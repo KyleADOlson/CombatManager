@@ -1,0 +1,4074 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSpecificItemChart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SpecificItemChart>
+    <Minor>50</Minor>
+    <Medium>25</Medium>
+    <Name>Mithral shirt</Name>
+    <Cost>1,100 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>30</Minor>
+    <Medium>20</Medium>
+    <Name>Dragonhide plate</Name>
+    <Cost>3,300 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>20</Minor>
+    <Medium>12</Medium>
+    <Name>Elven chain</Name>
+    <Cost>5,150 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>10</Medium>
+    <Name>Rhino hide</Name>
+    <Cost>5,165 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>15</Medium>
+    <Major>10</Major>
+    <Name>Adamantine Breastplate</Name>
+    <Cost>10,200 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>15</Medium>
+    <Major>10</Major>
+    <Name>Dwarven plate</Name>
+    <Cost>16,500 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>12</Major>
+    <Name>Banded mail ofluck</Name>
+    <Cost>18,900 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>18</Major>
+    <Name>Celestial armor</Name>
+    <Cost>22,400 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>10</Major>
+    <Name>Plate armor of the deep</Name>
+    <Cost>24,650 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>15</Major>
+    <Name>Breastplate of command</Name>
+    <Cost>25,400 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>15</Major>
+    <Name>Mithral full plate of speed</Name>
+    <Cost>26,500 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>10</Major>
+    <Name>Demon armor</Name>
+    <Cost>52,260 gp</Cost>
+    <Type>Armor</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>30</Minor>
+    <Medium>20</Medium>
+    <Name>Darkwood buckler</Name>
+    <Cost>205 gp</Cost>
+    <Type>Shield</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>50</Minor>
+    <Medium>25</Medium>
+    <Name>Darkwood shield</Name>
+    <Cost>257 gp</Cost>
+    <Type>Shield</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>15</Minor>
+    <Medium>25</Medium>
+    <Name>Mithral heavy shield</Name>
+    <Cost>1,020 gp</Cost>
+    <Type>Shield</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>5</Minor>
+    <Medium>15</Medium>
+    <Major>20</Major>
+    <Name>Caster—s shield</Name>
+    <Cost>3,153 gp</Cost>
+    <Type>Shield</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>20</Major>
+    <Name>Spined shield</Name>
+    <Cost>5,580 gp</Cost>
+    <Type>Shield</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>20</Major>
+    <Name>Lion—s shield</Name>
+    <Cost>9,170 gp</Cost>
+    <Type>Shield</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>30</Major>
+    <Name>Winged shield</Name>
+    <Cost>17,257 gp</Cost>
+    <Type>Shield</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>10</Major>
+    <Name>Absorbing shield</Name>
+    <Cost>50,170 gp</Cost>
+    <Type>Shield</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>15</Minor>
+    <Name>Sleep arrow</Name>
+    <Cost>132 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>10</Minor>
+    <Name>Screaming bolt</Name>
+    <Cost>267 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>20</Minor>
+    <Name>Masterwork Silver dagger</Name>
+    <Cost>322 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>20</Minor>
+    <Name>Masterwork Cold iron longsword</Name>
+    <Cost>330 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>10</Minor>
+    <Medium>9</Medium>
+    <Name>Javelin of lightning</Name>
+    <Cost>1,500 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>5</Minor>
+    <Medium>6</Medium>
+    <Name>Slaying arrow</Name>
+    <Cost>2,282 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>10</Minor>
+    <Medium>9</Medium>
+    <Name>Adamantine dagger</Name>
+    <Cost>3,002 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>10</Minor>
+    <Medium>9</Medium>
+    <Name>Adamantine battleaxe</Name>
+    <Cost>3,010 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Name>Slaying arrow, greater</Name>
+    <Cost>4,057 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Name>Shatterspike</Name>
+    <Cost>4,315 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Name>Dagger of venom</Name>
+    <Cost>8,302 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Name>Trident of warning</Name>
+    <Cost>10,115 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Major>4</Major>
+    <Name>Assassin—s dagger</Name>
+    <Cost>10,302 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>3</Major>
+    <Name>Shifter—s sorrow</Name>
+    <Cost>12,780 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>2</Major>
+    <Name>Trident of fish command</Name>
+    <Cost>18,650 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>8</Medium>
+    <Major>4</Major>
+    <Name>Flame tongue</Name>
+    <Cost>20,715 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>4</Major>
+    <Name>Luck blade (0 wishes)</Name>
+    <Cost>22,060 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Major>7</Major>
+    <Name>Sword of subtlety</Name>
+    <Cost>22,310 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>7</Major>
+    <Name>Sword of the planes</Name>
+    <Cost>22,315 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>6</Major>
+    <Name>Nine lives stealer</Name>
+    <Cost>23,057 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>5</Major>
+    <Name>Oathbow</Name>
+    <Cost>25,600 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>4</Major>
+    <Name>Sword of life stealing</Name>
+    <Cost>25,715 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Mace of terror</Name>
+    <Cost>38,552 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>6</Major>
+    <Name>Life-drinker</Name>
+    <Cost>40,320 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Sylvan scimitar</Name>
+    <Cost>47,315 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Rapier of puncturing</Name>
+    <Cost>50,320 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>6</Major>
+    <Name>Sun blade</Name>
+    <Cost>50,335 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>6</Major>
+    <Name>Frost brand</Name>
+    <Cost>54,475 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Dwarven thrower</Name>
+    <Cost>60,312 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>7</Major>
+    <Name>Luck blade (1 wish)</Name>
+    <Cost>62,360 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>4</Major>
+    <Name>Mace of smiting</Name>
+    <Cost>75,312 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Luck blade (2 wishes)</Name>
+    <Cost>102,660 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Holy avenger</Name>
+    <Cost>120,630 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Luck blade (3 wishes)</Name>
+    <Cost>142,960 gp</Cost>
+    <Type>Weapon</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>18</Minor>
+    <Name>Protection +1</Name>
+    <Cost>2,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>10</Minor>
+    <Name>Feather falling</Name>
+    <Cost>2,200 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>8</Minor>
+    <Name>Sustenance</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>8</Minor>
+    <Name>Climbing</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>8</Minor>
+    <Name>Jumping</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>8</Minor>
+    <Name>Swimming</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>10</Minor>
+    <Medium>5</Medium>
+    <Name>Counterspells</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>5</Minor>
+    <Medium>3</Medium>
+    <Name>Mind shielding</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>5</Minor>
+    <Medium>10</Medium>
+    <Name>Protection +2</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>5</Minor>
+    <Medium>5</Medium>
+    <Name>Force shield</Name>
+    <Cost>8,500 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>5</Minor>
+    <Medium>5</Medium>
+    <Name>the Ram</Name>
+    <Cost>8,600 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Name>Climbing, improved</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Name>Jumping, improved</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Name>Swimming, improved</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>3</Minor>
+    <Medium>4</Medium>
+    <Name>Animal friendship</Name>
+    <Cost>10,800 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>3</Minor>
+    <Medium>6</Medium>
+    <Major>2</Major>
+    <Name>Energy resistance, minor</Name>
+    <Cost>12,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>2</Minor>
+    <Medium>5</Medium>
+    <Name>Chameleon power</Name>
+    <Cost>12,700 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>2</Minor>
+    <Medium>5</Medium>
+    <Name>Water walking</Name>
+    <Cost>15,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>5</Major>
+    <Name>Protection +3</Name>
+    <Cost>18,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>3</Major>
+    <Name>Spell storing, minor</Name>
+    <Cost>18,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>5</Major>
+    <Name>Invisibility</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>4</Major>
+    <Name>Wizardry (I)</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>6</Major>
+    <Name>Evasion</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>3</Major>
+    <Name>X-ray vision</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>4</Major>
+    <Name>Blinking</Name>
+    <Cost>27,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>7</Major>
+    <Name>Energy resistance, major</Name>
+    <Cost>28,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>10</Major>
+    <Name>Protection +4</Name>
+    <Cost>32,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>6</Major>
+    <Name>Wizardry (II)</Name>
+    <Cost>40,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Freedom of movement</Name>
+    <Cost>40,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>3</Major>
+    <Name>Energy resistance, greater</Name>
+    <Cost>44,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Friend shield (pair)</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Protection +5</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>4</Major>
+    <Name>Shooting stars</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Spell storing</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>4</Major>
+    <Name>Wizardry (III)</Name>
+    <Cost>70,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>3</Major>
+    <Name>Telekinesis</Name>
+    <Cost>75,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Regeneration</Name>
+    <Cost>90,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>3</Major>
+    <Name>Spell turning</Name>
+    <Cost>100,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Wizardry (IV)</Name>
+    <Cost>100,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Three wishes</Name>
+    <Cost>120,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Djinni calling</Name>
+    <Cost>125,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Elemental command (air)</Name>
+    <Cost>200,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Elemental command (earth)</Name>
+    <Cost>200,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Elemental command (fire)</Name>
+    <Cost>200,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Elemental command  (water)</Name>
+    <Cost>200,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Spell storing, major</Name>
+    <Cost>200,000 gp</Cost>
+    <Type>Ring</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Name>Metamagic, Enlarge, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Name>Metamagic, Extend, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Name>Metamagic, Silent, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Name>Immovable</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Name>Metamagic, Empower, lesser</Name>
+    <Cost>9,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Name>Metal and mineral detection</Name>
+    <Cost>10,500 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>11</Medium>
+    <Major>4</Major>
+    <Name>Cancellation</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>2</Major>
+    <Name>Metamagic, Enlarge</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>2</Major>
+    <Name>Metamagic, Extend</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>2</Major>
+    <Name>Metamagic, Silent</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Major>4</Major>
+    <Name>Wonder</Name>
+    <Cost>12,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>8</Medium>
+    <Major>5</Major>
+    <Name>the Python</Name>
+    <Cost>13,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Name>Metamagic, Maximize, lesser</Name>
+    <Cost>14,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Major>2</Major>
+    <Name>Flame extinguishing</Name>
+    <Cost>15,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>8</Medium>
+    <Major>4</Major>
+    <Name>the Viper</Name>
+    <Cost>19,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Enemy detection</Name>
+    <Cost>23,500 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>6</Major>
+    <Name>Metamagic, Enlarge, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>6</Major>
+    <Name>Metamagic, Extend, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>6</Major>
+    <Name>Metamagic, Silent, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Splendor</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Withering</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>6</Major>
+    <Name>Metamagic, Empower</Name>
+    <Cost>32,500 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Thunder and lightning</Name>
+    <Cost>33,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Major>4</Major>
+    <Name>Metamagic, Quicken, lesser</Name>
+    <Cost>35,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>4</Major>
+    <Name>Negation</Name>
+    <Cost>37,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>3</Major>
+    <Name>Absorption</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>4</Major>
+    <Name>Flailing</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, Maximize</Name>
+    <Cost>54,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Rulership</Name>
+    <Cost>60,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Security</Name>
+    <Cost>61,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Lordly might</Name>
+    <Cost>70,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, Empower, greater</Name>
+    <Cost>73,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, Quicken</Name>
+    <Cost>75,500 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Alertness</Name>
+    <Cost>85,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Metamagic, Maximize, greater</Name>
+    <Cost>121,500 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Metamagic, Quicken, greater</Name>
+    <Cost>170,000 gp</Cost>
+    <Type>Rod</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>15</Medium>
+    <Major>3</Major>
+    <Name>Charming</Name>
+    <Cost>17,600 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>15</Medium>
+    <Major>6</Major>
+    <Name>Fire</Name>
+    <Cost>18,950 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>10</Medium>
+    <Major>2</Major>
+    <Name>Swarming insects</Name>
+    <Cost>22,800 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>15</Medium>
+    <Major>2</Major>
+    <Name>Size alteration</Name>
+    <Cost>26,150 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>20</Medium>
+    <Major>6</Major>
+    <Name>Healing</Name>
+    <Cost>29,600 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>15</Medium>
+    <Major>5</Major>
+    <Name>Frost</Name>
+    <Cost>41,400 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>7</Major>
+    <Name>Illumination</Name>
+    <Cost>51,500 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>7</Major>
+    <Name>Defense</Name>
+    <Cost>62,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>7</Major>
+    <Name>Abjuration</Name>
+    <Cost>82,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Conjuration</Name>
+    <Cost>82,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Divination</Name>
+    <Cost>82,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Enchantment</Name>
+    <Cost>82,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Evocation</Name>
+    <Cost>82,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Illusion</Name>
+    <Cost>82,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Necromancy</Name>
+    <Cost>82,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Transmutation</Name>
+    <Cost>82,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Earth and stone</Name>
+    <Cost>85,800 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Woodlands</Name>
+    <Cost>100,400 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Life</Name>
+    <Cost>109,400 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>3</Major>
+    <Name>Passage</Name>
+    <Cost>206,900 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Power</Name>
+    <Cost>235,000 gp</Cost>
+    <Type>Staff</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Feather token, anchor</Name>
+    <Cost>50 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Universal solvent</Name>
+    <Cost>50 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Elixir of love</Name>
+    <Cost>150 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Unguent of timelessness</Name>
+    <Cost>150 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Feather token, fan</Name>
+    <Cost>200 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Dust of tracelessness</Name>
+    <Cost>250 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Elixir of hiding</Name>
+    <Cost>250 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Elixir of tumbling</Name>
+    <Cost>250 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Elixir of swimming</Name>
+    <Cost>250 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Elixir of vision</Name>
+    <Cost>250 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Silversheen</Name>
+    <Cost>250 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Feather token, bird</Name>
+    <Cost>300 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Feather token, tree</Name>
+    <Cost>400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Feather token, swan boat</Name>
+    <Cost>450 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Elixir of truth</Name>
+    <Cost>500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Feather token, whip</Name>
+    <Cost>500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Dust of dryness</Name>
+    <Cost>850 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Hand of the mage</Name>
+    <Cost>900 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bracers of armor +1</Name>
+    <Cost>1,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Cloak of resistance +1</Name>
+    <Cost>1,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Pearl of power, 1st-level spell</Name>
+    <Cost>1,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Phylactery of faithfulness</Name>
+    <Cost>1,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Salve of slipperiness</Name>
+    <Cost>1,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Elixir of fire breath</Name>
+    <Cost>1,100 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Pipes of the sewers</Name>
+    <Cost>1,150 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Dust of illusion</Name>
+    <Cost>1,200 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Brooch of shielding</Name>
+    <Cost>1,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Necklace of fireballs type I</Name>
+    <Cost>1,650 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Dust of appearance</Name>
+    <Cost>1,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Hat of disguise</Name>
+    <Cost>1,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Pipes of sounding</Name>
+    <Cost>1,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Eff icient quiver</Name>
+    <Cost>1,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Amulet of natural armor +1</Name>
+    <Cost>2,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Handy haversack</Name>
+    <Cost>2,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Horn of fog</Name>
+    <Cost>2,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Elemental gem</Name>
+    <Cost>2,250 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Robe of bones</Name>
+    <Cost>2,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Sovereign glue</Name>
+    <Cost>2,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bag of holding type I</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Boots of elvenkind</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Boots of the winterlands</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Candle of truth</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Cloak of elvenkind</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Eyes of the eagle</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Goggles of minute seeing</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Scarab, golembane</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Necklace of fireballs type II</Name>
+    <Cost>2,700 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Stone of alarm</Name>
+    <Cost>2,700 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bead of force</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Chime of opening</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Horseshoes of speed</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Rope of climbing</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bag of tricks, gray</Name>
+    <Cost>3,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Dust of disappearance</Name>
+    <Cost>3,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Lens of detection</Name>
+    <Cost>3,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Vestment, druid's</Name>
+    <Cost>3,750 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Figurine of wondrous power, silver raven</Name>
+    <Cost>3,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Belt of giant strength +2</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Belt of incredible dexterity +2</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Belt of mighty constitution +2</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bracers of armor +2</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Cloak of resistance +2</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Gloves of arrow snaring</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Headband of alluring charisma +2</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Headband of inspired wisdom +2</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Headband of vast intelligence +2</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Ioun stone, clear spindle</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Restorative ointment</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Marvelous pigments</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Pearl of power, 2nd-level spell</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Stone salve</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Necklace of fireballs type III</Name>
+    <Cost>4,350 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Circlet of persuasion</Name>
+    <Cost>4,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Slippers of spider climbing</Name>
+    <Cost>4,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Incense of meditation</Name>
+    <Cost>4,900 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Amulet of mighty fists +1</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bag of holding type II</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bracers of archery, lesser</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Ioun stone, dusty rose prism</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Helm of comprehend languages and read magic</Name>
+    <Cost>5,200 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Vest of escape</Name>
+    <Cost>5,200 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Eversmoking bottle</Name>
+    <Cost>5,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Sustaining spoon</Name>
+    <Cost>5,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Necklace of fireballs type IV</Name>
+    <Cost>5,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Boots of striding and springing</Name>
+    <Cost>5,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Wind fan</Name>
+    <Cost>5,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Necklace of fireballs type V</Name>
+    <Cost>5,850 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Horseshoes of a zephyr</Name>
+    <Cost>6,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Pipes of haunting</Name>
+    <Cost>6,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Gloves of swimming and climbing</Name>
+    <Cost>6,250 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Crown of blasting, minor</Name>
+    <Cost>6,480 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Horn of goodness/evil</Name>
+    <Cost>6,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Robe of useful items</Name>
+    <Cost>7,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Boat, folding</Name>
+    <Cost>7,200 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Cloak of the manta ray</Name>
+    <Cost>7,200 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bottle of air</Name>
+    <Cost>7,250 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bag of holding type III</Name>
+    <Cost>7,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Periapt of health</Name>
+    <Cost>7,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Boots of levitation</Name>
+    <Cost>7,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Harp of charming</Name>
+    <Cost>7,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Amulet of natural armor +2</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Golem manual, flesh</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Hand of glory</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, deep red sphere</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, incandescent blue sphere</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, pale blue rhomboid</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, pink and green sphere</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, pink rhomboid</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, scarlet and blue sphere</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Deck of illusions</Name>
+    <Cost>8,100 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Necklace of fireballs type VI</Name>
+    <Cost>8,100 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Candle of invocation</Name>
+    <Cost>8,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Robe of blending</Name>
+    <Cost>8,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Bag of tricks, rust</Name>
+    <Cost>8,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Necklace of fireballs type VII</Name>
+    <Cost>8,700 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Bracers of armor +3</Name>
+    <Cost>9,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Cloak of resistance +3</Name>
+    <Cost>9,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Decanter of endless water</Name>
+    <Cost>9,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Necklace of adaptation</Name>
+    <Cost>9,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Pearl of power, 3rd-level spell</Name>
+    <Cost>9,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Figurine of wondrous power, serpentine owl</Name>
+    <Cost>9,100 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Strand of prayer beads, lesser</Name>
+    <Cost>9,600 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Bag of holding type IV</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Belt of physical might +2</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Figurine of wondrous power, bronze griffon</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Figurine of wondrous power, ebony fly</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Glove of storing</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Headband of mental prowess +2</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, dark blue rhomboid</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Cape of the mountebank</Name>
+    <Cost>10,080 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Phylactery of negative channeling</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Phylactery of positive channeling</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Gauntlet of rust</Name>
+    <Cost>11,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Boots of speed</Name>
+    <Cost>12,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Goggles of night</Name>
+    <Cost>12,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Golem manual, clay</Name>
+    <Cost>12,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Medallion of thoughts</Name>
+    <Cost>12,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Blessed book</Name>
+    <Cost>12,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Gem of brightness</Name>
+    <Cost>13,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Lyre of building</Name>
+    <Cost>13,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Robe, Monk—s</Name>
+    <Cost>13,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Cloak of arachnida</Name>
+    <Cost>14,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Belt of dwarvenkind</Name>
+    <Cost>14,900 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Periapt of wound closure</Name>
+    <Cost>15,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Pearl of the sirines</Name>
+    <Cost>15,300 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Figurine of wondrous power, onyx dog</Name>
+    <Cost>15,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Bag of tricks, tan</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Belt of giant strength +4</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Belt of incredible dexterity +4</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Belt of mighty constitution +4</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Belt of physical perfection +2</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Boots, winged</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Bracers of armor +4</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Cloak of resistance +4</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Headband of alluring charisma +4</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Headband of inspired wisdom +4</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Headband of mental superiority +2</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Headband of vast intelligence +4</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Pearl of power, 4th-level spell</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Scabbard of keen edges</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Figurine of wondrous power, golden lions</Name>
+    <Cost>16,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Chime of interruption</Name>
+    <Cost>16,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Broom of flying</Name>
+    <Cost>17,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Figurine of wondrous power, marble elephant</Name>
+    <Cost>17,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Amulet of natural armor +3</Name>
+    <Cost>18,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, iridescent spindle</Name>
+    <Cost>18,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Bracelet of friends</Name>
+    <Cost>19,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Amulet of mighty fists +2</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Carpet of flying, 5 ft. by 5 ft.</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Horn of blasting</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, pale lavender ellipsoid</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ioun stone, pearly white spindle</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Portable hole</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Stone of good luck (luckstone)</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Figurine of wondrous power, ivory goats</Name>
+    <Cost>21,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Rope of entanglement</Name>
+    <Cost>21,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Golem manual, stone</Name>
+    <Cost>22,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Mask of the skull</Name>
+    <Cost>22,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Mattock of the titans</Name>
+    <Cost>23,348 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Crown of blasting, major</Name>
+    <Cost>23,760 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Cloak of displacement, minor</Name>
+    <Cost>24,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Helm of underwater action</Name>
+    <Cost>24,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Bracers of archery, greater</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Bracers of armor +5</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Cloak of resistance +5</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Eyes of doom</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Pearl of power, 5th-level spell</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Maul of the titans</Name>
+    <Cost>25,305 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Cloak of the bat</Name>
+    <Cost>26,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Iron bands of binding</Name>
+    <Cost>26,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Cube of frost resistance</Name>
+    <Cost>27,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Helm of telepathy</Name>
+    <Cost>27,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Periapt of proof against poison</Name>
+    <Cost>27,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Robe of scintillating colors</Name>
+    <Cost>27,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Manual of bodily health +1</Name>
+    <Cost>27,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Manual of gainful exercise +1</Name>
+    <Cost>27,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Manual of quickness in action +1</Name>
+    <Cost>27,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Tome of clear thought +1</Name>
+    <Cost>27,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Tome of leadership and influence +1</Name>
+    <Cost>27,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Tome of understanding +1</Name>
+    <Cost>27,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Dimensional shackles</Name>
+    <Cost>28,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Figurine of wondrous power, obsidian steed</Name>
+    <Cost>28,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Drums of panic</Name>
+    <Cost>30,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Ioun stone, orange prism</Name>
+    <Cost>30,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Ioun stone, pale green prism</Name>
+    <Cost>30,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Lantern of revealing</Name>
+    <Cost>30,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Amulet of natural armor +4</Name>
+    <Cost>32,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Amulet of proof against detection and location</Name>
+    <Cost>35,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Carpet of flying, 5 ft. by 10 ft.</Name>
+    <Cost>35,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Golem manual, iron</Name>
+    <Cost>35,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Belt of giant strength +6</Name>
+    <Cost>36,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Belt of incredible dexterity +6</Name>
+    <Cost>36,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Belt of mighty constitution +6</Name>
+    <Cost>36,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Bracers of armor +6</Name>
+    <Cost>36,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Headband of alluring charisma +6</Name>
+    <Cost>36,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Headband of inspired wisdom +6</Name>
+    <Cost>36,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Headband of vast intelligence +6</Name>
+    <Cost>36,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Ioun stone, vibrant purple prism</Name>
+    <Cost>36,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Pearl of power, 6th-level spell</Name>
+    <Cost>36,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Scarab of protection</Name>
+    <Cost>38,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Belt of physical might +4</Name>
+    <Cost>40,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Headband of mental prowess +4</Name>
+    <Cost>40,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Ioun stone, lavender and green ellipsoid</Name>
+    <Cost>40,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Ring gates</Name>
+    <Cost>40,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Crystal ball</Name>
+    <Cost>42,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Golem manual, stone guardian</Name>
+    <Cost>44,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Amulet of mighty fists +3</Name>
+    <Cost>45,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Strand of prayer beads</Name>
+    <Cost>45,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Orb of storms</Name>
+    <Cost>48,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Boots of teleportation</Name>
+    <Cost>49,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Bracers of armor +7</Name>
+    <Cost>49,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Pearl of power, 7th-level spell</Name>
+    <Cost>49,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Amulet of natural armor +5</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Cloak of displacement, major</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Crystal ball with see invisibility</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Horn of Valhalla</Name>
+    <Cost>50,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Crystal ball with detect thoughts</Name>
+    <Cost>51,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Wings of flying</Name>
+    <Cost>54,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Cloak of etherealness</Name>
+    <Cost>55,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Instant fortress</Name>
+    <Cost>55,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of bodily health +2</Name>
+    <Cost>55,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of gainful exercise +2</Name>
+    <Cost>55,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of quickness in action +2</Name>
+    <Cost>55,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of clear thought +2</Name>
+    <Cost>55,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of leadership and influence +2</Name>
+    <Cost>55,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of understanding +2</Name>
+    <Cost>55,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Eyes of charming</Name>
+    <Cost>56,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Robe of stars</Name>
+    <Cost>58,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Carpet of flying, 10 ft. by 10 ft.</Name>
+    <Cost>60,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Darkskull</Name>
+    <Cost>60,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Cube of force</Name>
+    <Cost>62,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Belt of physical perfection +4</Name>
+    <Cost>64,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Bracers of armor +8</Name>
+    <Cost>64,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Headband of mental superiority +4</Name>
+    <Cost>64,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Pearl of power, 8th-level spell</Name>
+    <Cost>64,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Crystal ball with telepathy</Name>
+    <Cost>70,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Horn of blasting, greater</Name>
+    <Cost>70,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Pearl of power, two spells</Name>
+    <Cost>70,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Helm of teleportation</Name>
+    <Cost>73,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Gem of seeing</Name>
+    <Cost>75,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Robe of the archmagi</Name>
+    <Cost>75,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Mantle of faith</Name>
+    <Cost>76,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Amulet of mighty fists +4</Name>
+    <Cost>80,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Crystal ball with true seeing</Name>
+    <Cost>80,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Pearl of power, 9th-level spell</Name>
+    <Cost>81,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Well of many worlds</Name>
+    <Cost>82,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of bodily health +3</Name>
+    <Cost>82,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of gainful exercise +3</Name>
+    <Cost>82,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of quickness in action +3</Name>
+    <Cost>82,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of clear thought +3</Name>
+    <Cost>82,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of leadership and influence +3</Name>
+    <Cost>82,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of understanding +3</Name>
+    <Cost>82,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Apparatus of the crab</Name>
+    <Cost>90,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Belt of physical might +6</Name>
+    <Cost>90,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Headband of mental prowess +6</Name>
+    <Cost>90,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Mantle of spell resistance</Name>
+    <Cost>90,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Mirror of opposition</Name>
+    <Cost>92,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Strand of prayer beads, greater</Name>
+    <Cost>95,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of bodily health +4</Name>
+    <Cost>110,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of gainful exercise +4</Name>
+    <Cost>110,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of quickness in action +4</Name>
+    <Cost>110,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of clear thought +4</Name>
+    <Cost>110,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of leadership and influence +4</Name>
+    <Cost>110,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of understanding +4</Name>
+    <Cost>110,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Amulet of the planes</Name>
+    <Cost>120,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Robe of eyes</Name>
+    <Cost>120,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Amulet of mighty fists +5</Name>
+    <Cost>125,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Helm of brilliance</Name>
+    <Cost>125,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of bodily health +5</Name>
+    <Cost>137,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of gainful exercise +5</Name>
+    <Cost>137,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Manual of quickness in action +5</Name>
+    <Cost>137,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of clear thought +5</Name>
+    <Cost>137,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of leadership and influence +5</Name>
+    <Cost>137,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Tome of understanding +5</Name>
+    <Cost>137,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Belt of physical perfection +6</Name>
+    <Cost>144,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Headband of mental superiority +6</Name>
+    <Cost>144,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Efreeti bottle</Name>
+    <Cost>145,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Cubic gate</Name>
+    <Cost>164,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Iron flask</Name>
+    <Cost>170,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Mirror of life trapping</Name>
+    <Cost>200,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>20</Minor>
+    <Major>2</Major>
+    <Name>Mistmail</Name>
+    <Cost>2,250 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>15</Minor>
+    <Major>3</Major>
+    <Name>Soothsayer’s raiment</Name>
+    <Cost>10,300 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>15</Minor>
+    <Major>1</Major>
+    <Name>Boneless leather</Name>
+    <Cost>12,160 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>15</Minor>
+    <Major>1</Major>
+    <Name>Murderer’s blackcloth</Name>
+    <Cost>12,405 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>25</Minor>
+    <Major>5</Major>
+    <Name>Folding plate</Name>
+    <Cost>12,650 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>10</Minor>
+    <Major>15</Major>
+    <Name>Armor of insults</Name>
+    <Cost>16,175 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>15</Major>
+    <Name>Buccaneer’s breastplate</Name>
+    <Cost>23,850 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>7</Major>
+    <Name>Forsaken banded mail</Name>
+    <Cost>25,400 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>12</Major>
+    <Name>Giant-hide armor (ogre)</Name>
+    <Cost>39,165 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>10</Major>
+    <Name>Giant-hide armor (hill giant)</Name>
+    <Cost>46,665 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>10</Major>
+    <Name>Giant-hide armor (stone giant)</Name>
+    <Cost>54,165 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Giant-hide armor (fire giant)</Name>
+    <Cost>54,165 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Giant-hide armor (frost giant)</Name>
+    <Cost>54,165 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>5</Major>
+    <Name>Giant-hide armor (troll)</Name>
+    <Cost>59,165 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Giant-hide armor (cloud giant)</Name>
+    <Cost>69,165 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Giant-hide armor (storm giant)</Name>
+    <Cost>76,665 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Daystar half-plate</Name>
+    <Cost>81,250 gp</Cost>
+    <Type>Armor</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>10</Major>
+    <Name>Battlement shield</Name>
+    <Cost>16,180 gp</Cost>
+    <Type>Shield</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>10</Major>
+    <Name>Fortress shield</Name>
+    <Cost>19,180 gp</Cost>
+    <Type>Shield</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>7</Minor>
+    <Name>Dustburst bullet</Name>
+    <Cost>196 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>7</Minor>
+    <Name>Tangle bolt</Name>
+    <Cost>226 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>2</Minor>
+    <Medium>4</Medium>
+    <Name>Searing arrow</Name>
+    <Cost>1,516 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>2</Minor>
+    <Medium>4</Medium>
+    <Name>Sizzling arrow</Name>
+    <Cost>1,516 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>2</Minor>
+    <Medium>6</Medium>
+    <Name>Lance of jousting</Name>
+    <Cost>4,310 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Name>Boulderhead mace</Name>
+    <Cost>6,812 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>8</Medium>
+    <Name>Beaststrike club</Name>
+    <Cost>7,300 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>1</Major>
+    <Name>Trident of stability</Name>
+    <Cost>9,815 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>4</Major>
+    <Name>Blade of binding</Name>
+    <Cost>12,350 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>4</Major>
+    <Name>Shieldsplitter lance</Name>
+    <Cost>18,310 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>6</Major>
+    <Name>Ricochet hammer</Name>
+    <Cost>20,301 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>5</Major>
+    <Name>Sparkwake starknife</Name>
+    <Cost>21,324 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>2</Major>
+    <Name>Undercutting axe</Name>
+    <Cost>23,310 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Spirit blade</Name>
+    <Cost>48,502 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Guarding blade</Name>
+    <Cost>65,310 gp</Cost>
+    <Type>Weapon</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>5</Minor>
+    <Name>Dungeon ring, prisoner’s</Name>
+    <Cost>250 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>7</Minor>
+    <Name>Arcane signets</Name>
+    <Cost>1,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>10</Minor>
+    <Medium>8</Medium>
+    <Name>Maniacal Devices</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>2</Minor>
+    <Medium>7</Medium>
+    <Name>Delayed doom (1 stone)</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Medium>2</Medium>
+    <Name>Forcefangs</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Name>Revelation, lesser</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>1</Major>
+    <Name>Delayed doom (2 stones)</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>3</Major>
+    <Name>Delayed doom (3 stones)</Name>
+    <Cost>15,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>6</Major>
+    <Name>Retribution</Name>
+    <Cost>15,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>2</Major>
+    <Name>Dungeon ring, jailer’s</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>1</Major>
+    <Name>Revelation, greater</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Major>10</Major>
+    <Name>Delayed doom (4 stones)</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Major>1</Major>
+    <Name>Revelation, superior</Name>
+    <Cost>24,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Major>5</Major>
+    <Name>Delayed doom (5 stones)</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>8</Major>
+    <Name>Delayed doom (6 stones)</Name>
+    <Cost>30,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Delayed doom (7 stones)</Name>
+    <Cost>35,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Delayed doom (8 stones)</Name>
+    <Cost>40,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Delayed doom (9 stones)</Name>
+    <Cost>45,000 gp</Cost>
+    <Type>Ring</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Name>Metamagic, merciful, lesser</Name>
+    <Cost>1,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Name>Metamagic, disruptive, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Name>Metamagic, ectoplasmic, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>10</Medium>
+    <Name>Metamagic, elemental, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Name>Metamagic, focused, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Name>Metamagic, intensified, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Name>Metamagic, lingering, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Name>Metamagic, persistent, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Name>Metamagic, reach, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>10</Medium>
+    <Name>Metamagic, selective, lesser</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Name>Metamagic, merciful</Name>
+    <Cost>5,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Name>Metamagic, bouncing, lesser</Name>
+    <Cost>9,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Name>Metamagic, sickening, lesser</Name>
+    <Cost>9,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Name>Metamagic, thundering, lesser</Name>
+    <Cost>9,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>3</Major>
+    <Name>Metamagic, disruptive</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>6</Major>
+    <Name>Metamagic, ectoplasmic</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Major>11</Major>
+    <Name>Metamagic, elemental</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>8</Major>
+    <Name>Metamagic, focused</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>8</Major>
+    <Name>Metamagic, intensified</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>3</Major>
+    <Name>Metamagic, lingering</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>4</Major>
+    <Name>Metamagic, persistent</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>3</Major>
+    <Name>Metamagic, reach</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>8</Major>
+    <Name>Metamagic, selective</Name>
+    <Cost>11,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Major>2</Major>
+    <Name>Metamagic, merciful, greater</Name>
+    <Cost>12,250 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>2</Major>
+    <Name>Metamagic, dazing, lesser</Name>
+    <Cost>14,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, disruptive, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>3</Major>
+    <Name>Metamagic, ectoplasmic, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>6</Major>
+    <Name>Metamagic, elemental, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>4</Major>
+    <Name>Metamagic, focused, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>4</Major>
+    <Name>Metamagic, intensified, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, lingering, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Metamagic, persistent, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, reach, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>4</Major>
+    <Name>Metamagic, selective, greater</Name>
+    <Cost>24,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>3</Major>
+    <Name>Metamagic, bouncing</Name>
+    <Cost>32,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, sickening</Name>
+    <Cost>32,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, thundering</Name>
+    <Cost>32,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, dazing</Name>
+    <Cost>54,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>2</Major>
+    <Name>Metamagic, bouncing, greater</Name>
+    <Cost>73,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Metamagic, sickening, greater</Name>
+    <Cost>73,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Metamagic, thundering, greater</Name>
+    <Cost>73,000 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Metamagic, dazing, greater</Name>
+    <Cost>121,500 gp</Cost>
+    <Type>Rod</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>1</Major>
+    <Name>Toxins</Name>
+    <Cost>12,600 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>1</Major>
+    <Name>Journeys</Name>
+    <Cost>13,600 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>2</Major>
+    <Name>Rigor</Name>
+    <Cost>13,600 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>8</Medium>
+    <Major>4</Major>
+    <Name>Shrieking</Name>
+    <Cost>14,400 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Major>3</Major>
+    <Name>Souls</Name>
+    <Cost>16,400 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>10</Medium>
+    <Major>5</Major>
+    <Name>Stealth</Name>
+    <Cost>18,400 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Major>4</Major>
+    <Name>Revelations</Name>
+    <Cost>20,400 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>12</Medium>
+    <Major>6</Major>
+    <Name>Bolstering</Name>
+    <Cost>20,800 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>5</Medium>
+    <Major>2</Major>
+    <Name>Traps</Name>
+    <Cost>21,200 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>10</Medium>
+    <Major>7</Major>
+    <Name>Cackling wrath</Name>
+    <Cost>23,600 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>7</Medium>
+    <Major>9</Major>
+    <Name>Obstacles</Name>
+    <Cost>25,800 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Major>10</Major>
+    <Name>Performance</Name>
+    <Cost>26,800 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>4</Medium>
+    <Major>6</Major>
+    <Name>Hoarding</Name>
+    <Cost>30,016 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>6</Medium>
+    <Major>12</Major>
+    <Name>Slumber</Name>
+    <Cost>34,050 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>11</Major>
+    <Name>Vision</Name>
+    <Cost>41,250 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>3</Medium>
+    <Major>8</Major>
+    <Name>Weather</Name>
+    <Cost>44,200 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>2</Medium>
+    <Major>9</Major>
+    <Name>Many rays</Name>
+    <Cost>52,800 gp</Cost>
+    <Type>Staff</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Ioun torch</Name>
+    <Cost>75 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>War paint of the terrible visage</Name>
+    <Cost>100 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Assisting glove</Name>
+    <Cost>180 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bandages of rapid recovery</Name>
+    <Cost>200 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Catching cape</Name>
+    <Cost>200 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Soul soap</Name>
+    <Cost>200 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Bottle of messages</Name>
+    <Cost>300 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Key of lock jamming</Name>
+    <Cost>400 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Campfire bead</Name>
+    <Cost>720 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Defoliant polish</Name>
+    <Cost>800 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Dust of emulation</Name>
+    <Cost>800 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Muleback cords</Name>
+    <Cost>1,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>All tools vest</Name>
+    <Cost>1,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Cowardly crouching cloak</Name>
+    <Cost>1,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Scabbard of vigor</Name>
+    <Cost>1,800 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Clamor box</Name>
+    <Cost>2,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Glowing glove</Name>
+    <Cost>2,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Manacles of cooperation</Name>
+    <Cost>2,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Knight’s pennon (honor)</Name>
+    <Cost>2,200 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Flying ointment</Name>
+    <Cost>2,250 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Boots of friendly terrain</Name>
+    <Cost>2,400 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Apple of eternal sleep</Name>
+    <Cost>2,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Cauldron of brewing</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Philter of love</Name>
+    <Cost>3,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Sash of the war champion</Name>
+    <Cost>4,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Knight’s pennon (battle)</Name>
+    <Cost>4,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Knight’s pennon (parley)</Name>
+    <Cost>4,500 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Helm of fearsome mien</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Horn of the huntmaster</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Scabbard of staunching</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Minor>1</Minor>
+    <Name>Sheath of bladestealth</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Grappler’s mask</Name>
+    <Cost>5,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Torc of lionheart fury</Name>
+    <Cost>8,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Amulet of spell cunning</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Construct channel brick</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Doomharp</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Ki mat</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Lord’s banner (swiftness)</Name>
+    <Cost>10,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Crystal of healing hands</Name>
+    <Cost>12,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Book of the loremaster</Name>
+    <Cost>15,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Bracelet of mercy</Name>
+    <Cost>15,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Cauldron of plenty</Name>
+    <Cost>15,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Gloves of dueling</Name>
+    <Cost>15,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Necklace of ki serenity</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Robes of arcane heritage</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Silver smite bracelet</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Vest of the cockroach</Name>
+    <Cost>16,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Amulet of magecraft</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Horn of antagonism</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Moon circlet</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Necromancer’s athame</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Sniper goggles</Name>
+    <Cost>20,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Medium>1</Medium>
+    <Name>Annihilation spectacles</Name>
+    <Cost>25,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Cauldron of the dead</Name>
+    <Cost>30,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Mask of giants (lesser)</Name>
+    <Cost>30,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Cauldron of resurrection</Name>
+    <Cost>33,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Cauldron of flying</Name>
+    <Cost>40,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Cauldron of seeing</Name>
+    <Cost>42,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Lord’s banner (terror)</Name>
+    <Cost>56,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Lord’s banner (victory)</Name>
+    <Cost>75,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Mask of giants (greater)</Name>
+    <Cost>90,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>
+  <SpecificItemChart>
+    <Major>1</Major>
+    <Name>Lord’s banner (crusades)</Name>
+    <Cost>100,000 gp</Cost>
+    <Type>Wondrous Item</Type>
+    <Source>APG</Source>
+  </SpecificItemChart>  
+</ArrayOfSpecificItemChart>

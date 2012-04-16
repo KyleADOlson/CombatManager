@@ -1,0 +1,24 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CombatManager.SplashScreen"
+        Title="Combat Manager" Height="211" Width="326" WindowStyle="None" Loaded="Window_Loaded" AllowsTransparency="True" Background="#00000000" Icon="/CombatManager;component/Images/d20-32.ico">
+    <Grid Clip="M0.5,8.5 C0.5,4.081722 4.081722,0.5 8.5,0.5 L317.5,0.5 C321.91828,0.5 325.5,4.081722 325.5,8.5 L325.5,202.5 C325.5,206.91828 321.91828,210.5 317.5,210.5 L8.5,210.5 C4.081722,210.5 0.5,206.91828 0.5,202.5 z">
+    	<Grid.Background>
+    		<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+    			<GradientStop Color="#FF2C767A" Offset="0.522"/>
+    			<GradientStop Color="#FFAFDBDD"/>
+    		</LinearGradientBrush>
+    	</Grid.Background>
+    	<Rectangle RadiusY="8" RadiusX="8" Stroke="White" StrokeThickness="2"/>
+    	<TextBlock HorizontalAlignment="Left" Margin="82,79.373,0,0" TextWrapping="Wrap" Text="{StaticResource ApplicationTitle}" VerticalAlignment="Top" FontSize="21.333" Foreground="White" FontWeight="Bold">
+    		<TextBlock.Effect>
+    			<DropShadowEffect/>
+    		</TextBlock.Effect>
+    	</TextBlock>
+    	<Image HorizontalAlignment="Left" Source="Images/d20-40.png" Stretch="Fill" Width="40" Height="40" Margin="38,73.5,0,97.5" />
+    	<TextBlock HorizontalAlignment="Left" Margin="8,0,0,8" TextWrapping="Wrap" Text="{StaticResource ApplicationVersion}" VerticalAlignment="Bottom" Foreground="White"/>
+    	<TextBlock Margin="158,0,8,10.04" TextWrapping="Wrap" Text="{StaticResource ApplicationCopyright}" VerticalAlignment="Bottom" Foreground="White" HorizontalAlignment="Right"/>
+    	
+    </Grid>
+</Window>

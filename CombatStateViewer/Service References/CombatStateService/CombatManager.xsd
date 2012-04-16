@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/CombatManager" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CombatManager" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfSimpleCombatListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SimpleCombatListItem" nillable="true" type="tns:SimpleCombatListItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSimpleCombatListItem" nillable="true" type="tns:ArrayOfSimpleCombatListItem" />
+  <xs:complexType name="SimpleCombatListItem">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Followers" nillable="true" type="q1:ArrayOfguid" />
+      <xs:element minOccurs="0" name="ID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SimpleCombatListItem" nillable="true" type="tns:SimpleCombatListItem" />
+  <xs:complexType name="ArrayOfCharacter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Character" nillable="true" type="tns:Character" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCharacter" nillable="true" type="tns:ArrayOfCharacter" />
+  <xs:complexType name="Character">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrentInitiative" type="xs:int" />
+      <xs:element minOccurs="0" name="HP" type="xs:int" />
+      <xs:element minOccurs="0" name="HasInitiativeChanged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="InitiativeCount" nillable="true" type="tns:InitiativeCount" />
+      <xs:element minOccurs="0" name="InitiativeLeaderID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="InitiativeRolled" type="xs:int" />
+      <xs:element minOccurs="0" name="InitiativeTiebreaker" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsBlank" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsConditionsOpen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDelaying" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsHidden" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIdle" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMonster" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOtherHPOpen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsReadying" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaxHP" type="xs:int" />
+      <xs:element minOccurs="0" name="Monster" nillable="true" type="tns:Monster" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NonlethalDamage" type="xs:int" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TemporaryHP" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Character" nillable="true" type="tns:Character" />
+  <xs:complexType name="InitiativeCount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Base" type="xs:int" />
+      <xs:element minOccurs="0" name="Dex" type="xs:int" />
+      <xs:element minOccurs="0" name="Tiebreaker" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InitiativeCount" nillable="true" type="tns:InitiativeCount" />
+  <xs:complexType name="Monster">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AC_Mods" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AbilitiyScores" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AcParsed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AgeCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Alignment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Armor" type="xs:int" />
+      <xs:element minOccurs="0" name="Aura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaseAtk" type="xs:int" />
+      <xs:element minOccurs="0" name="BaseStatistics" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BeforeCombat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bloodline" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Burrow" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CMB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CMB_Numeric" type="xs:int" />
+      <xs:element minOccurs="0" name="CMD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CMD_Numeric" type="xs:int" />
+      <xs:element minOccurs="0" name="CR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CharacterFlag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Charisma" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Class" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Climb" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanionFlag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Constitution" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DefensiveAbilities" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Deflection" type="xs:int" />
+      <xs:element minOccurs="0" name="DescHTML" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description_Visual" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DexZero" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Dexterity" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Dodge" type="xs:int" />
+      <xs:element minOccurs="0" name="DontUseRacialHD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DuringCombat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Environment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExtractsPrepared" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Feats" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FeatsList" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="FeatsParsed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FlatFootedAC" type="xs:int" />
+      <xs:element minOccurs="0" name="Fly" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fort" type="xs:int" />
+      <xs:element minOccurs="0" name="FullAC" type="xs:int" />
+      <xs:element minOccurs="0" name="FullText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gear" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HP" type="xs:int" />
+      <xs:element minOccurs="0" name="HP_Mods" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Immune" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Init" type="xs:int" />
+      <xs:element minOccurs="0" name="Intelligence" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsTemplate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Land" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Languages" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoseDexBonus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Melee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MonsterSource" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Morale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NaturalArmor" type="xs:int" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OffenseNote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Organization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherGear" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreLossDex" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PreLossStr" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProhibitedSchools" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RacialMods" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ranged" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reach" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ref" type="xs:int" />
+      <xs:element minOccurs="0" name="Resist" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SQ" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Save_Mods" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Saves" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Senses" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Shield" type="xs:int" />
+      <xs:element minOccurs="0" name="Size" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkillValueList" nillable="true" type="tns:ArrayOfSkillValue" />
+      <xs:element minOccurs="0" name="Skills" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkillsParsed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Space" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialAbilities" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialAbilitiesList" nillable="true" type="tns:ArrayOfSpecialAbility" />
+      <xs:element minOccurs="0" name="SpecialAblitiesParsed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SpecialAttacks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Speed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Speed_Mod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpellDomains" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpellLikeAbilities" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpellsKnown" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpellsPrepared" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatsParsed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StrZero" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Strength" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Swim" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TemplatesApplied" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TouchAC" type="xs:int" />
+      <xs:element minOccurs="0" name="Treasure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UsableConditions" nillable="true" type="tns:ArrayOfCondition" />
+      <xs:element minOccurs="0" name="VariantParent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vulnerability" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Weaknesses" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Will" type="xs:int" />
+      <xs:element minOccurs="0" name="Wisdom" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="XP" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Monster" nillable="true" type="tns:Monster" />
+  <xs:complexType name="ArrayOfSkillValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SkillValue" nillable="true" type="tns:SkillValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSkillValue" nillable="true" type="tns:ArrayOfSkillValue" />
+  <xs:complexType name="SkillValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Mod" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Subtype" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SkillValue" nillable="true" type="tns:SkillValue" />
+  <xs:complexType name="ArrayOfSpecialAbility">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpecialAbility" nillable="true" type="tns:SpecialAbility" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpecialAbility" nillable="true" type="tns:ArrayOfSpecialAbility" />
+  <xs:complexType name="SpecialAbility">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbilityTypeIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="ConstructionPoints" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpecialAbility" nillable="true" type="tns:SpecialAbility" />
+  <xs:complexType name="ArrayOfCondition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Condition" nillable="true" type="tns:Condition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCondition" nillable="true" type="tns:ArrayOfCondition" />
+  <xs:complexType name="Condition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Affliction" nillable="true" type="tns:Affliction" />
+      <xs:element minOccurs="0" name="Bonus" nillable="true" type="tns:ConditionBonus" />
+      <xs:element minOccurs="0" name="Custom" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Spell" nillable="true" type="tns:Spell" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Condition" nillable="true" type="tns:Condition" />
+  <xs:complexType name="Affliction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cause" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DamageDie" nillable="true" type="tns:DieRoll" />
+      <xs:element minOccurs="0" name="DamageExtra" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DamageType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Details" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Frequency" type="xs:int" />
+      <xs:element minOccurs="0" name="FrequencyUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Immediate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDamageDrain" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSecondaryDamageDrain" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Limit" type="xs:int" />
+      <xs:element minOccurs="0" name="LimitUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Once" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Onset" nillable="true" type="tns:DieRoll" />
+      <xs:element minOccurs="0" name="OnsetUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherEffect" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Save" type="xs:int" />
+      <xs:element minOccurs="0" name="SaveType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondaryDamageDie" nillable="true" type="tns:DieRoll" />
+      <xs:element minOccurs="0" name="SecondaryDamageType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialEffectName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialEffectTime" nillable="true" type="tns:DieRoll" />
+      <xs:element minOccurs="0" name="SpecialEffectUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Affliction" nillable="true" type="tns:Affliction" />
+  <xs:complexType name="DieRoll">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Step" nillable="true" type="tns:DieStep" />
+      <xs:element minOccurs="0" name="count" type="xs:int" />
+      <xs:element minOccurs="0" name="die" type="xs:int" />
+      <xs:element minOccurs="0" name="extraRolls" nillable="true" type="tns:ArrayOfDieStep" />
+      <xs:element minOccurs="0" name="fraction" type="xs:int" />
+      <xs:element minOccurs="0" name="mod" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DieRoll" nillable="true" type="tns:DieRoll" />
+  <xs:complexType name="DieStep">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Die" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DieStep" nillable="true" type="tns:DieStep" />
+  <xs:complexType name="ArrayOfDieStep">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DieStep" nillable="true" type="tns:DieStep" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDieStep" nillable="true" type="tns:ArrayOfDieStep" />
+  <xs:complexType name="ConditionBonus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AC" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AllAttack" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AllSaves" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AllSkills" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Armor" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AttackDamage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CMB" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CMD" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Cha" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ChaSkill" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Con" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ConSkill" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Deflection" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Dex" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DexSkill" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DexZero" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Dodge" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Fort" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Initiative" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Int" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IntSkill" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LoseDex" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MeleeAttack" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MeleeDamage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="NaturalArmor" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Perception" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RangedAttack" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RangedDamage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Ref" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Shield" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Size" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Str" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="StrSkill" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="StrZero" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Will" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Wis" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="WisSkill" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConditionBonus" nillable="true" type="tns:ConditionBonus" />
+  <xs:complexType name="Spell">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArcaneScrollCost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArcaneScrollLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArcaneScrollWeight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bonus" nillable="true" type="tns:ConditionBonus" />
+      <xs:element minOccurs="0" name="DBLoaderID" type="xs:int" />
+      <xs:element minOccurs="0" name="DivineScrollCost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DivineScrollLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DivineScrollWeight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PotionCost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PotionLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PotionWeight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SLA_Level" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WandCost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WandLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WandWeight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="adept" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="alchemist" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="antipaladin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="assassin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="bard" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="casting_time" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cleric" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="components" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="costly_components" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="deity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description_formated" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="descriptor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dismissible" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="divine_focus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="druid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="duplicated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="effect" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="focus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="full_text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="inquisitor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="magus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="material" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="oracle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="paladin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="preparation_time" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="range" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ranger" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="red_mantis_assassin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="saving_throw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="school" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="shapeable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="somatic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="source" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="spell_level" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="spell_resistence" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="subschool" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="summoner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="targets" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="verbal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="witch" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="wiz" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Spell" nillable="true" type="tns:Spell" />
+</xs:schema>

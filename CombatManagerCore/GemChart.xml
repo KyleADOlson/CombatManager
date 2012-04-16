@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ArrayOfGemChart>
+<GemChart>
+<Roll>25</Roll>
+<Value>4d4 gp</Value>
+<AverageValue>10</AverageValue>
+<Gem>banded agate; eye agate; moss agate; azurite; blue quartz; hematite; lapis lazuli; malachite; obsidian; rhodochrosite; tiger eye turquoise; freshwater (irregular) pearl</Gem>
+</GemChart>
+<GemChart>
+<Roll>50</Roll>
+<Value>2d4 × 10 gp</Value>
+<AverageValue>50</AverageValue>
+<Gem>bloodstone; carnelian; chalcedony; chrysoprase; citrine; iolite, jasper; moonstone; onyx; peridot; rock crystal (clear quartz); sard; sardonyx; rose quartz; smoky quartz; star rose quartz; zircon</Gem>
+</GemChart>
+<GemChart>
+<Roll>70</Roll>
+<Value>4d4 × 10 gp</Value>
+<AverageValue>100</AverageValue>
+<Gem>amber; amethyst; chrysoberyl; coral; red garnet; brown-green garnet; jade; jet; white pearl; golden pearl; pink pearl; silver pearl; red spinel; red-brown spinel; deep green spinel; tourmaline</Gem>
+</GemChart>
+<GemChart>
+<Roll>90</Roll>
+<Value>2d4 × 100 gp</Value>
+<AverageValue>500</AverageValue>
+<Gem>alexandrite; aquamarine; violet garnet; black pearl; deep blue spinel; golden yellow topaz</Gem>
+</GemChart>
+<GemChart>
+<Roll>99</Roll>
+<Value>4d4 × 100 gp</Value>
+<AverageValue>1000</AverageValue>
+<Gem>Emerald; white opal; black opal; fire opal; blue sapphire; fiery yellow corundum; rich purple corundum; blue sapp; black star sapp</Gem>
+</GemChart>
+<GemChart>
+<Roll>100</Roll>
+<Value>2d4 × 1,000 gp</Value>
+<AverageValue>5000</AverageValue>
+<Gem>clearest bright green emerald; blue-white diamond; canary diamond; pink diamond; brown diamond; blue diamond; jacinth</Gem>
+</GemChart>
+</ArrayOfGemChart>

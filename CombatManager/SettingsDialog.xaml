@@ -1,0 +1,28 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="CombatManager.SettingsDialog"
+	x:Name="Window"
+	Title="Settings"
+	Width="258" Height="198" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False">
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.Background>
+			<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
+		</Grid.Background>
+		<Border BorderThickness="1" Margin="8,14,8,43" CornerRadius="6">
+			<Border.Background>
+				<SolidColorBrush Color="{DynamicResource SecondaryColorALight}"/>
+			</Border.Background>
+			<Grid>
+				<CheckBox x:Name="ConfirmApplicationCloseCheckbox" Content="Confirm on Application Close" HorizontalAlignment="Left" Margin="6,6,0,0" VerticalAlignment="Top"/>
+				<CheckBox x:Name="ConfirmInitiativeCheckbox" Content="Confirm Initiative Roll/Sort" HorizontalAlignment="Left" Margin="6,26,0,0" VerticalAlignment="Top"/>
+				<CheckBox x:Name="ConfirmCharacterDeleteCheckbox" Content="Confirm Character Delete" HorizontalAlignment="Left" Margin="6,46,0,0" VerticalAlignment="Top"/>
+				<CheckBox x:Name="RollAlternativeInitCheckbox" Content="Roll 3d6 For d20 Rolls" HorizontalAlignment="Left" Margin="6,85.92,0,0" VerticalAlignment="Top"/>
+				<CheckBox x:Name="ShowAllDamageDice" Content="Show All Damage Dice in Die Roller" HorizontalAlignment="Left" Margin="6,65.96,0,0" VerticalAlignment="Top"/>
+			</Grid>
+		</Border>
+		<Button Content="OK" HorizontalAlignment="Right" Margin="0,0,87,8" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="Button_Click"/>
+		<Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,8" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
+	</Grid>
+</Window>

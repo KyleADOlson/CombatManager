@@ -1,0 +1,331 @@
+﻿1.4.1
+Remember type filter options for monster DB views
+
+1.4.0
+Fix condition doubling with Monster Editor
+Fix green arrow position when loading groups
+Fix cleverly added Die Roller bug
+
+1.3.9
+Fix SQL Lite related crash on startup
+
+1.3.8
+Reduce load time some
+Reduce memory overhead
+Natural weapons count for Weapon Finesse
+Increase Treasure Generator maximums in UI
+Fix move up/down character in initiative selection
+Export custom conditions
+Add Bestiary 3, replace some old monsters with B3 revsion.
+
+1.3.7
+Add Quick die buttons
+Fix crash when customizing custom feats
+Fix prereq field on feats
+Fix zombie and skeleton XP change
+Fix resolute template
+Fix drag in text field crash
+Add races to rules
+
+1.3.6
+Fix initiative links crash
+Restore missing clear and mini buttons
+Fix reversed fields in feats editor
+Fix custom feats filter
+
+1.3.5
+More customizable Combat tab
+Add custom feats
+Add feats, spells and weapons from Ultimate Combat
+Add tracking for temporary hp and non-lethal damage
+Hyperlinks in treasure generator
+Treasure generator display cleanup
+Hero Lab companion and special ability import improvements
+Extend 3d6 initiative roll option to all d20 rolls
+Fix items missing lists in details
+
+1.3.4
+Add ability to create bonues for custom spells
+Fix treasure generator crash with custom spells
+Add Import/Export of monsters and spells from DB
+Fix filtering of custom spells
+Improve look of die rolls
+Roll indentical attacks for multiple selected monsters
+Scroll die roller to end when rolling
+Add reroll buttons to rolls
+Fix some PCGen attack parsing issues
+Add missing effect field on spells
+
+1.3.3
+Fix Monster Editor crash on some systems
+Fix crash when customizing custom spells
+Fix Divination School text removing erroneous text
+Correct monster list in Summon Monster spells
+
+1.3.2
+Custom Spells
+Drag and drop characters on player and monster lists
+Drag and drop files onto player and monster lists
+Add Ultimate Magic feats and missing APG feats
+Add Idle and Hidden states for characters
+Add links and coloring to initiative list
+Remember recent die rolls
+Fix condition crash
+Minor monster editor improvements
+Extend tooltip display time
+Fix BAB adjustments in stats block
+Fix monster CMB/CMD parsing and updating
+Improve Spell Like Abilities parsing performance
+Avoid crashes on invalid die entry
+
+1.3.1
+Add Dice Roller
+Add Attack, Skill, Save Rolls
+Show links/tips on spells for Hero Lab Characters
+Show links for Spell-Like Abilities
+Update Monsters
+Fix monster spell information
+Fix senses editing in monster editor
+Fix crash loading incorporeal creatures
+Add crash log Files
+
+1.3.0
+Add Custom Monster DB
+Add spell links and tooltips for monster spells known and prepared
+Tooltips for monster feats
+Fix loading and saving state on some systems
+Fix some Hero Lab import issues
+Added Magus levels to spells from PG and APG
+Save and restore window location
+Add subschool and descriptor to spell text
+
+1.2.9
+Add single column view for combat pane
+Add double column view for character stats
+Remember window Size
+Fix Armor adjustment in monster editor
+Add notes popup to characters.
+Apply Weapon Finesse changes automatically
+Scroll to current player in Initiative Window
+Show delaying and readying icons in Initiative Window
+Add Magic Item Rules
+PCGen import improvements
+
+1.2.8
+Add mini character display option
+Fix Monster Editor Space/Reach crash
+Monster editor tab order improvements
+Fix reversed SR/Immune fields
+Fix Monster Editor XP changes
+Add defensive abilities field
+Add deflection bonus to touch AC
+
+1.2.7
+Fix blank monster crash
+Fix Special Ability adding for some monsters
+
+1.2.6
+Add Monster Editor
+Add initiative window for players
+Add ability to roll iniative for individual characters
+Add more rules info, reorganize some rules
+Add Ultimate Magic spells
+Add APG Magic Items to treasure generator
+Add APG and Ultimate Magic spells to treasure generator
+Fix character removal crash
+Remove initiative list linked iniative scrollbar
+Reduce mundane item generation in treasure generator
+Fix prices for magic weapon and armor special abilities
+Fix display of a number of feats
+Add Entropic and Resolute templates
+Add initiative reset button
+Add 3d6 Initiative setting
+UI design updates
+
+1.2.5
+Make custom condition UI easier to understand
+Add augment summoning checkbox to advancer
+Add between CR filter to monster view
+Add extra options to condition context menu
+Thrown weapons listed under melee weapons and ranged weapons in attacks editor
+Dodge and Defelction bonuses adjust CMD
+Fix PCGen perception import crash
+Fix Herolab null stat imports and improve defensive abilities imports
+Fix feat name issues
+Fix feat removing crash
+Fix CR Adjustments when decreasing to CR 1
+Correct spell levels in a small number of spells
+
+1.2.4
+Save combat state frequently during combat (next/prev turns, adding characters)
+Add load/save combat state menu items
+Fix initiative sorting on reload
+Add print buttons to library pages
+NPC DB Update imported
+Improve UI selection of monster for monster view
+Update more correctly when conditions are added or removed
+
+1.2.3
+Save combat state on application exit
+Show last 5 conditions used in conditions menu (other than favorites)
+Fix AC and CMD bugs for blank characters
+Add CL filter for Magic Items
+Minor HeroLab import fixes
+
+1.2.2
+Save custom conditions added by user
+Allow bonuses on custom conditions
+Add list of "favorite" conditions to context menu, allow user editing of list
+Cause Blank characters to function the same as DB/Imported characters
+Fix crash when adjusting dexterity on some characters
+Fix minor settings bug
+
+1.2.1
+Add bonuses for all basic conditions
+Add spell school filter, spell school links
+Add magic section to rules
+Fix wondrous item generation
+Add Race/Class line to monster display
+Fix some herolab companion imports
+Fix herolab feat, defensive abilities, spell-like ability, senses, and special ability imports
+Ensure monster display in combat view is updated after adding/removing condition
+Fix some focus issues with monster display in combat page
+
+1.2.0
+Fix crash in Damage/Heal dialog
+Fix initiative list sorting
+Add stat changes for some spell conditions
+Add individual item generation
+
+1.1.9
+Fix crashes in conditions and NPCs
+
+1.1.8
+Add NPC DB
+Add Classes to rules
+Add HP Damage/Heal dialog
+Add feat change dialog
+Improve layout of treasure generator content when copied/pasted
+Fix crash on load bug on certain systems
+
+1.1.7
+Random Treasure Generator
+Multi-select of characters
+Automatic conditions for characters at 0 or less HP (dying, dead, etc.)
+Undo and Redo on combat page
+Fix sorting combat list bug that forces 2 clicks.
+Remove some duplicate data.
+
+1.1.6
+Add skills to rules tab
+Add natural attacks editor to attacks editor
+Save initiative links with file
+Settings dialog with confirmations for some actions
+Clear button for monsters list
+Add health coloring to grouped characters
+Fix mouse interaction on initiative list
+Combat list scrolls current player into view if needed
+Use same file extension for party and encounter to allow files to be loaded to either window
+Fix source for conditions in rules list
+
+1.1.5
+Add rules tab with combat rules, combat maneuvers, conditions, creature types, and universal monster rules
+Add magic items tab
+
+1.1.4
+Simple readying and delaying icons in context menu on initiative list
+Fix tooltip spell display bug
+Fix monster display selection bug
+Spell roman numerals sort
+Fix text for some monsters
+
+1.1.3
+Add ability to group monsters
+Add level filter for spells view
+Allow monster and player entries to switch lists
+View stat blocks for imported players and monsters in player list
+Fix some bugs for Windows classic theme
+Fix double click on list scroll bars
+
+1.1.2
+Fix Charisma import from PCGen files
+Allow Drag and Drop in initiative list
+Added missing Paladin spell item
+
+1.1.1
+Added Bestiary 2 monsters to DB
+Import character stats from PCGen files
+Import minions in herolab files
+
+1.1.0
+Hyperlink monster feats to feats page
+Add CR estimator
+Change condition timers to operate on the turn on which they are created.
+Add missing spells
+Condition selection window changed to dialog to keep it from disappearing if users click in blank space.
+
+1.0.9
+Added APG feats
+Added importing for HeroLab Characters
+Fixed turn counting for conditions
+Fixed issue with cloned monsters not appearing on combat list.
+Loading encounters and parties does not clear old items on list.
+Add missing "Spells Prepared" to monster display
+
+1.0.8
+Fix crash on some systems when loading xml data
+
+1.0.7
+Fix crashing bug loading monsters
+Fix poison tooltip
+
+1.0.6
+Added conditions UI
+Allow monster to apply poison or disease to characters
+Added actions menu
+Weapon changer fixes
+Add character cloning
+Allow bloody/burning skeleton combo
+Enter key works with HP box/popup
+Character attacks adjust when user changes strength/dex
+
+1.0.5
+Added weapon change dialog
+Expanded stats UI
+Added HP Modifier Popup
+Correctly recognize magic/special/mwk weapons
+Account for 2 handed weapons, secondary natural weapons, multi-attack, natural/melee weapon combos when advancing
+Added visual description of monsters
+Added button to sort by listed initiative
+Sources filter works with Combat screen monster list
+Added round counter
+Fix ability bonus for scores below 10
+Fix zombie template
+
+1.0.4
+Fixed Racial HD change BAB/Saves
+Added automatic increasing and decreasing of skills
+
+1.0.3
+Added player stats UI
+Added sources filter
+Fixed install upgrades
+Added Half-Celestial & Skeletal Champion templates
+Added missing save mods field
+Added Source field to feats, spells and monsters
+Fixed double display of critical feats
+Removed 3rd party feats
+Fixed problem with saving skills
+
+1.0.2
+Added Monster Advancer
+Fixed minor layout issues with combat list
+Prevent player/monster items from being cut off when when scroll bar appears.
+Add missing Aura property
+Make rolling monster HP an option
+Move current turn off of a player if moving up or down.
+
+1.0.1
+Added initiative numbers to combat list
+Fixed Phoenix bestiary entry.
+Prevented extra active player arrow from appearing on saved players.

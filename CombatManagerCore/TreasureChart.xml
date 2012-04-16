@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ArrayOfTreasureChart>
+    <TreasureChart>
+        <Level>1</Level>
+        <CoinRoll>14</CoinRoll>
+        <GoodsRoll>90</GoodsRoll>
+        <ItemsRoll>71</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>1</Level>
+        <CoinRoll>29</CoinRoll>
+        <CoinValue>1d6 x 1000 cp</CoinValue>
+        <GoodsRoll>95</GoodsRoll>
+        <GoodsValue>1 gem</GoodsValue>
+        <ItemsRoll>95</ItemsRoll>
+        <ItemsValue>1 mundane</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>1</Level>
+        <CoinRoll>52</CoinRoll>
+        <CoinValue>1d8 x 100 sp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>1</Level>
+        <CoinRoll>95</CoinRoll>
+        <CoinValue>2d8 x 10 gp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>1</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>1d4 x 10 pp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>2</Level>
+        <CoinRoll>13</CoinRoll>
+        <GoodsRoll>81</GoodsRoll>
+        <ItemsRoll>49</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>2</Level>
+        <CoinRoll>23</CoinRoll>
+        <CoinValue>1d10 x 1000 cp</CoinValue>
+        <GoodsRoll>95</GoodsRoll>
+        <GoodsValue>1d3 gems</GoodsValue>
+        <ItemsRoll>85</ItemsRoll>
+        <ItemsValue>1 mundane</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>2</Level>
+        <CoinRoll>43</CoinRoll>
+        <CoinValue>2d10 x 100 sp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d3 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>2</Level>
+        <CoinRoll>95</CoinRoll>
+        <CoinValue>4d10 x 10 gp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>2</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>2d8 x 10 pp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>3</Level>
+        <CoinRoll>11</CoinRoll>
+        <GoodsRoll>77</GoodsRoll>
+        <ItemsRoll>49</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>3</Level>
+        <CoinRoll>21</CoinRoll>
+        <CoinValue>2d10 x 1000 cp</CoinValue>
+        <GoodsRoll>95</GoodsRoll>
+        <GoodsValue>1d3 gems</GoodsValue>
+        <ItemsRoll>79</ItemsRoll>
+        <ItemsValue>1d3 mundane</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>3</Level>
+        <CoinRoll>41</CoinRoll>
+        <CoinValue>4d8 x 100 sp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d3 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>3</Level>
+        <CoinRoll>95</CoinRoll>
+        <CoinValue>1d4 x 100 gp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>3</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>1d10 x 10 pp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>4</Level>
+        <CoinRoll>11</CoinRoll>
+        <GoodsRoll>70</GoodsRoll>
+        <ItemsRoll>42</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>4</Level>
+        <CoinRoll>21</CoinRoll>
+        <CoinValue>3d10 x 1000 cp</CoinValue>
+        <GoodsRoll>95</GoodsRoll>
+        <GoodsValue>1d4 gems</GoodsValue>
+        <ItemsRoll>62</ItemsRoll>
+        <ItemsValue>1d4 mundane</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>4</Level>
+        <CoinRoll>41</CoinRoll>
+        <CoinValue>4d12 x 1000 sp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d3 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>4</Level>
+        <CoinRoll>95</CoinRoll>
+        <CoinValue>1d6 x 100 gp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>4</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>1d8 x 10 pp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>5</Level>
+        <CoinRoll>10</CoinRoll>
+        <GoodsRoll>60</GoodsRoll>
+        <ItemsRoll>57</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>5</Level>
+        <CoinRoll>19</CoinRoll>
+        <CoinValue>1d4 x 10000 cp</CoinValue>
+        <GoodsRoll>95</GoodsRoll>
+        <GoodsValue>1d4 gems</GoodsValue>
+        <ItemsRoll>67</ItemsRoll>
+        <ItemsValue>1d4 mundane</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>5</Level>
+        <CoinRoll>38</CoinRoll>
+        <CoinValue>1d6 x 1000 sp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d4 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1d3 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>5</Level>
+        <CoinRoll>95</CoinRoll>
+        <CoinValue>1d8 x 100 gp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>5</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>1d10 x 10 pp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>6</Level>
+        <CoinRoll>10</CoinRoll>
+
+        <GoodsRoll>56</GoodsRoll>
+
+        <ItemsRoll>54</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>6</Level>
+        <CoinRoll>18</CoinRoll>
+        <CoinValue>1d6 x 10000 cp</CoinValue>
+        <GoodsRoll>92</GoodsRoll>
+        <GoodsValue>1d4 gems</GoodsValue>
+        <ItemsRoll>59</ItemsRoll>
+        <ItemsValue>1d4 mundane</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>6</Level>
+        <CoinRoll>37</CoinRoll>
+        <CoinValue>1d8 x 1000 sp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d4 art</GoodsValue>
+        <ItemsRoll>99</ItemsRoll>
+        <ItemsValue>1d3 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>6</Level>
+        <CoinRoll>95</CoinRoll>
+        <CoinValue>1d10 x 100 gp</CoinValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>6</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>1d12 x 10 pp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>7</Level>
+        <CoinRoll>11</CoinRoll>
+
+        <GoodsRoll>48</GoodsRoll>
+
+        <ItemsRoll>51</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>7</Level>
+        <CoinRoll>18</CoinRoll>
+        <CoinValue>1d10 x 10000 cp</CoinValue>
+        <GoodsRoll>88</GoodsRoll>
+        <GoodsValue>1d4 gems</GoodsValue>
+        <ItemsRoll>97</ItemsRoll>
+        <ItemsValue>1d3 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>7</Level>
+        <CoinRoll>35</CoinRoll>
+        <CoinValue>1d12 x 1000 sp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d4 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>7</Level>
+        <CoinRoll>93</CoinRoll>
+        <CoinValue>2d6 x 100 gp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>7</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>3d4 x 10 pp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>8</Level>
+        <CoinRoll>10</CoinRoll>
+
+        <GoodsRoll>45</GoodsRoll>
+
+        <ItemsRoll>48</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>8</Level>
+        <CoinRoll>15</CoinRoll>
+        <CoinValue>1d12 x 10000 cp</CoinValue>
+        <GoodsRoll>85</GoodsRoll>
+        <GoodsValue>1d6 gems</GoodsValue>
+        <ItemsRoll>96</ItemsRoll>
+        <ItemsValue>1d4 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>8</Level>
+        <CoinRoll>29</CoinRoll>
+        <CoinValue>2d6 x 1000 sp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d4 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>8</Level>
+        <CoinRoll>87</CoinRoll>
+        <CoinValue>2d8 x 100 gp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>8</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>3d6 x 10 pp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>9</Level>
+        <CoinRoll>10</CoinRoll>
+
+        <GoodsRoll>40</GoodsRoll>
+
+        <ItemsRoll>43</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>9</Level>
+        <CoinRoll>15</CoinRoll>
+        <CoinValue>2d6 x 10000 cp</CoinValue>
+        <GoodsRoll>80</GoodsRoll>
+        <GoodsValue>1d8 gems</GoodsValue>
+        <ItemsRoll>91</ItemsRoll>
+        <ItemsValue>1d4 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>9</Level>
+        <CoinRoll>29</CoinRoll>
+        <CoinValue>2d8 x 1000 sp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d4 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>9</Level>
+        <CoinRoll>85</CoinRoll>
+        <CoinValue>5d4 x 100 gp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>9</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>2d12 x 10 pp</CoinValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>10</Level>
+        <CoinRoll>10</CoinRoll>
+
+        <GoodsRoll>35</GoodsRoll>
+
+        <ItemsRoll>40</ItemsRoll>
+
+    </TreasureChart>
+    <TreasureChart>
+        <Level>10</Level>
+        <CoinRoll>24</CoinRoll>
+        <CoinValue>2d10 x 1000 sp</CoinValue>
+        <GoodsRoll>79</GoodsRoll>
+        <GoodsValue>1d8 gems</GoodsValue>
+        <ItemsRoll>88</ItemsRoll>
+        <ItemsValue>1d4 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>10</Level>
+        <CoinRoll>79</CoinRoll>
+        <CoinValue>6d4 x 100 gp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d6 art</GoodsValue>
+        <ItemsRoll>99</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>10</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>5d6 x 10 pp</CoinValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>11</Level>
+        <CoinRoll>8</CoinRoll>
+
+        <GoodsRoll>24</GoodsRoll>
+
+        <ItemsRoll>31</ItemsRoll>
+
+    </TreasureChart>
+    <TreasureChart>
+        <Level>11</Level>
+        <CoinRoll>14</CoinRoll>
+        <CoinValue>3d10 x 1000 sp</CoinValue>
+        <GoodsRoll>74</GoodsRoll>
+        <GoodsValue>1d10 gems</GoodsValue>
+        <ItemsRoll>84</ItemsRoll>
+        <ItemsValue>1d4 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>11</Level>
+        <CoinRoll>75</CoinRoll>
+        <CoinValue>4d8 x 100 gp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d6 art</GoodsValue>
+        <ItemsRoll>98</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>11</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>4d10 x 10 pp</CoinValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>12</Level>
+        <CoinRoll>8</CoinRoll>
+
+        <GoodsRoll>17</GoodsRoll>
+
+        <ItemsRoll>27</ItemsRoll>
+
+    </TreasureChart>
+    <TreasureChart>
+        <Level>12</Level>
+        <CoinRoll>14</CoinRoll>
+        <CoinValue>3d12 x 1000 sp</CoinValue>
+        <GoodsRoll>70</GoodsRoll>
+        <GoodsValue>1d10 gems</GoodsValue>
+        <ItemsRoll>82</ItemsRoll>
+        <ItemsValue>1d6 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>12</Level>
+        <CoinRoll>75</CoinRoll>
+        <CoinValue>1d4 x 1000 gp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d8 art</GoodsValue>
+        <ItemsRoll>97</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>12</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>1d4 x 100 pp</CoinValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>13</Level>
+        <CoinRoll>8</CoinRoll>
+
+        <GoodsRoll>11</GoodsRoll>
+
+        <ItemsRoll>19</ItemsRoll>
+
+    </TreasureChart>
+    <TreasureChart>
+        <Level>13</Level>
+        <CoinRoll>75</CoinRoll>
+        <CoinValue>1d4 x 1000 gp</CoinValue>
+        <GoodsRoll>66</GoodsRoll>
+        <GoodsValue>1d12 gems</GoodsValue>
+        <ItemsRoll>73</ItemsRoll>
+        <ItemsValue>1d6 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>13</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>1d10 x 100 pp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>1d10 art</GoodsValue>
+        <ItemsRoll>95</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>13</Level>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>14</Level>
+        <CoinRoll>8</CoinRoll>
+        <GoodsRoll>11</GoodsRoll>
+        <ItemsRoll>19</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>14</Level>
+        <CoinRoll>75</CoinRoll>
+        <CoinValue>1d6 x 1000 gp</CoinValue>
+        <GoodsRoll>66</GoodsRoll>
+        <GoodsValue>2d8 gems</GoodsValue>
+        <ItemsRoll>58</ItemsRoll>
+        <ItemsValue>1d6 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>14</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>1d12 x 100 pp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>2d6 art</GoodsValue>
+        <ItemsRoll>92</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>14</Level>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>15</Level>
+        <CoinRoll>3</CoinRoll>
+        <GoodsRoll>9</GoodsRoll>
+        <ItemsRoll>11</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>15</Level>
+        <CoinRoll>74</CoinRoll>
+        <CoinValue>1d8 x 1000 gp</CoinValue>
+        <GoodsRoll>65</GoodsRoll>
+        <GoodsValue>2d10 gems</GoodsValue>
+        <ItemsRoll>46</ItemsRoll>
+        <ItemsValue>1d10 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>15</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>3d4 x 100 pp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>2d8 art</GoodsValue>
+        <ItemsRoll>90</ItemsRoll>
+        <ItemsValue>1 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>15</Level>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>16</Level>
+        <CoinRoll>3</CoinRoll>
+        <GoodsRoll>7</GoodsRoll>
+        <ItemsRoll>40</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>16</Level>
+        <CoinRoll>74</CoinRoll>
+        <CoinValue>1d12 x 1000 gp</CoinValue>
+        <GoodsRoll>64</GoodsRoll>
+        <GoodsValue>4d6 gems</GoodsValue>
+        <ItemsRoll>46</ItemsRoll>
+        <ItemsValue>1d10 minor</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>16</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>3d4 x 100 pp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>2d10 art</GoodsValue>
+        <ItemsRoll>90</ItemsRoll>
+        <ItemsValue>1d3 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>16</Level>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>17</Level>
+        <CoinRoll>3</CoinRoll>
+        <GoodsRoll>4</GoodsRoll>
+        <ItemsRoll>33</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>17</Level>
+        <CoinRoll>68</CoinRoll>
+        <CoinValue>3d4 x 1000 gp</CoinValue>
+        <GoodsRoll>63</GoodsRoll>
+        <GoodsValue>4d8 gems</GoodsValue>
+        <ItemsRoll>83</ItemsRoll>
+        <ItemsValue>1d3 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>17</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>2d10 x 100 pp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>3d8 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>18</Level>
+        <CoinRoll>2</CoinRoll>
+        <GoodsRoll>4</GoodsRoll>
+        <ItemsRoll>24</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>18</Level>
+        <CoinRoll>65</CoinRoll>
+        <CoinValue>3d6 x 1000 gp</CoinValue>
+        <GoodsRoll>54</GoodsRoll>
+        <GoodsValue>3d12 gems</GoodsValue>
+        <ItemsRoll>80</ItemsRoll>
+        <ItemsValue>1d4 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>18</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>5d4 x 100 pp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>3d10 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>19</Level>
+        <CoinRoll>2</CoinRoll>
+        <GoodsRoll>3</GoodsRoll>
+        <ItemsRoll>4</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>19</Level>
+        <CoinRoll>65</CoinRoll>
+        <CoinValue>3d8 x 1000 gp</CoinValue>
+        <GoodsRoll>50</GoodsRoll>
+        <GoodsValue>6d6 gems</GoodsValue>
+        <ItemsRoll>70</ItemsRoll>
+        <ItemsValue>1d4 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>19</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>3d10 x 100 pp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>6d6 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1 major</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>20</Level>
+        <CoinRoll>2</CoinRoll>
+        <GoodsRoll>2</GoodsRoll>
+        <ItemsRoll>25</ItemsRoll>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>20</Level>
+        <CoinRoll>65</CoinRoll>
+        <CoinValue>4d8 x 1000 gp</CoinValue>
+        <GoodsRoll>38</GoodsRoll>
+        <GoodsValue>4d10 gems</GoodsValue>
+        <ItemsRoll>65</ItemsRoll>
+        <ItemsValue>1d4 medium</ItemsValue>
+    </TreasureChart>
+    <TreasureChart>
+        <Level>20</Level>
+        <CoinRoll>100</CoinRoll>
+        <CoinValue>4d10 x 100 pp</CoinValue>
+        <GoodsRoll>100</GoodsRoll>
+        <GoodsValue>7d6 art</GoodsValue>
+        <ItemsRoll>100</ItemsRoll>
+        <ItemsValue>1d3 major</ItemsValue>
+    </TreasureChart>
+</ArrayOfTreasureChart>

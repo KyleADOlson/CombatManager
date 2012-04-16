@@ -1,0 +1,530 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
+
+namespace CombatManager
+{
+    public class SpellBlockInfo : INotifyPropertyChanged, ICloneable
+    {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        private String _Class;
+        private int? _MeleeTouch;
+        private int? _RangedTouch;
+        private int? _Concentration;
+        private int? _CasterLevel;
+        private bool _SpellLikeAbilities;
+        private String _BlockType;
+        private int? _SpellFailure;
+
+        private ObservableCollection<SpellLevelInfo> _Levels = new ObservableCollection<SpellLevelInfo>();
+
+        public SpellBlockInfo() { }
+        public SpellBlockInfo(SpellBlockInfo old)
+        {
+            _Class = old._Class;
+            _MeleeTouch = old._MeleeTouch;
+            _RangedTouch = old._RangedTouch;
+            _Concentration = old.Concentration;
+            _CasterLevel = old._CasterLevel;
+            _SpellLikeAbilities = old._SpellLikeAbilities;
+            _BlockType = old._BlockType;
+            _SpellFailure = old.SpellFailure;
+            foreach (SpellLevelInfo info in old._Levels)
+            {
+                _Levels.Add(new SpellLevelInfo(info));
+            }
+        }
+
+
+
+        public object Clone()
+        {
+            return new SpellBlockInfo(this);
+        }
+
+        static string _ClassRegexString;
+        static SpellBlockInfo()
+        {
+            bool first = true;
+            _ClassRegexString = "(";
+            foreach (Rule rule in Rule.Rules.Where(a => (a.Type == "Classes")))
+            {
+                if (!first)
+                {
+                    _ClassRegexString += "|";
+                }
+                first = false;
+                _ClassRegexString += rule.Name;
+            }
+            _ClassRegexString += ")";
+               
+        }
+
+        private static string spellcountblock = "((?<spellcount>[0-9]+(?=[;,\\)])),?)";
+        private static string dcblock = "(DC (?<DC>[0-9]+),?)";
+        private static string castblock = "((; )?((?<spellcast>[0-9]+|already)) cast)";
+        private static string otherblock = "((; )?(?<othertext>[-+',/a-zA-Z0-9:\\. %\\*]+))";
+        private static string countdcblock = "((" + spellcountblock + "|" + dcblock + "|" + castblock + "|" + otherblock + ") *)+";
+
+ 
+        private static string spellblock = "((?<spellname>[-'a-zA-Z/ ]+)([*)])? *(?<countdc>\\(" + countdcblock + "\\))?,?)";
+        private static string levelblock = " *((?<level>([0-9]))(st|nd|rd|th)?) *(\\((((?<daily>[0-9]+)/day(; (?<levelcast>[0-9]+) cast)?|at will))\\))?-?(?<spellblocks>" + spellblock + "+) *((?<more>[0-9]+) more)? *";
+
+
+        public static ObservableCollection<SpellBlockInfo> ParseInfo(string spellBlock)
+        {
+            ObservableCollection<SpellBlockInfo> blocklist = new ObservableCollection<SpellBlockInfo>();
+
+
+            Regex group = new Regex("(?<sla>Spell-Like Abilities)|((" + _ClassRegexString + ") )?Spells (?<blocktype>(Known|Prepared))");
+
+            List<string> list = new List<string>();
+            List<string> slablock = new List<string>();
+            foreach (Match spellMatch in group.Matches(spellBlock))
+            {
+                int start = spellMatch.Index;
+                int length;
+                Match next = spellMatch.NextMatch();
+
+                if (next.Success)
+                {
+                    length = next.Index - start;
+                }
+                else
+                {
+                    length = spellBlock.Length - start;
+                }
+
+                string text = spellBlock.Substring(start, length);
+                if (spellMatch.Groups["sla"].Success)
+                {
+                    slablock.Add(text);
+                }
+                else
+                {
+                    list.Add(text);
+                }
+
+            }
+
+            foreach (String spells in list)
+            {
+
+
+                Regex regSpell = new Regex(spellblock);
+                Regex regSpells = new Regex("((?<sla>Spell-Like Abilities)|(?<classname>" + _ClassRegexString + " )?(Spells (?<blocktype>(Known|Prepared)) +))(\\(CL ((?<cl>([0-9]+))(st|nd|rd|th)?)([,;] *concentration *[-+]?(?<concentration>[0-9]+)( \\[[-+][0-9]+ [a-zA-Z ]+\\])?)?([,;] *[-+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[-+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[-+]?(?<rangedtouch>[0-9]+) ranged touch)?\\))[:\r\n]*" +
+                    "(?<levelblocks>" + levelblock + "\r?\n?)+");
+                Regex regLevel = new Regex(levelblock);
+
+
+                foreach (Match m in regSpells.Matches(spells))
+                {
+                    SpellBlockInfo blockInfo = new SpellBlockInfo();
+                        blockInfo.ParseBlockHeader(m);
+                        
+
+                    foreach (Capture cap in m.Groups["levelblocks"].Captures)
+                    {
+                            
+                        Match levelMatch = regLevel.Match(cap.Value);
+
+                        SpellLevelInfo levelInfo = new SpellLevelInfo();
+
+                        levelInfo.Level = levelMatch.IntValue("level");
+
+                        levelInfo.Cast = levelMatch.IntValue("levelcast");
+
+                        if (levelMatch.Groups["daily"].Success)
+                        {
+                            if (String.Compare(levelMatch.Groups["daily"].Value.Trim(), "At Will", true) == 0)
+                            {
+                                levelInfo.AtWill = true;
+                            }
+                            else if (String.Compare(levelMatch.Groups["daily"].Value.Trim(), "Constant", true) == 0)
+                            {
+                                levelInfo.Constant = true;
+                            }
+                            else
+                            {
+
+                                levelInfo.PerDay = int.Parse(levelMatch.Groups["daily"].Value);
+                            }
+                        }
+
+                        levelInfo.More = levelMatch.IntValue("more");
+
+                        SpellInfo prevInfo = null;
+                        foreach (Match spell in regSpell.Matches(levelMatch.Groups["spellblocks"].Value))
+                        {
+
+                            SpellInfo spellInfo = ParseSpell(spell, prevInfo);
+
+                            if (spellInfo != prevInfo && spellInfo.Name.Length > 0)
+                            {
+                                levelInfo.Spells.Add(spellInfo);
+                            }
+
+                            prevInfo = spellInfo;
+                        }
+
+                        if (levelInfo.Spells.Count > 0)
+                        {
+                            blockInfo.Levels.Add(levelInfo);
+                        }          
+                    }
+
+                    if (blockInfo.Levels.Count > 0)
+                    {
+                        blocklist.Add(blockInfo);
+                    }
+
+                }
+            }
+
+            foreach (String slatext in slablock)
+            {
+                ParseSLABlocks(blocklist, slatext);
+            }
+
+            return blocklist;
+        }
+
+        private void ParseBlockHeader( Match m)
+        {
+            SpellBlockInfo blockInfo = this;
+            if (m.Groups["classname"].Success)
+            {
+                blockInfo.Class = m.Groups["classname"].Value.Trim();
+            }
+
+            if (m.Groups["sla"].Success)
+            {
+                blockInfo._SpellLikeAbilities = true;
+            }
+
+            else if (m.Groups["blocktype"].Success)
+            {
+                blockInfo.BlockType = m.Groups["blocktype"].Value.Trim();
+            }
+
+
+            blockInfo.Concentration = m.IntValue("concentration");
+            blockInfo.MeleeTouch = m.IntValue("meleetouch");
+            blockInfo.RangedTouch = m.IntValue("rangedtouch");
+            blockInfo.CasterLevel = m.IntValue("cl");
+            blockInfo.SpellFailure = m.IntValue("spellfailure");
+        }
+
+
+        private static string sladcblock = "((" + dcblock + "|" + otherblock + ") *)+";
+        private static string slaspellblock = "((?<spellname>[-'a-zA-Z/ ]+)\\*? *(?<countdc>\\(" + sladcblock + "\\))?,?)";
+        private static string slaheader = "(((?<daily>[0-9]+)/day)|(?<constant>[Cc]onstant)|(?<atwill>At will))-";
+        private static string slablock = " *" + slaheader + "(?<spellblocks>" + slaspellblock + "+) *";
+
+
+
+        private static void ParseSLABlocks(ObservableCollection<SpellBlockInfo> info, string text)
+        {
+            //DebugTimer t = new DebugTimer("SLA Blocks", false, false);
+
+            Regex regSpell = new Regex(slaspellblock);
+            Regex regSpells = new Regex("(?<sla>Spell-Like Abilities) *\\(CL ((?<cl>[0-9]+)(st|nd|rd|th)?)([,;] *concentration *[-+]?(?<concentration>[0-9]+)( \\[[-+][0-9]+ [a-zA-Z ]+\\])?)?([,;] *[-+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[-+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[-+]?(?<rangedtouch>[0-9]+) ranged touch)?\\)[:\r\n]*");
+            Regex regLevel = new Regex(slablock);
+
+          
+            
+
+            Match m = regSpells.Match(text);
+
+
+            //t.MarkEventIf("First", 20);
+
+            if (m.Success)
+            {
+                SpellBlockInfo blockInfo = new SpellBlockInfo();
+                blockInfo.ParseBlockHeader(m);
+
+                Regex regSlaHeader = new Regex(slaheader, RegexOptions.IgnoreCase);
+                string spellBlock = text;
+                List<string> spellblockList = new List<string>();
+                MatchCollection mc = regSlaHeader.Matches(spellBlock);
+
+
+                for (int i = 0; i < mc.Count; i++ )
+                {
+                    Match spellMatch = mc[i];
+                    int start = spellMatch.Index;
+                    int length;
+                    Match next = null;
+
+                    if (i + 1 < mc.Count)
+                    {
+                        next = mc[i + 1];
+                    }
+
+                    if (next != null)
+                    {
+                        length = next.Index - start;
+                    }
+                    else
+                    {
+                        length = spellBlock.Length - start;
+                    }
+
+
+                    string btext = spellBlock.Substring(start, length);
+                    spellblockList.Add(btext);
+
+
+                }
+
+                //t.MarkEventIf("SpellBlocklist", 20);
+
+
+                foreach (string block in spellblockList)
+                {
+                    //t.MarkEventIf("levmatch s", 100);
+                    Match levelMatch = regLevel.Match(block);
+                    //t.MarkEventIf("levmatch: " + block, 10);
+
+                    SpellLevelInfo levelInfo = new SpellLevelInfo();
+                  
+
+                    if (levelMatch.Groups["daily"].Success)
+                    {
+                        if (String.Compare(levelMatch.Groups["daily"].Value.Trim(), "At Will", true) == 0)
+                        {
+                            levelInfo.AtWill = true;
+                        }
+                        else if (String.Compare(levelMatch.Groups["daily"].Value.Trim(), "Constant", true) == 0)
+                        {
+                            levelInfo.Constant = true;
+                        }
+                        else
+                        {
+
+                            levelInfo.PerDay = int.Parse(levelMatch.Groups["daily"].Value);
+                        }
+                    }
+                    else if (levelMatch.Groups["atwill"].Success)
+                    {
+                        levelInfo.AtWill = true;
+                    }
+                    else if (levelMatch.Groups["constant"].Success)
+                    {
+                        levelInfo.Constant = true;
+                    }
+
+                    levelInfo.More = levelMatch.IntValue("more");
+
+                    SpellInfo prevInfo = null;
+                    Match spell = regSpell.Match(levelMatch.Groups["spellblocks"].Value);
+                    while (spell.Success)
+                    {
+
+                        SpellInfo spellInfo = ParseSpell(spell, prevInfo);
+
+                        if (spellInfo != prevInfo && spellInfo.Name.Length > 0)
+                        {
+                            levelInfo.Spells.Add(spellInfo);
+                        }
+
+                        prevInfo = spellInfo;
+                        spell = spell.NextMatch();
+                    }
+
+                    if (levelInfo.Spells.Count > 0)
+                    {
+                        blockInfo.Levels.Add(levelInfo);
+                    }
+
+                }
+
+                if (blockInfo.Levels.Count > 0)
+                {
+                    info.Add(blockInfo);
+                }
+            }
+
+            //t.MarkEventIfTotal("Long: " + text , 10);
+        }
+
+        private static SpellInfo ParseSpell(Match spell, SpellInfo prevInfo)
+        {
+           
+            string spellname = spell.Groups["spellname"].Value.TrimEnd(new char[] { 'D', ' ' });
+            spellname = StringCapitalizer.Capitalize(spellname).Trim();
+
+            SpellInfo spellInfo = null;
+            if ((String.Compare(spellname, "lesser", true) == 0 ||
+                String.Compare(spellname, "greater", true) == 0) && prevInfo != null)
+            {
+                spellInfo = prevInfo;
+                spellname = spellInfo.Name + ", " + spellname;
+            }
+            else
+            {
+
+                spellInfo = new SpellInfo();
+            }
+
+            spellInfo.Count = spell.IntValue("spellcount");
+
+            spellInfo.Name = spellname;
+
+            spellInfo.Spell = Spell.ByName(spellname);
+
+            spellInfo.DC = spell.IntValue("DC");
+
+            if (spell.Groups["spellcast"].Success)
+            {
+                if (String.Compare(spell.Groups["spellcast"].Value, "already", true) == 0)
+                {
+                    spellInfo.AlreadyCast = true;
+                }
+                else
+                {
+                    spellInfo.Cast = spell.IntValue("spellcast");
+                }
+            }
+
+            if (spell.Groups["othertext"].Success)
+            {
+                spellInfo.Other = spell.Groups["othertext"].Value;
+            }
+
+            if (spell.Groups["onlytext"].Success)
+            {
+                spellInfo.Only = spell.Groups["onlytext"].Value;
+            }
+
+            return spellInfo;
+        }
+
+
+        public String Class
+        {
+            get { return _Class; }
+            set
+            {
+                if (_Class != value)
+                {
+                    _Class = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Class")); }
+                }
+            }
+        }
+        public int? MeleeTouch
+        {
+            get { return _MeleeTouch; }
+            set
+            {
+                if (_MeleeTouch != value)
+                {
+                    _MeleeTouch = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MeleeTouch")); }
+                }
+            }
+        }
+        public int? RangedTouch
+        {
+            get { return _RangedTouch; }
+            set
+            {
+                if (_RangedTouch != value)
+                {
+                    _RangedTouch = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("RangedTouch")); }
+                }
+            }
+        }
+        public int? Concentration
+        {
+            get { return _Concentration; }
+            set
+            {
+                if (_Concentration != value)
+                {
+                    _Concentration = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Concentration")); }
+                }
+            }
+        }
+        public int? CasterLevel
+        {
+            get { return _CasterLevel; }
+            set
+            {
+                if (_CasterLevel != value)
+                {
+                    _CasterLevel = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CasterLevel")); }
+                }
+            }
+        }
+
+        public String BlockType
+        {
+            get { return _BlockType; }
+            set
+            {
+                if (_BlockType != value)
+                {
+                    _BlockType = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("BlockType")); }
+                }
+            }
+        }
+
+
+        public ObservableCollection<SpellLevelInfo> Levels
+        {
+            get { return _Levels; }
+            set
+            {
+                if (_Levels != value)
+                {
+                    _Levels = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Levels")); }
+                }
+            }
+        }
+
+
+        public int? SpellFailure
+        {
+            get { return _SpellFailure; }
+            set
+            {
+                if (_SpellFailure != value)
+                {
+                    _SpellFailure = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("SpellFailure")); }
+                }
+            }
+        }
+
+
+        public bool SpellLikeAbilities
+        {
+            get { return _SpellLikeAbilities; }
+            set
+            {
+                if (_SpellLikeAbilities != value)
+                {
+                    _SpellLikeAbilities = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("SpellLikeAbilities")); }
+                }
+            }
+        }
+
+
+    }
+}

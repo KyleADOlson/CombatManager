@@ -1,0 +1,2652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ArrayOfEquipment>
+<Equipment>
+<Name>Adventurer&apos;s sash</Name>
+<Cost>20 gp</Cost>
+<Weight>3 lbs.(container)</Weight>
+<Source>SOS</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Area Map</Name>
+<Cost>50 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Astrolabe</Name>
+<Cost>1000 gp</Cost>
+<Weight>6 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Backpack, common</Name>
+<Cost>2 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Backpack, masterwork</Name>
+<Cost>50 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Bag, waterproof</Name>
+<Cost>5 sp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Barrel, empty</Name>
+<Cost>2 gp</Cost>
+<Weight>30 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Barbed vest</Name>
+<Cost>10 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Basket, empty</Name>
+<Cost>4 sp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Bedroll</Name>
+<Cost>1 sp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Bell</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Blanket, common</Name>
+<Cost>2 sp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Blanket, winter</Name>
+<Cost>5 sp</Cost>
+<Weight>3 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Block and tackle</Name>
+<Cost>5 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Bottle, glass</Name>
+<Cost>2 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Bucket, empty</Name>
+<Cost>5 sp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Buoy, common</Name>
+<Cost>5 sp</Cost>
+<Weight> 16 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Buoy, superior</Name>
+<Cost>10 gp</Cost>
+<Weight>30 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Butterfly net</Name>
+<Cost>5 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Caltrops</Name>
+<Cost>1 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Candle</Name>
+<Cost>1 cp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Candle, helmet</Name>
+<Cost>2 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Canvas (sq. yd.)</Name>
+<Cost>1 sp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Cards, Harrow Deck</Name>
+<Cost>100 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Case, map or scroll</Name>
+<Cost>1 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chain (10 ft.)</Name>
+<Cost>30 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chain, breakaway</Name>
+<Cost>65 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chair, folding</Name>
+<Cost>2 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chalk (1 piece)</Name>
+<Cost>1 cp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chalkboard</Name>
+<Cost>1 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Charcoal (1 stick)</Name>
+<Cost>5 sp</Cost>
+<Weight>—</Weight>
+<Source>SOS</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chest, small (empty)</Name>
+<Cost>2 gp</Cost>
+<Weight>25 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chest, medium (empty)</Name>
+<Cost>5 gp</Cost>
+<Weight>50 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chest, large (empty)</Name>
+<Cost>10 gp</Cost>
+<Weight>100 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chest, huge (empty)</Name>
+<Cost>25 gp</Cost>
+<Weight>250 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Chest, false-bottomed</Name>
+<Cost>52 gp</Cost>
+<Weight>25 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Crowbar</Name>
+<Cost>2 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Cup, false-bottomed</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Earplugs</Name>
+<Cost>3 cp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Firewood (per day)</Name>
+<Cost>1 cp</Cost>
+<Weight>20 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Fishhook</Name>
+<Cost>1 sp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Fishing net, 25 sq. ft.</Name>
+<Cost>4 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Flask (empty)</Name>
+<Cost>3 cp</Cost>
+<Weight>1-1/2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Flint and steel</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Grappling hook</Name>
+<Cost>1 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Hammer</Name>
+<Cost>5 sp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Hammock</Name>
+<Cost>1 sp</Cost>
+<Weight>3 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Harpy Musk</Name>
+<Cost>2 gp</Cost>
+<Weight>—</Weight>
+<Source>RotRLPG</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Hourglass (one hour)</Name>
+<Cost>25 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Hourglass (one minute)</Name>
+<Cost>20 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Hourglass (six seconds)</Name>
+<Cost>10 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Ink (1 oz. vial)</Name>
+<Cost>8 gp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Inkpen</Name>
+<Cost>1 sp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Iron Spike</Name>
+<Cost>5 cp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Jewelry, false</Name>
+<Cost>+20 gp</Cost>
+<Weight>—</Weight>
+<Source>RotRLPG</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Jug, clay</Name>
+<Cost>3 cp</Cost>
+<Weight>9 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Key, copy</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Key, skeleton</Name>
+<Cost>85 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Key, wax blank</Name>
+<Cost>15 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Ladder, 10-foot</Name>
+<Cost>2 sp</Cost>
+<Weight>20 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Ladder, folding</Name>
+<Cost>2 gp</Cost>
+<Weight>16 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Lamp, common</Name>
+<Cost>1 sp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Lantern, bullseye</Name>
+<Cost>12 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Lantern, hooded</Name>
+<Cost>7 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Lantern, waterproof</Name>
+<Cost>+5 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Lock, simple</Name>
+<Cost>20 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Lock, average</Name>
+<Cost>40 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Lock, good</Name>
+<Cost>80 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Lock, superior</Name>
+<Cost>150 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Magnet</Name>
+<Cost>5 sp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Manacles, false</Name>
+<Cost>65 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Manacles, normal</Name>
+<Cost>15 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Manacles, masterwork</Name>
+<Cost>50 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Manacles, mithral</Name>
+<Cost>1000 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Marbles</Name>
+<Cost>1 sp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Mirror, small steel</Name>
+<Cost>10 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Mug/Tankard, clay</Name>
+<Cost>2 cp</Cost>
+<Weight>1 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Oil (1-pint flask)</Name>
+<Cost>1 sp</Cost>
+<Weight>1 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Pantograph</Name>
+<Cost>50 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>SOS</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Paper (1 sheet)</Name>
+<Cost>4 sp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Paper, rice (1 sheet)</Name>
+<Cost>5 cp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Parchment (1 sheet)</Name>
+<Cost>2 sp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Perfume</Name>
+<Cost> </Cost>
+<Weight> </Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Periscope</Name>
+<Cost>20 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Pick, miner&apos;s</Name>
+<Cost>3 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Pickle Extractor</Name>
+<Cost> </Cost>
+<Weight> </Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Pitcher, clay</Name>
+<Cost>2 cp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Piton</Name>
+<Cost>1 sp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Plank, collapsible</Name>
+<Cost>4 sp</Cost>
+<Weight>10 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Pole, 10-foot</Name>
+<Cost>5 cp</Cost>
+<Weight>8 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Pommel, hollow</Name>
+<Cost>5 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Pot, iron</Name>
+<Cost>8 sp</Cost>
+<Weight>4 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Pouch, belt (empty)</Name>
+<Cost>1 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Powder</Name>
+<Cost>1 cp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Prosthetic, arm</Name>
+<Cost>10 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Prosthetic, foot</Name>
+<Cost>1 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Prosthetic, hand</Name>
+<Cost>1 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Prosthetic, leg</Name>
+<Cost>20 gp</Cost>
+<Weight>6 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Pump Water Canister</Name>
+<Cost>75 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Quieting Needles</Name>
+<Cost>25 gp</Cost>
+<Weight>—</Weight>
+<Source>AP29</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Ram, portable</Name>
+<Cost>10 gp</Cost>
+<Weight>20 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Rations, trail (per day)</Name>
+<Cost>5 sp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Ring, poison pill</Name>
+<Cost>+20 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Rope, hemp (50 ft.)</Name>
+<Cost>1 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Rope, silk (50 ft.)</Name>
+<Cost>10 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Rope, Spider&apos;s Silk (50 ft.)</Name>
+<Cost>100 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Sack (empty)</Name>
+<Cost>1 sp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Scabbard, combat</Name>
+<Cost>1 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Scabbard, false-bottomed</Name>
+<Cost>45 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Scroll Case</Name>
+<Cost>1 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Sealing wax</Name>
+<Cost>1 gp</Cost>
+<Weight>1 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Sewing needle</Name>
+<Cost>5 sp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Sextant</Name>
+<Cost>1000 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Shaving Kit</Name>
+<Cost>15 sp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Shield Sconce</Name>
+<Cost>1 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Shovel</Name>
+<Cost>2 cp</Cost>
+<Weight>3 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Signal horn</Name>
+<Cost>1 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Signal whistle</Name>
+<Cost>8 sp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Signet ring</Name>
+<Cost>5 gp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Sledge</Name>
+<Cost>1 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Smoked Goggles</Name>
+<Cost>10 gp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Soap</Name>
+<Cost>1 cp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Spear-Thrower</Name>
+<Cost>1 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Spellbook, traveling (blank)</Name>
+<Cost>10 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Spike, iron</Name>
+<Cost>5 cp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Spyglass</Name>
+<Cost>1000 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Stationary</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Stove Can</Name>
+<Cost>10 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>String/twine (50 ft.)</Name>
+<Cost>1 cp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Swarmsuit</Name>
+<Cost>20 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Talisman, necrotic</Name>
+<Cost>500 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>PCS</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Tattoo</Name>
+<Cost>1 cp - 20gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Tent (small)</Name>
+<Cost>10 gp</Cost>
+<Weight>15 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Tent (medium)</Name>
+<Cost>15 gp</Cost>
+<Weight>20 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Tent (large)</Name>
+<Cost>30 gp</Cost>
+<Weight>40 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Tent (pavilion)</Name>
+<Cost>100 gp</Cost>
+<Weight>50 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Thurible</Name>
+<Cost>50 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Torch</Name>
+<Cost>1 cp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Unguent of Revivification (1 dose)</Name>
+<Cost>50 gp</Cost>
+<Weight>—</Weight>
+<Source>PCS</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Varisian Idol</Name>
+<Cost>50 gp</Cost>
+<Weight>—</Weight>
+<Source>CoCTPG</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Vial, iron (empty)</Name>
+<Cost>1 sp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Vial ink or potion</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Wandermeal (per serving)</Name>
+<Cost>1 cp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Watch, pocket</Name>
+<Cost>250 gp</Cost>
+<Weight>1 lb</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Water clock</Name>
+<Cost>1000 gp</Cost>
+<Weight>200 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Waterskin</Name>
+<Cost>1 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source></Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Weapon Cord</Name>
+<Cost>1 sp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Whetstone</Name>
+<Cost>2 cp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Whistle</Name>
+<Cost>5 cp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Whistle, silent</Name>
+<Cost>2 sp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Wrist Sheath</Name>
+<Cost>1 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Wrist Sheath, spring loaded</Name>
+<Cost>5 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Adventuring Gear</Type>
+</Equipment>
+<Equipment>
+<Name>Abacus</Name>
+<Cost>2 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Alchemist&apos;s Kit</Name>
+<Cost>25 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Alchemist&apos;s lab</Name>
+<Cost>200 gp</Cost>
+<Weight>40 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Alchemist&apos;s Lab, portable</Name>
+<Cost>75 gp</Cost>
+<Weight>20 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Altar, portable</Name>
+<Cost>250 gp</Cost>
+<Weight>40 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Anvil</Name>
+<Cost>5 gp</Cost>
+<Weight>40 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Artisan&apos;s tools</Name>
+<Cost>5 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Artisan&apos;s tools, masterwork</Name>
+<Cost>55 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Astrolabe</Name>
+<Cost>100 gp</Cost>
+<Weight>6 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Balancing Pole</Name>
+<Cost>8 sp</Cost>
+<Weight>12 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Bear trap</Name>
+<Cost>2 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Bellows</Name>
+<Cost>1 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Cauldron</Name>
+<Cost>1 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Climber&apos;s kit</Name>
+<Cost>80 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Compass</Name>
+<Cost>1 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Cooking Kit</Name>
+<Cost>1 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Disguise kit</Name>
+<Cost>50 gp</Cost>
+<Weight>8 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Doctor&apos;s Mask</Name>
+<Cost>50 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Doctor&apos;s Outfit</Name>
+<Cost>150 gp</Cost>
+<Weight>6 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Drill</Name>
+<Cost>5 sp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Eyeglasses</Name>
+<Cost>5 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Flotation Device</Name>
+<Cost>1 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Footprint book</Name>
+<Cost>50 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Fortune-tellers Deck, common</Name>
+<Cost>1 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Fortune-tellers Deck, quality</Name>
+<Cost>25 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Fortune-tellers Deck, masterwork</Name>
+<Cost>50 gp </Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Healer&apos;s kit</Name>
+<Cost>50 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Holly and mistletoe</Name>
+<Cost>—</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Holy symbol, wooden</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Holy symbol, silver</Name>
+<Cost>25 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Juggler&apos;s Kit</Name>
+<Cost>15 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Leeching Kit</Name>
+<Cost>5 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Magnifying glass</Name>
+<Cost>100 gp</Cost>
+<Weight>—</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Map Making Kit</Name>
+<Cost>10 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Musical instrument, common</Name>
+<Cost>5 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Musical instrument, masterwork</Name>
+<Cost>100 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Pole, balancing</Name>
+<Cost>8 gp</Cost>
+<Weight>12 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Portrait Book</Name>
+<Cost>10 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Printing Press (1-page)</Name>
+<Cost>250 gp</Cost>
+<Weight>150 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Prophecies of Kalistrade (the)</Name>
+<Cost>75 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Pulley</Name>
+<Cost>2 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Saw</Name>
+<Cost>4 cp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Sawback Sword</Name>
+<Cost>+5 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Sextant</Name>
+<Cost>500 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Scale, merchant&apos;s</Name>
+<Cost>2 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Spell component pouch</Name>
+<Cost>5 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Spellbook, wizard&apos;s (blank)</Name>
+<Cost>15 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Stretcher</Name>
+<Cost>1 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Surgeon&apos;s tools</Name>
+<Cost>20 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Swim Fins</Name>
+<Cost>1 sp</Cost>
+<Weight>5 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Symptom Kit</Name>
+<Cost>25 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Thermometer</Name>
+<Cost>25 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Thieves&apos; tools</Name>
+<Cost>30 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Thieves&apos; tools, masterwork</Name>
+<Cost>100 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Tool, masterwork</Name>
+<Cost>50 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Trap, bear</Name>
+<Cost>2 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Traveling spellbook (blank)</Name>
+<Cost>10 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Trespasser&apos;s Boot</Name>
+<Cost>8 sp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Wand of Misery</Name>
+<Cost>5 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Tools and Skill Kits</Type>
+</Equipment>
+<Equipment>
+<Name>Acid (1 flask)</Name>
+<Cost>10 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Alchemical Grease</Name>
+<Cost>5 gp</Cost>
+<Weight>1 lb./15</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Alchemical Solvent</Name>
+<Cost>20 gp</Cost>
+<Weight>1/2lb./20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Alchemist&apos;s fire (1 flask)</Name>
+<Cost>20 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Alchemist&apos;s kindness</Name>
+<Cost>1 gp</Cost>
+<Weight>— /20</Weight>
+<Source>APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Alkali Flask</Name>
+<Cost>15 gp</Cost>
+<Weight>1 lb./20</Weight>
+<Source>DDR</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Alkali salt</Name>
+<Cost>30 gp</Cost>
+<Weight>—/20</Weight>
+<Source>DDR</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Antiplague</Name>
+<Cost>50 gp</Cost>
+<Weight>—/25</Weight>
+<Source>AA, APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Antitoxin (vial)</Name>
+<Cost>50 gp</Cost>
+<Weight>—</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Beast lure</Name>
+<Cost>30 gp</Cost>
+<Weight>1/2 lb./20</Weight>
+<Source></Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Beast Scent</Name>
+<Cost>75 gp</Cost>
+<Weight>1/2 lbs./25</Weight>
+<Source>SOS</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Bladeguard</Name>
+<Cost>40 gp</Cost>
+<Weight>—/15</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Bloodblock</Name>
+<Cost>25 gp</Cost>
+<Weight>—/25</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Bodybalm</Name>
+<Cost>25 gp</Cost>
+<Weight>—/25</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Casting plaster</Name>
+<Cost>5 sp</Cost>
+<Weight>5 lbs./—</Weight>
+<Source>APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Darkflare</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>Faction Guide</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Distilled Terrap Sap</Name>
+<Cost>30 gp</Cost>
+<Weight>1/2 lb./15</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Everburning torch</Name>
+<Cost>110 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Firework, Desnan Candle</Name>
+<Cost>5 gp</Cost>
+<Weight>—/20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Firework, Paper Candle</Name>
+<Cost>1 gp</Cost>
+<Weight>—/20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Firework, Skyrocket</Name>
+<Cost>50 gp</Cost>
+<Weight>1 lb./25</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Firework, Starfountain</Name>
+<Cost>500 gp</Cost>
+<Weight>100 lbs./25</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Flash Powder</Name>
+<Cost>50 gp</Cost>
+<Weight>—/20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Fuse Grenade</Name>
+<Cost>100 gp</Cost>
+<Weight>1 lb./25</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Healy myrrh</Name>
+<Cost>50 gp</Cost>
+<Weight>—/see text</Weight>
+<Source>Qadira</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Holy water (1 flask)</Name>
+<Cost>25 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Ink, ghost</Name>
+<Cost>25 gp</Cost>
+<Weight>—/20</Weight>
+<Source>SOS</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Ink, glowing (vial)</Name>
+<Cost>5 gp</Cost>
+<Weight>—/15</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Ink, invisible (simple)</Name>
+<Cost>2 gp</Cost>
+<Weight>—/15</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Ink, invisible (average)</Name>
+<Cost>10 gp</Cost>
+<Weight>—/20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Ink, invisible (good)</Name>
+<Cost>25 gp</Cost>
+<Weight>—/20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Ink, invisible (superior)</Name>
+<Cost>75 gp</Cost>
+<Weight>—/25</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Kaava Musk</Name>
+<Cost>40 gp</Cost>
+<Weight>1/2 lb./20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Keros Oil</Name>
+<Cost>5 gp</Cost>
+<Weight>—/15</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Light Detector</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Liquid Ice</Name>
+<Cost>40 gp</Cost>
+<Weight>2 lb./25</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Marker Die</Name>
+<Cost>15 gp</Cost>
+<Weight>1 lb./15</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Nushadir (vial)</Name>
+<Cost>10 gp</Cost>
+<Weight>1 lb./20</Weight>
+<Source>APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Ooze Grease</Name>
+<Cost>50 gp</Cost>
+<Weight>1 lb./25</Weight>
+<Source>DDR</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Perfume/Cologne, common (1 dose)</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>PCS</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Perfume/Cologne, rare (1 dose)</Name>
+<Cost>10 gp</Cost>
+<Weight>—</Weight>
+<Source>PCS</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Perfume/Cologne, exotic (1 dose)</Name>
+<Cost>100 gp</Cost>
+<Weight>—</Weight>
+<Source>PCS</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Powder, Itching</Name>
+<Cost>60 gp</Cost>
+<Weight>2 lbs./25</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Scent Cloak</Name>
+<Cost>20 gp</Cost>
+<Weight>2 lbs./20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Silversheen</Name>
+<Cost>+750 gp</Cost>
+<Weight>—/see text</Weight>
+<Source>Qadira</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Smelling salts</Name>
+<Cost>25 gp</Cost>
+<Weight>—/20</Weight>
+<Source>APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Smoke Pellet</Name>
+<Cost>25 gp</Cost>
+<Weight>—/20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Smokestick</Name>
+<Cost>20 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Sneezing Powder (packet)</Name>
+<Cost>60 gp</Cost>
+<Weight>2 lbs./25</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Sunrod</Name>
+<Cost>2 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Soothe Syrup</Name>
+<Cost>25 gp</Cost>
+<Weight>1/2 lb./15</Weight>
+<Source>APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Tanglefoot bag</Name>
+<Cost>50 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Thunderstone</Name>
+<Cost>30 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Tindertwig</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>Core</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Troll styptic</Name>
+<Cost>100 gp</Cost>
+<Weight>—/25</Weight>
+<Source>SOS</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Unguent of Revivification</Name>
+<Cost>50 gp</Cost>
+<Weight>—</Weight>
+<Source>PCS</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Vermin Repellent</Name>
+<Cost>5 gp</Cost>
+<Weight>—/20</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Water Purification Sponge</Name>
+<Cost>25 gp</Cost>
+<Weight>1 lb./15</Weight>
+<Source>AA</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Weapon blanch, adamantine</Name>
+<Cost>100 gp</Cost>
+<Weight>1 lb./25</Weight>
+<Source>APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Weapon blanch, cold iron</Name>
+<Cost>50 gp</Cost>
+<Weight>1 lb./20</Weight>
+<Source>APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Weapon blanch, silver</Name>
+<Cost>5 gp</Cost>
+<Weight>1 lb./20</Weight>
+<Source>APG</Source>
+<Type>Special Substances</Type>
+</Equipment>
+<Equipment>
+<Name>Canary</Name>
+<Cost>4 cp</Cost>
+<Weight>9 oz.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Bird</Subtype>
+</Equipment>
+<Equipment>
+<Name>Falcon</Name>
+<Cost>40 gp</Cost>
+<Weight>20 lbs.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Bird</Subtype>
+</Equipment>
+<Equipment>
+<Name>Hawk</Name>
+<Cost>18 gp</Cost>
+<Weight>20 lbs.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Bird</Subtype>
+</Equipment>
+<Equipment>
+<Name>Owl</Name>
+<Cost>10 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Bird</Subtype>
+</Equipment>
+<Equipment>
+<Name>Owl (Verduran)</Name>
+<Cost>20 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Animals</Type>
+<Subtype>Bird</Subtype>
+</Equipment>
+<Equipment>
+<Name>Raven</Name>
+<Cost>2 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Bird</Subtype>
+</Equipment>
+<Equipment>
+<Name>Common cat</Name>
+<Cost>3 cp</Cost>
+<Weight>8 lbs.</Weight>
+<Source></Source>
+<Type>Animals</Type>
+<Subtype>Cat</Subtype>
+</Equipment>
+<Equipment>
+<Name>Osirion wise-eye cat</Name>
+<Cost>6 gp</Cost>
+<Weight>8 lbs.</Weight>
+<Source></Source>
+<Type>Animals</Type>
+<Subtype>Cat</Subtype>
+</Equipment>
+<Equipment>
+<Name>Dog (combat trained)</Name>
+<Cost>25 gp</Cost>
+<Weight>90 lbs.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Dog</Subtype>
+</Equipment>
+<Equipment>
+<Name>Riding dog</Name>
+<Cost>150 gp</Cost>
+<Weight>120 lbs.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Dog</Subtype>
+</Equipment>
+<Equipment>
+<Name>Sled dog</Name>
+<Cost>20 gp</Cost>
+<Weight>300 lbs.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Dog</Subtype>
+</Equipment>
+<Equipment>
+<Name>Heavy horse</Name>
+<Cost>200 gp</Cost>
+<Weight>1000 lbs.</Weight>
+<Source>Core</Source>
+<Type>Animals</Type>
+<Subtype>Horse</Subtype>
+</Equipment>
+<Equipment>
+<Name>Heavy horse (combat trained)</Name>
+<Cost>300 gp</Cost>
+<Weight>1,200 lbs.</Weight>
+<Source>Core</Source>
+<Type>Animals</Type>
+<Subtype>Horse</Subtype>
+</Equipment>
+<Equipment>
+<Name>Light horse</Name>
+<Cost>75 gp</Cost>
+<Weight>600 lbs.</Weight>
+<Source>Core</Source>
+<Type>Animals</Type>
+<Subtype>Horse</Subtype>
+</Equipment>
+<Equipment>
+<Name>Light horse (combat trained)</Name>
+<Cost>110 gp</Cost>
+<Weight>900 lbs.</Weight>
+<Source>Core</Source>
+<Type>Animals</Type>
+<Subtype>Horse</Subtype>
+</Equipment>
+<Equipment>
+<Name>Pack animal (donkey/mule)</Name>
+<Cost>8 gp</Cost>
+<Weight>600 lbs.</Weight>
+<Source>Core</Source>
+<Type>Animals</Type>
+<Subtype>Horse</Subtype>
+</Equipment>
+<Equipment>
+<Name>Pack animal (ox)</Name>
+<Cost>15 gp</Cost>
+<Weight>1 ton</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Horse</Subtype>
+</Equipment>
+<Equipment>
+<Name>Pack animal (yak)</Name>
+<Cost>24 gp</Cost>
+<Weight>2 tons</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Horse</Subtype>
+</Equipment>
+<Equipment>
+<Name>Pony</Name>
+<Cost>30 gp</Cost>
+<Weight>—</Weight>
+<Source>Core</Source>
+<Type>Animals</Type>
+<Subtype>Horse</Subtype>
+</Equipment>
+<Equipment>
+<Name>Pony (combat trained)</Name>
+<Cost>45 gp</Cost>
+<Weight>—</Weight>
+<Source>Core</Source>
+<Type>Animals</Type>
+<Subtype>Horse</Subtype>
+</Equipment>
+<Equipment>
+<Name>Common lizard</Name>
+<Cost>5 cp</Cost>
+<Weight>2 oz.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Reptile</Subtype>
+</Equipment>
+<Equipment>
+<Name>Nex gecko lizard</Name>
+<Cost>12 gp</Cost>
+<Weight>4 oz.</Weight>
+<Source></Source>
+<Type>Animals</Type>
+<Subtype>Reptile</Subtype>
+</Equipment>
+<Equipment>
+<Name>Constrictor snake</Name>
+<Cost>5 gp</Cost>
+<Weight>60 lbs.</Weight>
+<Source></Source>
+<Type>Animals</Type>
+<Subtype>Reptile</Subtype>
+</Equipment>
+<Equipment>
+<Name>Viper snake</Name>
+<Cost>5 gp</Cost>
+<Weight>10 oz.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Reptile</Subtype>
+</Equipment>
+<Equipment>
+<Name>Common toad</Name>
+<Cost>2 cp</Cost>
+<Weight>7 oz.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Reptile</Subtype>
+</Equipment>
+<Equipment>
+<Name>Vision toad</Name>
+<Cost>10 gp</Cost>
+<Weight>5 oz.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Reptile</Subtype>
+</Equipment>
+<Equipment>
+<Name>Common rat</Name>
+<Cost>1 cp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Rodent</Subtype>
+</Equipment>
+<Equipment>
+<Name>Blue rat</Name>
+<Cost>1 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source></Source>
+<Type>Animals</Type>
+<Subtype>Rodent</Subtype>
+</Equipment>
+<Equipment>
+<Name>Dire rat</Name>
+<Cost>5 gp</Cost>
+<Weight>50 lbs.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Rodent</Subtype>
+</Equipment>
+<Equipment>
+<Name>Donkey rat</Name>
+<Cost>1 gp</Cost>
+<Weight>50 lbs.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Rodent</Subtype>
+</Equipment>
+<Equipment>
+<Name>Weasel</Name>
+<Cost>2 gp</Cost>
+<Weight>8 oz.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Rodent</Subtype>
+</Equipment>
+<Equipment>
+<Name>Bat</Name>
+<Cost>5 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Other</Subtype>
+</Equipment>
+<Equipment>
+<Name>Bat, Uskwood</Name>
+<Cost>50 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source></Source>
+<Type>Animals</Type>
+<Subtype>Other</Subtype>
+</Equipment>
+<Equipment>
+<Name>Elephant</Name>
+<Cost>1000 gp</Cost>
+<Weight>5 tons</Weight>
+<Source></Source>
+<Type>Animals</Type>
+<Subtype>Other</Subtype>
+</Equipment>
+<Equipment>
+<Name>Monkey</Name>
+<Cost> </Cost>
+<Weight> </Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Other</Subtype>
+</Equipment>
+<Equipment>
+<Name>Hippogriff</Name>
+<Cost>500 gp</Cost>
+<Weight> </Weight>
+<Source>B2</Source>
+<Type>Animals</Type>
+<Subtype>Exotic</Subtype>
+</Equipment>
+<Equipment>
+<Name>Pseudodragon</Name>
+<Cost>200 gp</Cost>
+<Weight>7 lbs.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Exotic</Subtype>
+</Equipment>
+<Equipment>
+<Name>Stirge</Name>
+<Cost>20 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Animals</Type>
+<Subtype>Exotic</Subtype>
+</Equipment>
+<Equipment>
+<Name>Artisan&apos;s outfit</Name>
+<Cost>1 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Cold-weather outfit</Name>
+<Cost>8 gp</Cost>
+<Weight>7 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Courtier&apos;s outfit</Name>
+<Cost>30 gp</Cost>
+<Weight>6 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Entertainer&apos;s outfit</Name>
+<Cost>3 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Explorer&apos;s outfit</Name>
+<Cost>10 gp</Cost>
+<Weight>8 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Hot Weather Outfit</Name>
+<Cost>8 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source>APG</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Monk&apos;s outfit</Name>
+<Cost>5 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Noble&apos;s outfit</Name>
+<Cost>75 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Peasant&apos;s outfit</Name>
+<Cost>1 sp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Pickpocket&apos;s Outfit</Name>
+<Cost>5 gp</Cost>
+<Weight>3 lbs.</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Royal outfit</Name>
+<Cost>200 gp</Cost>
+<Weight>15 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Scholar&apos;s outfit</Name>
+<Cost>5 gp</Cost>
+<Weight>6 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Traveler&apos;s outfit</Name>
+<Cost>1 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Cleats</Name>
+<Cost>5 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>APG</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Cleric&apos;s vestments</Name>
+<Cost>5 gp</Cost>
+<Weight>6 lbs.</Weight>
+<Source>Core</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Furs</Name>
+<Cost>12 gp</Cost>
+<Weight>5 lbs.</Weight>
+<Source>APG</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Hats</Name>
+<Cost>1 sp to 50 gp</Cost>
+<Weight>1/2 to 2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Jewelry</Name>
+<Cost>varies</Cost>
+<Weight>varies</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Mask</Name>
+<Cost>1 sp to 50 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Sash, Adventurer&apos;s</Name>
+<Cost> </Cost>
+<Weight> </Weight>
+<Source>SOS</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Scarf</Name>
+<Cost>1 sp to 5 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Scarf, pocketed</Name>
+<Cost>8 gp</Cost>
+<Weight>1/2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Scarf, reinforced</Name>
+<Cost>10 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Snowshoes</Name>
+<Cost>5 gp</Cost>
+<Weight>4 lbs.</Weight>
+<Source>APG</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Tear-Away Clothing</Name>
+<Cost>+5 gp</Cost>
+<Weight>varies1</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Vest</Name>
+<Cost>1 sp to 50 gp</Cost>
+<Weight>1/2 lb.</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Wig</Name>
+<Cost>5 gp to 500 gp</Cost>
+<Weight>1/2 to 4 lbs.</Weight>
+<Source>AA</Source>
+<Type>Clothing</Type>
+</Equipment>
+<Equipment>
+<Name>Board game</Name>
+<Cost> 1 sp - 10 gp</Cost>
+<Weight> 2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Entertainment</Type>
+</Equipment>
+<Equipment>
+<Name>Bowling set</Name>
+<Cost> 5 sp - 10 gp</Cost>
+<Weight>15 lbs.</Weight>
+<Source>AA</Source>
+<Type>Entertainment</Type>
+</Equipment>
+<Equipment>
+<Name>Cards (marked)</Name>
+<Cost>1 gp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Entertainment</Type>
+</Equipment>
+<Equipment>
+<Name>Dice, loaded (average)</Name>
+<Cost>10 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Entertainment</Type>
+</Equipment>
+<Equipment>
+<Name>Dice, loaded (superior)</Name>
+<Cost>50 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Entertainment</Type>
+</Equipment>
+<Equipment>
+<Name>Kite</Name>
+<Cost> 1 sp - 2000 gp</Cost>
+<Weight>1 lb. - 5 lbs.</Weight>
+<Source>AA</Source>
+<Type>Entertainment</Type>
+</Equipment>
+<Equipment>
+<Name>Puzzle box</Name>
+<Cost> 1 gp - 1000 gp</Cost>
+<Weight>1 lb. - 5 lbs.</Weight>
+<Source>AA</Source>
+<Type>Entertainment</Type>
+</Equipment>
+<Equipment>
+<Name>Allnight</Name>
+<Cost>75 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Bachelor snuff</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Belladonna</Name>
+<Cost>2 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Clear ear</Name>
+<Cost>15 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Flayleaf</Name>
+<Cost>20 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Garlic</Name>
+<Cost>1 sp</Cost>
+<Weight>1 lb.</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Holly</Name>
+<Cost>—</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Mistletoe</Name>
+<Cost>—</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Night tea</Name>
+<Cost>1 sp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Pesh</Name>
+<Cost>20 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Shoanti barbarian chew</Name>
+<Cost>1 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Slave, common</Name>
+<Cost>75 gp</Cost>
+<Weight>175 lbs.</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Slave, hard labor</Name>
+<Cost>100 gp</Cost>
+<Weight>200 lbs.</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Slave, household</Name>
+<Cost>50 gp</Cost>
+<Weight>130 lbs.</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Slave, slip (halfling)</Name>
+<Cost>100 gp</Cost>
+<Weight>39 lbs.</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Slave, specialized</Name>
+<Cost>500 gp</Cost>
+<Weight>160 lbs.</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Tobacco</Name>
+<Cost>1 gp</Cost>
+<Weight>2 lbs.</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Wolfsbane</Name>
+<Cost>5 sp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Woundweal</Name>
+<Cost>100 gp</Cost>
+<Weight>—</Weight>
+<Source>AA</Source>
+<Type>Black Market</Type>
+</Equipment>
+<Equipment>
+<Name>Cart</Name>
+<Cost>15 gp</Cost>
+<Weight>200 lbs.</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+<Equipment>
+<Name>Galley</Name>
+<Cost>30000 gp</Cost>
+<Weight>—</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+<Equipment>
+<Name>Keelboat</Name>
+<Cost>3000 gp</Cost>
+<Weight>—</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+<Equipment>
+<Name>Longship</Name>
+<Cost>10000 gp</Cost>
+<Weight>—</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+<Equipment>
+<Name>Rowboat</Name>
+<Cost>50 gp</Cost>
+<Weight>100 lbs.</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+<Equipment>
+<Name>Oar</Name>
+<Cost>2 gp</Cost>
+<Weight>10 lbs.</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+<Equipment>
+<Name>Sailing ship</Name>
+<Cost>10000 gp</Cost>
+<Weight>—</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+<Equipment>
+<Name>Sled</Name>
+<Cost>20 gp</Cost>
+<Weight>300 lbs.</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+<Equipment>
+<Name>Wagon</Name>
+<Cost>35 gp</Cost>
+<Weight>400 lbs.</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+<Equipment>
+<Name>Warship</Name>
+<Cost>25000 gp</Cost>
+<Weight>—</Weight>
+<Source>Core</Source>
+<Type>Transport</Type>
+</Equipment>
+</ArrayOfEquipment>

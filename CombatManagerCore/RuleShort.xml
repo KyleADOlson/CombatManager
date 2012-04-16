@@ -1,0 +1,3726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRule>
+  <Rule>
+    <ID>1</ID>
+    <Name>Bull Rush</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>2</ID>
+    <Name>Dirty Trick</Name>
+    <Source>APG</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>3</ID>
+    <Name>Disarm</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>4</ID>
+    <Name>Drag</Name>
+    <Source>APG</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>5</ID>
+    <Name>Grapple</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>6</ID>
+    <Name>Overrun</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>7</ID>
+    <Name>Reposition</Name>
+    <Source>APG</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>8</ID>
+    <Name>Steal</Name>
+    <Source>APG</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>9</ID>
+    <Name>Sunder</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>10</ID>
+    <Name>Feint</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>11</ID>
+    <Name>Ability Damage and Drain</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>1d4 Str drain</Format>
+    <Location>Special Attacks and individual attacks</Location>
+    <AbilityType>Ex or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>12</ID>
+    <Name>All-Around Vision</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>all-around vision</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>13</ID>
+    <Name>Amorphous</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>amorphous</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>14</ID>
+    <Name>Amphibious</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>amphibious</Format>
+    <Location>SQ</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>15</ID>
+    <Name>Attach</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>attach</Format>
+    <Location>individual attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>16</ID>
+    <Name>Bleed</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>bleed (2d6)</Format>
+    <Location>Special Attacks and individual attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>17</ID>
+    <Name>Blindsense</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>blindsense 60 ft.</Format>
+    <Location>Senses</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>18</ID>
+    <Name>Blindsight</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>blindsight 60 ft.</Format>
+    <Location>Senses</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>19</ID>
+    <Name>Blood Drain</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>blood drain (1d2 Constitution)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>20</ID>
+    <Name>Blood Rage</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>blood rage</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>21</ID>
+    <Name>Breath Weapon</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>breath weapon (60-ft. cone, 8d6 fire damage, Reflex DC 20 for half, usable every 1d4 rounds)</Format>
+    <Location>Special Attacks; if the breath is more complicated than damage, it also appears under Special Abilities with its own entry</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>22</ID>
+    <Name>Burn</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>burn (2d6, DC 15)</Format>
+    <Location>Special Attacks and individual attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>23</ID>
+    <Name>Burrow</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>burrow 30 ft.</Format>
+    <Location>Speed</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>24</ID>
+    <Name>Change Shape</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>change shape (wolf, beast shape I)</Format>
+    <Location>SQ, and in Special Abilities for creatures with a unique listing</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>25</ID>
+    <Name>Channel Resistance</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>channel resistance +4</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>26</ID>
+    <Name>Climb</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>climb 30 ft.</Format>
+    <Location>Speed</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>27</ID>
+    <Name>Compression</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>compression</Format>
+    <Location>Special Qualities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>28</ID>
+    <Name>Constrict</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>constrict (1d8+6)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>29</ID>
+    <Name>Construct Traits</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>construct traits</Format>
+    <Location>Immune</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>30</ID>
+    <Name>Curse</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>Curse Name (Su) Slam—contact; save Will DC 14, frequency 1 day, effect 1d4 Str drain</Format>
+    <Location>Special Attacks and individual attacks</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>31</ID>
+    <Name>Curse of Lycanthropy</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>curse of lycanthropy</Format>
+    <Location>individual attacks</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>32</ID>
+    <Name>Damage Reduction</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>DR 5/silver</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>33</ID>
+    <Name>Disease</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>Disease Name (Ex) Bite—injury; save Fort DC 15, onset 1d3 days, frequency 1 day, effect 1 Con damage, cure 2 consecutive saves</Format>
+    <Location>Special Attacks and individual attacks</Location>
+    <AbilityType>Ex or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>34</ID>
+    <Name>Distraction</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>distraction (DC 14)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>35</ID>
+    <Name>Earth Glide</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>earth glide</Format>
+    <Location>Speed</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>36</ID>
+    <Name>Energy Drain</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>energy drain (2 levels, DC 18)</Format>
+    <Location>Special Attacks and individual attacks</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>37</ID>
+    <Name>Engulf</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>engulf (DC 12, 1d6 acid and paralysis)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>38</ID>
+    <Name>Entrap</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>entrap (DC 13, 1d10 minutes, hardness 5, hp 10)</Format>
+    <Location>special attacks and individual attacks</Location>
+    <AbilityType>Ex or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>39</ID>
+    <Name>Fast Healing</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>fast healing 5</Format>
+    <Location>hp</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>40</ID>
+    <Name>Fast Swallow</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>fast swallow</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>41</ID>
+    <Name>Fear</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>Defensive Abilities</Format>
+    <Location>Aura</Location>
+    <AbilityType>Su or Sp</AbilityType>
+    <Format2>fear cone</Format2>
+    <Location2>Special Attacks</Location2>
+  </Rule>
+  <Rule>
+    <ID>42</ID>
+    <Name>Ferocity</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>ferocity</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>43</ID>
+    <Name>Flight</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>fly 30 ft. (average)</Format>
+    <Location>Speed</Location>
+    <AbilityType>Ex, Sp, or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>44</ID>
+    <Name>Freeze</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>freeze</Format>
+    <Location>Special Qualities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>45</ID>
+    <Name>Frightful Presence</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>frightful presence (60 ft., DC 21)</Format>
+    <Location>Aura</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>46</ID>
+    <Name>Gaze</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>gaze</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>47</ID>
+    <Name>Grab</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>grab</Format>
+    <Location>individual attacks</Location>
+    <AbilityType>Ex</AbilityType>
+    <Format2>grab (Colossal)</Format2>
+    <Location2>Special Attacks</Location2>
+  </Rule>
+  <Rule>
+    <ID>48</ID>
+    <Name>Heat</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>heat (1d6 fire)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>49</ID>
+    <Name>Hold Breath</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>hold breath</Format>
+    <Location>Special Qualities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>50</ID>
+    <Name>Immunity</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>Immune acid, fire, paralysis</Format>
+    <Location>Defensive Abilitie</Location>
+    <AbilityType>Ex or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>51</ID>
+    <Name>Incorporeal</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>incorporeal</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>52</ID>
+    <Name>Jet</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>jet (200 ft.)</Format>
+    <Location>Speed</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>53</ID>
+    <Name>Keen Scent</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>keen scent</Format>
+    <Location>Senses</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>54</ID>
+    <Name>Lifesense</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>lifesense</Format>
+    <Location>Senses</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>55</ID>
+    <Name>Light Blindness</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>light blindness</Format>
+    <Location>Weaknesses</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>56</ID>
+    <Name>Light Sensitivity</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>light sensitivity</Format>
+    <Location>Weaknesses</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>57</ID>
+    <Name>Low-Light Vision</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>low-light vision</Format>
+    <Location>Senses</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>58</ID>
+    <Name>Lycanthropic Empathy</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>lycanthropic empathy (bears and dire bears)</Format>
+    <Location>Special Qualities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>59</ID>
+    <Name>Multiweapon Mastery</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>multiweapon mastery</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>60</ID>
+    <Name>Natural Attacks</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>bite +5 (1d6+1), 2 claws +5 (1d4+2), 4 tentacles +0 (1d4+1)</Format>
+    <Location>Melee and Ranged</Location>
+  </Rule>
+  <Rule>
+    <ID>61</ID>
+    <Name>Natural Invisibility</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>natural invisibility</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>62</ID>
+    <Name>Negative Energy Affinity</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>negative energy affinity</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>63</ID>
+    <Name>No Breath</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>no breath</Format>
+    <Location>Special Qualities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>64</ID>
+    <Name>Paralysis</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>paralysis (1d4 rounds, DC 18)</Format>
+    <Location>Special Attacks and individual attacks</Location>
+    <AbilityType>Ex or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>65</ID>
+    <Name>Plant Traits</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>plant traits</Format>
+    <Location>Immune</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>66</ID>
+    <Name>Poison</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>Poison Name (Ex) Sting—injury; save Fort DC 22, frequency 1/round for 6 rounds, effect 1d4 Con, cure 2 consecutive saves</Format>
+    <Location>Location: Special Attacks and individual attacks</Location>
+    <AbilityType>Ex or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>67</ID>
+    <Name>Pounce</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>pounce</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>68</ID>
+    <Name>Powerful Charge</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>powerful charge (gore, 4d8+24)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>69</ID>
+    <Name>Pull</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>pull (tentacle, 5 feet)</Format>
+    <Location>Special Attacks and individual attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>70</ID>
+    <Name>Push</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>push (slam, 10 feet)</Format>
+    <Location>Special Attacks and individual attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>71</ID>
+    <Name>Rake</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>rake (2 claws +8, 1d4+2)</Format>
+    <Location>pecial Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>72</ID>
+    <Name>Regeneration</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>regeneration 5 (fire, acid)</Format>
+    <Location>hp</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>73</ID>
+    <Name>Rend</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>rend (2 claws, 1d8+9)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>74</ID>
+    <Name>Resistance</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>Resist acid 10</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>75</ID>
+    <Name>Rock Catching</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>rock catching</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>76</ID>
+    <Name>Rock Throwing</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>rock throwing (120 ft.)</Format>
+    <Location>Special Attacks (damage is listed in Ranged attack)</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>77</ID>
+    <Name>Scent</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>scent</Format>
+    <Location>Senses</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>78</ID>
+    <Name>See in Darkness</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>see in darkness</Format>
+    <Location>Senses</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>79</ID>
+    <Name>Sound Mimicry</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>sound mimicry (voices)</Format>
+    <Location>Special Qualities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>80</ID>
+    <Name>Spell-Like Abilities</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>At will—burning hands (DC 13)</Format>
+    <Location>Spell-Like Abilities</Location>
+    <AbilityType>Sp</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>81</ID>
+    <Name>Spell Resistance</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>SR 18</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>82</ID>
+    <Name>Split</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>split (piercing and slashing, 10 hp)</Format>
+    <Location>Defensive Abilities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>83</ID>
+    <Name>Stench</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>stench (DC 15, 10 rounds)</Format>
+    <Location>Aura</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>84</ID>
+    <Name>Strangle</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>strangle</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>85</ID>
+    <Name>Summon</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>1/day—summon (level 4, 1 hezrou 35%)</Format>
+    <Location>Spell-Like Abilities</Location>
+    <AbilityType>Sp</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>86</ID>
+    <Name>Sunlight Powerlessness</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>sunlight powerlessness</Format>
+    <Location>Weaknesses</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>87</ID>
+    <Name>Swallow Whole</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>swallow whole (5d6 acid damage, AC 15, 18 hp)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>88</ID>
+    <Name>Telepathy</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>telepathy 100 ft.</Format>
+    <Location>Languages</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>89</ID>
+    <Name>Trample</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>trample (2d6+9, DC 20)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>90</ID>
+    <Name>Tremorsense</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>tremorsense 60 ft.</Format>
+    <Location>Senses</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>91</ID>
+    <Name>Trip</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>trip (bite)</Format>
+    <Location>individual attacks</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>92</ID>
+    <Name>Undead Traits</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>undead traits</Format>
+    <Location>Immune</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>93</ID>
+    <Name>Undersized Weapons</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>undersized weapons</Format>
+    <Location>Special Qualities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>94</ID>
+    <Name>Unnatural Aura</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>unnatural aura (30 ft.)</Format>
+    <Location>Aura</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>95</ID>
+    <Name>Vulnerabilities</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>vulnerability to fire</Format>
+    <Location>Weaknesses</Location>
+    <AbilityType>Ex or Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>96</ID>
+    <Name>Water Breathing</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>water breathing</Format>
+    <Location>Special Qualities</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>97</ID>
+    <Name>Web</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>web (+8 ranged, DC 16, 5 hp)</Format>
+    <Location>Special Attacks.</Location>
+    <AbilityType>Ex</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>98</ID>
+    <Name>Whirlwind</Name>
+    <Source>Bestiary</Source>
+    <Type>Universal Monster Rules</Type>
+    <Format>whirlwind (3/day, 10–30 ft. high, 1d6+6 damage, DC 15)</Format>
+    <Location>Special Attacks</Location>
+    <AbilityType>Su</AbilityType>
+  </Rule>
+  <Rule>
+    <ID>99</ID>
+    <Name>Aberration</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>100</ID>
+    <Name>Animal</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>101</ID>
+    <Name>Construct</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>102</ID>
+    <Name>Dragon</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>103</ID>
+    <Name>Fey</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>104</ID>
+    <Name>Humanoid</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>105</ID>
+    <Name>Magical Beast</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>106</ID>
+    <Name>Monstrous Humanoid</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>107</ID>
+    <Name>Ooze</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>108</ID>
+    <Name>Outsider</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>109</ID>
+    <Name>Plant</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>110</ID>
+    <Name>Undead</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>111</ID>
+    <Name>Vermin</Name>
+    <Source>Bestiary</Source>
+    <Type>Creature Types</Type>
+  </Rule>
+  <Rule>
+    <ID>112</ID>
+    <Name>Character Advancement</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>113</ID>
+    <Name>Ability Scores</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Ability Scores</Type>
+  </Rule>
+  <Rule>
+    <ID>526</ID>
+    <Name>Trip</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat Maneuvers</Type>
+  </Rule>
+  <Rule>
+    <ID>527</ID>
+    <Name>Dwarves</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Races</Type>
+  </Rule>
+  <Rule>
+    <ID>528</ID>
+    <Name>Elves</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Races</Type>
+  </Rule>
+  <Rule>
+    <ID>529</ID>
+    <Name>Gnomes</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Races</Type>
+  </Rule>
+  <Rule>
+    <ID>530</ID>
+    <Name>Half-elves</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Races</Type>
+  </Rule>
+  <Rule>
+    <ID>531</ID>
+    <Name>Half-orcs</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Races</Type>
+  </Rule>
+  <Rule>
+    <ID>532</ID>
+    <Name>Halflings</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Races</Type>
+  </Rule>
+  <Rule>
+    <ID>533</ID>
+    <Name>Humans</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Races</Type>
+  </Rule>
+  <Rule>
+    <ID>115</ID>
+    <Name>Dexterity</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Ability Scores</Type>
+  </Rule>
+  <Rule>
+    <ID>116</ID>
+    <Name>Constitution</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Ability Scores</Type>
+  </Rule>
+  <Rule>
+    <ID>117</ID>
+    <Name>Intelligence</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Ability Scores</Type>
+  </Rule>
+  <Rule>
+    <ID>118</ID>
+    <Name>Wisdom</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Ability Scores</Type>
+  </Rule>
+  <Rule>
+    <ID>119</ID>
+    <Name>Charisma</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Ability Scores</Type>
+  </Rule>
+  <Rule>
+    <ID>120</ID>
+    <Name>Skill Summary</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>121</ID>
+    <Name>How Combat Works</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>122</ID>
+    <Name>Combat Statistics</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>123</ID>
+    <Name>Attacks of Opportunity</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>124</ID>
+    <Name>Combat Actions and Attacks of Opportunity</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>125</ID>
+    <Name>Action Types</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>126</ID>
+    <Name>Standard Actions</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>127</ID>
+    <Name>Move Actions</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>128</ID>
+    <Name>Full Round Actions</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>129</ID>
+    <Name>Free Actions</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>130</ID>
+    <Name>Swift Actions</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>131</ID>
+    <Name>Miscellaneous Actions</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>132</ID>
+    <Name>Injury and Death</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>133</ID>
+    <Name>Stable Characters and Recovery</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>134</ID>
+    <Name>Healing</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>135</ID>
+    <Name>Temporary Hit Points</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>136</ID>
+    <Name>Nonlethal Damage</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>137</ID>
+    <Name>Movement, Position, And Distance</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>138</ID>
+    <Name>Combat Modifiers</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>139</ID>
+    <Name>Cover</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>140</ID>
+    <Name>Concealment</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>141</ID>
+    <Name>Flanking</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>142</ID>
+    <Name>Helpless Defenders</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>143</ID>
+    <Name>Aid Another</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>144</ID>
+    <Name>Charge</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>145</ID>
+    <Name>Combat Maneuvers</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>146</ID>
+    <Name>Mounted Combat</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>147</ID>
+    <Name>Throw Splash Weapon</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>148</ID>
+    <Name>Two-Weapon Fighting</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>149</ID>
+    <Name>Special Initiative Actions</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>150</ID>
+    <Name>Acrobatics</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Dex</Ability>
+  </Rule>
+  <Rule>
+    <ID>151</ID>
+    <Name>Appraise</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Int</Ability>
+  </Rule>
+  <Rule>
+    <ID>152</ID>
+    <Name>Bluff</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Cha</Ability>
+  </Rule>
+  <Rule>
+    <ID>153</ID>
+    <Name>Climb</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Str</Ability>
+  </Rule>
+  <Rule>
+    <ID>154</ID>
+    <Name>Craft</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Int</Ability>
+  </Rule>
+  <Rule>
+    <ID>155</ID>
+    <Name>Diplomacy</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Cha</Ability>
+  </Rule>
+  <Rule>
+    <ID>156</ID>
+    <Name>Disable Device</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>0</Untrained>
+    <Ability>Dex</Ability>
+  </Rule>
+  <Rule>
+    <ID>157</ID>
+    <Name>Disguise</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Cha</Ability>
+  </Rule>
+  <Rule>
+    <ID>158</ID>
+    <Name>Escape Artist</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Dex</Ability>
+  </Rule>
+  <Rule>
+    <ID>159</ID>
+    <Name>Fly</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Dex</Ability>
+  </Rule>
+  <Rule>
+    <ID>160</ID>
+    <Name>Handle Animal</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>0</Untrained>
+    <Ability>Cha</Ability>
+  </Rule>
+  <Rule>
+    <ID>161</ID>
+    <Name>Heal</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Wis</Ability>
+  </Rule>
+  <Rule>
+    <ID>162</ID>
+    <Name>Intimidate</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Cha</Ability>
+  </Rule>
+  <Rule>
+    <ID>163</ID>
+    <Name>Knowledge</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>0</Untrained>
+    <Ability>Int</Ability>
+  </Rule>
+  <Rule>
+    <ID>164</ID>
+    <Name>Linguistics</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>0</Untrained>
+    <Ability>Int</Ability>
+  </Rule>
+  <Rule>
+    <ID>165</ID>
+    <Name>Perception</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Wis</Ability>
+  </Rule>
+  <Rule>
+    <ID>166</ID>
+    <Name>Perform</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Cha</Ability>
+  </Rule>
+  <Rule>
+    <ID>167</ID>
+    <Name>Profession</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>0</Untrained>
+    <Ability>Wis</Ability>
+  </Rule>
+  <Rule>
+    <ID>168</ID>
+    <Name>Ride</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Dex</Ability>
+  </Rule>
+  <Rule>
+    <ID>169</ID>
+    <Name>Sense Motive</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Wis</Ability>
+  </Rule>
+  <Rule>
+    <ID>170</ID>
+    <Name>Sleight of Hand</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>0</Untrained>
+    <Ability>Dex</Ability>
+  </Rule>
+  <Rule>
+    <ID>171</ID>
+    <Name>Spellcraft</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>0</Untrained>
+    <Ability>Int</Ability>
+  </Rule>
+  <Rule>
+    <ID>172</ID>
+    <Name>Stealth</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Dex</Ability>
+  </Rule>
+  <Rule>
+    <ID>173</ID>
+    <Name>Survival</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Wis</Ability>
+  </Rule>
+  <Rule>
+    <ID>174</ID>
+    <Name>Swim</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>1</Untrained>
+    <Ability>Str</Ability>
+  </Rule>
+  <Rule>
+    <ID>175</ID>
+    <Name>Use Magic Device</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Skills</Type>
+    <Untrained>0</Untrained>
+    <Ability>Cha</Ability>
+  </Rule>
+  <Rule>
+    <ID>176</ID>
+    <Name>Barbarian</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>177</ID>
+    <Name>Bard</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>178</ID>
+    <Name>Cleric</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>179</ID>
+    <Name>Druid</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>180</ID>
+    <Name>Fighter</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>181</ID>
+    <Name>Monk</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>182</ID>
+    <Name>Paladin</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>183</ID>
+    <Name>Ranger</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>184</ID>
+    <Name>Rogue</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>187</ID>
+    <Name>Sorcerer</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>188</ID>
+    <Name>Wizard</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>189</ID>
+    <Name>Alchemist</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Advanced Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>190</ID>
+    <Name>Cavalier</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Advanced Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>191</ID>
+    <Name>Inquisitor</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Advanced Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>192</ID>
+    <Name>Oracle</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Advanced Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>193</ID>
+    <Name>Summoner</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Advanced Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>194</ID>
+    <Name>Witch</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Advanced Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>195</ID>
+    <Name>Arcane Archer</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>196</ID>
+    <Name>Arcane Trickster</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>197</ID>
+    <Name>Assassin</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>198</ID>
+    <Name>Dragon Disciple</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>199</ID>
+    <Name>Duelist</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>200</ID>
+    <Name>Eldritch Knight</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>201</ID>
+    <Name>Loremaster</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>202</ID>
+    <Name>Mystic Theurge</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>203</ID>
+    <Name>Pathfinder Chronicler</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>204</ID>
+    <Name>Shadowdancer</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>205</ID>
+    <Name>Battle Herald</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>206</ID>
+    <Name>Holy Vindicator</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>207</ID>
+    <Name>Horizon Walker</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>208</ID>
+    <Name>Master Chymist</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>209</ID>
+    <Name>Master Spy</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>210</ID>
+    <Name>Nature Warden</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>211</ID>
+    <Name>Rage Prophet</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>212</ID>
+    <Name>Stalwart Defender</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Prestige Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>214</ID>
+    <Name>Air Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>215</ID>
+    <Name>Animal Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>216</ID>
+    <Name>Artifice Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>217</ID>
+    <Name>Chaos Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>218</ID>
+    <Name>Charm Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>219</ID>
+    <Name>Community Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>220</ID>
+    <Name>Darkness Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>221</ID>
+    <Name>Death Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>222</ID>
+    <Name>Destruction Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>223</ID>
+    <Name>Earth Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>224</ID>
+    <Name>Evil Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>225</ID>
+    <Name>Fire Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>226</ID>
+    <Name>Glory Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>227</ID>
+    <Name>Good Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>228</ID>
+    <Name>Healing Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>229</ID>
+    <Name>Knowledge Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>230</ID>
+    <Name>Law Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>231</ID>
+    <Name>Liberation Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>232</ID>
+    <Name>Luck Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>233</ID>
+    <Name>Madness Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>234</ID>
+    <Name>Magic Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>235</ID>
+    <Name>Nobility Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>236</ID>
+    <Name>Plant Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>237</ID>
+    <Name>Protection Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>238</ID>
+    <Name>Repose Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>239</ID>
+    <Name>Rune Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>240</ID>
+    <Name>Strength Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>241</ID>
+    <Name>Sun Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>242</ID>
+    <Name>Travel Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>243</ID>
+    <Name>Trickery Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>244</ID>
+    <Name>War Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>245</ID>
+    <Name>Water Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>246</ID>
+    <Name>Weather Domain</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Domain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>247</ID>
+    <Name>Aberrant Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>248</ID>
+    <Name>Abyssal Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>249</ID>
+    <Name>Arcane Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>250</ID>
+    <Name>Celestial Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>251</ID>
+    <Name>Destined Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>252</ID>
+    <Name>Draconic Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>253</ID>
+    <Name>Elemental Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>254</ID>
+    <Name>Fey Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>255</ID>
+    <Name>Infernal Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>256</ID>
+    <Name>Undead Bloodline</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>257</ID>
+    <Name>Battle Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>258</ID>
+    <Name>Bones Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>259</ID>
+    <Name>Flame Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>260</ID>
+    <Name>Heavens Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>261</ID>
+    <Name>Life Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>262</ID>
+    <Name>Lore Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>263</ID>
+    <Name>Nature Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>264</ID>
+    <Name>Stone Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>265</ID>
+    <Name>Waves Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>266</ID>
+    <Name>Wind Mystery</Name>
+    <Source>APG</Source>
+    <Type>Oracle Mysteries</Type>
+  </Rule>
+  <Rule>
+    <ID>267</ID>
+    <Name>Casting Spells</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>268</ID>
+    <Name>Concentration</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>269</ID>
+    <Name>Counterspells</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>270</ID>
+    <Name>Caster Level</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>271</ID>
+    <Name>Spell Failure</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>272</ID>
+    <Name>Spell Result</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>273</ID>
+    <Name>Special Spell Effects</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>274</ID>
+    <Name>Combining Magic Effects</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>277</ID>
+    <Name>Abjuration</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>School</Subtype>
+  </Rule>
+  <Rule>
+    <ID>278</ID>
+    <Name>Conjuration</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>School</Subtype>
+  </Rule>
+  <Rule>
+    <ID>279</ID>
+    <Name>Divination</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>School</Subtype>
+  </Rule>
+  <Rule>
+    <ID>280</ID>
+    <Name>Enchantment</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>School</Subtype>
+  </Rule>
+  <Rule>
+    <ID>281</ID>
+    <Name>Evocation</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>School</Subtype>
+  </Rule>
+  <Rule>
+    <ID>282</ID>
+    <Name>Illusion</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>School</Subtype>
+  </Rule>
+  <Rule>
+    <ID>283</ID>
+    <Name>Necromancy</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>School</Subtype>
+  </Rule>
+  <Rule>
+    <ID>284</ID>
+    <Name>Transmutation</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>School</Subtype>
+  </Rule>
+  <Rule>
+    <ID>285</ID>
+    <Name>Arcane Spells</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>286</ID>
+    <Name>Preparing Wizard Spells</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>287</ID>
+    <Name>Arcane Magical Writings</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>288</ID>
+    <Name>Sorcerer and Bard Spells</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>289</ID>
+    <Name>Divine Spells</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>290</ID>
+    <Name>Preparing Divine Spells</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>291</ID>
+    <Name>Divine Magical Writings</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>292</ID>
+    <Name>New Divine Spells</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>293</ID>
+    <Name>Special Abilities</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>294</ID>
+    <Name>Descriptor</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>295</ID>
+    <Name>Components</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>296</ID>
+    <Name>Casting Time</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>297</ID>
+    <Name>Range</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>298</ID>
+    <Name>Aiming a Spell</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>299</ID>
+    <Name>Duration</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>300</ID>
+    <Name>Saving Throw</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>301</ID>
+    <Name>Spell Resistance</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Magic</Type>
+    <Subtype>Rules</Subtype>
+  </Rule>
+  <Rule>
+    <ID>302</ID>
+    <Name>Weapon Qualities</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Combat</Type>
+  </Rule>
+  <Rule>
+    <ID>303</ID>
+    <Name>Breaker</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>304</ID>
+    <Name>Brutal Pugilist</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>305</ID>
+    <Name>Drunken Brute</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>306</ID>
+    <Name>Elemental Kin</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>307</ID>
+    <Name>Hurler</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>308</ID>
+    <Name>Invulnerable Rager</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>309</ID>
+    <Name>Mounted Fury</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>310</ID>
+    <Name>Savage Barbarian</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>311</ID>
+    <Name>Superstitious</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>312</ID>
+    <Name>Totem Warrior</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Barbarian</Subtype>
+  </Rule>
+  <Rule>
+    <ID>313</ID>
+    <Name>Arcane Duelist</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Bard</Subtype>
+  </Rule>
+  <Rule>
+    <ID>314</ID>
+    <Name>Archivist</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Bard</Subtype>
+  </Rule>
+  <Rule>
+    <ID>315</ID>
+    <Name>Court Bard</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Bard</Subtype>
+  </Rule>
+  <Rule>
+    <ID>316</ID>
+    <Name>Detective</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Bard</Subtype>
+  </Rule>
+  <Rule>
+    <ID>317</ID>
+    <Name>Magician</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Bard</Subtype>
+  </Rule>
+  <Rule>
+    <ID>318</ID>
+    <Name>Sandman</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Bard</Subtype>
+  </Rule>
+  <Rule>
+    <ID>319</ID>
+    <Name>Savage Skald</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Bard</Subtype>
+  </Rule>
+  <Rule>
+    <ID>320</ID>
+    <Name>Sea Singer</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Bard</Subtype>
+  </Rule>
+  <Rule>
+    <ID>321</ID>
+    <Name>Street Performer</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Bard</Subtype>
+  </Rule>
+  <Rule>
+    <ID>322</ID>
+    <Name>Agathion Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>323</ID>
+    <Name>Ancestors Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>324</ID>
+    <Name>Arcane Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>325</ID>
+    <Name>Archon Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>326</ID>
+    <Name>Ash Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>327</ID>
+    <Name>Azata Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>328</ID>
+    <Name>Blood Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>329</ID>
+    <Name>Catastrophe Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>330</ID>
+    <Name>Caves Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>331</ID>
+    <Name>Cloud Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>332</ID>
+    <Name>Construct Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>333</ID>
+    <Name>Curse Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>334</ID>
+    <Name>Daemon Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>335</ID>
+    <Name>Day Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>336</ID>
+    <Name>Decay Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>337</ID>
+    <Name>Deception Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>338</ID>
+    <Name>Defense Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>339</ID>
+    <Name>Demon Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>340</ID>
+    <Name>Devil Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>341</ID>
+    <Name>Divine Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>342</ID>
+    <Name>Exploration Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>343</ID>
+    <Name>Family Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>344</ID>
+    <Name>Fate Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>345</ID>
+    <Name>Feather Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>346</ID>
+    <Name>Ferocity Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>347</ID>
+    <Name>Freedom Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>348</ID>
+    <Name>Fur Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>349</ID>
+    <Name>Growth Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>350</ID>
+    <Name>Heroism Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>351</ID>
+    <Name>Home Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>352</ID>
+    <Name>Honor Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>353</ID>
+    <Name>Ice Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>354</ID>
+    <Name>Inevitable Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>355</ID>
+    <Name>Insanity Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>356</ID>
+    <Name>Language Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>357</ID>
+    <Name>Leadership Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>358</ID>
+    <Name>Light Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>359</ID>
+    <Name>Loss Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>360</ID>
+    <Name>Love Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>361</ID>
+    <Name>Lust Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>362</ID>
+    <Name>Martyr Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>363</ID>
+    <Name>Memory Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>364</ID>
+    <Name>Metal Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>365</ID>
+    <Name>Murder Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>366</ID>
+    <Name>Night Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>367</ID>
+    <Name>Nightmare Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>368</ID>
+    <Name>Oceans Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>369</ID>
+    <Name>Protean Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>370</ID>
+    <Name>Purity Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>371</ID>
+    <Name>Rage Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>372</ID>
+    <Name>Resolve Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>373</ID>
+    <Name>Restoration Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>374</ID>
+    <Name>Resurrection Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>375</ID>
+    <Name>Revolution Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>376</ID>
+    <Name>Seasons Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>377</ID>
+    <Name>Smoke Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>378</ID>
+    <Name>Souls Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>379</ID>
+    <Name>Storms Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>380</ID>
+    <Name>Tactics Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>381</ID>
+    <Name>Thievery Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>382</ID>
+    <Name>Thought Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>383</ID>
+    <Name>Toil Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>384</ID>
+    <Name>Trade Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>385</ID>
+    <Name>Undead Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>386</ID>
+    <Name>Wards Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>387</ID>
+    <Name>Wind Subdomain</Name>
+    <Source>APG</Source>
+    <Type>Cleric Domains</Type>
+    <Subtype>Subdomain</Subtype>
+  </Rule>
+  <Rule>
+    <ID>388</ID>
+    <Name>Aquatic Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>389</ID>
+    <Name>Arctic Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>390</ID>
+    <Name>Blight Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>391</ID>
+    <Name>Cave Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>392</ID>
+    <Name>Desert Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>393</ID>
+    <Name>Jungle Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>394</ID>
+    <Name>Mountain Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>395</ID>
+    <Name>Plains Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>396</ID>
+    <Name>Swamp Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>397</ID>
+    <Name>Urban Druid</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>398</ID>
+    <Name>Animal Shamans</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Druid</Subtype>
+  </Rule>
+  <Rule>
+    <ID>399</ID>
+    <Name>Archer</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>400</ID>
+    <Name>Crossbowman</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>401</ID>
+    <Name>Free Hand Fighter</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>402</ID>
+    <Name>Mobile Fighter</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>403</ID>
+    <Name>Phalanx Soldier</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>404</ID>
+    <Name>Polearm Master</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>405</ID>
+    <Name>Roughrider</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>406</ID>
+    <Name>Savage Warrior</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>407</ID>
+    <Name>Shielded Fighter</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>408</ID>
+    <Name>Two-Handed Fighter</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>409</ID>
+    <Name>Two-Weapon Warrior</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>410</ID>
+    <Name>Weapon Master</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Fighter</Subtype>
+  </Rule>
+  <Rule>
+    <ID>114</ID>
+    <Name>Strength</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Ability Scores</Type>
+  </Rule>
+  <Rule>
+    <ID>411</ID>
+    <Name>Drunken Master</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>412</ID>
+    <Name>Hungry Ghost Monk</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>413</ID>
+    <Name>Ki Mystic</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>414</ID>
+    <Name>Monk of the Empty Hand</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>415</ID>
+    <Name>Monk of the Four Winds</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>416</ID>
+    <Name>Monk of the Healing Hand</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>417</ID>
+    <Name>Monk of the Lotus</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>418</ID>
+    <Name>Monk of the Sacred Mountain</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>419</ID>
+    <Name>Weapon Adept</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>420</ID>
+    <Name>Zen Archer</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Monk</Subtype>
+  </Rule>
+  <Rule>
+    <ID>421</ID>
+    <Name>Divine Defender</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Paladin</Subtype>
+  </Rule>
+  <Rule>
+    <ID>422</ID>
+    <Name>Hospitaler</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Paladin</Subtype>
+  </Rule>
+  <Rule>
+    <ID>423</ID>
+    <Name>Sacred Servant</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Paladin</Subtype>
+  </Rule>
+  <Rule>
+    <ID>424</ID>
+    <Name>Shining Knight</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Paladin</Subtype>
+  </Rule>
+  <Rule>
+    <ID>425</ID>
+    <Name>Undead Scourge</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Paladin</Subtype>
+  </Rule>
+  <Rule>
+    <ID>426</ID>
+    <Name>Warrior of the Holy Light</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Paladin</Subtype>
+  </Rule>
+  <Rule>
+    <ID>427</ID>
+    <Name>Antipaladin</Name>
+    <Source>APG</Source>
+    <Type>Classes</Type>
+    <Subtype>Advanced Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>428</ID>
+    <Name>New Combat Styles</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Ranger</Subtype>
+  </Rule>
+  <Rule>
+    <ID>429</ID>
+    <Name>Beast Master</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Ranger</Subtype>
+  </Rule>
+  <Rule>
+    <ID>430</ID>
+    <Name>Guide</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Ranger</Subtype>
+  </Rule>
+  <Rule>
+    <ID>431</ID>
+    <Name>Horse Lord</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Ranger</Subtype>
+  </Rule>
+  <Rule>
+    <ID>432</ID>
+    <Name>Infiltrator</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Ranger</Subtype>
+  </Rule>
+  <Rule>
+    <ID>433</ID>
+    <Name>Shapeshifter</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Ranger</Subtype>
+  </Rule>
+  <Rule>
+    <ID>434</ID>
+    <Name>Skirmisher</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Ranger</Subtype>
+  </Rule>
+  <Rule>
+    <ID>435</ID>
+    <Name>Spirit Ranger</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Ranger</Subtype>
+  </Rule>
+  <Rule>
+    <ID>436</ID>
+    <Name>Urban Ranger</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Ranger</Subtype>
+  </Rule>
+  <Rule>
+    <ID>437</ID>
+    <Name>Acrobat</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>438</ID>
+    <Name>Burglar</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>439</ID>
+    <Name>Cutpurse</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>440</ID>
+    <Name>Investigator</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>441</ID>
+    <Name>Poisoner</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>442</ID>
+    <Name>Rake</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>443</ID>
+    <Name>Scout</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>444</ID>
+    <Name>Sniper</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>445</ID>
+    <Name>Spy</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>446</ID>
+    <Name>Swashbuckler</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>447</ID>
+    <Name>Thug</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>448</ID>
+    <Name>Trapsmith</Name>
+    <Source>APG</Source>
+    <Type>Archetypes</Type>
+    <Subtype>Rogue</Subtype>
+  </Rule>
+  <Rule>
+    <ID>449</ID>
+    <Name>Aquatic</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>450</ID>
+    <Name>Boreal</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>451</ID>
+    <Name>Deep Earth</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>452</ID>
+    <Name>Dreamspun</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>453</ID>
+    <Name>Protean</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>454</ID>
+    <Name>Serpentine</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>455</ID>
+    <Name>Shadow</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>456</ID>
+    <Name>Starsoul</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>457</ID>
+    <Name>Stormborn</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>458</ID>
+    <Name>Verdant</Name>
+    <Source>APG</Source>
+    <Type>Sorcerer Bloodlines</Type>
+  </Rule>
+  <Rule>
+    <ID>459</ID>
+    <Name>Air School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>460</ID>
+    <Name>Earth School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>461</ID>
+    <Name>Fire School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>462</ID>
+    <Name>Water School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>463</ID>
+    <Name>Focused Arcane Schools</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>464</ID>
+    <Name>Admixture School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>465</ID>
+    <Name>Banishment School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>466</ID>
+    <Name>Controller School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>467</ID>
+    <Name>Counterspell School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>468</ID>
+    <Name>Creation School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>469</ID>
+    <Name>Enhancement School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>470</ID>
+    <Name>Foresight School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>471</ID>
+    <Name>Generation School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>472</ID>
+    <Name>Life School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>473</ID>
+    <Name>Manipulator School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>474</ID>
+    <Name>Phantasm School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>475</ID>
+    <Name>Scryer School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>476</ID>
+    <Name>Shadow School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>477</ID>
+    <Name>Shapechange School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>478</ID>
+    <Name>Teleportation School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>479</ID>
+    <Name>Undead School</Name>
+    <Source>APG</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>480</ID>
+    <Name>Abjuration School</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>481</ID>
+    <Name>Conjuration School</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>482</ID>
+    <Name>Divination School</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>483</ID>
+    <Name>Enchantment School</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>484</ID>
+    <Name>Evocation School</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>485</ID>
+    <Name>Illusion School</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>486</ID>
+    <Name>Necromancy School</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>487</ID>
+    <Name>Transmutation School</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>488</ID>
+    <Name>Universalist School</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Wizard Schools</Type>
+  </Rule>
+  <Rule>
+    <ID>489</ID>
+    <Name>Breaking and Entering</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>490</ID>
+    <Name>Vision and Light</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>491</ID>
+    <Name>Carrying Capacity</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>492</ID>
+    <Name>Alignment</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>493</ID>
+    <Name>Age</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>494</ID>
+    <Name>Height and Weight</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>495</ID>
+    <Name>Movement</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>496</ID>
+    <Name>Drugs and Addiction</Name>
+    <Source>GMG</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>497</ID>
+    <Name>Haunts</Name>
+    <Source>GMG</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>498</ID>
+    <Name>Hazards</Name>
+    <Source>GMG</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>499</ID>
+    <Name>Sanity and Madness</Name>
+    <Source>GMG</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>500</ID>
+    <Name>Disasters</Name>
+    <Source>GMG</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>501</ID>
+    <Name>Hero Points</Name>
+    <Source>APG</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>502</ID>
+    <Name>Traits</Name>
+    <Source>APG</Source>
+    <Type>Other</Type>
+  </Rule>
+  <Rule>
+    <ID>503</ID>
+    <Name>Magus</Name>
+    <Source>Ultimate Magic</Source>
+    <Type>Classes</Type>
+    <Subtype>Advanced Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>504</ID>
+    <Name>Magic Items and Detect Magic</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>505</ID>
+    <Name>Using Magic Items</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>506</ID>
+    <Name>Magic Items on the Body</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>507</ID>
+    <Name>Saving Throws Against Magic Item Powers</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>508</ID>
+    <Name>Damaging Magic Items</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>509</ID>
+    <Name>Purchasing Magic Items</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>510</ID>
+    <Name>Magic Item Descriptions</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>511</ID>
+    <Name>Magic Armor</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>512</ID>
+    <Name>Magic Weapons</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>513</ID>
+    <Name>Potions</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>514</ID>
+    <Name>Rings</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>515</ID>
+    <Name>Rods</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>517</ID>
+    <Name>Scrolls</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>518</ID>
+    <Name>Staves</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>519</ID>
+    <Name>Wands</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>520</ID>
+    <Name>Wondrous Items</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>521</ID>
+    <Name>Intelligent Items</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>523</ID>
+    <Name>Cursed Items</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>524</ID>
+    <Name>Artifacts</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>525</ID>
+    <Name>Magic Item Creation</Name>
+    <Source>PFRPG CORE</Source>
+    <Type>Magic Items</Type>
+  </Rule>
+</ArrayOfRule>

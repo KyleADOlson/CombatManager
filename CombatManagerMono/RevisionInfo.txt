@@ -1,0 +1,30 @@
+0.0.8
+Add Num Pad option to number editing popovers
+HD editor in monster editor works
+
+0.0.7
+Reload combat state list correctly
+Fix special ability parsing
+Add Move Up and Move Down buttons
+Add Move Before and Move After menu items
+Fix crash adding unconscious condition
+Add coloring to combat list for dying/dead characters
+Add Defense page to monster editor
+
+0.0.6
+Start of Monster Editor
+Add HTML display to Condition and Character popup menus
+Run on iOS 4.3, in theory
+Fix background gradient/color disappearing issue
+
+0.0.5
+Fix recent conditions
+Add Rules Filters
+Add Monster from Monsters Tab
+Simple Monster Advancer
+Racial HD Advancer
+Notes Button works
+Fix some orientation issues
+
+0.0.4
+Save file dialog works

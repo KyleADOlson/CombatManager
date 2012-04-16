@@ -1,0 +1,103 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:CombatManager"
+    xmlns:compModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	mc:Ignorable="d"
+	x:Class="CombatManager.SpinControl"
+	x:Name="UserControl"
+	d:DesignWidth="47.427" d:DesignHeight="26.625">
+	<UserControl.Resources>
+
+
+		<Style x:Key="ThumbStyle1" TargetType="{x:Type Thumb}">
+			<Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+			<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Thumb}">
+						<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+							<Grid Background="{DynamicResource SecondaryColorBGradientBrush}">
+
+								<Path Data="M1,4L4,1 7,4" Width="8" Height="5" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+
+
+							</Grid>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ThumbStyle2" TargetType="{x:Type Thumb}">
+			<Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+			<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Thumb}">
+						<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+							<Grid Background="{DynamicResource SecondaryColorBGradientBrush}">
+
+								<Path Data="M1,1L4,4 7,1" Width="8" Height="5" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+
+
+							</Grid>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="OnClick2">
+			<BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="popup">
+				<DiscreteBooleanKeyFrame KeyTime="0" Value="True"/>
+			</BooleanAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid>
+			<Grid.ToolTip>
+				<StackPanel>
+					<TextBlock>  
+						<TextBlock.Text>                 	           
+							<MultiBinding StringFormat="HP {0}/{1}">
+								<Binding Path="HP"/>
+								<Binding Path="MaxHP"/>
+							</MultiBinding>       
+						</TextBlock.Text>                           
+					</TextBlock>
+				</StackPanel>
+			</Grid.ToolTip>
+			<TextBox x:Name="HPTextBox"  HorizontalAlignment="Right" Margin="0,2.491,18,1.938" VerticalAlignment="Stretch" Height="Auto" Grid.Row="0" RenderTransformOrigin="1.739,0.365" Grid.Column="0" GotFocus="TextBox_GotFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" KeyUp="TextBox_KeyUp" Width="27.386" />
+			<Popup x:Name="popup" Placement="Bottom" StaysOpen="False" PlacementTarget="{Binding ElementName=HPTextBox}" AllowsTransparency="True" Grid.ColumnSpan="1" Margin="0,0,18.394,-3.344">
+				<Grid >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="33"/>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<Rectangle RadiusX="6" RadiusY="6" Stroke="White" Grid.Column="0" Grid.ColumnSpan="3">
+						<Rectangle.Fill>
+							<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+						</Rectangle.Fill>
+					</Rectangle>
+					<TextBox x:Name="textBox" Width="30" VerticalAlignment="Center" HorizontalAlignment="Left" Height="20" Margin="6,3,0,3" Text="" KeyUp="textBox_KeyUp" TextChanged="textBox_TextChanged" IsVisibleChanged="textBox_IsVisibleChanged" />
+					<Button Width="16" Height="16" Grid.Column="1" Margin="3,3,0,3" Background="{DynamicResource characterButtonBrush}" VerticalAlignment="Center" x:Name="SubractHPButton" Click="SubractHPButton_Click" FontWeight="Bold" FontSize="13.333" >
+
+						<Path Data="M 1,4 7,4 " Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+					</Button>
+					<Button Width="16" Height="16" Grid.Column="2" Margin="0,3,3,3" Background="{DynamicResource characterButtonBrush}" VerticalAlignment="Center" x:Name="AddHPButton" Click="AddHPButton_Click" FontWeight="Bold" FontSize="13.333" >
+
+						<Path Data="M 1,4 L 7,4 M4,1 L4,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+					</Button>
+				</Grid>
+			</Popup>
+
+			<Thumb x:Name="HPUpThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="0,3.417,2,12.031" Grid.Row="0" Grid.RowSpan="1" HorizontalAlignment="Right" Width="13.991" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle1}"/>
+			<Thumb x:Name="HPDownThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="0,14,2,1.938" Grid.Row="0" Grid.RowSpan="1" Height="Auto" VerticalAlignment="Stretch" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle2}" HorizontalAlignment="Right" Width="13.991"/></Grid>
+	</Grid>
+</UserControl>

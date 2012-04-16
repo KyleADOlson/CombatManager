@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ArrayOfArtChart>
+<ArtChart>
+<Roll>10</Roll>
+<Value>1d10 x 10 gp</Value>
+<AverageValue>55</AverageValue>
+<Art>Silver ewer; carved bone statuette; ivory statuette; finely wrought small gold bracelet</Art>
+</ArtChart>
+<ArtChart>
+<Roll>25</Roll>
+<Value>3d6 x 10 gp</Value>
+<AverageValue>105</AverageValue>
+<Art>Cloth of gold vestments; black velvet mask with numerous citrines; silver chalice with lapis lazuli gems</Art>
+</ArtChart>
+<ArtChart>
+<Roll>40</Roll>
+<Value>1d6 x 100 gp</Value>
+<AverageValue>350</AverageValue>
+<Art>Large well-done wool tapestry; brass mug with jade inlays</Art>
+</ArtChart>
+<ArtChart>
+<Roll>50</Roll>
+<Value>1d10 x 100 gp</Value>
+<AverageValue>550</AverageValue>
+<Art>Silver comb with moonstones; silver-plated steel longsword with jet jewel in hilt</Art>
+</ArtChart>
+<ArtChart>
+<Roll>60</Roll>
+<Value>2d6 x 100 gp</Value>
+<AverageValue>700</AverageValue>
+<Art>Carved harp of exotic wood with ivory inlay and zircon gems; solid gold idol (10 lb.)</Art>
+</ArtChart>
+<ArtChart>
+<Roll>70</Roll>
+<Value>3d6 x 100 gp</Value>
+<AverageValue>1050</AverageValue>
+<Art>Gold dragon comb with red garnet eye; gold and topaz bottle stopper cork; ceremonial electrum dagger with a star ruby in the pommel</Art>
+</ArtChart>
+<ArtChart>
+<Roll>80</Roll>
+<Value>4d6 x 100 gp</Value>
+<AverageValue>1400</AverageValue>
+<Art>Eyepatch with mock eye of sapp</Art>
+</ArtChart>
+<ArtChart>
+<Roll>85</Roll>
+<Value>5d6 x 100 gp</Value>
+<AverageValue>1750</AverageValue>
+<Art>Embroidered silk and velvet mantle with numerous moonstones; sapphire and moonstone; fire opal pendant on a fine gold chain; old masterpiece paintinghire pendant on gold chain</Art>
+</ArtChart>
+<ArtChart>
+<Roll>90</Roll>
+<Value>1d4 x 1000 gp</Value>
+<AverageValue>2500</AverageValue>
+<Art>Embroidered and bejeweled glove; jeweled anklet; gold music box</Art>
+</ArtChart>
+<ArtChart>
+<Roll>95</Roll>
+<Value>1d6 x 1000 gp</Value>
+<AverageValue>3500</AverageValue>
+<Art>Golden circlet with four aquamarines; a string of small pink pearls (necklace)</Art>
+</ArtChart>
+<ArtChart>
+<Roll>99</Roll>
+<Value>2d4 x 1000 gp</Value>
+<AverageValue>5000</AverageValue>
+<Art>Jeweled gold crown; jeweled electrum ring</Art>
+</ArtChart>
+<ArtChart>
+<Roll>100</Roll>
+<Value>2d6 x 1000 gp</Value>
+<AverageValue>7000</AverageValue>
+<Art>Gold and ruby ring; gold cup set with emeralds</Art>
+</ArtChart>
+</ArrayOfArtChart>

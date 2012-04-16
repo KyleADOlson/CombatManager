@@ -1,0 +1,15 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="RandomItemWeightFixer.MainWindow"
+        Title="MainWindow" Height="523" Width="676">
+    <Grid>
+        <Button Content="SpellPropList" Height="23" HorizontalAlignment="Left" Margin="5,0,0,0" Name="SpellPropButton" VerticalAlignment="Top" Width="75" Click="SpellPropButton_Click" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="95,1,0,0" Name="SpellPropText" VerticalAlignment="Top" Width="120" />
+        <CheckBox Content="ComboItems" Height="16" HorizontalAlignment="Left" Margin="221,4,0,0" Name="SpellPropCheckBox" VerticalAlignment="Top" />
+        <TextBox Height="23" Text="bestiary.xml" HorizontalAlignment="Right" Margin="0,1,216,0" Name="FileNameText" VerticalAlignment="Top" Width="120" />
+        <CheckBox Content="No Paren Items" Height="16" HorizontalAlignment="Left" Margin="444,4,0,0" Name="NoParenCheck" VerticalAlignment="Top" />
+        <CheckBox Content="Trim Parens" Height="16" HorizontalAlignment="Right" Margin="0,4,25,0" Name="TrimParensCheck" VerticalAlignment="Top" />
+        <Button Content="SpellCheck" Height="23" HorizontalAlignment="Left" Margin="5,44,0,0" Name="SpellCheck" VerticalAlignment="Top" Width="75" Click="SpellCheck_Click" />
+    </Grid>
+</Window>

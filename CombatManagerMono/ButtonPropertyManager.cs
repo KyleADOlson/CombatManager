@@ -1,0 +1,374 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using MonoTouch.Foundation;
+using MonoTouch.UIKit;
+using CombatManager;
+using System.ComponentModel;
+using System.Drawing;
+using System.Reflection;
+
+
+
+namespace CombatManagerMono
+{
+	public delegate string PropertyFormatDelegate(object property);
+	
+	public class ButtonPropertyManager
+	{
+		INotifyPropertyChanged _PropertyObject;
+		UIButton _Button;
+		UIView _DialogParent;
+		PropertyInfo _Property;
+		PropertyFormatDelegate _FormatDelegate;
+		bool _Multiline;
+		String _Title;
+		ButtonStringPopover _ValueListPopover;
+		HDEditorDialog _HDDialog;
+		
+		int _MinIntValue = int.MinValue;
+		int _MaxIntValue = int.MaxValue;
+		
+		TextBoxDialog _TextBoxDialog;
+		
+		List<KeyValuePair<object, string>> _ValueList;
+		
+		
+		public ButtonPropertyManager(UIButton button)
+		{
+			_Button = button;
+			_Button.TouchUpInside += Handle_ButtonTouchUpInside;
+		}
+		
+				
+		public ButtonPropertyManager (UIButton button, UIView dialogParent, INotifyPropertyChanged propertyObject, String property)
+		{
+			_PropertyObject = propertyObject;
+			_Property = propertyObject.GetType().GetProperty(property);
+			_DialogParent = dialogParent;
+			_Button = button;
+			_Button.TouchUpInside += Handle_ButtonTouchUpInside;
+			_PropertyObject.PropertyChanged += Handle_PropertyObjectPropertyChanged;
+			
+			UpdateButton();
+		}
+
+		void Handle_ButtonTouchUpInside (object sender, EventArgs e)
+		{
+			if (_ValueList == null)
+				{
+				if (_Property.PropertyType == typeof(string))
+				{
+					_TextBoxDialog = new TextBoxDialog();
+					_TextBoxDialog.HeaderText = DisplayTitle;
+					_TextBoxDialog.Value = (string)Value;
+					_TextBoxDialog.SingleLine = !_Multiline;
+					_TextBoxDialog.OKClicked += Handle_TextBoxDialogOKClicked;
+					_DialogParent.AddSubview(_TextBoxDialog.View);
+				}
+				else if (_Property.PropertyType == typeof(int) || _Property.PropertyType == typeof(int?))
+				{
+					NumberModifyPopover pop = new NumberModifyPopover();
+						pop.ShowOnView(_Button);
+					if (_Property.PropertyType == typeof(int?))
+					{
+						pop.Value = (int?)Value;
+					}
+					else
+					{
+						
+						pop.Value = (int)Value;
+					}
+					pop.ValueType = DisplayTitle;
+					pop.Title = DisplayTitle;
+					pop.Data = _PropertyObject;
+					pop.Nullable = (_Property.PropertyType == typeof(int?));
+					pop.NumberModified += HandlePopNumberModified;
+				}
+				else if (_Property.PropertyType == typeof(DieRoll))
+				{
+					_HDDialog = new HDEditorDialog();
+					_HDDialog.HeaderText = DisplayTitle;
+					_HDDialog.DieRoll = (DieRoll)Value;
+					DialogParent.AddSubview(_HDDialog.View);
+					_HDDialog.OKClicked += Handle_HDDialogOKClicked;
+				}
+			}
+		}
+
+		void Handle_HDDialogOKClicked (object sender, EventArgs e)
+		{
+			Value = _HDDialog.DieRoll;
+		}
+		
+		
+		void Handle_ValueListPopoverItemClicked (object sender, ButtonStringPopover.PopoverEventArgs e)
+		{
+			Value = e.Tag;	
+		}
+
+		void HandlePopNumberModified (object sender, NumberModifyEventArgs args)
+		{
+			NumberModifyPopover pop = (NumberModifyPopover)sender;
+			
+			
+			if (args.Set)
+			{
+				if ( (_Property.PropertyType == typeof(int?)))
+				{
+					int? val = (int?)args.Value;
+					val = BoundInt(val, MinIntValue, MaxIntValue);
+					Value = val;
+				}
+				else
+				{
+					int val = ((int?)args.Value).Value;
+					val = BoundInt(val, MinIntValue, MaxIntValue);
+					Value = val;
+				}
+			}
+			else
+			{
+				if (Value != null)
+				{
+					if ( (_Property.PropertyType == typeof(int?)))
+					{
+						int? val = (int?)Value;
+						val += args.Value.Value;
+						val = BoundInt(val, MinIntValue, MaxIntValue);
+						Value = val;
+					}
+					else
+					{
+						int val = (int)Value;
+						val += args.Value.Value;
+						val = BoundInt(val, MinIntValue, MaxIntValue);
+						Value = val;
+					}
+				}
+			}
+			
+			if (_Property.PropertyType == typeof(int?))
+			{
+				pop.Value = (int?)Value;
+			}
+			else
+			{
+				pop.Value = (int)Value;
+			}
+			UpdateButton();	
+		}
+		
+		static int BoundInt(int val, int min, int max)
+		{
+			if (val < min)
+			{
+				val = min;
+			}
+			if (val > max)
+			{
+				val = max;
+			}
+			return val;
+		}
+		
+		static int? BoundInt(int? val, int min, int max)
+		{
+			if (val != null)
+			{
+				if (val.Value < min)
+				{
+					val = min;
+				}
+				if (val.Value > max)
+				{
+					val = max;
+				}
+			}
+			return val;
+		}
+		
+		void Handle_TextBoxDialogOKClicked (object sender, EventArgs e)
+		{
+			if (_Property.PropertyType == typeof(string))
+			{
+				Value = _TextBoxDialog.Value;
+			}
+			
+			UpdateButton();
+		}
+
+		void Handle_PropertyObjectPropertyChanged (object sender, PropertyChangedEventArgs e)
+		{
+			UpdateButton();
+		}
+		
+		void UpdateButton()
+		{
+			_Button.SetText(CurrentText);
+		}
+		
+		string CurrentText
+		{
+			get
+			{
+				string text = "";
+				if (_FormatDelegate != null)
+				{
+					text = _FormatDelegate(Value);	
+				}
+				else if (Value != null)
+				{
+					text = Value.ToString();
+				}
+				else if (_Property.PropertyType == typeof(int?))
+				{
+					text = "-";	
+				}
+				return text;
+			}
+			
+		}
+		
+		object Value
+		{
+			get
+			{
+				MethodInfo info = _Property.GetGetMethod();	
+				return info.Invoke(_PropertyObject, new object[]{});
+			}
+			set
+			{
+				MethodInfo info = _Property.GetSetMethod();
+				info.Invoke(_PropertyObject, new object[] {value});
+			}
+		}
+		
+		public UIButton Button
+		{
+			get
+			{
+				return _Button;
+			}
+		}
+		
+		public bool Multiline
+		{
+			get
+			{
+				return _Multiline;
+			}
+			set
+			{
+				_Multiline = value;
+			}
+		}
+		
+		public UIView DialogParent
+		{
+			get
+			{
+				return _DialogParent;
+			}
+			set
+			{
+				_DialogParent = value;
+			}
+		}
+		
+		public PropertyFormatDelegate FormatDelegate
+		{
+			get
+			{
+				return _FormatDelegate;
+			}
+			set
+			{
+				_FormatDelegate = value;
+				
+				UpdateButton();
+			}
+		}
+		
+		public int MinIntValue
+		{
+			get
+			{
+				return _MinIntValue;
+			}
+			set
+			{
+				_MinIntValue = value;
+			}
+		}
+		
+		public int MaxIntValue
+		{
+			get
+			{
+				return _MaxIntValue;
+			}
+			set
+			{
+				_MaxIntValue = value;
+			}
+		}
+		public string DisplayTitle
+		{
+			get
+			{
+				if (_Title == null)
+				{
+					return _Property.Name;
+				}
+				return _Title;
+			}
+		}
+		
+		public string Title
+		{
+			get
+			{
+				return _Title;
+			}
+			set
+			{
+				_Title = value;
+			}
+		}
+		
+		public List<KeyValuePair<object, string>> ValueList
+		{
+			get
+			{
+				return _ValueList;
+			}
+			set
+			{
+				if (value != _ValueList)
+				{
+					if (_ValueList != null)
+					{
+						_ValueListPopover.Button = null;
+						_ValueListPopover = null;
+					}
+					_ValueList = value;
+					
+					if (_ValueList != null)
+					{	
+						_ValueListPopover = new ButtonStringPopover(_Button);
+						foreach (KeyValuePair<object, string> pair in _ValueList)
+						{
+							_ValueListPopover.Items.Add(new ButtonStringPopoverItem() {Text = pair.Value, Tag = pair.Key});		
+						}
+						_ValueListPopover.ItemClicked += Handle_ValueListPopoverItemClicked;
+					}
+						
+					
+				}
+			}
+
+		}
+	}
+}
+

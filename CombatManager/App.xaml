@@ -1,0 +1,261 @@
+﻿<Application x:Class="CombatManager.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:CombatManager"
+             
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <system:String x:Key="ApplicationTitle">Combat Manager</system:String>
+        <system:String x:Key="ApplicationVersion">1.4.0</system:String>
+        <system:String x:Key="ApplicationCopyright">© 2010-2012 Kyle Olson</system:String>
+				<Color x:Key="PrimaryColorLighter">#BBDBDD</Color>
+		 <Color x:Key="PrimaryColorLight">#AFDBDD</Color>
+		 <Color x:Key="PrimaryColorMedium">#87B9BB </Color>
+		 <Color x:Key="PrimaryColorDark">#6F8B8C</Color>  		 
+		 <Color x:Key="PrimaryColorDarker">#2C767A</Color>   		   		
+		 <Color x:Key="SecondaryColorALighter">#FFF2D8</Color>
+		 <Color x:Key="SecondaryColorALight">#FFEDC9</Color>
+		 <Color x:Key="SecondaryColorAMedium">#FFE8B8 </Color>
+		 <Color x:Key="SecondaryColorADark">#BFB297</Color>  
+		 <Color x:Key="SecondaryColorADarker">#A6833C</Color>     
+		 <Color x:Key="SecondaryColorBLighter">#FFD9D8</Color>
+		 <Color x:Key="SecondaryColorBLight">#FFCBC9</Color>
+		 <Color x:Key="SecondaryColorBMedium">#FFB9B8 </Color>
+		 <Color x:Key="SecondaryColorBDark">#BF9897</Color>  
+		 <Color x:Key="SecondaryColorBDarker">#A63E3C</Color>     
+        
+        
+
+         
+        <LinearGradientBrush x:Key="characterButtonBrush" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+            <GradientStop Color="#FF9D5B5B" Offset="0.5"/>
+            <GradientStop Color="#FFF71C1C" Offset="0.547"/>
+            <GradientStop Color="#FFF71C1C" Offset="1"/>
+        </LinearGradientBrush>      		
+        <DropShadowEffect x:Key="ConditionShadow" BlurRadius="4" ShadowDepth="2"/>     		
+        <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94"/>
+        <local:AttackToTypeImageConverter x:Key="AttackToTypeImageConverter"/>   
+        <local:ActiveToBrushConverter x:Key="activeToBrushConverter"/>
+        <local:ItemExistsConverter x:Key="itemExistsConverter"/>
+        <local:GreaterThanConverter x:Key="GreaterThanConverter"/>
+        <local:BoolInverter x:Key="boolInverter"/>
+        <local:NotNullVisibilityConverter x:Key="notNullVisibilityConverter"/>
+        <local:NotNullVisibilityCollapsedConverter x:Key="NotNullVisibilityCollapsedConverter"/>
+        <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+        <local:BoolToVisibilityCollapsedConverter x:Key="BoolToVisibilityCollapsedConverter"/>
+        <local:ChangedToBrushConverter x:Key="changedToBrushConverter"/>
+        <local:HPToBrushConverter x:Key="hpToBrushConverter"/>
+        <local:AbilityValueConverter x:Key="AbilityValueConverter"/>
+        <local:AbilityBonusConverter x:Key="AbilityBonusConverter"/>
+        <local:BonusValueConverter x:Key="BonusValueConverter"/>
+        <local:SpeedValueConverter x:Key="SpeedValueConverter"/>
+        <local:HPModConverter x:Key="HPModConverter"/>
+        <local:TurnsConverter x:Key="TurnsConverter"/>
+        <local:StringImageSmallIconConverter x:Key="StringImageSmallIconConverter" />
+        <local:StringImageConverter x:Key="StringImageConverter" />
+        <local:SizeConverter x:Key="SizeConverter"/>
+        <local:AlignmentIndexConverter x:Key="AlignmentIndexConverter"/> 
+        <local:MonsterTypeIndexConverter x:Key="MonsterTypeIndexConverter"/>
+        <local:StringCapitalizeConverter x:Key="StringCapitalizeConverter"/>
+        <local:WeaponItemToHandConverter x:Key="WeaponItemToHandConverter"/>
+        <local:CRValidatingConverter x:Key="CRValidatingConverter"/>
+        <local:IntGreaterThanZeroVisibilityCollapsedConverter x:Key="IntGreaterThanZeroVisibilityCollapsedConverter"/>
+        <local:FtPropertyConverter x:Key="FtPropertyConverter"/>
+        <local:SensesConverter x:Key="SensesConverter"/>
+        <local:ParenthesesPropertyConverter x:Key="ParenthesesPropertyConverter"/>
+        <local:SpellSchoolIndexConverter x:Key="SpellSchoolIndexConverter"/>
+        <Style x:Key="ButtonMainStyle" TargetType="{x:Type Control}">
+            <Setter Property="Background" Value="{DynamicResource PrimaryColorGradientBrush}" />
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+		 <Style x:Key="ButtonSecondaryStyle" TargetType="{x:Type Control}">
+            <Setter Property="Background" Value="{DynamicResource SecondaryColorBGradientBrush}" />
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+		 <Style x:Key="ButtonSecondaryAStyle" TargetType="{x:Type Control}">
+            <Setter Property="Background" Value="{DynamicResource SecondaryColorAGradientBrush}" />
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style x:Key="TabBorderStyle" TargetType="{x:Type Border}">
+            <Setter Property="Padding" Value="6"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <LinearGradientBrush x:Key="PrimaryColorGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        	<GradientStop Color="{DynamicResource PrimaryColorDarker}" Offset="0.447"/>
+        	<GradientStop Color="{DynamicResource PrimaryColorLight}" Offset="0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="SecondaryColorAGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="{DynamicResource SecondaryColorADarker}" Offset="0.447"/>
+        			<GradientStop Color="{DynamicResource SecondaryColorALight}" Offset="0"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SecondaryColorBGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="{DynamicResource SecondaryColorBDarker}" Offset="0.447"/>
+        			<GradientStop Color="{DynamicResource SecondaryColorBLight}" Offset="0"/>
+        </LinearGradientBrush>
+		
+		 <Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Padding" Value="4,4,4,4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+            <Setter Property="Background" Value="#F9F9F9"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <Grid ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="ColumnDefinition0"/>
+                                <ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
+                                <RowDefinition x:Name="RowDefinition1" Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TabPanel x:Name="HeaderPanel" Margin="0,2" IsItemsHost="true" Panel.ZIndex="1" Grid.Column="0" Grid.Row="0" KeyboardNavigation.TabIndex="1"/>
+                            <Rectangle Grid.ColumnSpan="1" Grid.RowSpan="1" Fill="{DynamicResource MediumBackgroundBrush}" StrokeThickness="0" x:Name="InternalMainRectangle" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" Stroke="White" RadiusX="0" RadiusY="0" Margin="0" Grid.Row="1"/>
+                            <Border x:Name="ContentPanel"  Grid.Column="0" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+                                <ContentPresenter x:Name="PART_SelectedContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" ContentSource="SelectedContent"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="TabStripPlacement" Value="Bottom">
+                                <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="1"/>
+                                <Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
+                                <Setter Property="Margin" TargetName="HeaderPanel" Value="2,0,2,2"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Left">
+                                <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+                                <Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="HeaderPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="ContentPanel" Value="1"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition0" Value="Auto"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+                                <Setter Property="Margin" TargetName="HeaderPanel" Value="2,2,0,2"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Right">
+                                <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+                                <Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="HeaderPanel" Value="1"/>
+                                <Setter Property="Grid.Column" TargetName="ContentPanel" Value="0"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
+                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+                                <Setter Property="Margin" TargetName="HeaderPanel" Value="0,2,2,2"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <CollectionViewSource  x:Key="SmallImages">
+            <CollectionViewSource.Source>
+                <col:ArrayList >
+                    <system:String>arrowdown</system:String>
+                    <system:String>arrowsdown</system:String>
+                    <system:String>arrowsup</system:String>
+                    <system:String>arrowup</system:String>
+                    <system:String>battery-low</system:String>
+                    <system:String>bleeding</system:String>
+                    <system:String>blind</system:String>
+                    <system:String>book</system:String>
+                    <system:String>bow</system:String>
+                    <system:String>broken</system:String>
+                    <system:String>brush</system:String>
+                    <system:String>claw</system:String>
+                    <system:String>clock</system:String>
+                    <system:String>clone</system:String>
+                    <system:String>cower</system:String>
+                    <system:String>d-20</system:String>
+                    <system:String>dazed</system:String>
+                    <system:String>dazzled</system:String>
+                    <system:String>dead</system:String>
+                    <system:String>deaf</system:String>
+                    <system:String>delete</system:String>
+                    <system:String>dice</system:String>
+                    <system:String>disease</system:String>
+                    <system:String>ellipsis</system:String>
+                    <system:String>exhausted</system:String>
+                    <system:String>facinated</system:String>
+                    <system:String>fatigued</system:String>
+                    <system:String>flagblue</system:String>
+                    <system:String>flaggreen</system:String>
+                    <system:String>flagred</system:String>
+                    <system:String>foot</system:String>
+                    <system:String>hand</system:String>
+                    <system:String>handicapped</system:String>
+                    <system:String>hourglass</system:String>
+                    <system:String>incorporeal</system:String>
+                    <system:String>invisible</system:String>
+                    <system:String>lasso</system:String>
+                    <system:String>lightning</system:String>
+                    <system:String>link</system:String>
+                    <system:String>lock</system:String>
+                    <system:String>keys</system:String>
+                    <system:String>magearmor</system:String>
+                    <system:String>monster</system:String>
+                    <system:String>nauseated</system:String>
+                    <system:String>next</system:String>
+                    <system:String>notes</system:String>
+                    <system:String>panic</system:String>
+                    <system:String>pencil</system:String>
+                    <system:String>person</system:String>
+                    <system:String>pin</system:String>
+                    <system:String>poison</system:String>
+                    <system:String>prev</system:String>
+                    <system:String>prone</system:String>
+                    <system:String>qm</system:String>
+                    <system:String>reaper</system:String>
+                    <system:String>reset</system:String>
+                    <system:String>rock</system:String>
+                    <system:String>scared</system:String>
+                    <system:String>scroll</system:String>
+                    <system:String>scrolleffect</system:String>
+                    <system:String>shaken</system:String>
+                    <system:String>shield</system:String>
+                    <system:String>shield-error</system:String>
+                    <system:String>sick</system:String>
+                    <system:String>sleep</system:String>
+                    <system:String>slow</system:String>
+                    <system:String>sort</system:String>
+                    <system:String>stable</system:String>
+                    <system:String>star</system:String>
+                    <system:String>stop</system:String>
+                    <system:String>stunned</system:String>
+                    <system:String>sword</system:String>
+                    <system:String>sword-single</system:String>
+                    <system:String>target</system:String>
+                    <system:String>treasure</system:String>
+                    <system:String>unlock</system:String>
+                    <system:String>wand</system:String>
+                    <system:String>zoomin</system:String>
+                    <system:String>zoomout</system:String>
+                </col:ArrayList>
+             </CollectionViewSource.Source>
+        </CollectionViewSource >
+    </Application.Resources>
+</Application>

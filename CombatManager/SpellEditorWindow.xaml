@@ -1,0 +1,570 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="CombatManager.SpellEditorWindow"
+	x:Name="Window"
+	Title="Spell Editor"
+	Width="640" Height="526.5" ResizeMode="NoResize" ShowInTaskbar="False" Icon="Images/d20-32.ico">
+    <Window.Resources>
+    	<Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
+    		<Setter Property="Foreground" Value="White"/>
+    		<Setter Property="FontWeight" Value="Bold"/>
+    		<Setter Property="Margin" Value="0,2,0,2"/>
+    	</Style>
+    	<DataTemplate x:Key="ClassLevelTemplate">
+    		<Grid d:DesignWidth="146">
+    			<TextBlock HorizontalAlignment="Stretch" Margin="8,0,51.662,0" TextWrapping="NoWrap" Text="{Binding Class}" VerticalAlignment="Center" Width="Auto"/>
+    			<TextBox HorizontalAlignment="Right" Margin="0,1,23.436,1" TextWrapping="NoWrap" Text="{Binding Level}" VerticalAlignment="Center" Width="24.226"/>
+    			<Button x:Name="DeleteButton" Margin="0,7.004,3.436,6.964" RenderTransformOrigin="0.222,-0.601" Grid.Column="0" Click="DeleteButton_Click" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Right" d:LayoutOverrides="Width">
+    				<Button.ToolTip>Delete</Button.ToolTip>
+    				<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+    			</Button>
+    		</Grid>
+    	</DataTemplate>
+    	<DataTemplate x:Key="UnusedClassLevelTemplate">
+    		<Grid>
+    			<TextBlock TextWrapping="Wrap" Text="{Binding Class}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center"/>
+    		</Grid>
+    	</DataTemplate>
+    </Window.Resources>
+	<Window.Background>
+		<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+	</Window.Background>
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="28.848"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="318.902"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<TabControl Grid.ColumnSpan="2" Margin="0,0,8,7.152" BorderThickness="2">
+			<TabControl.BorderBrush>
+				<SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
+			</TabControl.BorderBrush>
+			<TabControl.Background>
+				<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
+			</TabControl.Background>
+			<TabItem Header="Details">
+				<Grid Height="430" Width="613.463" Background="#00000000" Margin="0.268,0,0.268,-1.46">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="310.809"/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+					<Border x:Name="HeaderBorder" Height="91.84" VerticalAlignment="Top" Padding="3" Margin="0,0,8.036,0">
+						<Border.Effect>
+							<DropShadowEffect/>
+						</Border.Effect>
+						<Border.Background>
+							<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+						</Border.Background>
+						<Grid>
+		
+							<TextBox x:Name="SpellNameText" Margin="0,19.96,0,0"  Text="{Binding name}" VerticalAlignment="Top" TextChanged="SpellNameText_TextChanged" HorizontalAlignment="Left" Width="151" />
+							<TextBlock Text="Name" Style="{DynamicResource LabelStyle}" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+							<TextBlock Text="School" Style="{DynamicResource LabelStyle}" Margin="155,0,0,69.88" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+							<ComboBox x:Name="SchoolComboBox" Width="141.902" RenderTransformOrigin="0.35,0.319" SelectedIndex="{Binding school, Converter={StaticResource SpellSchoolIndexConverter}}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="155,0,0,43.92" />
+							<TextBlock Text="Subschool" Style="{DynamicResource LabelStyle}" Margin="0,0,217,26" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment"/>
+							<ComboBox Text="{Binding subschool}" Margin="0,0,145.902,0" VerticalAlignment="Bottom" IsEditable="True" d:LayoutOverrides="HorizontalAlignment">
+								<ComboBoxItem Content="calling"/>
+								<ComboBoxItem Content="charm"/>
+								<ComboBoxItem Content="compulsion"/>
+								<ComboBoxItem Content="creation"/>
+								<ComboBoxItem Content="figment"/>
+								<ComboBoxItem Content="glamer"/>
+								<ComboBoxItem Content="healing"/>
+								<ComboBoxItem Content="pattern"/>
+								<ComboBoxItem Content="phantasm"/>
+								<ComboBoxItem Content="polymorph"/>
+								<ComboBoxItem Content="scrying"/>
+								<ComboBoxItem Content="shadow"/>
+								<ComboBoxItem Content="summoning"/>
+								<ComboBoxItem Content="teleportation"/>
+
+							</ComboBox>
+							<TextBlock Text="Descriptor" Style="{DynamicResource LabelStyle}" Margin="0,0,83.112,26" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+							<ComboBox Text="{Binding descriptor}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="141.902" IsEditable="True">
+								<ComboBoxItem Content="acid"/>
+								<ComboBoxItem Content="air"/>
+								<ComboBoxItem Content="chaotic"/>
+								<ComboBoxItem Content="chaotic, sonic"/>
+								<ComboBoxItem Content="cold"/>
+								<ComboBoxItem Content="creation"/>
+								<ComboBoxItem Content="darkness"/>
+								<ComboBoxItem Content="death"/>
+								<ComboBoxItem Content="death, evil"/>
+								<ComboBoxItem Content="death, mind-affecting"/>
+								<ComboBoxItem Content="death, sonic"/>
+								<ComboBoxItem Content="earth"/>
+								<ComboBoxItem Content="electricity"/>
+								<ComboBoxItem Content="evil"/>
+								<ComboBoxItem Content="evil, sonic"/>
+								<ComboBoxItem Content="fear, mind-affecting"/>
+								<ComboBoxItem Content="fire"/>
+								<ComboBoxItem Content="fire or cold"/>
+								<ComboBoxItem Content="force"/>
+								<ComboBoxItem Content="good"/>
+								<ComboBoxItem Content="good, sonic"/>
+								<ComboBoxItem Content="language-dependent"/>
+								<ComboBoxItem Content="language-dependent, mind-affecting"/>
+								<ComboBoxItem Content="language-dependent, mind-affecting, sonic"/>
+								<ComboBoxItem Content="lawful"/>
+								<ComboBoxItem Content="lawful, sonic"/>
+								<ComboBoxItem Content="light"/>
+								<ComboBoxItem Content="mind-affecting"/>
+								<ComboBoxItem Content="mind-affecting, evil"/>
+								<ComboBoxItem Content="mind-affecting, sonic"/>
+								<ComboBoxItem Content="see text"/>
+								<ComboBoxItem Content="sonic"/>
+								<ComboBoxItem Content="water"/>
+							</ComboBox>
+						</Grid>
+					</Border>
+					<Border Margin="0,108.1,8.036,0" VerticalAlignment="Top" Padding="3">
+						<Border.Effect>
+							<DropShadowEffect/>
+						</Border.Effect>
+						<Border.Background>
+							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+						</Border.Background>
+						<StackPanel Height="311.4">
+							<TextBlock Text="Casting Time" Style="{DynamicResource LabelStyle}" Margin="0,0,0,2"/>
+							<ComboBox Text="{Binding casting_time}" Margin="0,0,0,2" IsEditable="True">
+								<ComboBoxItem Content="1 hour"/>
+								<ComboBoxItem Content="1 immediate action"/>
+								<ComboBoxItem Content="1 minute"/>
+								<ComboBoxItem Content="1 minute per page"/>
+								<ComboBoxItem Content="1 minute/lb. created"/>
+								<ComboBoxItem Content="1 round"/>
+								<ComboBoxItem Content="1 round; see text"/>
+								<ComboBoxItem Content="1 standard action"/>
+								<ComboBoxItem Content="1 standard action or see text"/>
+								<ComboBoxItem Content="10 minutes"/>
+								<ComboBoxItem Content="10 minutes; see text"/>
+								<ComboBoxItem Content="12 hours"/>
+								<ComboBoxItem Content="2 rounds"/>
+								<ComboBoxItem Content="24 hours"/>
+								<ComboBoxItem Content="3 full rounds"/>
+								<ComboBoxItem Content="3 rounds"/>
+								<ComboBoxItem Content="30 minutes"/>
+								<ComboBoxItem Content="6 rounds"/>
+								<ComboBoxItem Content="at least 10 minutes; see text"/>
+								<ComboBoxItem Content="see text"/>
+
+							</ComboBox>
+							<TextBlock Text="Range" Style="{DynamicResource LabelStyle}" Margin="0,0,0,2"/>
+							<ComboBox Text="{Binding range}" VerticalAlignment="Bottom" Margin="0,0,0,2" IsEditable="True">
+								<ComboBoxItem Content="0 ft."/>
+								<ComboBoxItem Content="0 ft.; see text"/>
+								<ComboBoxItem Content="1 mile"/>
+								<ComboBoxItem Content="1 mile/level"/>
+								<ComboBoxItem Content="10 ft."/>
+								<ComboBoxItem Content="120 ft."/>
+								<ComboBoxItem Content="15 ft."/>
+								<ComboBoxItem Content="2 miles"/>
+								<ComboBoxItem Content="20 ft."/>
+								<ComboBoxItem Content="30 ft."/>
+								<ComboBoxItem Content="40 ft."/>
+								<ComboBoxItem Content="40 ft./level"/>
+								<ComboBoxItem Content="5 miles"/>
+								<ComboBoxItem Content="50 ft."/>
+								<ComboBoxItem Content="60 ft."/>
+								<ComboBoxItem Content="anywhere within the area to be warded"/>
+								<ComboBoxItem Content="Area 10-ft.-radius emanation around the creature"/>
+								<ComboBoxItem Content="close (25 ft. + 5 ft./2 levels)"/>
+								<ComboBoxItem Content="close (25 ft. + 5 ft./2 levels) or see text"/>
+								<ComboBoxItem Content="close (25 ft. + 5 ft./2 levels)/100 ft.; see text"/>
+								<ComboBoxItem Content="close (25 ft. + 5 ft./2 levels); see text"/>
+								<ComboBoxItem Content="long (400 ft. + 40 ft./level)"/>
+								<ComboBoxItem Content="medium (100 ft. + 10 ft. level)"/>
+								<ComboBoxItem Content="medium (100 ft. + 10 ft./level)"/>
+								<ComboBoxItem Content="personal"/>
+								<ComboBoxItem Content="personal and touch"/>
+								<ComboBoxItem Content="personal or close (25 ft. + 5 ft./2 levels)"/>
+								<ComboBoxItem Content="personal or touch"/>
+								<ComboBoxItem Content="see text"/>
+								<ComboBoxItem Content="touch"/>
+								<ComboBoxItem Content="touch; see text"/>
+								<ComboBoxItem Content="unlimited"/>
+								<ComboBoxItem Content="up to 10 ft./level"/>
+
+							</ComboBox>
+							<TextBlock Text="Area" Style="{DynamicResource LabelStyle}" Margin="0,0,0,2"/>
+							<ComboBox Text="{Binding area}" VerticalAlignment="Bottom" Margin="0,0,0,2" IsEditable="True" >
+								<ComboBoxItem Content="10-ft. square/level; see text"/>
+								<ComboBoxItem Content="10-ft.-radius emanation centered on you"/>
+								<ComboBoxItem Content="10-ft.-radius emanation from touched creature"/>
+								<ComboBoxItem Content="10-ft.-radius emanation, centered on you"/>
+								<ComboBoxItem Content="10-ft.-radius spherical emanation, centered on you"/>
+								<ComboBoxItem Content="10-ft.-radius spread"/>
+								<ComboBoxItem Content="120-ft. line"/>
+								<ComboBoxItem Content="20-ft.-radius burst"/>
+								<ComboBoxItem Content="20-ft.-radius emanation"/>
+								<ComboBoxItem Content="20-ft.-radius emanation centered on a creature, object, or point in space"/>
+								<ComboBoxItem Content="20-ft.-radius emanation centered on a point in space"/>
+								<ComboBoxItem Content="20-ft.-radius spread"/>
+								<ComboBoxItem Content="2-mile-radius circle, centered on you; see text"/>
+								<ComboBoxItem Content="30-ft. cube/level (S)"/>
+								<ComboBoxItem Content="40 ft./level radius cylinder 40 ft. high"/>
+								<ComboBoxItem Content="40-ft. radius emanating from the touched point"/>
+								<ComboBoxItem Content="40-ft.-radius emanation"/>
+								<ComboBoxItem Content="40-ft.-radius emanation centered on you"/>
+								<ComboBoxItem Content="50-ft.-radius burst, centered on you"/>
+								<ComboBoxItem Content="5-ft.-radius emanation centered on you"/>
+								<ComboBoxItem Content="5-ft.-radius spread; or one solid object or one crystalline creature"/>
+								<ComboBoxItem Content="60-ft. cube/level (S)"/>
+								<ComboBoxItem Content="60-ft. line from you"/>
+								<ComboBoxItem Content="60-ft. line-shaped emanation from you"/>
+								<ComboBoxItem Content="80-ft.-radius burst"/>
+								<ComboBoxItem Content="80-ft.-radius spread (S)"/>
+								<ComboBoxItem Content="all allies and foes within a 40-ft.-radius burst centered on you"/>
+								<ComboBoxItem Content="all magical effects and magic items within a 40-ft.-radius burst, or one magic item (see text)"/>
+								<ComboBoxItem Content="all metal objects within a 40-ft.-radius burst"/>
+								<ComboBoxItem Content="barred cage (20-ft. cube) or windowless cell (10-ft. cube)"/>
+								<ComboBoxItem Content="circle, centered on you, with a radius of 400 ft. + 40 ft./level"/>
+								<ComboBoxItem Content="cloud spreads in 20-ft. radius, 20 ft. high"/>
+								<ComboBoxItem Content="cone-shaped burst"/>
+								<ComboBoxItem Content="cone-shaped emanation"/>
+								<ComboBoxItem Content="creatures and objects within 10-ft.-radius spread"/>
+								<ComboBoxItem Content="creatures and objects within a 5-ft.-radius burst"/>
+								<ComboBoxItem Content="creatures in a 20-ft.-radius spread"/>
+								<ComboBoxItem Content="creatures within a 20-ft.-radius spread"/>
+								<ComboBoxItem Content="cylinder (10-ft. radius, 40-ft. high)"/>
+								<ComboBoxItem Content="cylinder (20-ft. radius, 40 ft. high)"/>
+								<ComboBoxItem Content="cylinder (40-ft. radius, 20 ft. high)"/>
+								<ComboBoxItem Content="dirt in an area up to 750 ft. square and up to 10 ft. deep (S)"/>
+								<ComboBoxItem Content="four 40-ft.-radius spreads, see text"/>
+								<ComboBoxItem Content="line from your hand"/>
+								<ComboBoxItem Content="living creatures within a 10-ft.-radius burst"/>
+								<ComboBoxItem Content="nonchaotic creatures in a 40-ft.-radius spread centered on you"/>
+								<ComboBoxItem Content="nonevil creatures in a 40-ft.-radius spread centered on you"/>
+								<ComboBoxItem Content="nongood creatures in a 40-ft.-radius spread centered on you"/>
+								<ComboBoxItem Content="nonlawful creatures in a 40-ft.-radius spread centered on you"/>
+								<ComboBoxItem Content="nonlawful creatures within a burst that fills a 30-ft. cube"/>
+								<ComboBoxItem Content="one 20-ft. cube/level (S)"/>
+								<ComboBoxItem Content="one 20-ft. square/level"/>
+								<ComboBoxItem Content="one 30-ft. cube/level (S)"/>
+								<ComboBoxItem Content="one or more living creatures within a 10-ft.-radius burst"/>
+								<ComboBoxItem Content="or Target one 20-ft. cube/level  or one fire-based magic item (S)"/>
+								<ComboBoxItem Content="plants in a 40-ft.-radius spread"/>
+								<ComboBoxItem Content="see text"/>
+								<ComboBoxItem Content="several living creatures within a 40-ft.-radius burst"/>
+								<ComboBoxItem Content="several living creatures, no two of which may be more than 30 ft. apart"/>
+								<ComboBoxItem Content="several undead creatures within a 40-ft.-radius burst"/>
+								<ComboBoxItem Content="Target object touched"/>
+								<ComboBoxItem Content="Target or object touched or up to 5 sq. ft./level"/>
+								<ComboBoxItem Content="Target or one creature, one object, or a 5-ft. cube"/>
+								<ComboBoxItem Content="Target or see text"/>
+								<ComboBoxItem Content="Target, Effect, or  see text"/>
+								<ComboBoxItem Content="The caster and all allies within a 50-ft. burst, centered on the caster"/>
+								<ComboBoxItem Content="two 10-ft. cubes per level (S)"/>
+								<ComboBoxItem Content="up to 10-ft.-radius/level emanation centered on you"/>
+								<ComboBoxItem Content="up to 200 sq. ft./level (S)"/>
+								<ComboBoxItem Content="up to one 10-ft. cube/level (S)"/>
+								<ComboBoxItem Content="up to two 10-ft. cubes/level (S)"/>
+								<ComboBoxItem Content="water in a volume of 10 ft./level by 10 ft./level by 2 ft./level (S)"/>
+
+							</ComboBox>
+							<TextBlock Text="Targets" Style="{DynamicResource LabelStyle}" Margin="0,0,0,2"/>
+							<ComboBox Text="{Binding targets}" Margin="0,0,0,2" IsEditable="True">
+								<ComboBoxItem Content="creature or object touchedobject touched"/>
+								<ComboBoxItem Content="creature touched"/>
+								<ComboBoxItem Content="one animal"/>
+								<ComboBoxItem Content="one creature"/>
+								<ComboBoxItem Content="one creature or object"/>
+								<ComboBoxItem Content="one creature or object/level, no two of which can be more than 30 ft. apart"/>
+								<ComboBoxItem Content="one creature/level"/>
+								<ComboBoxItem Content="one creature/level in a 20-ft.-radius burst centered on you"/>
+								<ComboBoxItem Content="one creature/level touched"/>
+								<ComboBoxItem Content="one creature/level, no two of which can be more than 30 ft. apart"/>
+								<ComboBoxItem Content="one humanoid creature"/>
+								<ComboBoxItem Content="one humanoid creature/level, no two of which can be more than 30 ft. apart"/>
+								<ComboBoxItem Content="one living creature"/>
+								<ComboBoxItem Content="one living creature/level, no two of which may be more than 30 ft. apart"/>
+								<ComboBoxItem Content="one melee weapon"/>
+								<ComboBoxItem Content="one undead creature"/>
+								<ComboBoxItem Content="see text"/>
+								<ComboBoxItem Content="up to one creature per level, all within 30 ft. of each other"/>
+								<ComboBoxItem Content="up to one touched creature/level"/>
+								<ComboBoxItem Content="weapon touched"/>
+								<ComboBoxItem Content="you"/>
+								<ComboBoxItem Content="you or creature touched"/>
+							</ComboBox>
+							<TextBlock Text="Duration" Style="{DynamicResource LabelStyle}" Margin="0,0,0,2"/>
+							<ComboBox Text="{Binding Adjuster.Duration}" Margin="0,0,0,2" IsEditable="True" >
+								<ComboBoxItem Content="1 round/level"/>
+								<ComboBoxItem Content="1 min/level"/>
+								<ComboBoxItem Content="1 hour/level"/>
+								<ComboBoxItem Content="1 day/level"/>
+								<ComboBoxItem Content="concentration"/>
+								<ComboBoxItem Content="instantaneous"/>
+								<ComboBoxItem Content="permanent"/>
+								<ComboBoxItem Content="see text"/>
+							</ComboBox>
+							<CheckBox Margin="0,0,0,2" IsChecked="{Binding Adjuster.Dismissible}">
+			
+								<TextBlock Text="Dismissible"   Style="{DynamicResource LabelStyle}" Margin="0" FontWeight="Normal"/>
+							</CheckBox>
+							<TextBlock Text="Saving Throw" Style="{DynamicResource LabelStyle}" Margin="0,0,0,2"/>
+							<ComboBox Text="{Binding saving_throw}" Margin="0,0,0,2" IsEditable="True">
+								<ComboBoxItem Content="Fortitude half"/>
+								<ComboBoxItem Content="Fortitude half; see text"/>
+								<ComboBoxItem Content="Fortitude negates"/>
+								<ComboBoxItem Content="Fortitude negates (harmless)"/>
+								<ComboBoxItem Content="Fortitude partial"/>
+								<ComboBoxItem Content="Fortitude partial; see text"/>
+								<ComboBoxItem Content="Reflex half"/>
+								<ComboBoxItem Content="Reflex half; see text"/>
+								<ComboBoxItem Content="Reflex negates"/>
+								<ComboBoxItem Content="Reflex negates (harmless)"/>
+								<ComboBoxItem Content="Reflex partial"/>
+								<ComboBoxItem Content="Reflex partial; see text"/>
+								<ComboBoxItem Content="Will disbelief"/>
+								<ComboBoxItem Content="Will half"/>
+								<ComboBoxItem Content="Will half; see text"/>
+								<ComboBoxItem Content="Will negates"/>
+								<ComboBoxItem Content="Will negates (harmless)"/>
+								<ComboBoxItem Content="Will partial"/>
+								<ComboBoxItem Content="Will partial; see text"/>
+								<ComboBoxItem Content="none"/>
+								<ComboBoxItem Content="none; see text"/>
+								<ComboBoxItem Content="see text"/>
+							</ComboBox>
+							<TextBlock Text="Spell Resistance" Style="{DynamicResource LabelStyle}" Margin="0,0,0,2"/>
+							<ComboBox Text="{Binding spell_resistence}" Margin="0,0,0,2" IsEditable="True">
+								<ComboBoxItem Content="no"/>
+								<ComboBoxItem Content="see text"/>
+								<ComboBoxItem Content="yes"/>
+								<ComboBoxItem Content="yes (harmless)"/>
+							</ComboBox>
+						</StackPanel>
+					</Border>
+					<Border Height="118" VerticalAlignment="Top" Padding="3,3,3,0" Grid.Column="1" Margin="1.82,0,0,0">
+						<Border.Effect>
+							<DropShadowEffect/>
+						</Border.Effect>
+						<Border.Background>
+							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+						</Border.Background>
+						<Grid>
+							<TextBlock TextWrapping="Wrap" Text="Level" Style="{DynamicResource LabelStyle}" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+							<ListBox Margin="0,19.96,146.241,8" ItemsSource="{Binding Adjuster.Levels}" ItemTemplate="{DynamicResource ClassLevelTemplate}" HorizontalContentAlignment="Stretch" d:LayoutOverrides="HorizontalAlignment"/>
+							<ListBox x:Name="UnusedClassesList" Margin="157.001,19.96,0,8" ItemsSource="{Binding Adjuster.UnusedLevels}" ItemTemplate="{DynamicResource UnusedClassLevelTemplate}" MouseDoubleClick="UnusedClassesList_MouseDoubleClick"/>
+						</Grid>
+					</Border>
+					<Border Margin="1.82,123.96,0,0" Padding="4,2" Height="141.1" VerticalAlignment="Top" Grid.Column="1">
+						<Border.Effect>
+							<DropShadowEffect/>
+						</Border.Effect>
+						<Border.Background>
+							<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+						</Border.Background>
+						<Grid>
+							<TextBlock TextWrapping="Wrap" Text="Components" Style="{DynamicResource LabelStyle}" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+							<CheckBox Content="Verbal" IsChecked="{Binding Adjuster.Verbal}" HorizontalAlignment="Left" Margin="0,19.96,0,0" VerticalAlignment="Top"/>
+							<CheckBox Content="Somatic"  IsChecked="{Binding Adjuster.Somatic}"  Margin="75.556,19.96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.175,0.82" HorizontalAlignment="Left"/>
+							<CheckBox Content="Material"  IsChecked="{Binding Adjuster.Material}"  HorizontalAlignment="Left" Margin="0,42.92,0,0" VerticalAlignment="Top"/>
+							<TextBox Margin="0,62.88,0,0" TextWrapping="Wrap" Text="{Binding Adjuster.MaterialText}" RenderTransformOrigin="0.246,0.385" VerticalAlignment="Top"/>
+							<CheckBox Content="Focus"  IsChecked="{Binding Adjuster.Focus}"  HorizontalAlignment="Left" Margin="0,92.372,0,0" VerticalAlignment="Top"/>
+							<CheckBox Content="Divine Focus"  IsChecked="{Binding Adjuster.DivineFocus}"  HorizontalAlignment="Left" Margin="75.556,92.372,0,0" VerticalAlignment="Top"/>
+							<TextBox TextWrapping="Wrap" Text="{Binding Adjuster.FocusText}" VerticalAlignment="Top" RenderTransformOrigin="0.246,0.385" Margin="0,112.332,0,0"/>
+						</Grid>
+					</Border>
+					<Border Height="153.775" VerticalAlignment="Bottom" Padding="3" Grid.Column="1" Margin="1.82,0,0,4">
+						<Border.Effect>
+							<DropShadowEffect/>
+						</Border.Effect>
+						<Border.Background>
+							<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
+						</Border.Background>
+						<Grid>
+							<TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Style="{DynamicResource LabelStyle}" Foreground="Black"/>
+							<TextBox Margin="0,19.96,0,0" TextWrapping="Wrap" Text="{Binding description}" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto"/>
+						</Grid>
+					</Border>
+				</Grid>
+			</TabItem>
+			<TabItem Header="Bonus">
+				<Grid>
+					<Grid.Background>
+						<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
+					</Grid.Background>
+					<Grid Height="209.127" Margin="1,1,127.445,0" VerticalAlignment="Top">
+						<CheckBox x:Name="CustomBonusCheckBox" HorizontalAlignment="Left" Content="Bonus" Foreground="White"
+							RenderTransformOrigin="0.56,0.525" VerticalAlignment="Top" Padding="3,0,0,1" Margin="3,5,0,0" Checked="CustomBonusCheckBox_Checked" Unchecked="CustomBonusCheckBox_Unchecked">
+							<CheckBox.Effect>
+								<DropShadowEffect/>
+							</CheckBox.Effect>
+						</CheckBox>
+						<Grid x:Name="CustomBonusBorder" Margin="3,25.96,4,3.619">
+            					
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="112"/>
+								<ColumnDefinition Width="4"/>
+								<ColumnDefinition Width="67"/>
+								<ColumnDefinition Width="4"/>
+								<ColumnDefinition Width="125.698"/>
+								<ColumnDefinition Width="4"/>
+								<ColumnDefinition Width="0.968*"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="28.715"/>
+								<RowDefinition Height="82.833"/>
+								<RowDefinition Height="4"/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6">
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+								</Border.Background>
+								<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+									<Rectangle.Fill>
+										<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+									</Rectangle.Fill>
+								</Rectangle>
+							</Border>
+							<Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6" Grid.Column="2">
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+								</Border.Background>
+								<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+									<Rectangle.Fill>
+										<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+									</Rectangle.Fill>
+								</Rectangle>
+							</Border>
+							<Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6" Grid.Column="4" RenderTransformOrigin="1.421,0.513">
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+								</Border.Background>
+								<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+									<Rectangle.Fill>
+										<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+									</Rectangle.Fill>
+								</Rectangle>
+							</Border>
+							<Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6" Grid.Column="6" RenderTransformOrigin="1.421,0.513">
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+								</Border.Background>
+								<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+									<Rectangle.Fill>
+										<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+									</Rectangle.Fill>
+								</Rectangle>
+							</Border>
+                            	
+							<TextBlock HorizontalAlignment="Left" Margin="8,5.785,0,0" TextWrapping="Wrap" Text="Str" RenderTransformOrigin="2.813,2.896" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBox x:Name="CustomStrBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding Str, Converter={StaticResource BonusValueConverter}}" Margin="33.613,2.785,0,0" HorizontalAlignment="Left" Width="22" VerticalAlignment="Top" Grid.Row="1" />
+							<TextBlock HorizontalAlignment="Left" Margin="8,31.745,0,0" TextWrapping="Wrap" Text="Dex" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBox x:Name="CustomDexBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Dex, Converter={StaticResource BonusValueConverter}}"  Margin="33.613,28.745,0,0" HorizontalAlignment="Left" Width="22" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBlock HorizontalAlignment="Left" Margin="8,57.705,0,0" TextWrapping="Wrap" Text="Con" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBox x:Name="CustomConBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Con, Converter={StaticResource BonusValueConverter}}"  Margin="33.613,54.705,0,0" HorizontalAlignment="Left" Width="22" RenderTransformOrigin="0.524,0.719" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBlock Margin="58.612,5.953,0,0" TextWrapping="Wrap" Text="Int" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left"/>
+							<TextBox x:Name="CustomIntBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Int, Converter={StaticResource BonusValueConverter}}"  Margin="84.216,2.953,0,0" HorizontalAlignment="Left" Width="22" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.103,0.488"/>
+							<TextBlock Margin="58.612,31.934,0,34.127" TextWrapping="Wrap" Text="Wis" d:LayoutOverrides="Height" Grid.Row="1" HorizontalAlignment="Left"/>
+							<TextBox x:Name="CustomWisBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Wis, Converter={StaticResource BonusValueConverter}}"  Margin="84.235,28.913,0,0" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="22"/>
+							<TextBlock Margin="58.613,57.873,0,0" TextWrapping="Wrap" Text="Cha" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left"/>
+							<TextBox x:Name="CustomChaBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Cha, Converter={StaticResource BonusValueConverter}}"  Margin="84.235,54.873,0,0" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="22"/>
+							<TextBlock HorizontalAlignment="Left" Margin="8,8,0,4.755" TextWrapping="Wrap" d:LayoutOverrides="Height" Foreground="White"><TextBlock.Effect>
+									<DropShadowEffect/>
+								</TextBlock.Effect><Run Text="Stats"/><LineBreak/><Run/></TextBlock>
+							<TextBlock HorizontalAlignment="Left" Margin="8,8,0,4.755" TextWrapping="Wrap" d:LayoutOverrides="HorizontalAlignment, Height" RenderTransformOrigin="4.983,0.922" Text="Save" Grid.Column="2" Foreground="White">
+								<TextBlock.Effect>
+									<DropShadowEffect/>
+								</TextBlock.Effect>
+							</TextBlock>
+							<TextBlock HorizontalAlignment="Left" Margin="8,5.785,0,0" TextWrapping="Wrap" Text="Fort" RenderTransformOrigin="2.813,2.896" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2"/>
+							<TextBox x:Name="AllSavesBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding AllSaves, Converter={StaticResource BonusValueConverter}}" Margin="36.93,2.953,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Width="22" HorizontalAlignment="Left" />
+							<TextBox x:Name="FortSaveBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Fort, Converter={StaticResource BonusValueConverter}}" Margin="36.93,5.168,0,1.587" Grid.Column="2" d:LayoutOverrides="Height" Width="22" HorizontalAlignment="Left"/>
+							<TextBlock HorizontalAlignment="Left" Margin="8,31.766,0,35.107" TextWrapping="Wrap" Text="Ref" RenderTransformOrigin="2.813,2.896" Grid.Row="1" Grid.Column="2" d:LayoutOverrides="Height"/>
+							<TextBox x:Name="RefSaveBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Ref, Converter={StaticResource BonusValueConverter}}" Margin="36.93,28.913,0,0" Grid.Row="1" Grid.Column="2" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" />
+							<TextBlock HorizontalAlignment="Left" Margin="8,57.705,0,0" TextWrapping="Wrap" Text="Will" RenderTransformOrigin="2.813,2.896" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top"/>
+							<TextBox x:Name="WillSaveBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Will, Converter={StaticResource BonusValueConverter}}"  Margin="36.93,54.873,0,0" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Width="22" HorizontalAlignment="Left" />
+							<TextBlock HorizontalAlignment="Left" Margin="8,8,0,4.755" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Attack" Grid.Column="4" d:LayoutOverrides="HorizontalAlignment, Height" Foreground="White">
+								<TextBlock.Effect>
+									<DropShadowEffect/>
+								</TextBlock.Effect>
+							</TextBlock>
+							<TextBox x:Name="AllAttackBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding AllAttack, Converter={StaticResource BonusValueConverter}}" Margin="47.002,2.785,58.768,0" Grid.Column="4" d:LayoutOverrides="VerticalAlignment" VerticalAlignment="Top" Grid.Row="1" Width="22"/>
+							<TextBlock HorizontalAlignment="Left" Margin="9.153,5.953,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="All Hit" Grid.Column="4" d:LayoutOverrides="HorizontalAlignment" Grid.Row="1" VerticalAlignment="Top"/>
+							<TextBlock HorizontalAlignment="Left" Margin="70.002,5.785,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dmg" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top"/>
+							<TextBox x:Name="AttackDamageBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding AttackDamage, Converter={StaticResource BonusValueConverter}}" Margin="99.819,2.785,0,0" Grid.Column="4" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" d:LayoutOverrides="VerticalAlignment"/>
+							<TextBox x:Name="MeleeAttackBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding MeleeAttack, Converter={StaticResource BonusValueConverter}}" Margin="47.002,28.745,58.768,0" Grid.Column="4" VerticalAlignment="Top" Grid.Row="1" Width="22"/>
+							<TextBlock HorizontalAlignment="Left" Margin="25.993,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Hit" Grid.Column="4" Grid.Row="1" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+							<TextBlock HorizontalAlignment="Left" Margin="70.002,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dmg" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top"/>
+							<TextBox x:Name="MeleeDamageBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding MeleeDamage, Converter={StaticResource BonusValueConverter}}" Margin="99.819,28.745,0,0" Grid.Column="4" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBox x:Name="RangedAttackBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding RangedAttack, Converter={StaticResource BonusValueConverter}}" Margin="47.002,54.705,58.768,0" Grid.Column="4" VerticalAlignment="Top" Grid.Row="1" Width="22"/>
+							<TextBlock HorizontalAlignment="Left" Margin="25.993,57.705,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Hit" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+							<TextBlock HorizontalAlignment="Left" Margin="70.002,57.705,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dmg" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top"/>
+							<TextBox x:Name="RangedDamageBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding RangedDamage, Converter={StaticResource BonusValueConverter}}" Margin="99.819,54.705,0,0" Grid.Column="4" Width="22" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"/>
+							<Image HorizontalAlignment="Left" Margin="8,31.705,0,0" Width="16" Source="Images/sword-16.png" Grid.Column="4" Grid.Row="1" ToolTip="Melee" Height="16" VerticalAlignment="Top"/>
+							<Image HorizontalAlignment="Left" Margin="8,57.665,0,0" Width="16" Source="Images/bow-16.png" Grid.Column="4" Grid.Row="1" Height="16" VerticalAlignment="Top" RenderTransformOrigin="0.421,0.339" ToolTip="Ranged"/>
+							<TextBlock Margin="77.905,57.705,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Other" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+							<TextBox x:Name="ACBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding AC, Converter={StaticResource BonusValueConverter}}" Margin="133.857,54.873,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.188" Grid.Row="1"/>
+                            	
+							<TextBlock HorizontalAlignment="Left" Margin="8,5.953,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dodge" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
+							<TextBox x:Name="DodgeBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Dodge, Converter={StaticResource BonusValueConverter}}" Margin="53.905,2.953,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBlock HorizontalAlignment="Left" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Margin="8,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Natural" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
+							<TextBox x:Name="NaturalBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding NaturalArmor, Converter={StaticResource BonusValueConverter}}" Margin="53.905,28.913,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBlock HorizontalAlignment="Left" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Margin="8,57.873,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Shield" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
+							<Image Source="Images/shield-16.png" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Height="16" Grid.Column="6" Margin="8,8,0,0">
+								<Image.Effect>
+									<DropShadowEffect/>
+								</Image.Effect>
+							</Image>
+							<TextBox x:Name="ShieldBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Shield, Converter={StaticResource BonusValueConverter}}" Margin="53.905,54.873,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBlock HorizontalAlignment="Left" Margin="77.905,5.953,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Deflection" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
+							<TextBox x:Name="DeflectionBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Deflection, Converter={StaticResource BonusValueConverter}}" Margin="133.857,2.953,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBlock IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Margin="77.905,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Armor" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+							<TextBox x:Name="ArmorBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Armor, Converter={StaticResource BonusValueConverter}}" Margin="133.857,28.913,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+							<TextBlock HorizontalAlignment="Left" Margin="28.683,8.04,0,4.715" TextWrapping="Wrap" Text="AC" Grid.Column="6" d:LayoutOverrides="Height" Foreground="White">
+								<TextBlock.Effect>
+									<DropShadowEffect/>
+								</TextBlock.Effect>
+							</TextBlock>
+							<Border BorderThickness="1" CornerRadius="6" RenderTransformOrigin="1.421,0.513" Grid.Row="3" Grid.ColumnSpan="3">
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+								</Border.Background>
+								<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+									<Rectangle.Fill>
+										<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+									</Rectangle.Fill>
+								</Rectangle>
+							</Border>
+							<TextBox x:Name="CMBText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding CMB, Converter={StaticResource BonusValueConverter}}" Margin="33.613,34.04,0,0" VerticalAlignment="Top" Width="22" HorizontalAlignment="Left" Grid.Row="3"/>
+							<TextBlock HorizontalAlignment="Left" Margin="4.163,37.04,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="CMB" VerticalAlignment="Top" Grid.Row="3" d:LayoutOverrides="HorizontalAlignment"/>
+							<TextBlock HorizontalAlignment="Left" Margin="55.613,0,0,11" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="CMD" VerticalAlignment="Bottom" Grid.Row="3"/>
+							<TextBox x:Name="CMDText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding CMD, Converter={StaticResource BonusValueConverter}}" Margin="84.235,34.04,0,0" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3"/>
+							<TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Other" Foreground="White" Grid.Row="3" VerticalAlignment="Top">
+								<TextBlock.Effect>
+									<DropShadowEffect/>
+								</TextBlock.Effect>
+							</TextBlock>
+							<TextBlock HorizontalAlignment="Left" Margin="-4,0,0,11" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Size" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment"/>
+							<TextBox x:Name="SizeText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding Size, Converter={StaticResource BonusValueConverter}}" Margin="20.983,34.04,0,0" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="2"/>
+    						
+						</Grid>
+					</Grid>
+				</Grid>
+			</TabItem>
+		</TabControl>
+		<Button x:Name="OKButton" Content="OK" Grid.Column="1" Margin="150.561,0,89.537,0" Grid.Row="1" VerticalAlignment="Top" IsDefault="True" Click="OKButton_Click"/>
+		<Button x:Name="CancelButton" Content="Cancel" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10.537,0" Grid.Row="1" Width="75" VerticalAlignment="Top" IsCancel="True"/>
+	</Grid>
+</Window>

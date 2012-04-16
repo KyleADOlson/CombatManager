@@ -1,0 +1,610 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CombatManager"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CombatManager.AttacksWindow"
+        Title="Edit Attacks" Height="460" Width="727" Icon="Images/d20-32.ico" ShowInTaskbar="False" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Resources>
+    	<DataTemplate x:Key="MonsterImageTemplate">
+    		<DockPanel>
+    			<Image Width="16" Height="16" Source="{Binding Converter={StaticResource AttackToTypeImageConverter}}"/>
+    		</DockPanel>
+    	</DataTemplate>
+    	<DataTemplate x:Key="DataTemplate1">
+    		<Grid>
+    		     <TextBlock Loaded="TextBlock_Loaded" Foreground="White" />
+    	    </Grid>
+    	</DataTemplate>
+    	<DataTemplate x:Key="DataTemplate2">
+    		<Grid>
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="*"/>
+    				<RowDefinition Height="33.667"/>
+    			</Grid.RowDefinitions>
+    		  <ListBox ItemsSource="{Binding}" ItemTemplate="{DynamicResource MeleeWeaponItemTemplate}" HorizontalContentAlignment="Stretch" Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" Background="{x:Null}" BorderBrush="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+			  <Button x:Name="AddWeaponButton" Content="Add Weapon"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,5.667,0,6.04" Click="AddWeaponButton_Click" Padding="2,1" Loaded="AddWeaponButton_Loaded" DataContextChanged="AddWeaponButton_DataContextChanged" Grid.Row="1" d:LayoutOverrides="Height" />
+    	   </Grid>
+    	</DataTemplate>
+    	<DataTemplate x:Key="MeleeWeaponItemTemplate">
+    		<DataTemplate.Resources>
+    			<Storyboard x:Key="OnClick1">
+    				<BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="SpecialAbilitiesPopup">
+    					<DiscreteBooleanKeyFrame KeyTime="0" Value="True"/>
+    				</BooleanAnimationUsingKeyFrames>
+    			</Storyboard>
+    		</DataTemplate.Resources>
+    		<Grid HorizontalAlignment="Stretch">
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition Width="32"/>
+    				<ColumnDefinition Width="16"/>
+    				<ColumnDefinition Width="22"/>
+    				<ColumnDefinition Width="*"/>
+    				<ColumnDefinition Width="Auto" MinWidth="10.16"/>
+    			</Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                	<RowDefinition Height="Auto" MinHeight="21.96"/>
+                    <RowDefinition Height="Auto" MinHeight="21.96"/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.ColumnSpan="3" Margin="0" StrokeStartLineCap="Round" StrokeEndLineCap="Round" RadiusX="6" RadiusY="6">
+                	<Rectangle.Fill>
+                		<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+                	</Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Grid.ColumnSpan="1" Margin="3,0" StrokeStartLineCap="Round" StrokeEndLineCap="Round" RadiusX="6" RadiusY="6" Grid.Column="3">
+                	<Rectangle.Fill>
+                		<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+                	</Rectangle.Fill>
+                </Rectangle>
+    			<Image Grid.Column="2" Source="Images\hand-16.png" Visibility="{Binding Weapon.TwoHanded, Converter={StaticResource BoolToVisibilityCollapsedConverter}}"  RenderTransformOrigin="0.5,0.5" Margin="3,0" Width="16" Height="16" HorizontalAlignment="Left" VerticalAlignment="Center" />
+    			<Image Grid.Column="1" Source="Images\hand-16.png" Margin="0" Width="16" Height="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    			<TextBlock Text="{Binding Converter={StaticResource WeaponItemToHandConverter}}" Margin="3" Grid.Column="0" Grid.ColumnSpan="1" Foreground="White"/>
+    			<TextBlock Text="{Binding Name, Converter={StaticResource StringCapitalizeConverter}}" Margin="6,3" Grid.Column="3" Grid.ColumnSpan="1" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left"/>
+    			<Button x:Name="DeleteButton" Click="DeleteButton_Click"  RenderTransformOrigin="0.222,-0.601" Grid.Column="4"  Height="16" Grid.Row="0" Grid.ColumnSpan="1" Width="16" Margin="0,2.98,3,2.98" HorizontalAlignment="Right">
+    				<Button.Background>
+    					<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    						<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="0.5"/>
+    						<GradientStop Color="#FFDDDDDD" Offset="0.494"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="1"/>
+    					</LinearGradientBrush>
+    				</Button.Background>
+    				<Button.ToolTip>Delete</Button.ToolTip>
+    				<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+    			</Button>
+    			<ComboBox x:Name="MagicBonusComboBox" Grid.Row="1" Grid.ColumnSpan="2" SelectedIndex="0" HorizontalAlignment="Left" Width="45" Margin="0,3" HorizontalContentAlignment="Right" Padding="0,3" Loaded="MagicBonusComboBox_Loaded" VerticalAlignment="Top" SelectionChanged="MagicBonusComboBox_SelectionChanged">
+    				<ComboBox.Background>
+    					<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    						<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="0.5"/>
+    						<GradientStop Color="#FFDDDDDD" Offset="0.498"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="1"/>
+    					</LinearGradientBrush>
+    				</ComboBox.Background>
+    				<ComboBoxItem Content="brk"/>
+    				<ComboBoxItem Content="+0"/>
+    				<ComboBoxItem Content="mwk"/>
+    				<ComboBoxItem Content="+1"/>
+    				<ComboBoxItem Content="+2"/>
+    				<ComboBoxItem Content="+3"/>
+    				<ComboBoxItem Content="+4"/>
+    				<ComboBoxItem Content="+5"/>
+    				<ComboBoxItem Content="+6"/>
+    				<ComboBoxItem Content="+7"/>
+    				<ComboBoxItem Content="+8"/>
+    				<ComboBoxItem Content="+9"/>
+    			</ComboBox>
+    			<Rectangle x:Name="SpecialAbilitiesRect" Grid.ColumnSpan="3" Margin="1,3,0,3" StrokeStartLineCap="Round" StrokeEndLineCap="Round" RadiusX="6" RadiusY="6" Grid.Column="2" Grid.Row="1">
+    				<Rectangle.Fill>
+    					<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+    				</Rectangle.Fill>
+    			</Rectangle>
+    			<TextBlock x:Name="textBlock" Grid.Column="2" Grid.Row="1" TextWrapping="NoWrap" ToolTip="{Binding SpecialAbilities, Converter={StaticResource StringCapitalizeConverter}}" Text="{Binding SpecialAbilities, Converter={StaticResource StringCapitalizeConverter}}" HorizontalAlignment="Stretch" Margin="4,6.02,6,0" Grid.ColumnSpan="2" VerticalAlignment="Top" Foreground="White" TextTrimming="CharacterEllipsis"/>
+    			<Button x:Name="SpecialAbilitesButton" Grid.Column="4" Margin="0,0,3,0" Grid.Row="1" VerticalAlignment="Center" Height="16" Width="16">
+    				<Button.Background>
+    					<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    						<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="0.5"/>
+    						<GradientStop Color="#FFDDDDDD" Offset="0.494"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="1"/>
+    					</LinearGradientBrush>
+    				</Button.Background>
+    			     <Button.Content>
+    				        <Path Data="M1,3 L4,6 L7,3" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/>
+
+    			     </Button.Content>
+    		    </Button>
+    			<Popup x:Name="SpecialAbilitiesPopup" Placement="Bottom" StaysOpen="False"  PlacementTarget="{Binding ElementName=SpecialAbilitiesRect}" PopupAnimation="Slide" Visibility="Visible" Loaded="SpecialAbilitiesPopup_Loaded">
+    				<Grid Height="150" Width="320">
+    			     <ListBox x:Name="SpecialAbilitesListBox" ItemsSource="{Binding}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" Loaded="SpecialAbilitesListBox_Loaded" ItemTemplate="{DynamicResource SpecialAbilityTemplate}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ></ListBox>
+                    </Grid>
+    			</Popup>
+    	   </Grid>
+    		<DataTemplate.Triggers>
+    			<EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="SpecialAbilitiesRect">
+    				<BeginStoryboard Storyboard="{StaticResource OnClick1}"/>
+    			</EventTrigger>
+    			<EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="textBlock">
+    				<BeginStoryboard Storyboard="{StaticResource OnClick1}"/>
+    			</EventTrigger>
+    			<EventTrigger RoutedEvent="ButtonBase.Click" SourceName="SpecialAbilitesButton">
+    				<BeginStoryboard Storyboard="{StaticResource OnClick1}"/>
+    			</EventTrigger>
+    		</DataTemplate.Triggers>
+    	</DataTemplate>
+    	<Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
+    		<Setter Property="Background" Value="Transparent"/>
+    		<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+    		<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+    		<Setter Property="Padding" Value="2,0,0,0"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type ListBoxItem}">
+    					<Border x:Name="Bd" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true" CornerRadius="6" BorderThickness="1">
+    						<Border.Background>
+    							<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
+    						</Border.Background>
+    						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3"/>
+    					</Border>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+    		<WrapPanel IsItemsHost="True" Orientation="Vertical" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+    	</ItemsPanelTemplate>
+    	<DataTemplate x:Key="SpecialAbilityTemplate">
+    		<Grid>
+    			<CheckBox IsChecked="{Binding Checked}" Margin="2,0" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" ToolTip="{Binding Special.Text}">
+    		      <TextBlock Text="{Binding Special.Name, Converter={StaticResource StringCapitalizeConverter}}"/>
+                  </CheckBox>
+            </Grid>
+    	</DataTemplate>
+    	<DataTemplate x:Key="DataTemplate3">
+    		<Grid>
+    			<Grid.ColumnDefinitions>
+    			 <ColumnDefinition Width="*"/>    	
+    			 <ColumnDefinition Width="Auto" MinWidth="19"/>    	
+    			 <ColumnDefinition Width="Auto" MinWidth="20"/>    			 
+    			</Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding FullName}" HorizontalAlignment="Left" TextTrimming="CharacterEllipsis"/>
+                <Button x:Name="EditButton" Click="EditNaturalAttackButton_Click"  RenderTransformOrigin="0.222,-0.601"  Height="16" Width="16" Margin="0,0,3,0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="E" FontSize="9.333" Padding="1,0,1,1" Grid.Column="1">
+                	<Button.Background>
+                		<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                			<GradientStop Color="#FFF3F3F3" Offset="0"/>
+                			<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="0.5"/>
+                			<GradientStop Color="#FFDDDDDD" Offset="0.494"/>
+                			<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="1"/>
+                			<GradientStop Color="#FFE1E1E1" Offset="0.384"/>
+                		</LinearGradientBrush>
+                	</Button.Background>
+                	<Button.ToolTip>Edit</Button.ToolTip>
+                </Button>
+                <Button x:Name="DeleteButton" Click="DeleteButton_Click"  RenderTransformOrigin="0.222,-0.601"  Height="16" Width="16" Margin="0,0,4,0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2">
+                	<Button.Background>
+                		<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                			<GradientStop Color="#FFF3F3F3" Offset="0"/>
+                			<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="0.5"/>
+                			<GradientStop Color="#FFDDDDDD" Offset="0.494"/>
+                			<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="1"/>
+                		</LinearGradientBrush>
+                	</Button.Background>
+                	<Button.ToolTip>Delete</Button.ToolTip>
+                	<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                </Button>
+            </Grid>
+    	</DataTemplate>
+    	<DataTemplate x:Key="RangedItemTemplate">
+    		<DataTemplate.Resources>
+    			<Storyboard x:Key="OnClick1">
+    				<BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="SpecialAbilitiesPopup">
+    					<DiscreteBooleanKeyFrame KeyTime="0" Value="True"/>
+    				</BooleanAnimationUsingKeyFrames>
+    			</Storyboard>
+    		</DataTemplate.Resources>
+    		<Grid HorizontalAlignment="Stretch">
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition Width="32"/>
+    				<ColumnDefinition Width="16"/>
+    				<ColumnDefinition Width="22"/>
+    				<ColumnDefinition Width="*"/>
+    				<ColumnDefinition Width="Auto" MinWidth="10.16"/>
+    			</Grid.ColumnDefinitions>
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="Auto" MinHeight="21.96"/>
+    				<RowDefinition Height="Auto" MinHeight="21.96"/>
+    			</Grid.RowDefinitions>
+    			<Rectangle Grid.ColumnSpan="3" Margin="0" StrokeStartLineCap="Round" StrokeEndLineCap="Round" RadiusX="6" RadiusY="6">
+    				<Rectangle.Fill>
+    					<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+    				</Rectangle.Fill>
+    			</Rectangle>
+    			<Rectangle Grid.ColumnSpan="1" Margin="3,0" StrokeStartLineCap="Round" StrokeEndLineCap="Round" RadiusX="6" RadiusY="6" Grid.Column="3">
+    				<Rectangle.Fill>
+    					<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+    				</Rectangle.Fill>
+    			</Rectangle>
+    			<TextBlock Margin="3,3,8,3" Grid.Column="0" Grid.ColumnSpan="3" Foreground="White" Text="Ranged"/>
+    			<TextBlock Text="{Binding Name, Converter={StaticResource StringCapitalizeConverter}}" Margin="6,3" Grid.Column="3" Grid.ColumnSpan="1" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left"/>
+    			<Button x:Name="DeleteButton" Click="DeleteButton_Click"  RenderTransformOrigin="0.222,-0.601" Grid.Column="4"  Height="16" Grid.Row="0" Grid.ColumnSpan="1" Width="16" Margin="0,2.98,3,2.98" HorizontalAlignment="Right">
+    				<Button.Background>
+    					<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    						<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="0.5"/>
+    						<GradientStop Color="#FFDDDDDD" Offset="0.494"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="1"/>
+    					</LinearGradientBrush>
+    				</Button.Background>
+    				<Button.ToolTip>Delete</Button.ToolTip>
+    				<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+    			</Button>
+    			<ComboBox x:Name="MagicBonusComboBox" Grid.Row="1" Grid.ColumnSpan="2" SelectedIndex="0" HorizontalAlignment="Left" Width="45" Margin="0,3" HorizontalContentAlignment="Right" Padding="0,3" Loaded="MagicBonusComboBox_Loaded" VerticalAlignment="Top" SelectionChanged="MagicBonusComboBox_SelectionChanged">
+    				<ComboBox.Background>
+    					<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    						<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="0.5"/>
+    						<GradientStop Color="#FFDDDDDD" Offset="0.498"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="1"/>
+    					</LinearGradientBrush>
+                    </ComboBox.Background>
+                    <ComboBoxItem Content="brk"/>
+                    <ComboBoxItem Content="+0"/>
+    				<ComboBoxItem Content="mwk"/>
+    				<ComboBoxItem Content="+1"/>
+    				<ComboBoxItem Content="+2"/>
+    				<ComboBoxItem Content="+3"/>
+    				<ComboBoxItem Content="+4"/>
+    				<ComboBoxItem Content="+5"/>
+    				<ComboBoxItem Content="+6"/>
+    				<ComboBoxItem Content="+7"/>
+    				<ComboBoxItem Content="+8"/>
+    				<ComboBoxItem Content="+9"/>
+    			</ComboBox>
+    			<Rectangle x:Name="SpecialAbilitiesRect" Grid.ColumnSpan="3" Margin="1,3,0,3" StrokeStartLineCap="Round" StrokeEndLineCap="Round" RadiusX="6" RadiusY="6" Grid.Column="2" Grid.Row="1">
+    				<Rectangle.Fill>
+    					<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+    				</Rectangle.Fill>
+    			</Rectangle>
+    			<TextBlock x:Name="SpecialabilitiesText" Grid.Column="2" Grid.Row="1" TextWrapping="NoWrap" ToolTip="{Binding SpecialAbilities, Converter={StaticResource StringCapitalizeConverter}}" Text="{Binding SpecialAbilities, Converter={StaticResource StringCapitalizeConverter}}" HorizontalAlignment="Stretch" Margin="4,6.02,6,0" Grid.ColumnSpan="2" VerticalAlignment="Top" Foreground="White" TextTrimming="CharacterEllipsis"/>
+    			<Button x:Name="SpecialAbilitesButton" Grid.Column="4" Margin="0,0,3,0" Grid.Row="1" VerticalAlignment="Center" Height="16" Width="16">
+    				<Button.Background>
+    					<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    						<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="0.5"/>
+    						<GradientStop Color="#FFDDDDDD" Offset="0.494"/>
+    						<GradientStop Color="{DynamicResource PrimaryColorLighter}" Offset="1"/>
+    					</LinearGradientBrush>
+    				</Button.Background>
+    				<Path Data="M1,3 L4,6 L7,3" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/>
+
+    			</Button>
+    			<Popup x:Name="SpecialAbilitiesPopup" Placement="Bottom" StaysOpen="False"  PlacementTarget="{Binding ElementName=SpecialAbilitiesRect}" PopupAnimation="Slide" Visibility="Visible" Loaded="SpecialAbilitiesPopup_Loaded">
+    				<Grid Height="150" Width="Auto">
+    					<ListBox x:Name="SpecialAbilitesListBox" ItemsSource="{Binding}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" Loaded="SpecialAbilitesListBox_Loaded" ItemTemplate="{DynamicResource SpecialAbilityTemplate}" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+    				</Grid>
+    			</Popup>
+    		</Grid>
+    		<DataTemplate.Triggers>
+    			<EventTrigger RoutedEvent="ButtonBase.Click" SourceName="SpecialAbilitesButton">
+    				<BeginStoryboard Storyboard="{StaticResource OnClick1}"/>
+    			</EventTrigger>
+    			<EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="SpecialabilitiesText">
+    				<BeginStoryboard Storyboard="{StaticResource OnClick1}"/>
+    			</EventTrigger>
+    			<EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="SpecialAbilitiesRect">
+    				<BeginStoryboard Storyboard="{StaticResource OnClick1}"/>
+    			</EventTrigger>
+    		</DataTemplate.Triggers>
+    	</DataTemplate>
+    	<SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94"/>
+    	<Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
+    		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+    		<Setter Property="Padding" Value="4,4,4,4"/>
+    		<Setter Property="BorderThickness" Value="1"/>
+    		<Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+    		<Setter Property="Background" Value="#F9F9F9"/>
+    		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+    		<Setter Property="VerticalContentAlignment" Value="Center"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type TabControl}">
+    					<Grid ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition x:Name="ColumnDefinition0"/>
+    							<ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
+    						</Grid.ColumnDefinitions>
+    						<Grid.RowDefinitions>
+    							<RowDefinition x:Name="RowDefinition0" Height="Auto"/>
+    							<RowDefinition x:Name="RowDefinition1" Height="*"/>
+    						</Grid.RowDefinitions>
+    						<TabPanel x:Name="HeaderPanel" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
+    						<Border x:Name="ContentPanel" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local" CornerRadius="6">
+    							<ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+    						</Border>
+    					</Grid>
+    					<ControlTemplate.Triggers>
+    						<Trigger Property="TabStripPlacement" Value="Bottom">
+    							<Setter Property="Grid.Row" TargetName="HeaderPanel" Value="1"/>
+    							<Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+    							<Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+    							<Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
+    							<Setter Property="Margin" TargetName="HeaderPanel" Value="2,0,2,2"/>
+    						</Trigger>
+    						<Trigger Property="TabStripPlacement" Value="Left">
+    							<Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+    							<Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+    							<Setter Property="Grid.Column" TargetName="HeaderPanel" Value="0"/>
+    							<Setter Property="Grid.Column" TargetName="ContentPanel" Value="1"/>
+    							<Setter Property="Width" TargetName="ColumnDefinition0" Value="Auto"/>
+    							<Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
+    							<Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+    							<Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+    							<Setter Property="Margin" TargetName="HeaderPanel" Value="2,2,0,2"/>
+    						</Trigger>
+    						<Trigger Property="TabStripPlacement" Value="Right">
+    							<Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+    							<Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+    							<Setter Property="Grid.Column" TargetName="HeaderPanel" Value="1"/>
+    							<Setter Property="Grid.Column" TargetName="ContentPanel" Value="0"/>
+    							<Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
+    							<Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
+    							<Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+    							<Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+    							<Setter Property="Margin" TargetName="HeaderPanel" Value="0,2,2,2"/>
+    						</Trigger>
+    						<Trigger Property="IsEnabled" Value="false">
+    							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+    						</Trigger>
+    					</ControlTemplate.Triggers>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<SolidColorBrush x:Key="ListBorder" Color="#828790"/>
+    	<Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
+    		<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+    		<Setter Property="BorderBrush" Value="{StaticResource ListBorder}"/>
+    		<Setter Property="BorderThickness" Value="1"/>
+    		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+    		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+    		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+    		<Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+    		<Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+    		<Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+    		<Setter Property="VerticalContentAlignment" Value="Center"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type ListBox}">
+    					<Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="6" SnapsToDevicePixels="true" CornerRadius="6">
+    						<ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+    							<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+    						</ScrollViewer>
+    					</Border>
+    					<ControlTemplate.Triggers>
+    						<Trigger Property="IsEnabled" Value="false">
+    							<Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+    						</Trigger>
+    						<Trigger Property="IsGrouping" Value="true">
+    							<Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+    						</Trigger>
+    					</ControlTemplate.Triggers>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<Style x:Key="TabItemFocusVisual">
+    		<Setter Property="Control.Template">
+    			<Setter.Value>
+    				<ControlTemplate>
+    					<Rectangle Margin="3,3,3,1" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+    		<GradientStop Color="#F3F3F3" Offset="0"/>
+    		<GradientStop Color="#EBEBEB" Offset="0.5"/>
+    		<GradientStop Color="#DDDDDD" Offset="0.5"/>
+    		<GradientStop Color="#CDCDCD" Offset="1"/>
+    	</LinearGradientBrush>
+    	<LinearGradientBrush x:Key="TabItemHotBackground" EndPoint="0,1" StartPoint="0,0">
+    		<GradientStop Color="#EAF6FD" Offset="0.15"/>
+    		<GradientStop Color="#D9F0FC" Offset=".5"/>
+    		<GradientStop Color="#BEE6FD" Offset=".5"/>
+    		<GradientStop Color="#A7D9F5" Offset="1"/>
+    	</LinearGradientBrush>
+    	<SolidColorBrush x:Key="TabItemSelectedBackground" Color="#F9F9F9"/>
+    	<SolidColorBrush x:Key="TabItemHotBorderBrush" Color="#3C7FB1"/>
+    	<SolidColorBrush x:Key="TabItemDisabledBackground" Color="#F4F4F4"/>
+    	<SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="#FFC9C7BA"/>
+    	<Style x:Key="TabItemStyle1" TargetType="{x:Type TabItem}">
+    		<Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}"/>
+    		<Setter Property="Foreground" Value="White"/>
+    		<Setter Property="Padding" Value="6,1,6,1"/>
+    		<Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+    		<Setter Property="Background" Value="{DynamicResource ButtonNormalBackground}"/>
+    		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    		<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type TabItem}">
+    					<Grid x:Name="grid" SnapsToDevicePixels="true" ClipToBounds="False">
+    						<Border x:Name="Bd" BorderThickness="1,1,1,0" Padding="{TemplateBinding Padding}" CornerRadius="6" Margin="0,1,2,0" BorderBrush="{x:Null}">
+    							<Border.Background>
+    								<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+    							</Border.Background>
+    							<ContentPresenter x:Name="Content" ContentSource="Header" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="0,0,0,-1"/>
+    						</Border>
+    					</Grid>
+    					<ControlTemplate.Triggers>
+    						<Trigger Property="IsMouseOver" Value="true">
+    							<Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemHotBackground}"/>
+    						</Trigger>
+    						<Trigger Property="IsSelected" Value="true">
+    							<Setter Property="Panel.ZIndex" Value="1"/>
+    							<Setter Property="Background" TargetName="Bd">
+    								<Setter.Value>
+    									<SolidColorBrush Color="{DynamicResource SecondaryColorBDark}"/>
+    								</Setter.Value>
+    							</Setter>
+    							<Setter Property="Margin" TargetName="Content" Value="0,0,0,7"/>
+    							<Setter Property="Margin" TargetName="Bd" Value="0,0,0,-6.666"/>
+    						</Trigger>
+    						<MultiTrigger>
+    							<MultiTrigger.Conditions>
+    								<Condition Property="IsSelected" Value="false"/>
+    								<Condition Property="IsMouseOver" Value="true"/>
+    							</MultiTrigger.Conditions>
+    							<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemHotBorderBrush}"/>
+    						</MultiTrigger>
+    						<Trigger Property="TabStripPlacement" Value="Bottom">
+    							<Setter Property="BorderThickness" TargetName="Bd" Value="1,0,1,1"/>
+    						</Trigger>
+    						<Trigger Property="TabStripPlacement" Value="Left">
+    							<Setter Property="BorderThickness" TargetName="Bd" Value="1,1,0,1"/>
+    						</Trigger>
+    						<Trigger Property="TabStripPlacement" Value="Right">
+    							<Setter Property="BorderThickness" TargetName="Bd" Value="0,1,1,1"/>
+    						</Trigger>
+    						<MultiTrigger>
+    							<MultiTrigger.Conditions>
+    								<Condition Property="IsSelected" Value="true"/>
+    								<Condition Property="TabStripPlacement" Value="Top"/>
+    							</MultiTrigger.Conditions>
+    							<Setter Property="Margin" Value="-2,-2,-2,-1"/>
+    							<Setter Property="Margin" TargetName="Content" Value="0,0,0,1"/>
+    						</MultiTrigger>
+    						<MultiTrigger>
+    							<MultiTrigger.Conditions>
+    								<Condition Property="IsSelected" Value="true"/>
+    								<Condition Property="TabStripPlacement" Value="Bottom"/>
+    							</MultiTrigger.Conditions>
+    							<Setter Property="Margin" Value="-2,-1,-2,-2"/>
+    							<Setter Property="Margin" TargetName="Content" Value="0,1,0,0"/>
+    						</MultiTrigger>
+    						<MultiTrigger>
+    							<MultiTrigger.Conditions>
+    								<Condition Property="IsSelected" Value="true"/>
+    								<Condition Property="TabStripPlacement" Value="Left"/>
+    							</MultiTrigger.Conditions>
+    							<Setter Property="Margin" Value="-2,-2,-1,-2"/>
+    							<Setter Property="Margin" TargetName="Content" Value="0,0,1,0"/>
+    						</MultiTrigger>
+    						<MultiTrigger>
+    							<MultiTrigger.Conditions>
+    								<Condition Property="IsSelected" Value="true"/>
+    								<Condition Property="TabStripPlacement" Value="Right"/>
+    							</MultiTrigger.Conditions>
+    							<Setter Property="Margin" Value="-1,-2,-2,-2"/>
+    							<Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
+    						</MultiTrigger>
+    						<Trigger Property="IsEnabled" Value="false">
+    							<Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemDisabledBackground}"/>
+    							<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemDisabledBorderBrush}"/>
+    							<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+    						</Trigger>
+    					</ControlTemplate.Triggers>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+
+
+    </Window.Resources>
+	<Window.Background>
+		<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+	</Window.Background>
+    <Grid>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="270.928"/>
+    		<ColumnDefinition Width="255.072"/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="28.002"/>
+    		<RowDefinition Height="223.4"/>
+    		<RowDefinition Height="34.667"/>
+    		<RowDefinition/>
+    		<RowDefinition Height="36.6666666666666"/>
+    	</Grid.RowDefinitions>
+    	<Button Content="OK" IsDefault="True" Grid.Row="4" d:LayoutOverrides="Height" Grid.Column="2" HorizontalAlignment="Right" Width="75" Margin="0,8,8,6.706" Name="OKButton" Click="OKButton_Click" />
+    	<Button Content="Cancel" HorizontalAlignment="Right" Width="75" Margin="0,8.001,87,6.706" IsCancel="True" Grid.Row="4" d:LayoutOverrides="Height" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <ListBox ItemsSource="{Binding}" x:Name="RangedList" Margin="4,0,0,0" Grid.Row="1" Grid.Column="1" ItemTemplate="{DynamicResource RangedItemTemplate}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" Style="{DynamicResource ListBoxStyle1}" BorderBrush="{x:Null}">
+        	<ListBox.Background>
+        		<SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
+        	</ListBox.Background>
+        </ListBox>
+        <ListBox ItemsSource="{Binding}" x:Name="NaturalList" Margin="4,0,8,0" d:LayoutOverrides="VerticalAlignment" Grid.Row="1" Grid.Column="2" ItemTemplate="{DynamicResource DataTemplate3}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" Style="{DynamicResource ListBoxStyle1}" BorderBrush="{x:Null}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        	<ListBox.Background>
+        		<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+        	</ListBox.Background>
+
+        </ListBox>
+        <TabControl x:Name="MeleeTabControl" Margin="8,0,2,0" Grid.Row="1" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate1}" ContentTemplate="{DynamicResource DataTemplate2}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Style="{DynamicResource TabControlStyle1}" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource TabItemStyle1}">
+        	<TabControl.Background>
+        		<SolidColorBrush Color="{DynamicResource SecondaryColorBDark}"/>
+        	</TabControl.Background>
+        </TabControl>
+        <Button x:Name="AddSetButton" Content="Add Set" HorizontalAlignment="Left" Margin="8,8,0,0" Grid.Row="2" VerticalAlignment="Top" Click="AddSetButton_Click" Padding="2,1"/>
+        <Border x:Name="HandsBorder" BorderThickness="1" HorizontalAlignment="Right" Margin="0,8,2,0" Grid.Row="2" Width="111" CornerRadius="6" VerticalAlignment="Top" Height="21.96">
+        	<Border.Background>
+        		<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+        	</Border.Background>
+            <StackPanel Orientation="Horizontal">
+        	   <TextBlock TextWrapping="Wrap" Text="Hands: " VerticalAlignment="Center" Margin="3,0,0,0" FontWeight="Bold" Foreground="White" />
+                <TextBlock TextWrapping="Wrap" Text="{Binding Attacks.Hands}" VerticalAlignment="Center" Margin="0,0,3,0" Foreground="White" />
+                <TextBlock TextWrapping="Wrap" Text="+ Shield" Visibility="{Binding Monster.Shield, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}"  VerticalAlignment="Center" Margin="0,0,3,0" Foreground="White" />
+            </StackPanel>
+        </Border>
+        <Border BorderThickness="1" Margin="8,1.707,2,0" Grid.Row="3" CornerRadius="6" Padding="3">
+        	<Border.Background>
+        		<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+        	</Border.Background>
+        	<Grid>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Melee" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+        		<TextBlock x:Name="MeleeTextBlock" TextWrapping="Wrap" Margin="0,15.96,0,0" Foreground="White"/>
+			</Grid>
+        </Border>
+        <Button x:Name="RemoveSetButton" Content="Remove Set" Margin="61.877,7.996,0,4.706" Grid.Row="2" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="71" Padding="2,1" Click="RemoveSetButton_Click"/>
+        <Border BorderThickness="1" Margin="4,1.707,0,0" Grid.Row="3" CornerRadius="6" Padding="3" Grid.Column="1">
+        	<Border.Background>
+        		<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+        	</Border.Background>
+        	<Grid>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ranged" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+        		<TextBlock x:Name="RangedTextBlock" TextWrapping="Wrap" Margin="0,15.96,0,0" Foreground="White"/>
+        	</Grid>
+        </Border>
+        <Button x:Name="AddRangedWeaponButton" Content="Add Weapon" Grid.Column="1" HorizontalAlignment="Left" Margin="4,8,0,4.703" Grid.Row="2" Width="75" Click="AddRangedWeaponButton_Click"/>
+        <Border HorizontalAlignment="Left" Margin="8,2.006,0,3.999" CornerRadius="6" >
+			<Border.Background>
+				<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+			</Border.Background>
+        	<TextBlock TextWrapping="Wrap" Text="Melee Weapons" Margin="4,2" Foreground="White" >
+        		<TextBlock.Effect>
+        			<DropShadowEffect/>
+        		</TextBlock.Effect>
+        	</TextBlock>
+		</Border>
+		<Border HorizontalAlignment="Left" Margin="4,2.005,0,4" CornerRadius="6" Grid.Column="1" >
+			<Border.Background>
+				<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+			</Border.Background>
+			<TextBlock TextWrapping="Wrap" Text="Ranged Weapons" Margin="4,2" Foreground="White" >
+				<TextBlock.Effect>
+					<DropShadowEffect/>
+				</TextBlock.Effect>
+			</TextBlock>
+		</Border>
+		<Border Margin="4,2.006,0,3.999" CornerRadius="6" Grid.Column="2" HorizontalAlignment="Left" >
+			<Border.Background>
+				<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+			</Border.Background>
+			<TextBlock TextWrapping="Wrap" Text="Natural Weapons" Margin="4,2" Foreground="White" >
+				<TextBlock.Effect>
+					<DropShadowEffect/>
+				</TextBlock.Effect>
+			</TextBlock>
+		</Border>
+		<Button x:Name="AddNaturalAttackButton" Content="Add Natural Attack" Grid.Column="2" HorizontalAlignment="Left" Margin="4,8,0,4.703" Grid.Row="2" Click="AddNaturalAttackButton_Click"/>
+    </Grid>
+</Window>

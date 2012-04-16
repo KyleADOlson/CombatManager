@@ -1,0 +1,47 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="CombatManager.FeatChangeControl"
+	x:Name="UserControl">
+	<UserControl.Resources>
+		<DataTemplate x:Key="DataTemplate2">
+			<Grid d:DesignWidth="180">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="120"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="20"/>
+				</Grid.ColumnDefinitions>				
+				<TextBlock TextWrapping="NoWrap" Text="{Binding Name}" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.ColumnSpan="1" TextTrimming="CharacterEllipsis"/>
+				<TextBox  Text="{Binding Choice, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Column="1" Margin="2,2,0,2" TextChanged="TextBox_TextChanged"/>
+				<Button x:Name="DeleteButton" RenderTransformOrigin="0.222,-0.601" Grid.Column="2" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Center" Click="DeleteButton_Click" Style="{DynamicResource ButtonSecondaryStyle}">
+					<Button.ToolTip>Delete</Button.ToolTip>
+					<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+				</Button>
+			</Grid>
+		</DataTemplate>
+		<DataTemplate x:Key="DataTemplate1">
+			<Grid d:DesignWidth="121">
+				<TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="{Binding Name}" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+			</Grid>
+		</DataTemplate>
+	</UserControl.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="24"/>
+			<RowDefinition MinHeight="60"/>
+		</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.55*"/>
+				<ColumnDefinition Width="0.45*"/>
+			</Grid.ColumnDefinitions>
+			<ListBox x:Name="CurrentFeatsBox" Margin="0,0,8,25.96" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" HorizontalContentAlignment="Stretch" SelectionChanged="CurrentFeatsBox_SelectionChanged" Grid.RowSpan="2" />
+			<ListBox x:Name="SelectFeatBox" Margin="8,1.96,0,25.96" Grid.Column="1" ItemsSource="{Binding}" MouseDoubleClick="SelectFeatBox_MouseDoubleClick" ItemTemplate="{DynamicResource DataTemplate1}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Width="280" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" />
+			<TextBox x:Name="FeatFilterTextBox" Grid.Column="1" Margin="8,0,0,2.04" TextWrapping="Wrap" TextChanged="FeatFilterTextBox_TextChanged" d:LayoutOverrides="Height" />
+			<Button x:Name="AddButton" Content="Add" Grid.Column="1" HorizontalAlignment="Right" Width="75" Click="AddButton_Click" Grid.Row="1" VerticalAlignment="Bottom"/>
+
+	</Grid>
+</UserControl>

@@ -1,0 +1,16 @@
+﻿<Popup
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="CombatManager.NotesPopup"
+	x:Name="PopupBase" AllowsTransparency="True" StaysOpen="False">
+
+        <Border Padding="6" CornerRadius="6" BorderThickness="1" BorderBrush="#FFFFFFFF" Background="{DynamicResource PrimaryColorGradientBrush}">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,3">
+                    <Image Source="Images\NoteHS.png" Width="16" Height="16"/>
+                    <TextBlock Text="Notes" FontWeight="Bold" Foreground="White" Margin="3,0,0,0"/>
+                </StackPanel>
+                <TextBox Text="{Binding Notes}" Width="250" Height="120" AcceptsReturn="True" AcceptsTab="True"/>
+            </StackPanel>
+        </Border>
+</Popup>

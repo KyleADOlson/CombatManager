@@ -1,0 +1,55 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CombatManager.HPChangeDialog"
+        Title="Damage/Heal" Height="322.667" Width="302.667" ResizeMode="NoResize" Icon="Images/d20-32.ico">
+	<Window.Resources>
+		<DataTemplate x:Key="DataTemplate1">
+			<Grid d:DesignWidth="140">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="60"/>
+					<ColumnDefinition Width="0.883*"/>
+					<ColumnDefinition Width="Auto" MinWidth="47.178"/>
+				</Grid.ColumnDefinitions>
+				<CheckBox Content="{Binding Character.Name}" IsChecked="{Binding Selected}" Margin="4.335,3.833,6.33,4.166" d:LayoutOverrides="Width, Height" HorizontalAlignment="Stretch" Grid.Column="1"/>
+				<CheckBox IsChecked="{Binding Half}" Content="Half" Grid.Column="2" HorizontalAlignment="Left" Margin="3,3.833,0,6.167" d:LayoutOverrides="Height"/>
+				<TextBlock Margin="0,3.833,7.639,4.167" TextWrapping="Wrap" Text="{Binding HPText}" d:LayoutOverrides="Width, Height"/>
+			</Grid>
+		</DataTemplate>
+	</Window.Resources>
+	<Window.Background>
+		<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+	</Window.Background>
+    <Grid>
+    	<Button Content="Close" HorizontalAlignment="Right" Margin="0,0,14.667,4" VerticalAlignment="Bottom" Width="75" IsCancel="True" FontFamily="/CombatManager;component/Fonts/#Segoe UI" Click="Button_Click"/>
+    	<Border BorderThickness="1" Margin="8,8,8,29.96" CornerRadius="6">
+    		<Border.Background>
+    			<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+    		</Border.Background>
+    		<Grid Margin="0">
+    			<Grid.RowDefinitions>
+    				<RowDefinition/>
+    				<RowDefinition Height="58.328"/>
+    			</Grid.RowDefinitions>
+    			<ListBox x:Name="CharacterList" Margin="8,33.96,8,-28.915" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate1}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                <Button x:Name="DamageButton" Margin="0,0,89.5,3.413" VerticalAlignment="Bottom" Width="75" Click="DamageButton_Click" HorizontalAlignment="Right" d:LayoutOverrides="Width" Grid.Row="1" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/CombatManager;component/Images/lightning-16.png" Width="16" Height="16"/>
+                        <TextBlock Text="Damage"/>
+                    </StackPanel>
+                </Button>
+                    <Button x:Name="HealButton" Margin="0,0,6,3.413" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="HealButton_Click" Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/CombatManager;component/Images/stable-16.png" Width="16" Height="16"/>
+                        <TextBlock Text="Heal"/>
+                    </StackPanel>
+                </Button>
+                <TextBlock Height="15" HorizontalAlignment="Left" Margin="15,0,0,7.413" Name="textBlock1" Text="HP" VerticalAlignment="Bottom" Foreground="White" Width="19" RenderTransformOrigin="0.565,1.197" FontWeight="Bold" Grid.Row="1" />
+                <Button x:Name="SelectAllButton" Content="Select All" HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Width="75" Click="SelectAllButton_Click"/>
+                <Button x:Name="UnselectAllButton" Content="Unselect All" Margin="87,8,116.667,0" VerticalAlignment="Top" Click="UnselectAllButton_Click"/>
+            </Grid>
+    	</Border>
+    	<TextBox HorizontalAlignment="Left" Margin="54,0,0,34.373" TextWrapping="Wrap" Text="{Binding HPChange}" VerticalAlignment="Bottom" Width="48" Name="HPChangeBox" FontWeight="Bold" />
+        
+    </Grid>
+</Window>

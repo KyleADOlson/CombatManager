@@ -1,0 +1,74 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:CombatManager"
+	xmlns:s="clr-namespace:System;assembly=mscorlib"
+	mc:Ignorable="d"
+	x:Class="CombatManager.CustomCombatList"
+	x:Name="UserControl"
+	d:DesignWidth="412" d:DesignHeight="480">
+	<UserControl.Resources>
+        <local:CustomCombatListCharacterConverter x:Key="CustomCombatListCharacterConverter"/>
+		<DataTemplate x:Key="CustomCombatListItem">
+			<Grid x:Name="CombatListItemGrid" d:DesignWidth="74"  DataContextChanged="CombatListItemGrid_DataContextChanged" Initialized="CombatListItemGrid_Initialized">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="25"/>
+					<ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                	<RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="textBlock" Grid.Column="1" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,3" Foreground="{Binding HP, Converter={StaticResource hpToBrushConverter}}">
+                           
+                    <TextBlock.Text>
+                      <MultiBinding Converter="{StaticResource CustomCombatListCharacterConverter}">
+                        <Binding />
+                        <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type local:CustomCombatList}}" />
+                      </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <Ellipse Stroke="White" StrokeThickness="1" Width="16" Height="16" Visibility="{Binding IsActive, Converter={StaticResource boolToVisibilityConverter}}" HorizontalAlignment="Left" Margin="2.5,2.96,0,5" d:LayoutOverrides="Width">
+                	<Ellipse.Effect>
+                		<DropShadowEffect ShadowDepth="3" BlurRadius="3"/>
+                	</Ellipse.Effect>
+                	<Ellipse.Fill>
+                		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                			<GradientStop Color="#FF3CA63E" Offset="0.558"/>
+                			<GradientStop Color="#FFD1EDD0" Offset="0"/>
+                		</LinearGradientBrush>
+
+                	</Ellipse.Fill>
+                </Ellipse>
+                <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" Margin="4,0,0,0">
+                <Image Source="images/hourglass-16.png"  Visibility="{Binding IsDelaying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Grid.Column="0" HorizontalAlignment="Right" Width="16"/>
+                <Image Source="images/target-16.png"  Visibility="{Binding IsReadying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Grid.Column="1"/>
+                </StackPanel>
+                <ListBox x:Name="FollowerListBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding}" Visibility="{Binding Count, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}"  Background="{x:Null}" BorderBrush="{x:Null}" IsHitTestVisible="False" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" ItemTemplate="{DynamicResource FollowerTemplate}" >
+
+                	
+                </ListBox>
+            </Grid>
+			<DataTemplate.Triggers>
+				<DataTrigger Binding="{Binding IsActive}">
+					<DataTrigger.Value>
+						<s:Boolean>True</s:Boolean>
+					</DataTrigger.Value>
+					<Setter Property="FontWeight" TargetName="textBlock" Value="Bold"/>
+				</DataTrigger>
+			</DataTemplate.Triggers>
+		</DataTemplate>
+		<DataTemplate x:Key="FollowerTemplate">
+			<Grid>
+				<TextBlock TextWrapping="Wrap" Text="{Binding Name}" Foreground="{Binding HP, Converter={StaticResource hpToBrushConverter}}" d:LayoutOverrides="Width, Height"/>
+			</Grid>
+		</DataTemplate>
+	</UserControl.Resources>
+
+	<Grid x:Name="LayoutRoot" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True">
+		<ListBox x:Name="CombatListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CustomCombatListItem}" HorizontalContentAlignment="Stretch"/>
+	</Grid>
+</UserControl>

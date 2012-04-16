@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ArrayOfArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Blowgun</Name>
+<Cost>302 gp</Cost>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Darts, blowgun (10)</Name>
+<Cost>6 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Club</Name>
+<Cost>300 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Crossbow, heavy</Name>
+<Cost>350 gp</Cost>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Crossbow, light</Name>
+<Cost>335 gp</Cost>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Bolts, crossbow (10)</Name>
+<Cost>61 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Dagger</Name>
+<Cost>302 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Dagger, punching</Name>
+<Cost>302 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Dart</Name>
+<Cost>300 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Gauntlet</Name>
+<Cost>302 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Gauntlet, spiked</Name>
+<Cost>305 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Javelin</Name>
+<Cost>301 gp</Cost>
+<Materials>Metals, wood</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Longspear</Name>
+<Cost>305 gp</Cost>
+<Materials>Metals, wood</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Mace, heavy</Name>
+<Cost>312 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Mace, light</Name>
+<Cost>305 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Morningstar</Name>
+<Cost>308 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Quarterstaff</Name>
+<Cost>600 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Shortspear</Name>
+<Cost>301 gp</Cost>
+<Materials>Metals, wood</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Sickle</Name>
+<Cost>306 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Sling</Name>
+<Cost>300 gp</Cost>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Bullets, sling (10)</Name>
+<Cost>60 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Spear</Name>
+<Cost>302 gp</Cost>
+<Materials>Metals, wood</Materials>
+<Type>Simple</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Axe, throwing</Name>
+<Cost>308 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Battleaxe</Name>
+<Cost>310 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Falchion</Name>
+<Cost>375 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Flail</Name>
+<Cost>308 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Flail, heavy</Name>
+<Cost>315 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Glaive</Name>
+<Cost>308 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Greataxe</Name>
+<Cost>320 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Greatclub</Name>
+<Cost>305 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Greatsword</Name>
+<Cost>350 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Guisarme</Name>
+<Cost>309 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Halberd</Name>
+<Cost>310 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Hammer, light</Name>
+<Cost>301 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Handaxe</Name>
+<Cost>306 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Kukri</Name>
+<Cost>308 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Lance</Name>
+<Cost>310 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>4</Weight>
+<Name>Longbow</Name>
+<Cost>375 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>4</Weight>
+<Name>Longbow, composite</Name>
+<Cost>400 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Arrows (20)</Name>
+<Cost>121 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Longsword</Name>
+<Cost>315 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Pick, heavy</Name>
+<Cost>308 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Pick, light</Name>
+<Cost>304 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Ranseur</Name>
+<Cost>310 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Rapier</Name>
+<Cost>320 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Sap</Name>
+<Cost>301 gp</Cost>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Scimitar</Name>
+<Cost>315 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Scythe</Name>
+<Cost>318 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>9</Weight>
+<Name>Shortbow</Name>
+<Cost>330 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>4</Weight>
+<Name>Shortbow, composite</Name>
+<Cost>375 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>2</Weight>
+<Name>Starknife</Name>
+<Cost>324 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Sword, short</Name>
+<Cost>310 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Trident</Name>
+<Cost>315 gp</Cost>
+<Materials>Metals, wood</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Warhammer</Name>
+<Cost>312 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Martial</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Axe, orc double</Name>
+<Cost>660 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Bolas</Name>
+<Cost>305 gp</Cost>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Chain, spiked</Name>
+<Cost>325 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Crossbow, hand</Name>
+<Cost>400 gp</Cost>
+
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Bolts, hand crossbow (10)</Name>
+<Cost>61 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Crossbow, repeating heavy</Name>
+<Cost>700 gp</Cost>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Crossbow, repeating light</Name>
+<Cost>550 gp</Cost>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Bolts, repeating crossbow (5)</Name>
+<Cost>31 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Curve blade, elven</Name>
+<Cost>380 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Flail, dire</Name>
+<Cost>690 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Hammer, gnome hooked</Name>
+<Cost>620 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Kama</Name>
+<Cost>302 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Net</Name>
+<Cost>320 gp</Cost>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Nunchaku</Name>
+<Cost>302 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Sai</Name>
+<Cost>301 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Shuriken (5)</Name>
+<Cost>31 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>4</Weight>
+<Name>Siangham</Name>
+<Cost>303 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Sling staff, halfling</Name>
+<Cost>320 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Bullets, sling (10)</Name>
+<Cost>60 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>4</Weight>
+<Name>Sword, bastard</Name>
+<Cost>335 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>4</Weight>
+<Name>Sword, two-bladed</Name>
+<Cost>700 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Urgrosh, dwarven</Name>
+<Cost>650 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>Waraxe, dwarven</Name>
+<Cost>330 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>4</Weight>
+<Name>Whip</Name>
+<Cost>301 gp</Cost>
+<Type>Exotic</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>Padded armor</Name>
+<Cost>155 gp</Cost>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Leather armor</Name>
+<Cost>160 gp</Cost>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>9</Weight>
+<Name>Studded leather armor</Name>
+<Cost>175 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Chain shirt</Name>
+<Cost>250 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Hide armor</Name>
+<Cost>165 gp</Cost>
+<Materials>Dragonhide</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Scale mail</Name>
+<Cost>200 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Chainmail</Name>
+<Cost>300 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Breastplate</Name>
+<Cost>350 gp</Cost>
+<Materials>Dragonhide, metals</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Splint mail</Name>
+<Cost>350 gp</Cost>
+<Materials>Metals</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Banded mail</Name>
+<Cost>400 gp</Cost>
+<Materials>Dragonhide, metals</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Half-plate</Name>
+<Cost>750 gp</Cost>
+<Materials>Dragonhide, metals</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>8</Weight>
+<Name>Full plate</Name>
+<Cost>1,650 gp</Cost>
+<Materials>Dragonhide, metals</Materials>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>with armor spikes</Name>
+<Cost>50 gp</Cost>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>3</Weight>
+<Name>with locked gauntlet</Name>
+<Cost>8 gp</Cost>
+<Type>Armor</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>16</Weight>
+<Name>Buckler  </Name>
+<Cost>165 gp</Cost>
+<Materials>Wood, steel</Materials>
+<Type>Shield</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>16</Weight>
+<Name>Shield, light wooden  </Name>
+<Cost>153 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Shield</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>16</Weight>
+<Name>Shield, light steel  </Name>
+<Cost>159 gp</Cost>
+<Materials>Steel</Materials>
+<Type>Shield</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>16</Weight>
+<Name>Shield, heavy wooden  </Name>
+<Cost>157 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Shield</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>16</Weight>
+<Name>Shield, heavy steel  </Name>
+<Cost>170 gp</Cost>
+<Materials>Steel</Materials>
+<Type>Shield</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>15</Weight>
+<Name>Shield, tower  </Name>
+<Cost>180 gp</Cost>
+<Materials>Wood</Materials>
+<Type>Shield</Type>
+</ArmorWeaponChart>
+<ArmorWeaponChart>
+<Weight>5</Weight>
+<Name>with shield spikes </Name>
+<Cost>10 gp</Cost>
+<Type>Shield</Type>
+</ArmorWeaponChart>
+</ArrayOfArmorWeaponChart>

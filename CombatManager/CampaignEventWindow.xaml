@@ -1,0 +1,37 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="CombatManager.CampaignEventWindow"
+	x:Name="Window"
+	Title="CampaignEventWindow"
+	Width="602" Height="480" ResizeMode="NoResize">
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.13*"/>
+			<RowDefinition Height="0.126*"/>
+			<RowDefinition Height="0.657*"/>
+			<RowDefinition Height="0.087*"/>
+		</Grid.RowDefinitions>
+		<Grid.Background>
+			<SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
+		</Grid.Background>
+		<TextBlock HorizontalAlignment="Left" Margin="9.093,8,0,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top"/>
+		<TextBox Margin="9.093,27.96,11.447,0" TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Top"/>
+		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Details" VerticalAlignment="Top" Margin="9.093,0,0,0" Grid.Row="2" RenderTransformOrigin="0.445,3.338" d:LayoutOverrides="GridBox"/>
+		<TextBox Margin="5.646,19.96,11.447,0" TextWrapping="Wrap" Text="{Binding Details}" AcceptsTab="True" AcceptsReturn="True" Grid.Row="2" d:LayoutOverrides="GridBox"/>
+		<Button Content="Cancel" HorizontalAlignment="Right" Margin="0,7.5,8,9.04" Width="75" IsCancel="True" Grid.Row="3" d:LayoutOverrides="Height, GridBox"/>
+		<Button Content="OK" HorizontalAlignment="Right" Margin="0,7.5,87,9.04" Width="75" IsDefault="True" Grid.Row="3" Click="Button_Click" d:LayoutOverrides="Height, GridBox"/>
+		<TextBlock Margin="9.093,5.521,0,0" TextWrapping="Wrap" Text="Start" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1"/>
+		<DatePicker x:Name="StartDatePicker" Margin="9.093,25.289,0,0" SelectedDateFormat="Short" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" SelectedDateChanged="StartDatePicker_SelectedDateChanged" Width="126.64"/>
+		<ComboBox x:Name="StartHourCombo" HorizontalAlignment="Left" Margin="139.733,25.289,0,0" Width="40" SelectionChanged="StartCombo_SelectionChanged" Grid.Row="1" VerticalAlignment="Top" />
+		<ComboBox x:Name="StartMinuteCombo" HorizontalAlignment="Left" Margin="183.733,25.289,0,0" Width="40" SelectionChanged="StartCombo_SelectionChanged" Grid.Row="1" VerticalAlignment="Top" />
+		<ComboBox x:Name="StartAMPMCombo" HorizontalAlignment="Left" Margin="227.733,25.289,0,0" Width="46" SelectionChanged="StartCombo_SelectionChanged" Grid.Row="1" VerticalAlignment="Top" />
+		<TextBlock Margin="287.36,5.521,0,0" TextWrapping="Wrap" Text="End" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left"/>
+		<DatePicker x:Name="EndDatePicker" Margin="287.36,25.289,0,0" SelectedDateFormat="Short" Grid.Row="1" VerticalAlignment="Top" SelectedDateChanged="EndDatePicker_SelectedDateChanged" HorizontalAlignment="Left" Width="126.64"/>
+		<ComboBox x:Name="EndHourCombo" HorizontalAlignment="Left" Margin="425,25.289,0,0" Width="40" SelectionChanged="StartCombo_SelectionChanged" Grid.Row="1" VerticalAlignment="Top" />
+		<ComboBox x:Name="EndMinuteCombo" HorizontalAlignment="Left" Margin="469,25.289,0,0" Width="40" SelectionChanged="StartCombo_SelectionChanged" Grid.Row="1" VerticalAlignment="Top" />
+		<ComboBox x:Name="EndAMPMCombo" Margin="513,25.289,0,0" SelectionChanged="StartCombo_SelectionChanged" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="46" />
+	</Grid>
+</Window>

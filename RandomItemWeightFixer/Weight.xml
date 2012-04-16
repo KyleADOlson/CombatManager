@@ -1,0 +1,8242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ArrayOfWeightValue>
+<WeightValue>
+<Weight>14</Weight>
+<Name>arcane mark</Name>
+<Price>25 gp</Price>
+<Level>0</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>14</Weight>
+<Name>guidance</Name>
+<Price>25 gp</Price>
+<Level>0</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>16</Weight>
+<Name>light</Name>
+<Price>25 gp</Price>
+<Level>0</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>14</Weight>
+<Name>purify food and drink</Name>
+<Price>25 gp</Price>
+<Level>0</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>14</Weight>
+<Name>resistance</Name>
+<Price>25 gp</Price>
+<Level>0</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>14</Weight>
+<Name>stabilize</Name>
+<Price>25 gp</Price>
+<Level>0</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>14</Weight>
+<Name>virtue</Name>
+<Price>25 gp</Price>
+<Level>0</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>animate rope</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>bless weapon</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>10</Weight>
+<Name>cure light wounds</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>endure elements</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>enlarge person</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>erase</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>goodberry</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>grease</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>hide from animals</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>hide from undead</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>hold portal</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>jump</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>mage armor</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>magic fang</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>magic stone</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>magic weapon</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>pass without trace</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>protection from chaos</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>protection from evil</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>protection from good</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>protection from law</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>reduce person</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>remove fear</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>sanctuary</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>shield of faith</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>shillelagh</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>aid</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>align weapon</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>arcane lock</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>barkskin</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>bear&apos;s endurance</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>blur</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>bull&apos;s strength</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>cat&apos;s grace</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>10</Weight>
+<Name>cure moderate wounds</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>darkness</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>darkvision</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>delay poison</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>eagle&apos;s splendor</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>fox&apos;s cunning</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>gentle repose</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>invisibility</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>levitate</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>make whole</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>obscure object</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>owl&apos;s wisdom</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from arrows</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>reduce animal</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>remove paralysis</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>resist energy, acid</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>resist energy, cold</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>resist energy, electricity</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>resist energy, fire</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>resist energy, sonic</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>rope trick</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>shatter</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>spider climb</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>status</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>undetectable alignment</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>warp wood</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>wood shape</Name>
+<Price>300 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>continual flame</Name>
+<Price>350 gp</Price>
+<Level>2</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>10</Weight>
+<Name>cure serious wounds</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>daylight</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>dispel magic</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>displacement</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fire trap</Name>
+<Price>775 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>flame arrow</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>fly</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>gaseous form</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>good hope</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>haste</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>heroism</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>keen edge</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>magic fang, greater</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>magic vestment</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>neutralize poison</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from energy, acid</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from energy, cold</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from energy, electricity</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from energy, fire</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from energy, sonic</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>rage</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>remove blindness/deafness</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>remove curse</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>remove disease</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shrink item</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>stone shape</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>tongues</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>water breathing</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>water walk</Name>
+<Price>750 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>nondetection</Name>
+<Price>800 gp</Price>
+<Level>3</Level>
+<Type>Potion</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>acid splash</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>arcane mark</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>bleed</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>dancing lights</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>daze</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>7</Weight>
+<Name>detect magic</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>7</Weight>
+<Name>detect poison</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>7</Weight>
+<Name>disrupt undead</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>flare</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>ghost sound</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>light</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>mage hand</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>mending</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>8</Weight>
+<Name>message</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>open/close</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>prestidigitation</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>ray of frost</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>read magic</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>resistance</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>touch of fatigue</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>alarm</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>animate rope</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>burning hands</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>cause fear</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>charm person</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>chill touch</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>color spray</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>comprehend languages</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>detect secret doors</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>detect undead</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>disguise self</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>endure elements</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>enlarge person</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>erase</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>expeditious retreat</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>floating disk</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>grease</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hold portal</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>hypnotism</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>identify</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>jump</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>mage armor</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic aura</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>magic missile</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>magic weapon</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>mount</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>obscuring mist</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from chaos</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from evil</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from good</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from law</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>ray of enfeeblement</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>reduce person</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>shield</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>shocking grasp</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>silent image</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>sleep</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon monster I</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>true strike</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>unseen servant</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>ventriloquism</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>acid arrow</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>alter self</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bear&apos;s endurance</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>blindness-deafness</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>blur</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bull&apos;s strength</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>cat&apos;s grace</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>command undead</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>darkness</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>darkvision</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>daze monster</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect thoughts</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>eagle&apos;s splendor</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>false life</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>flaming sphere</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fog cloud</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fox&apos;s cunning</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>ghoul touch</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>glitterdust</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>gust of wind</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>hideous laughter</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>hypnotic pattern</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>invisibility</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>knock</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>levitate</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>locate object</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>make whole</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>minor image</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>mirror image</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>misdirection</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>obscure object</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>owl&apos;s wisdom</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from arrows</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>pyrotechnics</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>resist energy</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>rope trick</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>scare</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>scorching ray</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>see invisibility</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shatter</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>spectral hand</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>spider climb</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon monster II</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon swarm</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>touch of idiocy</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>web</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>whispering wind</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic mouth</Name>
+<Price>160 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>arcane lock</Name>
+<Price>175 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>continual flame</Name>
+<Price>200 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>phantom trap</Name>
+<Price>200 gp</Price>
+<Level>2</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>arcane sight</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>beast shape III</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>blink</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>clairaudience/clairvoyance</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>daylight</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>deep slumber</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dispel magic</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>displacement</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>explosive runes</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>fireball</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>flame arrow</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>fly</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>gaseous form</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>gentle repose</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>halt undead</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>haste</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>heroism</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>hold person</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>invisibility sphere</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>keen edge</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>lightning bolt</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against chaos</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against evil</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against good</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against law</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic weapon, greater</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>major image</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>phantom steed</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>protection from energy</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>rage</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>ray of exhaustion</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>secret page</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shrink item</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>sleet storm</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>slow</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>stinking cloud</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>suggestion</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon monster III</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>tiny hut</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>tongues</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>vampiric touch</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>water breathing</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>wind wall</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>illusory script</Name>
+<Price>425 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>nondetection</Name>
+<Price>425 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>sepia snake sigil</Name>
+<Price>875 gp</Price>
+<Level>3</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>arcane eye</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>beast shape I</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>bestow curse</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>black tentacles</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>charm monster</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>confusion</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>contagion</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>crushing despair</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect scrying</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dimension door</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dimensional anchor</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>elemental body I</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>enervation</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>enlarge person, mass</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fear</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fire shield</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>geas, lesser</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>globe of invulnerability, lesser</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hallucinatory terrain</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>ice storm</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>illusory wall</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>invisibility, greater</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>locate creature</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>minor creation</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>phantasmal killer</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>rainbow pattern</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>reduce person, mass</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>remove curse</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>resilient sphere</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>scrying</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>secure shelter</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shadow conjuration</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shout</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>solid fog</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>stone shape</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon monster IV</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>wall of fire</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>wall of ice</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>fire trap</Name>
+<Price>725 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>mnemonic enhancer</Name>
+<Price>750 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>stoneskin</Name>
+<Price>950 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>animate dead</Name>
+<Price>1,050 gp</Price>
+<Level>4</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>animal growth</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>baleful polymorph</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>beast shape III</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>blight</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>break enchantment</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>cloudkill</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>cone of cold</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>contact other plane</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>dismissal</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>dominate person</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>dream</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>elemental body II</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>fabricate</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>feeblemind</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>hold monster</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>interposing hand</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>mage&apos;s faithful hound</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>mage&apos;s private sanctum</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>magic jar</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>major creation</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>mind fog</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>mirage arcana</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>nightmare</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>overland flight</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>passwall</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>permanency</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>persistent image</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>planar binding, lesser</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>plant shape I</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>polymorph</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>prying eyes</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>secret chest</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>seeming</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>sending</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>shadow evocation</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon monster V</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>telekinesis</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>telepathic bond</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>teleport</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>transmute mud to rock</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>transmute rock to mud</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>wall of force</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>wall of stone</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>waves of fatigue</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>false vision</Name>
+<Price>1,375 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>symbol of pain</Name>
+<Price>2,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>symbol of sleep</Name>
+<Price>2,125 gp</Price>
+<Level>5</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>acid fog</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>analyze dweomer</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>antimagic field</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bear&apos;s endurance, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>beast shape IV</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bull&apos;s strength, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>cat&apos;s grace, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>chain lightning</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>contingency</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>control water</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>disintegrate</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dispel magic, greater</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>eagle&apos;s splendor, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>elemental body III</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>eyebite</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>flesh to stone</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>forceful hand</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>form of the dragon I</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fox&apos;s cunning, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>freezing sphere</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>geas/quest</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>globe of invulnerability</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>guards and wards</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>heroism, greater</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>mage&apos;s lucubration</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>mislead</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>move earth</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>owl&apos;s wisdom, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>permanent image</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>planar binding</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>plant shape II</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>repulsion</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shadow walk</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>stone to flesh</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>suggestion, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon monster VI</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>transformation</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>veil</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>programmed image</Name>
+<Price>1,675 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>wall of iron</Name>
+<Price>1,700 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>create undead</Name>
+<Price>1,750 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>legend lore</Name>
+<Price>1,900 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>true seeing</Name>
+<Price>1,900 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>circle of death</Name>
+<Price>2,150 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>undeath to death</Name>
+<Price>2,150 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>symbol of fear</Name>
+<Price>2,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>symbol of persuasion</Name>
+<Price>6,650 gp</Price>
+<Level>6</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>arcane sight, greater</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>banishment</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>control undead</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>control weather</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>delayed blast fireball</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>elemental body IV</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>ethereal jaunt</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>finger of death</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>form of the dragon II</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>giant form I</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>grasping hand</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>hold person, mass</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>insanity</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>invisibility, mass</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>mage&apos;s magnificent mansion</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>mage&apos;s sword</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>phase door</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>plane shift</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>plant shape III</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>polymorph, greater</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>power word blind</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>prismatic spray</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>reverse gravity</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>scrying, greater</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>sequester</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>shadow conjuration, greater</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>spell turning</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>statue</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon monster VII</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>teleport object</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>teleport, greater</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>waves of exhaustion</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>project image</Name>
+<Price>2,280 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>vision</Name>
+<Price>2,525 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>forcecage</Name>
+<Price>2,775 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>instant summons</Name>
+<Price>3,275 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>limited wish</Name>
+<Price>3,775 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>symbol of stunning</Name>
+<Price>7,775 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>symbol of weakness</Name>
+<Price>7,775 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>simulacrum</Name>
+<Price>8,775 gp</Price>
+<Level>7</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>antipathy</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>charm monster, mass</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>clenched fist</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>clone</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>demand</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dimensional lock</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>discern location</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>form of the dragon III</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>giant form II</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>horrid wilting</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>incendiary cloud</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>iron body</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>irresistible dance</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>maze</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>mind blank</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>moment of prescience</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>planar binding, greater</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>polar ray</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>polymorph any object</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>power word stun</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>prismatic wall</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>prying eyes, greater</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>scintillating pattern</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>screen</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shadow evocation, greater</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shout, greater</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon monster VIII</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>sunburst</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>telekinetic sphere</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>create greater undead</Name>
+<Price>3,150 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>protection from spells</Name>
+<Price>3,500 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>sympathy</Name>
+<Price>4,500 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>symbol of death</Name>
+<Price>8,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>symbol of insanity</Name>
+<Price>8,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>temporal stasis</Name>
+<Price>8,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>binding</Name>
+<Price>13,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>trap the soul</Name>
+<Price>23,000 gp</Price>
+<Level>8</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>crushing hand</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>dominate monster</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>energy drain</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>etherealness</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>foresight</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>freedom</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>gate</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>hold monster, mass</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>imprisonment</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>mage&apos;s disjunction</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>8</Weight>
+<Name>meteor swarm</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>power word kill</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>prismatic sphere</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>shades</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>shapechange</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>soul bind</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>summon monster IX</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>time stop</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>wail of the banshee</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>weird</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>refuge</Name>
+<Price>4,325 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>astral projection</Name>
+<Price>4,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>teleportation circle</Name>
+<Price>4,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>wish</Name>
+<Price>28,825 gp</Price>
+<Level>9</Level>
+<Type>Arcane</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>bleed</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>8</Weight>
+<Name>create water</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>10</Weight>
+<Name>detect magic</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>9</Weight>
+<Name>detect poison</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>flare</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>7</Weight>
+<Name>guidance</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>know direction</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>9</Weight>
+<Name>light</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>mending</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>8</Weight>
+<Name>purify food and drink</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>10</Weight>
+<Name>read magic</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>resistance</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>8</Weight>
+<Name>stabilize</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>virtue</Name>
+<Price>12.5 gp</Price>
+<Level>0</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bane</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>bless</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>calm animals</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>cause fear</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>charm animal</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>command</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>comprehend languages</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>cure light wounds</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>deathwatch</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect animals or plants</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>detect chaos</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>detect evil</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>detect good</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>detect law</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>detect snares and pits</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>detect undead</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>divine favor</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>doom</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>endure elements</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>entangle</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>entropic shield</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>faerie fire</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>goodberry</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hide from animals</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>hide from undead</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>inflict light wounds</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>jump</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>longstrider</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>magic fang</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic stone</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>obscuring mist</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>pass without trace</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>produce flame</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from chaos</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from evil</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from good</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>protection from law</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>remove fear</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>sanctuary</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>shield of faith</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shillelagh</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>speak with animals</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon monster I</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon nature&apos;s ally I</Name>
+<Price>25 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bless water</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>curse water</Name>
+<Price>50 gp</Price>
+<Level>1</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>align weapon</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>animal messenger</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>animal trance</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>barkskin</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>bear&apos;s endurance</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>bull&apos;s strength</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>calm emotions</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>cat&apos;s grace</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>chill metal</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>cure moderate wounds</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>darkness</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>death knell</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>delay poison</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>eagle&apos;s splendor</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>enthrall</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>find traps</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>flame blade</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>flaming sphere</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fog cloud</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>gentle repose</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>gust of wind</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>heat metal</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>hold animal</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>hold person</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>inflict moderate wounds</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>make whole</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>owl&apos;s wisdom</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>reduce animal</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>remove paralysis</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>resist energy</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>restoration, lesser</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shatter</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shield other</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>silence</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>soften earth and stone</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>sound burst</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>spider climb</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>spiritual weapon</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>status</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon monster II</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon nature&apos;s ally II</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon swarm</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>tree shape</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>undetectable alignment</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>warp wood</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>wood shape</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>zone of truth</Name>
+<Price>150 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>augury</Name>
+<Price>175 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>consecrate</Name>
+<Price>175 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>desecrate</Name>
+<Price>175 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fire trap</Name>
+<Price>175 gp</Price>
+<Level>2</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bestow curse</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>blindness-deafness</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>call lightning</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>contagion</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>create food and water</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>cure serious wounds</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>daylight</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>deeper darkness</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>diminish plants</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dispel magic</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>dominate animal</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>helping hand</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>inflict serious wounds</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>invisibility purge</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>locate object</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against chaos</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against evil</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against law</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic fang, greater</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>magic vestment</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>meld into stone</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>obscure object</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>plant growth</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>poison</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>prayer</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>protection from energy</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>quench</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>remove blindness/deafness</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>remove curse</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>remove disease</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>searing light</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>sleet storm</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>snare</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>speak with dead</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>speak with plants</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>spike growth</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>stone shape</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon monster III</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon nature&apos;s ally III</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>water breathing</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>water walk</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>wind wall</Name>
+<Price>375 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>continual flame</Name>
+<Price>425 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>glyph of warding</Name>
+<Price>575 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>animate dead</Name>
+<Price>625 gp</Price>
+<Level>3</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>air walk</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>antiplant shell</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>blight</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>chaos hammer</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>command plants</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>control water</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>cure critical wounds</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>death ward</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dimensional anchor</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>discern lies</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dismissal</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>divine power</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>flame strike</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>freedom of movement</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>giant vermin</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>holy smite</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>ice storm</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>imbue with spell ability</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>inflict critical wounds</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>magic weapon, greater</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>neutralize poison</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>order&apos;s wrath</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>poison</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>reincarnate</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>repel vermin</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>rusting grasp</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>scrying</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>sending</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>spell immunity</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>spike stones</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon monster IV</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon nature&apos;s ally IV</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>tongues</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>unholy blight</Name>
+<Price>700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>divination</Name>
+<Price>725 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>planar ally, lesser</Name>
+<Price>1,225 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>restoration</Name>
+<Price>1,700 gp</Price>
+<Level>4</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>animal growth</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>atonement</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>baleful polymorph</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>break enchantment</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>breath of life</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>call lightning storm</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>command, greater</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>commune with nature</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>control winds</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>cure light wounds, mass</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>death ward</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>dispel chaos</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>dispel evil</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>dispel good</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>dispel law</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>disrupting weapon</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>inflict light wounds, mass</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>insect plague</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>mark of justice</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>plane shift</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>righteous might</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>scrying</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>slay living</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>spell resistance</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon monster V</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon nature&apos;s ally V</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>transmute mud to rock</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>transmute rock to mud</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>tree stride</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>wall of fire</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>wall of thorns</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>wall of stone</Name>
+<Price>1,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>stoneskin</Name>
+<Price>1,375 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>true seeing</Name>
+<Price>1,375 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>commune</Name>
+<Price>1,625 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>hallow</Name>
+<Price>2,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>symbol of pain</Name>
+<Price>2,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>symbol of sleep</Name>
+<Price>2,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>unhallow</Name>
+<Price>2,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>awaken</Name>
+<Price>3,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>hallow</Name>
+<Price>6,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>raise dead</Name>
+<Price>6,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>unhallow</Name>
+<Price>6,125 gp</Price>
+<Level>5</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>animate objects</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>antilife shell</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>banishment</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bear&apos;s endurance, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>blade barrier</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bull&apos;s strength, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>cat&apos;s grace, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>cure moderate wounds, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dispel magic, greater</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>eagle&apos;s splendor, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>find the path</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fire seeds</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>geas/quest</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>harm</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>heal</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>heroes&apos; feast</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>inflict moderate wounds, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>ironwood</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>liveoak</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>move earth</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>owl&apos;s wisdom, mass</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>repel wood</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>spellstaff</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>stone tell</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon monster VI</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>summon nature&apos;s ally VI</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>transport via plants</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>wind walk</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>word of recall</Name>
+<Price>1,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>create undead</Name>
+<Price>1,750 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>glyph of warding, greater</Name>
+<Price>2,050 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>undeath to death</Name>
+<Price>2,150 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>symbol of fear</Name>
+<Price>2,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>planar ally</Name>
+<Price>2,900 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>forbiddance</Name>
+<Price>4,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>symbol of persuasion</Name>
+<Price>6,650 gp</Price>
+<Level>6</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>animate plants</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>blasphemy</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>changestaff</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>control weather</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>creeping doom</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>cure serious wounds, mass</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dictum</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>ethereal jaunt</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>fire storm</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>holy word</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>inflict serious wounds, mass</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>regenerate</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>repulsion</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>scrying, greater</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>summon monster VII</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon nature&apos;s ally VII</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>sunbeam</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>transmute metal to wood</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>word of chaos</Name>
+<Price>2,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>destruction</Name>
+<Price>2,775 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>refuge</Name>
+<Price>3,775 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>8</Weight>
+<Name>restoration, greater</Name>
+<Price>7,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>symbol of stunning</Name>
+<Price>7,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>symbol of weakness</Name>
+<Price>7,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>9</Weight>
+<Name>resurrection</Name>
+<Price>12,275 gp</Price>
+<Level>7</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>animal shapes</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>antimagic field</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>cloak of chaos</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>control plants</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>cure critical wounds, mass</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>dimensional lock</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>discern location</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>earthquake</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>finger of death</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>holy aura</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>inflict critical wounds, mass</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>repel metal or stone</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>reverse gravity</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shield of law</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>spell immunity, greater</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon monster VIII</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>summon nature&apos;s ally VIII</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>sunburst</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>unholy aura</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>whirlwind</Name>
+<Price>3,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>7</Weight>
+<Name>create greater undead</Name>
+<Price>3,150 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>7</Weight>
+<Name>planar ally, greater</Name>
+<Price>5,500 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>symbol of death</Name>
+<Price>8,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>symbol of insanity</Name>
+<Price>8,000 gp</Price>
+<Level>8</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>antipathy</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>elemental swarm</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>energy drain</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>8</Weight>
+<Name>etherealness</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>foresight</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>10</Weight>
+<Name>gate</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>heal, mass</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>implosion</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>8</Weight>
+<Name>miracle</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>shambler</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>10</Weight>
+<Name>shapechange</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>soul bind</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>storm of vengeance</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>summon monster IX</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>7</Weight>
+<Name>summon nature&apos;s ally IX</Name>
+<Price>3,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>astral projection</Name>
+<Price>4,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>sympathy</Name>
+<Price>5,325 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>7</Weight>
+<Name>true resurrection</Name>
+<Price>28,825 gp</Price>
+<Level>9</Level>
+<Type>Divine</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>acid splash</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>arcane mark</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>bleed</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>create water</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>dancing lights</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>daze</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>detect magic</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>detect poison</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>disrupt undead</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>flare</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>ghost sound</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>guidance</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>know direction</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>light</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>lullaby</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>mage hand</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>4</Weight>
+<Name>mending</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>message</Name>
+<Price>375 gp</Price>
+<Level>0</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>alarm</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>animate rope</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>bane</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>bless</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>bless weapon</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>burning hands</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>calm animals</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>cause fear</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>charm animal</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>charm person</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>chill touch</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>color spray</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>command</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>comprehend languages</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>confusion, lesser</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>cure light wounds</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>deathwatch</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect animals or plants</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect chaos</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect evil</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect good</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect law</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect secret doors</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect snares and pits</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect undead</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>disguise self</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>divine favor</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>doom</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>endure elements</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>enlarge person</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>entangle</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>entropic shield</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>erase</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>expeditious retreat</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>faerie fire</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>feather fall</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>floating disk</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>goodberry</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>grease</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hide from animals</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hide from undead</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hideous laughter</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hold portal</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hypnotism</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>identify</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>inflict light wounds</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>jump</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>longstrider</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>mage armor</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic aura</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic fang</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>magic missile</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>magic stone</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic weapon</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>mount</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>obscure object</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>obscuring mist</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>pass without trace</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>produce flame</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from chaos</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from evil</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from good</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from law</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>ray of enfeeblement</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>reduce person</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>remove fear</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>sanctuary</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shield</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shield of faith</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shillelagh</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>shocking grasp</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>silent image</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>sleep</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>speak with animals</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>summon monster I</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>summon nature&apos;s ally I</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>true strike</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>undetectable alignment</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>unseen servant</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>ventriloquism</Name>
+<Price>750 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic mouth</Name>
+<Price>1,250 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>bless water</Name>
+<Price>2,000 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>curse water</Name>
+<Price>2,000 gp</Price>
+<Level>1</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>acid arrow</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>aid</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>align weapon</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>alter self</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>animal messenger</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>animal trance</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>barkskin</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bear&apos;s endurance</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>blindness-deafness</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>blur</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>bull&apos;s strength</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>calm emotions</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>cat&apos;s grace</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>chill metal</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>command undead</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>cure moderate wounds</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>darkness</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>darkvision</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>daze monster</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>death knell</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>delay poison</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>detect thoughts</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>eagle&apos;s splendor</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>enthrall</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>false life</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>find traps</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>flame blade</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>flaming sphere</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>fog cloud</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>fox&apos;s cunning</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>gentle repose</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>ghoul touch</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>glitterdust</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>gust of wind</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>heat metal</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hold animal</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hold person</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hypnotic pattern</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>inflict moderate wounds</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>invisibility</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>knock</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>levitate</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>locate object</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>make whole</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>minor image</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>mirror image</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>misdirection</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>owl&apos;s wisdom</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from arrows</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>pyrotechnics</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>reduce animal</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>remove paralysis</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>resist energy</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>restoration, lesser</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>rope trick</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>scare</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>scorching ray</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>see invisibility</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>shatter</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shield other</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>silence</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>soften earth and stone</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>sound burst</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>spectral hand</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>spider climb</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>spiritual weapon</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>status</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>summon monster II</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>summon nature&apos;s ally II</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>summon swarm</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>tongues</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>touch of idiocy</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>tree shape</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>warp wood</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>web</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>whispering wind</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>wood shape</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>zone of truth</Name>
+<Price>4,500 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>arcane lock</Name>
+<Price>5,750 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>augury</Name>
+<Price>5,750 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>consecrate</Name>
+<Price>5,750 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>desecrate</Name>
+<Price>5,750 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>fire trap</Name>
+<Price>5,750 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>continual flame</Name>
+<Price>7,000 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>phantom trap</Name>
+<Price>7,000 gp</Price>
+<Level>2</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>arcane sight</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>beast shape I</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>bestow curse</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>blink</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>call lightning</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>clairaudience/clairvoyance</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>contagion</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>create food and water</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>6</Weight>
+<Name>cure serious wounds</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>daylight</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>deep slumber</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>deeper darkness</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>diminish plants</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>dispel magic</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>displacement</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>dominate animal</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>explosive runes</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fireball</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>flame arrow</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fly</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>gaseous form</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>halt undead</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>haste</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>helping hand</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>heroism</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>inflict serious wounds</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>invisibility purge</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>invisibility sphere</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>keen edge</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>lightning bolt</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against chaos</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against evil</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against good</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>magic circle against law</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic fang, greater</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic vestment</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>magic weapon, greater</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>major image</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>meld into stone</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>neutralize poison</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>phantom steed</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>plant growth</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>poison</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>prayer</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>protection from energy</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>quench</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>rage</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>ray of exhaustion</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>remove blindness/deafness</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>remove curse</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>remove disease</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>searing light</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>secret page</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shrink item</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>sleet storm</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>slow</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>snare</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>speak with dead</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>speak with plants</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>spike growth</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>stinking cloud</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>stone shape</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>suggestion</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>summon monster III</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>summon nature&apos;s ally III</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>tiny hut</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>vampiric touch</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>water breathing</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>water walk</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>wind wall</Name>
+<Price>11,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>illusory script</Name>
+<Price>13,750 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>nondetection</Name>
+<Price>13,750 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>glibness</Name>
+<Price>15,750 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>good hope</Name>
+<Price>15,750 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>heal mount</Name>
+<Price>15,750 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>sculpt sound</Name>
+<Price>15,750 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>glyph of warding</Name>
+<Price>21,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>animate dead</Name>
+<Price>23,750 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>sepia snake sigil</Name>
+<Price>36,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>air walk</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>antiplant shell</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>arcane eye</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>beast shape II</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>black tentacles</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>blight</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>chaos hammer</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>charm monster</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>command plants</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>confusion</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>control water</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>crushing despair</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>5</Weight>
+<Name>cure critical wounds</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>death ward</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>detect scrying</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>dimension door</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>dimensional anchor</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>discern lies</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>dismissal</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>divine power</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>elemental body I</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>enervation</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>enlarge person, mass</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>fear</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>fire shield</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>flame strike</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>freedom of movement</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>geas, lesser</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>giant vermin</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>globe of invulnerability, lesser</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>hallucinatory terrain</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>holy smite</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>ice storm</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>illusory wall</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>imbue with spell ability</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>inflict critical wounds</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>invisibility, greater</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>locate creature</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>minor creation</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>mnemonic enhancer</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>order&apos;s wrath</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>phantasmal killer</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>rainbow pattern</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>reduce person, mass</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>reincarnate</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>repel vermin</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>resilient sphere</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>rusting grasp</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>scrying</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>secure shelter</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>sending</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shadow conjuration</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>shout</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>solid fog</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>spell immunity</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>spike stones</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>summon monster IV</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>summon nature&apos;s ally IV</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>unholy blight</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>wall of fire</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>wall of ice</Name>
+<Price>21,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>divination</Name>
+<Price>22,250 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>3</Weight>
+<Name>restoration</Name>
+<Price>26,000 gp</Price>
+<Level>3</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>animal growth</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>break enchantment</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>commune with nature</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>dispel chaos</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>dispel evil</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>dominate person</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>hold monster</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>holy sword</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>mark of justice</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>modify memory</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>tree stride</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>zone of silence</Name>
+<Price>30,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>legend lore</Name>
+<Price>33,500 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>2</Weight>
+<Name>stoneskin</Name>
+<Price>33,500 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>planar ally, lesser</Name>
+<Price>46,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+<WeightValue>
+<Weight>1</Weight>
+<Name>restoration</Name>
+<Price>71,000 gp</Price>
+<Level>4</Level>
+<Type>Wand</Type>
+</WeightValue>
+</ArrayOfWeightValue>

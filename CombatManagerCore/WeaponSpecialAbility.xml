@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ArrayOfWeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Medium>70-72</Medium>
+        <Major>37-41</Major>
+        <RangedMedium>69-71</RangedMedium>
+        <RangedMajor>30-34</RangedMajor>
+        <Name>anarchic</Name>
+        <BasePriceMod>2</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+        <Text>An anarchic weapon is infused with the power of chaos. It makes the weapon chaotically aligned and thus bypasses the corresponding damage reduction. It deals an extra 2d6 points of damage against all creatures of lawful alignment. It bestows one permanent negative level on any lawful creature attempting to wield it. The negative level remains as long as the weapon is in hand and disappears when the weapon is no longer wielded. This negative level cannot be overcome in any way (including restoration spells) while the weapon is wielded.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Medium>73-75</Medium>
+        <Major>42-46</Major>
+        <RangedMedium>72-74</RangedMedium>
+        <RangedMajor>35-39</RangedMajor>
+        <Name>axiomatic</Name>
+        <BasePriceMod>2</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>An axiomatic weapon is infused with lawful power. It makes the weapon law-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2d6 points of damage against chaotic creatures. It bestows one permanent negative level on any chaotic creature attempting to wield it. The negative level remains as long as the weapon is in hand and disappears when the weapon is no longer wielded. This negative level cannot be overcome in any way (including restoration spells) while the weapon is wielded.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>01-10</Minor>
+        <Medium>01-06</Medium>
+        <Major>01-03</Major>
+        <RangedMinor>01-12</RangedMinor>
+        <RangedMedium>01-08</RangedMedium>
+        <RangedMajor>01-04</RangedMajor>
+        <Name>bane</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>A bane weapon excels against certain foes. Against a designated foe, the weapon's enhancement bonus is +2 better than its actual bonus. It also deals an extra 2d6 points of damage against the foe. </Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Major>84-86</Major>
+        <RangedMajor>85-90</RangedMajor>
+        <Name>brilliant energy</Name>
+        <BasePriceMod>4</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+        <Text>A brilliant energy weapon has its significant portion transformed into light, although this does not modify the item's weight. It always gives off light as a torch (20-foot radius). A brilliant energy weapon ignores nonliving matter. Armor and shield bonuses to AC (including any enhancement bonuses to that armor) do not count against it because the weapon passes through armor. (Dexterity, deflection, dodge, natural armor, and other such bonuses still apply.) A brilliant energy weapon cannot harm undead, constructs, and objects. This property can only be applied to melee weapons, thrown weapons, and ammunition.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Major>87-88</Major>
+        <Name>dancing</Name>
+        <BasePriceMod>4</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+        <Text>As a standard action, a dancing weapon can be loosed to attack on its own. It fights for 4 rounds using the base attack bonus of the one who loosed it and then drops. While dancing, it cannot make attacks of opportunity, and the person who activated it is not considered armed with the weapon. The weapon is considered wielded or attended by the creature for all maneuvers and effects that target items. While dancing, the weapon shares the same space as the activating character and can attack adjacent foes (weapons with reach can attack opponents up to 10 feet away). The dancing weapon accompanies the person who activated it everywhere, whether she moves by physical or magical means. If the wielder who loosed it has an unoccupied hand, she can grasp it while it is attacking on its own as a free action; when so retrieved, the weapon can't dance (attack on its own) again for 4 rounds.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>11-17</Minor>
+        <Medium>07-12</Medium>
+        <Name>defending</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>A defending weapon allows the wielder to transfer some or all of the weapon's enhancement bonus to his AC as a bonus that stacks with all others. As a free action, the wielder chooses how to allocate the weapon's enhancement bonus at the start of his turn before using the weapon, and the bonus to AC lasts until his next turn.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Medium>76-78</Medium>
+        <Major>47-49</Major>
+        <Name>disruption</Name>
+        <AltName>disrupting</AltName>
+        <BasePriceMod>2</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>A disruption weapon is the bane of all undead. Any undead creature struck in combat must succeed on a DC 14 Will save or be destroyed. A disruption weapon must be a bludgeoning melee weapon.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <RangedMinor>13-25</RangedMinor>
+        <RangedMedium>09-16</RangedMedium>
+        <RangedMajor>05-08</RangedMajor>
+        <Name>distance</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>0</Melee>
+        <Ranged>1</Ranged>
+      <Text>This special ability can only be placed on a ranged weapon. A distance weapon has double the range increment of other weapons of its kind.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>18-27</Minor>
+        <Medium>13-19</Medium>
+        <Major>04-06</Major>
+        <RangedMinor>26-40</RangedMinor>
+        <RangedMedium>17-28</RangedMedium>
+        <RangedMajor>09-12</RangedMajor>
+        <Name>flaming</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>Upon command, a flaming weapon is sheathed in fire that deals an extra 1d6 points of fire damage on a successful hit. The fire does not harm the wielder. The effect remains until another command is given.</Text>
+      <Plus>1d6 fire</Plus>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Medium>79-81</Medium>
+        <Major>50-54</Major>
+        <RangedMedium>75-79</RangedMedium>
+        <RangedMajor>40-49</RangedMajor>
+        <Name>flaming burst</Name>
+        <BasePriceMod>2</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>A flaming burst weapon functions as a flaming weapon that also explodes with flame upon striking a successful critical hit. The fire does not harm the wielder. In addition to the extra fire damage from the flaming ability (see above), a flaming burst weapon deals an extra 1d10 points of fire damage on a successful critical hit. If the weapon's critical multiplier is ×3, add an extra 2d10 points of fire damage instead, and if the multiplier is ×4, add an extra 3d10 points of fire damage.
+Even if the flaming ability is not active, the weapon still deals its extra fire damage on a successful critical hit.</Text>
+      <Plus>1d6 fire</Plus>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>28-37</Minor>
+        <Medium>20-26</Medium>
+        <Major>07-09</Major>
+        <RangedMinor>41-55</RangedMinor>
+        <RangedMedium>29-40</RangedMedium>
+        <RangedMajor>13-16</RangedMajor>
+        <Name>frost</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>Upon command, a frost weapon is sheathed in icy cold that deals an extra 1d6 points of cold damage on a successful hit. The cold does not harm the wielder. The effect remains until another command is given.</Text>
+      <Plus>1d6 cold</Plus>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>48-56</Minor>
+        <Medium>34-38</Medium>
+        <Major>13-15</Major>
+        <Name>ghost touch</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>A ghost touch weapon deals damage normally against incorporeal creatures, regardless of its bonus. An incorporeal creature's 50% reduction in damage from corporeal sources does not apply to attacks made against it with ghost touch weapons. The weapon can be picked up and moved by an incorporeal creature at any time. A manifesting ghost can wield the weapon against corporeal foes. Essentially, a ghost touch weapon counts as both corporeal or incorporeal.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Medium>85-87</Medium>
+        <Major>60-64</Major>
+        <RangedMedium>80-82</RangedMedium>
+        <RangedMajor>50-54</RangedMajor>
+        <Name>holy</Name>
+        <BasePriceMod>2</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>A holy weapon is imbued with holy power. This power makes the weapon good-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2d6 points of damage against all creatures of evil alignment. It bestows one permanent negative level on any evil creature attempting to wield it. The negative level remains as long as the weapon is in hand and disappears when the weapon is no longer wielded. This negative level cannot be overcome in any way (including by restoration spells) while the weapon is wielded.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Medium>82-84</Medium>
+        <Major>55-59</Major>
+        <RangedMedium>83-87</RangedMedium>
+        <RangedMajor>55-64</RangedMajor>
+        <Name>icy burst</Name>
+        <BasePriceMod>2</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>An icy burst weapon functions as a frost weapon that also explodes with frost upon striking a successful critical hit. The frost does not harm the wielder. In addition to the extra damage from the frost ability, an icy burst weapon deals an extra 1d10 points of cold damage on a successful critical hit. If the weapon's critical multiplier is ×3, add an extra 2d10 points of cold damage instead, and if the multiplier is ×4, add an extra 3d10 points.
+Even if the frost ability is not active, the weapon still deals its extra cold damage on a successful critical hit.</Text>
+        <Plus>1d6 cold</Plus>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>57-67</Minor>
+        <Medium>39-44</Medium>
+        <Name>keen</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>This ability doubles the threat range of a weapon. Only piercing or slashing melee weapons can be keen. If you roll this property randomly for an inappropriate weapon, reroll. This benefit doesn't stack with any other effect that expands the threat range of a weapon (such as the keen edge spell or the Improved Critical feat).</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>68-71</Minor>
+        <Medium>45-48</Medium>
+        <Major>16-19</Major>
+        <Name>ki focus</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>The magic weapon serves as a channel for the wielder's ki, allowing her to use her special ki attacks through the weapon as if they were unarmed attacks. These attacks include the monk's ki strike, quivering palm, and the Stunning Fist feat (including any condition that the monk can apply using this feat). Only melee weapons can have the ki focus ability.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>72-75</Minor>
+        <Medium>49-50</Medium>
+        <RangedMinor>56-60</RangedMinor>
+        <RangedMedium>41-42</RangedMedium>
+        <Name>merciful</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>The weapon deals an extra 1d6 points of damage, and all damage it deals is nonlethal damage. On command, the weapon suppresses this ability until told to resume it (allowing it to deal lethal damage, but without any bonus damage from this ability).</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>76-82</Minor>
+        <Medium>51-54</Medium>
+        <Major>20-21</Major>
+        <Name>mighty cleaving</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>A mighty cleaving weapon allows a wielder using the Cleave feat to make one additional attack if the first attack hits, as long as the next foe is adjacent to the first and also within reach. This additional attack cannot be against the first foe. Only melee weapons can be mighty cleaving weapons.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <RangedMinor>61-68</RangedMinor>
+        <RangedMedium>43-47</RangedMedium>
+        <RangedMajor>17-21</RangedMajor>
+        <Name>returning</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>0</Melee>
+        <Ranged>1</Ranged>
+      <Text>This special ability can only be placed on a weapon that can be thrown. A returning weapon flies through the air back to the creature that threw it. It returns to the thrower just before the creature's next turn (and is therefore ready to use again in that turn). Catching a returning weapon when it comes back is a free action. If the character can't catch it, or if the character has moved since throwing it, the weapon drops to the ground in the square from which it was thrown.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <RangedMinor>84-93</RangedMinor>
+        <RangedMedium>60-64</RangedMedium>
+        <RangedMajor>26-27</RangedMajor>
+        <Name>seeking</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>0</Melee>
+        <Ranged>1</Ranged>
+      <Text>Only ranged weapons can have the seeking ability. The weapon veers toward its target, negating any miss chances that would otherwise apply, such as from concealment. The wielder still has to aim the weapon at the right square. Arrows mistakenly shot into an empty space, for example, do not veer and hit invisible enemies, even if they are nearby.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>38-47</Minor>
+        <Medium>27-33</Medium>
+        <Major>10-12</Major>
+        <RangedMinor>69-83</RangedMinor>
+        <RangedMedium>48-59</RangedMedium>
+        <RangedMajor>22-25</RangedMajor>
+        <Name>shock</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>Upon command, a shock weapon is sheathed in crackling electricity that deals an extra 1d6 points of electricity damage on a successful hit. The electricity does not harm the wielder. The effect remains until another command is given.</Text>
+      <Plus>1d6 electricity</Plus>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Medium>88-90</Medium>
+        <Major>65-69</Major>
+        <RangedMedium>88-92</RangedMedium>
+        <RangedMajor>65-74</RangedMajor>
+        <Name>shocking burst</Name>
+        <BasePriceMod>2</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>A shocking burst weapon functions as a shock weapon that explodes with electricity upon striking a successful critical hit. The electricity does not harm the wielder. In addition to the extra electricity damage from the shock ability, a shocking burst weapon deals an extra 1d10 points of electricity damage on a successful critical hit. If the weapon's critical multiplier is ×3, add an extra 2d10 points of electricity damage instead, and if the multiplier is ×4, add an extra 3d10 points.
+ Even if the shock ability is not active, the weapon still deals its extra electricity damage on a successful critical hit.
+      </Text>
+      <Plus>1d6 electricity</Plus>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Major>79-83</Major>
+        <RangedMajor>80-84</RangedMajor>
+        <Name>speed</Name>
+        <BasePriceMod>3</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>When making a full-attack action, the wielder of a speed weapon may make one extra attack with it. The attack uses the wielder's full base attack bonus, plus any modifiers appropriate to the situation. (This benefit is not cumulative with similar effects, such as a haste spell.)</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>83-87</Minor>
+        <Medium>55-59</Medium>
+        <Major>22-24</Major>
+        <Name>spell storing</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>A spell storing weapon allows a spellcaster to store a single targeted spell of up to 3rd level in the weapon. (The spell must have a casting time of 1 standard action.) Anytime the weapon strikes a creature and the creature takes damage from it, the weapon can immediately cast the spell on that creature as a free action if the wielder desires. (This special ability is an exception to the general rule that casting a spell from an item takes at least as long as casting that spell normally.) Once the spell has been cast from the weapon, a spellcaster can cast any other targeted spell of up to 3rd level into it. The weapon magically imparts to the wielder the name of the spell currently stored within it. A randomly rolled spell storing weapon has a 50% chance to have a spell stored in it already.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>88-91</Minor>
+        <Medium>60-63</Medium>
+        <Major>25-28</Major>
+        <Name>throwing</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>This ability can only be placed on a melee weapon. A melee weapon crafted with this ability gains a range increment of 10 feet and can be thrown by a wielder proficient in its normal use.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>92-95</Minor>
+        <Medium>64-65</Medium>
+        <Major>29-32</Major>
+        <RangedMinor>94-99</RangedMinor>
+        <RangedMedium>65-68</RangedMedium>
+        <RangedMajor>28-29</RangedMajor>
+        <Name>thundering</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>A thundering weapon creates a cacophonous roar like thunder upon striking a successful critical hit. The sonic energy does not harm the wielder. A thundering weapon deals an extra 1d8 points of sonic damage on a successful critical hit. If the weapon's critical multiplier is ×3, add an extra 2d8 points of sonic damage instead, and if the multiplier is ×4, add an extra 3d8 points of sonic damage. Subjects dealt critical hits by a thundering weapon must make a DC 14 Fortitude save or be deafened permanently.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Medium>91-93</Medium>
+        <Major>70-74</Major>
+        <RangedMedium>93-95</RangedMedium>
+        <RangedMajor>75-79</RangedMajor>
+        <Name>unholy</Name>
+        <BasePriceMod>2</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>1</Ranged>
+      <Text>An unholy weapon is imbued with unholy power. This power makes the weapon evil-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2d6 points of damage against all creatures of good alignment. It bestows one permanent negative level on any good creature attempting to wield it. The negative level remains as long as the weapon is in hand and disappears when the weapon is no longer wielded. This negative level cannot be overcome in any way (including restoration spells) while the weapon is wielded.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Minor>96-99</Minor>
+        <Medium>66-69</Medium>
+        <Major>33-36</Major>
+        <Name>vicious</Name>
+        <BasePriceMod>1</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>When a vicious weapon strikes an opponent, it creates a flash of disruptive energy that resonates between the opponent and the wielder. This energy deals an extra 2d6 points of damage to the opponent and 1d6 points of damage to the wielder. Only melee weapons can be vicious.</Text>
+      <Plus>2d6 energy and 1d6 energy to wielder</Plus>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Major>89-90</Major>
+        <Name>vorpal</Name>
+        <BasePriceMod>5</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>This potent and feared ability allows the weapon to sever the heads of those it strikes. Upon a roll of natural 20 (followed by a successful roll to confirm the critical hit), the weapon severs the opponent's head (if it has one) from its body. Some creatures, such as many aberrations and all oozes, have no heads. Others, such as golems and undead creatures other than vampires, are not affected by the loss of their heads. Most other creatures, however, die when their heads are cut off. A vorpal weapon must be a slashing melee weapon. If you roll this property randomly for an inappropriate weapon, reroll.</Text>
+    </WeaponSpecialAbility>
+    <WeaponSpecialAbility>
+        <Medium>94-95</Medium>
+        <Major>75-78</Major>
+        <Name>wounding</Name>
+        <BasePriceMod>2</BasePriceMod>
+        <Melee>1</Melee>
+        <Ranged>0</Ranged>
+      <Text>A wounding weapon deals 1 point of bleed damage when it hits a creature. Multiple hits from a wounding weapon increase the bleed damage. Bleeding creatures take the bleed damage at the start of their turns. Bleeding can be stopped by a DC 15 Heal check or through the application of any spell that cures hit point damage. A critical hit does not multiply the bleed damage dealt by this weapon. Creatures immune to critical hits are immune to the damage.</Text>
+      <Plus>1 bleed</Plus>
+    </WeaponSpecialAbility>
+</ArrayOfWeaponSpecialAbility>

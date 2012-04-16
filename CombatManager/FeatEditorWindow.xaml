@@ -1,0 +1,106 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CombatManager.FeatEditorWindow"
+        Title="Feat Editor" Height="404" Width="551" Icon="Images/d20-32.ico" ShowInTaskbar="False" ResizeMode="NoResize">
+	<Window.Resources>
+		<Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="Margin" Value="0,2,0,2"/>
+		</Style>
+		<DataTemplate x:Key="TypesTemplate">
+			<Grid d:DesignWidth="173">
+				<CheckBox IsChecked="{Binding Selected}" Content="{Binding Type}" HorizontalAlignment="Stretch" Margin="4,2,3,2" d:LayoutOverrides="Height" VerticalAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+			</Grid>
+		</DataTemplate>
+	</Window.Resources>
+	<Window.Background>
+		<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
+	</Window.Background>
+    <Grid>
+    	<Grid.RowDefinitions>
+    		<RowDefinition/>
+    		<RowDefinition Height="31"/>
+    	</Grid.RowDefinitions>
+    	<Border x:Name="HeaderBorder" Height="55.84" VerticalAlignment="Top" Padding="3" Margin="7.333,7.333,17.334,0">
+    		<Border.Effect>
+    			<DropShadowEffect/>
+    		</Border.Effect>
+    		<Border.Background>
+    			<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+    		</Border.Background>
+    		<Grid>
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition Width="0.5*"/>
+    				<ColumnDefinition Width="0.5*"/>
+    			</Grid.ColumnDefinitions>
+		
+    			<TextBox x:Name="NameText" Margin="8,19.96,8,0"  Text="{Binding Name}" VerticalAlignment="Top" TextChanged="FeatNameText_TextChanged" />
+    			<TextBlock Text="Name" Style="{DynamicResource LabelStyle}" Margin="8,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+    				<TextBlock.Effect>
+    					<DropShadowEffect/>
+    				</TextBlock.Effect>
+    			</TextBlock>
+    			<TextBlock Text="Types" Style="{DynamicResource LabelStyle}" Margin="7.999,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1">
+    				<TextBlock.Effect>
+    					<DropShadowEffect/>
+    				</TextBlock.Effect>
+    			</TextBlock>
+    			<TextBox x:Name="TypesText" Margin="8,19.96,74,0"  Text="{Binding Type}" VerticalAlignment="Top" Grid.Column="1" IsEnabled="False" />
+    			<Popup x:Name="TypesPopup" PlacementTarget="{Binding ElementName=TypesButton}" HorizontalOffset="-90" HorizontalAlignment="Left" Margin="0" Width="153" AllowsTransparency="True" StaysOpen="False">
+    				<Grid Margin="0" Width="153">
+    					<Border BorderBrush="White" BorderThickness="1" CornerRadius="6">
+    						<Border.Background>
+    							<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+    						</Border.Background>
+    					</Border>
+    					<ListBox x:Name="TypesListBox" Margin="6" MinWidth="6" Height="173" ItemsSource="{Binding}" ItemTemplate="{DynamicResource TypesTemplate}"/>
+    				</Grid>
+    			</Popup>
+                <Button Grid.Column="1" Height="23" HorizontalAlignment="Right" Margin="0,20,8,0" x:Name="TypesButton" VerticalAlignment="Top" Width="62" Style="{DynamicResource ButtonMainStyle}" Content="Choose" Click="TypesButton_Click" />
+            </Grid>
+    	</Border>
+    	<Border x:Name="MainBorder" Padding="3" Margin="7.333,75.36,17.334,11.327">
+    		<Border.Effect>
+    			<DropShadowEffect/>
+    		</Border.Effect>
+    		<Border.Background>
+    			<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+    		</Border.Background>
+    		<Grid Margin="0">
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition Width="0.5*"/>
+    				<ColumnDefinition Width="0.5*"/>
+    			</Grid.ColumnDefinitions>
+    			<TextBlock Text="Prerequisites" Style="{DynamicResource LabelStyle}" Margin="8,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+    				<TextBlock.Effect>
+    					<DropShadowEffect/>
+    				</TextBlock.Effect>
+    			</TextBlock>
+    			<TextBox Margin="8,27.96,8,0" TextWrapping="Wrap" Text="{Binding Prerequistites}" VerticalAlignment="Top"/>
+    			<TextBlock Text="Benefit" Style="{DynamicResource LabelStyle}" Margin="8,53.92,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+    				<TextBlock.Effect>
+    					<DropShadowEffect/>
+    				</TextBlock.Effect>
+    			</TextBlock>
+    			<TextBox Margin="8,73.88,8,8" TextWrapping="Wrap" Text="{Binding Benefit}" VerticalScrollBarVisibility="Auto"/>
+    			<TextBlock Text="Normal" Style="{DynamicResource LabelStyle}" Margin="8,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1">
+    				<TextBlock.Effect>
+    					<DropShadowEffect/>
+    				</TextBlock.Effect>
+    			</TextBlock>
+    			<TextBox Margin="8,27.96,8,0" TextWrapping="Wrap" Text="{Binding Normal}" VerticalAlignment="Top" Grid.Column="1" Height="90" VerticalScrollBarVisibility="Auto"/>
+    			<TextBlock Text="Special" Style="{DynamicResource LabelStyle}" Margin="8,121.96,0,114.393" HorizontalAlignment="Left" Grid.Column="1" d:LayoutOverrides="Height">
+    				<TextBlock.Effect>
+    					<DropShadowEffect/>
+    				</TextBlock.Effect>
+    			</TextBlock>
+    			<TextBox Margin="8,0,8,8" TextWrapping="Wrap" Text="{Binding Special}" VerticalAlignment="Bottom" Grid.Column="1" Height="102.393" VerticalScrollBarVisibility="Auto"/>
+    		</Grid>
+    	</Border>
+    	<Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,16.667,8" Grid.Row="1" Width="75" VerticalAlignment="Bottom" IsCancel="True" Name="CancelButton" />
+    	<Button Content="OK" HorizontalAlignment="Right" Margin="0,0,102,8" Grid.Row="1" Width="75" VerticalAlignment="Bottom" IsDefault="True" Click="Button_Click" Name="OKButton" />
+        
+    </Grid>
+</Window>

@@ -1,0 +1,1192 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:CombatManager" mc:Ignorable="d"
+	x:Class="CombatManager.MonsterEditorWindow"
+	x:Name="Window"
+	Title="Monster Editor"
+	Width="657" Height="596" ResizeMode="NoResize" Icon="Images/d20-32.ico">
+
+	<Window.Resources>
+		<Style x:Key="ComboBoxFocusVisual">
+			<Setter Property="Control.Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Rectangle Margin="4,4,21,4" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+			<GradientStop Color="#F3F3F3" Offset="0"/>
+			<GradientStop Color="#EBEBEB" Offset="0.5"/>
+			<GradientStop Color="#DDDDDD" Offset="0.5"/>
+			<GradientStop Color="#CDCDCD" Offset="1"/>
+		</LinearGradientBrush>
+		<SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
+		<Geometry x:Key="DownArrowGeometry">M 0 0 L 3.5 4 L 7 0 Z</Geometry>
+		<Style x:Key="ComboBoxReadonlyToggleButton" TargetType="{x:Type ToggleButton}">
+			<Setter Property="OverridesDefaultStyle" Value="true"/>
+			<Setter Property="IsTabStop" Value="false"/>
+			<Setter Property="Focusable" Value="false"/>
+			<Setter Property="ClickMode" Value="Press"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ToggleButton}">
+						<Microsoft_Windows_Themes:ButtonChrome x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}" SnapsToDevicePixels="true">
+							<Grid HorizontalAlignment="Right" Width="10" d:LayoutOverrides="HorizontalAlignment">
+								<Path x:Name="Arrow" Data="{StaticResource DownArrowGeometry}" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" d:LayoutOverrides="Width"/>
+							</Grid>
+						</Microsoft_Windows_Themes:ButtonChrome>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsChecked" Value="true">
+								<Setter Property="RenderPressed" TargetName="Chrome" Value="true"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Fill" TargetName="Arrow" Value="#AFAFAF"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<LinearGradientBrush x:Key="TextBoxBorder" EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+			<GradientStop Color="#ABADB3" Offset="0.05"/>
+			<GradientStop Color="#E2E3EA" Offset="0.07"/>
+			<GradientStop Color="#E3E9EF" Offset="1"/>
+		</LinearGradientBrush>
+		<Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
+			<Setter Property="OverridesDefaultStyle" Value="true"/>
+			<Setter Property="AllowDrop" Value="true"/>
+			<Setter Property="MinWidth" Value="0"/>
+			<Setter Property="MinHeight" Value="0"/>
+			<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+			<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+			<Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type TextBox}">
+						<ScrollViewer x:Name="PART_ContentHost" Background="Transparent" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+			<Setter Property="OverridesDefaultStyle" Value="true"/>
+			<Setter Property="IsTabStop" Value="false"/>
+			<Setter Property="Focusable" Value="false"/>
+			<Setter Property="ClickMode" Value="Press"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ToggleButton}">
+						<Microsoft_Windows_Themes:ButtonChrome x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}" RoundCorners="false" SnapsToDevicePixels="true" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
+							<Path x:Name="Arrow" Data="{StaticResource DownArrowGeometry}" Fill="Black" HorizontalAlignment="Center" Margin="0,1,0,0" VerticalAlignment="Center"/>
+						</Microsoft_Windows_Themes:ButtonChrome>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsChecked" Value="true">
+								<Setter Property="RenderPressed" TargetName="Chrome" Value="true"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Fill" TargetName="Arrow" Value="#AFAFAF"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
+			<Grid x:Name="Placement" SnapsToDevicePixels="true">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+					<Microsoft_Windows_Themes:SystemDropShadowChrome x:Name="Shdw" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=Placement}">
+						<Border x:Name="DropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+							<ScrollViewer x:Name="DropDownScrollViewer">
+								<Grid RenderOptions.ClearTypeHint="Enabled">
+									<Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+										<Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
+									</Canvas>
+									<ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+								</Grid>
+							</ScrollViewer>
+						</Border>
+					</Microsoft_Windows_Themes:SystemDropShadowChrome>
+				</Popup>
+				<Microsoft_Windows_Themes:ListBoxChrome x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderFocused="{TemplateBinding IsKeyboardFocusWithin}"/>
+				<TextBox x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+				<ToggleButton Grid.Column="1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsKeyboardFocusWithin" Value="true">
+					<Setter Property="Foreground" Value="Black"/>
+				</Trigger>
+				<Trigger Property="IsDropDownOpen" Value="true">
+					<Setter Property="RenderFocused" TargetName="Border" Value="true"/>
+				</Trigger>
+				<Trigger Property="HasItems" Value="false">
+					<Setter Property="Height" TargetName="DropDownBorder" Value="95"/>
+				</Trigger>
+				<Trigger Property="IsEnabled" Value="false">
+					<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+					<Setter Property="Background" Value="#FFF4F4F4"/>
+				</Trigger>
+				<Trigger Property="IsGrouping" Value="true">
+					<Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+				</Trigger>
+				<Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
+					<Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
+					<Setter Property="Color" TargetName="Shdw" Value="#71000000"/>
+				</Trigger>
+				<Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
+					<Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
+					<Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource ComboBoxFocusVisual}"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+			<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+			<Setter Property="Padding" Value="4,3"/>
+			<Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+			<Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+			<Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ComboBox}">
+						<Grid x:Name="MainGrid" SnapsToDevicePixels="true">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition MinWidth="12" Width="12"/>
+							</Grid.ColumnDefinitions>
+							<Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+								<Microsoft_Windows_Themes:SystemDropShadowChrome x:Name="Shdw" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=MainGrid}">
+									<Border x:Name="DropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+										<ScrollViewer x:Name="DropDownScrollViewer">
+											<Grid RenderOptions.ClearTypeHint="Enabled">
+												<Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+													<Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
+												</Canvas>
+												<ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+											</Grid>
+										</ScrollViewer>
+									</Border>
+								</Microsoft_Windows_Themes:SystemDropShadowChrome>
+							</Popup>
+							<ToggleButton BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxReadonlyToggleButton}"/>
+							<ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
+								<Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
+								<Setter Property="Color" TargetName="Shdw" Value="#71000000"/>
+							</Trigger>
+							<Trigger Property="HasItems" Value="false">
+								<Setter Property="Height" TargetName="DropDownBorder" Value="95"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+								<Setter Property="Background" Value="#FFF4F4F4"/>
+							</Trigger>
+							<Trigger Property="IsGrouping" Value="true">
+								<Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+							</Trigger>
+							<Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
+								<Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
+								<Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsEditable" Value="true">
+					<Setter Property="BorderBrush" Value="{StaticResource TextBoxBorder}"/>
+					<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+					<Setter Property="IsTabStop" Value="false"/>
+					<Setter Property="Padding" Value="3"/>
+					<Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<LinearGradientBrush x:Key="TabItemHotBackground" EndPoint="0,1" StartPoint="0,0">
+			<GradientStop Color="#EAF6FD" Offset="0.15"/>
+			<GradientStop Color="#D9F0FC" Offset=".5"/>
+			<GradientStop Color="#BEE6FD" Offset=".5"/>
+			<GradientStop Color="#A7D9F5" Offset="1"/>
+		</LinearGradientBrush>
+		<DataTemplate x:Key="SkillValueTemplate">
+			<Grid d:DesignWidth="160">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="58.333"/>
+				</Grid.ColumnDefinitions>
+				<Button x:Name="SkillDeleteButton" RenderTransformOrigin="0.222,-0.601" Grid.Column="1" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource ButtonSecondaryStyle}" Margin="0,0,3,0" Click="SkillDeleteButton_Click">
+					<Button.ToolTip>Delete</Button.ToolTip>
+					<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+				</Button>
+				<TextBox HorizontalAlignment="Stretch" Margin="1.446,3,23,3" TextWrapping="NoWrap" Text="{Binding Mod}" d:LayoutOverrides="Width" Grid.Column="1" VerticalAlignment="Top"/>
+				<TextBlock HorizontalAlignment="Stretch" Margin="3,5.98,2.554,0" TextWrapping="NoWrap" Text="{Binding FullName}" VerticalAlignment="Top" TextTrimming="CharacterEllipsis"/>
+			</Grid>
+		</DataTemplate>
+		<DataTemplate x:Key="SpecialAbilityTemplate">
+			<Grid d:DesignWidth="267.917" d:DesignHeight="112" Width="292.917">
+				<Border Margin="3" CornerRadius="6">
+					<Border.Background>
+						<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+					</Border.Background>
+				</Border>
+				<TextBox HorizontalAlignment="Stretch" Margin="8,8,78.864,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="Auto"/>
+				<ComboBox HorizontalAlignment="Right" Margin="0,8,28,0" VerticalAlignment="Top" Width="46.864" SelectedIndex="{Binding AbilityTypeIndex}">
+					<ComboBoxItem Content="Ex"/>
+					<ComboBoxItem Content="Sp"/>
+					<ComboBoxItem Content="Su"/>
+					<ComboBoxItem Content="-"/>
+				</ComboBox>
+				<TextBox Margin="8,33.99,8,8.01" TextWrapping="Wrap" Text="{Binding Text}" VerticalAlignment="Stretch" Height="70" VerticalScrollBarVisibility="Auto" Width="Auto"/>
+				<Button x:Name="SpecialAbilityDeleteButton" RenderTransformOrigin="0.222,-0.601" Grid.Column="0" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" VerticalAlignment="Top" HorizontalAlignment="Right" Style="{DynamicResource ButtonSecondaryStyle}" Margin="0,10.294,8,0" Click="SpecialAbilityDeleteButton_Click">
+					<Button.ToolTip>Delete</Button.ToolTip>
+					<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+				</Button>
+			</Grid>
+		</DataTemplate>
+		<ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+			<WrapPanel IsItemsHost="True"/>
+		</ItemsPanelTemplate>
+		<Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="Padding" Value="2,0,0,0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBoxItem}">
+						<Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+	<Window.Background>
+		<SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
+	</Window.Background>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="41.464"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="392"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Border x:Name="StandardBlockBorder" Margin="8,8,2.333,0" VerticalAlignment="Top" CornerRadius="6" RenderTransformOrigin="0.5,0.5">
+			<Border.Effect>
+				<DropShadowEffect/>
+			</Border.Effect>
+			<Border.Background>
+				<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+			</Border.Background>
+			<Grid Margin="6">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="40" />
+					<ColumnDefinition Width="0.916*"/>
+					<ColumnDefinition Width="0.084*" />
+					<ColumnDefinition Width="31.375" />
+				</Grid.ColumnDefinitions>
+				<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name" Foreground="White" d:LayoutOverrides="Height" FontWeight="Bold" Margin="0,0,4,0" VerticalAlignment="Center"/>
+				<TextBox Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,4.001,2" VerticalAlignment="Center" Name="NameTextBox" TextChanged="NameTextBox_TextChanged" />
+				<TextBlock Grid.Column="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="CR" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="4,0"/>
+				<TextBox Grid.Column="3" Text="{Binding Adjuster.CR, Converter={StaticResource CRValidatingConverter}, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="0,2" />
+				<ComboBox SelectedIndex="{Binding Alignment, Converter={StaticResource AlignmentIndexConverter}}" Margin="0,3" Width="34.584" VerticalAlignment="Top" HorizontalAlignment="Left" BorderBrush="{x:Null}" Grid.ColumnSpan="1" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3" Grid.Row="1">
+					<ComboBoxItem Content="LG"/>
+					<ComboBoxItem Content="NG"/>
+					<ComboBoxItem Content="CG"/>
+					<ComboBoxItem Content="LN"/>
+					<ComboBoxItem Content="N"/>
+					<ComboBoxItem Content="CN"/>
+					<ComboBoxItem Content="LE"/>
+					<ComboBoxItem Content="NE"/>
+					<ComboBoxItem Content="CE"/>
+				</ComboBox>
+				<ComboBox SelectedIndex="{Binding Adjuster.MonsterSize}" Margin="0,3,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="88.028">
+					<ComboBoxItem Content="Fine"/>
+					<ComboBoxItem Content="Diminutive"/>
+					<ComboBoxItem Content="Tiny"/>
+					<ComboBoxItem Content="Small"/>
+					<ComboBoxItem Content="Medium"/>
+					<ComboBoxItem Content="Large"/>
+					<ComboBoxItem Content="Huge"/>
+					<ComboBoxItem Content="Gargantuan"/>
+					<ComboBoxItem Content="Colossal"/>
+				</ComboBox>
+				<ComboBox SelectedIndex="{Binding Type, Converter={StaticResource MonsterTypeIndexConverter}}" Margin="92.028,3,76.846,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3" Grid.Row="1" Grid.Column="1" Width="104" HorizontalAlignment="Left">
+					<ComboBoxItem Content="Aberration" />
+					<ComboBoxItem Content="Animal" />
+					<ComboBoxItem Content="Construct" />
+					<ComboBoxItem Content="Dragon" />
+					<ComboBoxItem Content="Fey" />
+					<ComboBoxItem Content="Humanoid" />
+					<ComboBoxItem Content="Magical Beast" />
+					<ComboBoxItem Content="Monstrous Humanoid" />
+					<ComboBoxItem Content="Ooze" />
+					<ComboBoxItem Content="Outsider" />
+					<ComboBoxItem Content="Plant" />
+					<ComboBoxItem Content="Undead" />
+					<ComboBoxItem Content="Vermin" />
+				</ComboBox>
+				<TextBox Margin="200,3,0,3" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" d:LayoutOverrides="Height" Text="{Binding SubType, Converter={StaticResource ParenthesesPropertyConverter}}" ToolTip="Subtype">
+
+				</TextBox>
+				<TextBlock TextWrapping="Wrap" Text="Senses" Foreground="White" Grid.Row="2" d:LayoutOverrides="Height" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+				<TextBox Margin="0,2,4.001,2" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1">
+					<MultiBinding Converter="{StaticResource SensesConverter}">
+						<Binding Path="Senses" />
+						<Binding Path="Perception" />
+					</MultiBinding>
+				</TextBox>
+				<TextBlock Margin="0,5" TextWrapping="Wrap" Foreground="White" Grid.Row="2" TextAlignment="Center" d:LayoutOverrides="Height" Text="Init" HorizontalAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
+				<TextBox Text="{Binding Init}" VerticalAlignment="Top" Grid.Row="2" TextAlignment="Center" GotFocus="TextBox_GotFocus" Margin="0,2,0,0" Grid.Column="3" />
+				<TextBlock Text="Race" Grid.Row="3" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" />
+				<TextBox Grid.Column="1" Margin="0,2" Grid.Row="3" Text="{Binding Race}" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="94.195"/>
+				<TextBlock Text="Class" Grid.Row="3" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" RenderTransformOrigin="2.474,0.342" Grid.Column="1" Margin="98.195,5,0,5" d:LayoutOverrides="Height" />
+				<TextBox Grid.Column="1" Margin="131.775,2,0,2" Grid.Row="3" Text="{Binding Class}" d:LayoutOverrides="Height" Grid.ColumnSpan="3"/>
+			</Grid>
+		</Border>
+		<Border  HorizontalAlignment="Right" Width="235.333" VerticalAlignment="Top" Margin="0,6,11,0" CornerRadius="6" Grid.Column="1" d:LayoutOverrides="VerticalAlignment">
+			<Border.Effect>
+				<DropShadowEffect/>
+			</Border.Effect>
+			<Border.Background>
+				<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+			</Border.Background>
+            <Grid>
+            	<Grid.RowDefinitions>
+            		<RowDefinition Height="Auto"/>
+            	   <RowDefinition/>
+            	</Grid.RowDefinitions>
+                <TextBlock FontWeight="Bold" FontSize="13.333" Text="Abilities" Margin="8,0,0,0" Foreground="White">
+                	<TextBlock.Effect>
+                		<DropShadowEffect/>
+                	</TextBlock.Effect></TextBlock>
+        		<Grid Grid.Row="1">
+        			<Grid.RowDefinitions>
+        				<RowDefinition Height="26"/>
+        				<RowDefinition Height="26"/>
+        				<RowDefinition Height="26"/>
+        			</Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                    	<ColumnDefinition Width="81"/>
+                        <ColumnDefinition Width="Auto" MinWidth="31.333"/>
+                    	<ColumnDefinition Width="81"/>
+                        <ColumnDefinition Width="Auto" MinWidth="31.333"/>
+                    </Grid.ColumnDefinitions>
+        			<TextBlock Margin="5,5,0,0" TextWrapping="Wrap" Text="Str" Foreground="White" TextAlignment="Center" VerticalAlignment="Top" Width="35.833" HorizontalAlignment="Left" d:LayoutOverrides="Width" FontWeight="Bold"/>
+        			<TextBox Text="{Binding Adjuster.Strength, Converter={StaticResource AbilityValueConverter}, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" TextAlignment="Center" GotFocus="TextBox_GotFocus" />
+        			<TextBlock Margin="5,5,0,0" TextWrapping="Wrap" Text="Dex" Grid.Column="0" Foreground="White" RenderTransformOrigin="0.275,0.535" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Width="35.833" HorizontalAlignment="Left" d:LayoutOverrides="Width" FontWeight="Bold"/>
+        			<TextBox Text="{Binding Adjuster.Dexterity, Converter={StaticResource AbilityValueConverter}, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" TextAlignment="Center" GotFocus="TextBox_GotFocus" />
+        			<TextBlock Margin="5,5,0,4" TextWrapping="Wrap" Text="Con" d:LayoutOverrides="Width, Height" Foreground="White" Grid.Row="2" TextAlignment="Center" Width="35.833" HorizontalAlignment="Left" FontWeight="Bold"/>
+        			<TextBox Text="{Binding Adjuster.Constitution, Converter={StaticResource AbilityValueConverter}, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" TextAlignment="Center" GotFocus="TextBox_GotFocus" d:LayoutOverrides="GridBox" />
+        			<TextBlock Margin="5,5,0,0" TextWrapping="Wrap" Text="Int" Grid.Row="0" Foreground="White" TextAlignment="Center" Width="35.833" VerticalAlignment="Top" HorizontalAlignment="Left" d:LayoutOverrides="Width, GridBox" Grid.Column="2" FontWeight="Bold"/>
+        			<TextBox Text="{Binding Adjuster.Intelligence, Converter={StaticResource AbilityValueConverter}, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" TextAlignment="Center" GotFocus="TextBox_GotFocus" Grid.Column="2" />
+        			<TextBlock Margin="5,5,0,0" TextWrapping="Wrap" Text="Wis" Grid.Column="2" Grid.Row="1" Foreground="White" TextAlignment="Center" VerticalAlignment="Top" d:LayoutOverrides="Width, GridBox" Width="35.833" HorizontalAlignment="Left" FontWeight="Bold"/>
+        			<TextBox Text="{Binding Adjuster.Wisdom, Converter={StaticResource AbilityValueConverter}, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" TextAlignment="Center" GotFocus="TextBox_GotFocus" d:LayoutOverrides="GridBox" Grid.Column="2" />
+        			<TextBlock HorizontalAlignment="Left" Margin="5,5,0,3.792" TextWrapping="Wrap" Text="Cha" d:LayoutOverrides="Width, Height, GridBox" Grid.Row="2" Foreground="White" Width="35.833" TextAlignment="Center" Grid.Column="2" FontWeight="Bold"/>
+        			<TextBox Text="{Binding Adjuster.Charisma, Converter={StaticResource AbilityValueConverter}, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" TextAlignment="Center" GotFocus="TextBox_GotFocus" d:LayoutOverrides="GridBox" Grid.Column="2" />
+        			<TextBlock Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" Text="{Binding Strength, Converter={StaticResource AbilityBonusConverter}}" d:LayoutOverrides="Height" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" Margin="0,5,0,0" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Dexterity, Converter={StaticResource AbilityBonusConverter}}" d:LayoutOverrides="Height" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" Margin="0,5,0,0" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Constitution, Converter={StaticResource AbilityBonusConverter}}" d:LayoutOverrides="Height" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" Margin="0,5,0,0" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="3" Grid.Row="0" TextWrapping="Wrap" Text="{Binding Intelligence, Converter={StaticResource AbilityBonusConverter}}" d:LayoutOverrides="Height" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" Margin="0,5,0,0" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Wisdom, Converter={StaticResource AbilityBonusConverter}}" d:LayoutOverrides="Height" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" Margin="0,5,0,0" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Charisma, Converter={StaticResource AbilityBonusConverter}}" d:LayoutOverrides="Height" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" Margin="0,5,0,0" FontWeight="Bold"/>
+                </Grid>
+            </Grid>
+        </Border>
+		<TabControl Margin="8,129.84,6.959,0" Grid.ColumnSpan="2" Style="{DynamicResource TabControlStyle1}" BorderBrush="{x:Null}" Background="{x:Null}" Height="396.696" VerticalAlignment="Top">
+			<TabItem BorderBrush="{x:Null}">
+				<TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                    	<Image Width="16" Height="16" Source="Images\shield-16.png" />
+                    	<TextBlock Text="Defense" Margin="5,0,0,0" />
+                    </StackPanel>				
+				</TabItem.Header>
+				<Grid>
+					<Border x:Name="DefenseBorder" Margin="2.5,0,-2.5,0" Style="{DynamicResource TabBorderStyle}">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="0.71*"/>
+								<ColumnDefinition Width="0.29*"/>
+							</Grid.ColumnDefinitions>
+                            <Border VerticalAlignment="Top" CornerRadius="6" HorizontalAlignment="Left" Width="437.896" d:LayoutOverrides="GridBox">
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+								</Border.Background>
+								<Grid Margin="6">
+									<TextBlock Margin="8,0,0,0" TextWrapping="Wrap" Text="HD" Foreground="White" TextAlignment="Center" d:LayoutOverrides="GridBox" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="-1.084,0.514"/>
+									<Button Content="{Binding HD}" d:LayoutOverrides="GridBox" Margin="30.04,0.98,0,0.98" x:Name="HDButton" Click="HDButton_Click" Style="{DynamicResource ButtonMainStyle}" Height="20" RenderTransformOrigin="0.73,-2.6" HorizontalAlignment="Left" Width="104.12" />
+									<TextBox Text="{Binding HP, UpdateSourceTrigger=PropertyChanged}" TextWrapping="NoWrap" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Center" GotFocus="TextBox_GotFocus" d:LayoutOverrides="GridBox" Margin="158.724,0,0,0" Width="29.329" />
+									<TextBlock Margin="138.16,0,0,0" TextWrapping="Wrap" Text="HP" Foreground="White" TextAlignment="Center" d:LayoutOverrides="GridBox" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left"/>
+									<TextBox Text="{Binding HP_Mods, UpdateSourceTrigger=PropertyChanged}" TextWrapping="NoWrap" VerticalAlignment="Top" GotFocus="TextBox_GotFocus" Margin="247.457,0,0,0" d:LayoutOverrides="GridBox" />
+									<TextBlock Margin="192.053,0,0,0" TextWrapping="Wrap" Text="HP Mods" Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" d:LayoutOverrides="GridBox"/>
+				
+								</Grid>
+							</Border>
+                            <Border  d:LayoutOverrides="HorizontalAlignment, GridBox" HorizontalAlignment="Left" Width="103.22" Margin="0,46.96,0,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top">
+                            	<Border.Effect>
+                            		<DropShadowEffect/>
+                            	</Border.Effect>
+                            	<Border.Background>
+                            		<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+                            	</Border.Background>
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="0"/>
+									<ColumnDefinition Width="0.333*"/>
+									<ColumnDefinition Width="26.667" />
+								</Grid.ColumnDefinitions>
+								<TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="AC" Grid.Column="1" Foreground="White" TextAlignment="Center" d:LayoutOverrides="Height" Grid.ColumnSpan="2" FontWeight="Bold"/>
+								<TextBox Text="{Binding FullAC}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+								<TextBlock Margin="0,5,0,6.287" TextWrapping="Wrap" Text="Touch" Grid.Column="1" Foreground="White" Grid.Row="1" TextAlignment="Center" d:LayoutOverrides="Height, GridBox" HorizontalAlignment="Center" FontWeight="Bold"/>
+								<TextBox Text="{Binding TouchAC}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Right" Grid.Row="1" TextAlignment="Center" GotFocus="TextBox_GotFocus" />
+								<TextBlock Margin="3.066,5,0,6.287" TextWrapping="Wrap" Text="Flat-Footed" Grid.Column="1" Foreground="White" Grid.Row="3" TextAlignment="Center" d:LayoutOverrides="Height" FontWeight="Bold"/>
+								<TextBox Text="{Binding FlatFootedAC}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Right" Grid.Row="3" TextAlignment="Center" GotFocus="TextBox_GotFocus" />
+							</Grid>
+                            </Border>
+							<Border Margin="116.053,46.96,143.666,0" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="VerticalAlignment, GridBox" VerticalAlignment="Top" CornerRadius="6" Height="81.741">
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
+								</Border.Background>
+								<WrapPanel Margin="3">
+									<Grid Width="80" Margin="3,0,0,0">
+										<TextBlock TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Armor" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+										<TextBox Text="{Binding Adjuster.Armor}" TextWrapping="NoWrap" Width="24" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" GotFocus="TextBox_GotFocus" d:LayoutOverrides="GridBox" Margin="0,2" />
+									</Grid>
+						
+									<Grid Width="80" Margin="3,0,0,0">
+										<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Deflection" VerticalAlignment="Center"/>
+										<TextBox Text="{Binding Adjuster.Deflection}" TextWrapping="NoWrap" Width="24" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" GotFocus="TextBox_GotFocus" d:LayoutOverrides="GridBox" Margin="0,2" />
+									</Grid>
+									<Grid Width="80" Margin="3,0,0,0">
+										<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dodge" VerticalAlignment="Center"/>
+										<TextBox Text="{Binding Adjuster.Dodge}" TextWrapping="NoWrap" Width="24" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" GotFocus="TextBox_GotFocus" d:LayoutOverrides="GridBox" Margin="0,2" />
+									</Grid>
+									<Grid Width="80" Margin="3,0,0,0">
+										<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Shield" VerticalAlignment="Center"/>
+										<TextBox Text="{Binding Adjuster.Shield}" TextWrapping="NoWrap" Width="24" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" GotFocus="TextBox_GotFocus" d:LayoutOverrides="GridBox" Margin="0,2" />
+									</Grid>
+									<Grid Width="80" Margin="3,0,0,0">
+										<TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Natural" VerticalAlignment="Center"/>
+										<TextBox Text="{Binding Adjuster.NaturalArmor}" TextWrapping="NoWrap" Width="24" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" GotFocus="TextBox_GotFocus" d:LayoutOverrides="GridBox" Margin="0,2" />
+									</Grid>
+
+								</WrapPanel>
+							</Border>
+							<Border  Margin="0,134.701,143.666,0" VerticalAlignment="Top" d:LayoutOverrides="GridBox" Height="25.333">
+								<Grid Background="{DynamicResource PrimaryColorGradientBrush}">
+									<Grid.Effect>
+										<DropShadowEffect/>
+									</Grid.Effect>
+									<Grid.RowDefinitions>
+										<RowDefinition/>
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="0.333*"/>
+										<ColumnDefinition Width="26.667" />
+										<ColumnDefinition Width="0.333*"/>
+										<ColumnDefinition Width="26.667" />
+										<ColumnDefinition Width="0.333*"/>
+										<ColumnDefinition Width="26.667" />
+									</Grid.ColumnDefinitions>
+									<TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="Fort" Foreground="White" TextAlignment="Center" d:LayoutOverrides="Height" Grid.ColumnSpan="2" FontWeight="Bold"/>
+									<TextBox Text="{Binding Fort}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" TextAlignment="Center" GotFocus="TextBox_GotFocus" />
+									<TextBlock Margin="3.066,5,29.167,6.287" TextWrapping="Wrap" Text="Ref" Foreground="White" Grid.Row="1" TextAlignment="Center" d:LayoutOverrides="Height" Width="28" Grid.ColumnSpan="2" FontWeight="Bold" Grid.Column="2"/>
+									<TextBox Text="{Binding Ref}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="1" TextAlignment="Center" GotFocus="TextBox_GotFocus" />
+									<TextBlock Margin="3.066,5,0,6.287" TextWrapping="Wrap" Text="Will" Foreground="White" Grid.Row="3" TextAlignment="Center" d:LayoutOverrides="Height" FontWeight="Bold" Grid.Column="4"/>
+									<TextBox Text="{Binding Will}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" TextAlignment="Center" GotFocus="TextBox_GotFocus" />
+								</Grid>
+							</Border>
+							<Border BorderThickness="1" Margin="0,166.403,0,0" VerticalAlignment="Top" Height="189.626">
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+								</Border.Background>
+					
+								<StackPanel Margin="3,6">
+									<Grid Margin="0,3,0,0">
+										<TextBlock Text="Def. Abilities" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="6,0,0,0" Foreground="White"/>
+										<TextBox Text="{Binding DefensiveAbilities, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="75,0,3,0"/>
+									</Grid>
+									<Grid Margin="0,3,0,0">
+										<TextBlock Text="DR" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="6,0,0,0" Foreground="White"/>
+										<ComboBox Text="{Binding DR, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="75,0,3,0" IsEditable="True" Height="21.96">
+										    <ComboBoxItem Content="5/-"/>
+                                            <ComboBoxItem Content="5/adamantine"/>
+                                            <ComboBoxItem Content="5/bludgeoning"/>
+                                            <ComboBoxItem Content="5/bludgeoning and magic"/>
+                                            <ComboBoxItem Content="5/bludgeoning or slashing"/>
+                                            <ComboBoxItem Content="5/cold iron"/>
+                                            <ComboBoxItem Content="5/cold iron or evil"/>
+                                            <ComboBoxItem Content="5/cold iron or good"/>
+                                            <ComboBoxItem Content="5/cold iron or lawful"/>
+                                            <ComboBoxItem Content="5/evil"/>
+                                            <ComboBoxItem Content="5/evil or silver"/>
+                                            <ComboBoxItem Content="5/good"/>
+                                            <ComboBoxItem Content="5/good and piercing"/>
+                                            <ComboBoxItem Content="5/good or silver"/>
+                                            <ComboBoxItem Content="5/lawful"/>
+                                            <ComboBoxItem Content="5/magic"/>
+                                            <ComboBoxItem Content="5/magic and silver"/>
+                                            <ComboBoxItem Content="5/magic and slashing"/>
+                                            <ComboBoxItem Content="5/magic or silver"/>
+                                            <ComboBoxItem Content="5/piercing or slashing"/>
+                                            <ComboBoxItem Content="5/silver"/>
+                                            <ComboBoxItem Content="5/silver or good"/>
+                                            <ComboBoxItem Content="5/slashing"/>
+                                            <ComboBoxItem Content="5/slashing or bludgeoning"/>
+                                            <ComboBoxItem Content="10/-"/>
+                                            <ComboBoxItem Content="10/adamantine"/>
+                                            <ComboBoxItem Content="10/adamantine and bludgeoning"/>
+                                            <ComboBoxItem Content="10/adamantine and magic"/>
+                                            <ComboBoxItem Content="10/adamantine or bludgeoning"/>
+                                            <ComboBoxItem Content="10/adamantine or good"/>
+                                            <ComboBoxItem Content="10/bludgeoning"/>
+                                            <ComboBoxItem Content="10/bludgeoning and magic"/>
+                                            <ComboBoxItem Content="10/bludgeoning or magic"/>
+                                            <ComboBoxItem Content="10/chaotic"/>
+                                            <ComboBoxItem Content="10/cold iron"/>
+                                            <ComboBoxItem Content="10/cold iron and evil"/>
+                                            <ComboBoxItem Content="10/cold iron and good"/>
+                                            <ComboBoxItem Content="10/cold iron and lawful"/>
+                                            <ComboBoxItem Content="10/cold iron and magic"/>
+                                            <ComboBoxItem Content="10/cold iron or evil"/>
+                                            <ComboBoxItem Content="10/cold iron or good"/>
+                                            <ComboBoxItem Content="10/cold iron or lawful"/>
+                                            <ComboBoxItem Content="10/cold iron or silver"/>
+                                            <ComboBoxItem Content="10/evil"/>
+                                            <ComboBoxItem Content="10/evil and silver"/>
+                                            <ComboBoxItem Content="10/evil or magic"/>
+                                            <ComboBoxItem Content="10/evil or silver"/>
+                                            <ComboBoxItem Content="10/good"/>
+                                            <ComboBoxItem Content="10/good and silver"/>
+                                            <ComboBoxItem Content="10/good or silver"/>
+                                            <ComboBoxItem Content="10/lawful"/>
+                                            <ComboBoxItem Content="10/magic"/>
+                                            <ComboBoxItem Content="10/magic and adamantine"/>
+                                            <ComboBoxItem Content="10/magic and cold iron"/>
+                                            <ComboBoxItem Content="10/magic and silver"/>
+                                            <ComboBoxItem Content="10/magic slashing or bludgeoning"/>
+                                            <ComboBoxItem Content="10/nonmagical weapons"/>
+                                            <ComboBoxItem Content="10/piercing"/>
+                                            <ComboBoxItem Content="10/piercing or slashing"/>
+                                            <ComboBoxItem Content="10/silver"/>
+                                            <ComboBoxItem Content="10/slashing"/>
+                                            <ComboBoxItem Content="10/slashing or piercing"/>
+                                            <ComboBoxItem Content="15/-"/>
+                                            <ComboBoxItem Content="15/adamantine"/>
+                                            <ComboBoxItem Content="15/adamantine and lawful"/>
+                                            <ComboBoxItem Content="15/adamantine"/>
+                                            <ComboBoxItem Content="15/bludgeoning and good"/>
+                                            <ComboBoxItem Content="15/bludgeoning and magic"/>
+                                            <ComboBoxItem Content="15/chaotic"/>
+                                            <ComboBoxItem Content="15/cold iron"/>
+                                            <ComboBoxItem Content="15/cold iron and good"/>
+                                            <ComboBoxItem Content="15/cold iron and lawful"/>
+                                            <ComboBoxItem Content="15/cold iron and magic"/>
+                                            <ComboBoxItem Content="15/cold iron and slashing"/>
+                                            <ComboBoxItem Content="15/epic"/>
+                                            <ComboBoxItem Content="15/epic and evil"/>
+                                            <ComboBoxItem Content="15/evil"/>
+                                            <ComboBoxItem Content="15/evil and silver"/>
+                                            <ComboBoxItem Content="15/good and piercing"/>
+                                            <ComboBoxItem Content="15/good and silver"/>
+                                            <ComboBoxItem Content="15/lawful"/>
+                                            <ComboBoxItem Content="15/magic"/>
+                                            <ComboBoxItem Content="15/slashing"/>
+                                            <ComboBoxItem Content="15/vorpal"/>
+                                            <ComboBoxItem Content="20/cold iron"/>
+                                            <ComboBoxItem Content="20/good"/>
+                                            <ComboBoxItem Content="20/magic"/>
+                                            
+
+										</ComboBox>
+									</Grid>
+									<Grid Margin="0,3,0,0">
+										<TextBlock Text="Immune" VerticalAlignment="Center" Margin="6,0,31.776,0" Foreground="White" d:LayoutOverrides="Width" HorizontalAlignment="Left"/>
+										<TextBox Text="{Binding Immune, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="75,0,3,0" d:LayoutOverrides="GridBox"/>
+									</Grid>
+									<Grid Margin="0,3,0,0">
+										<TextBlock Text="SR" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="6,0,0,0" Foreground="White"/>
+										<TextBox  Text="{Binding SR, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="75,0,3,0"/>
+									</Grid>
+									<Grid Margin="0,3,0,0">
+										<TextBlock Text="Resist" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="6,0,0,0" Foreground="White"/>
+										<TextBox Text="{Binding Resist, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="75,0,3,0"/>
+									</Grid>
+									<Grid Margin="0,3,0,0">
+										<TextBlock Text="Weakness" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="6,0,0,0" Foreground="White"/>
+										<TextBox  Text="{Binding Weaknesses, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="75,0,3,0"/>
+									</Grid>
+								</StackPanel>
+							</Border>
+						</Grid>
+					</Border>
+				</Grid>
+			</TabItem>
+			<TabItem BorderBrush="{x:Null}">
+				
+				<TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                    	<Image Width="16" Height="16" Source="Images\sword-16.png" />
+                    	<TextBlock Text="Offense" Margin="5,0,0,0" />
+                    </StackPanel>				
+				</TabItem.Header>
+				<Grid>
+					<Border BorderThickness="2" Style="{DynamicResource TabBorderStyle}">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="274.625"/>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+							<Border BorderThickness="1" Height="90.68" Margin="8,3.16,8,0" VerticalAlignment="Top">
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
+								</Border.Background>
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Grid Height="89.68" VerticalAlignment="Top">
+									<TextBlock HorizontalAlignment="Left" Margin="6.039,63.72,0,0" TextWrapping="Wrap" Text="Space" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold"/>
+									<TextBox Text="{Binding Adjuster.LandSpeed}" HorizontalAlignment="Left" Margin="47.917,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" d:LayoutOverrides="VerticalAlignment" RenderTransformOrigin="0.369,0.335"/>
+									<TextBlock Margin="89.711,63.72,0,0" TextWrapping="Wrap" Text="Reach" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="Black" FontWeight="Bold"/>
+									<TextBlock HorizontalAlignment="Left" Margin="89.711,11,0,0" TextWrapping="Wrap" Text="Fly" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold"/>
+									<TextBox Text="{Binding Adjuster.FlySpeed, Converter={StaticResource SpeedValueConverter}}" Margin="135.125,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.369,0.335" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="30"/>
+									<ComboBox HorizontalAlignment="Right" Margin="0,8,8,0" VerticalAlignment="Top" Width="79.5" SelectedIndex="{Binding Adjuster.FlyQuality}">
+										<ComboBoxItem Content="Clumsy"/>
+										<ComboBoxItem Content="Poor"/>
+										<ComboBoxItem Content="Average"/>
+										<ComboBoxItem Content="Good"/>
+										<ComboBoxItem Content="Perfect"/>
+									</ComboBox>
+									<TextBox Text="{Binding Adjuster.ClimbSpeed, Converter={StaticResource SpeedValueConverter}}" HorizontalAlignment="Left" Margin="47.917,33.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.369,0.335"/>
+									<TextBlock Margin="89.711,37.76,125.5,31.96" TextWrapping="Wrap" Text="Burrow" Foreground="Black" FontWeight="Bold" d:LayoutOverrides="Width, Height"/>
+									<TextBox Text="{Binding Adjuster.BurrowSpeed, Converter={StaticResource SpeedValueConverter}}" Margin="135.125,33.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.369,0.335" HorizontalAlignment="Left" Width="30"/>
+									<TextBlock HorizontalAlignment="Left" Margin="169.125,36.76,0,32.96" TextWrapping="Wrap" Text="Swim" Foreground="Black" RenderTransformOrigin="0.32,0.477" FontWeight="Bold" d:LayoutOverrides="Height"/>
+									<TextBox Text="{Binding Adjuster.SwimSpeed, Converter={StaticResource SpeedValueConverter}}" Margin="0,34.76,8,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.369,0.335" HorizontalAlignment="Right" Width="30"/>
+									<TextBlock HorizontalAlignment="Left" Margin="6.176,37.76,0,31.96" TextWrapping="Wrap" Text="Climb" Foreground="Black" FontWeight="Bold" d:LayoutOverrides="Height"/>
+									<TextBox Text="{Binding Space, Converter={StaticResource FtPropertyConverter}}" HorizontalAlignment="Left" Margin="47.917,60.72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
+									<TextBox Text="{Binding Reach, Converter={StaticResource FtPropertyConverter}}" Margin="135.125,60.72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.958,0.555" HorizontalAlignment="Left" Width="30"/>
+									<TextBlock HorizontalAlignment="Left" Margin="4.332,11,0,0" TextWrapping="Wrap" Text="Speed" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold"/>
+								</Grid>
+							</Border>
+							<Grid Margin="8,100.7,8,33.96" >
+								<Grid.Effect>
+									<DropShadowEffect/>
+								</Grid.Effect>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="21"/>
+									<RowDefinition Height="0.5*"/>
+									<RowDefinition Height="21"/>
+									<RowDefinition Height="0.5*"/>
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition/>
+								</Grid.ColumnDefinitions>
+								<Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+									<Rectangle.Fill>
+										<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+									</Rectangle.Fill>
+								</Rectangle>
+								<Rectangle Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
+									<Rectangle.Fill>
+										<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+									</Rectangle.Fill>
+								</Rectangle>
+								<Border  Grid.Row="0" Grid.Column="0" Background="{DynamicResource PrimaryColorGradientBrush}" >
+									<TextBlock Text="Melee" Foreground="White" Margin="3,0,0,0" FontWeight="Bold" VerticalAlignment="Center">
+										<TextBlock.Effect>
+											<DropShadowEffect/>
+										</TextBlock.Effect>
+									</TextBlock>
+								</Border>
+								<TextBlock Text="{Binding Melee}" Visibility="{Binding Melee, Converter={StaticResource NotNullVisibilityCollapsedConverter}}" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Foreground="White" Margin="3,0,3,2" TextTrimming="CharacterEllipsis"/>
+								<Border Grid.Row="2" Grid.Column="0" Background="{DynamicResource PrimaryColorGradientBrush}" >
+									<TextBlock Text="Ranged" Foreground="White" Margin="3,0,0,0" FontWeight="Bold" d:LayoutOverrides="GridBox" VerticalAlignment="Center">
+										<TextBlock.Effect>
+											<DropShadowEffect/>
+										</TextBlock.Effect>
+									</TextBlock>
+								</Border>
+								<TextBlock Text="{Binding Ranged}" Visibility="{Binding Ranged, Converter={StaticResource NotNullVisibilityCollapsedConverter}}" Grid.Row="3" Grid.Column="0"  TextWrapping="Wrap" Foreground="White" Margin="3,0,3,2" TextTrimming="CharacterEllipsis"/>
+							</Grid>
+							<Button x:Name="AttacksEditorButton" Content="Attacks Editor" HorizontalAlignment="Left" Margin="8,0,0,5.5" VerticalAlignment="Bottom" Click="AttacksEditorButton_Click" Padding="3,1" Style="{DynamicResource ButtonMainStyle}"/>
+							<Button x:Name="ManualEditButton" Content="Manual Edit" Margin="95.18,0,0,5.5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="ManualEditButton_Click" Padding="3,1" Style="{DynamicResource ButtonMainStyle}"/>
+							<Border Grid.Column="1">
+								<Border.Effect>
+									<DropShadowEffect/>
+								</Border.Effect>
+								<Border.Background>
+									<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+								</Border.Background>
+								<Grid>
+									<TextBlock HorizontalAlignment="Left" Margin="8,5,0,0" TextWrapping="Wrap" Text="Special Attacks" VerticalAlignment="Top" Foreground="White" d:LayoutOverrides="VerticalAlignment" FontWeight="Bold"/>
+									<TextBox Margin="8,24.84,8,0" Text="{Binding SpecialAttacks}" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" d:LayoutOverrides="VerticalAlignment" VerticalScrollBarVisibility="Auto"/>
+									<TextBlock HorizontalAlignment="Left" Margin="8,88.84,0,0" TextWrapping="Wrap" Text="Spell-Like Abilities" VerticalAlignment="Top" Foreground="White" d:LayoutOverrides="VerticalAlignment" FontWeight="Bold"/>
+									<TextBox Margin="8,108.8,8,0" Text="{Binding Adjuster.SpellLikeAbilities}" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" VerticalScrollBarVisibility="Auto"/>
+									<TextBlock HorizontalAlignment="Left" Margin="8,172.8,0,0" TextWrapping="Wrap" Text="Spells Known" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+									<TextBox Margin="8,192.76,8,0" Text="{Binding Adjuster.SpellsKnown}" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" VerticalScrollBarVisibility="Auto"/>
+									<TextBlock HorizontalAlignment="Left" Margin="8,256.76,0,0" TextWrapping="Wrap" Text="Spells Prepared" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
+									<TextBox Margin="8,276.72,8,0" Text="{Binding Adjuster.SpellsPrepared}" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" VerticalScrollBarVisibility="Auto"/></Grid>
+							</Border>
+						</Grid>
+					</Border>
+				</Grid>
+			</TabItem>			
+			<TabItem BorderBrush="{x:Null}">
+				<TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                    	<Image Width="16" Height="16" Source="Images/pencil-16.png" />
+                    	<TextBlock Text="Statistics" Margin="5,0,0,0" />
+                    </StackPanel>				
+				</TabItem.Header>
+			    <Border Margin="0,0,0,0" Style="{DynamicResource TabBorderStyle}">
+							
+                <Grid >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.564*"/>
+						<ColumnDefinition Width="0.436*"/>
+						<ColumnDefinition Width="0*"/>
+					</Grid.ColumnDefinitions>
+					<Border VerticalAlignment="Top"  HorizontalAlignment="Left" Width="112.333">
+						<Border.Effect>
+							<DropShadowEffect/>
+						</Border.Effect>
+						<Border.Background>
+							<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+						</Border.Background>
+    					<Grid>
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition/>
+    							<ColumnDefinition Width="33" />
+    						</Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                            	<RowDefinition Height="Auto" MinHeight="8.667"/>
+                            	<RowDefinition Height="Auto"/>
+                            	<RowDefinition Height="Auto" MinHeight="8.666"/>
+                            </Grid.RowDefinitions>
+    						<TextBlock Margin="5,5,0,6.287" TextWrapping="Wrap" Text="Base Attack" Foreground="White" TextAlignment="Center" d:LayoutOverrides="Height, GridBox" HorizontalAlignment="Center" FontWeight="Bold"/>
+    						<TextBox Text="{Binding Adjuster.BaseAtk}" Margin="0,2,0,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Center" TextAlignment="Center" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
+    						<TextBlock Margin="5,5,0,6.287" TextWrapping="Wrap" Text="CMB" Foreground="White" Grid.Row="1" TextAlignment="Center" d:LayoutOverrides="Height, GridBox" HorizontalAlignment="Center" FontWeight="Bold"/>
+    						<TextBox Text="{Binding CMB_Numeric}" Margin="0,2,0,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextAlignment="Center" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
+    						<TextBlock Margin="4.449,5,0,6.287" TextWrapping="Wrap" Text="CMD" Foreground="White" Grid.Row="2" TextAlignment="Center" d:LayoutOverrides="Height, GridBox" HorizontalAlignment="Center" FontWeight="Bold"/>
+    						<TextBox Text="{Binding CMD_Numeric}" Margin="0,2,0,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" TextAlignment="Center" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" Grid.RowSpan="3" />
+    					</Grid>
+                    </Border>
+					<Border BorderThickness="1" Height="103.84" Margin="124.333,0,5.991,0" VerticalAlignment="Top">
+						<Border.Effect>
+							<DropShadowEffect/>
+						</Border.Effect>
+						<Border.Background>
+							<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+						</Border.Background>
+						<Grid>
+							<TextBlock Text="Racial Modifiers" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,4.25,0,0" Foreground="White" FontWeight="Bold"/>
+							<TextBox Text="{Binding RacialMods, UpdateSourceTrigger=PropertyChanged}" Margin="8,24.21,8,0" VerticalAlignment="Top"/>
+							<TextBlock Text="Aura" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" Margin="8,50.17,0,35.71" d:LayoutOverrides="Height, GridBox"/>
+							<TextBox x:Name="AuraTextBox" Margin="8,0,8,9.75" TextWrapping="Wrap" Text="{Binding Aura}" VerticalAlignment="Bottom"/></Grid>
+					</Border>
+					<Border Margin="0,111.673,5.991,8" CornerRadius="6">
+						<Border.Effect>
+							<DropShadowEffect/>
+						</Border.Effect>
+						<Border.Background>
+							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+						</Border.Background>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="133.712"/>
+							</Grid.ColumnDefinitions>
+							<TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" Text="Skills" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"/>
+							<ListBox x:Name="SkillsListBox" ItemsSource="{Binding}" Margin="8,27.96,0,8" ItemTemplate="{DynamicResource SkillValueTemplate}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+							<TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="7.999,8,0,0" TextWrapping="Wrap" Text="Available" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"/>
+							<ListBox Grid.Column="1" Margin="8,27.96,8,59.92" ItemsSource="{Binding}"  x:Name="AvailableSkillsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="AvailableSkillsList_MouseDoubleClick" />
+							<ComboBox Grid.Column="1" Margin="7.999,0,8,33.96" VerticalAlignment="Bottom" x:Name="SkillSubtypeTextBox" IsEditable="True" />
+							<Button x:Name="AddSkillButton" Content="Add" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,8,8" VerticalAlignment="Bottom" Width="75" Click="AddSkillButton_Click"/></Grid>
+				    </Border>
+					<Border BorderThickness="0" Margin="2.532,0,8,0" VerticalAlignment="Top" Grid.Column="1" Height="348.696">
+						<Border.Effect>
+							<DropShadowEffect/>
+						</Border.Effect>
+						<Border.Background>
+							<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+						</Border.Background>
+					
+						<StackPanel Margin="3,6">
+							<Grid Margin="0,3,0,0"/>
+							<StackPanel Margin="0,3,0,0">
+								<TextBlock Text="Languages" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" HorizontalAlignment="Left" FontWeight="Bold"/>
+								<TextBox Text="{Binding Languages, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,0,8,0" Height="87" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+							</StackPanel>
+							<StackPanel Margin="0,3,0,0">
+								<TextBlock Text="SQ" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" FontWeight="Bold"/>
+								<TextBox  Text="{Binding SQ, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="87" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+							</StackPanel>
+							<StackPanel Margin="0,3,0,0">
+								<TextBlock Text="Gear" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" FontWeight="Bold"/>
+								<TextBox Text="{Binding Gear, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="87" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+							</StackPanel>
+						</StackPanel>
+					</Border>
+                </Grid>
+                </Border>
+			</TabItem>			
+			<TabItem  BorderBrush="{x:Null}">
+				<TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                    	<Image Width="16" Height="16" Source="Images\star-16.png" />
+                    	<TextBlock Text="Feats" Margin="5,0,0,0" />
+                    </StackPanel>				
+				</TabItem.Header>
+		      <Border Style="{DynamicResource TabBorderStyle}">
+			     <Grid>
+			     	<Border  Margin="0,0,8,0" CornerRadius="6">
+			     		<Border.Effect>
+			     			<DropShadowEffect/>
+			     		</Border.Effect>
+			     		<Border.Background>
+			     			<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+			     		</Border.Background>
+			     		<Grid>
+			     			<local:FeatChangeControl Margin="8,27.96,8,8" x:Name="FeatChangeControl"/>
+			     			<TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" Text="Feats" VerticalAlignment="Top" RenderTransformOrigin="0.211,0.561" FontWeight="Bold" Foreground="White"/>
+			     		</Grid>
+			     	</Border></Grid>
+			  </Border>
+            </TabItem>
+            <TabItem  BorderBrush="{x:Null}">
+				<TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                    	<Image Width="16" Height="16" Source="Images\lightning-16.png" />
+                    	<TextBlock Text="Special Abilities" Margin="5,0,0,0" />
+                    </StackPanel>				
+				</TabItem.Header>
+                
+		      <Border Style="{DynamicResource TabBorderStyle}">
+		          <Grid>
+		          	<ListBox ItemsSource="{Binding}" Margin="0,0,8,30.46" ItemTemplate="{DynamicResource SpecialAbilityTemplate}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" x:Name="SpecialAbilitiesListBox" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
+		          		<ListBox.Effect>
+		          			<DropShadowEffect/>
+		          		</ListBox.Effect>
+		          		<ListBox.Background>
+		          			<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+		          		</ListBox.Background>
+		          	</ListBox>
+		          	<Button x:Name="AddSpecialAbilityButton" Margin="0,0,0,0.79" VerticalAlignment="Bottom" Click="AddSpecialAbilityButton_Click" HorizontalAlignment="Left" Style="{DynamicResource ButtonMainStyle}">
+		          	   <StackPanel Orientation="Horizontal">
+		          	   	   <Path Data="M3,0 L6,0 L6,3 L9,3 L9,6 L6,6 L6,9 L3,9 L3,6 L0,6 L0,3 L3,3 z" HorizontalAlignment="Left" StrokeStartLineCap="Round" Stretch="Fill" StrokeEndLineCap="Round" Width="15" Height="15" Margin="3,2,0,1" Stroke="#FF115E16" Fill="#FF3AE54D">
+            				<Path.Effect>
+            					<DropShadowEffect ShadowDepth="2"/>
+            				</Path.Effect>
+            			</Path>
+		          	       <TextBlock Text="Add Special Ability" Margin="3,0" VerticalAlignment="Center"/>
+		          	   </StackPanel>
+		          	 </Button>
+                 </Grid>
+		      </Border>
+            </TabItem>
+            <TabItem  BorderBrush="{x:Null}" >
+            	<TabItem.Header>
+            		<StackPanel Orientation="Horizontal">
+            			<Image Width="16" Height="16" Source="Images/book-16.png" />
+            			<TextBlock Text="Description" Margin="5,0,0,0" />
+            		</StackPanel>				
+            	</TabItem.Header>
+                
+            	<Border Style="{DynamicResource TabBorderStyle}">
+            		<Grid>
+            			<Grid.ColumnDefinitions>
+            			 <ColumnDefinition/>     
+            			 <ColumnDefinition/>          
+            			</Grid.ColumnDefinitions>
+                        <Border Padding="6" CornerRadius="6" Margin="0,0,4.001,0">
+                        	<Border.Effect>
+                        		<DropShadowEffect/>
+                        	</Border.Effect>
+                        	<Border.Background>
+                        		<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+                        	</Border.Background>
+                            <StackPanel Orientation="Vertical" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    			<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Environment" VerticalAlignment="Top" Margin="3,2,11,2" Foreground="White" FontWeight="Bold"/>
+                                <ComboBox Text="{Binding Environment}" IsEditable="True">
+                                	<ComboBoxItem Content="any"/>
+                                        <ComboBoxItem Content="any aquatic"/>
+                                        <ComboBoxItem Content="any aquatic or land"/>
+                                        <ComboBoxItem Content="any battle"/>
+                                        <ComboBoxItem Content="any coastal"/>
+                                        <ComboBoxItem Content="any coastlines"/>
+                                        <ComboBoxItem Content="any cold"/>
+                                        <ComboBoxItem Content="any cold land"/>
+                                        <ComboBoxItem Content="any evil-aligned plane"/>
+                                        <ComboBoxItem Content="any extraplanar"/>
+                                        <ComboBoxItem Content="any forest"/>
+                                        <ComboBoxItem Content="any forest or swamp"/>
+                                        <ComboBoxItem Content="any forest, hill, jungle, or plains"/>
+                                        <ComboBoxItem Content="any forests"/>
+                                        <ComboBoxItem Content="any forests or hills"/>
+                                        <ComboBoxItem Content="any forests or plains"/>
+                                        <ComboBoxItem Content="any forests, plains, and swamps"/>
+                                        <ComboBoxItem Content="any good-aligned plane"/>
+                                        <ComboBoxItem Content="any hills or forests"/>
+                                        <ComboBoxItem Content="any hills or mountains"/>
+                                        <ComboBoxItem Content="any lakes"/>
+                                        <ComboBoxItem Content="any land"/>
+                                        <ComboBoxItem Content="any land or underground"/>
+                                        <ComboBoxItem Content="any marshes or underground"/>
+                                        <ComboBoxItem Content="any mountains or underground"/>
+                                        <ComboBoxItem Content="any non-cold underground"/>
+                                        <ComboBoxItem Content="any ocean"/>
+                                        <ComboBoxItem Content="any oceans"/>
+                                        <ComboBoxItem Content="any plains or swamps"/>
+                                        <ComboBoxItem Content="any ruins"/>
+                                        <ComboBoxItem Content="any ruins or underground"/>
+                                        <ComboBoxItem Content="any saltwater"/>
+                                        <ComboBoxItem Content="any swamp"/>
+                                        <ComboBoxItem Content="any swamp or underground"/>
+                                        <ComboBoxItem Content="any swamps"/>
+                                        <ComboBoxItem Content="any swamps or underground"/>
+                                        <ComboBoxItem Content="any swamps or woodlands"/>
+                                        <ComboBoxItem Content="any temperate"/>
+                                        <ComboBoxItem Content="any temperate and warm"/>
+                                        <ComboBoxItem Content="any temperate or tropical"/>
+                                        <ComboBoxItem Content="any temperate or underground"/>
+                                        <ComboBoxItem Content="any temperate or warm"/>
+                                        <ComboBoxItem Content="any temperate, warm, or urban"/>
+                                        <ComboBoxItem Content="any tropical"/>
+                                        <ComboBoxItem Content="any underground"/>
+                                        <ComboBoxItem Content="any underground or urban"/>
+                                        <ComboBoxItem Content="any urban"/>
+                                        <ComboBoxItem Content="any urban or ruins"/>
+                                        <ComboBoxItem Content="any volcano or underground"/>
+                                        <ComboBoxItem Content="any warm"/>
+                                        <ComboBoxItem Content="any water"/>
+                                        <ComboBoxItem Content="cold aquatic and coastlines"/>
+                                        <ComboBoxItem Content="cold aquatic or underground"/>
+                                        <ComboBoxItem Content="cold deserts and glaciers"/>
+                                        <ComboBoxItem Content="cold forests"/>
+                                        <ComboBoxItem Content="cold forests and plains"/>
+                                        <ComboBoxItem Content="cold hills"/>
+                                        <ComboBoxItem Content="cold hills and mountains"/>
+                                        <ComboBoxItem Content="cold hills or glaciers"/>
+                                        <ComboBoxItem Content="cold lakes and swamps"/>
+                                        <ComboBoxItem Content="cold marshes"/>
+                                        <ComboBoxItem Content="cold marshes and underground"/>
+                                        <ComboBoxItem Content="cold mountains"/>
+                                        <ComboBoxItem Content="cold mountains or forests"/>
+                                        <ComboBoxItem Content="cold mountains or underground"/>
+                                        <ComboBoxItem Content="cold oceans"/>
+                                        <ComboBoxItem Content="cold or temperate forest and plains"/>
+                                        <ComboBoxItem Content="cold or temperate forests"/>
+                                        <ComboBoxItem Content="cold or temperate forests and plains"/>
+                                        <ComboBoxItem Content="cold or temperate hills"/>
+                                        <ComboBoxItem Content="cold or temperate plains"/>
+                                        <ComboBoxItem Content="cold plains"/>
+                                        <ComboBoxItem Content="cold plains or mountains"/>
+                                        <ComboBoxItem Content="ocean"/>
+                                        <ComboBoxItem Content="temperate and hot forests and deserts"/>
+                                        <ComboBoxItem Content="temperate and hot plains or urban"/>
+                                        <ComboBoxItem Content="temperate and warm forest"/>
+                                        <ComboBoxItem Content="temperate and warm forests"/>
+                                        <ComboBoxItem Content="temperate and warm marshes and underground"/>
+                                        <ComboBoxItem Content="temperate and warm plains"/>
+                                        <ComboBoxItem Content="temperate and warm swamps"/>
+                                        <ComboBoxItem Content="temperate aquatic"/>
+                                        <ComboBoxItem Content="temperate coastlines"/>
+                                        <ComboBoxItem Content="temperate coasts"/>
+                                        <ComboBoxItem Content="temperate deserts"/>
+                                        <ComboBoxItem Content="temperate deserts, hills, or mountains"/>
+                                        <ComboBoxItem Content="temperate forest"/>
+                                        <ComboBoxItem Content="temperate forest or marshes"/>
+                                        <ComboBoxItem Content="temperate forest or plains"/>
+                                        <ComboBoxItem Content="temperate forest or swamp"/>
+                                        <ComboBoxItem Content="temperate forest, swamp, or underground"/>
+                                        <ComboBoxItem Content="temperate forests"/>
+                                        <ComboBoxItem Content="temperate forests and marshes"/>
+                                        <ComboBoxItem Content="temperate forests and plains"/>
+                                        <ComboBoxItem Content="temperate forests or hills"/>
+                                        <ComboBoxItem Content="temperate forests or plains"/>
+                                        <ComboBoxItem Content="temperate forests or underground"/>
+                                        <ComboBoxItem Content="temperate forests, lakes, and rivers"/>
+                                        <ComboBoxItem Content="temperate forests, mountains, or underground"/>
+                                        <ComboBoxItem Content="temperate forests, plains, or swamps"/>
+                                        <ComboBoxItem Content="temperate freshwater"/>
+                                        <ComboBoxItem Content="temperate hills"/>
+                                        <ComboBoxItem Content="temperate hills and plains"/>
+                                        <ComboBoxItem Content="temperate hills and ruins"/>
+                                        <ComboBoxItem Content="temperate hills and underground"/>
+                                        <ComboBoxItem Content="temperate hills or plains"/>
+                                        <ComboBoxItem Content="temperate hills or underground"/>
+                                        <ComboBoxItem Content="temperate hills, mountains, or underground"/>
+                                        <ComboBoxItem Content="temperate lakes or rivers"/>
+                                        <ComboBoxItem Content="temperate marsh"/>
+                                        <ComboBoxItem Content="temperate marshes"/>
+                                        <ComboBoxItem Content="temperate marshes and plains"/>
+                                        <ComboBoxItem Content="temperate marshes and underground"/>
+                                        <ComboBoxItem Content="temperate mountains"/>
+                                        <ComboBoxItem Content="temperate mountains or hills"/>
+                                        <ComboBoxItem Content="temperate mountains or urban"/>
+                                        <ComboBoxItem Content="temperate ocean"/>
+                                        <ComboBoxItem Content="temperate oceans"/>
+                                        <ComboBoxItem Content="temperate or cold aquatic or underground"/>
+                                        <ComboBoxItem Content="temperate or cold hills"/>
+                                        <ComboBoxItem Content="temperate or cold ocean"/>
+                                        <ComboBoxItem Content="temperate or tropical forests"/>
+                                        <ComboBoxItem Content="temperate or tropical forests or hills"/>
+                                        <ComboBoxItem Content="temperate or tropical hills"/>
+                                        <ComboBoxItem Content="temperate or tropical swamps"/>
+                                        <ComboBoxItem Content="temperate or warm aquatic"/>
+                                        <ComboBoxItem Content="temperate or warm forest"/>
+                                        <ComboBoxItem Content="temperate or warm forest or underground"/>
+                                        <ComboBoxItem Content="temperate or warm forests"/>
+                                        <ComboBoxItem Content="temperate or warm forests and underground"/>
+                                        <ComboBoxItem Content="temperate or warm forests or plains"/>
+                                        <ComboBoxItem Content="temperate or warm forests or swamps"/>
+                                        <ComboBoxItem Content="temperate or warm forests or underground"/>
+                                        <ComboBoxItem Content="temperate or warm forests, hills, or underground"/>
+                                        <ComboBoxItem Content="temperate or warm hills"/>
+                                        <ComboBoxItem Content="temperate or warm land"/>
+                                        <ComboBoxItem Content="temperate or warm marshes"/>
+                                        <ComboBoxItem Content="temperate or warm marshes and aquatic"/>
+                                        <ComboBoxItem Content="temperate or warm ocean"/>
+                                        <ComboBoxItem Content="temperate or warm ocean or coastline"/>
+                                        <ComboBoxItem Content="temperate or warm plains"/>
+                                        <ComboBoxItem Content="temperate or warm swamps"/>
+                                        <ComboBoxItem Content="temperate or warm swamps or underground"/>
+                                        <ComboBoxItem Content="temperate or warm water"/>
+                                        <ComboBoxItem Content="temperate or warm water or shore"/>
+                                        <ComboBoxItem Content="temperate plains"/>
+                                        <ComboBoxItem Content="temperate plains or forests"/>
+                                        <ComboBoxItem Content="temperate plains, hills, or forests"/>
+                                        <ComboBoxItem Content="temperate plains, rocky hills, and underground"/>
+                                        <ComboBoxItem Content="temperate ruins or underground"/>
+                                        <ComboBoxItem Content="temperate swamp or underground"/>
+                                        <ComboBoxItem Content="temperate swamps"/>
+                                        <ComboBoxItem Content="temperate swamps or underground"/>
+                                        <ComboBoxItem Content="temperate underground or deep forest"/>
+                                        <ComboBoxItem Content="temperate underground or marshes"/>
+                                        <ComboBoxItem Content="tropical forests"/>
+                                        <ComboBoxItem Content="tropical forests and jungles"/>
+                                        <ComboBoxItem Content="tropical hills and mountains"/>
+                                        <ComboBoxItem Content="tropical jungles"/>
+                                        <ComboBoxItem Content="tropical lakes and rivers"/>
+                                        <ComboBoxItem Content="tropical lakes and rivers or underground"/>
+                                        <ComboBoxItem Content="tropical oceans"/>
+                                        <ComboBoxItem Content="tropical rivers and lakes"/>
+                                        <ComboBoxItem Content="tropical rivers, lakes, and swamps"/>
+                                        <ComboBoxItem Content="tropical swamps"/>
+                                        <ComboBoxItem Content="underground"/>
+                                        <ComboBoxItem Content="volcanic underground"/>
+                                        <ComboBoxItem Content="warm aquatic"/>
+                                        <ComboBoxItem Content="warm coastline"/>
+                                        <ComboBoxItem Content="warm coastline or forest"/>
+                                        <ComboBoxItem Content="warm coastline, swamps, or plains"/>
+                                        <ComboBoxItem Content="warm coasts or forests"/>
+                                        <ComboBoxItem Content="warm desert and hills"/>
+                                        <ComboBoxItem Content="warm deserts"/>
+                                        <ComboBoxItem Content="warm deserts and hills"/>
+                                        <ComboBoxItem Content="warm deserts, plains, or hills"/>
+                                        <ComboBoxItem Content="warm forest and plains"/>
+                                        <ComboBoxItem Content="warm forest, plains, or hills"/>
+                                        <ComboBoxItem Content="warm forests"/>
+                                        <ComboBoxItem Content="warm forests and mountains"/>
+                                        <ComboBoxItem Content="warm forests and plains"/>
+                                        <ComboBoxItem Content="warm forests and swamps"/>
+                                        <ComboBoxItem Content="warm forests or marshes"/>
+                                        <ComboBoxItem Content="warm forests or plains"/>
+                                        <ComboBoxItem Content="warm forests or underground"/>
+                                        <ComboBoxItem Content="warm forests, oceans, or rivers"/>
+                                        <ComboBoxItem Content="warm forests, swamps, and fresh water"/>
+                                        <ComboBoxItem Content="warm fresh water"/>
+                                        <ComboBoxItem Content="warm hills"/>
+                                        <ComboBoxItem Content="warm hills and deserts"/>
+                                        <ComboBoxItem Content="warm hills and marshes"/>
+                                        <ComboBoxItem Content="warm hills or plains"/>
+                                        <ComboBoxItem Content="warm jungle"/>
+                                        <ComboBoxItem Content="warm jungles and swamps"/>
+                                        <ComboBoxItem Content="warm lakes and swamps"/>
+                                        <ComboBoxItem Content="warm marshes"/>
+                                        <ComboBoxItem Content="warm marshes and aquatic"/>
+                                        <ComboBoxItem Content="warm mountains"/>
+                                        <ComboBoxItem Content="warm ocean"/>
+                                        <ComboBoxItem Content="warm ocean or coastline"/>
+                                        <ComboBoxItem Content="warm oceans"/>
+                                        <ComboBoxItem Content="warm or temperate deserts, forests, plains, or underground"/>
+                                        <ComboBoxItem Content="warm plains"/>
+                                        <ComboBoxItem Content="warm plains and deserts"/>
+                                        <ComboBoxItem Content="warm plains or desert"/>
+                                        <ComboBoxItem Content="warm plains or hills"/>
+                                        <ComboBoxItem Content="warm rivers"/>
+                                        <ComboBoxItem Content="warm rivers and marshes"/>
+                                        <ComboBoxItem Content="warm swamps"/>
+
+                                </ComboBox>
+                    			<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Organization" VerticalAlignment="Top" Margin="3,2,11,2" Foreground="White" FontWeight="Bold"/>
+                    			<TextBox Text="{Binding Organization}" />
+                                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Treasure" VerticalAlignment="Top" Margin="3,2,11,2" Foreground="White" FontWeight="Bold"/>
+                    			<TextBox Text="{Binding Treasure}" Height="55" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Before Combat" VerticalAlignment="Top" Margin="3,2,11,2" Foreground="White" FontWeight="Bold"/>
+                    			<TextBox Text="{Binding BeforeCombat}" Height="72" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                                <TextBlock TextWrapping="Wrap" Text="During Combat" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="3,2,11,2" Foreground="White" FontWeight="Bold"/>
+                    			<TextBox Text="{Binding DuringCombat}" Height="73" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="1" Padding="6" CornerRadius="6">
+                        	<Border.Effect>
+                        		<DropShadowEffect/>
+                        	</Border.Effect>
+                        	<Border.Background>
+                        		<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+                        	</Border.Background>
+                            <StackPanel >
+                                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Morale" VerticalAlignment="Top" Margin="3,2,4,2" FontWeight="Bold" Foreground="White"/>
+                    			<TextBox Text="{Binding Morale}" Width="304.797" Height="62" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Visual Description" VerticalAlignment="Top" Margin="3,2,4,2" FontWeight="Bold" Foreground="White"/>
+                    			<TextBox Text="{Binding Description_Visual}" Width="304.797" Height="62" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Margin="3,2,4,2" FontWeight="Bold" Foreground="White"/>
+                                <TextBox Text="{Binding Description}" TextWrapping="Wrap" AcceptsReturn="True" Height="159.96" Margin="0,0,0.001,0" VerticalScrollBarVisibility="Auto" TextChanged="TextBox_TextChanged"/>
+            		      </StackPanel>
+                      </Border>
+                    </Grid>
+            	</Border>
+            </TabItem>
+        </TabControl>
+		<Button x:Name="OKButton" Content="OK" Grid.Column="1" Margin="0,9.464,87,10.04" Grid.Row="1" d:LayoutOverrides="Height" HorizontalAlignment="Right" Width="75" IsDefault="True" Click="OKButton_Click" />
+		<Button x:Name="CancelButton" Content="Cancel" Grid.Column="1" Margin="0,9.464,8,10.04" Grid.Row="1" HorizontalAlignment="Right" Width="75" d:LayoutOverrides="Height" IsCancel="True"/>
+	</Grid>
+</Window>

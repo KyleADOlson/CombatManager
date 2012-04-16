@@ -1,0 +1,56 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="CombatManager.DieRollEditWindow"
+	x:Name="Window"
+	Title="Edit Die Roll"
+	Width="251" Height="241">
+	<Window.Resources>
+		<DataTemplate x:Key="DataTemplate1">
+			<Grid d:DesignWidth="136">
+				<Grid.Background>
+					<SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
+				</Grid.Background>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" MinWidth="34.32"/>
+					<ColumnDefinition Width="30"/>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="30"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<TextBlock TextWrapping="Wrap" Text="Count" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2,0"/>
+				<TextBlock TextWrapping="Wrap" Text="Die" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="2" d:LayoutOverrides="Width" Margin="2,0"/>
+				<TextBox Grid.Column="1" Margin="2.805,4.004,2,4.004" TextWrapping="Wrap" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" d:LayoutOverrides="Height" />
+				<TextBox Grid.Column="3" Margin="2,4.004" TextWrapping="Wrap" Text="{Binding Die, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" d:LayoutOverrides="Height" />
+				<Button x:Name="DeleteButton" Margin="0,7.004,0,6.964" RenderTransformOrigin="0.222,-0.601" Grid.Column="4" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Center" Click="DeleteButton_Click">
+					<Button.ToolTip>Delete</Button.ToolTip>
+					<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+				</Button>
+
+			</Grid>
+			
+		</DataTemplate>
+	</Window.Resources>
+	<Window.Background>
+		<SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
+	</Window.Background>
+
+	<Grid x:Name="LayoutRoot">
+		<Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,8" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
+		<Button x:Name="OKButton" Content="OK" Margin="62,0,87,8" VerticalAlignment="Bottom" IsDefault="True" Click="OKButton_Click"/>
+		<Button x:Name="AddDieButton" Content="Add Die" Margin="8,0,0,44" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="59" Click="AddDieButton_Click"/>
+		<Border BorderThickness="2" Margin="8,8,8,0" Height="26" VerticalAlignment="Top" CornerRadius="6" Background="{DynamicResource SecondaryColorBGradientBrush}" BorderBrush="White">
+		  <TextBlock Text="2d4+7" VerticalAlignment="Center" Margin="4,0" Foreground="White" Name="DieRollText" />
+	    </Border>
+		<ListBox Margin="8,38,79,69.96" Name="DieStepList" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate1}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Hidden" />
+		<Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Right" Margin="0,38,8,0" Width="66.998" Height="50.5" VerticalAlignment="Top" CornerRadius="6">
+			<Border.Background>
+				<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+			</Border.Background>
+			<Grid>
+				<TextBox Margin="5.999,19.96,8,0" TextWrapping="Wrap" x:Name="DieRollBonusText" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+				<TextBlock Margin="5.999,4,0,0" TextWrapping="Wrap" Text="Mod" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/></Grid>
+		</Border>
+	</Grid>
+</Window>

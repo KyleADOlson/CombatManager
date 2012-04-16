@@ -1,0 +1,149 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.ComponentModel;
+using System.Xml.Serialization;
+
+
+namespace CombatManager
+{
+    public class CampaignEvent : INotifyPropertyChanged, ICloneable, IDBLoadable
+    {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private int _DBLoaderID;
+        private int _CampaignID;
+        private DateTime _Start;
+        private DateTime _LastStart;
+        private DateTime _End;
+        private bool _AllDay;
+        private string _Title;
+        private string _Details;
+
+
+        public CampaignEvent()
+        {
+
+        }
+
+        public CampaignEvent(CampaignEvent old)
+        {
+            _Start = old._Start;
+            _End = old.End;
+            _AllDay = old._AllDay;
+            _Title = old._Title;
+            _Details = old._Details;
+
+        }
+
+        public object Clone()
+        {
+            return new CampaignEvent(this);
+        }
+
+        public DateTime Start
+        {
+            get { return _Start; }
+            set
+            {
+                if (_Start != value)
+                {
+                    _LastStart = _Start;
+                    _Start = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Start")); }
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public DateTime LastStart
+        {
+            get { return _LastStart; }
+        }
+
+        public DateTime End
+        {
+            get { return _End; }
+            set
+            {
+                if (_End != value)
+                {
+                    _End = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("End")); }
+                }
+            }
+        }
+        public bool AllDay
+        {
+            get { return _AllDay; }
+            set
+            {
+                if (_AllDay != value)
+                {
+                    _AllDay = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AllDay")); }
+                }
+            }
+        }
+        public string Title
+        {
+            get { return _Title; }
+            set
+            {
+                if (_Title != value)
+                {
+                    _Title = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Title")); }
+                }
+            }
+        }
+        public string Details
+        {
+            get { return _Details; }
+            set
+            {
+                if (_Details != value)
+                {
+                    _Details = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Details")); }
+                }
+            }
+        }
+
+
+        public int DBLoaderID
+        {
+            get
+            {
+                return _DBLoaderID;
+            }
+            set
+            {
+                if (_DBLoaderID != value)
+                {
+                    _DBLoaderID = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DBLoaderID")); }
+                }
+            }
+        }
+
+        public int CampaignID
+        {
+            get
+            {
+                return _CampaignID;
+            }
+            set
+            {
+                if (_CampaignID != value)
+                {
+                    _CampaignID = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CampaignID")); }
+                }
+            }
+        }
+    }
+
+}

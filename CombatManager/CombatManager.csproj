@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{37BB3C34-4D03-4B0E-9958-91CB107637E3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CombatManager</RootNamespace>
+    <AssemblyName>CombatManager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>4.0.20901.0</ExpressionBlendVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <Utf8Output>true</Utf8Output>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.7.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\d20-32.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AvalonDock, Version=1.3.3571.0, Culture=neutral, PublicKeyToken=85a1e0ada7ec13e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AvalonDock\AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="AvalonDock.Themes">
+      <HintPath>..\AvalonDock\AvalonDock.Themes.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="PresentationUI" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>v4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AttacksWindow.xaml.cs">
+      <DependentUpon>AttacksWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CampaignEventWindow.xaml.cs">
+      <DependentUpon>CampaignEventWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cloud\CloudConnection.cs" />
+    <Compile Include="Cloud\MonsterLibrary.cs" />
+    <Compile Include="CMUtilities.cs" />
+    <Compile Include="CombatListWindow.xaml.cs">
+      <DependentUpon>CombatListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCombatList.xaml.cs">
+      <DependentUpon>CustomCombatList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomConditionDialog.xaml.cs">
+      <DependentUpon>CustomConditionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DieRollEditWindow.xaml.cs">
+      <DependentUpon>DieRollEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExportDialog.xaml.cs">
+      <DependentUpon>ExportDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeatChangeControl.xaml.cs">
+      <DependentUpon>FeatChangeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeatChangeWindow.xaml.cs">
+      <DependentUpon>FeatChangeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeatEditorWindow.xaml.cs">
+      <DependentUpon>FeatEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HPChangeDialog.xaml.cs">
+      <DependentUpon>HPChangeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IInitiativeController.cs" />
+    <Compile Include="MagicItemBlockCreator.cs" />
+    <Compile Include="ManualAttacksEditWindow.xaml.cs">
+      <DependentUpon>ManualAttacksEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\GameMap.cs" />
+    <Compile Include="MonsterEditorWindow.xaml.cs">
+      <DependentUpon>MonsterEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NaturalAttackWindow.xaml.cs">
+      <DependentUpon>NaturalAttackWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotesPopup.xaml.cs">
+      <DependentUpon>NotesPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConditionSelector.xaml.cs">
+      <DependentUpon>ConditionSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters.cs" />
+    <Compile Include="DragAdorner.cs" />
+    <Compile Include="FeatBlockCreator.cs" />
+    <Compile Include="ListViewDragDropManager.cs" />
+    <Compile Include="RuleBlockCreator.cs" />
+    <Compile Include="MonsterBlockCreator.cs" />
+    <Compile Include="MouseUtilities.cs" />
+    <Compile Include="SettingsDialog.xaml.cs">
+      <DependentUpon>SettingsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpellBlockCreator.cs" />
+    <Compile Include="SpellEditorWindow.xaml.cs">
+      <DependentUpon>SpellEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpinControl.xaml.cs">
+      <DependentUpon>SpinControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TreasureBlockCreator.cs" />
+    <Compile Include="UndoAction.cs" />
+    <Compile Include="UndoHelper.cs" />
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="ValidationRules.cs" />
+    <Compile Include="WeaponSelectWindow.xaml.cs">
+      <DependentUpon>WeaponSelectWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AttacksWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CampaignEventWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CombatListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ConditionSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomCombatList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomConditionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DieRollEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExportDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeatChangeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FeatChangeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FeatEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HPChangeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ManualAttacksEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MonsterEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NaturalAttackWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NotesPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OGLWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Simple Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BlockCreator.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="SpellEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SpinControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WeaponSelectWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OGLWindow.xaml.cs">
+      <DependentUpon>OGLWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Images\zzz-16.png" />
+    <Resource Include="version" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\clone-16.png" />
+    <Resource Include="Images\delete-16.png" />
+    <Resource Include="Images\clock-16.png" />
+    <Resource Include="Images\blind-16.png" />
+    <Resource Include="Images\dead-16.png" />
+    <Resource Include="Images\bleeding-16.png" />
+    <Resource Include="Images\qm-16.png" />
+    <Resource Include="Images\scared-16.png" />
+    <Resource Include="Images\cower-16.png" />
+    <Resource Include="Images\dazed-16.png" />
+    <Resource Include="Images\dazzled-16.png" />
+    <Resource Include="Images\battery-low-16.png" />
+    <Resource Include="Images\deaf-16.png" />
+    <Resource Include="Images\facinated-16.png" />
+    <Resource Include="Images\fatigued-16.png" />
+    <Resource Include="Images\handicapped-16.png" />
+    <Resource Include="Images\incorporeal-16.png" />
+    <Resource Include="Images\invisible-16.png" />
+    <Resource Include="Images\lasso-16.png" />
+    <Resource Include="Images\nauseated-16.png" />
+    <Resource Include="Images\panic-16.png" />
+    <Resource Include="Images\pin-16.png" />
+    <Resource Include="Images\prone-16.png" />
+    <Resource Include="Images\shaken-16.png" />
+    <Resource Include="Images\sick-16.png" />
+    <Resource Include="Images\sleep-16.png" />
+    <Resource Include="Images\broken-16.png" />
+    <Resource Include="Images\foot-16.png" />
+    <Resource Include="Images\rock-16.png" />
+    <Resource Include="Images\stunned-16.png" />
+    <Resource Include="Images\reaper-16.png" />
+    <Resource Include="Images\stable-16.png" />
+    <Resource Include="Images\stop-16.png" />
+    <Resource Include="Images\slow-16.png" />
+    <Resource Include="Images\exhausted-16.png" />
+    <Resource Include="Images\shield-error-16.png" />
+    <Resource Include="Images\poison-16.png" />
+    <Resource Include="Images\disease-16.png" />
+    <Resource Include="Images\lightning-16.png" />
+    <Resource Include="Images\ellipsis-16.png" />
+    <Resource Include="Images\arrowdown-16.png" />
+    <Resource Include="Images\arrowup-16.png" />
+    <Resource Include="Images\shield-16.png" />
+    <Resource Include="Images\magearmor-16.png" />
+    <Resource Include="Images\import-16.png" />
+    <Resource Include="Images\reset-16.png" />
+    <Resource Include="Images\prev-16.png" />
+    <Resource Include="Images\next-16.png" />
+    <Resource Include="Images\link-16.png" />
+    <Resource Include="Images\person-16.png" />
+    <Resource Include="Images\unlock-16.png" />
+    <Resource Include="Images\lock-16.png" />
+    <Resource Include="Images\hourglass-16.png" />
+    <Resource Include="Images\target-16.png" />
+    <Resource Include="Images\book-16.png" />
+    <Resource Include="Images\treasure-16.png" />
+    <Resource Include="Images\scrolleffect-16.png" />
+    <Resource Include="Images\PrintHS.png" />
+    <Resource Include="Images\flagblue-16.png" />
+    <Resource Include="Images\flaggreen-16.png" />
+    <Resource Include="Images\flagred-16.png" />
+    <Resource Include="Images\arrowsdown-16.png" />
+    <Resource Include="Images\arrowsup-16.png" />
+    <Resource Include="Images\arrowcurveleft-16.png" />
+    <Resource Include="Images\arrowcurveright-16.png" />
+    <Resource Include="Images\bell-16.png" />
+    <Resource Include="Images\bulb-16.png" />
+    <Resource Include="Images\zoomin-16.png" />
+    <Resource Include="Images\zoomout-16.png" />
+    <Resource Include="Images\personwindow-16.png" />
+    <Resource Include="Images\wand-16.png" />
+    <Resource Include="Images\dice-16.png" />
+    <Resource Include="Images\Annotate_Warning.ico" />
+    <Resource Include="Images\pencil-16.png" />
+    <Resource Include="Images\brush-16.png" />
+    <Resource Include="Images\keys-16.png" />
+    <Resource Include="Images\screen-16.png" />
+    <Resource Include="Images\ArrangeWindowsHS.png" />
+    <Resource Include="Images\sort-16.png" />
+    <Resource Include="Images\bow-16.png" />
+    <Resource Include="Images\claw-16.png" />
+    <Resource Include="Images\sword-single-16.png" />
+    <Resource Include="Images\sort.ico" />
+    <Resource Include="Images\hand-16.png" />
+    <Resource Include="Images\scroll-16.png" />
+    <Resource Include="Images\sword-16.png" />
+    <Resource Include="Images\star-16.png" />
+    <Resource Include="Images\monster-16.png" />
+    <Resource Include="ogl.txt" />
+    <Resource Include="Images\d20-32.ico" />
+    <Resource Include="Images\NoteHS.png" />
+    <Resource Include="Images\d20-40.png" />
+    <Resource Include="Images\sheet.png" />
+    <Resource Include="Images\d20-32.png" />
+    <Resource Include="Images\openHS.png" />
+    <Resource Include="Images\saveHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CombatManagerCore\CombatManagerCore.csproj">
+      <Project>{89CF9A2F-FAE7-46E5-B2CC-FC478D9662FA}</Project>
+      <Name>CombatManagerCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CombatViewService\CombatViewService.csproj">
+      <Project>{6A6FBA0A-49B6-4F87-A5BB-8AE48F43E0BA}</Project>
+      <Name>CombatViewService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\notes-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\d20-16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,29 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="CombatManager.WeaponSelectWindow"
+	x:Name="Window"
+	Title="Select Weapon"
+	Width="314" Height="323" ResizeMode="NoResize" Icon="Images/d20-32.ico" Loaded="Window_Loaded" ShowInTaskbar="False">
+	<Window.Resources>
+		<DataTemplate x:Key="DataTemplate1">
+			<Grid>
+			     <StackPanel Orientation="Horizontal">
+                     <TextBlock Text="{Binding Name, Converter={StaticResource StringCapitalizeConverter}}"/>
+			         <TextBlock Text=" "/>
+                    <TextBlock Name="DamageText" Loaded="DamageText_Loaded" />
+			     </StackPanel>
+			</Grid>
+		</DataTemplate>
+	</Window.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.Background>
+			<SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
+		</Grid.Background>
+        <ListBox x:Name="WeaponListBox" Margin="8,34,8,33.96" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate1}" MouseDoubleClick="WeaponListBox_MouseDoubleClick"/>
+        <Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,8" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
+        <Button IsEnabled="{Binding CurrentItem, Converter={StaticResource itemExistsConverter}}" Content="OK" Margin="146,0,87,8" VerticalAlignment="Bottom" IsDefault="True" Click="Button_Click"/>
+        <TextBox x:Name="NameFilterBox" Margin="8,8,8,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="NameFilterBox_TextChanged"/>
+	</Grid>
+</Window>

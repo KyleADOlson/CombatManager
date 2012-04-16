@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1770C4F-09EE-41F9-86AB-5672C3D42980}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CombatManagerCoreMono</RootNamespace>
+    <AssemblyName>CombatManagerCoreMono</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG, MONO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>MONO</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG, MONO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DefineConstants>MONO</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Distribution|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <DefineConstants>MONO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Distribution|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Distribution</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DistributionDebug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG, MONO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DistributionDebug|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\DistributionDebug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Affliction.cs" />
+    <Compile Include="ArmorWeaponChart.cs" />
+    <Compile Include="ArmorWeaponSpecialChart.cs" />
+    <Compile Include="Attack.cs" />
+    <Compile Include="AttackSet.cs" />
+    <Compile Include="Character.cs" />
+    <Compile Include="CharacterAttacks.cs" />
+    <Compile Include="CMRegexUtilities.cs" />
+    <Compile Include="CMStringUtilities.cs" />
+    <Compile Include="Coin.cs" />
+    <Compile Include="Condition.cs" />
+    <Compile Include="ConditionBonus.cs" />
+    <Compile Include="CreatureTypeInfo.cs" />
+    <Compile Include="DBLoader.cs" />
+    <Compile Include="DBTableDesc.cs" />
+    <Compile Include="DieRoll.cs" />
+    <Compile Include="Equipment.cs" />
+    <Compile Include="Feat.cs" />
+    <Compile Include="InitiativeCount.cs" />
+    <Compile Include="InsensitiveComparer.cs" />
+    <Compile Include="MagicItem.cs" />
+    <Compile Include="monster.cs" />
+    <Compile Include="MonsterDB.cs" />
+    <Compile Include="RandomWeightChart.cs" />
+    <Compile Include="SizeMods.cs" />
+    <Compile Include="SkillValue.cs" />
+    <Compile Include="SourceInfo.cs" />
+    <Compile Include="SpecialAbility.cs" />
+    <Compile Include="SpecificItemChart.cs" />
+    <Compile Include="Spell.cs" />
+    <Compile Include="SpellBlockInfo.cs" />
+    <Compile Include="SpellInfo.cs" />
+    <Compile Include="SpellLevelInfo.cs" />
+    <Compile Include="Stat.cs" />
+    <Compile Include="StringCapitalizer.cs" />
+    <Compile Include="Treasure.cs" />
+    <Compile Include="TreasureGenerator.cs" />
+    <Compile Include="TreasureItem.cs" />
+    <Compile Include="Weapon.cs" />
+    <Compile Include="WeaponItem.cs" />
+    <Compile Include="WeaponSpecialAbility.cs" />
+    <Compile Include="XMLLoader.cs" />
+    <Compile Include="ActiveCondition.cs" />
+    <Compile Include="RomanNumbers.cs">
+    <Compile Include="CombatState.cs" />
+    <Compile Include="DBSettings.cs" />
+    <Compile Include="Rule.cs" />
+    <Compile Include="CharacterClass.cs" />
+    <Compile Include="DebugLogger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TreasureChart.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Spells.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WeaponSpecialAbility.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Weapons.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SpecificItemChart.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NPC.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MagicItems.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Feats.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GemChart.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Equipment.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Condition.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bestiary.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArtChart.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmorWeaponSpecialChart.xml">
+    </Content>
+    <Content Include="ArmorWeaponChart.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+    </Content>
+    <Content Include="Details.db">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RuleShort.xml">
+      <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WeaponNames" />
+  </ItemGroup>
+</Project>
