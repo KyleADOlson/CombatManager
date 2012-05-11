@@ -7262,7 +7262,10 @@ namespace CombatManager
             cf.savageBite = HasSpecialAbility("Savage Bite");
             cf.powerfulBite = HasSQ("powerful bite");
             cf.rockThrowing = HasSpecialAttack("Rock Throwing");
-            cf.isDragon = new Regex(DragonRegexString, RegexOptions.IgnoreCase).Match(Name).Success;
+            if (Name != null)
+            {
+                cf.isDragon = new Regex(DragonRegexString, RegexOptions.IgnoreCase).Match(Name).Success;
+            }
             return cf;
         }
 

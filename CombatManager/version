@@ -1,5 +1,6 @@
 ﻿1.4.1
 Remember type filter options for monster DB views
+Fix attacks editor crash 
 
 1.4.0
 Fix condition doubling with Monster Editor
