@@ -55,6 +55,19 @@ namespace CombatManager
 
                 RevisionFlowViewer.Document.Blocks.Add(new Paragraph(new Run(text)));
             }
+
+
+            using (Stream textStream = Application.GetResourceStream(new Uri("pack://application:,,,/license.txt")).Stream)
+            {
+
+                StreamReader reader = new StreamReader(textStream);
+
+                string text = reader.ReadToEnd();
+
+
+
+                GPLScrollViewer.Document.Blocks.Add(new Paragraph(new Run(text)));
+            }
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
