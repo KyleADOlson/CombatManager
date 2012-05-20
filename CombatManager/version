@@ -1,6 +1,9 @@
 ﻿1.4.1
 Remember type filter options for monster DB views
 Fix attacks editor crash 
+Improve move to monster/party performance
+Fix extra spaces in attacks parsing issue (Kraken Tentacles)
+
 
 1.4.0
 Fix condition doubling with Monster Editor

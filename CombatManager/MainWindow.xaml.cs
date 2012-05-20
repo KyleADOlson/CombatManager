@@ -1079,7 +1079,7 @@ namespace CombatManager
                     if (chMove.IsMonster != toMonster)
                     {
 
-                        MoveCharacterList(chMove, toMonster);
+                        MoveCharacter(chMove, toMonster);
 
                         combatState.Characters.Remove(chMove);
 
@@ -4843,10 +4843,9 @@ namespace CombatManager
             {
                 List<Character> list = GetViewSelectedCharacters(sender);
 
-                foreach (Character ch in list)
-                {
-                    MoveCharacterList(ch, false);
-                }
+
+                MoveCharacterList(list, false);
+
             }
         }
 
@@ -4856,19 +4855,29 @@ namespace CombatManager
             {
                 List<Character> list = GetViewSelectedCharacters(sender);
 
-                foreach (Character ch in list)
-                {
-                    MoveCharacterList(ch, true);
-                }
+                MoveCharacterList(list, true);
+
             }
         }
 
-        private void MoveCharacterList(Character ch, bool monster)
+        private void MoveCharacter(Character ch, bool monster)
         {
 
             combatState.RegroupFollowers(ch);
             combatState.UnlinkLeader(ch);
             ch.IsMonster = monster;
+            playerView.Refresh();
+            monsterView.Refresh();
+        }
+
+        private void MoveCharacterList(IList<Character> chars, bool monster)
+        {
+            foreach (var ch in chars)
+            {
+                combatState.RegroupFollowers(ch);
+                combatState.UnlinkLeader(ch);
+                ch.IsMonster = monster;
+            }
             playerView.Refresh();
             monsterView.Refresh();
         }
