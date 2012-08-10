@@ -360,10 +360,6 @@ namespace CombatManagerMono
 				{
 					currentCharacters.Add(ch);	
 					ch.PropertyChanged += HandleChPropertyChanged;
-					ch.Monster.ActiveConditions.CollectionChanged += delegate(object sender, NotifyCollectionChangedEventArgs e) 
-					{
-						//ReloadCharacter(ch);
-					};
 				}
 			}
 		}

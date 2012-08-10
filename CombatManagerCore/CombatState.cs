@@ -418,6 +418,8 @@ namespace CombatManager
             {
                 foreach (ActiveCondition condition in ch.Stats.ActiveConditions)
                 {
+                    System.Diagnostics.Debug.Assert(condition != null);
+
                     if (condition != null)
                     {
                         bool passedConditionInitiative = false;
@@ -1039,11 +1041,14 @@ namespace CombatManager
 
         public void AddCharacter(Character character)
         {
-
+            
+            sortingList = true;
             character.InitiativeCount = GetAfterLastInitiative();
             Characters.Add(character);
             _UnfilteredCombatList.Add(character);
             FilterList();
+            sortingList = false;
+            CharacterSortCompleted(this, new EventArgs());
         }
 
         public void RemoveCharacter(Character character)
@@ -1056,9 +1061,12 @@ namespace CombatManager
                 MoveNext();
             }
 
+            sortingList = true;
             Characters.Remove(character);
             _UnfilteredCombatList.Remove(character);
             FilterList();
+            sortingList = false;
+            CharacterSortCompleted(this, new EventArgs());
         }
 
 

@@ -26,6 +26,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using CombatManager;
+using System.Drawing;
 
 namespace CombatManagerMono
 {
@@ -43,6 +44,7 @@ namespace CombatManagerMono
 		CombatState _CombatState;
 		
 		public event EventHandler ShouldClose;
+
 
 		public MonsterAddView (IntPtr handle) : base(handle)
 		{
@@ -116,6 +118,8 @@ namespace CombatManagerMono
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+
 			_filterText = "";
 			_tableSource = new TableDataSource(this);
 			_tableDelegate = new TableDelegate(this);
@@ -127,6 +131,11 @@ namespace CombatManagerMono
 			filterTextBox.ValueChanged += HandleFilterTextBoxValueChanged;
 			filterTextBox.AllEditingEvents += HandleFilterTextBoxAllEditingEvents;
 		}
+
+        public override void ViewWillAppear (bool animated)
+        {
+            base.ViewWillAppear (animated);
+        }
 
 		void HandleFilterTextBoxAllEditingEvents (object sender, EventArgs e)
 		{
@@ -191,9 +200,9 @@ namespace CombatManagerMono
 			{
 				if (parent!= null)
 				{
-					return 26;
+					return 35;
 				}
-				return 26;
+				return 35;
 			}
 			
 			public override void RowSelected (UITableView tableView, NSIndexPath indexPath)

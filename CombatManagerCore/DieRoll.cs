@@ -365,6 +365,13 @@ namespace CombatManager
             return outRoll;
         }
 
+        public static DieStep StepDie(DieStep step, int diff)
+        {
+            DieRoll r = new DieRoll(step.Count, step.Die, 0);
+            return StepDie(r, diff).Step;
+
+        }
+
 
         private static DieRoll StepUpDieRoll(DieRoll roll)
         {

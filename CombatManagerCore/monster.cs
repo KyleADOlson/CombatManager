@@ -5300,6 +5300,11 @@ namespace CombatManager
             return value;
         }
 
+        public static string GetFlyQualityString(int val)
+        {
+            return flyQualityList.First(a => a.Value == val).Key;
+        }
+
         private static string GetMaxFlyQuality(string quality1, string quality2)
         {
             return (GetFlyQuality(quality1) > GetFlyQuality(quality2))?quality1 : quality2;
@@ -10053,6 +10058,14 @@ namespace CombatManager
 
         }
 
+        public static List<String> DragonColors
+        {
+            get
+            {
+                return new List<String> (dragonColorList.Keys);
+            }
+        }
+
 
         public static FlyQuality FlyQualityFromString(String strQuality)
         {
@@ -10783,6 +10796,32 @@ namespace CombatManager
                     }
 				}
 			}
+
+            public int Space
+            {
+                get
+                {
+                    int ? space = FootConverter.Convert(_Monster.Space);
+                    return (space == null)?0:(space.Value);
+                }
+                set
+                {
+                    _Monster.Space = FootConverter.ConvertBack(value);
+                }
+            }
+
+            public int Reach
+            {
+                get
+                {
+                    int ? reach = FootConverter.Convert(_Monster.Reach);
+                    return (reach == null)?0:(reach.Value);
+                }
+                set
+                {
+                    _Monster.Reach = FootConverter.ConvertBack(value);
+                }
+            }
         }
 
         [XmlIgnore]

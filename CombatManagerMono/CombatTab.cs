@@ -31,34 +31,38 @@ namespace CombatManagerMono
 {
 	public class CombatTab: CMTab
 	{
-		CombatListView combatListView;
-		CharacterListView playerList;
-		CharacterListView monsterList;
-		UIWebView monsterView;
+		CombatListView _CombatList;
+		CharacterListView _PlayerList;
+		CharacterListView _MonsterList;
+		UIWebView _MonsterView;
+        DieRollerView _DieView;
 		
 		Character _SelectedCharacter;
 		
 		
 		public CombatTab (CombatState state) : base (state)
 		{
-			combatListView = new CombatListView();
+			_CombatList = new CombatListView();
 			//
 			
-			AddSubview(combatListView);
-			playerList = new CharacterListView(CombatState, false);
-			playerList.CharacterSelectionChanged += HandlePlayerListCharacterSelectionChanged;
-			AddSubview(playerList);
-			monsterList = new CharacterListView(CombatState, true);
-			monsterList.CharacterSelectionChanged += HandlePlayerListCharacterSelectionChanged;
-			AddSubview(monsterList);
+			AddSubview(_CombatList);
+			_PlayerList = new CharacterListView(CombatState, false);
+			_PlayerList.CharacterSelectionChanged += HandlePlayerListCharacterSelectionChanged;
+			AddSubview(_PlayerList);
+			_MonsterList = new CharacterListView(CombatState, true);
+			_MonsterList.CharacterSelectionChanged += HandlePlayerListCharacterSelectionChanged;
+			AddSubview(_MonsterList);
 			
-			monsterView = new UIWebView(new RectangleF(0, 0, 100, 100));
-			monsterView.BackgroundColor = UIColor.Brown;
-			monsterView.LoadHtmlString("<html></html>", new NSUrl("http://localhost/"));
+			_MonsterView = new UIWebView(new RectangleF(0, 0, 100, 100));
+			_MonsterView.BackgroundColor = UIColor.Brown;
+			_MonsterView.LoadHtmlString("<html></html>", new NSUrl("http://localhost/"));
 		
-			AddSubview(monsterView);
+			AddSubview(_MonsterView);
+
+            _DieView = new DieRollerView();
+            AddSubview(_DieView);
 			
-			combatListView.CombatState = state;
+			_CombatList.CombatState = state;
 			
 		}
 
@@ -78,7 +82,7 @@ namespace CombatManagerMono
 				
 				if (_SelectedCharacter != null)
 				{
-					monsterView.LoadHtmlString(MonsterHtmlCreator.CreateHtml(_SelectedCharacter.Monster, _SelectedCharacter), new NSUrl("http://localhost/"));
+					_MonsterView.LoadHtmlString(MonsterHtmlCreator.CreateHtml(_SelectedCharacter.Monster, _SelectedCharacter), new NSUrl("http://localhost/"));
 				}
 			}
 		}
@@ -93,36 +97,30 @@ namespace CombatManagerMono
 			float width = 0;
 			
 			
-			if (UIExtensions.IsVertical)
-			{
-				width = rect.Width / 3.0f;
-				
-			}
-			else
-			{
-				width = rect.Width / 4.0f;
-			}
+			width = rect.Width / 4.0f;
+			
 			width -= margin;
 			
 			RectangleF loc = new RectangleF(0, 0, width, rect.Height);
 			
-			combatListView.Frame = loc;
+			_CombatList.Frame = loc;
 			
 			loc.X += width + margin;
-			playerList.Frame = loc;
+			_PlayerList.Frame = loc;
 			
 			loc.X += width + margin;
-			monsterList.Frame = loc;
+			_MonsterList.Frame = loc;
 			
-			if (!UIExtensions.IsVertical)
-			{
-				loc.X += width + margin;
-				monsterView.Frame = loc;
-			}
-			
-			
-			
-			
+			loc.X += width + margin;
+            loc.Height = Bounds.Height/2;
+            _MonsterView.Frame = loc;
+
+            loc.Y += Bounds.Height/2;
+            _DieView.Frame = loc;
+
+
+
+
 		}
 	}
 }

@@ -100,7 +100,7 @@ namespace CombatManagerMono
 			{
 				if (p != null)
 				{
-					p.Monster = Monster;
+					p.CurrentMonster = Monster;
 					p.DialogParent = this.View;
 				}
 			}
@@ -189,7 +189,7 @@ namespace CombatManagerMono
 					{
 						foreach (MonsterEditorPage page in _Pages)
 						{
-							page.Monster = _Monster;	
+							page.CurrentMonster = _Monster;	
 						}
 					}
 				}

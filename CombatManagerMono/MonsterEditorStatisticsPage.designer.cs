@@ -1,24 +1,4 @@
-/*
- *  MonsterEditorStatisticsPage.designer.cs
- *
- *  Copyright (C) 2010-2012 Kyle Olson, kyle@kyleolson.com
- *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  as published by the Free Software Foundation; either version 2
- *  of the License, or (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- * 
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- *
- */
-
+// WARNING
 //
 // This file has been generated automatically by MonoDevelop to store outlets and
 // actions made in the Xcode designer. If it is removed, they will be lost.
@@ -31,6 +11,143 @@ namespace CombatManagerMono
 	[Register ("MonsterEditorStatisticsPage")]
 	partial class MonsterEditorStatisticsPage
 	{
+		[Outlet]
+		CombatManagerMono.GradientView BaseView { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientView ModView { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientView SkillsView { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientView DescriptionView { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton CMBButton { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton BaseAtkButton { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton CMDButton { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton RacialModsButton { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton AuraButton { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton LanguagesButton { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton SQButton { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton GearButton { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton AddSkillButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UITableView AvailableSkillsTable { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UITableView KnownSkillsTable { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton SkillDetailButton { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton SkillDetailSelectButton { get; set; }
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (BaseView != null) {
+				BaseView.Dispose ();
+				BaseView = null;
+			}
+
+			if (ModView != null) {
+				ModView.Dispose ();
+				ModView = null;
+			}
+
+			if (SkillsView != null) {
+				SkillsView.Dispose ();
+				SkillsView = null;
+			}
+
+			if (DescriptionView != null) {
+				DescriptionView.Dispose ();
+				DescriptionView = null;
+			}
+
+			if (CMBButton != null) {
+				CMBButton.Dispose ();
+				CMBButton = null;
+			}
+
+			if (BaseAtkButton != null) {
+				BaseAtkButton.Dispose ();
+				BaseAtkButton = null;
+			}
+
+			if (CMDButton != null) {
+				CMDButton.Dispose ();
+				CMDButton = null;
+			}
+
+			if (RacialModsButton != null) {
+				RacialModsButton.Dispose ();
+				RacialModsButton = null;
+			}
+
+			if (AuraButton != null) {
+				AuraButton.Dispose ();
+				AuraButton = null;
+			}
+
+			if (LanguagesButton != null) {
+				LanguagesButton.Dispose ();
+				LanguagesButton = null;
+			}
+
+			if (SQButton != null) {
+				SQButton.Dispose ();
+				SQButton = null;
+			}
+
+			if (GearButton != null) {
+				GearButton.Dispose ();
+				GearButton = null;
+			}
+
+			if (AddSkillButton != null) {
+				AddSkillButton.Dispose ();
+				AddSkillButton = null;
+			}
+
+			if (AvailableSkillsTable != null) {
+				AvailableSkillsTable.Dispose ();
+				AvailableSkillsTable = null;
+			}
+
+			if (KnownSkillsTable != null) {
+				KnownSkillsTable.Dispose ();
+				KnownSkillsTable = null;
+			}
+
+			if (SkillDetailButton != null) {
+				SkillDetailButton.Dispose ();
+				SkillDetailButton = null;
+			}
+
+			if (SkillDetailSelectButton != null) {
+				SkillDetailSelectButton.Dispose ();
+				SkillDetailSelectButton = null;
+			}
+		}
 	}
 }
-

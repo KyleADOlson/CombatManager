@@ -25,6 +25,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using CombatManager;
+using System.Drawing;
 
 namespace CombatManagerMono
 {
@@ -53,6 +54,7 @@ namespace CombatManagerMono
 			toolbar = new ToolbarView();
 			
 			currentTab = new CombatTab(_CombatState);
+
 			
 			AddSubview(toolbar);
 			AddSubview(currentTab);
@@ -120,7 +122,7 @@ namespace CombatManagerMono
 			
 			base.LayoutSubviews ();
 			toolbar.SetWidth(Frame.Width);
-			toolbar.SetHeight(40);
+			toolbar.SetHeight(50);
 			toolbar.SetLocation(0, 0);
 			toolbar.ButtonClicked += HandleToolbarButtonClicked;
 			
@@ -128,6 +130,8 @@ namespace CombatManagerMono
 			currentTab.SetLocation(0, toolbar.Frame.Height);
 			currentTab.SetWidth(Frame.Width);
 			currentTab.SetHeight(Frame.Height - toolbar.Frame.Height);
+
+
 		}
 
 		void HandleToolbarButtonClicked (object sender, int button)

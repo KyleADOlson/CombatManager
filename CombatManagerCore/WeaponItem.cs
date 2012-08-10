@@ -136,7 +136,7 @@ namespace CombatManager
         {
             WeaponItem item = new WeaponItem();
 
-            item.Weapon = Weapon;
+            item.Weapon = (Weapon)Weapon.Clone();
             item.Count = Count;
             item.MagicBonus = MagicBonus;
             item.Masterwork = Masterwork;

@@ -55,10 +55,11 @@ namespace CombatManagerMono
 			foreach (string s in names)
 			{
 				GradientButton b = new GradientButton();
-				b.Frame = (new RectangleF(pos, 0, buttonWidth, 40));
+				b.Frame = (new RectangleF(pos, 0, buttonWidth, 50));
 				b.SetImage(UIExtensions.GetSmallIcon(images[i]), UIControlState.Normal);
+
 				b.Border = 1;
-				b.CornerRadius = 0;
+                b.CornerRadii = new float[] {4, 16, 0, 0};
 				
 				b.SetTitle(s, UIControlState.Normal);
 				UIEdgeInsets si = b.ImageEdgeInsets;
@@ -76,28 +77,23 @@ namespace CombatManagerMono
 			}
 			
 			clickedButton = buttons[0];
-			UIColor c = clickedButton.Color2;
-			clickedButton.Color2 = clickedButton.Color1;
-			clickedButton.Color1 = c;
+            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
 			
-			BackgroundColor = CMUIColors.SecondaryColorBDark;
+			BackgroundColor = UIColor.Black;
 			
 		}
 		
 
 		void HandleBTouchUpInside (object sender, EventArgs e)
 		{
-			UIColor c = clickedButton.Color2;
-			clickedButton.Color2 = clickedButton.Color1;
-			clickedButton.Color1 = c;
+            
+            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDarker);
 			clickedButton = (GradientButton)sender;
 			if (ButtonClicked != null)
 			{
 				ButtonClicked(this, ((UIButton)sender).Tag);
 			}
-			c = clickedButton.Color2;
-			clickedButton.Color2 = clickedButton.Color1;
-			clickedButton.Color1 = c;
+            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
 		}
 		public override void LayoutSubviews ()
 		{

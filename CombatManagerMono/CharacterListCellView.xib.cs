@@ -47,13 +47,22 @@ namespace CombatManagerMono
 		private MonsterEditorDialog _MonsterEditorDialog;
 		
 		private CharacterListView _CharacterListView;
+
+        private static UIImage _IdleImage;
+        private static UIImage _FollowerImage;
 		
 		//private UIImageView _IdleImage;
 		//private UIImageView _HiddenImage;
 		
 		List<GradientButton> ConditionButtons = new List<GradientButton>();
 		
-		
+		static CharacterListCellView()
+        {
+            _IdleImage = UIExtensions.GetSmallIcon("zzz");
+            _FollowerImage = UIExtensions.GetSmallIcon("lock");
+        }
+
+
 		public CharacterListCellView (IntPtr handle) : base(handle)
 		{
 			Initialize ();
@@ -84,6 +93,8 @@ namespace CombatManagerMono
 
 		void Initialize ()
 		{
+
+
 			
 			GradientView view = new GradientView();
 			view.Border = 1f;
@@ -421,6 +432,7 @@ namespace CombatManagerMono
 					UpdateNonlethal();
 					UpdateTempHP();
 					UpdateConditionDisplay();
+                    UpdateIndicatorImage();
 					
 					_Character.PropertyChanged += Handle_CharacterPropertyChanged;
 					_Character.Monster.PropertyChanged += Handle_CharacterMonsterPropertyChanged;
@@ -519,8 +531,12 @@ namespace CombatManagerMono
 				}
 				else if (e.PropertyName == "IsIdle" || e.PropertyName == "IsHidden")
 				{
-					UpdateIdleHidden();
+					UpdateIndicatorImage();
 				}
+                else if (e.PropertyName == "InitiativeLeader")
+                {
+                    UpdateIndicatorImage();
+                }
 				
 			}
 			else
@@ -572,17 +588,20 @@ namespace CombatManagerMono
 		}
 		
 		
-		void UpdateIdleHidden()
+		void UpdateIndicatorImage()
 		{
-			/*if (_Character.IsIdle && _IdleImage == null)
-			{
-				_IdleImage = new UIImageView(UIExtensions.GetSmallIcon("zzz"));
-				nameContainer.AddSubview(_IdleImage);
-			}
-			else if (!_Character.IsIdle && _IdleImage != null)
-			{
-				nameContainer.RemoveS	
-			}*/
+            if (_Character.InitiativeLeader != null)
+            {
+                IndicatorView.Image = _FollowerImage;
+            }
+            else if (_Character.IsIdle)
+            {
+                IndicatorView.Image = _IdleImage;
+            }
+            else
+            {
+                IndicatorView.Image = null;
+            }
 		}
 		
 		static int ConditionWidth = 30;

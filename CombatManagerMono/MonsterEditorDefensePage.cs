@@ -92,35 +92,35 @@ namespace CombatManagerMono
 		
 		private void SetupManagers()
 		{
-			_HPManager = new ButtonPropertyManager(HPButton, DialogParent, Monster, "HP");	
-			_HDManager = new ButtonPropertyManager(HDButton, DialogParent, Monster.Adjuster, "HD");	
-			_HPModsManager = new ButtonPropertyManager(HPModsButton, DialogParent, Monster, "HP_Mods");	
+			_HPManager = new ButtonPropertyManager(HPButton, DialogParent, CurrentMonster, "HP");	
+			_HDManager = new ButtonPropertyManager(HDButton, DialogParent, CurrentMonster.Adjuster, "HD");	
+            _HPModsManager = new ButtonPropertyManager(HPModsButton, DialogParent, CurrentMonster, "HP_Mods") {Title="HP Mods"};	
 				
 			
-			_ACManager = new ButtonPropertyManager(ACButton, DialogParent, Monster, "FullAC");
+			_ACManager = new ButtonPropertyManager(ACButton, DialogParent, CurrentMonster, "FullAC");
 			_ACManager.Title = "AC";
-			_TouchManager = new ButtonPropertyManager(TouchButton, DialogParent, Monster, "TouchAC");
+			_TouchManager = new ButtonPropertyManager(TouchButton, DialogParent, CurrentMonster, "TouchAC");
 			_TouchManager.Title = "Touch AC";
-			_FlatFootedManager = new ButtonPropertyManager(FlatFootedButton, DialogParent, Monster, "FlatFootedAC");
+			_FlatFootedManager = new ButtonPropertyManager(FlatFootedButton, DialogParent, CurrentMonster, "FlatFootedAC");
 			_FlatFootedManager.Title = "Flat Footed AC";
 			
-			_ArmorManager = new ButtonPropertyManager(ArmorButton, DialogParent, Monster.Adjuster, "Armor");	
-			_DodgeManager = new ButtonPropertyManager(DodgeButon, DialogParent, Monster.Adjuster, "Dodge");	
-			_NaturalManager = new ButtonPropertyManager(NaturalButton, DialogParent, Monster.Adjuster, "NaturalArmor");	
+			_ArmorManager = new ButtonPropertyManager(ArmorButton, DialogParent, CurrentMonster.Adjuster, "Armor");	
+			_DodgeManager = new ButtonPropertyManager(DodgeButon, DialogParent, CurrentMonster.Adjuster, "Dodge");	
+			_NaturalManager = new ButtonPropertyManager(NaturalButton, DialogParent, CurrentMonster.Adjuster, "NaturalArmor");	
 			_NaturalManager.Title = "Natural Armor";
-			_DeflectionManager = new ButtonPropertyManager(DeflectionButton, DialogParent, Monster.Adjuster, "Deflection");	
-			_ShieldManager = new ButtonPropertyManager(ShieldButton, DialogParent, Monster.Adjuster, "Shield");	
+			_DeflectionManager = new ButtonPropertyManager(DeflectionButton, DialogParent, CurrentMonster.Adjuster, "Deflection");	
+			_ShieldManager = new ButtonPropertyManager(ShieldButton, DialogParent, CurrentMonster.Adjuster, "Shield");	
 				
-			_FortManager = new ButtonPropertyManager(FortButton, DialogParent, Monster, "Fort");	
-			_RefManager = new ButtonPropertyManager(RefButton, DialogParent, Monster, "Ref");	
-			_WillManager = new ButtonPropertyManager(WillButton, DialogParent, Monster, "Will");	
+			_FortManager = new ButtonPropertyManager(FortButton, DialogParent, CurrentMonster, "Fort");	
+			_RefManager = new ButtonPropertyManager(RefButton, DialogParent, CurrentMonster, "Ref");	
+			_WillManager = new ButtonPropertyManager(WillButton, DialogParent, CurrentMonster, "Will");	
 				
-			_DefensiveAbilitiesManager = new ButtonPropertyManager(DefensiveAbilitiesButton, DialogParent, Monster, "DefensiveAbilities");	
-			_DRManager = new ButtonPropertyManager(DRButton, DialogParent, Monster, "DR");	
-			_ImmuneManager = new ButtonPropertyManager(ImmuneButton, DialogParent, Monster, "Immune");	
-			_SRManager = new ButtonPropertyManager(SRButton, DialogParent, Monster, "SR");	
-			_ResistManager = new ButtonPropertyManager(ResistButton, DialogParent, Monster, "Resist");	
-			_WeaknessManager = new ButtonPropertyManager(WeaknessButton, DialogParent, Monster, "Weaknesses");          	
+            _DefensiveAbilitiesManager = new ButtonPropertyManager(DefensiveAbilitiesButton, DialogParent, CurrentMonster, "DefensiveAbilities") {Title="Defensive Abilities"};	
+			_DRManager = new ButtonPropertyManager(DRButton, DialogParent, CurrentMonster, "DR");	
+			_ImmuneManager = new ButtonPropertyManager(ImmuneButton, DialogParent, CurrentMonster, "Immune");	
+			_SRManager = new ButtonPropertyManager(SRButton, DialogParent, CurrentMonster, "SR");	
+			_ResistManager = new ButtonPropertyManager(ResistButton, DialogParent, CurrentMonster, "Resist");	
+			_WeaknessManager = new ButtonPropertyManager(WeaknessButton, DialogParent, CurrentMonster, "Weaknesses");          	
 			
 			PropertyManagers.Add(_HPManager);
 			PropertyManagers.Add(_HDManager);
@@ -150,8 +150,7 @@ namespace CombatManagerMono
 			foreach (ButtonPropertyManager m in PropertyManagers)
 			{
 				GradientButton b = (GradientButton)m.Button;
-				b.SetTitleColor(UIColor.White, UIControlState.Normal);
-				b.SetTitleColor(UIColor.Gray, UIControlState.Highlighted);
+                CMStyles.TextFieldStyle(b);
 				
 			}
 			

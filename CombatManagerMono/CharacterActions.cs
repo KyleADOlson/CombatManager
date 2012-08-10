@@ -116,7 +116,7 @@ namespace CombatManagerMono
 		{
 			List<CharacterActionItem> items = new List<CharacterActionItem>();
 			
-			items.Add(new CharacterActionItem("Edit", "pencil", GetEditItems(ch)));
+			items.Add(new CharacterActionItem("Edit", "pencil", CharacterActionType.EditMonster));
 			items.Add(new CharacterActionItem("Copy to Custom", "import"));
 			if (!ch.IsIdle)
 			{
@@ -128,7 +128,7 @@ namespace CombatManagerMono
 				
 				items.Add(new CharacterActionItem("Remove Idle", "zzz", CharacterActionType.RemoveIdle));
 			}
-			if (!ch.IsHidden)
+			/*if (!ch.IsHidden)
 			{
 				
 				items.Add(new CharacterActionItem("Make Hidden", "blind", CharacterActionType.MakeHidden));
@@ -137,7 +137,7 @@ namespace CombatManagerMono
 			{
 				
 				items.Add(new CharacterActionItem("Remove Hidden", "blind", CharacterActionType.RemoveHidden));
-			}
+			}*/
 			
 			items.Add(new CharacterActionItem());
 			CharacterActionItem conditionsItem = new CharacterActionItem("Add Condition", "clock", GetConditionItems(ch));

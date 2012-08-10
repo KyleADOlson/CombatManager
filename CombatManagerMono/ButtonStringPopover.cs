@@ -32,6 +32,11 @@ using System.Drawing;
 namespace CombatManagerMono
 {
 	
+    public class WillShowPopoverEventArgs : EventArgs
+    {
+        public bool Cancel {get; set;}
+    }
+
 	public class ButtonStringPopoverItem
 	{
 		public string Text {get; set;}
@@ -59,7 +64,7 @@ namespace CombatManagerMono
 		
 		bool _SetButtonText;
 		
-		public event EventHandler WillShowPopover;
+		public event EventHandler<WillShowPopoverEventArgs> WillShowPopover;
 		
 		float _separatorHeight = 10;
 		float _rowHeight = 28;
@@ -162,17 +167,21 @@ namespace CombatManagerMono
 
 		void HandleBTouchUpInside (object sender, EventArgs e)
 		{
+            WillShowPopoverEventArgs ea = new WillShowPopoverEventArgs();
 			if (WillShowPopover != null)
 			{
-				WillShowPopover(this, new EventArgs());
+				WillShowPopover(this, ea);
 			}
 			
 			_CurrentItems = _Items;
 			
 			RecalcHeight();
-			
-			_controller.PresentFromRect(_button.Frame, _button.Superview, UIPopoverArrowDirection.Any, true);
-			TableView.ReloadData();
+
+            if (!ea.Cancel)
+            {
+			    _controller.PresentFromRect(_button.Frame, _button.Superview, UIPopoverArrowDirection.Any, true);
+			    TableView.ReloadData();
+            }
 		}
 		
 		public void RecalcHeight()
