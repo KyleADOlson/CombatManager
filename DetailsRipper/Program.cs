@@ -27,6 +27,8 @@ using System.Data.SQLite;
 using System.IO;
 using System.Xml.Linq;
 using CombatManager;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace DetailsRipper
 {
@@ -102,21 +104,39 @@ namespace DetailsRipper
 
             XDocument docMon = XDocument.Load("Bestiary.xml");
 
+            List<XElement> removeAfter = new List<XElement>();
+
             foreach (XElement x in docMon.Descendants("Monster"))
             {
                 if (x.Element("FullText") != null)
                 {
                     x.Element("FullText").Remove();
                 }
+
+                FixNumbers(x);
+                string name = x.Element("Name").Value;
+
+                if (name == name.ToUpper())
+                {
+                    x.Element("Name").Value = name.ToLower().Capitalize();
+                }
+
                 XElement oldElement;
                 string monName = x.Element("Name").Value;
-                if (monsterList.TryGetValue(monName, out oldElement))
+                string source = x.Element("Source").Value;
+                Debug.Assert(source != null);
+                if (Regex.Match(source, "Tome of Horrors").Success)
+                {
+                    removeAfter.Add(x);
+                    //x.Remove();
+                }
+                else if (monsterList.TryGetValue(monName, out oldElement))
                 {
                     string oldSource = oldElement.ElementValue("Source");
                     string newSource = x.ElementValue("Source");
 
                     //System.Diagnostics.Debug.WriteLine(x.Element("Name").Value);
-                    if (newSource == "Bestiary 3")
+                    if (newSource == "Bestiary 3" || newSource == "PFRPG Bestiary 3")
                     {
                         oldElement.Remove();
                         //System.Diagnostics.Debug.WriteLine("Remove " + oldSource);
@@ -139,7 +159,15 @@ namespace DetailsRipper
                 }
             }
 
+            foreach (XElement x in removeAfter)
+            {
+                x.Remove();
+            }
+
+
             docMon.Save("BestiaryShort.xml");
+
+            File.Copy("BestiaryShort.xml", "..\\..\\..\\CombatManagerCore\\BestiaryShort.xml", true);
 
             docMon = XDocument.Load("NPC.xml");
 
@@ -152,6 +180,15 @@ namespace DetailsRipper
                 {
                     x.Element("FullText").Remove();
                 }
+
+                string name = x.Element("Name").Value;
+
+                if (name == name.ToUpper())
+                {
+                    x.Element("Name").Value = name.ToLower().Capitalize();
+                }
+
+                FixNumbers(x);
 
                 XElement oldElement;
                 string monName = x.Element("Name").Value;
@@ -190,14 +227,40 @@ namespace DetailsRipper
             docMon.Save("NPCShort.xml");
 
 
+            File.Copy("NPCShort.xml", "..\\..\\..\\CombatManagerCore\\NPCShort.xml", true);
+
 
 
         }
 
 
+        public static void FixNumbers(XElement x)
+        {
+            x.Element("Will").FixNum();
+            x.Element("Fort").FixNum();
+            x.Element("Ref").FixNum();
+            x.Element("Init").FixNum();
+            x.Element("HP").FixNum();
+
+        }
+
     }
+
+
+
     public static class XElementExt
     {
+        public static void FixNum(this XElement x)
+        {
+            int outVal;
+            if (!int.TryParse(x.Value, out outVal))
+            {
+                Regex reg = new Regex("-?[0-9]+");
+                Match m = reg.Match(x.Value);
+
+                x.Value = m.Value;
+            }
+        }
 
         public static string ElementValue(this XElement x, string name)
         {
