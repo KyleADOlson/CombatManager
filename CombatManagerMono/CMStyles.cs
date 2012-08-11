@@ -60,6 +60,16 @@ namespace CombatManagerMono
                 
         }
 
+        public static void StyleStandardButton(this GradientButton b)
+        {
+            
+            b.BorderColor = UIExtensions.RGBColor(0xFFFFFF);
+            b.SetTitleColor(UIColor.White, UIControlState.Normal);
+            b.SetTitleColor(UIColor.DarkGray, UIControlState.Highlighted);
+            b.Border = 2;
+            b.DisabledGradient = new GradientHelper(0xFF999999.UIColor(), 0xFF555555.UIColor());
+        }
+
 
     }
 }

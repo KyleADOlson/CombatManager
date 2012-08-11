@@ -49,12 +49,7 @@ namespace CombatManagerMono
 		
 		protected void StyleButton(GradientButton b)
 		{
-			
-			b.BorderColor = UIExtensions.RGBColor(0xFFFFFF);
-			b.SetTitleColor(UIColor.White, UIControlState.Normal);
-			b.SetTitleColor(UIColor.DarkGray, UIControlState.Highlighted);
-			b.Border = 1;
-            b.DisabledGradient = new GradientHelper(0xFF999999.UIColor(), 0xFF555555.UIColor());
+            b.StyleStandardButton();
 		}
 		
 		protected void StyleHeader(GradientView headerView, UILabel headerLabel)

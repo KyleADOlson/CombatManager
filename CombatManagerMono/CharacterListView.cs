@@ -380,6 +380,20 @@ namespace CombatManagerMono
 			
 		}
 		
+        public Character SelectedCharacter
+        {
+            get
+            {
+                NSIndexPath ip = listView.IndexPathForSelectedRow;
+                if (ip != null)
+                {
+                    int index = ip.Row;
+
+                    return currentCharacters[index];
+                }
+                return null;
+            }
+        }
 		
 		private class ViewDataSource : UITableViewDataSource
 		{

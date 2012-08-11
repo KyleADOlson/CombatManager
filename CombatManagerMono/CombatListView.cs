@@ -57,6 +57,10 @@ namespace CombatManagerMono
 		
 		UIFont _Font;
 	 	UIFont _FontBold;
+
+        UIImage _ReadyingImage;
+        UIImage _DelayingImage;
+        UIImage _LinkImage;
 		
 		public CombatListView ()
 		{
@@ -64,6 +68,11 @@ namespace CombatManagerMono
 
 			_Font = UIFont.SystemFontOfSize(14);
 			_FontBold = UIFont.BoldSystemFontOfSize(14);
+
+            _ReadyingImage = UIExtensions.GetSmallIcon("target");
+            _DelayingImage = UIExtensions.GetSmallIcon("hourglass");
+            _LinkImage = UIExtensions.GetSmallIcon("link");
+
 		
 			_ListView = new UITableView();
 			AddSubview(_ListView);
@@ -288,7 +297,7 @@ namespace CombatManagerMono
 
 		void HandleChPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			if (e.PropertyName == "Name")
+			if (e.PropertyName == "Name" || e.PropertyName == "IsReadying" || e.PropertyName == "IsDelaying")
 			{
                 UpdateCharacter(sender as Character);	
 			}		
@@ -493,25 +502,55 @@ namespace CombatManagerMono
 				
 				
 				state.UpdateCell(ch, cell);
+
+                float accHeight = 30f;
 				
 				
-				UIView buttonView = new UIView(new RectangleF(0, 0, 79, 30));
+				UIView buttonView = new UIView(new RectangleF(0, 0, 79, accHeight));
 				
-				
+                float xPos = 0;
 				GradientButton b = new GradientButton();
+
+                if (ch.IsReadying || ch.IsDelaying)
+                {
+                    UIImageView view = new UIImageView();
+                    view.Image = ch.IsReadying?state._ReadyingImage:state._DelayingImage;
+                    view.Frame = new RectangleF(new PointF(xPos, (accHeight - 16f)/2.0f), new SizeF(16, 16));
+                    buttonView.Add (view);
+                    xPos += 18;
+                }
+
+                if (ch.HasFollowers)
+                {
+                    
+                    UIImageView view = new UIImageView();
+                    view.Image = state._LinkImage;
+                    view.Frame = new RectangleF(new PointF(xPos, (accHeight - 16f)/2.0f), new SizeF(16, 16));
+                    buttonView.Add (view);
+                    xPos += 18;
+                }
+
+
 				b.SetTitle(ch.CurrentInitiative.ToString(), UIControlState.Normal);
 				b.CornerRadius = 0;
-				b.Frame = new RectangleF(0, 0, 40, 30);
+				b.Frame = new RectangleF(xPos, 0, 40, accHeight);
 				b.TouchUpInside += state.InitButtonTouchUpInside;
 				b.Data = ch;
 				buttonView.AddSubview(b);
+
+                xPos += b.Frame.Width - 1;
+
 				b = new GradientButton();
 				b.SetImage(UIExtensions.GetSmallIcon("lightning"), UIControlState.Normal);
 				b.CornerRadius = 0;
-				b.Frame = new RectangleF(39, 0, 40, 30);
+				b.Frame = new RectangleF(xPos, 0, 40, accHeight);
 				
 				buttonView.AddSubview(b);
 				b.Data = ch;
+
+                xPos += b.Frame.Width -1;
+
+                buttonView.SetWidth(xPos);
 				
 				
 				ButtonStringPopover actionsPopover = new ButtonStringPopover(b);

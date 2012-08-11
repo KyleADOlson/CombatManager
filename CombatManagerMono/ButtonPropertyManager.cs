@@ -295,6 +295,7 @@ namespace CombatManagerMono
                         _TextView.Frame = _Button.Bounds;
                         _TextView.UserInteractionEnabled = false;
                         _Button.Add(_TextView);
+                        _Button.BringSubviewToFront(_TextView);
                         _TextView.Text = _Button.TitleLabel.Text;
                     }
                     _TextView.Hidden = !_Multiline;

@@ -123,6 +123,10 @@ namespace CombatManagerMono
 			_filterText = "";
 			_tableSource = new TableDataSource(this);
 			_tableDelegate = new TableDelegate(this);
+
+            ButtonAreaView.Gradient = new GradientHelper(CMUIColors.SecondaryColorADark);
+            ButtonAreaView.Border = 0;
+            ButtonAreaView.CornerRadius = 0;
 			
 			monsterTable.DataSource = _tableSource;
 			monsterTable.Delegate = _tableDelegate;

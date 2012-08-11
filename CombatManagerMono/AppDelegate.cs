@@ -16,7 +16,7 @@ namespace CombatManagerMono
     {
         // class-level declarations
         UIWindow window;
-        CombatManagerMonoViewController viewController;
+        static CombatManagerMonoViewController viewController;
 
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -36,6 +36,14 @@ namespace CombatManagerMono
             window.MakeKeyAndVisible ();
 			
             return true;
+        }
+
+        public static CombatManagerMonoViewController RootController
+        {
+            get
+            {
+                return viewController;
+            }
         }
     }
 }

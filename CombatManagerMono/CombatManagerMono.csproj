@@ -219,6 +219,10 @@
     <Compile Include="NaturalAttackDialog.designer.cs">
       <DependentUpon>NaturalAttackDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="AboutView.cs" />
+    <Compile Include="AboutView.designer.cs">
+      <DependentUpon>AboutView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="CombatManagerMonoViewController_iPhone.xib" />
@@ -259,6 +263,8 @@
     <InterfaceDefinition Include="NaturalAttackItemView_iPad.xib" />
     <InterfaceDefinition Include="NaturalAttackDialog_iPhone.xib" />
     <InterfaceDefinition Include="NaturalAttackDialog_iPad.xib" />
+    <InterfaceDefinition Include="AboutView_iPhone.xib" />
+    <InterfaceDefinition Include="AboutView_iPad.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -582,6 +588,13 @@
     <Content Include="..\CombatManager\images\check-16.png">
       <Link>Images\External\check-16.png</Link>
     </Content>
+    <Content Include="..\CombatManager\images\info.png">
+      <Link>Images\External\info.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\info%402x.png">
+      <Link>Images\External\info%402x.png</Link>
+    </Content>
+    <Content Include="about.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />

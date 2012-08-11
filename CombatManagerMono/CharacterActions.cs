@@ -112,7 +112,7 @@ namespace CombatManagerMono
 	{
 		
 		
-		public static List<CharacterActionItem> GetActions(Character ch)
+		public static List<CharacterActionItem> GetActions(Character ch, Character selCh)
 		{
 			List<CharacterActionItem> items = new List<CharacterActionItem>();
 			
@@ -147,7 +147,7 @@ namespace CombatManagerMono
 			
 			items.Add(new CharacterActionItem());
 			items.Add(new CharacterActionItem("Roll", "d20"));
-			items.Add(new CharacterActionItem("Initiative", "sort", GetInitiativeItems(ch, null)));
+			items.Add(new CharacterActionItem("Initiative", "sort", GetInitiativeItems(ch, selCh)));
 			items.Add(new CharacterActionItem("Clone", "clone", CharacterActionType.Clone));
 			if (ch.IsMonster)
 			{
@@ -188,13 +188,25 @@ namespace CombatManagerMono
 			items.Add(new CharacterActionItem("Move Down", "arrowdown", CharacterActionType.MoveDownInitiative));
 			if (selectedChar != null && selectedChar != ch)
 			{
-				items.Add(new CharacterActionItem("Move Before " + selectedChar.Name, "arrowup", CharacterActionType.MoveBeforeInitiative, selectedChar));
-				items.Add(new CharacterActionItem("Move After" + selectedChar.Name, "arrowdown", CharacterActionType.MoveAfterInitiative, selectedChar));
+				items.Add(new CharacterActionItem("Move Before " + selectedChar.Name, "arrowsup", CharacterActionType.MoveBeforeInitiative, selectedChar));
+				items.Add(new CharacterActionItem("Move After " + selectedChar.Name, "arrowsdown", CharacterActionType.MoveAfterInitiative, selectedChar));
 	
 			}
 			items.Add(new CharacterActionItem());		
 			items.Add(new CharacterActionItem("Ready", "target", CharacterActionType.Ready));
 			items.Add(new CharacterActionItem("Delay", "hourglass", CharacterActionType.Delay));
+
+            if (ch.InitiativeLeader != null)
+            {
+                items.Add (new CharacterActionItem());
+                items.Add (new CharacterActionItem("Unlink Initiative", "link", CharacterActionType.UnlinkInitiative));
+            }
+            else if (selectedChar != null && selectedChar != ch)
+            {
+                items.Add(new CharacterActionItem());
+                items.Add (new CharacterActionItem("Link Initiative to " + selectedChar.Name, 
+                                                   "link", CharacterActionType.LinkInitiative, selectedChar));
+            }
 		
 		
 			return items;
@@ -303,7 +315,29 @@ namespace CombatManagerMono
 			case CharacterActionType.MoveBeforeInitiative:
 				state.MoveCharacterBefore(primaryChar, (Character)param);
 				break;
-				
+            case CharacterActionType.Ready:
+                primaryChar.IsReadying = !primaryChar.IsReadying;
+                if (primaryChar.IsReadying && primaryChar.IsDelaying)
+                {
+                    primaryChar.IsDelaying = false;
+                }
+                break;
+            case CharacterActionType.Delay:
+                primaryChar.IsDelaying = !primaryChar.IsDelaying;
+                if (primaryChar.IsReadying && primaryChar.IsDelaying)
+                {
+                    primaryChar.IsReadying = false;
+                }
+                break;
+            case CharacterActionType.LinkInitiative:
+                if (primaryChar != param)
+                {
+                    state.LinkInitiative(primaryChar, (Character)param);
+                }
+                break;
+            case CharacterActionType.UnlinkInitiative:
+                state.UnlinkLeader(primaryChar);
+                break;
 			case CharacterActionType.AddConditon:	
 				if (param != null)
 				{

@@ -46,6 +46,7 @@ namespace CombatManagerMono
             };
 
             _SpecialTextButton = new GradientButton(); 
+            _SpecialTextButton.SetTitleColor(0x00000000.UIColor(), UIControlState.Normal);
             _SpecialTextManager = new ButtonPropertyManager(_SpecialTextButton, MainUI.MainView, _Ability, "Text") {Multiline = true};
             _Manager.Add(_SpecialTextManager);
 
@@ -85,6 +86,7 @@ namespace CombatManagerMono
 
             _SpecialTextButton.Frame = new RectangleF(borderMargin, _NameButton.Frame.Bottom, Frame.Width-borderMargin*2.0f, Frame.Height - _NameButton.Frame.Bottom - borderMargin);
             _SpecialTextManager.TextView.Frame = _SpecialTextButton.Bounds;
+
 
 
         }

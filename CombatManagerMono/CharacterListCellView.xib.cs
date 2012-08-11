@@ -50,6 +50,7 @@ namespace CombatManagerMono
 
         private static UIImage _IdleImage;
         private static UIImage _FollowerImage;
+        private static UIImage _ActionImage;
 		
 		//private UIImageView _IdleImage;
 		//private UIImageView _HiddenImage;
@@ -60,6 +61,7 @@ namespace CombatManagerMono
         {
             _IdleImage = UIExtensions.GetSmallIcon("zzz");
             _FollowerImage = UIExtensions.GetSmallIcon("lock");
+            _ActionImage = UIImage.FromFile("Images/External/d20-32.png");
         }
 
 
@@ -87,8 +89,12 @@ namespace CombatManagerMono
 			button.CornerRadius = 0;
 			button.SetTitleColor(UIColor.White, UIControlState.Normal);
 			button.SetTitleColor(UIColor.DarkTextColor,UIControlState.Selected);
-			
-			button.Gradient = new GradientHelper(CMUIColors.SecondaryColorAMedium, CMUIColors.SecondaryColorADarker);
+            button.TitleLabel.Font = UIFont.BoldSystemFontOfSize(17f);
+            button.TitleLabel.AdjustsFontSizeToFitWidth = true;
+            button.TitleLabel.MinimumFontSize = 14f;
+
+
+			button.Gradient = new GradientHelper(CMUIColors.SecondaryColorADark, CMUIColors.SecondaryColorADarker);
 		}
 
 		void Initialize ()
@@ -112,7 +118,7 @@ namespace CombatManagerMono
 			view.BorderColor = CMUIColors.SecondaryColorALight;
 			cellmain.SelectedBackgroundView = view;
 			
-			actionsButton.SetImage(UIExtensions.GetSmallIcon("d20"), UIControlState.Normal);
+			actionsButton.SetImage(_ActionImage, UIControlState.Normal);
 			maxHPButton.TouchUpInside += HandleMaxHPButtonTouchUpInside;
 			hpButton.TouchUpInside += HandleHpButtonTouchUpInside;
 			modButton.TouchUpInside += HandleModButtonTouchUpInside;
@@ -210,8 +216,8 @@ namespace CombatManagerMono
 			UIWebView v = new UIWebView(new RectangleF(0, 0, 300, 200));
 			v.LoadHtmlString(MonsterHtmlCreator.CreateHtml(_Character.Monster, _Character, true), new NSUrl("http://localhost/")); 
 			_ActionsPopover.AccessoryView = v;
-			
-			List<CharacterActionItem> actions = CharacterActions.GetActions(_Character);
+
+			List<CharacterActionItem> actions = CharacterActions.GetActions(_Character, _CharacterListView.SelectedCharacter);
 			
 			AddActionItems(actions, _ActionsPopover.Items);
 			
