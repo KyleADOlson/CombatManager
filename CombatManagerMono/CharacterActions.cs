@@ -117,7 +117,7 @@ namespace CombatManagerMono
 			List<CharacterActionItem> items = new List<CharacterActionItem>();
 			
 			items.Add(new CharacterActionItem("Edit", "pencil", CharacterActionType.EditMonster));
-			items.Add(new CharacterActionItem("Copy to Custom", "import"));
+			//items.Add(new CharacterActionItem("Copy to Custom", "import"));
 			if (!ch.IsIdle)
 			{
 				
@@ -142,11 +142,11 @@ namespace CombatManagerMono
 			items.Add(new CharacterActionItem());
 			CharacterActionItem conditionsItem = new CharacterActionItem("Add Condition", "clock", GetConditionItems(ch));
 			items.Add(conditionsItem);
-			items.Add(new CharacterActionItem("Apply Affliction", "lightning"));
+			//items.Add(new CharacterActionItem("Apply Affliction", "lightning"));
 			items.Add(new CharacterActionItem("Notes", "notes", CharacterActionType.EditNotes));
 			
 			items.Add(new CharacterActionItem());
-			items.Add(new CharacterActionItem("Roll", "d20"));
+			//items.Add(new CharacterActionItem("Roll", "d20"));
 			items.Add(new CharacterActionItem("Initiative", "sort", GetInitiativeItems(ch, selCh)));
 			items.Add(new CharacterActionItem("Clone", "clone", CharacterActionType.Clone));
 			if (ch.IsMonster)
@@ -186,7 +186,7 @@ namespace CombatManagerMono
 			
 			items.Add(new CharacterActionItem("Move Up", "arrowup", CharacterActionType.MoveUpInitiative));
 			items.Add(new CharacterActionItem("Move Down", "arrowdown", CharacterActionType.MoveDownInitiative));
-			if (selectedChar != null && selectedChar != ch)
+			if (selectedChar != null && selectedChar != ch && selectedChar.InitiativeLeader == null)
 			{
 				items.Add(new CharacterActionItem("Move Before " + selectedChar.Name, "arrowsup", CharacterActionType.MoveBeforeInitiative, selectedChar));
 				items.Add(new CharacterActionItem("Move After " + selectedChar.Name, "arrowsdown", CharacterActionType.MoveAfterInitiative, selectedChar));
@@ -201,7 +201,7 @@ namespace CombatManagerMono
                 items.Add (new CharacterActionItem());
                 items.Add (new CharacterActionItem("Unlink Initiative", "link", CharacterActionType.UnlinkInitiative));
             }
-            else if (selectedChar != null && selectedChar != ch)
+            else if (selectedChar != null && selectedChar != ch && selectedChar.InitiativeLeader == null)
             {
                 items.Add(new CharacterActionItem());
                 items.Add (new CharacterActionItem("Link Initiative to " + selectedChar.Name, 
@@ -330,7 +330,8 @@ namespace CombatManagerMono
                 }
                 break;
             case CharacterActionType.LinkInitiative:
-                if (primaryChar != param)
+                Character targetChar = (Character)param;
+                if (primaryChar != targetChar  && targetChar.InitiativeLeader == null)
                 {
                     state.LinkInitiative(primaryChar, (Character)param);
                 }

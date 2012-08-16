@@ -26,6 +26,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using CombatManager;
 using System.Drawing;
+using System.Threading;
 
 namespace CombatManagerMono
 {
@@ -43,6 +44,7 @@ namespace CombatManagerMono
 		
 		static MainUI _MainView;
 		
+        static object _Lock = new object();
 		static CombatState _CombatState = new CombatState();
 		
 		public MainUI ()
@@ -61,17 +63,42 @@ namespace CombatManagerMono
 			
 		}
 		
+        private static CombatState _NextCombatState = null;
+
 		public static void SaveCombatState()
 		{
+            DateTime startTime = DateTime.Now;
+            System.Diagnostics.Debug.WriteLine("SaveCombatState");
             try
             {
-				XmlLoader<CombatState>.Save(_CombatState, "CombatState.xml", true);
+                CombatState s = new CombatState(_CombatState);
+
+
+                Thread t = new Thread(delegate() {
+
+                  try
+                    {
+                        XmlLoader<CombatState>.Save(s, "CombatState.xml", true);
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Failure saving combat state: " + ex.ToString());
+                    }
+
+                });
+                t.Start ();
 
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Failure saving combat state: " + ex.ToString());
+                System.Diagnostics.Debug.WriteLine("Failure starting save combat state: " + ex.ToString());
             }
+
+            System.Diagnostics.Debug.WriteLine("Finished SaveCombatState Time: " + 
+                (DateTime.Now - startTime).TotalSeconds.ToString() + " secs");
+
 		}
 		
 		public static void LoadCombatState()
@@ -82,7 +109,8 @@ namespace CombatManagerMono
 				if (state != null)
 				{
 					_CombatState.Copy(state);
-					_CombatState.SortCombatList(false, false);
+					_CombatState.SortCombatList(false, false, true);
+
 					_CombatState.FixInitiativeLinksList(new List<Character>(_CombatState.Characters));
 				}
 
@@ -103,7 +131,7 @@ namespace CombatManagerMono
 
 		static void Handle_CombatStateCharacterRemoved (object sender, CombatStateCharacterEventArgs e)
 		{
-			SaveCombatState();
+			//SaveCombatState();
 		}
 
 		static void Handle_CombatStateCharacterAdded (object sender, CombatStateCharacterEventArgs e)

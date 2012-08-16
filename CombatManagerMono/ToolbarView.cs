@@ -82,11 +82,13 @@ namespace CombatManagerMono
             clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
 			
             _AboutButton = new GradientButton();
-            _AboutButton.SetImage(UIImage.FromFile("Images/External/Info.png"), UIControlState.Normal);
+            _AboutButton.SetImage(UIImage.FromFile("Images/External/info.png"), UIControlState.Normal);
             _AboutButton.Border = 0;
             _AboutButton.BackgroundColor = UIColor.Clear;
             _AboutButton.Gradient = new GradientHelper(0x00000000.UIColor());
-            _AboutButton.TouchUpInside += AboutButtonClicked;
+            _AboutButton.TouchUpInside += AboutButtonClicked;            
+            _AboutButton.Frame = new RectangleF(Bounds.Width - 32, (Bounds.Height - 32.0f)/2.0f, 32f, 32f);
+
             Add (_AboutButton);
 			BackgroundColor = UIColor.Black;
 			

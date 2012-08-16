@@ -2035,7 +2035,7 @@ namespace CombatManager
 
         void ParseSpecialAbilities()
         {
-            if (specialAbilitiesList != null && specialAbilitiesList.Count > 0)
+            if (specialAbilitiesList != null)
             {
                 specialAblitiesParsed = true;
             }

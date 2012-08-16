@@ -17,6 +17,8 @@ namespace CombatManagerMono
 
         List<UIImageView> _LoadingIcons = new List<UIImageView>();
 
+        UIImageView _BackgroundView;
+
         static bool UserInterfaceIdiomIsPhone
         {
             get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -39,6 +41,13 @@ namespace CombatManagerMono
         public override void ViewDidLoad ()
         {
             base.ViewDidLoad ();
+
+            _BackgroundView = new UIImageView();
+
+            _BackgroundView.Frame = View.Bounds;
+            View.Add(_BackgroundView);
+            _BackgroundView.Image = UIImage.FromFile("Images/DiePencil.jpg");
+
 			
             Thread t = new Thread(LoadStuff);
             t.Start();

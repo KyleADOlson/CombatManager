@@ -206,19 +206,47 @@ namespace CombatManagerMono
 			MainUI.SaveCombatState();
 		}
 
+        int ActiveCharacterIndex
+        {
+            get
+            {
+                if (CombatState.CurrentCharacter == null)
+                {
+                    return -1;
+                }
+
+                return _CombatState.CombatList.IndexOf(CombatState.CurrentCharacter);
+            }
+        }
+
 		void HandleNextButtonTouchUpInside (object sender, EventArgs e)
 		{
-			CombatState.MoveNext();
-			ReloadList();
+            
+            int index1 = ActiveCharacterIndex;
+            CombatState.MoveNext();
+            int index2 = ActiveCharacterIndex;
+
+            ReloadListRows(new List<int>{index1, index2});
 			MainUI.SaveCombatState();
 		}
 
 		void HandlePrevButtonTouchUpInside (object sender, EventArgs e)
 		{
+            int index1 = ActiveCharacterIndex;
 			CombatState.MovePrevious();
-			ReloadList();
+            int index2 = ActiveCharacterIndex;
+
+            ReloadListRows(new List<int>{index1, index2});
 			MainUI.SaveCombatState();
 		}
+
+        void ReloadListRows(IEnumerable<int> indexes)
+        {
+
+            _ListView.ReloadRows((from a in indexes where a >= 0 select NSIndexPath.FromRowSection(a, 0)).ToArray(),
+                                 UITableViewRowAnimation.None);
+           
+        }
 
 		void HandleRollButtonTouchUpInside (object sender, EventArgs e)
 		{

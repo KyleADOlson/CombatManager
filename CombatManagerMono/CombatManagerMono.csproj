@@ -58,6 +58,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -76,7 +77,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>iPhone Distribution: Kyle Olson</CodesignKey>
+    <MtouchArch>ARMv7</MtouchArch>
+    <IpaPackageName />
+    <CrashReportingApiKey />
+    <MtouchI18n />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -268,7 +273,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Content Include="backtest.png" />
     <Content Include="Default-Landscape~ipad.png" />
     <Content Include="Default-Portrait~ipad.png" />
     <Content Include="icon.png" />
@@ -595,6 +599,13 @@
       <Link>Images\External\info%402x.png</Link>
     </Content>
     <Content Include="about.html" />
+    <Content Include="Images\DiePencil.jpg" />
+    <Content Include="Default-Portrait%402x.png" />
+    <Content Include="Default-Landscape%402x.png" />
+    <Content Include="App.png" />
+    <Content Include="RetinaApp.png" />
+    <Content Include="RetinaSettings.png" />
+    <Content Include="RetinaSpotlight.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
@@ -605,5 +616,8 @@
       <Project>{A1770C4F-09EE-41F9-86AB-5672C3D42980}</Project>
       <Name>CombatManagerCoreMono</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork.png" />
   </ItemGroup>
 </Project>
