@@ -109,6 +109,7 @@ namespace CombatManager
             AddToMap("Curse of the Crimson Throne: Skeletons of Scarwall", SourceType.AdventuresAndModules, "AP 11", "AP11", "PAP11:CotCT5");
             AddToMap("Curse of the Riven Sky", SourceType.AdventuresAndModules);
             AddToMap("Dark Markets - A Guide to Katapesh", SourceType.ChroniclesAndCompanions, "PCh:DM");
+            AddToMap("Distant Worlds", SourceType.ChroniclesAndCompanions);
             AddToMap("Dragons Revisited", SourceType.ChroniclesAndCompanions, "PCh:DR");
             AddToMap("Dungeon Denizens Revisited", SourceType.ChroniclesAndCompanions, "PCh:DDR");
             AddToMap("Dungeons of Golarion", SourceType.ChroniclesAndCompanions, "DungeonsOfGolarion");

@@ -95,11 +95,20 @@ namespace CombatManagerMono
 			base.ViewDidLoad ();
 			
 			ButtonView.CornerRadius = 0;
-			TitleView.CornerRadius = 0;
-			BackgroundView.CornerRadius = 0;
-			BackgroundView.Gradient = new GradientHelper(new List<UIColor>() {
-				UIColor.White, UIColor.White}, new List<float>(){0, 1});
-			
+            ButtonView.Border = 0;
+            ButtonView.Gradient = new GradientHelper(0x0.UIColor());
+            ButtonView.BackgroundColor = UIColor.Clear;
+
+            TitleView.CornerRadius = 0;
+            TitleView.Border = 0;
+            TitleView.Gradient = new GradientHelper(0x0.UIColor());
+            TitleView.BackgroundColor = UIColor.Clear;
+
+            CMStyles.StyleBasicPanel(BackgroundView);
+
+            OKButton.StyleStandardButton();
+            CancelButton.StyleStandardButton();
+
 			OKButton.TouchUpInside += HandleOKButtonTouchUpInside;
 			CancelButton.TouchUpInside += HandleCancelButtonTouchUpInside;
 			BackgroundButton.TouchUpInside += HandleCancelButtonTouchUpInside;

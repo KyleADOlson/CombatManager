@@ -47,13 +47,24 @@ namespace CombatManagerMono
 		private MonsterEditorDialog _MonsterEditorDialog;
 		
 		private CharacterListView _CharacterListView;
+
+        private static UIImage _IdleImage;
+        private static UIImage _FollowerImage;
+        private static UIImage _ActionImage;
 		
 		//private UIImageView _IdleImage;
 		//private UIImageView _HiddenImage;
 		
 		List<GradientButton> ConditionButtons = new List<GradientButton>();
 		
-		
+		static CharacterListCellView()
+        {
+            _IdleImage = UIExtensions.GetSmallIcon("zzz");
+            _FollowerImage = UIExtensions.GetSmallIcon("lock");
+            _ActionImage = UIImage.FromFile("Images/External/d20-32.png");
+        }
+
+
 		public CharacterListCellView (IntPtr handle) : base(handle)
 		{
 			Initialize ();
@@ -78,12 +89,18 @@ namespace CombatManagerMono
 			button.CornerRadius = 0;
 			button.SetTitleColor(UIColor.White, UIControlState.Normal);
 			button.SetTitleColor(UIColor.DarkTextColor,UIControlState.Selected);
-			
-			button.Gradient = new GradientHelper(CMUIColors.SecondaryColorAMedium, CMUIColors.SecondaryColorADarker);
+            button.TitleLabel.Font = UIFont.BoldSystemFontOfSize(17f);
+            button.TitleLabel.AdjustsFontSizeToFitWidth = true;
+            button.TitleLabel.MinimumFontSize = 14f;
+
+
+			button.Gradient = new GradientHelper(CMUIColors.SecondaryColorADark, CMUIColors.SecondaryColorADarker);
 		}
 
 		void Initialize ()
 		{
+
+
 			
 			GradientView view = new GradientView();
 			view.Border = 1f;
@@ -101,7 +118,7 @@ namespace CombatManagerMono
 			view.BorderColor = CMUIColors.SecondaryColorALight;
 			cellmain.SelectedBackgroundView = view;
 			
-			actionsButton.SetImage(UIExtensions.GetSmallIcon("d20"), UIControlState.Normal);
+			actionsButton.SetImage(_ActionImage, UIControlState.Normal);
 			maxHPButton.TouchUpInside += HandleMaxHPButtonTouchUpInside;
 			hpButton.TouchUpInside += HandleHpButtonTouchUpInside;
 			modButton.TouchUpInside += HandleModButtonTouchUpInside;
@@ -199,8 +216,8 @@ namespace CombatManagerMono
 			UIWebView v = new UIWebView(new RectangleF(0, 0, 300, 200));
 			v.LoadHtmlString(MonsterHtmlCreator.CreateHtml(_Character.Monster, _Character, true), new NSUrl("http://localhost/")); 
 			_ActionsPopover.AccessoryView = v;
-			
-			List<CharacterActionItem> actions = CharacterActions.GetActions(_Character);
+
+			List<CharacterActionItem> actions = CharacterActions.GetActions(_Character, _CharacterListView.SelectedCharacter);
 			
 			AddActionItems(actions, _ActionsPopover.Items);
 			
@@ -421,6 +438,7 @@ namespace CombatManagerMono
 					UpdateNonlethal();
 					UpdateTempHP();
 					UpdateConditionDisplay();
+                    UpdateIndicatorImage();
 					
 					_Character.PropertyChanged += Handle_CharacterPropertyChanged;
 					_Character.Monster.PropertyChanged += Handle_CharacterMonsterPropertyChanged;
@@ -519,8 +537,12 @@ namespace CombatManagerMono
 				}
 				else if (e.PropertyName == "IsIdle" || e.PropertyName == "IsHidden")
 				{
-					UpdateIdleHidden();
+					UpdateIndicatorImage();
 				}
+                else if (e.PropertyName == "InitiativeLeader")
+                {
+                    UpdateIndicatorImage();
+                }
 				
 			}
 			else
@@ -572,17 +594,20 @@ namespace CombatManagerMono
 		}
 		
 		
-		void UpdateIdleHidden()
+		void UpdateIndicatorImage()
 		{
-			/*if (_Character.IsIdle && _IdleImage == null)
-			{
-				_IdleImage = new UIImageView(UIExtensions.GetSmallIcon("zzz"));
-				nameContainer.AddSubview(_IdleImage);
-			}
-			else if (!_Character.IsIdle && _IdleImage != null)
-			{
-				nameContainer.RemoveS	
-			}*/
+            if (_Character.InitiativeLeader != null)
+            {
+                IndicatorView.Image = _FollowerImage;
+            }
+            else if (_Character.IsIdle)
+            {
+                IndicatorView.Image = _IdleImage;
+            }
+            else
+            {
+                IndicatorView.Image = null;
+            }
 		}
 		
 		static int ConditionWidth = 30;

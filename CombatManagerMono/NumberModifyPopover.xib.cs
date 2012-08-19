@@ -136,6 +136,8 @@ namespace CombatManagerMono
 			
 			SwapButton.SetImage(UIExtensions.GetSmallIcon("sort"), UIControlState.Normal);
 			NullButton.Hidden = !this.Nullable;
+
+            _NumPadMode = NSUserDefaults.StandardUserDefaults.BoolForKey("NumPadMode");
 			
 			UpdatePadView();
 			
@@ -274,6 +276,7 @@ namespace CombatManagerMono
 		partial void SwapButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
 		{
 			_NumPadMode = !_NumPadMode;
+            NSUserDefaults.StandardUserDefaults.SetBool(_NumPadMode, "NumPadMode");
 			UpdatePadView();
 		}
 		

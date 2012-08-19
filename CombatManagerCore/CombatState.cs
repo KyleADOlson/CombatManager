@@ -96,29 +96,37 @@ namespace CombatManager
             _Round = s._Round;
             _CR = s._CR;
             _XP = s._XP;
-            if (_Characters != null)
+            _CombatIDList = new List<Guid>();
+
+
+            _CombatList = new ObservableCollection<Character>();
+
+            _UnfilteredCombatList = new ObservableCollection<Character>();
+            _Characters = new ObservableCollection<Character>();
+
+            if (s._Characters != null)
             {
-                _Characters = new ObservableCollection<Character>(s._Characters);
+                foreach (Character c in s._Characters)
+                {
+                    Character newChar = (Character)c.Clone();
+                    AddCharacter(newChar);
+                    if (s._CurrentCharacter == c)
+                    {
+                        _CurrentCharacter = newChar;                       
+                    }
+                    newChar.ID = c.ID;
+
+                }
                 _Characters.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(_Characters_CollectionChanged);
 
             }
-            if (_CombatList != null)
+            foreach (Character ch in s._CombatList)
             {
-                _CombatList = new ObservableCollection<Character>(s._CombatList);
-            }
-            if (_UnfilteredCombatList != null)
-            {
-                _UnfilteredCombatList = new ObservableCollection<Character>(s._UnfilteredCombatList);
-            }
-            _CurrentCharacter = (Character)s._CurrentCharacter.Clone();
-            _CurrentCharacter.ID = s._CurrentCharacter.ID;
-            if (_CombatIDList != null)
-            {
-                _CombatIDList = new List<Guid>(s._CombatIDList);
+                _CombatIDList.Add (ch.ID);
             }
 
-            _CombatIDListNeedsUpdate = s._CombatIDListNeedsUpdate;
-            _CombatListNeedsUpdate = s._CombatListNeedsUpdate;
+            _CombatIDListNeedsUpdate = false;
+            _CombatListNeedsUpdate = true;
 
         }
 
@@ -258,7 +266,8 @@ namespace CombatManager
 
                     foreach (Guid g in _CombatIDList)
                     {
-                        _CombatList.Add(Characters.FirstOrDefault(a => a.ID == g));
+                        Character c = Characters.FirstOrDefault(a => a.ID == g);
+                        _CombatList.Add(c);
                     }
                     _CombatListNeedsUpdate = false;
                 }
@@ -320,6 +329,11 @@ namespace CombatManager
             {
                 _CombatIDList = value;
             }
+        }
+
+        public void ResetIDFlag()
+        {
+            _CombatListNeedsUpdate = false;
         }
 
         [DataMember]
@@ -391,7 +405,7 @@ namespace CombatManager
 
         public void UpdateAllConditions()
         {
-            foreach (Character ch in CombatList)
+            foreach (Character ch in _UnfilteredCombatList)
             {
                 UpdateConditions(ch);
             }
@@ -418,6 +432,8 @@ namespace CombatManager
             {
                 foreach (ActiveCondition condition in ch.Stats.ActiveConditions)
                 {
+                    System.Diagnostics.Debug.Assert(condition != null);
+
                     if (condition != null)
                     {
                         bool passedConditionInitiative = false;
@@ -681,10 +697,14 @@ namespace CombatManager
             SortCombatList(true, true);
         }
 
-        public void SortCombatList(bool moveToFirst, bool assignNewInitiative)
+        public void SortCombatList(bool moveToFirst, bool assignNewInitiative, bool rawCombatList = false)
         {
 			sortingList = true;
-            CombatList.Clear();
+             
+            if (!rawCombatList)
+            {
+                CombatList.Clear();
+            }
             _UnfilteredCombatList.Clear();
 
             List<Character> init = new List<Character>();
@@ -702,14 +722,23 @@ namespace CombatManager
 
                 }
             }
+            if (rawCombatList)
+            {
+                init.Clear();
+                init.AddRange(CombatList);
+            }
+            else
+            {
+                init.Sort((a, b) => b.InitiativeCount.CompareTo(a.InitiativeCount));
+            }
 
-            init.Sort((a, b) => b.InitiativeCount.CompareTo(a.InitiativeCount));
+
+
 
             foreach (Character character in init)
             {
                 _UnfilteredCombatList.Add(character);
             }
-			
             FilterList();
 			
 			
@@ -845,6 +874,8 @@ namespace CombatManager
 
         public void MoveUpCharacter(Character character)
         {
+            
+            System.Diagnostics.Debug.WriteLine("MoveUp");
             if (character != null)
             {
 
@@ -908,6 +939,7 @@ namespace CombatManager
 
         public void MoveDownCharacter(Character character)
         {
+            System.Diagnostics.Debug.WriteLine("MoveDown");
             if (character != null)
             {
 
@@ -958,6 +990,8 @@ namespace CombatManager
                 UpdateAllConditions();
 
             }
+            
+            System.Diagnostics.Debug.WriteLine("MoveDown - Complete");
             
         }
 
@@ -1039,11 +1073,17 @@ namespace CombatManager
 
         public void AddCharacter(Character character)
         {
-
+            
+            sortingList = true;
             character.InitiativeCount = GetAfterLastInitiative();
             Characters.Add(character);
             _UnfilteredCombatList.Add(character);
             FilterList();
+            sortingList = false;
+            if (CharacterSortCompleted != null)
+            {
+                CharacterSortCompleted(this, new EventArgs());
+            }
         }
 
         public void RemoveCharacter(Character character)
@@ -1056,9 +1096,16 @@ namespace CombatManager
                 MoveNext();
             }
 
+            sortingList = true;
             Characters.Remove(character);
             _UnfilteredCombatList.Remove(character);
             FilterList();
+            sortingList = false;
+            
+            if (CharacterSortCompleted != null)
+            {
+                CharacterSortCompleted(this, new EventArgs());
+            }
         }
 
 

@@ -1,24 +1,3 @@
-/*
- *  CharacterListCellView.xib.designer.cs
- *
- *  Copyright (C) 2010-2012 Kyle Olson, kyle@kyleolson.com
- *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  as published by the Free Software Foundation; either version 2
- *  of the License, or (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- * 
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- *
- */
-
 // WARNING
 //
 // This file has been generated automatically by MonoDevelop to store outlets and
@@ -32,6 +11,9 @@ namespace CombatManagerMono
 	[Register ("CharacterListCellView")]
 	partial class CharacterListCellView
 	{
+		[Outlet]
+		MonoTouch.UIKit.UIImageView IndicatorView { get; set; }
+
 		[Outlet]
 		CombatManagerMono.GradientButton hpButton { get; set; }
 
@@ -58,5 +40,58 @@ namespace CombatManagerMono
 
 		[Outlet]
 		CombatManagerMono.GradientButton nameField { get; set; }
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (IndicatorView != null) {
+				IndicatorView.Dispose ();
+				IndicatorView = null;
+			}
+
+			if (hpButton != null) {
+				hpButton.Dispose ();
+				hpButton = null;
+			}
+
+			if (maxHPButton != null) {
+				maxHPButton.Dispose ();
+				maxHPButton = null;
+			}
+
+			if (nonlethalButton != null) {
+				nonlethalButton.Dispose ();
+				nonlethalButton = null;
+			}
+
+			if (actionsButton != null) {
+				actionsButton.Dispose ();
+				actionsButton = null;
+			}
+
+			if (modButton != null) {
+				modButton.Dispose ();
+				modButton = null;
+			}
+
+			if (tempHPButton != null) {
+				tempHPButton.Dispose ();
+				tempHPButton = null;
+			}
+
+			if (cellmain != null) {
+				cellmain.Dispose ();
+				cellmain = null;
+			}
+
+			if (nameContainer != null) {
+				nameContainer.Dispose ();
+				nameContainer = null;
+			}
+
+			if (nameField != null) {
+				nameField.Dispose ();
+				nameField = null;
+			}
+		}
 	}
 }
