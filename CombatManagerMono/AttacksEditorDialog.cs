@@ -21,7 +21,6 @@ namespace CombatManagerMono
 
         TypeTab _SelectedTab;
 
-        List<GradientButton> _SetButtons = new List<GradientButton>();
         List<AttackItemView> _AttackItems = new List<AttackItemView>();
         List<NaturalAttackItemView> _NaturalAttackItems = new List<NaturalAttackItemView>();
 

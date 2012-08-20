@@ -410,6 +410,14 @@ namespace CombatManagerMono
 			{
 				return 28;
 			}
+
+            public HDEditorDialog State
+            {
+                get
+                {
+                    return state;
+                }
+            }
 		}
 		
 		

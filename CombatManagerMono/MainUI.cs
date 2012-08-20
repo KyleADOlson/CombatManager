@@ -41,10 +41,10 @@ namespace CombatManagerMono
 		SpellsTab _spellsTab;
 		FeatsTab _featsTab;
 		RulesTab _rulesTab;
+        TreasureTab _treasureTab;
 		
 		static MainUI _MainView;
 		
-        static object _Lock = new object();
 		static CombatState _CombatState = new CombatState();
 		
 		public MainUI ()
@@ -63,7 +63,6 @@ namespace CombatManagerMono
 			
 		}
 		
-        private static CombatState _NextCombatState = null;
 
 		public static void SaveCombatState()
 		{
@@ -197,6 +196,12 @@ namespace CombatManagerMono
 					newTab = RulesTab;	
 				}
 				break;
+            case 5:
+                if (!(currentTab is TreasureTab))
+                {
+                    newTab = TreasureTab;  
+                }
+                break;
 			}
 			
 			if (newTab !=null && newTab != currentTab)
@@ -269,6 +274,18 @@ namespace CombatManagerMono
 				return _rulesTab;
 			}
 		}
+        
+        TreasureTab TreasureTab
+        {
+            get
+            {
+                if (_treasureTab == null)
+                {
+                    _treasureTab = new TreasureTab(_CombatState);
+                }
+                return _treasureTab;
+            }
+        }
 		
 		public static MainUI MainView
 		{

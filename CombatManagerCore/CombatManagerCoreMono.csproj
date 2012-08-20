@@ -197,9 +197,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ArmorWeaponSpecialChart.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ArmorWeaponChart.xml">
       <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Details.db">
       <DeployService-Deploy>true</DeployService-Deploy>

@@ -96,10 +96,10 @@ namespace CombatManager
                     _AppDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                     _AppDataDir = Path.Combine(_AppDataDir, AppDataSubDir);
 
-                    /*if (!Directory.Exists(_AppDataDir))
+                    if (!Directory.Exists(_AppDataDir))
                     {
                         Directory.CreateDirectory(_AppDataDir);
-                    }*/
+                    }
 
                 }
                 return _AppDataDir;

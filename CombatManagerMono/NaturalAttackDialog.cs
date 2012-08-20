@@ -22,6 +22,8 @@ namespace CombatManagerMono
         ButtonStringPopover _DamagePopover;
         ButtonStringPopover _AttackPopover;
 
+        List<ButtonPropertyManager> _Managers = new List<ButtonPropertyManager>();
+
         public static bool UserInterfaceIdiomIsPhone
         {
             get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -73,6 +75,9 @@ namespace CombatManagerMono
             _AttackPopover = new ButtonStringPopover(AttackButton);
             _AttackPopover.WillShowPopover += HandleWillShowAttackPopover;
             _AttackPopover.ItemClicked += HandleAttackItemClicked;
+
+            _Managers.Add(_PlusManager);
+            _Managers.Add (_CountManager);
 
             UpdateWeaponDamageText();
         }
