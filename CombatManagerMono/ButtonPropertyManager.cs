@@ -46,6 +46,7 @@ namespace CombatManagerMono
 		String _Title;
 		ButtonStringPopover _ValueListPopover;
 		HDEditorDialog _HDDialog;
+        UITextView _TextView;
 		
 		int _MinIntValue = int.MinValue;
 		int _MaxIntValue = int.MaxValue;
@@ -227,6 +228,10 @@ namespace CombatManagerMono
 		void UpdateButton()
 		{
 			_Button.SetText(CurrentText);
+            if (_TextView != null)
+            {
+                _TextView.Text = CurrentText;
+            }
 		}
 		
 		string CurrentText
@@ -281,7 +286,21 @@ namespace CombatManagerMono
 			}
 			set
 			{
-				_Multiline = value;
+                if (_Multiline != value)
+                {
+				    _Multiline = value;
+                    if (_TextView == null)
+                    {
+                        _TextView = new UITextView();
+                        _TextView.Frame = _Button.Bounds;
+                        _TextView.UserInteractionEnabled = false;
+                        _Button.Add(_TextView);
+                        _Button.BringSubviewToFront(_TextView);
+                        _TextView.Text = _Button.TitleLabel.Text;
+                    }
+                    _TextView.Hidden = !_Multiline;
+                
+                }
 			}
 		}
 		
@@ -357,6 +376,14 @@ namespace CombatManagerMono
 				_Title = value;
 			}
 		}
+
+        public UITextView TextView
+        {
+            get
+            {
+                return _TextView;
+            }
+        }
 		
 		public List<KeyValuePair<object, string>> ValueList
 		{

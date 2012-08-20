@@ -150,6 +150,11 @@ namespace CombatManager
 
         }
 
+        public static int StepsFromMedium(MonsterSize size)
+        {
+            return size-CombatManager.MonsterSize.Medium;
+        }
+
         
 
         public SizeMods(MonsterSize size, String name, int attack, int combat, int fly, int stealth, string space,

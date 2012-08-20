@@ -22,12 +22,19 @@
 using MonoTouch.UIKit;
 using System.Drawing;
 using System;
+using System.Collections.Generic;
 using MonoTouch.Foundation;
+using CombatManager;
 
 namespace CombatManagerMono
 {
 	public partial class MonsterEditorDescriptionPage : MonsterEditorPage
 	{
+
+
+        List<ButtonPropertyManager> _Managers = new List<ButtonPropertyManager>();
+
+
 		static bool UserInterfaceIdiomIsPhone
 		{
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -36,6 +43,7 @@ namespace CombatManagerMono
 		public MonsterEditorDescriptionPage ()
 			: base (UserInterfaceIdiomIsPhone ? "MonsterEditorDescriptionPage_iPhone" : "MonsterEditorDescriptionPage_iPad", null)
 		{
+
 		}
 		
 		public override void DidReceiveMemoryWarning ()
@@ -49,9 +57,21 @@ namespace CombatManagerMono
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			
-			//any additional setup after loading the view, typically from a nib.
+            
+            _Managers.Add( new ButtonPropertyManager(EnvironmentButton, DialogParent, CurrentMonster, "Environment") {Multiline = true});
+            _Managers.Add( new ButtonPropertyManager(OrganizationButton, DialogParent, CurrentMonster, "Organization") {Multiline = true}); 
+            _Managers.Add( new ButtonPropertyManager(TreasureButton, DialogParent, CurrentMonster, "Treasure") {Multiline = true}); 
+            _Managers.Add( new ButtonPropertyManager(BeforeCombatButton, DialogParent, CurrentMonster, "BeforeCombat") {Multiline = true, Title="Before Combat"}); 
+            _Managers.Add( new ButtonPropertyManager(DuringCombatButton, DialogParent, CurrentMonster, "DuringCombat") {Multiline = true, Title="During Combat"}); 
+            _Managers.Add( new ButtonPropertyManager(MoraleButton, DialogParent, CurrentMonster, "Morale") {Multiline = true}); 
+            _Managers.Add( new ButtonPropertyManager(VisualDescriptionButton, DialogParent, CurrentMonster, "Description_Visual") {Multiline = true, Title="Visual Description"}); 
+            _Managers.Add( new ButtonPropertyManager(DescriptionButton, DialogParent, CurrentMonster, "Description") {Multiline = true}); 
+ 
+
+
 		}
+
+
 		
 		public override void ViewDidUnload ()
 		{

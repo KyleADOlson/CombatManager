@@ -66,7 +66,48 @@ namespace CombatManager
         private static Dictionary<string, string> xmlAttributeErrors;
         private static string lastFile;
 
-        public const string AppDataDir = "Combat Manager";
+        public const string AppDataSubDir = "Combat Manager";
+
+        static string _AssemblyDir;
+        static string _AppDataDir;
+
+        static XmlSerializer _Serializer = new XmlSerializer(typeof(T));
+
+        public static string AssemblyDir
+        {
+            get
+            {
+                if (_AssemblyDir == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("AssemblyDir");
+                    _AssemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                }
+                return _AssemblyDir;
+            }
+        }
+
+        public static string AppDataDir
+        {
+            get
+            {
+                if (_AppDataDir == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("AppDataDir");
+                    _AppDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                    _AppDataDir = Path.Combine(_AppDataDir, AppDataSubDir);
+
+                    /*if (!Directory.Exists(_AppDataDir))
+                    {
+                        Directory.CreateDirectory(_AppDataDir);
+                    }*/
+
+                }
+                return _AppDataDir;
+            }
+        }
+
+       
+
 
 
         public static T Load(string filename)
@@ -98,17 +139,13 @@ namespace CombatManager
                 if (!appData)
                 {
                     // A FileStream is needed to read the XML document.
-                    path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    path = AssemblyDir;
                 }
                 else
                 {
-                    path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                    path = Path.Combine(path, AppDataDir);
+                    path  = AppDataDir;
 
-                    if (!Directory.Exists(path))
-                    {
-                        Directory.CreateDirectory(path);
-                    }
+
                 }
 
                 string file = Path.Combine(path, filename);
@@ -159,20 +196,14 @@ namespace CombatManager
             string path;
             if (!appData)
             {
-                // A FileStream is needed to read the XML document.
-                path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                path = AssemblyDir;
             }
             else
             {
-                path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                path = Path.Combine(path, AppDataDir);
+                path = AppDataDir;
 
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
             }
-
+        
 
             string file = Path.Combine(path, filename);
             Save(list, file);
@@ -180,17 +211,30 @@ namespace CombatManager
 
         public static void Save(T list, string filename)
         {
-            lastFile = filename;
+            FileInfo fi = new FileInfo(filename);
 
-            XmlSerializer serializer =
-                new XmlSerializer(typeof(T));
+
+            #if MONO
+            //DateTime startTime = DateTime.Now;
+            //DebugLogger.WriteLine("Saving [" + fi.Name + "]");
+            #endif
+
+            //lastFile = filename;
+
 
             TextWriter writer = new StreamWriter(filename);
-            XmlTextWriter xmlWriter = new XmlTextWriter(writer);
-            xmlWriter.Formatting = Formatting.Indented;
 
-            serializer.Serialize(xmlWriter, list);
+            XmlTextWriter xmlWriter = new XmlTextWriter(writer);
+
+
+            _Serializer.Serialize(xmlWriter, list);
             writer.Close();
+
+
+            #if MONO
+            //DebugLogger.WriteLine("Finished [" + fi.Name + "]  Time: " + 
+            //    (DateTime.Now - startTime).TotalSeconds.ToString() + " secs");
+            #endif
 
 
         }

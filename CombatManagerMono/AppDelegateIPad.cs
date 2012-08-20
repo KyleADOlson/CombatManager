@@ -45,12 +45,12 @@ namespace CombatManagerMono
 		// This method is invoked when the application has loaded its UI and its ready to run
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			window = new UIWindow (UIScreen.MainScreen.Bounds);
+			/*window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
 			viewController = new MainViewController ();
 			window.RootViewController = viewController;
 			window.MakeKeyAndVisible ();
-			
+			*/
 			Delegate = this;
 			
 			NSNotificationCenter.DefaultCenter.AddObserver(UIScreen.DidConnectNotification, ScreenDidConnect);

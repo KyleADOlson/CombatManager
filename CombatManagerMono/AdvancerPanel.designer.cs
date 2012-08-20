@@ -1,24 +1,3 @@
-/*
- *  AdvancerPanel.designer.cs
- *
- *  Copyright (C) 2010-2012 Kyle Olson, kyle@kyleolson.com
- *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  as published by the Free Software Foundation; either version 2
- *  of the License, or (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- * 
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- *
- */
-
 // WARNING
 //
 // This file has been generated automatically by MonoDevelop to store outlets and
@@ -32,6 +11,12 @@ namespace CombatManagerMono
 	[Register ("AdvancerPanel")]
 	partial class AdvancerPanel
 	{
+		[Outlet]
+		CombatManagerMono.GradientButton OtherButton6 { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton OtherButton5 { get; set; }
+
 		[Outlet]
 		CombatManagerMono.GradientButton AddMonsterButton { get; set; }
 
@@ -86,6 +71,18 @@ namespace CombatManagerMono
 		[Outlet]
 		MonoTouch.UIKit.UIView OtherTemplateOptionView { get; set; }
 
+		[Outlet]
+		CombatManagerMono.GradientButton OtherButton1 { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton OtherButton2 { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton OtherButton3 { get; set; }
+
+		[Outlet]
+		CombatManagerMono.GradientButton OtherButton4 { get; set; }
+
 		[Action ("AddMonsterButtonTouchUpInside:")]
 		partial void AddMonsterButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
 
@@ -94,5 +91,128 @@ namespace CombatManagerMono
 
 		[Action ("ResetButtonTouchUpInside:")]
 		partial void ResetButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (OtherButton6 != null) {
+				OtherButton6.Dispose ();
+				OtherButton6 = null;
+			}
+
+			if (OtherButton5 != null) {
+				OtherButton5.Dispose ();
+				OtherButton5 = null;
+			}
+
+			if (AddMonsterButton != null) {
+				AddMonsterButton.Dispose ();
+				AddMonsterButton = null;
+			}
+
+			if (RacialView != null) {
+				RacialView.Dispose ();
+				RacialView = null;
+			}
+
+			if (SimpleView != null) {
+				SimpleView.Dispose ();
+				SimpleView = null;
+			}
+
+			if (OtherView != null) {
+				OtherView.Dispose ();
+				OtherView = null;
+			}
+
+			if (SimpleHeaderView != null) {
+				SimpleHeaderView.Dispose ();
+				SimpleHeaderView = null;
+			}
+
+			if (RacialHeaderView != null) {
+				RacialHeaderView.Dispose ();
+				RacialHeaderView = null;
+			}
+
+			if (OtherHeaderView != null) {
+				OtherHeaderView.Dispose ();
+				OtherHeaderView = null;
+			}
+
+			if (AdvancedButton != null) {
+				AdvancedButton.Dispose ();
+				AdvancedButton = null;
+			}
+
+			if (SimpleSizeButton != null) {
+				SimpleSizeButton.Dispose ();
+				SimpleSizeButton = null;
+			}
+
+			if (OutsiderButton != null) {
+				OutsiderButton.Dispose ();
+				OutsiderButton = null;
+			}
+
+			if (AugmentSummoningButton != null) {
+				AugmentSummoningButton.Dispose ();
+				AugmentSummoningButton = null;
+			}
+
+			if (RacialHitDieButton != null) {
+				RacialHitDieButton.Dispose ();
+				RacialHitDieButton = null;
+			}
+
+			if (RacialBonusButton != null) {
+				RacialBonusButton.Dispose ();
+				RacialBonusButton = null;
+			}
+
+			if (RacialSizeButton != null) {
+				RacialSizeButton.Dispose ();
+				RacialSizeButton = null;
+			}
+
+			if (OtherTemplateButton != null) {
+				OtherTemplateButton.Dispose ();
+				OtherTemplateButton = null;
+			}
+
+			if (AdvancerHeaderView != null) {
+				AdvancerHeaderView.Dispose ();
+				AdvancerHeaderView = null;
+			}
+
+			if (ResetButton != null) {
+				ResetButton.Dispose ();
+				ResetButton = null;
+			}
+
+			if (OtherTemplateOptionView != null) {
+				OtherTemplateOptionView.Dispose ();
+				OtherTemplateOptionView = null;
+			}
+
+			if (OtherButton1 != null) {
+				OtherButton1.Dispose ();
+				OtherButton1 = null;
+			}
+
+			if (OtherButton2 != null) {
+				OtherButton2.Dispose ();
+				OtherButton2 = null;
+			}
+
+			if (OtherButton3 != null) {
+				OtherButton3.Dispose ();
+				OtherButton3 = null;
+			}
+
+			if (OtherButton4 != null) {
+				OtherButton4.Dispose ();
+				OtherButton4 = null;
+			}
+		}
 	}
 }

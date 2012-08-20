@@ -37,6 +37,7 @@ namespace CombatManagerMono
 		float _border = 1.0f;
 		UIColor _borderColor = UIExtensions.RGBColor(0x0);
 		GradientHelper _gradient;
+        float [] _CornerRadii = null;
 		
 		
 		public GradientView (IntPtr p) : base(p)
@@ -59,19 +60,32 @@ namespace CombatManagerMono
 			rect.Height -= _border;
 			
 			CGContext cr = UIGraphics.GetCurrentContext ();
+
+            float [] cornerRadii = new float[4];
+            if (_CornerRadii != null)
+            {
+                Array.Copy(_CornerRadii, cornerRadii, 4);
+            }
+            else
+            {
+                for (int i=0; i<4; i++)
+                {
+                    cornerRadii[i] = CornerRadius;
+                }
+            }
 			
 			if (_gradient != null)
 			{
-				cr.DrawRoundRect(_gradient.Gradient, rect, _cornerRadius);
+				cr.DrawRoundRect(_gradient.Gradient, rect, cornerRadii);
 			}
 			else
 			{
-				cr.DrawRoundRect(_color1, _color2, rect, _cornerRadius);
+				cr.DrawRoundRect(GraphicUtils.CreateNormalGradient(_color1, _color2), rect, cornerRadii);
 			}
 			
 			if (_border > 0)
 			{
-				GraphicUtils.RoundRectPath(cr, rect, _cornerRadius);
+				GraphicUtils.RoundRectPath(cr, rect, cornerRadii);
 				cr.SetStrokeColor(_borderColor.CGColor.Components);
 				cr.SetLineWidth(_border);
 				cr.StrokePath();	
@@ -127,6 +141,8 @@ namespace CombatManagerMono
 			set
 			{
 				_cornerRadius = value;
+                
+                _CornerRadii = null;
 				SetNeedsDisplay();
 			}
 		}
@@ -157,6 +173,27 @@ namespace CombatManagerMono
 				SetNeedsDisplay();
 			}
 		}
+
+        public float[] CornerRadii
+        {
+            get
+            {
+                return _CornerRadii;
+            }
+            set
+            {
+                if (value != null && value.Length != 4)
+                {
+                    throw new ArgumentOutOfRangeException("value", "value must be length 4 or null");
+                }
+
+
+                _CornerRadii = value;
+                SetNeedsDisplay();
+
+
+            }
+        }
 	}
 				
 }

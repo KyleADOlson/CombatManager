@@ -30,12 +30,13 @@ namespace CombatManagerMono
 	[Register("GradientButton")]
 	public partial class GradientButton : UIButton
 	{
-		UIColor _color1 = CMUIColors.PrimaryColorMedium;
-		UIColor _color2 = CMUIColors.PrimaryColorDarker;
-		float _cornerRadius = 10.0f;
+		float _cornerRadius = 6.0f;
 		float _border = 1.0f;
-		UIColor _borderColor = CMUIColors.PrimaryColorDark;
-		GradientHelper _gradient;
+        UIColor _borderColor = 0xFF000000.UIColor();
+		GradientHelper _gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDarker);
+        GradientHelper _DisabledGradient = CMUIColors.DisabledGradient;
+        bool [] _SkipCorners = new bool[4] ;
+        float [] _CornerRadii = null;
 		
 		object _Data;
 		
@@ -73,18 +74,55 @@ namespace CombatManagerMono
 			CGContext cr = UIGraphics.GetCurrentContext();
 			
 			//cr.SetAllowsAntialiasing(true);
-			if (_gradient != null)
-			{
-				cr.DrawRoundRect(_gradient.Gradient, rect, _cornerRadius);
-			}
-			else
-			{
-				cr.DrawRoundRect(_color1, _color2, rect, _cornerRadius);
-			}
+
+            float [] cornerRadii = new float[4];
+            if (_CornerRadii != null)
+            {
+                Array.Copy(_CornerRadii, cornerRadii, 4);
+            }
+            else if (_SkipCorners != null)               
+            {
+                for (int i=0; i<4; i++)
+                {
+                    cornerRadii[i] = _SkipCorners[i]?0f:CornerRadius;
+                }
+            }
+            else
+            {
+                for (int i=0; i<4; i++)
+                {
+                    cornerRadii[i] = CornerRadius;
+                }
+            }
+
+
+            GradientHelper useGradient = _gradient;
+            if (!Enabled && _DisabledGradient != null)
+            {
+                useGradient = _DisabledGradient;
+            }
+			
+			cr.DrawRoundRect(useGradient.Gradient, rect, cornerRadii);
+			
 			
 			if (_border > 0)
 			{
-				GraphicUtils.RoundRectPath(cr, rect, _cornerRadius);
+                if (_SkipCorners == null && _CornerRadii == null)
+                {
+				
+                    GraphicUtils.RoundRectPath(cr, rect, _cornerRadius);
+                }
+                else if (_SkipCorners !=null)
+                {
+                    
+                    GraphicUtils.RoundRectPath(cr, rect, _cornerRadius, _SkipCorners);
+                }
+                else if (_CornerRadii != null)
+                {
+                    
+                    GraphicUtils.RoundRectPath(cr, rect, _CornerRadii);
+                }
+
 				cr.SetStrokeColor(_borderColor.CGColor.Components);
 				cr.SetLineWidth(_border);
 				cr.StrokePath();	
@@ -92,32 +130,7 @@ namespace CombatManagerMono
 			
 		}
 		
-		
-		public UIColor Color1
-		{
-			get
-			{
-				return _color1;
-			}
-			set
-			{
-				_color1 = value;
-				SetNeedsDisplay();
-			}
-		}
-		
-		public UIColor Color2
-		{
-			get
-			{
-				return _color2;
-			}
-			set
-			{
-				_color2 = value;
-				SetNeedsDisplay();
-			}
-		}
+
 		
 		public UIColor BorderColor
 		{
@@ -141,6 +154,7 @@ namespace CombatManagerMono
 			set
 			{
 				_cornerRadius = value;
+                _CornerRadii = null;
 				SetNeedsDisplay();
 			}
 		}
@@ -171,6 +185,21 @@ namespace CombatManagerMono
 				SetNeedsDisplay();
 			}
 		}
+
+        public GradientHelper DisabledGradient
+        {
+            get
+            {
+                
+                return _DisabledGradient;
+            }
+            set
+            {
+                _DisabledGradient = value;
+                SetNeedsDisplay();
+            }
+        }
+        
 		
 		public object Data
 		{
@@ -183,6 +212,56 @@ namespace CombatManagerMono
 				_Data = value;
 			}
 		}
-	}
+
+        public bool[] SkipCorners
+        {
+            get
+            {
+                return _SkipCorners;
+            }
+            set
+            {
+                if (value != null && value.Length != 4)
+                {
+                    throw new ArgumentOutOfRangeException("value", "value must be length 4 or null");
+                }
+
+
+                _SkipCorners = value;
+                if (value != null)
+                {
+                    _CornerRadii = null;
+                }
+                SetNeedsDisplay();
+
+
+            }
+        }
+
+        public float[] CornerRadii
+        {
+            get
+            {
+                return _CornerRadii;
+            }
+            set
+            {
+                if (value != null && value.Length != 4)
+                {
+                    throw new ArgumentOutOfRangeException("value", "value must be length 4 or null");
+                }
+
+
+                _CornerRadii = value;
+                if (value != null)
+                {
+                    _SkipCorners = null;
+                }
+                SetNeedsDisplay();
+
+
+            }
+        }
+    }
 }
 

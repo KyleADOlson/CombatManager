@@ -78,6 +78,7 @@ namespace CombatManager
         private int _MagicBonus;
         private String _SpecialAbilities;
         private bool _MainHand;
+		private bool _TwoHanded;
         private string _Plus;
         private DieStep _Step;
         private Dictionary<string, WeaponItemPlus> _PlusList;
@@ -104,6 +105,7 @@ namespace CombatManager
             Masterwork = attack.Masterwork;
             Broken = attack.Broken;
             SpecialAbilities = attack.SpecialAbilities;
+			TwoHanded = attack.TwoHanded;
 
             if (Weapon.Class == "Natural" )
             {
@@ -125,6 +127,7 @@ namespace CombatManager
             Count = 1;
             MagicBonus = 0;
             Masterwork = false;
+			TwoHanded = weapon.TwoHanded;
 
             if (Weapon.Class == "Natural")
             {
@@ -136,7 +139,7 @@ namespace CombatManager
         {
             WeaponItem item = new WeaponItem();
 
-            item.Weapon = Weapon;
+            item.Weapon = (Weapon)Weapon.Clone();
             item.Count = Count;
             item.MagicBonus = MagicBonus;
             item.Masterwork = Masterwork;
@@ -145,6 +148,7 @@ namespace CombatManager
             item.MainHand = MainHand;
             item.Plus = Plus;
             item.Step = Step;
+			item.TwoHanded = TwoHanded;
 
             return item;
         }
@@ -158,7 +162,7 @@ namespace CombatManager
                 if (_Count != value)
                 {
                     _Count = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Count")); }
+					OnPropertyChanged("Count");
                 }
             }
         }
@@ -170,7 +174,7 @@ namespace CombatManager
                 if (_Weapon != value)
                 {
                     _Weapon = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Weapon")); }
+					OnPropertyChanged("Weapon");
                 }
             }
         }
@@ -182,7 +186,7 @@ namespace CombatManager
                 if (_Masterwork != value)
                 {
                     _Masterwork = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Masterwork")); }
+					OnPropertyChanged("Masterwork");
                 }
             }
         }
@@ -194,7 +198,7 @@ namespace CombatManager
                 if (_Broken != value)
                 {
                     _Broken = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Broken")); }
+					OnPropertyChanged("Broken");
                 }
             }
         }
@@ -206,7 +210,7 @@ namespace CombatManager
                 if (_MagicBonus != value)
                 {
                     _MagicBonus = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MagicBonus")); }
+					OnPropertyChanged("MagicBonus");
                 }
             }
         }
@@ -218,10 +222,30 @@ namespace CombatManager
                 if (_MainHand != value)
                 {
                     _MainHand = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MainHand")); }
+					OnPropertyChanged("MainHand");
                 }
             }
         }
+
+		public bool TwoHanded
+		{
+			get { return _TwoHanded; }
+			set
+			{
+				if (_TwoHanded != value)
+				{
+					_TwoHanded = value;
+					OnPropertyChanged("TwoHanded");
+				}
+			}
+		}
+
+		protected void OnPropertyChanged(string propertyName)
+		{
+			if(PropertyChanged != null)
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+
         public String SpecialAbilities
         {
             get { return _SpecialAbilities; }
@@ -269,11 +293,8 @@ namespace CombatManager
                         }
                     }
 
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilities"));
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilitySet"));
-                    }
+					OnPropertyChanged("SpecialAbilities");
+					OnPropertyChanged("SpecialAbilitySet");
                 }
             }
         }
@@ -299,7 +320,7 @@ namespace CombatManager
                 if (_Plus != value)
                 {
                     _Plus = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Plus")); }
+					OnPropertyChanged("Plus");
                     if (_PlusList != null)
                     {
                         _PlusList = null;
@@ -317,7 +338,7 @@ namespace CombatManager
                 if (_Step != value)
                 {
                     _Step = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Step")); }
+					OnPropertyChanged("Step");
                 }
             }
         }
@@ -411,12 +432,8 @@ namespace CombatManager
 
                 _SpecialAbilities = text;
 
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilitySet"));
-                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilities"));
-                }
-                
+				OnPropertyChanged("SpecialAbilitySet");
+				OnPropertyChanged("SpecialAbilities");                
             }
         }
 

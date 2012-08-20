@@ -145,12 +145,14 @@
     <Compile Include="WeaponSpecialAbility.cs" />
     <Compile Include="XMLLoader.cs" />
     <Compile Include="ActiveCondition.cs" />
-    <Compile Include="RomanNumbers.cs">
     <Compile Include="CombatState.cs" />
     <Compile Include="DBSettings.cs" />
     <Compile Include="Rule.cs" />
     <Compile Include="CharacterClass.cs" />
     <Compile Include="DebugLogger.cs" />
+    <Compile Include="RomanNumbers.cs" />
+    <Compile Include="ParsedFeat.cs" />
+    <Compile Include="PropertyConverters.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">
@@ -168,10 +170,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SpecificItemChart.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="NPC.xml">
-      <DeployService-Deploy>true</DeployService-Deploy>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MagicItems.xml">
@@ -194,10 +192,6 @@
       <DeployService-Deploy>true</DeployService-Deploy>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Bestiary.xml">
-      <DeployService-Deploy>true</DeployService-Deploy>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="ArtChart.xml">
       <DeployService-Deploy>true</DeployService-Deploy>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -213,6 +207,12 @@
     </Content>
     <Content Include="RuleShort.xml">
       <DeployService-Deploy>true</DeployService-Deploy>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BestiaryShort.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NPCShort.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

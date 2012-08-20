@@ -79,11 +79,12 @@ namespace CombatManagerMono
 		{
 			base.ViewDidLoad ();
 			MainWindow = window;
+
 			
 			//view.AddSubview(backview);
 			
 			
-			this.CenterImage.Image = UIImage.FromFile("Images/icon.png");
+			//this.CenterImage.Image = UIImage.FromFile("Images/icon.png");
 			//Spin();
 			
 			Thread t = new Thread(LoadStuff);
@@ -100,7 +101,7 @@ namespace CombatManagerMono
 				
 				UIView.BeginAnimations("SpinAnimation");
 				UIView.SetAnimationDuration(.2);
-				CenterImage.Transform = CGAffineTransform.MakeRotation(spin);
+				//CenterImage.Transform = CGAffineTransform.MakeRotation(spin);
 				UIView.SetAnimationDelegate(this);
 				UIView.SetAnimationDidStopSelector(new Selector("Spin"));
 				UIView.CommitAnimations();
@@ -167,7 +168,7 @@ namespace CombatManagerMono
 			
 			
 			PointF pt = new PointF(rect.Width/2.0f, rect.Height/2.0f);
-			CenterImage.Center = pt;
+			//CenterImage.Center = pt;
 			if (ui != null)
 			{
 				rect.X = 0;
@@ -179,9 +180,9 @@ namespace CombatManagerMono
 		public void WriteLine(string text)
 		{
 			InvokeOnMainThread( delegate {
-			if (MainController.LoadingTextField != null)
+			if (MainController.LoadingView != null)
 			{
-				MainController.LoadingTextField.Text += "\r\n" + text ;
+				MainController.LoadingView.Text += "\r\n" + text ;
 			}
 			});
 

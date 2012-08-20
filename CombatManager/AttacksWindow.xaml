@@ -55,8 +55,17 @@
                 		<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
                 	</Rectangle.Fill>
                 </Rectangle>
-    			<Image Grid.Column="2" Source="Images\hand-16.png" Visibility="{Binding Weapon.TwoHanded, Converter={StaticResource BoolToVisibilityCollapsedConverter}}"  RenderTransformOrigin="0.5,0.5" Margin="3,0" Width="16" Height="16" HorizontalAlignment="Left" VerticalAlignment="Center" />
-    			<Image Grid.Column="1" Source="Images\hand-16.png" Margin="0" Width="16" Height="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    			<Image Grid.Column="2" Source="Images\hand-16.png" Visibility="{Binding TwoHanded, Converter={StaticResource BoolToVisibilityCollapsedConverter}}"  RenderTransformOrigin="0.5,0.5" Margin="3,0" Width="16" Height="16" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="Attack_MouseDown" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Grid.Column="1" Source="Images\hand-16.png" Margin="0" Width="16" Height="16" VerticalAlignment="Center" HorizontalAlignment="Center" MouseLeftButtonDown="Attack_MouseDown"/>
     			<TextBlock Text="{Binding Converter={StaticResource WeaponItemToHandConverter}}" Margin="3" Grid.Column="0" Grid.ColumnSpan="1" Foreground="White"/>
     			<TextBlock Text="{Binding Name, Converter={StaticResource StringCapitalizeConverter}}" Margin="6,3" Grid.Column="3" Grid.ColumnSpan="1" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left"/>
     			<Button x:Name="DeleteButton" Click="DeleteButton_Click"  RenderTransformOrigin="0.222,-0.601" Grid.Column="4"  Height="16" Grid.Row="0" Grid.ColumnSpan="1" Width="16" Margin="0,2.98,3,2.98" HorizontalAlignment="Right">

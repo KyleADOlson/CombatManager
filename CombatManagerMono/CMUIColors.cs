@@ -131,6 +131,14 @@ namespace CombatManagerMono
 				return UIExtensions.RGBColor(0xA63E3C);
 			}
 		}   
+
+        public static GradientHelper DisabledGradient
+        {
+            get
+            {
+                return new GradientHelper(0xFF999999.UIColor(), 0xFF555555.UIColor());
+            }
+        }
 	}
 }
 
