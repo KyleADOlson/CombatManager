@@ -30,14 +30,53 @@ using System.Collections.Generic;
 namespace CombatManagerMono
 {
 	public static class GraphicUtils
-	{
-		public static void RoundRectPath(CGContext cr, RectangleF rect, float radius)
+	{      
+        public static void RoundRectPath(CGContext cr, RectangleF rect, float cornerRadius, bool[] skipCorner = null)
+        {
+            if (skipCorner == null)
+            {
+                skipCorner = new bool[4];
+            }
+
+            if (skipCorner.Length != 4)
+            {
+                throw new ArgumentOutOfRangeException("skipCorner", "skipCorner count must be 4.");
+            }
+
+            float [] corners = new float[4];
+
+            for (int i=0; i<4; i++)
+            {
+                corners[i] = skipCorner[i]?0:cornerRadius;
+            }
+            RoundRectPath(cr, rect, corners);
+
+        }
+
+
+
+		public static void RoundRectPath(CGContext cr, RectangleF rect, float[] cornerRadii)
 		{
+            if (cornerRadii == null || cornerRadii.Length != 4)
+            {
+
+                throw new ArgumentOutOfRangeException("cornerRadii", "cornerRadii count must be 4.");
+            }
+
 		    cr.BeginPath();
-		    cr.AddArc(rect.X + radius, rect.Y+radius, radius, (float)Math.PI, (float)(3.0f*Math.PI/2.0f), false);
-		    cr.AddArc(rect.X + rect.Width - radius, rect.Y + radius, radius,  (float)(3.0f*Math.PI/2.0f), 2.0f*(float)Math.PI, false);
-		    cr.AddArc(rect.X + rect.Width - radius, rect.Y + rect.Height-radius, radius, (float)(2*Math.PI), 5.0f*((float)Math.PI/2.0f), false);
-		    cr.AddArc(rect.X + radius, rect.Y + rect.Height-radius, radius,(float) (5.0f*Math.PI/2.0f), (float)(3.0f*Math.PI), false);
+            float radius = cornerRadii[0];
+            cr.AddArc(rect.X + radius, rect.Y+radius, radius, (float)Math.PI, (float)(3.0f*Math.PI/2.0f), false);
+            
+            radius = cornerRadii[1];
+            cr.AddArc(rect.X + rect.Width - radius, rect.Y + radius, radius,  (float)(3.0f*Math.PI/2.0f), 2.0f*(float)Math.PI, false);
+
+            radius = cornerRadii[2];
+            cr.AddArc(rect.X + rect.Width - radius, rect.Y + rect.Height-radius, radius, (float)(2*Math.PI), 5.0f*((float)Math.PI/2.0f), false);
+
+            radius = cornerRadii[3];
+            cr.AddArc(rect.X + radius, rect.Y + rect.Height-radius, radius,(float) (5.0f*Math.PI/2.0f), (float)(3.0f*Math.PI), false);
+
+                
 		    cr.ClosePath();
 		}
 		
@@ -99,35 +138,19 @@ namespace CombatManagerMono
 		    return normalGradient;
 		}
 		
-		public static void DrawRoundRect(this CGContext cr, UIColor c1, UIColor c2, RectangleF rect, float cornerRadius)
-		{
-			cr.DrawRoundRect(c1, c2, rect, cornerRadius, (float)-Math.PI/2.0f);
-		}
+
+        public static void DrawRoundRect(this CGContext cr, CGGradient gradient, RectangleF rect, float cornerRadius, float angle = (float)-Math.PI/2.0f)
+        {		
+            DrawRoundRect(cr, gradient, rect, new float[]{cornerRadius, cornerRadius, cornerRadius, cornerRadius}, angle);
+        }
 		
-		public static void DrawRoundRect(this CGContext cr, CGGradient g, RectangleF rect, float cornerRadius)
-		{
-			cr.DrawRoundRect(g, rect, cornerRadius, (float)-Math.PI/2.0f);
-		}
-		
-		public static void DrawRoundRect(this CGContext cr, UIColor c1, UIColor c2, RectangleF rect, float cornerRadius, float angle)
-		{
-			DrawRoundRect(cr, CreateNormalGradient(c1, c2), rect, cornerRadius, angle);
-		}
-		
-		
-    	public static void DrawRoundRect(this CGContext cr, CGGradient gradient, RectangleF rect, float cornerRadius, float angle)
+    	public static void DrawRoundRect(this CGContext cr, CGGradient gradient, RectangleF rect, float[] cornerRadii, float angle = (float)-Math.PI/2.0f)
 		{
 			
 			cr.SaveState();
-		    if (cornerRadius <= 0)
-		    {
-		        cr.AddRect(rect);
-		    }
-		    else
-		    {
-		        
-		        RoundRectPath(cr, rect, cornerRadius);
-		    }
+		      
+		    RoundRectPath(cr, rect, cornerRadii);
+		    
 		    cr.Clip();
 		    PointF startg = RectIntersect(angle, rect);
 		    PointF endg = RectIntersect(angle + (float)Math.PI, rect);

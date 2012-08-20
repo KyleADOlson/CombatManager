@@ -6,14 +6,17 @@
 	<string>CombatMan</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>icon.png</string>
+		<string>App.png</string>
 		<string>spotlighticon.png</string>
 		<string>settingsicon.png</string>
+		<string>RetinaApp.png</string>
+		<string>RetinaSpotlight.png</string>
+		<string>RetinaSettings.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>ABMPP786M3.kyleolson.combatmanager</string>
+	<string>kyleolson.combatmanager</string>
 	<key>CFBundleVersion</key>
-	<string>0.0.8</string>
+	<string>1.0.0</string>
 	<key>MinimumOSVersion</key>
 	<string>4.3</string>
 	<key>UIDeviceFamily</key>

@@ -658,5 +658,15 @@ namespace CombatManager
             }
         }
 
+		private void Attack_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			Image image = sender as Image;
+			WeaponItem item = image.DataContext as WeaponItem;
+			if (item != null && item.Weapon.Hands.Equals("One-Handed", StringComparison.InvariantCultureIgnoreCase))
+			{
+				item.TwoHanded = !item.TwoHanded;
+				UpdateMeleeString();
+			}
+		}
     }
 }

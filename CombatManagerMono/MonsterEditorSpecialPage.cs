@@ -22,12 +22,16 @@
 using MonoTouch.UIKit;
 using System.Drawing;
 using System;
+using System.Collections.Generic;
 using MonoTouch.Foundation;
+using CombatManager;
 
 namespace CombatManagerMono
 {
 	public partial class MonsterEditorSpecialPage : MonsterEditorPage
 	{
+        List<SpecialAbilityView> _AbilityViews;
+
 		static bool UserInterfaceIdiomIsPhone
 		{
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -37,6 +41,8 @@ namespace CombatManagerMono
 			: base (UserInterfaceIdiomIsPhone ? "MonsterEditorSpecialPage_iPhone" : "MonsterEditorSpecialPage_iPad", null)
 		{
 		}
+
+
 		
 		public override void DidReceiveMemoryWarning ()
 		{
@@ -50,7 +56,10 @@ namespace CombatManagerMono
 		{
 			base.ViewDidLoad ();
 			
-			//any additional setup after loading the view, typically from a nib.
+            AddAbilityButton.TouchUpInside += HandleAddTouchUpInside;
+            CurrentMonster.SpecialAbilitiesList.CollectionChanged += (sender, e) => CreateSpecialItems();
+
+            CreateSpecialItems();
 		}
 		
 		public override void ViewDidUnload ()
@@ -72,6 +81,64 @@ namespace CombatManagerMono
 				return true;
 			}
 		}
+
+        private void CreateSpecialItems()
+        {
+            if (_AbilityViews != null)
+            {
+                foreach (var view in _AbilityViews)
+                {
+                    view.RemoveFromSuperview();
+                }
+            }
+
+            _AbilityViews = new List<SpecialAbilityView>();
+
+            foreach (SpecialAbility ab in CurrentMonster.SpecialAbilitiesList)
+            {
+                SpecialAbilityView view = new SpecialAbilityView(CurrentMonster, ab);                
+                SpecialScrollView.Add (view);
+                _AbilityViews.Add(view);
+            }
+
+            LayoutSpecialItems();
+        }
+
+        private static float itemWidth = 400;
+        private static float itemHeight = 170;
+        private static float itemXGap = 20;
+        private static float itemYGap = 20;
+
+        private void LayoutSpecialItems()
+        {
+            float yLoc = itemYGap;
+            int count = 0;
+            float lastY = 0;
+
+            foreach (SpecialAbilityView v in _AbilityViews)
+            {
+                float xLoc = ((count%2) == 0)?itemXGap:(itemXGap*2.0f+itemWidth);
+                v.Frame = new RectangleF(xLoc, yLoc, itemWidth, itemHeight);
+                if (count%2==1)
+                {
+                    yLoc += itemHeight + itemYGap;
+                }
+                lastY = v.Frame.Bottom;
+                count++;
+            }
+
+
+            SpecialScrollView.ContentSize = new SizeF((itemXGap + itemWidth) * 2.0f, lastY);
+        }
+
+        
+        void HandleAddTouchUpInside (object sender, EventArgs e)
+        {
+            SpecialAbility ab = new SpecialAbility();
+            ab.Name = "Ability";
+            ab.Type = "Ex";
+            CurrentMonster.SpecialAbilitiesList.Add(ab);
+        }
 	}
 }
 

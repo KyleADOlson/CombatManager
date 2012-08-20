@@ -55,6 +55,7 @@ namespace CombatManager
         private bool _AltDamage;
         private Stat _AltDamageStat;
         private bool _AltDamageDrain;
+		private bool _TwoHanded;
 
         private static string _SpecialAbilityString;
 
@@ -79,7 +80,6 @@ namespace CombatManager
 
         public Attack(int count, string name, DieRoll damage, string plus)
         {
-
             Count = count;
             Name = name;
             Bonus = new List<int>();
@@ -111,6 +111,7 @@ namespace CombatManager
             atk._AltDamage = _AltDamage;
             atk._AltDamageStat = _AltDamageStat;
             atk._AltDamageDrain = _AltDamageDrain;
+			atk._TwoHanded = _TwoHanded;
 
             return atk;
         }
@@ -244,6 +245,8 @@ namespace CombatManager
                 {
                     _BaseWeapon = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("BaseWeapon")); }
+
+					this.TwoHanded = _BaseWeapon.TwoHanded;
                 }
             }
         }
@@ -349,7 +352,20 @@ namespace CombatManager
             }
         }
 
-        
+
+		public bool TwoHanded
+		{
+			get { return _TwoHanded; }
+			set
+			{
+				if (_TwoHanded != value)
+				{
+					_TwoHanded = value;
+					if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TwoHanded")); }
+				}
+			}
+		}
+
         
         public bool AltDamageDrain
         {
@@ -473,7 +489,7 @@ namespace CombatManager
 
             info.Damage = Monster.FindNextDieRoll(m.Groups["damage"].Value, 0);
 
-            if (m.Groups["offhanddamage"].Success)
+			if (m.Groups["offhanddamage"].Success)
             {
                 info.OffHandDamage = Monster.FindNextDieRoll(m.Groups["offhanddamage"].Value, 0);
             }
@@ -685,9 +701,5 @@ namespace CombatManager
 				return text;
 			}
 		}
-
-
-       
-
     }
 }

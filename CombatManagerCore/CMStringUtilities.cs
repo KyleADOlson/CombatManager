@@ -70,6 +70,17 @@ namespace CombatManager
         }
 
 
+        public static string PlusFormatSpaceNumber(int number)
+        {
+            if (number >= 0)
+            {
+                return "+ " + number.ToString();
+            }
+            else
+            {
+                return "- " + Math.Abs(number).ToString();
+            }
+        }
 
         public static string PlusFormatNumber(int number)
         {

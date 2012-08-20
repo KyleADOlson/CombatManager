@@ -74,14 +74,11 @@ namespace CombatManagerMono
 		
 		protected void StylePanel(GradientView panel)
 		{
-			panel.BackgroundColor = UIColor.Clear;
-			panel.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker);
-			panel.BorderColor = UIExtensions.RGBColor(0xFFFFFF);
-			panel.Border = 2;
+            CMStyles.StyleBasicPanel(panel);
 		}
 		
 		
-		public Monster Monster
+		public Monster CurrentMonster
 		{
 			get
 			{

@@ -25,6 +25,8 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using CombatManager;
+using System.Drawing;
+using System.Threading;
 
 namespace CombatManagerMono
 {
@@ -42,6 +44,7 @@ namespace CombatManagerMono
 		
 		static MainUI _MainView;
 		
+        static object _Lock = new object();
 		static CombatState _CombatState = new CombatState();
 		
 		public MainUI ()
@@ -53,23 +56,49 @@ namespace CombatManagerMono
 			toolbar = new ToolbarView();
 			
 			currentTab = new CombatTab(_CombatState);
+
 			
 			AddSubview(toolbar);
 			AddSubview(currentTab);
 			
 		}
 		
+        private static CombatState _NextCombatState = null;
+
 		public static void SaveCombatState()
 		{
+            DateTime startTime = DateTime.Now;
+            System.Diagnostics.Debug.WriteLine("SaveCombatState");
             try
             {
-				XmlLoader<CombatState>.Save(_CombatState, "CombatState.xml", true);
+                CombatState s = new CombatState(_CombatState);
+
+
+                Thread t = new Thread(delegate() {
+
+                  try
+                    {
+                        XmlLoader<CombatState>.Save(s, "CombatState.xml", true);
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Failure saving combat state: " + ex.ToString());
+                    }
+
+                });
+                t.Start ();
 
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Failure saving combat state: " + ex.ToString());
+                System.Diagnostics.Debug.WriteLine("Failure starting save combat state: " + ex.ToString());
             }
+
+            System.Diagnostics.Debug.WriteLine("Finished SaveCombatState Time: " + 
+                (DateTime.Now - startTime).TotalSeconds.ToString() + " secs");
+
 		}
 		
 		public static void LoadCombatState()
@@ -80,7 +109,8 @@ namespace CombatManagerMono
 				if (state != null)
 				{
 					_CombatState.Copy(state);
-					_CombatState.SortCombatList(false, false);
+					_CombatState.SortCombatList(false, false, true);
+
 					_CombatState.FixInitiativeLinksList(new List<Character>(_CombatState.Characters));
 				}
 
@@ -101,7 +131,7 @@ namespace CombatManagerMono
 
 		static void Handle_CombatStateCharacterRemoved (object sender, CombatStateCharacterEventArgs e)
 		{
-			SaveCombatState();
+			//SaveCombatState();
 		}
 
 		static void Handle_CombatStateCharacterAdded (object sender, CombatStateCharacterEventArgs e)
@@ -120,7 +150,7 @@ namespace CombatManagerMono
 			
 			base.LayoutSubviews ();
 			toolbar.SetWidth(Frame.Width);
-			toolbar.SetHeight(40);
+			toolbar.SetHeight(50);
 			toolbar.SetLocation(0, 0);
 			toolbar.ButtonClicked += HandleToolbarButtonClicked;
 			
@@ -128,6 +158,8 @@ namespace CombatManagerMono
 			currentTab.SetLocation(0, toolbar.Frame.Height);
 			currentTab.SetWidth(Frame.Width);
 			currentTab.SetHeight(Frame.Height - toolbar.Frame.Height);
+
+
 		}
 
 		void HandleToolbarButtonClicked (object sender, int button)

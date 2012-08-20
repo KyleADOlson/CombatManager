@@ -39,6 +39,8 @@ namespace CombatManagerMono
 		public event ToolbarClickEventHandler ButtonClicked;
 		
 		GradientButton clickedButton = null;
+
+        GradientButton _AboutButton;
 		
 		public ToolbarView ()
 		{
@@ -55,10 +57,11 @@ namespace CombatManagerMono
 			foreach (string s in names)
 			{
 				GradientButton b = new GradientButton();
-				b.Frame = (new RectangleF(pos, 0, buttonWidth, 40));
+				b.Frame = (new RectangleF(pos, 0, buttonWidth, 50));
 				b.SetImage(UIExtensions.GetSmallIcon(images[i]), UIControlState.Normal);
+
 				b.Border = 1;
-				b.CornerRadius = 0;
+                b.CornerRadii = new float[] {4, 16, 0, 0};
 				
 				b.SetTitle(s, UIControlState.Normal);
 				UIEdgeInsets si = b.ImageEdgeInsets;
@@ -76,32 +79,46 @@ namespace CombatManagerMono
 			}
 			
 			clickedButton = buttons[0];
-			UIColor c = clickedButton.Color2;
-			clickedButton.Color2 = clickedButton.Color1;
-			clickedButton.Color1 = c;
+            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
 			
-			BackgroundColor = CMUIColors.SecondaryColorBDark;
+            _AboutButton = new GradientButton();
+            _AboutButton.SetImage(UIImage.FromFile("Images/External/info.png"), UIControlState.Normal);
+            _AboutButton.Border = 0;
+            _AboutButton.BackgroundColor = UIColor.Clear;
+            _AboutButton.Gradient = new GradientHelper(0x00000000.UIColor());
+            _AboutButton.TouchUpInside += AboutButtonClicked;            
+            _AboutButton.Frame = new RectangleF(Bounds.Width - 32, (Bounds.Height - 32.0f)/2.0f, 32f, 32f);
+
+            Add (_AboutButton);
+			BackgroundColor = UIColor.Black;
 			
 		}
+
+        void AboutButtonClicked (object sender, EventArgs e)
+        {
+            AboutView view = new AboutView();
+            view.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+            AppDelegate.RootController.PresentModalViewController(view, true);
+        }
 		
 
 		void HandleBTouchUpInside (object sender, EventArgs e)
 		{
-			UIColor c = clickedButton.Color2;
-			clickedButton.Color2 = clickedButton.Color1;
-			clickedButton.Color1 = c;
+            
+            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDarker);
 			clickedButton = (GradientButton)sender;
 			if (ButtonClicked != null)
 			{
 				ButtonClicked(this, ((UIButton)sender).Tag);
 			}
-			c = clickedButton.Color2;
-			clickedButton.Color2 = clickedButton.Color1;
-			clickedButton.Color1 = c;
+            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
 		}
 		public override void LayoutSubviews ()
 		{
 			base.LayoutSubviews ();
+            _AboutButton.Frame = new RectangleF(Bounds.Width - 32, (Bounds.Height - 32.0f)/2.0f, 32f, 32f);
+
+
 		}
 		
 	}

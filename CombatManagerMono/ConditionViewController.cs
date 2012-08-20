@@ -73,6 +73,8 @@ namespace CombatManagerMono
 				CustomTab, FavoritesTab};
 			UpdateButtons();
 			
+            TitleView.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker);
+
 			StyleBar(TopView);
 			StyleBar(BottomView);
 			
@@ -150,19 +152,16 @@ namespace CombatManagerMono
 			button.Border = 0;
 			
 			
-			List<UIColor> colors;
-			
 			if (selected)
 			{
-				colors = new List<UIColor> { UIExtensions.ARGBColor(0x11FFFFFF),  UIExtensions.ARGBColor(0x88FFFFFF)};
+                button.Gradient = new GradientHelper(CMUIColors.PrimaryColorDark, CMUIColors.PrimaryColorMedium);
 			}
 			else
 			{
 				
-				colors = new List<UIColor> {UIColor.Clear, UIColor.Clear};
+                button.Gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDark);
 			}
 			
-			button.Gradient = new GradientHelper(colors, new List<float>{0.0f, 1.0f});
 			button.CornerRadius = 2.0f;
 		}
 		
@@ -171,9 +170,7 @@ namespace CombatManagerMono
 			view.CornerRadius = 0;
 			view.Border = 0;
 			
-			List<UIColor> colors = new List<UIColor> {UIExtensions.ARGBColor(0xFF000000), UIExtensions.ARGBColor(0xFF080808), UIExtensions.ARGBColor(0xFF202020),  UIExtensions.ARGBColor(0xFF202020)};
-			
-			view.Gradient = new GradientHelper(colors, new List<float>{0.0f, 0.5f, 0.5f, 1.0f});
+			view.Gradient = new GradientHelper(CMUIColors.PrimaryColorDark);
 		}
 		
 		private void RebuildConditionList()

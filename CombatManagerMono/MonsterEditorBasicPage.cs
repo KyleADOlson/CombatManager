@@ -72,18 +72,18 @@ namespace CombatManagerMono
 			StylePanel(this.AbilityArea);
 			StylePanel(this.HeaderArea);
 						
-			_NameManager = new ButtonPropertyManager(NameButton, DialogParent, Monster, "Name"); 	
+			_NameManager = new ButtonPropertyManager(NameButton, DialogParent, CurrentMonster, "Name"); 	
 			PropertyManagers.Add(_NameManager);
 			
-			_ClassManager = new ButtonPropertyManager(ClassButton, DialogParent, Monster, "Class");  	
+			_ClassManager = new ButtonPropertyManager(ClassButton, DialogParent, CurrentMonster, "Class");  	
 			PropertyManagers.Add(_ClassManager);
-			_SensesManager = new ButtonPropertyManager(SensesButton, DialogParent, Monster, "Senses"); 	 	
+			_SensesManager = new ButtonPropertyManager(SensesButton, DialogParent, CurrentMonster, "Senses"); 	 	
 			PropertyManagers.Add(_SensesManager);
-			_RaceManager = new ButtonPropertyManager(RaceButton, DialogParent, Monster, "Race"); 	 	
+			_RaceManager = new ButtonPropertyManager(RaceButton, DialogParent, CurrentMonster, "Race"); 	 	
 			PropertyManagers.Add(_RaceManager);
-			_InitManager = new ButtonPropertyManager(InitButton, DialogParent, Monster, "Init"); 	 	
+			_InitManager = new ButtonPropertyManager(InitButton, DialogParent, CurrentMonster, "Init"); 	 	
 			PropertyManagers.Add(_InitManager);
-			_SubtypeManager = new ButtonPropertyManager(CreatureSubtypeButton, DialogParent, Monster.Adjuster, "Subtype");
+			_SubtypeManager = new ButtonPropertyManager(CreatureSubtypeButton, DialogParent, CurrentMonster.Adjuster, "Subtype");
 			_SubtypeManager.Title = "Subtype"; 	
 			PropertyManagers.Add(_SubtypeManager);
 			
@@ -98,7 +98,7 @@ namespace CombatManagerMono
 			foreach (KeyValuePair<Stat, UIButton> pair in _StatButtons)
 			{
 				ButtonPropertyManager m = new ButtonPropertyManager(pair.Value, DialogParent, 
-				                                                    Monster.Adjuster, Monster.StatText(pair.Key));
+				                                                    CurrentMonster.Adjuster, Monster.StatText(pair.Key));
 				m.MinIntValue = 0;
 				m.MaxIntValue = 99;
 				m.FormatDelegate = delegate (object num)
@@ -119,9 +119,10 @@ namespace CombatManagerMono
 					return numText;
 				};
 				_StatManagers[pair.Key] = m;
+                PropertyManagers.Add(m);
 			}
 			
-			_CRManager = new ButtonPropertyManager(CRButton, DialogParent, Monster.Adjuster, "CR");
+			_CRManager = new ButtonPropertyManager(CRButton, DialogParent, CurrentMonster.Adjuster, "CR");
 			var crList = new List<KeyValuePair<object, string>>();
 			
 			
@@ -136,9 +137,11 @@ namespace CombatManagerMono
 			}
 				           
 			_CRManager.ValueList = crList; 
+            PropertyManagers.Add(_CRManager);
 			
-			_AlignmentManager = new ButtonPropertyManager(AlignmentButton, DialogParent, Monster, "Alignment");
-			
+			_AlignmentManager = new ButtonPropertyManager(AlignmentButton, DialogParent, CurrentMonster, "Alignment");
+			PropertyManagers.Add(_AlignmentManager);
+
 			var alignmentList = new List<KeyValuePair<object, string>>();
 			for (int i=0; i<3; i++)
 			{
@@ -153,8 +156,8 @@ namespace CombatManagerMono
 			_AlignmentManager.ValueList = alignmentList;
 			
 			
-			_CreatureTypeManager = new ButtonPropertyManager(CreatureTypeButton, DialogParent, Monster, "Type");
-			
+			_CreatureTypeManager = new ButtonPropertyManager(CreatureTypeButton, DialogParent, CurrentMonster, "Type");
+			PropertyManagers.Add(_CreatureTypeManager);
 			var typeList = new List<KeyValuePair<object, string>>();
 			foreach (CreatureType t in Enum.GetValues(typeof(CreatureType)))
 			{
@@ -164,8 +167,8 @@ namespace CombatManagerMono
 			}
 			_CreatureTypeManager.ValueList = typeList;
 			
-			_CreatureSizeManager = new ButtonPropertyManager(SizeButton, DialogParent, Monster.Adjuster, "MonsterSize");
-			
+			_CreatureSizeManager = new ButtonPropertyManager(SizeButton, DialogParent, CurrentMonster.Adjuster, "MonsterSize");
+			PropertyManagers.Add(_CreatureSizeManager);
 			var sizeList = new List<KeyValuePair<object, string>>();
 			foreach (MonsterSize s in Enum.GetValues(typeof(MonsterSize)))
 			{
@@ -180,7 +183,14 @@ namespace CombatManagerMono
 				};
 			_CreatureSizeManager.ValueList = sizeList;
 			
-			
+			foreach (ButtonPropertyManager m in PropertyManagers)
+            {
+                GradientButton b = m.Button as GradientButton;
+
+                CMStyles.TextFieldStyle(b);
+            }
+
+
 			
 			
 		}

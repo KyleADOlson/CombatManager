@@ -76,7 +76,9 @@
     <Compile Include="MagicItem.cs" />
     <Compile Include="monster.cs" />
     <Compile Include="MonsterDB.cs" />
+    <Compile Include="ParsedFeat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyConverters.cs" />
     <Compile Include="RandomWeightChart.cs" />
     <Compile Include="RomanNumbers.cs" />
     <Compile Include="Rule.cs" />

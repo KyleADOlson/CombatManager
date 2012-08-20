@@ -51,68 +51,93 @@ namespace CombatManagerMono
 			
 			return new UIColor(rf, gf, bf, af);
 		}
+
+        public static UIColor UIColor(this uint argb)
+        {
+            return ARGBColor(argb);
+        }
+        public static UIColor UIColor(this int argb)
+        {
+            return ((uint)argb).UIColor();
+        }
 		
-		public static void SetWidth(this UIView view, float width)
-		{
-			RectangleF frame = view.Frame;
-			frame.Width = width;
-			view.Frame = frame;
-			
-		}
-		
-		public static void SetHeight(this UIView view, float height)
-		{
-			RectangleF frame = view.Frame;
-			frame.Height = height;
-			view.Frame = frame;
-			
-		}
-		
-		public static void SetX(this UIView view, float x)
-		{
-			RectangleF frame = view.Frame;
-			frame.X = x;
-			view.Frame = frame;
-			
-		}
-		
-		public static void SetY(this UIView view, float y)
-		{
-			RectangleF frame = view.Frame;
-			frame.Y = y;
-			view.Frame = frame;
-			
-		}
-		
-		public static void SetLocation(this UIView view, PointF loc)
-		{
-			view.SetLocation(loc.X, loc.Y);
-		}
-		
-		public static void SetLocation(this UIView view, float x, float y)
-		{
-			RectangleF frame = view.Frame;
-			PointF loc = frame.Location;
-			loc.X = x;
-			loc.Y = y;
-			frame.Location = loc;
-			view.Frame = frame;
-			
-		}
-		
-		public static void SetPosition(this UIView view, float x, float y, float width, float height)
-		{
-			RectangleF frame = view.Frame;
-			frame.X = x;
-			frame.Y = y;
-			frame.Height = height;
-			frame.Width = width;
-			view.Frame = frame;	
-		}
+    public static void SetWidth(this UIView view, float width)
+        {
+            RectangleF frame = view.Frame;
+            frame.Width = width;
+            view.Frame = frame;
+            
+        }
+        
+        public static void SetHeight(this UIView view, float height)
+        {
+            RectangleF frame = view.Frame;
+            frame.Height = height;
+            view.Frame = frame;
+            
+        }   
+
+        
+        public static void SetSize(this UIView view, SizeF size)
+        {
+            view.SetSize(size.Width, size.Height);
+        }
+
+        public static void SetSize(this UIView view, float width, float height)
+        {
+            RectangleF frame = view.Frame;
+            frame.Height = height;
+            frame.Width = width;
+            view.Frame = frame;
+            
+        }
+        
+        public static void SetX(this UIView view, float x)
+        {
+            RectangleF frame = view.Frame;
+            frame.X = x;
+            view.Frame = frame;
+            
+        }
+        
+        public static void SetY(this UIView view, float y)
+        {
+            RectangleF frame = view.Frame;
+            frame.Y = y;
+            view.Frame = frame;
+            
+        }
+        
+        public static void SetLocation(this UIView view, PointF loc)
+        {
+            view.SetLocation(loc.X, loc.Y);
+        }
+        
+        public static void SetLocation(this UIView view, float x, float y)
+        {
+            RectangleF frame = view.Frame;
+            PointF loc = frame.Location;
+            loc.X = x;
+            loc.Y = y;
+            frame.Location = loc;
+            view.Frame = frame;
+            
+        }
+        
+        public static void SetPosition(this UIView view, float x, float y, float width, float height)
+        {
+            RectangleF frame = view.Frame;
+            frame.X = x;
+            frame.Y = y;
+            frame.Height = height;
+            frame.Width = width;
+            view.Frame = frame; 
+        }
+
 		
 		public static void SetText(this UIButton button, string text)
 		{
-			button.SetTitle(text, UIControlState.Normal);	
+			button.SetTitle((text==null)?"":text, UIControlState.Normal);	
 		}
 		
 		public static void SetSmallIcon(this UIButton button, string name)
@@ -151,6 +176,16 @@ namespace CombatManagerMono
 		{
 			return String.IsNullOrEmpty(str);
 		}
+
+        public static String NullToEmpty(this string str)
+        {
+            return (str == null)?"":str;
+        }
+
+        public static RectangleF OriginRect(this SizeF size)
+        {
+            return new RectangleF(new Point(0, 0), size);
+        }
 		
 	}
 }

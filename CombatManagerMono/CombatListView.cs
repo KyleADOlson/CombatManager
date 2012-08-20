@@ -33,117 +33,153 @@ namespace CombatManagerMono
 {
 	public class CombatListView : UIView
 	{
-		CombatState _combatState;
+		CombatState _CombatState;
 		ViewDataSource viewDataSource;
 		ViewDelegate viewDelegate;
-		UITableView listView;
+		UITableView _ListView;
 		
-		GradientButton nextButton;
-		GradientButton prevButton;
-		GradientButton moveUpButton;
-		GradientButton moveDownButton;
-		GradientButton rollButton;
-		GradientButton sortButton;
+		GradientButton _NextButton;
+		GradientButton _PrevButton;
+		GradientButton _MoveUpButton;
+		GradientButton _MoveDownButton;
+
+		GradientButton _RollButton;		
+        GradientButton _SortButton;
+        GradientButton _ResetButton;
 		
-		GradientView currentCharacterView;
-		UILabel currentCharacterLabel;
-		GradientView roundView;
-		UILabel roundLabel;
+		GradientView _CurrentCharacterView;
+		UILabel _CurrentCharacterLabel;
+		GradientView _RoundView;
+		UILabel _RoundLabel;
 		
 		Character _SelectedCharacter;
 		
 		
 		UIFont _Font;
 	 	UIFont _FontBold;
+
+        UIImage _ReadyingImage;
+        UIImage _DelayingImage;
+        UIImage _LinkImage;
 		
 		public CombatListView ()
 		{
+            ClipsToBounds = true;
+
 			_Font = UIFont.SystemFontOfSize(14);
 			_FontBold = UIFont.BoldSystemFontOfSize(14);
+
+            _ReadyingImage = UIExtensions.GetSmallIcon("target");
+            _DelayingImage = UIExtensions.GetSmallIcon("hourglass");
+            _LinkImage = UIExtensions.GetSmallIcon("link");
+
 		
-			listView = new UITableView();
-			AddSubview(listView);
+			_ListView = new UITableView();
+			AddSubview(_ListView);
 			
-			currentCharacterView = new GradientView();
-			AddSubview(currentCharacterView);
-			currentCharacterLabel = new UILabel();
-			currentCharacterLabel.TextAlignment = UITextAlignment.Center;
-			currentCharacterLabel.BackgroundColor = UIExtensions.ARGBColor(0x0);
-			currentCharacterLabel.TextColor = UIColor.White;
-			currentCharacterLabel.AdjustsFontSizeToFitWidth = true;
-			currentCharacterView.AddSubview(currentCharacterLabel);
-			currentCharacterView.Gradient = new GradientHelper(CMUIColors.SecondaryColorBDark);
-			currentCharacterView.BorderColor = UIColor.Gray;
-			currentCharacterView.CornerRadius = 0;
+			_CurrentCharacterView = new GradientView();
+			AddSubview(_CurrentCharacterView);
+			_CurrentCharacterLabel = new UILabel();
+			_CurrentCharacterLabel.TextAlignment = UITextAlignment.Center;
+			_CurrentCharacterLabel.BackgroundColor = UIExtensions.ARGBColor(0x0);
+			_CurrentCharacterLabel.TextColor = UIColor.White;
+			_CurrentCharacterLabel.AdjustsFontSizeToFitWidth = true;
+            _CurrentCharacterLabel.Font = UIFont.BoldSystemFontOfSize(UIFont.LabelFontSize);
+			_CurrentCharacterView.AddSubview(_CurrentCharacterLabel);
+			_CurrentCharacterView.Gradient = new GradientHelper(CMUIColors.SecondaryColorBDark);
+			_CurrentCharacterView.BorderColor = UIColor.Gray;
+			_CurrentCharacterView.CornerRadius = 0;
 			
-			roundView = new GradientView();
-			AddSubview(roundView);
-			roundLabel = new UILabel();
-			roundLabel.BackgroundColor = UIExtensions.ARGBColor(0x0);
-			roundLabel.TextAlignment = UITextAlignment.Center;
-			roundLabel.TextColor = UIColor.White;
-			currentCharacterLabel.AdjustsFontSizeToFitWidth = true;
-			roundView.AddSubview(roundLabel);
-			roundView.BorderColor = UIColor.Gray;
-			roundView.Gradient = new GradientHelper(CMUIColors.SecondaryColorBDark);
-			roundView.CornerRadius = 0;
-			
-			
-			nextButton = new GradientButton();
-			StyleButton(nextButton);
-			
-			nextButton.SetTitle("Next", UIControlState.Normal);
-			nextButton.SetImage(UIImage.FromFile("Images/External/next-16.png"), UIControlState.Normal);
-			nextButton.TouchUpInside += HandleNextButtonTouchUpInside;
-			AddSubview(nextButton);
+			_RoundView = new GradientView();
+			AddSubview(_RoundView);
+			_RoundLabel = new UILabel();
+			_RoundLabel.BackgroundColor = UIExtensions.ARGBColor(0x0);
+			_RoundLabel.TextAlignment = UITextAlignment.Center;
+			_RoundLabel.TextColor = UIColor.White;
+            _RoundLabel.Font = UIFont.BoldSystemFontOfSize(UIFont.LabelFontSize);
+			_CurrentCharacterLabel.AdjustsFontSizeToFitWidth = true;
+			_RoundView.AddSubview(_RoundLabel);
+			_RoundView.BorderColor = UIColor.Gray;
+			_RoundView.Gradient = new GradientHelper(CMUIColors.SecondaryColorBDark);
+			_RoundView.CornerRadius = 0;
 			
 			
-			prevButton = new GradientButton();
-			StyleButton(prevButton);
-			prevButton.SetTitle("Prev", UIControlState.Normal);
-			prevButton.SetImage(UIImage.FromFile("Images/External/prev-16.png"), UIControlState.Normal);
-			prevButton.TouchUpInside += HandlePrevButtonTouchUpInside;
-			AddSubview(prevButton);
+			_NextButton = new GradientButton();
+			StyleButton(_NextButton);
+			
+			_NextButton.SetTitle("Next", UIControlState.Normal);
+			_NextButton.SetImage(UIImage.FromFile("Images/External/next-16.png"), UIControlState.Normal);
+			_NextButton.TouchUpInside += HandleNextButtonTouchUpInside;
+			AddSubview(_NextButton);
+			
+			
+			_PrevButton = new GradientButton();
+			StyleButton(_PrevButton);
+			_PrevButton.SetTitle("Prev", UIControlState.Normal);
+			_PrevButton.SetImage(UIImage.FromFile("Images/External/prev-16.png"), UIControlState.Normal);
+			_PrevButton.TouchUpInside += HandlePrevButtonTouchUpInside;
+			AddSubview(_PrevButton);
 			
 			
 			
-			moveUpButton = new GradientButton();
-			StyleButton(moveUpButton);
-			moveUpButton.SetTitle("Move Up", UIControlState.Normal);
-			moveUpButton.SetImage(UIImage.FromFile("Images/External/arrowup-16.png"), UIControlState.Normal);
-			moveUpButton.TouchUpInside += HandleMoveUpButtonTouchUpInside;;
-			AddSubview(moveUpButton);
+			_MoveUpButton = new GradientButton();
+			StyleButton(_MoveUpButton);
+			_MoveUpButton.SetTitle("Move Up", UIControlState.Normal);
+			_MoveUpButton.SetImage(UIImage.FromFile("Images/External/arrowup-16.png"), UIControlState.Normal);
+			_MoveUpButton.TouchUpInside += HandleMoveUpButtonTouchUpInside;;
+			AddSubview(_MoveUpButton);
 			
 			
-			moveDownButton = new GradientButton();
-			StyleButton(moveDownButton);
-			moveDownButton.SetTitle("Move Down", UIControlState.Normal);
-			moveDownButton.SetImage(UIImage.FromFile("Images/External/arrowdown-16.png"), UIControlState.Normal);
-			moveDownButton.TouchUpInside += HandleMoveDownButtonTouchUpInside;;
-			AddSubview(moveDownButton);
+			_MoveDownButton = new GradientButton();
+			StyleButton(_MoveDownButton);
+			_MoveDownButton.SetTitle("Move Down", UIControlState.Normal);
+			_MoveDownButton.SetImage(UIImage.FromFile("Images/External/arrowdown-16.png"), UIControlState.Normal);
+			_MoveDownButton.TouchUpInside += HandleMoveDownButtonTouchUpInside;;
+			AddSubview(_MoveDownButton);
 			
 			
-			rollButton = new GradientButton();
-			StyleButton(rollButton);
-			rollButton.SetImage(UIImage.FromFile("Images/External/d20-32.png"), UIControlState.Normal);
-			rollButton.SetTitle("Roll Initiative", UIControlState.Normal);
-			rollButton.TouchUpInside += HandleRollButtonTouchUpInside;
-			AddSubview(rollButton);
+			_RollButton = new GradientButton();
+			StyleButton(_RollButton);
+			_RollButton.SetImage(UIImage.FromFile("Images/External/d20-32.png"), UIControlState.Normal);
+			_RollButton.SetTitle("Roll Initiative", UIControlState.Normal);
+			_RollButton.TouchUpInside += HandleRollButtonTouchUpInside;
+			AddSubview(_RollButton);
 			
 			
-			sortButton = new GradientButton();
-			StyleButton(sortButton);
-			sortButton.SetTitle("Sort", UIControlState.Normal);
-			sortButton.SetImage(UIImage.FromFile("Images/External/sort-16.png"), UIControlState.Normal);
-			sortButton.TouchUpInside += HandleSortButtonTouchUpInside;
-			AddSubview(sortButton);
+			_SortButton = new GradientButton();
+			StyleButton(_SortButton);
+			_SortButton.SetTitle("Sort", UIControlState.Normal);
+            _SortButton.ImageEdgeInsets = new UIEdgeInsets(0, 0, 0, 10);
+			_SortButton.SetImage(UIImage.FromFile("Images/Sort.png"), UIControlState.Normal);
+			_SortButton.TouchUpInside += HandleSortButtonTouchUpInside;
+			AddSubview(_SortButton);
+
+            
+            _ResetButton = new GradientButton();
+            StyleButton(_ResetButton);
+            _ResetButton.SetTitle("Reset", UIControlState.Normal);
+            _ResetButton.ImageEdgeInsets = new UIEdgeInsets(0, 0, 0, 10);
+            _ResetButton.SetImage(UIImage.FromFile("Images/Refresh.png"), UIControlState.Normal);
+            _ResetButton.TouchUpInside += HandleResetButtonTouchUpInside;
+            AddSubview(_ResetButton);
+
 		}
+
+        void HandleResetButtonTouchUpInside (object sender, EventArgs e)
+        {
+            foreach (Character c in _CombatState.Characters)
+            {
+                c.CurrentInitiative = 0;
+                _CombatState.Round = null;
+            }
+            _ListView.ReloadData();
+        }
 
 		void HandleMoveDownButtonTouchUpInside (object sender, EventArgs e)
 		{
 			if (_SelectedCharacter != null)
 			{
-				_combatState.MoveDownCharacter(_SelectedCharacter);	
+				_CombatState.MoveDownCharacter(_SelectedCharacter);	
 			}
 		}
 
@@ -151,7 +187,7 @@ namespace CombatManagerMono
 		{
 			if (_SelectedCharacter != null)
 			{
-				_combatState.MoveUpCharacter(_SelectedCharacter);
+				_CombatState.MoveUpCharacter(_SelectedCharacter);
 			}
 		}
 		
@@ -170,19 +206,47 @@ namespace CombatManagerMono
 			MainUI.SaveCombatState();
 		}
 
+        int ActiveCharacterIndex
+        {
+            get
+            {
+                if (CombatState.CurrentCharacter == null)
+                {
+                    return -1;
+                }
+
+                return _CombatState.CombatList.IndexOf(CombatState.CurrentCharacter);
+            }
+        }
+
 		void HandleNextButtonTouchUpInside (object sender, EventArgs e)
 		{
-			CombatState.MoveNext();
-			ReloadList();
+            
+            int index1 = ActiveCharacterIndex;
+            CombatState.MoveNext();
+            int index2 = ActiveCharacterIndex;
+
+            ReloadListRows(new List<int>{index1, index2});
 			MainUI.SaveCombatState();
 		}
 
 		void HandlePrevButtonTouchUpInside (object sender, EventArgs e)
 		{
+            int index1 = ActiveCharacterIndex;
 			CombatState.MovePrevious();
-			ReloadList();
+            int index2 = ActiveCharacterIndex;
+
+            ReloadListRows(new List<int>{index1, index2});
 			MainUI.SaveCombatState();
 		}
+
+        void ReloadListRows(IEnumerable<int> indexes)
+        {
+
+            _ListView.ReloadRows((from a in indexes where a >= 0 select NSIndexPath.FromRowSection(a, 0)).ToArray(),
+                                 UITableViewRowAnimation.None);
+           
+        }
 
 		void HandleRollButtonTouchUpInside (object sender, EventArgs e)
 		{
@@ -195,14 +259,14 @@ namespace CombatManagerMono
 		void ReloadList()
 		{
 			Character ch = _SelectedCharacter;
-			listView.ReloadData();
+			_ListView.ReloadData();
 			
-			int index = _combatState.CombatList.IndexOf(ch);
+			int index = _CombatState.CombatList.IndexOf(ch);
 			
 			if (index >= 0)
 			{
 				
-				listView.SelectRow(NSIndexPath.FromRowSection(index, 0), false, UITableViewScrollPosition.Middle);	
+				_ListView.SelectRow(NSIndexPath.FromRowSection(index, 0), false, UITableViewScrollPosition.Middle);	
 			}
 			
 		}
@@ -211,31 +275,31 @@ namespace CombatManagerMono
 		{
 			get
 			{
-				return _combatState;
+				return _CombatState;
 			}
 			set
 			{
-				if (_combatState != value)
+				if (_CombatState != value)
 				{
-					if (_combatState != null)
+					if (_CombatState != null)
 					{
 						
-						_combatState.CombatList.CollectionChanged -= CombatListChanged;
-						_combatState.PropertyChanged -= Handle_combatStatePropertyChanged;
+						_CombatState.CombatList.CollectionChanged -= CombatListChanged;
+						_CombatState.PropertyChanged -= Handle_combatStatePropertyChanged;
 					}
 					
-					_combatState = value;
+					_CombatState = value;
 					viewDelegate = new ViewDelegate(this);
 					viewDataSource = new ViewDataSource(this);
-					listView.Delegate = viewDelegate;
-					listView.DataSource = viewDataSource;
+					_ListView.Delegate = viewDelegate;
+					_ListView.DataSource = viewDataSource;
 					
 					ReloadList();
 					
-					if (_combatState != null)
+					if (_CombatState != null)
 					{
-						_combatState.CombatList.CollectionChanged += CombatListChanged;
-						_combatState.PropertyChanged += Handle_combatStatePropertyChanged;
+						_CombatState.CombatList.CollectionChanged += CombatListChanged;
+						_CombatState.PropertyChanged += Handle_combatStatePropertyChanged;
 						
 						UpdateStatus();
 					}
@@ -261,24 +325,30 @@ namespace CombatManagerMono
 
 		void HandleChPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			if (e.PropertyName == "Name")
+			if (e.PropertyName == "Name" || e.PropertyName == "IsReadying" || e.PropertyName == "IsDelaying")
 			{
-				ReloadList();	
-			}
-		}
+                UpdateCharacter(sender as Character);	
+			}		
+        }
+
+        void UpdateCharacter(Character ch)
+        {
+            int index = CombatState.CombatList.IndexOf(ch);
+            if (index != -1)
+            {
+                _ListView.ReloadRows(new NSIndexPath[] {NSIndexPath.FromRowSection(index, 0)}, UITableViewRowAnimation.None);
+            }
+        }
 		
 		
-		void HandleChMonsterActiveConditionsCollectionChanged (object sender, NotifyCollectionChangedEventArgs e)
-		{
-			ReloadList();
-		}
+
 		
 		void UpdateCell(Character ch, DataListViewCell cell)
 		{
 			cell.Data = ch;
 			
 			cell.TextLabel.Text = ch.Name;
-			if (ch == _combatState.CurrentCharacter)
+			if (ch == _CombatState.CurrentCharacter)
 			{
 				cell.TextLabel.Font = _FontBold;
 			}
@@ -309,44 +379,52 @@ namespace CombatManagerMono
 			RectangleF rect = ConvertRectFromView(Frame, Superview);
 			
 			RectangleF statusRect = new RectangleF(0, 0, (rect.Width/3.0f)*2.0f + 1.0f, buttonHeight);
-			currentCharacterView.Frame = statusRect;
-			RectangleF labelRect  = currentCharacterView.Bounds;
+			_CurrentCharacterView.Frame = statusRect;
+			RectangleF labelRect  = _CurrentCharacterView.Bounds;
 			labelRect.X += labelMarginX;
 			labelRect.Width -= 2 * labelMarginX;
 			
-			currentCharacterLabel.Frame = labelRect;
+			_CurrentCharacterLabel.Frame = labelRect;
 			
 			statusRect.X = statusRect.Width - 1.0f;
 			statusRect.Width = rect.Width/3.0f;
-			roundView.Frame = statusRect;
-			labelRect  = roundView.Bounds;
+			_RoundView.Frame = statusRect;
+			labelRect  = _RoundView.Bounds;
 			labelRect.X += labelMarginX;
 			labelRect.Width -= 2 * labelMarginX;
-			roundLabel.Frame = labelRect;
+			_RoundLabel.Frame = labelRect;
 			
 			
 			float bWidth = (rect.Width + 1.0f) /2;
 			RectangleF button = new RectangleF(0, buttonHeight, bWidth, buttonHeight);
-			prevButton.Frame = button;
+			_PrevButton.Frame = button;
 			button.X += bWidth - 1.0f;
-			nextButton.Frame = button;
+			_NextButton.Frame = button;
 			
 			button.X = 0;
 			button.Y = button.Bottom;
-			moveUpButton.Frame = button;
+			_MoveUpButton.Frame = button;
 			button.X += bWidth - 1.0f;
-			moveDownButton.Frame = button;
+			_MoveDownButton.Frame = button;
 			
 			RectangleF list = rect;
 			list.Y += button.Bottom;
-			list.Height -= list.Y + buttonHeight;
-			listView.Frame = list;
+            list.Height -= list.Y + buttonHeight*2;
+			_ListView.Frame = list;
 			
 			button.X = 0;
 			button.Y = list.Bottom;
-			rollButton.Frame = button;
-			button.X += bWidth -1.0f;
-			sortButton.Frame = button;
+            button.Height = Bounds.Height - list.Bottom;
+			_RollButton.Frame = button;
+			
+            button.X += bWidth -1.0f;
+            button.Width += 2;
+            button.Height = button.Height/2.0f;
+			_SortButton.Frame = button;
+
+            button.Y += button.Height;
+            _ResetButton.Frame = button;
+
 			
 		}
 		
@@ -410,10 +488,10 @@ namespace CombatManagerMono
 		
 		private void UpdateStatus()
 		{
-			currentCharacterLabel.Text = (_combatState.CurrentCharacter != null)?
-				_combatState.CurrentCharacter.Name:"";
-			roundLabel.Text = "RD " + ((_combatState.Round != null)?
-				_combatState.Round.ToString():"");
+			_CurrentCharacterLabel.Text = (_CombatState.CurrentCharacter != null)?
+				_CombatState.CurrentCharacter.Name:"";
+			_RoundLabel.Text = "RD " + ((_CombatState.Round != null)?
+				_CombatState.Round.ToString():"");
 		}
 					                                                                                                                    
 		
@@ -444,29 +522,63 @@ namespace CombatManagerMono
 				Character ch = state.CombatState.CombatList[indexPath.Row];
 				
 				ch.PropertyChanged += state.HandleChPropertyChanged;
-				ch.Monster.ActiveConditions.CollectionChanged += state.HandleChMonsterActiveConditionsCollectionChanged;
+				ch.Monster.ActiveConditions.CollectionChanged += delegate
+                    {
+                        state.UpdateCharacter(ch); 
+                    };
+                    
 				
 				
 				state.UpdateCell(ch, cell);
+
+                float accHeight = 30f;
 				
 				
-				UIView buttonView = new UIView(new RectangleF(0, 0, 79, 30));
+				UIView buttonView = new UIView(new RectangleF(0, 0, 79, accHeight));
 				
-				
+                float xPos = 0;
 				GradientButton b = new GradientButton();
+
+                if (ch.IsReadying || ch.IsDelaying)
+                {
+                    UIImageView view = new UIImageView();
+                    view.Image = ch.IsReadying?state._ReadyingImage:state._DelayingImage;
+                    view.Frame = new RectangleF(new PointF(xPos, (accHeight - 16f)/2.0f), new SizeF(16, 16));
+                    buttonView.Add (view);
+                    xPos += 18;
+                }
+
+                if (ch.HasFollowers)
+                {
+                    
+                    UIImageView view = new UIImageView();
+                    view.Image = state._LinkImage;
+                    view.Frame = new RectangleF(new PointF(xPos, (accHeight - 16f)/2.0f), new SizeF(16, 16));
+                    buttonView.Add (view);
+                    xPos += 18;
+                }
+
+
 				b.SetTitle(ch.CurrentInitiative.ToString(), UIControlState.Normal);
 				b.CornerRadius = 0;
-				b.Frame = new RectangleF(0, 0, 40, 30);
+				b.Frame = new RectangleF(xPos, 0, 40, accHeight);
 				b.TouchUpInside += state.InitButtonTouchUpInside;
 				b.Data = ch;
 				buttonView.AddSubview(b);
+
+                xPos += b.Frame.Width - 1;
+
 				b = new GradientButton();
 				b.SetImage(UIExtensions.GetSmallIcon("lightning"), UIControlState.Normal);
 				b.CornerRadius = 0;
-				b.Frame = new RectangleF(39, 0, 40, 30);
+				b.Frame = new RectangleF(xPos, 0, 40, accHeight);
 				
 				buttonView.AddSubview(b);
 				b.Data = ch;
+
+                xPos += b.Frame.Width -1;
+
+                buttonView.SetWidth(xPos);
 				
 				
 				ButtonStringPopover actionsPopover = new ButtonStringPopover(b);
@@ -490,7 +602,7 @@ namespace CombatManagerMono
 			
 				if (item.Action != CharacterActionType.None)
 				{
-					CharacterActions.TakeAction(state._combatState, item.Action, ch, new List<Character>() {ch}, item.Tag);
+					CharacterActions.TakeAction(state._CombatState, item.Action, ch, new List<Character>() {ch}, item.Tag);
 				}
 				
 			}

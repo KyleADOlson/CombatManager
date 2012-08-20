@@ -2035,7 +2035,7 @@ namespace CombatManager
 
         void ParseSpecialAbilities()
         {
-            if (specialAbilitiesList != null && specialAbilitiesList.Count > 0)
+            if (specialAbilitiesList != null)
             {
                 specialAblitiesParsed = true;
             }
@@ -5300,6 +5300,11 @@ namespace CombatManager
             return value;
         }
 
+        public static string GetFlyQualityString(int val)
+        {
+            return flyQualityList.First(a => a.Value == val).Key;
+        }
+
         private static string GetMaxFlyQuality(string quality1, string quality2)
         {
             return (GetFlyQuality(quality1) > GetFlyQuality(quality2))?quality1 : quality2;
@@ -7310,7 +7315,7 @@ namespace CombatManager
             attack.AltDamage = item.Weapon.AltDamage;
             attack.AltDamageStat = item.Weapon.AltDamageStat;
             attack.AltDamageDrain = item.Weapon.AltDamageDrain;
-
+			attack.TwoHanded = item.TwoHanded;
 
             SetAttackDamageDie(item, attack, af, cf);
 
@@ -7359,7 +7364,7 @@ namespace CombatManager
             }
             else if (((cf.savageBite || cf.isDragon) && String.Compare(attack.Name, "Bite", true) == 0) ||
                 (cf.isDragon && ((String.Compare(attack.Name, "Tail", true) == 0) || (String.Compare(attack.Name, "Tail Slap", true) == 0))) ||
-                (attack.Weapon.Hands == "Two-Handed") || (onlyNatural && AbilityBonus(Strength) > 0) && !makeSecondary)
+                attack.TwoHanded || item.TwoHanded || (onlyNatural && AbilityBonus(Strength) > 0) && !makeSecondary)
             {
 
                 strDamageBonus += AbilityBonus(Strength) / 2;
@@ -7707,7 +7712,8 @@ namespace CombatManager
 
                             if (attack.Weapon != null && attack.Weapon.Class != "Natural")
                             {
-                                set.WeaponAttacks.Add(attack);
+								testTwoHandedFromText(attack);
+								set.WeaponAttacks.Add(attack);
                             }
                             else
                             {
@@ -7748,7 +7754,8 @@ namespace CombatManager
 
                         if (attack.Weapon != null && attack.Weapon.Class != "Natural")
                         {
-                            newSet.WeaponAttacks.Add(attack);
+							testTwoHandedFromText(attack);
+							newSet.WeaponAttacks.Add(attack);
                         }
                         else
                         {
@@ -7769,6 +7776,22 @@ namespace CombatManager
                 return sets;
             }
         }
+
+		private void testTwoHandedFromText(Attack attack)
+		{
+			// Determine if being used two-handed.
+			if (attack.Weapon.Hands.Equals("One-Handed", StringComparison.InvariantCultureIgnoreCase))
+			{
+				int strMod = AbilityBonus(Strength);
+				if (strMod > 0)
+				{
+					strMod += strMod / 2;
+
+					if ((attack.Damage.mod - attack.MagicBonus).Equals(strMod))
+						attack.TwoHanded = true;
+				}
+			}
+		}
 
         [XmlIgnore]
         public List<Attack> RangedAttacks
@@ -10053,6 +10076,14 @@ namespace CombatManager
 
         }
 
+        public static List<String> DragonColors
+        {
+            get
+            {
+                return new List<String> (dragonColorList.Keys);
+            }
+        }
+
 
         public static FlyQuality FlyQualityFromString(String strQuality)
         {
@@ -10783,6 +10814,32 @@ namespace CombatManager
                     }
 				}
 			}
+
+            public int Space
+            {
+                get
+                {
+                    int ? space = FootConverter.Convert(_Monster.Space);
+                    return (space == null)?0:(space.Value);
+                }
+                set
+                {
+                    _Monster.Space = FootConverter.ConvertBack(value);
+                }
+            }
+
+            public int Reach
+            {
+                get
+                {
+                    int ? reach = FootConverter.Convert(_Monster.Reach);
+                    return (reach == null)?0:(reach.Value);
+                }
+                set
+                {
+                    _Monster.Reach = FootConverter.ConvertBack(value);
+                }
+            }
         }
 
         [XmlIgnore]

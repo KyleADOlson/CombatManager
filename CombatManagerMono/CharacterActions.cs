@@ -112,12 +112,12 @@ namespace CombatManagerMono
 	{
 		
 		
-		public static List<CharacterActionItem> GetActions(Character ch)
+		public static List<CharacterActionItem> GetActions(Character ch, Character selCh)
 		{
 			List<CharacterActionItem> items = new List<CharacterActionItem>();
 			
-			items.Add(new CharacterActionItem("Edit", "pencil", GetEditItems(ch)));
-			items.Add(new CharacterActionItem("Copy to Custom", "import"));
+			items.Add(new CharacterActionItem("Edit", "pencil", CharacterActionType.EditMonster));
+			//items.Add(new CharacterActionItem("Copy to Custom", "import"));
 			if (!ch.IsIdle)
 			{
 				
@@ -128,7 +128,7 @@ namespace CombatManagerMono
 				
 				items.Add(new CharacterActionItem("Remove Idle", "zzz", CharacterActionType.RemoveIdle));
 			}
-			if (!ch.IsHidden)
+			/*if (!ch.IsHidden)
 			{
 				
 				items.Add(new CharacterActionItem("Make Hidden", "blind", CharacterActionType.MakeHidden));
@@ -137,17 +137,17 @@ namespace CombatManagerMono
 			{
 				
 				items.Add(new CharacterActionItem("Remove Hidden", "blind", CharacterActionType.RemoveHidden));
-			}
+			}*/
 			
 			items.Add(new CharacterActionItem());
 			CharacterActionItem conditionsItem = new CharacterActionItem("Add Condition", "clock", GetConditionItems(ch));
 			items.Add(conditionsItem);
-			items.Add(new CharacterActionItem("Apply Affliction", "lightning"));
+			//items.Add(new CharacterActionItem("Apply Affliction", "lightning"));
 			items.Add(new CharacterActionItem("Notes", "notes", CharacterActionType.EditNotes));
 			
 			items.Add(new CharacterActionItem());
-			items.Add(new CharacterActionItem("Roll", "d20"));
-			items.Add(new CharacterActionItem("Initiative", "sort", GetInitiativeItems(ch, null)));
+			//items.Add(new CharacterActionItem("Roll", "d20"));
+			items.Add(new CharacterActionItem("Initiative", "sort", GetInitiativeItems(ch, selCh)));
 			items.Add(new CharacterActionItem("Clone", "clone", CharacterActionType.Clone));
 			if (ch.IsMonster)
 			{
@@ -186,15 +186,27 @@ namespace CombatManagerMono
 			
 			items.Add(new CharacterActionItem("Move Up", "arrowup", CharacterActionType.MoveUpInitiative));
 			items.Add(new CharacterActionItem("Move Down", "arrowdown", CharacterActionType.MoveDownInitiative));
-			if (selectedChar != null && selectedChar != ch)
+			if (selectedChar != null && selectedChar != ch && selectedChar.InitiativeLeader == null)
 			{
-				items.Add(new CharacterActionItem("Move Before " + selectedChar.Name, "arrowup", CharacterActionType.MoveBeforeInitiative, selectedChar));
-				items.Add(new CharacterActionItem("Move After" + selectedChar.Name, "arrowdown", CharacterActionType.MoveAfterInitiative, selectedChar));
+				items.Add(new CharacterActionItem("Move Before " + selectedChar.Name, "arrowsup", CharacterActionType.MoveBeforeInitiative, selectedChar));
+				items.Add(new CharacterActionItem("Move After " + selectedChar.Name, "arrowsdown", CharacterActionType.MoveAfterInitiative, selectedChar));
 	
 			}
 			items.Add(new CharacterActionItem());		
 			items.Add(new CharacterActionItem("Ready", "target", CharacterActionType.Ready));
 			items.Add(new CharacterActionItem("Delay", "hourglass", CharacterActionType.Delay));
+
+            if (ch.InitiativeLeader != null)
+            {
+                items.Add (new CharacterActionItem());
+                items.Add (new CharacterActionItem("Unlink Initiative", "link", CharacterActionType.UnlinkInitiative));
+            }
+            else if (selectedChar != null && selectedChar != ch && selectedChar.InitiativeLeader == null)
+            {
+                items.Add(new CharacterActionItem());
+                items.Add (new CharacterActionItem("Link Initiative to " + selectedChar.Name, 
+                                                   "link", CharacterActionType.LinkInitiative, selectedChar));
+            }
 		
 		
 			return items;
@@ -303,7 +315,30 @@ namespace CombatManagerMono
 			case CharacterActionType.MoveBeforeInitiative:
 				state.MoveCharacterBefore(primaryChar, (Character)param);
 				break;
-				
+            case CharacterActionType.Ready:
+                primaryChar.IsReadying = !primaryChar.IsReadying;
+                if (primaryChar.IsReadying && primaryChar.IsDelaying)
+                {
+                    primaryChar.IsDelaying = false;
+                }
+                break;
+            case CharacterActionType.Delay:
+                primaryChar.IsDelaying = !primaryChar.IsDelaying;
+                if (primaryChar.IsReadying && primaryChar.IsDelaying)
+                {
+                    primaryChar.IsReadying = false;
+                }
+                break;
+            case CharacterActionType.LinkInitiative:
+                Character targetChar = (Character)param;
+                if (primaryChar != targetChar  && targetChar.InitiativeLeader == null)
+                {
+                    state.LinkInitiative(primaryChar, (Character)param);
+                }
+                break;
+            case CharacterActionType.UnlinkInitiative:
+                state.UnlinkLeader(primaryChar);
+                break;
 			case CharacterActionType.AddConditon:	
 				if (param != null)
 				{
