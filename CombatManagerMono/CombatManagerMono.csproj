@@ -228,6 +228,11 @@
     <Compile Include="AboutView.designer.cs">
       <DependentUpon>AboutView.cs</DependentUpon>
     </Compile>
+    <Compile Include="TreasureTab.cs" />
+    <Compile Include="MagicItemHtmlCreator.cs" />
+    <Compile Include="SideTabBar.cs" />
+    <Compile Include="TreasureGeneratorPage.cs" />
+    <Compile Include="TreasureHtmlCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="CombatManagerMonoViewController_iPhone.xib" />
@@ -606,6 +611,48 @@
     <Content Include="RetinaApp.png" />
     <Content Include="RetinaSettings.png" />
     <Content Include="RetinaSpotlight.png" />
+    <Content Include="..\CombatManager\images\LeftArrow-24.png">
+      <Link>Images\External\LeftArrow-24.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\LeftArrow-24%402x.png">
+      <Link>Images\External\LeftArrow-24%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\RightArrow-24.png">
+      <Link>Images\External\RightArrow-24.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\RightArrow-24%402x.png">
+      <Link>Images\External\RightArrow-24%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\treasure-16%402x.png">
+      <Link>Images\External\treasure-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d20-40%402x.png">
+      <Link>Images\External\d20-40%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d20-32%402x.png">
+      <Link>Images\External\d20-32%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\star-16%402x.png">
+      <Link>Images\External\star-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\openHS%402x.png">
+      <Link>Images\External\openHS%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\saveHS%402x.png">
+      <Link>Images\External\saveHS%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\book-16%402x.png">
+      <Link>Images\External\book-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\lightning-16%402x.png">
+      <Link>Images\External\lightning-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\mail-16.png">
+      <Link>Images\External\mail-16.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\mail-16%402x.png">
+      <Link>Images\External\mail-16%402x.png</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />

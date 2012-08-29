@@ -108,23 +108,25 @@ namespace CombatManagerMono
 			StyleButton(_NextButton);
 			
 			_NextButton.SetTitle("Next", UIControlState.Normal);
-			_NextButton.SetImage(UIImage.FromFile("Images/External/next-16.png"), UIControlState.Normal);
-			_NextButton.TouchUpInside += HandleNextButtonTouchUpInside;
+			_NextButton.SetImage(UIImage.FromFile("Images/External/RightArrow-24.png"), UIControlState.Normal);
+            _NextButton.ImageEdgeInsets = new UIEdgeInsets(0, 0, 0, 5);  
+            _NextButton.TouchUpInside += HandleNextButtonTouchUpInside;
 			AddSubview(_NextButton);
 			
 			
 			_PrevButton = new GradientButton();
 			StyleButton(_PrevButton);
 			_PrevButton.SetTitle("Prev", UIControlState.Normal);
-			_PrevButton.SetImage(UIImage.FromFile("Images/External/prev-16.png"), UIControlState.Normal);
-			_PrevButton.TouchUpInside += HandlePrevButtonTouchUpInside;
+			_PrevButton.SetImage(UIImage.FromFile("Images/External/LeftArrow-24.png"), UIControlState.Normal);
+			_PrevButton.ImageEdgeInsets = new UIEdgeInsets(0, 0, 0, 5); 
+            _PrevButton.TouchUpInside += HandlePrevButtonTouchUpInside;
 			AddSubview(_PrevButton);
 			
 			
 			
 			_MoveUpButton = new GradientButton();
 			StyleButton(_MoveUpButton);
-			_MoveUpButton.SetTitle("Move Up", UIControlState.Normal);
+			_MoveUpButton.SetTitle("Up", UIControlState.Normal);
 			_MoveUpButton.SetImage(UIImage.FromFile("Images/External/arrowup-16.png"), UIControlState.Normal);
 			_MoveUpButton.TouchUpInside += HandleMoveUpButtonTouchUpInside;;
 			AddSubview(_MoveUpButton);
@@ -132,7 +134,7 @@ namespace CombatManagerMono
 			
 			_MoveDownButton = new GradientButton();
 			StyleButton(_MoveDownButton);
-			_MoveDownButton.SetTitle("Move Down", UIControlState.Normal);
+			_MoveDownButton.SetTitle("Down", UIControlState.Normal);
 			_MoveDownButton.SetImage(UIImage.FromFile("Images/External/arrowdown-16.png"), UIControlState.Normal);
 			_MoveDownButton.TouchUpInside += HandleMoveDownButtonTouchUpInside;;
 			AddSubview(_MoveDownButton);
@@ -377,35 +379,41 @@ namespace CombatManagerMono
 		{
 			base.LayoutSubviews ();
 			RectangleF rect = ConvertRectFromView(Frame, Superview);
+
+            float xColumnWidth = (rect.Width/3.0f);		
+            float yRowHeight = buttonHeight;
 			
-			RectangleF statusRect = new RectangleF(0, 0, (rect.Width/3.0f)*2.0f + 1.0f, buttonHeight);
+            RectangleF statusRect = new RectangleF(0, 0, xColumnWidth*2.0f + 1.0f, buttonHeight);
 			_CurrentCharacterView.Frame = statusRect;
+
 			RectangleF labelRect  = _CurrentCharacterView.Bounds;
 			labelRect.X += labelMarginX;
-			labelRect.Width -= 2 * labelMarginX;
-			
+			labelRect.Width -= 2 * labelMarginX;			
 			_CurrentCharacterLabel.Frame = labelRect;
 			
-			statusRect.X = statusRect.Width - 1.0f;
-			statusRect.Width = rect.Width/3.0f;
+            statusRect.Y += yRowHeight;
 			_RoundView.Frame = statusRect;
+
 			labelRect  = _RoundView.Bounds;
 			labelRect.X += labelMarginX;
 			labelRect.Width -= 2 * labelMarginX;
 			_RoundLabel.Frame = labelRect;
 			
 			
-			float bWidth = (rect.Width + 1.0f) /2;
-			RectangleF button = new RectangleF(0, buttonHeight, bWidth, buttonHeight);
-			_PrevButton.Frame = button;
-			button.X += bWidth - 1.0f;
-			_NextButton.Frame = button;
+			RectangleF button = new RectangleF(xColumnWidth * 2.0f, 0, xColumnWidth + 1.0f, yRowHeight * 2.0f);
+            _NextButton.Frame = button;
 			
-			button.X = 0;
-			button.Y = button.Bottom;
-			_MoveUpButton.Frame = button;
-			button.X += bWidth - 1.0f;
-			_MoveDownButton.Frame = button;
+            button.X = 0;
+            button.Y = button.Bottom;
+            button.Height = button.Height /2.0f;
+            _MoveUpButton.Frame = button;
+
+
+            button.X += xColumnWidth;
+            _MoveDownButton.Frame = button;	
+
+            button.X += xColumnWidth;
+            _PrevButton.Frame = button;
 			
 			RectangleF list = rect;
 			list.Y += button.Bottom;
@@ -414,10 +422,11 @@ namespace CombatManagerMono
 			
 			button.X = 0;
 			button.Y = list.Bottom;
+            button.Width = (rect.Width/2.0f) + 1;
             button.Height = Bounds.Height - list.Bottom;
 			_RollButton.Frame = button;
 			
-            button.X += bWidth -1.0f;
+            button.X += (rect.Width/2.0f);
             button.Width += 2;
             button.Height = button.Height/2.0f;
 			_SortButton.Frame = button;
@@ -490,7 +499,7 @@ namespace CombatManagerMono
 		{
 			_CurrentCharacterLabel.Text = (_CombatState.CurrentCharacter != null)?
 				_CombatState.CurrentCharacter.Name:"";
-			_RoundLabel.Text = "RD " + ((_CombatState.Round != null)?
+			_RoundLabel.Text = "Round " + ((_CombatState.Round != null)?
 				_CombatState.Round.ToString():"");
 		}
 					                                                                                                                    
@@ -649,4 +658,5 @@ namespace CombatManagerMono
 		}
 	}
 }
+
 

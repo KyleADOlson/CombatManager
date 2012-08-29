@@ -35,10 +35,12 @@ namespace CombatManagerMono
         UIColor _borderColor = 0xFF000000.UIColor();
 		GradientHelper _gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDarker);
         GradientHelper _DisabledGradient = CMUIColors.DisabledGradient;
+        GradientHelper _HighlightedGradient;
         bool [] _SkipCorners = new bool[4] ;
         float [] _CornerRadii = null;
 		
 		object _Data;
+
 		
 		public GradientButton (IntPtr p) : base(p)
 		{
@@ -55,7 +57,32 @@ namespace CombatManagerMono
 		{
 			
 		}
+
+        public override void TouchesBegan (NSSet touches, UIEvent evt)
+        {
+            base.TouchesBegan (touches, evt);
+            SetNeedsDisplay();
+        }
 		
+        public override void TouchesEnded (NSSet touches, UIEvent evt)
+        {
+            base.TouchesEnded (touches, evt);
+            SetNeedsDisplay();
+        }
+
+        public override void TouchesMoved (NSSet touches, UIEvent evt)
+        {
+            base.TouchesMoved (touches, evt);
+            SetNeedsDisplay();
+        }
+
+        public override void TouchesCancelled (NSSet touches, UIEvent evt)
+        {
+            base.TouchesCancelled (touches, evt);
+            SetNeedsDisplay();
+        }
+
+       
 		
 		public override void Draw (RectangleF rect)
 		{
@@ -97,12 +124,26 @@ namespace CombatManagerMono
 
 
             GradientHelper useGradient = _gradient;
+            bool reversed = false;
             if (!Enabled && _DisabledGradient != null)
             {
                 useGradient = _DisabledGradient;
             }
+            else if (Highlighted && Tracking)
+            {
+                if (_HighlightedGradient == null)
+                {
+                    reversed = true;
+                }
+                else
+                {
+                    _gradient = _HighlightedGradient;
+                }
+            }
+
+
 			
-			cr.DrawRoundRect(useGradient.Gradient, rect, cornerRadii);
+			cr.DrawRoundRect(useGradient.Gradient, rect, cornerRadii, reversed?(float)Math.PI/2.0f:(float)-Math.PI/2.0f);
 			
 			
 			if (_border > 0)
@@ -199,7 +240,18 @@ namespace CombatManagerMono
                 SetNeedsDisplay();
             }
         }
-        
+
+        public GradientHelper HighlightedGradient
+        {
+            get
+            {
+                return _HighlightedGradient;
+            }
+            set
+            {
+                _HighlightedGradient = value;
+            }
+        }        
 		
 		public object Data
 		{

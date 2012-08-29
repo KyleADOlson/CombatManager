@@ -30,6 +30,15 @@ using CombatManager;
 
 namespace CombatManagerMono
 {
+    
+    public class LookupSideTabItem
+    {
+        public string Name {get; set;}
+        public UIImage Icon {get; set;}
+        public UIView View {get; set;}
+    }
+
+
 	public abstract class LookupTab<T> : CMTab
 	{
 		UITableView listTable;
@@ -38,6 +47,8 @@ namespace CombatManagerMono
 		UIView _FilterView;
 		UIView _BottomView;
 		GradientButton _ResetButton;
+
+        SideTabBar _SideTabBar;
 		
 		float _BottomViewHeight;
 		
@@ -47,6 +58,8 @@ namespace CombatManagerMono
 		
 		T _selectedItem;
 		T _displayItem;
+
+        UIView _VisibleTabView;
 		
 		
 		public LookupTab (CombatState state) : base(state)
@@ -71,7 +84,25 @@ namespace CombatManagerMono
 			_ResetButton.TouchUpInside += Handle_ResetButtonTouchUpInside;
 			_ResetButton.SetImage(UIExtensions.GetSmallIcon("reset"), UIControlState.Normal);
 			_FilterView.AddSubview(_ResetButton);
-			
+
+            if (ShowSideBar)
+            {
+                _SideTabBar = new SideTabBar();
+                _SideTabBar.TabSelected += HandleTabSelected;
+                _SideTabBar.Hidden = true;
+                _SideTabBar.AddTab(new SideTab {Name=DefaultTabName, Tag=null, Icon=DefaultTabImage});
+                Add (_SideTabBar);
+
+                List<LookupSideTabItem> tabItems = LoadTabItems();
+
+                if (tabItems != null)
+                {
+                    foreach (LookupSideTabItem item in tabItems)
+                    {
+                        _SideTabBar.AddTab(new SideTab {Name=item.Name, Tag=item, Icon = item.Icon});
+                    }
+                }
+            }
 			
 			
 			
@@ -87,6 +118,33 @@ namespace CombatManagerMono
 			
 				
 		}
+
+        void HandleTabSelected (object sender, SideTabEventArgs e)
+        {
+            if (e.Tab.Tag != _VisibleTabView)
+            {
+                if (_VisibleTabView != null)
+                {
+                    _VisibleTabView.RemoveFromSuperview();
+                    _VisibleTabView = null;
+                }
+
+                var v = ((LookupSideTabItem)e.Tab.Tag);
+
+                if (v != null)
+                {
+                    _VisibleTabView = v.View;
+                }
+
+                if (_VisibleTabView != null)
+                {
+                    Add (_VisibleTabView);
+                }
+
+
+
+            }
+        }
 
 		void Handle_ResetButtonTouchUpInside (object sender, EventArgs e)
 		{
@@ -170,7 +228,7 @@ namespace CombatManagerMono
 		
 		protected abstract string ItemHtml(T item);
 		
-		protected abstract bool CompareItems(T item1, T item2);
+        protected abstract bool CompareItems(T item1, T item2);
 		
 		protected virtual void ResetButtonClicked()
 		{
@@ -203,6 +261,44 @@ namespace CombatManagerMono
 				return 40;
 			}
 		}
+
+        protected virtual bool ShowSideBar
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        protected virtual string DefaultTabName
+        {
+            get
+            {
+                return "";
+            }
+        }
+        protected virtual UIImage DefaultTabImage
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+
+        protected virtual float SideTabWidth
+        {
+            get
+            {
+                return 60;
+            }
+        }
+
+        protected virtual List<LookupSideTabItem> LoadTabItems()
+        {
+            return null;
+        }
+
 		
 		public override void LayoutSubviews ()
 		{
@@ -210,17 +306,26 @@ namespace CombatManagerMono
 			
 			RectangleF rect = ConvertRectFromView(Frame, Superview);
 			
-			filterField.SetLocation(5, 5);
+            float sideTabSize = 0;
+            if (ShowSideBar)
+            {
+                sideTabSize = SideTabWidth;
+                _SideTabBar.Frame = new RectangleF(0, 0,sideTabSize, rect.Height);
+                _SideTabBar.Hidden = false;
+            }
+
+			filterField.SetLocation(sideTabSize + 5, 5);
 			filterField.SetWidth(SideWidth -10);
 			filterField.SetHeight(30);
 			
-			listTable.SetLocation(0, 40);
+			listTable.SetLocation(sideTabSize, 40);
 			listTable.SetWidth(SideWidth-5);
 			listTable.SetHeight(rect.Height-25);
 			
-			
-			
-			_FilterView.Frame = new RectangleF(SideWidth, 0,  rect.Width-SideWidth, FilterHeight);
+
+            float xLoc = listTable.Frame.Right + 0.5f;
+
+			_FilterView.Frame = new RectangleF(xLoc + 10.0f, 0,  rect.Width-xLoc-10.0f, FilterHeight);
 			
 			float webViewHeight = rect.Height-FilterHeight;
 			
@@ -229,7 +334,7 @@ namespace CombatManagerMono
 				webViewHeight -= _BottomViewHeight;	
 			}
 			
-			 webView.Frame = new RectangleF(SideWidth, FilterHeight, rect.Width-SideWidth, webViewHeight);
+			 webView.Frame = new RectangleF(xLoc, FilterHeight, rect.Width-xLoc, webViewHeight);
 			
 			if (BottomView != null)
 			{
@@ -242,9 +347,20 @@ namespace CombatManagerMono
 			_ResetButton.SetLocation(FilterView.Frame.Width - 40 , 5);
 			_ResetButton.SetWidth(30);
 			_ResetButton.SetHeight(30);
-			
-			
-			
+
+            if (ShowSideBar)
+            {
+
+                RectangleF rectTabView = new RectangleF(_SideTabBar.Frame.Right, _SideTabBar.Frame.Top, Bounds.Width - _SideTabBar.Frame.Width, Bounds.Height);
+
+                foreach (var view in from x in _SideTabBar.Tabs where ((LookupSideTabItem)x.Tag) != null select ((LookupSideTabItem)x.Tag).View)
+                {
+                    if (view != null)
+                    {
+                        view.Frame = rectTabView;
+                    }
+                }
+            }
 		}
 		
 		public override void Draw (RectangleF rect)
@@ -386,6 +502,8 @@ namespace CombatManagerMono
 				return _displayItem;
 			}
 		}
+
+
 	}
 }
 

@@ -2921,24 +2921,13 @@ namespace CombatManager
         {
             bool result = false;
 
-            if (this.featFilterBox.Text == null)
+			string filterText = this.featFilterBox.Text.Trim();
+            if (string.IsNullOrWhiteSpace(filterText))
             {
-                result = true;
+                return true;
             }
 
-            if (this.featFilterBox.Text.Trim().Length == 0)
-            {
-                result = true;
-            }
-
-            if (result != true)
-            {
-
-                result = feat.Name.ToUpper().
-                    Contains(featFilterBox.Text.Trim().ToUpper());
-            }
-
-            return result;
+			return feat.Name.IndexOf(filterText, StringComparison.InvariantCultureIgnoreCase) >= 0 || (feat.AltName != null && feat.AltName.IndexOf(filterText, StringComparison.InvariantCultureIgnoreCase) >= 0);
         }
 
         private bool FeatTypeFilter(Feat feat)

@@ -47,8 +47,8 @@ namespace CombatManagerMono
 			
 			BackgroundColor = new UIColor(1, 0, 0, 0);
 			
-			List<String> names = new List<String>() {"Combat", "Monsters", "Feats", "Spells", "Rules"};
-			List<String> images = new List<String>() {"sword", "monster", "star", "scroll", "book"};
+			List<String> names = new List<String>() {"Combat", "Monsters", "Feats", "Spells", "Rules", "Treasure"};
+			List<String> images = new List<String>() {"sword", "monster", "star", "scroll", "book", "treasure"};
 
 			float pos = 0;
 			float buttonWidth = 110;
