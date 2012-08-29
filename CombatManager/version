@@ -1,4 +1,9 @@
-﻿1.4.1
+﻿1.4.2
+Use two hands on one-handed weapon
+DB cleanup
+Update Monsters, Spells, and Weapons
+
+1.4.1
 Remember type filter options for monster DB views
 Fix attacks editor crash 
 Improve move to monster/party performance
