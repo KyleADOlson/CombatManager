@@ -1,7 +1,8 @@
 ﻿1.4.2
 Use two hands on one-handed weapon
-DB cleanup
-Update Monsters, Spells, and Weapons
+Improve click-selection in monster/player lists
+DB cleanup for NPCs and Monsters
+Update Spells and Magic Items
 
 1.4.1
 Remember type filter options for monster DB views

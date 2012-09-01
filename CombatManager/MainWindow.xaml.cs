@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  MainWindow.xaml.cs
  *
  *  Copyright (C) 2010-2012 Kyle Olson, kyle@kyleolson.com
@@ -19,7 +19,7 @@
  *
  */
 
-﻿using System;
+using System;
 using System.Data;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
@@ -3416,6 +3416,36 @@ namespace CombatManager
             dragStartTop = Top;
         }
 
+
+
+        private void NameTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+            bool ctrl = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+			
+            //select items
+            Character ch = (Character)(sender as TextBox).DataContext;
+
+            ListBox lb = ch.IsMonster ? monsterListBox : playerListBox;
+
+            if (ctrl)
+            {
+                if (lb.SelectedItems.Contains(ch))
+                {
+                    lb.SelectedItems.Remove(ch);
+                }
+                else
+                {
+                    lb.SelectedItems.Add(ch);
+                }
+            }
+            else
+            {
+                lb.SelectedItem = ch;
+            }
+
+        }
+
         private void OGL_Button_Click(object sender, RoutedEventArgs e)
         {
             using (var undoGroup = undo.CreateUndoGroup())
@@ -6025,6 +6055,30 @@ namespace CombatManager
                     viewer.Document.Blocks.AddRange(creator.CreateBlocks(magicItem, false));
                 }
             }
+
+            else if (viewer.DataContext is Monster)
+            {
+
+                Monster m = viewer.DataContext as Monster;
+
+                if (m != null)
+                {
+                    MonsterBlockCreator creator = new MonsterBlockCreator(viewer.Document, null);
+                    viewer.Document.Blocks.AddRange(creator.CreateBlocks(m, true));
+                }
+            }
+
+            else if (viewer.DataContext is Character)
+            {
+
+                Character m = viewer.DataContext as Character;
+
+                if (m != null)
+                {
+                    MonsterBlockCreator creator = new MonsterBlockCreator(viewer.Document, null);
+                    viewer.Document.Blocks.AddRange(creator.CreateBlocks(m, true));
+                }
+            }
         }
 
         private void RollDiceButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -7545,6 +7599,16 @@ namespace CombatManager
                 campaignInfo.AddEvent(w.Event);
                 SaveCampaignInfo();
             }
+		}
+
+		private void NameTextBox_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			// TODO: Add event handler implementation here.
+		}
+
+		private void NameTextBox_PreviewMouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			// TODO: Add event handler implementation here.
 		}
 
     }

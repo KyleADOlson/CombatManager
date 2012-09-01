@@ -593,7 +593,7 @@
             				<Image x:Name="IdleImage" Source="images\zzz-16.png" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="16" Margin="0"
             					Visibility="{Binding IsIdle, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Width="16" ToolTip="Idle"/>
             			</StackPanel>
-            			<TextBox Grid.Column="1" x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" Margin="3.168,5,8,3.04" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.ColumnSpan="1" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Name" d:LayoutOverrides="GridBox" />
+            			<TextBox Grid.Column="1" x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" Margin="3.168,5,8,3.04" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.ColumnSpan="1" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Name" d:LayoutOverrides="GridBox" GotFocus="NameTextBox_GotFocus" />
             		</Grid>
                 
             		<Button x:Name="DeleteButton" Margin="0,8,0,5.969" RenderTransformOrigin="0.222,-0.601" Grid.Column="0" Click="DeleteButton_Click" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" GotKeyboardFocus="TextBox_GotKeyboardFocus" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Right" d:LayoutOverrides="Width">
@@ -980,7 +980,7 @@
                     	<Thumb x:Name="HPUpThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="0,3.417,2,12.031" Grid.Row="0" Grid.RowSpan="1" HorizontalAlignment="Right" Width="13.991" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle1}"/>
                     	<Thumb x:Name="HPDownThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="0,14,2,1.938" Grid.Row="0" Grid.RowSpan="1" Height="Auto" VerticalAlignment="Stretch" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle2}" HorizontalAlignment="Right" Width="13.991"/></Grid>
                 </Border>
-                <TextBox x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Name}" Grid.ColumnSpan="2" Margin="2.875,4.04,4,4" Grid.Column="1"  />
+                <TextBox x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Name}" Grid.ColumnSpan="2" Margin="2.875,4.04,4,4" Grid.Column="1" GotFocus="NameTextBox_GotFocus" MouseRightButtonDown="NameTextBox_MouseRightButtonDown" PreviewMouseRightButtonDown="NameTextBox_PreviewMouseRightButtonDown" />
                 <local:NotesPopup x:Name="NotesPopup"/>
                 <Button x:Name="DeleteButton" Margin="3.495,8,3.494,5.969" RenderTransformOrigin="0.222,-0.601" Grid.Column="5" Click="DeleteButton_Click" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" GotKeyboardFocus="TextBox_GotKeyboardFocus" Style="{DynamicResource ButtonSecondaryStyle}">
                     <Button.ToolTip>Delete</Button.ToolTip>
