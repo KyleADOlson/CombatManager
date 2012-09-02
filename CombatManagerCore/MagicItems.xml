@@ -29151,7 +29151,7 @@
     <id>1095</id>
   </MagicItem>
   <MagicItem>
-    <Name>ELIXIR OF DARKSIGHT</Name>
+    <Name>Elixir of Darksight</Name>
     <Aura>moderate transmutation</Aura>
     <CL>6</CL>
     <Slot>none</Slot>
@@ -29162,7 +29162,7 @@
     <Cost>600 gp</Cost>
     <Group>Wondrous Item</Group>
     <Source>Advanced Race Guide</Source>
-    <FullText>&lt;link rel="stylesheet"href="PF.css"&gt;&lt;div class="heading"&gt;&lt;p class="alignleft"&gt;ELIXIR OF DARKSIGHT&lt;/p&gt;&lt;div style="clear: both;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;Aura &lt;/b&gt;moderate transmutation; &lt;b&gt;CL &lt;/b&gt;6th&lt;/h5&gt;&lt;h5&gt;&lt;b&gt;Slot &lt;/b&gt;none; &lt;b&gt;Price &lt;/b&gt;1,200 gp; &lt;b&gt;Weight &lt;/b&gt;-&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;DESCRIPTION&lt;/b&gt;&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h4&gt;&lt;p&gt;This dark, syrupy draught doubles the range of the drinker's &lt;i&gt;darkvision&lt;/i&gt; and also enables her to see through &lt;i&gt;deeper darkness&lt;/i&gt; when using &lt;i&gt;darkvision&lt;/i&gt;. The effects last for 1 hour.&lt;/p&gt;&lt;/h4&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;CONSTRUCTION&lt;/b&gt;&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;Requirements &lt;/b&gt;Craft Wondrous Item, &lt;i&gt;darkvision&lt;/i&gt;, &lt;i&gt;deeper darkness&lt;/i&gt;; &lt;b&gt;Cost &lt;/b&gt;600 gp&lt;/h5&gt;&lt;/div&gt;</FullText>
+    <FullText>&lt;link rel="stylesheet"href="PF.css"&gt;&lt;div class="heading"&gt;&lt;p class="alignleft"&gt;Elixir of Darksight&lt;/p&gt;&lt;div style="clear: both;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;Aura &lt;/b&gt;moderate transmutation; &lt;b&gt;CL &lt;/b&gt;6th&lt;/h5&gt;&lt;h5&gt;&lt;b&gt;Slot &lt;/b&gt;none; &lt;b&gt;Price &lt;/b&gt;1,200 gp; &lt;b&gt;Weight &lt;/b&gt;-&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;DESCRIPTION&lt;/b&gt;&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h4&gt;&lt;p&gt;This dark, syrupy draught doubles the range of the drinker's &lt;i&gt;darkvision&lt;/i&gt; and also enables her to see through &lt;i&gt;deeper darkness&lt;/i&gt; when using &lt;i&gt;darkvision&lt;/i&gt;. The effects last for 1 hour.&lt;/p&gt;&lt;/h4&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;CONSTRUCTION&lt;/b&gt;&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;Requirements &lt;/b&gt;Craft Wondrous Item, &lt;i&gt;darkvision&lt;/i&gt;, &lt;i&gt;deeper darkness&lt;/i&gt;; &lt;b&gt;Cost &lt;/b&gt;600 gp&lt;/h5&gt;&lt;/div&gt;</FullText>
     <MinorArtifactFlag>0</MinorArtifactFlag>
     <MajorArtifactFlag>0</MajorArtifactFlag>
     <Abjuration>0</Abjuration>
@@ -29179,7 +29179,7 @@
     <id>1096</id>
   </MagicItem>
   <MagicItem>
-    <Name>ROD OF DWARVEN MIGHT</Name>
+    <Name>Rod of Dwarven Might</Name>
     <Aura>strong transmutation</Aura>
     <CL>19</CL>
     <Slot>none</Slot>
@@ -29190,7 +29190,7 @@
     <Cost>40,000 gp</Cost>
     <Group>Rod</Group>
     <Source>Advanced Race Guide</Source>
-    <FullText>&lt;link rel="stylesheet"href="PF.css"&gt;&lt;div class="heading"&gt;&lt;p class="alignleft"&gt;ROD OF DWARVEN MIGHT&lt;/p&gt;&lt;div style="clear: both;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;Aura &lt;/b&gt;strong transmutation; &lt;b&gt;CL &lt;/b&gt;19th&lt;/h5&gt;&lt;h5&gt;&lt;b&gt;Slot &lt;/b&gt;none; &lt;b&gt;Price &lt;/b&gt;80,000 gp; &lt;b&gt;Weight &lt;/b&gt;10 lbs.&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;DESCRIPTION&lt;/b&gt;&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h4&gt;&lt;p&gt;This dwarven version of the more famous &lt;i&gt;rod of lordly might&lt;/i&gt; has no spell-like powers; however, when wielded by a dwarf, it increases all AC, attack roll, CMD, CMB, and saving throw bonuses from a dwarf's racial traits by +1. The rod shares the mundane powers of a &lt;i&gt;rod of lordly might&lt;/i&gt;, but its magical weapon forms are tailored to dwarven preferences.  &lt;ul&gt;&lt;li&gt; In its normal form, the rod can be used as a &lt;i&gt;+1 returning light hammer&lt;/i&gt;.  &lt;li&gt; When button 1 is pushed, the rod becomes a &lt;i&gt;+3 dwarven longhammer&lt;/i&gt;.  &lt;li&gt; When button 2 is pushed, the rod becomes a &lt;i&gt;+4 dwarven waraxe&lt;/i&gt;.  &lt;li&gt; When button 3 is pushed, the rod becomes a &lt;i&gt;+2 light crossbow&lt;/i&gt; or &lt;i&gt;+2 heavy crossbow&lt;/i&gt;.&lt;/ul&gt;&lt;/p&gt;&lt;/h4&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;CONSTRUCTION&lt;/b&gt;&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;Requirements &lt;/b&gt;Craft Magic Arms and Armor, Craft Rod, &lt;i&gt;bull's strength&lt;/i&gt;, &lt;i&gt;telekinesis&lt;/i&gt;, creator must be a dwarf; &lt;b&gt;Cost &lt;/b&gt;40,000 gp&lt;/h5&gt;&lt;/div&gt;</FullText>
+    <FullText>&lt;link rel="stylesheet"href="PF.css"&gt;&lt;div class="heading"&gt;&lt;p class="alignleft"&gt;Rod of Dwarven Might&lt;/p&gt;&lt;div style="clear: both;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;Aura &lt;/b&gt;strong transmutation; &lt;b&gt;CL &lt;/b&gt;19th&lt;/h5&gt;&lt;h5&gt;&lt;b&gt;Slot &lt;/b&gt;none; &lt;b&gt;Price &lt;/b&gt;80,000 gp; &lt;b&gt;Weight &lt;/b&gt;10 lbs.&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;DESCRIPTION&lt;/b&gt;&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h4&gt;&lt;p&gt;This dwarven version of the more famous &lt;i&gt;rod of lordly might&lt;/i&gt; has no spell-like powers; however, when wielded by a dwarf, it increases all AC, attack roll, CMD, CMB, and saving throw bonuses from a dwarf's racial traits by +1. The rod shares the mundane powers of a &lt;i&gt;rod of lordly might&lt;/i&gt;, but its magical weapon forms are tailored to dwarven preferences.  &lt;ul&gt;&lt;li&gt; In its normal form, the rod can be used as a &lt;i&gt;+1 returning light hammer&lt;/i&gt;.  &lt;li&gt; When button 1 is pushed, the rod becomes a &lt;i&gt;+3 dwarven longhammer&lt;/i&gt;.  &lt;li&gt; When button 2 is pushed, the rod becomes a &lt;i&gt;+4 dwarven waraxe&lt;/i&gt;.  &lt;li&gt; When button 3 is pushed, the rod becomes a &lt;i&gt;+2 light crossbow&lt;/i&gt; or &lt;i&gt;+2 heavy crossbow&lt;/i&gt;.&lt;/ul&gt;&lt;/p&gt;&lt;/h4&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;CONSTRUCTION&lt;/b&gt;&lt;/h5&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div&gt;&lt;h5&gt;&lt;b&gt;Requirements &lt;/b&gt;Craft Magic Arms and Armor, Craft Rod, &lt;i&gt;bull's strength&lt;/i&gt;, &lt;i&gt;telekinesis&lt;/i&gt;, creator must be a dwarf; &lt;b&gt;Cost &lt;/b&gt;40,000 gp&lt;/h5&gt;&lt;/div&gt;</FullText>
     <MinorArtifactFlag>0</MinorArtifactFlag>
     <MajorArtifactFlag>0</MajorArtifactFlag>
     <Abjuration>0</Abjuration>
