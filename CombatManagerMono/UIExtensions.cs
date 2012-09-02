@@ -186,6 +186,16 @@ namespace CombatManagerMono
         {
             return new RectangleF(new Point(0, 0), size);
         }
+
+        public static PointF Center(this RectangleF rect)
+        {
+            return new PointF(rect.Height/2.0f, rect.Width/2.0f);
+        }
+
+        public static PointF Add(this PointF p1, PointF p2)
+        {
+            return new PointF(p1.X + p2.X, p1.Y + p2.Y);
+        }
 		
 	}
 }

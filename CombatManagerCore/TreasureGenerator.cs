@@ -288,6 +288,37 @@ namespace CombatManager
             MajorWondrous = 0x10000
         }
 
+        public static String RandomItemString(RandomItemType type)
+        {
+            switch (type)
+            {
+            case RandomItemType.Potion:
+                return "Potion";
+            case RandomItemType.Scroll:
+                return "Scroll";
+            case RandomItemType.MinorWondrous:
+                return "Wondrous Item";
+            case RandomItemType.MagicalArmor:
+                return "Armor";
+            case RandomItemType.MagicalWeapon:
+                return "Weapon";
+            case RandomItemType.Wand:
+                return "Wand";
+            case RandomItemType.Ring:
+                return "Ring";
+            case RandomItemType.MediumWondrous:
+                return "Wondrous Item";
+            case RandomItemType.Rod:
+                return "Rod";
+            case RandomItemType.Staff:
+                return "Staff";
+            case RandomItemType.MajorWondrous:
+                return "Wondrous Item";
+
+            }
+            return "";
+        }
+
 
         private static void LoadRandomItemChart()
         {

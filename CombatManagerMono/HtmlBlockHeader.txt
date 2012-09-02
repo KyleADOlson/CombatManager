@@ -54,6 +54,11 @@ font-size:16px;
 {
 font-style:italic;
 }
+.itemspace
+{
+font-style:italic;
+text-decoration:underline;
+}
 .description
 {
 font-family:"Times New Roman",Georgia,Serif;

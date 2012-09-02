@@ -387,6 +387,15 @@ namespace CombatManagerMono
             {
                 return UITableViewCellEditingStyle.Delete;
             }
+
+            public MonsterEditorStatisticsPage State
+            {
+                get
+                {
+                    return state;
+                }
+            }
+
         }
 	}
 }

@@ -60,6 +60,23 @@ namespace CombatManagerMono
                 
         }
 
+        public static void StyleSideTab(this GradientButton button, bool selected)
+        {
+            button.Border = 2;
+                
+            button.CornerRadii = new float[] {16, 4, 0, 0};              
+            if (selected)
+            {
+                button.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
+            }
+            else
+            {
+                
+                button.Gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDarker);
+            }
+            button.BorderColor = 0xFFFFFFFF.UIColor();                
+        }
+
         public static void StyleStandardButton(this GradientButton b)
         {
             
@@ -70,6 +87,27 @@ namespace CombatManagerMono
             b.DisabledGradient = new GradientHelper(0xFF999999.UIColor(), 0xFF555555.UIColor());
         }
 
+        public static void MakeCheckButtonStyle(this GradientButton button, bool isChecked)
+        {
+
+            button.HorizontalAlignment = UIControlContentHorizontalAlignment.Left;
+            button.ImageEdgeInsets = new UIEdgeInsets(0, 6, 0, 12);
+            UIEdgeInsets s = button.TitleEdgeInsets;
+            s.Left = 12;
+            button.TitleEdgeInsets = s;
+
+            if (isChecked)
+            {
+                button.SetImage(UIImage.FromFile("Images/External/CheckBox.png"), UIControlState.Normal);
+
+            }
+            else
+            {
+                
+                button.SetImage(UIImage.FromFile("Images/External/CheckBoxUnchecked.png"), UIControlState.Normal);
+
+            }
+        }
 
     }
 }
