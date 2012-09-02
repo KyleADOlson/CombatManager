@@ -28,6 +28,7 @@ using CombatManager;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Drawing;
+using MonoTouch.CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -173,8 +174,9 @@ namespace CombatManagerMono
             {
                 c.CurrentInitiative = 0;
                 _CombatState.Round = null;
+
             }
-            _ListView.ReloadData();
+            //_ListView.ReloadData();
         }
 
 		void HandleMoveDownButtonTouchUpInside (object sender, EventArgs e)
@@ -203,8 +205,9 @@ namespace CombatManagerMono
 		
 		void HandleSortButtonTouchUpInside (object sender, EventArgs e)
 		{
+            ObservableCollection<Character> oldList = new ObservableCollection<Character>(CombatState.CombatList);
 			CombatState.SortCombatList(true, true);
-			ReloadList();
+            ReloadList(oldList);
 			MainUI.SaveCombatState();
 		}
 
@@ -242,27 +245,55 @@ namespace CombatManagerMono
 			MainUI.SaveCombatState();
 		}
 
-        void ReloadListRows(IEnumerable<int> indexes)
-        {
-
-            _ListView.ReloadRows((from a in indexes where a >= 0 select NSIndexPath.FromRowSection(a, 0)).ToArray(),
-                                 UITableViewRowAnimation.None);
-           
-        }
 
 		void HandleRollButtonTouchUpInside (object sender, EventArgs e)
 		{
+            ObservableCollection<Character> oldList = new ObservableCollection<Character>(CombatState.CombatList);
 			CombatState.RollInitiative();
 			CombatState.SortCombatList();
-			ReloadList();
+			ReloadList(oldList);
 			MainUI.SaveCombatState();
+
 		}
 		
-		void ReloadList()
+        void ReloadList()
+        {
+            ReloadList(null);
+        }
+
+		void ReloadList(ObservableCollection<Character> oldList)
 		{
 			Character ch = _SelectedCharacter;
-			_ListView.ReloadData();
 			
+            if (oldList == null)
+            {
+                _ListView.ReloadData();
+            }
+            else
+            {
+                List<int> indexes = new List<int>();
+
+                for (int i=0; i<_CombatState.CombatList.Count; i++)
+                {
+
+                    if (i>= oldList.Count || _CombatState.CombatList[i] != oldList[i])
+                    {
+                        indexes.Add(i);
+                    }
+                }
+
+                ReloadListRows(indexes);
+                if (oldList.Count > _CombatState.CombatList.Count)
+                {
+                    indexes = new List<int>();
+                    for (int i=_CombatState.CombatList.Count; i<oldList.Count; i++)
+                    {
+                        indexes.Add(i);
+                    }
+                    DeleteListRows(indexes);
+                }
+            }
+
 			int index = _CombatState.CombatList.IndexOf(ch);
 			
 			if (index >= 0)
@@ -272,6 +303,22 @@ namespace CombatManagerMono
 			}
 			
 		}
+
+        void ReloadListRows(IEnumerable<int> indexes)
+        {
+
+            _ListView.ReloadRows((from a in indexes where a >= 0 select NSIndexPath.FromRowSection(a, 0)).ToArray(),
+                                 UITableViewRowAnimation.None);
+           
+        }
+
+        void DeleteListRows(IEnumerable<int> indexes)
+        {
+
+            _ListView.DeleteRows((from a in indexes where a >= 0 select NSIndexPath.FromRowSection(a, 0)).ToArray(),
+                                 UITableViewRowAnimation.None);
+           
+        }
 		
 		public CombatState CombatState
 		{

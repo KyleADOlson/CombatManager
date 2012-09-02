@@ -608,7 +608,9 @@
     <Content Include="Default-Portrait%402x.png" />
     <Content Include="Default-Landscape%402x.png" />
     <Content Include="App.png" />
-    <Content Include="RetinaApp.png" />
+    <Content Include="RetinaApp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="RetinaSettings.png" />
     <Content Include="RetinaSpotlight.png" />
     <Content Include="..\CombatManager\images\LeftArrow-24.png">
@@ -652,6 +654,48 @@
     </Content>
     <Content Include="..\CombatManager\images\mail-16%402x.png">
       <Link>Images\External\mail-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d12-16.png">
+      <Link>Images\External\d12-16.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d12-16%402x.png">
+      <Link>Images\External\d12-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d20p-16.png">
+      <Link>Images\External\d20p-16.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d20p-16%402x.png">
+      <Link>Images\External\d20p-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d4-16.png">
+      <Link>Images\External\d4-16.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d4-16%402x.png">
+      <Link>Images\External\d4-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d6-16.png">
+      <Link>Images\External\d6-16.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d6-16%402x.png">
+      <Link>Images\External\d6-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d10-16.png">
+      <Link>Images\External\d10-16.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d10-16%402x.png">
+      <Link>Images\External\d10-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d8-16.png">
+      <Link>Images\External\d8-16.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d8-16%402x.png">
+      <Link>Images\External\d8-16%402x.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d100-16.png">
+      <Link>Images\External\d100-16.png</Link>
+    </Content>
+    <Content Include="..\CombatManager\images\d100-16%402x.png">
+      <Link>Images\External\d100-16%402x.png</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>

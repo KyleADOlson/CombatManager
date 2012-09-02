@@ -41,6 +41,9 @@ namespace CombatManagerMono
 		
 		object _Data;
 
+        private UIImage _BonusImage;
+        private RectangleF _BonusImageRect;
+
 		
 		public GradientButton (IntPtr p) : base(p)
 		{
@@ -168,6 +171,14 @@ namespace CombatManagerMono
 				cr.SetLineWidth(_border);
 				cr.StrokePath();	
 			}
+
+            if (BonusImage != null)
+            {
+                cr.TranslateCTM(0, BonusImage.Size.Height + _BonusImageRect.Y * 2.0f);
+                cr.ScaleCTM( 1.0f, -1.0f);
+
+                cr.DrawImage(_BonusImageRect, _BonusImage.CGImage);
+            }
 			
 		}
 		
@@ -264,6 +275,41 @@ namespace CombatManagerMono
 				_Data = value;
 			}
 		}
+
+        public UIImage BonusImage
+        {
+            get
+            {
+                return _BonusImage;
+            }
+            set
+            {
+                if (_BonusImage != value)
+                {
+                    _BonusImage = value;
+                    SetNeedsDisplay();
+                }
+            }
+        }
+
+        public RectangleF BonusImageRect
+        {
+            get
+            {
+                return _BonusImageRect;
+            }
+            set
+            {
+                if (_BonusImageRect != value)
+                {
+                    _BonusImageRect = value;
+                    if (_BonusImage != null)
+                    {
+                        SetNeedsDisplay();
+                    }
+                }
+            }
+        }
 
         public bool[] SkipCorners
         {

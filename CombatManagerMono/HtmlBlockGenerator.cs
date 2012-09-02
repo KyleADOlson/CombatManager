@@ -298,16 +298,22 @@ namespace CombatManagerMono
 			return builder.CreateHeader(name, null);
 		}
 		
-	    public static StringBuilder CreateHeader(this StringBuilder builder, string name, string extra)
+        public static StringBuilder CreateHeader(this StringBuilder builder, string name, string extra)
+        {
+            return builder.CreateHeader(name, extra, "h1");
+
+        }
+
+	    public static StringBuilder CreateHeader(this StringBuilder builder, string name, string extra, string header)
 		{
 			if (extra == null)
 			{
-				builder.AppendEscapedTag("h1", name);
+				builder.AppendEscapedTag(header, name);
 				
 			}
 			else
 			{
-				builder.AppendOpenTag("h1");
+				builder.AppendOpenTag(header);
 				
 				builder.AppendOpenTagWithClass ("table", "headertable");
 				
@@ -322,10 +328,9 @@ namespace CombatManagerMono
 				
 				builder.AppendCloseTag ("table");
 				
-				builder.AppendCloseTag("h1");
+				builder.AppendCloseTag(header);
 			}
-			
-			return builder;
+						return builder;
 		}
 		
 		public static bool NotNullString(this string str)
@@ -368,7 +373,25 @@ namespace CombatManagerMono
             }
 
            return blocks;
-        }		
+        }
+
+        public static void AppendImg(this StringBuilder builder, string img)
+        {
+
+            String text = "<img src=\"" + img + "\"/>";
+
+            builder.Append(text);
+
+        }
+
+        public static void AppendSmallIcon(this StringBuilder builder, string name)
+        {
+
+            String text = "<img src=\"Images/External/" + name + "-16.png\"/>";
+
+            builder.Append(text);
+
+        }
 		
 	}
 	

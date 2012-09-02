@@ -50,6 +50,17 @@ namespace CombatManager
         [DataMember]
         public int Mod { get; set; }
 
+        public static RollResult operator+ (RollResult a, RollResult r)
+        {
+            RollResult nr = new RollResult();
+            nr.Total = a.Total + r.Total;
+            nr.Rolls.AddRange(a.Rolls);
+            nr.Rolls.AddRange(r.Rolls);
+            nr.Mod = a.Mod + r.Mod;
+
+            return nr;
+        }
+
     }
 
 
