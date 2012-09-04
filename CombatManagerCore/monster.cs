@@ -10049,6 +10049,24 @@ namespace CombatManager
             return 0;
         }
 
+        public static string GetSaveText(SaveType type)
+        {
+            if (type == SaveType.Fort)
+            {
+                return "Fort";
+            }
+            else if (type == SaveType.Ref)
+            {
+                return "Ref";
+            }
+            else if (type == SaveType.Will)
+            {
+                return "Will";
+            }
+
+            return "";
+        }
+
         private void SetStatDirect(Stat stat, int? value)
         {
             switch (stat)

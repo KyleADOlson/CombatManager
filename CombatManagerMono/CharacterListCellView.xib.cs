@@ -171,25 +171,42 @@ namespace CombatManagerMono
 			if (item.Action != CharacterActionType.None)
 			{
 				CharacterActionResult res = CharacterActions.TakeAction(_CombatState, item.Action, _Character, new List<Character>() {_Character}, item.Tag);
-				if (res == CharacterActionResult.NeedConditionDialog)
-				{
+				switch (res)
+                {
+                case CharacterActionResult.NeedConditionDialog:
+				
 					_ConditionView = new ConditionViewController();
 					_ConditionView.ConditionApplied += ConditionApplied;
 					MainUI.MainView.AddSubview(_ConditionView.View);
-				}
-				else if (res == CharacterActionResult.NeedNotesDialog)
-				{
+                    break;
+                case CharacterActionResult.NeedNotesDialog:
+				
 					_TextBoxDialog = new TextBoxDialog();
 					_TextBoxDialog.HeaderText = "Notes";
 					_TextBoxDialog.Value = _Character.Notes;
 					MainUI.MainView.AddSubview(_TextBoxDialog.View);
 					_TextBoxDialog.OKClicked += Handle_NotesTextBoxDialogOKClicked;
-				}
-				else if (res == CharacterActionResult.NeedMonsterEditorDialog)
-				{
+                    break;
+                case CharacterActionResult.NeedMonsterEditorDialog:
+				
 					_MonsterEditorDialog = new MonsterEditorDialog(Character.Monster);
 					MainUI.MainView.AddSubview(_MonsterEditorDialog.View);
-				}
+                    break;
+                case CharacterActionResult.RollAttack:
+                    DieRollerView.Roller.RollAttack((Attack)item.Tag, _Character);
+                    break;
+                case CharacterActionResult.RollAttackSet:
+                    DieRollerView.Roller.RollAttackSet((AttackSet)item.Tag, _Character);
+                    break;
+                case CharacterActionResult.RollSave:
+                    DieRollerView.Roller.RollSave((Monster.SaveType)item.Tag, _Character);
+                    break;
+                    
+                case CharacterActionResult.RollSkill:
+                    var sks = (Tuple<string, string>)item.Tag;
+                    DieRollerView.Roller.RollSkill(sks.Item1, sks.Item2, _Character);
+                    break;
+                }
 			}
 		}
 
@@ -242,6 +259,11 @@ namespace CombatManagerMono
 				{
 					AddActionItems(it.SubItems, p.Subitems);
 				}
+
+                if (it.Action == CharacterActionType.None && it.SubItems == null)
+                {
+                    p.Disabled = true;
+                }
 			}
 		}
 

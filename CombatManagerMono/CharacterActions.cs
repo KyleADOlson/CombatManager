@@ -21,6 +21,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CombatManager;
 
 namespace CombatManagerMono
@@ -53,9 +54,15 @@ namespace CombatManagerMono
 		MoveBeforeInitiative,
 		MoveAfterInitiative,
 		Delay,
-		Ready
+		Ready,
+        RollAttackSet,
+        RollAttack,
+        RollSave,
+        RollSkill
+
 		
 	}
+
 	
 	public enum CharacterActionResult
 	{
@@ -64,6 +71,10 @@ namespace CombatManagerMono
 		NeedAttacksDialog,
 		NeedNotesDialog,
 		NeedMonsterEditorDialog,
+        RollAttack,
+        RollAttackSet,
+        RollSave,
+        RollSkill
 	}
 	
 	public class CharacterActionItem
@@ -108,7 +119,8 @@ namespace CombatManagerMono
 		}
 	}
 	
-	public static class CharacterActions
+	public static class 
+        CharacterActions
 	{
 		
 		
@@ -146,7 +158,7 @@ namespace CombatManagerMono
 			items.Add(new CharacterActionItem("Notes", "notes", CharacterActionType.EditNotes));
 			
 			items.Add(new CharacterActionItem());
-			//items.Add(new CharacterActionItem("Roll", "d20"));
+			items.Add(new CharacterActionItem("Roll", "d20", GetRollItems(ch)));
 			items.Add(new CharacterActionItem("Initiative", "sort", GetInitiativeItems(ch, selCh)));
 			items.Add(new CharacterActionItem("Clone", "clone", CharacterActionType.Clone));
 			if (ch.IsMonster)
@@ -177,7 +189,91 @@ namespace CombatManagerMono
 		
 		
 			return items;
-		}
+		}    
+
+        public static List<CharacterActionItem> GetRollItems(Character ch)
+        {
+            
+            
+            List<CharacterActionItem> items = new List<CharacterActionItem>();
+            
+            items.AddRange(GetAttackItems(ch));
+
+            items.Add (new CharacterActionItem());
+
+            items.AddRange(GetSaveItems(ch));
+
+            items.Add (new CharacterActionItem());
+
+            items.AddRange (GetSkillItems(ch));
+        
+        
+            return items;
+        }
+
+        public static List<CharacterActionItem> GetSaveItems(Character ch)
+        {
+            
+            List<CharacterActionItem> items = new List<CharacterActionItem>();
+            items.Add(new CharacterActionItem("Fort", "d20p", CharacterActionType.RollSave, Monster.SaveType.Fort));
+            items.Add(new CharacterActionItem("Ref", "d20p", CharacterActionType.RollSave, Monster.SaveType.Ref));
+            items.Add(new CharacterActionItem("Will", "d20p", CharacterActionType.RollSave, Monster.SaveType.Will));
+            return items;
+        
+        }
+
+        public static List<CharacterActionItem> GetAttackItems(Character ch)
+        {
+          
+            List<CharacterActionItem> items = new List<CharacterActionItem>();
+
+            foreach (AttackSet atkSet in ch.Monster.MeleeAttacks)
+            {
+                CharacterActionItem item = new CharacterActionItem(atkSet.ToString(), "sword", CharacterActionType.RollAttackSet, atkSet);
+                items.Add(item);
+            }
+
+            foreach (Attack atk in ch.Monster.RangedAttacks)
+            {
+                CharacterActionItem item = new CharacterActionItem(atk.ToString(), "bow", CharacterActionType.RollAttack, atk);
+                items.Add (item);
+            }
+            
+            return items;
+
+        }
+
+        public static List<CharacterActionItem> GetSkillItems(Character ch)
+        {
+            
+            List<CharacterActionItem> items = new List<CharacterActionItem>();
+
+            foreach (string skill in from a in Monster.SkillsList orderby a.Key select a.Key)
+            {             
+                Monster.SkillInfo info = Monster.SkillsDetails[skill];
+
+
+                if (info.Subtypes != null)
+                {
+                    List<CharacterActionItem> subitems = new List<CharacterActionItem>();
+                    foreach (string subtype in info.Subtypes)
+                    {
+                        subitems.Add (new CharacterActionItem(subtype, "d20p", CharacterActionType.RollSkill, 
+                                                              new Tuple<string, string>(skill, subtype)));
+                    }
+                    var ci = new CharacterActionItem(skill, "d20p", subitems);
+                    items.Add (ci);
+
+                }
+                else
+                {
+                    items.Add(new CharacterActionItem(skill, "d20p", CharacterActionType.RollSkill, new Tuple<string, string>(skill, null)));
+                }
+            }
+
+
+            return items;
+        }
 		
 		public static List<CharacterActionItem> GetInitiativeItems(Character ch, Character selectedChar)
 		{
@@ -362,6 +458,18 @@ namespace CombatManagerMono
 			case CharacterActionType.EditMonster:
 				res = CharacterActionResult.NeedMonsterEditorDialog;
 				break;
+            case CharacterActionType.RollAttack:
+                res = CharacterActionResult.RollAttack;
+                break;
+            case CharacterActionType.RollAttackSet:
+                res = CharacterActionResult.RollAttackSet;
+                break;
+            case CharacterActionType.RollSave:
+                res = CharacterActionResult.RollSave;
+                break;
+            case CharacterActionType.RollSkill:
+                res = CharacterActionResult.RollSkill;
+                break;
 			}
 			return res;
 		}

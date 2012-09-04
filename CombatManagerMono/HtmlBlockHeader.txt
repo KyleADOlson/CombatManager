@@ -14,6 +14,14 @@ font-family:HelveticaNeue, Arial, sans-serif;
 font-size:20px;
 padding: 4px;
 }
+h2
+{
+color:White;
+background-color:#A63E3C;
+font-family:HelveticaNeue, Arial, sans-serif;
+font-size:14px;
+padding: 2px;
+}
 p
 {
 font-size:14px;
@@ -59,10 +67,30 @@ font-style:italic;
 font-style:italic;
 text-decoration:underline;
 }
+.weaponheader
+{
+text-decoration:underline;
+}
+.resultdie
+{
+font-weight:bold;
+text-decoration:underline;
+}
 .description
 {
 font-family:"Times New Roman",Georgia,Serif;
 }
+.critical
+{
+color:White;
+background-color:#A63E3C;
+}
+.critfail
+{
+color:White;
+background-color:#000000;
+}
+
 </style>
 </head>
 <body>

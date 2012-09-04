@@ -112,10 +112,11 @@ namespace CombatManagerMono
 			_MonsterList.Frame = loc;
 			
 			loc.X += width + margin;
-            loc.Height = Bounds.Height/2;
+            loc.Height = Bounds.Height*2.0f/5.0f;
             _MonsterView.Frame = loc;
 
-            loc.Y += Bounds.Height/2;
+            loc.Y = _MonsterView.Frame.Bottom;
+            loc.Height = Bounds.Height - loc.Y;
             _DieView.Frame = loc;
 
 

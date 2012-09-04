@@ -9,6 +9,7 @@ using CombatManager;
 using MonoTouch.CoreGraphics;
 using System.Text;
 using MonoTouch.Foundation;
+using System.IO;
 
 
 namespace CombatManagerMono
@@ -19,18 +20,34 @@ namespace CombatManagerMono
         List<UIButton> _DieButtons;
         GradientButton _RollButton;
         GradientButton _ClearButton;
+        GradientButton _ClearHtmlButton;
         GradientView _BottomView;
         GradientButton _DieTextButton;
+        UILabel _TitleLabel;
 
         string _DieText;
 
         TextBoxDialog _TBDialog;
 
-        List<RollResult> _Results = new List<RollResult>();
+        List<Object> _Results = new List<Object>();
 
+        Dictionary<UIGestureRecognizer, GradientButton> _Recs = new Dictionary<UIGestureRecognizer, GradientButton>();
+
+        public static DieRollerView Roller {get; set;}
 
         public DieRollerView ()
         {
+            Roller = this;
+
+            BackgroundColor = CMUIColors.PrimaryColorDark;
+
+            _TitleLabel = new UILabel();
+            _TitleLabel.Text = "Die Roller";
+            _TitleLabel.BackgroundColor = UIColor.Clear;
+            _TitleLabel.TextColor = UIColor.White;
+            _TitleLabel.Font = UIFont.BoldSystemFontOfSize(17);
+
+
             _OutputView = new UIWebView();
 
             _RollButton = new GradientButton();
@@ -40,21 +57,36 @@ namespace CombatManagerMono
             _RollButton.ImageEdgeInsets = new UIEdgeInsets(0, 0, 0, 7);
             _RollButton.CornerRadius = 0;
             _RollButton.Gradient = new GradientHelper(CMUIColors.SecondaryColorADarker, CMUIColors.SecondaryColorADark);
+            _RollButton.Font = UIFont.BoldSystemFontOfSize(17);
 
             _ClearButton = new GradientButton();
             _ClearButton.TouchUpInside += ClearButtonClicked;
             _ClearButton.SetText("Clear");
             _ClearButton.CornerRadius = 0;
+            _ClearButton.Font = UIFont.BoldSystemFontOfSize(17);
             _ClearButton.Gradient = new GradientHelper(CMUIColors.SecondaryColorBDarker, CMUIColors.SecondaryColorBDark);
 
+            _ClearHtmlButton = new GradientButton();
+            _ClearHtmlButton.TouchUpInside += _ClearHtmlButtonClicked;
+            _ClearHtmlButton.SetText("Reset");
+            _ClearHtmlButton.SetImage(UIExtensions.GetSmallIcon("reset"), UIControlState.Normal);
+            _ClearHtmlButton.ImageEdgeInsets = new UIEdgeInsets(0, 0, 0, 7);
+            _ClearHtmlButton.Font = UIFont.BoldSystemFontOfSize(17);
+            _ClearHtmlButton.CornerRadius = 0;
+            _ClearHtmlButton.Gradient = new GradientHelper(CMUIColors.SecondaryColorADarker, CMUIColors.SecondaryColorADark);
+             
             _BottomView = new GradientView();
             _BottomView.ClipsToBounds = true;
             _BottomView.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker);
 
+            Add (_TitleLabel);
             Add (_OutputView);
             Add (_BottomView);
+            Add (_ClearHtmlButton);
             
             _BottomView.AddSubviews(_RollButton, _ClearButton);
+
+            BringSubviewToFront(_BottomView);
 
             _DieButtons = new List<UIButton>();
 
@@ -66,8 +98,41 @@ namespace CombatManagerMono
                 b.Tag = v;
                 b.TouchUpInside += DieClicked;
 
+                UIImage im = null;
+
+                switch (v)
+                {
+                case 4:
+                case 6:
+                case 8:
+                case 10:
+                case 12: 
+                case 100:
+                    im = UIExtensions.GetSmallIcon("d" + v);
+                    break;                
+                case 20:
+                    im = UIExtensions.GetSmallIcon("d20p");
+                    break;
+                }
+
+                if (im != null)
+                {
+                    b.BonusImage = im;
+                    b.ContentEdgeInsets = new UIEdgeInsets(25, 0, 0, 0);
+                }
+
+
                 _BottomView.AddSubview(b);
                 _DieButtons.Add(b);
+
+                UISwipeGestureRecognizer rec = new UISwipeGestureRecognizer();
+                rec.Direction = UISwipeGestureRecognizerDirection.Up | UISwipeGestureRecognizerDirection.Down;
+                rec.Delegate = new SwipeGestureDelegate();
+                rec.AddTarget(this, new MonoTouch.ObjCRuntime.Selector("HandleDieSwipe"));
+                _Recs[rec] = b;
+
+                b.AddGestureRecognizer(rec);
+
             }
 
             _DieTextButton = new GradientButton();
@@ -78,11 +143,96 @@ namespace CombatManagerMono
 
         }
 
+        void _ClearHtmlButtonClicked (object sender, EventArgs e)
+        {
+            _Results.Clear();
+            RenderResults();
+        }
+
+        String DieImageName(int die)
+        {
+            switch (die)
+            {
+            case 4:
+            case 6:
+            case 8:
+            case 10:
+            case 12: 
+            case 100:
+                return "d" + die;    
+            case 20:
+                return "d20p";
+            }
+            return null;
+
+        }
+
+
+        class SwipeGestureDelegate : UIGestureRecognizerDelegate
+        {
+            public override bool ShouldReceiveTouch (UIGestureRecognizer recognizer, UITouch touch)
+            {
+                return true;
+            }
+        }
+
+        [Export("HandleDieSwipe")]
+        void HandleDieSwipe(UISwipeGestureRecognizer rec)
+        {
+            GradientButton b =  _Recs[rec];
+            _BottomView.BringSubviewToFront(b);
+
+            int value = b.Tag;
+
+            DieRoll r = DieRoll.FromString("1d" + value);
+
+            SlideView(b, true);
+
+            AddRoll (r);
+        }
+
+        void SlideView (UIView b, bool up)
+        {
+            UIView.Animate(.1f, 0f,
+                            0,
+                           () => {b.Layer.AffineTransform = CGAffineTransform.MakeTranslation(0, up?-10:10);},
+            () => {b.Layer.AffineTransform =  CGAffineTransform.MakeTranslation(0, 0);});
+
+        }
+
+        void AddRoll(String description, DieRoll r)
+        {
+
+            if (r != null)
+            {
+                RollResult res = r.Roll();
+
+                _Results.Insert(0, new Tuple<string, RollResult>(description, res));
+
+                TrimList();
+            }
+            RenderResults();
+        }
+
+        void AddRoll(DieRoll r)
+        {
+            if (r != null)
+            {
+                RollResult res = r.Roll();
+
+                _Results.Insert(0, res);
+
+                TrimList();
+            }
+            RenderResults();
+        }
+
         void DieTextButtonClicked (object sender, EventArgs e)
         {
             _TBDialog = new TextBoxDialog();
             _TBDialog.SingleLine = true;
             _TBDialog.Value = _DieText;
+            _TBDialog.HeaderText = "Die Roll";
             _TBDialog.OKClicked += (x, ex) => 
             {
                 _DieText = _TBDialog.Value;
@@ -104,6 +254,8 @@ namespace CombatManagerMono
             {
                 roll.AddDie(new DieStep(1, ((UIButton)sender).Tag)); 
             }
+            
+            SlideView((UIView)sender, false);
             _DieText = roll.Text;
             _DieTextButton.SetText(_DieText);
         }
@@ -119,17 +271,8 @@ namespace CombatManagerMono
         {
             DieRoll r = DieRoll.FromString(_DieText);
 
-            if (r != null)
-            {
-                RollResult res = r.Roll();
 
-                _Results.Insert(0, res);
-
-                while (_Results.Count > 50)
-                {
-                    _Results.RemoveAt(_Results.Count - 1);
-                }
-            }
+            AddRoll(r);
             RenderResults();
         }
 
@@ -139,50 +282,201 @@ namespace CombatManagerMono
             StringBuilder resHtml = new StringBuilder();
             resHtml.CreateHtmlHeader();
             resHtml.AppendOpenTag("p");
-            foreach (RollResult r in _Results)
+            foreach (var v in _Results)
             {
-                bool first = true;
-                foreach (DieResult dr in r.Rolls)
+                if (v is RollResult)
                 {
-                    string text;
-                    if (first)
-                    {
-                        text = dr.Result.ToString();
-                        first = false;
-                    }
-                    else
-                    {
-                        text = " " + CMStringUtilities.PlusFormatSpaceNumber(dr.Result);
-                    }
-                    resHtml.AppendHtml(text);
-                    
+                    RenderRollResult(resHtml, v as RollResult);
                 }
-                if (r.Mod != 0)
+                if (v is Tuple<string, RollResult>)
                 {
-                    resHtml.AppendHtml(r.Mod.PlusFormat());
+                    var x = v as Tuple<string, RollResult>;
+
+                    RenderRollResult(resHtml, x.Item2, true, 20, x.Item1);
                 }
-                resHtml.AppendHtml(" = ");
-                resHtml.AppendOpenTagWithClass("sp", "bolded");
-                resHtml.AppendHtml(r.Total.ToString());
-                resHtml.AppendCloseTag("sp");
-                resHtml.AppendLineBreak();
+                else if (v is AttackRollResult)
+                {
+                    RenderAttackRollResult(resHtml, v as AttackRollResult);
+                }
+                else if (v is AttackSetResult)
+                {
+                    RenderAttackSetResult(resHtml, v as AttackSetResult);
+                }
             }
             
             resHtml.AppendCloseTag("p");
 
 
             resHtml.CreateHtmlFooter();
-            _OutputView.LoadHtmlString(resHtml.ToString(), new NSUrl("http://localhost/"));
 
+            NSUrl baseUrl = new NSUrl(NSBundle.MainBundle.BundlePath, true);
+
+            _OutputView.LoadHtmlString(resHtml.ToString(), baseUrl);
+
+        }
+
+        private void AppendCharacterHeader(StringBuilder resHtml, Character ch)
+        {
+            resHtml.CreateHeader(ch.Name, null, "h2");
+        }
+
+        private void RenderAttackSetResult(StringBuilder resHtml, AttackSetResult res)
+        {
+            if (res.Character != null)
+            {
+                AppendCharacterHeader(resHtml, res.Character);
+            }
+
+            foreach (AttackRollResult ar in res.Results)
+            {
+                RenderAttackRollResult(resHtml, ar);
+            }
+        }
+
+        private void RenderAttackRollResult(StringBuilder resHtml, AttackRollResult ar)
+        {
+            if (ar.Character != null)
+            {
+                AppendCharacterHeader(resHtml, ar.Character);
+            }
+
+            resHtml.AppendOpenTagWithClass("span", "weaponheader");
+            if (ar.Attack.Weapon == null)
+            {
+                resHtml.AppendSmallIcon("sword");
+            }
+            else if (ar.Attack.Weapon.Ranged)
+            {
+                resHtml.AppendSmallIcon("bow");
+            }
+            else if (ar.Attack.Weapon.Natural)
+            {
+                resHtml.AppendSmallIcon("claw");
+            }
+            else
+            {
+                resHtml.AppendSmallIcon("sword");
+            }
+
+            resHtml.AppendHtml(ar.Name.Capitalize());
+            resHtml.AppendLineBreak();
+            resHtml.AppendCloseTag("span");
+
+            foreach (SingleAttackRoll res in ar.Rolls)
+            {
+                RenderRollResult(resHtml, res.Result, false, ar.Attack.CritRange);
+
+                resHtml.AppendHtml(" Dmg: ");
+                RenderRollResult(resHtml, res.Damage);
+
+                if (res.CritResult != null)
+                {
+                    resHtml.AppendHtml(" Crit: ");
+                    RenderRollResult(resHtml, res.CritResult, res.CritResult.Rolls[0].Result == 1);
+
+                    if (res.CritResult.Rolls[0].Result != 1)
+                    {                    
+                        resHtml.AppendHtml(" Dmg: ");
+                    }
+                    RenderRollResult(resHtml, res.CritDamage);
+                }
+
+            }
+            
+        }
+
+        private void RenderRollResult (StringBuilder resHtml, RollResult r, bool breakLine = true, int critRange = 20, string description = null)
+        {
+
+            if (description != null)
+            {
+                resHtml.AppendHtml(description);
+                resHtml.AppendSpace();
+            }
+
+            bool first = true;
+            foreach (DieResult dr in r.Rolls)
+            {
+                if (!first)
+                {
+                    if (dr.Result < 0)
+                    {
+                        resHtml.AppendHtml(" - ");
+                    }
+                    else
+                    {
+                        resHtml.AppendHtml(" + ");
+                    }
+
+                }
+
+                resHtml.Append (DieHtml(dr.Die));
+
+                string text;
+                text = dr.Result.ToString();
+                resHtml.AppendSpace();
+                if (dr.Die == 20 && dr.Result >= critRange)
+                {
+                    resHtml.AppendOpenTagWithClass("span", "critical");
+                    resHtml.AppendSpace();
+                    resHtml.AppendHtml(text);
+                    resHtml.AppendSpace();
+                    resHtml.AppendCloseTag("span");
+                    resHtml.AppendSpace();
+                }
+                else if (dr.Die == 20 && dr.Result == 1)
+                {
+                    resHtml.AppendOpenTagWithClass("span", "critfail");
+                    resHtml.AppendSpace();
+                    resHtml.AppendHtml(text);
+                    resHtml.AppendSpace();
+                    resHtml.AppendCloseTag("span");
+                    resHtml.AppendSpace();
+                }
+                else
+                {                    
+                    resHtml.AppendHtml(text);
+                }
+                first = false;
+                
+            }
+            if (r.Mod != 0)
+            {
+                resHtml.AppendHtml(r.Mod.PlusFormat());
+            }
+            resHtml.AppendHtml(" = ");
+            resHtml.AppendOpenTagWithClass("sp", "bolded");
+            resHtml.AppendHtml(r.Total.ToString());
+            resHtml.AppendCloseTag("sp");
+            if ( breakLine)
+            {
+                resHtml.AppendLineBreak();
+            }
+        }
+
+        private string DieHtml(int val)
+        {
+            string text = "";
+            string dieImage = DieImageName(val);
+            if (dieImage != null)
+            {
+                text = "<img src=\"Images/External/" + dieImage + "-16.png\"/>";
+            }
+            return text;
         }
 
         private const float _BottomSize = 150;
         private const float _SideButtonSize = 40;
         private const float _TextHeight = 30;
+        private const float _TopButtonSize = 35;
+
 
         public override void LayoutSubviews ()
         {
-            _OutputView.Frame = new RectangleF(0, 1, Bounds.Width, Bounds.Height - _BottomSize-2);
+            _TitleLabel.Frame = new RectangleF(15, 0,  Bounds.Width * 2.0f/3.0f - 15f, _TopButtonSize);
+
+            _ClearHtmlButton.Frame = new RectangleF(Bounds.Width * 2.0f/3.0f, 0, Bounds.Width/3.0f, _TopButtonSize);
+            _OutputView.Frame = new RectangleF(0, _TopButtonSize, Bounds.Width, Bounds.Height - _BottomSize-1 - _TopButtonSize);
 
             _BottomView.Frame = new RectangleF(0, Bounds.Height - _BottomSize, Bounds.Width, _BottomSize);
 
@@ -206,7 +500,7 @@ namespace CombatManagerMono
 
             for (int i=0; i<_DieButtons.Count; i++)
             {
-                UIButton b = _DieButtons[i];
+                GradientButton b = (GradientButton)_DieButtons[i];
 
                 int column = i%4;
                 int row = i/4;
@@ -225,6 +519,14 @@ namespace CombatManagerMono
                 b.Frame = new RectangleF(p, s);
 
 
+                if (b.BonusImage != null)
+                {
+                    RectangleF rect = b.BonusImage.Size.OriginRect();
+                    rect.X = (b.Frame.Width - rect.Width)/2.0f;
+                    rect.Y = 5;
+                    b.BonusImageRect = rect;
+                }
+
 
             }
 
@@ -232,6 +534,207 @@ namespace CombatManagerMono
                                             dieSpace.Width, _TextHeight);
 
 
+        }
+
+        public class SingleAttackRoll
+        {
+            public RollResult Result {get; set;}
+            public RollResult Damage {get; set;}
+            public RollResult CritResult {get; set;}
+            public RollResult CritDamage {get; set;}
+        }
+
+        public class AttackSetResult
+        {
+            
+            Character _Character;
+
+            List<AttackRollResult> _Results = new List<AttackRollResult>();
+
+            public Character Character
+            {
+                get
+                {
+                    return _Character;
+                }
+                set
+                {
+                    _Character = value;
+                }
+            }
+
+            public List<AttackRollResult> Results
+            {
+                get
+                {
+                    return _Results;
+                }
+            }
+
+        }
+
+        public class AttackRollResult
+        {
+            Attack _Attack;
+
+            String _Name;
+
+            Character _Character;
+
+            public String Name
+            {
+                get
+                {
+                    return _Name;
+                }
+            }
+
+            public Character Character
+            {
+                get
+                {
+                    return _Character;
+                }
+                set
+                {
+                    _Character = value;
+                }
+            }
+
+            
+            public Attack Attack
+            {
+                get
+                {
+                    return _Attack;
+                }
+            }
+
+
+            public List<SingleAttackRoll> Rolls {get; set;}
+
+
+
+            public AttackRollResult(Attack atk)
+            {
+                _Attack = atk;
+
+                _Name = atk.Name;
+
+                Rolls = new List<SingleAttackRoll>();
+
+                if (atk.Weapon != null)
+                {
+                    _Name = atk.Weapon.Name;
+                }
+
+                int totalAttacks = atk.Count * atk.Bonus.Count;
+
+                for (int atkcount = 0; atkcount < atk.Count; atkcount++)
+                {
+                    foreach (int mod in atk.Bonus)
+                    {
+                        SingleAttackRoll sr = new SingleAttackRoll();
+
+                        DieRoll roll = new DieRoll(1, 20, mod);
+                    
+                        sr.Result = roll.Roll();
+                        sr.Damage = atk.Damage.Roll();
+
+
+
+                        if (sr.Result.Rolls[0].Result >= atk.CritRange)
+                        {
+                            sr.CritResult = roll.Roll();
+
+                            sr.CritDamage = new RollResult();
+
+                            for (int i = 1; i < atk.CritMultiplier; i++)
+                            {
+                                RollResult crit = atk.Damage.Roll();
+                            
+                                sr.CritDamage = crit + sr.CritDamage;
+                            }
+                        }
+
+
+                        Rolls.Add (sr);
+                    }
+                }
+
+            }
+        }
+
+        public void RollSave(Monster.SaveType type, Character ch)
+        {
+            int mod = ch.Monster.GetSave(type);
+            DieRoll roll = new DieRoll(1, 20, mod);
+
+            AddRoll (Monster.GetSaveText(type) + ": ", roll);
+        }
+
+        public void RollSkill(String skill, Character ch)
+        {
+            RollSkill(skill, null, ch);
+        }
+
+        public void RollSkill(String skill, String subtype, Character ch)
+        {
+            int mod = ch.Monster.GetSkillMod(skill, subtype);
+
+            string text = skill + (subtype != null?" "+subtype:"") + ": ";
+            
+            DieRoll roll = new DieRoll(1, 20, mod);
+
+
+            AddRoll (text, roll);
+
+        }
+
+
+        public void RollAttack(Attack atk, Character ch)
+        {
+            AttackRollResult res = new AttackRollResult(atk);
+       
+            res.Character = ch;
+
+            _Results.Insert(0, res);
+
+            TrimList ();
+
+            RenderResults();
+        }
+
+        public void RollAttackSet(AttackSet atkSet, Character ch)
+        {
+            AttackSetResult res = new AttackSetResult();
+            res.Character = ch;
+
+            foreach (Attack at in atkSet.WeaponAttacks)
+            {
+                AttackRollResult ares = new AttackRollResult(at);
+                res.Results.Add (ares);
+            }
+            foreach (Attack at in atkSet.NaturalAttacks)
+            {
+                AttackRollResult ares = new AttackRollResult(at);
+                res.Results.Add (ares);
+            }
+
+            
+            _Results.Insert(0, res);
+
+            TrimList ();
+
+            RenderResults();
+        }
+
+        private void TrimList()
+        {
+            while (_Results.Count > 50)
+            {
+                _Results.RemoveAt(_Results.Count - 1);
+            }
         }
 
     }
