@@ -26,6 +26,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Drawing;
 using CombatManager;
+using System.ComponentModel;
 
 
 namespace CombatManagerMono
@@ -39,7 +40,7 @@ namespace CombatManagerMono
     }
 
 
-	public abstract class LookupTab<T> : CMTab
+    public abstract class LookupTab<T> : CMTab
 	{
 		UITableView listTable;
 		protected UITextField filterField;

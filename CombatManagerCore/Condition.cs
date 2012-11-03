@@ -104,7 +104,7 @@ namespace CombatManager
             _Conditions = XmlListLoader<Condition>.Load("Condition.xml");
 
             LoadSpellConditions();
-            LoadMonsterConditions();
+            //LoadMonsterConditions();
             LoadCustomConditions();
             LoadFavoriteConditions();
             LoadRecentConditions();
