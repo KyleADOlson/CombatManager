@@ -1,4 +1,8 @@
-﻿1.4.2
+﻿1.4.3
+Fix special ability loading issue from last build
+Die roller graphic update
+
+1.4.2
 Use two hands on one-handed weapon
 Improve click-selection in monster/player lists
 DB cleanup for NPCs and Monsters
