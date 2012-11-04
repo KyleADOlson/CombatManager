@@ -50,22 +50,22 @@ namespace CombatManager
 
 
 
-        private static SortedList<int, SortedList<int, string>> coinChart;
-        private static SortedList<int, SortedList<int, string>> goodsChart;
-        private static SortedList<int, SortedList<int, string>> itemChart;
+        private static SortedDictionary<int, SortedDictionary<int, string>> coinChart;
+        private static SortedDictionary<int, SortedDictionary<int, string>> goodsChart;
+        private static SortedDictionary<int, SortedDictionary<int, string>> itemChart;
 
 
-        private static SortedList<int, List<Spell>> potionChart;
-        private static SortedList<int, List<Spell>> arcaneScrollChart;
-        private static SortedList<int, List<Spell>> divineScrollChart;
-        private static SortedList<int, List<Spell>> wandChart;
+        private static SortedDictionary<int, List<Spell>> potionChart;
+        private static SortedDictionary<int, List<Spell>> arcaneScrollChart;
+        private static SortedDictionary<int, List<Spell>> divineScrollChart;
+        private static SortedDictionary<int, List<Spell>> wandChart;
         private static List<int> potionLevelTotals;
         private static List<int> arcaneScrollLevelTotals;
         private static List<int> divineScrollLevelTotals;
         private static List<int> wandLevelTotals;
 
-        private static SortedList<int, GemChart> gemTypeChart;
-        private static SortedList<int, ArtChart> artChart;
+        private static SortedDictionary<int, GemChart> gemTypeChart;
+        private static SortedDictionary<int, ArtChart> artChart;
 
         private static RandomWeightChart<RandomItemType> minorChart;
         private static RandomWeightChart<RandomItemType> mediumChart;
@@ -90,10 +90,10 @@ namespace CombatManager
 
         private static void LoadSpellItemCharts()
         {
-            potionChart = new SortedList<int, List<Spell>>();
-            arcaneScrollChart = new SortedList<int, List<Spell>>();
-            divineScrollChart = new SortedList<int, List<Spell>>();
-            wandChart = new SortedList<int, List<Spell>>();
+            potionChart = new SortedDictionary<int, List<Spell>>();
+            arcaneScrollChart = new SortedDictionary<int, List<Spell>>();
+            divineScrollChart = new SortedDictionary<int, List<Spell>>();
+            wandChart = new SortedDictionary<int, List<Spell>>();
 
             potionLevelTotals = new List<int>();
             arcaneScrollLevelTotals = new List<int>();
@@ -183,16 +183,16 @@ namespace CombatManager
             List<TreasureChart> list = XmlListLoader<TreasureChart>.Load("TreasureChart.xml");
 
 
-            coinChart = new SortedList<int, SortedList<int, string>>();
-            goodsChart = new SortedList<int, SortedList<int, string>>();
-            itemChart = new SortedList<int, SortedList<int, string>>();
+            coinChart = new SortedDictionary<int, SortedDictionary<int, string>>();
+            goodsChart = new SortedDictionary<int, SortedDictionary<int, string>>();
+            itemChart = new SortedDictionary<int, SortedDictionary<int, string>>();
             foreach (TreasureChart item in list)
             {
                 if (item.CoinRoll != null)
                 {
                     if (!coinChart.ContainsKey(item.Level))
                     {
-                        coinChart[item.Level] = new SortedList<int, string>();
+                        coinChart[item.Level] = new SortedDictionary<int, string>();
                     }
                     coinChart[item.Level][item.CoinRoll.Value] = item.CoinValue;
                 }
@@ -200,7 +200,7 @@ namespace CombatManager
                 {
                     if (!goodsChart.ContainsKey(item.Level))
                     {
-                        goodsChart[item.Level] = new SortedList<int, string>();
+                        goodsChart[item.Level] = new SortedDictionary<int, string>();
                     }
                     goodsChart[item.Level][item.GoodsRoll.Value] = item.GoodsValue;
                 }
@@ -208,7 +208,7 @@ namespace CombatManager
                 {
                     if (!itemChart.ContainsKey(item.Level))
                     {
-                        itemChart[item.Level] = new SortedList<int, string>();
+                        itemChart[item.Level] = new SortedDictionary<int, string>();
                     }
                     itemChart[item.Level][item.ItemsRoll.Value] = item.ItemsValue;
                 }
@@ -219,7 +219,7 @@ namespace CombatManager
         private static void LoadGemChart()
         {
             List<GemChart> list = XmlListLoader<GemChart>.Load("GemChart.xml");
-            gemTypeChart = new SortedList<int, GemChart>();
+            gemTypeChart = new SortedDictionary<int, GemChart>();
 
             foreach (GemChart item in list)
             {
@@ -231,7 +231,7 @@ namespace CombatManager
         private static void LoadArtChart()
         {
             List<ArtChart> list = XmlListLoader<ArtChart>.Load("ArtChart.xml");
-            artChart = new SortedList<int, ArtChart>();
+            artChart = new SortedDictionary<int, ArtChart>();
 
             foreach (ArtChart item in list)
             {

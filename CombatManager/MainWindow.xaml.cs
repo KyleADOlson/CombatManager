@@ -1270,8 +1270,8 @@ namespace CombatManager
 
         void LoadBestiary()
         {
-            SortedList<String, String> types = new SortedList<String, String>();
-            SortedList<double, String> crs = new SortedList<double, string>();
+            SortedDictionary<String, String> types = new SortedDictionary<String, String>();
+            SortedDictionary<double, String> crs = new SortedDictionary<double, string>();
 
             Regex regslash = new Regex("/");
 
@@ -1355,7 +1355,7 @@ namespace CombatManager
 
         }
 
-        private void AddCRsToCombo(ComboBox box, SortedList<double, String> crs)
+        private void AddCRsToCombo(ComboBox box, SortedDictionary<double, String> crs)
         {
             foreach (String cr in crs.Values)
             {
@@ -2919,8 +2919,6 @@ namespace CombatManager
 
         private bool FeatTextFilter(Feat feat)
         {
-            bool result = false;
-
 			string filterText = this.featFilterBox.Text.Trim();
             if (string.IsNullOrWhiteSpace(filterText))
             {

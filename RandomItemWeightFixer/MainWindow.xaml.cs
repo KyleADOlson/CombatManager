@@ -35,7 +35,6 @@ using System.Windows.Shapes;
 using CombatManager;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Xml.XPath;
 using System.Xml.Linq;
 using System.IO;
 using System.Diagnostics;

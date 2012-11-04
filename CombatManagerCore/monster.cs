@@ -26,12 +26,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml.XPath;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Xml.Linq;
 
 namespace CombatManager
 {
@@ -989,31 +989,31 @@ namespace CombatManager
                 using (FileStream stream = new FileStream(filename, FileMode.Open))
                 {
 
-                    XPathDocument doc = new XPathDocument(stream);
+                    XDocument doc = XDocument.Parse(new StreamReader(stream).ReadToEnd());
 
-                    XPathNavigator n = doc.CreateNavigator();
 
                     //look for herolab file
-                    XPathNodeIterator it = n.Select("/document");
+                    XElement it = doc.Root;
 
-                    if (it.MoveNext())
+                    if (it.Name == "document")
                     {
-                        string sig = it.Current.GetAttribute("signature", "");
+                        string sig = it.Attribute("signature").Value;
 
                         if (sig == "Hero Lab Portfolio")
                         {
-                            it = n.Select("/document/product");
+                            XElement prod = it.Element("product");
 
-                            if (it.MoveNext())
+                            if (prod != null)
                             {
 
                                 int major = 0;
                                 int minor = 0;
                                 int patch = 0;
 
-                                int.TryParse(it.Current.GetAttribute("major", ""), out major);
-                                int.TryParse(it.Current.GetAttribute("minor", ""), out minor);
-                                int.TryParse(it.Current.GetAttribute("patch", ""), out patch);
+
+                                major = GetAttributeIntValue(prod, "major");
+                                minor = GetAttributeIntValue(prod, "minor");
+                                patch = GetAttributeIntValue(prod, "patch");
 
                                 if (!CheckVersion(major, minor, patch, 3, 6, 7))
                                 {
@@ -1028,14 +1028,30 @@ namespace CombatManager
                     else
                     {
                         //look for PCGen file
-                        it = n.Select("/group-set/groups/group/combatants");
-                        if (it.MoveNext())
+                        //"/group-set/groups/group/combatants"
+                        XElement el = doc.Root;
+                        if (el.Name == "group-set")
                         {
-                            returnMonsters = FromPCGenExportFile(doc);
+                            el = el.Element("groups");
+                            if (el != null)
+                            {
+                                el = el.Element("group");
+                                if (el != null)
+                                {
+
+                                    el = el.Element("combatants");
+                                }
+
+                                if (el != null)
+                                {
+                                    returnMonsters = FromPCGenExportFile(doc);
+                                }
+                            }
                         }
-
-
                     }
+
+
+                    
 
 
                     if (returnMonsters == null)
@@ -1096,52 +1112,36 @@ namespace CombatManager
 
         }
 
-        private static List<Monster> FromHeroLabFile(XPathDocument doc)
+        private static List<Monster> FromHeroLabFile(XDocument doc)
         {
             List<Monster> monsters = new List<Monster>();
 
 
             //attempt to get the stats block
-            XPathNavigator n = doc.CreateNavigator();
-           
-
-            XPathNodeIterator it = n.Select("/document/portfolio/hero");
-
-            while (it.MoveNext())
+            foreach (XElement heroElement in doc.Root.Element("portfolio").Elements("hero"))
             {
+
+
 
                 Monster monster = new Monster();
 
-                monster.Name = it.Current.GetAttribute("heroname", "");
+                monster.Name = heroElement.Attribute("heroname").Value;
 
 
-                XPathNodeIterator itStats = it.Current.SelectChildren("statblock", "");
+                XElement statblock = heroElement.Element("statblock");
 
-                if (itStats.MoveNext())
+                if (statblock != null)
                 {
-                    string statsblock = itStats.Current.Value;
+                    string statsblock = statblock.Value;
 
                     ImportHeroLabBlock(statsblock, monster);
 
                     monsters.Add(monster);
                 }
 
-                XPathNodeIterator itMinion = it.Current.SelectDescendants("minion", "", false);
-                while (itMinion.MoveNext())
-                {
-                    monster = new Monster();
-                    monster.Name = itMinion.Current.GetAttribute("heroname", "");
-                    itStats = itMinion.Current.SelectChildren("statblock", "");
 
-                    if (itStats.MoveNext())
-                    {
-                        string statsblock = itStats.Current.Value;
 
-                        ImportHeroLabBlock(statsblock, monster);
 
-                        monsters.Add(monster);
-                    }
-                }
             }
 
             return monsters;
@@ -1149,37 +1149,36 @@ namespace CombatManager
         }
 
 
-        private static List<Monster> FromPCGenExportFile(XPathDocument doc)
+        private static List<Monster> FromPCGenExportFile(XDocument doc)
         {
             List<Monster> monsters = new List<Monster>();
 
             
             //attempt to get the stats block
-            XPathNavigator n = doc.CreateNavigator();
 
-            XPathNodeIterator it = n.Select("/group-set/groups/group/combatants/combatant");
-            while (it.MoveNext())
+            ///group-set/groups/group/combatants/combatant
+            XElement combatant = doc.Root.Element("groups");
+            combatant = combatant.Element("group");
+            combatant = combatant.Element("combatants");
+            combatant = combatant.Element("combatant");
+            if (combatant != null)
             {
 
                 Monster monster = new Monster();
 
                 //get name
-                XPathNodeIterator itVal = it.Current.SelectChildren("name", "");
-                if (itVal.MoveNext())
-                {
-                    monster.Name = itVal.Current.Value;
-                }
+                monster.Name = combatant.Element("name").Value;
 
                 Match m = null;
 
                 //get type
-                itVal = it.Current.SelectChildren("fullType", "");
-                if (itVal.MoveNext())
+                XElement it = combatant.Element("fullType");
+                if (it != null)
                 {
-                    Regex regFull = new Regex("(?<align>" + AlignString + ")( )+(?<size>" + SizesString + ")( )*\r\n?" +
+                    Regex regFull = new Regex("(?<align>" + AlignString + ")( )+(?<size>" + SizesString + ")( )*\r?\n?" +
                          "(?<type>" + TypesString + ")", RegexOptions.IgnoreCase);
 
-                    m = regFull.Match(itVal.Current.Value);
+                    m = regFull.Match(it.Value);
 
                     if (m.Success)
                     {
@@ -1193,9 +1192,11 @@ namespace CombatManager
                     }
                 }
 
+                it = combatant;
+
                 //get hp
-                monster.HP = GetIntValue(it, "hitPoints");
-                string hd = GetStringValue(it, "hitDice");
+                monster.HP = GetElementIntValue(it, "hitPoints");
+                string hd = GetElementStringValue(it, "hitDice");
 
                 hd = Regex.Replace(hd, "\\([0-9]+ hp\\)", "");
                 hd = Regex.Replace(hd, "\\(|\\)", "");
@@ -1203,9 +1204,9 @@ namespace CombatManager
                 monster.HD = hd;
 
                 //get stats
-                string abilityScores = GetStringValue(it, "fullAbilities");
+                string abilityScores = GetElementStringValue(it, "fullAbilities");
 
-                string cha = GetStringValue(it, "cha");
+                string cha = GetElementStringValue(it, "cha");
                 Regex regInt = new Regex("(?<val>[0-9]+) ");
                 m = regInt.Match(cha);
                 int chaInt;
@@ -1224,13 +1225,13 @@ namespace CombatManager
 
 
 
-                monster.CR = GetStringValue(it, "challengeRating");
+                monster.CR = GetElementStringValue(it, "challengeRating");
 
                 monster.XP = GetCRValue(monster.CR).ToString();
 
-                monster.Init = GetIntValue(it, "init-modifier");
+                monster.Init = GetElementIntValue(it, "init-modifier");
 
-                string ac = GetStringValue(it, "fullArmorClass");
+                string ac = GetElementStringValue(it, "fullArmorClass");
                 if (ac != null)
                 {
                     ac = ac.Replace(":", "");
@@ -1240,19 +1241,19 @@ namespace CombatManager
                 monster.ParseAC();
 
 
-                monster.Fort = GetIntValue(it, "fortSave");
-                monster.Ref = GetIntValue(it, "reflexSave");
-                monster.Will = GetIntValue(it, "willSave");
+                monster.Fort = GetElementIntValue(it, "fortSave");
+                monster.Ref = GetElementIntValue(it, "reflexSave");
+                monster.Will = GetElementIntValue(it, "willSave");
 
                 //load skills
-                string skills = GetStringValue(it, "skills");
+                string skills = GetElementStringValue(it, "skills");
                 skills = Regex.Replace(skills, ";( )*\r\n", ", ").Trim().Trim(new char[] { ',' });
                 monster.skills = skills;
 
                 
                 //BAB, CMB, CMD
                 SizeMods mods = SizeMods.GetMods(SizeMods.GetSize(monster.Size));
-                monster.BaseAtk = GetIntValue(it, "baseAttack");
+                monster.BaseAtk = GetElementIntValue(it, "baseAttack");
 
 
                 monster.CMB = CMStringUtilities.PlusFormatNumber(monster.BaseAtk + AbilityBonus(monster.Strength) +
@@ -1261,7 +1262,7 @@ namespace CombatManager
                 monster.CMD = (monster.BaseAtk + mods.Combat + AbilityBonus(monster.Strength) + AbilityBonus(monster.Dexterity) + 10).ToString();
 
 
-                string feats = GetStringValue(it, "feats");
+                string feats = GetElementStringValue(it, "feats");
                 if (feats != null)
                 {
                     feats = FixPCGenFeatList(feats);
@@ -1269,14 +1270,14 @@ namespace CombatManager
                 monster.feats = feats;
 
                 //load and fix speed
-                string speed = GetStringValue(it, "speed");
+                string speed = GetElementStringValue(it, "speed");
                 speed = Regex.Replace(speed, "Walk ", "");
                 monster.Speed = speed.ToLower();
 
                 
 
                 //load senses
-                string senses = GetStringValue(it, "senses").ToLower();
+                string senses = GetElementStringValue(it, "senses").ToLower();
 
                 //fix low light vision
                 senses = Regex.Replace(senses, "low-light,", "low-light vision,");
@@ -1302,9 +1303,9 @@ namespace CombatManager
                 monster.Senses = senses;
 
 
-                monster.SpecialAttacks = GetStringValue(it, "specialAttacks");
+                monster.SpecialAttacks = GetElementStringValue(it, "specialAttacks");
 
-                string gear = GetStringValue(it, "possessions");
+                string gear = GetElementStringValue(it, "possessions");
                 if (gear != null)
                 {
                     gear = Regex.Replace(gear, "\r\n", "");
@@ -1313,7 +1314,7 @@ namespace CombatManager
                 }
 
 
-                string attacks = GetStringValue(it, "attack");
+                string attacks = GetElementStringValue(it, "attack");
                 attacks = Regex.Replace(attacks, "(\r?\n)|:|(\r)", "");
 
                 List<String> meleeStrings = new List<string>();
@@ -1393,54 +1394,47 @@ namespace CombatManager
             return monsters;
         }
 
-        private static int? GetNullableIntValue(XPathNodeIterator it, string name)
+        static int GetElementIntValue(XElement it, string name)
         {
-            int? returnVal = null;
-
-            string val = GetStringValue(it, name);
-
-            if (val != null)
+            int value = 0;
+            XElement el = it.Element(name);
+            if (el != null)
             {
-                int intVal;
-                if (int.TryParse(val, out intVal))
-                {
-                    returnVal = intVal;
-                }
+                value = Int32.Parse(el.Value);
             }
-
-            return returnVal;
-        }
-        private static int GetIntValue(XPathNodeIterator it, string name)
-        {
-            int returnVal = 0;
-
-            string val = GetStringValue(it, name);
-
-            if (val != null)
-            {
-                int intVal;
-                if (int.TryParse(val, out intVal))
-                {
-                    returnVal = intVal;
-                }
-            }
-
-            return returnVal;
+            return value;
         }
 
-        private static string GetStringValue(XPathNodeIterator it, string name)
+        static String GetElementStringValue(XElement it, string name)
         {
-            string val = null;
-
-
-            XPathNodeIterator itVal = it.Current.SelectChildren(name, "");
-            if (itVal.MoveNext())
+            string text = null;
+            XElement el = it.Element(name);
+            if (el != null)
             {
-                val = itVal.Current.Value;
+                text = el.Value;
             }
+            return text;
+        }
 
-
-            return val;
+        static int GetAttributeIntValue(XElement it, string name)
+        {
+            int value = 0;
+            XAttribute el = it.Attribute(name);
+            if (el != null)
+            {
+                value = Int32.Parse(el.Value);
+            }
+            return value;
+        }
+        static String GetAttributeStringValue(XElement it, string name)
+        {
+            string text = null;
+            XAttribute el = it.Attribute(name);
+            if (el != null)
+            {
+                text = el.Value;
+            }
+            return text;
         }
 
         private static string HeroLabStatRegexString(string stat)

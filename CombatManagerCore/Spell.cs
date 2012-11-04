@@ -514,7 +514,7 @@ namespace CombatManager
 		{
 			get
 			{
-				SortedList<int, int> levList = new SortedList<int, int>();
+                SortedDictionary<int, int> levList = new SortedDictionary<int, int>();
 				
 				foreach (CharacterClassEnum cl in Enum.GetValues(typeof(CharacterClassEnum)))
 				{
