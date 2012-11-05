@@ -87,7 +87,7 @@ namespace CombatManager
     }
     
 
-    public class Condition : INotifyPropertyChanged, ICloneable
+    public class Condition : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -29,7 +29,7 @@ using System.Xml.Serialization;
 
 namespace CombatManager
 {
-    public class CampaignEvent : INotifyPropertyChanged, ICloneable, IDBLoadable
+    public class CampaignEvent : INotifyPropertyChanged, IDBLoadable
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

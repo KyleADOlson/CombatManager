@@ -33,6 +33,8 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
 
+using Ionic.Zip;
+
 namespace CombatManager
 {
 
@@ -52,7 +54,7 @@ namespace CombatManager
     }
 
     [DataContract]
-    public class Monster : INotifyPropertyChanged, ICloneable, IDBLoadable
+    public class Monster : INotifyPropertyChanged, IDBLoadable
     {
         static ObservableCollection<Monster> monsters;
         
@@ -983,84 +985,92 @@ namespace CombatManager
         public static List<Monster> FromFile(string filename)
         {
             List<Monster> returnMonsters = null;
-
             try
             {
-                using (FileStream stream = new FileStream(filename, FileMode.Open))
+
+                if (ZipFile.IsZipFile(filename))
+                {
+                    returnMonsters = FromHeroLabZip(filename);
+                }
+                else
                 {
 
-                    XDocument doc = XDocument.Parse(new StreamReader(stream).ReadToEnd());
-
-
-                    //look for herolab file
-                    XElement it = doc.Root;
-
-                    if (it.Name == "document")
+                    using (FileStream stream = new FileStream(filename, FileMode.Open))
                     {
-                        string sig = it.Attribute("signature").Value;
 
-                        if (sig == "Hero Lab Portfolio")
+                        XDocument doc = XDocument.Parse(new StreamReader(stream).ReadToEnd());
+
+
+                        //look for herolab file
+                        XElement it = doc.Root;
+
+                        if (it.Name == "document")
                         {
-                            XElement prod = it.Element("product");
+                            string sig = it.Attribute("signature").Value;
 
-                            if (prod != null)
+                            if (sig == "Hero Lab Portfolio")
                             {
+                                XElement prod = it.Element("product");
 
-                                int major = 0;
-                                int minor = 0;
-                                int patch = 0;
-
-
-                                major = GetAttributeIntValue(prod, "major");
-                                minor = GetAttributeIntValue(prod, "minor");
-                                patch = GetAttributeIntValue(prod, "patch");
-
-                                if (!CheckVersion(major, minor, patch, 3, 6, 7))
-                                {
-                                    throw new MonsterParseException("Combat Manager requires files from a newer version of HeroLab." +
-                                        "\r\nUpgrade HeroLab to the newest version, reload the file and save the file.");
-                                }
-
-                                returnMonsters = FromHeroLabFile(doc);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        //look for PCGen file
-                        //"/group-set/groups/group/combatants"
-                        XElement el = doc.Root;
-                        if (el.Name == "group-set")
-                        {
-                            el = el.Element("groups");
-                            if (el != null)
-                            {
-                                el = el.Element("group");
-                                if (el != null)
+                                if (prod != null)
                                 {
 
-                                    el = el.Element("combatants");
-                                }
+                                    int major = 0;
+                                    int minor = 0;
+                                    int patch = 0;
 
-                                if (el != null)
-                                {
-                                    returnMonsters = FromPCGenExportFile(doc);
+
+                                    major = GetAttributeIntValue(prod, "major");
+                                    minor = GetAttributeIntValue(prod, "minor");
+                                    patch = GetAttributeIntValue(prod, "patch");
+
+                                    if (!CheckVersion(major, minor, patch, 3, 6, 7))
+                                    {
+                                        throw new MonsterParseException("Combat Manager requires files from a newer version of HeroLab." +
+                                            "\r\nUpgrade HeroLab to the newest version, reload the file and save the file.");
+                                    }
+
+                                    returnMonsters = FromHeroLabFile(doc);
                                 }
                             }
                         }
+                        else
+                        {
+                            //look for PCGen file
+                            //"/group-set/groups/group/combatants"
+                            XElement el = doc.Root;
+                            if (el.Name == "group-set")
+                            {
+                                el = el.Element("groups");
+                                if (el != null)
+                                {
+                                    el = el.Element("group");
+                                    if (el != null)
+                                    {
+
+                                        el = el.Element("combatants");
+                                    }
+
+                                    if (el != null)
+                                    {
+                                        returnMonsters = FromPCGenExportFile(doc);
+                                    }
+                                }
+                            }
+                        }
+
+
+
+
+
+                        if (returnMonsters == null)
+                        {
+                            throw new MonsterParseException("Unrecognized file format");
+                        }
                     }
 
 
-                    
-
-
-                    if (returnMonsters == null)
-                    {
-                        throw new MonsterParseException("Unrecognized file format");
-                    }
                 }
-
-
             }
             catch (IOException ex)
             {
@@ -1082,7 +1092,6 @@ namespace CombatManager
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
                 throw new MonsterParseException("CombatManger was not able to understand the file.", ex);
             }
-
 
 
             return returnMonsters;
@@ -1146,6 +1155,30 @@ namespace CombatManager
 
             return monsters;
 
+        }
+
+        private static List<Monster> FromHeroLabZip(string filename)
+        {
+            
+            List<Monster> monsters = new List<Monster>();
+
+
+            ZipFile f = ZipFile.Read(filename);
+            
+
+            foreach (var en in from v in f.Entries where v.FileName.StartsWith("statblocks_text") && !v.IsDirectory select v)
+            {
+                MemoryStream m = new MemoryStream();
+                
+                StreamReader r = new StreamReader(en.OpenReader());
+                String block = r.ReadToEnd();
+                
+                Monster monster = new Monster();
+                ImportHeroLabBlock(block, monster);
+                monsters.Add(monster);
+            }
+
+            return monsters;
         }
 
 

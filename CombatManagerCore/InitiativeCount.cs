@@ -28,7 +28,7 @@ using System.Xml.Serialization;
 
 namespace CombatManager
 {
-    public class InitiativeCount : INotifyPropertyChanged, ICloneable, IComparable<InitiativeCount>, IComparable
+    public class InitiativeCount : INotifyPropertyChanged, IComparable<InitiativeCount>, IComparable
     {
         
         public event PropertyChangedEventHandler PropertyChanged;

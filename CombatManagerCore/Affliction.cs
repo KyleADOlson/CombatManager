@@ -30,7 +30,7 @@ using System.Xml.Serialization;
 
 namespace CombatManager
 {
-    public class Affliction : INotifyPropertyChanged, ICloneable
+    public class Affliction : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -34,7 +34,7 @@ using System.Text.RegularExpressions;
 namespace CombatManager
 {
 
-    public class Spell : INotifyPropertyChanged, ICloneable, IDBLoadable
+    public class Spell : INotifyPropertyChanged, IDBLoadable
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private String _name;

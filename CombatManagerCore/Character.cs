@@ -32,7 +32,7 @@ namespace CombatManager
 {
     
     [DataContract]
-    public class Character : INotifyPropertyChanged, ICloneable
+    public class Character : INotifyPropertyChanged
     {
         [XmlIgnore]
         public object UndoInfo { get; set; }

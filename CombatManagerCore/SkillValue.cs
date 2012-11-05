@@ -33,7 +33,7 @@ using System.IO;
 namespace CombatManager
 {
 
-    public class SkillValue : ICloneable, INotifyPropertyChanged
+    public class SkillValue : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

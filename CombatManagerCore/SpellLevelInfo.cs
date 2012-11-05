@@ -28,7 +28,7 @@ using System.Collections.ObjectModel;
 
 namespace CombatManager
 {
-    public class SpellLevelInfo : INotifyPropertyChanged, ICloneable
+    public class SpellLevelInfo : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

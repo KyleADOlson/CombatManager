@@ -30,7 +30,7 @@ using System.Text.RegularExpressions;
 
 namespace CombatManager
 {
-    public class Weapon : INotifyPropertyChanged, ICloneable
+    public class Weapon : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

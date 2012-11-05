@@ -32,7 +32,7 @@ using System.IO;
 
 namespace CombatManager
 {
-    public class Coin : INotifyPropertyChanged, ICloneable
+    public class Coin : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

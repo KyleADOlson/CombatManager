@@ -35,7 +35,7 @@ using System.Collections.ObjectModel;
 
 namespace CombatManager
 {
-    public class Feat : INotifyPropertyChanged, IDBLoadable, ICloneable
+    public class Feat : INotifyPropertyChanged, IDBLoadable
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

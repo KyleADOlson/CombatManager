@@ -29,7 +29,7 @@ using System.Text.RegularExpressions;
 
 namespace CombatManager
 {
-    public class SpellBlockInfo : INotifyPropertyChanged, ICloneable
+    public class SpellBlockInfo : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

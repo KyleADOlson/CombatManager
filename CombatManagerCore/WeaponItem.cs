@@ -64,7 +64,7 @@ namespace CombatManager
         }
     }
 
-    public class WeaponItem : INotifyPropertyChanged, ICloneable
+    public class WeaponItem : INotifyPropertyChanged
     {
 
         

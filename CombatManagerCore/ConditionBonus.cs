@@ -27,7 +27,7 @@ using System.ComponentModel;
 
 namespace CombatManager
 {
-    public class ConditionBonus : INotifyPropertyChanged, ICloneable
+    public class ConditionBonus : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

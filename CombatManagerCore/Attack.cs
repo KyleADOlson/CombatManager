@@ -31,7 +31,7 @@ using System.IO;
 
 namespace CombatManager
 {
-    public class Attack : INotifyPropertyChanged, ICloneable
+    public class Attack : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

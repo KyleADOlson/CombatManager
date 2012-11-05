@@ -26,7 +26,7 @@ using System.Text;
 
 namespace CombatManager
 {
-    public class AttackSet : ICloneable
+    public class AttackSet
     {
         List<Attack> _WeaponAttacks;
         List<Attack> _NaturalAttacks;

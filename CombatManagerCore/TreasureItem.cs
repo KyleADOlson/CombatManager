@@ -31,7 +31,7 @@ using System.IO;
 
 namespace CombatManager
 {
-    public class TreasureItem : INotifyPropertyChanged, ICloneable
+    public class TreasureItem : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;

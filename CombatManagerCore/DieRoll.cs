@@ -76,7 +76,7 @@ namespace CombatManager
 
 
     [DataContract]
-    public class DieRoll : ICloneable
+    public class DieRoll
     {
         private int _count;
         private int _fraction;

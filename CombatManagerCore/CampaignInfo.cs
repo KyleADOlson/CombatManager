@@ -26,7 +26,6 @@ using System.Text;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 #if !MONO
-using System.Data.Common;
 using ScottsUtils;
 #else
 using Mono.Data.Sqlite;
