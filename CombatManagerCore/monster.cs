@@ -33,9 +33,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
 
-#if!MONO
 using Ionic.Zip;
-#endif
 
 namespace CombatManager
 {
@@ -989,7 +987,6 @@ namespace CombatManager
             List<Monster> returnMonsters = null;
             try
             {
-
                 if (ZipFile.IsZipFile(filename))
                 {
                     returnMonsters = FromHeroLabZip(filename);
@@ -1164,7 +1161,6 @@ namespace CombatManager
             
             List<Monster> monsters = new List<Monster>();
 
-#if!MONO
             ZipFile f = ZipFile.Read(filename);
             
 
@@ -1179,7 +1175,6 @@ namespace CombatManager
                 ImportHeroLabBlock(block, monster, true);
                 monsters.Add(monster);
             }
-#endif
 
             return monsters;
         }
