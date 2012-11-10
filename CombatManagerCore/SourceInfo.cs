@@ -74,6 +74,7 @@ namespace CombatManager
 
             AddToMap("Academy Of Secrets", SourceType.AdventuresAndModules);
             AddToMap("Advanced Player's Guide", SourceType.APG, "AGP", "APG");
+            AddToMap("Advanced Race Guide", SourceType.Other, "ARG");
             AddToMap("Adventurer's Armory", SourceType.ChroniclesAndCompanions, "AA", "PF CS", "PFC: AA");
             AddToMap("Andoran, Spirit of Liberty", SourceType.ChroniclesAndCompanions, "Andoran", "ASL", "PCh:ASoL");
             AddToMap("Bonus Bestiary", SourceType.Core);
@@ -132,6 +133,10 @@ namespace CombatManager
             AddToMap("Inner Sea World Guide", SourceType.ChroniclesAndCompanions);
             AddToMap("Jade Regent: The Brinewall Legacy", SourceType.AdventuresAndModules, "AP 49", "AP49");
             AddToMap("Jade Regent: Night of Frozen Shadows", SourceType.AdventuresAndModules, "AP 50", "AP50");
+            AddToMap("Jade Regent: The Hungry Storm", SourceType.AdventuresAndModules, "AP 51", "AP51");
+            AddToMap("Jade Regent: Forest of Spirits", SourceType.AdventuresAndModules, "AP 52", "AP52");
+            AddToMap("Jade Regent: Tide of Honor", SourceType.AdventuresAndModules, "AP 53", "AP53");
+            AddToMap("Jade Regent: The Empty Throne", SourceType.AdventuresAndModules, "AP 54", "AP54");
             AddToMap("Kingmaker: Blood for Blood", SourceType.AdventuresAndModules, "AP 34", "AP34", "PAP34:K4");
             AddToMap("Kingmaker: Rivers Run Red", SourceType.AdventuresAndModules, "AP 32", "AP32", "PAP32:K2");
             AddToMap("Kingmaker: Sound of a Thousand Screams", SourceType.AdventuresAndModules, "AP 36", "AP36", "PAP36:K6");
@@ -184,9 +189,22 @@ namespace CombatManager
             AddToMap("Serpent's Skull: Souls for Smuggler's Shiv", SourceType.AdventuresAndModules, "AP 37", "AP37");
             AddToMap("Serpent's Skull: The Thousand Fangs Below", SourceType.AdventuresAndModules, "AP 41", "AP41");
             AddToMap("Serpent's Skull: Vaults of Madness", SourceType.AdventuresAndModules, "AP 40", "AP40");
+            AddToMap("Shattered Star: Shards of Sin", SourceType.AdventuresAndModules, "AP 61", "AP61");
+            AddToMap("Shattered Star: Curse of the Lady's Light", SourceType.AdventuresAndModules, "AP 62", "AP62");
+            AddToMap("Shattered Star: The Asylum Stone", SourceType.AdventuresAndModules, "AP 63", "AP63");
+            AddToMap("Shattered Star: Beyond the Doomsday Door", SourceType.AdventuresAndModules, "AP 64", "AP64");
+            AddToMap("Shattered Star: Into the Nightmare Rift", SourceType.AdventuresAndModules, "AP 65", "AP65");
+            AddToMap("Shattered Star: The Dead Heart of Xin", SourceType.AdventuresAndModules, "AP 66", "AP66");
+            AddToMap("Skull & Shackles: The Wormwood Mutiny", SourceType.AdventuresAndModules, "AP 55", "AP55");
+            AddToMap("Skull & Shackles: Raiders of the Fever Sea", SourceType.AdventuresAndModules, "AP 56", "AP56");
+            AddToMap("Skull & Shackles: Tempest Rising", SourceType.AdventuresAndModules, "AP 57", "AP57");
+            AddToMap("Skull & Shackles: Island of Empty Eyes", SourceType.AdventuresAndModules, "AP 58", "AP58");
+            AddToMap("Skull & Shackles: The Price of Infamy", SourceType.AdventuresAndModules, "AP 59", "AP59");
+            AddToMap("Skull & Shackles: From Hell's Heart", SourceType.AdventuresAndModules, "AP 60", "AP60");
             AddToMap("Taldor, Echoes of Glory", SourceType.ChroniclesAndCompanions, "PCo:TEoG", "Taldor");
             AddToMap("Tomb Of The Iron Medusa", SourceType.AdventuresAndModules);
             AddToMap("Ultimate Combat", SourceType.UltimateCombat, "UC");
+            AddToMap("Ultimate Equipment", SourceType.Other, "UE");
             AddToMap("Ultimate Magic", SourceType.UltimateMagic, "UM");
             AddToMap("Undead Revisited", SourceType.ChroniclesAndCompanions);
             AddToMap("Wayfinder #1", SourceType.Other, "Wayfinder 1");
