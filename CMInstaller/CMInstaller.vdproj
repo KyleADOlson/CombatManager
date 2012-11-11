@@ -58,25 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_802A851599CD4B31AF1E31B61DEB5FE4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A2F1F8145D4956E74F7738E9925BCC4E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_98BEB31C169C4599EE9DE413EB337170"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D88E80CD8C779C2BD94A71675E088455"
+        "OwnerKey" = "8:_FF1D65956D6D4F0E84ABE2A8399BAF85"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,7 +70,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FF1D65956D6D4F0E84ABE2A8399BAF85"
+        "OwnerKey" = "8:_D88E80CD8C779C2BD94A71675E088455"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_98BEB31C169C4599EE9DE413EB337170"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A2F1F8145D4956E74F7738E9925BCC4E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_802A851599CD4B31AF1E31B61DEB5FE4"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -367,15 +367,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Combat Manager"
-        "ProductCode" = "8:{3500F626-4F83-4AA1-B1A2-C6560170BEDD}"
-        "PackageCode" = "8:{2A12380B-DDF4-4F88-A7C6-AFE3A550326C}"
+        "ProductCode" = "8:{68886331-6632-4A2B-A086-5B660885F456}"
+        "PackageCode" = "8:{D2475BF9-22E4-47FA-9479-6CBD23EC4C39}"
         "UpgradeCode" = "8:{D3BA9248-E13B-4D16-A80A-2F435C82C97B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.4.3"
+        "ProductVersion" = "8:1.4.4"
         "Manufacturer" = "8:Kyle Olson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -931,7 +931,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D93483BADC9846B7A94C2A93C94B2698"
             {
-            "SourcePath" = "8:..\\CombatManager\\obj\\Debug\\CombatManager.exe"
+            "SourcePath" = "8:..\\CombatManager\\obj\\Release\\CombatManager.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D0CCFF9FB43041529C5CEBDAF673DD43"
