@@ -367,8 +367,8 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Combat Manager"
-        "ProductCode" = "8:{09A4E355-970B-44B7-9A3D-C57305F0CB18}"
-        "PackageCode" = "8:{FA0D55F8-23A6-4A17-8D70-D2502D9648F2}"
+        "ProductCode" = "8:{68886331-6632-4A2B-A086-5B660885F456}"
+        "PackageCode" = "8:{D2475BF9-22E4-47FA-9479-6CBD23EC4C39}"
         "UpgradeCode" = "8:{D3BA9248-E13B-4D16-A80A-2F435C82C97B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

@@ -98,6 +98,7 @@
     <Content Include="..\CombatManagerCore\Bestiary.xml">
       <Link>Bestiary.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\CombatManagerCore\Feats.xml">
       <Link>Feats.xml</Link>
@@ -106,6 +107,7 @@
     <Content Include="..\CombatManagerCore\MagicItems.xml">
       <Link>MagicItems.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\CombatManagerCore\NPC.xml">
       <Link>NPC.xml</Link>

@@ -1931,7 +1931,14 @@ namespace CombatManager
             foreach (int cl in MagicItem.CLs)
             {
                 ComboBoxItem item = new ComboBoxItem();
-                item.Content = "CL " + BlockCreator.PastTenseNumber(cl);
+                if (cl == -1)
+                {
+                    item.Content = "Varies";
+                }
+                else
+                {
+                    item.Content = "CL " + BlockCreator.PastTenseNumber(cl);
+                }
                 item.DataContext = cl;
                 MagicItemCLFilterComboBox.Items.Add(item);
             }

@@ -70,7 +70,7 @@ namespace CombatManager
 
             CreateItemIfNotNull(details.Inlines, "Aura ", true, item.Aura, " ", false);
             CreateItemIfNotNull(details.Inlines, "[", false, item.AuraStrength, "]; ", false);
-            CreateItemIfNotNull(details.Inlines, "CL ", true, PastTenseNumber(item.CL), "", true);
+            CreateItemIfNotNull(details.Inlines, "CL ", true, (item.CL==-1)?"Varies":PastTenseNumber(item.CL), "", true);
             CreateItemIfNotNull(details.Inlines, "Slot ", true, item.Slot, "; ", false);
             CreateItemIfNotNull(details.Inlines, "Price ", true, item.Price, "; ", false);
             CreateItemIfNotNull(details.Inlines, "Weight ", true, item.Weight, "", true);
