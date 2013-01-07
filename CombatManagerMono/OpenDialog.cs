@@ -302,6 +302,20 @@ namespace CombatManagerMono
 				
 				return cell;			
 			}
+
+            public override void CommitEditingStyle(UITableView tableView,
+                                                    UITableViewCellEditingStyle editingStyle,
+                                                    NSIndexPath indexPath)
+            {
+                if (editingStyle == UITableViewCellEditingStyle.Delete)
+                {
+                    String text = state.files[indexPath.Row];
+                    state.files.RemoveAt (indexPath.Row);
+                    tableView.DeleteRows(new [] { indexPath }, UITableViewRowAnimation.Fade);
+                    File.Delete(text);
+
+                }
+            }
 			
 		}
 		

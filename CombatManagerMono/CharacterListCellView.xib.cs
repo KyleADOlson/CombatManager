@@ -88,7 +88,7 @@ namespace CombatManagerMono
 		{
 			button.CornerRadius = 0;
 			button.SetTitleColor(UIColor.White, UIControlState.Normal);
-			button.SetTitleColor(UIColor.DarkTextColor,UIControlState.Selected);
+			button.SetTitleColor(UIColor.Black,UIControlState.Selected);
             button.TitleLabel.Font = UIFont.BoldSystemFontOfSize(17f);
             button.TitleLabel.AdjustsFontSizeToFitWidth = true;
             button.TitleLabel.MinimumFontSize = 14f;

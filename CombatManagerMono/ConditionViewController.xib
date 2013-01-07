@@ -2,20 +2,19 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">768</int>
-		<string key="IBDocument.SystemVersion">12A269</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
-		<string key="IBDocument.AppKitVersion">1187</string>
-		<string key="IBDocument.HIToolboxVersion">624.00</string>
+		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1498</string>
+			<string key="NS.object.0">1930</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>IBProxyObject</string>
 			<string>IBUIButton</string>
 			<string>IBUILabel</string>
-			<string>IBUIStepper</string>
 			<string>IBUITableView</string>
 			<string>IBUITextField</string>
 			<string>IBUIView</string>
@@ -263,7 +262,7 @@
 										<string key="NSFrame">{{10, 16}, {78, 21}}</string>
 										<reference key="NSSuperview" ref="651125089"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="648253447"/>
+										<reference key="NSNextKeyView"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
@@ -276,20 +275,6 @@
 										<float key="IBUIMinimumFontSize">10</float>
 										<reference key="IBUIFontDescription" ref="916235069"/>
 										<reference key="IBUIFont" ref="965275692"/>
-									</object>
-									<object class="IBUIStepper" id="648253447">
-										<reference key="NSNextResponder" ref="651125089"/>
-										<int key="NSvFlags">268</int>
-										<string key="NSFrame">{{85, 13}, {94, 27}}</string>
-										<reference key="NSSuperview" ref="651125089"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="1010895355"/>
-										<bool key="IBUIOpaque">NO</bool>
-										<bool key="IBUIClipsSubviews">YES</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<double key="IBUIMaximumValue">100</double>
 									</object>
 									<object class="IBUIView" id="1010895355">
 										<reference key="NSNextResponder" ref="651125089"/>
@@ -353,6 +338,7 @@
 										<string key="NSFrame">{{423, 5}, {72, 37}}</string>
 										<reference key="NSSuperview" ref="651125089"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:241</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -598,14 +584,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">DurationStepper</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="648253447"/>
-					</object>
-					<int key="connectionID">68</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="320386862"/>
 						<reference key="destination" ref="372490531"/>
@@ -665,15 +643,6 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">45</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">StepperValueChanged:</string>
-						<reference key="source" ref="648253447"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">13</int>
-					</object>
-					<int key="connectionID">33</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -756,7 +725,6 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="1010895355"/>
-							<reference ref="648253447"/>
 							<reference ref="717692112"/>
 							<reference ref="29108028"/>
 							<reference ref="879013820"/>
@@ -813,11 +781,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="1049518109"/>
 						</object>
-						<reference key="parent" ref="651125089"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">30</int>
-						<reference key="object" ref="648253447"/>
 						<reference key="parent" ref="651125089"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -888,7 +851,6 @@
 					<string>24.CustomClassName</string>
 					<string>24.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
-					<string>30.IBPluginDependency</string>
 					<string>31.IBPluginDependency</string>
 					<string>32.CustomClassName</string>
 					<string>32.IBPluginDependency</string>
@@ -929,7 +891,6 @@
 					<string>GradientButton</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>GradientButton</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1165,16 +1126,12 @@
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
 			<integer value="768" key="NS.object.0"/>
 		</object>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1296" key="NS.object.0"/>
-		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
 			<integer value="3000" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<string key="IBCocoaTouchPluginVersion">1498</string>
+		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>
 </archive>
