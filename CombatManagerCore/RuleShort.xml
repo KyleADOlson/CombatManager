@@ -956,42 +956,161 @@
     <Name>Dwarves</Name>
     <Source>PFRPG Core</Source>
     <Type>Races</Type>
+    <Subtype>Core</Subtype>
   </Rule>
   <Rule>
     <ID>528</ID>
     <Name>Elves</Name>
     <Source>PFRPG Core</Source>
     <Type>Races</Type>
+    <Subtype>Core</Subtype>
   </Rule>
   <Rule>
     <ID>529</ID>
     <Name>Gnomes</Name>
     <Source>PFRPG Core</Source>
     <Type>Races</Type>
+    <Subtype>Core</Subtype>
   </Rule>
   <Rule>
     <ID>530</ID>
     <Name>Half-elves</Name>
     <Source>PFRPG Core</Source>
     <Type>Races</Type>
+    <Subtype>Core</Subtype>
   </Rule>
   <Rule>
     <ID>531</ID>
     <Name>Half-orcs</Name>
     <Source>PFRPG Core</Source>
     <Type>Races</Type>
+    <Subtype>Core</Subtype>
   </Rule>
   <Rule>
     <ID>532</ID>
     <Name>Halflings</Name>
     <Source>PFRPG Core</Source>
     <Type>Races</Type>
+    <Subtype>Core</Subtype>
   </Rule>
   <Rule>
     <ID>533</ID>
     <Name>Humans</Name>
     <Source>PFRPG Core</Source>
     <Type>Races</Type>
+    <Subtype>Core</Subtype>
+  </Rule>
+  <Rule>
+    <ID>534</ID>
+    <Name>Aasimars</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>535</ID>
+    <Name>Catfolk</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>729</ID>
+    <Name>Dhampirs</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>730</ID>
+    <Name>Drow</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>731</ID>
+    <Name>Fetchlings</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>732</ID>
+    <Name>Goblins</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>733</ID>
+    <Name>Hobgoblins</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>734</ID>
+    <Name>Ifrits</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>735</ID>
+    <Name>Kobolds</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>736</ID>
+    <Name>Orcs</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>737</ID>
+    <Name>Oreads</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>738</ID>
+    <Name>Ratfolk</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>739</ID>
+    <Name>Sylphs</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>740</ID>
+    <Name>Tengus</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>741</ID>
+    <Name>Tieflings</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
+  </Rule>
+  <Rule>
+    <ID>742</ID>
+    <Name>Undines</Name>
+    <Source>Advanced Race Guide</Source>
+    <Type>Races</Type>
+    <Subtype>Featured</Subtype>
   </Rule>
   <Rule>
     <ID>115</ID>
