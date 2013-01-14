@@ -1113,6 +1113,27 @@
     <Subtype>Featured</Subtype>
   </Rule>
   <Rule>
+    <ID>743</ID>
+    <Name>Gunslinger</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Classes</Type>
+    <Subtype>Advanced Base Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>744</ID>
+    <Name>Ninja</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Classes</Type>
+    <Subtype>Alternate Class</Subtype>
+  </Rule>
+  <Rule>
+    <ID>745</ID>
+    <Name>Samurai</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Classes</Type>
+    <Subtype>Alternate Class</Subtype>
+  </Rule>
+  <Rule>
     <ID>115</ID>
     <Name>Dexterity</Name>
     <Source>PFRPG CORE</Source>
@@ -3242,7 +3263,7 @@
     <Name>Antipaladin</Name>
     <Source>APG</Source>
     <Type>Classes</Type>
-    <Subtype>Advanced Base Class</Subtype>
+    <Subtype>Alternate Class</Subtype>
   </Rule>
   <Rule>
     <ID>428</ID>
