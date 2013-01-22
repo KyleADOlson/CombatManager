@@ -777,14 +777,32 @@ namespace RandomItemWeightFixer
 
         private void SpellCheck_Click(object sender, RoutedEventArgs e)
         {
-            List<Spell> newsp = XmlListLoader<Spell>.Load("spf2.xml");
+            List<Spell> newsp = XmlListLoader<Spell>.Load("spells.xml");
+            Dictionary<String, List<Spell>> spells = new Dictionary<string, List<Spell>>();
+
+
 
             foreach (Spell sp in newsp)
             {
-                if (Spell.ByName(sp.Name) != null)
+                if (spells.ContainsKey(sp.Name))
                 {
-                    System.Diagnostics.Debug.WriteLine(sp.Name);
                 }
+                else
+                {
+                    spells[sp.Name] = new List<Spell>();
+                }
+                spells[sp.Name].Add(sp);
+            }
+
+            foreach (List<Spell> spl in from sl in spells.Values where sl.Count > 1 select sl)
+            {
+                System.Diagnostics.Debug.Write(spl[0].Name);
+                foreach (Spell sp in spl)
+                {
+                    System.Diagnostics.Debug.Write(" / " + sp.source);
+                }
+                System.Diagnostics.Debug.WriteLine("");
+
             }
         }
 

@@ -94,6 +94,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="..\CombatManagerCore\Spells.xml">
+      <Link>Spells.xml</Link>
+    </Resource>
     <Content Include="Weight.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

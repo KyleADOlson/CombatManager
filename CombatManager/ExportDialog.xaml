@@ -65,7 +65,7 @@
             </TabItem>
             <TabItem x:Name="FeatsTab" Margin="-2,-2,-2,-1">
             	<TabItem.Header>
-            		<TextBlock Text="{Binding Count, StringFormat=Spells (\{0\})}"/>
+            		<TextBlock Text="{Binding Count, StringFormat=Feats (\{0\})}"/>
             	</TabItem.Header>
             	<Grid>
             		<CheckBox x:Name="SelectAllFeatsCheckbox" Content="Select All" HorizontalAlignment="Left" Margin="0,2.707,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" IsChecked="True" Click="SelectAllFeatsCheckbox_Click" />

@@ -89,12 +89,37 @@ namespace DetailsRipper
 
             XDocument docSpells = XDocument.Load("Spells.xml");
 
-            foreach (XElement x in docSpells.Descendants("Spell"))
+            Dictionary<String, XElement> spellName = new Dictionary<string,XElement>();
+            var eleme = docSpells.Descendants("Spell");
+            List<XElement> spellsToRemove = new List<XElement>();
+            foreach (XElement x in eleme)
             {
                 if (x.Element("full_text") != null)
                 {
                     x.Element("full_text").Remove();
                 }
+
+                String currentName = x.Element("name").Value;
+                if (!spellName.ContainsKey(currentName))
+                {
+                    spellName[currentName] = x;
+                }
+                else
+                {
+                    XElement a = spellName[currentName];
+                    XElement b = x;
+                    if (a.Element("source") != null && b.Element("source") != null && a.Element("source").Value == b.Element("source").Value)
+                    {
+                        spellsToRemove.Add(x);
+                        System.Diagnostics.Debug.WriteLine("Removed " + currentName);
+                    }
+                }
+                   
+            }
+
+            foreach (XElement x in spellsToRemove)
+            {
+                x.Remove();
             }
 
             docSpells.Save("Spells.xml");
