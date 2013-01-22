@@ -1684,6 +1684,11 @@ namespace CombatManager
 
 
             monster.Speed = GetLine("Spd", statsblock, false);
+            if (monster.Speed == null)
+            {
+                
+                monster.Speed = GetLine("Speed", statsblock, false);
+            }
 
 
             monster.SpecialAttacks = GetLine("Special Attacks", statsblock, true);
@@ -10371,11 +10376,14 @@ namespace CombatManager
 
                 int? foundSpeed = null;
 
-                Match m = speedReg.Match(_Monster.speed);
-
-                if (m.Success)
+                if (_Monster.speed != null)
                 {
-                    foundSpeed = int.Parse(m.Groups["speed"].Value);
+                    Match m = speedReg.Match(_Monster.speed);
+
+                    if (m.Success)
+                    {
+                        foundSpeed = int.Parse(m.Groups["speed"].Value);
+                    }
                 }
 
                 return foundSpeed;
@@ -10417,13 +10425,16 @@ namespace CombatManager
                 {
                     int speed = 0;
 
-                    Regex speedReg = new Regex("^ *(?<speed>[0-9]+) +ft\\.", RegexOptions.IgnoreCase);
-
-                    Match m = speedReg.Match(_Monster.Speed);
-
-                    if (m.Success)
+                    if (_Monster.Speed != null)
                     {
-                        speed = int.Parse(m.Groups["speed"].Value);
+                        Regex speedReg = new Regex("^ *(?<speed>[0-9]+) +ft\\.", RegexOptions.IgnoreCase);
+
+                        Match m = speedReg.Match(_Monster.Speed);
+
+                        if (m.Success)
+                        {
+                            speed = int.Parse(m.Groups["speed"].Value);
+                        }
                     }
 
                     return speed;
@@ -10449,16 +10460,19 @@ namespace CombatManager
                 quality = null;
 
                 Regex speedReg = new Regex("fly +(?<speed>[0-9]+) +ft\\. +\\((?<quality>[a-zA-Z]+)\\)", RegexOptions.IgnoreCase);
-
-                Match m = speedReg.Match(_Monster.Speed);
-
-                if (m.Success)
+                if (_Monster.Speed != null)
                 {
-                    speed = int.Parse(m.Groups["speed"].Value);
-                    quality = StringCapitalizer.Capitalize(m.Groups["quality"].Value);
-                }
+                    Match m = speedReg.Match(_Monster.Speed);
 
-                return m.Success;
+                    if (m.Success)
+                    {
+                        speed = int.Parse(m.Groups["speed"].Value);
+                        quality = StringCapitalizer.Capitalize(m.Groups["quality"].Value);
+                    }
+                    return m.Success;
+                }
+                return false;
+
             }
 
             private void SetFly(int speed, string quality)

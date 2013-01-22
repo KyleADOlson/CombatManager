@@ -51,6 +51,8 @@ namespace CombatManagerMono
         private static UIImage _IdleImage;
         private static UIImage _FollowerImage;
         private static UIImage _ActionImage;
+
+        private static bool _ActionsPopoverShown;
 		
 		//private UIImageView _IdleImage;
 		//private UIImageView _HiddenImage;
@@ -229,19 +231,34 @@ namespace CombatManagerMono
 		
 		void Handle_ActionsPopoverWillShowPopover (object sender, EventArgs e)
 		{
-			
-			UIWebView v = new UIWebView(new RectangleF(0, 0, 300, 200));
+            UIAlertView view = null;
+			if (!_ActionsPopoverShown)
+            {
+                 view = new UIAlertView("Loading", "Accessing Database...", new UIAlertViewDelegate(), null, new string[]{});
+                view.Show();
+                NSRunLoop.Current.RunUntil(NSDate.Now.AddSeconds(.1));
+                //show waiting dialog
+            }
+
+			UIWebView v = new UIWebView(new RectangleF(0, 0, 180, 120));
 			v.LoadHtmlString(MonsterHtmlCreator.CreateHtml(_Character.Monster, _Character, true), new NSUrl("http://localhost/")); 
 			_ActionsPopover.AccessoryView = v;
 
 			List<CharacterActionItem> actions = CharacterActions.GetActions(_Character, _CharacterListView.SelectedCharacter);
 			
+            if (!_ActionsPopoverShown)
+            {
+                view.DismissWithClickedButtonIndex(0, false);
+                //hide waiting dialog
+                _ActionsPopoverShown = true;
+            }
 			AddActionItems(actions, _ActionsPopover.Items);
 			
 
 
 		}
-		
+
+
 		void AddActionItems(List<CharacterActionItem> actionList, List<ButtonStringPopoverItem> items)
 		{
 			

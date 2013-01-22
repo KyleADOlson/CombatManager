@@ -227,7 +227,7 @@ namespace CombatManagerMono
 			{
 				this._combatState.LoadPartyFiles(e.Files, _monsters);
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				alertView = new UIAlertView() {Title = "Unable to Load Files"};
 				alertView.AddButton("OK");
