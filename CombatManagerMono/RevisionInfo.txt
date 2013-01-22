@@ -1,3 +1,9 @@
+1.0.4
+Added loading prompt to action button
+Removed duplicate spells
+Fix HL loading errors
+Fix blank speed crash
+
 0.0.8
 Add Num Pad option to number editing popovers
 HD editor in monster editor works
