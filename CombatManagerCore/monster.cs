@@ -1636,7 +1636,7 @@ namespace CombatManager
                 monster.HD = "0d0";
             }
 
-            Regex regSave = new Regex("Fort (?<fort>[-+0-9]+), Ref (?<ref>[-+0-9]+), Will (?<will>[-+0-9]+)");
+            Regex regSave = new Regex("Fort (?<fort>[-+0-9]+)( \\([-+0-9]+bonus vs. [- a-zA-Z]+\\))?, Ref (?<ref>[-+0-9]+), Will (?<will>[-+0-9]+)");
             m = regSave.Match(statsblock);
             if (m.Success)
             {

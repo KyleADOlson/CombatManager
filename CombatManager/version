@@ -1,4 +1,7 @@
-﻿1.4.6
+﻿1.4.7
+Fix Hero Lab Saves imports for some files
+
+1.4.6
 Fix duplicate spells
 Fix Hero Lab "Speed" property loading
 Resolve update issue with zip dll
