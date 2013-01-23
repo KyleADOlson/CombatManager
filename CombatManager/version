@@ -1,5 +1,7 @@
 ﻿1.4.6
 Fix duplicate spells
+Fix Hero Lab "Speed" property loading
+Resolve update issue with zip dll
 
 1.4.5
 Add Ultimate Combat Classes to rules
