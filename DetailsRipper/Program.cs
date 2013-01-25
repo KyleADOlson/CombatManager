@@ -99,6 +99,13 @@ namespace DetailsRipper
                     x.Element("full_text").Remove();
                 }
 
+                string name = x.Element("name").Value;
+
+                if (name == name.ToUpper())
+                {
+                    x.Element("name").Value = name.ToLower().Capitalize();
+                }
+
                 String currentName = x.Element("name").Value;
                 if (!spellName.ContainsKey(currentName))
                 {
@@ -108,10 +115,20 @@ namespace DetailsRipper
                 {
                     XElement a = spellName[currentName];
                     XElement b = x;
-                    if (a.Element("source") != null && b.Element("source") != null && a.Element("source").Value == b.Element("source").Value)
+                    if (a.Element("source") != null && b.Element("source") != null && (
+                            String.Compare(a.Element("source").Value,b.Element("source").Value, true) == 0) || a.Element("source").Value == "Inner Sea World Guide")
                     {
-                        spellsToRemove.Add(x);
+                        spellsToRemove.Add(b);
                         System.Diagnostics.Debug.WriteLine("Removed " + currentName);
+                    }
+                    else if (a.Element("source").Value.StartsWith("AP ") || b.Element("source").Value == "APG" || b.Element("source").Value == "Advanced Race Guide")
+                    {
+                        spellsToRemove.Add(a);
+                    }
+                    else
+                    {
+
+                        System.Diagnostics.Debug.WriteLine("Duplicate " + currentName + "/" + a.Element("source").Value + "/" + b.Element("source").Value + "/");
                     }
                 }
                    
