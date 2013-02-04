@@ -1,5 +1,7 @@
 ﻿1.4.7
+Fix zip DLL problems (again)
 Fix Hero Lab Saves imports for some files
+NPC DB Update
 
 1.4.6
 Fix duplicate spells
@@ -11,6 +13,7 @@ Add Ultimate Combat Classes to rules
 Add Featured Races to rules
 Restore spell mods
 Restore afflictions
+
 
 1.4.4
 Support for HeroLab 4.1 files
