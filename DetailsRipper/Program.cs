@@ -148,8 +148,15 @@ namespace DetailsRipper
 
             List<XElement> removeAfter = new List<XElement>();
 
+            HashSet<String> names = new HashSet<string>();
+
             foreach (XElement x in docMon.Descendants("Monster"))
             {
+                foreach (var va in x.Elements())
+                {
+                    names.Add(va.Name.LocalName);
+                }
+
                 if (x.Element("FullText") != null)
                 {
                     x.Element("FullText").Remove();
@@ -199,6 +206,11 @@ namespace DetailsRipper
                 {
                     monsterList[monName] = x;
                 }
+            }
+
+            foreach (String s in names)
+            {
+                System.Diagnostics.Debug.WriteLine(s);
             }
 
             foreach (XElement x in removeAfter)
