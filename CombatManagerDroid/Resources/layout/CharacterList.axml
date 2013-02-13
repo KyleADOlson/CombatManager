@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout4">
+        <ImageButton
+            android:src="@drawable/invisible16"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/blankButton"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:layout_marginRight="-4dp"
+            android:layout_marginLeft="-4dp" />
+        <ImageButton
+            android:src="@drawable/monster16"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/monsterButton"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:layout_marginRight="-4dp"
+            android:layout_marginLeft="-4dp" />
+        <ImageButton
+            android:src="@drawable/openHS"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/loadButton"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:layout_marginRight="-4dp"
+            android:layout_marginLeft="-4dp" />
+        <ImageButton
+            android:src="@drawable/saveHS"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/saveButton"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:layout_marginRight="-4dp"
+            android:layout_marginLeft="-4dp" />
+    </LinearLayout>
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/characterList"
+        android:layout_weight="1" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3">
+        <Button
+            android:text="Button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/button1" />
+    </LinearLayout>
+</LinearLayout>

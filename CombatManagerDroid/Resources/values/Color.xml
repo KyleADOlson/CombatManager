@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+	<color name="PrimaryColorLighter">#BBDBDD</color>
+	<color name="PrimaryColorLight">#AFDBDD</color>
+	<color name="PrimaryColorMedium">#87B9BB</color>
+	<color name="PrimaryColorDark">#6F8B8C</color>  		 
+	<color name="PrimaryColorDarker">#2C767A</color>   		   		
+	<color name="SecondaryColorALighter">#FFF2D8</color>
+	<color name="SecondaryColorALight">#FFEDC9</color>
+	<color name="SecondaryColorAMedium">#FFE8B8</color>
+	<color name="SecondaryColorADark">#BFB297</color>  
+	<color name="SecondaryColorADarker">#A6833C</color>     
+	<color name="SecondaryColorBLighter">#FFD9D8</color>
+	<color name="SecondaryColorBLight">#FFCBC9</color>
+	<color name="SecondaryColorBMedium">#FFB9B8</color>
+	<color name="SecondaryColorBDark">#BF9897</color>  
+	<color name="SecondaryColorBDarker">#A63E3C</color>     
+</resources>

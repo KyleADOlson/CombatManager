@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="300px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/linearLayout2"
+            android:layout_weight="1">
+            <Button
+                android:text="+5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button1" />
+            <Button
+                android:text="+1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button2" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1"
+                android:autoText="false"
+                android:layout_gravity="center"
+                android:paddingBottom="4dp" />
+            <Button
+                android:text="-1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button3" />
+            <Button
+                android:text="-5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button4" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/linearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <Button
+                android:text="+5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button1" />
+            <Button
+                android:text="+1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button2" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:layout_gravity="center"
+                android:paddingBottom="4dp" />
+            <Button
+                android:text="-1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button3" />
+            <Button
+                android:text="-5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button4" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/linearLayout2"
+            android:layout_weight="1">
+            <Button
+                android:text="+5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button1" />
+            <Button
+                android:text="+1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button2" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_gravity="center"
+                android:paddingBottom="4dp" />
+            <Button
+                android:text="-1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button3" />
+            <Button
+                android:text="-5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button4" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/linearLayout2"
+            android:layout_weight="1">
+            <Button
+                android:text="+5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button1" />
+            <Button
+                android:text="+1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button2" />
+            <TextView
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:layout_gravity="center"
+                android:paddingBottom="4dp" />
+            <Button
+                android:text="-1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button3" />
+            <Button
+                android:text="-5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button4" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3">
+        <Button
+            android:text="Ok"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/okButton"
+            android:layout_weight="1" />
+        <Button
+            android:text="Cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/cancelButton"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

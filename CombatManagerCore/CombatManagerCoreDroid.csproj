@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2C035836-40C4-4941-8346-EB9606E84CF2}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CombatManager</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AssemblyName>CombatManagerCoreDroid</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;MONO;ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <DefineConstants>MONO;ANDROID</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\DotZipLib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Services" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Resources\values\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="ActiveCondition.cs" />
+    <Compile Include="Affliction.cs" />
+    <Compile Include="ArmorWeaponChart.cs" />
+    <Compile Include="ArmorWeaponSpecialChart.cs" />
+    <Compile Include="Attack.cs" />
+    <Compile Include="AttackSet.cs" />
+    <Compile Include="CampaignEvent.cs" />
+    <Compile Include="CampaignInfo.cs" />
+    <Compile Include="Character.cs" />
+    <Compile Include="CharacterAttacks.cs" />
+    <Compile Include="CharacterClass.cs" />
+    <Compile Include="CMRegexUtilities.cs" />
+    <Compile Include="CMStringUtilities.cs" />
+    <Compile Include="Coin.cs" />
+    <Compile Include="CombatState.cs" />
+    <Compile Include="Condition.cs" />
+    <Compile Include="ConditionBonus.cs" />
+    <Compile Include="CreatureTypeInfo.cs" />
+    <Compile Include="DBLoader.cs" />
+    <Compile Include="DBSettings.cs" />
+    <Compile Include="DBTableDesc.cs" />
+    <Compile Include="DebugLogger.cs" />
+    <Compile Include="DieRoll.cs" />
+    <Compile Include="Equipment.cs" />
+    <Compile Include="ExportData.cs" />
+    <Compile Include="Feat.cs" />
+    <Compile Include="InitiativeCount.cs" />
+    <Compile Include="InsensitiveComparer.cs" />
+    <Compile Include="MagicItem.cs" />
+    <Compile Include="monster.cs" />
+    <Compile Include="MonsterDB.cs" />
+    <Compile Include="ParsedFeat.cs" />
+    <Compile Include="PropertyConverters.cs" />
+    <Compile Include="RandomWeightChart.cs" />
+    <Compile Include="RomanNumbers.cs" />
+    <Compile Include="Rule.cs" />
+    <Compile Include="SizeMods.cs" />
+    <Compile Include="SkillValue.cs" />
+    <Compile Include="SourceInfo.cs" />
+    <Compile Include="SpecialAbility.cs" />
+    <Compile Include="SpecificItemChart.cs" />
+    <Compile Include="Spell.cs" />
+    <Compile Include="SpellBlockInfo.cs" />
+    <Compile Include="SpellInfo.cs" />
+    <Compile Include="SpellLevelInfo.cs" />
+    <Compile Include="Stat.cs" />
+    <Compile Include="StringCapitalizer.cs" />
+    <Compile Include="Treasure.cs" />
+    <Compile Include="TreasureGenerator.cs" />
+    <Compile Include="TreasureItem.cs" />
+    <Compile Include="Weapon.cs" />
+    <Compile Include="WeaponItem.cs" />
+    <Compile Include="WeaponSpecialAbility.cs" />
+    <Compile Include="XMLLoader.cs" />
+    <Compile Include="FeatHtmlCreator.cs" />
+    <Compile Include="GenericHtmlCreator.cs" />
+    <Compile Include="HtmlBlockGenerator.cs" />
+    <Compile Include="MonsterHtmlCreator.cs" />
+    <Compile Include="RuleHtmlCreator.cs" />
+    <Compile Include="SpellHtmlCreator.cs" />
+    <Compile Include="TreasureHtmlCreator.cs" />
+    <Compile Include="CoreContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RuleShort.xml" />
+    <Content Include="Spells.xml" />
+  </ItemGroup>
+</Project>

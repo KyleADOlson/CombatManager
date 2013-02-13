@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E248A0D4-E371-4B60-BB5E-B44FA36E6EC2}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CombatManagerDroid</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AssemblyName>CombatManagerDroid</AssemblyName>
+    <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HomeActivity.cs" />
+    <Compile Include="LoadingActivity.cs" />
+    <Compile Include="LibraryListAdapter.cs" />
+    <Compile Include="LookupFragment.cs" />
+    <Compile Include="CombatFragment.cs" />
+    <Compile Include="InitiativeListAdapter.cs" />
+    <Compile Include="CharacterListAdapter.cs" />
+    <Compile Include="UIUtils.cs" />
+    <Compile Include="ActionDialog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\layout\Loading.axml" />
+    <AndroidResource Include="Resources\layout\Lookup.axml" />
+    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\layout\Combat.axml" />
+    <AndroidResource Include="Resources\values\Color.xml" />
+    <AndroidResource Include="Resources\layout-port\Combat.axml" />
+    <AndroidResource Include="Resources\layout\CharacterList.axml" />
+    <AndroidResource Include="Resources\drawable\d2040.png" />
+    <AndroidResource Include="Resources\drawable\monster16.png" />
+    <AndroidResource Include="Resources\drawable\openHS.png" />
+    <AndroidResource Include="Resources\drawable\saveHS.png" />
+    <AndroidResource Include="Resources\drawable\invisible16.png" />
+    <AndroidResource Include="Resources\drawable\book16.png" />
+    <AndroidResource Include="Resources\drawable\scroll16.png" />
+    <AndroidResource Include="Resources\drawable\star16.png" />
+    <AndroidResource Include="Resources\drawable\sword16.png" />
+    <AndroidResource Include="Resources\drawable\treasure16.png" />
+    <AndroidResource Include="Resources\layout\CharacterListItem.axml" />
+    <AndroidResource Include="Resources\drawable\blue_button.xml" />
+    <AndroidResource Include="Resources\layout\TextDialog.axml" />
+    <AndroidResource Include="Resources\layout\NumberDialog.axml" />
+    <AndroidResource Include="Resources\drawable\init_button.xml" />
+    <AndroidResource Include="Resources\layout\ActionDialog.axml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\CombatManagerCore\CombatManagerCoreDroid.csproj">
+      <Project>{2C035836-40C4-4941-8346-EB9606E84CF2}</Project>
+      <Name>CombatManagerCoreDroid</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="..\CombatManagerCore\Weapons.xml">
+      <Link>Assets\Weapons.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\HtmlBlockFooter.txt">
+      <Link>Assets\HtmlBlockFooter.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\HtmlBlockHeader.txt">
+      <Link>Assets\HtmlBlockHeader.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\ArmorWeaponChart.xml">
+      <Link>Assets\ArmorWeaponChart.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\ArmorWeaponSpecialChart.xml">
+      <Link>Assets\ArmorWeaponSpecialChart.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\ArtChart.xml">
+      <Link>Assets\ArtChart.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\BestiaryShort.xml">
+      <Link>Assets\BestiaryShort.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\Condition.xml">
+      <Link>Assets\Condition.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\Equipment.xml">
+      <Link>Assets\Equipment.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\Feats.xml">
+      <Link>Assets\Feats.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\GemChart.xml">
+      <Link>Assets\GemChart.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\MagicItems.xml">
+      <Link>Assets\MagicItems.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\NPCShort.xml">
+      <Link>Assets\NPCShort.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\RuleShort.xml">
+      <Link>Assets\RuleShort.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\SpecificItemChart.xml">
+      <Link>Assets\SpecificItemChart.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\Spells.xml">
+      <Link>Assets\Spells.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\TreasureChart.xml">
+      <Link>Assets\TreasureChart.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\WeaponSpecialAbility.xml">
+      <Link>Assets\WeaponSpecialAbility.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\Details.db">
+      <Link>Assets\Details.db</Link>
+    </AndroidAsset>
+  </ItemGroup>
+</Project>

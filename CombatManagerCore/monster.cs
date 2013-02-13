@@ -62,15 +62,14 @@ namespace CombatManager
         static void LoadBestiary()
         {
             DateTime time = DateTime.Now;
-#if MONO
-            List<Monster> set = XmlListLoader<Monster>.Load("BestiaryShort.xml");
-            List<Monster> set2 = XmlListLoader<Monster>.Load("NPCShort.xml");
-#else
             List<Monster> set = LoadMonsterFromXml("BestiaryShort.xml");
+#if !ANDROID
             List<Monster> set2 = LoadMonsterFromXml("NPCShort.xml");
+#else
+            List<Monster> set2 = new List<Monster>();
 #endif
             DateTime time2 = DateTime.Now;
-            long span = (new TimeSpan(time2.Ticks - time.Ticks)).Milliseconds;
+            double span = (new TimeSpan(time2.Ticks - time.Ticks)).TotalMilliseconds;
             System.Diagnostics.Debug.WriteLine("Ticks: " + span);
 			
 			if (set2 != null)
@@ -98,7 +97,12 @@ namespace CombatManager
         private static List<Monster> LoadMonsterFromXml(String filename)
         {
             List<Monster> monsters = new List<Monster>();
+#if ANDROID
+            XDocument doc = XDocument.Load(new StreamReader(CoreContext.Context.Assets.Open(filename)));
+#else
             XDocument doc = XDocument.Load(new StreamReader(filename));
+#endif
+           
             foreach (var v in doc.Descendants("Monster"))
             {
                 Monster m = new Monster();

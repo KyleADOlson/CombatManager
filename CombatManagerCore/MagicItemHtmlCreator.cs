@@ -42,11 +42,11 @@ namespace CombatManagerMono
 
 
 
-            if (!item.DescHTML.IsEmptyOrNull() || !item.Description.IsEmptyOrNull())
+            if (!String.IsNullOrEmpty(item.DescHTML) || !String.IsNullOrEmpty(item.Description))
             {
                 blocks.CreateSectionHeader("DESCRIPTION");
 
-                if (!item.DescHTML.IsEmptyOrNull() && item.DescHTML != "NULL")
+                if (!String.IsNullOrEmpty(item.DescHTML) && item.DescHTML != "NULL")
                 {
 
                     blocks.AppendOpenTagWithClass("p", "description");
@@ -80,7 +80,7 @@ namespace CombatManagerMono
 
             }
 
-            if (!item.Destruction.IsEmptyOrNull() && item.Destruction != "NULL")
+            if (!String.IsNullOrEmpty(item.Destruction) && item.Destruction != "NULL")
             {
                 blocks.CreateSectionHeader("DESTRUCTION");
 

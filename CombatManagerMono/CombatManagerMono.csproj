@@ -139,9 +139,7 @@
     <Compile Include="ConditionViewController.designer.cs" />
     <Compile Include="DataListViewCell.cs" />
     <Compile Include="DialogPopoverViewController.cs" />
-    <Compile Include="FeatHtmlCreator.cs" />
     <Compile Include="FeatsTab.cs" />
-    <Compile Include="GenericHtmlCreator.cs" />
     <Compile Include="GradientButton.cs" />
     <Compile Include="GradientHelper.cs" />
     <Compile Include="GradientView.cs" />
@@ -154,7 +152,6 @@
     <Compile Include="HealthViewPopover.xib.designer.cs">
       <DependentUpon>HealthViewPopover.xib</DependentUpon>
     </Compile>
-    <Compile Include="HtmlBlockGenerator.cs" />
     <Compile Include="LookupTab.cs" />
     <Compile Include="MainUI.cs" />
     <Compile Include="MonsterAddView.xib.cs">
@@ -180,7 +177,6 @@
     <Compile Include="MonsterEditorSpecialPage.designer.cs" />
     <Compile Include="MonsterEditorStatisticsPage.cs" />
     <Compile Include="MonsterEditorStatisticsPage.designer.cs" />
-    <Compile Include="MonsterHtmlCreator.cs" />
     <Compile Include="MonstersTab.cs" />
     <Compile Include="NumberModifyPopover.xib.cs">
       <DependentUpon>NumberModifyPopover.xib</DependentUpon>
@@ -196,9 +192,7 @@
     </Compile>
     <Compile Include="OpenDialog.cs" />
     <Compile Include="OpenDialog.designer.cs" />
-    <Compile Include="RuleHtmlCreator.cs" />
     <Compile Include="RulesTab.cs" />
-    <Compile Include="SpellHtmlCreator.cs" />
     <Compile Include="SpellsTab.cs" />
     <Compile Include="StandardDialogView.cs" />
     <Compile Include="TextBoxDialog.cs" />
@@ -231,10 +225,8 @@
       <DependentUpon>AboutView.cs</DependentUpon>
     </Compile>
     <Compile Include="TreasureTab.cs" />
-    <Compile Include="MagicItemHtmlCreator.cs" />
     <Compile Include="SideTabBar.cs" />
     <Compile Include="TreasureGeneratorPage.cs" />
-    <Compile Include="TreasureHtmlCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="CombatManagerMonoViewController_iPhone.xib" />
@@ -590,8 +582,6 @@
     <Content Include="..\CombatManager\images\zzz-16.png">
       <Link>Images\External\zzz-16.png</Link>
     </Content>
-    <Content Include="HtmlBlockFooter.txt" />
-    <Content Include="HtmlBlockHeader.txt" />
     <Content Include="Images\Sort.png" />
     <Content Include="Images\Sort%402x.png" />
     <Content Include="Images\Refresh.png" />

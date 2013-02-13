@@ -24,7 +24,7 @@ using System.Text;
 using CombatManager;
 using System.Collections.Generic;
 
-namespace CombatManagerMono
+namespace CombatManager
 {
 	public class RuleHtmlCreator
 	{

@@ -1,7 +1,7 @@
 1.0.4
 Added loading prompt to action button
 Removed duplicate spells
-Fix HL loading errors
+Fix Hero Lab loading errors
 Fix blank speed crash
 
 0.0.8

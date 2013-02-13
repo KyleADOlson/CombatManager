@@ -32,6 +32,9 @@ using System.Xml;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+#if ANDROID
+using Android.Content;
+#endif
 
 namespace CombatManager
 {
@@ -133,7 +136,12 @@ namespace CombatManager
                 serializer.UnknownNode += new XmlNodeEventHandler(serializer_UnknownNode);
                 serializer.UnknownAttribute += new XmlAttributeEventHandler(serializer_UnknownAttribute);
 
-
+#if ANDROID
+                using (Stream io = CoreContext.Context.Assets.Open(filename))
+                {
+                    using (StreamReader fs = new StreamReader(io))
+                    {
+#else
                 string path;
                 if (!appData)
                 {
@@ -153,6 +161,7 @@ namespace CombatManager
                 {
                     using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
                     {
+#endif
 
                         xmlAttributeErrors = new Dictionary<string, string>();
 
@@ -167,8 +176,9 @@ namespace CombatManager
                             }
                         }
 
-
+#if !ANDROID
                         fs.Close();
+#endif  
                     }
                 }
             }

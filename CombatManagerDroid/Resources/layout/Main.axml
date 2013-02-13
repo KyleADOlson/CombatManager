@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="Combat"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/combatButton"
+            android:drawableLeft="@drawable/sword16" />
+        <Button
+            android:text="Monsters"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/monstersButton"
+            android:drawableLeft="@drawable/monster16" />
+        <Button
+            android:text="Feats"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/button3"
+            android:drawableLeft="@drawable/star16" />
+        <Button
+            android:text="Spells"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/button4"
+            android:drawableLeft="@drawable/scroll16" />
+        <Button
+            android:text="Rules"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/button5"
+            android:drawableLeft="@drawable/book16" />
+        <Button
+            android:text="Treasure"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/button6"
+            android:drawableLeft="@drawable/treasure16" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/bodyLayout">
+        <fragment
+            class="CombatManagerDroid.CombatFragment"
+            android:id="@+id/my_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

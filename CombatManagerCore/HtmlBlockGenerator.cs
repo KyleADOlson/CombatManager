@@ -27,7 +27,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Collections.Generic;
 
-namespace CombatManagerMono
+namespace CombatManager
 {
 	public static class HtmlBlockCreator
 	{
@@ -41,7 +41,7 @@ namespace CombatManagerMono
 			{
 				if (_Header == null)
 				{
-					using (StreamReader r = new StreamReader("HtmlBlockHeader.txt"))
+                    using (StreamReader r = CreateReader("HtmlBlockHeader.txt"))
 					{
 						_Header = r.ReadToEnd();
 					}
@@ -58,7 +58,7 @@ namespace CombatManagerMono
 				if (_Footer == null)
 				{
 					
-					using (StreamReader r = new StreamReader("HtmlBlockFooter.txt"))
+					using (StreamReader r = CreateReader("HtmlBlockFooter.txt"))
 					{
 						_Footer = r.ReadToEnd();
 					}
@@ -67,6 +67,17 @@ namespace CombatManagerMono
 			}
 		}
 		
+        static StreamReader CreateReader(string filename)
+        {
+#if ANDROID
+            Stream io = CombatManager.CoreContext.Context.Assets.Open(filename);
+            
+            return new StreamReader(io);
+#else
+            return new StreamReader(filename);
+#endif
+        }
+
 		public static StringBuilder AppendHtml(this StringBuilder builder, string text)
 		{
 			return builder.Append(HttpUtility.HtmlEncode(text));
@@ -227,7 +238,7 @@ namespace CombatManagerMono
 		
 		public static StringBuilder CreateItemIfNotNull(this StringBuilder builder, string title, bool boldTitle, string value, string end, bool linebreak)
 		{
-			if (!value.IsEmptyOrNull())
+			if (!String.IsNullOrEmpty(value))
 			{
 				if (title != null)
 				{

@@ -102,6 +102,7 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\DotZipLib\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Services" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -156,6 +157,14 @@
     <Compile Include="RomanNumbers.cs" />
     <Compile Include="ParsedFeat.cs" />
     <Compile Include="PropertyConverters.cs" />
+    <Compile Include="FeatHtmlCreator.cs" />
+    <Compile Include="GenericHtmlCreator.cs" />
+    <Compile Include="HtmlBlockGenerator.cs" />
+    <Compile Include="MagicItemHtmlCreator.cs" />
+    <Compile Include="MonsterHtmlCreator.cs" />
+    <Compile Include="RuleHtmlCreator.cs" />
+    <Compile Include="SpellHtmlCreator.cs" />
+    <Compile Include="TreasureHtmlCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">
@@ -220,6 +229,8 @@
     <Content Include="NPCShort.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="HtmlBlockFooter.txt" />
+    <Content Include="HtmlBlockHeader.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WeaponNames" />
