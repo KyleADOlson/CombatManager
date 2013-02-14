@@ -35,6 +35,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,17 +72,23 @@
     <Compile Include="Equipment.cs" />
     <Compile Include="ExportData.cs" />
     <Compile Include="Feat.cs" />
+    <Compile Include="FeatHtmlCreator.cs" />
+    <Compile Include="GenericHtmlCreator.cs" />
+    <Compile Include="HtmlBlockGenerator.cs" />
     <Compile Include="InitiativeCount.cs" />
     <Compile Include="InsensitiveComparer.cs" />
     <Compile Include="MagicItem.cs" />
+    <Compile Include="MagicItemHtmlCreator.cs" />
     <Compile Include="monster.cs" />
     <Compile Include="MonsterDB.cs" />
+    <Compile Include="MonsterHtmlCreator.cs" />
     <Compile Include="ParsedFeat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyConverters.cs" />
     <Compile Include="RandomWeightChart.cs" />
     <Compile Include="RomanNumbers.cs" />
     <Compile Include="Rule.cs" />
+    <Compile Include="RuleHtmlCreator.cs" />
     <Compile Include="SizeMods.cs" />
     <Compile Include="SkillValue.cs" />
     <Compile Include="SourceInfo.cs" />
@@ -89,12 +96,14 @@
     <Compile Include="SpecificItemChart.cs" />
     <Compile Include="Spell.cs" />
     <Compile Include="SpellBlockInfo.cs" />
+    <Compile Include="SpellHtmlCreator.cs" />
     <Compile Include="SpellInfo.cs" />
     <Compile Include="SpellLevelInfo.cs" />
     <Compile Include="Stat.cs" />
     <Compile Include="StringCapitalizer.cs" />
     <Compile Include="Treasure.cs" />
     <Compile Include="TreasureGenerator.cs" />
+    <Compile Include="TreasureHtmlCreator.cs" />
     <Compile Include="TreasureItem.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="WeaponItem.cs" />
@@ -102,6 +111,7 @@
     <Compile Include="XMLLoader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\Users\kolson\Downloads\version.xml" />
     <Content Include="ArmorWeaponChart.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -126,6 +136,12 @@
     <Content Include="GemChart.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="HtmlBlockFooter.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlBlockHeader.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="MagicItems.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -142,9 +158,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TreasureChart.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Weapons.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="WeaponSpecialAbility.xml">

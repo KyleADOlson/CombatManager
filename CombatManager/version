@@ -1,4 +1,7 @@
-﻿1.4.7
+﻿1.4.8
+Check for updates on startup
+
+1.4.7
 Fix zip DLL problems (again)
 Fix Hero Lab Saves imports for some files
 NPC DB Update

@@ -48,6 +48,10 @@ using System.Collections;
 using System.Collections.Specialized;
 using System.Windows.Interop;
 using System.ServiceModel;
+using System.Threading;
+using System.Net;
+using System.Xml.Linq;
+using System.Reflection;
 
 namespace CombatManager
 {
@@ -383,6 +387,8 @@ namespace CombatManager
             System.Diagnostics.Debug.WriteLine(startupTimeText);
 
             System.Diagnostics.Debug.WriteLine("Startup Time: " + startupTime.TotalSeconds);
+
+            PerformUpdateCheck();
             
         }
 
@@ -7615,6 +7621,49 @@ namespace CombatManager
 		{
 			// TODO: Add event handler implementation here.
 		}
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://combatmanager.com");
+        }
+
+        private void PerformUpdateCheck()
+        {
+            Thread t = new Thread(() => 
+            { 
+                try
+                {
+                    HttpWebRequest rq1 = (HttpWebRequest)WebRequest.Create("http://CombatManager.com/version.xml");
+                    HttpWebResponse rsp1 = (HttpWebResponse)rq1.GetResponse();
+
+                    XDocument doc = XDocument.Load(rsp1.GetResponseStream());
+
+                    String val = doc.Root.Value;
+
+                    rsp1.Close();
+
+                    Version remotev = Version.Parse(val);
+                    Version localv = Assembly.GetExecutingAssembly().GetName().Version;
+
+                    if (remotev.CompareTo(localv) > 0)
+                    {
+                        Dispatcher.BeginInvoke((Action)(() =>
+                            {
+                                UpdateButton.Visibility = System.Windows.Visibility.Visible;
+                            }));
+                    }
+                        
+
+
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error loading version: \r\n" + ex.ToString());
+                }
+            });
+            t.Start();
+            
+        }
 
     }
 }

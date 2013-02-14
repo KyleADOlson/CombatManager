@@ -42,11 +42,6 @@ using System.Xml.Serialization;
 
 namespace CombatManager
 {
-    public class TitleValuePair
-    {
-        public string Title;
-        public string Value;
-    }
 
 
     public delegate void DocumentLinkHander(object sender, DocumentLinkEventArgs e);

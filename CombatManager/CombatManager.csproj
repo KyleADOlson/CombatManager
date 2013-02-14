@@ -452,10 +452,6 @@
       <Project>{89CF9A2F-FAE7-46E5-B2CC-FC478D9662FA}</Project>
       <Name>CombatManagerCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CombatViewService\CombatViewService.csproj">
-      <Project>{6A6FBA0A-49B6-4F87-A5BB-8AE48F43E0BA}</Project>
-      <Name>CombatViewService</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\notes-16.png" />

@@ -2439,8 +2439,12 @@
                 <DropShadowEffect ShadowDepth="0"/>
             </Button.Effect>
             <Grid Width="12" Height="12">
-                <Path Stretch="Fill" Stroke="#97CBC7C7" Data="M0,0 L1,0" StrokeThickness="3" Margin="-0.996,5,-2.005,-5" Width="15" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
-                <Path Stretch="Fill" Stroke="White" Data="M0,0 L1,0" StrokeThickness="3" Margin="-1.496,5.625,-1.505,-3.625" Width="15" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="0*" />
+                </Grid.ColumnDefinitions>
+                <Path Stretch="Fill" Stroke="#97CBC7C7" Data="M0,0 L1,0" StrokeThickness="3" Margin="-1,5,-2,-5" Width="15" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Grid.ColumnSpan="2" />
+                <Path Stretch="Fill" Stroke="White" Data="M0,0 L1,0" StrokeThickness="3" Margin="-1,5.625,-2,-3.625" Width="15" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Grid.ColumnSpan="2" />
             </Grid>
         </Button>
         <Button x:Name="MaximizeButton" HorizontalAlignment="Right" Margin="0,0,37,2.13" Width="24" RenderTransformOrigin="0.812,0.682" Click="MaximizeButton_Click" VerticalAlignment="Bottom" Height="22" IsTabStop="False" Focusable="False" Background="{DynamicResource SecondaryColorBGradientBrush}">
@@ -3692,6 +3696,11 @@
         </Grid>
         <Button Content="Undo" HorizontalAlignment="Left" Margin="90,4,0,8" x:Name="UndoButton" Style="{DynamicResource ButtonMainStyle}" Width="37.05" Grid.Row="2" Click="UndoButton_Click" FontSize="10.667" />
         <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Margin="132.05,4,0,8.168" Grid.Row="2" Style="{DynamicResource ButtonMainStyle}" d:LayoutOverrides="Height" Click="SettingsButton_Click" FontSize="10.667"/>
+        <Button Background="{DynamicResource SecondaryColorBGradientBrush}" Focusable="False" Height="22" HorizontalAlignment="Right" IsTabStop="False" Margin="0,0,101,2" Name="UpdateButton" RenderTransformOrigin="0.812,0.682" VerticalAlignment="Bottom" Width="107" Content="Update Available" Foreground="White" FontWeight="Bold" Click="UpdateButton_Click" Visibility="Hidden">
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="0" />
+            </Button.Effect>
+        </Button>
     </Grid>
 
 
