@@ -33,7 +33,6 @@
 
 Sub NewZip(pathToZipFile)
 
-    WScript.Echo "Creating a new zip file (" & pathToZipFile & ") "
 
     Dim fso
     Set fso = CreateObject("Scripting.FileSystemObject")
@@ -92,12 +91,9 @@ Sub CreateZip(pathToZipFile, dirToZip)
     fullDirToZip = fso.GetAbsolutePathName(dirToZip)
 
     If Not fso.FolderExists(fullDirToZip) Then
-        WScript.Echo "The directory to zip does not exist."
         Exit Sub
     End If
 
-    WScript.Echo "Checking zip " & fullPathToZipFile
-    WScript.Echo "  against directory " &  fullDirToZip
 
     dim sa
     set sa = CreateObject("Shell.Application")
@@ -135,7 +131,6 @@ Sub CreateZip(pathToZipFile, dirToZip)
                     If (needRepack = -1) Then
                         '' first file only
                         If Not fso.FileExists(fullPathToZipFile) Then
-                            WScript.Echo "The zip file does not exist."
                             '' no zip means, always need to repack
                             needRepack = 1
                         Else
@@ -184,10 +179,8 @@ Sub CreateZip(pathToZipFile, dirToZip)
         If (pass = 0) Then
             If (needRepack <> 0) Then
                 '' reaching pass 1 means we delete and re-create the zip file
-                WScript.Echo "The resources zip needs to be re-packed. "
                 Set zip = Nothing
                 If fso.FileExists(fullPathToZipFile) Then
-                    WScript.Echo "That zip file already exists - deleting it."
                     fso.DeleteFile fullPathToZipFile
                     '' give it time to be really deleted
                     Wscript.Sleep(2400)
@@ -195,7 +188,6 @@ Sub CreateZip(pathToZipFile, dirToZip)
                 NewZip fullPathToZipFile
                 Set zip = sa.NameSpace(fullPathToZipFile)
             Else
-                WScript.Echo "The resources zip does not need to be updated."
                 '' insure we skip the 2nd pass.
                 pass = pass + 1
             End If
@@ -205,7 +197,6 @@ Sub CreateZip(pathToZipFile, dirToZip)
             '' but don't wait forever.
             Dim sLoop
             sLoop = 0
-            WScript.Echo "Verifying the count..."
             Do Until fcount <= zip.Items.Count
                 Wscript.Sleep(400)
                 sLoop = sLoop + 1
