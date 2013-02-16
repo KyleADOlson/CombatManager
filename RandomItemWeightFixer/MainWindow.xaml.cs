@@ -650,7 +650,7 @@ namespace RandomItemWeightFixer
             bigText = Regex.Replace(bigText, "&ndash;", "-");
 
 
-            Regex x = new Regex("\\<h2 id\\=\"[-a-zA-Z0-9()]+\"\\>(?<name>[-a-zA-Z '0-9]+)( \\((?<type>[^)]+)\\))?\\</h2\\>[ \\t\\r\\n]*" +
+            Regex x = new Regex("\\<h2 id\\=\"[-\\p{L}0-9()]+\"\\>(?<name>[-\\p{L} '0-9]+)( \\((?<type>[^)]+)\\))?\\</h2\\>[ \\t\\r\\n]*" +
                 "\\<p\\>(?<short>([^\\<]|\\</?i\\>)+)\\</p\\>[ \\t\\r\\n]*" +
                 "(\\<p\\>\\<b\\>Prerequisites?\\</b\\>: (?<prereq>[^\\<]+)\\</p\\>[ \\t\\r\\n]*)?" +
                 "(\\<p\\>\\<b\\>Benefits?\\</b\\>: (?<benefit>[^\\<]+)\\</p\\>[ \\t\\r\\n]*)?" +

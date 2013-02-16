@@ -112,6 +112,7 @@
     <Compile Include="Cloud\CloudConnection.cs" />
     <Compile Include="Cloud\MonsterLibrary.cs" />
     <Compile Include="CMUtilities.cs" />
+    <Compile Include="CombatHotKey.cs" />
     <Compile Include="CombatListWindow.xaml.cs">
       <DependentUpon>CombatListWindow.xaml</DependentUpon>
     </Compile>
@@ -135,6 +136,9 @@
     </Compile>
     <Compile Include="FeatEditorWindow.xaml.cs">
       <DependentUpon>FeatEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HotKeysDialog.xaml.cs">
+      <DependentUpon>HotKeysDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="HPChangeDialog.xaml.cs">
       <DependentUpon>HPChangeDialog.xaml</DependentUpon>
@@ -230,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FeatEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HotKeysDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -67,6 +67,7 @@
         <local:SensesConverter x:Key="SensesConverter"/>
         <local:ParenthesesPropertyConverter x:Key="ParenthesesPropertyConverter"/>
         <local:SpellSchoolIndexConverter x:Key="SpellSchoolIndexConverter"/>
+        <local:KeyToStringConverter x:Key="KeyToStringConverter"/>
         <Style x:Key="ButtonMainStyle" TargetType="{x:Type Control}">
             <Setter Property="Background" Value="{DynamicResource PrimaryColorGradientBrush}" />
             <Setter Property="Foreground" Value="White"/>

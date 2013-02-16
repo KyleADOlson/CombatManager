@@ -52,7 +52,7 @@ namespace CombatManager
         public SkillValue(string name)
         {
 
-            Regex regName = new Regex("([ a-zA-Z]+)( \\(([- a-zA-Z]+)\\))?");
+            Regex regName = new Regex("([ \\p{L}]+)( \\(([- \\p{L}]+)\\))?");
 
             Match match = regName.Match(name);
 

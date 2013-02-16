@@ -1458,7 +1458,7 @@ namespace CombatManager
                 List<String> meleeStrings = new List<string>();
                 List<String> rangedStrings = new List<string>();
 
-                Regex regAttack = new Regex("(?<weapon>[ ,a-zA-Z0-9+]+)( \\((?<sub>[-+ a-zA-Z0-9/]+)\\))? (?<bonus>(N/A|([-+/0-9]+))) (?<type>(melee|ranged)) (?<dmg>\\([0-9]+d[0-9]+(\\+[0-9]+)?(/[0-9]+-20)?(/x[0-9]+)?\\))");
+                Regex regAttack = new Regex("(?<weapon>[ ,\\p{L}0-9+]+)( \\((?<sub>[-+ \\p{L}0-9/]+)\\))? (?<bonus>(N/A|([-+/0-9]+))) (?<type>(melee|ranged)) (?<dmg>\\([0-9]+d[0-9]+(\\+[0-9]+)?(/[0-9]+-20)?(/x[0-9]+)?\\))");
 
                 foreach (Match ma in regAttack.Matches(attacks))
                 {
@@ -1586,7 +1586,13 @@ namespace CombatManager
             if (readNameBlock)
             {
                 StringReader reader = new StringReader(statsblock);
-                monster.Name = reader.ReadLine();
+                String name = reader.ReadLine();
+                int loc = name.IndexOf('\t');
+                if (loc != -1)
+                {
+                    name = name.Substring(0, loc);
+                }
+                monster.Name = name;
             }
 
 
@@ -1668,7 +1674,7 @@ namespace CombatManager
 
             if (raceClass != null)
             {
-                m = Regex.Match(raceClass, "(?<race>[-a-zA-Z]+) (?<class>.+)?");
+                m = Regex.Match(raceClass, "(?<race>[-\\p{L}]+) (?<class>.+)?");
 
                 if (m.Success)
                 {
@@ -1711,7 +1717,7 @@ namespace CombatManager
 
             monster.Senses += "Perception " + CMStringUtilities.PlusFormatNumber(perception);
 
-            Regex regArmor = new Regex("(?<ac>AC -?[0-9]+, touch -?[0-9]+, flat-footed -?[0-9]+) +(?<mods>\\([-a-zA-Z0-9, +]+\\))?", RegexOptions.IgnoreCase);
+            Regex regArmor = new Regex("(?<ac>AC -?[0-9]+, touch -?[0-9]+, flat-footed -?[0-9]+) +(?<mods>\\([-\\p{L}0-9, +]+\\))?", RegexOptions.IgnoreCase);
             m = regArmor.Match(statsblock);
             monster.AC = m.Groups["ac"].Value;
             if (m.Groups["mods"].Success)
@@ -1743,7 +1749,7 @@ namespace CombatManager
                 monster.HD = "0d0";
             }
 
-            Regex regSave = new Regex("Fort (?<fort>[-+0-9]+)( \\([-+0-9]+bonus vs. [- a-zA-Z]+\\))?, Ref (?<ref>[-+0-9]+), Will (?<will>[-+0-9]+)");
+            Regex regSave = new Regex("Fort (?<fort>[-+0-9]+)( \\([-+0-9]+bonus vs. [- \\p{L}]+\\))?, Ref (?<ref>[-+0-9]+), Will (?<will>[-+0-9]+)");
             m = regSave.Match(statsblock);
             if (m.Success)
             {
@@ -1847,16 +1853,16 @@ namespace CombatManager
 
                 MatchCollection matches = regLine.Matches(special);
 
-                Regex regWeaponTraining = new Regex("Weapon Training: (?<group>[a-zA-Z]+) \\+(?<value>[0-9]+)");
+                Regex regWeaponTraining = new Regex("Weapon Training: (?<group>[\\p{L}]+) \\+(?<value>[0-9]+)");
                 Regex regSR = new Regex("Spell Resistance \\((?<SR>[0-9]+)\\)");
-                Regex regSpecialAbility = new Regex("(?<name>[-\\.+, a-zA-Z0-9:]+)"
+                Regex regSpecialAbility = new Regex("(?<name>[-\\.+, \\p{L}0-9:]+)"
                     + "( \\((?<mod>[-+][0-9]+)\\))?"
                     + "( [0-9]+')?"
                     + "( \\(CMB (?<CMB>[0-9]+)\\))?"
                     + "( \\((?<AtWill>At will)\\))?"
                     + "( \\((?<daily>[0-9]+)/day\\))?"
                     + "( \\(DC (?<DC>[0-9]+)\\))?"
-                    + "( \\((?<othertext>[0-9A-Za-z, /]+)\\))?"
+                    + "( \\((?<othertext>[0-9\\p{L}, /]+)\\))?"
                     + " \\((?<type>(Ex|Su|Sp)(, (?<cp>[0-9]+) CP)?)\\) (?<text>.+)");
 
                 foreach (Match ma in matches)
@@ -1923,7 +1929,7 @@ namespace CombatManager
                 }
             }
 
-            string endAttacks = "[a-zA-Z]+ Spells Known|Special Attacks|Spell-Like Abilities|-------";
+            string endAttacks = "[\\p{L}]+ Spells Known|Special Attacks|Spell-Like Abilities|-------";
 
             Regex regMelee = new Regex("\r\nMelee (?<melee>(.|\r|\n)+?)\r\n(Ranged|" + endAttacks + ")");
 
@@ -1952,7 +1958,7 @@ namespace CombatManager
             monster.SpellLikeAbilities = GetLine("Spell-Like Abilities", statsblock, false);
 
             Regex regSpells = new Regex(
-                "\r\n[ a-zA-Z]+ (?<spells>Spells Known (.|\r|\n)+?)\r\n------");
+                "\r\n[ \\p{L}]+ (?<spells>Spells Known (.|\r|\n)+?)\r\n------");
 
             m = regSpells.Match(statsblock);
             if (m.Success)
@@ -2140,7 +2146,7 @@ namespace CombatManager
 
         private static string ReplaceColonItems(string text)
         {
-            Regex reg = new Regex(": (?<val>[-+/. a-zA-Z0-9]+?)(?<mod> (\\+|-)[0-9]+)?((?<comma>,)|\r|\n|$)");
+            Regex reg = new Regex(": (?<val>[-+/. \\p{L}0-9]+?)(?<mod> (\\+|-)[0-9]+)?((?<comma>,)|\r|\n|$)");
 
             return reg.Replace(text, delegate(Match m)
             {
@@ -2206,7 +2212,7 @@ namespace CombatManager
 
                     List<String> list = new List<string>();
 					string specRegString = "\\((?<type>(Ex|Su|Sp))(, (?<cp>[0-9]+) CP)?\\):?";
-                    Regex specFindRegex = new Regex("((?<startline>^)|\\.)[-a-zA-Z ',]+" + specRegString);
+                    Regex specFindRegex = new Regex("((?<startline>^)|\\.)[-\\p{L} ',]+" + specRegString);
 					Regex specRegex = new Regex(specRegString);
 					Match specFindMatch = specFindRegex.Match(specText);
 					List<int> locList = new List<int>();
@@ -2341,7 +2347,7 @@ namespace CombatManager
             skillValueDictionary = new Dictionary<String, SkillValue>(new InsensitiveEqualityCompararer());
             if (skills != null)
             {
-                Regex skillReg = new Regex("([ a-zA-Z]+)( )(\\(([- a-zA-Z]+)\\) )?((\\+|-)[0-9]+)");
+                Regex skillReg = new Regex("([ \\p{L}]+)( )(\\(([- \\p{L}]+)\\) )?((\\+|-)[0-9]+)");
 
                 foreach (Match match in skillReg.Matches(skills))
                 {
@@ -2382,7 +2388,7 @@ namespace CombatManager
                 if (Feats != null)
                 {
 
-                    Regex regFeat = new Regex("(^| )([- a-zA-Z0-9]+( \\([- ,a-zA-Z0-9]+\\))?)(\\*+)?(\\Z|,)");
+                    Regex regFeat = new Regex("(^| )([- \\p{L}0-9]+( \\([- ,\\p{L}0-9]+\\))?)(\\*+)?(\\Z|,)");
 
                     foreach (Match m in regFeat.Matches(Feats))
                     {
@@ -2651,7 +2657,7 @@ namespace CombatManager
 
             string returnText = text;
 
-            Regex regName = new Regex(skill + " (\\([-a-zA-Z ]+\\) )?(\\+|-)[0-9]+");
+            Regex regName = new Regex(skill + " (\\([-\\p{L} ]+\\) )?(\\+|-)[0-9]+");
 
             Match match = regName.Match(text);
             if (match.Success)
@@ -2681,7 +2687,7 @@ namespace CombatManager
 
             string returnText = text;
 
-            Regex regName = new Regex(skill + " (\\([-a-zA-Z ]+\\) )?(\\+|-)[0-9]+");
+            Regex regName = new Regex(skill + " (\\([-\\p{L} ]+\\) )?(\\+|-)[0-9]+");
 
             bool added = false;
 
@@ -5366,7 +5372,7 @@ namespace CombatManager
            
         }
 
-        private const string FlyString = "(fly )([0-9]+)( ft\\. \\()([a-zA-Z]+)(\\))";
+        private const string FlyString = "(fly )([0-9]+)( ft\\. \\()([\\p{L}]+)(\\))";
 
         private static string AddFlyFromMove(string text, int speedMult, string quality)
         {
@@ -5426,7 +5432,7 @@ namespace CombatManager
 
         private static string RemoveFly(string text)
         {
-            Regex regFly = new Regex("(, )?(fly )([0-9]+)( ft\\. \\()([a-zA-Z]+)(\\))", RegexOptions.IgnoreCase);
+            Regex regFly = new Regex("(, )?(fly )([0-9]+)( ft\\. \\()([\\p{L}]+)(\\))", RegexOptions.IgnoreCase);
 
 
             return regFly.Replace(text, "");
@@ -7691,7 +7697,7 @@ namespace CombatManager
             }
             else
             {
-                Regex regWT = new Regex("(?<start>, )?Weapon Training \\((?<values>([ a-zA-Z]+ \\+[0-9]+,?)+)\\)");
+                Regex regWT = new Regex("(?<start>, )?Weapon Training \\((?<values>([ \\p{L}]+ \\+[0-9]+,?)+)\\)");
 
                 bool foundWeaponTraining = false;
 
@@ -7706,7 +7712,7 @@ namespace CombatManager
                         retString += m.Groups["start"].Value;
                     }
 
-                    Regex regValues = new Regex("(?<name>[ a-zA-Z]+ \\+(?<val>[0-9]+)");
+                    Regex regValues = new Regex("(?<name>[ \\p{L}]+ \\+(?<val>[0-9]+)");
 
                     bool weaponFound = false;
                     retString += "weapon training (" + regValues.Replace(m.Groups["values"].Value, delegate(Match ma)
@@ -7759,7 +7765,7 @@ namespace CombatManager
 
             if (SQ != null && SQ.Length > 0)
             {
-                Regex regWT = new Regex("(?<start>, )?weapon training \\((?<values>([ a-zA-Z]+ \\+[0-9]+,?)+)\\)", RegexOptions.IgnoreCase);
+                Regex regWT = new Regex("(?<start>, )?weapon training \\((?<values>([ \\p{L}]+ \\+[0-9]+,?)+)\\)", RegexOptions.IgnoreCase);
 
                 Match m = regWT.Match(SQ);
 
@@ -10566,7 +10572,7 @@ namespace CombatManager
                 speed = 0;
                 quality = null;
 
-                Regex speedReg = new Regex("fly +(?<speed>[0-9]+) +ft\\. +\\((?<quality>[a-zA-Z]+)\\)", RegexOptions.IgnoreCase);
+                Regex speedReg = new Regex("fly +(?<speed>[0-9]+) +ft\\. +\\((?<quality>[\\p{L}]+)\\)", RegexOptions.IgnoreCase);
                 if (_Monster.Speed != null)
                 {
                     Match m = speedReg.Match(_Monster.Speed);
@@ -10584,7 +10590,7 @@ namespace CombatManager
 
             private void SetFly(int speed, string quality)
             {
-                Regex speedReg = new Regex("fly +(?<speed>[0-9]+) +ft\\. +\\((?<quality>[a-zA-Z]+)\\)", RegexOptions.IgnoreCase);
+                Regex speedReg = new Regex("fly +(?<speed>[0-9]+) +ft\\. +\\((?<quality>[\\p{L}]+)\\)", RegexOptions.IgnoreCase);
 
                 string flyString = "fly " + speed + " ft. (" + quality.ToLower() + ")";
                 
@@ -10605,7 +10611,7 @@ namespace CombatManager
 
             private void RemoveFly()
             {
-                Regex speedReg = new Regex("(, +)?fly +(?<speed>[0-9]+) +ft\\. +\\((?<quality>[a-zA-Z]+)\\)", RegexOptions.IgnoreCase);
+                Regex speedReg = new Regex("(, +)?fly +(?<speed>[0-9]+) +ft\\. +\\((?<quality>[\\p{L}]+)\\)", RegexOptions.IgnoreCase);
 
                 speedReg.Replace(_Monster.Speed, "");
                 

@@ -32,6 +32,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Input;
 
 namespace CombatManager
 {
@@ -1144,6 +1145,74 @@ namespace CombatManager
             {
                 return _Schools;
             }
+        }
+    }
+
+    [ValueConversion(typeof(Key), typeof(String))]
+    class KeyToStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (targetType != typeof(String))
+            {
+                return null;
+            }
+
+            Key k = (Key)value;
+
+            if (k >= Key.A && k <= Key.Z)
+            {
+                int diff = k - Key.A;
+
+                Char c = (Char)((int)'A' + diff);
+                String s = c.ToString();
+                return s;
+            }
+            else if (k >= Key.NumPad0 && k <= Key.NumPad0)
+            {
+                int diff = k - Key.NumPad0;               
+                return diff.ToString();
+            }
+            else if (k >= Key.F1 && k <= Key.F10)
+            {
+                int val = k - Key.F1 + 1;
+
+                return "F" + val;
+            }
+
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (targetType != typeof(Key))
+            {
+                return null;
+
+            }
+
+            String s = (String)value;
+            Match m = Regex.Match(s, "F(?<num>[0-9]+)");
+            if (m.Success)
+            {
+                int key = int.Parse(m.Groups["num"].Value) - 1;
+                
+                return (Key)(Key.F1 + key);
+            }
+            if (Regex.Match(s, "[0-9]").Success)
+            {
+                Char c = s[0];
+                int diff = c - '0';
+                return (Key)(Key.NumPad0 + diff);
+            }
+            if (Regex.Match(s, "[A-Z]").Success)
+            {
+                Char c = s[0];
+                int diff = c - 'A';
+                return (Key)(Key.A + diff);
+            }
+
+            return null;
         }
     }
 	

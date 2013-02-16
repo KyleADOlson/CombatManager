@@ -447,7 +447,7 @@ namespace CombatManager
 
             
 
-            Regex regex = new Regex("<(?<tag>/?[a-zA-Z0-9]+)[^<>]*?>", RegexOptions.IgnoreCase);
+            Regex regex = new Regex("<(?<tag>/?[\\p{L}0-9]+)[^<>]*?>", RegexOptions.IgnoreCase);
             Match match = (regex.Match(description));
 
             bool bold = startBold;

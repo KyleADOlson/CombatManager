@@ -1,5 +1,6 @@
 ﻿1.4.8
 Check for updates on startup
+Remove CRs in some HL imports
 
 1.4.7
 Fix zip DLL problems (again)

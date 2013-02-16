@@ -115,7 +115,7 @@ namespace PropertyCreator
             String string1 = reader.ReadLine();
             while (string1 != null)
             {
-                Regex reg = new Regex("(?<type>[a-zA-Z0-9_?<>]+ )?(?<text>[a-zA-Z0-9_]+)(;)?(\\s)*(,|$|\\t)");
+                Regex reg = new Regex("(?<type>[\\p{L}0-9_?<>]+ )?(?<text>[\\p{L}0-9_]+)(;)?(\\s)*(,|$|\\t)");
 
                 foreach (Match m in reg.Matches(string1))
                 {

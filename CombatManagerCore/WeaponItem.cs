@@ -516,7 +516,7 @@ namespace CombatManager
             _PlusList = new Dictionary<string,WeaponItemPlus>();
             if (_Plus != null)
             {
-                Regex regex = new Regex("((?<dieroll>([0-9]+)d([0-9]+)((\\+|-)[0-9]+)?) +)?(?<name>[-a-zA-Z0-9 ]+?)(( +and +)|($))");
+                Regex regex = new Regex("((?<dieroll>([0-9]+)d([0-9]+)((\\+|-)[0-9]+)?) +)?(?<name>[-\\p{L}0-9 ]+?)(( +and +)|($))");
 
                 foreach (Match m in regex.Matches(_Plus))
                 {

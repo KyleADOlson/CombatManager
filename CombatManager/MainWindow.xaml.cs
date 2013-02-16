@@ -134,6 +134,7 @@ namespace CombatManager
 
         List<string> _RecentDieRolls;
 
+        List<CombatHotKey> _CombatHotKeys;
 
 
         public static RoutedUICommand UndoCommand = new RoutedUICommand();
@@ -341,7 +342,7 @@ namespace CombatManager
 
             NextCommand.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
             PrevCommand.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
-
+            
             LoadSettings();
 
             treasureCheckboxesList = new List<CheckBox>(new CheckBox[] {
@@ -7664,6 +7665,40 @@ namespace CombatManager
             t.Start();
             
         }
+
+        private void HotKeysButton_Click(object sender, RoutedEventArgs e)
+        {
+			var hkd = new HotKeysDialog();
+			hkd.Owner = this;
+            if (_CombatHotKeys == null)
+            {
+                _CombatHotKeys = new List<CombatHotKey>();
+                _CombatHotKeys.Add(new CombatHotKey());
+            }
+            hkd.CombatHotKeys = _CombatHotKeys;
+			hkd.ShowDialog();
+		
+        }
+
+        private void LoadHotkeys()
+        {
+            _CombatHotKeys = XmlListLoader<CombatHotKey>.Load("CombatHotKeys.xml", true);
+        }
+
+        private void SaveHotkeys()
+        {
+            if (_CombatHotKeys != null)
+            {
+                XmlListLoader<CombatHotKey>.Save(_CombatHotKeys, "CombatHotKeys.xml");
+            }
+        }
+
+        private void UpdateHotKeys()
+        {
+
+        }
+
+
 
     }
 }

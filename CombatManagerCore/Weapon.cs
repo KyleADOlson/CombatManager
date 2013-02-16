@@ -778,7 +778,7 @@ namespace CombatManager
 
                 foreach (Weapon weapon in set)
                 {
-                    Regex reg = new Regex("([-\\. a-zA-Z]+), ([-\\. a-zA-Z]+)");
+                    Regex reg = new Regex("([-\\. \\p{L}]+), ([-\\. \\p{L}]+)");
 
                     Match m = reg.Match(weapon.Name);
 

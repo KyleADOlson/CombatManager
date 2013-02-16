@@ -228,17 +228,17 @@ namespace CombatManager
         {
             get
             {
-                return "((^)|((?<afflictionname>[a-zA-Z ]+): ))(?<cause>[- a-zA-Z]+)" + 
+                return "((^)|((?<afflictionname>[\\p{L} ]+): ))(?<cause>[- \\p{L}]+)" + 
                     "; save (?<savetype>((Fort)|(Fortitude)|(Ref)|(Reflex)|(Will))) DC (?<savedc>[0-9]+)" +
 
-                    "(?<onset>; onset (((?<onsetdie>([0-9]+)(d[0-9]+)?) ((?<onsetunit>[a-zA-Z]+?)s?))|(?<immediateonset>immediate)))?" + 
-                    "; frequency (((?<frequencycount>[0-9]+)([/ ]+)((?<frequencyunit>[a-zA-Z]+?)s?)(?<limit> for (?<limitcount>[0-9]+) (?<limittype>[a-zA-Z]+)s?)?)|(?<once>once))" +
+                    "(?<onset>; onset (((?<onsetdie>([0-9]+)(d[0-9]+)?) ((?<onsetunit>[\\p{L}]+?)s?))|(?<immediateonset>immediate)))?" + 
+                    "; frequency (((?<frequencycount>[0-9]+)([/ ]+)((?<frequencyunit>[\\p{L}]+?)s?)(?<limit> for (?<limitcount>[0-9]+) (?<limittype>[\\p{L}]+)s?)?)|(?<once>once))" +
                     "; effect (" + 
-                    "(?<damageeffect>(?<damagedie>([0-9]+)(d[0-9]+)?) (?<damagetype>[a-zA-Z]+)( and (?<secondarydamagedie>([0-9]+)(d[0-9]+)?) (?<secondarydamagetype>[a-zA-Z]+))?( damage)?([-\\(\\) ,\\.a-zA-Z0-9]+)?)|" +
-                    "(?<specialeffect>(?<specialeffectname>[a-zA-Z]+) for (?<specialeffectdie>([0-9]+)(d[0-9]+)?) (?<specialeffectunit>[a-zA-Z]+?)s?)|" +
-                    "(?<othereffect>[- 'a-zA-Z0-9]+)"+
+                    "(?<damageeffect>(?<damagedie>([0-9]+)(d[0-9]+)?) (?<damagetype>[\\p{L}]+)( and (?<secondarydamagedie>([0-9]+)(d[0-9]+)?) (?<secondarydamagetype>[\\p{L}]+))?( damage)?([-\\(\\) ,\\.\\p{L}0-9]+)?)|" +
+                    "(?<specialeffect>(?<specialeffectname>[\\p{L}]+) for (?<specialeffectdie>([0-9]+)(d[0-9]+)?) (?<specialeffectunit>[\\p{L}]+?)s?)|" +
+                    "(?<othereffect>[- '\\p{L}0-9]+)"+
                      ")" +
-                    "(; cure (?<cure>([- +\\(\\),a-zA-Z0-9]+)))?(\\.)?( (?<details>.+$))?";
+                    "(; cure (?<cure>([- +\\(\\),\\p{L}0-9]+)))?(\\.)?( (?<details>.+$))?";
 
             }
         }

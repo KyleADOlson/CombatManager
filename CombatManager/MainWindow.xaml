@@ -3701,6 +3701,7 @@
                 <DropShadowEffect ShadowDepth="0" />
             </Button.Effect>
         </Button>
+        <Button Content="Hot Keys" FontSize="10.667" HorizontalAlignment="Left" Margin="183,4,0,8" Name="HotKeysButton" Style="{DynamicResource ButtonMainStyle}" Grid.Row="2" Click="HotKeysButton_Click" />
     </Grid>
 
 

@@ -407,7 +407,7 @@ namespace CombatManager
 
             if (attackName == null)
             {
-                text += "[a-zA-Z][- a-zA-Z]*)(s?";
+                text += "[\\p{L}][- \\p{L}]*)(s?";
             }
 
             else
@@ -415,7 +415,7 @@ namespace CombatManager
                 text += Regex.Escape(attackName) + ")(s?";
             }
 
-            text += ")( )((?<incorrectmagicbonus>\\+[0-9]+ +)?(?<bonus>[-\\+0-9/]+))( melee)?(?<rangedtouch> ranged touch)?( +\\()(?<damage>"+ DieRegexString + ")(/(?<offhanddamage>" + DieRegexString + "))?(?<critrange>/[0-9]+-[0-9]+)?(?<critmultiplier>/x[0-9]+)?(?<altdamage> (?<altdamagestat>(Strength)|(Dexterity)|(Constitution)|(Intelligence)|(Wisdom)|(Charisma)) (?<altdamagetype>(damage)|(drain)))?(, (?<savetype>((Fort)|(Ref)|(Will)))\\. DC (?<saveval>[0-9]+) (?<saveresult>((half)|(negates))) ?)?(?<allplus> (plus|and) (?<plus>[- a-zA-Z0-9\\.\\+;]+))?(\\))";
+            text += ")( )((?<incorrectmagicbonus>\\+[0-9]+ +)?(?<bonus>[-\\+0-9/]+))( melee)?(?<rangedtouch> ranged touch)?( +\\()(?<damage>"+ DieRegexString + ")(/(?<offhanddamage>" + DieRegexString + "))?(?<critrange>/[0-9]+-[0-9]+)?(?<critmultiplier>/x[0-9]+)?(?<altdamage> (?<altdamagestat>(Strength)|(Dexterity)|(Constitution)|(Intelligence)|(Wisdom)|(Charisma)) (?<altdamagetype>(damage)|(drain)))?(, (?<savetype>((Fort)|(Ref)|(Will)))\\. DC (?<saveval>[0-9]+) (?<saveresult>((half)|(negates))) ?)?(?<allplus> (plus|and) (?<plus>[- \\p{L}0-9\\.\\+;]+))?(\\))";
 
             return text;
         }

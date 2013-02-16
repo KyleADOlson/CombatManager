@@ -611,7 +611,7 @@ namespace CombatManager
                     }
 
                     Hyperlink link = new Hyperlink(new Run(feat));
-                    Regex regFeat = new Regex("(?<name>[-'a-zA-Z ]+) +\\(");
+                    Regex regFeat = new Regex("(?<name>[-'\\p{L} ]+) +\\(");
                     string featname = feat;
                     Match m = regFeat.Match(feat);
                     if (m.Success)

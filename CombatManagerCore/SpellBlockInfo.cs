@@ -91,11 +91,11 @@ namespace CombatManager
         private static string spellcountblock = "((?<spellcount>[0-9]+(?=[;,\\)])),?)";
         private static string dcblock = "(DC (?<DC>[0-9]+),?)";
         private static string castblock = "((; )?((?<spellcast>[0-9]+|already)) cast)";
-        private static string otherblock = "((; )?(?<othertext>[-+',/a-zA-Z0-9:\\. %\\*]+))";
+        private static string otherblock = "((; )?(?<othertext>[-+',/\\p{L}0-9:\\. %\\*]+))";
         private static string countdcblock = "((" + spellcountblock + "|" + dcblock + "|" + castblock + "|" + otherblock + ") *)+";
 
  
-        private static string spellblock = "((?<spellname>[-'a-zA-Z/ ]+)([*)])? *(?<countdc>\\(" + countdcblock + "\\))?,?)";
+        private static string spellblock = "((?<spellname>[-'\\p{L}/ ]+)([*)])? *(?<countdc>\\(" + countdcblock + "\\))?,?)";
         private static string levelblock = " *((?<level>([0-9]))(st|nd|rd|th)?) *(\\((((?<daily>[0-9]+)/day(; (?<levelcast>[0-9]+) cast)?|at will))\\))?-?(?<spellblocks>" + spellblock + "+) *((?<more>[0-9]+) more)? *";
 
 
@@ -140,7 +140,7 @@ namespace CombatManager
 
 
                 Regex regSpell = new Regex(spellblock);
-                Regex regSpells = new Regex("((?<sla>Spell-Like Abilities)|(?<classname>" + _ClassRegexString + " )?(Spells (?<blocktype>(Known|Prepared)) +))(\\(CL ((?<cl>([0-9]+))(st|nd|rd|th)?)([,;] *concentration *[-+]?(?<concentration>[0-9]+)( \\[[-+][0-9]+ [a-zA-Z ]+\\])?)?([,;] *[-+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[-+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[-+]?(?<rangedtouch>[0-9]+) ranged touch)?\\))[:\r\n]*" +
+                Regex regSpells = new Regex("((?<sla>Spell-Like Abilities)|(?<classname>" + _ClassRegexString + " )?(Spells (?<blocktype>(Known|Prepared)) +))(\\(CL ((?<cl>([0-9]+))(st|nd|rd|th)?)([,;] *concentration *[-+]?(?<concentration>[0-9]+)( \\[[-+][0-9]+ [\\p{L} ]+\\])?)?([,;] *[-+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[-+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[-+]?(?<rangedtouch>[0-9]+) ranged touch)?\\))[:\r\n]*" +
                     "(?<levelblocks>" + levelblock + "\r?\n?)+");
                 Regex regLevel = new Regex(levelblock);
 
@@ -245,7 +245,7 @@ namespace CombatManager
 
 
         private static string sladcblock = "((" + dcblock + "|" + otherblock + ") *)+";
-        private static string slaspellblock = "((?<spellname>[-'a-zA-Z/ ]+)\\*? *(?<countdc>\\(" + sladcblock + "\\))?,?)";
+        private static string slaspellblock = "((?<spellname>[-'\\p{L}/ ]+)\\*? *(?<countdc>\\(" + sladcblock + "\\))?,?)";
         private static string slaheader = "(((?<daily>[0-9]+)/day)|(?<constant>[Cc]onstant)|(?<atwill>At will))-";
         private static string slablock = " *" + slaheader + "(?<spellblocks>" + slaspellblock + "+) *";
 
@@ -256,7 +256,7 @@ namespace CombatManager
             //DebugTimer t = new DebugTimer("SLA Blocks", false, false);
 
             Regex regSpell = new Regex(slaspellblock);
-            Regex regSpells = new Regex("(?<sla>Spell-Like Abilities) *\\(CL ((?<cl>[0-9]+)(st|nd|rd|th)?)([,;] *concentration *[-+]?(?<concentration>[0-9]+)( \\[[-+][0-9]+ [a-zA-Z ]+\\])?)?([,;] *[-+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[-+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[-+]?(?<rangedtouch>[0-9]+) ranged touch)?\\)[:\r\n]*");
+            Regex regSpells = new Regex("(?<sla>Spell-Like Abilities) *\\(CL ((?<cl>[0-9]+)(st|nd|rd|th)?)([,;] *concentration *[-+]?(?<concentration>[0-9]+)( \\[[-+][0-9]+ [\\p{L} ]+\\])?)?([,;] *[-+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[-+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[-+]?(?<rangedtouch>[0-9]+) ranged touch)?\\)[:\r\n]*");
             Regex regLevel = new Regex(slablock);
 
           
