@@ -1,0 +1,87 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CombatManager.HotKeysDialog"
+        Title="Hot Keys" Height="380" Width="516" WindowStartupLocation="CenterOwner" Icon="/CombatManager;component/Images/d20-32.ico" ResizeMode="NoResize">
+	<Window.Resources>
+		<DataTemplate x:Key="HotKeyItemTemplate">
+			<Grid Width="470.047">
+				<CheckBox x:Name="AltCheckBox" IsChecked="{Binding AltKey}" Margin="0,7,0,0" Content="Alt" HorizontalAlignment="Left" Width="36.239" VerticalAlignment="Top"/>
+				<CheckBox x:Name="ShiftCheckBox" IsChecked="{Binding ShiftKey}"  Content="Shift" HorizontalAlignment="Left" Margin="40.239,7,0,0" VerticalAlignment="Top"/>
+				<CheckBox x:Name="CtrlCheckBox" IsChecked="{Binding CtrlKey}" Content="Ctrl" HorizontalAlignment="Left" Margin="85.132,7,0,0" Width="42.201" VerticalAlignment="Top"/>
+                <ComboBox x:Name="KeyComboBox" Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}" Width="46.667" HorizontalAlignment="Left" Margin="137.332,3.333,0,3.333" d:LayoutOverrides="Height" VerticalAlignment="Stretch" SelectedIndex="0">
+                    <ComboBoxItem>A</ComboBoxItem>
+                    <ComboBoxItem>B</ComboBoxItem>
+                    <ComboBoxItem>C</ComboBoxItem>
+                    <ComboBoxItem>D</ComboBoxItem>
+                    <ComboBoxItem>E</ComboBoxItem>
+                    <ComboBoxItem>F</ComboBoxItem>
+                    <ComboBoxItem>G</ComboBoxItem>
+                    <ComboBoxItem>H</ComboBoxItem>
+                    <ComboBoxItem>I</ComboBoxItem>
+                    <ComboBoxItem>J</ComboBoxItem>
+                    <ComboBoxItem>K</ComboBoxItem>
+                    <ComboBoxItem>L</ComboBoxItem>
+                    <ComboBoxItem>M</ComboBoxItem>
+                    <ComboBoxItem>N</ComboBoxItem>
+                    <ComboBoxItem>O</ComboBoxItem>
+                    <ComboBoxItem>P</ComboBoxItem>
+                    <ComboBoxItem>Q</ComboBoxItem>
+                    <ComboBoxItem>R</ComboBoxItem>
+                    <ComboBoxItem>S</ComboBoxItem>
+                    <ComboBoxItem>T</ComboBoxItem>
+                    <ComboBoxItem>U</ComboBoxItem>
+                    <ComboBoxItem>V</ComboBoxItem>
+                    <ComboBoxItem>W</ComboBoxItem>
+                    <ComboBoxItem>X</ComboBoxItem>
+                    <ComboBoxItem>Y</ComboBoxItem>
+                    <ComboBoxItem>Z</ComboBoxItem>
+                    <ComboBoxItem>1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                    <ComboBoxItem>6</ComboBoxItem>
+                    <ComboBoxItem>7</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>9</ComboBoxItem>
+                    <ComboBoxItem>0</ComboBoxItem>
+                    <ComboBoxItem>F0</ComboBoxItem>
+                    <ComboBoxItem>F1</ComboBoxItem>
+                    <ComboBoxItem>F2</ComboBoxItem>
+                    <ComboBoxItem>F3</ComboBoxItem>
+                    <ComboBoxItem>F4</ComboBoxItem>
+                    <ComboBoxItem>F5</ComboBoxItem>
+                    <ComboBoxItem>F6</ComboBoxItem>
+                    <ComboBoxItem>F7</ComboBoxItem>
+                    <ComboBoxItem>F8</ComboBoxItem>
+                    <ComboBoxItem>F9</ComboBoxItem>
+                    <ComboBoxItem>F10</ComboBoxItem>
+                    <ComboBoxItem>F11</ComboBoxItem>
+                    <ComboBoxItem>F12</ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="CommandComboBox" HorizontalAlignment="Left" Margin="194.661,3.333,0,3.333" Width="120" VerticalAlignment="Stretch" Height="Auto" d:LayoutOverrides="Height" SelectionChanged="CommandComboBox_SelectionChanged">
+                	<ComboBoxItem>Melee Attack</ComboBoxItem>            
+					<ComboBoxItem>Ranged Attack</ComboBoxItem>         
+					<ComboBoxItem>Save</ComboBoxItem>         
+					<ComboBoxItem>Skill</ComboBoxItem>
+				</ComboBox>
+				<Button x:Name="DeleteButton" Margin="0,6.294,7.333,6.331" RenderTransformOrigin="0.222,-0.601" Width="16" Height="16" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Right" Click="DeleteButton_Click">
+					<Button.ToolTip>Delete</Button.ToolTip>
+					<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+				</Button>
+				<ComboBox x:Name="SubtypeComboBox" HorizontalAlignment="Left" Margin="318.661,3.333,0,0" Width="120" VerticalAlignment="Top" Height="Auto"/>
+			</Grid>
+		</DataTemplate>
+	</Window.Resources>
+	<Window.Background>
+		<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+	</Window.Background>
+    <Grid>
+    	<ListBox x:Name="KeyListBox" Margin="8,8,8,38.96" ItemTemplate="{DynamicResource HotKeyItemTemplate}"/>
+    	<Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,8" VerticalAlignment="Bottom" Width="75" Click="CancelButton_Click"/>
+    	<Button x:Name="OKButton" Content="OK" HorizontalAlignment="Right" Margin="0,0,87,8" VerticalAlignment="Bottom" Width="75" Click="OKButton_Click"/>
+    	<Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="8,0,0,8" VerticalAlignment="Bottom" Width="75" Click="AddButton_Click"/>
+        
+    </Grid>
+</Window>
