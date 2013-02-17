@@ -136,6 +136,8 @@ namespace CombatManager
 
         List<CombatHotKey> _CombatHotKeys;
 
+        List<InputBinding> _HotKeys = new List<InputBinding>();
+
 
         public static RoutedUICommand UndoCommand = new RoutedUICommand();
         public static RoutedUICommand RedoCommand = new RoutedUICommand();
@@ -388,6 +390,8 @@ namespace CombatManager
             System.Diagnostics.Debug.WriteLine(startupTimeText);
 
             System.Diagnostics.Debug.WriteLine("Startup Time: " + startupTime.TotalSeconds);
+
+            LoadHotkeys();
 
             PerformUpdateCheck();
             
@@ -7673,32 +7677,156 @@ namespace CombatManager
             if (_CombatHotKeys == null)
             {
                 _CombatHotKeys = new List<CombatHotKey>();
-                _CombatHotKeys.Add(new CombatHotKey());
             }
             hkd.CombatHotKeys = _CombatHotKeys;
-			hkd.ShowDialog();
+            if (hkd.ShowDialog() == true)
+            {
+                _CombatHotKeys = hkd.CombatHotKeys;
+                SaveHotkeys();
+            }
 		
         }
 
         private void LoadHotkeys()
         {
             _CombatHotKeys = XmlListLoader<CombatHotKey>.Load("CombatHotKeys.xml", true);
+            UpdateHotKeys();
         }
 
         private void SaveHotkeys()
         {
             if (_CombatHotKeys != null)
             {
-                XmlListLoader<CombatHotKey>.Save(_CombatHotKeys, "CombatHotKeys.xml");
+                XmlListLoader<CombatHotKey>.Save(_CombatHotKeys, "CombatHotKeys.xml", true);
             }
+            UpdateHotKeys();
         }
 
         private void UpdateHotKeys()
         {
+            if (_CombatHotKeys != null)
+            {
+                foreach (InputBinding key in _HotKeys)
+                {
+                    InputBindings.Remove(key);
+                }
+                _HotKeys.Clear();
+                foreach (CombatHotKey hk in _CombatHotKeys)
+                {
+                    CombatHotKey chk = hk;
+                    InputBindings.Add(new KeyBinding(new RelayCommand((object x) =>
+                    {
+                        TakeHotkeyAction(chk);
+                    }), hk.Key, hk.Modifier));
+                }
+            
+            }
+
+        }
+
+        private void TakeHotkeyAction(CombatHotKey chk)
+        {
+            //get targets
+            Character ch = currentViewCharacter;
+
+            if (ch != null)
+            {
+                List<Character> list = GetViewSelectedCharactersFromChar(ch);
+
+                foreach (Character c in list)
+                {
+                    //run command
+                    switch (chk.Type)
+                    {
+                        case CombatHotKeyType.MeleeAttack:
+                            List<AttackSet> latk = c.Monster.MeleeAttacks;
+                            if (latk.Count > 0)
+                            {
+                                AttackSet set = latk[0];
+
+                                List<Attack> attacks = new List<Attack>();
+
+                                attacks.AddRange(set.WeaponAttacks);
+                                attacks.AddRange(set.NaturalAttacks);
+
+
+                                foreach (Attack atk in attacks)
+                                {
+                                    RollAttack(c, atk);
+                                }
+                            }
+
+                            break;
+                        case CombatHotKeyType.RangedAttack:
+                            List<Attack> ran = c.Monster.RangedAttacks;
+                            if (ran != null && ran.Count > 0)
+                            {
+
+                                foreach (Attack atk in ran)
+                                {
+                                    RollAttack(c, atk);
+                                }
+                            }
+
+                            break;
+                        case CombatHotKeyType.Save:
+                            if (chk.Subtype == "Fort")
+                            {
+                                RollSave(c, Monster.SaveType.Fort);
+                            }
+                            else if (chk.Subtype == "Ref")
+                            {
+                                RollSave(c, Monster.SaveType.Ref);
+                            }
+                            else if (chk.Subtype == "Will")
+                            {
+                                RollSave(c, Monster.SaveType.Will);
+                            }
+                            break;
+                        case CombatHotKeyType.Skill:
+                            RollSkillCheck(c, chk.Subtype, null);
+                            break;
+                    }
+                }
+            }
+            
 
         }
 
 
+    }
 
+    public class RelayCommand : ICommand 
+    { 
+
+
+        readonly Action<object> _execute; readonly Predicate<object> _canExecute; 
+
+        public RelayCommand(Action<object> execute) : this(execute, null) { } 
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute) 
+        { 
+            if (execute == null) throw new ArgumentNullException("execute"); 
+            _execute = execute; _canExecute = canExecute; 
+        } 
+        [DebuggerStepThrough] 
+        public bool CanExecute(object parameter) 
+        { 
+            return _canExecute == null ? true : _canExecute(parameter); 
+        } 
+        public event EventHandler CanExecuteChanged 
+        { 
+            add 
+            { 
+                CommandManager.RequerySuggested += value; 
+            } 
+            remove 
+            { 
+                CommandManager.RequerySuggested -= value; 
+            } 
+        } 
+        public void Execute(object parameter) 
+        { 
+            _execute(parameter); 
+        } 
     }
 }

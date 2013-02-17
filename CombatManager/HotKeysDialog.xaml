@@ -9,7 +9,7 @@
 				<CheckBox x:Name="AltCheckBox" IsChecked="{Binding AltKey}" Margin="0,7,0,0" Content="Alt" HorizontalAlignment="Left" Width="36.239" VerticalAlignment="Top"/>
 				<CheckBox x:Name="ShiftCheckBox" IsChecked="{Binding ShiftKey}"  Content="Shift" HorizontalAlignment="Left" Margin="40.239,7,0,0" VerticalAlignment="Top"/>
 				<CheckBox x:Name="CtrlCheckBox" IsChecked="{Binding CtrlKey}" Content="Ctrl" HorizontalAlignment="Left" Margin="85.132,7,0,0" Width="42.201" VerticalAlignment="Top"/>
-                <ComboBox x:Name="KeyComboBox" Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}" Width="46.667" HorizontalAlignment="Left" Margin="137.332,3.333,0,3.333" d:LayoutOverrides="Height" VerticalAlignment="Stretch" SelectedIndex="0">
+                <ComboBox x:Name="KeyComboBox" Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}" Width="46.667" HorizontalAlignment="Left" Margin="137.332,3.333,0,3.333" d:LayoutOverrides="Height" VerticalAlignment="Stretch" Initialized="KeyComboBox_Initialized">
                     <ComboBoxItem>A</ComboBoxItem>
                     <ComboBoxItem>B</ComboBoxItem>
                     <ComboBoxItem>C</ComboBoxItem>
@@ -36,17 +36,6 @@
                     <ComboBoxItem>X</ComboBoxItem>
                     <ComboBoxItem>Y</ComboBoxItem>
                     <ComboBoxItem>Z</ComboBoxItem>
-                    <ComboBoxItem>1</ComboBoxItem>
-                    <ComboBoxItem>2</ComboBoxItem>
-                    <ComboBoxItem>3</ComboBoxItem>
-                    <ComboBoxItem>4</ComboBoxItem>
-                    <ComboBoxItem>5</ComboBoxItem>
-                    <ComboBoxItem>6</ComboBoxItem>
-                    <ComboBoxItem>7</ComboBoxItem>
-                    <ComboBoxItem>8</ComboBoxItem>
-                    <ComboBoxItem>9</ComboBoxItem>
-                    <ComboBoxItem>0</ComboBoxItem>
-                    <ComboBoxItem>F0</ComboBoxItem>
                     <ComboBoxItem>F1</ComboBoxItem>
                     <ComboBoxItem>F2</ComboBoxItem>
                     <ComboBoxItem>F3</ComboBoxItem>
@@ -60,7 +49,8 @@
                     <ComboBoxItem>F11</ComboBoxItem>
                     <ComboBoxItem>F12</ComboBoxItem>
                 </ComboBox>
-                <ComboBox x:Name="CommandComboBox" HorizontalAlignment="Left" Margin="194.661,3.333,0,3.333" Width="120" VerticalAlignment="Stretch" Height="Auto" d:LayoutOverrides="Height" SelectionChanged="CommandComboBox_SelectionChanged">
+                <ComboBox x:Name="CommandComboBox" HorizontalAlignment="Left" Margin="194.661,3.333,0,3.333" Width="120" VerticalAlignment="Stretch" Height="Auto" d:LayoutOverrides="Height" SelectionChanged="CommandComboBox_SelectionChanged"
+					SelectedIndex="{Binding IntType}" DataContextChanged="CommandComboBox_DataContextChanged" Initialized="CommandComboBox_Initialized">
                 	<ComboBoxItem>Melee Attack</ComboBoxItem>            
 					<ComboBoxItem>Ranged Attack</ComboBoxItem>         
 					<ComboBoxItem>Save</ComboBoxItem>         
@@ -70,7 +60,7 @@
 					<Button.ToolTip>Delete</Button.ToolTip>
 					<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
 				</Button>
-				<ComboBox x:Name="SubtypeComboBox" HorizontalAlignment="Left" Margin="318.661,3.333,0,0" Width="120" VerticalAlignment="Top" Height="Auto"/>
+				<ComboBox x:Name="SubtypeComboBox" HorizontalAlignment="Left" Margin="318.661,3.333,0,0" Width="120" VerticalAlignment="Top" Height="Auto" Initialized="SubtypeComboBox_Initialized" SelectionChanged="SubtypeComboBox_SelectionChanged"/>
 			</Grid>
 		</DataTemplate>
 	</Window.Resources>

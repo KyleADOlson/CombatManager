@@ -1168,7 +1168,7 @@ namespace CombatManager
                 String s = c.ToString();
                 return s;
             }
-            else if (k >= Key.NumPad0 && k <= Key.NumPad0)
+            else if (k >= Key.NumPad0 && k <= Key.NumPad9)
             {
                 int diff = k - Key.NumPad0;               
                 return diff.ToString();

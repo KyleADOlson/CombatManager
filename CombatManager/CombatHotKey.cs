@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using System.Xml.Serialization;
 
 namespace CombatManager
 {
@@ -53,38 +54,50 @@ namespace CombatManager
             get { return _Subtype; }
             set { _Subtype = value; }
         }
+		
+		
+        [XmlIgnore]
+        public int IntType
+		{
+			
+            get { return (int)_Type; }
+            set { _Type = (CombatHotKeyType)value; }
+		}
 
+        [XmlIgnore]
         public bool AltKey
         {
-            get { return GetKey(ModifierKeys.Alt); }
+            get { return GetModifier(ModifierKeys.Alt); }
             set
             {
-                SetKey(ModifierKeys.Alt, value);
+                SetModifier(ModifierKeys.Alt, value);
             }
         }
+        [XmlIgnore]
         public bool ShiftKey
         {
-            get { return GetKey(ModifierKeys.Shift); }
+            get { return GetModifier(ModifierKeys.Shift); }
             set
             {
-                SetKey(ModifierKeys.Shift, value);
+                SetModifier(ModifierKeys.Shift, value);
             }
         }
+        [XmlIgnore]
         public bool CtrlKey
         {
-            get { return GetKey(ModifierKeys.Control); }
+            get { return GetModifier(ModifierKeys.Control); }
             set
             {
-                SetKey(ModifierKeys.Control, value);
+                SetModifier(ModifierKeys.Control, value);
             }
         }
 
-        private bool GetKey(ModifierKeys key)
+        private bool GetModifier(ModifierKeys key)
         {
             return (_Modifier & key) == key;
         }
 
-        private void SetKey(ModifierKeys key, bool value)
+        private void SetModifier(ModifierKeys key, bool value)
         {
             if (value)
             {

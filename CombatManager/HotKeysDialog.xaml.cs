@@ -58,7 +58,7 @@ namespace CombatManager
             set
             {
                 _CombatHotKeys = new ObservableCollection<CombatHotKey>();
-                foreach (CombatHotKey hk in _CombatHotKeys)
+                foreach (CombatHotKey hk in value)
                 {
                     _CombatHotKeys.Add(new CombatHotKey(hk));
                 }
@@ -84,33 +84,111 @@ namespace CombatManager
                         break;
                     }
                 }
-            
+
+            }
+            UpdateSubtypeCombo(typeCombo.SelectedIndex, subtypeCombo);
+
+		}
+
+        private void UpdateSubtypeCombo(int selectedIndex, ComboBox subtypeCombo)
+        {
+
+            if (subtypeCombo != null)
+            {
+                subtypeCombo.Items.Clear();
+                switch (selectedIndex)
+                {
+                    case 0:
+                        subtypeCombo.IsEnabled = false;
+                        break;
+                    case 1:
+                        subtypeCombo.IsEnabled = false;
+                        break;
+                    case 2:
+                        subtypeCombo.IsEnabled = true;
+                        subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Fort" });
+                        subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Ref" });
+                        subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Will" });
+                        break;
+                    case 3:
+                        subtypeCombo.IsEnabled = true;
+                        foreach (Monster.SkillInfo si in Monster.SkillsDetails.Values)
+                        {
+                            subtypeCombo.Items.Add(new ComboBoxItem() { Content = si.Name, Tag = si });
+                        }
+                        break;
+                }
+
+                ComboBox cb = subtypeCombo;
+                CombatHotKey hk = (CombatHotKey)cb.DataContext;
+                SetIndexForString(cb, hk.Subtype);
+            }
+        }
+
+        private void SetIndexForString(ComboBox cb, String str)
+        {
+            int val = -1;
+            for (int i = 0; i < cb.Items.Count; i++)
+            {
+                ComboBoxItem it = (ComboBoxItem)cb.Items[i];
+                if ((it.Content as string) == str)
+                {
+                    val = i;
+                    break;
+                }
             }
 
-            subtypeCombo.Items.Clear();
-            switch (typeCombo.SelectedIndex)
+            if (val != -1)
             {
-                case 0:
-                    subtypeCombo.IsEnabled = false;
-                    break;
-                case 1:
-                    subtypeCombo.IsEnabled = false;
-                    break;
-                case 2:
-                    subtypeCombo.IsEnabled = true;
-                    subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Fort" });
-                    subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Ref" });
-                    subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Will" });
-                    subtypeCombo.SelectedIndex = 0;
-                    break;
-                case 3:
-                    subtypeCombo.IsEnabled = true;
-                    foreach (Monster.SkillInfo si in Monster.SkillsDetails.Values)
-                    {
-                        subtypeCombo.Items.Add(new ComboBoxItem() { Content = si.Name, Tag = si });
-                    }
-                    break;
+
+                cb.SelectedIndex = val;
             }
+            else
+            {
+                cb.SelectedIndex = 0;
+            }
+        }
+
+		private void KeyComboBox_Initialized(object sender, System.EventArgs e)
+		{
+            ComboBox cb = (ComboBox)sender;
+            CombatHotKey hk = (CombatHotKey)cb.DataContext;
+
+            string key = (String)new KeyToStringConverter().Convert(hk.Key, 
+                typeof(String), null, System.Globalization.CultureInfo.CurrentCulture);
+
+
+            SetIndexForString(cb, key);
+		}
+
+		private void CommandComboBox_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+		{
+		}
+
+		private void CommandComboBox_Initialized(object sender, System.EventArgs e)
+		{
+		}
+       
+		private void SubtypeComboBox_Initialized(object sender, System.EventArgs e)
+		{
+            ComboBox cb = (ComboBox)sender;
+			CombatHotKey hk = (CombatHotKey)cb.DataContext;
+            int index = hk.IntType;
+            UpdateSubtypeCombo(index, cb);
+
+            
+		}
+
+		private void SubtypeComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+		{
+            ComboBox cb = ((ComboBox)sender);
+
+			CombatHotKey hk = (CombatHotKey)cb.DataContext;
+            if (cb.SelectedValue != null)
+            {
+                hk.Subtype = (String)((ComboBoxItem)cb.SelectedValue).Content;
+            }
+
 		}
     }
 }
