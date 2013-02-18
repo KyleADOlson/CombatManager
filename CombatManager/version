@@ -1,6 +1,7 @@
 ﻿1.4.8
+Add user configurable HotKeys for die rolls
 Check for updates on startup
-Remove CRs in some HL imports
+Fix name, Space, Reach in HL imports
 
 1.4.7
 Fix zip DLL problems (again)

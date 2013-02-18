@@ -34,6 +34,7 @@ using System.Runtime.Serialization;
 using System.Xml.Linq;
 
 using Ionic.Zip;
+using System.Threading.Tasks;
 
 namespace CombatManager
 {
@@ -62,12 +63,15 @@ namespace CombatManager
         static void LoadBestiary()
         {
             DateTime time = DateTime.Now;
-            List<Monster> set = LoadMonsterFromXml("BestiaryShort.xml");
-#if !ANDROID
-            List<Monster> set2 = LoadMonsterFromXml("NPCShort.xml");
-#else
-            List<Monster> set2 = new List<Monster>();
-#endif
+            List<Monster> set = null;
+            List<Monster> set2 = null;
+
+            Parallel.Invoke(new Action[] {
+                () =>
+                set = LoadMonsterFromXml("BestiaryShort.xml"), 
+             () => 
+                 set2 = LoadMonsterFromXml("NPCShort.xml")});
+
             DateTime time2 = DateTime.Now;
             double span = (new TimeSpan(time2.Ticks - time.Ticks)).TotalMilliseconds;
             System.Diagnostics.Debug.WriteLine("Ticks: " + span);
@@ -199,6 +203,11 @@ namespace CombatManager
         {
             get
             {
+                if (monsters == null)
+                {
+                    LoadBestiary();
+                }
+
                 return monsters;
             }
         }
@@ -664,7 +673,6 @@ namespace CombatManager
 				creatureTypeNamesList = new List<string>(creatureTypeNames.Values);
 				creatureTypeNamesList.Sort();
 
-                LoadBestiary();
             }
             catch (Exception ex)
             {
@@ -1838,6 +1846,17 @@ namespace CombatManager
             {
                 monster.Gear = GetLine("Combat Gear", statsblock, true);
             }
+            string space = GetLine("Space", statsblock, true);
+            if (space != null)
+            {
+                m = Regex.Match(space, "(?<space>[0-9]+ ?ft\\.)[;,] +Reach +(?<reach>[0-9]+ ?ft\\.)");
+                if (m.Success)
+                {
+                    monster.Space = m.Groups["space"].Value;
+                    monster.Reach = m.Groups["reach"].Value;
+                }
+            }
+
 
 
 
@@ -1929,7 +1948,7 @@ namespace CombatManager
                 }
             }
 
-            string endAttacks = "[\\p{L}]+ Spells Known|Special Attacks|Spell-Like Abilities|-------";
+            string endAttacks = "[\\p{L}]+ Spells (Known|Prepared)|Special Attacks|Spell-Like Abilities|-------|Space [0-9]";
 
             Regex regMelee = new Regex("\r\nMelee (?<melee>(.|\r|\n)+?)\r\n(Ranged|" + endAttacks + ")");
 
@@ -2532,7 +2551,7 @@ namespace CombatManager
             {
 
 
-                Regex regAttack = new Regex(Attack.RegexString(thrownAttack.Key));
+                Regex regAttack = new Regex(Attack.RegexString(thrownAttack.Key), RegexOptions.IgnoreCase);
 
                 returnText = regAttack.Replace(returnText, delegate(Match m)
                 {
@@ -5558,7 +5577,7 @@ namespace CombatManager
                 returnText = "";
             }
 
-            Regex regAttack = new Regex(Attack.RegexString(attack.Name));
+            Regex regAttack = new Regex(Attack.RegexString(attack.Name), RegexOptions.IgnoreCase);
             bool bAdded = false;
 
             returnText = regAttack.Replace(returnText, delegate(Match m)
@@ -5640,7 +5659,7 @@ namespace CombatManager
 
             string returnText = text;
 
-            Regex regAttack = new Regex(Attack.RegexString(null));
+            Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
             returnText = regAttack.Replace(returnText, delegate(Match m)
             {
@@ -6862,7 +6881,7 @@ namespace CombatManager
             string returnText = text;
 
             //find mods 
-            Regex regAttack = new Regex(Attack.RegexString(null));
+            Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
             returnText = regAttack.Replace(returnText, delegate(Match m)
             {
@@ -6890,7 +6909,7 @@ namespace CombatManager
 
             string returnText = text;
 
-            Regex regAttack = new Regex(Attack.RegexString(null));
+            Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
             returnText = regAttack.Replace(returnText, delegate(Match m)
             {
@@ -6917,7 +6936,7 @@ namespace CombatManager
 
             string returnText = text;
 
-            Regex regAttack = new Regex(Attack.RegexString(null));
+            Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
             returnText = regAttack.Replace(returnText, delegate(Match m)
             {
@@ -7846,7 +7865,7 @@ namespace CombatManager
                 {
                     Regex regOr = new Regex("\\) or ");
 
-                    Regex regAttack = new Regex(Attack.RegexString(null));
+                    Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
                     int lastLoc = 0;
 
                     foreach (Match m in regOr.Matches(Melee))
@@ -7950,7 +7969,7 @@ namespace CombatManager
             {
                 List<Attack> attacks = new List<Attack>();
 
-                Regex regAttack = new Regex(Attack.RegexString(null));
+                Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
                 if (Ranged != null)
                 {

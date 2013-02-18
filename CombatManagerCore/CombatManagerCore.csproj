@@ -160,6 +160,9 @@
     <Content Include="TreasureChart.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Weapons.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="WeaponSpecialAbility.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
