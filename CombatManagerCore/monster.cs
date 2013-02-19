@@ -1862,13 +1862,15 @@ namespace CombatManager
 
             Regex regLine = new Regex("(?<text>.+)\r\n");
 
-            Regex regSpecial = new Regex("SPECIAL ABILITIES\r\n(-+)\r\n(?<special>(.|\r|\n)+)((Created With Hero Lab)|(Hero Lab))");
+            Regex regSpecial = new Regex("(SPECIAL ABILITIES|Special Abilities)\r\n(-+)\r\n(?<special>(.|\r|\n)+)((Created With Hero Lab)|(Hero Lab))");
             m = regSpecial.Match(statsblock);
             if (m.Success)
             {
                 string special = m.Groups["special"].Value;
 
                 //parse special string
+                //fix template text
+                special = Regex.Replace(special, "Granted by [- \\p{L}]+ heritage\\.\r\n\r\n", "");
 
                 MatchCollection matches = regLine.Matches(special);
 
