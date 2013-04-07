@@ -6882,25 +6882,46 @@ namespace CombatManager
             }
             string returnText = text;
 
+			if (returnText.IndexOf(" or ") > 0)
+			{
+				List<string> orAttacks = new List<string>();
+				foreach (string subAttack in returnText.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
+					orAttacks.Add(ChangeAttackMods(subAttack, diff));
+
+				return string.Join(" or ", orAttacks.ToArray());
+			}
+
+			if (returnText.IndexOf(" and ") > 0)
+			{
+				List<string> andAttacks = new List<string>();
+				foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+					andAttacks.Add(ChangeAttackMods(subAttack, diff));
+
+				return string.Join(" and ", andAttacks.ToArray());
+			}			
+
             //find mods 
-            Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
-
-            returnText = regAttack.Replace(returnText, delegate(Match m)
-            {
-                Attack info = Attack.ParseAttack(m);
-                //get mod
-                for (int i = 0; i < info.Bonus.Count; i++)
-                {
-                    info.Bonus[i] += diff;
-                }
-
-                return info.Text;
-
-            });
-
-
-            return returnText;
+			return changeAttack(diff, returnText);
         }
+
+		private static string changeAttack(int diff, string returnText)
+		{
+			Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+
+			returnText = regAttack.Replace(returnText, delegate(Match m)
+			{
+				Attack info = Attack.ParseAttack(m);
+				//get mod
+				for (int i = 0; i < info.Bonus.Count; i++)
+				{
+					info.Bonus[i] += diff;
+				}
+
+				return info.Text;
+
+			});
+			return returnText;
+		}
 
         private static string ChangeAttackDieStep(string text, int diff)
         {
@@ -6928,63 +6949,85 @@ namespace CombatManager
 
         }
 
-        public string ChangeAttackDamage(string text, int diff, int diffPlusHalf, int halfDiff)
-        {
+		public string ChangeAttackDamage(string text, int diff, int diffPlusHalf, int halfDiff)
+		{
 
-            if (text == null)
-            {
-                return null;
-            }
+			if (text == null)
+			{
+				return null;
+			}
 
-            string returnText = text;
+			string returnText = text;
 
-            Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+			if (text.IndexOf(" or ") > 0)
+			{
+				List<string> orAttack = new List<string>();
+				foreach (string subAttack in text.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
+					orAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
 
-            returnText = regAttack.Replace(returnText, delegate(Match m)
-            {
-                Attack info = Attack.ParseAttack(m);
+				return string.Join(" or ", orAttack.ToArray());
+			}
 
-                if (!info.AltDamage)
-                {
-                    int applyDiff = diff;
+			if (text.IndexOf(" and ") > 0)
+			{
+				List<string> andAttack = new List<string>();
+				foreach (string subAttack in text.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+					andAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
 
-                    if (info.Weapon != null)
-                    {
-                        if (info.Weapon.Class == "Natual" && info.Weapon.Light)
-                        {
-                            applyDiff = halfDiff;
-                        }
+				return string.Join(" and ", andAttack.ToArray());
+			}
 
-                        else if (info.Weapon.Hands == "Two-Handed")
-                        {
-                            applyDiff = diffPlusHalf;
-                        }
-                    }
+			return changeAttack(diff, diffPlusHalf, halfDiff, returnText);
+		}
+
+		private string changeAttack(int diff, int diffPlusHalf, int halfDiff, string returnText)
+		{
+			Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+
+			returnText = regAttack.Replace(returnText, delegate(Match m)
+			{
+				Attack info = Attack.ParseAttack(m);
+
+				if (!info.AltDamage)
+				{
+					int applyDiff = diff;
+
+					if (info.Weapon != null)
+					{
+						if (info.Weapon.Class == "Natual" && info.Weapon.Light)
+						{
+							applyDiff = halfDiff;
+						}
+
+						else if (info.Weapon.Hands == "Two-Handed")
+						{
+							applyDiff = diffPlusHalf;
+						}
+					}
 
 
-                    info.Damage.mod += applyDiff;
+					info.Damage.mod += applyDiff;
 
-                    if (info.OffHandDamage != null)
-                    {
-                        if (HasFeat("Double Slice") || HasSpecialAbility("Superior Two-Weapon Fighting"))
-                        {
-                            info.OffHandDamage.mod += applyDiff;
-                        }
-                        else
-                        {
-                            info.OffHandDamage.mod += halfDiff;
-                        }
+					if (info.OffHandDamage != null)
+					{
+						if (HasFeat("Double Slice") || HasSpecialAbility("Superior Two-Weapon Fighting"))
+						{
+							info.OffHandDamage.mod += applyDiff;
+						}
+						else
+						{
+							info.OffHandDamage.mod += halfDiff;
+						}
 
-                    }
+					}
 
-                }
+				}
 
-                return info.Text;
+				return info.Text;
 
-            });
-
-            return returnText;
-        }
+			});
+			return returnText;
+		}
 
 
         private static string ChangeReachForSize(string reach, MonsterSize sizeOld, MonsterSize sizeNew, int diff)
