@@ -111,7 +111,6 @@
     <Compile Include="XMLLoader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\Users\kolson\Downloads\version.xml" />
     <Content Include="ArmorWeaponChart.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
