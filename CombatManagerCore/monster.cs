@@ -6901,10 +6901,10 @@ namespace CombatManager
 			}			
 
             //find mods 
-			return changeAttack(diff, returnText);
+			return ChangeSingleAttackMods(diff, returnText);
         }
 
-		private static string changeAttack(int diff, string returnText)
+        private static string ChangeSingleAttackMods(int diff, string returnText)
 		{
 			Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
@@ -6924,6 +6924,37 @@ namespace CombatManager
 		}
 
         private static string ChangeAttackDieStep(string text, int diff)
+        {
+            if (text == null)
+            {
+                return null;
+            }
+            string returnText = text;
+
+            if (returnText.IndexOf(" or ") > 0)
+            {
+                List<string> orAttacks = new List<string>();
+                foreach (string subAttack in returnText.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
+                    orAttacks.Add(ChangeAttackDieStep(subAttack, diff));
+
+                return string.Join(" or ", orAttacks.ToArray());
+            }
+
+            if (returnText.IndexOf(" and ") > 0)
+            {
+                List<string> andAttacks = new List<string>();
+                foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+                    andAttacks.Add(ChangeAttackDieStep(subAttack, diff));
+
+                return string.Join(" and ", andAttacks.ToArray());
+            }
+
+            //find mods 
+            return ChangeSingleAttackDieStep(returnText, diff);
+        }
+
+
+        private static string ChangeSingleAttackDieStep(string text, int diff)
         {
             if (text == null)
             {
