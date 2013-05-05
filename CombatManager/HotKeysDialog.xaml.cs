@@ -210,5 +210,21 @@ namespace CombatManager
                 grid.Background = null;
             }
         }
+
+        private void ItemBackground_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        {
+
+            Grid cb = ((Grid)sender);
+			CombatHotKey hk = (CombatHotKey)cb.DataContext;
+            UpdateBackground(cb, hk);
+        }
+
+        private void ItemBackground_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+            Grid cb = ((Grid)sender);
+			CombatHotKey hk = (CombatHotKey)cb.DataContext;
+            UpdateBackground(cb, hk);
+        }
     }
 }

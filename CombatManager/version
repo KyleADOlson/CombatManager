@@ -1,4 +1,9 @@
-﻿1.4.8
+﻿1.4.9
+HotKey crash fix
+Spell block [] crash fix
+Monster, NPC and Spells update
+
+1.4.8
 Add simple user configurable HotKeys for die rolls
 Check for updates on startup
 Fix name, Space, Reach in HL imports

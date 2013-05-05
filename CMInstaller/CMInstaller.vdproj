@@ -27,6 +27,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D07B5FEEB73013C6B247F4837C89BC9B"
+        "OwnerKey" = "8:_D93483BADC9846B7A94C2A93C94B2698"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D07B5FEEB73013C6B247F4837C89BC9B"
+        "OwnerKey" = "8:_D473458B89024BF6904F0397BC15E8A2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D473458B89024BF6904F0397BC15E8A2"
         "OwnerKey" = "8:_D93483BADC9846B7A94C2A93C94B2698"
         "MsmSig" = "8:_UNDEFINED"
@@ -41,6 +53,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D93483BADC9846B7A94C2A93C94B2698"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D07B5FEEB73013C6B247F4837C89BC9B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -240,6 +258,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D07B5FEEB73013C6B247F4837C89BC9B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:IonicZipDll, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D07B5FEEB73013C6B247F4837C89BC9B"
+                    {
+                    "Name" = "8:IonicZipDll.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:IonicZipDll.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D0CCFF9FB43041529C5CEBDAF673DD43"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D473458B89024BF6904F0397BC15E8A2"
             {
             "AssemblyRegister" = "3:1"
@@ -338,15 +387,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Combat Manager"
-        "ProductCode" = "8:{051EDE30-B6F7-465D-8D2C-5658C08F043F}"
-        "PackageCode" = "8:{8C54093E-AA7C-4881-93C9-55C0F76F1DF1}"
+        "ProductCode" = "8:{E7FEA411-C001-4526-ABA4-1176FBBD1455}"
+        "PackageCode" = "8:{DA941217-357C-43D6-A07C-07D3CD0CF9AE}"
         "UpgradeCode" = "8:{D3BA9248-E13B-4D16-A80A-2F435C82C97B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.4.8"
+        "ProductVersion" = "8:1.4.9"
         "Manufacturer" = "8:Kyle Olson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -902,7 +951,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D93483BADC9846B7A94C2A93C94B2698"
             {
-            "SourcePath" = "8:..\\CombatManager\\obj\\Release\\CombatManager.exe"
+            "SourcePath" = "8:..\\CombatManager\\obj\\Debug\\CombatManager.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D0CCFF9FB43041529C5CEBDAF673DD43"
