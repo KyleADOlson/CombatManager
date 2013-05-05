@@ -7714,10 +7714,18 @@ namespace CombatManager
                 foreach (CombatHotKey hk in _CombatHotKeys)
                 {
                     CombatHotKey chk = hk;
-                    InputBindings.Add(new KeyBinding(new RelayCommand((object x) =>
+                    try
                     {
-                        TakeHotkeyAction(chk);
-                    }), hk.Key, hk.Modifier));
+
+                        InputBindings.Add(new KeyBinding(new RelayCommand((object x) =>
+                        {
+                            TakeHotkeyAction(chk);
+                        }), hk.Key, hk.Modifier));
+                    }
+                    catch (NotSupportedException)
+                    {
+
+                    }
                 }
             
             }

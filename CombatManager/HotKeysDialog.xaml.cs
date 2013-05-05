@@ -190,5 +190,25 @@ namespace CombatManager
             }
 
 		}
+
+		private void CheckBox_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+            CheckBox cb = ((CheckBox)sender);
+			CombatHotKey hk = (CombatHotKey)cb.DataContext;
+            Grid parent = (Grid)VisualTreeHelper.GetParent(cb);
+            UpdateBackground(parent, hk);
+		}
+
+        private void UpdateBackground(Grid grid, CombatHotKey hk)
+        {
+            if (hk.Modifier == ModifierKeys.None || hk.Modifier == ModifierKeys.Shift)
+            {
+                grid.Background = new SolidColorBrush(Colors.Pink);
+            }
+            else
+            {
+                grid.Background = null;
+            }
+        }
     }
 }

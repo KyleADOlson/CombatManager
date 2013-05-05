@@ -5,10 +5,10 @@
         Title="Hot Keys" Height="380" Width="516" WindowStartupLocation="CenterOwner" Icon="/CombatManager;component/Images/d20-32.ico" ResizeMode="NoResize">
 	<Window.Resources>
 		<DataTemplate x:Key="HotKeyItemTemplate">
-			<Grid Width="470.047">
-				<CheckBox x:Name="AltCheckBox" IsChecked="{Binding AltKey}" Margin="0,7,0,0" Content="Alt" HorizontalAlignment="Left" Width="36.239" VerticalAlignment="Top"/>
-				<CheckBox x:Name="ShiftCheckBox" IsChecked="{Binding ShiftKey}"  Content="Shift" HorizontalAlignment="Left" Margin="40.239,7,0,0" VerticalAlignment="Top"/>
-				<CheckBox x:Name="CtrlCheckBox" IsChecked="{Binding CtrlKey}" Content="Ctrl" HorizontalAlignment="Left" Margin="85.132,7,0,0" Width="42.201" VerticalAlignment="Top"/>
+			<Grid x:Name="ItemBackground" Width="470.047">
+				<CheckBox x:Name="AltCheckBox" IsChecked="{Binding AltKey}" Margin="0,7,0,0" Content="Alt" HorizontalAlignment="Left" Width="36.239" VerticalAlignment="Top" Click="CheckBox_Click"/>
+				<CheckBox x:Name="ShiftCheckBox" IsChecked="{Binding ShiftKey}"  Content="Shift" HorizontalAlignment="Left" Margin="40.239,7,0,0" VerticalAlignment="Top" Click="CheckBox_Click"/>
+				<CheckBox x:Name="CtrlCheckBox" IsChecked="{Binding CtrlKey}" Content="Ctrl" HorizontalAlignment="Left" Margin="85.132,7,0,0" Width="42.201" VerticalAlignment="Top" Click="CheckBox_Click"/>
                 <ComboBox x:Name="KeyComboBox" Text="{Binding Key, Converter={StaticResource KeyToStringConverter}}" Width="46.667" HorizontalAlignment="Left" Margin="137.332,3.333,0,3.333" d:LayoutOverrides="Height" VerticalAlignment="Stretch" Initialized="KeyComboBox_Initialized">
                     <ComboBoxItem>A</ComboBoxItem>
                     <ComboBoxItem>B</ComboBoxItem>
