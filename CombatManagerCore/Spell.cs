@@ -1772,7 +1772,7 @@ namespace CombatManager
                         {
                             if (info != null)
                             {
-                                if (ul.FirstOrDefault(a => a.Property == info.Property) == null)
+                                if (ul.FirstOrDefault(a => a != null && a.Property == info.Property) == null)
                                 {
                                     ul.Add(info);
                                 }
@@ -1945,7 +1945,7 @@ namespace CombatManager
 
             private LevelAdjusterInfo LevelValue(IEnumerable<LevelAdjusterInfo> list, string property)
             {
-                return list.FirstOrDefault(a => a.Property == property);
+                return list.FirstOrDefault(a => (a != null && a.Property == property));
             }
 
             private string GetPairText(List<LevelAdjusterInfo> list, string class1, string class2)
@@ -1955,7 +1955,7 @@ namespace CombatManager
 
                 if (info1 != null && info2 != null && info1.Level == info2.Level)
                 {
-                    list.RemoveAll(a => (a.Property == class1) || (a.Property == class2));
+                    list.RemoveAll(a => a!= null && (a.Property == class1) || (a.Property == class2));
 
                     string text = info1.Class + "/" + info2.Class + " " + info1.Level;
 
