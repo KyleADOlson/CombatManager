@@ -1,4 +1,8 @@
-﻿1.4.9
+﻿1.5.0
+Fix installer missing Zip DLL
+Cleanup Monster type list
+
+1.4.9
 Illegal Hotkey crash fix
 Spell block [] crash fix
 Monster, NPC and Spells update
@@ -24,7 +28,6 @@ Add Ultimate Combat Classes to rules
 Add Featured Races to rules
 Restore spell mods
 Restore afflictions
-
 
 1.4.4
 Support for HeroLab 4.1 files
