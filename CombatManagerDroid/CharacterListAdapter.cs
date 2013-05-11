@@ -64,30 +64,44 @@ namespace CombatManagerDroid
 
                 v.FindViewById<Button>(Resource.Id.hpButton).Click += delegate
                 {
-                    UIUtils.ShowNumberDialog("HP", _Characters[(int)v.Tag], parent.Context);
+                    new NumberDialog("HP", _Characters[(int)v.Tag], parent.Context).Show();
                 };
                 
                 v.FindViewById<Button>(Resource.Id.hpMaxButton).Click += delegate
                 {
-                    UIUtils.ShowNumberDialog("MaxHP", _Characters[(int)v.Tag], parent.Context);
+                    new NumberDialog("MaxHP", _Characters[(int)v.Tag], parent.Context).Show();
                 };
                 
                 v.FindViewById<Button>(Resource.Id.initButton).Click += delegate
                 {
-                    UIUtils.ShowNumberDialog("Init", _Characters[(int)v.Tag].Monster, parent.Context);
+                    new NumberDialog("Init", _Characters[(int)v.Tag].Monster, parent.Context).Show();
                 };
+
+                v.FindViewById<ImageButton>(Resource.Id.actionButton).Click += delegate
+                {
+                    Character c = _Characters[(int)v.Tag];
+                    ActionDialog d = new ActionDialog(parent.Context, _State);
+                    d.Character = c;
+                    d.Show();
+                };
+
+
 
             }
             v.Tag = position;
 
-            v.FindViewById<Button>(Resource.Id.nameEditText).Text = _Characters[position].Name;
-            v.FindViewById<Button>(Resource.Id.hpButton).Text = _Characters[position].HP.ToString();
-            v.FindViewById<Button>(Resource.Id.hpMaxButton).Text = _Characters[position].MaxHP.ToString();
-            v.FindViewById<Button>(Resource.Id.initButton).Text = _Characters[position].Monster.Init.PlusFormat();
-
-
+            UpdateViewText (v, _Characters[position]);
 
             return v;
+        }
+
+        private void UpdateViewText(View v, Character c)
+        {
+            v.FindViewById<Button>(Resource.Id.nameEditText).Text = c.Name;
+            v.FindViewById<Button>(Resource.Id.hpButton).Text = c.HP.ToString();
+            v.FindViewById<Button>(Resource.Id.hpMaxButton).Text = c.MaxHP.ToString();
+            v.FindViewById<Button>(Resource.Id.initButton).Text = c.Monster.Init.PlusFormat();
+
         }
 
         private void FilterList()

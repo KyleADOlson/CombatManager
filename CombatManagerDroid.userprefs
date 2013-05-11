@@ -1,36 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CombatManagerCore/XMLLoader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CombatManagerDroid/LookupFragment.cs">
     <Files>
-      <File FileName="CombatManagerCore/XMLLoader.cs" Line="140" Column="1" />
-      <File FileName="CombatManagerDroid/HomeActivity.cs" Line="6" Column="21" />
-      <File FileName="CombatManagerDroid/Properties/AndroidManifest.xml" Line="5" Column="2" />
-      <File FileName="CombatManagerDroid/LibraryListAdapter.cs" Line="37" Column="7" />
-      <File FileName="CombatManagerCore/Weapons.xml" Line="1" Column="1" />
-      <File FileName="CombatManagerDroid/LoadingActivity.cs" Line="19" Column="39" />
-      <File FileName="CombatManagerDroid/LookupFragment.cs" Line="26" Column="1" />
-      <File FileName="CombatManagerDroid/CombatFragment.cs" Line="15" Column="21" />
-      <File FileName="CombatManagerDroid/InitiativeListAdapter.cs" Line="37" Column="51" />
-      <File FileName="CombatManagerDroid/Resources/values/Strings.xml" Line="5" Column="39" />
-      <File FileName="CombatManagerDroid/Resources/values/Color.xml" Line="12" Column="45" />
-      <File FileName="CombatManagerDroid/CharacterListAdapter.cs" Line="18" Column="56" />
-      <File FileName="CombatManagerDroid/Resources/drawable/blue_button.xml" Line="2" Column="1" />
-      <File FileName="CombatManagerDroid/Resources/drawable/init_button.xml" Line="30" Column="35" />
-      <File FileName="CombatManagerDroid/ActionDialog.cs" Line="27" Column="40" />
-      <File FileName="CombatManagerDroid/UIUtils.cs" Line="46" Column="1" />
+      <File FileName="CombatManagerDroid/MonsterPickerDialog.cs" Line="230" Column="1" />
+      <File FileName="CombatManagerDroid/ActionDialog.cs" Line="73" Column="20" />
+      <File FileName="CombatManagerDroid/CombatFragment.cs" Line="132" Column="13" />
+      <File FileName="CombatManagerDroid/CharacterListAdapter.cs" Line="86" Column="19" />
+      <File FileName="CombatManagerDroid/CharacterActionsAdapter.cs" Line="81" Column="35" />
+      <File FileName="CombatManagerDroid/InitiativeListAdapter.cs" Line="20" Column="1" />
+      <File FileName="CombatManagerDroid/UIUtils.cs" Line="43" Column="13" />
+      <File FileName="CombatManagerCore/monster.cs" Line="680" Column="1" />
+      <File FileName="CombatManagerDroid/HomeActivity.cs" Line="73" Column="9" />
+      <File FileName="CombatManagerDroid/LookupFragment.cs" Line="14" Column="1" />
+      <File FileName="CombatManagerDroid/MonsterFragment.cs" Line="19" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="CombatManagerCoreDroid" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Resources" expanded="True">
-              <Node name="values" expanded="True" />
-            </Node>
-          </Node>
+          <Node name="CombatManagerCoreDroid" expanded="True" />
           <Node name="CombatManagerDroid" expanded="True" selected="True">
             <Node name="Resources" expanded="True">
-              <Node name="values" expanded="True" />
+              <Node name="layout" expanded="True" />
             </Node>
           </Node>
         </State>

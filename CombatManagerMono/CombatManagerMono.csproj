@@ -121,7 +121,6 @@
     <Compile Include="AdvancerPanel.designer.cs" />
     <Compile Include="ButtonPropertyManager.cs" />
     <Compile Include="ButtonStringPopover.cs" />
-    <Compile Include="CharacterActions.cs" />
     <Compile Include="CharacterListCellView.xib.cs">
       <DependentUpon>CharacterListCellView.xib</DependentUpon>
     </Compile>

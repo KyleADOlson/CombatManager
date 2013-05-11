@@ -53,11 +53,5 @@
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/bodyLayout">
-        <fragment
-            class="CombatManagerDroid.CombatFragment"
-            android:id="@+id/my_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+        android:id="@+id/bodyLayout" />
 </LinearLayout>

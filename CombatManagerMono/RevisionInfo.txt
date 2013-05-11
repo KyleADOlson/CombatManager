@@ -1,3 +1,8 @@
+1.0.5
+More Hero Lab Parsing fixes
+Monster Advancer Fixes
+Monster DB update
+
 1.0.4
 Added loading prompt to action button
 Removed duplicate spells

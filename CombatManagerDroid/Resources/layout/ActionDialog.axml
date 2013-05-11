@@ -14,21 +14,26 @@
         <WebView
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/webView1" />
+            android:id="@+id/webView" />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
+        android:orientation="vertical"
+        android:minWidth="200px"
+        android:minHeight="350px"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:id="@+id/linearLayout2"
         android:layout_weight="2">
+        <Button
+            android:text="Close"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/closeButton" />
         <ListView
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/listView1" />
+            android:id="@+id/actionListView" />
     </LinearLayout>
 </LinearLayout>

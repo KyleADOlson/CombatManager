@@ -57,6 +57,10 @@
     <Compile Include="CharacterListAdapter.cs" />
     <Compile Include="UIUtils.cs" />
     <Compile Include="ActionDialog.cs" />
+    <Compile Include="CharacterActionsAdapter.cs" />
+    <Compile Include="NumberDialog.cs" />
+    <Compile Include="MonsterPickerDialog.cs" />
+    <Compile Include="MonsterFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -89,6 +93,7 @@
     <AndroidResource Include="Resources\layout\NumberDialog.axml" />
     <AndroidResource Include="Resources\drawable\init_button.xml" />
     <AndroidResource Include="Resources\layout\ActionDialog.axml" />
+    <AndroidResource Include="Resources\layout\MonsterPickerDialog.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

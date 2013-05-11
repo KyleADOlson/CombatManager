@@ -19,10 +19,23 @@ namespace CombatManagerDroid
     [Activity (Label = "Combat Manager", Theme = "@android:style/Theme.Light.NoTitleBar")]
     public class HomeActivity : Activity, ActionBar.ITabListener
     {
+        enum HomePage
+        {
+            Combat,
+            Monsters,
+            Feats,
+            Spells,
+            Rules,
+            Treasure
+        }
+
         int count = 1;
 
-        private LookupFragment _MonsterFragment;
+
+
+        private MonsterFragment _MonsterFragment;
         private CombatFragment _CombatFragment;
+        static HomePage lastFragment = HomePage.Combat;
 
         protected override void OnCreate (Bundle bundle)
         {
@@ -38,21 +51,35 @@ namespace CombatManagerDroid
             {
                 ShowCombatFragment();
             };
+            ShowLastFragment();
 
             //UpdateText();
         }
 
-        private void ShowMonsterFragment()
+        private void ShowLastFragment()
         {
-            FragmentTransaction ft = FragmentManager.BeginTransaction();
-
-            if (_MonsterFragment == null)
+            switch (lastFragment)
             {
-                _MonsterFragment = new LookupFragment();
+            case HomePage.Combat:
+                ShowCombatFragment();
+                break;
+            case HomePage.Monsters:
+                ShowMonsterFragment();
+                break;
+            case HomePage.Feats:
+                ShowFeatsFragment();
+                break;
+            case HomePage.Spells:
+                ShowSpellsFragment();
+                break;
+            case HomePage.Rules:
+                ShowRulesFragment();
+                break;
+            case HomePage.Treasure:
+                ShowTreasureFragment();
+                break;
             }
-            ft.Replace(Resource.Id.bodyLayout, _MonsterFragment);
-            ft.SetTransition(FragmentTransit.FragmentOpen);
-            ft.Commit();
+                
         }
         
         private void ShowCombatFragment()
@@ -66,6 +93,41 @@ namespace CombatManagerDroid
             ft.Replace(Resource.Id.bodyLayout, _CombatFragment);
             ft.SetTransition(FragmentTransit.FragmentOpen);
             ft.Commit();
+            lastFragment = HomePage.Combat;
+        }
+        
+        private void ShowMonsterFragment()
+        {
+            FragmentTransaction ft = FragmentManager.BeginTransaction();
+            
+            if (_MonsterFragment == null)
+            {
+                _MonsterFragment = new MonsterFragment();
+            }
+            ft.Replace(Resource.Id.bodyLayout, _MonsterFragment);
+            ft.SetTransition(FragmentTransit.FragmentOpen);
+            ft.Commit();
+            lastFragment = HomePage.Monsters;
+        }
+
+        private void ShowFeatsFragment()
+        {
+
+        }
+
+        private void ShowSpellsFragment()
+        {
+
+        }
+
+        private void ShowRulesFragment()
+        {
+
+        }
+
+        private void ShowTreasureFragment()
+        {
+
         }
 
         protected override void OnPause ()

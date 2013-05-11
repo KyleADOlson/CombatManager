@@ -165,6 +165,7 @@
     <Compile Include="RuleHtmlCreator.cs" />
     <Compile Include="SpellHtmlCreator.cs" />
     <Compile Include="TreasureHtmlCreator.cs" />
+    <Compile Include="CharacterActions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">

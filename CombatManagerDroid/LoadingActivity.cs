@@ -13,6 +13,7 @@ using Android.Views;
 using Android.Widget;
 
 using CombatManager;
+using System.Threading.Tasks;
 
 namespace CombatManagerDroid
 {
@@ -29,10 +30,23 @@ namespace CombatManagerDroid
             SetContentView (Resource.Layout.Loading);
 
             Thread t = new Thread(new ThreadStart(delegate {
-                Monster m = Monster.Monsters[0];
-                RunOnUiThread(delegate {
-                    LoadComplete();
+                DBSettings.UseDB = false;
+
+                Dictionary<String, Weapon> w = Weapon.Weapons;
+
+                Parallel.Invoke(new Action[]
+                                {
+                    () =>
+                    {Monster m = Monster.Monsters[0];},
+                        () =>
+                            
+                    {Spell s = Spell.Spells[0];}
                 });
+
+                RunOnUiThread(() => 
+                              LoadComplete());
+
+
             }));
             t.Start();
 

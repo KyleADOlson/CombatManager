@@ -22,6 +22,9 @@ namespace CombatManagerDroid
         static CombatState _CombatState;
         static Character _ViewCharacter;
 
+        ListView _MonsterList;
+        ListView _PlayerList;
+
         public override void OnCreate (Bundle savedInstanceState)
         {
             base.OnCreate (savedInstanceState);
@@ -30,7 +33,7 @@ namespace CombatManagerDroid
             {
                 _CombatState = new CombatState();
 
-                for (int i=0; i<12; i++)
+                for (int i=0; i<6; i++)
                 {
                     Character c = new Character(Monster.Monsters[i], true);
                     c.IsMonster = (i%2==0)?true:false;
@@ -38,8 +41,21 @@ namespace CombatManagerDroid
                 }
             }
             _CombatState.PropertyChanged += HandleCombatStatePropertyChanged;
+            _CombatState.Characters.CollectionChanged += HandledCombatStateCharactersChanged;
 
 
+        }
+
+        void HandledCombatStateCharactersChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (_MonsterList != null)
+            {
+                _MonsterList.SetAdapter(new CharacterListAdapter(_CombatState, true));
+            }
+            if (_PlayerList != null)
+            {
+                _PlayerList.SetAdapter(new CharacterListAdapter(_CombatState, false));
+            }
         }
 
         void HandleCombatStatePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -105,6 +121,32 @@ namespace CombatManagerDroid
                 Character c = ((BaseAdapter<Character>)lv.Adapter)[e.Position];
                 ShowCharacter(v, c);
             };
+            if (monsters)
+            {
+                _PlayerList = lv;
+            }
+            else
+            {
+                _MonsterList = lv;
+            }
+
+            cl.FindViewById<ImageButton>(Resource.Id.blankButton).Click += 
+                (object sender, EventArgs e) => 
+                {
+                Monster m = new Monster();
+                _CombatState.AddMonster(m, monsters);
+
+                };
+
+            
+            cl.FindViewById<ImageButton>(Resource.Id.monsterButton).Click += 
+                (object sender, EventArgs e) => 
+                {
+                MonsterPickerDialog dl = new MonsterPickerDialog(v.Context, monsters, _CombatState);
+                dl.Show();
+
+                };
+
             v.FindViewById<LinearLayout>(id).AddView(cl);
 
         }
@@ -165,6 +207,7 @@ namespace CombatManagerDroid
             base.OnDestroy();
 
             _CombatState.PropertyChanged -= HandleCombatStatePropertyChanged;
+            _CombatState.Characters.CollectionChanged -= HandledCombatStateCharactersChanged;
         }
     }
 }

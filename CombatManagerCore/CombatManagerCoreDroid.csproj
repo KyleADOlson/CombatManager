@@ -72,7 +72,9 @@
     <Compile Include="CampaignInfo.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharacterAttacks.cs" />
-    <Compile Include="CharacterClass.cs" />
+    <Compile Include="CharacterClass.cs">
+      <DependentUpon>CharacterClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="CMRegexUtilities.cs" />
     <Compile Include="CMStringUtilities.cs" />
     <Compile Include="Coin.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="SpellHtmlCreator.cs" />
     <Compile Include="TreasureHtmlCreator.cs" />
     <Compile Include="CoreContext.cs" />
+    <Compile Include="CharacterActions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RuleShort.xml" />

@@ -13,7 +13,7 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText1"
+            android:id="@+id/filterText"
             android:textColor="#ff000000"
             android:background="#ffffffff" />
         <ListView
@@ -21,11 +21,11 @@
             android:minHeight="25px"
             android:layout_width="150dp"
             android:layout_height="fill_parent"
-            android:id="@+id/listView1" />
+            android:id="@+id/itemList" />
     </LinearLayout>
     <WebView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:id="@+id/webView1"
+        android:id="@+id/itemView"
         android:layout_weight="1" />
 </LinearLayout>
