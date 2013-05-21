@@ -1,4 +1,7 @@
-﻿1.5.0
+﻿1.5.1
+Fix crash for very large (44+) CR encounters
+
+1.5.0
 Fix installer missing Zip DLL
 Cleanup Monster type list
 Cleanup Spell School list fix

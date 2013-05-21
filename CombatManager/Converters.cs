@@ -994,7 +994,7 @@ namespace CombatManager
 
             string cr = (string)value;
 
-            int? xpVal = Monster.TryGetCRValue(cr);
+            long? xpVal = Monster.TryGetCRValue(cr);
 
             if (xpVal == null)
             {

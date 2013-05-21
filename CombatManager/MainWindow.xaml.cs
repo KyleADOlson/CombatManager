@@ -3191,10 +3191,10 @@ namespace CombatManager
                     ComboBoxItem item1 = (ComboBoxItem)BetweenCRLowCombo.SelectedItem;
                     ComboBoxItem item2 = (ComboBoxItem)BetweenCRHighCombo.SelectedItem;
 
-                    int val1 = Monster.GetCRValue((string)item1.Content);
-                    int val2 = Monster.GetCRValue((string)item2.Content);
+                    long val1 = Monster.GetCRValue((string)item1.Content);
+                    long val2 = Monster.GetCRValue((string)item2.Content);
 
-                    int monsterVal = Monster.GetCRValue(monster.CR);
+                    long monsterVal = Monster.GetCRValue(monster.CR);
 
                     if ((monsterVal >= val1 && monsterVal <= val2)
                         || (monsterVal >= val2 && monsterVal <= val1))

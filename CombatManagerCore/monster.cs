@@ -63,39 +63,71 @@ namespace CombatManager
         static void LoadBestiary()
         {
             DateTime time = DateTime.Now;
-            List<Monster> set = null;
-            List<Monster> set2 = null;
+            List<Monster> monsterSet1 = new List<Monster>();
+            List<Monster> npcSet1 = new List<Monster>();
+            List<Monster> monsterSet2 = new List<Monster>();
+            List<Monster> npcSet2 = new List<Monster>();
 
-            Parallel.Invoke(new Action[] {
-                () =>
-                set = LoadMonsterFromXml("BestiaryShort.xml"), 
-             () => 
-                 set2 = LoadMonsterFromXml("NPCShort.xml")});
+            if (LowMemoryLoad)
+            {
+
+                Parallel.Invoke(new Action[] {
+                        () =>
+                        monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
+                     () => 
+                         npcSet1 = LoadMonsterFromXml("NPCShort.xml")});
+            }
+            else
+            {
+
+
+                Parallel.Invoke(new Action[] {
+                        () =>
+                        monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
+                        () =>
+                        monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml"), 
+                     () => 
+                         npcSet1 = LoadMonsterFromXml("NPCShort.xml"),
+                
+                     () => 
+                         npcSet2 = LoadMonsterFromXml("NPCShort2.xml")});
+            }
+
+            monsterSet1.AddRange(monsterSet2);
+            npcSet1.AddRange(npcSet2);
 
             DateTime time2 = DateTime.Now;
             double span = (new TimeSpan(time2.Ticks - time.Ticks)).TotalMilliseconds;
             System.Diagnostics.Debug.WriteLine("Ticks: " + span);
 			
-			if (set2 != null)
+			if (npcSet1 != null)
 			{
-	            foreach (Monster m in set2)
+	            foreach (Monster m in npcSet1)
 	            {
 	                m.NPC = true;
 	            }
-	            set.AddRange(set2);
+	            monsterSet1.AddRange(npcSet1);
 			}
 		
 #if!MONO
             if (DBSettings.UseDB)
             {
                 List<Monster> dbMonsters = new List<Monster>(MonsterDB.DB.Monsters);
-                set.AddRange(dbMonsters);
+                monsterSet1.AddRange(dbMonsters);
             }
 #endif
 			 
-            monsters = new ObservableCollection<Monster>(set);
+            monsters = new ObservableCollection<Monster>(monsterSet1);
 
 
+        }
+
+        private static bool LowMemoryLoad
+        {
+            get
+            {
+                return false;
+            }
         }
 
         private static List<Monster> LoadMonsterFromXml(String filename)
@@ -4784,9 +4816,9 @@ namespace CombatManager
                  
         }
 
-        public static int GetCRValue(string crText)
+        public static long GetCRValue(string crText)
         {
-            int xpVal = 0;
+            long xpVal = 0;
 
             if (crText.Contains('/'))
             {
@@ -4805,10 +4837,10 @@ namespace CombatManager
             return xpVal;
         }
 
-        public static int? TryGetCRValue(string crText)
+        public static long? TryGetCRValue(string crText)
         {
 
-            int? xpVal = null;
+            long? xpVal = null;
 
             if (crText.Contains('/'))
             {
@@ -4833,7 +4865,7 @@ namespace CombatManager
             return xpVal;
         }
 
-        private static int GetAllIntCRValue(int crInt)
+        private static long GetAllIntCRValue(int crInt)
         {
             if (crInt < -4)
             {
@@ -4849,12 +4881,12 @@ namespace CombatManager
             }
         }
 
-        private static int GetIntCRValue(int crInt)
+        private static long GetIntCRValue(int crInt)
         {
-            int x = crInt;
+            long x = crInt;
 
-            int powVal = ((x + 1) / 2) + 1;
-            int xpVal = ((int)Math.Pow(2, powVal)) * 100;
+            long powVal = ((x + 1) / 2) + 1;
+            long xpVal = ((int)Math.Pow(2, powVal)) * 100;
             if ((x - 1) % 2 != 0)
             {
                 xpVal += xpVal / 2;
