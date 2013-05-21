@@ -1,26 +1,24 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CombatManagerDroid/LookupFragment.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="CombatManagerDroid/MonsterPickerDialog.cs" Line="230" Column="1" />
-      <File FileName="CombatManagerDroid/ActionDialog.cs" Line="73" Column="20" />
-      <File FileName="CombatManagerDroid/CombatFragment.cs" Line="132" Column="13" />
-      <File FileName="CombatManagerDroid/CharacterListAdapter.cs" Line="86" Column="19" />
-      <File FileName="CombatManagerDroid/CharacterActionsAdapter.cs" Line="81" Column="35" />
-      <File FileName="CombatManagerDroid/InitiativeListAdapter.cs" Line="20" Column="1" />
-      <File FileName="CombatManagerDroid/UIUtils.cs" Line="43" Column="13" />
-      <File FileName="CombatManagerCore/monster.cs" Line="680" Column="1" />
-      <File FileName="CombatManagerDroid/HomeActivity.cs" Line="73" Column="9" />
-      <File FileName="CombatManagerDroid/LookupFragment.cs" Line="14" Column="1" />
-      <File FileName="CombatManagerDroid/MonsterFragment.cs" Line="19" Column="6" />
+      <File FileName="CombatManagerDroid/MonsterEditorDefenseActivity.cs" Line="44" Column="75" />
+      <File FileName="CombatManagerDroid/MonsterEditorActivity.cs" Line="237" Column="91" />
+      <File FileName="CombatManagerDroid/MonsterEditorMainActivity.cs" Line="54" Column="1" />
+      <File FileName="CombatManagerDroid/MonsterEditorOffenseActivity.cs" Line="58" Column="54" />
+      <File FileName="CombatManagerDroid/UIUtils.cs" Line="77" Column="31" />
+      <File FileName="CombatManagerCore/monster.cs" Line="6747" Column="95" />
+      <File FileName="CombatManagerDroid/MonsterPickerDialog.cs" Line="218" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="CombatManagerCoreDroid" expanded="True" />
-          <Node name="CombatManagerDroid" expanded="True" selected="True">
+          <Node name="CombatManagerDroid" expanded="True">
             <Node name="Resources" expanded="True">
-              <Node name="layout" expanded="True" />
+              <Node name="layout" expanded="True">
+                <Node name="MonsterEditor.axml" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -39,5 +37,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CombatManagerDroid MonoForAntroid.PreferredDevice="7in WSVGA (Tablet)" AndroidDeviceId-Debug="015d2109841bf604" />
+  <MonoDevelop.Ide.ItemProperties.CombatManagerDroid MonoForAntroid.PreferredDevice="7in WSVGA (Tablet)" AndroidDeviceId-Debug="0075539f5987056a" />
 </Properties>

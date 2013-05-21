@@ -312,31 +312,32 @@ namespace CombatManager
 		{
 			
 			List<CharacterActionItem> items = new List<CharacterActionItem>();
+            items.Add(new CharacterActionItem("Other...", null, CharacterActionType.AddConditon));
+            
+
 			if (Condition.FavoriteConditions.Count > 0)
 			{
+                items.Add(new CharacterActionItem());
 				foreach (FavoriteCondition fc in Condition.FavoriteConditions)
 				{
 					Condition c = Condition.FromFavorite(fc);
 					
 					items.Add(new CharacterActionItem(c.Name, c.Image, CharacterActionType.AddConditon, c));
 				}
-				items.Add(new CharacterActionItem());
 			}
 			
 			if (Condition.RecentConditions.Count > 0)
 			{
+                items.Add(new CharacterActionItem());
 				foreach (var fc in Condition.RecentConditions)
 				{
 					Condition c = Condition.FromFavorite(fc);
 					
 					items.Add(new CharacterActionItem(c.Name, c.Image, CharacterActionType.AddConditon, c));
 				}
-				items.Add(new CharacterActionItem());
 			}
 			
-			items.Add(new CharacterActionItem("Other...", null, CharacterActionType.AddConditon));
 
-		
 			return items;
 		}
 		

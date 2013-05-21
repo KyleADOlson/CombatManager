@@ -1,3 +1,6 @@
+1.0.6
+Fix condition selection problem
+
 1.0.5
 More Hero Lab Parsing fixes
 Monster Advancer Fixes

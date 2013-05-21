@@ -75,9 +75,32 @@ namespace CombatManagerDroid
             }
             else if (ai.Name != null && ai.Name.Length > 0)
             {
-                CharacterActions.TakeAction(_State, ai.Action, _Character, new List<CombatManager.Character>() {_Character}, ai.Tag);
+                CharacterActionResult res = CharacterActions.TakeAction(_State, ai.Action, _Character, new List<CombatManager.Character>() {_Character}, ai.Tag);
                 Dismiss();
+
+                switch(res)
+                {
+                case CharacterActionResult.NeedAttacksDialog:
+                    break;
+                case CharacterActionResult.NeedMonsterEditorDialog:
+                    ShowMonsterEditor();
+                    break;
+                case CharacterActionResult.NeedConditionDialog:
+                    break;
+                case CharacterActionResult.NeedNotesDialog:
+                    ShowMonsterEditor();
+                    break;
+                }
             }
+        }
+
+        void ShowMonsterEditor()
+        {
+            MonsterEditorActivity.SourceMonster = _Character.Monster;
+
+            Intent intent = new Intent(this.Context, (Java.Lang.Class) new MonsterEditorMainActivity().Class); 
+            intent.AddFlags(ActivityFlags.NewTask); 
+            Context.StartActivity(intent);
         }
 
     }

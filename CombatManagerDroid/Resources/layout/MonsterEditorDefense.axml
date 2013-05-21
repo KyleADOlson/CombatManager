@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffafdbdd">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:background="#ff47aaaf">
+        <Button
+            android:text="Main"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/mainTab" />
+        <Button
+            android:text="Defense"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/defenseTab" />
+        <Button
+            android:text="Offense"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/offenseTab" />
+        <Button
+            android:text="Stats"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/statsTab" />
+        <Button
+            android:text="Feats"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/featsTab" />
+        <Button
+            android:text="Special"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/specialTab" />
+        <Button
+            android:text="Description"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/descriptionTab" />
+    </LinearLayout>
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/bodyLayout"
+            android:layout_weight="1">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/linearLayout3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="HD"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center" />
+                <Button
+                    android:text="Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/hdButton" />
+                <TextView
+                    android:text="HP"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView2"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/hpText" />
+                <TextView
+                    android:text="HP Mods"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView4"
+                    android:gravity="center" />
+                <EditText
+                    android:id="@+id/hpModsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout4">
+                <TextView
+                    android:text="AC"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView5" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/acText" />
+                <TextView
+                    android:text="Touch"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView6" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/touchText" />
+                <TextView
+                    android:text="Flat-Footed"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView7" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/flatFootedText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout5">
+                <TextView
+                    android:text="Armor"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView8"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/armorText" />
+                <TextView
+                    android:text="Dodge"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView9"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/dodgeText" />
+                <TextView
+                    android:text="Natural"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView10"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/naturalText" />
+                <TextView
+                    android:text="Deflection"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView11"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/deflectionText" />
+                <TextView
+                    android:text="Shield"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView12"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/shieldText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout6">
+                <TextView
+                    android:text="Fort"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView13"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/fortText" />
+                <TextView
+                    android:text="Ref"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView14"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/refText" />
+                <TextView
+                    android:text="Will"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView15"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/willText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout7">
+                <TextView
+                    android:text="Def. Abilities"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView16"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/defAbilitiesText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout8">
+                <TextView
+                    android:text="DR"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView17"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/drText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout9">
+                <TextView
+                    android:text="Immune"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView18"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/immuneText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout10">
+                <TextView
+                    android:text="SR"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView19"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/srText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout11">
+                <TextView
+                    android:text="Resist"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView20"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/resistText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout12">
+                <TextView
+                    android:text="Weakness"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView21"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/weaknessText" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:gravity="right"
+        android:background="#ff47aaaf">
+        <Button
+            android:text="OK"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/okButton"
+            android:layout_marginRight="10dp" />
+        <Button
+            android:text="Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancelButton" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/linearLayout2"
+            android:gravity="right"
+            android:background="#ff47aaaf"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent">
+            <Button
+                android:text="OK"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/okButton"
+                android:layout_marginRight="10dp" />
+            <Button
+                android:text="Cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancelButton" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/linearLayout2"
+            android:gravity="right"
+            android:background="#ff47aaaf"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent">
+            <Button
+                android:text="OK"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/okButton"
+                android:layout_marginRight="10dp" />
+            <Button
+                android:text="Cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancelButton" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/linearLayout2"
+            android:gravity="right"
+            android:background="#ff47aaaf"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent">
+            <Button
+                android:text="OK"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/okButton"
+                android:layout_marginRight="10dp" />
+            <Button
+                android:text="Cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancelButton" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:scrollbars="none"
+        android:background="#ffafdbdd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout13">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout1"
+            android:background="#ff47aaaf">
+            <Button
+                android:text="Main"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/mainTab" />
+            <Button
+                android:text="Defense"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/defenseTab" />
+            <Button
+                android:text="Offense"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/offenseTab" />
+            <Button
+                android:text="Stats"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/statsTab" />
+            <Button
+                android:text="Feats"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/featsTab" />
+            <Button
+                android:text="Special"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/specialTab" />
+            <Button
+                android:text="Description"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/descriptionTab" />
+        </LinearLayout>
+        <ScrollView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/scrollView1"
+            android:layout_weight="1"
+            android:scrollbars="vertical">
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/bodyLayout"
+                android:layout_weight="1"
+                android:scrollbars="none">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout3">
+                    <TextView
+                        android:text="Name"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView1"
+                        android:gravity="center" />
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/nameText" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:text="CR XX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/crButton" />
+                    <Button
+                        android:text="LG"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/alignmentButton" />
+                    <Button
+                        android:text="Large"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/sizeButton" />
+                    <Button
+                        android:text="Outsider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/typeButton" />
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/subtypesText" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout5">
+                    <TextView
+                        android:text="Senses"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView2"
+                        android:gravity="center" />
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/sensesText"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:text="Init"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView3"
+                        android:gravity="center" />
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/initText"
+                        android:layout_weight="4" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout6">
+                    <TextView
+                        android:text="Race"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView4"
+                        android:gravity="center" />
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/raceText"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:text="Class"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView5"
+                        android:gravity="center" />
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/classText"
+                        android:layout_weight=".7" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout9"
+                    android:background="#ffb0b0b0">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/linearLayout7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="Str"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/textView6"
+                            android:gravity="center"
+                            android:minWidth="55dp" />
+                        <EditText
+                            android:inputType="number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/strText"
+                            android:minWidth="55dp" />
+                        <TextView
+                            android:text="Dex"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/textView6"
+                            android:gravity="center"
+                            android:minWidth="55dp" />
+                        <EditText
+                            android:inputType="number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/dexText"
+                            android:minWidth="55dp" />
+                        <TextView
+                            android:text="Con"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/textView6"
+                            android:gravity="center"
+                            android:minWidth="55dp" />
+                        <EditText
+                            android:inputType="number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/conText"
+                            android:minWidth="55dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/linearLayout8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="Int"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/textView6"
+                            android:gravity="center"
+                            android:minWidth="55dp" />
+                        <EditText
+                            android:inputType="number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/intText"
+                            android:minWidth="55dp" />
+                        <TextView
+                            android:text="Wis"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/textView6"
+                            android:gravity="center"
+                            android:minWidth="55dp" />
+                        <EditText
+                            android:inputType="number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/wisText"
+                            android:minWidth="55dp" />
+                        <TextView
+                            android:text="Cha"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/textView6"
+                            android:gravity="center"
+                            android:minWidth="55dp" />
+                        <EditText
+                            android:inputType="number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/chaText"
+                            android:minWidth="55dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2"
+            android:gravity="right"
+            android:background="#ff47aaaf">
+            <Button
+                android:text="OK"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/okButton"
+                android:layout_marginRight="10dp" />
+            <Button
+                android:text="Cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancelButton" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

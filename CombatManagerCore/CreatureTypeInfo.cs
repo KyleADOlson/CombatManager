@@ -180,6 +180,11 @@ namespace CombatManager
             }
         }
 
+        public static IEnumerable<String> GetTypes()
+        {
+            return infoMap.Keys;
+        }
+
         public int GetBAB(int hd)
         {
             return (hd * BABRate) / 4;

@@ -61,6 +61,14 @@
     <Compile Include="NumberDialog.cs" />
     <Compile Include="MonsterPickerDialog.cs" />
     <Compile Include="MonsterFragment.cs" />
+    <Compile Include="MonsterEditorActivity.cs" />
+    <Compile Include="MonsterEditorMainActivity.cs" />
+    <Compile Include="MonsterEditorDefenseActivity.cs" />
+    <Compile Include="MonsterEditorOffenseActivity.cs" />
+    <Compile Include="MonsterEditorStatsActivity.cs" />
+    <Compile Include="MonsterEditorFeatsActivity.cs" />
+    <Compile Include="MonsterEditorSpecialActivity.cs" />
+    <Compile Include="MonsterEditorDescriptionActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -94,6 +102,15 @@
     <AndroidResource Include="Resources\drawable\init_button.xml" />
     <AndroidResource Include="Resources\layout\ActionDialog.axml" />
     <AndroidResource Include="Resources\layout\MonsterPickerDialog.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditor.axml">
+      <DependentUpon>MonsterEditor.axml</DependentUpon>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MonsterEditorDefense.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorDescription.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorFeats.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorOffense.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorSpecial.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorStats.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

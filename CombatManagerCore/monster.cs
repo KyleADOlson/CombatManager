@@ -6740,6 +6740,14 @@ namespace CombatManager
             }
         }
 
+        public static List<string> FlyQualityList
+        {
+            get
+            {
+                return new List<string>(from a in flyQualityList orderby a.Value select a.Key);
+            }
+        }
+
         private const string DieRollRegexString = "([0-9]+)(/[0-9]+)?d([0-9]+)(?<extra>(\\+([0-9]+)d([0-9]+))*)((\\+|-)[0-9]+)?";
 
 
