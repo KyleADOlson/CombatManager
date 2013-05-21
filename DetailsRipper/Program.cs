@@ -218,10 +218,13 @@ namespace DetailsRipper
                 x.Remove();
             }
 
+            XDocument doc2 = new XDocument(docMon);
 
-            docMon.Save("BestiaryShort.xml");
+            SplitDescendents(docMon, doc2, 1000);
 
-            File.Copy("BestiaryShort.xml", "..\\..\\..\\CombatManagerCore\\BestiaryShort.xml", true);
+
+            SaveCopyFile(docMon, "BestiaryShort.xml");
+            SaveCopyFile(doc2, "BestiaryShort2.xml");
 
             docMon = XDocument.Load("NPC.xml");
 
@@ -278,13 +281,56 @@ namespace DetailsRipper
             }
             System.Diagnostics.Debug.WriteLine("Dup Count: " + dupcount);
 
-            docMon.Save("NPCShort.xml");
+
+            doc2 = new XDocument(docMon);
+
+            SplitDescendents(docMon, doc2, 1000);
+
+            SaveCopyFile(docMon, "NPCShort.xml");
+            SaveCopyFile(doc2, "NPCShort2.xml");
 
 
-            File.Copy("NPCShort.xml", "..\\..\\..\\CombatManagerCore\\NPCShort.xml", true);
+
+        }
+
+        private static void SaveCopyFile(XDocument doc, String filename)
+        {
+
+            doc.Save(filename);
 
 
+            File.Copy(filename, "..\\..\\..\\CombatManagerCore\\"+  filename, true);
+        }
 
+        private static void SplitDescendents(XDocument docMon, XDocument doc2, int splitValue)
+        {
+
+            int count = 0;
+            List<XElement> removeList = new List<XElement>();
+            foreach (XElement x in docMon.Descendants("Monster"))
+            {
+                if (count < splitValue)
+                {
+                    count++;
+                }
+                else
+                {
+                    removeList.Add(x);
+                }
+            }
+            count = 0;
+            foreach (XElement x in doc2.Descendants("Monster"))
+            {
+                if (count < splitValue)
+                {
+                    removeList.Add(x);
+                    count++;
+                }
+            }
+            foreach (XElement x in removeList)
+            {
+                x.Remove();
+            }
         }
 
 

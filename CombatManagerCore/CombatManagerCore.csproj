@@ -55,6 +55,7 @@
     <Compile Include="CampaignEvent.cs" />
     <Compile Include="CampaignInfo.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="CharacterActions.cs" />
     <Compile Include="CharacterAttacks.cs" />
     <Compile Include="CharacterClass.cs" />
     <Compile Include="CMRegexUtilities.cs" />
@@ -123,6 +124,9 @@
     <Content Include="BestiaryShort.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="BestiaryShort2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Condition.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -145,6 +149,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="NPCShort.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NPCShort2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="RuleShort.xml">
