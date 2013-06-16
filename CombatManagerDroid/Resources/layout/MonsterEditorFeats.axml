@@ -48,14 +48,76 @@
             android:layout_height="fill_parent"
             android:id="@+id/descriptionTab" />
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
+    <ScrollView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/bodyLayout"
-        android:layout_weight="1" />
+        android:id="@+id/scrollView1"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/bodyLayout"
+            android:layout_weight="1">
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="350px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3"
+                android:layout_weight="1">
+                <TextView
+                    android:text="Feats"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView1" />
+                <ListView
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/featListView"
+                    android:layout_weight="1" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/linearLayout4"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2">
+                <TextView
+                    android:text="Available"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/filterText" />
+                <ListView
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/availableListView"
+                    android:layout_weight="1" />
+                <Button
+                    android:text="Add"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addButton" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"

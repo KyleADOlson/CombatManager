@@ -36,6 +36,7 @@ using System.Xml.Linq;
 using Ionic.Zip;
 using System.Threading.Tasks;
 
+
 namespace CombatManager
 {
 
@@ -70,7 +71,8 @@ namespace CombatManager
 
             if (LowMemoryLoad)
             {
-
+                
+                System.Diagnostics.Debug.WriteLine("Low Memory Load");
                 Parallel.Invoke(new Action[] {
                         () =>
                         monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
@@ -80,12 +82,16 @@ namespace CombatManager
             else
             {
 
+                System.Diagnostics.Debug.WriteLine("Full Monster Load");
 
                 Parallel.Invoke(new Action[] {
                         () =>
                         monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
                         () =>
-                        monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml"), 
+                    monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml")});
+                
+                Parallel.Invoke(new Action[] {
+
                      () => 
                          npcSet1 = LoadMonsterFromXml("NPCShort.xml"),
                 
@@ -126,7 +132,23 @@ namespace CombatManager
         {
             get
             {
+#if (!MONO  || ANDROID)
+
                 return false;
+#else
+                IOSDeviceHardware.IOSHardware hw =  IOSDeviceHardware.Version;
+                if ( hw == IOSDeviceHardware.IOSHardware.iPad ||
+                    hw == IOSDeviceHardware.IOSHardware.iPad3G)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+#endif
+
             }
         }
 

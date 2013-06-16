@@ -3,23 +3,27 @@
   <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="CombatManagerDroid/MonsterEditorDefenseActivity.cs" Line="44" Column="75" />
-      <File FileName="CombatManagerDroid/MonsterEditorActivity.cs" Line="237" Column="91" />
+      <File FileName="CombatManagerDroid/MonsterEditorActivity.cs" Line="280" Column="26" />
       <File FileName="CombatManagerDroid/MonsterEditorMainActivity.cs" Line="54" Column="1" />
       <File FileName="CombatManagerDroid/MonsterEditorOffenseActivity.cs" Line="58" Column="54" />
       <File FileName="CombatManagerDroid/UIUtils.cs" Line="77" Column="31" />
-      <File FileName="CombatManagerCore/monster.cs" Line="6747" Column="95" />
+      <File FileName="CombatManagerCore/monster.cs" Line="9992" Column="47" />
       <File FileName="CombatManagerDroid/MonsterPickerDialog.cs" Line="218" Column="29" />
+      <File FileName="../../../../Library/Frameworks/Mono.framework/External/xbuild/Xamarin/Android/Xamarin.Android.Common.targets" Line="1" Column="1" />
+      <File FileName="CombatManagerDroid/MonsterEditorStatsActivity.cs" Line="44" Column="93" />
+      <File FileName="CombatManagerDroid/MonsterEditorSpecialActivity.cs" Line="1" Column="1" />
+      <File FileName="CombatManagerDroid/MonsterEditorDescriptionActivity.cs" Line="4" Column="16" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="CombatManagerCoreDroid" expanded="True" />
           <Node name="CombatManagerDroid" expanded="True">
+            <Node name="Assets" expanded="True" />
             <Node name="Resources" expanded="True">
-              <Node name="layout" expanded="True">
-                <Node name="MonsterEditor.axml" selected="True" />
-              </Node>
+              <Node name="layout" expanded="True" />
             </Node>
+            <Node name="MonsterEditorStatsActivity.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -37,5 +41,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CombatManagerDroid MonoForAntroid.PreferredDevice="7in WSVGA (Tablet)" AndroidDeviceId-Debug="0075539f5987056a" />
+  <MonoDevelop.Ide.ItemProperties.CombatManagerDroid MonoForAntroid.PreferredDevice="7in WSVGA (Tablet)" AndroidDeviceId-Debug="015d2109841bf604" />
 </Properties>

@@ -1,4 +1,5 @@
 1.0.6
+Reduce Monster List on iPad to prevent memory-based crashes
 Fix condition selection problem
 
 1.0.5

@@ -48,14 +48,35 @@
             android:layout_height="fill_parent"
             android:id="@+id/descriptionTab" />
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
+    <ScrollView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/bodyLayout"
-        android:layout_weight="1" />
+        android:id="@+id/scrollView1"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/bodyLayout"
+            android:layout_weight="1">
+            <Button
+                android:text="Add"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/addButton" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/specialLayout" />
+        </LinearLayout>
+    </ScrollView>
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"

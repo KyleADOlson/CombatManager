@@ -48,14 +48,175 @@
             android:layout_height="fill_parent"
             android:id="@+id/descriptionTab" />
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
+    <ScrollView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/bodyLayout"
-        android:layout_weight="1" />
+        android:id="@+id/scrollView1"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/bodyLayout"
+            android:layout_weight="1">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/linearLayout3">
+                <TextView
+                    android:text="Base Attack"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView1"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="numberSigned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/baseAttackText"
+                    android:minWidth="50dp" />
+                <TextView
+                    android:text="CMB"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView2"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="numberSigned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/cmbText"
+                    android:minWidth="50dp" />
+                <TextView
+                    android:text="CMD"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView3"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="numberSigned"
+                    android:id="@+id/cmdText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:minWidth="50dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/linearLayout4"
+                android:layout_weight="1">
+                <TextView
+                    android:text="Racial Modifiers"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText1" />
+                <TextView
+                    android:text="Aura"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView5" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText2" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout5">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/linearLayout6"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+                    <TextView
+                        android:text="Skills"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView6" />
+                    <ListView
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/skillsListView"
+                        android:layout_weight="1"
+                        android:background="#ffffffff" />
+                    <Button
+                        android:text="Add"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/addButton" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout8">
+                <TextView
+                    android:text="Languages"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView9" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText3" />
+                <TextView
+                    android:text="SQ"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView8" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText4" />
+                <TextView
+                    android:text="Gear"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView10" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText5" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"

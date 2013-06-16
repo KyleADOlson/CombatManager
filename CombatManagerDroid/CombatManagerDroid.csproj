@@ -177,5 +177,11 @@
     <AndroidAsset Include="..\CombatManagerCore\Details.db">
       <Link>Assets\Details.db</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\BestiaryShort2.xml">
+      <Link>Assets\BestiaryShort2.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\NPCShort2.xml">
+      <Link>Assets\NPCShort2.xml</Link>
+    </AndroidAsset>
   </ItemGroup>
 </Project>

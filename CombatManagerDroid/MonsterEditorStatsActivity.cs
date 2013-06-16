@@ -11,6 +11,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+using CombatManager;
+
 namespace CombatManagerDroid
 {
     [Activity (Label = "Monster Editor", Theme = "@android:style/Theme.Light.NoTitleBar")]   
@@ -20,8 +22,24 @@ namespace CombatManagerDroid
         {
             get
             {
-                return Resource.Layout.MonsterEditorSpecial;
+                return Resource.Layout.MonsterEditorStats;
             }
+        }
+
+        protected override void OnCreate (Bundle bundle)
+        {
+            base.OnCreate (bundle);
+
+            ArrayAdapter<String> availableAdapter = new ArrayAdapter<string>
+                (this, Android.Resource.Layout.SelectDialogItem);
+
+            foreach (SkillValue v in EditMonster.SkillValueList)
+            {
+                availableAdapter.Add(v.FullName);
+            }
+
+            FindViewById<ListView>(Resource.Id.skillsListView).Adapter = availableAdapter;
+
         }
     }
 }

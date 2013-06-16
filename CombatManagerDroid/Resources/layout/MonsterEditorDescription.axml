@@ -48,14 +48,104 @@
             android:layout_height="fill_parent"
             android:id="@+id/descriptionTab" />
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
+    <ScrollView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/bodyLayout"
-        android:layout_weight="1" />
+        android:id="@+id/scrollView1"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/bodyLayout"
+            android:layout_weight="1">
+            <TextView
+                android:text="Environment"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1" />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/environmentText" />
+            <TextView
+                android:text="Organization"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2" />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/organizationText" />
+            <TextView
+                android:text="Treasure"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3" />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/treasureText" />
+            <TextView
+                android:text="Before Combat"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4" />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/beforeCombatText" />
+            <TextView
+                android:text="During Combat"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5" />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/duringCombatText" />
+            <TextView
+                android:text="Morale"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6" />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/moraleText" />
+            <TextView
+                android:text="Visual Description"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView7" />
+            <EditText
+                android:inputType="textMultiLine"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/visualDescriptionText" />
+            <TextView
+                android:text="Description"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8" />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/descriptionText" />
+        </LinearLayout>
+    </ScrollView>
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
