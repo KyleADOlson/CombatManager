@@ -2526,11 +2526,53 @@
         													<TextBlock Text="Reset" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="3" />
         												</StackPanel>
         											</Button>
-        											<ListBox Margin="4,28.666,3,54.332" x:Name="combatListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CombatListItemTemplate}" HorizontalContentAlignment="Stretch" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-        											<Button HorizontalAlignment="Left" Margin="3.916,2.706,0,0" VerticalAlignment="Top" Width="72.667" Content="Next Turn" Click="NextButtonClick" x:Name="NextButton" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" Height="21.96" Style="{DynamicResource ButtonMainStyle}" ToolTip="Next Turn (Ctrl+N)" d:LayoutOverrides="VerticalAlignment" />
-        											<Button Margin="80.583,2.706,55.237,0" Content="Previous" x:Name="PrevButton" Click="PrevButton_Click" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" VerticalAlignment="Top" Style="{DynamicResource ButtonMainStyle}" Height="21.96" ToolTip="Previous Turn (Ctrl+P)" d:LayoutOverrides="VerticalAlignment" />
-        											<Button HorizontalAlignment="Right" Margin="0,2.706,28,0" 
-        												IsEnabled="{Binding CurrentItem, Converter={StaticResource itemExistsConverter}}" x:Name="MoveUpButton" Click="MoveUpButton_Click" VerticalAlignment="Top" ToolTip="Move Character Up" Height="21.96" Style="{DynamicResource ButtonMainStyle}" d:LayoutOverrides="VerticalAlignment">
+        											<ListBox Margin="4,44,3,54.332" x:Name="combatListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CombatListItemTemplate}" HorizontalContentAlignment="Stretch" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+        											<Button Margin="57.096,2.706,55.237,0" VerticalAlignment="Top" Click="NextButtonClick" x:Name="NextButton" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" Height="37.294" Style="{DynamicResource ButtonMainStyle}" ToolTip="Next Turn (Ctrl+N)" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Background="{DynamicResource SecondaryColorBGradientBrush}">
+        												<Button.Content>
+        														<StackPanel Orientation="Horizontal">
+        															<StackPanel Orientation="Vertical">
+        																<TextBlock HorizontalAlignment="Center">Next</TextBlock>						
+																		<TextBlock HorizontalAlignment="Center">Turn</TextBlock>
+																	</StackPanel>
+        															<Path Data="M1,4 L5,4 L5,1 L11,6 L5,11 L5,8 L1,8 z" StrokeLineJoin="Round" StrokeThickness="1" Width="16" RenderTransformOrigin="0.5,0.5" Height="15" Stretch="Fill" Stroke="White" Margin="11,0,0,0">
+        																<Path.RenderTransform>
+        																	<TransformGroup>
+        																		<ScaleTransform ScaleX="1.6" ScaleY="1.6"/>
+        																		<SkewTransform/>
+        																		<RotateTransform/>
+        																		<TranslateTransform/>
+        																	</TransformGroup>
+        																</Path.RenderTransform>
+        																<Path.Fill>
+        																	<SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
+        																</Path.Fill>
+        															</Path>						
+																</StackPanel>				
+														</Button.Content>	
+													</Button>
+        											<Button Margin="4,2.706,0,0" x:Name="PrevButton" Click="PrevButton_Click" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" VerticalAlignment="Top" Style="{DynamicResource ButtonMainStyle}" Height="37.294" ToolTip="Previous Turn (Ctrl+P)" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="49.18" >
+        												<StackPanel Orientation="Horizontal">
+        													<Path Data="M1,4 L5,4 L5,1 L11,6 L5,11 L5,8 L1,8 z" StrokeLineJoin="Round" StrokeThickness="1" Width="16" RenderTransformOrigin="0.5,0.5" Height="15" Stretch="Fill" Stroke="White" Margin="0,0,2,0">
+        														<Path.RenderTransform>
+        															<TransformGroup>
+        																<ScaleTransform/>
+        																<SkewTransform/>
+        																<RotateTransform Angle="180"/>
+        																<TranslateTransform/>
+        															</TransformGroup>
+        														</Path.RenderTransform>
+        														<Path.Fill>
+        															<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+        														</Path.Fill>
+        													</Path>
+        															<StackPanel Orientation="Vertical">
+        																<TextBlock HorizontalAlignment="Center">Prev</TextBlock>						
+																	<TextBlock HorizontalAlignment="Center">Turn</TextBlock>
+																</StackPanel>					
+        												</StackPanel>
+        											</Button>
+        											<Button HorizontalAlignment="Right" Margin="0,2.706,27,0" 
+        												IsEnabled="{Binding CurrentItem, Converter={StaticResource itemExistsConverter}}" x:Name="MoveUpButton" Click="MoveUpButton_Click" VerticalAlignment="Top" ToolTip="Move Character Up" Height="37.294" Style="{DynamicResource ButtonMainStyle}" d:LayoutOverrides="VerticalAlignment" Width="24.237" Background="{DynamicResource PrimaryColorGradientBrush}">
         												<StackPanel>
         													<Path Data="M1,4 L5,4 L5,1 L11,6 L5,11 L5,8 L1,8 z" StrokeLineJoin="Round" StrokeThickness="1" HorizontalAlignment="Center" Width="16" RenderTransformOrigin="0.5,0.5" Height="15" Stretch="Fill" Stroke="White">
         														<Path.Fill>
@@ -2547,8 +2589,8 @@
         													</Path>
         												</StackPanel>
         											</Button>
-        											<Button Margin="0,2.706,3,0"
-        												IsEnabled="{Binding CurrentItem, Converter={StaticResource itemExistsConverter}}" x:Name="MoveDownButton" Click="MoveDownButton_Click" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Move Character Down" Height="21.96" Style="{DynamicResource ButtonMainStyle}" d:LayoutOverrides="VerticalAlignment">
+        											<Button Margin="0,2.706,3.5,0"
+        												IsEnabled="{Binding CurrentItem, Converter={StaticResource itemExistsConverter}}" x:Name="MoveDownButton" Click="MoveDownButton_Click" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Move Character Down" Height="37.294" Style="{DynamicResource ButtonMainStyle}" d:LayoutOverrides="VerticalAlignment" Width="24" Background="{DynamicResource PrimaryColorGradientBrush}">
         												<StackPanel>
         													<Path Data="M1,4 L5,4 L5,1 L11,6 L5,11 L5,8 L1,8 z" StrokeLineJoin="Round" StrokeThickness="1" HorizontalAlignment="Left" Width="16" RenderTransformOrigin="0.5,0.5" Height="15" Stretch="Fill" Stroke="White">
         														<Path.Fill>
