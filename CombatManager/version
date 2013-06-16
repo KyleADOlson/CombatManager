@@ -1,5 +1,7 @@
 ﻿1.5.1
 Fix crash for very large (44+) CR encounters
+Embiggen next turn button
+Spell block parsing fixes
 
 1.5.0
 Fix installer missing Zip DLL
