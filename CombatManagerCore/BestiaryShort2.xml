@@ -26639,4 +26639,1266 @@
     <id>4363</id>
     <UniqueMonster>0</UniqueMonster>
   </Monster>
+  <Monster>
+    <Name>Svathurim</Name>
+    <CR>11</CR>
+    <XP>12800</XP>
+    <Alignment>CE</Alignment>
+    <Size>Huge</Size>
+    <Type>monstrous humanoid</Type>
+    <SubType>(cold)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft.; Perception +19</Senses>
+    <AC>26, touch 11, flat-footed 23</AC>
+    <AC_Mods>(+4 armor, +3 Dex, +10 natural, +1 shield, -2 size)</AC_Mods>
+    <HP>147</HP>
+    <HD>(14d10+70)</HD>
+    <Saves>Fort +11, Ref +12, Will +11</Saves>
+    <Fort>11</Fort>
+    <Ref>12</Ref>
+    <Will>11</Will>
+    <Immune>cold</Immune>
+    <Weaknesses>vulnerable to fire</Weaknesses>
+    <Speed>50 ft.</Speed>
+    <Melee>mwk lance +22/+17/+12 (2d6+9/x3), gore +16 (2d6+4), 2 hooves +16 (1d8+4) or 2 slams +21 (1d8+9), gore +21 (2d6+9), 2 hooves +16 (1d8+4)</Melee>
+    <Ranged>mwk composite longbow +16/+11/+6 (2d6+9/x3)</Ranged>
+    <Space>15 ft.</Space>
+    <Reach>10 ft. (20 ft. with lance)</Reach>
+    <SpecialAttacks>thunderous trample, trample (1d8+13, DC 26)</SpecialAttacks>
+    <AbilitiyScores>Str 29, Dex 17, Con 20, Int 10, Wis 14, Cha 11</AbilitiyScores>
+    <BaseAtk>14</BaseAtk>
+    <CMB>+25 (+27 bull rush, +27 overrun)</CMB>
+    <CMD>38 (40 vs. bull rush, 40 vs. overrun, 50 vs. trip)</CMD>
+    <Feats>Charge ThroughAPG, Great Fortitude, Improved Bull Rush, Improved Overrun, Intimidating Prowess, Natural Jouster (see the sidebar), Power Attack</Feats>
+    <Skills>Acrobatics +12 (+20 when jumping), Climb +12, Intimidate +25, Perception +19, Survival +14, Swim +20</Skills>
+    <RacialMods>+8 Acrobatics when jumping</RacialMods>
+    <Languages>Giant, Skald</Languages>
+    <SQ>skyrunner, undersized weapons</SQ>
+    <Environment>cold hills, mountains, or plains</Environment>
+    <Organization>solitary, pair, warband (3-6), or clan (1-4 svathurim plus 2-12 frost giants)</Organization>
+    <Treasure>standard (mwk chain shirt, mwk light steel shield, mwk lance, mwk composite longbow with 40 arrows, other treasure)</Treasure>
+    <Description_Visual>This hulking creature has the lower body of a massive stallion with eight thick legs. Rising from its equine body is the trunk of a muscled humanoid with icy blue skin and a prodigious white beard rimed with ice. Piercing blue eyes glare beneath beetled brows and a spiraling pair of horns which curl upward.</Description_Visual>
+    <Source>AP 69</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Skyrunner (Su) When charging, running, or taking a double move, a svathurim can stride across open air as if it were using air walk. This movement is very taxing, and a svathurim must succeed at a DC 14 Constitution check at the end of each round it uses this ability to avoid being fatigued for 1 minute. This DC increases by 2 each round after the first. Returning to the ground resets the DC to 14, but does not negate any ongoing fatigue or exhaustion. A svathurim cannot trample when using this ability. Thunderous Trample (Su) Any creature damaged by a svathurim's trample attack must succeed at a DC 22 Fortitude save or be deafened for 1 minute. The save DC is Constitution-based. Undersized Weapons (Ex) Although a svathurim is Huge, its upper torso is the same size as that of a Large humanoid. As a result, it wields weapons as if they were one size category smaller than their actual size (Large for most svathurim).</SpecialAbilities>
+    <Description>Ancient tales claim the first svathurims spawned from Thremyr, akin to the creation stories of frost giants, ice trolls, winter wolves, and other creatures of snow and ice. The stories claim that when Thremyr fell into the Steaming Sea, he shed great icebergs that transformed into smaller copies of the god himself. The frost giants, spawned from his shedding body, worship this slumbering god as their creator, and thus consider svathurims their kin. The hindquarters of an adult svathurim are up to 10 feet tall and 16 feet long, while their giant trunk and head reach up to 18 feet on average. Svathurims typically weigh over 5 tons and may live up to 500 years, far longer than their frost giant kin. Ecology Svathurims dwell deep in the frozen wastes of the tundra and arctic regions of Golarion, amid the great glaciers covering the Crown of the World. They occasionally travel along the frozen shores of polar seas, hunting seals, walruses, and whales that venture too close to shore or dragging vast nets through subarctic shallows during salmon runs. It is uncommon for svathurims to live in the vast boreal forests of the north, where their great bulk impedes movement among the trees, though some clans do dwell in the high mountains, springing from peak to peak in prodigious leaps and using their supernatural skyborne gallops. Svathurims are omnivorous and always hungry, able to subsist on scrub plants and kelp in times of great need, or even to eke out bare subsistence on the algae and lichen embedded in ice and rocks. However, they greatly prefer fresh, uncooked meat, and will devour every scrap of whatever they kill. Their grinding teeth are capable of reducing bone to meal, so even the toughest of a victim's remains generally end up in a svathurim's gullet. In the cold and pitiless environment of the north, nothing can be wasted. Svathurim males outnumber females by a wide margin, and these creatures are indiscriminate in their mating habits. The rare svathurim mares are little more selective in their affections than the males, and there is no shortage of males willing to court them. Ironically, many adult male svathurim are killed or wounded in competition for the attentions of females, either maimed and driven off by more dominant males or slain and presented as a trophy to prove worthiness to a female. Female svathurim are never monogamous, though, as mating with many males confuses the issue of parentage enough to keep their offspring safe from the predations of many adult males, lest a male inadvertently eradicate a foal svathurim that may be his own flesh and blood. Habitat &amp; Society Svathurims live in clans, typically headed by the strongest and most accomplished hunter in the group, whether male or female. In some clans, svathurims gain status by the number of offspring they produce, though parentage is diff icult to prove for males and leads to frequent disputes. Where females are both strong and fertile, they are able to assert dominance both by their own strength and by the loyalty and support of those children willing to fight for them. Of course, no svathurim can feel too secure in his position, as once-loyal supporters may shift their allegiance on a whim, and even faithful children may decide that they have grown strong enough to betray their parent to a rival or gather support (often from siblings) to take power in their own right. Svathurims sometimes build large corrals of stone, ice, or rarely bone or wood where such materials are available in plenty. Usually unroofed, these monolithic barriers serve mostly to keep predators away from their young or to protect their stores of treasure or food gathered by the clan from raiders. A rare few svathurims build more secure enclosed lodges or delve permanent hostels in caves. Svathurims that choose to settle in one area are most likely to live among frost giants. Frost giants view svathurims with a mix of fear, respect, awe, and revulsion. Most know well the tale of the svathurims' creation, and while not all take this as evidence of pseudo-divinity and a shared creation myth, few deny the svathurims' speed, strength, and skill at hunting and killing. For some giant clans, satisfying a svathurim's whims is a small price to pay for the advantages gained by an alliance with them Svathurims collect treasure as frost giants do, favoring precious metals in raw nuggets that are then hammered into crude tribal jewelry. Bracelets, armlets, and rings and chains they can braid into their hair, beards, and long horse-like tails are favored treasures, as are inlays and carvings made of mammoth or walrus ivory. Those in subarctic regions collect amber and rare boreal hardwoods, polishing the latter to a luxurious shine and engraving them with runic inscriptions and genealogies both real and imagined.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4363</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Stormghost</Name>
+    <CR>15</CR>
+    <XP>51200</XP>
+    <Alignment>CE</Alignment>
+    <Size>Large</Size>
+    <Type>monstrous humanoid</Type>
+    <Init>10</Init>
+    <Senses>all-around vision, darkvision 90 ft., low-light vision, scent, see in darkness, see in fog; Perception +22</Senses>
+    <Aura>static aura (5 ft., 2d6 electricity)</Aura>
+    <AC>28, touch 16, flat-footed 21</AC>
+    <AC_Mods>(+6 Dex, +1 dodge, +12 natural, -1 size)</AC_Mods>
+    <HP>212</HP>
+    <HD>(17d10+119)</HD>
+    <HP_Mods>regeneration 5 (acid)</HP_Mods>
+    <Saves>Fort +12, Ref +16, Will +12</Saves>
+    <Fort>12</Fort>
+    <Ref>16</Ref>
+    <Will>12</Will>
+    <Immune>disease, electricity, poison</Immune>
+    <Resist>cold 10, fire 10</Resist>
+    <Speed>50 ft., climb 30 ft.</Speed>
+    <Melee>bite +24 (1d8+8), 2 claws +24 (1d8+8/19-20 plus 1d6 electricity)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>5 ft. (10 ft. with claws)</Reach>
+    <SpecialAttacks>impaling leap, sneak attack +3d6, static blast</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 11th; concentration +14) At Will-alter winds, fog cloud, jump 3/day-deeper darkness, greater invisibility, gust of wind (DC 15), ice storm 1/day-control weather, plague stormUM (DC 19), siroccoAPG (DC 19)</SpellLikeAbilities>
+    <AbilitiyScores>Str 27, Dex 23, Con 24, Int 11, Wis 14, Cha 16</AbilitiyScores>
+    <BaseAtk>17</BaseAtk>
+    <CMB>26</CMB>
+    <CMD>43 (47 vs. trip)</CMD>
+    <Feats>Acrobatic Steps, Combat Reflexes, Dodge, Improved Critical (claws), Improved Initiative, Mobility, Nimble Moves, Power Attack, Spring Attack</Feats>
+    <Skills>Acrobatics +20 (+28 when jumping), Climb +24, Perception +22, Stealth +22 (+26 in icy or snowy areas), Survival +20</Skills>
+    <RacialMods>+4 Stealth in icy or snowy areas</RacialMods>
+    <Languages>Triaxian</Languages>
+    <Environment>cold mountains</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>none</Treasure>
+    <Description_Visual>Matching the color of snow and ice, this menacing creature stands on four pointed legs like those of an insect. A conical head ringed with tiny eyes and sporting gnashing teeth sits atop this creature's humanoid torso.</Description_Visual>
+    <Source>AP 70</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Adaptive Camouflage (Ex) A stormghost's hide shifts coloration over time to match that of its environment. Choose a ranger favored terrain type. A stormghost gains a +4 racial bonus on Stealth checks within that terrain type. A stormghost moving into a different terrain type must remain there for 1d4 weeks before the racial bonus applies to the new terrain type. Impaling Leap (Ex) As a standard action, a stormghost can jump into the air and land on a single target at least one size category smaller than itself, using its spiky legs to impale the victim. The target must succeed at a DC 25 Reflex save or it takes 4d8+12 points of piercing damage and is pinned. If the stormghost chooses to maintain the pin, it must succeed at a combat maneuver check as normal. Pinned foes take damage each from the impaling leap each round if they don't escape. The save DC is Constitution-based. See in Fog (Ex) A stormghost can see in fog and foglike conditions without penalty. Static Aura (Su) A stormghost can surround itself with crackling electricity that leaps from its body, affecting nearby creatures. All creatures within 5 feet of the stormghost take 2d6 points of electricity damage at the beginning of the stormghost's turn. Static Blast (Su) As a standard action, a stormghost can focus its static charge into a bolt, releasing it in a 40-foot line that deals 6d6 points of electricity damage. A successful DC 25 Reflex save halves this damage. A stormghost can use its static blast once every 1d4 rounds. The save DC is Constitution-based.</SpecialAbilities>
+    <Description>Bestial hunters that prowl the mountains of Triaxus, stormghosts are a deadly threat to all creatures that stumble across their path. Triaxians attributed the name stormghost to these creatures because of their ability to conjure malignant weather and attack unseen. Stormghosts typically attack in remote mountainous areas, leaping down on their victims from cliff sides and ambushing them in blind mountain passes. Constantly in search of food, stormghosts are excellent hunters and trackers. These predators are completely unafraid of engaging with any target, and thus pose a risk to the humanoids of the planet- and even the dragons. As with Triaxians, stormghosts' appearances vary depending on the season. Thankfully, stormghosts are extremely rare, but the creatures live exceedingly long lives. A stormghost's regeneration diminishes long-term degradation of its body, allowing it to live for over 2,000 years. A stormghost stands nearly 8 feet tall in its regular posture, but can extend its legs to reach up to 14 feet. Formed of muscled flesh and hardened chitin, a stormghost weighs roughly 1,500 pounds. Ecology Stormghosts are apex predators in Triaxus's hills and mountains; a few even make their way to the lowlands. A stormghost is ephemeral like a phantom, and its coloration and ability to become invisible give rise to part of its common name, as victims are typically unaware of the creature's presence until it is far too late. It can also call down storms and banks of fog-the source of the other part of its common name-and can even conjure darkness. Stormghosts themselves, however, can see through fog and darkness, and possess other specialized senses. While the creatures have no recognizable nose, they are capable of tracking their prey by scent using a specialized sensory organ found on the lower part of their torsos. This organ picks up faint chemical signatures with such accuracy that a stormghost can differentiate between two creatures of the same type and recall with perfect detail an individual creature's signature for years after first encountering it. As with all successful hunters, stormghosts' senses and tenacity make them difficult to evade. These traits, in addition to their superior stamina, help stormghosts doggedly hunt down prey that initially escapes their clutches. Exceptionally single-minded, stormghosts live to hunt and hate losing their quarry, and they persistently pursue their fleeing prey, foregoing sleep and ignoring other victims that might be easier to take down-even if they're ravenous-in order to make their desired kill. Stormghosts undergo a change during Triaxus's transitional seasons, shifting their coloration to match their environment. In the winter, stormghosts have an icy white hide that allows them to better conceal themselves in the snow. As summer comes and the planet begins to thaw, stormghosts' hides darken and a splotched coloration of grays and browns emerges. This coloration allows them to hide themselves in the mountainous terrain in which they live. Habitat &amp; Society Stormghosts are solitary creatures that despise sharing their hunting grounds with other creatures, especially other stormghosts. When another predator begins hunting in the same region as a stormghost, the stormghost shifts its predation to that creature, tracking it down and consuming it. The exception to this is when another stormghost trespasses upon its hunting grounds. While the stormghost still tracks down and kills its competition as it would another creature, it does not consume the rival stormghost, finding the flesh of its own kind completely unpalatable, and instead ritualistically butchers its competitor and leaves the corpse as a sign that this territory is already claimed. Stormghosts are exceedingly rare; fewer than 1,000 have been spotted, according to records kept by dragonriders of the Skyfire Mandate. Many of these sightings, made safely from the back of a dragonkin, are believed to be of the same stormghost, leading many scholars to estimate that the population might be much smaller, with a few at most living in the Parapet Mountains. A naturalist in Preita recently published a journal detailing his journey in search for evidence of a stormghost, as tales of these and other vicious beasts are fashionable in the cosmopolitan cities of the Allied Territories. In this journal, he postulates that stormghosts are aliens from another world in the solar system, or perhaps beyond. Their long lives, regenerative capabilities, robust physical form, yet low population numbers suggest this hypothesis is plausible. Although this researcher clearly lacks a greater understanding of worlds beyond Triaxus, his findings on the otherworldly origins of stormghosts are indeed quite accurate. On a planet in a nearby solar system, stormghosts were grown in facilities to be biological probes deployed on specific planets for 2,000 years before they would be retrieved. During their time on those worlds, they are tasked, compelled by their very genesis and the urge of every cell, to kill and consume organic life. Over the course of their lives, a gland within their torsos at the base of the neck collects samples of every kill. These samples can be collected by the stormghost's creators and analyzed. What they are searching for is anyone's guess, but the number of stormghosts on Triaxus suggests these unknown creators seek a comprehensive collection of dragons and dragonkind.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>1</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4396</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Triaxian</Name>
+    <CR>1/2</CR>
+    <XP>200</XP>
+    <Race>Triaxian</Race>
+    <Class>ranger 1</Class>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(Triaxian)</SubType>
+    <Init>2</Init>
+    <Senses>low-light vision; Perception +8</Senses>
+    <AC>18, touch 12, flat-footed 16</AC>
+    <AC_Mods>(+6 armor, +2 Dex)</AC_Mods>
+    <HP>13</HP>
+    <HD>(1d10+3)</HD>
+    <Saves>Fort +4, Ref +4, Will +2</Saves>
+    <Fort>4</Fort>
+    <Ref>4</Ref>
+    <Will>2</Will>
+    <Speed>20 ft.</Speed>
+    <Melee>lance +2 (1d8+1/x3) or longsword +2 (1d8+1/19-20)</Melee>
+    <Ranged>composite longbow +3 (1d8+1/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>favored enemy (dragons +2)</SpecialAttacks>
+    <AbilitiyScores>Str 13, Dex 14, Con 15, Int 10, Wis 14, Cha 8</AbilitiyScores>
+    <BaseAtk>1</BaseAtk>
+    <CMB>2</CMB>
+    <CMD>14</CMD>
+    <Feats>Mounted Archery, Mounted Combat</Feats>
+    <Skills>Knowledge (arcana) +1, Knowledge (nature) +4, Perception +8, Ride +1, Stealth +1, Survival +6</Skills>
+    <RacialMods>+2 Perception</RacialMods>
+    <Languages>Triaxian</Languages>
+    <SQ>seasoned, track +1, wild empathy +0</SQ>
+    <Environment>?</Environment>
+    <Organization>?</Organization>
+    <Treasure>?</Treasure>
+    <Description_Visual>This warrior looks like an attractive humanoid with pointed, featherlike ears and eyes shaped into long, horizontal slits. Though he has no true hair, his entire body is covered in short, sleek white fur.</Description_Visual>
+    <Source>AP 70</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Seasoned (Ex) Triaxians suffer no harm from being in hot or cold environments depending on whether they are Summerborn or Winterborn. Summerborn Triaxians can exist comfortably in conditions between 90 and 140 degrees Fahrenheit without having to attempt Fortitude saves. Winterborn Triaxians can exist comfortably in conditions between 40 and -20 degrees Fahrenheit without having to attempt Fortitude saves. When in conditions of severe cold or heat, Triaxians only have to attempt Fortitude saves once per hour instead of once every 10 minutes. Transitional Triaxians do not have this ability.</SpecialAbilities>
+    <Description>Triaxians are the dominant race on the planet Triaxus, a world whose erratic orbit causes exceptionally long and disparate seasons. Though eerily similar to humans, elves, and the other mammalian humanoids common on Golarion, Triaxians have developed certain adaptations to their environment that mark them as indisputably alien. Just like human ethnicities, Triaxian populations vary in size, weight, and other distinguishing physical characteristics, based primarily on the geographical regions in which they reside. Most Triaxians, both males and females, are around 6 feet tall but somewhat lean compared to humans, rarely weighing more than 200 pounds. Their ears are elongated, but rather than being pointed like elves or half lings, these appendages are instead notched in a feathered or comblike pattern. The flaps created by these notches constantly move to adjust the ear's shape, operating both consciously and unconsciously to help Triaxians focus on specific sounds, not unlike the maneuverable ears of dogs, cats, and other such animals. Like many creatures on their world, Triaxians have evolved to shift along with their environment, resulting in differences between generations of the same family that would seem bizarre to humanoids from Golarion. In the warm summer years, Triaxians are completely hairless, with skin that ranges from deep red to coffee-colored to charcoal black. This configuration allows them to better survive in the sweltering heat of the planet's tropical summers, with the increased melanin in their dark skin protecting them from the sun's intense rays. These Summerborn Triaxians, as they are known, breed true for many generations-yet as the planet begins its rapid seasonal shift, so do the Triaxians. Newborn Triaxians begin to evince new adaptations to the cooling environment, and by the time winter has come on in full, Triaxians change markedly: their pale bodies are covered in fine, insulating white fur like that of an ermine, while their eyes narrow to elongated slits to protect against snowblindness. These new traits similarly breed true until the seasons begin to change once more, at which point the eyes widen and fur recedes, starting the cycle anew. Just as Triaxians differ physically depending on which season they're born into, so do their cultures and customs change. Winterborn Triaxians are defined by the hardship of a world whose very environment seeks to starve or freeze them. They tend to be stolid, hardworking people, with an ironclad sense of honor stemming from the knowledge that in a Triaxian winter, a broken promise can mean death for a whole clan. Even within large communities, the focus remains on survival for one's family and friends, with individuals willing and ready to share, serve, and die to protect the group. Oaths of friendship are serious affairs; once given they are rarely transgressed, and doing so risks a blood feud. With the exception of those nomadic hunter tribes that migrate in pursuit of herd animals, most settlements are permanent and fortified against the predatory horrors that stalk the blinding blizzards. Summerborn Triaxians, by contrast, are born into a world of plenty. With forests full of fruit and game, and glaciers receding to reveal vast tracts of fertile earth, the attachment to cold stone fortresses and cramped cities weakens, and Triaxians spread out across the landscape. For many, it is a time of nomadism, living in small bands and temporary structures, or else participating in great waves of land-grabs as homesteaders. Though they still have the weight of history to remind them of the hardships of their ancestors-and those yet to come for their descendants- Summerborn Triaxians tend to be an easy-going, generous people, quick to accept outsiders, to break with their clans and families and strike out on their own, and to challenge convention in pursuit of greater goals. They are simultaneously less hardened and more likely to go to war, for with the business of survival taking less energy and new territory constantly being settled, leaders have more time and resources to dispute borders and jockey for power. Historically, Summerborn Triaxians are those most likely to visit other planes or worlds, as the drive to explore their newly thawed planet also leads them to look beyond it. Transitional Triaxians occupy a much smaller portion of the Triaxian adaptation cycle than either the Summerborn or Winterborn-usually no more than a generation each orbital year-and often play an uncomfortable role in their society. To Summerborn Triaxians, a Transitional child is an ill omen-a sign that winter approaches, and that the time of plenty is drawing to a close. The first such individuals to appear are often hidden or slain by their parents, and vilified by those rebellious fools and leaders who believe that Transitional children actively bring on the winter, or who simply don't want to begin the long and arduous process of preparing for future generations' survival. Transitional children born at the tail of winter, on the other hand, are often treasured and held up as hopeful signs of a golden era to come. Yet even these may face persecution by those dynasties that fear change, or whose leaders expect a loss of power once their people are free to spread beyond their reach. In both cases, Transitional Triaxians find themselves in a society where they are visibly different from both their parents and their children, and where their very existence is a weighty portent. Strangely, while Triaxians' mutable nature is perfectly adapted to their planet's erratic orbit, the cycle of physiological changes seems keyed to internal clocks rather than external indicators. Even in situations where these adaptations would be disadvantageous, the small populations of Triaxians who have set up residence on other worlds or planes continue to change in time with their kindred on Triaxus. Beyond their obvious adaptations to their environment, Triaxians are remarkably human. Their basic biology, social structures, cultures, and philosophy-while sometimes surprising to outsiders-all fall well within the bounds of what might be encountered in a humanoid race on Golarion, thus making them one of the least "alien" civilizations in Golarion's solar system. Though the statistics above represent a typical initiate training to become a Dragonrider of the Skyfire Mandate, this is by no means the standard for the race-outside of broad strokes, it's as impossible to describe Triaxians' myriad traits and predispositions as it would be to do so for humanity itself. Triaxians are good and evil, warlike and peaceful, magical and mundane, and everything in between. For more information on Triaxians and Triaxus, see Pathfinder Campaign Setting: Distant Worlds and "Planet of Dragons" on page 64. Triaxian CHARACTERS (10 RP) Triaxians don't possess racial Hit Dice, gaining their capabilities instead from class levels. All Triaxians have the following racial traits. +2 Constitution, +2 Wisdom, -2 Strength: Triaxians are a hardy and wily race, as befits their constantly changing environment, but their lean forms have trouble maintaining large amounts of muscle mass. Low-Light Vision: In dim light, Triaxians can see twice as far as humans. Keen Senses: Triaxians' unique ear construction grants them a +2 bonus on Perception checks. Bonus Feat: Triaxians select one extra feat at 1st level. Seasoned: See above. Languages: Triaxians speak Triaxian (the common trade language of Triaxus). Triaxians with high Intelligence scores can choose any languages they want (except secret languages, such as Druidic).</Description>
+    <OtherGear>NPC gear (chainmail, composite longbow with 20 arrows, lance, longsword, other treasure)</OtherGear>
+    <CharacterFlag>1</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4397</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Ursikka</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Alignment>N</Alignment>
+    <Size>Huge</Size>
+    <Type>magical beast</Type>
+    <Init>4</Init>
+    <Senses>darkvision 60 ft., low-light vision, scent, tremorsense 30 ft.; Perception +15</Senses>
+    <AC>24, touch 8, flat-footed 24</AC>
+    <AC_Mods>(+16 natural, -2 size)</AC_Mods>
+    <HP>138</HP>
+    <HD>(12d10+72)</HD>
+    <Saves>Fort +14, Ref +10, Will +5; +4 vs. mind-affecting effects</Saves>
+    <Fort>14</Fort>
+    <Ref>10</Ref>
+    <Will>5</Will>
+    <Save_Mods>+4 vs. mind-affecting effects</Save_Mods>
+    <DefensiveAbilities>ferocity</DefensiveAbilities>
+    <Resist>cold 10</Resist>
+    <Speed>40 ft., burrow 20 ft.</Speed>
+    <Melee>bite +21 (2d6+11 plus freezing viscosity), 2 claws +21 (1d8+11)</Melee>
+    <Space>15 ft.</Space>
+    <Reach>15 ft.</Reach>
+    <SpecialAttacks>coat claws, spit</SpecialAttacks>
+    <AbilitiyScores>Str 32, Dex 11, Con 22, Int 2, Wis 13, Cha 5</AbilitiyScores>
+    <BaseAtk>12</BaseAtk>
+    <CMB>+25 (+27 bull rush)</CMB>
+    <CMD>35 (37 vs. bull rush, 39 vs. trip)</CMD>
+    <Feats>Awesome Blow, Improved Bull Rush, Improved Initiative, Lightning Reflexes, Power Attack, Snatch</Feats>
+    <Skills>Climb +15, Perception +15</Skills>
+    <SQ>hibernation</SQ>
+    <Environment>any cold land</Environment>
+    <Organization>solitary, pair, or hive (3-10)</Organization>
+    <Treasure>none</Treasure>
+    <Description_Visual>This enormous, insectlike creature is covered in downy white fur, broken only by glossy black claws and portions of its exoskeleton. A pair of iridescent eyes gleams above a horrid three-part mouth that drips viscous fluid.</Description_Visual>
+    <Source>AP 70</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Coat Claws (Ex) As a standard action, an ursikka can coat its pincerlike claws with its freezing viscous saliva. This coating lasts for 1 minute. Any creature hit by an ursikka's coated claws or grappled by an ursikka using the Snatch feat takes an additional 2d6 points of cold damage (Reflex DC 22 half). Freezing Viscosity (Ex) The saliva that drips from an ursikka's mouth is maddeningly sticky as well as preternaturally cold. Creatures that take damage from an ursikka's bite attack must succeed at a DC 22 Reflex save or become entangled for 1d4 rounds. While entangled, creatures take 2d6 points of cold damage (Reflex DC 22 half). An entangled creature can break free before the end of this duration by succeeding at a DC 19 Strength check or by dealing 15 point of damage to the encasing saliva with either a slashing weapon or with fire damage. Using fire to remove the saliva damages the entangled creature as well. The save DC is Constitution-based. Hibernation (Ex) Ursikkas can enter a state of hibernation for an indefinite period of time, typically until Triaxus's long summer subsides. An ursikka surrounds itself with its spittle, which hardens into a cocoon. While hibernating, an ursikka doesn't need to drink or eat. The cocoon has hardness 10 and 60 hit points, and is immune to fire damage. As long as the cocoon remains intact, the ursikka remains unharmed in its hibernation. An ursikka must use its attacks to break free from its cocoon. Spit (Ex) As a standard action, an ursikka can spit a 60-foot line of its saliva. Creatures struck by this saliva take 8d6 points of cold damage and risk being entangled. A successful DC 22 Reflex save halves the damage and negates the entangled condition. The save DC is Constitution-based.</SpecialAbilities>
+    <Description>Like enormous, nightmarish praying mantises, ursikkas roam the Triaxian wilderness during the wandering planet's winter years. These vicious, short-tempered predators rule primeval environs by default, being among Triaxus's largest, hungriest beasts. Ursikkas' towering height, which can reach 25 feet, is mostly due to the long, slender walking legs on which the creatures skitter with an eerie speed that belies their hulking size. A long, bloated abdomen accounts for most of the beasts' 20 feet of length. Ursikkas' thoraxes anchor their grasping forearms, which each end in sharp pincers capable of shearing flesh from bone like hot knives cutting through butter. Ursikkas' white, shaggy fur covers the majority of their bodies, and their three-part maws can open wide enough to swallow a human whole. The freezing, sticky fluid that drips from their gnashing jaws aids this activity even further. Ecology Ursikkas are specifically suited to their home planet's long winter season. Their impossibly cold bodily fluids, which allow them to thrive in subzero temperatures, grant them equally cold saliva that helps the beasts kill their prey as well as digest it. Further, the property that keeps ursikkas' spittle liquid at its freezing temperature also makes it incredibly sticky-a quality that aids the creatures in combat and when preparing for Triaxus's hot summer years. During their planet's long winter, ursikkas terrorize Triaxus's large swaths of uncivilized land in endless quests for food. The ravenous creatures require several tons of raw meat each week to survive. Although they prefer to eat the flesh of large, cold-blooded creatures, hungry ursikkas pursue any viable prey, particularly victims that seem sluggish and easy to catch. When the end of winter approaches, the huge quantity of food they consume fuels an increased production of saliva, which they use to prepare their summer abodes. During Triaxus's summers, ursikkas live inside cocoons constructed from their own saliva. In the weeks before the change of seasons, ursikkas choose an inconspicuous locale-such as inside cave complexes or even holes of their own construction-in which to spend the long summer. The creatures then tirelessly weave their spittle around their bodies until they're fully covered. In 24 hours, the chemicals in the spittle harden it into an impenetrable sheath that protects ursikkas from Triaxus's brutal summer heat. Shortly after their spittle-cocoons harden, the beasts go dormant and do not awake until the temperature returns to a more tolerable level. Although ursikkas are known for aggressiveness during the entirety of winter, they are at their most volatile right before and right after dormancy. An ursikka that is interrupted while weaving its cocoon immediately attempts to kill the intruders. An ursikka whose cocoon is broken during the summer emerges similarly enraged; ursikkas that defeat the creatures responsible for waking them attempt to reconstruct their cocoons, but as spittle production ceases during hibernation, those efforts often fail. Some Summerborn Triaxians actively seek out the cocoons of slumbering ursikkas, knowing they can defeat the exposed beasts relatively easily. Habitat &amp; Society With their ruthless predatory skills and voracious appetites, ursikkas typically live solitary existences. However, in places where prey is abundant-such as the wilds of the Drakelands and in the Allied Territories-ursikkas sometimes live in pairs or, rarely, in small hives of three to 10. In such cases, ursikkas still hunt alone. Triaxian scholars note that the creatures don't hesitate to kill each other should one steal another's meal. In accordance with their long life cycles, ursikkas mate infrequently. Once or twice each winter, the larger females of the species typically seek out mates as determinedly as they hunt prey. Afterward, each female lays one enormous, fertilized egg made of a secretion similar to the creatures' hardened saliva. After a 5-year gestation period, the egg hatches. If ursikka parents are even aware of their offspring, though, their behavior does not indicate it. According to scholars, young ursikkas grow to maturity in fewer than 10 years. One disturbing speculation indicates that adult ursikkas sometimes enjoy the flesh of their younger counterparts-and may actually hunt juvenile members of their own species if prey becomes scarce. Whether this behavior is simply a way for adult ursikkas to survive or a warped way for them to retain their territorial dominance is unknown. Although they are very long-lived, ursikkas rarely live through more than two Triaxian winters. In the planet's most isolated territories, where few predators or stalwart hunters threaten them, ursikkas typically die of old age during their dormant period; ursikka carcasses swathed in shimmering, deteriorating cocoons are not uncommon in these frontiers. In more populated areas, ursikkas' lifespans are shorter, especially given the hardy, cold-forged winter cultures that hunt the creatures for protection, thrills, and sometimes meat. Indeed, the warriors of the most populous nations of the Allied Territories consider a slain ursikkas' claws, mandibles, and bulbous eyes the ultimate hunting trophies. Some even make furred armor from ursikkas' durable exoskeletons.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4398</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Wolliped</Name>
+    <CR>3</CR>
+    <XP>800</XP>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>animal</Type>
+    <Init>2</Init>
+    <Senses>low-light vision, scent; Perception +6</Senses>
+    <AC>15, touch 11, flat-footed 13</AC>
+    <AC_Mods>(+2 Dex, +4 natural, -1 size)</AC_Mods>
+    <HP>30</HP>
+    <HD>(4d8+12)</HD>
+    <Saves>Fort +7, Ref +6, Will +1</Saves>
+    <Fort>7</Fort>
+    <Ref>6</Ref>
+    <Will>1</Will>
+    <Speed>50 ft.</Speed>
+    <Melee>gore +6 (1d8+6)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>trample (1d6+6, DC 16)</SpecialAttacks>
+    <AbilitiyScores>Str 18, Dex 14, Con 17, Int 2, Wis 11, Cha 3</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>+8 (+10 bull rush)</CMB>
+    <CMD>20 (22 vs. bull rush, 32 vs. trip)</CMD>
+    <Feats>EnduranceB, Improved Bull Rush, Power Attack</Feats>
+    <Skills>Climb +8, Perception +6</Skills>
+    <Environment>temperate hills</Environment>
+    <Organization>solitary, pair, or cavalry (3-12)</Organization>
+    <Treasure>none</Treasure>
+    <Description_Visual>This shaggy, multi-legged creature has a flattened face with wide nostrils and four eyes. Ivory tusks jut downward from its mouth.</Description_Visual>
+    <Source>AP 70</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Spit (Ex) Once per hour, a wolliped can regurgitate the contents of its stomach, spitting the foul material at a single target within 10 feet. The target must succeed at a DC 15 Fortitude save or be sickened for 1d4 rounds. The save DC is Constitution-based.</SpecialAbilities>
+    <Description>Believed to be native to the Parapet Mountains, wollipeds were among the first beasts of burden domesticated by Triaxians. Some claim wollipeds weren't domesticated initially to be working animals, but rather were herded and bred for their extremely warm and plentiful fleece. In any case, Triaxians have a long history of using these magnificent animals for many purposes, even employing them as mounts in battle. A typical wolliped stands between 5 and 6 feet at the front shoulder and weighs upward of 1,000 pounds. Ecology Wollipeds are social herd animals that subsist on a diet of grasses, leaves, and other plant material. Wollipeds in high mountainous environments obtain much of their food from lichens and mosses, while herds of wollipeds on the plains graze on more substantial fare. Wild wollipeds tend to migrate to more plentiful foraging lands when winter comes to Triaxus, though these can be difficult to find. Domesticated wollipeds, tended to by their Triaxian herders, are found throughout nearly all of Triaxus. Walking on eight sturdy legs, wollipeds are exceptionally sure-footed. These creatures can climb steep mountain trails and march through heavy snow with little effort, and Triaxian cavalry have often charged up scree-choked hillsides to raid fortresses on the backs of armored wollipeds. The great beasts' facility at maneuvering in challenging environments and generally submissive nature have resulted in a long relationship with the humanoids on Triaxus. Wollipeds live for about 15 years, mating and giving birth every 11 months, and can be ridden until the final month of pregnancy. Habitat &amp; Society Wollipeds are social animals, grouping together into herds for protection. When threatened, wollipeds gather in a tight cluster with the young animals kept in the very center of the herd. Domesticated wollipeds are used for casual riding, pulling plows, and walking circles to power wollimills. While other exotic fabrics are available during a Triaxian summer, the mainstay of Triaxian winter textiles is spun wolliped fleece. Wolliped fibers wick water away, and still provide adequate warmth even when soaked, while the variations in coat colors and textures provide a wide array of design options. Like Triaxians, wollipeds exhibit distinct seasonal variance. Wollipeds born during the winter have long, thick, shaggy coats of fine fibers with a hollow core, while those born in the summers have shorter, thinner coats. Rather than the coats of individuals changing, the change happens generationally; winter wollipeds give birth to short-coated summer wollipeds as the planet warms, and vice versa. The process happens quickly, usually beginning in eastern Aylok, though no one knows precisely why. In addition to wolliped fleece, some Triaxian artisans use the ivory from wolliped tusks as a raw material, but this is most common for wollipeds born during the winter, as their tusks are three times the size of those born in summer. Winterborn wollipeds use their foot-long tusks for a variety of purposes. In addition to using them to dig in the ice and snow for deep green tubers, burmoss, and patches of sentient tulbos fungus that stretches beneath the ice, wollipeds clash their tusks together in competitions for dominance within a herd and as part of their mating displays. Wollipeds use spitting as a form of communication as well as for defense. Most wollipeds only spit at one another, typically in the course of their tusk-clashing shows of dominance, but when threatened they can launch a nauseating wad of partially digested fodder at their attackers. Some trained wolliped mounts have honed this nature into a weapon guided by their riders. The dragons of Triaxus have little use for terrestrial mounts, and instead use wollipeds as a consistent source of food. More than half of all domesticated wollipeds eventually feed Triaxus's dragon population, though most wollipeds used for meat are older animals whose fleece has turned coarse and brittle. Triaxians also eat wolliped flesh, but most consider young and healthy animals too valuable to eat except during desperate winter years. Regional Variants The statistics on the facing page represent the most common breed of wolliped native to the Drakelands, the Allied Territories, and the Skyfire Mandate. In addition to these, a multitude of other breeds exist throughout Triaxus. Alurals: Triaxians of the Unbound Tribes breed the best wollipeds for battle, with their steeds recognized worldwide as being the strongest and most aggressive. Alurals are also the only known breed of wolliped that is carnivorous. Tribes here collect wolliped milk, fermenting it into a potent alcoholic beverage used for rituals, feasts, and holy days. Alurals have the advanced simple template. Ningese Wollipeds: The remote nation of Ning breeds the smallest wollipeds on Triaxus. Ningese wollipeds are quick and nimble, using these traits to elude the hordes of monsters threatening the civilized regions of the nation. Wollipeds here are primarily used for fleece and food. In the summer, Ningese wollipeds grow to Medium size and their speed increases by 10 feet. Ningese wollipeds born in the harsh winter are Small and have 2 fewer Hit Dice; their Strength and Constitution decreases by 2, and their Dexterity increases by 2. Wolliped Companions Starting Statistics: Size Medium; Speed 50 ft.; AC +1 natural armor, Attack gore (1d6); Ability Scores Str 14, Dex 16, Con 12, Int 2, Wis 11, Cha 4; Special Qualities low-light vision, scent. 7th-Level Adv.: Size Large; AC +3 natural armor; Attack gore (1d8); Ability Scores Str +4, Dex -2, Con +4; Special Abilities spit, trample.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>1</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Combat Trained</AlternateNameForm>
+    <id>4399</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Wolliped</Name>
+    <CR>3</CR>
+    <XP>800</XP>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>animal</Type>
+    <Init>2</Init>
+    <Senses>low-light vision, scent; Perception +9</Senses>
+    <AC>15, touch 11, flat-footed 13</AC>
+    <AC_Mods>(+2 Dex, +4 natural, -1 size)</AC_Mods>
+    <HP>30</HP>
+    <HD>(4d8+12)</HD>
+    <Saves>Fort +7, Ref +6, Will +1</Saves>
+    <Fort>7</Fort>
+    <Ref>6</Ref>
+    <Will>1</Will>
+    <Speed>50 ft.</Speed>
+    <Melee>gore +1 (1d8+2)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 18, Dex 14, Con 17, Int 2, Wis 11, Cha 3</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>8</CMB>
+    <CMD>20 (32 vs. trip)</CMD>
+    <Feats>EnduranceB, Run, Skill Focus (Perception)</Feats>
+    <Skills>Climb +8, Perception +9</Skills>
+    <Environment>temperate hills</Environment>
+    <Organization>solitary, pair, or herd (3-12)</Organization>
+    <Treasure>none</Treasure>
+    <Description_Visual>This shaggy, multi-legged creature has a flattened face with wide nostrils and four eyes. Ivory tusks jut downward from its mouth.</Description_Visual>
+    <Source>AP 70</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Docile (Ex) Unless a wolliped is specifically trained for combat (see the Handle Animal skill on page 97 of the Pathfinder RPG Core Rulebook), its gore is treated as a secondary attack and the creature lacks the trample ability. Spit (Ex) Once per hour, a wolliped can regurgitate the contents of its stomach, spitting the foul material at a single target within 10 feet. The target must succeed at a DC 15 Fortitude save or be sickened for 1d4 rounds. The save DC is Constitution-based.</SpecialAbilities>
+    <Description>Believed to be native to the Parapet Mountains, wollipeds were among the first beasts of burden domesticated by Triaxians. Some claim wollipeds weren't domesticated initially to be working animals, but rather were herded and bred for their extremely warm and plentiful fleece. In any case, Triaxians have a long history of using these magnificent animals for many purposes, even employing them as mounts in battle. A typical wolliped stands between 5 and 6 feet at the front shoulder and weighs upward of 1,000 pounds. Ecology Wollipeds are social herd animals that subsist on a diet of grasses, leaves, and other plant material. Wollipeds in high mountainous environments obtain much of their food from lichens and mosses, while herds of wollipeds on the plains graze on more substantial fare. Wild wollipeds tend to migrate to more plentiful foraging lands when winter comes to Triaxus, though these can be difficult to find. Domesticated wollipeds, tended to by their Triaxian herders, are found throughout nearly all of Triaxus. Walking on eight sturdy legs, wollipeds are exceptionally sure-footed. These creatures can climb steep mountain trails and march through heavy snow with little effort, and Triaxian cavalry have often charged up scree-choked hillsides to raid fortresses on the backs of armored wollipeds. The great beasts' facility at maneuvering in challenging environments and generally submissive nature have resulted in a long relationship with the humanoids on Triaxus. Wollipeds live for about 15 years, mating and giving birth every 11 months, and can be ridden until the final month of pregnancy. Habitat &amp; Society Wollipeds are social animals, grouping together into herds for protection. When threatened, wollipeds gather in a tight cluster with the young animals kept in the very center of the herd. Domesticated wollipeds are used for casual riding, pulling plows, and walking circles to power wollimills. While other exotic fabrics are available during a Triaxian summer, the mainstay of Triaxian winter textiles is spun wolliped fleece. Wolliped fibers wick water away, and still provide adequate warmth even when soaked, while the variations in coat colors and textures provide a wide array of design options. Like Triaxians, wollipeds exhibit distinct seasonal variance. Wollipeds born during the winter have long, thick, shaggy coats of fine fibers with a hollow core, while those born in the summers have shorter, thinner coats. Rather than the coats of individuals changing, the change happens generationally; winter wollipeds give birth to short-coated summer wollipeds as the planet warms, and vice versa. The process happens quickly, usually beginning in eastern Aylok, though no one knows precisely why. In addition to wolliped fleece, some Triaxian artisans use the ivory from wolliped tusks as a raw material, but this is most common for wollipeds born during the winter, as their tusks are three times the size of those born in summer. Winterborn wollipeds use their foot-long tusks for a variety of purposes. In addition to using them to dig in the ice and snow for deep green tubers, burmoss, and patches of sentient tulbos fungus that stretches beneath the ice, wollipeds clash their tusks together in competitions for dominance within a herd and as part of their mating displays. Wollipeds use spitting as a form of communication as well as for defense. Most wollipeds only spit at one another, typically in the course of their tusk-clashing shows of dominance, but when threatened they can launch a nauseating wad of partially digested fodder at their attackers. Some trained wolliped mounts have honed this nature into a weapon guided by their riders. The dragons of Triaxus have little use for terrestrial mounts, and instead use wollipeds as a consistent source of food. More than half of all domesticated wollipeds eventually feed Triaxus's dragon population, though most wollipeds used for meat are older animals whose fleece has turned coarse and brittle. Triaxians also eat wolliped flesh, but most consider young and healthy animals too valuable to eat except during desperate winter years. Regional Variants The statistics on the facing page represent the most common breed of wolliped native to the Drakelands, the Allied Territories, and the Skyfire Mandate. In addition to these, a multitude of other breeds exist throughout Triaxus. Alurals: Triaxians of the Unbound Tribes breed the best wollipeds for battle, with their steeds recognized worldwide as being the strongest and most aggressive. Alurals are also the only known breed of wolliped that is carnivorous. Tribes here collect wolliped milk, fermenting it into a potent alcoholic beverage used for rituals, feasts, and holy days. Alurals have the advanced simple template. Ningese Wollipeds: The remote nation of Ning breeds the smallest wollipeds on Triaxus. Ningese wollipeds are quick and nimble, using these traits to elude the hordes of monsters threatening the civilized regions of the nation. Wollipeds here are primarily used for fleece and food. In the summer, Ningese wollipeds grow to Medium size and their speed increases by 10 feet. Ningese wollipeds born in the harsh winter are Small and have 2 fewer Hit Dice; their Strength and Constitution decreases by 2, and their Dexterity increases by 2. Wolliped Companions Starting Statistics: Size Medium; Speed 50 ft.; AC +1 natural armor, Attack gore (1d6); Ability Scores Str 14, Dex 16, Con 12, Int 2, Wis 11, Cha 4; Special Qualities low-light vision, scent. 7th-Level Adv.: Size Large; AC +3 natural armor; Attack gore (1d8); Ability Scores Str +4, Dex -2, Con +4; Special Abilities spit, trample.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>1</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Domesticated Or Wild</AlternateNameForm>
+    <id>4400</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Grimple</Name>
+    <CR>1/3</CR>
+    <XP>135</XP>
+    <Alignment>CN</Alignment>
+    <Size>Tiny</Size>
+    <Type>fey</Type>
+    <Init>1</Init>
+    <Senses>low-light vision; Perception +4</Senses>
+    <AC>13, touch 13, flat-footed 12</AC>
+    <AC_Mods>(+1 Dex, +2 size)</AC_Mods>
+    <HP>4</HP>
+    <HD>(1d6+1)</HD>
+    <Saves>Fort +1, Ref +3, Will +2</Saves>
+    <Fort>1</Fort>
+    <Ref>3</Ref>
+    <Will>2</Will>
+    <DR>2/cold iron</DR>
+    <Speed>20 ft., climb 20 ft., fly 20 ft. (clumsy)</Speed>
+    <Melee>bite +3 (1d3-4)</Melee>
+    <Ranged>rock +3 (1d2-4)</Ranged>
+    <Space>2-1/2 ft.</Space>
+    <Reach>0 ft.</Reach>
+    <SpecialAttacks>putrid vomit</SpecialAttacks>
+    <AbilitiyScores>Str 3, Dex 13, Con 12, Int 10, Wis 11, Cha 6</AbilitiyScores>
+    <BaseAtk>0</BaseAtk>
+    <CMB>-1</CMB>
+    <CMD>5</CMD>
+    <Feats>Skill Focus (Stealth), Weapon FinesseB</Feats>
+    <Skills>Climb +13, Fly +1, Perception +4, Sleight of Hand +5, Stealth +16, Swim +5</Skills>
+    <Languages>Undercommon</Languages>
+    <SQ>gremlin lice</SQ>
+    <Environment>any urban</Environment>
+    <Organization>solitary, pair, mob (3-8), or infestation (9-16 with 1-3 rogues of 1st-3rd level, 1 fighter leader of 2nd-4th level, 2-6 trained dire rats and 1-4 spider swarms)</Organization>
+    <Treasure>standard</Treasure>
+    <Description_Visual>This putrid looking creature has the appearance of a half-starved, mange-ridden opossum. Leathery skin flaps stretch between its forearms and stubby hind legs, and a pair of boarlike tusks dominates its face.</Description_Visual>
+    <Source>Fey Revisited</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Gremlin Lice (Ex) Filthy creatures, nearly all grimples are infested with gremlin lice. Whenever a warm-blooded creature comes in direct physical contact with a grimple, there is a 25% chance it contracts gremlin lice. 1d4 rounds after the individual contracts lice, it begins to itch. The itch proves so distracting that for the duration of the infestation, the individual takes a -1 penalty on all concentration and initiative checks. Fortunately, these annoying parasites cannot live long on non-gremlins, and only survive for 24 hours. Submersion in water or exposure to freezing temperatures also kills a goblin lice infestation. Putrid Vomit (Ex) Every 1d4 rounds, a grimple can spit up a 30-foot stream of vomit as a standard action. Treat the vomit as a ranged touch attack with no range increment. Anyone struck by the vomit must succeed at a DC 11 Fortitude save or be nauseated for 1d4 rounds. The save is Constitution-based.</SpecialAbilities>
+    <Description>Grimples are filthy urban scavengers that lurk beneath the eaves of abandoned buildings, clock towers, belfries, and steeples. Sickly-looking and hideously ugly, they shed constantly as a result of the small parasites they host. Quick climbers, grimples also have loose flaps of skin that stretch between their arms and legs that they use to glide short distances. Like most gremlins, they despise humans and show their vengeance by attacking drunks, unlocking stables, torturing guard dogs, urinating in water barrels, and loosening hanging storefront signs so they fall on people. Still, the grimple's ability to vomit at will remains its most unappealing quality. Voracious omnivores, grimples feast off garbage. They frequently target inns, restaurants, and other places where they can scavenge a steady supply of food.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>1</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4402</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Blackwood Satyr</Name>
+    <CR>7</CR>
+    <XP>3200</XP>
+    <Alignment>CN</Alignment>
+    <Size>Medium</Size>
+    <Type>fey</Type>
+    <Init>5</Init>
+    <Senses>low-light vision; Perception +22</Senses>
+    <Aura>incorrigible charm (30 ft., DC 19)</Aura>
+    <AC>20, touch 16, flat-footed 14</AC>
+    <AC_Mods>(+5 Dex, +1 dodge, +4 natural)</AC_Mods>
+    <HP>83</HP>
+    <HD>(9d6+52)</HD>
+    <Saves>Fort +6, Ref +11, Will +9</Saves>
+    <Fort>6</Fort>
+    <Ref>11</Ref>
+    <Will>9</Will>
+    <DR>10/cold iron</DR>
+    <Speed>40 ft.</Speed>
+    <Melee>dagger +6 (1d4+2/19-20), horns +1 (1d6+1)</Melee>
+    <Ranged>+1 longbow +11 (1d8+1/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>pipes (DC 19)</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 8th; concentration +13) At Will-dancing lights (DC 15), deep slumber (DC 18), ghost sound (DC 15), suggestion (DC 18) 3/day-major image (DC 18), reckless infatuationUM (DC 18) 1/day-charm monster (DC 19), summon nature's ally IV</SpellLikeAbilities>
+    <AbilitiyScores>Str 15, Dex 20, Con 17, Int 14, Wis 16, Cha 21</AbilitiyScores>
+    <BaseAtk>4</BaseAtk>
+    <CMB>6</CMB>
+    <CMD>22</CMD>
+    <Feats>Dodge, Mobility, Skill Focus (Perception), Spell Penetration, Weapon Focus (longbow)</Feats>
+    <Skills>Bluff +14, Diplomacy +17, Handle Animal +9, Intimidate +9, Knowledge (local) +13, Knowledge (nature) +13, Perception +22, Perform (wind) +21, Sense Motive +10, Spellcraft +8, Stealth +17</Skills>
+    <RacialMods>+4 Perception, +4 Perform, +4 Stealth</RacialMods>
+    <Languages>Common, Sylvan</Languages>
+    <Environment>temperate forests</Environment>
+    <Organization>solitary, pair, band (3-6), or orgy (7-11)</Organization>
+    <Treasure>standard (dagger, short bow plus 20 arrows, masterwork panpipes, other treasure)</Treasure>
+    <Description_Visual>This handsome, grinning man has the furry legs of a goat and a set of curling ram horns extending from his temples.</Description_Visual>
+    <Group>Satyr</Group>
+    <Source>Fey Revisited</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Incorrigible Charm (Su) A blackwood satyr emits an aura of incorrigible charm out to a radius of 30 feet. Any creature that begins its turn in this area of effect must succeed at a DC 19 Will save, or be affected as per the spell charm person. The blackwood satyr can suppress or resume this ability at will. This is a mind-affecting effect. The save DC is Charisma-based. Pipes (Su) A blackwood satyr can focus and empower his magical abilities by playing haunting melodies on his panpipes. When he plays, all creatures within a 60-foot radius must succeed at a DC 19 Will save or be affected by charm monster, deep slumber, reckless infatuation, or suggestion, depending on what tune the satyr chooses. A creature that successfully saves against any of the pipes' effects cannot be affected by the same set of pipes for 24 hours, but can still be affected by the blackwood satyr's other spell-like abilities as normal. The satyr's use of his pipes does not count toward his uses per day of his spell-like abilities, and if separated from them, he may continue to use his standard abilities. The pipes themselves are masterwork, and a satyr can craft a replacement with 1 week of labor. The save DC is Charisma-based.</SpecialAbilities>
+    <Description>Blackwood satyrs are an especially infamous breed of fey indigenous to the Verduran Forest, which straddles the borders of Andoran, Taldor, and Galt. They are well known throughout southeastern Avistan for exuding the pleasantly sweet aroma of blackwood tar, from which they gain their name. Though the human population surrounding the Verduran Forest seldom ventures deep into the fey wood for anything other than logging, the blackwood satyrs seem to take perverse pleasure in waylaying noble lords and ladies during their passage down the heavily traveled Sellen River, playing songs from the river's bank to lure vessels closer and enthrall all aboard.</Description>
+    <Gear>sleep arrows (3), +1 seeking arrows (5); Other Gear +1 longbow with 20 arrows, dagger, efficient quiver</Gear>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4409</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Sprite Swarm</Name>
+    <CR>5</CR>
+    <XP>1600</XP>
+    <Alignment>CN</Alignment>
+    <Size>Diminutive</Size>
+    <Type>fey</Type>
+    <SubType>(swarm)</SubType>
+    <Init>7</Init>
+    <Senses>low-light vision, detect evil, detect good; Perception +14</Senses>
+    <AC>18, touch 18, flat-footed 14</AC>
+    <AC_Mods>(+3 Dex, +1 dodge, +4 size)</AC_Mods>
+    <HP>45</HP>
+    <HD>(10d6+10)</HD>
+    <Saves>Fort +4, Ref +10, Will +7</Saves>
+    <Fort>4</Fort>
+    <Ref>10</Ref>
+    <Will>7</Will>
+    <DefensiveAbilities>swarm traits</DefensiveAbilities>
+    <DR>2/cold iron</DR>
+    <Immune>weapon damage</Immune>
+    <Speed>15 ft., fly 60 ft. (perfect)</Speed>
+    <Melee>swarm (2d6 plus distraction)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>0 ft.</Reach>
+    <SpecialAttacks>angry glow, concentrated rush, distraction (DC 16)</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 5th; concentration +5) Constant-detect evil, detect good 1/day-mass dazeUM (DC 14)</SpellLikeAbilities>
+    <AbilitiyScores>Str 3, Dex 17, Con 12, Int 6, Wis 11, Cha 10</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>-</CMB>
+    <CMD>-</CMD>
+    <Feats>Alertness, Dodge, Flyby Attack, Improved Initiative, Skill Focus (Perception)</Feats>
+    <Skills>Fly +30, Intimidate +10, Perception +14, Sense Motive +9, Stealth +28</Skills>
+    <Languages>Common, Sylvan</Languages>
+    <SQ>mob mentality</SQ>
+    <Environment>temperate forests</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>incidental</Treasure>
+    <Description_Visual>Thousands of tiny, colorful winged humanoids crawl from every corner of the forest to form this buzzing, writhing swarm.</Description_Visual>
+    <Source>Fey Revisited</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Angry Glow (Su) Once per minute, as a full-round action, the sprites that make up a sprite swarm may coordinate their luminous abilities to create a singular, searing glow. Creatures within 10 feet of a sprite swarm with line of sight must succeed at a DC 16 Fortitude save or be blinded for 1d4 rounds. A creature that succeeds at its save is dazzled for 1 round. The save DC is Constitution-based. Concentrated Rush (Ex) Once every 1d4 rounds, if more than one creature occupies a sprite swarm's space, the swarm may use its attack action to concentrate on one of these creatures to deal 4d6 points of damage in place of its normal swarm damage. Other creatures within the horde's space do not take swarm damage that round. Mob Mentality (Ex) As long as a sprite swarm has at least 10 hit points, it retains its Intelligence score and can act accordingly. Even so, it cannot be targeted by mind-affecting spells or effects that target a single creature. If its hit points fall below 10, the swarm is considered mindless as the individual creatures within begin to panic.</SpecialAbilities>
+    <Description>When intruders threaten their beloved homes, sprite guards in large villages are taught to call for their fellow tribe members to form a vicious, enveloping swarm to drive back their enemies. Typically consisting of at least 5,000 sprites, these swarms are known for inf licting pain upon any creatures in their paths. Sprite swarms typically form only when the sprites' village is threatened by a large number of intruders or a single powerful foe; however, the malevolent sprites of Geb are quick to form swarms when faced with intrusion of any kind.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4410</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Cervinal</Name>
+    <CR>17</CR>
+    <XP>102400</XP>
+    <Alignment>NG</Alignment>
+    <Size>Large</Size>
+    <Type>outsider</Type>
+    <SubType>(agathion, extraplanar, good)</SubType>
+    <Init>5</Init>
+    <Senses>darkvision 60 ft., detect scrying, low-light vision, see invisibility; Perception +31</Senses>
+    <AC>32, touch 15, flat-footed 26</AC>
+    <AC_Mods>(+5 Dex, +1 dodge, +17 natural, -1 size)</AC_Mods>
+    <HP>283</HP>
+    <HD>(21d10+168)</HD>
+    <Saves>Fort +20, Ref +14, Will +19; +4 vs. poison</Saves>
+    <Fort>20</Fort>
+    <Ref>14</Ref>
+    <Will>19</Will>
+    <Save_Mods>+4 vs. poison</Save_Mods>
+    <DR>10/evil and silver</DR>
+    <Immune>electricity, petrification</Immune>
+    <Resist>cold 10, sonic 10</Resist>
+    <SR>28</SR>
+    <Speed>30 ft.</Speed>
+    <Speed_Mod>gallop</Speed_Mod>
+    <Melee>2 hooves +25 (2d6+5), 2 slams +30 (1d6+10)</Melee>
+    <Ranged>+3 composite longbow +29/+24/+19/+14 (1d8+13/x3)</Ranged>
+    <Space>10 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>powerful charge (gore, 2d8+15 plus stagger)</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 20th; concentration +24) Constant-detect scrying, see invisibility, speak with animals At Will-discern lies, freedom of movement, greater teleport (self plus 50 lbs. of objects only), invisibility purge, light, message 5/day-clairaudience/clairvoyance, cure critical wounds, dismissal (DC 18), dispel magic 3/day-breath of life, mass bull's strength, plane shift (DC 19) 1/day-discern location, greater scrying</SpellLikeAbilities>
+    <AbilitiyScores>Str 31, Dex 20, Con 26, Int 19, Wis 24, Cha 19</AbilitiyScores>
+    <BaseAtk>21</BaseAtk>
+    <CMB>32</CMB>
+    <CMD>48 (52 vs. trip)</CMD>
+    <Feats>Combat Casting, Combat Reflexes, Critical Focus, Dodge, Improved Natural Attack (slams), Lightning Reflexes, Mobility, Point-Blank Shot, Precise Shot, Rapid Shot, Weapon Focus (composite longbow)</Feats>
+    <Skills>Acrobatics +29, Climb +31, Diplomacy +28, Intimidate +25, Knowledge (arcana) +28, Knowledge (nature) +28, Knowledge (planes) +28, Perception +31, Stealth +25, Survival +28</Skills>
+    <Languages>Celestial, Draconic, Infernal; speak with animals, truespeech</Languages>
+    <SQ>lay on hands (10d6, 14/day, as a 20th-level paladin), undersized weapons</SQ>
+    <Environment>any (Nirvana)</Environment>
+    <Organization>solitary, collective (2-3), or herd (4-6)</Organization>
+    <Treasure>double (+3 composite longbow, other treasure)</Treasure>
+    <Description_Visual>Stately antlers emerge from the crown of this imposing man's bald head. Tufts of fur jut from elsewhere on his upper body, while his lower half is entirely that of a regal elk.</Description_Visual>
+    <Group>Agathion</Group>
+    <Source>Chronicle Of The Righteous</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Gallop (Ex) When a cervinal uses a full-round action to run, it may move up to six times its speed. Stagger (Ex) Any creature that takes damage from a cervinal's powerful charge attack must succeed at a DC 28 Fortitude save or be staggered for 1 round. The save DC is Constitution-based.</SpecialAbilities>
+    <Description>Sometimes termed the "knights" of the agathions, cervinals have gained a reputation throughout the Outer Planes for their battle prowess, noble natures, and admirable wisdom. They stand almost 11 feet tall with magnificent racks of antlers 4 feet across, and weigh over 2,000 pounds. Cervinals manifest from the souls of good leaders, including military officers, regents, and church officials. In the good-aligned planes, they most often serve as generals in battles against fiends, but they also develop strategies to combat everyday evil in the multiverse, secure evil artifacts, and coordinate efforts between agathions and other celestial races.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4411</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Balisse Angel</Name>
+    <CR>8</CR>
+    <XP>4800</XP>
+    <Alignment>NG</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(angel, extraplanar, good)</SubType>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft., detect evil; Perception +16</Senses>
+    <Aura>protective aura</Aura>
+    <AC>21, touch 13, flat-footed 18</AC>
+    <AC_Mods>(+2 Dex, +1 dodge, +8 natural| +4 deflection vs. evil)</AC_Mods>
+    <HP>95</HP>
+    <HD>(10d10+40)</HD>
+    <Saves>Fort +11, Ref +7, Will +10; +4 vs. poison, +4 resistance vs. evil</Saves>
+    <Fort>11</Fort>
+    <Ref>7</Ref>
+    <Will>10</Will>
+    <Save_Mods>+4 vs. poison, +4 resistance vs. evil</Save_Mods>
+    <DR>10/evil</DR>
+    <Immune>acid, cold, petrification</Immune>
+    <Resist>electricity 10, fire 10</Resist>
+    <SR>19</SR>
+    <Speed>40 ft., fly 60 ft. (good)</Speed>
+    <Melee>+1 flaming heavy mace +14/+9 (1d8+4)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>brand of the impenitent</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 10th; concentration +14) Constant-detect evil At Will-aid, dispel evil (DC 19), dispel magic, holy smite (DC 18), invisibility (self only), plane shift (DC 20), remove curse, remove disease, remove fear 3/day-cure serious wounds, hold person (DC 16) 1/day-atonement, mark of justice</SpellLikeAbilities>
+    <AbilitiyScores>Str 17, Dex 15, Con 18, Int 13, Wis 16, Cha 18</AbilitiyScores>
+    <BaseAtk>10</BaseAtk>
+    <CMB>13</CMB>
+    <CMD>26</CMD>
+    <Feats>Dodge, Improved Initiative, Lightning Reflexes, Mobility, Power Attack</Feats>
+    <Skills>Acrobatics +15, Diplomacy +17, Fly +19, Knowledge (planes) +14, Knowledge (religion) +14, Perception +16, Sense Motive +16</Skills>
+    <Languages>Celestial, Draconic, Infernal; truespeech</Languages>
+    <Environment>any good-aligned plane</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>double (+1 flaming heavy mace, other treasure)</Treasure>
+    <Description_Visual>This celestial being's body is obscured by darkness, but its glorious wings glow brilliantly around it, outlining the silhouette of a stern individual with shining yellow eyes.</Description_Visual>
+    <Group>Angel</Group>
+    <Source>Chronicle Of The Righteous</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Brand of the Impenitent (Su) Three times per day, a balisse angel can brand a judged individual within 30 feet. The target must succeed at a DC 19 Will save or be branded with a painless, glowing icon on its chest-usually the holy symbol of the deity or empyreal lord the balisse angel serves. This brand lasts for a number of days equal to the balisse angel's Hit Dice (10 days for most balisse angels). Anyone who attacks the branded target gains a +2 sacred bonus on weapon attack and damage rolls and a +2 sacred bonus on caster level checks to overcome the target's spell resistance. The save DC is Charisma-based.</SpecialAbilities>
+    <Description>Balisse angels, sometimes called confessor angels, appear to good individuals on the horns of a moral dilemma or to those experiencing a crisis of faith. They prefer to guide individuals to their own moral decisions rather than order them to conform to a specific ideal of good. Balisse angels form from the spirits of individuals who have committed evil acts but later are redeemed and die while living an exemplary, moral life. Though balisse angels do not usually remember their mortal years, they retain a strong belief in the power of mentoring and salvation. The role of confessor is a solitary one. Balisse angels rarely interact with their own kind and cherish every minute they are able to spend on the celestial planes. Some balisse angels form long-lasting bonds with the people they have helped; between missions they may travel to visit their old success stories. Often a balisse angel leaves a mortal just as the mortal is beginning to appreciate the angel's company. Reunions are rare, but cherished all the more because of their scarcity. The average balisse angel stands 7 feet tall and weighs 200 pounds; its powerful wings make up the majority of this weight.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4412</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Choral Angel</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Alignment>NG</Alignment>
+    <Size>Small</Size>
+    <Type>outsider</Type>
+    <SubType>(angel, extraplanar, good)</SubType>
+    <Init>7</Init>
+    <Senses>darkvision 60 ft., detect evil; Perception +16</Senses>
+    <Aura>protective aura</Aura>
+    <AC>19, touch 14, flat-footed 16</AC>
+    <AC_Mods>(+3 Dex, +5 natural, +1 size)</AC_Mods>
+    <HP>68</HP>
+    <HD>(8d10+24)</HD>
+    <Saves>Fort +6, Ref +9, Will +9; +4 vs. poison, +4 resistance vs. evil</Saves>
+    <Fort>6</Fort>
+    <Ref>9</Ref>
+    <Will>9</Will>
+    <Save_Mods>+4 vs. poison, +4 resistance vs. evil</Save_Mods>
+    <DR>5/evil</DR>
+    <Immune>acid, cold, petrification</Immune>
+    <Resist>electricity 10, fire 10</Resist>
+    <SR>17</SR>
+    <Speed>40 ft., fly 60 ft. (good)</Speed>
+    <Melee>slam +10 (1d3+1)</Melee>
+    <Ranged>piercing hymn +12 (2d6 sonic plus deafen)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>countersong, harmonize</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 8th; concentration +11) Constant-detect evil At Will-aid, dispel evil (DC 18), dispel magic, ghost sound (DC 13), invisibility (self only), plane shift (DC 18), remove curse, remove disease, remove fear 3/day-cure moderate wounds, sculpt sound (DC 16), sound burst (DC 15)</SpellLikeAbilities>
+    <AbilitiyScores>Str 13, Dex 16, Con 15, Int 16, Wis 16, Cha 17</AbilitiyScores>
+    <BaseAtk>8</BaseAtk>
+    <CMB>8</CMB>
+    <CMD>21</CMD>
+    <Feats>Alertness, Great Fortitude, Improved Initiative, Toughness</Feats>
+    <Skills>Acrobatics +14, Diplomacy +14, Escape Artist +11, Fly +20, Knowledge (planes) +14, Knowledge (religion) +14, Perception +16, Perform (sing) +14, Sense Motive +16</Skills>
+    <Languages>Celestial, Draconic, Infernal; truespeech</Languages>
+    <Environment>any good-aligned plane</Environment>
+    <Organization>solitary, duet, or ensemble (3-8)</Organization>
+    <Treasure>standard</Treasure>
+    <Description_Visual>This celestial looks like a miniature human wearing a long, sheer robe that matches her broad, platinum wings. Her silver hair slowly ripples through the air of its own volition, highlighting the angel's serene expression.</Description_Visual>
+    <Group>Angel</Group>
+    <Source>Chronicle Of The Righteous</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Countersong (Su) A choral angel can attempt a Perform (sing) check to counter magic effects that depend on sound. This ability functions as the bard ability of the same name. Harmonize (Sp) When choral angels work together, they can use their complementary voices to create mystical harmonies. Two or more choral angels within 60 feet of one another can use calm emotions or heroism as a spell-like ability, four or more choral angels can use shout, and six or more choral angels can use greater heroism or holy word. Only the choral angel who actually uses the spell-like ability in question must take a standard action to achieve this effect-the other choral angels need only take swift actions during the same round. Piercing Hymn (Su) As a standard action, a choral angel can launch a concentrated blast of sonic energy from its mouth. This attack has a range of 90 feet with no range increment. Any creature struck by a choral angel's piercing hymn must succeed at a DC 17 Fortitude save or be deafened for 1d4 minutes. The save DC is Charisma-based.</SpecialAbilities>
+    <Description>Choral angels are vocalists of unparalleled talent, and their singing fill the halls of good deities with soaring hymns and solemn chants. They manifest from the souls of the pious dead who possessed exceptional musical talent and pure spirits in life. Sometimes, mortals who did not possess musical talent but instead held a deep and abiding appreciation for the arts are gifted with this form upon ascending to the good-aligned planes after death. While choral angels are not soldiers and prefer to avoid combat, which many of their angelic brethren relish, these celestials can defend themselves with their puissant voices when need be, creating powerful magical effects that resonate with the purity in their hearts to overcome foes. Choral angels sometimes support astral devas in their duties by visiting the Material Plane bearing messages for mortals. These messages are inevitably good in nature, and it is a joyous event when a choral angel appears to a mortal. If the celestials expect danger or opposition during their visit, they travel in groups called ensembles, and use their harmonizing voices to spread the word of their patron as well as to bolster their allies in battle. If particularly vexed or pressed, an ensemble of choral angels can use their harmonies to devastating effect, obliterating their foes with powerful chants drawn from Elysium or hymns dedicated to the powers of Heaven. Most choral angels stand only 3-1/2 feet tall, and their svelte frames weigh a meager 40 pounds. Their hair is always of a metallic sheen resembling that of rare natural minerals and ores such as platinum, gold, and silver, though some of the oldest choral angels posses hair that glimmers perpetually like emeralds, sapphires, or diamonds.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4413</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Spyglass Archon</Name>
+    <CR>3</CR>
+    <XP>800</XP>
+    <Alignment>LG</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(archon, extraplanar, good, lawful)</SubType>
+    <Init>2</Init>
+    <Senses>darkvision 60 ft., detect evil, hone senses, low-light vision; Perception +7</Senses>
+    <Aura>aura of menace (DC 13), magic circle against evil</Aura>
+    <AC>15, touch 12, flat-footed 13</AC>
+    <AC_Mods>(+2 armor, +2 Dex, +1 natural)</AC_Mods>
+    <HP>26</HP>
+    <HD>(4d10+4)</HD>
+    <Saves>Fort +2, Ref +6, Will +4; +4 vs. poison</Saves>
+    <Fort>2</Fort>
+    <Ref>6</Ref>
+    <Will>4</Will>
+    <Save_Mods>+4 vs. poison</Save_Mods>
+    <DR>5/evil</DR>
+    <Immune>electricity, petrification</Immune>
+    <SR>14</SR>
+    <Speed>40 ft., fly 40 ft. (good)</Speed>
+    <Melee>mwk longsword +5 (1d8+2/19-20), mwk short sword +5 (1d6+1/19-20)</Melee>
+    <Ranged>shortbow +6 (1d6/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>sneak attack +1d6</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 4th; concentration +3) Constant-detect evil, magic circle against evil At Will-aid, continual flame, greater teleport (self plus 50 lbs. of objects only), message 3/day-darkness, entropic shield, undetectable alignment</SpellLikeAbilities>
+    <AbilitiyScores>Str 14, Dex 15, Con 12, Int 13, Wis 10, Cha 9</AbilitiyScores>
+    <BaseAtk>4</BaseAtk>
+    <CMB>6</CMB>
+    <CMD>18</CMD>
+    <Feats>Skill Focus (Stealth), Two-Weapon Fighting</Feats>
+    <Skills>Acrobatics +9, Bluff +6, Fly +13, Knowledge (planes) +8, Perception +7, Sense Motive +7, Stealth +12</Skills>
+    <Languages>Celestial, Draconic, Infernal; truespeech</Languages>
+    <Environment>any (Heaven)</Environment>
+    <Organization>solitary or pair</Organization>
+    <Treasure>standard (mwk longsword, mwk short sword, shortbow, leather armor, other treasure)</Treasure>
+    <Description_Visual>The movements of this black-skinned humanoid are unnaturally quiet, clearly belonging to one used to slinking unseen and unheard through dark places. Ebon wings and a matching mask complete this figure's stealthy appearance.</Description_Visual>
+    <Group>Archon</Group>
+    <Source>Chronicle Of The Righteous</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Hone Senses (Su) Three times per day, a spyglass archon can concentrate its attention as a swift action. For a number of rounds equal to its Hit Dice (4 for most spyglass archons), the range of the spyglass archon's darkvision is doubled, it gains a +6 bonus on Perception checks, and it gains blindsense out to a range of 15 feet.</SpecialAbilities>
+    <Description>Spyglass archons act as spies in the interests of Heaven. Though as lawful as any of their kin, spyglass archons use guile and stealth to uncover evil's plans and bring reports back to Heaven. Unlike hound archons, who act more as military scouts and sentinels, spyglass archons infiltrate enemy strongholds and observe agents of evil from scarcely an arm's-breadth away. Spyglass archons believe in law as strongly as they do in good, and are careful to act lawfully in their search for information. In places where law forbids a spyglass archon from entering a building and eavesdropping, it may hide in the shadows of public areas or conceal itself near windows to watch for evidence of evildoing. Once an archon has sufficient information to report, it returns to Heaven, where it shares its findings with its superiors. Since their tasks require discretion, spyglass archons train in multiple discreet fighting styles, and are as capable as any rogue of laying a foe low before she even notices the archon's presence. Specialized spell-like abilities aid the sleuths in this endeavor, and they are not above shrouding an enemy in magical darkness before descending upon her. Souls that become spyglass archons are solitary by nature, so they have few qualms about the isolation entailed by work. Most of their missions require intense concentration and skill, and are most easily undertaken by a single individual, but 2 spyglass archons might work together on extremely difficult, multipart missions. Spyglass archons are just over 5 feet tall and weigh almost 120 pounds.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4414</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Veranallia</Name>
+    <CR>20</CR>
+    <XP>307200</XP>
+    <Alignment>CG</Alignment>
+    <Size>Large</Size>
+    <Type>outsider</Type>
+    <SubType>(azata, chaotic, extraplanar, good)</SubType>
+    <Init>12</Init>
+    <Senses>darkvision 60 ft., low-light vision, tremorsense 60 ft.; Perception +39</Senses>
+    <AC>36, touch 17, flat-footed 28</AC>
+    <AC_Mods>(+8 Dex, +19 natural, -1 size)</AC_Mods>
+    <HP>324</HP>
+    <HD>(24d10+192)</HD>
+    <Saves>Fort +21, Ref +16, Will +22</Saves>
+    <Fort>21</Fort>
+    <Ref>16</Ref>
+    <Will>22</Will>
+    <DR>15/cold iron and evil</DR>
+    <Immune>electricity, petrification</Immune>
+    <Resist>cold 10, fire 10</Resist>
+    <SR>31</SR>
+    <Speed>50 ft.</Speed>
+    <Speed_Mod>transport via plants</Speed_Mod>
+    <Melee>+3 icy burst sickle +35/+30/+25/+20 (1d6+12/19-20 plus 1d6 cold), 4 vines +27 (1d8+4 plus grab)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>5 ft. (10 ft. with vines)</Reach>
+    <SpecialAttacks>autumnal embrace, constrict (1d8+4), rebirth</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 20th; concentration +29) Constant-detect animals or plants, detect evil, speak with plants, transport via plants At Will-blight, cure serious wounds, diminish plants, entangle (DC 20), plant growth 5/day-control plants (DC 27), grove of respiteAPG, wall of thorns 3/day-animate plants, awaken, repel metal or stone 1/day-regenerate, shambler</SpellLikeAbilities>
+    <SpellsPrepared>Cleric Spells Prepared (CL 20th; concentration +28) 9th-energy drain (DC 27) (2), mass heal, storm of vengeance (DC 27) 8th-cloak of chaos, earthquake, mass cure critical wounds (2), sunburst (DC 26) 7th-blasphemy (DC 25), destruction (DC 25), greater restoration, mass cure serious wounds, repulsion (DC 25) 6th-antilife shell, banishment (DC 24), greater dispel magic, heal, wind walk 5th-breath of life, dispel evil (DC 23) (2), greater command (DC 23), insect plague 4th-antiplant shell, chaos hammer (DC 22), freedom of movement, holy smite (DC 22), neutralize poison, poison (DC 22) 3rd-contagion (DC 21), daylight, dispel magic, protection from energy, searing light, water walk 2nd-align weapon, barkskin, calm emotions (DC 20), enthrall (DC 20), gentle repose, lesser restoration 1st-detect law, divine favor, endure elements, entropic shield, protection from evil, remove fear 0-create water, detect poison, light, purify food and drink</SpellsPrepared>
+    <AbilitiyScores>Str 28, Dex 26, Con 25, Int 18, Wis 27, Cha 29</AbilitiyScores>
+    <BaseAtk>24</BaseAtk>
+    <CMB>+34 (+38 grapple)</CMB>
+    <CMD>52 (56 vs. trip)</CMD>
+    <Feats>Alertness, Cleave, Combat Casting, Combat Reflexes, Critical Focus, Great Cleave, Improved Critical (sickle), Improved Initiative, Improved Natural Attack (vine), Power Attack, Sickening Critical, Toughness</Feats>
+    <Skills>Bluff +36, Climb +33, Escape Artist +35, Heal +35, Intimidate +36, Knowledge (nature) +31, Knowledge (planes) +31, Perception +39, Sense Motive +39, Stealth +31</Skills>
+    <Languages>Celestial, Draconic, Infernal; speak with plants; truespeech</Languages>
+    <SQ>undersized weapons, winter sickle</SQ>
+    <Environment>any (Elysium)</Environment>
+    <Organization>solitary, pair, or grove (3-6)</Organization>
+    <Treasure>double</Treasure>
+    <Description_Visual>This rosy-haired woman is completely nude except for the mass of vines and leaves that cover her lower body. The plant matter silently weaves about her frame seemingly of its own volition, and consists of flourishing vines bursting with blooming flowers as well as wilted leaves covered with a silvery sheen of hoarfrost.</Description_Visual>
+    <Group>Azata</Group>
+    <Source>Chronicle Of The Righteous</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Autumnal Embrace (Su) At will, a veranallia can strike any creature within 30 feet barren or sterile. The target must succeed at a DC 31 Fortitude save or lose any ability it had to reproduce or bear children. This effect can only be removed by a heal, limited wish, miracle, or wish spell. Creatures that magically reproduce are not affected by this ability. The save DC is Charisma-based. Rebirth (Su) Once per day, a veranallia can reincarnate a creature she deems worthy of the honor. The creature's original body decays and sinks into the ground, affecting the surrounding area in a 1/2-mile radius as though with plant growth (enrichment). Over the course of 1d4 days, a white, flowery cocoon emerges from the affected ground and splits open, revealing the newly reincarnated creature inside. Creatures reincarnated by a veranallia always return to life as aasimars. This ability otherwise functions as the reincarnate spell. Spells Veranallias cast divine spells as 20th-level clerics and have access to some druid spells. They do not gain access to domains or other cleric abilities. Winter Sickle (Ex) At will as a free action, a veranallia can create a jagged blade from her hoarfrost-covered vines that acts as a +3 icy burst sickle. One round after it leaves the veranallia's grasp, the weapon melts into a small puddle of water.</SpecialAbilities>
+    <Description>Veranallias are among the most powerful azatas known and embody the changing of the seasons, from blossoming spring to dormant winter. They command the growth and decay of plants, control various aspects of the weather, and enrich soil with the remains of fallen foes. A veranallia stands 8 feet tall and weighs about 350 pounds. Beautiful and majestic, the queenly veranallia possesses a form that combines aspects of a feylike woman and the subtle power of nature. A veranallia appears humanoid from the waist up, but where her thighs and legs should be, sprout countless vines, leaves, and various kinds of plant matter instead. These flora represent the life of plants throughout all stages of the year, continually shifting from blooming, verdant colors and textures to crisp, withered specimens and back in a matter of seconds. Veranallias hail from the wildest regions of Elysium, primeval realms where few but the mightiest azatas dare tread. They are creatures of transition, preferring the unpredictable maelstroms of weather at Elysium's edges to the more temperate or consistent regions of that plane. They also have a particular appreciation for areas where one element transitions into another, such as coastlines, geysers, hot springs, and underground lakes. Many among their kind can be found in the lush Field of Broken Tyrants or various heavily wooded forests throughout Elysium; as many as a dozen veranallias are reputed to dwell among the ever-changing trees and plants of the Painted Forest, and it is thought their annual tribunals are actually the source of the eldritch woodland's transformative climate and continually shifting composition. At first glance, a veranallia's lower body may appear to be made of living plants that wrap themselves around her, but these vines are in fact a part of the azata's strange physiology. Despite this, she is not subject to blight or similar plant-affecting magic, and attempts to use such abilities to hinder her inspire a veranallia's ire like little else. A veranallia's vines are incredibly strong and can entwine and crush an enemy as easily as a python would crush a field mouse. These vines often change appearance based on the veranallia's environment, but not always in any predictable or sensible manner. Veranallias prefer the company of other azatas, and may have any number of faithful bralani or ghaele followers. Their fickle natures make it difficult for most other creatures, even other azatas, to interact with them. Lillends are not inspired by the dangerous power of veranallias, and brijidines' belief in the cleansing power of fire does not make friendship with the verdant veranallias easy. While most other celestials concede that veranallias have only the best intentions, most would still rather deal with more predictable members of the celestial planes. Archons in particular find it almost impossible to speak to veranallias, and the noble angels and agathions have trouble following a veranallia's leaps in logic and rapidly shifting moods. Due to their power and inf luence, it takes a force of great evil to slay veranallias. When a veranallia does die, however, her body explodes into a fine glittering dust that covers a radius of up to a mile. This area becomes exceedingly fertile and subject to indeterminate weather. Storms, snowfalls, heat waves, and gentle showers come by turns regardless of the region's usual climate. Veranallias who have died on the evil Outer Planes have left such fertile areas behind, but the soil inevitably becomes corrupted again, giving rise to vile creatures such as sards and spawning vicious weather patterns. Hardy plane-traveling adventurers speak of ancient veranallias living in the remotest corners of Elysium, and claim that these unique azatas possess even greater mastery over the elements than their more commonly encountered kin. Veranallias with the ability to shower entire mountains with lightning or cause heat waves so intense that they turn lakes to sand are spoken of in arcane texts in the Great Library of Harmonious Scripture of Heaven.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4415</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Animated Tank</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Alignment>N</Alignment>
+    <Size>Huge</Size>
+    <Type>construct</Type>
+    <Init>5</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +26</Senses>
+    <AC>29, touch 9, flat-footed 28</AC>
+    <AC_Mods>(+1 Dex, +20 natural, -2 size)</AC_Mods>
+    <HP>144</HP>
+    <HD>(16d10+56)</HD>
+    <Saves>Fort +5, Ref +6, Will +5</Saves>
+    <Fort>5</Fort>
+    <Ref>6</Ref>
+    <Will>5</Will>
+    <DR>10/adamantine</DR>
+    <Immune>construct traits</Immune>
+    <Speed>40 ft.</Speed>
+    <Ranged>3 Maxim M1910 machine guns +15 (2d8/19-20), Hotchkiss 6 pounder +15 (8d6/x3)</Ranged>
+    <Space>15 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>integrated weaponry, telekinesis, vicious trample (6d6+18, DC 30)</SpecialAttacks>
+    <AbilitiyScores>Str 35, Dex 12, Con -, Int 13, Wis 10, Cha 9</AbilitiyScores>
+    <BaseAtk>16</BaseAtk>
+    <CMB>+30 (+32 bull rush)</CMB>
+    <CMD>41 (43 vs. bull rush, can't be tripped)</CMD>
+    <Feats>Alertness, Awesome Blow, Improved Bull Rush, Improved Initiative, Point-Blank Shot, Power Attack, Skill Focus (Perception), Toughness</Feats>
+    <Skills>Intimidate +15, Perception +26, Sense Motive +20</Skills>
+    <Languages>Russian (can't speak); telepathy 100 ft.</Languages>
+    <SQ>inexhaustible ammo</SQ>
+    <Environment>any</Environment>
+    <Organization>solitary, troop (2-4), squadron (5-12)</Organization>
+    <Treasure>none</Treasure>
+    <Description_Visual>Like a deranged caterpillar of grinding metal and protruding turrets, this massive armored vehicle dominates the battlefield, spitting hot lead and artillery-seemingly without a crew.</Description_Visual>
+    <Source>AP 71</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Inexhaustible Ammo (Su) An animated tank loads and fires its weapons as a normal tank, but it telekinetically reloads from a supernaturally endless supply of ammunition. Integrated Weaponry (Ex) An animated tank is equipped with three Maxim M1910 machine guns (see page 65) and two Hotchkiss 6 pounders (see page 66) built into its body. It treats these weapons as natural attacks and not manufactured weapons. It cannot make iterative attacks with these weapons. An animated tank has its weapons arranged on all sides of its body and can make three machine gun attacks and one Hotchkiss 6 pounder attack each round. An animated tank's weapons can still be targeted by effects that target manufactured weapons (such as magic weapon spells or sunder attempts), but cannot easily be harvested for use once the animated tank is destroyed. An animated tank is always proficient with its weapons, and its ranged weapons do not provoke attacks of opportunity when fired in melee combat. Telekinesis (Su) The pickled brain that animates the tank possesses a supernatural ability to manipulate its surroundings and reload its armament. The animated tank can use telekinesis as a standard action every 1d4 rounds (caster level 16th). Vicious Trample (Ex) An animated tank's powerful metal treads deal 6d6+18 points of damage on a successful trample.</SpecialAbilities>
+    <Description>The brains of great military commanders and tacticians need not go to waste simply because their mortal bodies have been slain. Preserved in glass vessels, bathed in nutrient fluids, and wired to strange energies and bizarre technologies, these organs are given new life, as their mental talents are preserved and tapped to independently control monstrous war machines. Though the methods, magic, and technology used differ between creators of these hulking engines, incarnations of these creatures typically take the form of captured siege engines and vehicles retrofitted to allow independent control by the pickled brains inside. Animated tanks are perhaps the most dangerous of such animate siege engines. Thought haunted by some, and simply assumed by others to be well-commanded vehicles crewed by crack soldiers, these animated monstrosities are feared and loathed on battlefields across the front. Blessed with incredible armor and the ability to never tire or deplete their stocks of ammunition, these creatures run roughshod over trenches and barricades alike, grinding troops unfortunate enough to fall beneath their tracks to splinters of meat and bone. The tremendous range afforded by their armaments only makes matters worse for those forced to confront the lumbering monstrosities, and finding a weakness within their steel carcasses is nigh impossible. Animated tanks are found in the company of one or more rifle or flamethrower troops; these soldiers are usually either keenly aware of the tank's unique magical animation, or wholly ignorant of its mysterious and taciturn movements as they simply follow their commander's orders without regard to the tank's missing crew. Those hearing the tanks' orders in their own heads, however, instantly realize that something is not quite normal. As animated tanks are built with the armored frames of British Mark IV tanks-a common war wagon on First World War battlefields-few soldiers question the orders of their superiors when tasked with accompanying one of the beasts. Though Mark IV tanks could normally hold a crew of eight, the cabin of an animated tank is filled with strange technological and alchemical devices, allowing only four Medium creatures space to ride inside-that is, if the animated tank agrees to carry passengers. Animated tanks were designed by Viktor Miloslav for use by the Russian Imperial Army, and it is thought that this mad experimentation and blasphemous use of the deceased is what triggered his exile to the cold wastes of Siberia and his imprisonment in the Akuvskaya prison camp. It is ultimately unknown how effective the creations of Viktor Miloslav proved on the battlefields of the Great War, or whether any of the monstrosities survived the war, as their shelled-out carcasses look little different from normal tanks, with the exception of a faint smell of formaldehyde and remnants of broken glass not usually found with tanks of this model. Whether some slumbering beast waits patiently in some forgotten barn or warehouse remains to be seen, or whether brave soldiers have laid this dangerous and blasphemous technology to rest is unknown, but hopefully Viktor Miloslav's mad designs have all been destroyed or lost forever. Variants Viktor Miloslav is rumored to have created variations on the normal Mark V tank during his brief explorations into self-animated war machines during World War I. "Female" Animated Tank (CR 11): So named because it lacked the heavier Hotchkiss 6 pounder guns of its more robust counterpart, this variant makes up for its lack of explosive firepower with a bristling barrage of machine gun fire, being able to make up to five attacks per round with its Maxim M1910 machine guns. The tanks are otherwise identical in most respects, and few find a female animated tank's lack of Hotchkiss 6 pounder guns a relief when faced with its withering machine gun attacks. The "Moving Fortress" (CR 13): Once word of Viktor Miloslav's inventions spread to Germany, the engineers there tried to replicate the effects he'd achieved, though it's unknown to what degree they succeeded. Should one of these specimens have survived, it would have been much more highly armored, built on the base of the German A7V tank-designed literally like a tracked, armored land ship. A moving fortress has 2 additional Hit Dice, and its natural armor bonus is increased by 5. Its single main gun, more robust than the Hotchkiss 6 pounder, deals an additional 4d6 points of damage, and the moving fortress is equipped with six Maxim M1910 machine guns. Construction An animated tank is built by retrofitting a preexisting tank and hard-wiring its pickled brain to the controls through strange technology, rather than crafting the construct's tank body from scratch. The secrets to preserving brains and connecting them to metal war wagons is lost, as is the nonmagical technological process by which Viktor Miloslav constructed the monstrosities found on Earth during the First World War. However, those able to inspect a destroyed specimen may be able to reconstruct the process. In addition to an animated tank's creation requirements-beyond the body of an intact tank-an animating brain must be harvested soon after its body is deceased, preserved with gentle repose, and subjected to a special nutrient bath before being revived and ultimately hooked into the tank. Only time and experimentation will reveal whether other secrets to this mysterious process were lost in the chaos of war on Earth. ANIMATED TANK CL 12th; Price 200,000 gp CONSTRUCTION Requirements Craft Construct, animate object, geas/quest, resurrection, telekinesis; Skill Craft (blacksmithing), Knowledge (engineering), and Heal DC 25; Cost 100,000</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4442</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Genthodaemon</Name>
+    <CR>5</CR>
+    <XP>1600</XP>
+    <Alignment>NE</Alignment>
+    <Size>Large</Size>
+    <Type>outsider</Type>
+    <SubType>(daemon, evil, extraplanar)</SubType>
+    <Init>0</Init>
+    <Senses>darkvision 60 ft.; Perception +10</Senses>
+    <Aura>destruction (30 ft.)</Aura>
+    <AC>18, touch 9, flat-footed 18</AC>
+    <AC_Mods>(+9 natural, -1 size)</AC_Mods>
+    <HP>51</HP>
+    <HD>(6d10+18)</HD>
+    <Saves>Fort +8, Ref +5, Will +3</Saves>
+    <Fort>8</Fort>
+    <Ref>5</Ref>
+    <Will>3</Will>
+    <DefensiveAbilities>barbed defense</DefensiveAbilities>
+    <DR>5/good or silver</DR>
+    <Immune>acid, death effects, disease, poison</Immune>
+    <Resist>cold 10, electricity 10, fire 10</Resist>
+    <Speed>30 ft., fly 30 ft. (average)</Speed>
+    <Melee>bite +10 (1d8+4), 2 claws +10 (1d6+4 plus bleed 1d4), tail slap +4 (1d8+2 plus bleed 1d4)</Melee>
+    <Ranged>4 shrapnel +5 (1d6+4/19-20)</Ranged>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <SpecialAttacks>penetrating slivers, trample (1d6+6 plus bleed 1d4, DC 17)</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 6th; concentration +8) Constant-detect good At Will-cause fear (DC 13), lesser confusion (DC 13), message, obscuring mist 1/day-crushing despair (DC 16), dispel magic, meld into stone, move earth</SpellLikeAbilities>
+    <AbilitiyScores>Str 18, Dex 11, Con 16, Int 11, Wis 12, Cha 15</AbilitiyScores>
+    <BaseAtk>6</BaseAtk>
+    <CMB>11</CMB>
+    <CMD>21</CMD>
+    <Feats>Power Attack, Weapon Focus (bite), Weapon Focus (claws)</Feats>
+    <Skills>Fly +7, Intimidate +11, Knowledge (engineering) +9, Knowledge (planes) +9, Perception +10, Stealth +5</Skills>
+    <Languages>Abyssal, Draconic, Infernal; telepathy 100 ft.</Languages>
+    <Environment>any (Abaddon)</Environment>
+    <Organization>solitary or squad (2-18)</Organization>
+    <Treasure>standard</Treasure>
+    <Description_Visual>Jagged bits of metal, armor, and sharp pieces of wire embed the flesh of this towering fiend.</Description_Visual>
+    <Group>Daemon</Group>
+    <Source>AP 71</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Aura of Destruction (Su) A genthodaemon can create an aura of pure carnage. All critical threats made against targets within the aura (including the genthodaemon) are automatically confirmed. Dying creatures within the aura take a -10 penalty on stabilization checks. The genthodaemon can activate or suppress this aura as a free action. Barbed Defense (Su) A creature that strikes a genthodaemon with a melee weapon, an unarmed strike, or a natural weapon takes 1d4+4 points of piercing damage from the barbed wire and other pieces of jagged metal embedded in the genthodaemon's body. Melee weapons with reach do not endanger their users in this way. Penetrating Slivers (Ex) When a genthodaemon confirms a critical hit with a claw attack, pieces of its metal nails break off and enter the target's body, working their way toward its heart. When the slivers reach the heart 1d3 rounds later, the creature takes 1d6 points of Constitution damage. The slivers are destroyed by anything that removes curses, diseases, or death effects. Likewise, creatures immune to curses, diseases, and death effects are immune to this ability. Shrapnel (Ex) A genthodaemon can shake loose four large pieces of the shrapnel embedded in its body as a standard action (make a separate attack roll for each piece). This attack has a range of 180 feet with no range increment. All targets of this attack must be within 30 feet of each other. The daemon can launch at most 24 pieces of shrapnel in any 24-hour period.</SpecialAbilities>
+    <Description>Genthodaemons are common troops of daemonic armies, resolutely obedient to any greater type of daemon that gives them orders. They personify death in hopeless or futile wars, genocide, and the despair created by long, bloody stalemates where the combatants lose their will to live and forget why they were fighting in the first place. They have almost no role in corrupting mortals, as they are devoid of interest in the fates of most other creatures, but are sometimes called by daemonologists or greater daemons for use in war or their ability to shape battlefields. Any daemon that can summon a ceustodaemon can instead use its summon ability to summon a genthodaemon. A genthodaemon looks like a stereotypical fiend- basically humanoid, but with claws, a tail, batlike wings, and cloven hooves. Metal armored plates, barbs, and spikes cover its body, though these are part of the daemon rather than armor it wears. Its claws are jagged metal shards sprouting from its fingers where nails should be. Genthodaemons are only slightly above cacodaemons and lacridaemons in the hierarchy of Abaddon. A greater daemon may create a genthodaemon from a cacodaemon or one of the hunted (a dead soul trying to survive on Abaddon); however, most arise naturally from war-battered souls who band together as hunted, transforming into true daemons simultaneously when the group has cannibalized enough souls. Genthodaemons show unusual loyalty to others in their band, though this doesn't interfere with their obligations to more powerful daemons. A typical genthodaemon stands over 9 feet tall and weighs 500 to 600 pounds (with much of this weight stemming from the daemon's embedded metal). Ecology Souls that become genthodaemons usually come from worlds where war technology has advanced to allow production of large amounts of metal armor and weapons-particularly worlds where firearms have been invented. When battle grows so such a scope that the enemy becomes a faceless tide, or killing becomes casual and easy at long range, the act of waging war becomes completely dehumanized and soldiers become mere pieces in a perpetual machine. In such grim instances and the seeds are planted to send soldiers' souls to Abaddon. These ties to the craft of war stain the dead soul and the daemon created from it, manifesting as armor plates fused with daemonic flesh, pieces of weapons embedded in its bones, or even remnants of siege engines or barbed wire sprouting from or wrapped around the daemon's body. These elements are part of the daemon, not mere decorations, but any mechanical pieces merely resemble functional items and no longer work (for example, a daemon with a crossbow or rifle embedded in its arm cannot shoot it). Genthodaemons from the same band often resemble each other, including the shape of their metal parts, sometimes because their mortal selves were even in the same army and uniform. Though genthodaemons serve in the armies of all four Horsemen, they are most strongly associated with Szuriel, the Horseman of War. Her military background, strong discipline, and focus on the brutality of war resonates with the core of a genthodaemon's being. Those who (as mortals) were involved in acts of genocide have a morbid fascination with obscisidaemons and tend to follow them. Though genthodaemons were not the instigators of genocide in their mortal lives (which could have granted them higher status on Abaddon), those who participated in such acts feel a fawning admiration for the greater daemons who orchestrated such atrocities. Like other daemons, genthodaemons hate all living things-and to an extent, themselves-and look forward to the death of the last mortal, for on that day they will have no other reminders of their bleak mortal lives and can focus all their hate inward. Habitat &amp; Society Genthodaemons patrol the fortresses, cities, ruins, and wastelands of Abaddon looking for invaders, hostile non-daemons, and gangs of the hunted. Because they usually travel in groups, they are rarely preyed upon by other creatures and only have to face death when deployed as part of a Horseman's army. They are of low status but fulfill a necessary role as soldiers of Abaddon. Greater daemons treat them with the formal respect due their relative difference in rank, much like how a general might treat a common soldier. However, in the wars against mortal life, the Horsemen understand the value of suicidal missions and brazen sacrifice, and are not above sending countless genthodaemons to permanent destruction if it advances the cause of Abaddon. The genthodaemons accept this as their lot and never complain, as protests require effort, will, and the belief that there is a possibility of change-three things these shell-shocked creatures lost long ago. On the Material Plane, genthodaemons sometimes serve daemonic cults that are unworthy of a greater daemon's attention or lacking the power to summon a more powerful creature. As their magic is suitable for war and destruction, they have limited use to mortal cultists not intent on violence.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4443</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Fext</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <Init>4</Init>
+    <Senses>darkvision 60 ft.; Perception +20</Senses>
+    <AC>25, touch 15, flat-footed 20</AC>
+    <AC_Mods>(+4 Dex, +1 dodge, +10 natural)</AC_Mods>
+    <HP>127</HP>
+    <HD>(15d8+60)</HD>
+    <Saves>Fort +9, Ref +9, Will +11</Saves>
+    <Fort>9</Fort>
+    <Ref>9</Ref>
+    <Will>11</Will>
+    <DR>10/glass or obsidian</DR>
+    <Immune>cold, undead traits</Immune>
+    <Resist>electricity 10, fire 10</Resist>
+    <SR>21</SR>
+    <Speed>40 ft.</Speed>
+    <Melee>bastard sword +18/+13/+8 (1d10+6/17-20) or slam +17 (1d4+9 plus energy drain)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>energy drain (1d4 levels, DC 21)</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 15th; concentration +19) At Will-death knell (DC 16), protection from good, speak with dead (DC 17) 3/day-bestow curse (DC 17)</SpellLikeAbilities>
+    <AbilitiyScores>Str 23, Dex 18, Con -, Int 13, Wis 15, Cha 18</AbilitiyScores>
+    <BaseAtk>11</BaseAtk>
+    <CMB>17</CMB>
+    <CMD>32</CMD>
+    <Feats>Cleave, Dodge, Great Cleave, Improved Critical (bastard sword), Mobility, Power Attack, Spring Attack, Weapon Focus (bastard sword)</Feats>
+    <Skills>Acrobatics +10 (+14 when jumping), Disguise +15, Intimidate +20, Knowledge (engineering) +12, Knowledge (religion) +12, Perception +20, Sense Motive +9, Stealth +17</Skills>
+    <Languages>Common, Necril</Languages>
+    <SQ>unkillable</SQ>
+    <Environment>any</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>standard (bastard sword, other gear)</Treasure>
+    <Description_Visual>This creature's pallid skin belies its healthy, powerful physique. Dressed in a fine military uniform, complete with numerous decorations and medals, the creature gazes from eyes that are dead and vacant, its thin lips grinning wickedly and revealing pointed, inhuman teeth.</Description_Visual>
+    <Source>AP 71</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Unkillable (Su) When reduced to 0 hit points by anything other than a glass or obsidian weapon, a fext is not destroyed, but instead becomes unconscious. Additionally, 1d4 minutes after falling, a fext gains fast healing 1. To be completely destroyed, a fext must be reduced to 0 hit points by a glass or obsidian weapon or, once a fext is rendered unconscious, its head must be severed and anointed with holy water. Once destroyed, a fext dissolves into fine ash.</SpecialAbilities>
+    <Description>Any good general forbids mention of fexts among his ranks, but such strictures do little to prevent soldiers from whispering tales of undying officers leading enemy units. These supernatural officers-often the targets of dozens of strikes and attempted assassinations over the course of their careers-never seem to fall to these attempts, and when they do, they return for the next clash unfazed. Soldiers whisper that these undead officers are only vulnerable to glass arrows, glass bullets, or glass daggers. Tales of fexts, usually dismissed as camp folktales derived from soldiers' frustration at failed campaigns and lost battles, are most frighteningly true-a truth living officers keep from the normal rank and file, for it takes a truly strong leader to send his soldiers against an unkillable foe. Fexts are relatively new on the face of Golarion. The Whispering Way is said to be behind the existence of these powerful creatures, which not only possess skills at warfare and widespread destruction, but also excel at the subterfuge and guile necessary to pass themselves off as normal, living humanoids. While these abominations often serve corrupt monarchs or power-hungry and desperate tyrants, some fexts infiltrate good armies and act as horrible warlords, defying their nation's ideals. These fexts use politics and miscommunication to distort the truth of their battlefield atrocities. Though a fext normally acts as a commander on the battlefield, when engaged in combat, a fext favors its martial prowess, intermingling quick strikes and deadly blows with disruptive curses and its energy drain ability. Many fexts enjoy cruel and humiliating alternatives for their curses instead of simply reducing ability scores or the effectiveness of attack rolls-they may choose abstract effects such as having the target's commander view him as an enemy or making the target of the curse appear loathsome to fellow soldiers in order to break ranks. In war zones, fexts never spare a kill, being eager to use their death knell spell-like ability. Also, as they wade through scorched battlefields, they frequently use their speak with dead spell-like ability to discern information about rival armies. Ecology Strange rituals doom a child to becoming a fext, ensuring its twisted immortality. Usually male and usually human, the child is destined from birth to die young, but will shine in undeath as a great military leader. Wicked rites corrupt the child while it's still in its mother's womb, infusing it with a power that burns brightly during its development, only to dim upon reaching adulthood into a spiral of blackness followed by an immediate descent into undeath. Creating a fext requires a caster of at least 15th level who must subject an expectant mother to weekly treatments throughout her pregnancy, consisting of an array of charms, herbs, oils, pastes, and powders. After the child is born, a portion of the preserved placenta must be carried or kept near the fext throughout its childhood, usually disguised as a charm, stuffed into a doll, or worked into a favored toy or memento. Born a strong and healthy child, the fext leads a mostly typical life for a child of its parentage, region, and status, maintaining a keen intellect and hearty physique. These boons in its youth all but guarantee it a powerful place in society, especially in the field of battle. A young fext finds itself enamored with warfare of any kind and usually studies weaponry, fighting styles, and historical battles with a voracious appetite. Some fexts grow up knowing their destiny-or learn of it along the way-and choose to dedicate their lives to preparing for some dark purpose. Upon reaching adulthood, a fext falls ill. With fever rising and a head full of hallucinations, the fext lies comatose for a week. During this time, the creature slowly passes from mortality, its soul hanging suspended between worlds, then crumbling into undeath. The transition from life to undeath yields great benefits to a fext, though some experience shocking revelations during the transformation. Like vampires, fexts decay at a slower rate than most undead, allowing the creatures to feign normal life for at least a decade. During this time, their skin slowly grows pallid and the odor of death increasingly haunts them. As fexts begin to degrade, the creatures employ mundane disguises and use restorative spells to maintain their physical bodies' previous appearance. Maintaining their image, fexts generally keep to their expected behavior and use their given names until disguise becomes too difficult. At that point, they often choose a name from the Necril tongue, granted in a vision during their transformation to undeath. Habitat &amp; Society Fexts have no choice as to where they grow up, but in adolescence and young adulthood, before the transformation takes place, they find themselves drawn to areas of conflict and war. In fact, regions of political turmoil and constant battles are breeding grounds for fexts-the ritual that creates these creatures is performed almost exclusively in war-torn countries for two reasons. First, it ensures the youth grows up knowing the ravages of war, allowing the fext to learn the reality of death early on, just as a child in a more idyllic setting might learn to play make-believe. Second, it places the youth in a position to become a great leader and a strong warrior who strives to lead forces in battle. The ritual for creating a fext is nearly as variable as the path to lichdom, and must be customized for each potential child who is to carry the honor. Some parents are aware of the path their unborn child is destined to walk, but others are manipulated into allowing these foul rites. They remain unaware of what the procedure will do to their child, and being told it will protect the child and make it stronger. Subjects for this transformation are usually children of nobles or families renowned for a lineage of strong soldiers. When those driven to create a fext discover an ideal mother is with child, they pose as midwives or doctors, and work the rites into their regular care, explaining the tinctures and herbs away as beneficial supplements for the mother and child.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4444</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Trench Mist</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Alignment>NE</Alignment>
+    <Size>Gargantuan</Size>
+    <Type>aberration</Type>
+    <SubType>(air)</SubType>
+    <Init>9</Init>
+    <Senses>darkvision 60 ft., lifesense; Perception +25</Senses>
+    <AC>12, touch 12, flat-footed 6</AC>
+    <AC_Mods>(+5 Dex, +1 dodge, -4 size)</AC_Mods>
+    <HP>112</HP>
+    <HD>(15d8+45)</HD>
+    <HP_Mods>fast healing 5</HP_Mods>
+    <Saves>Fort +8, Ref +10, Will +10</Saves>
+    <Fort>8</Fort>
+    <Ref>10</Ref>
+    <Will>10</Will>
+    <DefensiveAbilities>amorphous, negative energy affinity</DefensiveAbilities>
+    <DR>10/magic</DR>
+    <Immune>acid, electricity, sonic</Immune>
+    <Speed>0 ft., fly 40 ft. (perfect)</Speed>
+    <Melee>touch +7 (4d6 acid plus 4d6 negative energy)</Melee>
+    <Space>20 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <SpecialAttacks>create trench zombie, engulfing mists</SpecialAttacks>
+    <AbilitiyScores>Str -, Dex 20, Con 16, Int 7, Wis 13, Cha 10</AbilitiyScores>
+    <BaseAtk>11</BaseAtk>
+    <CMB>15</CMB>
+    <CMD>31 (can't be tripped)</CMD>
+    <Feats>Ability Focus (engulfing mists), Combat Reflexes, Dodge, Flyby Attack, Improved Initiative, Mobility, Skill Focus (Perception), Weapon Finesse</Feats>
+    <Skills>Fly +25, Perception +25</Skills>
+    <Languages>Russian (can't speak); telepathy 30 ft.</Languages>
+    <SQ>gaseous, trench zombie symbiosis</SQ>
+    <Environment>any</Environment>
+    <Organization>solitary, pair, or horror (3-5)</Organization>
+    <Treasure>none</Treasure>
+    <Description_Visual>A noxious mustard-colored vapor hangs low over the battlefield, concealing the sickening forms of dead soldiers who walk once more among the living. Its heavy fumes shift and swirl as if alive.</Description_Visual>
+    <Source>AP 71</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Create Trench Zombie (Su) A trench mist can animate any corporeal creature slain while engulfed within its form. The victim rises as a trench zombie (see facing page) in 1d4 rounds and is under the control of the trench mist that created it. A trench zombie becomes free-willed if it is separated from its parent trench mist. A trench mist can animate a number of trench zombies whose Hit Dice total does not exceed more than twice its own Hit Dice. Engulfing Mists (Ex) A trench mist can engulf foes (see the engulf special ability on page 296 of Pathfinder RPG Bestiary 2). A creature engulfed by a trench mist does not gain the pinned condition and may move normally-such a creature is not in danger of suffocating, but as long as it begins its turn engulfed, it automatically takes 4d6 points of acid damage and 4d6 points of negative energy damage. A trench mist's vapors obscure all sight, including darkvision, beyond 5 feet. Creatures 5 feet away have concealment (attacks have a 20% miss chance). Creatures farther away have total concealment (50% miss chance, and the attacker can't use sight to locate targets). The save DC to avoid the engulfing mists is Constitution-based. Gaseous (Ex) A trench mist has a body composed of foul, mustard-colored vapors. This form grants the amorphous defensive ability and allows it to pass through small holes or narrow openings, even mere cracks, with no reduction to its speed, but it cannot enter water or other liquids. A trench mist doesn't have a Strength score. It can't manipulate or wear objects, and it is treated as a creature three size categories smaller than its actual size (Medium for most trench mists) for the purposes of how wind affects it. Trench Zombie Symbiosis (Su) Because of its symbiotic relationship with the trench zombies it creates, a trench mist shares senses with its animated creatures when they are engulfed within its form, granting them lifesense and making them immune to the concealment the trench mist grants to creatures within and outside of its foggy form.</SpecialAbilities>
+    <Description>Trench mists are created anywhere that deadly gas attacks are used for the wholesale slaughter of troops, whether attacks of a mundane poisonous nature, or from the magical effects of spells such as acid fog. Under mysterious circumstances likely born of the horrors of war and the final throes of young soldiers dying before their time, these mists linger over the battlefield, absorbing the departing souls of the slain. This commingling of loosed life energy and strange chemicals grants the miasma a sly, malevolent sentience. Once so born, the trench mist then seeks only to impart misery and share its singular fate with those fortunate enough to have escaped the poisonous attacks that birthed the creature in the first place. As it preys upon the living it absorbs the aff licted into its growing horde of shambling servants. Victims of its acidic mist rise as hateful zombies under the creature's control, and a trench mist that gains a horde of zombies is a dangerous foe indeed. On battlefields where trench mists are known to have arisen, wise commanders arrange cease-fires during which both sides abandon the site, lest their troops succumb to the horrifying fate of their comrades. Part of the trench mist's self-awareness comes from the symbiotic trench zombies it gains as it slaughters its victims, as the zombies under the mist's control retain the abilities they had in life as well as some snippets of their former memories, which all feed into the collective consciousness of the trench mist. This allows the mist to learn and adapt, granting it a relatively keen intelligence compared to other similar creatures, and allowing it to make canny combat decisions and cleverly manipulate its surroundings. Trench mists wander battlefields looking for prey so they can add more shambling zombies to their collective hordes. Occasionally they might even enter inhabited areas to seek out fresh ammunition and armaments for those of their symbiotic undead who may have exhausted their weaponry. When bereft of such foul company, trench mists often persist for years after the tides of war have receded, settling into the soil and slumbering until fresh prey arises. The lifespan of trench mists is unknown, though through this sort of hibernation they very well may be immortal, reemerging without warning at the scenes of ancient battles centuries after they have taken place, whether turned up by an unsuspecting farmer's plow or war waged anew.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4445</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Trench Zombie</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>Human</Race>
+    <Class>fighter (trench fighter) 6</Class>
+    <MonsterSource>see page 67</MonsterSource>
+    <Alignment>LN</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <SubType>(augmented human, human)</SubType>
+    <Init>8</Init>
+    <Senses>darkvision 60 ft.; Perception +7</Senses>
+    <AC>18, touch 15, flat-footed 13</AC>
+    <AC_Mods>(+4 Dex, +1 dodge, +3 natural)</AC_Mods>
+    <HP>43</HP>
+    <HD>(6d10++6)</HD>
+    <Saves>Fort +4, Ref +6, Will +3 (+2 vs. fear)</Saves>
+    <Fort>4</Fort>
+    <Ref>6</Ref>
+    <Will>3</Will>
+    <DefensiveAbilities>bravery +2 channel resistance +4</DefensiveAbilities>
+    <DR>5/ magic and slashing</DR>
+    <Immune>acid, cold, electricity, undead traits</Immune>
+    <Resist>fire 10</Resist>
+    <Speed>30 ft.</Speed>
+    <Melee>socket bayonet +9/+4 (1d6+3) or slam +9 (1d6+4)</Melee>
+    <Ranged>Mosin-Nagant M1891 rifle +12/+7 (1d10+6/x4) or M1914 concussion grenade +10 (3d6)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>trench warfare (rifle), weapon training (firearms +1)</SpecialAttacks>
+    <AbilitiyScores>Str 17, Dex 18, Con -, Int 10, Wis 12, Cha 8</AbilitiyScores>
+    <BaseAtk>6</BaseAtk>
+    <CMB>9</CMB>
+    <CMD>24</CMD>
+    <Feats>Deadly Aim, Dodge, Improved InitiativeB, Point-Blank Shot, Precise Shot, Rapid Shot, Toughness, Weapon Focus (rifle), Weapon Specialization (rifle)</Feats>
+    <Skills>Climb +15, Craft (firearms) +4, Knowledge (engineering) +4, Perception +7, Profession (soldier) +5, Ride +8, Stealth +10, Survival +5</Skills>
+    <RacialMods>+8 Climb</RacialMods>
+    <Languages>Russian</Languages>
+    <SQ>symbiote</SQ>
+    <Environment>any</Environment>
+    <Organization>solitary, pair, or horror (3-5)</Organization>
+    <Treasure>none</Treasure>
+    <Description_Visual>You see a rotting creature leaking sulfurous fumes from beneath its acid-burned, peeling skin, and bristling with the armaments it possessed in its horrifying death.</Description_Visual>
+    <Source>AP 71</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Trench Warfare (Ex) Starting at 3rd level, a trench fighter can select one specific type of firearm (such as a machine gun, revolver, or rif le). He gains a bonus equal to his Dexterity modifier on damage rolls when firing that type of firearm. Every 4 levels thereafter (7th, 11th, and 15th), the trench fighter picks up another type of firearm, gaining these bonuses for those types as well. Furthermore, when behind partial, normal, or improved cover, a trench fighter gains an additional +2 AC bonus from the cover. This ability replaces armor training 1, 2, 3, and 4. Symbiote (Ex) A unique relationship with trench mists grants trench zombies immunity to acid. In addition, when a trench zombie reaches 0 hit points and is destroyed, the mustard-colored mist that animates the creature bursts violently from its damaged form. All creatures adjacent to the trench zombie are exposed to the toxic gas and take 4d6 points of acid damage. If the trench zombie is enveloped within the fog of its parent trench mist when this death burst occurs, the mist's fast healing ability increases by 1 for a number of rounds equal to the Hit Dice of the destroyed trench zombie. The effects of the deaths of multiple symbiotic trench zombies stack.</SpecialAbilities>
+    <Description>A trench zombie is a rotting creature leaking sulfurous fumes from beneath its acid-burned, peeling skin, and bristling with the armaments it possessed in its horrifying death. Retaining many of the memories and skills it possessed in life, a trench zombie contributes its intelligence into a sort of hive mind for the trench mist that originally spawned it, creating a true symbiosis between the two-a gift the trench zombie repays upon its destruction, when the horrific fumes that granted it unlife go back to the trench mist that birthed it. Trench zombies are foul and vengeful, and are canny enough to lurk within the nurturing embrace of their mother mist, which provides them concealment without impairing their senses. Those seeking trench zombies' destruction typically must enter the engulfing body of a trench mist if they are to ward off the zombies' ranged attacks. Trench zombies are created using the juju zombie template (Bestiary 2 291), but they lose the juju zombie's immunity to magic missile, which is replaced by immunity to acid. Trench zombies also gain the following special ability Symbiote (Ex).</Description>
+    <Gear>M1914 concussion grenades (2, see page 66); Other Gear Mosin-Nagant M1891 rifle (see page 65) with 20 metal cartridges, socket bayonet (see page 67), gas mask (see page 67)</Gear>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <ClassArchetypes>trench fighter</ClassArchetypes>
+    <id>4446</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Great Wyrm Umbral Dragon</Name>
+    <CR>22</CR>
+    <XP>614400</XP>
+    <Alignment>CE</Alignment>
+    <Size>Colossal</Size>
+    <Type>dragon</Type>
+    <SubType>(extraplanar)</SubType>
+    <Init>2</Init>
+    <Senses>dragon senses; Perception +40</Senses>
+    <Aura>frightful presence (360 ft., DC 32)</Aura>
+    <AC>39, touch 0, flat-footed 39</AC>
+    <AC_Mods>(-2 Dex, +39 natural, -8 size)</AC_Mods>
+    <HP>420</HP>
+    <HD>(29d12+232)</HD>
+    <Saves>Fort +24, Ref +14, Will +24</Saves>
+    <Fort>24</Fort>
+    <Ref>14</Ref>
+    <Will>24</Will>
+    <DR>20/magic</DR>
+    <Immune>cold, death effects, negative energy, paralysis, sleep</Immune>
+    <SR>33</SR>
+    <Speed>40 ft., fly 250 ft. (clumsy)</Speed>
+    <Melee>bite +35 (4d8+21/19-20 plus energy drain), 2 claws +35 (4d6+14/19-20 plus energy drain), tail slap +33 (4d6+21) and 2 wings +33 (2d8+7)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpecialAttacks>breath weapon (70-ft. cone, 24d8 neg. energy, DC 32), create shadows, crush (4d8+21, DC 32), energy drain (1 level, DC 32), shadow breath (12 Str), tail sweep (2d8+19, DC 32)</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 29th; concentration +37) At will-darkness, project image (DC 25), shadow walk, vampiric touch 3/day-finger of death (DC 25), shades(DC 27)</SpellLikeAbilities>
+    <SpellsKnown>Spells Known (CL 19th; concentration +27) 9th (4/day)-suffocation, mass (DC 27), wish 8th (7/day)-horrid wilting (DC 26), screen, trap the soul(DC 26) 7th (7/day)-destruction (DC 25), limited wish, waves of exhaustion 6th (7/day)-harm (DC 24), mislead, veil(DC 24) 5th (7/day)-greater command (DC 23), slay living (DC 23), teleport, unhallow 4th (7/day)-enervation, inflict critical wounds (DC 22), phantasmal killer (DC 22), unholy blight(DC 22) 3rd (7/day)-dispel magic, haste, inflict serious wounds (DC 21), lightning bolt(DC 21) 2nd (7/day)-alter self, blur, command undead (DC 20), invisibility, web(DC 20) 1st (7/day)-inflict light wounds (DC 19), grease (DC 19), magic missile, reduce person (DC 19), shield 0 (at will)-acid splash, bleed (DC 18), detect magic, detect poison, disrupt undead (DC 18), ghost sound, mage hand, ray of frost, read magic</SpellsKnown>
+    <AbilitiyScores>Str 39, Dex 6, Con 27, Int 26, Wis 27, Cha 26</AbilitiyScores>
+    <BaseAtk>29</BaseAtk>
+    <CMB>51</CMB>
+    <CMD>59 (63 vs trip)</CMD>
+    <Feats>Bleeding Critical, Blinding Critical, Critical Focus, Flyby Attack, Greater Vital Strike, Hover, Improved Critical (bite), Improved Critical (claws), Improved Initiative, Improved Vital Strike, Multiattack, Power Attack, Skill Focus (Stealth), Snatch, Vital Strike</Feats>
+    <Skills>Appraise +40, Bluff +40, Diplomacy +40, Fly +14, Knowledge (arcana) +40, Knowledge (history) +40, Knowledge (local) +40, Knowledge (planes) +40, Knowledge (religion) +40, Perception +40, Sense Motive +40, Spellcraft +40, Stealth +20, Survival +40</Skills>
+    <Languages>Abyssal, Common, Draconic, Undercommon, 5 more</Languages>
+    <SQ>ghost bane, umbral scion</SQ>
+    <Environment>any</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>triple</Treasure>
+    <Description_Visual>This sleek, dark dragon moves with a disturbing, serpentine grace, its eyes glowing as if lit from within by crimson embers.</Description_Visual>
+    <Group>Primal Dragon</Group>
+    <Source>d20pfsrd</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Breath Weapon (Su)Although it deals negative energy damage, an umbral dragon's breath weapon does not heal undead creatures. Create Shadows (Su)Any creature slain by an ancient or older umbral dragon rises as a shadow (if 8 HD or less) or greater shadow (if above 8 HD) under the umbral dragon's control 1d4 rounds later. Energy Drain (Su)A great wyrm umbral dragon deals 1 negative level with each successful bite or claw attack (1 level, DC 32). Ghost Bane (Su)A young or older umbral dragon's physical attacks deal damage to incorporeal creatures normally. Shadow Breath (Su)Three times per day, an adult or older umbral dragon can breathe a cone of shadows. Creatures who fail a Fortitude save are blinded for 1d4 rounds and take 1 point of Str drain per age category possessed by the dragon. A successful save negates the blindness and reduces Str drain to 1d4 points. Umbral Scion (Ex)Umbral dragons have negative energy affinity and are immune to energy drain and death effects.</SpecialAbilities>
+    <Description>Cruel and sadistic, umbral dragons prefer the taste of undead flesh or ghostly ectoplasm, yet never turn down opportunities to consume living flesh.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4453</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Great Wyrm Gold Dragon</Name>
+    <CR>23</CR>
+    <XP>819200</XP>
+    <Alignment>LG</Alignment>
+    <Size>Colossal</Size>
+    <Type>dragon</Type>
+    <SubType>(fire)</SubType>
+    <Init>-2</Init>
+    <Senses>dragon senses; Perception +45</Senses>
+    <Aura>fire (10 ft., 2d6 fire), frightful presence (360 ft., DC 33)</Aura>
+    <AC>40, touch 0, flat-footed 40</AC>
+    <AC_Mods>(-2 Dex, +40 natural, -8 size)</AC_Mods>
+    <HP>465</HP>
+    <HD>(30d12+270)</HD>
+    <Saves>Fort +26, Ref +15, Will +27</Saves>
+    <Fort>26</Fort>
+    <Ref>15</Ref>
+    <Will>27</Will>
+    <DR>20/magic</DR>
+    <Immune>fire, paralysis, sleep</Immune>
+    <SR>34</SR>
+    <Weaknesses>vulnerability to cold</Weaknesses>
+    <Speed>60 ft., fly 300 ft. (clumsy), swim 60 ft.</Speed>
+    <Melee>bite +38 (4d8+24/19-20), 2 claws +38 (4d6+16/19-20), tail slap +36 (4d6+24/19-20), 2 wings +36 (2d8+8/19-20)</Melee>
+    <Space>30 ft.</Space>
+    <Reach>20 ft. (30 ft. with bite)</Reach>
+    <SpecialAttacks>breath weapon (70-ft. cone, 24d10 fire, DC 34), crush (4d8+24, DC 34), tail sweep (2d8+24, DC 34), weakening breath</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 30th; concentration +38) At will-bless, daylight, detect evil, foresight, geas/quest, sunburst(DC 26)</SpellLikeAbilities>
+    <SpellsKnown>Spells Known (CL 19th; concentration +27) 9th (4/day)-time stop, wish 8th (7/day)-euphoric tranquility (DC 26), greater prying eyes, protection from spells 7th (7/day)-greater teleport, resurrection, vision 6th (7/day)-antimagic field, greater dispel magic, heal 5th (7/day)-dispel evil (DC 23), plane shift, teleport, true seeing 4th (8/day)-divination, restoration, spell immunity, stoneskin 3rd (8/day)-dispel magic, haste, invisibility purge, prayer 2nd (8/day)-aid, cure moderate wounds, lesser restoration, resist energy, silence 1st (8/day)-alarm, divine favor, mage armor, shield, shield of faith 0 (at will)-detect magic, detect poison, light, mage hand, mending, open/close, prestidigitation, read magic, stabilize</SpellsKnown>
+    <AbilitiyScores>Str 43, Dex 6, Con 29, Int 26, Wis 27, Cha 26</AbilitiyScores>
+    <BaseAtk>30</BaseAtk>
+    <CMB>54</CMB>
+    <CMD>62 (66 vs. trip)</CMD>
+    <Feats>Alertness, Critical Focus, Extend Spell, Hover, Improved Critical (bite), Improved Critical (claw), Improved Critical (wing), Improved Critical (tail), Iron Will, Multiattack, Power Attack, Quicken Spell, Stunning Critical, Vital Strike, Wingover</Feats>
+    <Skills>Diplomacy +41, Fly +15, Heal +41, Knowledge (arcana) +41, Knowledge (history) +41, Knowledge (local) +41, Knowledge (nobility) +41, Knowledge (planes) +41, Knowledge (religion) +41, Perception +45, Sense Motive +45, Spellcraft +41, Swim +57, Use Magic Device +41</Skills>
+    <RacialMods>+8 Swim</RacialMods>
+    <Languages>Celestial, Common, Draconic, Elven, Halfling, 4 more</Languages>
+    <SQ>change shape, detect gems, divine aid, fast flight, luck</SQ>
+    <Environment>warm plains</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>triple</Treasure>
+    <Description_Visual>Golden scales cover the body of this majestic dragon, and a regal crest of horns arches backward above wise and piercing eyes.</Description_Visual>
+    <Group>Metallic Dragon</Group>
+    <Source>d20pfsrd</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Change Shape (Su)A very young or older gold dragon can assume any animal or humanoid form three times per day as if using polymorph. Detect Gems (Sp) A young or older gold dragon can detect gems three times per day. This functions as locate object, but can only be used to locate gemstones. Divine Aid (Sp)Once a week, a great wyrm gold dragon can call upon celestial powers for aid. This functions as a miracle. Fast Flight (Ex)A young or older gold dragon is treated as one size category larger when determining his fly speed. Fire Aura (Su)An old or older gold dragon is surrounded by an aura of fire. All creatures within 5 feet of the dragon take 1d6 points of fire damage at the beginning of the dragon's turn. An ancient gold dragon's aura extends to 10 feet. A great wyrm's damage increases to 2d6. The dragon can activate or suppress this aura as a free action. Luck (Sp)Once per day an adult or older gold dragon can touch a gem, usually one embedded in the dragon's hide, and enspell it to bring good luck. As long as the dragon carries the gem, it and every good creature within a given radius of it (10 ft. per age category) receives a +1 luck bonus on all saving throws. If the dragon gives an enspelled gem to another creature, only that bearer gets the bonus. The effect lasts 1d3 hours plus 3 hours per age category of the dragon. This ability is the equivalent of a 2nd-level spell. Weakening Breath (Su)Instead of a cone of fire, a gold dragon can breathe a cone of weakening gas. Creatures within the cone must succeed on a Fortitude save or take 1 point of Strength damage per age category (Will save half).</SpecialAbilities>
+    <Description>Gold dragons are the epitome of virtue. Other metallic dragons revere their gold cousins as the agents of divine forces and the paragons of dragonkind, and often seek them for advice or aid.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>1</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4455</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Mature Adult Forest Dragon</Name>
+    <CR>15</CR>
+    <XP>51200</XP>
+    <Alignment>CE</Alignment>
+    <Size>Huge</Size>
+    <Type>dragon</Type>
+    <SubType>(earth)</SubType>
+    <Init>4</Init>
+    <Senses>dragon senses, tremorsense 60 ft.; Perception +25</Senses>
+    <Aura>frightful presence (210 ft., DC 22)</Aura>
+    <AC>33, touch 8, flat-footed 33</AC>
+    <AC_Mods>(+25 natural, -2 size)</AC_Mods>
+    <HP>256</HP>
+    <HD>(19d12+133)</HD>
+    <Saves>Fort +17, Ref +11, Will +16</Saves>
+    <Fort>17</Fort>
+    <Ref>11</Ref>
+    <Will>16</Will>
+    <DR>5/adamantine</DR>
+    <Immune>paralysis, poison, sleep</Immune>
+    <SR>26</SR>
+    <Speed>40 ft., burrow 20 ft., climb 30 ft., fly 200 ft. (poor)</Speed>
+    <Melee>bite +28 (2d8+15/19-20), 2 claws +27 (2d6+10), gore +27 (2d6+15), tail slap +25 (2d6+15)</Melee>
+    <Space>15 ft.</Space>
+    <Reach>10 ft. (15 ft. with bite and gore)</Reach>
+    <SpecialAttacks>breath weapon (60-ft. cone, 14d6 piercing damage, DC 25) crush (DC 27, 2d8+15)</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 19th; concentration +23) At will-entangle (DC 14), blight (DC 18), pass without trace</SpellLikeAbilities>
+    <SpellsKnown>Spells Known (CL 9th; concentration +13) 4th (4/day)-charm monster (DC 17), solid fog 3rd (7/day)-lightning bolt (DC 16), wind wall, stinking cloud(DC 16) 2nd (7/day)-fog cloud, hideous laughter, invisibility, touch of idiocy 1st (7/day)-hypnotism (DC 14), obscuring mist, magic missile, ray of enfeeblement (DC 14), shield 0 (at-will)-daze (DC 13), detect magic, ghost sound, mage hand, mending, read magic, resistance, touch of fatigue</SpellsKnown>
+    <AbilitiyScores>Str 31, Dex 10, Con 22, Int 16, Wis 17, Cha 16</AbilitiyScores>
+    <BaseAtk>19</BaseAtk>
+    <CMB>31</CMB>
+    <CMD>41 (45 vs. trip)</CMD>
+    <Feats>Improved Critical (bite), Improved Initiative, Improved Natural Armor, Iron Will, Multiattack, Power Attack, Skill Focus (Stealth), Stealthy, Toughness, Weapon Focus (bite)</Feats>
+    <Skills>Acrobatics +19 (+23 when jumping), Bluff +25, Climb +40, Escape Artist +2, Fly -8, Intimidate +25, Knowledge (arcana) +16, Knowledge (nature) +15, Perception +25, Spellcraft +25, Stealth +20, Survival +25</Skills>
+    <Languages>Common, Draconic, Elven, Goblin, Sylvan</Languages>
+    <SQ>change shape, sound imitation, woodland stride</SQ>
+    <Environment>any forest</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>triple</Treasure>
+    <Description_Visual>This massive serpentine and wingless creature has jade scales and antlers, and sounds like grinding stones as it stalks forth.</Description_Visual>
+    <Group>Imperial Dragon</Group>
+    <Source>d20pfsrd</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Change Shape (Su)An adult or older forest dragon can assume any humanoid form three times per day as if using polymorph. Sound Imitation (Ex)A very young or older forest dragon can mimic any voice or sound it has heard by making a successful Bluff check against the listener's Sense Motive check. Woodland Stride (Ex)As the druid ability of the same name.</SpecialAbilities>
+    <Description>Forest dragons, or dilung, are fickle and malevolent dragons that dwell in deep, rugged woodlands. While a forest dragon can fly, it prefers to stalk the earth, flying only to pursue objects of its wrath.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>1</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4463</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
+  <Monster>
+    <Name>Juvenile Sovereign Dragon</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>dragon</Type>
+    <Init>5</Init>
+    <Senses>dragon senses; Perception +21</Senses>
+    <Aura>frightful presence (120 ft., DC 21)</Aura>
+    <AC>26, touch 10, flat-footed 25</AC>
+    <AC_Mods>(+1 Dex, +16 natural, -1 size)</AC_Mods>
+    <HP>161</HP>
+    <HD>(14d12+70)</HD>
+    <Saves>Fort +14, Ref +12, Will +15</Saves>
+    <Fort>14</Fort>
+    <Ref>12</Ref>
+    <Will>15</Will>
+    <Immune>paralysis, sleep</Immune>
+    <Speed>50 ft., fly 200 ft. (poor)</Speed>
+    <Melee>bite +22 (2d6+12/19-20), 2 claws +21 (1d8+8), gore +21 (1d8+12), tail slap +19 (1d8+12)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>5 ft. (10 ft. with bite and gore)</Reach>
+    <SpecialAttacks>breath weapon (40 ft. cone, 8d6 sonic, DC 22), violent retort</SpecialAttacks>
+    <SpellLikeAbilities>Spell-Like Abilities (CL 14th; concentration +18) At will-calm emotions (DC 16), detect evil/good</SpellLikeAbilities>
+    <SpellsKnown>Spells Known (CL 3th; concentration +7) 1st (6/day)-charm person (DC 15), color spray (DC 15), true strike 0 (at will)-daze (DC 14), detect magic, ghost sound, read magic, resistance</SpellsKnown>
+    <AbilitiyScores>Str 27, Dex 12, Con 21, Int 18, Wis 19, Cha 18</AbilitiyScores>
+    <BaseAtk>14</BaseAtk>
+    <CMB>23</CMB>
+    <CMD>34 (38 vs. trip)</CMD>
+    <Feats>Improved Critical (bite), Improved Initiative, Iron Will, Lightning Reflexes, Multiattack, Persuasive, Weapon Focus (bite)</Feats>
+    <Skills>Appraise +21, Bluff +21, Diplomacy +25, Fly -5, Intimidate +25, Knowledge (arcana) +21, Knowledge (history) +21, Knowledge (nobility) +21, Perception +21, Sense Motive +21, Spellcraft +21</Skills>
+    <Languages>Auran, Celestial, Common, Draconic, Infernal</Languages>
+    <SQ>change shape, dogmatic discordance</SQ>
+    <Environment>any mountains</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>triple</Treasure>
+    <Description_Visual>This magnificent dragon is covered in splendid gold scales, and horns jut from its head like a crown.</Description_Visual>
+    <Group>Imperial Dragon</Group>
+    <Source>d20pfsrd</Source>
+    <IsTemplate>0</IsTemplate>
+    <SpecialAbilities>Change Shape (Su)A young or older sovereign dragon can assume any humanoid form three times per day as polymorph. Dogmatic Discordance (Su)Good or evil creatures take a -2 penalty when making saving throws against a sovereign dragon's spells, spell-like abilities, breath weapon, and aura. Violent Retort (Ex)When a young or older sovereign dragon takes damage from a melee attack critical hit, it can, as an immediate action, make a claw or tail slap attack against the creature that made the critical hit.</SpecialAbilities>
+    <Description>Guardians of balance, sovereign dragons, or lungwangs as they are also known, were placed in the skies by the gods themselves to safeguard harmony in the world.</Description>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>4465</id>
+    <UniqueMonster>0</UniqueMonster>
+  </Monster>
 </ArrayOfMonster>

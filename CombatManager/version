@@ -1,4 +1,7 @@
-﻿1.5.1
+﻿1.5.2
+Large CR XP display fix
+
+1.5.1
 Fix crash for very large (44+) CR encounters
 Embiggen next turn button
 Spell block parsing fixes
