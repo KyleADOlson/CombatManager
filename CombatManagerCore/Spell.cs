@@ -1912,29 +1912,38 @@ namespace CombatManager
                     {
                         LevelAdjusterInfo info = list[0];
 
-                        string text = null;
-
-                        if (info.Property == "sor" || info.Property == "wiz")
+                        if (info == null)
                         {
-                            text = GetPairText(list, "sor", "wiz");
-                        }
-                        else if (info.Property == "cleric" || info.Property == "oracle")
-                        {
-                            text = GetPairText(list, "cleric", "oracle");
-                        }
-
-                        if (text == null)
-                        {
-                            text = info.Class + " " + info.Level;
+                            System.Console.WriteLine("Info null");
                             list.RemoveAt(0);
                         }
-
-
-                        if (levelText.Length > 0)
+                        else
                         {
-                            levelText += ", ";
+
+                            string text = null;
+
+                            if (info.Property == "sor" || info.Property == "wiz")
+                            {
+                                text = GetPairText(list, "sor", "wiz");
+                            }
+                            else if (info.Property == "cleric" || info.Property == "oracle")
+                            {
+                                text = GetPairText(list, "cleric", "oracle");
+                            }
+
+                            if (text == null)
+                            {
+                                text = info.Class + " " + info.Level;
+                                list.RemoveAt(0);
+                            }
+
+
+                            if (levelText.Length > 0)
+                            {
+                                levelText += ", ";
+                            }
+                            levelText += text;
                         }
-                        levelText += text;
                     }
 
                     _Spell.spell_level = levelText;
