@@ -86,12 +86,11 @@ namespace CombatManager
 
                 Parallel.Invoke(new Action[] {
                         () =>
-                        monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
+                            monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"),
                         () =>
-                    monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml")});
-                
-                Parallel.Invoke(new Action[] {
-
+                        monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml")});
+                    
+                    Parallel.Invoke(new Action[] {
                      () => 
                          npcSet1 = LoadMonsterFromXml("NPCShort.xml"),
                 
@@ -133,8 +132,11 @@ namespace CombatManager
             get
             {
 #if (!MONO  || ANDROID)
-
+#if ANDROID
+                return true;
+#else
                 return false;
+#endif
 #else
                 IOSDeviceHardware.IOSHardware hw =  IOSDeviceHardware.Version;
                 if ( hw == IOSDeviceHardware.IOSHardware.iPad ||

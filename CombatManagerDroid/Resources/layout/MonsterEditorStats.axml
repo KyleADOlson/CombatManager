@@ -127,7 +127,7 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText1" />
+                    android:id="@+id/racialModsText" />
                 <TextView
                     android:text="Aura"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -137,14 +137,14 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText2" />
+                    android:id="@+id/auraText" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:id="@+id/linearLayout5">
                 <LinearLayout
                     android:orientation="vertical"
@@ -162,14 +162,13 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView6" />
-                    <ListView
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/skillsListView"
-                        android:layout_weight="1"
-                        android:background="#ffffffff" />
+                        android:id="@+id/skillsLinearLayout" />
                     <Button
                         android:text="Add"
                         android:layout_width="fill_parent"
@@ -193,7 +192,7 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText3" />
+                    android:id="@+id/languagesText" />
                 <TextView
                     android:text="SQ"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -203,7 +202,7 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText4" />
+                    android:id="@+id/sqText" />
                 <TextView
                     android:text="Gear"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -213,7 +212,7 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText5" />
+                    android:id="@+id/gearText" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

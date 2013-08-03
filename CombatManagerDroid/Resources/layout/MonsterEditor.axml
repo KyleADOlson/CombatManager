@@ -96,22 +96,26 @@
                     android:text="CR XX"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/crButton" />
+                    android:id="@+id/crButton"
+                    android:minWidth="75dp" />
                 <Button
                     android:text="LG"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/alignmentButton" />
+                    android:id="@+id/alignmentButton"
+                    android:minWidth="75dp" />
                 <Button
                     android:text="Large"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/sizeButton" />
+                    android:id="@+id/sizeButton"
+                    android:minWidth="75dp" />
                 <Button
                     android:text="Outsider"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:id="@+id/typeButton" />
+                    android:id="@+id/typeButton"
+                    android:minWidth="75dp" />
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -279,7 +283,7 @@
                         android:text="Cha"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="wrap_content"
                         android:id="@+id/textView6"
                         android:gravity="center"
                         android:minWidth="55dp" />

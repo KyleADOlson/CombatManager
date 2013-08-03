@@ -121,7 +121,7 @@ namespace CombatManagerDroid
                 Character c = ((BaseAdapter<Character>)lv.Adapter)[e.Position];
                 ShowCharacter(v, c);
             };
-            if (monsters)
+            if (!monsters)
             {
                 _PlayerList = lv;
             }
@@ -146,6 +146,23 @@ namespace CombatManagerDroid
                 dl.Show();
 
                 };
+
+            cl.FindViewById<Button>(Resource.Id.clearButton).Click += 
+                (object sender, EventArgs e) => 
+            {
+                AlertDialog.Builder bui = new AlertDialog.Builder(v.Context);
+                bui.SetMessage("Clear " + (monsters?"Monsters":"Players") + " List?");
+                bui.SetPositiveButton("OK", (a, x) => {
+                    List<Character> removeList = new List<Character>(from c in _CombatState.Characters where c.IsMonster == monsters select c);
+                        foreach (Character c in removeList)
+                    {
+                        _CombatState.RemoveCharacter(c);
+                    }
+                    });
+                bui.SetNegativeButton("Cancel", (a, x) => {});
+                bui.Show();                
+            };
+
 
             v.FindViewById<LinearLayout>(id).AddView(cl);
 

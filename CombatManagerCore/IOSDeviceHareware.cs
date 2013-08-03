@@ -69,9 +69,11 @@ namespace CombatManager
                 sysctlbyname(IOSDeviceHardware.HardwareProperty, pStr, pLen, IntPtr.Zero, 0);
                 
                 var hardwareStr = Marshal.PtrToStringAnsi(pStr);
-                
+
                 Marshal.FreeHGlobal(pLen);
                 Marshal.FreeHGlobal(pStr);
+
+                System.Diagnostics.Debug.WriteLine("Hardware: " + hardwareStr);
                 
                 if (hardwareStr == "iPhone1,1") return IOSHardware.iPhone;
                 if (hardwareStr == "iPhone1,2") return IOSHardware.iPhone3G;
@@ -109,16 +111,16 @@ namespace CombatManager
                 {
                     if (UIDevice.CurrentDevice.Model.Contains("iPhone"))
                     {
-                        if(UIScreen.MainScreen.Scale > 1.5f)
-                            return IOSHardware.iPhoneRetinaSimulator;
-                        else
+                        //if(UIScreen.MainScreen.Scale > 1.5f)
+                        //    return IOSHardware.iPhoneRetinaSimulator;
+                        //else
                             return IOSHardware.iPhoneSimulator;
                     }
                     else
                     {
-                        if(UIScreen.MainScreen.Scale > 1.5f)
-                            return IOSHardware.iPadRetinaSimulator;
-                        else
+                        //if(UIScreen.MainScreen.Scale > 1.5f)
+                        //    return IOSHardware.iPadRetinaSimulator;
+                        //else
                             return IOSHardware.iPadSimulator;
                     }
                 }

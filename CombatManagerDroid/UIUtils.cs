@@ -79,6 +79,17 @@ namespace CombatManagerDroid
             return (EditText)x.FindViewById (resource);
         }
 
+        public static void MakeNumber(this EditText et)
+        {
+            et.InputType = Android.Text.InputTypes.ClassNumber | Android.Text.InputTypes.NumberFlagSigned;
+
+        }
+
+        public static void SetTextSizeDip(this TextView t, float size)
+        {
+
+           t.SetTextSize(Android.Util.ComplexUnitType.Dip, size);
+        }
 
     }
 }

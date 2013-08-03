@@ -69,6 +69,9 @@
     <Compile Include="MonsterEditorFeatsActivity.cs" />
     <Compile Include="MonsterEditorSpecialActivity.cs" />
     <Compile Include="MonsterEditorDescriptionActivity.cs" />
+    <Compile Include="SkillPickerDialog.cs" />
+    <Compile Include="TextSelectionAdapater.cs" />
+    <Compile Include="FeatPickerDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -111,6 +114,9 @@
     <AndroidResource Include="Resources\layout\MonsterEditorOffense.axml" />
     <AndroidResource Include="Resources\layout\MonsterEditorSpecial.axml" />
     <AndroidResource Include="Resources\layout\MonsterEditorStats.axml" />
+    <AndroidResource Include="Resources\layout\SkillPickerDialog.axml" />
+    <AndroidResource Include="Resources\drawable\redx.png" />
+    <AndroidResource Include="Resources\layout\FeatPickerDialog.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
