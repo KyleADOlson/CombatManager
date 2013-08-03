@@ -1602,7 +1602,15 @@ namespace CombatManager
             XElement el = it.Element(name);
             if (el != null)
             {
-                value = Int32.Parse(el.Value);
+                try
+                {
+                    value = Int32.Parse(el.Value);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    throw;
+                }
             }
             return value;
         }
@@ -4910,7 +4918,7 @@ namespace CombatManager
             long x = crInt;
 
             long powVal = ((x + 1) / 2) + 1;
-            long xpVal = ((int)Math.Pow(2, powVal)) * 100;
+            long xpVal = ((long)Math.Pow(2, powVal)) * 100;
             if ((x - 1) % 2 != 0)
             {
                 xpVal += xpVal / 2;
@@ -4919,7 +4927,7 @@ namespace CombatManager
             return xpVal;
         }
 
-        public static string EstimateCR(int xp)
+        public static string EstimateCR(long xp)
         {
             string CR = null;
 
@@ -10296,7 +10304,7 @@ namespace CombatManager
         }
 
         [XmlIgnore]
-        public int? XPValue
+        public long? XPValue
         {
             get
             {
@@ -10304,8 +10312,8 @@ namespace CombatManager
                 {
 
                     string xpstr = Regex.Replace(xp, ",", "");
-                    int val = 0;
-                    if (int.TryParse(xpstr, out val))
+                    long val = 0;
+                    if (long.TryParse(xpstr, out val))
                     {
                         return val;
                     }

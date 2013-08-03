@@ -4799,13 +4799,13 @@ namespace CombatManager
         {
             using (var undoGroup = undo.CreateUndoGroup())
             {
-                int xp = 0;
+                long xp = 0;
 
                 foreach (Character c in monsterView)
                 {
                     if (c.Monster != null && c.Monster.XP != null)
                     {
-                        int? monsterXP = c.Monster.XPValue;
+                        long? monsterXP = c.Monster.XPValue;
                         if (monsterXP != null)
                         {
                             xp += monsterXP.Value;

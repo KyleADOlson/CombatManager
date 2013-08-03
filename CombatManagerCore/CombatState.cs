@@ -64,7 +64,7 @@ namespace CombatManager
 
         private int? _Round;		
 		private string _CR;
-        private int? _XP;
+        private long? _XP;
 
         private ObservableCollection<Character> _Characters;
         private ObservableCollection<Character> _CombatList;
@@ -218,7 +218,7 @@ namespace CombatManager
 		}
 
         [DataMember]
-        public int? XP
+        public long? XP
         {
             get { return _XP; }
             set
@@ -1284,13 +1284,13 @@ namespace CombatManager
 		
 		private void CalculateEncounterXP()
 		{
-            int xp = 0;
+            long xp = 0;
 
             foreach (Character c in from x in Characters where x.IsMonster select x)
             {
                 if (c.Monster != null && c.Monster.XP != null)
                 {
-                    int? monsterXP = c.Monster.XPValue;
+                    long? monsterXP = c.Monster.XPValue;
                     if (monsterXP != null)
                     {
                         xp += monsterXP.Value;

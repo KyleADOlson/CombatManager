@@ -2527,7 +2527,7 @@
         												</StackPanel>
         											</Button>
         											<ListBox Margin="4,44,3,54.332" x:Name="combatListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CombatListItemTemplate}" HorizontalContentAlignment="Stretch" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-        											<Button Margin="57.096,2.706,55.237,0" VerticalAlignment="Top" Click="NextButtonClick" x:Name="NextButton" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" Height="37.294" Style="{DynamicResource ButtonMainStyle}" ToolTip="Next Turn (Ctrl+N)" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Background="{DynamicResource SecondaryColorBGradientBrush}">
+        											<Button Margin="61.2,2.706,55.237,0" VerticalAlignment="Top" Click="NextButtonClick" x:Name="NextButton" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" Height="37.294" Style="{DynamicResource ButtonMainStyle}" ToolTip="Next Turn (Ctrl+N)" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Background="{DynamicResource PrimaryColorGradientBrush}">
         												<Button.Content>
         														<StackPanel Orientation="Horizontal">
         															<StackPanel Orientation="Vertical">
@@ -2544,13 +2544,13 @@
         																	</TransformGroup>
         																</Path.RenderTransform>
         																<Path.Fill>
-        																	<SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
+        																	<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
         																</Path.Fill>
         															</Path>						
 																</StackPanel>				
 														</Button.Content>	
 													</Button>
-        											<Button Margin="4,2.706,0,0" x:Name="PrevButton" Click="PrevButton_Click" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" VerticalAlignment="Top" Style="{DynamicResource ButtonMainStyle}" Height="37.294" ToolTip="Previous Turn (Ctrl+P)" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="49.18" >
+        											<Button Margin="4,2.706,0,0" x:Name="PrevButton" Click="PrevButton_Click" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" VerticalAlignment="Top" Style="{DynamicResource ButtonMainStyle}" Height="37.294" ToolTip="Previous Turn (Ctrl+P)" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="53.2" >
         												<StackPanel Orientation="Horizontal">
         													<Path Data="M1,4 L5,4 L5,1 L11,6 L5,11 L5,8 L1,8 z" StrokeLineJoin="Round" StrokeThickness="1" Width="16" RenderTransformOrigin="0.5,0.5" Height="15" Stretch="Fill" Stroke="White" Margin="0,0,2,0">
         														<Path.RenderTransform>
