@@ -4051,7 +4051,7 @@ namespace CombatManager
             AdjustDexterity(4);
             AdjustIntelligence(2);
             AdjustWisdom(2);
-            AdjustCharisma(2);
+            AdjustCharisma(4);
             Constitution = null;
 
             //Add Channel Resistance +4
@@ -4156,7 +4156,7 @@ namespace CombatManager
 
             //add feats
             AddFeat("Alertness");
-            AddFeat("CombatReflexes");
+            AddFeat("Combat Reflexes");
             AddFeat("Dodge");
             AddFeat("Improved Initiative");
             AddFeat("Lightning Reflexes");

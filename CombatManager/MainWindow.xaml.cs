@@ -151,8 +151,13 @@ namespace CombatManager
 
         static string startupTimeText = "";
 
+
+
         public MainWindow()
         {
+
+
+
 #if !DEBUG
             App.Current.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(Current_DispatcherUnhandledException);
 #endif
@@ -164,6 +169,7 @@ namespace CombatManager
             DateTime start = t;
             DateTime last = DateTime.Now;
             InitializeComponent();
+
 
 
             RestoreWindowState();
