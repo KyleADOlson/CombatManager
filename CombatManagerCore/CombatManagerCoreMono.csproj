@@ -166,6 +166,7 @@
     <Compile Include="SpellHtmlCreator.cs" />
     <Compile Include="TreasureHtmlCreator.cs" />
     <Compile Include="CharacterActions.cs" />
+    <Compile Include="IOSDeviceHareware.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">
@@ -232,6 +233,12 @@
     </Content>
     <Content Include="HtmlBlockFooter.txt" />
     <Content Include="HtmlBlockHeader.txt" />
+    <Content Include="BestiaryShort2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NPCShort2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WeaponNames" />

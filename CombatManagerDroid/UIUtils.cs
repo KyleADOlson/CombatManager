@@ -53,7 +53,43 @@ namespace CombatManagerDroid
             return v;
         }
 
+        public static Button GetButton(this Activity x, int resource)
+        {
+            return (Button)x.FindViewById (resource);
+        }
+        public static Button GetButton(this Dialog x, int resource)
+        {
+            return (Button)x.FindViewById (resource);
+        }
+        public static Button GetButton(this View x, int resource)
+        {
+            return (Button)x.FindViewById (resource);
+        }
+        
+        public static EditText GetEditText(this Activity x, int resource)
+        {
+            return (EditText)x.FindViewById (resource);
+        }
+        public static EditText GetEditText(this Dialog x, int resource)
+        {
+            return (EditText)x.FindViewById (resource);
+        }
+        public static EditText GetEditText(this View x, int resource)
+        {
+            return (EditText)x.FindViewById (resource);
+        }
 
+        public static void MakeNumber(this EditText et)
+        {
+            et.InputType = Android.Text.InputTypes.ClassNumber | Android.Text.InputTypes.NumberFlagSigned;
+
+        }
+
+        public static void SetTextSizeDip(this TextView t, float size)
+        {
+
+           t.SetTextSize(Android.Util.ComplexUnitType.Dip, size);
+        }
 
     }
 }

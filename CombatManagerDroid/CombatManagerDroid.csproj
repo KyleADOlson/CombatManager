@@ -61,6 +61,17 @@
     <Compile Include="NumberDialog.cs" />
     <Compile Include="MonsterPickerDialog.cs" />
     <Compile Include="MonsterFragment.cs" />
+    <Compile Include="MonsterEditorActivity.cs" />
+    <Compile Include="MonsterEditorMainActivity.cs" />
+    <Compile Include="MonsterEditorDefenseActivity.cs" />
+    <Compile Include="MonsterEditorOffenseActivity.cs" />
+    <Compile Include="MonsterEditorStatsActivity.cs" />
+    <Compile Include="MonsterEditorFeatsActivity.cs" />
+    <Compile Include="MonsterEditorSpecialActivity.cs" />
+    <Compile Include="MonsterEditorDescriptionActivity.cs" />
+    <Compile Include="SkillPickerDialog.cs" />
+    <Compile Include="TextSelectionAdapater.cs" />
+    <Compile Include="FeatPickerDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -94,6 +105,18 @@
     <AndroidResource Include="Resources\drawable\init_button.xml" />
     <AndroidResource Include="Resources\layout\ActionDialog.axml" />
     <AndroidResource Include="Resources\layout\MonsterPickerDialog.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditor.axml">
+      <DependentUpon>MonsterEditor.axml</DependentUpon>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MonsterEditorDefense.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorDescription.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorFeats.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorOffense.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorSpecial.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorStats.axml" />
+    <AndroidResource Include="Resources\layout\SkillPickerDialog.axml" />
+    <AndroidResource Include="Resources\drawable\redx.png" />
+    <AndroidResource Include="Resources\layout\FeatPickerDialog.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -159,6 +182,12 @@
     </AndroidAsset>
     <AndroidAsset Include="..\CombatManagerCore\Details.db">
       <Link>Assets\Details.db</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\BestiaryShort2.xml">
+      <Link>Assets\BestiaryShort2.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\NPCShort2.xml">
+      <Link>Assets\NPCShort2.xml</Link>
     </AndroidAsset>
   </ItemGroup>
 </Project>

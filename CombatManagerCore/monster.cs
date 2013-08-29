@@ -36,6 +36,7 @@ using System.Xml.Linq;
 using Ionic.Zip;
 using System.Threading.Tasks;
 
+
 namespace CombatManager
 {
 
@@ -70,7 +71,8 @@ namespace CombatManager
 
             if (LowMemoryLoad)
             {
-
+                
+                System.Diagnostics.Debug.WriteLine("Low Memory Load");
                 Parallel.Invoke(new Action[] {
                         () =>
                         monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
@@ -80,12 +82,15 @@ namespace CombatManager
             else
             {
 
+                System.Diagnostics.Debug.WriteLine("Full Monster Load");
 
                 Parallel.Invoke(new Action[] {
                         () =>
-                        monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
+                            monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"),
                         () =>
-                        monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml"), 
+                        monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml")});
+                    
+                    Parallel.Invoke(new Action[] {
                      () => 
                          npcSet1 = LoadMonsterFromXml("NPCShort.xml"),
                 
@@ -126,7 +131,26 @@ namespace CombatManager
         {
             get
             {
+#if (!MONO  || ANDROID)
+#if ANDROID
+                return true;
+#else
                 return false;
+#endif
+#else
+                IOSDeviceHardware.IOSHardware hw =  IOSDeviceHardware.Version;
+                if ( hw == IOSDeviceHardware.IOSHardware.iPad ||
+                    hw == IOSDeviceHardware.IOSHardware.iPad3G)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+#endif
+
             }
         }
 
@@ -6777,6 +6801,14 @@ namespace CombatManager
             get
             {
                 return _SkillsDetails;
+            }
+        }
+
+        public static List<string> FlyQualityList
+        {
+            get
+            {
+                return new List<string>(from a in flyQualityList orderby a.Value select a.Key);
             }
         }
 

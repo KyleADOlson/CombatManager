@@ -62,9 +62,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout3">
         <Button
-            android:text="Button"
+            android:text="Clear"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:id="@+id/button1" />
+            android:id="@+id/clearButton" />
     </LinearLayout>
 </LinearLayout>

@@ -32,7 +32,9 @@ namespace CombatManagerDroid
             _IsMonsters = isMonsters;
 
             RequestWindowFeature((int)WindowFeatures.NoTitle);
+
             SetContentView(Resource.Layout.MonsterPickerDialog);
+            Window.SetSoftInputMode(SoftInput.AdjustResize);
 
             ((Button)FindViewById(Resource.Id.closeButton)).Click += 
             (object sender, EventArgs e) => {Dismiss();};
@@ -110,7 +112,7 @@ namespace CombatManagerDroid
             {
 
                 newMonsters = new List<Monster>(from x in _Monsters where
-                                              x.Name.Contains(text) orderby x.Name select x);
+                                              x.Name.ToUpper().Contains(text.ToUpper()) orderby x.Name select x);
             }
             _VisibleMonsters = newMonsters;
 
