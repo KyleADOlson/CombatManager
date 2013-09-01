@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.Reflection;
 
 namespace CombatManagerDroid
 {
@@ -89,6 +90,42 @@ namespace CombatManagerDroid
         {
 
            t.SetTextSize(Android.Util.ComplexUnitType.Dip, size);
+        }
+
+        public static void AttachButtonStringList(View v, object ob, int id, String property, List<String> options)
+        {
+            AttachButtonStringList(v, ob, id, property, options, "{0}");
+        }
+        
+        public static void AttachButtonStringList(View v, object ob, int id, String property, List<String> options, string format)
+        {
+
+            PropertyInfo pi = ob.GetType().GetProperty(property);
+            
+            Button t = v.FindViewById<Button>(id);
+            String text = (string)pi.GetGetMethod().Invoke(ob, new object[]{});
+            t.Text = String.Format(format, text);
+            t.Click += (object sender, EventArgs e) => {
+                
+                
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(v.Context);
+                
+                builderSingle.SetTitle(property);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                    v.Context,
+                    Android.Resource.Layout.SelectDialogSingleChoice);
+                arrayAdapter.AddAll(options);
+                
+                
+                builderSingle.SetAdapter (arrayAdapter, (se, ev)=> {
+                    string val = arrayAdapter.GetItem(ev.Which);
+                    t.Text = String.Format(format, val);
+                    pi.GetSetMethod().Invoke(ob, new object[]{val});
+                    
+                });
+                
+                builderSingle.Show();
+            };
         }
 
     }

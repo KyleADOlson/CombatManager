@@ -54,9 +54,24 @@ namespace CombatManagerDroid
             //attacks
             Button b = FindViewById<Button>(Resource.Id.meleeAttacksButton);
             b.Text = EditMonster.Melee;
+            b.Click += (object sender, EventArgs e) => 
+            {
+                UIUtils.ShowTextDialog("Melee", EditMonster, this);
+            };
 
             b = FindViewById<Button>(Resource.Id.rangedAttacksButton);
             b.Text = EditMonster.Ranged;
+            b.Click += (object sender, EventArgs e) => 
+            {
+                UIUtils.ShowTextDialog("Ranged", EditMonster, this);
+            };
+
+            b = FindViewById<Button>(Resource.Id.attacksEditorButton);
+            b.Click += (object sender, EventArgs e) => 
+            {
+                ShowAttacksEditor();
+            };
+
 
             //other offense text
             AttachEditTextString(EditMonster, Resource.Id.specialAttacksText, "SpecialAttacks");
@@ -64,6 +79,14 @@ namespace CombatManagerDroid
             AttachEditTextString(EditMonster, Resource.Id.spellsKnownText, "SpellsKnown");
             AttachEditTextString(EditMonster, Resource.Id.spellsPreparedText, "SpellsPrepared");
 
+        }
+
+        void ShowAttacksEditor()
+        {
+            AttacksEditorActivity.Monster = EditMonster;
+            Intent intent = new Intent(this.BaseContext, new AttacksEditorActivity().Class); 
+            intent.AddFlags(ActivityFlags.NewTask); 
+            StartActivity(intent);
         }
     }
 }
