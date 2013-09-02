@@ -72,6 +72,7 @@
     <Compile Include="SkillPickerDialog.cs" />
     <Compile Include="TextSelectionAdapater.cs" />
     <Compile Include="FeatPickerDialog.cs" />
+    <Compile Include="AttacksEditorActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -117,6 +118,11 @@
     <AndroidResource Include="Resources\layout\SkillPickerDialog.axml" />
     <AndroidResource Include="Resources\drawable\redx.png" />
     <AndroidResource Include="Resources\layout\FeatPickerDialog.axml" />
+    <AndroidResource Include="Resources\layout\SpecialAbility.axml" />
+    <AndroidResource Include="Resources\layout\AttacksEditor.axml" />
+    <AndroidResource Include="Resources\drawable\claw16.png" />
+    <AndroidResource Include="Resources\drawable\bow16.png" />
+    <AndroidResource Include="Resources\drawable\hand16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

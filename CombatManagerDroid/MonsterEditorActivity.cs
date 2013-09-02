@@ -130,7 +130,7 @@ namespace CombatManagerDroid
                 return new MonsterEditorFeatsActivity();
                 break;
             case Resource.Id.specialTab:
-                return new MonsterEditorFeatsActivity();
+                return new MonsterEditorSpecialActivity();
                 break;
             case Resource.Id.descriptionTab:
                 return new MonsterEditorDescriptionActivity();
