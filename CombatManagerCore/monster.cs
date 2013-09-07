@@ -2569,7 +2569,7 @@ namespace CombatManager
                 {
                     if (text.Length == 0)
                     {
-                        returnText = valText;
+                        returnText = "(" + valText + ")";
                     }
                     else if (valText.Length > 0)
                     {
@@ -2578,7 +2578,7 @@ namespace CombatManager
                 }
             }
             
-            return returnText;
+            return returnText != "()" ? returnText : "";
         }
 
 
@@ -4075,7 +4075,7 @@ namespace CombatManager
             AdjustDexterity(4);
             AdjustIntelligence(2);
             AdjustWisdom(2);
-            AdjustCharisma(2);
+            AdjustCharisma(4);
             Constitution = null;
 
             //Add Channel Resistance +4
@@ -4180,7 +4180,7 @@ namespace CombatManager
 
             //add feats
             AddFeat("Alertness");
-            AddFeat("CombatReflexes");
+            AddFeat("Combat Reflexes");
             AddFeat("Dodge");
             AddFeat("Improved Initiative");
             AddFeat("Lightning Reflexes");
@@ -4731,7 +4731,7 @@ namespace CombatManager
         {
             Dodge += value;
             FullAC += value;
-            CMD += value;
+            CMD = ChangeCMD(CMD, value);
             TouchAC += value;
             AC_Mods = ReplaceModifierNumber(ac_mods, "dodge", Dodge, false);
 
@@ -4741,7 +4741,7 @@ namespace CombatManager
             Deflection += value;
             FullAC += value;
             FlatFootedAC += value;
-            CMD += value;
+            CMD = ChangeCMD(CMD, value);
             TouchAC += value;
             AC_Mods = ReplaceModifierNumber(ac_mods, "deflection", Deflection, false);
 
@@ -6632,7 +6632,7 @@ namespace CombatManager
             }
             set
             {
-                HD = ReplaceDieRoll(HD, HDRoll, 0);
+                HD = ReplaceDieRoll(HD, value, 0);
             }
         }
 

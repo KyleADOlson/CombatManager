@@ -151,8 +151,13 @@ namespace CombatManager
 
         static string startupTimeText = "";
 
+
+
         public MainWindow()
         {
+
+
+
 #if !DEBUG
             App.Current.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(Current_DispatcherUnhandledException);
 #endif
@@ -164,6 +169,7 @@ namespace CombatManager
             DateTime start = t;
             DateTime last = DateTime.Now;
             InitializeComponent();
+
 
 
             RestoreWindowState();
@@ -1267,6 +1273,7 @@ namespace CombatManager
                     propertyName == "FullAC" ||
                     propertyName == "TouchAC" ||
                     propertyName == "FlatFootedAC" ||
+                    propertyName == "AC_Mods" ||
                     propertyName == "Fort" ||
                     propertyName == "Ref" ||
                     propertyName == "Will" ||
@@ -4932,8 +4939,13 @@ namespace CombatManager
 
         private void playerListBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            Character ch = (Character)playerView.CurrentItem;
-            SetCurrentViewMonster(ch);
+            ListBox box = (ListBox)sender;
+
+            Character ch = (Character)box.SelectedValue;
+            if (ch != null)
+            {
+                SetCurrentViewMonster(ch);
+            }
         }
 
         private void monsterListBox_GotFocus(object sender, RoutedEventArgs e)
