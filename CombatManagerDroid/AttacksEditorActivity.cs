@@ -13,6 +13,7 @@ using Android.Widget;
 
 using CombatManager;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace CombatManagerDroid
 {
@@ -46,6 +47,41 @@ namespace CombatManagerDroid
             BuildMeleeGroup();
             BuildRanged ();
             BuildNatural();
+
+            Button b = FindViewById<Button>(Resource.Id.okButton);
+            b.Click += (object sender, EventArgs e) => 
+            {
+                _Monster.Melee = _Monster.MeleeString(_Attacks);
+                _Monster.Ranged = _Monster.RangedString(_Attacks);
+                Finish();
+            };
+
+            b = FindViewById<Button>(Resource.Id.cancelButton);
+            b.Click += (object sender, EventArgs e) => 
+            {
+                
+                Finish();
+            };
+              
+
+            b = FindViewById <Button>(Resource.Id.addMeleeButton);
+            b.Click += (object sender, EventArgs e) => 
+            {
+                AddAttack(true, false, false);
+            };
+
+            b = FindViewById <Button>(Resource.Id.addRangedButton);
+            b.Click += (object sender, EventArgs e) => 
+            {
+                AddAttack(false, true, false);
+            };
+            
+            b = FindViewById <Button>(Resource.Id.addNaturalButton);
+            b.Click += (object sender, EventArgs e) => 
+            {
+                AddAttack(false, false, true);
+            };
+
 
         }
 
@@ -84,7 +120,7 @@ namespace CombatManagerDroid
                 var vs = _Attacks.MeleeWeaponSets[visibleGroup];
                 foreach (var atk in vs)
                 {
-                    ml.AddView(CreateAttackView(atk, false));
+                    ml.AddView(CreateAttackView(atk, false, false));
                 }
 
             }
@@ -97,24 +133,24 @@ namespace CombatManagerDroid
             foreach (var atk in _Attacks.RangedWeapons)
             {
                
-                rl.AddView(CreateAttackView(atk, false));
+                rl.AddView(CreateAttackView(atk, true, false));
             }
         }
 
         private void BuildNatural()
         {
             LinearLayout nl = FindViewById<LinearLayout>(Resource.Id.naturalLayout); 
+            nl.RemoveAllViews();
             foreach (var atk in _Attacks.NaturalAttacks)
             {
                 
-                TextView tv = new TextView(this);
-                tv.Text = atk.FullName;
-                nl.AddView(tv);
+                
+                nl.AddView(CreateAttackView(atk, false, true));
             }
         }
 
 
-        private View CreateAttackView(WeaponItem atk, bool ranged)
+        private View CreateAttackView(WeaponItem atk, bool ranged, bool natural)
         {
             LinearLayout baseLayout = new LinearLayout(this);
             baseLayout.Orientation = Orientation.Horizontal;
@@ -123,46 +159,50 @@ namespace CombatManagerDroid
             baseLayout.SetPadding(4, 4, 4, 4);
 
             //hands
-            LinearLayout handView = new LinearLayout(this);
-            handView.Orientation = Orientation.Horizontal;
-            TextView handsText = new TextView(this);
-            handsText.SetTextSizeDip(18);
-            handsText.SetPadding(4, 0, 4, 0);
-            handView.AddView(handsText);
-            if (ranged)
+            if (!natural)
             {
-                handsText.Text = "Ranged";
-            }
-            else
-            {
-                int hc = 1;
-                if (atk.TwoHanded)
+                LinearLayout handView = new LinearLayout(this);
+                handView.Orientation = Orientation.Horizontal;
+                TextView handsText = new TextView(this);
+                handsText.SetTextSizeDip(18);
+                handsText.SetPadding(4, 0, 4, 0);
+                handView.AddView(handsText);
+            
+                if (ranged)
                 {
-                    handsText.Text = "";
-                    hc = 2;
-                    
-                }
-                else if (atk.MainHand)
-                {
-                    handsText.Text = "Main";
+                    handsText.Text = "Ranged";
                 }
                 else
                 {
-                    handsText.Text = "Off";
-                }
+                    int hc = 1;
+                    if (atk.TwoHanded)
+                    {
+                        handsText.Text = "";
+                        hc = 2;
+                        
+                    }
+                    else if (atk.MainHand)
+                    {
+                        handsText.Text = "Main";
+                    }
+                    else
+                    {
+                        handsText.Text = "Off";
+                    }
 
-                for (int i=0; i<hc; i++)
-                {
-                    ImageView handImage = new ImageView(this);
-                    handImage.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.hand16));
-                    handView.AddView(handImage);
-                }
+                    for (int i=0; i<hc; i++)
+                    {
+                        ImageView handImage = new ImageView(this);
+                        handImage.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.hand16));
+                        handView.AddView(handImage);
+                    }
 
+                }
+                handView.SetBackgroundColor(new Android.Graphics.Color(0xBF, 0x98, 0x97));
+                handView.SetGravity(GravityFlags.CenterVertical);
+                handView.SetPadding(4, 4, 4, 4);
+                baseLayout.AddView(handView);
             }
-            handView.SetBackgroundColor(new Android.Graphics.Color(0xBF, 0x98, 0x97));
-            handView.SetGravity(GravityFlags.CenterVertical);
-            handView.SetPadding(4, 4, 4, 4);
-            baseLayout.AddView(handView);
 
 
             //name
@@ -173,7 +213,14 @@ namespace CombatManagerDroid
 
             TextView nameText = new TextView(this);
             nameText.SetTextSizeDip(18);
-            nameText.Text = atk.Name;
+            if (natural)
+            {
+                nameText.Text = atk.FullName;
+            }
+            else
+            {
+                nameText.Text = atk.Name;
+            }
             nameText.SetPadding(4, 0, 4, 0);
            
             nameView.AddView(nameText);
@@ -181,38 +228,41 @@ namespace CombatManagerDroid
 
             baseLayout.AddView(nameView);
 
-            //bonus
-            Button b = new Button(this);
-            SetBonusText(b, atk);
-            baseLayout.AddView(b);
-            b.Click += (object sender, EventArgs e) => 
+            if (!natural)
             {
-                BonusClicked(b, atk);
-            };
+                //bonus
+                Button b = new Button(this);
+                SetBonusText(b, atk);
+                baseLayout.AddView(b);
+                b.Click += (object sender, EventArgs e) => 
+                {
+                    BonusClicked(b, atk);
+                };
 
-            //magic
-            Button magicButton = new Button(this);
-            if (atk.SpecialAbilities == null || atk.SpecialAbilities == "")
-            {
-                magicButton.Text = "...";
+                //magic
+                Button magicButton = new Button(this);
+                if (atk.SpecialAbilities == null || atk.SpecialAbilities == "")
+                {
+                    magicButton.Text = "...";
+                }
+                else
+                {
+                    magicButton.Text = atk.SpecialAbilities;
+                }
+                magicButton.SetMinimumWidth(120);
+                baseLayout.AddView(magicButton);
+                magicButton.Click += (object sender, EventArgs e) => 
+                {
+                    SpecialClicked(magicButton, atk, ranged);
+                };
             }
-            else
-            {
-                magicButton.Text = atk.SpecialAbilities;
-            }
-            magicButton.SetMinimumWidth(120);
-            baseLayout.AddView (magicButton);
-            magicButton.Click += (object sender, EventArgs e) => 
-            {
-                SpecialClicked(magicButton, atk);
-            };
 
             //delete
             ImageButton deleteButton = new ImageButton(this);
             deleteButton.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.redx));
             deleteButton.Click += (object sender, EventArgs e) => 
             {
-                DeleteClicked(atk, ranged);
+                DeleteClicked(atk, ranged, natural);
             };
             baseLayout.AddView(deleteButton);
 
@@ -267,6 +317,7 @@ namespace CombatManagerDroid
                 SetBonusText(b, atk);
             });
 
+
                 
             
             builderSingle.Show();
@@ -288,22 +339,195 @@ namespace CombatManagerDroid
             }
         }
 
-        private void SpecialClicked(Button b, WeaponItem atk)
+        private void SpecialClicked(Button b, WeaponItem atk, bool ranged)
         {
+			AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
 
+			builderSingle.SetTitle("Special");
+		    
+
+			List<String> options = new List<string>();
+			List<WeaponSpecialAbility> specialList = ranged?WeaponSpecialAbility.RangedAbilities:WeaponSpecialAbility.MeleeAbilities;
+			bool [] itemschecked = new bool[specialList.Count];
+			int i = 0;
+			foreach (WeaponSpecialAbility ab in specialList) 
+			{
+				options.Add (ab.Name);
+				if (atk.SpecialAbilities != null && atk.SpecialAbilities.Contains (ab.Name)) 
+				{
+					itemschecked[i] = true;
+				}
+				i++;
+
+			}
+
+			builderSingle.SetMultiChoiceItems(options.ToArray(), itemschecked, (sender, args)=>
+			{
+				int index = args.Which;
+				string special = options[index];
+				SortedDictionary<string, string>  dict = new SortedDictionary<string, string>(atk.SpecialAbilitySet);
+				if (args.IsChecked)
+				{
+					dict[special] = special;
+				}
+				else
+				{
+					dict.Remove(special);
+				}
+				atk.SpecialAbilitySet = dict;
+
+
+
+			});
+
+			builderSingle.ItemSelected += (object sender, AdapterView.ItemSelectedEventArgs e) => 
+			{
+				if (ranged)
+                {
+                    BuildRanged();
+                }
+                else
+                {
+                    BuildMeleeGroup();
+                }
+			};
+
+			builderSingle.SetOnCancelListener(new SpecialListener(this, ranged));
+
+
+
+			builderSingle.Show();
         }
 
-        private void DeleteClicked(WeaponItem atk, bool ranged)
+		private class SpecialListener : Java.Lang.Object,  IDialogInterfaceOnCancelListener
+		{
+			AttacksEditorActivity at;
+            bool ranged;
+			public SpecialListener(AttacksEditorActivity at, bool ranged)
+			{
+				this.at = at;
+                this.ranged = ranged;
+			}
+
+			public virtual void OnCancel(IDialogInterface s)
+			{
+                if (ranged)
+                {
+                    at.BuildRanged();    
+                }
+                else
+                {
+
+                    at.BuildMeleeGroup();
+                }
+			}
+		}
+
+	    private void AddAttack(bool melee, bool ranged, bool natural)
+        {
+            var weapons = from w in Weapon.Weapons.Values where TypeFilter(w, melee, ranged, natural) orderby w.Name select w.Name;
+
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
+
+            builderSingle.SetTitle("Add Attack");
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                Android.Resource.Layout.SelectDialogItem);
+            arrayAdapter.AddAll(new List<string>(weapons));
+
+
+            builderSingle.SetAdapter (arrayAdapter, (se, ev)=> {
+                string name = arrayAdapter.GetItem(ev.Which);
+
+
+                Weapon wp = Weapon.Weapons[name];
+                WeaponItem item = new WeaponItem(wp);
+               
+
+                if (melee)
+                {
+                    _Attacks.MeleeWeaponSets[visibleGroup].Add(item);
+                    BuildMeleeGroup();
+                }
+                else if (ranged)
+                {
+                    _Attacks.RangedWeapons.Add(item);
+                    BuildRanged();
+                }
+                else if (natural)
+                {
+                    if (item != null)
+                    {
+                        bool bAdded = false;
+                        foreach (WeaponItem wi in _Attacks.NaturalAttacks)
+                        {
+                            if (String.Compare(wi.Name, item.Name, true) == 0)
+                            {
+                                wi.Count++;
+                                bAdded = true;
+                                break;
+                            }
+
+                        }
+
+                        if (!bAdded)
+                        {
+                            _Attacks.NaturalAttacks.Add(item);
+                        }
+                    }
+                    BuildNatural();
+
+                }
+
+            });
+            builderSingle.Show();
+        }
+
+        private bool TypeFilter(Weapon wp, bool melee, bool ranged, bool natural)
+        {
+            if (wp.Natural)
+            {
+                return natural;
+            }
+            else if (wp.Ranged)
+            {
+                if (!ranged)
+                {
+                    return false;
+                }
+                else
+                {
+                    return !(new Regex("(\\(( )?[0-9]+( )?\\))|(  Bolt)|(  Dart)|(  Bullets)", RegexOptions.IgnoreCase).Match(wp.Name).Success);                  
+                }            
+            }
+            else 
+            {
+                if (wp.Throw)
+                {
+                    return melee || ranged;
+                }
+
+                return melee;
+            }
+        }
+	
+
+        private void DeleteClicked(WeaponItem atk, bool ranged, bool natural)
         {
             if (ranged)
             {
                 _Attacks.RangedWeapons.Remove(atk);
                 BuildRanged();
             }
-            else
+            else if (!natural)
             {
                 _Attacks.MeleeWeaponSets[visibleGroup].Remove(atk);
                 BuildMeleeGroup();
+            }
+            else
+            {
+                _Attacks.NaturalAttacks.Remove(atk);
+                BuildNatural();
             }
         }
 

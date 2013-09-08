@@ -31,14 +31,15 @@ namespace CombatManagerDroid
 
             if (_CombatState == null)
             {
-                _CombatState = new CombatState();
+                LoadCombatState();
+                /*_CombatState = new CombatState();
 
                 for (int i=0; i<6; i++)
                 {
                     Character c = new Character(Monster.Monsters[i], true);
                     c.IsMonster = (i%2==0)?true:false;
                     _CombatState.AddCharacter(c);
-                }
+                }*/
             }
             _CombatState.PropertyChanged += HandleCombatStatePropertyChanged;
             _CombatState.Characters.CollectionChanged += HandledCombatStateCharactersChanged;
@@ -56,6 +57,8 @@ namespace CombatManagerDroid
             {
                 _PlayerList.SetAdapter(new CharacterListAdapter(_CombatState, false));
             }
+            
+            SaveCombatState();
         }
 
         void HandleCombatStatePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -65,6 +68,8 @@ namespace CombatManagerDroid
                 UpdateCurrentCharacter(View);
                 ((BaseAdapter)View.FindViewById<ListView>
                     (Resource.Id.initiativeList).Adapter).NotifyDataSetChanged();
+
+                SaveCombatState();
             }
         }
 
@@ -133,12 +138,12 @@ namespace CombatManagerDroid
             cl.FindViewById<ImageButton>(Resource.Id.blankButton).Click += 
                 (object sender, EventArgs e) => 
                 {
-                Monster m = new Monster();
-                _CombatState.AddMonster(m, monsters);
+
+                    _CombatState.AddBlank(monsters);
 
                 };
 
-            
+
             cl.FindViewById<ImageButton>(Resource.Id.monsterButton).Click += 
                 (object sender, EventArgs e) => 
                 {
@@ -225,6 +230,24 @@ namespace CombatManagerDroid
 
             _CombatState.PropertyChanged -= HandleCombatStatePropertyChanged;
             _CombatState.Characters.CollectionChanged -= HandledCombatStateCharactersChanged;
+        }
+
+        public static void SaveCombatState()
+        {
+            XmlLoader<CombatState>.Save(_CombatState, "CombatState.xml", true);
+        }
+
+        private void LoadCombatState()
+        {
+            CombatState state = XmlLoader<CombatState>.Load("CombatState.xml", true);
+            if (state == null)
+            {
+                _CombatState = new CombatState();
+            }
+            else
+            {
+                _CombatState = state;
+            }
         }
     }
 }
