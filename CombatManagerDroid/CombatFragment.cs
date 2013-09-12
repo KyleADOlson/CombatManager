@@ -14,6 +14,7 @@ using Android.Widget;
 
 using CombatManager;
 using Android.Webkit;
+using System.IO;
 
 namespace CombatManagerDroid
 {
@@ -151,6 +152,47 @@ namespace CombatManagerDroid
                 dl.Show();
 
                 };
+
+            cl.FindViewById<ImageButton>(Resource.Id.loadButton).Click += 
+                (object sender, EventArgs e) => 
+            {
+                FileDialog fd = new FileDialog(cl.Context, true);
+                fd.Show();
+                
+                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) => 
+                {
+                    
+                    string name = ea.Filename;
+                    string fullname = Path.Combine(FileDialog.Folder, name);
+
+                    List<Character> l = XmlListLoader<Character>.Load(fullname);
+                    foreach (var c in l)
+                    {
+                        c.IsMonster = monsters;
+                        _CombatState.AddCharacter(c);
+                    }
+
+                };
+
+            };
+
+            cl.FindViewById<ImageButton>(Resource.Id.saveButton).Click += 
+                (object sender, EventArgs e) => 
+            {
+                FileDialog fd = new FileDialog(v.Context, false);
+                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) => 
+                {
+                    string name = ea.Filename;
+                    if (!name.EndsWith(".cmpt", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        name = name+".cmpt";
+                    }
+                    string fullname = Path.Combine(FileDialog.Folder, name);
+
+                    XmlListLoader<Character>.Save(new List<Character>(_CombatState.Characters.Where((a)=>a.IsMonster == monsters)), fullname);
+                };
+                fd.Show();
+            };
 
             cl.FindViewById<Button>(Resource.Id.clearButton).Click += 
                 (object sender, EventArgs e) => 

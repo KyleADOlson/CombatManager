@@ -74,6 +74,7 @@
     <Compile Include="Resources\UIUtils.cs">
       <DependentUpon>Resource.designer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -124,6 +125,7 @@
     <AndroidResource Include="Resources\drawable\claw16.png" />
     <AndroidResource Include="Resources\drawable\bow16.png" />
     <AndroidResource Include="Resources\drawable\hand16.png" />
+    <AndroidResource Include="Resources\layout\FileDialog.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
