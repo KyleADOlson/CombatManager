@@ -1683,16 +1683,56 @@ namespace CombatManager
 
 
             Regex regStats = new Regex(statsRegStr);
-            
-            
-            
+
+
+
             Match m = regStats.Match(statsblock);
-            monster.AbilitiyScores = "Str " + m.Groups["str"].Value +
-            ", Dex " + m.Groups["dex"].Value +
-            ", Con " + m.Groups["con"].Value +
-            ", Int " + m.Groups["int"].Value +
-            ", Wis " + m.Groups["wis"].Value +
-            ", Cha " + m.Groups["cha"].Value;
+            if (m.Success)
+            {
+                monster.AbilitiyScores = "Str " + m.Groups["str"].Value +
+                                         ", Dex " + m.Groups["dex"].Value +
+                                         ", Con " + m.Groups["con"].Value +
+                                         ", Int " + m.Groups["int"].Value +
+                                         ", Wis " + m.Groups["wis"].Value +
+                                         ", Cha " + m.Groups["cha"].Value;
+            }
+            else
+            {
+                string StatCollection = "";
+                const string RegstatsRegStrength = ("Str ([0-9]+/)?(?<str>([0-9]+|-))");
+                const string RegstatsRegDexterity = ("Dex ([0-9]+/)?(?<dex>([0-9]+|-))");
+                const string RegstatsRegConstitution = ("Con ([0-9]+/)?(?<con>([0-9]+|-))");
+                const string RegstatsRegIntelligence = ("Int ([0-9]+/)?(?<int>([0-9]+|-))");
+                const string RegstatsRegWisdom = ("Wis ([0-9]+/)?(?<wis>([0-9]+|-))");
+                const string RegstatsRegCharisma = ("Cha ([0-9]+/)?(?<cha>([0-9]+|-))");
+
+                regStats = new Regex(RegstatsRegStrength);
+                Match regexMatchStr = regStats.Match(statsblock);
+                StatCollection = regexMatchStr.Success ? "Str " + regexMatchStr.Groups["str"].Value : "Str -";
+
+                regStats = new Regex(RegstatsRegDexterity);
+                Match regexMatchDex = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchDex.Success ? ", Dex " + regexMatchDex.Groups["dex"].Value : ", Dex -");
+
+                regStats = new Regex(RegstatsRegConstitution);
+                Match regexMatchCon = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchCon.Success ? ", Con " + regexMatchCon.Groups["con"].Value : ", Con -");
+
+                regStats = new Regex(RegstatsRegIntelligence);
+                Match regexMatchInt = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchInt.Success ? ", Int " + regexMatchInt.Groups["int"].Value : ", Int -");
+
+                regStats = new Regex(RegstatsRegWisdom);
+                Match regexMatchWis = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchWis.Success ? ", Wis " + regexMatchWis.Groups["wis"].Value : ", Wis -");
+
+                regStats = new Regex(RegstatsRegCharisma);
+                Match regexMatchCha = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchCha.Success ? ", Cha " + regexMatchCha.Groups["cha"].Value : ", Cha -");
+
+                monster.AbilitiyScores = StatCollection;
+
+            }
 
             Regex regCR = new Regex("CR (?<cr>[0-9]+(/[0-9]+)?)\r\n");
             m = regCR.Match(statsblock);
