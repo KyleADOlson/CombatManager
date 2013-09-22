@@ -3533,10 +3533,10 @@ namespace CombatManager
             Speed = AddFlyFromMove(Speed, 2, "average");
 
             //set bite & 2 claw attacks
-            AddNaturalAttack("bite", 2, 1);
+            AddNaturalAttack("bite", 1, 1);
 
 
-            AddNaturalAttack("claw", 1, 0);
+            AddNaturalAttack("claw", 2, 0);
 
             //add breath weapon
             SpecialAttacks = AddSpecialAttack(SpecialAttacks,
@@ -4576,34 +4576,29 @@ namespace CombatManager
             }
         }
 
-        public void AddNaturalAttack(string name, int count, int step)
+        public void AddNaturalAttack(string naName, int count, int step)
         {
-           
-            if (Weapon.Weapons.ContainsKey(name))
+
+            if (Weapon.Weapons.ContainsKey(naName))
             {
                 ObservableCollection<AttackSet> sets = new ObservableCollection<AttackSet>(MeleeAttacks);
-                ObservableCollection<Attack> ranged = new ObservableCollection<Attack>(RangedAttacks);
-                CharacterAttacks attacks = new CharacterAttacks(sets, ranged);
+                ObservableCollection<Attack> naRanged = new ObservableCollection<Attack>(RangedAttacks);
+                CharacterAttacks attacks = new CharacterAttacks(sets, naRanged);
 
-                bool bAdded = false;
-                foreach (WeaponItem wi in attacks.NaturalAttacks)
+                bool bAttackalreadyExists = false;
+                foreach (WeaponItem wi in attacks.NaturalAttacks.Where(wi => !string.Equals(wi.Name, naName)))
                 {
-                    if (String.Compare(wi.Name, Name, true) == 0)
+                    if (wi.Count < count)
                     {
-                        if (wi.Count < count)
-                        {
-                            wi.Count = count;
-                        }
-                        bAdded = true;
-                        break;
+                        wi.Count = count;
                     }
-
+                    bAttackalreadyExists = true;
+                    break;
                 }
 
-                if (!bAdded)
+                if (!bAttackalreadyExists)
                 {
-                    WeaponItem item = new WeaponItem(Weapon.Weapons[name]);
-                    item.Count = count;
+                    WeaponItem item = new WeaponItem(Weapon.Weapons[naName]) { Count = count };
                     attacks.NaturalAttacks.Add(item);
                 }
 
@@ -4612,11 +4607,7 @@ namespace CombatManager
             else
             {
 
-                Attack attack = new Attack();
-                attack.CritMultiplier = 2;
-                attack.CritRange = 20;
-                attack.Name = name;
-                attack.Count = count;
+                Attack attack = new Attack { CritMultiplier = 2, CritRange = 20, Name = naName, Count = count };
                 MonsterSize monsterSize = SizeMods.GetSize(Size);
                 SizeMods mods = SizeMods.GetMods(monsterSize);
 
