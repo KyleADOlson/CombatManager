@@ -34,8 +34,11 @@ namespace CombatManagerDroid
 
 
         private MonsterFragment _MonsterFragment;
+        private FeatFragment _FeatFragment;
+        private SpellFragment _SpellFragment;
+        private RuleFragment _RuleFragment;
         private CombatFragment _CombatFragment;
-        static HomePage lastFragment = HomePage.Combat;
+        static HomePage _LastFragment = HomePage.Combat;
 
         protected override void OnCreate (Bundle bundle)
         {
@@ -47,9 +50,21 @@ namespace CombatManagerDroid
             {
                 ShowMonsterFragment();
             };
+            FindViewById<Button>(Resource.Id.featsButton).Click += delegate
+            {
+                ShowFeatsFragment();
+            };
+            FindViewById<Button>(Resource.Id.spellsButton).Click += delegate
+            {
+                ShowSpellsFragment();
+            };
             FindViewById<Button>(Resource.Id.combatButton).Click += delegate
             {
                 ShowCombatFragment();
+            };
+            FindViewById<Button>(Resource.Id.rulesButton).Click += delegate
+            {
+                ShowRulesFragment();
             };
             ShowLastFragment();
 
@@ -58,7 +73,7 @@ namespace CombatManagerDroid
 
         private void ShowLastFragment()
         {
-            switch (lastFragment)
+            switch (_LastFragment)
             {
             case HomePage.Combat:
                 ShowCombatFragment();
@@ -93,7 +108,7 @@ namespace CombatManagerDroid
             ft.Replace(Resource.Id.bodyLayout, _CombatFragment);
             ft.SetTransition(FragmentTransit.FragmentOpen);
             ft.Commit();
-            lastFragment = HomePage.Combat;
+            _LastFragment = HomePage.Combat;
         }
         
         private void ShowMonsterFragment()
@@ -107,22 +122,50 @@ namespace CombatManagerDroid
             ft.Replace(Resource.Id.bodyLayout, _MonsterFragment);
             ft.SetTransition(FragmentTransit.FragmentOpen);
             ft.Commit();
-            lastFragment = HomePage.Monsters;
+            _LastFragment = HomePage.Monsters;
         }
 
         private void ShowFeatsFragment()
         {
+            FragmentTransaction ft = FragmentManager.BeginTransaction();
 
+            if (_FeatFragment == null)
+            {
+                _FeatFragment = new FeatFragment();
+            }
+            ft.Replace(Resource.Id.bodyLayout, _FeatFragment);
+            ft.SetTransition(FragmentTransit.FragmentOpen);
+            ft.Commit();
+            _LastFragment = HomePage.Feats;
         }
 
         private void ShowSpellsFragment()
         {
+            FragmentTransaction ft = FragmentManager.BeginTransaction();
 
+            if (_SpellFragment == null)
+            {
+                _SpellFragment = new SpellFragment();
+            }
+            ft.Replace(Resource.Id.bodyLayout, _SpellFragment);
+            ft.SetTransition(FragmentTransit.FragmentOpen);
+            ft.Commit();
+            _LastFragment = HomePage.Spells;
         }
 
         private void ShowRulesFragment()
         {
+            
+            FragmentTransaction ft = FragmentManager.BeginTransaction();
 
+            if (_RuleFragment == null)
+            {
+                _RuleFragment = new RuleFragment();
+            }
+            ft.Replace(Resource.Id.bodyLayout, _RuleFragment);
+            ft.SetTransition(FragmentTransit.FragmentOpen);
+            ft.Commit();
+            _LastFragment = HomePage.Rules;
         }
 
         private void ShowTreasureFragment()

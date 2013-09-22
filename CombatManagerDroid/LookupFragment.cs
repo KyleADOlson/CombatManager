@@ -14,10 +14,11 @@ using Android.Widget;
 
 using CombatManager;
 using Android.Webkit;
+using System.Threading;
 
 namespace CombatManagerDroid
 {
-    public abstract class LookupFragment<T> : Fragment
+    public abstract class LookupFragment<T> : Fragment where T: class
     {
 
         protected abstract List<T> GetItems();
@@ -32,7 +33,7 @@ namespace CombatManagerDroid
         static T _SelectedItem;
 
         List<T> items;
-        List<T> filteredItems;
+        List<T> _FilteredItems;
 
         public override void OnCreate (Bundle savedInstanceState)
         {
@@ -51,25 +52,40 @@ namespace CombatManagerDroid
 
             items = GetItems();
             items.Sort((a, b) => ItemName(a).CompareTo(ItemName(b)));
-            filteredItems = new List<T>(items);
+            _FilteredItems = new List<T>(items);
 
             ItemList.SetAdapter(new LookupAdapter(this));
             ItemList.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => 
             {
-                _SelectedItem = filteredItems[e.Position];
-                ShowItem(filteredItems[e.Position]);
+                _SelectedItem = _FilteredItems[e.Position];
+                ShowItem(_FilteredItems[e.Position]);
             };
             ((TextView)_v.FindViewById(Resource.Id.filterText)).TextChanged += 
                 (object sender, Android.Text.TextChangedEventArgs e) => 
             {
-                FilterItems();
-                ((BaseAdapter)ItemList.Adapter).NotifyDataSetChanged();
-                ShowItem(_SelectedItem);
+                UpdateFilter();
             };
             FilterItems();
             ShowItem(_SelectedItem);
 
+
+
             return v;
+        }
+
+        private void UpdateFilter()
+        {
+            Thread t = new Thread(() =>
+            {
+                FilterItems();
+                this.Activity.RunOnUiThread(() =>
+                {
+                    ((BaseAdapter)ItemList.Adapter).NotifyDataSetChanged();
+                    ShowItem(_SelectedItem);
+                });
+            });
+            t.Start();
+
         }
 
         protected virtual bool FilterItem(string filtertext, T item)
@@ -79,35 +95,42 @@ namespace CombatManagerDroid
 
         private void FilterItems()
         {
-            string filtertext = ((TextView)_v.FindViewById(Resource.Id.filterText)).Text;
-
-            if (filtertext == null || filtertext.Length == 0)
+            lock (this)
             {
-                filteredItems = items;
-            }
-            else
-            {
+                string filtertext = ((TextView)_v.FindViewById(Resource.Id.filterText)).Text;
 
-                filteredItems = new List<T>();
-                foreach (T item in items)
+                List<T> outputItems;
+
+                if (filtertext == null || filtertext.Length == 0)
                 {
-                    if (FilterItem (filtertext, item))
-                    {
-                        filteredItems.Add(item);
-                    }
-                }
-            }
-
-            if (!filteredItems.Contains(_SelectedItem))
-            {
-                if (filteredItems.Count == 0)
-                {
-                    _SelectedItem = default(T);
+                    outputItems = items;
                 }
                 else
                 {
-                    _SelectedItem = filteredItems[0];
+
+                    outputItems = new List<T>();
+                    foreach (T item in items)
+                    {
+                        if (FilterItem(filtertext, item))
+                        {
+                            outputItems.Add(item);
+                        }
+                    }
                 }
+
+                if (!outputItems.Contains(_SelectedItem))
+                {
+                    if (outputItems.Count == 0)
+                    {
+                        _SelectedItem = default(T);
+                    }
+                    else
+                    {
+                        _SelectedItem = outputItems[0];
+                    }
+                }
+
+                _FilteredItems = outputItems;
             }
 
         }
@@ -125,7 +148,7 @@ namespace CombatManagerDroid
 
             WebView wv = _v.FindViewById<WebView>(Resource.Id.itemView);
             wv.LoadUrl("about:blank");
-            if (!item.Equals(default(T)))
+            if (item != null)
             {
                 wv.LoadData(ItemHtml(item), "text/html", null);
             }
@@ -147,7 +170,7 @@ namespace CombatManagerDroid
             {
                 get
                 {
-                    return _lf.filteredItems.Count;
+                    return _lf._FilteredItems.Count;
                 }
             }
             
@@ -168,7 +191,7 @@ namespace CombatManagerDroid
                 {
                     t = new TextView(_Context);
                 }
-                t.Text = _lf.ItemName(_lf.filteredItems[position]);
+                t.Text = _lf.ItemName(_lf._FilteredItems[position]);
                 return t;
             }
         }

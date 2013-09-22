@@ -17,6 +17,7 @@
     <AssemblyName>CombatManagerDroid</AssemblyName>
     <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -75,6 +76,9 @@
       <DependentUpon>Resource.designer.cs</DependentUpon>
     </Compile>
     <Compile Include="FileDialog.cs" />
+    <Compile Include="FeatFragment.cs" />
+    <Compile Include="SpellFragment.cs" />
+    <Compile Include="RuleFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -34,6 +34,9 @@ namespace CombatManagerDroid
 
                 Dictionary<String, Weapon> w = Weapon.Weapons;
 
+
+                Rule.PrepareDetailDB(Application.PackageManager.GetPackageInfo(PackageName, 0).VersionName);
+
                 Parallel.Invoke(new Action[]
                                 {
                     () =>

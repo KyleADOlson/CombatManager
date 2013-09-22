@@ -22,5 +22,6 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = CombatManagerDroid\CombatManagerDroid.csproj
+		version = 1.0
 	EndGlobalSection
 EndGlobal
