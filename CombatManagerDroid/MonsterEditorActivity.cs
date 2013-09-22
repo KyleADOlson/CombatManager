@@ -197,7 +197,7 @@ namespace CombatManagerDroid
                 builderSingle.SetTitle(property);
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                     this,
-                    Android.Resource.Layout.SelectDialogSingleChoice);
+                    Android.Resource.Layout.SelectDialogItem);
                 arrayAdapter.AddAll(options);
 
                
@@ -227,7 +227,7 @@ namespace CombatManagerDroid
                 builderSingle.SetTitle(property);
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                     this,
-                    Android.Resource.Layout.SelectDialogSingleChoice);
+                    Android.Resource.Layout.SelectDialogItem);
                 arrayAdapter.AddAll(new List<string>(from x in options select x.Item2));
                 
 

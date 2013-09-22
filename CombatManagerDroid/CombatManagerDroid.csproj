@@ -37,7 +37,6 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -55,7 +54,6 @@
     <Compile Include="CombatFragment.cs" />
     <Compile Include="InitiativeListAdapter.cs" />
     <Compile Include="CharacterListAdapter.cs" />
-    <Compile Include="UIUtils.cs" />
     <Compile Include="ActionDialog.cs" />
     <Compile Include="CharacterActionsAdapter.cs" />
     <Compile Include="NumberDialog.cs" />
@@ -73,6 +71,9 @@
     <Compile Include="TextSelectionAdapater.cs" />
     <Compile Include="FeatPickerDialog.cs" />
     <Compile Include="AttacksEditorActivity.cs" />
+    <Compile Include="Resources\UIUtils.cs">
+      <DependentUpon>Resource.designer.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -79,6 +79,22 @@ namespace CombatManagerDroid
             AttachEditTextString(EditMonster, Resource.Id.spellsKnownText, "SpellsKnown");
             AttachEditTextString(EditMonster, Resource.Id.spellsPreparedText, "SpellsPrepared");
 
+            EditMonster.PropertyChanged += HandlePropertyChanged;
+
+        }
+
+        void HandlePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Melee")
+            {
+                Button b = FindViewById<Button>(Resource.Id.meleeAttacksButton);
+                b.Text = EditMonster.Melee;
+            }
+            else if (e.PropertyName == "Ranged")
+            {
+                Button b = FindViewById<Button>(Resource.Id.rangedAttacksButton);
+                b.Text = EditMonster.Ranged;
+            }
         }
 
         void ShowAttacksEditor()
@@ -88,6 +104,9 @@ namespace CombatManagerDroid
             intent.AddFlags(ActivityFlags.NewTask); 
             StartActivity(intent);
         }
+
+
+
     }
 }
 
