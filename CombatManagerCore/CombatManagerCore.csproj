@@ -123,6 +123,7 @@
     </Content>
     <Content Include="BestiaryShort.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="BestiaryShort2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
