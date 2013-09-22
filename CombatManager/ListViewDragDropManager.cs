@@ -574,7 +574,7 @@ namespace WPF.JoshSmith.ServiceProviders.UI
 				DependencyObject depObj = res.VisualHit;
 				while( depObj != null )
 				{
-					if( depObj is ScrollBar )
+					if( depObj is ScrollBar  || depObj is TextBox)
 						return true;
 
 					// VisualTreeHelper works with objects of type Visual or Visual3D.

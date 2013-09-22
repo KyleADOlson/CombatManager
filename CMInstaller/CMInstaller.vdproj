@@ -58,25 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_802A851599CD4B31AF1E31B61DEB5FE4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1CF99DE0EDBA4C238DA7BD05915F7845"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7849F16192644FCC2FB297190CEE75D2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FF1D65956D6D4F0E84ABE2A8399BAF85"
+        "OwnerKey" = "8:_D473458B89024BF6904F0397BC15E8A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,7 +70,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D473458B89024BF6904F0397BC15E8A2"
+        "OwnerKey" = "8:_FF1D65956D6D4F0E84ABE2A8399BAF85"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7849F16192644FCC2FB297190CEE75D2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1CF99DE0EDBA4C238DA7BD05915F7845"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_802A851599CD4B31AF1E31B61DEB5FE4"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -203,6 +203,11 @@
             "AssemblyAsmDisplayName" = "8:AvalonDock, Version=1.3.3592.0, Culture=neutral, PublicKeyToken=85a1e0ada7ec13e4, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_1CF99DE0EDBA4C238DA7BD05915F7845"
+                    {
+                    "Name" = "8:AvalonDock.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:AvalonDock.dll"
             "TargetName" = "8:"
@@ -229,6 +234,11 @@
             "AssemblyAsmDisplayName" = "8:AvalonDock.Themes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_7849F16192644FCC2FB297190CEE75D2"
+                    {
+                    "Name" = "8:AvalonDock.Themes.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:AvalonDock.Themes.dll"
             "TargetName" = "8:"
@@ -252,9 +262,14 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:IonicZipDll, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:IonicZipDll, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_D07B5FEEB73013C6B247F4837C89BC9B"
+                    {
+                    "Name" = "8:IonicZipDll.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:IonicZipDll.dll"
             "TargetName" = "8:"
@@ -278,9 +293,14 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CombatManager.Core, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:CombatManager.Core, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_D473458B89024BF6904F0397BC15E8A2"
+                    {
+                    "Name" = "8:CombatManager.Core.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:CombatManager.Core.dll"
             "TargetName" = "8:"
@@ -367,15 +387,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Combat Manager"
-        "ProductCode" = "8:{6FB8410A-2A50-42AE-8866-EF3B503D1713}"
-        "PackageCode" = "8:{2C0E0291-D11E-4517-9F5D-E3FC7C129A10}"
+        "ProductCode" = "8:{96F5A2F3-0004-42CB-86A5-CAF566536A5F}"
+        "PackageCode" = "8:{70D4375D-BDBA-48C2-85B7-D5B4662591D8}"
         "UpgradeCode" = "8:{D3BA9248-E13B-4D16-A80A-2F435C82C97B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.5.1"
+        "ProductVersion" = "8:1.5.2"
         "Manufacturer" = "8:Kyle Olson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
