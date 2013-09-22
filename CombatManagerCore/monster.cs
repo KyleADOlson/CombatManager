@@ -3197,29 +3197,13 @@ namespace CombatManager
 
         private bool MakeSummoned(HalfOutsiderType outsiderType)
         {
+
             //add darkvision
             Senses = ChangeDarkvisionAtLeast(Senses, 60);
 
             //add smite evil as swift action
 
             AddSmite(outsiderType, false);
-            
-
-            int resistAmount = 5;
-            if (HDRoll.count > 10)
-            {
-                resistAmount = 15;
-            }
-            else if (HDRoll.count > 4)
-            {
-                resistAmount = 10;
-            }
-
-            //add resist acid, cold, electricity
-            Resist = AddResitance(Resist, "acid", resistAmount);
-            Resist = AddResitance(Resist, "cold", resistAmount);
-            Resist = AddResitance(Resist, "electricity", resistAmount);
-
             //add DR/evil as needed
             DR = AddSummonDR(DR, HD, GetOutsiderDRType(outsiderType));
 
@@ -3232,6 +3216,63 @@ namespace CombatManager
 
             //add SR = CR+5
             SR = AddSummonSR(SR, CR, 5);
+
+
+            int resistAmount = 5;
+            if (HDRoll.count > 10)
+            {
+                resistAmount = 15;
+            }
+            else if (HDRoll.count > 4)
+            {
+                resistAmount = 10;
+            }
+            if (Equals(Type, "animal") | Equals(Type, "vermin"))
+            {
+                //implied but not explictly stated
+                //Type = "magical beast";
+            }
+            switch (outsiderType)
+            {
+                case HalfOutsiderType.Celestial:
+                    {
+                        
+                        //SubType = "(good, extraplanar)";//implied but not explictly stated
+                        //add resist acid, cold, electricity
+                        Resist = AddResitance(Resist, "acid", resistAmount);
+                        Resist = AddResitance(Resist, "cold", resistAmount);
+                        Resist = AddResitance(Resist, "electricity", resistAmount);
+                        break;
+                    }
+                case HalfOutsiderType.Fiendish:
+                    {
+
+                        //SubType = "(evil, extraplanar)";//implied but not explictly stated
+                        //add resist fire, cold
+                        Resist = AddResitance(Resist, "fire", resistAmount);
+                        Resist = AddResitance(Resist, "cold", resistAmount);
+                        break;
+                    }
+                case HalfOutsiderType.Entropic:
+                    {
+
+                        //SubType = "(chaotic, extraplanar)";//implied but not explictly stated
+                        //add resist acid, fire
+                        Resist = AddResitance(Resist, "acid", resistAmount);
+                        Resist = AddResitance(Resist, "fire", resistAmount);
+                        break;
+                    }
+                case HalfOutsiderType.Resolute:
+                    {
+
+                        //SubType = "(lawful, extraplanar)";//implied but not explictly stated
+                        //add resist acid, cold, fire
+                        Resist = AddResitance(Resist, "acid", resistAmount);
+                        Resist = AddResitance(Resist, "cold", resistAmount);
+                        Resist = AddResitance(Resist, "fire", resistAmount);
+                        break;
+                    }
+            }
 
             return true;
         }
