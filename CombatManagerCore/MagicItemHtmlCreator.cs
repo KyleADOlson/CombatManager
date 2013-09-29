@@ -3,7 +3,7 @@ using System.Text;
 
 using CombatManager;
 
-namespace CombatManagerMono
+namespace CombatManager
 {
     public class MagicItemHtmlCreator
     {

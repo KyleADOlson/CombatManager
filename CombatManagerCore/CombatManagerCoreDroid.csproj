@@ -127,6 +127,7 @@
     <Compile Include="TreasureHtmlCreator.cs" />
     <Compile Include="CoreContext.cs" />
     <Compile Include="CharacterActions.cs" />
+    <Compile Include="MagicItemHtmlCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RuleShort.xml" />

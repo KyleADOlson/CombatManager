@@ -761,6 +761,59 @@ namespace CombatManager
 
         }
 
+        static SortedDictionary<double, String> _crs;
+        public static SortedDictionary<double, String> CRList
+        {
+            get
+            {
+                if (_crs == null)
+                {
+
+                    _crs = new SortedDictionary<double, string>();
+
+                    Regex regslash = new Regex("/");
+
+
+                    foreach (Monster monster in Monster.Monsters)
+                    {
+
+                        if (monster.CR != null && monster.CR.Length > 0)
+                        {
+                            if (!_crs.ContainsValue(monster.CR.Trim()))
+                            {
+
+                                Match match = regslash.Match(monster.CR);
+                                if (match.Success)
+                                {
+                                    string text = monster.CR.Substring(match.Index + match.Length);
+
+                                    double val;
+                                    if (double.TryParse(text, out val))
+                                    {
+                                        _crs.Add(1.0 / val, monster.CR.Trim());
+                                    }
+
+                                }
+                                else
+                                {
+                                    double val;
+                                    if (double.TryParse(monster.CR, out val))
+                                    {
+
+                                        _crs.Add(val, monster.CR.Trim());
+                                    }
+                                }
+                            }
+                        }
+
+
+
+                    }
+                }
+                return _crs;
+            }
+        }
+
         public Monster()
         {
             skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
@@ -4654,7 +4707,7 @@ namespace CombatManager
 
             //remove special attacks & special abilities
             SpecialAbilities = null;
-            specialAbilitiesList.Clear();
+            SpecialAbilitiesList.Clear();
             SpecialAttacks = null;
             SpellLikeAbilities = null;
             SpellsKnown = null;

@@ -23,8 +23,14 @@ namespace CombatManagerDroid
         static CombatState _CombatState;
         static Character _ViewCharacter;
 
+       
         ListView _MonsterList;
         ListView _PlayerList;
+
+        //die roller
+        static string _DieText = "";
+        static List<object> _RollResults = new List<object>();
+
 
         public override void OnCreate (Bundle savedInstanceState)
         {
@@ -44,6 +50,7 @@ namespace CombatManagerDroid
             }
             _CombatState.PropertyChanged += HandleCombatStatePropertyChanged;
             _CombatState.Characters.CollectionChanged += HandledCombatStateCharactersChanged;
+            _CombatState.RollRequested += HandleRollRequested;
 
 
         }
@@ -60,6 +67,12 @@ namespace CombatManagerDroid
             }
             
             SaveCombatState();
+        }
+
+        void HandleRollRequested (object sender, CombatState.RollEventArgs e)
+        {
+            _RollResults.Add(e.Roll);
+            ShowDieRolls(View);
         }
 
         void HandleCombatStatePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -105,6 +118,8 @@ namespace CombatManagerDroid
             AddCharacterList(inflater, container, v, Resource.Id.monsterListLayout, false);
 
             ShowCharacter(v, _ViewCharacter);
+
+            SetupDieRoller(v);
 
             return v;
         }
@@ -265,13 +280,14 @@ namespace CombatManagerDroid
         }
 
 
-
         public override void OnDestroy ()
         {
             base.OnDestroy();
+           
 
             _CombatState.PropertyChanged -= HandleCombatStatePropertyChanged;
             _CombatState.Characters.CollectionChanged -= HandledCombatStateCharactersChanged;
+            _CombatState.RollRequested -= HandleRollRequested;
         }
 
         public static void SaveCombatState()
@@ -291,6 +307,116 @@ namespace CombatManagerDroid
                 _CombatState = state;
             }
         }
+
+        public static CombatState CombatState
+        {
+            get
+            {
+                return _CombatState;
+            }
+        }
+
+        void SetupDieRoller(View v)
+        {
+            List<int> buttons = new List<int>() { Resource.Id.rollD4Button, Resource.Id.rollD6Button,
+                Resource.Id.rollD8Button, Resource.Id.rollD10Button, Resource.Id.rollD12Button,
+                Resource.Id.rollD20Button, Resource.Id.rollD100Button
+            };
+            foreach (int id in buttons)
+            {
+                ImageButton b = v.FindViewById<ImageButton>(id);
+                int die = 0;
+                int.TryParse(((String)b.Tag), out die);
+                b.Click += (object sender, EventArgs e) => {AddDieRoll(die);};
+            }
+
+            ImageButton clearButton = v.FindViewById<ImageButton>(Resource.Id.clearRollButton);
+            clearButton.Click += (object sender, EventArgs e) => {ClearRoll();};
+
+
+            ImageButton rollButton = v.FindViewById<ImageButton>(Resource.Id.rollButton);
+            rollButton.Click += (object sender, EventArgs e) => {Roll();};
+
+            
+            EditText dieText = v.FindViewById<EditText>(Resource.Id.rollText);
+            dieText.Text = _DieText;
+            dieText.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) => 
+            {
+                _DieText = dieText.Text;
+                };
+            
+            WebView wv = v.FindViewById<WebView>(Resource.Id.rollWebView);  
+            wv.SetPictureListener(new DieViewClient());
+            ShowDieRolls(v);
+
+
+        }
+
+        private class DieViewClient : Java.Lang.Object, WebView.IPictureListener
+        {
+            public void OnNewPicture(WebView view, Android.Graphics.Picture picture) {
+                //view.PageDown(true);
+            }
+
+        }
+
+        void AddDieRoll(int die)
+        {
+            EditText dieText = View.FindViewById<EditText>(Resource.Id.rollText);
+
+            DieRoll roll = DieRoll.FromString(dieText.Text);
+            if (roll == null)
+            {
+                roll = new DieRoll(1, die, 0);
+            }
+            else
+            {
+                roll.AddDie(new DieStep(1, die)); 
+            }
+
+            dieText.Text = roll.Text;
+        }
+
+        void ClearRoll()
+        {
+            
+            EditText dieText = View.FindViewById<EditText>(Resource.Id.rollText);
+            dieText.Text = "";
+        }
+
+        void Roll()
+        {
+            
+            EditText dieText = View.FindViewById<EditText>(Resource.Id.rollText);
+
+            DieRoll roll = DieRoll.FromString(dieText.Text);
+
+            if (roll != null)
+            {
+                RollResult res = roll.Roll();
+
+                _RollResults.Add(res);
+
+                while (_RollResults.Count > 50)
+                {
+                    _RollResults.RemoveAt(0);
+                }
+
+                ShowDieRolls(View);
+            }
+        }
+
+        void ShowDieRolls(View v)
+        {
+            
+            WebView wv = v.FindViewById<WebView>(Resource.Id.rollWebView);  
+            //wv.LoadUrl("about:blank");
+            //wv.LoadData(, "text/html", null);
+            wv.LoadDataWithBaseURL(null, RollResultHtmlCreator.CreateHtml(_RollResults), "text/html", "utf-8", null);
+            wv.PageDown(true);
+        }
+
+
     }
 }
 
