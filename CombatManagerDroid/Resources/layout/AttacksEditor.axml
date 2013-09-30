@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffbfb297">
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView1"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/linearLayout5">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout2"
+                android:gravity="center_vertical"
+                android:background="#ffa6833c">
+                <ImageView
+                    android:src="@drawable/sword16"
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp" />
+                <TextView
+                    android:text="Melee"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffffff"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/meleeGroupLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/meleeLayout" />
+            <Button
+                android:text="Add Melee Attack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addMeleeButton" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3"
+                android:gravity="center_vertical"
+                android:background="#ffa6833c">
+                <ImageView
+                    android:src="@drawable/bow16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView2"
+                    android:layout_marginLeft="4dp" />
+                <TextView
+                    android:text="Ranged"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffffff"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rangedLayout" />
+            <Button
+                android:text="Add Ranged Attack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addRangedButton" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout4"
+                android:gravity="center_vertical"
+                android:background="#ffa6833c">
+                <ImageView
+                    android:src="@drawable/claw16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView3"
+                    android:layout_marginLeft="4dp" />
+                <TextView
+                    android:text="Natural"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3"
+                    android:textColor="#ffffffff"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/naturalLayout" />
+            <Button
+                android:text="Add Natural Attack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addNaturalButton" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout6"
+        android:gravity="right"
+        android:background="#FFE8B8">
+        <Button
+            android:text="OK"
+            android:id="@+id/okButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent" />
+        <Button
+            android:text="Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/cancelButton" />
+    </LinearLayout>
+</LinearLayout>

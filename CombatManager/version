@@ -1,5 +1,13 @@
-﻿1.5.2
+﻿1.5.3
+
+1.5.2
 Large CR XP display fix
+CMD not updating properly
+AC Mod text fix
+HD Update fix
+Show Other Gear 
+Prevent Monster-Type related Advancer crashes
+Don't begin drag & drop on Text Boxes
 
 1.5.1
 Fix crash for very large (44+) CR encounters

@@ -1,3 +1,12 @@
+1.0.7
+Improved spell parsing
+Handled large CRs
+Fix Monster List bug from last revision
+
+1.0.6
+Reduce Monster List on iPad to prevent memory-based crashes
+Fix condition selection problem
+
 1.0.5
 More Hero Lab Parsing fixes
 Monster Advancer Fixes

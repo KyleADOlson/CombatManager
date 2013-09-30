@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="none"
+    android:background="#ffafdbdd">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:background="#ff47aaaf">
+        <Button
+            android:text="Main"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/mainTab" />
+        <Button
+            android:text="Defense"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/defenseTab" />
+        <Button
+            android:text="Offense"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/offenseTab" />
+        <Button
+            android:text="Stats"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/statsTab" />
+        <Button
+            android:text="Feats"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/featsTab" />
+        <Button
+            android:text="Special"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/specialTab" />
+        <Button
+            android:text="Description"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/descriptionTab" />
+    </LinearLayout>
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView1"
+        android:layout_weight="1"
+        android:scrollbars="vertical">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/bodyLayout"
+            android:layout_weight="1"
+            android:scrollbars="none">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3">
+                <TextView
+                    android:text="Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView1"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/nameText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/linearLayout4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="CR XX"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/crButton"
+                    android:minWidth="75dp" />
+                <Button
+                    android:text="LG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/alignmentButton"
+                    android:minWidth="75dp" />
+                <Button
+                    android:text="Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/sizeButton"
+                    android:minWidth="75dp" />
+                <Button
+                    android:text="Outsider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/typeButton"
+                    android:minWidth="75dp" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/subtypesText" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout5">
+                <TextView
+                    android:text="Senses"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView2"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/sensesText"
+                    android:layout_weight="1" />
+                <TextView
+                    android:text="Init"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView3"
+                    android:gravity="center" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/initText"
+                    android:layout_weight="4" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout6">
+                <TextView
+                    android:text="Race"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView4"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/raceText"
+                    android:layout_weight="1" />
+                <TextView
+                    android:text="Class"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/textView5"
+                    android:gravity="center" />
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/classText"
+                    android:layout_weight=".7" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout9"
+                android:background="#ffb0b0b0">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/linearLayout7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Str"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView6"
+                        android:gravity="center"
+                        android:minWidth="55dp" />
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/strText"
+                        android:minWidth="55dp" />
+                    <TextView
+                        android:text="Dex"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView6"
+                        android:gravity="center"
+                        android:minWidth="55dp" />
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/dexText"
+                        android:minWidth="55dp" />
+                    <TextView
+                        android:text="Con"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView6"
+                        android:gravity="center"
+                        android:minWidth="55dp" />
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/conText"
+                        android:minWidth="55dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/linearLayout8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Int"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView6"
+                        android:gravity="center"
+                        android:minWidth="55dp" />
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/intText"
+                        android:minWidth="55dp" />
+                    <TextView
+                        android:text="Wis"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/textView6"
+                        android:gravity="center"
+                        android:minWidth="55dp" />
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/wisText"
+                        android:minWidth="55dp" />
+                    <TextView
+                        android:text="Cha"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView6"
+                        android:gravity="center"
+                        android:minWidth="55dp" />
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/chaText"
+                        android:minWidth="55dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:gravity="right"
+        android:background="#ff47aaaf">
+        <Button
+            android:text="OK"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/okButton"
+            android:layout_marginRight="10dp"
+            android:minWidth="120dp" />
+        <Button
+            android:text="Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancelButton"
+            android:minWidth="120dp" />
+    </LinearLayout>
+</LinearLayout>

@@ -12,6 +12,7 @@ using Android.Views;
 using Android.Widget;
 
 using CombatManager;
+using Android.Graphics;
 
 namespace CombatManagerDroid
 {
@@ -65,6 +66,7 @@ namespace CombatManagerDroid
                 t = new TextView(_Context);
             }
             t.Text = ai.Name;
+            t.SetTextColor(new Color(0xee, 0xee, 0xee));
             t.SetTextSize(Android.Util.ComplexUnitType.Dip, 20f);
             if (ai.Name != null && ai.Name.Length > 0)
             {
@@ -75,6 +77,7 @@ namespace CombatManagerDroid
                 t.SetPadding(0, -2, 0, -2);
                 t.Enabled = false;
             }
+            t.SetCompoundDrawablesWithIntrinsicBounds(PopupUtils.NamedImage(_Context, ai.Icon), null, null, null);
             return t;
         }
 

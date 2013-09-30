@@ -17,6 +17,7 @@
     <AssemblyName>CombatManagerDroid</AssemblyName>
     <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -37,7 +38,6 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -55,12 +55,34 @@
     <Compile Include="CombatFragment.cs" />
     <Compile Include="InitiativeListAdapter.cs" />
     <Compile Include="CharacterListAdapter.cs" />
-    <Compile Include="UIUtils.cs" />
     <Compile Include="ActionDialog.cs" />
     <Compile Include="CharacterActionsAdapter.cs" />
     <Compile Include="NumberDialog.cs" />
     <Compile Include="MonsterPickerDialog.cs" />
     <Compile Include="MonsterFragment.cs" />
+    <Compile Include="MonsterEditorActivity.cs" />
+    <Compile Include="MonsterEditorMainActivity.cs" />
+    <Compile Include="MonsterEditorDefenseActivity.cs" />
+    <Compile Include="MonsterEditorOffenseActivity.cs" />
+    <Compile Include="MonsterEditorStatsActivity.cs" />
+    <Compile Include="MonsterEditorFeatsActivity.cs" />
+    <Compile Include="MonsterEditorSpecialActivity.cs" />
+    <Compile Include="MonsterEditorDescriptionActivity.cs" />
+    <Compile Include="SkillPickerDialog.cs" />
+    <Compile Include="TextSelectionAdapater.cs" />
+    <Compile Include="FeatPickerDialog.cs" />
+    <Compile Include="AttacksEditorActivity.cs" />
+    <Compile Include="Resources\UIUtils.cs">
+      <DependentUpon>Resource.designer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileDialog.cs" />
+    <Compile Include="FeatFragment.cs" />
+    <Compile Include="SpellFragment.cs" />
+    <Compile Include="RuleFragment.cs" />
+    <Compile Include="TreasureFragment.cs" />
+    <Compile Include="PopupUtils.cs" />
+    <Compile Include="RollResultHtmlCreator.cs" />
+    <Compile Include="ConditionDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -94,6 +116,149 @@
     <AndroidResource Include="Resources\drawable\init_button.xml" />
     <AndroidResource Include="Resources\layout\ActionDialog.axml" />
     <AndroidResource Include="Resources\layout\MonsterPickerDialog.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditor.axml">
+      <DependentUpon>MonsterEditor.axml</DependentUpon>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MonsterEditorDefense.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorDescription.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorFeats.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorOffense.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorSpecial.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorStats.axml" />
+    <AndroidResource Include="Resources\layout\SkillPickerDialog.axml" />
+    <AndroidResource Include="Resources\drawable\redx.png" />
+    <AndroidResource Include="Resources\layout\FeatPickerDialog.axml" />
+    <AndroidResource Include="Resources\layout\SpecialAbility.axml" />
+    <AndroidResource Include="Resources\layout\AttacksEditor.axml" />
+    <AndroidResource Include="Resources\drawable\claw16.png" />
+    <AndroidResource Include="Resources\drawable\bow16.png" />
+    <AndroidResource Include="Resources\drawable\hand16.png" />
+    <AndroidResource Include="Resources\layout\FileDialog.axml" />
+    <AndroidResource Include="Resources\layout\MonsterAdvancer.axml" />
+    <AndroidResource Include="Resources\drawable\dice16.png" />
+    <AndroidResource Include="Resources\drawable\wand16.png" />
+    <AndroidResource Include="Resources\layout\TreasureGenerator.axml" />
+    <AndroidResource Include="Resources\drawable\ArrangeWindowsHS.png" />
+    <AndroidResource Include="Resources\drawable\arrowcurveleft16.png" />
+    <AndroidResource Include="Resources\drawable\arrowcurveright16.png" />
+    <AndroidResource Include="Resources\drawable\arrowdown16.png" />
+    <AndroidResource Include="Resources\drawable\arrowsdown16.png" />
+    <AndroidResource Include="Resources\drawable\arrowsup16.png" />
+    <AndroidResource Include="Resources\drawable\arrowup16.png" />
+    <AndroidResource Include="Resources\drawable\batterylow16.png" />
+    <AndroidResource Include="Resources\drawable\bell16.png" />
+    <AndroidResource Include="Resources\drawable\bleeding16.png" />
+    <AndroidResource Include="Resources\drawable\blind16.png" />
+    <AndroidResource Include="Resources\drawable\broken16.png" />
+    <AndroidResource Include="Resources\drawable\brush16.png" />
+    <AndroidResource Include="Resources\drawable\bulb16.png" />
+    <AndroidResource Include="Resources\drawable\check16.png" />
+    <AndroidResource Include="Resources\drawable\CheckBox.png" />
+    <AndroidResource Include="Resources\drawable\CheckBoxUnchecked.png" />
+    <AndroidResource Include="Resources\drawable\clock16.png" />
+    <AndroidResource Include="Resources\drawable\clone16.png" />
+    <AndroidResource Include="Resources\drawable\cower16.png" />
+    <AndroidResource Include="Resources\drawable\d20p16.png" />
+    <AndroidResource Include="Resources\drawable\d416.png" />
+    <AndroidResource Include="Resources\drawable\d616.png" />
+    <AndroidResource Include="Resources\drawable\d816.png" />
+    <AndroidResource Include="Resources\drawable\d1016.png" />
+    <AndroidResource Include="Resources\drawable\d1216.png" />
+    <AndroidResource Include="Resources\drawable\d2016.png" />
+    <AndroidResource Include="Resources\drawable\d2032.png" />
+    <AndroidResource Include="Resources\drawable\d10016.png" />
+    <AndroidResource Include="Resources\drawable\dazed16.png" />
+    <AndroidResource Include="Resources\drawable\dazzled16.png" />
+    <AndroidResource Include="Resources\drawable\dead16.png" />
+    <AndroidResource Include="Resources\drawable\deaf16.png" />
+    <AndroidResource Include="Resources\drawable\delete16.png" />
+    <AndroidResource Include="Resources\drawable\disease16.png" />
+    <AndroidResource Include="Resources\drawable\ellipsis16.png" />
+    <AndroidResource Include="Resources\drawable\exhausted16.png" />
+    <AndroidResource Include="Resources\drawable\facinated16.png" />
+    <AndroidResource Include="Resources\drawable\fatigued16.png" />
+    <AndroidResource Include="Resources\drawable\flagblue16.png" />
+    <AndroidResource Include="Resources\drawable\flaggreen16.png" />
+    <AndroidResource Include="Resources\drawable\flagred16.png" />
+    <AndroidResource Include="Resources\drawable\foot16.png" />
+    <AndroidResource Include="Resources\drawable\handicapped16.png" />
+    <AndroidResource Include="Resources\drawable\hourglass16.png" />
+    <AndroidResource Include="Resources\drawable\import16.png" />
+    <AndroidResource Include="Resources\drawable\incorporeal16.png" />
+    <AndroidResource Include="Resources\drawable\info.png" />
+    <AndroidResource Include="Resources\drawable\keys16.png" />
+    <AndroidResource Include="Resources\drawable\lasso16.png" />
+    <AndroidResource Include="Resources\drawable\LeftArrow24.png" />
+    <AndroidResource Include="Resources\drawable\lightning16.png" />
+    <AndroidResource Include="Resources\drawable\link16.png" />
+    <AndroidResource Include="Resources\drawable\lock16.png" />
+    <AndroidResource Include="Resources\drawable\magearmor16.png" />
+    <AndroidResource Include="Resources\drawable\mail16.png" />
+    <AndroidResource Include="Resources\drawable\nauseated16.png" />
+    <AndroidResource Include="Resources\drawable\next16.png" />
+    <AndroidResource Include="Resources\drawable\NoteHS.png" />
+    <AndroidResource Include="Resources\drawable\notes16.png" />
+    <AndroidResource Include="Resources\drawable\panic16.png" />
+    <AndroidResource Include="Resources\drawable\pencil16.png" />
+    <AndroidResource Include="Resources\drawable\person16.png" />
+    <AndroidResource Include="Resources\drawable\personwindow16.png" />
+    <AndroidResource Include="Resources\drawable\pin16.png" />
+    <AndroidResource Include="Resources\drawable\poison16.png" />
+    <AndroidResource Include="Resources\drawable\prev16.png" />
+    <AndroidResource Include="Resources\drawable\PrintHS.png" />
+    <AndroidResource Include="Resources\drawable\prone16.png" />
+    <AndroidResource Include="Resources\drawable\qm16.png" />
+    <AndroidResource Include="Resources\drawable\reaper16.png" />
+    <AndroidResource Include="Resources\drawable\reset16.png" />
+    <AndroidResource Include="Resources\drawable\RightArrow24.png" />
+    <AndroidResource Include="Resources\drawable\rock16.png" />
+    <AndroidResource Include="Resources\drawable\scared16.png" />
+    <AndroidResource Include="Resources\drawable\screen16.png" />
+    <AndroidResource Include="Resources\drawable\scrolleffect16.png" />
+    <AndroidResource Include="Resources\drawable\shaken16.png" />
+    <AndroidResource Include="Resources\drawable\sheet.png" />
+    <AndroidResource Include="Resources\drawable\shield16.png" />
+    <AndroidResource Include="Resources\drawable\shielderror16.png" />
+    <AndroidResource Include="Resources\drawable\sick16.png" />
+    <AndroidResource Include="Resources\drawable\sleep16.png" />
+    <AndroidResource Include="Resources\drawable\slow16.png" />
+    <AndroidResource Include="Resources\drawable\sort16.png" />
+    <AndroidResource Include="Resources\drawable\stable16.png" />
+    <AndroidResource Include="Resources\drawable\stop16.png" />
+    <AndroidResource Include="Resources\drawable\stunned16.png" />
+    <AndroidResource Include="Resources\drawable\swordsingle16.png" />
+    <AndroidResource Include="Resources\drawable\target16.png" />
+    <AndroidResource Include="Resources\drawable\unlock16.png" />
+    <AndroidResource Include="Resources\drawable\zoomin16.png" />
+    <AndroidResource Include="Resources\drawable\zoomout16.png" />
+    <AndroidResource Include="Resources\drawable\zzz16.png" />
+    <AndroidResource Include="Resources\drawable\book162x.png" />
+    <AndroidResource Include="Resources\drawable\CheckBox2x.png" />
+    <AndroidResource Include="Resources\drawable\CheckBoxUnchecked2x.png" />
+    <AndroidResource Include="Resources\drawable\d20p162x.png" />
+    <AndroidResource Include="Resources\drawable\d4162x.png" />
+    <AndroidResource Include="Resources\drawable\d6162x.png" />
+    <AndroidResource Include="Resources\drawable\d8162x.png" />
+    <AndroidResource Include="Resources\drawable\d10162x.png" />
+    <AndroidResource Include="Resources\drawable\d12162x.png" />
+    <AndroidResource Include="Resources\drawable\d20322x.png" />
+    <AndroidResource Include="Resources\drawable\d20402x.png" />
+    <AndroidResource Include="Resources\drawable\d100162x.png" />
+    <AndroidResource Include="Resources\drawable\info2x.png" />
+    <AndroidResource Include="Resources\drawable\LeftArrow242x.png" />
+    <AndroidResource Include="Resources\drawable\lightning162x.png" />
+    <AndroidResource Include="Resources\drawable\mail162x.png" />
+    <AndroidResource Include="Resources\drawable\openHS2x.png" />
+    <AndroidResource Include="Resources\drawable\redx2x.png" />
+    <AndroidResource Include="Resources\drawable\RightArrow242x.png" />
+    <AndroidResource Include="Resources\drawable\saveHS2x.png" />
+    <AndroidResource Include="Resources\drawable\star162x.png" />
+    <AndroidResource Include="Resources\drawable\treasure162x.png" />
+    <AndroidResource Include="Resources\drawable\button2.xml" />
+    <AndroidResource Include="Resources\drawable\button_die.xml" />
+    <AndroidResource Include="Resources\layout\ConditionDialog.axml" />
+    <AndroidResource Include="Resources\drawable\bg_key.xml" />
+    <AndroidResource Include="Resources\layout\MultilineTextDialog.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -159,6 +324,12 @@
     </AndroidAsset>
     <AndroidAsset Include="..\CombatManagerCore\Details.db">
       <Link>Assets\Details.db</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\BestiaryShort2.xml">
+      <Link>Assets\BestiaryShort2.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\NPCShort2.xml">
+      <Link>Assets\NPCShort2.xml</Link>
     </AndroidAsset>
   </ItemGroup>
 </Project>

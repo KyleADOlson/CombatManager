@@ -1460,6 +1460,14 @@ namespace CombatManager
                 classes["magus"] = "Magus";
             }
 
+            public static Dictionary<string, string> Classes
+            {
+                get
+                {
+                    return classes;
+                }
+            }
+
             public SpellAdjuster(Spell spell)
             {
                 _Spell = spell;

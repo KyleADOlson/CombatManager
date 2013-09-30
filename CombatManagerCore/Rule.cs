@@ -32,6 +32,13 @@ using System.Xml;
 using System.Globalization;
 using System.IO;
 using ScottsUtils;
+
+#if ANDROID
+using Android.Content.PM;
+using Android.Content;
+using Android.App;
+#endif
+
 #if !MONO
 #else
 using Mono.Data.Sqlite;
@@ -123,6 +130,80 @@ namespace CombatManager
             }
         }
 
+#if ANDROID
+        static string _DBVersion;
+        public static void PrepareDetailDB(String version)
+        {
+            _DBVersion = version;
+            if (!Directory.Exists(DBFolder))
+            {
+                Directory.CreateDirectory(DBFolder);
+            }
+            //if !db exists
+            if (!File.Exists(DBFullFilename))
+            {
+                //open stream
+                using (Stream io = CoreContext.Context.Assets.Open("Details.db"))
+                {
+                    using (FileStream fs = File.Open(DBFullFilename, FileMode.Create))
+                    {
+                        //copy db
+                        byte[] bytes = new byte[20480];
+                        int read = io.Read(bytes, 0, bytes.Length);
+                        while (read > 0)
+                        {
+                            fs.Write(bytes, 0, read);
+                            read = io.Read(bytes, 0, bytes.Length);
+                        }
+                        fs.Close();
+                    }
+                    io.Close();
+                }
+
+                
+                //delete old dbs
+                List<string> files = new List<string>(Directory.EnumerateFiles(DBFolder));
+
+                foreach (string s in from x in files where x != DBFullFilename select x)
+                {
+                    File.Delete(s);
+                }
+            }
+
+
+        }
+
+        private static string DBFolder
+        {
+            get
+            {
+                string dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                dir = Path.Combine(dir, "Database");
+                return dir;
+            }
+        }
+
+        private static string DBFullFilename
+        {
+            get
+            {
+                string filename = DBFilename;
+                return Path.Combine(DBFolder, filename);
+            }
+        }
+
+        private static string DBFilename
+        {
+            get
+            {
+                return "detail" + _DBVersion + ".db";
+
+            }
+        }
+                 
+
+#endif
+
         public static string LoadDetails(string ID)
         {
             string details = null;
@@ -132,8 +213,12 @@ namespace CombatManager
 #if MONO
                 if (detailsDB == null)
                 {
+#if ANDROID
+                    detailsDB = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + DBFullFilename);
+#else
+                    
                     detailsDB = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=Details.db");
-
+#endif
                     detailsDB.Open();
 
                 }

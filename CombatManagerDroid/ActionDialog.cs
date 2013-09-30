@@ -75,9 +75,58 @@ namespace CombatManagerDroid
             }
             else if (ai.Name != null && ai.Name.Length > 0)
             {
-                CharacterActions.TakeAction(_State, ai.Action, _Character, new List<CombatManager.Character>() {_Character}, ai.Tag);
+                CharacterActionResult res = CharacterActions.TakeAction(_State, ai.Action, _Character, new List<CombatManager.Character>() {_Character}, ai.Tag);
                 Dismiss();
+
+                switch(res)
+                {
+                case CharacterActionResult.NeedAttacksDialog:
+                    break;
+                case CharacterActionResult.NeedMonsterEditorDialog:
+                    ShowMonsterEditor();
+                    break;
+                case CharacterActionResult.NeedConditionDialog:
+                    ShowConditionDialog();
+                    break;
+                case CharacterActionResult.NeedNotesDialog:
+                    ShowNotesDialog();
+                    break;
+                case CharacterActionResult.RollAttack:
+                    _State.Roll(CombatState.RollType.Attack, _Character, (Attack)ai.Tag, null); 
+                    break;
+                case CharacterActionResult.RollAttackSet:
+                    _State.Roll(CombatState.RollType.AttackSet, _Character, (AttackSet)ai.Tag, null); 
+                    break;
+                case CharacterActionResult.RollSave:
+
+                    _State.Roll(CombatState.RollType.Save, _Character, (Monster.SaveType)ai.Tag, null);
+                    break;
+
+                case CharacterActionResult.RollSkill:
+                    var sks = (Tuple<string, string>)ai.Tag;
+                    _State.Roll(CombatState.RollType.Save, _Character, sks.Item1, sks.Item2);
+                    break;
+                }
             }
+        }
+
+        void ShowMonsterEditor()
+        {
+            MonsterEditorActivity.SourceMonster = _Character.Monster;
+
+            Intent intent = new Intent(this.Context, (Java.Lang.Class) new MonsterEditorMainActivity().Class); 
+            intent.AddFlags(ActivityFlags.NewTask); 
+            Context.StartActivity(intent);
+        }
+
+        void ShowConditionDialog()
+        {
+            ConditionDialog dl = new ConditionDialog(this.Context, _State, _Character);
+            dl.Show();
+        }
+        void ShowNotesDialog()
+        {
+            UIUtils.ShowTextDialog("Notes", _Character, Context ,true);
         }
 
     }

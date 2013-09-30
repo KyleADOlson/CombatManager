@@ -5,11 +5,18 @@
     android:layout_height="fill_parent">
     <LinearLayout
         android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:id="@+id/linearLayout1">
+        android:id="@+id/leftLayout" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/searchLayout">
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -23,9 +30,38 @@
             android:layout_height="fill_parent"
             android:id="@+id/itemList" />
     </LinearLayout>
-    <WebView
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:id="@+id/itemView"
-        android:layout_weight="1" />
+        android:id="@+id/searchReplacementLayout" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/linearLayout2"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minHeight=" 0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/filterLayout" />
+        <WebView
+            android:id="@+id/itemView"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottomLayout" />
+    </LinearLayout>
 </LinearLayout>

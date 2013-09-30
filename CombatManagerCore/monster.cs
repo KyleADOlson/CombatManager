@@ -36,6 +36,7 @@ using System.Xml.Linq;
 using Ionic.Zip;
 using System.Threading.Tasks;
 
+
 namespace CombatManager
 {
 
@@ -70,7 +71,8 @@ namespace CombatManager
 
             if (LowMemoryLoad)
             {
-
+                
+                System.Diagnostics.Debug.WriteLine("Low Memory Load");
                 Parallel.Invoke(new Action[] {
                         () =>
                         monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
@@ -80,12 +82,15 @@ namespace CombatManager
             else
             {
 
+                System.Diagnostics.Debug.WriteLine("Full Monster Load");
 
                 Parallel.Invoke(new Action[] {
                         () =>
-                        monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
+                            monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"),
                         () =>
-                        monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml"), 
+                        monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml")});
+                    
+                    Parallel.Invoke(new Action[] {
                      () => 
                          npcSet1 = LoadMonsterFromXml("NPCShort.xml"),
                 
@@ -126,7 +131,26 @@ namespace CombatManager
         {
             get
             {
+#if (!MONO  || ANDROID)
+#if ANDROID
+                return true;
+#else
                 return false;
+#endif
+#else
+                IOSDeviceHardware.IOSHardware hw =  IOSDeviceHardware.Version;
+                if ( hw == IOSDeviceHardware.IOSHardware.iPad ||
+                    hw == IOSDeviceHardware.IOSHardware.iPad3G)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+#endif
+
             }
         }
 
@@ -735,6 +759,59 @@ namespace CombatManager
             }
 
 
+        }
+
+        static SortedDictionary<double, String> _crs;
+        public static SortedDictionary<double, String> CRList
+        {
+            get
+            {
+                if (_crs == null)
+                {
+
+                    _crs = new SortedDictionary<double, string>();
+
+                    Regex regslash = new Regex("/");
+
+
+                    foreach (Monster monster in Monster.Monsters)
+                    {
+
+                        if (monster.CR != null && monster.CR.Length > 0)
+                        {
+                            if (!_crs.ContainsValue(monster.CR.Trim()))
+                            {
+
+                                Match match = regslash.Match(monster.CR);
+                                if (match.Success)
+                                {
+                                    string text = monster.CR.Substring(match.Index + match.Length);
+
+                                    double val;
+                                    if (double.TryParse(text, out val))
+                                    {
+                                        _crs.Add(1.0 / val, monster.CR.Trim());
+                                    }
+
+                                }
+                                else
+                                {
+                                    double val;
+                                    if (double.TryParse(monster.CR, out val))
+                                    {
+
+                                        _crs.Add(val, monster.CR.Trim());
+                                    }
+                                }
+                            }
+                        }
+
+
+
+                    }
+                }
+                return _crs;
+            }
         }
 
         public Monster()
@@ -1659,16 +1736,56 @@ namespace CombatManager
 
 
             Regex regStats = new Regex(statsRegStr);
-            
-            
-            
+
+
+
             Match m = regStats.Match(statsblock);
-            monster.AbilitiyScores = "Str " + m.Groups["str"].Value +
-            ", Dex " + m.Groups["dex"].Value +
-            ", Con " + m.Groups["con"].Value +
-            ", Int " + m.Groups["int"].Value +
-            ", Wis " + m.Groups["wis"].Value +
-            ", Cha " + m.Groups["cha"].Value;
+            if (m.Success)
+            {
+                monster.AbilitiyScores = "Str " + m.Groups["str"].Value +
+                                         ", Dex " + m.Groups["dex"].Value +
+                                         ", Con " + m.Groups["con"].Value +
+                                         ", Int " + m.Groups["int"].Value +
+                                         ", Wis " + m.Groups["wis"].Value +
+                                         ", Cha " + m.Groups["cha"].Value;
+            }
+            else
+            {
+                string StatCollection = "";
+                const string RegstatsRegStrength = ("Str ([0-9]+/)?(?<str>([0-9]+|-))");
+                const string RegstatsRegDexterity = ("Dex ([0-9]+/)?(?<dex>([0-9]+|-))");
+                const string RegstatsRegConstitution = ("Con ([0-9]+/)?(?<con>([0-9]+|-))");
+                const string RegstatsRegIntelligence = ("Int ([0-9]+/)?(?<int>([0-9]+|-))");
+                const string RegstatsRegWisdom = ("Wis ([0-9]+/)?(?<wis>([0-9]+|-))");
+                const string RegstatsRegCharisma = ("Cha ([0-9]+/)?(?<cha>([0-9]+|-))");
+
+                regStats = new Regex(RegstatsRegStrength);
+                Match regexMatchStr = regStats.Match(statsblock);
+                StatCollection = regexMatchStr.Success ? "Str " + regexMatchStr.Groups["str"].Value : "Str -";
+
+                regStats = new Regex(RegstatsRegDexterity);
+                Match regexMatchDex = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchDex.Success ? ", Dex " + regexMatchDex.Groups["dex"].Value : ", Dex -");
+
+                regStats = new Regex(RegstatsRegConstitution);
+                Match regexMatchCon = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchCon.Success ? ", Con " + regexMatchCon.Groups["con"].Value : ", Con -");
+
+                regStats = new Regex(RegstatsRegIntelligence);
+                Match regexMatchInt = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchInt.Success ? ", Int " + regexMatchInt.Groups["int"].Value : ", Int -");
+
+                regStats = new Regex(RegstatsRegWisdom);
+                Match regexMatchWis = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchWis.Success ? ", Wis " + regexMatchWis.Groups["wis"].Value : ", Wis -");
+
+                regStats = new Regex(RegstatsRegCharisma);
+                Match regexMatchCha = regStats.Match(statsblock);
+                StatCollection = StatCollection + (regexMatchCha.Success ? ", Cha " + regexMatchCha.Groups["cha"].Value : ", Cha -");
+
+                monster.AbilitiyScores = StatCollection;
+
+            }
 
             Regex regCR = new Regex("CR (?<cr>[0-9]+(/[0-9]+)?)\r\n");
             m = regCR.Match(statsblock);
@@ -2545,7 +2662,7 @@ namespace CombatManager
                 {
                     if (text.Length == 0)
                     {
-                        returnText = valText;
+                        returnText = "(" + valText + ")";
                     }
                     else if (valText.Length > 0)
                     {
@@ -2554,7 +2671,7 @@ namespace CombatManager
                 }
             }
             
-            return returnText;
+            return returnText != "()" ? returnText : "";
         }
 
 
@@ -3133,29 +3250,13 @@ namespace CombatManager
 
         private bool MakeSummoned(HalfOutsiderType outsiderType)
         {
+
             //add darkvision
             Senses = ChangeDarkvisionAtLeast(Senses, 60);
 
             //add smite evil as swift action
 
             AddSmite(outsiderType, false);
-            
-
-            int resistAmount = 5;
-            if (HDRoll.count > 10)
-            {
-                resistAmount = 15;
-            }
-            else if (HDRoll.count > 4)
-            {
-                resistAmount = 10;
-            }
-
-            //add resist acid, cold, electricity
-            Resist = AddResitance(Resist, "acid", resistAmount);
-            Resist = AddResitance(Resist, "cold", resistAmount);
-            Resist = AddResitance(Resist, "electricity", resistAmount);
-
             //add DR/evil as needed
             DR = AddSummonDR(DR, HD, GetOutsiderDRType(outsiderType));
 
@@ -3168,6 +3269,63 @@ namespace CombatManager
 
             //add SR = CR+5
             SR = AddSummonSR(SR, CR, 5);
+
+
+            int resistAmount = 5;
+            if (HDRoll.count > 10)
+            {
+                resistAmount = 15;
+            }
+            else if (HDRoll.count > 4)
+            {
+                resistAmount = 10;
+            }
+            if (Equals(Type, "animal") | Equals(Type, "vermin"))
+            {
+                //implied but not explictly stated
+                //Type = "magical beast";
+            }
+            switch (outsiderType)
+            {
+                case HalfOutsiderType.Celestial:
+                    {
+                        
+                        //SubType = "(good, extraplanar)";//implied but not explictly stated
+                        //add resist acid, cold, electricity
+                        Resist = AddResitance(Resist, "acid", resistAmount);
+                        Resist = AddResitance(Resist, "cold", resistAmount);
+                        Resist = AddResitance(Resist, "electricity", resistAmount);
+                        break;
+                    }
+                case HalfOutsiderType.Fiendish:
+                    {
+
+                        //SubType = "(evil, extraplanar)";//implied but not explictly stated
+                        //add resist fire, cold
+                        Resist = AddResitance(Resist, "fire", resistAmount);
+                        Resist = AddResitance(Resist, "cold", resistAmount);
+                        break;
+                    }
+                case HalfOutsiderType.Entropic:
+                    {
+
+                        //SubType = "(chaotic, extraplanar)";//implied but not explictly stated
+                        //add resist acid, fire
+                        Resist = AddResitance(Resist, "acid", resistAmount);
+                        Resist = AddResitance(Resist, "fire", resistAmount);
+                        break;
+                    }
+                case HalfOutsiderType.Resolute:
+                    {
+
+                        //SubType = "(lawful, extraplanar)";//implied but not explictly stated
+                        //add resist acid, cold, fire
+                        Resist = AddResitance(Resist, "acid", resistAmount);
+                        Resist = AddResitance(Resist, "cold", resistAmount);
+                        Resist = AddResitance(Resist, "fire", resistAmount);
+                        break;
+                    }
+            }
 
             return true;
         }
@@ -4051,7 +4209,7 @@ namespace CombatManager
             AdjustDexterity(4);
             AdjustIntelligence(2);
             AdjustWisdom(2);
-            AdjustCharisma(2);
+            AdjustCharisma(4);
             Constitution = null;
 
             //Add Channel Resistance +4
@@ -4156,7 +4314,7 @@ namespace CombatManager
 
             //add feats
             AddFeat("Alertness");
-            AddFeat("CombatReflexes");
+            AddFeat("Combat Reflexes");
             AddFeat("Dodge");
             AddFeat("Improved Initiative");
             AddFeat("Lightning Reflexes");
@@ -4549,7 +4707,7 @@ namespace CombatManager
 
             //remove special attacks & special abilities
             SpecialAbilities = null;
-            specialAbilitiesList.Clear();
+            SpecialAbilitiesList.Clear();
             SpecialAttacks = null;
             SpellLikeAbilities = null;
             SpellsKnown = null;
@@ -4707,7 +4865,7 @@ namespace CombatManager
         {
             Dodge += value;
             FullAC += value;
-            CMD += value;
+            CMD = ChangeCMD(CMD, value);
             TouchAC += value;
             AC_Mods = ReplaceModifierNumber(ac_mods, "dodge", Dodge, false);
 
@@ -4717,7 +4875,7 @@ namespace CombatManager
             Deflection += value;
             FullAC += value;
             FlatFootedAC += value;
-            CMD += value;
+            CMD = ChangeCMD(CMD, value);
             TouchAC += value;
             AC_Mods = ReplaceModifierNumber(ac_mods, "deflection", Deflection, false);
 
@@ -6608,7 +6766,7 @@ namespace CombatManager
             }
             set
             {
-                HD = ReplaceDieRoll(HD, HDRoll, 0);
+                HD = ReplaceDieRoll(HD, value, 0);
             }
         }
 
@@ -6777,6 +6935,14 @@ namespace CombatManager
             get
             {
                 return _SkillsDetails;
+            }
+        }
+
+        public static List<string> FlyQualityList
+        {
+            get
+            {
+                return new List<string>(from a in flyQualityList orderby a.Value select a.Key);
             }
         }
 

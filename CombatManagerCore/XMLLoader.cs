@@ -137,10 +137,37 @@ namespace CombatManager
                 serializer.UnknownAttribute += new XmlAttributeEventHandler(serializer_UnknownAttribute);
 
 #if ANDROID
-                using (Stream io = CoreContext.Context.Assets.Open(filename))
+                string path = filename;
+                Stream io;
+                StreamReader fs;
+                if (!appData)
                 {
-                    using (StreamReader fs = new StreamReader(io))
+                    if (path.StartsWith("/"))
                     {
+                        io = File.Open(path, FileMode.Open);
+                        fs = new StreamReader(io);
+
+                    }
+                    else
+                    {
+                      
+                        io = CoreContext.Context.Assets.Open(path);
+                        fs = new StreamReader(io);
+                    }
+                    
+                }
+                else
+                {
+                    path = Path.Combine(AppDataDir, filename);
+                    io = File.Open(path, FileMode.Open);
+                    fs = new StreamReader(io);
+
+                }
+                using(io)
+                {
+                    using (fs)
+                    {
+                    
 #else
                 string path;
                 if (!appData)

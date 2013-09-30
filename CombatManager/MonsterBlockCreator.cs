@@ -670,7 +670,7 @@ namespace CombatManager
             statsParagraph.Inlines.AddRange(CreateItemIfNotNull("Languages ", monster.Languages));
             statsParagraph.Inlines.AddRange(CreateItemIfNotNull("SQ ", monster.SQ));
             statsParagraph.Inlines.AddRange(CreateItemIfNotNull("Gear ", monster.Gear));
-
+            statsParagraph.Inlines.AddRange(CreateItemIfNotNull("Other Gear ", monster.OtherGear));
 
             blocks.Add(statsParagraph);
         }

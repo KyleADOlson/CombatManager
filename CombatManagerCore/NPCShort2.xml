@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfMonster>
   <Monster>
     <Name>Village Warrior</Name>
@@ -38652,7 +38652,7 @@
     <XP>400</XP>
     <Alignment>N</Alignment>
     <Size>Medium</Size>
-    <Type>Animal</Type>
+    <Type>animal</Type>
     <Init>1</Init>
     <Senses>low-light vision, scent; Perception +3</Senses>
     <AC>12, touch 11, flat-footed 11</AC>
@@ -57885,7 +57885,7 @@
   </Monster>
   <Monster>
     <Name>Dire Rat Animal Companion</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>Dire Rat</Race>
     <Alignment>N</Alignment>
@@ -57930,7 +57930,7 @@
   </Monster>
   <Monster>
     <Name>Piggy</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>Boar animal companion</Race>
     <Alignment>N</Alignment>
@@ -58298,7 +58298,7 @@
   </Monster>
   <Monster>
     <Name>Dire Rat Animal Companion Tier 6-7</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>Dire Rat Tier 6-7</Race>
     <Alignment>N</Alignment>
@@ -59908,7 +59908,7 @@
   </Monster>
   <Monster>
     <Name>Goblin Shaman's Familiar</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>Weasel</Race>
     <MonsterSource>Pathfinder RPG Bestiary 133</MonsterSource>
@@ -60062,7 +60062,7 @@
   </Monster>
   <Monster>
     <Name>Goblin Shaman's Familiar Tier 6-7</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>Weasel</Race>
     <MonsterSource>Pathfinder RPG Bestiary 133</MonsterSource>
@@ -60503,7 +60503,7 @@
   </Monster>
   <Monster>
     <Name>Summoned Fire Beetle</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>Fiendish fire beetle</Race>
     <MonsterSource>Pathfinder RPG Bestiary 33, 294</MonsterSource>
@@ -60608,7 +60608,7 @@
   </Monster>
   <Monster>
     <Name>Summoned Wolf</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>wolf</Race>
     <MonsterSource>Pathfinder RPG Bestiary 278, 294</MonsterSource>
@@ -60713,7 +60713,7 @@
   </Monster>
   <Monster>
     <Name>Summoned Wolverine</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>wolverine</Race>
     <MonsterSource>Pathfinder RPG Bestiary 279, 294</MonsterSource>
@@ -62508,7 +62508,7 @@
   </Monster>
   <Monster>
     <Name>Garugu, Gorilla Animal Companion</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>ape</Race>
     <Alignment>N</Alignment>
@@ -62977,7 +62977,7 @@
   </Monster>
   <Monster>
     <Name>Summoned Lemure</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>Summoned Lemure</Race>
     <Alignment>LE</Alignment>
@@ -63080,7 +63080,7 @@
   </Monster>
   <Monster>
     <Name>Summoned Dretch</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>Summoned Dretch</Race>
     <Alignment>CE</Alignment>
@@ -63187,7 +63187,7 @@
   </Monster>
   <Monster>
     <Name>Summoned Hell Hound</Name>
-    <CR>-</CR>
+    <CR>1/8</CR>
     <XP>0</XP>
     <Race>Summoned Hell Hound</Race>
     <Alignment>LE</Alignment>

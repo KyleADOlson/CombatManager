@@ -2,6 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="CombatManagerDroid.CombatManagerDroid">
 	<uses-sdk />
 	<application android:label="CombatManagerDroid">
-	
 	</application>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

@@ -252,7 +252,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:IonicZipDll, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:IonicZipDll, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                 }
@@ -278,7 +278,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CombatManager.Core, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:CombatManager.Core, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                 }
@@ -367,15 +367,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Combat Manager"
-        "ProductCode" = "8:{6FB8410A-2A50-42AE-8866-EF3B503D1713}"
-        "PackageCode" = "8:{2C0E0291-D11E-4517-9F5D-E3FC7C129A10}"
+        "ProductCode" = "8:{BE37833C-023D-4201-9392-5EBA1A7D8DDA}"
+        "PackageCode" = "8:{F08947EF-03B6-4E82-82A4-444F1FD3BBB4}"
         "UpgradeCode" = "8:{D3BA9248-E13B-4D16-A80A-2F435C82C97B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.5.1"
+        "ProductVersion" = "8:1.5.3"
         "Manufacturer" = "8:Kyle Olson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
