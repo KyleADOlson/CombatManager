@@ -737,7 +737,10 @@ namespace CombatManager
 
             foreach (Character character in init)
             {
-                _UnfilteredCombatList.Add(character);
+                if (character != null)
+                {
+                    _UnfilteredCombatList.Add(character);
+                }
             }
             FilterList();
 			
@@ -770,7 +773,7 @@ namespace CombatManager
             {
 
                 return new List<Character>(from c in _UnfilteredCombatList
-                                           where !c.IsIdle && c.InitiativeLeader == null
+                                           where c != null && !c.IsIdle && c.InitiativeLeader == null
                                            select c);
             }
         }

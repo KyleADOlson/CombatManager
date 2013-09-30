@@ -65,16 +65,47 @@ namespace CombatManagerDroid
         
         private void SetDialogNumber()
         {
-            String kText = "";
-            if ((_Value < 0) && (_Value > -1000))
+            int kVal = ((_Value / 1000) % 10);
+            string kText = kVal.ToString();
+            int cVal = ((Math.Abs(_Value) / 100) % 10);
+            string cText = cVal.ToString();
+            int dVal = ((Math.Abs(_Value)/10)%10);
+            string dText = dVal.ToString();
+            int iVal = (Math.Abs(_Value) % 10);
+            string iText = iVal.ToString();
+                
+            string dashText = "";
+            if (_Value < 0)
             {
-                kText += "-";
+                dashText = "-";
             }
-            kText += ((_Value/1000)%10).ToString();
+
+            int absVal = Math.Abs(_Value);
+            if (absVal < 10)
+            {
+                dText = "";
+                iText = dashText + iText;
+                dashText = "";
+            }
+            if (absVal < 100)
+            {
+                cText = "";
+                dText = dashText + dText;
+                dashText = "";
+            }
+            if (absVal < 1000)
+            {
+                kText = "";
+                cText = dashText + cText;
+                dashText = "";
+            }
+
+
+
             ((TextView)FindViewById(Resource.Id.textView1)).Text = kText;
-            ((TextView)FindViewById(Resource.Id.textView2)).Text = ((Math.Abs(_Value)/100)%10).ToString();
-            ((TextView)FindViewById(Resource.Id.textView3)).Text = ((Math.Abs(_Value)/10)%10).ToString();
-            ((TextView)FindViewById(Resource.Id.textView4)).Text = (Math.Abs(_Value)%10).ToString();
+            ((TextView)FindViewById(Resource.Id.textView2)).Text = cText;
+            ((TextView)FindViewById(Resource.Id.textView3)).Text = dText;
+            ((TextView)FindViewById(Resource.Id.textView4)).Text = iText;
             
         }
     }

@@ -82,6 +82,7 @@
     <Compile Include="TreasureFragment.cs" />
     <Compile Include="PopupUtils.cs" />
     <Compile Include="RollResultHtmlCreator.cs" />
+    <Compile Include="ConditionDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -253,6 +254,11 @@
     <AndroidResource Include="Resources\drawable\saveHS2x.png" />
     <AndroidResource Include="Resources\drawable\star162x.png" />
     <AndroidResource Include="Resources\drawable\treasure162x.png" />
+    <AndroidResource Include="Resources\drawable\button2.xml" />
+    <AndroidResource Include="Resources\drawable\button_die.xml" />
+    <AndroidResource Include="Resources\layout\ConditionDialog.axml" />
+    <AndroidResource Include="Resources\drawable\bg_key.xml" />
+    <AndroidResource Include="Resources\layout\MultilineTextDialog.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

@@ -23,9 +23,12 @@ namespace CombatManagerDroid
         static CombatState _CombatState;
         static Character _ViewCharacter;
 
+        static Character _SelectedCharacter;
        
         ListView _MonsterList;
         ListView _PlayerList;
+
+        InitiativeListAdapter _InitListAdapter;
 
         //die roller
         static string _DieText = "";
@@ -51,8 +54,15 @@ namespace CombatManagerDroid
             _CombatState.PropertyChanged += HandleCombatStatePropertyChanged;
             _CombatState.Characters.CollectionChanged += HandledCombatStateCharactersChanged;
             _CombatState.RollRequested += HandleRollRequested;
+           
+            _CombatState.CombatList.CollectionChanged += HandleCombatListChanged;
 
 
+        }
+
+        void HandleCombatListChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            ReloadInitiativeList();
         }
 
         void HandledCombatStateCharactersChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -75,14 +85,21 @@ namespace CombatManagerDroid
             ShowDieRolls(View);
         }
 
+        void ReloadInitiativeList()
+        {
+            
+            _InitListAdapter.NotifyDataSetChanged();
+           
+
+          
+        }
+
         void HandleCombatStatePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "CurrentCharacter")
             {
                 UpdateCurrentCharacter(View);
-                ((BaseAdapter)View.FindViewById<ListView>
-                    (Resource.Id.initiativeList).Adapter).NotifyDataSetChanged();
-
+                ReloadInitiativeList();
                 SaveCombatState();
             }
         }
@@ -106,16 +123,23 @@ namespace CombatManagerDroid
             UpdateCurrentCharacter(v);
 
             ListView lv = v.FindViewById<ListView>(Resource.Id.initiativeList);
-            lv.SetAdapter (
-                new InitiativeListAdapter(_CombatState));
+            _InitListAdapter = new InitiativeListAdapter(_CombatState);
+            lv.SetAdapter (_InitListAdapter);
             
             lv.ItemClick +=  (sender, e) => {
                 Character c = ((BaseAdapter<Character>)lv.Adapter)[e.Position];
+                if (_SelectedCharacter != c)
+                {
+                    _SelectedCharacter = c;
+                    _InitListAdapter.Character = _SelectedCharacter;
+                    _InitListAdapter.NotifyDataSetChanged();
+                }
                 ShowCharacter(v, c);
+
             };
 
-            AddCharacterList(inflater, container, v, Resource.Id.playerListLayout, true);
-            AddCharacterList(inflater, container, v, Resource.Id.monsterListLayout, false);
+            AddCharacterList(inflater, container, v, Resource.Id.playerListLayout, false);
+            AddCharacterList(inflater, container, v, Resource.Id.monsterListLayout, true);
 
             ShowCharacter(v, _ViewCharacter);
 
@@ -252,11 +276,23 @@ namespace CombatManagerDroid
         }
         private void UpClicked()
         {
-            
+            if (_SelectedCharacter != null)
+            {
+                if (_CombatState.CombatList.Contains(_SelectedCharacter))
+                {
+                    _CombatState.MoveUpCharacter(_SelectedCharacter);
+                }
+            }
         }
         private void DownClicked()
         {
-            
+            if (_SelectedCharacter != null)
+            {
+                if (_CombatState.CombatList.Contains(_SelectedCharacter))
+                {
+                    _CombatState.MoveDownCharacter(_SelectedCharacter);
+                }
+            }
         }
         private void RollInitiativeClicked()
         {
@@ -288,6 +324,7 @@ namespace CombatManagerDroid
             _CombatState.PropertyChanged -= HandleCombatStatePropertyChanged;
             _CombatState.Characters.CollectionChanged -= HandledCombatStateCharactersChanged;
             _CombatState.RollRequested -= HandleRollRequested;
+            _CombatState.CombatList.CollectionChanged -= HandleCombatListChanged;
         }
 
         public static void SaveCombatState()
@@ -305,7 +342,12 @@ namespace CombatManagerDroid
             else
             {
                 _CombatState = state;
-            }
+
+            }                
+            _CombatState.SortCombatList(false, false, true);
+            _CombatState.FixInitiativeLinksList(new List<Character>(_CombatState.Characters));
+
+
         }
 
         public static CombatState CombatState

@@ -142,7 +142,8 @@ namespace CombatManagerDroid
                 Monster m = CurrentMonster;
                 if (m != null)
                 {
-                    CombatFragment.CombatState.AddMonster(m, true);
+
+                    CombatFragment.CombatState.AddMonster(m, true, true);
                 }
             };
 

@@ -128,6 +128,7 @@
     <Compile Include="CoreContext.cs" />
     <Compile Include="CharacterActions.cs" />
     <Compile Include="MagicItemHtmlCreator.cs" />
+    <Compile Include="ConditionHtmlCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RuleShort.xml" />

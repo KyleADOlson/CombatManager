@@ -86,9 +86,10 @@ namespace CombatManagerDroid
                     ShowMonsterEditor();
                     break;
                 case CharacterActionResult.NeedConditionDialog:
+                    ShowConditionDialog();
                     break;
                 case CharacterActionResult.NeedNotesDialog:
-                    ShowMonsterEditor();
+                    ShowNotesDialog();
                     break;
                 case CharacterActionResult.RollAttack:
                     _State.Roll(CombatState.RollType.Attack, _Character, (Attack)ai.Tag, null); 
@@ -118,9 +119,14 @@ namespace CombatManagerDroid
             Context.StartActivity(intent);
         }
 
-        void RollSkill()
+        void ShowConditionDialog()
         {
-
+            ConditionDialog dl = new ConditionDialog(this.Context, _State, _Character);
+            dl.Show();
+        }
+        void ShowNotesDialog()
+        {
+            UIUtils.ShowTextDialog("Notes", _Character, Context ,true);
         }
 
     }

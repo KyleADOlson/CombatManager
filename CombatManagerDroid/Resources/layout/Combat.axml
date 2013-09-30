@@ -51,7 +51,8 @@
                         d1p1:ellipsize="end"
                         d1p1:paddingRight="4dp"
                         d1p1:paddingLeft="4dp"
-                        d1p1:singleLine="true" />
+                        d1p1:singleLine="true"
+                        d1p1:textColor="#FFFFFF" />
                     <TextView
                         d1p1:text="Turn"
                         d1p1:textAppearance="?android:attr/textAppearanceMedium"
@@ -60,7 +61,8 @@
                         d1p1:layout_height="wrap_content"
                         d1p1:ellipsize="end"
                         d1p1:paddingRight="4dp"
-                        d1p1:paddingLeft="4dp" />
+                        d1p1:paddingLeft="4dp"
+                        d1p1:textColor="#FFFFFF" />
                 </LinearLayout>
                 <Button
                     d1p1:text="Next"
