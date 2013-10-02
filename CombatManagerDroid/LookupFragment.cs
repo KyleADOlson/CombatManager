@@ -27,7 +27,7 @@ namespace CombatManagerDroid
         
         protected abstract String ItemHtml(T item);
 
-        View _v;
+        public View _v;
 
 
         static T _SelectedItem;
@@ -65,15 +65,16 @@ namespace CombatManagerDroid
             {
                 UpdateFilter();
             };
+            BuildFilters();
             FilterItems();
+            BuildAdditionalLayouts();
             ShowItem(_SelectedItem);
-
 
 
             return v;
         }
 
-        private void UpdateFilter()
+        public void UpdateFilter()
         {
             Thread t = new Thread(() =>
             {
@@ -93,7 +94,7 @@ namespace CombatManagerDroid
             return ItemName(item).ToUpper().Contains(filtertext.ToUpper());
         }
 
-        private void FilterItems()
+        protected void FilterItems()
         {
             lock (this)
             {
@@ -103,7 +104,15 @@ namespace CombatManagerDroid
 
                 if (filtertext == null || filtertext.Length == 0)
                 {
-                    outputItems = items;
+                    outputItems = new List<T>();
+
+                    foreach (T item in items)
+                    {
+                        if (CustomFilterItem(item))
+                        {
+                            outputItems.Add(item);
+                        }
+                    }
                 }
                 else
                 {
@@ -111,7 +120,7 @@ namespace CombatManagerDroid
                     outputItems = new List<T>();
                     foreach (T item in items)
                     {
-                        if (FilterItem(filtertext, item))
+                        if (FilterItem(filtertext, item) && CustomFilterItem(item))
                         {
                             outputItems.Add(item);
                         }
@@ -143,7 +152,12 @@ namespace CombatManagerDroid
             }
         }
 
-        private void ShowItem(T item)
+        protected void RefreshItem()
+        {
+            ShowItem(_SelectedItem);
+        }
+
+        protected virtual void ShowItem(T item)
         {
 
             WebView wv = _v.FindViewById<WebView>(Resource.Id.itemView);
@@ -151,6 +165,80 @@ namespace CombatManagerDroid
             if (item != null)
             {
                 wv.LoadData(ItemHtml(item), "text/html", null);
+            }
+        }
+
+        protected LinearLayout FilterLayout
+        {
+            get
+            {
+                return _v.FindViewById<LinearLayout>(Resource.Id.filterLayout);
+            }
+        }
+
+
+
+        protected virtual void BuildFilters()
+        {
+
+        }
+
+        protected virtual void BuildAdditionalLayouts()
+        {
+
+        }
+
+        protected Button BuildFilterButton(String text, int size)
+        {
+            Button b = new Button(_v.Context);
+            b.Text = text;
+            b.SetMinimumWidth(size);
+            FilterLayout.AddView(b);
+            return b;
+            
+        }
+        
+        protected LinearLayout BottomLayout
+        {
+            get
+            {
+                return _v.FindViewById<LinearLayout>(Resource.Id.bottomLayout);
+            }
+        }
+
+        protected LinearLayout LeftLayout
+        {
+            get
+            {
+                return _v.FindViewById<LinearLayout>(Resource.Id.leftLayout);
+            }
+        }
+
+        protected LinearLayout SearchLayout
+        {
+            get
+            {
+                return _v.FindViewById<LinearLayout>(Resource.Id.searchLayout);
+            }
+        }
+        protected LinearLayout SearchReplacementLayout
+        {
+            get
+            {
+                return _v.FindViewById<LinearLayout>(Resource.Id.searchReplacementLayout);
+            }
+        }
+
+        protected virtual bool CustomFilterItem(T item)
+        {
+            return true;
+        }
+
+        public T SelectedItem
+        {
+            get
+            {
+                return _SelectedItem;
             }
         }
        

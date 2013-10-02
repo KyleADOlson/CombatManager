@@ -737,7 +737,10 @@ namespace CombatManager
 
             foreach (Character character in init)
             {
-                _UnfilteredCombatList.Add(character);
+                if (character != null)
+                {
+                    _UnfilteredCombatList.Add(character);
+                }
             }
             FilterList();
 			
@@ -770,7 +773,7 @@ namespace CombatManager
             {
 
                 return new List<Character>(from c in _UnfilteredCombatList
-                                           where !c.IsIdle && c.InitiativeLeader == null
+                                           where c != null && !c.IsIdle && c.InitiativeLeader == null
                                            select c);
             }
         }
@@ -1426,6 +1429,239 @@ namespace CombatManager
             
 			
         }
+
+        public class RollEventArgs : EventArgs
+        {
+            public RequestedRoll Roll {get; set;}
+        }
+
+        public event EventHandler<RollEventArgs> RollRequested;
+
+        private void SendRollEvent(RequestedRoll roll)
+        {
+            if (RollRequested != null)
+            {
+                RollRequested(this, new RollEventArgs() {Roll = roll});
+            }
+        }
+      
+
+        public enum RollType
+        {
+            Attack,
+            AttackSet,
+            Save,
+            Skill
+        }
+
+        public class RequestedRoll
+        {
+            public RequestedRoll()
+            {
+            }
+
+            public RollType Type { get; set;}
+            public Character Character {get; set;}
+            public object Param1 { get; set;}
+            public object Param2 { get; set;}
+            public object Result {get; set;}
+        }
+
+        public void Roll(RollType type, Character character, object param1, object param2)
+        {
+            RequestedRoll req = new RequestedRoll() {
+                Type = type,
+                Character = character,
+                Param1 = param1,
+                Param2 = param2
+            };
+
+            switch (type)
+            {
+            case RollType.Save:
+                {
+                    int mod = character.Monster.GetSave((Monster.SaveType)param1);
+                    DieRoll roll = new DieRoll(1, 20, mod);
+                    req.Result = roll.Roll();
+                }
+                break;
+            case RollType.Skill:
+                {
+                    string skill = (string)param1;
+                    string subtype = (string)param2;
+                    int mod = character.Monster.GetSkillMod(skill, subtype);
+
+                    DieRoll roll = new DieRoll(1, 20, mod);
+                    req.Result = roll.Roll();
+                }
+                break;
+            case RollType.Attack:
+                {
+                    Attack atk = (Attack)param1;
+                    AttackRollResult res = new AttackRollResult(atk);
+                    res.Character = character;
+                    req.Result = res;
+
+                    res.Character = character;
+                }
+                break;
+            case RollType.AttackSet:
+                {
+                    AttackSet atkSet = (AttackSet)param1;
+                    AttackSetResult res = new AttackSetResult();
+                    res.Character = character;
+
+                    foreach (Attack at in atkSet.WeaponAttacks)
+                    {
+                        AttackRollResult ares = new AttackRollResult(at);
+                        res.Results.Add (ares);
+                    }
+                    foreach (Attack at in atkSet.NaturalAttacks)
+                    {
+                        AttackRollResult ares = new AttackRollResult(at);
+                        res.Results.Add (ares);
+                    }
+                    req.Result = res;
+                }
+                break;
+            }
+            SendRollEvent(req);
+
+
+        }
+
+        public class SingleAttackRoll
+        {
+            public RollResult Result {get; set;}
+            public RollResult Damage {get; set;}
+            public RollResult CritResult {get; set;}
+            public RollResult CritDamage {get; set;}
+        }
+
+        public class AttackSetResult
+        {
+
+            Character _Character;
+
+            List<AttackRollResult> _Results = new List<AttackRollResult>();
+
+            public Character Character
+            {
+                get
+                {
+                    return _Character;
+                }
+                set
+                {
+                    _Character = value;
+                }
+            }
+
+            public List<AttackRollResult> Results
+            {
+                get
+                {
+                    return _Results;
+                }
+            }
+
+        }
+
+        public class AttackRollResult
+        {
+            Attack _Attack;
+
+            String _Name;
+
+            Character _Character;
+
+            public String Name
+            {
+                get
+                {
+                    return _Name;
+                }
+            }
+
+            public Character Character
+            {
+                get
+                {
+                    return _Character;
+                }
+                set
+                {
+                    _Character = value;
+                }
+            }
+
+
+            public Attack Attack
+            {
+                get
+                {
+                    return _Attack;
+                }
+            }
+
+
+            public List<SingleAttackRoll> Rolls {get; set;}
+
+
+
+            public AttackRollResult(Attack atk)
+            {
+                _Attack = atk;
+
+                _Name = atk.Name;
+
+                Rolls = new List<SingleAttackRoll>();
+
+                if (atk.Weapon != null)
+                {
+                    _Name = atk.Weapon.Name;
+                }
+
+                int totalAttacks = atk.Count * atk.Bonus.Count;
+
+                for (int atkcount = 0; atkcount < atk.Count; atkcount++)
+                {
+                    foreach (int mod in atk.Bonus)
+                    {
+                        SingleAttackRoll sr = new SingleAttackRoll();
+
+                        DieRoll roll = new DieRoll(1, 20, mod);
+
+                        sr.Result = roll.Roll();
+                        sr.Damage = atk.Damage.Roll();
+
+
+
+                        if (sr.Result.Rolls[0].Result >= atk.CritRange)
+                        {
+                            sr.CritResult = roll.Roll();
+
+                            sr.CritDamage = new RollResult();
+
+                            for (int i = 1; i < atk.CritMultiplier; i++)
+                            {
+                                RollResult crit = atk.Damage.Roll();
+
+                                sr.CritDamage = crit + sr.CritDamage;
+                            }
+                        }
+
+
+                        Rolls.Add (sr);
+                    }
+                }
+
+            }
+        }
+
+
+
+
 
     }
 }

@@ -16,12 +16,18 @@ namespace CombatManagerDroid
 {
     static class UIUtils
     {
+
         public static void ShowTextDialog(String property, Object ob, Context context)
+        {
+            ShowTextDialog(property, ob, context, false);
+
+        }
+        public static void ShowTextDialog(String property, Object ob, Context context, bool multiline)
         {
 
 
             Dialog d = new Dialog(context);
-            d.SetContentView(Resource.Layout.TextDialog);
+            d.SetContentView(multiline?Resource.Layout.MultilineTextDialog:Resource.Layout.TextDialog);
             d.SetTitle(property);
 
             var prop = ob.GetType().GetProperty(property);

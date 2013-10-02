@@ -367,7 +367,7 @@ namespace CombatManager
     class AbilityValueConverter : NullableIntValueConverter
     {
         public AbilityValueConverter()
-            : base(0, 99)
+            : base(0, 999)
         {
         }
     }
@@ -376,7 +376,7 @@ namespace CombatManager
     class BonusValueConverter : NullableIntValueConverter
     {
         public BonusValueConverter()
-            : base(-99, 99)
+            : base(-999, 999)
         {
         }
     }

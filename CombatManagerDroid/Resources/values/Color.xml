@@ -14,5 +14,7 @@
 	<color name="SecondaryColorBLight">#FFCBC9</color>
 	<color name="SecondaryColorBMedium">#FFB9B8</color>
 	<color name="SecondaryColorBDark">#BF9897</color>  
-	<color name="SecondaryColorBDarker">#A63E3C</color>     
+	<color name="SecondaryColorBDarker">#A63E3C</color>   
+    <color name="pressed_color">#4d90fe</color>
+    <color name="default_color">#ffffff</color>  
 </resources>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ff2C767A">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/basicLayout">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout4">
+            <CheckBox
+                android:text="Advanced"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/advancedBox"
+                android:layout_weight="1" />
+            <Button
+                android:text="x1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/advancedMultiplierButton"
+                android:textColor="#ff000000"
+                android:minWidth="50dp"
+                android:minHeight="25dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout5">
+            <Button
+                android:text="Normal"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/sizeButton"
+                android:layout_weight="1"
+                android:textColor="#ff000000" />
+            <Button
+                android:text="x1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/sizeMultiplierButton"
+                android:textColor="#ff000000"
+                android:minWidth="50dp"
+                android:minHeight="25dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout6">
+            <Button
+                android:text="None"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/outsiderButton"
+                android:layout_weight="1"
+                android:textColor="#ff000000" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout7">
+            <CheckBox
+                android:text="Augment Summoning"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/augmentSummoningBox" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/hdLayout">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout8">
+            <Button
+                android:text="No HD"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/hdButton"
+                android:textColor="#ff000000" />
+            <Button
+                android:text="1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/hdCountButton"
+                android:textColor="#ff000000"
+                android:minWidth="50dp"
+                android:minHeight="25dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout9">
+            <Button
+                android:text="Bonus Stat Strength"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/bonusStatButton"
+                android:textColor="#ff000000" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout10">
+            <Button
+                android:text="No Stat Change"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/statChangeButton"
+                android:textColor="#ff000000" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/templateSelectionLayout">
+        <Button
+            android:text="No Template"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/templateButton" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout11">
+            <Button
+                android:text="Regular"
+                android:id="@+id/zombieButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:text="Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dragonColorButton" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/statsLayout">
+                <TextView
+                    android:text="Pick Three Stats"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView1" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout14">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/linearLayout13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent">
+                        <CheckBox
+                            android:text="Str"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/strBox"
+                            android:checked="true" />
+                        <CheckBox
+                            android:text="Int"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/intBox" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/linearLayout13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent">
+                        <CheckBox
+                            android:text="Dex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/dexBox"
+                            android:checked="true" />
+                        <CheckBox
+                            android:text="Wis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/wisBox" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/linearLayout13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent">
+                        <CheckBox
+                            android:text="Con"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/conBox"
+                            android:checked="true" />
+                        <CheckBox
+                            android:text="Cha"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/chaBox" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/skeletonLayout">
+                <CheckBox
+                    android:text="Bloody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bloodyBox" />
+                <CheckBox
+                    android:text="Burning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/burningBox"
+                    android:layout_marginTop="-10dp" />
+                <CheckBox
+                    android:text="Skeletal Champion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/championBox"
+                    android:maxHeight="30dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginTop="-10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

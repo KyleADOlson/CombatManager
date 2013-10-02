@@ -11,7 +11,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:minWidth="250dp" />
+        android:minWidth="250dp"
+        android:singleLine="true" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"

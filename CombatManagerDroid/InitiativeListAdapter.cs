@@ -18,6 +18,19 @@ namespace CombatManagerDroid
     class InitiativeListAdapter : BaseAdapter<Character>
     {  
         CombatState _State;
+        Character _Character;
+        public Character Character
+        {
+            get
+            {
+                return _Character;
+            }
+            set
+            {
+                _Character = value;
+            }
+        }
+
         public InitiativeListAdapter(CombatState state)
         {
             _State = state;
@@ -55,6 +68,11 @@ namespace CombatManagerDroid
                 layout = new LinearLayout(Application.Context);
             }
             layout.RemoveAllViews();
+            layout.LayoutParameters = new AbsListView.LayoutParams(
+                new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MatchParent,
+                ViewGroup.LayoutParams.WrapContent));
+
 
             TextView t = new TextView(Application.Context);
             if (t == null)
@@ -63,14 +81,22 @@ namespace CombatManagerDroid
             }
             t.Text = _State.CombatList[position].Name;
             t.SetTextColor (Android.Graphics.Color.Black);
-
+            
+            layout.SetBackgroundColor(new Android.Graphics.Color(0xee, 0xee, 0xee));
             if (_State.CurrentCharacter == _State.CombatList[position])
             {
-                TextView tv = new TextView(Application.Context);
-                tv.Text = ">> ";
-                layout.AddView(tv);
+                ImageView iv = new ImageView(Application.Context);
+                iv.SetImageDrawable(Application.Context.Resources.GetDrawable(Resource.Drawable.next16));
+
+                layout.AddView(iv);
             }
 
+            if (_State.CombatList[position] == _Character)
+            {
+                layout.SetBackgroundColor(new Android.Graphics.Color(0, 0, 0));
+                
+                t.SetTextColor (Android.Graphics.Color.White);
+            }
           
 
             layout.AddView(t);

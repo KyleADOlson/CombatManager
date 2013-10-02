@@ -33,11 +33,13 @@ namespace CombatManagerDroid
 
 
 
-        private MonsterFragment _MonsterFragment;
-        private FeatFragment _FeatFragment;
-        private SpellFragment _SpellFragment;
-        private RuleFragment _RuleFragment;
-        private CombatFragment _CombatFragment;
+        MonsterFragment _MonsterFragment;
+        FeatFragment _FeatFragment;
+        SpellFragment _SpellFragment;
+        RuleFragment _RuleFragment;
+        CombatFragment _CombatFragment;
+        TreasureFragment _TreasureFragment;
+
         static HomePage _LastFragment = HomePage.Combat;
 
         protected override void OnCreate (Bundle bundle)
@@ -66,12 +68,16 @@ namespace CombatManagerDroid
             {
                 ShowRulesFragment();
             };
+            FindViewById<Button>(Resource.Id.treasureButton).Click += delegate
+            {
+                ShowTreasureFragment();
+            };
             ShowLastFragment();
 
             //UpdateText();
         }
 
-        private void ShowLastFragment()
+        void ShowLastFragment()
         {
             switch (_LastFragment)
             {
@@ -171,7 +177,18 @@ namespace CombatManagerDroid
         private void ShowTreasureFragment()
         {
 
+            FragmentTransaction ft = FragmentManager.BeginTransaction();
+
+            if (_TreasureFragment == null)
+            {
+                _TreasureFragment = new TreasureFragment();
+            }
+            ft.Replace(Resource.Id.bodyLayout, _TreasureFragment);
+            ft.SetTransition(FragmentTransit.FragmentOpen);
+            ft.Commit();
+            _LastFragment = HomePage.Treasure;
         }
+
 
         protected override void OnPause ()
         {

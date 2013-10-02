@@ -77,6 +77,7 @@ namespace CombatManagerDroid
                 t.SetPadding(0, -2, 0, -2);
                 t.Enabled = false;
             }
+            t.SetCompoundDrawablesWithIntrinsicBounds(PopupUtils.NamedImage(_Context, ai.Icon), null, null, null);
             return t;
         }
 

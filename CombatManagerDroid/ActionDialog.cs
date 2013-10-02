@@ -86,9 +86,25 @@ namespace CombatManagerDroid
                     ShowMonsterEditor();
                     break;
                 case CharacterActionResult.NeedConditionDialog:
+                    ShowConditionDialog();
                     break;
                 case CharacterActionResult.NeedNotesDialog:
-                    ShowMonsterEditor();
+                    ShowNotesDialog();
+                    break;
+                case CharacterActionResult.RollAttack:
+                    _State.Roll(CombatState.RollType.Attack, _Character, (Attack)ai.Tag, null); 
+                    break;
+                case CharacterActionResult.RollAttackSet:
+                    _State.Roll(CombatState.RollType.AttackSet, _Character, (AttackSet)ai.Tag, null); 
+                    break;
+                case CharacterActionResult.RollSave:
+
+                    _State.Roll(CombatState.RollType.Save, _Character, (Monster.SaveType)ai.Tag, null);
+                    break;
+
+                case CharacterActionResult.RollSkill:
+                    var sks = (Tuple<string, string>)ai.Tag;
+                    _State.Roll(CombatState.RollType.Save, _Character, sks.Item1, sks.Item2);
                     break;
                 }
             }
@@ -101,6 +117,16 @@ namespace CombatManagerDroid
             Intent intent = new Intent(this.Context, (Java.Lang.Class) new MonsterEditorMainActivity().Class); 
             intent.AddFlags(ActivityFlags.NewTask); 
             Context.StartActivity(intent);
+        }
+
+        void ShowConditionDialog()
+        {
+            ConditionDialog dl = new ConditionDialog(this.Context, _State, _Character);
+            dl.Show();
+        }
+        void ShowNotesDialog()
+        {
+            UIUtils.ShowTextDialog("Notes", _Character, Context ,true);
         }
 
     }
