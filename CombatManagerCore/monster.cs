@@ -10109,6 +10109,17 @@ namespace CombatManager
 
             skillValueList.Clear();
             skillValueList.AddRange(skillValueDictionary.Values);
+
+            foreach (SkillValue v in skillValueList)
+            {
+                v.PropertyChanged += new PropertyChangedEventHandler(SkillValuePropertyChanged);
+            }
+        }
+
+        void SkillValuePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            SkillValue v = (SkillValue)sender;
+            UpdateSkillFields(v);
         }
 
 
