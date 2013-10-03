@@ -1480,7 +1480,6 @@ namespace CombatManager
             {
             case RollType.Save:
                 {
-                    int val = 0;
                     int mod = character.Monster.GetSave((Monster.SaveType)param1);
                     DieRoll roll = new DieRoll(1, 20, mod);
                     req.Result = roll.Roll();
@@ -1495,6 +1494,7 @@ namespace CombatManager
                     DieRoll roll = new DieRoll(1, 20, mod);
                     req.Result = roll.Roll();
                 }
+                break;
             case RollType.Attack:
                 {
                     Attack atk = (Attack)param1;
@@ -1502,7 +1502,7 @@ namespace CombatManager
                     res.Character = character;
                     req.Result = res;
 
-                res.Character = character;
+                    res.Character = character;
                 }
                 break;
             case RollType.AttackSet:
