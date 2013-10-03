@@ -31,6 +31,18 @@ namespace CombatManagerDroid
 
             //hp section
             //hd button
+            Button b = FindViewById<Button>(Resource.Id.hdButton);
+            b.Text = EditMonster.HD;
+            b.Click += (object sender, EventArgs e) => 
+            {
+                HDDialog dialog = new HDDialog(this, EditMonster.HD);
+                dialog.OkClicked += (object s, EventArgs ea) => 
+                {
+                    EditMonster.HD = dialog.DieRoll.Text;
+                    b.Text = EditMonster.HD;
+                };
+                dialog.Show();
+            };
 
             AttachEditTextInt(EditMonster, Resource.Id.hpText, "HP");
             AttachEditTextString(EditMonster, Resource.Id.hpModsText, "HP_Mods");

@@ -28,6 +28,9 @@ namespace CombatManagerDroid
 
             SetContentView (LayoutID);
 
+            
+            Window.SetSoftInputMode(SoftInput.StateHidden);
+
             FindViewById<Button>(Resource.Id.cancelButton).Click += delegate
             {
                 CancelClicked();
@@ -47,10 +50,22 @@ namespace CombatManagerDroid
             {
                 
                 int a = x;
-                FindViewById<Button>(x).Click += delegate
+                Button b = FindViewById<Button>(x);
+                b.Click += delegate
                 {
                     TabClicked(a);
                 };
+
+                if (LayoutID == LayoutFromTab(x))
+                {
+                    b.Selected = true;
+                    b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.init_button));
+                }
+                else
+                  
+                {
+                    b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.init_button));
+                }
             }
         }
 

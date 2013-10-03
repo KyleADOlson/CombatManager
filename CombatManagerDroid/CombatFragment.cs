@@ -118,12 +118,23 @@ namespace CombatManagerDroid
                 delegate {DownClicked();};
             v.FindViewById<Button>(Resource.Id.rollInitiativeButton).Click += 
             delegate {RollInitiativeClicked();};
+            v.FindViewById<Button>(Resource.Id.sortButton).Click += (object sender, EventArgs e) => 
+            {
+                _CombatState.SortInitiative();
+            };
+            v.FindViewById<Button>(Resource.Id.resetButton).Click += (object sender, EventArgs e) => 
+            {
+                foreach (Character ch in _CombatState.Characters)
+                {
+                    ch.CurrentInitiative = 0;
+                }
+            };
 
-            
+
             UpdateCurrentCharacter(v);
 
             ListView lv = v.FindViewById<ListView>(Resource.Id.initiativeList);
-            _InitListAdapter = new InitiativeListAdapter(_CombatState);
+            _InitListAdapter = new InitiativeListAdapter(_CombatState, v);
             lv.SetAdapter (_InitListAdapter);
             
             lv.ItemClick +=  (sender, e) => {

@@ -149,7 +149,7 @@
                         d1p1:text="Sort"
                         d1p1:layout_width="fill_parent"
                         d1p1:layout_height="fill_parent"
-                        d1p1:id="@+id/button6"
+                        d1p1:id="@+id/sortButton"
                         d1p1:layout_weight="1"
                         d1p1:background="@drawable/init_button"
                         d1p1:drawableLeft="@drawable/sort16" />
@@ -157,7 +157,7 @@
                         d1p1:text="Reset"
                         d1p1:layout_width="fill_parent"
                         d1p1:layout_height="fill_parent"
-                        d1p1:id="@+id/button7"
+                        d1p1:id="@+id/resetButton"
                         d1p1:layout_weight="1"
                         d1p1:background="@drawable/init_button"
                         d1p1:drawableLeft="@drawable/reset16" />

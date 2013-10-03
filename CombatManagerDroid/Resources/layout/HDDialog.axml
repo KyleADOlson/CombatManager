@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="-"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/subtract4Button"
+            android:tag="4" />
+        <TextView
+            android:text="20d20"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/d4Text"
+            android:layout_gravity="center"
+            android:gravity="center" />
+        <Button
+            android:text="+"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/add4Button"
+            android:tag="4" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="-"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/subtract6Button"
+            android:tag="6" />
+        <TextView
+            android:text="20d20"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/d6Text"
+            android:layout_gravity="center"
+            android:gravity="center" />
+        <Button
+            android:text="+"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/add6Button"
+            android:tag="6" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="-"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/subtract8Button"
+            android:tag="8" />
+        <TextView
+            android:text="20d20"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/d8Text"
+            android:layout_gravity="center"
+            android:gravity="center" />
+        <Button
+            android:text="+"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/add8Button"
+            android:tag="8" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="-"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/subtract10Button"
+            android:tag="10" />
+        <TextView
+            android:text="20d20"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/d10Text"
+            android:layout_gravity="center"
+            android:gravity="center" />
+        <Button
+            android:text="+"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/add10Button"
+            android:tag="10" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="-"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/subtract12Button"
+            android:tag="12" />
+        <TextView
+            android:text="20d20"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/d12Text"
+            android:layout_gravity="center"
+            android:gravity="center" />
+        <Button
+            android:text="+"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/add12Button"
+            android:tag="12" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="-"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/subtract20Button"
+            android:tag="20" />
+        <TextView
+            android:text="20d20"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/d20Text"
+            android:layout_gravity="center"
+            android:gravity="center" />
+        <Button
+            android:text="+"
+            android:layout_width="75dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/add20Button"
+            android:tag="20" />
+    </LinearLayout>
+    <EditText
+        android:inputType="numberSigned"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/modText" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2">
+        <Button
+            android:text="OK"
+            android:id="@+id/okButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <Button
+            android:text="Cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancelButton"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>
