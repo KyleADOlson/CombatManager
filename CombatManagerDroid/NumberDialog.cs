@@ -19,6 +19,7 @@ namespace CombatManagerDroid
 
         public NumberDialog(String property, Object ob, Context context) : base (context)
         {
+
             SetContentView(Resource.Layout.NumberDialog);
             SetTitle(property);
 

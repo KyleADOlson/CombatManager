@@ -53,7 +53,9 @@
     <Compile Include="LibraryListAdapter.cs" />
     <Compile Include="LookupFragment.cs" />
     <Compile Include="CombatFragment.cs" />
-    <Compile Include="InitiativeListAdapter.cs" />
+    <Compile Include="InitiativeListAdapter.cs">
+      <DependentUpon>FileDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="CharacterListAdapter.cs" />
     <Compile Include="ActionDialog.cs" />
     <Compile Include="CharacterActionsAdapter.cs" />
@@ -72,9 +74,6 @@
     <Compile Include="TextSelectionAdapater.cs" />
     <Compile Include="FeatPickerDialog.cs" />
     <Compile Include="AttacksEditorActivity.cs" />
-    <Compile Include="Resources\UIUtils.cs">
-      <DependentUpon>Resource.designer.cs</DependentUpon>
-    </Compile>
     <Compile Include="FileDialog.cs" />
     <Compile Include="FeatFragment.cs" />
     <Compile Include="SpellFragment.cs" />
@@ -83,6 +82,8 @@
     <Compile Include="PopupUtils.cs" />
     <Compile Include="RollResultHtmlCreator.cs" />
     <Compile Include="ConditionDialog.cs" />
+    <Compile Include="UIUtils.cs" />
+    <Compile Include="HDDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -259,6 +260,9 @@
     <AndroidResource Include="Resources\layout\ConditionDialog.axml" />
     <AndroidResource Include="Resources\drawable\bg_key.xml" />
     <AndroidResource Include="Resources\layout\MultilineTextDialog.axml" />
+    <AndroidResource Include="Resources\drawable-nodpi\DiePencil.png" />
+    <AndroidResource Include="Resources\layout\HDDialog.axml" />
+    <AndroidResource Include="Resources\layout\editor_tab_bar.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -331,5 +335,8 @@
     <AndroidAsset Include="..\CombatManagerCore\NPCShort2.xml">
       <Link>Assets\NPCShort2.xml</Link>
     </AndroidAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable-nodpi\" />
   </ItemGroup>
 </Project>

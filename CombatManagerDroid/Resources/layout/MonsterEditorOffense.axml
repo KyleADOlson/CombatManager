@@ -4,50 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffafdbdd">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1"
-        android:background="#ff47aaaf">
-        <Button
-            android:text="Main"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/mainTab" />
-        <Button
-            android:text="Defense"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/defenseTab" />
-        <Button
-            android:text="Offense"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/offenseTab" />
-        <Button
-            android:text="Stats"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/statsTab" />
-        <Button
-            android:text="Feats"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/featsTab" />
-        <Button
-            android:text="Special"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/specialTab" />
-        <Button
-            android:text="Description"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/descriptionTab" />
-    </LinearLayout>
+    <include
+        layout="@layout/editor_tab_bar" />
     <ScrollView
         android:minWidth="25px"
         android:minHeight="25px"
@@ -98,7 +56,9 @@
                             android:id="@+id/speedText"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:minWidth="45dp" />
+                            android:minWidth="45dp"
+                            android:singleLine="true"
+                            android:numeric="integer" />
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
@@ -120,7 +80,8 @@
                             android:id="@+id/flyText"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:minWidth="45dp" />
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
                         <Button
                             android:text="Button"
                             android:id="@+id/flyQualityButton"
@@ -155,7 +116,8 @@
                             android:id="@+id/climbText"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:minWidth="45dp" />
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
@@ -177,7 +139,8 @@
                             android:id="@+id/burrowText"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:minWidth="45dp" />
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
@@ -199,7 +162,8 @@
                             android:id="@+id/swimText"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:minWidth="45dp" />
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -229,7 +193,8 @@
                             android:id="@+id/spaceText"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:minWidth="45dp" />
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="horizontal"
@@ -251,7 +216,8 @@
                             android:id="@+id/reachText"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:minWidth="45dp" />
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -315,7 +281,8 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/specialAttacksText" />
+                    android:id="@+id/specialAttacksText"
+                    android:singleLine="true" />
                 <TextView
                     android:text="Spell-Like Abilities"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -325,7 +292,8 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spellLikeAbilitiesText" />
+                    android:id="@+id/spellLikeAbilitiesText"
+                    android:singleLine="true" />
                 <TextView
                     android:text="Spells Known"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -335,7 +303,8 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spellsKnownText" />
+                    android:id="@+id/spellsKnownText"
+                    android:singleLine="true" />
                 <TextView
                     android:text="Spells Prepared"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -345,7 +314,8 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spellsPreparedText" />
+                    android:id="@+id/spellsPreparedText"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
