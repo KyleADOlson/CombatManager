@@ -17,4 +17,7 @@
 	<color name="SecondaryColorBDarker">#A63E3C</color>   
     <color name="pressed_color">#4d90fe</color>
     <color name="default_color">#ffffff</color>  
+    
+    <color name="main_tab_light">#EEEEEE</color>
+    <color name="main_tab_dark">#aaaaaa</color>
 </resources>

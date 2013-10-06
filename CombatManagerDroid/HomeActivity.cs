@@ -33,6 +33,7 @@ namespace CombatManagerDroid
 
 
 
+
         MonsterFragment _MonsterFragment;
         FeatFragment _FeatFragment;
         SpellFragment _SpellFragment;
@@ -41,6 +42,16 @@ namespace CombatManagerDroid
         TreasureFragment _TreasureFragment;
 
         static HomePage _LastFragment = HomePage.Combat;
+
+        List<int> _ButtonId = new List<int>
+        {
+            Resource.Id.combatButton,
+            Resource.Id.monstersButton,
+            Resource.Id.featsButton,
+            Resource.Id.spellsButton,
+            Resource.Id.rulesButton,
+            Resource.Id.treasureButton
+        };
 
         protected override void OnCreate (Bundle bundle)
         {
@@ -72,7 +83,14 @@ namespace CombatManagerDroid
             {
                 ShowTreasureFragment();
             };
+            ImageButton b = FindViewById<ImageButton>(Resource.Id.helpButton);
+            b.Click += delegate
+            {
+                ShowHelp();
+            };
+
             ShowLastFragment();
+
 
             //UpdateText();
         }
@@ -102,97 +120,125 @@ namespace CombatManagerDroid
             }
                 
         }
+
+        private void SetTabState(HomePage selectedPage)
+        {
+            for (int i=0; i<6; i++)
+            {
+                Button b = FindViewById<Button>(_ButtonId[i]);
+                b.Selected = i == (int)selectedPage;
+
+            }
+        }
         
         private void ShowCombatFragment()
         {
-            FragmentTransaction ft = FragmentManager.BeginTransaction();
             
             if (_CombatFragment == null)
             {
                 _CombatFragment = new CombatFragment();
             }
-            ft.Replace(Resource.Id.bodyLayout, _CombatFragment);
-            ft.SetTransition(FragmentTransit.FragmentOpen);
-            ft.Commit();
             _LastFragment = HomePage.Combat;
+            TransitionBodyFragment(_CombatFragment);
+            SetTabState(_LastFragment);
         }
         
         private void ShowMonsterFragment()
         {
-            FragmentTransaction ft = FragmentManager.BeginTransaction();
             
             if (_MonsterFragment == null)
             {
                 _MonsterFragment = new MonsterFragment();
             }
-            ft.Replace(Resource.Id.bodyLayout, _MonsterFragment);
-            ft.SetTransition(FragmentTransit.FragmentOpen);
-            ft.Commit();
             _LastFragment = HomePage.Monsters;
+            
+            TransitionBodyFragment(_MonsterFragment);
+            SetTabState(_LastFragment);
         }
 
         private void ShowFeatsFragment()
         {
-            FragmentTransaction ft = FragmentManager.BeginTransaction();
 
             if (_FeatFragment == null)
             {
                 _FeatFragment = new FeatFragment();
             }
-            ft.Replace(Resource.Id.bodyLayout, _FeatFragment);
-            ft.SetTransition(FragmentTransit.FragmentOpen);
-            ft.Commit();
             _LastFragment = HomePage.Feats;
+            TransitionBodyFragment(_FeatFragment);
+            SetTabState(_LastFragment);
         }
 
         private void ShowSpellsFragment()
         {
-            FragmentTransaction ft = FragmentManager.BeginTransaction();
 
             if (_SpellFragment == null)
             {
                 _SpellFragment = new SpellFragment();
             }
-            ft.Replace(Resource.Id.bodyLayout, _SpellFragment);
-            ft.SetTransition(FragmentTransit.FragmentOpen);
-            ft.Commit();
             _LastFragment = HomePage.Spells;
+            
+            TransitionBodyFragment(_SpellFragment);
+            SetTabState(_LastFragment);
         }
 
         private void ShowRulesFragment()
         {
-            
-            FragmentTransaction ft = FragmentManager.BeginTransaction();
+
 
             if (_RuleFragment == null)
             {
                 _RuleFragment = new RuleFragment();
             }
-            ft.Replace(Resource.Id.bodyLayout, _RuleFragment);
-            ft.SetTransition(FragmentTransit.FragmentOpen);
-            ft.Commit();
             _LastFragment = HomePage.Rules;
+            
+            TransitionBodyFragment(_RuleFragment);
+            SetTabState(_LastFragment);
         }
 
         private void ShowTreasureFragment()
         {
 
-            FragmentTransaction ft = FragmentManager.BeginTransaction();
 
             if (_TreasureFragment == null)
             {
                 _TreasureFragment = new TreasureFragment();
             }
-            ft.Replace(Resource.Id.bodyLayout, _TreasureFragment);
-            ft.SetTransition(FragmentTransit.FragmentOpen);
-            ft.Commit();
             _LastFragment = HomePage.Treasure;
+            TransitionBodyFragment(_TreasureFragment);
+            SetTabState(_LastFragment);
+        }
+
+        private void TransitionBodyFragment(Fragment fragment)
+        {
+            
+            FragmentTransaction ft = FragmentManager.BeginTransaction();
+            ft.Replace(Resource.Id.bodyLayout, fragment);
+            ft.SetTransition(FragmentTransit.None);
+            ft.Commit();
         }
 
 
         protected override void OnPause ()
         {
             base.OnPause ();
+        }
+
+        void ShowHelp()
+        {
+            /*String message = "Combat Manager for Android\r\n";
+            message += "Version " + Application.PackageManager.GetPackageInfo(PackageName, 0).VersionName + "\r\n\r\n";
+                message += "Copyright 2010-2013 Kyle Olson";
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.SetMessage(message);
+            builder1.SetCancelable(true);
+            builder1.SetPositiveButton("Close", (sender, e) => {});
+
+                AlertDialog alert11 = builder1.Create();
+            alert11.Show();*/
+
+            AboutDialog dlg = new AboutDialog(this);
+            dlg.Show();
         }
 
 

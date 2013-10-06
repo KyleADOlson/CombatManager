@@ -32,6 +32,13 @@ namespace CombatManagerDroid
             }
         }
 
+        public class CharacterEventArgs
+        {
+            public Character Character{get; set;}
+        }
+
+        public EventHandler<CharacterEventArgs> CharacterClicked;
+
         public InitiativeListAdapter(CombatState state, View view)
         {
             _State = state;
@@ -159,6 +166,15 @@ namespace CombatManagerDroid
                 ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
             lp.Weight = 1.0f;
             t.LayoutParameters = lp;
+
+            t.Click += (object sender, EventArgs e) => 
+            {
+                if (CharacterClicked != null)
+                {
+                    CharacterClicked(this, new CharacterEventArgs() {Character = c});
+                }
+
+            };
           
 
             layout.AddView(t);
@@ -176,7 +192,7 @@ namespace CombatManagerDroid
             bu.SetTextColor(new Android.Graphics.Color(0xff, 0xff, 0xff));
             bu.Click += (object sender, EventArgs e) => {
                 
-                new NumberDialog("CurrentInitiative", c, _View.Context).Show();
+                new NumberDialog("CurrentInitiative", "Initiative", c, _View.Context).Show();
             };
 
             //action button

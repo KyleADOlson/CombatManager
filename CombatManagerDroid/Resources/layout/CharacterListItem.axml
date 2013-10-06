@@ -72,11 +72,18 @@
             android:layout_height="fill_parent"
             android:minWidth="60dp" />
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
+    <HorizontalScrollView
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/conditionsLayout" />
+        android:id="@+id/horizontalScrollView1">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:id="@+id/conditionsLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </HorizontalScrollView>
 </LinearLayout>

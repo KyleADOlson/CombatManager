@@ -25,6 +25,7 @@ namespace CombatManagerDroid
         {
             base.OnCreate (bundle);
 
+            OverridePendingTransition(Resource.Animation.fadein, Resource.Animation.fadeout);
 
             SetContentView (LayoutID);
 

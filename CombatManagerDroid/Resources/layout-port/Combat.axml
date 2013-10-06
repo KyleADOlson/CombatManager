@@ -230,49 +230,56 @@
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/rollD4Button"
                     d1p1:layout_weight="1"
-                    d1p1:tag="4" />
+                    d1p1:tag="4"
+                    d1p1:background="@drawable/main_tab" />
                 <ImageButton
                     d1p1:src="@drawable/d6162x"
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/rollD6Button"
                     d1p1:layout_weight="1"
-                    d1p1:tag="6" />
+                    d1p1:tag="6"
+                    d1p1:background="@drawable/main_tab" />
                 <ImageButton
                     d1p1:src="@drawable/d8162x"
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/rollD8Button"
                     d1p1:layout_weight="1"
-                    d1p1:tag="8" />
+                    d1p1:tag="8"
+                    d1p1:background="@drawable/main_tab" />
                 <ImageButton
                     d1p1:src="@drawable/d10162x"
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/rollD10Button"
                     d1p1:layout_weight="1"
-                    d1p1:tag="10" />
+                    d1p1:tag="10"
+                    d1p1:background="@drawable/main_tab" />
                 <ImageButton
                     d1p1:src="@drawable/d12162x"
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="wrap_content"
                     d1p1:id="@+id/rollD12Button"
                     d1p1:layout_weight="1"
-                    d1p1:tag="12" />
+                    d1p1:tag="12"
+                    d1p1:background="@drawable/main_tab" />
                 <ImageButton
                     d1p1:src="@drawable/d20p162x"
                     d1p1:id="@+id/rollD20Button"
                     d1p1:tag="20"
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
-                    d1p1:layout_weight="1" />
+                    d1p1:layout_weight="1"
+                    d1p1:background="@drawable/main_tab" />
                 <ImageButton
                     d1p1:src="@drawable/d100162x"
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/rollD100Button"
                     d1p1:layout_weight="1"
-                    d1p1:tag="100" />
+                    d1p1:tag="100"
+                    d1p1:background="@drawable/main_tab" />
             </LinearLayout>
             <LinearLayout
                 d1p1:orientation="horizontal"
@@ -286,7 +293,8 @@
                     d1p1:id="@+id/clearRollButton"
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
-                    d1p1:layout_weight="3" />
+                    d1p1:layout_weight="3"
+                    d1p1:background="@drawable/main_tab" />
                 <EditText
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
@@ -298,10 +306,9 @@
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/rollButton"
-                    d1p1:layout_weight="3" />
+                    d1p1:layout_weight="3"
+                    d1p1:background="@drawable/main_tab" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-<!-- Property Change Conflict | id:@+id/button6 | id=@+id/sortButton -->
-<!-- Property Change Conflict | id:@+id/button7 | id=@+id/resetButton -->
 </LinearLayout>

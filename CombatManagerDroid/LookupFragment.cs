@@ -39,6 +39,7 @@ namespace CombatManagerDroid
         {
             base.OnCreate (savedInstanceState);
 
+
             // Create your fragment here
 
 

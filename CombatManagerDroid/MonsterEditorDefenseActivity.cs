@@ -32,14 +32,14 @@ namespace CombatManagerDroid
             //hp section
             //hd button
             Button b = FindViewById<Button>(Resource.Id.hdButton);
-            b.Text = EditMonster.HD;
+            b.Text = EditMonster.Adjuster.HD.Text;
             b.Click += (object sender, EventArgs e) => 
             {
-                HDDialog dialog = new HDDialog(this, EditMonster.HD);
+                HDDialog dialog = new HDDialog(this, EditMonster.Adjuster.HD.Text);
                 dialog.OkClicked += (object s, EventArgs ea) => 
                 {
-                    EditMonster.HD = dialog.DieRoll.Text;
-                    b.Text = EditMonster.HD;
+                    EditMonster.Adjuster.HD = dialog.DieRoll;
+                    b.Text = EditMonster.Adjuster.HD.Text;
                 };
                 dialog.Show();
             };
