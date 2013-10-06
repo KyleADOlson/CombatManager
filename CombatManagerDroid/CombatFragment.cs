@@ -28,6 +28,8 @@ namespace CombatManagerDroid
         ListView _MonsterList;
         ListView _PlayerList;
 
+        static TextView _XPText;
+
         InitiativeListAdapter _InitListAdapter;
 
         //die roller
@@ -75,6 +77,10 @@ namespace CombatManagerDroid
             {
                 _PlayerList.SetAdapter(new CharacterListAdapter(_CombatState, false));
             }
+            if (_XPText != null)
+            {
+                ReloadXPText();
+            }
             
             SaveCombatState();
         }
@@ -92,6 +98,19 @@ namespace CombatManagerDroid
            
 
           
+        }
+
+        void ReloadXPText()
+        {
+            if (_CombatState.XP == null)
+            {
+                _XPText.Text = null;
+            }
+            else
+            {
+                _XPText.Text = "XP: " + _CombatState.XP;
+            }
+
         }
 
         void HandleCombatStatePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -136,6 +155,11 @@ namespace CombatManagerDroid
             ListView lv = v.FindViewById<ListView>(Resource.Id.initiativeList);
             _InitListAdapter = new InitiativeListAdapter(_CombatState, v);
             lv.SetAdapter (_InitListAdapter);
+
+            _InitListAdapter.CharacterClicked += (sender, e) =>
+            {
+                ShowCharacter(v, e.Character);
+            };
             
             lv.ItemClick +=  (sender, e) => {
                 Character c = ((BaseAdapter<Character>)lv.Adapter)[e.Position];
@@ -148,6 +172,7 @@ namespace CombatManagerDroid
                 ShowCharacter(v, c);
 
             };
+
 
             AddCharacterList(inflater, container, v, Resource.Id.playerListLayout, false);
             AddCharacterList(inflater, container, v, Resource.Id.monsterListLayout, true);
@@ -260,6 +285,13 @@ namespace CombatManagerDroid
                 bui.Show();                
             };
 
+            if (monsters)
+            {
+                _XPText = cl.FindViewById<TextView>(Resource.Id.xpText);
+                ReloadXPText();
+            }
+
+
 
             v.FindViewById<LinearLayout>(id).AddView(cl);
 
@@ -369,6 +401,8 @@ namespace CombatManagerDroid
             }
         }
 
+        GestureDetector gd;
+
         void SetupDieRoller(View v)
         {
             List<int> buttons = new List<int>() { Resource.Id.rollD4Button, Resource.Id.rollD6Button,
@@ -380,6 +414,8 @@ namespace CombatManagerDroid
                 ImageButton b = v.FindViewById<ImageButton>(id);
                 int die = 0;
                 int.TryParse(((String)b.Tag), out die);
+
+              
                 b.Click += (object sender, EventArgs e) => {AddDieRoll(die);};
             }
 
@@ -404,6 +440,8 @@ namespace CombatManagerDroid
 
 
         }
+
+ 
 
         private class DieViewClient : Java.Lang.Object, WebView.IPictureListener
         {
@@ -444,6 +482,11 @@ namespace CombatManagerDroid
 
             DieRoll roll = DieRoll.FromString(dieText.Text);
 
+            Roll(roll);
+        }
+
+        void Roll (DieRoll roll)
+        {
             if (roll != null)
             {
                 RollResult res = roll.Roll();

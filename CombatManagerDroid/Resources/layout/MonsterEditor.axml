@@ -241,7 +241,7 @@
                         android:text="Cha"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:id="@+id/textView6"
                         android:gravity="center"
                         android:minWidth="55dp" />

@@ -84,6 +84,7 @@
     <Compile Include="ConditionDialog.cs" />
     <Compile Include="UIUtils.cs" />
     <Compile Include="HDDialog.cs" />
+    <Compile Include="Resources\AboutDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -258,11 +259,17 @@
     <AndroidResource Include="Resources\drawable\button2.xml" />
     <AndroidResource Include="Resources\drawable\button_die.xml" />
     <AndroidResource Include="Resources\layout\ConditionDialog.axml" />
-    <AndroidResource Include="Resources\drawable\bg_key.xml" />
+    <AndroidResource Include="Resources\drawable\bg_key.xml">
+      <DependentUpon>book16.png</DependentUpon>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\MultilineTextDialog.axml" />
     <AndroidResource Include="Resources\drawable-nodpi\DiePencil.png" />
     <AndroidResource Include="Resources\layout\HDDialog.axml" />
     <AndroidResource Include="Resources\layout\editor_tab_bar.axml" />
+    <AndroidResource Include="Resources\drawable\main_tab.xml" />
+    <AndroidResource Include="Resources\anim\fadein.xml" />
+    <AndroidResource Include="Resources\anim\fadeout.xml" />
+    <AndroidResource Include="Resources\layout\AboutDialog.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -335,8 +342,10 @@
     <AndroidAsset Include="..\CombatManagerCore\NPCShort2.xml">
       <Link>Assets\NPCShort2.xml</Link>
     </AndroidAsset>
+    <AndroidAsset Include="Assets\AboutHtml.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-nodpi\" />
+    <Folder Include="Resources\anim\" />
   </ItemGroup>
 </Project>

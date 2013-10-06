@@ -60,11 +60,22 @@
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout3">
+        android:id="@+id/linearLayout3"
+        android:background="#2C767A">
         <Button
             android:text="Clear"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:id="@+id/clearButton" />
+            android:id="@+id/clearButton"
+            android:background="@drawable/main_tab" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/xpText"
+            android:gravity="center_vertical"
+            android:textColor="#FFFFFF"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp" />
     </LinearLayout>
 </LinearLayout>

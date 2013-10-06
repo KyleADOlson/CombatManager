@@ -16,17 +16,11 @@ namespace CombatManagerDroid
 
             
             blocks.AppendOpenTag("p");
-            bool firstRoll = true;
             for (int i=0; i <results.Count; i++)
             {
                 Object obj = results[results.Count - i - 1];
 
-                if (!firstRoll)
-                {
-                    blocks.AppendLineBreak();
-                }
-                
-                firstRoll = false;
+
                 if (obj is RollResult)
                 {
                     RenderRollResult(blocks, (RollResult)obj);

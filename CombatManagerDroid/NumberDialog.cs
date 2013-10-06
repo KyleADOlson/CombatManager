@@ -16,16 +16,20 @@ namespace CombatManagerDroid
     public class NumberDialog : Dialog
     {
         int _Value;
+        public NumberDialog(String property, Object ob, Context context) : this(property, property, ob, context)
+        {
 
-        public NumberDialog(String property, Object ob, Context context) : base (context)
+        }
+
+        public NumberDialog(String property, String title, Object ob, Context context) : base (context)
         {
 
             SetContentView(Resource.Layout.NumberDialog);
-            SetTitle(property);
+            SetTitle(title);
 
             var prop = ob.GetType().GetProperty(property);
             _Value = (int)prop.GetGetMethod().Invoke(ob, new object[]{}); 
-            
+
             
             SetDialogNumber();
             
