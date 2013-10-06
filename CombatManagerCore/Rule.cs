@@ -70,13 +70,6 @@ namespace CombatManager
         private static SortedDictionary<string, string> types;
         private static Dictionary<string, SortedDictionary<string, string>> subtypes;
 
-#if !MONO
-        private static SQL_Lite sqlDetailsDB;
-#else
-		
-        private static SqliteConnection detailsDB;
-#endif
-
         public static void LoadRules()
         {
             List<Rule> set = XmlListLoader<Rule>.Load("RuleShort.xml");
@@ -204,62 +197,6 @@ namespace CombatManager
 
 #endif
 
-        public static string LoadDetails(string ID)
-        {
-            string details = null;
-            string commandText = "Select details from Rules where ID=?";
-            try
-            {
-#if MONO
-                if (detailsDB == null)
-                {
-#if ANDROID
-                    detailsDB = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + DBFullFilename);
-#else
-                    
-                    detailsDB = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=Details.db");
-#endif
-                    detailsDB.Open();
-
-                }
-
-                var cm = detailsDB.CreateCommand();
-                cm.CommandText = commandText;
-                var p = cm.CreateParameter();
-                p.Value = ID;
-                cm.Parameters.Add(p);
-
-                details = (string)cm.ExecuteScalar();
-#else
-                if (sqlDetailsDB == null)
-                {
-                    sqlDetailsDB = new SQL_Lite();
-                    sqlDetailsDB.SkipHeaderRow = true;
-                    sqlDetailsDB.Open("details.db");
-                }
-            
-                RowsRet ret = null;
-
-                ret = sqlDetailsDB.ExecuteCommand(commandText, new object[] { ID });
-
-                if (ret == null || ret.Count() == 0)
-                {
-                    return "";
-                }
-
-                details = ret.Rows[0]["details"];
-
-#endif
-                
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-            }
-
-
-            return details;
-        }
 
         public static ICollection<string> Types
         {
@@ -316,7 +253,7 @@ namespace CombatManager
                 if (_Details == null && _ID != null && !_DBDetailsLoaded)
                 {
                     _DBDetailsLoaded = true;
-                    _Details = LoadDetails(_ID);
+                    _Details = DetailsDB.LoadDetails(_ID, "Rules", "details");
                 }
 
                 return _Details; 

@@ -117,7 +117,7 @@ namespace CombatManager
 
         static Spell()
         {
-            List<Spell> set = XmlListLoader<Spell>.Load("Spells.xml");
+            List<Spell> set = XmlListLoader<Spell>.Load("SpellsShort.xml");
 
             List<Spell> remove = new List<Spell>();
             foreach (var cur in set)
@@ -748,7 +748,14 @@ namespace CombatManager
         }
         public String description
         {
-            get { return _description; }
+            get 
+            {
+                if (_description == null)
+                {
+                    _description = DetailsDB.LoadDetails(_name, "Spells", "description");
+                }
+                return _description; 
+            }
             set
             {
                 if (_description != value)
@@ -760,7 +767,14 @@ namespace CombatManager
         }
         public String description_formated
         {
-            get { return _description_formated; }
+            get
+            {
+                if (_description_formated == null)
+                {
+                    _description_formated = DetailsDB.LoadDetails(_name, "Spells", "description_formated");
+                }
+                return _description_formated;
+            }
             set
             {
                 if (_description_formated != value)
