@@ -133,7 +133,7 @@ namespace CombatManager
             {
 #if (!MONO  || ANDROID)
 #if ANDROID
-                return true;
+                return false;
 #else
                 return false;
 #endif
