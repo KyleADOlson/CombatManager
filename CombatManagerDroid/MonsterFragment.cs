@@ -107,7 +107,7 @@ namespace CombatManagerDroid
             b = BuildFilterButton("cr", 80);
             List<string> crs = new List<string>(Monster.CRList.Values);
             crs.Insert(0, "All");
-            PopupUtils.AttachButtonStringPopover("Type", b, 
+            PopupUtils.AttachButtonStringPopover("CR", b, 
                                                  crs, 
                                                  0, (r1, index, val)=>
                                                  {
