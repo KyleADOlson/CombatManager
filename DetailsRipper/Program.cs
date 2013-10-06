@@ -34,15 +34,18 @@ namespace DetailsRipper
 {
     class Program
     {
+
+        static SQLiteConnection cn;
+
         static void Main(string[] args)
         {
             if (File.Exists("Details.db"))
             {
                 File.Delete("Details.db");
             }
-
-            SQLiteConnection cn = new SQLiteConnection("Data Source=Details.db");
+            cn = new SQLiteConnection("Data Source=Details.db");
             cn.Open();
+
             var v = cn.CreateCommand();
             v.CommandText = "Create Table Rules (ID integer primary key, details string)";
             v.ExecuteNonQuery();
@@ -70,7 +73,6 @@ namespace DetailsRipper
            
 
 
-            cn.Close();
 
             docRules.Save("RuleShort.xml");
 
@@ -87,59 +89,7 @@ namespace DetailsRipper
             docMagic.Save("MagicItemsShort.xml");
 
 
-            XDocument docSpells = XDocument.Load("Spells.xml");
-
-            Dictionary<String, XElement> spellName = new Dictionary<string,XElement>();
-            var eleme = docSpells.Descendants("Spell");
-            List<XElement> spellsToRemove = new List<XElement>();
-            foreach (XElement x in eleme)
-            {
-                if (x.Element("full_text") != null)
-                {
-                    x.Element("full_text").Remove();
-                }
-
-                string name = x.Element("name").Value;
-
-                if (name == name.ToUpper())
-                {
-                    x.Element("name").Value = name.ToLower().Capitalize();
-                }
-
-                String currentName = x.Element("name").Value;
-                if (!spellName.ContainsKey(currentName))
-                {
-                    spellName[currentName] = x;
-                }
-                else
-                {
-                    XElement a = spellName[currentName];
-                    XElement b = x;
-                    if (a.Element("source") != null && b.Element("source") != null && (
-                            String.Compare(a.Element("source").Value,b.Element("source").Value, true) == 0) || a.Element("source").Value == "Inner Sea World Guide")
-                    {
-                        spellsToRemove.Add(b);
-                        System.Diagnostics.Debug.WriteLine("Removed " + currentName);
-                    }
-                    else if (a.Element("source").Value.StartsWith("AP ") || b.Element("source").Value == "APG" || b.Element("source").Value == "Advanced Race Guide")
-                    {
-                        spellsToRemove.Add(a);
-                    }
-                    else
-                    {
-
-                        System.Diagnostics.Debug.WriteLine("Duplicate " + currentName + "/" + a.Element("source").Value + "/" + b.Element("source").Value + "/");
-                    }
-                }
-                   
-            }
-
-            foreach (XElement x in spellsToRemove)
-            {
-                x.Remove();
-            }
-
-            docSpells.Save("Spells.xml");
+            CleanupSpells();
 
 
             Dictionary<string, XElement> monsterList = new Dictionary<string, XElement>();
@@ -290,7 +240,98 @@ namespace DetailsRipper
             SaveCopyFile(doc2, "NPCShort2.xml");
 
 
+            cn.Close();
 
+        }
+
+        static void CleanupSpells()
+        {
+
+
+            XDocument docSpells = XDocument.Load("Spells.xml");
+
+            Dictionary<String, XElement> spellName = new Dictionary<string, XElement>();
+            var eleme = docSpells.Descendants("Spell");
+            List<XElement> spellsToRemove = new List<XElement>();
+            foreach (XElement x in eleme)
+            {
+                if (x.Element("full_text") != null)
+                {
+                    x.Element("full_text").Remove();
+                }
+
+                string name = x.Element("name").Value;
+
+                if (name == name.ToUpper())
+                {
+                    x.Element("name").Value = name.ToLower().Capitalize();
+                }
+
+                String currentName = x.Element("name").Value;
+                if (!spellName.ContainsKey(currentName))
+                {
+                    spellName[currentName] = x;
+                }
+                else
+                {
+                    XElement a = spellName[currentName];
+                    XElement b = x;
+                    if (a.Element("source") != null && b.Element("source") != null && (
+                            String.Compare(a.Element("source").Value, b.Element("source").Value, true) == 0) || a.Element("source").Value == "Inner Sea World Guide")
+                    {
+                        spellsToRemove.Add(b);
+                        System.Diagnostics.Debug.WriteLine("Removed " + currentName);
+                    }
+                    else if (a.Element("source").Value.StartsWith("AP ") || b.Element("source").Value == "APG" || b.Element("source").Value == "Advanced Race Guide")
+                    {
+                        spellsToRemove.Add(a);
+                    }
+                    else
+                    {
+
+                        System.Diagnostics.Debug.WriteLine("Duplicate " + currentName + "/" + a.Element("source").Value + "/" + b.Element("source").Value + "/");
+                    }
+                }
+
+            }
+
+            foreach (XElement x in spellsToRemove)
+            {
+                x.Remove();
+            }
+
+            docSpells.Save("Spells.xml");
+
+            var v = cn.CreateCommand();
+            v.CommandText = "Create Table Spells (ID string primary key, description string, description_formated string)";
+            v.ExecuteNonQuery();
+
+            var t = cn.BeginTransaction();
+
+            int count = 0;
+            foreach (XElement x in docSpells.Descendants("Spell"))
+            {
+                count++;
+                var cm = cn.CreateCommand();
+                cm.CommandText = "Insert into Spells (ID, description, description_formated) values (?, ?, ?)";
+                var p1 = cm.CreateParameter();
+                p1.Value = x.ElementValue("name");
+                cm.Parameters.Add(p1);
+                var p2 = cm.CreateParameter();
+                p2.Value = x.ElementValue("description");
+                cm.Parameters.Add(p2);
+                var p3 = cm.CreateParameter();
+                p3.Value = x.ElementValue("description_formated");
+                cm.Parameters.Add(p3);
+                cm.ExecuteNonQuery();
+                x.Element("description").Remove();
+                x.Element("description_formated").Remove();
+            }
+
+            t.Commit();
+
+
+            SaveCopyFile(docSpells, "SpellsShort.xml");
         }
 
         private static void SaveCopyFile(XDocument doc, String filename)

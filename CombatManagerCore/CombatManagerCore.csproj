@@ -69,6 +69,7 @@
     <Compile Include="DBSettings.cs" />
     <Compile Include="DBTableDesc.cs" />
     <Compile Include="DebugLogger.cs" />
+    <Compile Include="DetailsDB.cs" />
     <Compile Include="DieRoll.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="ExportData.cs" />
@@ -161,8 +162,8 @@
     <Content Include="SpecificItemChart.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Spells.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="SpellsShort.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TreasureChart.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
