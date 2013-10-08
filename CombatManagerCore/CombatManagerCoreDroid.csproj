@@ -129,9 +129,10 @@
     <Compile Include="MagicItemHtmlCreator.cs" />
     <Compile Include="ConditionHtmlCreator.cs" />
     <Compile Include="XMLLoader.cs" />
+    <Compile Include="DetailsDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RuleShort.xml" />
-    <Content Include="Spells.xml" />
+    <Content Include="SpellsShort.xml" />
   </ItemGroup>
 </Project>

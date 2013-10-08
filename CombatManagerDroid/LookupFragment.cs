@@ -80,11 +80,15 @@ namespace CombatManagerDroid
             Thread t = new Thread(() =>
             {
                 FilterItems();
-                this.Activity.RunOnUiThread(() =>
+                Activity ac = Activity;
+                if (ac != null)
                 {
-                    ((BaseAdapter)ItemList.Adapter).NotifyDataSetChanged();
-                    ShowItem(_SelectedItem);
-                });
+                    ac.RunOnUiThread(() =>
+                    {
+                        ((BaseAdapter)ItemList.Adapter).NotifyDataSetChanged();
+                        ShowItem(_SelectedItem);
+                    });
+                }
             });
             t.Start();
 

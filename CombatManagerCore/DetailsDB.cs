@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ScottsUtils;
+using System.IO;
 
 #if !MONO
 #else
@@ -11,7 +12,7 @@ using Mono.Data.Sqlite;
 
 namespace CombatManager
 {
-    static class DetailsDB
+    public static class DetailsDB
     {
         #if !MONO
                 private static SQL_Lite sqlDetailsDB;
@@ -77,5 +78,79 @@ namespace CombatManager
             return details;
         
         }
+
+        #if ANDROID
+        static string _DBVersion;
+        public static void PrepareDetailDB(String version)
+        {
+            _DBVersion = version;
+            if (!Directory.Exists(DBFolder))
+            {
+                Directory.CreateDirectory(DBFolder);
+            }
+            //if !db exists
+            if (!File.Exists(DBFullFilename))
+            {
+                //open stream
+                using (Stream io = CoreContext.Context.Assets.Open("Details.db"))
+                {
+                    using (FileStream fs = File.Open(DBFullFilename, FileMode.Create))
+                    {
+                        //copy db
+                        byte[] bytes = new byte[20480];
+                        int read = io.Read(bytes, 0, bytes.Length);
+                        while (read > 0)
+                        {
+                            fs.Write(bytes, 0, read);
+                            read = io.Read(bytes, 0, bytes.Length);
+                        }
+                        fs.Close();
+                    }
+                    io.Close();
+                }
+
+
+                //delete old dbs
+                List<string> files = new List<string>(Directory.EnumerateFiles(DBFolder));
+
+                foreach (string s in from x in files where x != DBFullFilename select x)
+                {
+                    File.Delete(s);
+                }
+            }
+
+
+        }
+
+        private static string DBFolder
+        {
+            get
+            {
+                string dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                dir = Path.Combine(dir, "Database");
+                return dir;
+            }
+        }
+
+        private static string DBFullFilename
+        {
+            get
+            {
+                string filename = DBFilename;
+                return Path.Combine(DBFolder, filename);
+            }
+        }
+
+        private static string DBFilename
+        {
+            get
+            {
+                return "detail" + _DBVersion + ".db";
+
+            }
+        }
+
+
+        #endif
     }
 }

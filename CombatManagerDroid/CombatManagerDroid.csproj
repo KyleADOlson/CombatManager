@@ -93,7 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\layout\Loading.axml" />
     <AndroidResource Include="Resources\layout\Lookup.axml" />
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -270,6 +269,8 @@
     <AndroidResource Include="Resources\anim\fadein.xml" />
     <AndroidResource Include="Resources\anim\fadeout.xml" />
     <AndroidResource Include="Resources\layout\AboutDialog.axml" />
+    <AndroidResource Include="Resources\drawable-ldpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -324,9 +325,6 @@
     <AndroidAsset Include="..\CombatManagerCore\SpecificItemChart.xml">
       <Link>Assets\SpecificItemChart.xml</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\CombatManagerCore\Spells.xml">
-      <Link>Assets\Spells.xml</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\CombatManagerCore\TreasureChart.xml">
       <Link>Assets\TreasureChart.xml</Link>
     </AndroidAsset>
@@ -343,9 +341,15 @@
       <Link>Assets\NPCShort2.xml</Link>
     </AndroidAsset>
     <AndroidAsset Include="Assets\AboutHtml.txt" />
+    <AndroidAsset Include="..\CombatManagerCore\SpellsShort.xml">
+      <Link>Assets\SpellsShort.xml</Link>
+    </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-nodpi\" />
     <Folder Include="Resources\anim\" />
+    <Folder Include="Resources\drawable-hdpi\" />
+    <Folder Include="Resources\drawable-ldpi\" />
+    <Folder Include="Resources\drawable-mdpi\" />
   </ItemGroup>
 </Project>
