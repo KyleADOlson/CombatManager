@@ -45,7 +45,25 @@ namespace DetailsRipper
             }
             cn = new SQLiteConnection("Data Source=Details.db");
             cn.Open();
+            CleanupRules();
 
+            CleanupMagicItems();
+
+
+            CleanupSpells();
+
+            CleanupMonsters();
+
+
+
+            cn.Close();
+
+            CopyFileToCore("details.db");
+
+        }
+
+        static void CleanupRules()
+        {
             var v = cn.CreateCommand();
             v.CommandText = "Create Table Rules (ID integer primary key, details string)";
             v.ExecuteNonQuery();
@@ -54,7 +72,7 @@ namespace DetailsRipper
 
             var vals = docRules.Descendants("Rule");
             var t = cn.BeginTransaction();
-           
+
             foreach (XElement x in vals)
             {
                 var cm = cn.CreateCommand();
@@ -70,12 +88,15 @@ namespace DetailsRipper
             }
 
             t.Commit();
-           
+
 
 
 
             docRules.Save("RuleShort.xml");
+        }
 
+        static void CleanupMagicItems()
+        {
             XDocument docMagic = XDocument.Load("MagicItems.xml");
 
             foreach (XElement x in docMagic.Descendants("MagicItem"))
@@ -87,10 +108,21 @@ namespace DetailsRipper
             }
 
             docMagic.Save("MagicItemsShort.xml");
+        }
 
+        static void CleanupMonsters()
+        {
 
-            CleanupSpells();
-
+            var v = cn.CreateCommand();
+            string command = "Create Table Bestiary (ID string primary key";
+            foreach (string s in Monster.MonsterDBFields)
+            {
+                command += ", ";
+                command += s;
+            }
+            command += ")";
+            v.CommandText = command;
+            v.ExecuteNonQuery();
 
             Dictionary<string, XElement> monsterList = new Dictionary<string, XElement>();
 
@@ -107,18 +139,7 @@ namespace DetailsRipper
                     names.Add(va.Name.LocalName);
                 }
 
-                if (x.Element("FullText") != null)
-                {
-                    x.Element("FullText").Remove();
-                }
-
-                FixNumbers(x);
-                string name = x.Element("Name").Value;
-
-                if (name == name.ToUpper())
-                {
-                    x.Element("Name").Value = name.ToLower().Capitalize();
-                }
+                CleanMonsterElements(x);
 
                 XElement oldElement;
                 string monName = x.Element("Name").Value;
@@ -134,17 +155,14 @@ namespace DetailsRipper
                     string oldSource = oldElement.ElementValue("Source");
                     string newSource = x.ElementValue("Source");
 
-                    //System.Diagnostics.Debug.WriteLine(x.Element("Name").Value);
                     if (newSource == "Bestiary 3" || newSource == "PFRPG Bestiary 3")
                     {
                         oldElement.Remove();
-                        //System.Diagnostics.Debug.WriteLine("Remove " + oldSource);
                         monsterList[monName] = x;
                     }
                     else if (oldSource == "Bestiary 3")
                     {
                         x.Remove();
-                        //System.Diagnostics.Debug.WriteLine("Remove " + newSource);
                     }
                     else
                     {
@@ -168,6 +186,7 @@ namespace DetailsRipper
                 x.Remove();
             }
 
+            MoveMonsterFieldsToDB(docMon);
             XDocument doc2 = new XDocument(docMon);
 
             SplitDescendents(docMon, doc2, 1000);
@@ -183,19 +202,7 @@ namespace DetailsRipper
             List<XElement> removeList = new List<XElement>();
             foreach (XElement x in docMon.Descendants("Monster"))
             {
-                if (x.Element("FullText") != null)
-                {
-                    x.Element("FullText").Remove();
-                }
-
-                string name = x.Element("Name").Value;
-
-                if (name == name.ToUpper())
-                {
-                    x.Element("Name").Value = name.ToLower().Capitalize();
-                }
-
-                FixNumbers(x);
+                CleanMonsterElements(x);
 
                 XElement oldElement;
                 string monName = x.Element("Name").Value;
@@ -232,15 +239,79 @@ namespace DetailsRipper
             System.Diagnostics.Debug.WriteLine("Dup Count: " + dupcount);
 
 
+            MoveMonsterFieldsToDB(docMon);
             doc2 = new XDocument(docMon);
-
             SplitDescendents(docMon, doc2, 1000);
 
             SaveCopyFile(docMon, "NPCShort.xml");
             SaveCopyFile(doc2, "NPCShort2.xml");
+        }
+
+        static void MoveMonsterFieldsToDB(XDocument doc)
+        {
+            var t = cn.BeginTransaction();
+
+            string command = "Insert into Bestiary (ID"; 
+            
+            string  values = ") values (?";
+
+            foreach (string s in Monster.MonsterDBFields)
+            {
+                command += ", " + s;
+                values += ", ?";
+            }
+            command = command + values + ")";
+
+            foreach (XElement x in doc.Descendants("Monster"))
+            {
+
+                var cm = cn.CreateCommand();
+                cm.CommandText = command;
+                var p1 = cm.CreateParameter();
+                p1.Value = x.ElementValue("id");
+                cm.Parameters.Add(p1);
+
+                foreach (string s in Monster.MonsterDBFields)
+                {
+
+                    var p2 = cm.CreateParameter();
+                    p2.Value = x.ElementValue(s);
+                    cm.Parameters.Add(p2);
+
+                    RemoveIfNotNull(x, s);
+                }
 
 
-            cn.Close();
+                cm.ExecuteNonQuery();
+            }
+
+            t.Commit();
+        }
+
+
+        static void RemoveIfNotNull(XElement x, string name)
+        {
+            XElement xe = x.Element(name);
+            if (xe != null)
+            {
+                xe.Remove();
+            }
+        }
+
+        static void CleanMonsterElements(XElement x)
+        {
+            if (x.Element("FullText") != null)
+            {
+                x.Element("FullText").Remove();
+            }
+
+            FixNumbers(x);
+            string name = x.Element("Name").Value;
+
+            if (name == name.ToUpper())
+            {
+                x.Element("Name").Value = name.ToLower().Capitalize();
+            }
 
         }
 
@@ -340,7 +411,13 @@ namespace DetailsRipper
             doc.Save(filename);
 
 
-            File.Copy(filename, "..\\..\\..\\CombatManagerCore\\"+  filename, true);
+            CopyFileToCore(filename);
+        }
+
+        private static void CopyFileToCore(string filename)
+        {
+
+            File.Copy(filename, "..\\..\\..\\CombatManagerCore\\" + filename, true);
         }
 
         private static void SplitDescendents(XDocument docMon, XDocument doc2, int splitValue)

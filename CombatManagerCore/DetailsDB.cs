@@ -22,8 +22,29 @@ namespace CombatManager
 
         public static string LoadDetails(string ID, string table, string field)
         {
-            string details = "";
-            string commandText = "Select " + field + " from " + table +" where ID=?";
+            return LoadDetails(ID, table, new List<string>() { field })[field];
+        }
+
+
+        public static Dictionary<string, string> LoadDetails(string ID, string table, List<string> fields)
+        {
+
+            var dict = new Dictionary<string, string>();
+
+            string selectFields="";
+            bool first = true;
+            foreach (string s in fields)
+            {
+                if (!first)
+                {
+                    selectFields += ", ";
+                }
+                first = false;
+                selectFields += s;
+            }
+
+
+            string commandText = "Select " + selectFields + " from " + table + " where ID=?";
             try
             {
 #if MONO
@@ -40,12 +61,20 @@ namespace CombatManager
                 }
 
                 var cm = detailsDB.CreateCommand();
-                cm.CommandText = commandText;
+                cm.CommandText = commandText;               
                 var p = cm.CreateParameter();
                 p.Value = ID;
                 cm.Parameters.Add(p);
 
-                details = (string)cm.ExecuteScalar();
+                var r = cm.ExecuteReader();
+
+                r.Read()
+                foreach (string s in fields)
+                {
+                    dict[s] = r.GetString(r.GetOrdinal(s));
+                }
+                r.Close();   
+                
 #else
                 if (sqlDetailsDB == null)
                 {
@@ -58,12 +87,16 @@ namespace CombatManager
 
                 ret = sqlDetailsDB.ExecuteCommand(commandText, new object[] { ID });
 
+
                 if (ret == null || ret.Count() == 0)
                 {
-                    return "";
+                    return dict;
                 }
 
-                details = ret.Rows[0][field];
+                foreach (string s in fields)
+                {
+                    dict[s] = ret.Rows[0][s];
+                }
 
 #endif
    
@@ -74,7 +107,7 @@ namespace CombatManager
             }
 
 
-            return details;
+            return dict;
         
         }
     }

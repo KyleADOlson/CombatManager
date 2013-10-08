@@ -167,6 +167,8 @@ namespace CombatManager
             {
                 Monster m = new Monster();
 
+                m._DetailsID = GetElementIntValue(v, "id");
+
                 m.Name = GetElementStringValue(v, "Name");
                 m.CR = GetElementStringValue(v, "CR");
                 m.XP = GetElementStringValue(v, "XP");
@@ -408,6 +410,8 @@ namespace CombatManager
         private int? _PreLossStr;
 
         private int _DBLoaderID;
+
+        private int _DetailsID;
 
         private ObservableCollection<SpellBlockInfo> _SpellLikeAbilitiesBlock;
         private ObservableCollection<SpellBlockInfo> _SpellsKnownBlock;
@@ -873,7 +877,7 @@ namespace CombatManager
             }
 
             DexZero = m.DexZero;
-			
+            _DetailsID = m._DetailsID;
 		    Name=m.name;
             CR=m.cr;
             XP=m.xp;
@@ -1041,7 +1045,8 @@ namespace CombatManager
 			Monster m = new Monster();
 
             BaseClone(m);
-			
+
+            m._DetailsID = _DetailsID;
 		    m.name=name;
             m.cr=cr;
             m.xp=xp;
@@ -1647,6 +1652,52 @@ namespace CombatManager
 
             }
             return monsters;
+        }
+
+        void UpdateFromDetailsDB()
+        {
+            if (_DetailsID != 0)
+            {
+                //perform updating from DB
+                var list = DetailsDB.LoadDetails(_DetailsID.ToString(), "Bestiary", MonsterDBFields); 
+               Description = list["Description"];
+               Description_Visual = list["Description_Visual"];
+               SpecialAbilities = list["SpecialAbilities"];
+               BeforeCombat = list["BeforeCombat"];
+               DuringCombat = list["DuringCombat"];
+               Morale = list["Morale"];
+               Gear = list["Gear"];
+               OtherGear = list["OtherGear"];
+               Feats = list["Feats"];
+               SpecialAttacks = list["SpecialAttacks"];
+               SpellLikeAbilities = list["SpellLikeAbilities"];
+               SpellsKnown = list["SpellsKnown"];
+               SpellsPrepared = list["SpellsPrepared"];
+               Skills = list["Skills"];
+                _DetailsID = 0;
+            }
+        }
+
+        public static List<string> MonsterDBFields
+        {
+            get
+            {
+                return new List<string>() {
+               "Description",
+               "Description_Visual",
+               "SpecialAbilities",
+               "BeforeCombat",
+               "DuringCombat",
+               "Morale",
+               "Gear",
+               "OtherGear",
+               "Feats",
+               "SpecialAttacks",
+               "SpellLikeAbilities",
+               "SpellsKnown",
+               "SpellsPrepared",
+               "Skills"};
+            }
         }
 
         static int GetElementIntValue(XElement it, string name)
@@ -8780,6 +8831,8 @@ namespace CombatManager
         {
             get
             {
+
+                UpdateFromDetailsDB();
                 return specialAttacks;
             }
             set
@@ -8797,6 +8850,8 @@ namespace CombatManager
         {
             get
             {
+
+                UpdateFromDetailsDB();
                 return spellLikeAbilities;
             }
             set
@@ -8908,6 +8963,7 @@ namespace CombatManager
         {
             get
             {
+                UpdateFromDetailsDB();
                 return feats;
             }
             set
@@ -8925,6 +8981,7 @@ namespace CombatManager
         {
             get
             {
+                UpdateFromDetailsDB();
                 return skills;
             }
             set
@@ -9049,6 +9106,8 @@ namespace CombatManager
         {
             get
             {
+
+                UpdateFromDetailsDB();
                 if (description_visual == "NULL")
                 {
                     description_visual = null;
@@ -9121,6 +9180,7 @@ namespace CombatManager
         {
             get
             {
+                UpdateFromDetailsDB();
                 return specialAbilities;
             }
             set
@@ -9138,6 +9198,7 @@ namespace CombatManager
         {
             get
             {
+                UpdateFromDetailsDB();
                 return description;
             }
             set
@@ -9224,6 +9285,8 @@ namespace CombatManager
         {
             get
             {
+
+                UpdateFromDetailsDB();
                 if (beforeCombat == "NULL")
                 {
                     beforeCombat = null;
@@ -9245,6 +9308,8 @@ namespace CombatManager
         {
             get
             {
+
+                UpdateFromDetailsDB();
                 if (duringCombat == "NULL")
                 {
                     duringCombat = null;
@@ -9266,6 +9331,7 @@ namespace CombatManager
         {
             get
             {
+                UpdateFromDetailsDB();
                 if (morale == "NULL")
                 {
                     morale = null;
@@ -9287,6 +9353,7 @@ namespace CombatManager
         {
             get
             {
+                UpdateFromDetailsDB();
                 if (gear == "NULL")
                 {
                     gear = null;
@@ -9308,6 +9375,7 @@ namespace CombatManager
         {
             get
             {
+                UpdateFromDetailsDB();
                 return otherGear;
             }
             set
@@ -9533,6 +9601,7 @@ namespace CombatManager
         {
             get
             {
+                UpdateFromDetailsDB();
                 return spellsPrepared;
             }
             set
@@ -9660,6 +9729,7 @@ namespace CombatManager
         {
             get
             {
+                UpdateFromDetailsDB();
                 return spellsKnown;
             }
             set
