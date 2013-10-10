@@ -82,9 +82,7 @@ namespace CombatManagerDroid
                 v.FindViewById<ImageButton>(Resource.Id.actionButton).Click += delegate
                 {
                     Character c = _Characters[(int)v.Tag];
-                    ActionDialog d = new ActionDialog(parent.Context, _State);
-                    d.Character = c;
-                    d.Show();
+                    ShowActionDialog(c, parent.Context);
                 };
 
 
@@ -100,6 +98,21 @@ namespace CombatManagerDroid
             _Handlers.Add(cch);
 
             return v;
+        }
+
+        ActionDialog _ActionDialog = null;
+        private void ShowActionDialog(Character c, Context context)
+        {
+            if (_ActionDialog == null)
+            {
+                _ActionDialog = new ActionDialog(context, _State);
+                _ActionDialog.DismissEvent += (object sender, EventArgs e) => 
+                {
+                    _ActionDialog = null;
+                };
+                _ActionDialog.Character = c;
+                _ActionDialog.Show();
+            }
         }
 
         private class ConditionButtonChangedHandler
@@ -213,11 +226,13 @@ namespace CombatManagerDroid
                 Drawable d = v.Context.Resources.GetDrawable(resID);
 
                 View button;
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, 60);
                 if (ac.Turns == null)
                 {
                 
                     ImageButton b = new ImageButton(v.Context);
                     b.SetImageDrawable(d);
+                    b.LayoutParameters = lp;
                     conditionsLayout.AddView(b);
                     button = b;
                 }
@@ -225,11 +240,12 @@ namespace CombatManagerDroid
                 {
                     Button b = new Button(v.Context);
                     b.Text = ac.Turns.ToString();
-                    b.SetCompoundDrawablesWithIntrinsicBounds(d, null, null, null);
+                    b.SetCompoundDrawablesWithIntrinsicBounds(d, null, null, null);;
+                    b.LayoutParameters = lp;
                     conditionsLayout.AddView(b);
                     button = b;
-
                 }
+
 
                 ConditionButtonChangedHandler cbch = new ConditionButtonChangedHandler(v, button, c, ac, this, parent);
                 _ButtonHandlers.Add(cbch);

@@ -69,10 +69,18 @@ namespace CombatManager
 
                 var r = cm.ExecuteReader();
 
-                r.Read()
+                r.Read();
                 foreach (string s in fields)
                 {
-                    dict[s] = r.GetString(r.GetOrdinal(s));
+                    object obj = r.GetValue(r.GetOrdinal(s));
+                    if (obj != null)
+                    {
+                        dict[s] = obj.ToString();
+                    }
+                    else
+                    {
+                        dict[s] = null;
+                    }
                 }
                 r.Close();   
                 

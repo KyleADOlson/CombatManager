@@ -56,6 +56,7 @@ namespace CombatManagerDroid
         {
             get
             {
+                System.Diagnostics.Debug.Assert(_State.CombatList[position] != null);
                 return _State.CombatList[position];
             }
         }

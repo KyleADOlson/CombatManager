@@ -167,13 +167,10 @@
     <Compile Include="TreasureHtmlCreator.cs" />
     <Compile Include="CharacterActions.cs" />
     <Compile Include="IOSDeviceHareware.cs" />
+    <Compile Include="DetailsDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">
-      <DeployService-Deploy>True</DeployService-Deploy>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Spells.xml">
       <DeployService-Deploy>True</DeployService-Deploy>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -237,6 +234,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="NPCShort2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SpellsShort.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

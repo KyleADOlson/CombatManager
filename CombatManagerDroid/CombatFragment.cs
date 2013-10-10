@@ -58,13 +58,22 @@ namespace CombatManagerDroid
             _CombatState.RollRequested += HandleRollRequested;
            
             _CombatState.CombatList.CollectionChanged += HandleCombatListChanged;
+            _CombatState.CharacterSortCompleted += HandleCharacterSortCompleted;
 
+        }
 
+        void HandleCharacterSortCompleted (object sender, EventArgs e)
+        {
+            
+            ReloadInitiativeList();
         }
 
         void HandleCombatListChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            ReloadInitiativeList();
+            if (!_CombatState.SortingList)
+            {
+                ReloadInitiativeList();
+            }
         }
 
         void HandledCombatStateCharactersChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -93,11 +102,9 @@ namespace CombatManagerDroid
 
         void ReloadInitiativeList()
         {
-            
             _InitListAdapter.NotifyDataSetChanged();
-           
 
-          
+           
         }
 
         void ReloadXPText()
@@ -368,6 +375,8 @@ namespace CombatManagerDroid
             _CombatState.Characters.CollectionChanged -= HandledCombatStateCharactersChanged;
             _CombatState.RollRequested -= HandleRollRequested;
             _CombatState.CombatList.CollectionChanged -= HandleCombatListChanged;
+            
+            _CombatState.CharacterSortCompleted -= HandleCharacterSortCompleted;
         }
 
         public static void SaveCombatState()
