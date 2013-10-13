@@ -17,5 +17,8 @@
         p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
         p1:id="@+id/textView1"
-        p1:textColor="#000000" />
+        p1:textColor="#000000"
+        p1:layout_marginLeft="20dp"
+        p1:layout_marginTop="20dp"
+        p1:textSize="30dp" />
 </RelativeLayout>

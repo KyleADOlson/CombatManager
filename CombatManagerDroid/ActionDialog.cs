@@ -49,9 +49,8 @@ namespace CombatManagerDroid
                 SetTitle(_Character.Name);
 
                 WebView wv = (WebView)this.FindViewById(Resource.Id.webView);
-                
-                wv.LoadUrl("about:blank");
-                wv.LoadData(MonsterHtmlCreator.CreateHtml(_Character.Monster), "text/html", null);
+
+                wv.LoadDataWithBaseURL(null, MonsterHtmlCreator.CreateHtml(_Character.Monster), "text/html", "utf-8", null);
 
                 ListView lv = (ListView)FindViewById(Resource.Id.actionListView);
                 lv.ItemClick += ListViewItemClick;

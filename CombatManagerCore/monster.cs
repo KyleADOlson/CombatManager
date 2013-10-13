@@ -103,7 +103,7 @@ namespace CombatManager
 
             DateTime time2 = DateTime.Now;
             double span = (new TimeSpan(time2.Ticks - time.Ticks)).TotalMilliseconds;
-            System.Diagnostics.Debug.WriteLine("Ticks: " + span);
+            System.Diagnostics.Debug.WriteLine("Bestairy Load: " + span);
 			
 			if (npcSet1 != null)
 			{

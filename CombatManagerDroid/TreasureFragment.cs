@@ -257,10 +257,14 @@ namespace CombatManagerDroid
         void ShowLastTreasure()
         {
             WebView wv = _v.FindViewById<WebView>(Resource.Id.itemView);
-            wv.LoadUrl("about:blank");
             if (_LastTreasure != null)
             {
-                wv.LoadData(TreasureHtmlCreator.CreateHtml(_LastTreasure), "text/html", null);
+                wv.LoadDataWithBaseURL(null, TreasureHtmlCreator.CreateHtml(_LastTreasure), "text/html", "utf-8", null);
+            }
+            else
+            {
+                
+                wv.LoadUrl("about:blank");
             }
         }
 

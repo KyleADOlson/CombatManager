@@ -166,10 +166,14 @@ namespace CombatManagerDroid
         {
 
             WebView wv = _v.FindViewById<WebView>(Resource.Id.itemView);
-            wv.LoadUrl("about:blank");
             if (item != null)
             {
-                wv.LoadData(ItemHtml(item), "text/html", null);
+                wv.LoadDataWithBaseURL(null, ItemHtml(item), "text/html", "utf-8", null);
+            }
+            else
+            {
+                
+                wv.LoadUrl("about:blank");
             }
         }
 

@@ -309,8 +309,8 @@ namespace CombatManagerDroid
             if (c != null)
             {
                 WebView wv = v.FindViewById<WebView>(Resource.Id.characterView);
-                wv.LoadUrl("about:blank");
-                wv.LoadData(MonsterHtmlCreator.CreateHtml(c.Monster), "text/html", null);
+
+                wv.LoadDataWithBaseURL(null, MonsterHtmlCreator.CreateHtml(c.Monster), "text/html", "utf-8", null);
             }
             _ViewCharacter = c;
         }
