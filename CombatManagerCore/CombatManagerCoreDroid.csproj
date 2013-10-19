@@ -14,6 +14,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AssemblyName>CombatManagerCoreDroid</AssemblyName>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -34,7 +35,6 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <DefineConstants>MONO;ANDROID</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
@@ -117,7 +117,6 @@
     <Compile Include="Weapon.cs" />
     <Compile Include="WeaponItem.cs" />
     <Compile Include="WeaponSpecialAbility.cs" />
-    <Compile Include="XMLLoader.cs" />
     <Compile Include="FeatHtmlCreator.cs" />
     <Compile Include="GenericHtmlCreator.cs" />
     <Compile Include="HtmlBlockGenerator.cs" />
@@ -127,9 +126,13 @@
     <Compile Include="TreasureHtmlCreator.cs" />
     <Compile Include="CoreContext.cs" />
     <Compile Include="CharacterActions.cs" />
+    <Compile Include="MagicItemHtmlCreator.cs" />
+    <Compile Include="ConditionHtmlCreator.cs" />
+    <Compile Include="XMLLoader.cs" />
+    <Compile Include="DetailsDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RuleShort.xml" />
-    <Content Include="Spells.xml" />
+    <Content Include="SpellsShort.xml" />
   </ItemGroup>
 </Project>

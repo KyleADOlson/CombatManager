@@ -54,6 +54,7 @@ namespace CombatManager
         private String _Normal;
         private String _Special;
         private SortedDictionary<String, String> _Types;
+
         private bool _DetailParsed;
 
 
@@ -65,7 +66,7 @@ namespace CombatManager
         private static SortedDictionary<string, string> types;
         private static ObservableCollection<Feat> feats;
 
-
+        private static bool _FeatsLoaded;
         private static DBLoader<Feat> _FeatsDB;
 
 
@@ -177,6 +178,16 @@ namespace CombatManager
                 }
             }
 
+            _FeatsLoaded = true;
+
+        }
+
+        public static bool FeatsLoaded
+        {
+            get
+            {
+                return _FeatsLoaded;
+            }
         }
 
 

@@ -51,7 +51,8 @@
                         d1p1:ellipsize="end"
                         d1p1:paddingRight="4dp"
                         d1p1:paddingLeft="4dp"
-                        d1p1:singleLine="true" />
+                        d1p1:singleLine="true"
+                        d1p1:textColor="#FFFFFF" />
                     <TextView
                         d1p1:text="Turn"
                         d1p1:textAppearance="?android:attr/textAppearanceMedium"
@@ -60,16 +61,18 @@
                         d1p1:layout_height="wrap_content"
                         d1p1:ellipsize="end"
                         d1p1:paddingRight="4dp"
-                        d1p1:paddingLeft="4dp" />
+                        d1p1:paddingLeft="4dp"
+                        d1p1:textColor="#FFFFFF" />
                 </LinearLayout>
                 <Button
-                    d1p1:text="Next"
                     d1p1:layout_width="fill_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/nextButton"
                     d1p1:layout_gravity="right"
                     d1p1:layout_weight="2"
-                    d1p1:background="@drawable/init_button" />
+                    d1p1:background="@drawable/init_button"
+                    d1p1:drawableRight="@drawable/RightArrow24"
+                    d1p1:text="Nx" />
             </LinearLayout>
             <LinearLayout
                 d1p1:orientation="horizontal"
@@ -81,25 +84,28 @@
                 d1p1:background="#A6833C">
                 <Button
                     d1p1:text="Up"
-                    d1p1:layout_width="wrap_content"
+                    d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/upButton"
                     d1p1:layout_weight="1"
-                    d1p1:background="@drawable/init_button" />
+                    d1p1:background="@drawable/init_button"
+                    d1p1:drawableLeft="@drawable/arrowup16" />
                 <Button
-                    d1p1:text="Down"
-                    d1p1:layout_width="wrap_content"
+                    d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/downButton"
                     d1p1:layout_weight="1"
-                    d1p1:background="@drawable/init_button" />
+                    d1p1:background="@drawable/init_button"
+                    d1p1:drawableLeft="@drawable/arrowdown16"
+                    d1p1:text="Dn" />
                 <Button
-                    d1p1:text="Prev"
-                    d1p1:layout_width="wrap_content"
+                    d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/prevButton"
                     d1p1:layout_weight="1"
-                    d1p1:background="@drawable/init_button" />
+                    d1p1:background="@drawable/init_button"
+                    d1p1:drawableLeft="@drawable/LeftArrow24"
+                    d1p1:text="Pr" />
             </LinearLayout>
             <ListView
                 d1p1:minWidth="25px"
@@ -129,7 +135,8 @@
                     d1p1:layout_height="fill_parent"
                     d1p1:id="@+id/rollInitiativeButton"
                     d1p1:layout_weight="1"
-                    d1p1:drawableLeft="@drawable/d2040" />
+                    d1p1:drawableLeft="@drawable/d2040"
+                    d1p1:background="@drawable/init_button" />
                 <LinearLayout
                     d1p1:orientation="vertical"
                     d1p1:minWidth="25px"
@@ -142,14 +149,17 @@
                         d1p1:text="Sort"
                         d1p1:layout_width="fill_parent"
                         d1p1:layout_height="fill_parent"
-                        d1p1:id="@+id/button6"
-                        d1p1:layout_weight="1" />
+                        d1p1:id="@+id/sortButton"
+                        d1p1:layout_weight="1"
+                        d1p1:background="@drawable/init_button" />
                     <Button
                         d1p1:text="Reset"
                         d1p1:layout_width="fill_parent"
                         d1p1:layout_height="fill_parent"
-                        d1p1:id="@+id/button7"
-                        d1p1:layout_weight="1" />
+                        d1p1:id="@+id/resetButton"
+                        d1p1:layout_weight="1"
+                        d1p1:background="@drawable/init_button"
+                        d1p1:fitsSystemWindows="false" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -174,13 +184,14 @@
             d1p1:background="#ff47aaaf" />
     </LinearLayout>
     <LinearLayout
-        d1p1:orientation="vertical"
+        d1p1:orientation="horizontal"
         d1p1:minWidth="25px"
         d1p1:minHeight="25px"
         d1p1:id="@+id/linearLayout5"
         d1p1:background="#ff27cbdb"
         d1p1:layout_width="fill_parent"
-        d1p1:layout_height="fill_parent">
+        d1p1:layout_height="fill_parent"
+        d1p1:layout_weight="3">
         <WebView
             d1p1:layout_width="match_parent"
             d1p1:layout_height="match_parent"
@@ -188,6 +199,116 @@
             d1p1:layout_marginLeft="2dp"
             d1p1:layout_marginTop="2dp"
             d1p1:layout_marginRight="2dp"
-            d1p1:layout_marginBottom="2dp" />
+            d1p1:layout_marginBottom="2dp"
+            d1p1:layout_weight="1" />
+        <LinearLayout
+            d1p1:orientation="vertical"
+            d1p1:minWidth="25px"
+            d1p1:minHeight="25px"
+            d1p1:layout_width="fill_parent"
+            d1p1:layout_height="match_parent"
+            d1p1:id="@+id/linearLayout12"
+            d1p1:layout_weight="1">
+            <WebView
+                d1p1:layout_width="fill_parent"
+                d1p1:layout_height="match_parent"
+                d1p1:id="@+id/rollWebView"
+                d1p1:layout_weight="1"
+                d1p1:layout_marginLeft="2dp"
+                d1p1:layout_marginRight="2dp"
+                d1p1:layout_marginBottom="2dp" />
+            <LinearLayout
+                d1p1:orientation="horizontal"
+                d1p1:minWidth="25px"
+                d1p1:minHeight="25px"
+                d1p1:layout_width="fill_parent"
+                d1p1:layout_height="wrap_content"
+                d1p1:id="@+id/linearLayout13">
+                <ImageButton
+                    d1p1:src="@drawable/d4162x"
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:id="@+id/rollD4Button"
+                    d1p1:layout_weight="1"
+                    d1p1:tag="4"
+                    d1p1:background="@drawable/main_tab" />
+                <ImageButton
+                    d1p1:src="@drawable/d6162x"
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:id="@+id/rollD6Button"
+                    d1p1:layout_weight="1"
+                    d1p1:tag="6"
+                    d1p1:background="@drawable/main_tab" />
+                <ImageButton
+                    d1p1:src="@drawable/d8162x"
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:id="@+id/rollD8Button"
+                    d1p1:layout_weight="1"
+                    d1p1:tag="8"
+                    d1p1:background="@drawable/main_tab" />
+                <ImageButton
+                    d1p1:src="@drawable/d10162x"
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:id="@+id/rollD10Button"
+                    d1p1:layout_weight="1"
+                    d1p1:tag="10"
+                    d1p1:background="@drawable/main_tab" />
+                <ImageButton
+                    d1p1:src="@drawable/d12162x"
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="wrap_content"
+                    d1p1:id="@+id/rollD12Button"
+                    d1p1:layout_weight="1"
+                    d1p1:tag="12"
+                    d1p1:background="@drawable/main_tab" />
+                <ImageButton
+                    d1p1:src="@drawable/d20p162x"
+                    d1p1:id="@+id/rollD20Button"
+                    d1p1:tag="20"
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:layout_weight="1"
+                    d1p1:background="@drawable/main_tab" />
+                <ImageButton
+                    d1p1:src="@drawable/d100162x"
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:id="@+id/rollD100Button"
+                    d1p1:layout_weight="1"
+                    d1p1:tag="100"
+                    d1p1:background="@drawable/main_tab" />
+            </LinearLayout>
+            <LinearLayout
+                d1p1:orientation="horizontal"
+                d1p1:minWidth="25px"
+                d1p1:minHeight="25px"
+                d1p1:layout_width="fill_parent"
+                d1p1:layout_height="wrap_content"
+                d1p1:id="@+id/linearLayout15">
+                <ImageButton
+                    d1p1:src="@drawable/redx"
+                    d1p1:id="@+id/clearRollButton"
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:layout_weight="3"
+                    d1p1:background="@drawable/main_tab" />
+                <EditText
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:id="@+id/rollText"
+                    d1p1:layout_weight="1"
+                    d1p1:singleLine="true" />
+                <ImageButton
+                    d1p1:src="@drawable/dice16"
+                    d1p1:layout_width="match_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:id="@+id/rollButton"
+                    d1p1:layout_weight="3"
+                    d1p1:background="@drawable/main_tab" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

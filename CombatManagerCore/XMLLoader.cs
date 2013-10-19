@@ -142,8 +142,18 @@ namespace CombatManager
                 StreamReader fs;
                 if (!appData)
                 {
-                    io = CoreContext.Context.Assets.Open(path);
-                    fs = new StreamReader(io);
+                    if (path.StartsWith("/"))
+                    {
+                        io = File.Open(path, FileMode.Open);
+                        fs = new StreamReader(io);
+
+                    }
+                    else
+                    {
+                      
+                        io = CoreContext.Context.Assets.Open(path);
+                        fs = new StreamReader(io);
+                    }
                     
                 }
                 else

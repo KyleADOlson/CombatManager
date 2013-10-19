@@ -20,7 +20,7 @@ namespace CombatManagerDroid
 
 
 
-    [Activity (Label = "Attacks Editor", MainLauncher = true, Theme="@android:style/Theme.Light.NoTitleBar")]           
+    [Activity (Label = "Attacks Editor", Theme="@android:style/Theme.Light.NoTitleBar")]           
     public class AttacksEditorActivity : Activity
     {
         

@@ -32,6 +32,13 @@ using System.Xml;
 using System.Globalization;
 using System.IO;
 using ScottsUtils;
+
+#if ANDROID
+using Android.Content.PM;
+using Android.Content;
+using Android.App;
+#endif
+
 #if !MONO
 #else
 using Mono.Data.Sqlite;
@@ -62,13 +69,6 @@ namespace CombatManager
         private static List<Rule> ruleList;
         private static SortedDictionary<string, string> types;
         private static Dictionary<string, SortedDictionary<string, string>> subtypes;
-
-#if !MONO
-        private static SQL_Lite sqlDetailsDB;
-#else
-		
-        private static SqliteConnection detailsDB;
-#endif
 
         public static void LoadRules()
         {
@@ -123,58 +123,80 @@ namespace CombatManager
             }
         }
 
-        public static string LoadDetails(string ID)
+#if ANDROID
+        static string _DBVersion;
+        public static void PrepareDetailDB(String version)
         {
-            string details = null;
-            string commandText = "Select details from Rules where ID=?";
-            try
+            _DBVersion = version;
+            if (!Directory.Exists(DBFolder))
             {
-#if MONO
-                if (detailsDB == null)
+                Directory.CreateDirectory(DBFolder);
+            }
+            //if !db exists
+            if (!File.Exists(DBFullFilename))
+            {
+                //open stream
+                using (Stream io = CoreContext.Context.Assets.Open("Details.db"))
                 {
-                    detailsDB = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=Details.db");
-
-                    detailsDB.Open();
-
+                    using (FileStream fs = File.Open(DBFullFilename, FileMode.Create))
+                    {
+                        //copy db
+                        byte[] bytes = new byte[20480];
+                        int read = io.Read(bytes, 0, bytes.Length);
+                        while (read > 0)
+                        {
+                            fs.Write(bytes, 0, read);
+                            read = io.Read(bytes, 0, bytes.Length);
+                        }
+                        fs.Close();
+                    }
+                    io.Close();
                 }
 
-                var cm = detailsDB.CreateCommand();
-                cm.CommandText = commandText;
-                var p = cm.CreateParameter();
-                p.Value = ID;
-                cm.Parameters.Add(p);
+                
+                //delete old dbs
+                List<string> files = new List<string>(Directory.EnumerateFiles(DBFolder));
 
-                details = (string)cm.ExecuteScalar();
-#else
-                if (sqlDetailsDB == null)
+                foreach (string s in from x in files where x != DBFullFilename select x)
                 {
-                    sqlDetailsDB = new SQL_Lite();
-                    sqlDetailsDB.SkipHeaderRow = true;
-                    sqlDetailsDB.Open("details.db");
+                    File.Delete(s);
                 }
-            
-                RowsRet ret = null;
+            }
 
-                ret = sqlDetailsDB.ExecuteCommand(commandText, new object[] { ID });
 
-                if (ret == null || ret.Count() == 0)
-                {
-                    return "";
-                }
+        }
 
-                details = ret.Rows[0]["details"];
+        private static string DBFolder
+        {
+            get
+            {
+                string dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                dir = Path.Combine(dir, "Database");
+                return dir;
+            }
+        }
+
+        private static string DBFullFilename
+        {
+            get
+            {
+                string filename = DBFilename;
+                return Path.Combine(DBFolder, filename);
+            }
+        }
+
+        private static string DBFilename
+        {
+            get
+            {
+                return "detail" + _DBVersion + ".db";
+
+            }
+        }
+                 
 
 #endif
-                
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-            }
 
-
-            return details;
-        }
 
         public static ICollection<string> Types
         {
@@ -231,7 +253,7 @@ namespace CombatManager
                 if (_Details == null && _ID != null && !_DBDetailsLoaded)
                 {
                     _DBDetailsLoaded = true;
-                    _Details = LoadDetails(_ID);
+                    _Details = DetailsDB.LoadDetails(_ID, "Rules", "details");
                 }
 
                 return _Details; 

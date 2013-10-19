@@ -96,6 +96,7 @@ namespace CombatManager
         private static List<FavoriteCondition> _FavoriteConditions;
         private static List<FavoriteCondition> _RecentCondtions;
 
+        private static bool _MonsterConditionsLoaded;
 
         private const int RecentLength = 8;
 
@@ -166,58 +167,64 @@ namespace CombatManager
             }
         }
 
-        private static void LoadMonsterConditions()
+        public static void LoadMonsterConditions()
         {
-            int success = 0;
-            int failure = 0;
-
-            foreach (Monster monster in Monster.Monsters)
+            if (!MonsterConditionsLoaded)
             {
+                int success = 0;
+                int failure = 0;
 
-                if (monster.SpecialAbilitiesList != null)
+                foreach (Monster monster in Monster.Monsters)
                 {
-                    foreach (SpecialAbility sa in monster.SpecialAbilitiesList)
+
+                    if (monster.SpecialAbilitiesList != null)
                     {
-                        if (sa.Name == "Disease" || sa.Name == "Poison")
+                        foreach (SpecialAbility sa in monster.SpecialAbilitiesList)
                         {
-                            Affliction a = Affliction.FromSpecialAbility(monster, sa);
-
-
-                            if (a == null)
+                            if (sa.Name == "Disease" || sa.Name == "Poison")
                             {
-                                failure++;
-                                //System.Diagnostics.Debug.WriteLine(monster.Name + " - " + sa.Name);
-                            }
-                            else
-                            {
-                                success++;
+                                Affliction a = Affliction.FromSpecialAbility(monster, sa);
 
-                                Condition c = new Condition();
-                                c.Name = a.Name;
-                                c.Affliction = a;
-                                if (sa.Name == "Disease")
+
+                                if (a == null)
                                 {
-                                    c.Image = "disease";
+                                    failure++;
+                                    //System.Diagnostics.Debug.WriteLine(monster.Name + " - " + sa.Name);
                                 }
                                 else
                                 {
-                                    c.Image = "poison";
+                                    success++;
+
+                                    Condition c = new Condition();
+                                    c.Name = a.Name;
+                                    c.Affliction = a;
+                                    if (sa.Name == "Disease")
+                                    {
+                                        c.Image = "disease";
+                                    }
+                                    else
+                                    {
+                                        c.Image = "poison";
+                                    }
+
+                                    Conditions.Add(c);
+
+                                    monster.UsableConditions.Add(c);
                                 }
 
-                                Conditions.Add(c);
-
-                                monster.UsableConditions.Add(c);
                             }
-
                         }
                     }
                 }
+
+                if (failure > 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("Afflictions:  Succeeded: " + success + " Failed: " + failure);
+                }
+
+                _MonsterConditionsLoaded = true;
             }
 
-            if (failure > 0)
-            {
-                System.Diagnostics.Debug.WriteLine("Afflictions:  Succeeded: " + success + " Failed: " + failure);
-            }
         }
 
         public static Condition FindCondition(string name)
@@ -407,6 +414,13 @@ namespace CombatManager
                     LoadConditions();
                 }
                 return _Conditions;
+            }
+        }
+        public static bool MonsterConditionsLoaded
+        {
+            get
+            {
+                return _MonsterConditionsLoaded;
             }
         }
 

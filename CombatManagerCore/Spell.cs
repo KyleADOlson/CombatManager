@@ -117,7 +117,7 @@ namespace CombatManager
 
         static Spell()
         {
-            List<Spell> set = XmlListLoader<Spell>.Load("Spells.xml");
+            List<Spell> set = XmlListLoader<Spell>.Load("SpellsShort.xml");
 
             List<Spell> remove = new List<Spell>();
             foreach (var cur in set)
@@ -748,7 +748,14 @@ namespace CombatManager
         }
         public String description
         {
-            get { return _description; }
+            get 
+            {
+                if (_description == null)
+                {
+                    _description = DetailsDB.LoadDetails(_name, "Spells", "description");
+                }
+                return _description; 
+            }
             set
             {
                 if (_description != value)
@@ -760,7 +767,14 @@ namespace CombatManager
         }
         public String description_formated
         {
-            get { return _description_formated; }
+            get
+            {
+                if (_description_formated == null)
+                {
+                    _description_formated = DetailsDB.LoadDetails(_name, "Spells", "description_formated");
+                }
+                return _description_formated;
+            }
             set
             {
                 if (_description_formated != value)
@@ -1460,6 +1474,14 @@ namespace CombatManager
                 classes["magus"] = "Magus";
             }
 
+            public static Dictionary<string, string> Classes
+            {
+                get
+                {
+                    return classes;
+                }
+            }
+
             public SpellAdjuster(Spell spell)
             {
                 _Spell = spell;
@@ -1912,29 +1934,38 @@ namespace CombatManager
                     {
                         LevelAdjusterInfo info = list[0];
 
-                        string text = null;
-
-                        if (info.Property == "sor" || info.Property == "wiz")
+                        if (info == null)
                         {
-                            text = GetPairText(list, "sor", "wiz");
-                        }
-                        else if (info.Property == "cleric" || info.Property == "oracle")
-                        {
-                            text = GetPairText(list, "cleric", "oracle");
-                        }
-
-                        if (text == null)
-                        {
-                            text = info.Class + " " + info.Level;
+                            System.Console.WriteLine("Info null");
                             list.RemoveAt(0);
                         }
-
-
-                        if (levelText.Length > 0)
+                        else
                         {
-                            levelText += ", ";
+
+                            string text = null;
+
+                            if (info.Property == "sor" || info.Property == "wiz")
+                            {
+                                text = GetPairText(list, "sor", "wiz");
+                            }
+                            else if (info.Property == "cleric" || info.Property == "oracle")
+                            {
+                                text = GetPairText(list, "cleric", "oracle");
+                            }
+
+                            if (text == null)
+                            {
+                                text = info.Class + " " + info.Level;
+                                list.RemoveAt(0);
+                            }
+
+
+                            if (levelText.Length > 0)
+                            {
+                                levelText += ", ";
+                            }
+                            levelText += text;
                         }
-                        levelText += text;
                     }
 
                     _Spell.spell_level = levelText;

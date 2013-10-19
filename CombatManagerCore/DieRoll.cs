@@ -707,7 +707,50 @@ namespace CombatManager
             }
         }
 
+        public void RemoveDie(DieStep step)
+        {
+            if (this.die == step.Die)
+            {
+                this.count -= step.Count;
+                if (this.count < 0)
+                {
+                    this.count = 0;
+                }
+            }
+            else
+            {
+                if (_extraRolls != null)
+                {
+                    for (int i=0; i<_extraRolls.Count; i++)
+                    {
+                        DieStep ex = extraRolls[i];
+                        if (ex.Die == step.Die)
+                        {
+                            ex.Count -= step.Count;
+                            if (ex.Count <= 0)
+                            {
+                                _extraRolls.RemoveAt(i);
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        
+        public int DieCount(int die)
+        {
+            int count = 0;
 
+            foreach (DieStep d in this.AllRolls)
+            {
+                if (d.Die == die)
+                {
+                    count += d.Count;
+                }
+            }
+            return count;
+        }
 
     }
 
@@ -855,6 +898,7 @@ namespace CombatManager
                 }
             }
         }
+
 
     }
 }

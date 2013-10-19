@@ -7,45 +7,67 @@
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1">
-        <Button
-            android:text="Combat"
+        android:id="@+id/linearLayout2"
+        android:gravity="right">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+            <Button
+                android:text="Combat"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/combatButton"
+                android:drawableLeft="@drawable/sword16"
+                android:background="@drawable/main_tab" />
+            <Button
+                android:text="Monsters"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/monstersButton"
+                android:drawableLeft="@drawable/monster16"
+                android:background="@drawable/main_tab" />
+            <Button
+                android:text="Feats"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/featsButton"
+                android:drawableLeft="@drawable/star16"
+                android:background="@drawable/main_tab" />
+            <Button
+                android:text="Spells"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/spellsButton"
+                android:drawableLeft="@drawable/scroll16"
+                android:background="@drawable/main_tab" />
+            <Button
+                android:text="Rules"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/rulesButton"
+                android:drawableLeft="@drawable/book16"
+                android:background="@drawable/main_tab" />
+            <Button
+                android:text="Treasure"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/treasureButton"
+                android:drawableLeft="@drawable/treasure16"
+                android:background="@drawable/main_tab" />
+        </LinearLayout>
+        <ImageButton
+            android:src="@drawable/info"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:id="@+id/combatButton"
-            android:drawableLeft="@drawable/sword16" />
-        <Button
-            android:text="Monsters"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/monstersButton"
-            android:drawableLeft="@drawable/monster16" />
-        <Button
-            android:text="Feats"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/button3"
-            android:drawableLeft="@drawable/star16" />
-        <Button
-            android:text="Spells"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/button4"
-            android:drawableLeft="@drawable/scroll16" />
-        <Button
-            android:text="Rules"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/button5"
-            android:drawableLeft="@drawable/book16" />
-        <Button
-            android:text="Treasure"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/button6"
-            android:drawableLeft="@drawable/treasure16" />
+            android:id="@+id/helpButton"
+            android:background="@drawable/main_tab" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

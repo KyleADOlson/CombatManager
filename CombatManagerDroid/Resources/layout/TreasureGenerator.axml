@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="Level"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/byLevelButton" />
+        <Button
+            android:text="Items"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/byItemsButton" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="150dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/levelLayout">
+            <Button
+                android:text="Level 1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/levelButton" />
+            <Button
+                android:text="Coin Normal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/coinButton" />
+            <Button
+                android:text="Goods Normal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/goodsButton" />
+            <Button
+                android:text="Items Normal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/magicItemsButton" />
+            <Button
+                android:text="Generate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/generateLevelButton" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="150dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/itemsLayout">
+            <Button
+                android:text="1 Item(s)"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/countButton" />
+            <Button
+                android:text="Level Minor"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemsLevelButton" />
+            <CheckBox
+                android:text="Magical Armor"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/magicalArmorBox"
+                android:textSize="14dp"
+                android:layout_marginBottom="-7dp"
+                android:layout_marginTop="-7dp"
+                android:checked="true" />
+            <CheckBox
+                android:text="Magical Weapon"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/magicalWeaponBox"
+                android:textSize="14dp"
+                android:layout_marginBottom="-7dp"
+                android:layout_marginTop="-7dp"
+                android:checked="true" />
+            <CheckBox
+                android:text="Potion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/potionBox"
+                android:textSize="14dp"
+                android:layout_marginBottom="-7dp"
+                android:layout_marginTop="-7dp"
+                android:checked="true" />
+            <CheckBox
+                android:text="Ring"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ringBox"
+                android:textSize="14dp"
+                android:layout_marginBottom="-7dp"
+                android:layout_marginTop="-7dp"
+                android:checked="true" />
+            <CheckBox
+                android:text="Rod"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rodBox"
+                android:textSize="14dp"
+                android:layout_marginBottom="-7dp"
+                android:layout_marginTop="-7dp"
+                android:checked="true" />
+            <CheckBox
+                android:text="Staff"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/staffBox"
+                android:textSize="14dp"
+                android:layout_marginBottom="-7dp"
+                android:layout_marginTop="-7dp"
+                android:checked="true" />
+            <CheckBox
+                android:text="Wand"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/wandBox"
+                android:textSize="14dp"
+                android:layout_marginBottom="-7dp"
+                android:layout_marginTop="-7dp"
+                android:checked="true" />
+            <CheckBox
+                android:text="Wondrous Item"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/wondrousItemBox"
+                android:textSize="14dp"
+                android:layout_marginBottom="-7dp"
+                android:layout_marginTop="-7dp"
+                android:checked="true" />
+            <Button
+                android:text="Generate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/generateItemsButton" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -4,50 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffafdbdd">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1"
-        android:background="#ff47aaaf">
-        <Button
-            android:text="Main"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/mainTab" />
-        <Button
-            android:text="Defense"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/defenseTab" />
-        <Button
-            android:text="Offense"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/offenseTab" />
-        <Button
-            android:text="Stats"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/statsTab" />
-        <Button
-            android:text="Feats"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/featsTab" />
-        <Button
-            android:text="Special"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/specialTab" />
-        <Button
-            android:text="Description"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/descriptionTab" />
-    </LinearLayout>
+    <include
+        layout="@layout/editor_tab_bar" />
     <ScrollView
         android:minWidth="25px"
         android:minHeight="25px"
@@ -82,7 +40,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:id="@+id/baseAttackText"
-                    android:minWidth="50dp" />
+                    android:minWidth="50dp"
+                    android:singleLine="true" />
                 <TextView
                     android:text="CMB"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -95,7 +54,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:id="@+id/cmbText"
-                    android:minWidth="50dp" />
+                    android:minWidth="50dp"
+                    android:singleLine="true" />
                 <TextView
                     android:text="CMD"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -108,7 +68,8 @@
                     android:id="@+id/cmdText"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:minWidth="50dp" />
+                    android:minWidth="50dp"
+                    android:singleLine="true" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
@@ -127,7 +88,8 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/racialModsText" />
+                    android:id="@+id/racialModsText"
+                    android:singleLine="true" />
                 <TextView
                     android:text="Aura"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -137,7 +99,8 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/auraText" />
+                    android:id="@+id/auraText"
+                    android:singleLine="true" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -161,7 +124,8 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView6" />
+                        android:id="@+id/textView6"
+                        android:singleLine="true" />
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -192,7 +156,8 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/languagesText" />
+                    android:id="@+id/languagesText"
+                    android:singleLine="true" />
                 <TextView
                     android:text="SQ"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -202,7 +167,8 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sqText" />
+                    android:id="@+id/sqText"
+                    android:singleLine="true" />
                 <TextView
                     android:text="Gear"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -212,7 +178,8 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/gearText" />
+                    android:id="@+id/gearText"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

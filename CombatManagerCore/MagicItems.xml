@@ -24324,7 +24324,7 @@
     <Description>Most bags of devouring appear as normal sacks, but Chomper is unlike most bags of devouring. Sporting rows of vicious teeth, a bad attitude, and a thirst to devour all things, this intelligent cursed item believes it is the favored maw and most important appendage of a creature it refers to as the Eater of All. Chomper hates all creatures except for demons, whom it considers kindred spirits of destruction.  Chomper has all of the magical abilities of a regular bag of devouring (Pathfinder RPG Core Rulebook 539), along with the following additional powers.  Bite: As a standard action, Chomper's possessor can swing the bag by its straps in an attempt to strike any target within a 5-foot radius. The possessor targets a single creature or unattended item with this attack. Chomper (not the wielder) makes a single bite attack against the creature or item targeted: bite +14 (1d10+5 and bleed 2). This action does not provoke attacks of opportunity, despite the quasit's Tiny size. Attacks made in this way are never modified by the wielder's abilities-Azrikalis cannot modify his attack roll with his Dexterity modifier, for example, nor can he use Chomper to make sneak attacks.  Hateful Curse: When a non-demon is in possession of Chomper, the bag's cursed aura imparts a -1 penalty on all of its wielder's attack rolls, saving throws, skill checks, and ability checks. If Chomper manages to seize control of a non-demon host through personality conflict, it directs its host to seek out victims to feed to it.</Description>
     <Requirements>bag of holding type III</Requirements>
     <Group>Wondrous Item</Group>
-    <Source>Rival Gudie</Source>
+    <Source>Rival Guide</Source>
     <AL>CE</AL>
     <Int>10</Int>
     <Wis>14</Wis>

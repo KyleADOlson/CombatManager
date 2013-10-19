@@ -1,55 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="wrap_content"
+    android:background="#BBDBDD">
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/linearLayout1"
-        android:layout_weight="1">
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/nameEditText"
-            android:background="@drawable/blue_button" />
+        android:id="@+id/linearLayout3">
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/linearLayout2">
+            android:id="@+id/linearLayout1"
+            android:layout_weight="1">
             <Button
-                android:text="Button"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:id="@+id/nameEditText"
+                android:background="@drawable/blue_button"
+                android:text="foo"
+                android:autoText="false"
+                android:linksClickable="false"
+                android:textSize="14dp"
+                android:singleLine="true"
+                android:ellipsize="middle" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/hpButton"
-                android:layout_weight="1"
-                android:textSize="14dp" />
-            <Button
-                android:text="Button"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/hpMaxButton"
-                android:layout_weight="1"
-                android:textSize="14dp" />
-            <Button
-                android:text="Button"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/initButton"
-                android:layout_weight="1"
-                android:textSize="14dp" />
+                android:id="@+id/linearLayout2">
+                <Button
+                    android:text="Button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:id="@+id/hpButton"
+                    android:layout_weight="1"
+                    android:textSize="14dp"
+                    android:background="@drawable/button2" />
+                <Button
+                    android:text="Button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:id="@+id/hpMaxButton"
+                    android:layout_weight="1"
+                    android:textSize="14dp"
+                    android:background="@drawable/button2" />
+                <Button
+                    android:text="Button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:id="@+id/initButton"
+                    android:layout_weight="1"
+                    android:textSize="14dp"
+                    android:background="@drawable/button2" />
+            </LinearLayout>
         </LinearLayout>
+        <ImageButton
+            android:text="Button"
+            android:id="@+id/actionButton"
+            android:src="@drawable/d2040"
+            android:background="@drawable/button_die"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:minWidth="60dp" />
     </LinearLayout>
-    <ImageButton
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:id="@+id/actionButton"
-        android:src="@drawable/d2040" />
+    <HorizontalScrollView
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalScrollView1">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:id="@+id/conditionsLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </HorizontalScrollView>
 </LinearLayout>

@@ -33,9 +33,25 @@ namespace CombatManagerDroid
 
 
 
-        private MonsterFragment _MonsterFragment;
-        private CombatFragment _CombatFragment;
-        static HomePage lastFragment = HomePage.Combat;
+
+        MonsterFragment _MonsterFragment;
+        FeatFragment _FeatFragment;
+        SpellFragment _SpellFragment;
+        RuleFragment _RuleFragment;
+        CombatFragment _CombatFragment;
+        TreasureFragment _TreasureFragment;
+
+        static HomePage _LastFragment = HomePage.Combat;
+
+        List<int> _ButtonId = new List<int>
+        {
+            Resource.Id.combatButton,
+            Resource.Id.monstersButton,
+            Resource.Id.featsButton,
+            Resource.Id.spellsButton,
+            Resource.Id.rulesButton,
+            Resource.Id.treasureButton
+        };
 
         protected override void OnCreate (Bundle bundle)
         {
@@ -47,18 +63,41 @@ namespace CombatManagerDroid
             {
                 ShowMonsterFragment();
             };
+            FindViewById<Button>(Resource.Id.featsButton).Click += delegate
+            {
+                ShowFeatsFragment();
+            };
+            FindViewById<Button>(Resource.Id.spellsButton).Click += delegate
+            {
+                ShowSpellsFragment();
+            };
             FindViewById<Button>(Resource.Id.combatButton).Click += delegate
             {
                 ShowCombatFragment();
             };
+            FindViewById<Button>(Resource.Id.rulesButton).Click += delegate
+            {
+                ShowRulesFragment();
+            };
+            FindViewById<Button>(Resource.Id.treasureButton).Click += delegate
+            {
+                ShowTreasureFragment();
+            };
+            ImageButton b = FindViewById<ImageButton>(Resource.Id.helpButton);
+            b.Click += delegate
+            {
+                ShowHelp();
+            };
+
             ShowLastFragment();
+
 
             //UpdateText();
         }
 
-        private void ShowLastFragment()
+        void ShowLastFragment()
         {
-            switch (lastFragment)
+            switch (_LastFragment)
             {
             case HomePage.Combat:
                 ShowCombatFragment();
@@ -81,58 +120,125 @@ namespace CombatManagerDroid
             }
                 
         }
+
+        private void SetTabState(HomePage selectedPage)
+        {
+            for (int i=0; i<6; i++)
+            {
+                Button b = FindViewById<Button>(_ButtonId[i]);
+                b.Selected = i == (int)selectedPage;
+
+            }
+        }
         
         private void ShowCombatFragment()
         {
-            FragmentTransaction ft = FragmentManager.BeginTransaction();
             
             if (_CombatFragment == null)
             {
                 _CombatFragment = new CombatFragment();
             }
-            ft.Replace(Resource.Id.bodyLayout, _CombatFragment);
-            ft.SetTransition(FragmentTransit.FragmentOpen);
-            ft.Commit();
-            lastFragment = HomePage.Combat;
+            _LastFragment = HomePage.Combat;
+            TransitionBodyFragment(_CombatFragment);
+            SetTabState(_LastFragment);
         }
         
         private void ShowMonsterFragment()
         {
-            FragmentTransaction ft = FragmentManager.BeginTransaction();
             
             if (_MonsterFragment == null)
             {
                 _MonsterFragment = new MonsterFragment();
             }
-            ft.Replace(Resource.Id.bodyLayout, _MonsterFragment);
-            ft.SetTransition(FragmentTransit.FragmentOpen);
-            ft.Commit();
-            lastFragment = HomePage.Monsters;
+            _LastFragment = HomePage.Monsters;
+            
+            TransitionBodyFragment(_MonsterFragment);
+            SetTabState(_LastFragment);
         }
 
         private void ShowFeatsFragment()
         {
 
+            if (_FeatFragment == null)
+            {
+                _FeatFragment = new FeatFragment();
+            }
+            _LastFragment = HomePage.Feats;
+            TransitionBodyFragment(_FeatFragment);
+            SetTabState(_LastFragment);
         }
 
         private void ShowSpellsFragment()
         {
 
+            if (_SpellFragment == null)
+            {
+                _SpellFragment = new SpellFragment();
+            }
+            _LastFragment = HomePage.Spells;
+            
+            TransitionBodyFragment(_SpellFragment);
+            SetTabState(_LastFragment);
         }
 
         private void ShowRulesFragment()
         {
 
+
+            if (_RuleFragment == null)
+            {
+                _RuleFragment = new RuleFragment();
+            }
+            _LastFragment = HomePage.Rules;
+            
+            TransitionBodyFragment(_RuleFragment);
+            SetTabState(_LastFragment);
         }
 
         private void ShowTreasureFragment()
         {
 
+
+            if (_TreasureFragment == null)
+            {
+                _TreasureFragment = new TreasureFragment();
+            }
+            _LastFragment = HomePage.Treasure;
+            TransitionBodyFragment(_TreasureFragment);
+            SetTabState(_LastFragment);
         }
+
+        private void TransitionBodyFragment(Fragment fragment)
+        {
+            
+            FragmentTransaction ft = FragmentManager.BeginTransaction();
+            ft.Replace(Resource.Id.bodyLayout, fragment);
+            ft.SetTransition(FragmentTransit.None);
+            ft.Commit();
+        }
+
 
         protected override void OnPause ()
         {
             base.OnPause ();
+        }
+
+        void ShowHelp()
+        {
+            /*String message = "Combat Manager for Android\r\n";
+            message += "Version " + Application.PackageManager.GetPackageInfo(PackageName, 0).VersionName + "\r\n\r\n";
+                message += "Copyright 2010-2013 Kyle Olson";
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.SetMessage(message);
+            builder1.SetCancelable(true);
+            builder1.SetPositiveButton("Close", (sender, e) => {});
+
+                AlertDialog alert11 = builder1.Create();
+            alert11.Show();*/
+
+            AboutDialog dlg = new AboutDialog(this);
+            dlg.Show();
         }
 
 
