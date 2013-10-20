@@ -110,6 +110,7 @@
     <Compile Include="Weapon.cs" />
     <Compile Include="WeaponItem.cs" />
     <Compile Include="WeaponSpecialAbility.cs" />
+    <Compile Include="XElementExt.cs" />
     <Compile Include="XMLLoader.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,8 +148,8 @@
     <Content Include="HtmlBlockHeader.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="MagicItems.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="MagicItemsShort.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="NPCShort.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

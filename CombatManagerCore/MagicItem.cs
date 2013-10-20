@@ -31,6 +31,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Globalization;
 using System.IO;
+using System.Xml.Linq;
 
 namespace CombatManager
 {
@@ -49,6 +50,8 @@ namespace CombatManager
 
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private int _DetailsID;
 
         private String _Name;
         private String _Aura;
@@ -75,7 +78,8 @@ namespace CombatManager
         private String _AuraStrength;
         private String _WeightValue;
         private String _PriceValue;
-        private String _CostValue; private String _AL;
+        private String _CostValue; 
+        private String _AL;
         private String _Int;
         private String _Wis;
         private String _Cha;
@@ -85,8 +89,8 @@ namespace CombatManager
         private String _Powers;
         private String _MagicItem;
         private String _DescHTML;
-
-
+        private String _Mythic;
+        private String _LegendaryWeapon;
 
 
 
@@ -98,7 +102,7 @@ namespace CombatManager
         public static void LoadMagicItems()
         {
 
-            List<MagicItem> set = XmlListLoader<MagicItem>.Load("MagicItems.xml");
+            List<MagicItem> set = LoadMagicItemsFromXml("MagicItemsShort.xml");
 
 
             groups = new SortedDictionary<string, string>();
@@ -111,6 +115,105 @@ namespace CombatManager
 
                 groups[item.Group] = item.Group;
                 cls[item.CL] = item.CL;
+            }
+        }
+
+        public static List<MagicItem> LoadMagicItemsFromXml(string filename)
+        {
+              
+            try
+            {
+
+                List<MagicItem> magicItems = new List<MagicItem>();
+    #if ANDROID
+                XDocument doc = XDocument.Load(new StreamReader(CoreContext.Context.Assets.Open(filename)));
+    #else
+
+                XDocument doc = XDocument.Load(filename);
+    #endif
+               
+                foreach (var v in doc.Descendants("MagicItem"))
+                {
+                    MagicItem m = new MagicItem();
+
+                    m._DetailsID = v.ElementIntValue("id");
+
+                    Debug.Assert(m._DetailsID != 0);
+
+                    m._Name = v.ElementValue("Name");
+                    m._Aura = v.ElementValue("Aura");
+                    m._CL = v.ElementIntValue("CL");
+                    m._Slot = v.ElementValue("Slot");
+                    m._Price = v.ElementValue("Price");
+                    m._Weight = v.ElementValue("Weight");
+                    m._Description = v.ElementValue("Description");
+                    m._Requirements = v.ElementValue("Requirements");
+                    m._Cost = v.ElementValue("Cost");
+                    m._Group = v.ElementValue("Group");
+                    m._Source = v.ElementValue("Source");
+                    m._FullText = v.ElementValue("FullText");
+                    m._Destruction = v.ElementValue("Destruction");
+                    m._MinorArtifactFlag = v.ElementValue("MinorArtifactFlag");
+                    m._MajorArtifactFlag = v.ElementValue("MajorArtifactFlag");
+                    m._Abjuration = v.ElementValue("Abjuration");
+                    m._Conjuration = v.ElementValue("Conjuration");
+                    m._Divination = v.ElementValue("Divination");
+                    m._Enchantment = v.ElementValue("Enchantment");
+                    m._Evocation = v.ElementValue("Evocation");
+                    m._Necromancy = v.ElementValue("Necromancy");
+                    m._Transmutation = v.ElementValue("Transmutation");
+                    m._AuraStrength = v.ElementValue("AuraStrength");
+                    m._WeightValue = v.ElementValue("WeightValue");
+                    m._PriceValue = v.ElementValue("PriceValue");
+                    m._CostValue = v.ElementValue("CostValue");
+                    m._AL = v.ElementValue("AL");
+                    m._Int = v.ElementValue("Int");
+                    m._Wis = v.ElementValue("Wis");
+                    m._Cha = v.ElementValue("Cha");
+                    m._Ego = v.ElementValue("Ego");
+                    m._Communication = v.ElementValue("Communication");
+                    m._Senses = v.ElementValue("Senses");
+                    m._Powers = v.ElementValue("Powers");
+                    m._MagicItem = v.ElementValue("MagicItem");
+                    m._DescHTML = v.ElementValue("DescHTML");
+                    m._Mythic = v.ElementValue("Mythic");
+                    m._LegendaryWeapon = v.ElementValue("LegendaryWeapon");
+
+                    magicItems.Add(m);
+                }
+                return magicItems;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        
+        }
+
+        public static List<string> DetailsFields
+        {
+            get
+            {
+                return new List<string>() {
+                "Description",
+                "Requirements",
+                "FullText",
+                "Destruction"};
+            }
+        }
+
+        void UpdateFromDetailsDB()
+        {
+            if (_DetailsID != 0)
+            {
+                //perform updating from DB
+                var list = DetailsDB.LoadDetails(_DetailsID.ToString(), "MagicItems", DetailsFields);
+                Description = list["Description"];
+                Requirements = list["Requirements"];
+                FullText = list["FullText"];
+                Destruction = list["Destruction"];
+                _DetailsID = 0;
             }
         }
 
@@ -224,7 +327,11 @@ namespace CombatManager
         }
         public String Description
         {
-            get { return _Description; }
+            get {
+                UpdateFromDetailsDB();
+
+                return _Description; 
+            }
             set
             {
                 if (_Description != value)
@@ -236,7 +343,12 @@ namespace CombatManager
         }
         public String Requirements
         {
-            get { return _Requirements; }
+            get
+            {
+                UpdateFromDetailsDB();
+
+                return _Requirements;
+            }
             set
             {
                 if (_Requirements != value)
@@ -284,7 +396,12 @@ namespace CombatManager
         }
         public String FullText
         {
-            get { return _FullText; }
+            get
+            {
+                UpdateFromDetailsDB();
+
+                return _FullText;
+            }
             set
             {
                 if (_FullText != value)
@@ -296,7 +413,12 @@ namespace CombatManager
         }
         public String Destruction
         {
-            get { return _Destruction; }
+            get
+            {
+                UpdateFromDetailsDB();
+
+                return _Destruction;
+            }
             set
             {
                 if (_Destruction != value)
@@ -585,6 +707,32 @@ namespace CombatManager
                 }
             }
         }
+
+        public String Mythic
+        {
+            get { return _Mythic; }
+            set
+            {
+                if (_Mythic != value)
+                {
+                    _Mythic = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Mythic")); }
+                }
+            }
+        }
+        public String LegendaryWeapon
+        {
+            get { return _LegendaryWeapon; }
+            set
+            {
+                if (_LegendaryWeapon != value)
+                {
+                    _LegendaryWeapon = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("LegendaryWeapon")); }
+                }
+            }
+        }
+
 
 
         public static MagicItem ByName(string name)
