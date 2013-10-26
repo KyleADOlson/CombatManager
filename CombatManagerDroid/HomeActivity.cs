@@ -17,6 +17,7 @@ using Android.OS;
 namespace CombatManagerDroid
 {
     [Activity (Label = "Combat Manager", Theme = "@android:style/Theme.Light.NoTitleBar")]
+
     public class HomeActivity : Activity, ActionBar.ITabListener
     {
         enum HomePage

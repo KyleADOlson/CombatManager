@@ -36,6 +36,13 @@ namespace CombatManagerDroid
         static string _DieText = "";
         static List<object> _RollResults = new List<object>();
 
+        static List<string> _Extensions = new List<string>()
+        {
+            ".cmpt",
+            ".por",
+            ".rpgrp"
+        };
+
 
         public override void OnCreate (Bundle savedInstanceState)
         {
@@ -238,14 +245,15 @@ namespace CombatManagerDroid
             cl.FindViewById<ImageButton>(Resource.Id.loadButton).Click += 
                 (object sender, EventArgs e) => 
             {
-                FileDialog fd = new FileDialog(cl.Context, true);
+
+                FileDialog fd = new FileDialog(cl.Context, _Extensions, true);
                 fd.Show();
                 
                 fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) => 
                 {
                     
                     string name = ea.Filename;
-                    string fullname = Path.Combine(FileDialog.Folder, name);
+                    string fullname = Path.Combine(fd.Folder, name);
 
                     List<Character> l = XmlListLoader<Character>.Load(fullname);
                     foreach (var c in l)
@@ -261,7 +269,7 @@ namespace CombatManagerDroid
             cl.FindViewById<ImageButton>(Resource.Id.saveButton).Click += 
                 (object sender, EventArgs e) => 
             {
-                FileDialog fd = new FileDialog(v.Context, false);
+                FileDialog fd = new FileDialog(v.Context, _Extensions, false);
                 fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) => 
                 {
                     string name = ea.Filename;
@@ -269,7 +277,7 @@ namespace CombatManagerDroid
                     {
                         name = name+".cmpt";
                     }
-                    string fullname = Path.Combine(FileDialog.Folder, name);
+                    string fullname = Path.Combine(fd.Folder, name);
 
                     XmlListLoader<Character>.Save(new List<Character>(_CombatState.Characters.Where((a)=>a.IsMonster == monsters)), fullname);
                 };

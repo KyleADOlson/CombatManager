@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CombatManagerDroid
 {
-    [Activity (Label = "Combat Manager", MainLauncher = true, Theme="@android:style/Theme.Black.NoTitleBar")]			
+    [Activity (Label = "Combat Manager", MainLauncher = true, Theme="@android:style/Theme.Black.NoTitleBar")]
     public class LoadingActivity : Activity
     {
         protected override void OnCreate (Bundle bundle)

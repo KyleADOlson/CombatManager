@@ -9,6 +9,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System.IO;
+using System.Security.AccessControl;
 
 namespace CombatManagerDroid
 {
@@ -16,8 +17,10 @@ namespace CombatManagerDroid
     {
         bool _Load;
 
-        List<string> _FileList;
         Context _Context;
+        String _Folder;
+        List<String> _Extensions;
+        FileViewAdapter adapter;
 
         public string Text{ get; set; }
 
@@ -27,10 +30,11 @@ namespace CombatManagerDroid
         }
         public event EventHandler<FileDialogEventArgs> DialogComplete;
 
-        public FileDialog(Context context, bool load) : base (context)
+        public FileDialog(Context context, List<string> ext, bool load) : base (context)
         {
             _Load = load;
             _Context = context;
+            _Extensions = ext;
 
             SetContentView(Resource.Layout.FileDialog);
             SetTitle(_Load?"Open File":"Save File");
@@ -43,27 +47,61 @@ namespace CombatManagerDroid
             ((Button)FindViewById(Resource.Id.cancelButton)).Click += 
                 (object sender, EventArgs e) => {Dismiss();};
             
-            EditText t = FindViewById<EditText>(Resource.Id.fileName);
+            //EditText t = FindViewById<EditText>(Resource.Id.fileName);
 
+            
+            Button b = FindViewById<Button>(Resource.Id.folderUpButton);
+            b.Click += (object sender, EventArgs e) => { MoveUpFolder();};
 
+            
             if (!Directory.Exists(Folder))
             {
                 Directory.CreateDirectory(Folder);
             }
 
+
+            
+            TextView tv = FindViewById<TextView>(Resource.Id.folderNameText);
+            tv.Text = Folder;
+
+
             BuildList();
 
         }
 
-        public static string Folder
+        void MoveUpFolder()
+        {
+            DirectoryInfo info = new DirectoryInfo(Folder);
+            if (info.Parent != null)
+            {
+                _Folder = info.Parent.FullName;
+                UpdateFolderDisplay();
+            }
+        }
+
+        void UpdateFolderDisplay()
+        {
+            
+            TextView tv = FindViewById<TextView>(Resource.Id.folderNameText);
+            tv.Text = Folder;
+
+
+            adapter.UpdateFolder(Folder);
+        }
+
+        public string Folder
         {
             get
             {
-                string docpath = "/sdcard";
+                if (_Folder == null)
+                {
+                    string docpath = "/sdcard";
 
-                string folder = Path.Combine(docpath, "CombatManager");
+                    string folder = Path.Combine(docpath, "CombatManager");
+                    _Folder = folder;
+                }
 
-                return folder;
+                return _Folder;
             }
         }
 
@@ -73,7 +111,7 @@ namespace CombatManagerDroid
 
             if (_Load)
             {
-                if (_FileList.Contains(t.Text.Trim()))
+                if (File.Exists(Path.Combine(Folder, t.Text.Trim())))
                 {
                     Text = t.Text.Trim();
                     Dismiss();
@@ -101,20 +139,143 @@ namespace CombatManagerDroid
         {
 
             ListView v = FindViewById<ListView>(Resource.Id.fileList);
-            ArrayAdapter<String> ad = new ArrayAdapter<String>(_Context, Android.Resource.Layout.SelectDialogItem);
-            _FileList = new List<string>();
-            foreach (var f in Directory.EnumerateFiles(Folder))
-            {
-                _FileList.Add(new FileInfo(f).Name);
-            }
-            ad.AddAll(_FileList);
+
+            FileViewAdapter ad = new FileViewAdapter(this, _Context, Folder);
+            adapter = ad;
 
             v.SetAdapter(ad);
             v.ItemClick += (object sender, AdapterView.ItemClickEventArgs e)  => 
             {
                 EditText t = FindViewById<EditText>(Resource.Id.fileName);
-                t.Text = _FileList[e.Position];
+                FileSystemInfo item = ad.GetFile(e.Position);
+                if (item is FileInfo)
+                {
+                    
+                    t.Text = item.Name;
+                }
+                else
+                {
+                    if (CanAccessFolder(item.FullName))
+                    {
+                        _Folder = item.FullName;
+                        UpdateFolderDisplay();
+                    }
+                    else
+                    {
+                        //maybe do a popup?
+                    }
+                }
             };
+        }
+
+        bool CanAccessFolder(string folder)
+        {
+            try
+            {
+                foreach (var f in Directory.EnumerateDirectories(folder))
+                {              
+                    return true;
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        bool MatchesExtension(FileInfo f)
+        {
+            return this._Extensions.Contains(f.Extension);
+        }
+
+
+        class FileViewAdapter : BaseAdapter
+        {
+            static List<FileSystemInfo> _Items;
+            Context _Context;
+            FileDialog _Parent;
+
+            public FileViewAdapter(FileDialog parent, Context context, string folder)
+            {
+                _Context = context;
+                _Parent = parent;
+
+                UpdateFolder(folder);
+
+            }
+
+            public void UpdateFolder(string folder)
+            {
+                
+                _Items =  new List<FileSystemInfo>();
+                foreach (var f in Directory.EnumerateDirectories(folder))
+                {
+                    var d = new DirectoryInfo(f);
+                   
+                    _Items.Add(d);
+                }
+
+                foreach (var f in Directory.EnumerateFiles(folder))
+                {
+                    FileInfo file = new FileInfo(f);
+                    if (_Parent.MatchesExtension(file))
+                    {
+                        _Items.Add(file);
+                    }
+                }
+                NotifyDataSetChanged();
+            }
+
+            public override int Count
+            {
+                get
+                {
+                    return _Items.Count;
+                }
+            }
+
+            public override Java.Lang.Object GetItem(int position)
+            {
+                return position;
+            }
+            public override long GetItemId(int position)
+            {
+                return position;
+            }
+
+            public override View GetView(int position, View convertView, ViewGroup parent)
+            {
+
+                TextView t = (TextView)convertView;
+                if (t == null)
+                {
+                    t = new TextView(_Context);
+                }
+                t.TextSize = 18;
+                if (_Items[position] is FileInfo)
+                {
+
+                    t.Text = ((FileInfo)_Items[position]).Name;                
+                    t.SetCompoundDrawablesWithIntrinsicBounds(_Context.Resources.GetDrawable(Resource.Drawable.file16), null, null, null);
+
+                }
+                if (_Items[position] is DirectoryInfo)
+                {
+
+                    t.Text = ((DirectoryInfo)_Items[position]).Name;                
+                    t.SetCompoundDrawablesWithIntrinsicBounds(_Context.Resources.GetDrawable(Resource.Drawable.folder16), null, null, null);
+
+                }
+               
+                return t;
+            }
+
+            public FileSystemInfo GetFile(int position)
+            {
+                return _Items[position];
+            }
         }
 
     }

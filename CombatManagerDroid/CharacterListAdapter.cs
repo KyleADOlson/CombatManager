@@ -172,14 +172,21 @@ namespace CombatManagerDroid
                 _Character.Monster.ActiveConditions.CollectionChanged += HandleConditionsChanged;
 
                 _Character.Monster.PropertyChanged += HandlePropertyChanged;
+                _Character.PropertyChanged += HandlePropertyChanged;
 
                 _View.ViewDetachedFromWindow += (object sender, View.ViewDetachedFromWindowEventArgs e) => 
                 {
                     _Character.Monster.ActiveConditions.CollectionChanged -= HandleConditionsChanged;
                     _Character.Monster.PropertyChanged -= HandlePropertyChanged;
+                    _Character.PropertyChanged -= HandlePropertyChanged;
                     _Adp._Handlers.Remove(this);
                 };
 
+            }
+
+            void HandlePropertyChanged1 (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+            {
+                
             }
 
             void HandlePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
