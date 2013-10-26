@@ -98,6 +98,7 @@ namespace CombatManager
         private static SortedDictionary<string, string> groups;
         private static SortedDictionary<int, int> cls;
 
+        private static bool _MagicItemsLoaded;
 
         public static void LoadMagicItems()
         {
@@ -115,6 +116,16 @@ namespace CombatManager
 
                 groups[item.Group] = item.Group;
                 cls[item.CL] = item.CL;
+            }
+
+            _MagicItemsLoaded = true;
+        }
+
+        public static bool MagicItemsLoaded
+        {
+            get
+            {
+                return _MagicItemsLoaded;
             }
         }
 

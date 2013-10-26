@@ -70,44 +70,59 @@ namespace CombatManager
         private static SortedDictionary<string, string> types;
         private static Dictionary<string, SortedDictionary<string, string>> subtypes;
 
+        private static bool _RulesLoaded;
+
         public static void LoadRules()
         {
-            List<Rule> set = XmlListLoader<Rule>.Load("RuleShort.xml");
-
-
-            types = new SortedDictionary<string, string>();
-            subtypes = new Dictionary<string, SortedDictionary<string, string>>();
-            ruleList = new List<Rule>();
-
-            foreach (Condition c in Condition.Conditions)
+            if (!_RulesLoaded)
             {
-                if (c.Text != null)
+                List<Rule> set = XmlListLoader<Rule>.Load("RuleShort.xml");
+
+
+                types = new SortedDictionary<string, string>();
+                subtypes = new Dictionary<string, SortedDictionary<string, string>>();
+                ruleList = new List<Rule>();
+
+                foreach (Condition c in Condition.Conditions)
                 {
-                    Rule r = new Rule();
-                    r.Name = c.Name;
-                    r.Type = "Condition";
-                    r.Source = "PFRPG Core";
-                    r.Details = c.Text;
-                    set.Add(r);
-                }
-            }
-
-            foreach (Rule rule in set)
-            {
-                ruleList.Add(rule);
-
-                types[rule.Type] = rule.Type;
-
-                if (rule.Subtype != null && rule.Subtype.Length > 0)
-                {
-                    if (!subtypes.ContainsKey(rule.Type))
+                    if (c.Text != null)
                     {
-                        subtypes[rule.Type] = new SortedDictionary<string, string>();
+                        Rule r = new Rule();
+                        r.Name = c.Name;
+                        r.Type = "Condition";
+                        r.Source = "PFRPG Core";
+                        r.Details = c.Text;
+                        set.Add(r);
                     }
-                    subtypes[rule.Type][rule.Subtype] = rule.Subtype;
                 }
+
+                foreach (Rule rule in set)
+                {
+                    ruleList.Add(rule);
+
+                    types[rule.Type] = rule.Type;
+
+                    if (rule.Subtype != null && rule.Subtype.Length > 0)
+                    {
+                        if (!subtypes.ContainsKey(rule.Type))
+                        {
+                            subtypes[rule.Type] = new SortedDictionary<string, string>();
+                        }
+                        subtypes[rule.Type][rule.Subtype] = rule.Subtype;
+                    }
+                }
+
+                _RulesLoaded = true;
             }
 
+        }
+
+        public static bool RulesLoaded
+        {
+            get
+            {
+                return _RulesLoaded;
+            }
         }
 
 
