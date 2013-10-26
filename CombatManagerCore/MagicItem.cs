@@ -87,7 +87,7 @@ namespace CombatManager
         private String _Communication;
         private String _Senses;
         private String _Powers;
-        private String _MagicItem;
+        private String _MagicItems;
         private String _DescHTML;
         private String _Mythic;
         private String _LegendaryWeapon;
@@ -152,43 +152,10 @@ namespace CombatManager
                     Debug.Assert(m._DetailsID != 0);
 
                     m._Name = v.ElementValue("Name");
-                    m._Aura = v.ElementValue("Aura");
                     m._CL = v.ElementIntValue("CL");
-                    m._Slot = v.ElementValue("Slot");
-                    m._Price = v.ElementValue("Price");
-                    m._Weight = v.ElementValue("Weight");
-                    m._Description = v.ElementValue("Description");
-                    m._Requirements = v.ElementValue("Requirements");
-                    m._Cost = v.ElementValue("Cost");
                     m._Group = v.ElementValue("Group");
                     m._Source = v.ElementValue("Source");
-                    m._FullText = v.ElementValue("FullText");
-                    m._Destruction = v.ElementValue("Destruction");
-                    m._MinorArtifactFlag = v.ElementValue("MinorArtifactFlag");
-                    m._MajorArtifactFlag = v.ElementValue("MajorArtifactFlag");
-                    m._Abjuration = v.ElementValue("Abjuration");
-                    m._Conjuration = v.ElementValue("Conjuration");
-                    m._Divination = v.ElementValue("Divination");
-                    m._Enchantment = v.ElementValue("Enchantment");
-                    m._Evocation = v.ElementValue("Evocation");
-                    m._Necromancy = v.ElementValue("Necromancy");
-                    m._Transmutation = v.ElementValue("Transmutation");
-                    m._AuraStrength = v.ElementValue("AuraStrength");
-                    m._WeightValue = v.ElementValue("WeightValue");
-                    m._PriceValue = v.ElementValue("PriceValue");
-                    m._CostValue = v.ElementValue("CostValue");
-                    m._AL = v.ElementValue("AL");
-                    m._Int = v.ElementValue("Int");
-                    m._Wis = v.ElementValue("Wis");
-                    m._Cha = v.ElementValue("Cha");
-                    m._Ego = v.ElementValue("Ego");
-                    m._Communication = v.ElementValue("Communication");
-                    m._Senses = v.ElementValue("Senses");
-                    m._Powers = v.ElementValue("Powers");
-                    m._MagicItem = v.ElementValue("MagicItem");
-                    m._DescHTML = v.ElementValue("DescHTML");
-                    m._Mythic = v.ElementValue("Mythic");
-                    m._LegendaryWeapon = v.ElementValue("LegendaryWeapon");
+                    m._MagicItems = v.ElementValue("MagicItems");
 
                     magicItems.Add(m);
                 }
@@ -207,10 +174,40 @@ namespace CombatManager
             get
             {
                 return new List<string>() {
-                "Description",
-                "Requirements",
-                "FullText",
-                "Destruction"};
+                    "Aura",
+                    "Slot",
+                    "Price",
+                    "Weight",
+                    "Description",
+                    "Requirements",
+                    "Cost",
+                    "FullText",
+                    "Destruction",
+                    "MinorArtifactFlag",
+                    "MajorArtifactFlag",
+                    "Abjuration",
+                    "Conjuration",
+                    "Divination",
+                    "Enchantment",
+                    "Evocation",
+                    "Necromancy",
+                    "Transmutation",
+                    "AuraStrength",
+                    "WeightValue",
+                    "PriceValue",
+                    "CostValue", 
+                    "AL",
+                    "Int",
+                    "Wis",
+                    "Cha",
+                    "Ego",
+                    "Communication",
+                    "Senses",
+                    "Powers",
+                    "MagicItems",
+                    "DescHTML",
+                    "Mythic",
+                    "LegendaryWeapon",};
             }
         }
 
@@ -220,10 +217,42 @@ namespace CombatManager
             {
                 //perform updating from DB
                 var list = DetailsDB.LoadDetails(_DetailsID.ToString(), "MagicItems", DetailsFields);
-                Description = list["Description"];
-                Requirements = list["Requirements"];
-                FullText = list["FullText"];
-                Destruction = list["Destruction"];
+
+                _Aura = list["Aura"];
+                _Slot = list["Slot"];
+                _Price = list["Price"];
+                _Weight = list["Weight"];
+                _Description = list["Description"];
+                _Requirements = list["Requirements"];
+                _Cost = list["Cost"];
+                _FullText = list["FullText"];
+                _Destruction = list["Destruction"];
+                _MinorArtifactFlag = list["MinorArtifactFlag"];
+                _MajorArtifactFlag = list["MajorArtifactFlag"];
+                _Abjuration = list["Abjuration"];
+                _Conjuration = list["Conjuration"];
+                _Divination = list["Divination"];
+                _Enchantment = list["Enchantment"];
+                _Evocation = list["Evocation"];
+                _Necromancy = list["Necromancy"];
+                _Transmutation = list["Transmutation"];
+                _AuraStrength = list["AuraStrength"];
+                _WeightValue = list["WeightValue"];
+                _PriceValue = list["PriceValue"];
+                _CostValue = list["CostValue"]; 
+                _AL = list["AL"];
+                _Int = list["Int"];
+                _Wis = list["Wis"];
+                _Cha = list["Cha"];
+                _Ego = list["Ego"];
+                _Communication = list["Communication"];
+                _Senses = list["Senses"];
+                _Powers = list["Powers"];
+                _MagicItems = list["MagicItems"];
+                _DescHTML = list["DescHTML"];
+                _Mythic = list["Mythic"];
+                _LegendaryWeapon = list["LegendaryWeapon"];
+
                 _DetailsID = 0;
             }
         }
@@ -278,7 +307,8 @@ namespace CombatManager
         }
         public String Aura
         {
-            get { return _Aura; }
+            get { UpdateFromDetailsDB(); 
+                return _Aura; }
             set
             {
                 if (_Aura != value)
@@ -302,7 +332,11 @@ namespace CombatManager
         }
         public String Slot
         {
-            get { return _Slot; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Slot;
+            }
             set
             {
                 if (_Slot != value)
@@ -314,7 +348,11 @@ namespace CombatManager
         }
         public String Price
         {
-            get { return _Price; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Price;
+            }
             set
             {
                 if (_Price != value)
@@ -326,7 +364,11 @@ namespace CombatManager
         }
         public String Weight
         {
-            get { return _Weight; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Weight;
+            }
             set
             {
                 if (_Weight != value)
@@ -371,7 +413,11 @@ namespace CombatManager
         }
         public String Cost
         {
-            get { return _Cost; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Cost;
+            }
             set
             {
                 if (_Cost != value)
@@ -441,7 +487,11 @@ namespace CombatManager
         }
         public String MinorArtifactFlag
         {
-            get { return _MinorArtifactFlag; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _MinorArtifactFlag;
+            }
             set
             {
                 if (_MinorArtifactFlag != value)
@@ -453,7 +503,11 @@ namespace CombatManager
         }
         public String MajorArtifactFlag
         {
-            get { return _MajorArtifactFlag; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _MajorArtifactFlag;
+            }
             set
             {
                 if (_MajorArtifactFlag != value)
@@ -465,7 +519,11 @@ namespace CombatManager
         }
         public String Abjuration
         {
-            get { return _Abjuration; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Abjuration;
+            }
             set
             {
                 if (_Abjuration != value)
@@ -477,7 +535,11 @@ namespace CombatManager
         }
         public String Conjuration
         {
-            get { return _Conjuration; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Conjuration;
+            }
             set
             {
                 if (_Conjuration != value)
@@ -489,7 +551,11 @@ namespace CombatManager
         }
         public String Divination
         {
-            get { return _Divination; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Divination;
+            }
             set
             {
                 if (_Divination != value)
@@ -501,7 +567,11 @@ namespace CombatManager
         }
         public String Enchantment
         {
-            get { return _Enchantment; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Enchantment;
+            }
             set
             {
                 if (_Enchantment != value)
@@ -513,7 +583,11 @@ namespace CombatManager
         }
         public String Evocation
         {
-            get { return _Evocation; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Evocation;
+            }
             set
             {
                 if (_Evocation != value)
@@ -525,7 +599,11 @@ namespace CombatManager
         }
         public String Necromancy
         {
-            get { return _Necromancy; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Necromancy;
+            }
             set
             {
                 if (_Necromancy != value)
@@ -537,7 +615,11 @@ namespace CombatManager
         }
         public String Transmutation
         {
-            get { return _Transmutation; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Transmutation;
+            }
             set
             {
                 if (_Transmutation != value)
@@ -549,7 +631,11 @@ namespace CombatManager
         }
         public String AuraStrength
         {
-            get { return _AuraStrength; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _AuraStrength;
+            }
             set
             {
                 if (_AuraStrength != value)
@@ -561,7 +647,11 @@ namespace CombatManager
         }
         public String WeightValue
         {
-            get { return _WeightValue; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _WeightValue;
+            }
             set
             {
                 if (_WeightValue != value)
@@ -573,7 +663,11 @@ namespace CombatManager
         }
         public String PriceValue
         {
-            get { return _PriceValue; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _PriceValue;
+            }
             set
             {
                 if (_PriceValue != value)
@@ -585,7 +679,11 @@ namespace CombatManager
         }
         public String CostValue
         {
-            get { return _CostValue; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _CostValue;
+            }
             set
             {
                 if (_CostValue != value)
@@ -597,7 +695,11 @@ namespace CombatManager
         }
         public String AL
         {
-            get { return _AL; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _AL;
+            }
             set
             {
                 if (_AL != value)
@@ -609,7 +711,11 @@ namespace CombatManager
         }
         public String Int
         {
-            get { return _Int; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Int;
+            }
             set
             {
                 if (_Int != value)
@@ -621,7 +727,11 @@ namespace CombatManager
         }
         public String Wis
         {
-            get { return _Wis; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Wis;
+            }
             set
             {
                 if (_Wis != value)
@@ -633,7 +743,11 @@ namespace CombatManager
         }
         public String Cha
         {
-            get { return _Cha; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Cha;
+            }
             set
             {
                 if (_Cha != value)
@@ -645,7 +759,11 @@ namespace CombatManager
         }
         public String Ego
         {
-            get { return _Ego; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Ego;
+            }
             set
             {
                 if (_Ego != value)
@@ -657,7 +775,11 @@ namespace CombatManager
         }
         public String Communication
         {
-            get { return _Communication; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Communication;
+            }
             set
             {
                 if (_Communication != value)
@@ -669,7 +791,11 @@ namespace CombatManager
         }
         public String Senses
         {
-            get { return _Senses; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Senses;
+            }
             set
             {
                 if (_Senses != value)
@@ -681,7 +807,11 @@ namespace CombatManager
         }
         public String Powers
         {
-            get { return _Powers; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Powers;
+            }
             set
             {
                 if (_Powers != value)
@@ -692,15 +822,15 @@ namespace CombatManager
             }
         }
 
-        [XmlElement (ElementName="MagicItem")]
-        public String MagicItemRequired
+        public String MagicItems
         {
-            get { return _MagicItem; }
+            get { return _MagicItems; }
             set
             {
-                if (_MagicItem != value && value != "NULL")
+                UpdateFromDetailsDB();
+                if (_MagicItems != value && value != "NULL")
                 {
-                    _MagicItem = value;
+                    _MagicItems = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MagicItem")); }
                 }
             }
@@ -708,7 +838,11 @@ namespace CombatManager
 
         public String DescHTML
         {
-            get { return _DescHTML; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _DescHTML;
+            }
             set
             {
                 if (_DescHTML != value)
@@ -721,7 +855,11 @@ namespace CombatManager
 
         public String Mythic
         {
-            get { return _Mythic; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _Mythic;
+            }
             set
             {
                 if (_Mythic != value)
@@ -733,7 +871,11 @@ namespace CombatManager
         }
         public String LegendaryWeapon
         {
-            get { return _LegendaryWeapon; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _LegendaryWeapon;
+            }
             set
             {
                 if (_LegendaryWeapon != value)
