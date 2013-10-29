@@ -809,13 +809,4 @@ namespace RandomItemWeightFixer
     }
 
 
-    public static class XElementExt
-    {
-
-
-        public static string ElementValue(this XElement x, string name)
-        {
-            return x.Element(name) == null ? null : x.Element(name).Value;
-        }
-    }
 }

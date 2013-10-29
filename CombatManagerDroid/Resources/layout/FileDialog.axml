@@ -2,7 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:minWidth="300dp"
+    android:minHeight="450dp">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2">
+        <Button
+            android:text="Up"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/folderUpButton"
+            android:drawableLeft="@drawable/arrowup16" />
+        <TextView
+            android:text="Folder Name"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/folderNameText"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical" />
+    </LinearLayout>
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"

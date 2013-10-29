@@ -90,6 +90,7 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Assets\VersionNotes.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -271,6 +272,8 @@
     <AndroidResource Include="Resources\layout\AboutDialog.axml" />
     <AndroidResource Include="Resources\drawable-ldpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable\file16.png" />
+    <AndroidResource Include="Resources\drawable\folder16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -313,9 +316,6 @@
     <AndroidAsset Include="..\CombatManagerCore\GemChart.xml">
       <Link>Assets\GemChart.xml</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\CombatManagerCore\MagicItems.xml">
-      <Link>Assets\MagicItems.xml</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\CombatManagerCore\NPCShort.xml">
       <Link>Assets\NPCShort.xml</Link>
     </AndroidAsset>
@@ -343,6 +343,9 @@
     <AndroidAsset Include="Assets\AboutHtml.txt" />
     <AndroidAsset Include="..\CombatManagerCore\SpellsShort.xml">
       <Link>Assets\SpellsShort.xml</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\CombatManagerCore\MagicItemsShort.xml">
+      <Link>Assets\MagicItemsShort.xml</Link>
     </AndroidAsset>
   </ItemGroup>
   <ItemGroup>

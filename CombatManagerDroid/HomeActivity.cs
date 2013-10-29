@@ -17,6 +17,7 @@ using Android.OS;
 namespace CombatManagerDroid
 {
     [Activity (Label = "Combat Manager", Theme = "@android:style/Theme.Light.NoTitleBar")]
+
     public class HomeActivity : Activity, ActionBar.ITabListener
     {
         enum HomePage
@@ -42,6 +43,9 @@ namespace CombatManagerDroid
         TreasureFragment _TreasureFragment;
 
         static HomePage _LastFragment = HomePage.Combat;
+
+        
+        ProgressDialog _ProgressDialog;
 
         List<int> _ButtonId = new List<int>
         {
@@ -183,22 +187,73 @@ namespace CombatManagerDroid
 
         private void ShowRulesFragment()
         {
+            if (!Rule.RulesLoaded)
+            {
+                _ProgressDialog = new ProgressDialog(this, (int)ProgressDialogStyle.Spinner); 
+                _ProgressDialog.SetMessage("Loading");
+                _ProgressDialog.Show();
 
+                Thread t = new Thread(() =>
+                                      {
+                    Rule.LoadRules();
+                    RunOnUiThread(() =>
+                                  {
+                        _ProgressDialog.Dismiss();
+                        FinishLoadRulesFragment();
+                    });
+                });
+                t.Start();
+            }
+            else
+            {
+                FinishLoadRulesFragment();
+            }
+        }
 
+        private void FinishLoadRulesFragment()
+        {
+            
             if (_RuleFragment == null)
             {
                 _RuleFragment = new RuleFragment();
             }
             _LastFragment = HomePage.Rules;
-            
+
             TransitionBodyFragment(_RuleFragment);
             SetTabState(_LastFragment);
         }
 
+
         private void ShowTreasureFragment()
         {
+            if (!MagicItem.MagicItemsLoaded)
+            {
+                _ProgressDialog = new ProgressDialog(this, (int)ProgressDialogStyle.Spinner); 
+                _ProgressDialog.SetMessage("Loading");
+                _ProgressDialog.Show();
 
+                Thread t = new Thread(() =>
+                {
+                    MagicItem.LoadMagicItems();
+                    RunOnUiThread(() =>
+                    {
+                        _ProgressDialog.Dismiss();
+                        FinishLoadTreasureFragment();
+                    });
+                });
+                t.Start();
 
+            }
+            else
+            {
+                FinishLoadTreasureFragment();
+            }
+
+        }
+
+        private void FinishLoadTreasureFragment()
+        {
+            
             if (_TreasureFragment == null)
             {
                 _TreasureFragment = new TreasureFragment();

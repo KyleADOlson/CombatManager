@@ -97,32 +97,54 @@ namespace DetailsRipper
 
         static void CleanupMagicItems()
         {
+
+            var v = cn.CreateCommand();
+            CreateTable(v, "MagicItems", MagicItem.DetailsFields);
+
             XDocument docMagic = XDocument.Load("MagicItems.xml");
+
+            var t = cn.BeginTransaction();
+
+            string command = CreateCommand("MagicItems", MagicItem.DetailsFields);
 
             foreach (XElement x in docMagic.Descendants("MagicItem"))
             {
-                if (x.Element("DescHTML") != null)
-                {
-                    x.Element("DescHTML").Remove();
-                }
+                TransferElementToDB(cn, command, x, MagicItem.DetailsFields);
             }
 
+            t.Commit();
+
             docMagic.Save("MagicItemsShort.xml");
+            CopyFileToCore("MagicItemsShort.xml");
+        }
+
+        static void TransferElementToDB(SQLiteConnection cn, string command, XElement x, List<String> fields)
+        {
+            var cm = cn.CreateCommand();
+            cm.CommandText = command;
+            var p1 = cm.CreateParameter();
+            p1.Value = x.ElementValue("id");
+            cm.Parameters.Add(p1);
+
+            foreach (string s in fields)
+            {
+
+                var p2 = cm.CreateParameter();
+                p2.Value = x.ElementValue(s);
+                cm.Parameters.Add(p2);
+
+                RemoveIfNotNull(x, s);
+            }
+
+
+            cm.ExecuteNonQuery();
         }
 
         static void CleanupMonsters()
         {
 
             var v = cn.CreateCommand();
-            string command = "Create Table Bestiary (ID string primary key";
-            foreach (string s in Monster.MonsterDBFields)
-            {
-                command += ", ";
-                command += s;
-            }
-            command += ")";
-            v.CommandText = command;
-            v.ExecuteNonQuery();
+            CreateTable(v, "Bestiary", Monster.MonsterDBFields);
 
             Dictionary<string, XElement> monsterList = new Dictionary<string, XElement>();
 
@@ -247,42 +269,47 @@ namespace DetailsRipper
             SaveCopyFile(doc2, "NPCShort2.xml");
         }
 
-        static void MoveMonsterFieldsToDB(XDocument doc)
+        static void CreateTable(SQLiteCommand v, string name, IEnumerable<string> fields)
         {
-            var t = cn.BeginTransaction();
+            string command = "Create Table " + name + " (ID string primary key";
+            foreach (string s in fields)
+            {
+                command += ", ";
+                command += s;
+            }
+            command += ")";
+            v.CommandText = command;
+            v.ExecuteNonQuery();
+        }
 
-            string command = "Insert into Bestiary (ID"; 
-            
-            string  values = ") values (?";
+        static string CreateCommand(string table, IEnumerable<string> fields)
+        {
 
-            foreach (string s in Monster.MonsterDBFields)
+            string command = "Insert into " + table + " (ID";
+
+            string values = ") values (?";
+
+            foreach (string s in fields)
             {
                 command += ", " + s;
                 values += ", ?";
             }
             command = command + values + ")";
 
+            return command;
+        }
+
+
+        static void MoveMonsterFieldsToDB(XDocument doc)
+        {
+            var t = cn.BeginTransaction();
+
+            string command = CreateCommand("Bestiary", Monster.MonsterDBFields);
+
             foreach (XElement x in doc.Descendants("Monster"))
             {
 
-                var cm = cn.CreateCommand();
-                cm.CommandText = command;
-                var p1 = cm.CreateParameter();
-                p1.Value = x.ElementValue("id");
-                cm.Parameters.Add(p1);
-
-                foreach (string s in Monster.MonsterDBFields)
-                {
-
-                    var p2 = cm.CreateParameter();
-                    p2.Value = x.ElementValue(s);
-                    cm.Parameters.Add(p2);
-
-                    RemoveIfNotNull(x, s);
-                }
-
-
-                cm.ExecuteNonQuery();
+                TransferElementToDB(cn, command, x, Monster.MonsterDBFields);
             }
 
             t.Commit();
