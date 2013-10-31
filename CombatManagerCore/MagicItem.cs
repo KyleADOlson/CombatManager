@@ -161,7 +161,7 @@ namespace CombatManager
                 }
                 return magicItems;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
