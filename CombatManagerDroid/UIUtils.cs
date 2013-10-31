@@ -27,6 +27,7 @@ namespace CombatManagerDroid
 
 
             Dialog d = new Dialog(context);
+            d.SetCanceledOnTouchOutside(true);
             d.SetContentView(multiline?Resource.Layout.MultilineTextDialog:Resource.Layout.TextDialog);
             d.SetTitle(property);
 
@@ -132,6 +133,18 @@ namespace CombatManagerDroid
                 
                 builderSingle.Show();
             };
+        }
+
+        public static void ShowOKCancelDialog(Context context, String message, Action okAction)
+        {
+            AlertDialog.Builder bui = new AlertDialog.Builder(context);
+            bui.SetMessage(message);
+            bui.SetPositiveButton("OK", (a, x) => {
+                okAction();
+            });
+            bui.SetNegativeButton("Cancel", (a, x) => {});
+            bui.Show();  
+
         }
 
     }

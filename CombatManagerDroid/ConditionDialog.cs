@@ -32,6 +32,7 @@ namespace CombatManagerDroid
         {
             RequestWindowFeature((int)WindowFeatures.NoTitle);
             SetContentView(Resource.Layout.ConditionDialog);
+            SetCanceledOnTouchOutside(true);
 
             _State = state;
             _Character = character;

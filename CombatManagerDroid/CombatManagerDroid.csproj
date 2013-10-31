@@ -84,7 +84,11 @@
     <Compile Include="ConditionDialog.cs" />
     <Compile Include="UIUtils.cs" />
     <Compile Include="HDDialog.cs" />
-    <Compile Include="Resources\AboutDialog.cs" />
+    <Compile Include="SettingsDialog.cs">
+      <DependentUpon>CMPreferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AboutDialog.cs" />
+    <Compile Include="CMPreferences.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -274,6 +278,8 @@
     <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable\file16.png" />
     <AndroidResource Include="Resources\drawable\folder16.png" />
+    <AndroidResource Include="Resources\layout\SettingsDialog.axml" />
+    <AndroidResource Include="Resources\drawable\ic_sysbar_quicksettings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

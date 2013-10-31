@@ -93,10 +93,6 @@ namespace CombatManagerDroid
             {
                 _PlayerList.SetAdapter(new CharacterListAdapter(_CombatState, false));
             }
-            if (_XPText != null)
-            {
-                ReloadXPText();
-            }
             
             SaveCombatState();
         }
@@ -122,7 +118,7 @@ namespace CombatManagerDroid
             }
             else
             {
-                _XPText.Text = "XP: " + _CombatState.XP;
+                _XPText.Text = "CR: " + (_CombatState.XP.Value > 0?Monster.EstimateCR(_CombatState.XP.Value):"0") + " XP: " + _CombatState.XP;
             }
 
         }
@@ -134,6 +130,10 @@ namespace CombatManagerDroid
                 UpdateCurrentCharacter(View);
                 ReloadInitiativeList();
                 SaveCombatState();
+            }
+            if (e.PropertyName == "XP")
+            {
+                ReloadXPText();
             }
         }
 
@@ -153,14 +153,11 @@ namespace CombatManagerDroid
             delegate {RollInitiativeClicked();};
             v.FindViewById<Button>(Resource.Id.sortButton).Click += (object sender, EventArgs e) => 
             {
-                _CombatState.SortInitiative();
+                SortInitiativeClicked();
             };
             v.FindViewById<Button>(Resource.Id.resetButton).Click += (object sender, EventArgs e) => 
             {
-                foreach (Character ch in _CombatState.Characters)
-                {
-                    ch.CurrentInitiative = 0;
-                }
+                ResetInitiativeClicked();
             };
 
 
@@ -354,8 +351,56 @@ namespace CombatManagerDroid
         }
         private void RollInitiativeClicked()
         {
-            _CombatState.RollInitiative();
-            _CombatState.SortInitiative();
+            Action func = () =>
+            {
+                _CombatState.RollInitiative();
+                _CombatState.SortInitiative();
+            };
+            if (!Activity.GetCMPrefs().GetConfirmInitiative())
+            {
+                func();
+            }
+            else
+            {
+                UIUtils.ShowOKCancelDialog(Activity, "Roll Initiative?", func);
+            }
+
+        }
+
+        private void SortInitiativeClicked()
+        {
+            Action func = () =>
+            {
+                _CombatState.SortInitiative(); 
+            };
+            if (!Activity.GetCMPrefs().GetConfirmInitiative())
+            {
+                func();
+            }
+            else
+            {
+                UIUtils.ShowOKCancelDialog(Activity, "Sort Initiative?", func);
+            }
+        }
+
+        private void ResetInitiativeClicked()
+        {
+            
+            Action func = () =>
+            {
+                foreach (Character ch in _CombatState.Characters)
+                {
+                    ch.CurrentInitiative = 0;
+                }
+            };
+            if (!Activity.GetCMPrefs().GetConfirmInitiative())
+            {
+                func();
+            }
+            else
+            {
+                UIUtils.ShowOKCancelDialog(Activity, "Reset Initiative?", func);
+            }
         }
         private void UpdateCurrentCharacter(View v)
         {
@@ -407,7 +452,8 @@ namespace CombatManagerDroid
             _CombatState.SortCombatList(false, false, true);
             _CombatState.FixInitiativeLinksList(new List<Character>(_CombatState.Characters));
 
-
+            ISharedPreferences sp = Activity.GetSharedPreferences("CombatManager", 0);
+            CombatState.use3d6 = sp.GetBoolean("use3d6", false);
         }
 
         public static CombatState CombatState
@@ -417,8 +463,6 @@ namespace CombatManagerDroid
                 return _CombatState;
             }
         }
-
-        GestureDetector gd;
 
         void SetupDieRoller(View v)
         {
@@ -435,6 +479,9 @@ namespace CombatManagerDroid
               
                 b.Click += (object sender, EventArgs e) => {AddDieRoll(die);};
             }
+
+            View cb = v.FindViewById<View>(Resource.Id.clearInitiativeButton);
+            cb.Click += (object sender, EventArgs e) => {ClearAllRolls();};
 
             ImageButton clearButton = v.FindViewById<ImageButton>(Resource.Id.clearRollButton);
             clearButton.Click += (object sender, EventArgs e) => {ClearRoll();};
@@ -529,6 +576,11 @@ namespace CombatManagerDroid
             wv.PageDown(true);
         }
 
+        void ClearAllRolls()
+        {
+            _RollResults.Clear();
+            ShowDieRolls(this.View);
+        }
 
     }
 }

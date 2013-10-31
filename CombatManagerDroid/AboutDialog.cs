@@ -20,6 +20,7 @@ namespace CombatManagerDroid
             SetTitle("About");
 
             SetContentView(Resource.Layout.AboutDialog);
+            SetCanceledOnTouchOutside(true);
 
 
             //load html

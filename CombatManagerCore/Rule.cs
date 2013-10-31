@@ -115,6 +115,7 @@ namespace CombatManager
                 _RulesLoaded = true;
             }
 
+
         }
 
         public static bool RulesLoaded

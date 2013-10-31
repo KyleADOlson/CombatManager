@@ -32,6 +32,7 @@ namespace CombatManagerDroid
             _IsMonsters = isMonsters;
 
             RequestWindowFeature((int)WindowFeatures.NoTitle);
+            SetCanceledOnTouchOutside(true);
 
             SetContentView(Resource.Layout.MonsterPickerDialog);
             Window.SetSoftInputMode(SoftInput.AdjustResize);

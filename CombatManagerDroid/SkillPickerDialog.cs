@@ -25,6 +25,7 @@ namespace CombatManagerDroid
             RequestWindowFeature((int)WindowFeatures.NoTitle);
             
             SetContentView(Resource.Layout.SkillPickerDialog);
+            SetCanceledOnTouchOutside(true);
 
             ((Button)FindViewById(Resource.Id.cancelButton)).Click += 
             (object sender, EventArgs e) => {Dismiss();};
