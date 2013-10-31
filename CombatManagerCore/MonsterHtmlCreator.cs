@@ -84,7 +84,13 @@ namespace CombatManager
                 name = ch.Name;
             }
 
-            blocks.CreateHeader(name, "CR " + monster.CR);
+            string header = "CR " + monster.CR;
+            if (monster.MR != null && monster.MR > 0)
+            {
+                header += "/MR " + monster.MR;
+            }
+
+            blocks.CreateHeader(name, header);
 			
 			
 			blocks.AppendOpenTag("p");
