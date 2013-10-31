@@ -399,7 +399,7 @@ namespace CombatManager
 
         private bool skillsParsed;
         private bool skillValuesMayNeedUpdate;
-        private Dictionary<String, SkillValue> skillValueDictionary;
+        private SortedDictionary<String, SkillValue> skillValueDictionary;
         private List<SkillValue> skillValueList;
 
         private bool featsParsed;
@@ -829,7 +829,7 @@ namespace CombatManager
 
         public Monster()
         {
-            skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+            skillValueDictionary = new SortedDictionary<string, SkillValue>();
             skillValueList = new List<SkillValue>();
         }
 
@@ -1005,7 +1005,7 @@ namespace CombatManager
             skillsParsed = m.skillsParsed;
             if (m.skillsParsed)
             {
-                skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+                skillValueDictionary = new SortedDictionary<string, SkillValue>();
                 foreach (SkillValue skillValue in m.skillValueDictionary.Values)
                 {
 
@@ -1174,7 +1174,7 @@ namespace CombatManager
             m.skillsParsed = skillsParsed;
             if (skillsParsed)
             {
-                m.skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+                m.skillValueDictionary = new SortedDictionary<string, SkillValue>();
                 foreach (SkillValue skillValue in skillValueDictionary.Values)
                 {
 
@@ -2582,7 +2582,7 @@ namespace CombatManager
 
         private void ParseSkills()
         {
-            skillValueDictionary = new Dictionary<String, SkillValue>(new InsensitiveEqualityCompararer());
+            skillValueDictionary = new SortedDictionary<String, SkillValue>();
             if (skills != null)
             {
                 Regex skillReg = new Regex("([ \\p{L}]+)( )(\\(([- \\p{L}]+)\\) )?((\\+|-)[0-9]+)");
@@ -5250,11 +5250,11 @@ namespace CombatManager
 
             int diff = newBonus - oldBonus;
 
-            //adjust perception
-            if (!ChangeSkill("Perception", diff))
-            {
-                Senses = ChangeSkillStringMod(Senses, "Perception", diff);
-            }
+            ////adjust perception (Redundant)
+            //if (!ChangeSkill("Perception", diff))
+            //{
+            //    Senses = ChangeSkillStringMod(Senses, "Perception", diff);
+            //}
 
             //adjust save
             Will += diff;
@@ -5285,13 +5285,13 @@ namespace CombatManager
             //adjust skills
             ChangeSkillsForStat(Stat.Intelligence, diff);
 
-
-            CreatureTypeInfo info = CreatureTypeInfo.GetInfo(Type);
+            // Why does this exist here? (Causes problems and unnecessary)
+            //CreatureTypeInfo info = CreatureTypeInfo.GetInfo(Type);
             
-            //get skill count
-            int oldSkillCount = Math.Max(info.Skills + oldBonus, 1);
-            int newSkillCount = Math.Max(info.Skills + newBonus, 1);
-            AdjustSkills(newSkillCount * HDRoll.TotalCount - oldSkillCount * HDRoll.TotalCount);
+            ////get skill count
+            //int oldSkillCount = Math.Max(info.Skills + oldBonus, 1);
+            //int newSkillCount = Math.Max(info.Skills + newBonus, 1);
+            //AdjustSkills(newSkillCount * HDRoll.TotalCount - oldSkillCount * HDRoll.TotalCount);
 
         }
 
@@ -10167,7 +10167,7 @@ namespace CombatManager
         }
 
         [XmlIgnore]
-        public Dictionary<String, SkillValue> SkillValueDictionary
+        public SortedDictionary<String, SkillValue> SkillValueDictionary
         {
             get
             {
@@ -10213,7 +10213,7 @@ namespace CombatManager
             }
             set
             {
-                skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+                skillValueDictionary = new SortedDictionary<string, SkillValue>();
 
                 foreach (SkillValue val in value)
                 {
