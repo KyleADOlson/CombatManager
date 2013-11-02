@@ -342,6 +342,24 @@ namespace DetailsRipper
 
         }
 
+        static List<String> _SpellAnnotationFields = new List<string>()
+            {
+                "name",
+                "PotionWeight",
+                "DivineScrollWeight",
+                "ArcaneScrollWeight",
+                "WandWeight",
+                "PotionLevel",
+                "PotionCost",
+                "ArcaneScrollLevel",
+                "ArcaneScrollCost",
+                "DivineScrollLevel",
+                "DivineScrollCost",
+                "WandLevel",
+                "WandCost",
+                "Bonus"
+            };
+
         static void CleanupSpells()
         {
 
@@ -400,36 +418,88 @@ namespace DetailsRipper
 
             docSpells.Save("Spells.xml");
 
+
+
+
+
             var v = cn.CreateCommand();
-            v.CommandText = "Create Table Spells (ID string primary key, description string, description_formated string)";
-            v.ExecuteNonQuery();
+            CreateTable(v, "Spells", Spell.DetailsFields);
 
             var t = cn.BeginTransaction();
 
-            int count = 0;
+            string command = CreateCommand("Spells", Spell.DetailsFields);
+
             foreach (XElement x in docSpells.Descendants("Spell"))
             {
-                count++;
-                var cm = cn.CreateCommand();
-                cm.CommandText = "Insert into Spells (ID, description, description_formated) values (?, ?, ?)";
-                var p1 = cm.CreateParameter();
-                p1.Value = x.ElementValue("name");
-                cm.Parameters.Add(p1);
-                var p2 = cm.CreateParameter();
-                p2.Value = x.ElementValue("description");
-                cm.Parameters.Add(p2);
-                var p3 = cm.CreateParameter();
-                p3.Value = x.ElementValue("description_formated");
-                cm.Parameters.Add(p3);
-                cm.ExecuteNonQuery();
-                x.Element("description").Remove();
-                x.Element("description_formated").Remove();
+                TransferElementToDB(cn, command, x, Spell.DetailsFields);
             }
+
 
             t.Commit();
 
+            ApplySpellAnnotations(docSpells);
+            //SaveSpellAnnotations(docSpells);
 
             SaveCopyFile(docSpells, "SpellsShort.xml");
+
+        }
+
+        private static void ApplySpellAnnotations(XDocument doc)
+        {
+
+            XDocument docAnnotations = XDocument.Load("SpellAnnotations.xml");
+
+            Dictionary<string, XElement> dict = new Dictionary<string, XElement>();
+
+            foreach (XElement anno in docAnnotations.Descendants("Spell"))
+            {
+                dict.Add(anno.Element("name").Value, anno);
+            }
+
+            foreach (XElement sp in doc.Descendants("Spell"))
+            {
+                if (dict.ContainsKey(sp.Element("name").Value))
+                {
+                    foreach (XElement val in dict[sp.Element("name").Value].Elements())
+                    {
+                        if (val.Name.LocalName != "name")
+                        {
+                            sp.Add(new XElement(val));
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void SaveSpellAnnotations(XDocument docClone)
+        {
+
+
+            List<XElement> removeNodes = new List<XElement>();
+            foreach (XElement sp in docClone.Descendants("Spell"))
+            {
+                List<XElement> remove = new List<XElement>();
+                foreach (XElement x in sp.Elements())
+                {
+                    if (!_SpellAnnotationFields.Contains(x.Name.LocalName))
+                    {
+                        remove.Add(x);
+                    }
+                }
+                foreach (XElement x in remove)
+                {
+                    x.Remove();
+                }
+                if (sp.Elements().Count() <= 1)
+                {
+                    removeNodes.Add(sp);
+                }
+            }
+            foreach (XElement sp in removeNodes)
+            {
+                sp.Remove();
+            }
+            SaveCopyFile(docClone, "SpellAnnotations.xml");
         }
 
         private static void SaveCopyFile(XDocument doc, String filename)

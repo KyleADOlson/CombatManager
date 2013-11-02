@@ -120,6 +120,9 @@
       <Link>Rule.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\CombatManagerCore\SpellAnnotations.xml">
+      <Link>SpellAnnotations.xml</Link>
+    </Content>
     <Content Include="..\CombatManagerCore\Spells.xml">
       <Link>Spells.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -261,7 +261,7 @@ namespace CombatManager
                 }
                 return monsters;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
