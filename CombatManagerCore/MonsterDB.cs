@@ -35,6 +35,8 @@ namespace CombatManager
 
         private static MonsterDB db;
 
+        private bool _MythicCorrected;
+
 
         public MonsterDB()
         {
@@ -54,8 +56,23 @@ namespace CombatManager
         {
             get
             {
-              
-                return _DBLoader.Items;
+                var v = _DBLoader.Items;
+
+                if (!_MythicCorrected)
+                {
+                    foreach (var monster in v)
+                    {
+                        if (monster.Mythic != "0" || monster.MR != null)
+                        {
+                            monster.Mythic = "0";
+                            monster.MR = null;
+                            UpdateMonster(monster);
+                        }
+                    }
+                    _MythicCorrected = true;
+                }
+
+                return v;
             }
         }
 

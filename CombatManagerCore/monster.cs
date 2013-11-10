@@ -5072,23 +5072,30 @@ namespace CombatManager
 
         public static long GetCRValue(string crText)
         {
-            long xpVal = 0;
-
-            if (crText.Contains('/'))
+            try
             {
-                if (xpValues.ContainsKey(crText))
+                long xpVal = 0;
+
+                if (crText.Contains('/'))
                 {
-                    xpVal = xpValues[crText];
+                    if (xpValues.ContainsKey(crText))
+                    {
+                        xpVal = xpValues[crText];
+                    }
                 }
+                else
+                {
+                    int x = int.Parse(crText);
+
+                    xpVal = GetIntCRValue(x);
+                }
+
+                return xpVal;
             }
-            else
+            catch
             {
-                int x = int.Parse(crText);
-
-                xpVal = GetIntCRValue(x);
+                throw;
             }
-
-            return xpVal;
         }
 
         public static long? TryGetCRValue(string crText)
