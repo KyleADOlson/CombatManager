@@ -120,6 +120,7 @@ namespace CombatManagerDroid
                 new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MatchParent,
                 ViewGroup.LayoutParams.WrapContent));
+            layout.SetGravity(GravityFlags.CenterVertical);
             
             Character c = _State.CombatList[position];
 
@@ -146,6 +147,9 @@ namespace CombatManagerDroid
             }
             t.Text = _State.CombatList[position].Name;
             t.SetTextColor (Android.Graphics.Color.Black);
+            t.Ellipsize = Android.Text.TextUtils.TruncateAt.Middle;
+            t.Gravity = GravityFlags.CenterVertical;
+            t.SetSingleLine(true);
             
             layout.SetBackgroundColor(new Android.Graphics.Color(0xee, 0xee, 0xee));
             if (_State.CurrentCharacter == _State.CombatList[position])

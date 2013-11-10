@@ -1,3 +1,8 @@
+0.09
+Fix crash when rolling skills
+Fix some crashes when switching tabs
+Ellipsize names on initiative list
+
 0.08
 Treasure page improvements
 Ask on roll/sort/reset initiative

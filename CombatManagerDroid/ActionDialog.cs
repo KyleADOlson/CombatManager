@@ -104,7 +104,7 @@ namespace CombatManagerDroid
 
                 case CharacterActionResult.RollSkill:
                     var sks = (Tuple<string, string>)ai.Tag;
-                    _State.Roll(CombatState.RollType.Save, _Character, sks.Item1, sks.Item2);
+                    _State.Roll(CombatState.RollType.Skill, _Character, sks.Item1, sks.Item2);
                     break;
                 }
             }

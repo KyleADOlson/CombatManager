@@ -143,10 +143,10 @@ namespace CombatManagerDroid
         private void ShowCombatFragment()
         {
             
-            if (_CombatFragment == null)
-            {
+            //if (_CombatFragment == null)
+            //{
                 _CombatFragment = new CombatFragment();
-            }
+            //}
             _LastFragment = HomePage.Combat;
             TransitionBodyFragment(_CombatFragment);
             SetTabState(_LastFragment);
@@ -155,10 +155,10 @@ namespace CombatManagerDroid
         private void ShowMonsterFragment()
         {
             
-            if (_MonsterFragment == null)
-            {
+            //if (_MonsterFragment == null)
+            //{
                 _MonsterFragment = new MonsterFragment();
-            }
+            //}
             _LastFragment = HomePage.Monsters;
             
             TransitionBodyFragment(_MonsterFragment);
@@ -173,7 +173,8 @@ namespace CombatManagerDroid
                 if (!_LoadingFragment)
                 {
                     _LoadingFragment = true;
-                    _ProgressDialog = new ProgressDialog(this, (int)ProgressDialogStyle.Spinner); 
+                    _ProgressDialog = new ProgressDialog(this, (int)ProgressDialogStyle.Spinner);
+                    _ProgressDialog.SetCanceledOnTouchOutside(false); 
                     _ProgressDialog.SetMessage("Loading");
                     _ProgressDialog.Show();
 
@@ -199,10 +200,10 @@ namespace CombatManagerDroid
         private void FinishShowFeatsFragment()
         {
             
-            if (_FeatFragment == null)
-            {
+            //if (_FeatFragment == null)
+            //{
                 _FeatFragment = new FeatFragment();
-            }
+            //}
             _LastFragment = HomePage.Feats;
             TransitionBodyFragment(_FeatFragment);
             SetTabState(_LastFragment);
@@ -211,10 +212,10 @@ namespace CombatManagerDroid
         private void ShowSpellsFragment()
         {
 
-            if (_SpellFragment == null)
-            {
+            //if (_SpellFragment == null)
+            //{
                 _SpellFragment = new SpellFragment();
-            }
+            //}
             _LastFragment = HomePage.Spells;
             
             TransitionBodyFragment(_SpellFragment);
@@ -230,6 +231,7 @@ namespace CombatManagerDroid
                     _LoadingFragment = true;
                     _ProgressDialog = new ProgressDialog(this, (int)ProgressDialogStyle.Spinner); 
                     _ProgressDialog.SetMessage("Loading");
+                    _ProgressDialog.SetCanceledOnTouchOutside(false);
                     _ProgressDialog.Show();
 
                     Thread t = new Thread(() =>
@@ -254,10 +256,10 @@ namespace CombatManagerDroid
         private void FinishLoadRulesFragment()
         {
             
-            if (_RuleFragment == null)
-            {
+            //if (_RuleFragment == null)
+            //{
                 _RuleFragment = new RuleFragment();
-            }
+            //}
             _LastFragment = HomePage.Rules;
 
             TransitionBodyFragment(_RuleFragment);
@@ -271,6 +273,7 @@ namespace CombatManagerDroid
             {
                 _ProgressDialog = new ProgressDialog(this, (int)ProgressDialogStyle.Spinner); 
                 _ProgressDialog.SetMessage("Loading");
+                _ProgressDialog.SetCanceledOnTouchOutside(false);
                 _ProgressDialog.Show();
 
                 Thread t = new Thread(() =>
@@ -295,10 +298,10 @@ namespace CombatManagerDroid
         private void FinishLoadTreasureFragment()
         {
             
-            if (_TreasureFragment == null)
-            {
+            //if (_TreasureFragment == null)
+            //{
                 _TreasureFragment = new TreasureFragment();
-            }
+            //}
             _LastFragment = HomePage.Treasure;
             TransitionBodyFragment(_TreasureFragment);
             SetTabState(_LastFragment);

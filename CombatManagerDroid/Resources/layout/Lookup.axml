@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/filterText"
             android:textColor="#ff000000"
-            android:background="#ffffffff" />
+            android:background="#ffffffff"
+            android:layout_margin="3dp"
+            android:textSize="18dp" />
         <ListView
             android:minWidth="25px"
             android:minHeight="25px"
