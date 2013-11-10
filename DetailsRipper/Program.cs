@@ -90,9 +90,7 @@ namespace DetailsRipper
             t.Commit();
 
 
-
-
-            docRules.Save("RuleShort.xml");
+            SaveCopyFile(docRules,"RuleShort.xml");
         }
 
         static void CleanupMagicItems()
@@ -338,6 +336,12 @@ namespace DetailsRipper
             if (name == name.ToUpper())
             {
                 x.Element("Name").Value = name.ToLower().Capitalize();
+            }
+
+            string cr = x.Element("CR").Value;
+            if (cr == "-")
+            {
+                x.Element("CR").Value = "0";
             }
 
         }

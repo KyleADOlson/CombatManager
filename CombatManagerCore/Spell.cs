@@ -109,7 +109,7 @@ namespace CombatManager
         private String _shadow;
         private String _sonic;
         private String _water;
-        private int _id;
+        private int _detailsid;
 
         //annotation fields
 
@@ -1705,14 +1705,15 @@ namespace CombatManager
             }
         }
 
-        public int id
+        [XmlElement("id")]
+        public int detailsid
         {
-            get { return _id; }
+            get { return _detailsid; }
             set
             {
-                if (_id != value)
+                if (_detailsid != value)
                 {
-                    _id = value;
+                    _detailsid = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("id")); }
                 }
             }
@@ -1931,10 +1932,10 @@ namespace CombatManager
 
         void UpdateFromDetailsDB()
         {
-            if (_id != 0)
+            if (_detailsid != 0)
             {
                 //perform updating from DB
-                var list = DetailsDB.LoadDetails(_id.ToString(), "Spells", DetailsFields);
+                var list = DetailsDB.LoadDetails(_detailsid.ToString(), "Spells", DetailsFields);
 
 
                 _casting_time = list["casting_time"];
@@ -1977,7 +1978,7 @@ namespace CombatManager
                 _sonic= list["sonic"];
                 _water= list["water"];
 
-                _id = 0;
+                _detailsid = 0;
             }
         }
         

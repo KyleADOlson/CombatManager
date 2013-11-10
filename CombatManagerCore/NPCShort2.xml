@@ -56189,7 +56189,7 @@
   </Monster>
   <Monster>
     <Name>Bellu</Name>
-    <CR>-</CR>
+    <CR>0</CR>
     <XP>0</XP>
     <Race>eidolon</Race>
     <Alignment>NE</Alignment>
@@ -56291,7 +56291,7 @@
   </Monster>
   <Monster>
     <Name>Bellu Tier 3-4</Name>
-    <CR>-</CR>
+    <CR>0</CR>
     <XP>0</XP>
     <Race>eidolon</Race>
     <Alignment>NE</Alignment>
@@ -56393,7 +56393,7 @@
   </Monster>
   <Monster>
     <Name>Bellu Tier 6-7</Name>
-    <CR>-</CR>
+    <CR>0</CR>
     <XP>0</XP>
     <Race>eidolon</Race>
     <Alignment>NE</Alignment>
@@ -57388,7 +57388,7 @@
   </Monster>
   <Monster>
     <Name>Tiger Animal Companion</Name>
-    <CR>-</CR>
+    <CR>0</CR>
     <XP>0</XP>
     <Race>Tiger</Race>
     <Alignment>NE</Alignment>
@@ -57486,7 +57486,7 @@
   </Monster>
   <Monster>
     <Name>Tiger Animal Companion Tier 6-7</Name>
-    <CR>-</CR>
+    <CR>0</CR>
     <XP>0</XP>
     <Race>Tiger Tier 6-7</Race>
     <Alignment>NE</Alignment>
@@ -58934,7 +58934,7 @@
   </Monster>
   <Monster>
     <Name>Advanced Glacial Ooze</Name>
-    <CR>-</CR>
+    <CR>0</CR>
     <XP>0</XP>
     <Race>Advanced Glacial Ooze</Race>
     <MonsterSource>Tome of Horrors Complete 458</MonsterSource>
@@ -59403,7 +59403,7 @@
   </Monster>
   <Monster>
     <Name>Hak</Name>
-    <CR>-</CR>
+    <CR>0</CR>
     <XP>0</XP>
     <Race>Allosaurus animal companion</Race>
     <MonsterSource>Pathfinder RPG Bestiary 2 90</MonsterSource>
