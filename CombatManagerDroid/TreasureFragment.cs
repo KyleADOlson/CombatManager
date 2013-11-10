@@ -27,7 +27,13 @@ namespace CombatManagerDroid
         int _ItemCount = 1;
         int _ItemLevel;
 
-        Treasure _LastTreasure;
+        static Treasure _LastTreasure;
+
+        static bool _GeneratorVisible;
+        static bool _LevelVisible = true;
+
+        static string _Group;
+        static int _CL = -1;
 
         protected override List<MagicItem> GetItems ()
         {
@@ -44,6 +50,74 @@ namespace CombatManagerDroid
         protected override string ItemName (MagicItem item)
         {
             return item.Name;
+        }
+
+
+        protected override void BuildFilters()
+        {
+            Button b = BuildFilterButton("group", 100);
+
+            
+            List<String> groups = new List<string>() { "All Groups" };
+            groups.AddRange(MagicItem.Groups);
+            int startindex = groups.IndexOf(_Group);
+            if (startindex < 0)
+            {
+                startindex = 0;
+            }
+            PopupUtils.AttachButtonStringPopover("Group", b, 
+                                                 groups,
+            startindex, (r1, index, val)=>
+            {
+                if (index == 0)
+                {
+                    _Group = "";
+                }
+                else
+                {
+                    _Group = val;
+                }
+                UpdateFilter();
+
+            });
+
+            b = BuildFilterButton("cl", 80);
+            List<string> cls = new List<string>() {"All CLs"};
+            cls.AddRange(from x in MagicItem.CLs select x.ToString());
+            startindex = 0;
+            if (_CL != -1)
+            {
+                startindex = cls.IndexOf(_CL.ToString());
+            }
+            PopupUtils.AttachButtonStringPopover("CL", b, 
+                                                 cls,
+                                                 startindex, (r1, index, val)=>
+                                                 {
+                if (index == 0)
+                {
+                    _CL = -1;
+                }
+                else
+                {
+                    int.TryParse(val, out _CL);
+                }
+                UpdateFilter();
+
+            });
+        }
+        protected override bool CustomFilterItem(MagicItem item)
+        {
+            return GroupFilter(item) && CLFilter(item);
+        }
+
+        bool GroupFilter(MagicItem item)
+        {
+            return _Group == null || _Group == "" || item.Group == _Group;
+        }
+
+        bool CLFilter(MagicItem item)
+        {
+            return _CL == -1 || item.CL == _CL;
         }
 
         protected override void BuildAdditionalLayouts()
@@ -74,7 +148,7 @@ namespace CombatManagerDroid
             {
                 ShowLevel(false);
             };
-            ShowLevel(true);
+            ShowLevel(_LevelVisible);
 
             //level generation
             b = _GeneratorLayout.FindViewById<Button>(Resource.Id.levelButton);        
@@ -153,12 +227,32 @@ namespace CombatManagerDroid
                 GenerateItems();
             };
 
+            if (_GeneratorVisible)
+            {
+                ShowGenerator();
+            }
+            else
+            {
+                ShowLookup();
+            }
+
+
+        }
+
+        protected override bool SkipShowItem
+        {
+            get
+            {
+                return _GeneratorVisible;
+            }
         }
 
         void ShowLookup()
         {
             SearchReplacementLayout.Visibility = ViewStates.Gone;
             SearchLayout.Visibility = ViewStates.Visible;
+            FilterLayout.Visibility = ViewStates.Visible;
+            _GeneratorVisible = false;
             RefreshItem();
         }
 
@@ -166,6 +260,8 @@ namespace CombatManagerDroid
         {
             SearchReplacementLayout.Visibility = ViewStates.Visible;
             SearchLayout.Visibility = ViewStates.Gone;
+            FilterLayout.Visibility = ViewStates.Gone;
+            _GeneratorVisible = true;
             ShowLastTreasure();
 
         }
@@ -176,6 +272,7 @@ namespace CombatManagerDroid
             LinearLayout itemsLayout = _GeneratorLayout.FindViewById<LinearLayout>(Resource.Id.itemsLayout); 
             levelLayout.Visibility = show?ViewStates.Visible:ViewStates.Gone;
             itemsLayout.Visibility = !show?ViewStates.Visible:ViewStates.Gone;
+            _LevelVisible = show;
         }
 
         void GenerateLevel()

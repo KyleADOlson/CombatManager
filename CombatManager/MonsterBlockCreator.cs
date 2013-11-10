@@ -148,7 +148,13 @@ namespace CombatManager
                 name = ch.Name;
             }
 
-            blocks.Add(CreateHeaderParagraph(name, "CR " + monster.CR));
+            string header =  "CR " + monster.CR;
+            if (monster.MR != null && monster.MR > 0)
+            {
+                header += "/MR " + monster.MR;
+            }
+
+            blocks.Add(CreateHeaderParagraph(name, header));
 
             Paragraph topParagraph = new Paragraph();
             topParagraph.Inlines.Add(new Bold(new Run("XP: " + monster.XP)));

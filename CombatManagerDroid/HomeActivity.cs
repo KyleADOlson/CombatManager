@@ -92,6 +92,11 @@ namespace CombatManagerDroid
             {
                 ShowHelp();
             };
+            b = FindViewById<ImageButton>(Resource.Id.settingsButton);
+            b.Click += delegate
+            {
+                ShowSettings();
+            };
 
             ShowLastFragment();
 
@@ -160,9 +165,40 @@ namespace CombatManagerDroid
             SetTabState(_LastFragment);
         }
 
+        static bool _LoadingFragment;
         private void ShowFeatsFragment()
         {
+            if (!Feat.FeatsLoaded)
+            {
+                if (!_LoadingFragment)
+                {
+                    _LoadingFragment = true;
+                    _ProgressDialog = new ProgressDialog(this, (int)ProgressDialogStyle.Spinner); 
+                    _ProgressDialog.SetMessage("Loading");
+                    _ProgressDialog.Show();
 
+                    Thread t = new Thread(() =>
+                    {
+                        Feat.LoadFeats();
+                        RunOnUiThread(() =>
+                        {
+                            _LoadingFragment = false;
+                            _ProgressDialog.Dismiss();
+                            FinishShowFeatsFragment();
+                        });
+                    });
+                    t.Start();
+                }
+            }
+            else
+            {
+                FinishShowFeatsFragment();
+            }
+        }
+
+        private void FinishShowFeatsFragment()
+        {
+            
             if (_FeatFragment == null)
             {
                 _FeatFragment = new FeatFragment();
@@ -189,20 +225,25 @@ namespace CombatManagerDroid
         {
             if (!Rule.RulesLoaded)
             {
-                _ProgressDialog = new ProgressDialog(this, (int)ProgressDialogStyle.Spinner); 
-                _ProgressDialog.SetMessage("Loading");
-                _ProgressDialog.Show();
+                if (!_LoadingFragment)
+                {
+                    _LoadingFragment = true;
+                    _ProgressDialog = new ProgressDialog(this, (int)ProgressDialogStyle.Spinner); 
+                    _ProgressDialog.SetMessage("Loading");
+                    _ProgressDialog.Show();
 
-                Thread t = new Thread(() =>
-                                      {
-                    Rule.LoadRules();
-                    RunOnUiThread(() =>
-                                  {
-                        _ProgressDialog.Dismiss();
-                        FinishLoadRulesFragment();
+                    Thread t = new Thread(() =>
+                    {
+                        Rule.LoadRules();
+                        RunOnUiThread(() =>
+                        {
+                            _ProgressDialog.Dismiss();
+                            FinishLoadRulesFragment();
+                            _LoadingFragment = false;
+                        });
                     });
-                });
-                t.Start();
+                    t.Start();
+                }
             }
             else
             {
@@ -280,19 +321,15 @@ namespace CombatManagerDroid
 
         void ShowHelp()
         {
-            /*String message = "Combat Manager for Android\r\n";
-            message += "Version " + Application.PackageManager.GetPackageInfo(PackageName, 0).VersionName + "\r\n\r\n";
-                message += "Copyright 2010-2013 Kyle Olson";
-
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-            builder1.SetMessage(message);
-            builder1.SetCancelable(true);
-            builder1.SetPositiveButton("Close", (sender, e) => {});
-
-                AlertDialog alert11 = builder1.Create();
-            alert11.Show();*/
+          
 
             AboutDialog dlg = new AboutDialog(this);
+            dlg.Show();
+        }
+
+        void ShowSettings()
+        {
+            SettingsDialog dlg = new SettingsDialog(this);
             dlg.Show();
         }
 

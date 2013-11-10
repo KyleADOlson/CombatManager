@@ -317,6 +317,7 @@ namespace CombatManagerDroid
             }
 
             UpdateTemplateView();
+
         }
 
         protected override void ShowItem(Monster item)

@@ -344,220 +344,223 @@ namespace CombatManagerDroid
 			public const int hourglass16 = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int Icon = 2130837574;
+			public const int ic_sysbar_quicksettings = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int import16 = 2130837575;
+			public const int Icon = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int incorporeal16 = 2130837576;
+			public const int import16 = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int info = 2130837577;
+			public const int incorporeal16 = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int info2x = 2130837578;
+			public const int info = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int init_button = 2130837579;
+			public const int info2x = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int invisible16 = 2130837580;
+			public const int init_button = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int keys16 = 2130837581;
+			public const int invisible16 = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int lasso16 = 2130837582;
+			public const int keys16 = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
-			public const int LeftArrow24 = 2130837583;
+			public const int lasso16 = 2130837583;
 			
 			// aapt resource value: 0x7f020050
-			public const int LeftArrow242x = 2130837584;
+			public const int LeftArrow24 = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int lightning16 = 2130837585;
+			public const int LeftArrow242x = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int lightning162x = 2130837586;
+			public const int lightning16 = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int link16 = 2130837587;
+			public const int lightning162x = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int lock16 = 2130837588;
+			public const int link16 = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int magearmor16 = 2130837589;
+			public const int lock16 = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int mail16 = 2130837590;
+			public const int magearmor16 = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int mail162x = 2130837591;
+			public const int mail16 = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int main_tab = 2130837592;
+			public const int mail162x = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int monster16 = 2130837593;
+			public const int main_tab = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int nauseated16 = 2130837594;
+			public const int monster16 = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int next16 = 2130837595;
+			public const int nauseated16 = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int NoteHS = 2130837596;
+			public const int next16 = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int notes16 = 2130837597;
+			public const int NoteHS = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int openHS = 2130837598;
+			public const int notes16 = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int openHS2x = 2130837599;
+			public const int openHS = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int panic16 = 2130837600;
+			public const int openHS2x = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int pencil16 = 2130837601;
+			public const int panic16 = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int person16 = 2130837602;
+			public const int pencil16 = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int personwindow16 = 2130837603;
+			public const int person16 = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int pin16 = 2130837604;
+			public const int personwindow16 = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int poison16 = 2130837605;
+			public const int pin16 = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int prev16 = 2130837606;
+			public const int poison16 = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int PrintHS = 2130837607;
+			public const int prev16 = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int prone16 = 2130837608;
+			public const int PrintHS = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int qm16 = 2130837609;
+			public const int prone16 = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int reaper16 = 2130837610;
+			public const int qm16 = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int redx = 2130837611;
+			public const int reaper16 = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int redx2x = 2130837612;
+			public const int redx = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int reset16 = 2130837613;
+			public const int redx2x = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int RightArrow24 = 2130837614;
+			public const int reset16 = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int RightArrow242x = 2130837615;
+			public const int RightArrow24 = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int rock16 = 2130837616;
+			public const int RightArrow242x = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int saveHS = 2130837617;
+			public const int rock16 = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int saveHS2x = 2130837618;
+			public const int saveHS = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int scared16 = 2130837619;
+			public const int saveHS2x = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int screen16 = 2130837620;
+			public const int scared16 = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int scroll16 = 2130837621;
+			public const int screen16 = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int scrolleffect16 = 2130837622;
+			public const int scroll16 = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int shaken16 = 2130837623;
+			public const int scrolleffect16 = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int sheet = 2130837624;
+			public const int shaken16 = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int shield16 = 2130837625;
+			public const int sheet = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int shielderror16 = 2130837626;
+			public const int shield16 = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int sick16 = 2130837627;
+			public const int shielderror16 = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int sleep16 = 2130837628;
+			public const int sick16 = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int slow16 = 2130837629;
+			public const int sleep16 = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int sort16 = 2130837630;
+			public const int slow16 = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int stable16 = 2130837631;
+			public const int sort16 = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int star16 = 2130837632;
+			public const int stable16 = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int star162x = 2130837633;
+			public const int star16 = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int stop16 = 2130837634;
+			public const int star162x = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int stunned16 = 2130837635;
+			public const int stop16 = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int sword16 = 2130837636;
+			public const int stunned16 = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int swordsingle16 = 2130837637;
+			public const int sword16 = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int target16 = 2130837638;
+			public const int swordsingle16 = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int treasure16 = 2130837639;
+			public const int target16 = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int treasure162x = 2130837640;
+			public const int treasure16 = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int unlock16 = 2130837641;
+			public const int treasure162x = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int wand16 = 2130837642;
+			public const int unlock16 = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int zoomin16 = 2130837643;
+			public const int wand16 = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int zoomout16 = 2130837644;
+			public const int zoomin16 = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int zzz16 = 2130837645;
+			public const int zoomout16 = 2130837645;
+			
+			// aapt resource value: 0x7f02008e
+			public const int zzz16 = 2130837646;
 			
 			static Drawable()
 			{
@@ -572,8 +575,8 @@ namespace CombatManagerDroid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0700ac
-			public const int acText = 2131165356;
+			// aapt resource value: 0x7f0700b0
+			public const int acText = 2131165360;
 			
 			// aapt resource value: 0x7f070024
 			public const int actionButton = 2131165220;
@@ -581,26 +584,26 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070004
 			public const int actionListView = 2131165188;
 			
-			// aapt resource value: 0x7f070066
-			public const int add10Button = 2131165286;
+			// aapt resource value: 0x7f070068
+			public const int add10Button = 2131165288;
 			
-			// aapt resource value: 0x7f070069
-			public const int add12Button = 2131165289;
+			// aapt resource value: 0x7f07006b
+			public const int add12Button = 2131165291;
 			
-			// aapt resource value: 0x7f07006c
-			public const int add20Button = 2131165292;
+			// aapt resource value: 0x7f07006e
+			public const int add20Button = 2131165294;
 			
-			// aapt resource value: 0x7f07005d
-			public const int add4Button = 2131165277;
+			// aapt resource value: 0x7f07005f
+			public const int add4Button = 2131165279;
 			
-			// aapt resource value: 0x7f070060
-			public const int add6Button = 2131165280;
+			// aapt resource value: 0x7f070062
+			public const int add6Button = 2131165282;
 			
-			// aapt resource value: 0x7f070063
-			public const int add8Button = 2131165283;
+			// aapt resource value: 0x7f070065
+			public const int add8Button = 2131165285;
 			
-			// aapt resource value: 0x7f070056
-			public const int addButton = 2131165270;
+			// aapt resource value: 0x7f070058
+			public const int addButton = 2131165272;
 			
 			// aapt resource value: 0x7f07000b
 			public const int addMeleeButton = 2131165195;
@@ -611,89 +614,89 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070010
 			public const int addRangedButton = 2131165200;
 			
-			// aapt resource value: 0x7f07007d
-			public const int advancedBox = 2131165309;
-			
-			// aapt resource value: 0x7f07007e
-			public const int advancedMultiplierButton = 2131165310;
-			
-			// aapt resource value: 0x7f070049
-			public const int afflictionsButton = 2131165257;
-			
-			// aapt resource value: 0x7f07009a
-			public const int alignmentButton = 2131165338;
-			
-			// aapt resource value: 0x7f0700b1
-			public const int armorText = 2131165361;
-			
-			// aapt resource value: 0x7f0700de
-			public const int attacksEditorButton = 2131165406;
+			// aapt resource value: 0x7f070081
+			public const int advancedBox = 2131165313;
 			
 			// aapt resource value: 0x7f070082
-			public const int augmentSummoningBox = 2131165314;
+			public const int advancedMultiplierButton = 2131165314;
+			
+			// aapt resource value: 0x7f07004b
+			public const int afflictionsButton = 2131165259;
+			
+			// aapt resource value: 0x7f07009e
+			public const int alignmentButton = 2131165342;
+			
+			// aapt resource value: 0x7f0700b5
+			public const int armorText = 2131165365;
+			
+			// aapt resource value: 0x7f0700e2
+			public const int attacksEditorButton = 2131165410;
+			
+			// aapt resource value: 0x7f070086
+			public const int augmentSummoningBox = 2131165318;
+			
+			// aapt resource value: 0x7f0700ee
+			public const int auraText = 2131165422;
 			
 			// aapt resource value: 0x7f0700ea
-			public const int auraText = 2131165418;
+			public const int baseAttackText = 2131165418;
 			
-			// aapt resource value: 0x7f0700e6
-			public const int baseAttackText = 2131165414;
+			// aapt resource value: 0x7f070080
+			public const int basicLayout = 2131165312;
 			
-			// aapt resource value: 0x7f07007c
-			public const int basicLayout = 2131165308;
-			
-			// aapt resource value: 0x7f0700cf
-			public const int beforeCombatText = 2131165391;
+			// aapt resource value: 0x7f0700d3
+			public const int beforeCombatText = 2131165395;
 			
 			// aapt resource value: 0x7f070019
 			public const int blankButton = 2131165209;
 			
-			// aapt resource value: 0x7f070095
-			public const int bloodyBox = 2131165333;
+			// aapt resource value: 0x7f070099
+			public const int bloodyBox = 2131165337;
 			
-			// aapt resource value: 0x7f07007b
-			public const int bodyLayout = 2131165307;
+			// aapt resource value: 0x7f07007f
+			public const int bodyLayout = 2131165311;
 			
-			// aapt resource value: 0x7f070086
-			public const int bonusStatButton = 2131165318;
+			// aapt resource value: 0x7f07008a
+			public const int bonusStatButton = 2131165322;
 			
-			// aapt resource value: 0x7f070074
-			public const int bottomLayout = 2131165300;
+			// aapt resource value: 0x7f070077
+			public const int bottomLayout = 2131165303;
 			
-			// aapt resource value: 0x7f070096
-			public const int burningBox = 2131165334;
+			// aapt resource value: 0x7f07009a
+			public const int burningBox = 2131165338;
 			
-			// aapt resource value: 0x7f0700da
-			public const int burrowText = 2131165402;
+			// aapt resource value: 0x7f0700de
+			public const int burrowText = 2131165406;
 			
-			// aapt resource value: 0x7f0700f3
-			public const int button1 = 2131165427;
+			// aapt resource value: 0x7f0700f7
+			public const int button1 = 2131165431;
 			
-			// aapt resource value: 0x7f0700f4
-			public const int button2 = 2131165428;
+			// aapt resource value: 0x7f0700f8
+			public const int button2 = 2131165432;
 			
-			// aapt resource value: 0x7f0700f5
-			public const int button3 = 2131165429;
+			// aapt resource value: 0x7f0700f9
+			public const int button3 = 2131165433;
 			
-			// aapt resource value: 0x7f0700f6
-			public const int button4 = 2131165430;
+			// aapt resource value: 0x7f0700fa
+			public const int button4 = 2131165434;
 			
-			// aapt resource value: 0x7f0700fd
-			public const int byItemsButton = 2131165437;
+			// aapt resource value: 0x7f070103
+			public const int byItemsButton = 2131165443;
 			
-			// aapt resource value: 0x7f0700fc
-			public const int byLevelButton = 2131165436;
+			// aapt resource value: 0x7f070102
+			public const int byLevelButton = 2131165442;
 			
 			// aapt resource value: 0x7f070018
 			public const int cancelButton = 2131165208;
 			
-			// aapt resource value: 0x7f070093
-			public const int chaBox = 2131165331;
-			
-			// aapt resource value: 0x7f0700a9
-			public const int chaText = 2131165353;
-			
 			// aapt resource value: 0x7f070097
-			public const int championBox = 2131165335;
+			public const int chaBox = 2131165335;
+			
+			// aapt resource value: 0x7f0700ad
+			public const int chaText = 2131165357;
+			
+			// aapt resource value: 0x7f07009b
+			public const int championBox = 2131165339;
 			
 			// aapt resource value: 0x7f07001d
 			public const int characterList = 2131165213;
@@ -704,191 +707,197 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070038
 			public const int characterView = 2131165240;
 			
-			// aapt resource value: 0x7f0700a2
-			public const int classText = 2131165346;
+			// aapt resource value: 0x7f0700a6
+			public const int classText = 2131165350;
 			
 			// aapt resource value: 0x7f07001e
 			public const int clearButton = 2131165214;
 			
-			// aapt resource value: 0x7f070044
-			public const int clearRollButton = 2131165252;
+			// aapt resource value: 0x7f07003b
+			public const int clearInitiativeButton = 2131165243;
 			
-			// aapt resource value: 0x7f0700d9
-			public const int climbText = 2131165401;
+			// aapt resource value: 0x7f070046
+			public const int clearRollButton = 2131165254;
+			
+			// aapt resource value: 0x7f0700dd
+			public const int climbText = 2131165405;
 			
 			// aapt resource value: 0x7f070001
 			public const int closeButton = 2131165185;
 			
-			// aapt resource value: 0x7f0700e7
-			public const int cmbText = 2131165415;
+			// aapt resource value: 0x7f0700eb
+			public const int cmbText = 2131165419;
 			
-			// aapt resource value: 0x7f0700e8
-			public const int cmdText = 2131165416;
+			// aapt resource value: 0x7f0700ec
+			public const int cmdText = 2131165420;
 			
-			// aapt resource value: 0x7f070100
-			public const int coinButton = 2131165440;
+			// aapt resource value: 0x7f070106
+			public const int coinButton = 2131165446;
 			
-			// aapt resource value: 0x7f0700f2
-			public const int column1 = 2131165426;
+			// aapt resource value: 0x7f0700f6
+			public const int column1 = 2131165430;
 			
-			// aapt resource value: 0x7f0700f7
-			public const int column2 = 2131165431;
+			// aapt resource value: 0x7f0700fb
+			public const int column2 = 2131165435;
 			
-			// aapt resource value: 0x7f0700f8
-			public const int column3 = 2131165432;
+			// aapt resource value: 0x7f0700fc
+			public const int column3 = 2131165436;
 			
-			// aapt resource value: 0x7f0700f9
-			public const int column4 = 2131165433;
+			// aapt resource value: 0x7f0700fd
+			public const int column4 = 2131165437;
 			
-			// aapt resource value: 0x7f070075
-			public const int combatButton = 2131165301;
+			// aapt resource value: 0x7f070078
+			public const int combatButton = 2131165304;
 			
-			// aapt resource value: 0x7f070092
-			public const int conBox = 2131165330;
+			// aapt resource value: 0x7f070096
+			public const int conBox = 2131165334;
 			
-			// aapt resource value: 0x7f0700a6
-			public const int conText = 2131165350;
+			// aapt resource value: 0x7f0700aa
+			public const int conText = 2131165354;
 			
-			// aapt resource value: 0x7f07004c
-			public const int conditionView = 2131165260;
+			// aapt resource value: 0x7f07004e
+			public const int conditionView = 2131165262;
 			
-			// aapt resource value: 0x7f070047
-			public const int conditionsButton = 2131165255;
+			// aapt resource value: 0x7f070049
+			public const int conditionsButton = 2131165257;
 			
 			// aapt resource value: 0x7f070026
 			public const int conditionsLayout = 2131165222;
 			
-			// aapt resource value: 0x7f070105
-			public const int countButton = 2131165445;
+			// aapt resource value: 0x7f0700fe
+			public const int confirmBox = 2131165438;
 			
-			// aapt resource value: 0x7f070099
-			public const int crButton = 2131165337;
+			// aapt resource value: 0x7f07010b
+			public const int countButton = 2131165451;
 			
-			// aapt resource value: 0x7f070065
-			public const int d10Text = 2131165285;
+			// aapt resource value: 0x7f07009d
+			public const int crButton = 2131165341;
 			
-			// aapt resource value: 0x7f070068
-			public const int d12Text = 2131165288;
+			// aapt resource value: 0x7f070067
+			public const int d10Text = 2131165287;
 			
-			// aapt resource value: 0x7f07006b
-			public const int d20Text = 2131165291;
+			// aapt resource value: 0x7f07006a
+			public const int d12Text = 2131165290;
 			
-			// aapt resource value: 0x7f07005c
-			public const int d4Text = 2131165276;
+			// aapt resource value: 0x7f07006d
+			public const int d20Text = 2131165293;
 			
-			// aapt resource value: 0x7f07005f
-			public const int d6Text = 2131165279;
+			// aapt resource value: 0x7f07005e
+			public const int d4Text = 2131165278;
 			
-			// aapt resource value: 0x7f070062
-			public const int d8Text = 2131165282;
+			// aapt resource value: 0x7f070061
+			public const int d6Text = 2131165281;
 			
-			// aapt resource value: 0x7f0700c1
-			public const int defAbilitiesText = 2131165377;
+			// aapt resource value: 0x7f070064
+			public const int d8Text = 2131165284;
 			
-			// aapt resource value: 0x7f07004e
-			public const int defenseTab = 2131165262;
+			// aapt resource value: 0x7f0700c5
+			public const int defAbilitiesText = 2131165381;
+			
+			// aapt resource value: 0x7f070050
+			public const int defenseTab = 2131165264;
+			
+			// aapt resource value: 0x7f0700bb
+			public const int deflectionText = 2131165371;
+			
+			// aapt resource value: 0x7f070101
+			public const int deleteButton = 2131165441;
+			
+			// aapt resource value: 0x7f070055
+			public const int descriptionTab = 2131165269;
+			
+			// aapt resource value: 0x7f0700d7
+			public const int descriptionText = 2131165399;
+			
+			// aapt resource value: 0x7f070094
+			public const int dexBox = 2131165332;
+			
+			// aapt resource value: 0x7f0700a9
+			public const int dexText = 2131165353;
 			
 			// aapt resource value: 0x7f0700b7
-			public const int deflectionText = 2131165367;
-			
-			// aapt resource value: 0x7f0700fb
-			public const int deleteButton = 2131165435;
-			
-			// aapt resource value: 0x7f070053
-			public const int descriptionTab = 2131165267;
-			
-			// aapt resource value: 0x7f0700d3
-			public const int descriptionText = 2131165395;
-			
-			// aapt resource value: 0x7f070090
-			public const int dexBox = 2131165328;
-			
-			// aapt resource value: 0x7f0700a5
-			public const int dexText = 2131165349;
-			
-			// aapt resource value: 0x7f0700b3
-			public const int dodgeText = 2131165363;
+			public const int dodgeText = 2131165367;
 			
 			// aapt resource value: 0x7f07002e
 			public const int downButton = 2131165230;
 			
-			// aapt resource value: 0x7f0700c3
-			public const int drText = 2131165379;
+			// aapt resource value: 0x7f0700c7
+			public const int drText = 2131165383;
 			
-			// aapt resource value: 0x7f07008b
-			public const int dragonColorButton = 2131165323;
-			
-			// aapt resource value: 0x7f0700d0
-			public const int duringCombatText = 2131165392;
-			
-			// aapt resource value: 0x7f0700cc
-			public const int environmentText = 2131165388;
-			
-			// aapt resource value: 0x7f070077
-			public const int featsButton = 2131165303;
+			// aapt resource value: 0x7f07008f
+			public const int dragonColorButton = 2131165327;
 			
 			// aapt resource value: 0x7f0700d4
-			public const int featsLayout = 2131165396;
+			public const int duringCombatText = 2131165396;
 			
-			// aapt resource value: 0x7f070054
-			public const int featsList = 2131165268;
-			
-			// aapt resource value: 0x7f070051
-			public const int featsTab = 2131165265;
-			
-			// aapt resource value: 0x7f070059
-			public const int fileList = 2131165273;
-			
-			// aapt resource value: 0x7f07005a
-			public const int fileName = 2131165274;
-			
-			// aapt resource value: 0x7f070072
-			public const int filterLayout = 2131165298;
-			
-			// aapt resource value: 0x7f07004a
-			public const int filterText = 2131165258;
-			
-			// aapt resource value: 0x7f0700af
-			public const int flatFootedText = 2131165359;
-			
-			// aapt resource value: 0x7f0700d8
-			public const int flyQualityButton = 2131165400;
-			
-			// aapt resource value: 0x7f0700d7
-			public const int flyText = 2131165399;
-			
-			// aapt resource value: 0x7f070058
-			public const int folderNameText = 2131165272;
-			
-			// aapt resource value: 0x7f070057
-			public const int folderUpButton = 2131165271;
-			
-			// aapt resource value: 0x7f0700bb
-			public const int fortText = 2131165371;
-			
-			// aapt resource value: 0x7f0700ee
-			public const int gearText = 2131165422;
-			
-			// aapt resource value: 0x7f07010f
-			public const int generateItemsButton = 2131165455;
-			
-			// aapt resource value: 0x7f070103
-			public const int generateLevelButton = 2131165443;
-			
-			// aapt resource value: 0x7f070101
-			public const int goodsButton = 2131165441;
-			
-			// aapt resource value: 0x7f070084
-			public const int hdButton = 2131165316;
-			
-			// aapt resource value: 0x7f070085
-			public const int hdCountButton = 2131165317;
-			
-			// aapt resource value: 0x7f070083
-			public const int hdLayout = 2131165315;
+			// aapt resource value: 0x7f0700d0
+			public const int environmentText = 2131165392;
 			
 			// aapt resource value: 0x7f07007a
-			public const int helpButton = 2131165306;
+			public const int featsButton = 2131165306;
+			
+			// aapt resource value: 0x7f0700d8
+			public const int featsLayout = 2131165400;
+			
+			// aapt resource value: 0x7f070056
+			public const int featsList = 2131165270;
+			
+			// aapt resource value: 0x7f070053
+			public const int featsTab = 2131165267;
+			
+			// aapt resource value: 0x7f07005b
+			public const int fileList = 2131165275;
+			
+			// aapt resource value: 0x7f07005c
+			public const int fileName = 2131165276;
+			
+			// aapt resource value: 0x7f070075
+			public const int filterLayout = 2131165301;
+			
+			// aapt resource value: 0x7f07004c
+			public const int filterText = 2131165260;
+			
+			// aapt resource value: 0x7f0700b3
+			public const int flatFootedText = 2131165363;
+			
+			// aapt resource value: 0x7f0700dc
+			public const int flyQualityButton = 2131165404;
+			
+			// aapt resource value: 0x7f0700db
+			public const int flyText = 2131165403;
+			
+			// aapt resource value: 0x7f07005a
+			public const int folderNameText = 2131165274;
+			
+			// aapt resource value: 0x7f070059
+			public const int folderUpButton = 2131165273;
+			
+			// aapt resource value: 0x7f0700bf
+			public const int fortText = 2131165375;
+			
+			// aapt resource value: 0x7f0700f2
+			public const int gearText = 2131165426;
+			
+			// aapt resource value: 0x7f070115
+			public const int generateItemsButton = 2131165461;
+			
+			// aapt resource value: 0x7f070109
+			public const int generateLevelButton = 2131165449;
+			
+			// aapt resource value: 0x7f070107
+			public const int goodsButton = 2131165447;
+			
+			// aapt resource value: 0x7f070088
+			public const int hdButton = 2131165320;
+			
+			// aapt resource value: 0x7f070089
+			public const int hdCountButton = 2131165321;
+			
+			// aapt resource value: 0x7f070087
+			public const int hdLayout = 2131165319;
+			
+			// aapt resource value: 0x7f07007e
+			public const int helpButton = 2131165310;
 			
 			// aapt resource value: 0x7f070025
 			public const int horizontalScrollView1 = 2131165221;
@@ -899,11 +908,11 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070022
 			public const int hpMaxButton = 2131165218;
 			
-			// aapt resource value: 0x7f0700ab
-			public const int hpModsText = 2131165355;
+			// aapt resource value: 0x7f0700af
+			public const int hpModsText = 2131165359;
 			
-			// aapt resource value: 0x7f0700aa
-			public const int hpText = 2131165354;
+			// aapt resource value: 0x7f0700ae
+			public const int hpText = 2131165358;
 			
 			// aapt resource value: 0x7f070007
 			public const int imageView1 = 2131165191;
@@ -914,47 +923,47 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070012
 			public const int imageView3 = 2131165202;
 			
-			// aapt resource value: 0x7f0700c5
-			public const int immuneText = 2131165381;
+			// aapt resource value: 0x7f0700c9
+			public const int immuneText = 2131165385;
 			
 			// aapt resource value: 0x7f070023
 			public const int initButton = 2131165219;
 			
-			// aapt resource value: 0x7f07009e
-			public const int initText = 2131165342;
+			// aapt resource value: 0x7f0700a2
+			public const int initText = 2131165346;
 			
 			// aapt resource value: 0x7f070030
 			public const int initiativeList = 2131165232;
 			
-			// aapt resource value: 0x7f07008f
-			public const int intBox = 2131165327;
+			// aapt resource value: 0x7f070093
+			public const int intBox = 2131165331;
 			
-			// aapt resource value: 0x7f0700a7
-			public const int intText = 2131165351;
+			// aapt resource value: 0x7f0700ab
+			public const int intText = 2131165355;
 			
-			// aapt resource value: 0x7f07004b
-			public const int itemList = 2131165259;
+			// aapt resource value: 0x7f07004d
+			public const int itemList = 2131165261;
 			
-			// aapt resource value: 0x7f070073
-			public const int itemView = 2131165299;
+			// aapt resource value: 0x7f070076
+			public const int itemView = 2131165302;
+			
+			// aapt resource value: 0x7f07010a
+			public const int itemsLayout = 2131165450;
+			
+			// aapt resource value: 0x7f07010c
+			public const int itemsLevelButton = 2131165452;
+			
+			// aapt resource value: 0x7f0700f0
+			public const int languagesText = 2131165424;
+			
+			// aapt resource value: 0x7f070072
+			public const int leftLayout = 2131165298;
+			
+			// aapt resource value: 0x7f070105
+			public const int levelButton = 2131165445;
 			
 			// aapt resource value: 0x7f070104
-			public const int itemsLayout = 2131165444;
-			
-			// aapt resource value: 0x7f070106
-			public const int itemsLevelButton = 2131165446;
-			
-			// aapt resource value: 0x7f0700ec
-			public const int languagesText = 2131165420;
-			
-			// aapt resource value: 0x7f07006f
-			public const int leftLayout = 2131165295;
-			
-			// aapt resource value: 0x7f0700ff
-			public const int levelButton = 2131165439;
-			
-			// aapt resource value: 0x7f0700fe
-			public const int levelLayout = 2131165438;
+			public const int levelLayout = 2131165444;
 			
 			// aapt resource value: 0x7f070002
 			public const int linearLayout1 = 2131165186;
@@ -968,14 +977,17 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070039
 			public const int linearLayout12 = 2131165241;
 			
-			// aapt resource value: 0x7f07003b
-			public const int linearLayout13 = 2131165243;
+			// aapt resource value: 0x7f07003d
+			public const int linearLayout13 = 2131165245;
 			
-			// aapt resource value: 0x7f07008d
-			public const int linearLayout14 = 2131165325;
+			// aapt resource value: 0x7f070091
+			public const int linearLayout14 = 2131165329;
 			
-			// aapt resource value: 0x7f070043
-			public const int linearLayout15 = 2131165251;
+			// aapt resource value: 0x7f070045
+			public const int linearLayout15 = 2131165253;
+			
+			// aapt resource value: 0x7f07003a
+			public const int linearLayout16 = 2131165242;
 			
 			// aapt resource value: 0x7f070003
 			public const int linearLayout2 = 2131165187;
@@ -1004,20 +1016,20 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f07001b
 			public const int loadButton = 2131165211;
 			
-			// aapt resource value: 0x7f070102
-			public const int magicItemsButton = 2131165442;
-			
-			// aapt resource value: 0x7f070107
-			public const int magicalArmorBox = 2131165447;
-			
 			// aapt resource value: 0x7f070108
-			public const int magicalWeaponBox = 2131165448;
+			public const int magicItemsButton = 2131165448;
 			
-			// aapt resource value: 0x7f07004d
-			public const int mainTab = 2131165261;
+			// aapt resource value: 0x7f07010d
+			public const int magicalArmorBox = 2131165453;
 			
-			// aapt resource value: 0x7f0700df
-			public const int meleeAttacksButton = 2131165407;
+			// aapt resource value: 0x7f07010e
+			public const int magicalWeaponBox = 2131165454;
+			
+			// aapt resource value: 0x7f07004f
+			public const int mainTab = 2131165263;
+			
+			// aapt resource value: 0x7f0700e3
+			public const int meleeAttacksButton = 2131165411;
 			
 			// aapt resource value: 0x7f070009
 			public const int meleeGroupLayout = 2131165193;
@@ -1025,137 +1037,143 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f07000a
 			public const int meleeLayout = 2131165194;
 			
-			// aapt resource value: 0x7f07006d
-			public const int modText = 2131165293;
+			// aapt resource value: 0x7f07006f
+			public const int modText = 2131165295;
 			
 			// aapt resource value: 0x7f07001a
 			public const int monsterButton = 2131165210;
 			
-			// aapt resource value: 0x7f0700ef
-			public const int monsterEditText = 2131165423;
+			// aapt resource value: 0x7f0700f3
+			public const int monsterEditText = 2131165427;
 			
 			// aapt resource value: 0x7f070037
 			public const int monsterListLayout = 2131165239;
 			
-			// aapt resource value: 0x7f0700f0
-			public const int monsterListView = 2131165424;
+			// aapt resource value: 0x7f0700f4
+			public const int monsterListView = 2131165428;
 			
-			// aapt resource value: 0x7f070076
-			public const int monstersButton = 2131165302;
-			
-			// aapt resource value: 0x7f0700d1
-			public const int moraleText = 2131165393;
+			// aapt resource value: 0x7f070079
+			public const int monstersButton = 2131165305;
 			
 			// aapt resource value: 0x7f0700d5
-			public const int movementLayout = 2131165397;
+			public const int moraleText = 2131165397;
+			
+			// aapt resource value: 0x7f0700d9
+			public const int movementLayout = 2131165401;
 			
 			// aapt resource value: 0x7f070020
 			public const int nameEditText = 2131165216;
 			
-			// aapt resource value: 0x7f070098
-			public const int nameText = 2131165336;
+			// aapt resource value: 0x7f07009c
+			public const int nameText = 2131165340;
 			
 			// aapt resource value: 0x7f070014
 			public const int naturalLayout = 2131165204;
 			
-			// aapt resource value: 0x7f0700b5
-			public const int naturalText = 2131165365;
+			// aapt resource value: 0x7f0700b9
+			public const int naturalText = 2131165369;
 			
 			// aapt resource value: 0x7f07002b
 			public const int nextButton = 2131165227;
 			
-			// aapt resource value: 0x7f07004f
-			public const int offenseTab = 2131165263;
+			// aapt resource value: 0x7f070051
+			public const int offenseTab = 2131165265;
 			
 			// aapt resource value: 0x7f070017
 			public const int okButton = 2131165207;
 			
-			// aapt resource value: 0x7f0700cd
-			public const int organizationText = 2131165389;
+			// aapt resource value: 0x7f0700d1
+			public const int organizationText = 2131165393;
 			
-			// aapt resource value: 0x7f070081
-			public const int outsiderButton = 2131165313;
+			// aapt resource value: 0x7f070085
+			public const int outsiderButton = 2131165317;
 			
 			// aapt resource value: 0x7f070036
 			public const int playerListLayout = 2131165238;
 			
-			// aapt resource value: 0x7f070109
-			public const int potionBox = 2131165449;
+			// aapt resource value: 0x7f07010f
+			public const int potionBox = 2131165455;
 			
 			// aapt resource value: 0x7f07002f
 			public const int prevButton = 2131165231;
 			
-			// aapt resource value: 0x7f0700a0
-			public const int raceText = 2131165344;
+			// aapt resource value: 0x7f070071
+			public const int progressBar1 = 2131165297;
 			
-			// aapt resource value: 0x7f0700e9
-			public const int racialModsText = 2131165417;
+			// aapt resource value: 0x7f0700a4
+			public const int raceText = 2131165348;
 			
-			// aapt resource value: 0x7f0700e0
-			public const int rangedAttacksButton = 2131165408;
+			// aapt resource value: 0x7f0700ed
+			public const int racialModsText = 2131165421;
+			
+			// aapt resource value: 0x7f0700e4
+			public const int rangedAttacksButton = 2131165412;
 			
 			// aapt resource value: 0x7f07000f
 			public const int rangedLayout = 2131165199;
 			
-			// aapt resource value: 0x7f0700dd
-			public const int reachText = 2131165405;
+			// aapt resource value: 0x7f0700e1
+			public const int reachText = 2131165409;
 			
-			// aapt resource value: 0x7f0700bd
-			public const int refText = 2131165373;
+			// aapt resource value: 0x7f0700c1
+			public const int refText = 2131165377;
 			
-			// aapt resource value: 0x7f07006e
-			public const int relativeLayout1 = 2131165294;
+			// aapt resource value: 0x7f070070
+			public const int relativeLayout1 = 2131165296;
 			
 			// aapt resource value: 0x7f070035
 			public const int resetButton = 2131165237;
 			
-			// aapt resource value: 0x7f0700c9
-			public const int resistText = 2131165385;
+			// aapt resource value: 0x7f0700cd
+			public const int resistText = 2131165389;
 			
-			// aapt resource value: 0x7f07010a
-			public const int ringBox = 2131165450;
+			// aapt resource value: 0x7f070110
+			public const int ringBox = 2131165456;
 			
-			// aapt resource value: 0x7f07010b
-			public const int rodBox = 2131165451;
+			// aapt resource value: 0x7f070111
+			public const int rodBox = 2131165457;
 			
-			// aapt resource value: 0x7f070046
-			public const int rollButton = 2131165254;
+			// aapt resource value: 0x7f0700ff
+			public const int roll3d6Box = 2131165439;
 			
-			// aapt resource value: 0x7f070042
-			public const int rollD100Button = 2131165250;
+			// aapt resource value: 0x7f070048
+			public const int rollButton = 2131165256;
 			
-			// aapt resource value: 0x7f07003f
-			public const int rollD10Button = 2131165247;
-			
-			// aapt resource value: 0x7f070040
-			public const int rollD12Button = 2131165248;
+			// aapt resource value: 0x7f070044
+			public const int rollD100Button = 2131165252;
 			
 			// aapt resource value: 0x7f070041
-			public const int rollD20Button = 2131165249;
+			public const int rollD10Button = 2131165249;
 			
-			// aapt resource value: 0x7f07003c
-			public const int rollD4Button = 2131165244;
+			// aapt resource value: 0x7f070042
+			public const int rollD12Button = 2131165250;
 			
-			// aapt resource value: 0x7f07003d
-			public const int rollD6Button = 2131165245;
+			// aapt resource value: 0x7f070043
+			public const int rollD20Button = 2131165251;
 			
 			// aapt resource value: 0x7f07003e
-			public const int rollD8Button = 2131165246;
+			public const int rollD4Button = 2131165246;
+			
+			// aapt resource value: 0x7f07003f
+			public const int rollD6Button = 2131165247;
+			
+			// aapt resource value: 0x7f070040
+			public const int rollD8Button = 2131165248;
 			
 			// aapt resource value: 0x7f070032
 			public const int rollInitiativeButton = 2131165234;
 			
-			// aapt resource value: 0x7f070045
-			public const int rollText = 2131165253;
+			// aapt resource value: 0x7f070047
+			public const int rollText = 2131165255;
 			
-			// aapt resource value: 0x7f07003a
-			public const int rollWebView = 2131165242;
+			// aapt resource value: 0x7f07003c
+			public const int rollWebView = 2131165244;
 			
 			// aapt resource value: 0x7f07002a
 			public const int roundText = 2131165226;
 			
-			// aapt resource value: 0x7f070078
-			public const int rulesButton = 2131165304;
+			// aapt resource value: 0x7f07007b
+			public const int rulesButton = 2131165307;
 			
 			// aapt resource value: 0x7f07001c
 			public const int saveButton = 2131165212;
@@ -1163,230 +1181,233 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070005
 			public const int scrollView1 = 2131165189;
 			
-			// aapt resource value: 0x7f070070
-			public const int searchLayout = 2131165296;
+			// aapt resource value: 0x7f070073
+			public const int searchLayout = 2131165299;
 			
-			// aapt resource value: 0x7f070071
-			public const int searchReplacementLayout = 2131165297;
+			// aapt resource value: 0x7f070074
+			public const int searchReplacementLayout = 2131165300;
 			
-			// aapt resource value: 0x7f07009d
-			public const int sensesText = 2131165341;
+			// aapt resource value: 0x7f0700a1
+			public const int sensesText = 2131165345;
 			
-			// aapt resource value: 0x7f0700b9
-			public const int shieldText = 2131165369;
+			// aapt resource value: 0x7f07007d
+			public const int settingsButton = 2131165309;
 			
-			// aapt resource value: 0x7f07007f
-			public const int sizeButton = 2131165311;
+			// aapt resource value: 0x7f0700bd
+			public const int shieldText = 2131165373;
 			
-			// aapt resource value: 0x7f070080
-			public const int sizeMultiplierButton = 2131165312;
+			// aapt resource value: 0x7f070083
+			public const int sizeButton = 2131165315;
 			
-			// aapt resource value: 0x7f070094
-			public const int skeletonLayout = 2131165332;
+			// aapt resource value: 0x7f070084
+			public const int sizeMultiplierButton = 2131165316;
 			
-			// aapt resource value: 0x7f0700fa
-			public const int skillListView = 2131165434;
+			// aapt resource value: 0x7f070098
+			public const int skeletonLayout = 2131165336;
 			
-			// aapt resource value: 0x7f0700eb
-			public const int skillsLinearLayout = 2131165419;
+			// aapt resource value: 0x7f070100
+			public const int skillListView = 2131165440;
+			
+			// aapt resource value: 0x7f0700ef
+			public const int skillsLinearLayout = 2131165423;
 			
 			// aapt resource value: 0x7f070034
 			public const int sortButton = 2131165236;
 			
-			// aapt resource value: 0x7f0700dc
-			public const int spaceText = 2131165404;
-			
-			// aapt resource value: 0x7f0700e1
-			public const int specialAttacksText = 2131165409;
+			// aapt resource value: 0x7f0700e0
+			public const int spaceText = 2131165408;
 			
 			// aapt resource value: 0x7f0700e5
-			public const int specialLayout = 2131165413;
+			public const int specialAttacksText = 2131165413;
 			
-			// aapt resource value: 0x7f070052
-			public const int specialTab = 2131165266;
+			// aapt resource value: 0x7f0700e9
+			public const int specialLayout = 2131165417;
 			
-			// aapt resource value: 0x7f0700d6
-			public const int speedText = 2131165398;
+			// aapt resource value: 0x7f070054
+			public const int specialTab = 2131165268;
 			
-			// aapt resource value: 0x7f0700e2
-			public const int spellLikeAbilitiesText = 2131165410;
+			// aapt resource value: 0x7f0700da
+			public const int speedText = 2131165402;
 			
-			// aapt resource value: 0x7f070048
-			public const int spellsButton = 2131165256;
+			// aapt resource value: 0x7f0700e6
+			public const int spellLikeAbilitiesText = 2131165414;
 			
-			// aapt resource value: 0x7f0700e3
-			public const int spellsKnownText = 2131165411;
+			// aapt resource value: 0x7f07004a
+			public const int spellsButton = 2131165258;
 			
-			// aapt resource value: 0x7f0700e4
-			public const int spellsPreparedText = 2131165412;
+			// aapt resource value: 0x7f0700e7
+			public const int spellsKnownText = 2131165415;
 			
-			// aapt resource value: 0x7f0700ed
-			public const int sqText = 2131165421;
-			
-			// aapt resource value: 0x7f0700c7
-			public const int srText = 2131165383;
-			
-			// aapt resource value: 0x7f07010c
-			public const int staffBox = 2131165452;
-			
-			// aapt resource value: 0x7f070087
-			public const int statChangeButton = 2131165319;
-			
-			// aapt resource value: 0x7f07008c
-			public const int statsLayout = 2131165324;
-			
-			// aapt resource value: 0x7f070050
-			public const int statsTab = 2131165264;
-			
-			// aapt resource value: 0x7f07008e
-			public const int strBox = 2131165326;
-			
-			// aapt resource value: 0x7f0700a4
-			public const int strText = 2131165348;
-			
-			// aapt resource value: 0x7f070064
-			public const int subtract10Button = 2131165284;
-			
-			// aapt resource value: 0x7f070067
-			public const int subtract12Button = 2131165287;
-			
-			// aapt resource value: 0x7f07006a
-			public const int subtract20Button = 2131165290;
-			
-			// aapt resource value: 0x7f07005b
-			public const int subtract4Button = 2131165275;
-			
-			// aapt resource value: 0x7f07005e
-			public const int subtract6Button = 2131165278;
-			
-			// aapt resource value: 0x7f070061
-			public const int subtract8Button = 2131165281;
-			
-			// aapt resource value: 0x7f070055
-			public const int subtypeText = 2131165269;
-			
-			// aapt resource value: 0x7f07009c
-			public const int subtypesText = 2131165340;
-			
-			// aapt resource value: 0x7f0700db
-			public const int swimText = 2131165403;
-			
-			// aapt resource value: 0x7f070089
-			public const int templateButton = 2131165321;
-			
-			// aapt resource value: 0x7f070088
-			public const int templateSelectionLayout = 2131165320;
+			// aapt resource value: 0x7f0700e8
+			public const int spellsPreparedText = 2131165416;
 			
 			// aapt resource value: 0x7f0700f1
-			public const int textField = 2131165425;
+			public const int sqText = 2131165425;
+			
+			// aapt resource value: 0x7f0700cb
+			public const int srText = 2131165387;
+			
+			// aapt resource value: 0x7f070112
+			public const int staffBox = 2131165458;
+			
+			// aapt resource value: 0x7f07008b
+			public const int statChangeButton = 2131165323;
+			
+			// aapt resource value: 0x7f070090
+			public const int statsLayout = 2131165328;
+			
+			// aapt resource value: 0x7f070052
+			public const int statsTab = 2131165266;
+			
+			// aapt resource value: 0x7f070092
+			public const int strBox = 2131165330;
+			
+			// aapt resource value: 0x7f0700a8
+			public const int strText = 2131165352;
+			
+			// aapt resource value: 0x7f070066
+			public const int subtract10Button = 2131165286;
+			
+			// aapt resource value: 0x7f070069
+			public const int subtract12Button = 2131165289;
+			
+			// aapt resource value: 0x7f07006c
+			public const int subtract20Button = 2131165292;
+			
+			// aapt resource value: 0x7f07005d
+			public const int subtract4Button = 2131165277;
+			
+			// aapt resource value: 0x7f070060
+			public const int subtract6Button = 2131165280;
+			
+			// aapt resource value: 0x7f070063
+			public const int subtract8Button = 2131165283;
+			
+			// aapt resource value: 0x7f070057
+			public const int subtypeText = 2131165271;
+			
+			// aapt resource value: 0x7f0700a0
+			public const int subtypesText = 2131165344;
+			
+			// aapt resource value: 0x7f0700df
+			public const int swimText = 2131165407;
+			
+			// aapt resource value: 0x7f07008d
+			public const int templateButton = 2131165325;
+			
+			// aapt resource value: 0x7f07008c
+			public const int templateSelectionLayout = 2131165324;
+			
+			// aapt resource value: 0x7f0700f5
+			public const int textField = 2131165429;
 			
 			// aapt resource value: 0x7f070008
 			public const int textView1 = 2131165192;
 			
-			// aapt resource value: 0x7f0700b4
-			public const int textView10 = 2131165364;
-			
-			// aapt resource value: 0x7f0700b6
-			public const int textView11 = 2131165366;
-			
 			// aapt resource value: 0x7f0700b8
-			public const int textView12 = 2131165368;
+			public const int textView10 = 2131165368;
 			
 			// aapt resource value: 0x7f0700ba
-			public const int textView13 = 2131165370;
+			public const int textView11 = 2131165370;
 			
 			// aapt resource value: 0x7f0700bc
-			public const int textView14 = 2131165372;
+			public const int textView12 = 2131165372;
 			
 			// aapt resource value: 0x7f0700be
-			public const int textView15 = 2131165374;
+			public const int textView13 = 2131165374;
 			
 			// aapt resource value: 0x7f0700c0
-			public const int textView16 = 2131165376;
+			public const int textView14 = 2131165376;
 			
 			// aapt resource value: 0x7f0700c2
-			public const int textView17 = 2131165378;
+			public const int textView15 = 2131165378;
 			
 			// aapt resource value: 0x7f0700c4
-			public const int textView18 = 2131165380;
+			public const int textView16 = 2131165380;
 			
 			// aapt resource value: 0x7f0700c6
-			public const int textView19 = 2131165382;
+			public const int textView17 = 2131165382;
+			
+			// aapt resource value: 0x7f0700c8
+			public const int textView18 = 2131165384;
+			
+			// aapt resource value: 0x7f0700ca
+			public const int textView19 = 2131165386;
 			
 			// aapt resource value: 0x7f07000e
 			public const int textView2 = 2131165198;
 			
-			// aapt resource value: 0x7f0700c8
-			public const int textView20 = 2131165384;
+			// aapt resource value: 0x7f0700cc
+			public const int textView20 = 2131165388;
 			
-			// aapt resource value: 0x7f0700ca
-			public const int textView21 = 2131165386;
+			// aapt resource value: 0x7f0700ce
+			public const int textView21 = 2131165390;
 			
 			// aapt resource value: 0x7f070013
 			public const int textView3 = 2131165203;
 			
-			// aapt resource value: 0x7f07009f
-			public const int textView4 = 2131165343;
-			
-			// aapt resource value: 0x7f0700a1
-			public const int textView5 = 2131165345;
-			
 			// aapt resource value: 0x7f0700a3
-			public const int textView6 = 2131165347;
+			public const int textView4 = 2131165347;
 			
-			// aapt resource value: 0x7f0700ae
-			public const int textView7 = 2131165358;
+			// aapt resource value: 0x7f0700a5
+			public const int textView5 = 2131165349;
 			
-			// aapt resource value: 0x7f0700b0
-			public const int textView8 = 2131165360;
+			// aapt resource value: 0x7f0700a7
+			public const int textView6 = 2131165351;
 			
 			// aapt resource value: 0x7f0700b2
-			public const int textView9 = 2131165362;
+			public const int textView7 = 2131165362;
 			
-			// aapt resource value: 0x7f0700ad
-			public const int touchText = 2131165357;
+			// aapt resource value: 0x7f0700b4
+			public const int textView8 = 2131165364;
 			
-			// aapt resource value: 0x7f070079
-			public const int treasureButton = 2131165305;
+			// aapt resource value: 0x7f0700b6
+			public const int textView9 = 2131165366;
 			
-			// aapt resource value: 0x7f0700ce
-			public const int treasureText = 2131165390;
+			// aapt resource value: 0x7f0700b1
+			public const int touchText = 2131165361;
 			
-			// aapt resource value: 0x7f07009b
-			public const int typeButton = 2131165339;
+			// aapt resource value: 0x7f07007c
+			public const int treasureButton = 2131165308;
+			
+			// aapt resource value: 0x7f0700d2
+			public const int treasureText = 2131165394;
+			
+			// aapt resource value: 0x7f07009f
+			public const int typeButton = 2131165343;
 			
 			// aapt resource value: 0x7f07002d
 			public const int upButton = 2131165229;
 			
-			// aapt resource value: 0x7f0700d2
-			public const int visualDescriptionText = 2131165394;
+			// aapt resource value: 0x7f0700d6
+			public const int visualDescriptionText = 2131165398;
 			
-			// aapt resource value: 0x7f07010d
-			public const int wandBox = 2131165453;
+			// aapt resource value: 0x7f070113
+			public const int wandBox = 2131165459;
 			
-			// aapt resource value: 0x7f0700cb
-			public const int weaknessText = 2131165387;
+			// aapt resource value: 0x7f0700cf
+			public const int weaknessText = 2131165391;
 			
 			// aapt resource value: 0x7f070000
 			public const int webView = 2131165184;
 			
-			// aapt resource value: 0x7f0700bf
-			public const int willText = 2131165375;
+			// aapt resource value: 0x7f0700c3
+			public const int willText = 2131165379;
 			
-			// aapt resource value: 0x7f070091
-			public const int wisBox = 2131165329;
+			// aapt resource value: 0x7f070095
+			public const int wisBox = 2131165333;
 			
-			// aapt resource value: 0x7f0700a8
-			public const int wisText = 2131165352;
+			// aapt resource value: 0x7f0700ac
+			public const int wisText = 2131165356;
 			
-			// aapt resource value: 0x7f07010e
-			public const int wondrousItemBox = 2131165454;
+			// aapt resource value: 0x7f070114
+			public const int wondrousItemBox = 2131165460;
 			
 			// aapt resource value: 0x7f07001f
 			public const int xpText = 2131165215;
 			
-			// aapt resource value: 0x7f07008a
-			public const int zombieButton = 2131165322;
+			// aapt resource value: 0x7f07008e
+			public const int zombieButton = 2131165326;
 			
 			static Id()
 			{
@@ -1477,16 +1498,19 @@ namespace CombatManagerDroid
 			public const int NumberDialog = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int SkillPickerDialog = 2130903065;
+			public const int SettingsDialog = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int SpecialAbility = 2130903066;
+			public const int SkillPickerDialog = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int TextDialog = 2130903067;
+			public const int SpecialAbility = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int TreasureGenerator = 2130903068;
+			public const int TextDialog = 2130903068;
+			
+			// aapt resource value: 0x7f03001d
+			public const int TreasureGenerator = 2130903069;
 			
 			static Layout()
 			{

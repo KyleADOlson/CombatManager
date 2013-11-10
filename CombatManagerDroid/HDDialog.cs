@@ -27,6 +27,7 @@ namespace CombatManagerDroid
             RequestWindowFeature((int)WindowFeatures.NoTitle);
 
             SetContentView(Resource.Layout.HDDialog);
+            SetCanceledOnTouchOutside(true);
 
             Window.SetSoftInputMode(SoftInput.StateHidden);
 

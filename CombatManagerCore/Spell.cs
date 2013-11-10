@@ -49,7 +49,6 @@ namespace CombatManager
         private String _targets;
         private String _effect;
         private String _dismissible;
-        private String _deity;
         private String _area;
         private String _duration;
         private String _shapeable;
@@ -85,9 +84,38 @@ namespace CombatManager
         private String _SLA_Level;
         private String _preparation_time;
         private bool _duplicated;
+        private String _acid;
+        private String _air;
+        private String _chaotic;
+        private String _cold;
+        private String _curse;
+        private String _darkness;
+        private String _death;
+        private String _disease;
+        private String _earth;
+        private String _electricity;
+        private String _emotion;
+        private String _evil;
+        private String _fear;
+        private String _fire;
+        private String _force;
+        private String _good;
+        private String _language;
+        private String _lawful;
+        private String _light;
+        private String _mind_affecting;
+        private String _pain;
+        private String _poison;
+        private String _shadow;
+        private String _sonic;
+        private String _water;
+        private int _detailsid;
 
+        //annotation fields
+
+        //bonus annotation
         private ConditionBonus _Bonus;
-
+        //treasure table annotations
         private string _PotionWeight;
         private string _DivineScrollWeight;
         private string _ArcaneScrollWeight;
@@ -117,11 +145,19 @@ namespace CombatManager
 
         static Spell()
         {
+
+
+        }
+
+        static void LoadSpells()
+        {
             List<Spell> set = XmlListLoader<Spell>.Load("SpellsShort.xml");
 
             List<Spell> remove = new List<Spell>();
             foreach (var cur in set)
             {
+
+                //This needs to be removed at some point.  We shouldn't change the duration/areas field to add tags to the ui
                 if (cur.dismissible == "1")
                 {
                     if (!cur.duration.Contains("(D)"))
@@ -143,7 +179,7 @@ namespace CombatManager
                     remove.Add(cur);
                 }
 
-                
+
             }
 
             foreach (Spell s in remove)
@@ -164,7 +200,7 @@ namespace CombatManager
             }
 
             _Spells.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(_Spells_CollectionChanged);
-            _SpellDictionary = new Dictionary<string,ObservableCollection<Spell>>(new InsensitiveEqualityCompararer());
+            _SpellDictionary = new Dictionary<string, ObservableCollection<Spell>>(new InsensitiveEqualityCompararer());
 
             _Schools = new SortedDictionary<string, string>();
             foreach (Spell s in _Spells)
@@ -174,7 +210,6 @@ namespace CombatManager
                 AddSpellDictionaryItem(s);
 
             }
-
 
         }
 
@@ -289,6 +324,10 @@ namespace CombatManager
         {
             get
             {
+                if (_Spells == null)
+                {
+                    LoadSpells();
+                }
                 return _Spells;
             }
         }
@@ -317,6 +356,10 @@ namespace CombatManager
         {
             get
             {
+                if (_Schools == null)
+                {
+                    LoadSpells();
+                }
                 return _Schools.Values;
             }
         }
@@ -345,7 +388,6 @@ namespace CombatManager
             _targets = s._targets;
             _effect = s._effect;
             _dismissible = s._dismissible;
-            _deity = s._deity;
             _area = s._area;
             _duration = s._duration;
             _shapeable = s._shapeable;
@@ -381,6 +423,31 @@ namespace CombatManager
             _SLA_Level = s._SLA_Level;
             _preparation_time = s._preparation_time;
             _duplicated = s._duplicated;
+            _acid = s._acid;
+            _air = s._air;
+            _chaotic = s._chaotic;
+            _cold = s._cold;
+            _curse = s._curse;
+            _darkness = s._darkness;
+            _death = s._death;
+            _disease = s._disease;
+            _earth = s._earth;
+            _electricity = s._electricity;
+            _emotion = s._emotion;
+            _evil = s._evil;
+            _fear = s._fear;
+            _fire = s._fire;
+            _force = s._force;
+            _good = s._good;
+            _language = s._language;
+            _lawful = s._lawful;
+            _light = s._light;
+            _mind_affecting = s._mind_affecting;
+            _pain = s._pain;
+            _poison = s._poison;
+            _shadow = s._shadow;
+            _sonic = s._sonic;
+            _water = s._water;
             _PotionWeight = s._PotionWeight;
             _DivineScrollWeight = s.DivineScrollWeight;
             _ArcaneScrollWeight = s.ArcaneScrollWeight;
@@ -623,7 +690,11 @@ namespace CombatManager
         }
         public String casting_time
         {
-            get { return _casting_time; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _casting_time;
+            }
             set
             {
                 if (_casting_time != value)
@@ -635,7 +706,11 @@ namespace CombatManager
         }
         public String components
         {
-            get { return _components; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _components;
+            }
             set
             {
                 if (_components != value)
@@ -652,7 +727,11 @@ namespace CombatManager
         }
         public String costly_components
         {
-            get { return _costly_components; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _costly_components;
+            }
             set
             {
                 if (_costly_components != value)
@@ -664,7 +743,11 @@ namespace CombatManager
         }
         public String range
         {
-            get { return _range; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _range;
+            }
             set
             {
                 if (_range != value)
@@ -676,7 +759,11 @@ namespace CombatManager
         }
         public String targets
         {
-            get { return _targets; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _targets;
+            }
             set
             {
                 if (_targets != value)
@@ -688,7 +775,11 @@ namespace CombatManager
         }
         public String duration
         {
-            get { return _duration; }
+            get
+            {
+                //UpdateFromDetailsDB();
+                return _duration;
+            }
             set
             {
                 if (_duration != value)
@@ -700,7 +791,11 @@ namespace CombatManager
         }
         public String dismissible
         {
-            get { return _dismissible; }
+            get
+            {
+                //UpdateFromDetailsDB();
+                return _dismissible;
+            }
             set
             {
                 if (_dismissible != value)
@@ -712,7 +807,11 @@ namespace CombatManager
         }
         public String shapeable
         {
-            get { return _shapeable; }
+            get
+            {
+                //UpdateFromDetailsDB();
+                return _shapeable;
+            }
             set
             {
                 if (_shapeable != value)
@@ -724,7 +823,11 @@ namespace CombatManager
         }
         public String saving_throw
         {
-            get { return _saving_throw; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _saving_throw;
+            }
             set
             {
                 if (_saving_throw != value)
@@ -736,7 +839,11 @@ namespace CombatManager
         }
         public String spell_resistence
         {
-            get { return _spell_resistence; }
+            get
+            {
+                UpdateFromDetailsDB();
+                return _spell_resistence;
+            }
             set
             {
                 if (_spell_resistence != value)
@@ -750,10 +857,7 @@ namespace CombatManager
         {
             get 
             {
-                if (_description == null)
-                {
-                    _description = DetailsDB.LoadDetails(_name, "Spells", "description");
-                }
+                UpdateFromDetailsDB();
                 return _description; 
             }
             set
@@ -769,10 +873,7 @@ namespace CombatManager
         {
             get
             {
-                if (_description_formated == null)
-                {
-                    _description_formated = DetailsDB.LoadDetails(_name, "Spells", "description_formated");
-                }
+                UpdateFromDetailsDB();
                 return _description_formated;
             }
             set
@@ -993,21 +1094,13 @@ namespace CombatManager
             }
         }
 
-        public String deity
-        {
-            get { return _deity; }
-            set
-            {
-                if (_deity != value)
-                {
-                    _deity = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("deity")); }
-                }
-            }
-        }
         public String area
         {
-            get { return _area; }
+            get
+            {
+                //UpdateFromDetailsDB();
+                return _area;
+            }
             set
             {
                 if (_area != value)
@@ -1215,6 +1308,418 @@ namespace CombatManager
                 }
             }
         }
+        public String acid
+        {
+            get { return _acid; }
+            set
+            {
+                if (_acid != value)
+                {
+                    _acid = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("acid")); }
+                }
+            }
+        }
+        public String air
+        {
+            get 
+            { 
+                UpdateFromDetailsDB(); 
+                return _air; 
+            }
+            set
+            {
+                if (_air != value)
+                {
+                    _air = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("air")); }
+                }
+            }
+        }
+        public String chaotic
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _chaotic;
+            }
+            set
+            {
+                if (_chaotic != value)
+                {
+                    _chaotic = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("chaotic")); }
+                }
+            }
+        }
+        public String cold
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _cold;
+            }
+            set
+            {
+                if (_cold != value)
+                {
+                    _cold = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("cold")); }
+                }
+            }
+        }
+        public String curse
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _curse;
+            }
+            set
+            {
+                if (_curse != value)
+                {
+                    _curse = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("curse")); }
+                }
+            }
+        }
+        public String darkness
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _darkness;
+            }
+            set
+            {
+                if (_darkness != value)
+                {
+                    _darkness = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("darkness")); }
+                }
+            }
+        }
+        public String death
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _death;
+            }
+            set
+            {
+                if (_death != value)
+                {
+                    _death = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("death")); }
+                }
+            }
+        }
+        public String disease
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _disease;
+            }
+            set
+            {
+                if (_disease != value)
+                {
+                    _disease = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("disease")); }
+                }
+            }
+        }
+        public String earth
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _earth;
+            }
+            set
+            {
+                if (_earth != value)
+                {
+                    _earth = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("earth")); }
+                }
+            }
+        }
+        public String electricity
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _electricity;
+            }
+            set
+            {
+                if (_electricity != value)
+                {
+                    _electricity = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("electricity")); }
+                }
+            }
+        }
+        public String emotion
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _emotion;
+            }
+            set
+            {
+                if (_emotion != value)
+                {
+                    _emotion = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("emotion")); }
+                }
+            }
+        }
+        public String evil
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _evil;
+            }
+            set
+            {
+                if (_evil != value)
+                {
+                    _evil = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("evil")); }
+                }
+            }
+        }
+        public String fear
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _fear;
+            }
+            set
+            {
+                if (_fear != value)
+                {
+                    _fear = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("fear")); }
+                }
+            }
+        }
+        public String fire
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _fire;
+            }
+            set
+            {
+                if (_fire != value)
+                {
+                    _fire = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("fire")); }
+                }
+            }
+        }
+        public String force
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _force;
+            }
+            set
+            {
+                if (_force != value)
+                {
+                    _force = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("force")); }
+                }
+            }
+        }
+        public String good
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _good;
+            }
+            set
+            {
+                if (_good != value)
+                {
+                    _good = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("good")); }
+                }
+            }
+        }
+        public String language
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _language;
+            }
+            set
+            {
+                if (_language != value)
+                {
+                    _language = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("language")); }
+                }
+            }
+        }
+        public String lawful
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _lawful;
+            }
+            set
+            {
+                if (_lawful != value)
+                {
+                    _lawful = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("lawful")); }
+                }
+            }
+        }
+        public String light
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _light;
+            }
+            set
+            {
+                if (_light != value)
+                {
+                    _light = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("light")); }
+                }
+            }
+        }
+        public String mind_affecting
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _mind_affecting;
+            }
+            set
+            {
+                if (_mind_affecting != value)
+                {
+                    _mind_affecting = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("mind_affecting")); }
+                }
+            }
+        }
+        public String pain
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _pain;
+            }
+            set
+            {
+                if (_pain != value)
+                {
+                    _pain = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("pain")); }
+                }
+            }
+        }
+        public String poison
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _poison;
+            }
+            set
+            {
+                if (_poison != value)
+                {
+                    _poison = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("poison")); }
+                }
+            }
+        }
+        public String shadow
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _shadow;
+            }
+            set
+            {
+                if (_shadow != value)
+                {
+                    _shadow = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("shadow")); }
+                }
+            }
+        }
+        public String sonic
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _sonic;
+            }
+            set
+            {
+                if (_sonic != value)
+                {
+                    _sonic = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("sonic")); }
+                }
+            }
+        }
+        public String water
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return _water;
+            }
+            set
+            {
+                if (_water != value)
+                {
+                    _water = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("water")); }
+                }
+            }
+        }
+
+        [XmlElement("id")]
+        public int detailsid
+        {
+            get { return _detailsid; }
+            set
+            {
+                if (_detailsid != value)
+                {
+                    _detailsid = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("id")); }
+                }
+            }
+        }
+
+
         public string PotionWeight
         {
             get { return _PotionWeight; }
@@ -1372,6 +1877,108 @@ namespace CombatManager
                     _Bonus = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Bonus")); }
                 }
+            }
+        }
+
+        public static List<string> DetailsFields
+        {
+            get
+            {
+                return new List<String>() 
+                {
+                    "casting_time",
+                    "components",
+                    "costly_components",
+                    "range",
+                    "targets",
+                    "effect",
+                    //"dismissible",
+                    //"area",
+                    //"duration",
+                    //"shapeable",
+                    "saving_throw",
+                    "spell_resistence",
+                    "description",
+                    "description_formated",
+                    "acid",
+                    "air",
+                    "chaotic",
+                    "cold",
+                    "curse",
+                    "darkness",
+                    "death",
+                    "disease",
+                    "earth",
+                    "electricity",
+                    "emotion",
+                    "evil",
+                    "fear",
+                    "fire",
+                    "force",
+                    "good",
+                    "language",
+                    "lawful",
+                    "light",
+                    "mind_affecting",
+                    "pain",
+                    "poison",
+                    "shadow",
+                    "sonic",
+                    "water",
+                };
+
+            }
+        }
+
+        void UpdateFromDetailsDB()
+        {
+            if (_detailsid != 0)
+            {
+                //perform updating from DB
+                var list = DetailsDB.LoadDetails(_detailsid.ToString(), "Spells", DetailsFields);
+
+
+                _casting_time = list["casting_time"];
+                _components = list["components"];
+                _costly_components = list["costly_components"];
+                _range = list["range"];
+                _targets = list["targets"];
+                _effect = list["effect"];
+                //_dismissible = list["dismissible"];
+                //_area = list["area"];
+                //_duration = list["duration"];
+                //_shapeable = list["shapeable"];
+                _saving_throw = list["saving_throw"];
+                _spell_resistence = list["spell_resistence"];
+                _description = list["description"];
+                _description_formated = list["description_formated"];
+                _acid = list["acid"];                    
+                _air = list["air"];
+                _chaotic = list["chaotic"];
+                _cold= list["cold"];
+                _curse= list["curse"];
+                _darkness= list["darkness"];
+                _death= list["death"];
+                _disease= list["disease"];
+                _earth= list["earth"];
+                _electricity= list["electricity"];
+                _emotion= list["emotion"];
+                _evil= list["evil"];
+                _fear= list["fear"];
+                _fire= list["fire"];
+                _force= list["force"];
+                _good= list["good"];
+                _language= list["language"];
+                _lawful= list["lawful"];
+                _light= list["light"];
+                _mind_affecting= list["mind_affecting"];
+                _pain= list["pain"];
+                _poison= list["poison"];
+                _shadow= list["shadow"];
+                _sonic= list["sonic"];
+                _water= list["water"];
+
+                _detailsid = 0;
             }
         }
         

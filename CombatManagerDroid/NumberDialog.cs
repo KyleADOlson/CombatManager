@@ -26,6 +26,7 @@ namespace CombatManagerDroid
 
             SetContentView(Resource.Layout.NumberDialog);
             SetTitle(title);
+            SetCanceledOnTouchOutside(true);
 
             var prop = ob.GetType().GetProperty(property);
             _Value = (int)prop.GetGetMethod().Invoke(ob, new object[]{}); 

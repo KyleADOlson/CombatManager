@@ -38,6 +38,7 @@ namespace CombatManagerDroid
 
             SetContentView(Resource.Layout.FileDialog);
             SetTitle(_Load?"Open File":"Save File");
+            SetCanceledOnTouchOutside(true);
 
             Button okB = (Button)FindViewById(Resource.Id.okButton);
             (okB).Click += 

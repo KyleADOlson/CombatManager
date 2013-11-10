@@ -69,8 +69,7 @@ namespace CombatManagerDroid
             BuildFilters();
             FilterItems();
             BuildAdditionalLayouts();
-            ShowItem(_SelectedItem);
-
+            RefreshItem();
 
             return v;
         }
@@ -164,16 +163,18 @@ namespace CombatManagerDroid
 
         protected virtual void ShowItem(T item)
         {
-
-            WebView wv = _v.FindViewById<WebView>(Resource.Id.itemView);
-            if (item != null)
+            if (!SkipShowItem)
             {
-                wv.LoadDataWithBaseURL(null, ItemHtml(item), "text/html", "utf-8", null);
-            }
-            else
-            {
-                
-                wv.LoadUrl("about:blank");
+                WebView wv = _v.FindViewById<WebView>(Resource.Id.itemView);
+                if (item != null)
+                {
+                    wv.LoadDataWithBaseURL(null, ItemHtml(item), "text/html", "utf-8", null);
+                }
+                else
+                {
+                    
+                    wv.LoadUrl("about:blank");
+                }
             }
         }
 
@@ -194,7 +195,14 @@ namespace CombatManagerDroid
 
         protected virtual void BuildAdditionalLayouts()
         {
+        }
 
+        protected virtual bool SkipShowItem
+        {
+            get
+            {
+                return false;
+            }
         }
 
         protected Button BuildFilterButton(String text, int size)

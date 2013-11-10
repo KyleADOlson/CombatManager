@@ -12,13 +12,20 @@
         p1:id="@+id/imageView1"
         p1:scaleType="centerCrop" />
     <TextView
-        p1:text="Loading..."
+        p1:text="Loading"
         p1:textAppearance="?android:attr/textAppearanceMedium"
         p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
         p1:id="@+id/textView1"
         p1:textColor="#000000"
-        p1:layout_marginLeft="20dp"
-        p1:layout_marginTop="20dp"
+        p1:layout_marginLeft="80dp"
+        p1:layout_marginTop="24dp"
+        p1:layout_toRightOf="@id/textView1"
         p1:textSize="30dp" />
+    <ProgressBar
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/progressBar1"
+        p1:layout_marginLeft="20dp"
+        p1:layout_marginTop="20dp" />
 </RelativeLayout>

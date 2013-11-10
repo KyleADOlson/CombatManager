@@ -1025,45 +1025,52 @@ namespace CombatManager
 
         public Object ParseObjectForType(string text, Type t)
         {
-            if (t == typeof(Int32))
+            try
             {
-                return Int32.Parse(text);
-            }
-            if (t == typeof(Int64))
-            {
-                return Int64.Parse(text);
-            }
-            if (t == typeof(Nullable<Int32>))
-            {
-                Nullable<Int32> val = null;
-
-                int num;
-                if (Int32.TryParse(text, out num))
+                if (t == typeof(Int32))
                 {
-                    val = num;
+                    return Int32.Parse(text);
                 }
-
-                return val;
-            }
-            if (t == typeof(Nullable<Int64>))
-            {
-                Nullable<Int64> val = null;
-
-                Int64 num;
-                if (Int64.TryParse(text, out num))
+                if (t == typeof(Int64))
                 {
-                    val = num;
+                    return Int64.Parse(text);
                 }
+                if (t == typeof(Nullable<Int32>))
+                {
+                    Nullable<Int32> val = null;
 
-                return val;
+                    int num;
+                    if (Int32.TryParse(text, out num))
+                    {
+                        val = num;
+                    }
+
+                    return val;
+                }
+                if (t == typeof(Nullable<Int64>))
+                {
+                    Nullable<Int64> val = null;
+
+                    Int64 num;
+                    if (Int64.TryParse(text, out num))
+                    {
+                        val = num;
+                    }
+
+                    return val;
+                }
+                if (t == typeof(bool))
+                {
+                    return text == "1";
+                }
+                if (t == typeof(string))
+                {
+                    return text;
+                }
             }
-            if (t == typeof(bool))
+            catch (Exception)
             {
-                return text == "1";
-            }
-            if (t == typeof(string))
-            {
-                return text;
+                throw;
             }
 
             System.Diagnostics.Debug.Assert(false);

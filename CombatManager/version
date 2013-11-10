@@ -1,7 +1,11 @@
-﻿1.5.3
-Reduce memory load and improve startup speed
-Treasure update
+﻿1.5.4
+Fix issue with custom monsters being listed as Mythic
+Minor rules db additions
 
+1.5.3
+Reduce memory load and improve startup speed
+Treasure, Monster, and Spells update
+Various bug fixes
 
 1.5.2
 Large CR XP display fix

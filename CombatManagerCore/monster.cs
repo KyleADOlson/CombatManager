@@ -254,12 +254,14 @@ namespace CombatManager
                     m.MonsterSource = GetElementStringValue(v, "MonsterSource");
                     m.BaseStatistics = GetElementStringValue(v, "BaseStatistics");
                     m.OtherGear = GetElementStringValue(v, "OtherGear");
-
+                    m.MR = GetElementIntNullValue(v, "MR");
+                    m.Mythic = GetElementStringValue(v, "Mythic");
+                    
                     monsters.Add(m);
                 }
                 return monsters;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -375,6 +377,8 @@ namespace CombatManager
         private String variantParent;
         private bool npc;
         private String descHTML;
+        private int? mr;
+        private String mythic;
 
         private bool statsParsed;
         private int? strength;
@@ -972,6 +976,8 @@ namespace CombatManager
             VariantParent = m.variantParent;
             NPC = m.npc;
             DescHTML = m.descHTML;
+            Mythic = m.mythic;
+            MR = m.mr;
 
 
             StatsParsed=m.statsParsed;
@@ -1141,6 +1147,8 @@ namespace CombatManager
             m.variantParent = variantParent;
             m.npc = npc;
             m.descHTML = descHTML;
+            m.mr = mr;
+            m.mythic = mythic;
 
 
             m.statsParsed=statsParsed;
@@ -1712,6 +1720,26 @@ namespace CombatManager
         static int GetElementIntValue(XElement it, string name)
         {
             int value = 0;
+            XElement el = it.Element(name);
+            if (el != null)
+            {
+                try
+                {
+                    value = Int32.Parse(el.Value);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    throw;
+                }
+            }
+            return value;
+        }
+
+
+        static int? GetElementIntNullValue(XElement it, string name)
+        {
+            int? value = null;
             XElement el = it.Element(name);
             if (el != null)
             {
@@ -5035,23 +5063,30 @@ namespace CombatManager
 
         public static long GetCRValue(string crText)
         {
-            long xpVal = 0;
-
-            if (crText.Contains('/'))
+            try
             {
-                if (xpValues.ContainsKey(crText))
+                long xpVal = 0;
+
+                if (crText.Contains('/'))
                 {
-                    xpVal = xpValues[crText];
+                    if (xpValues.ContainsKey(crText))
+                    {
+                        xpVal = xpValues[crText];
+                    }
                 }
+                else
+                {
+                    int x = int.Parse(crText);
+
+                    xpVal = GetIntCRValue(x);
+                }
+
+                return xpVal;
             }
-            else
+            catch
             {
-                int x = int.Parse(crText);
-
-                xpVal = GetIntCRValue(x);
+                throw;
             }
-
-            return xpVal;
         }
 
         public static long? TryGetCRValue(string crText)
@@ -9889,6 +9924,35 @@ namespace CombatManager
                 {
                     descHTML = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DescHTML")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int? MR
+        {
+            get { return mr; }
+            set
+            {
+                if (mr != value)
+                {
+                    mr = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MR")); }
+                }
+            }
+        }
+
+
+        [DataMember]
+        public String Mythic
+        {
+            get { return mythic; }
+            set
+            {
+                if (mythic != value)
+                {
+                    mythic = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Mythic")); }
                 }
             }
         }

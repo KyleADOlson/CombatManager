@@ -1,3 +1,10 @@
+0.08
+Treasure page improvements
+Ask on roll/sort/reset initiative
+Settings dialog
+Fix xp update on combat list
+Display CR on combat list
+
 0.07
 Fix HP Display on Combat Tab
 Add browsing to file open/save dialog

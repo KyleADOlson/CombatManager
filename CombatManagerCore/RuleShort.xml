@@ -1134,6 +1134,186 @@
     <Subtype>Alternate Class</Subtype>
   </Rule>
   <Rule>
+    <ID>746</ID>
+    <Name>Spellblights</Name>
+    <Source>Ultmate Magic</Source>
+    <Type>Mastering Magic</Type>
+  </Rule>
+  <Rule>
+    <ID>747</ID>
+    <Name>Spell Duels</Name>
+    <Source>Ultmate Magic</Source>
+    <Type>Mastering Magic</Type>
+  </Rule>
+  <Rule>
+    <ID>748</ID>
+    <Name>Binding Outsiders</Name>
+    <Source>Ultmate Magic</Source>
+    <Type>Mastering Magic</Type>
+  </Rule>
+  <Rule>
+    <ID>749</ID>
+    <Name>Building and Modifying Constructs</Name>
+    <Source>Ultmate Magic</Source>
+    <Type>Mastering Magic</Type>
+  </Rule>
+  <Rule>
+    <ID>750</ID>
+    <Name>New Familiars</Name>
+    <Source>Ultmate Magic</Source>
+    <Type>Mastering Magic</Type>
+  </Rule>
+  <Rule>
+    <ID>751</ID>
+    <Name>Designing Spells Pt. 1</Name>
+    <Source>Ultmate Magic</Source>
+    <Type>Mastering Magic</Type>
+  </Rule>
+  <Rule>
+    <ID>752</ID>
+    <Name>Designing Spells Pt. 2</Name>
+    <Source>Ultmate Magic</Source>
+    <Type>Mastering Magic</Type>
+  </Rule>
+  <Rule>
+    <ID>753</ID>
+    <Name>Spellbooks Pt. 1</Name>
+    <Source>Ultmate Magic</Source>
+    <Type>Mastering Magic</Type>
+  </Rule>
+  <Rule>
+    <ID>754</ID>
+    <Name>Spellbooks Pt. 2</Name>
+    <Source>Ultmate Magic</Source>
+    <Type>Mastering Magic</Type>
+  </Rule>
+  <Rule>
+    <ID>755</ID>
+    <Name>Playing the Game</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Getting Started</Type>
+  </Rule>
+  <Rule>
+    <ID>756</ID>
+    <Name>Common Terms</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Getting Started</Type>
+  </Rule>
+  <Rule>
+    <ID>757</ID>
+    <Name>Generating a Character</Name>
+    <Source>PFRPG Core</Source>
+    <Type>Getting Started</Type>
+  </Rule>
+  <Rule>
+    <ID>759</ID>
+    <Name>Vehicle Basics</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>760</ID>
+    <Name>Vehicle Rules</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>761</ID>
+    <Name>Vehicles in Combat</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>762</ID>
+    <Name>Vehicle Statistics</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>763</ID>
+    <Name>Land Vehicles</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>764</ID>
+    <Name>Water Vehicles</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>765</ID>
+    <Name>Air Vehicles</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>766</ID>
+    <Name>Maneuvering a Vehicle</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>767</ID>
+    <Name>Propulsion Devices</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>768</ID>
+    <Name>Driving Devices</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Vehicles</Type>
+  </Rule>
+  <Rule>
+    <ID>769</ID>
+    <Name>Armor as Damage Reduction</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Variant Rules</Type>
+  </Rule>
+  <Rule>
+    <ID>770</ID>
+    <Name>Called Shots</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Variant Rules</Type>
+  </Rule>
+  <Rule>
+    <ID>771</ID>
+    <Name>Piecemeal Armor</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Variant Rules</Type>
+  </Rule>
+  <Rule>
+    <ID>772</ID>
+    <Name>Wounds and Vigor</Name>
+    <Source>Ultimate Combat</Source>
+    <Type>Variant Rules</Type>
+  </Rule>
+  <Rule>
+    <ID>773</ID>
+    <Name>Character Background</Name>
+    <Source>Ultimate Campaign</Source>
+    <Type>Character Background</Type>
+  </Rule>
+  <Rule>
+    <ID>774</ID>
+    <Name>Early Life</Name>
+    <Source>Ultimate Campaign</Source>
+    <Type>Character Background</Type>
+  </Rule>
+  <Rule>
+    <ID>775</ID>
+    <Name>Adolescence</Name>
+    <Source>Ultimate Campaign</Source>
+    <Type>Character Background</Type>
+  </Rule>
+  <Rule>
+    <ID>776</ID>
+    <Name>Adulthood</Name>
+    <Source>Ultimate Campaign</Source>
+    <Type>Character Background</Type>
+  </Rule>
+  <Rule>
     <ID>115</ID>
     <Name>Dexterity</Name>
     <Source>PFRPG CORE</Source>
@@ -3862,5 +4042,17 @@
     <Name>Magic Item Creation</Name>
     <Source>PFRPG CORE</Source>
     <Type>Magic Items</Type>
+  </Rule>
+  <Rule>
+    <ID>779</ID>
+    <Name>Traits Pt. 1</Name>
+    <Source>Ultimate Campaign</Source>
+    <Type>Character Background</Type>
+  </Rule>
+  <Rule>
+    <ID>780</ID>
+    <Name>Traits Pt. 2</Name>
+    <Source>Ultimate Campaign</Source>
+    <Type>Character Background</Type>
   </Rule>
 </ArrayOfRule>
