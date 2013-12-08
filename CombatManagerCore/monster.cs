@@ -833,7 +833,7 @@ namespace CombatManager
 
         public Monster()
         {
-            skillValueDictionary = new SortedDictionary<string, SkillValue>();
+            skillValueDictionary = new SortedDictionary<string, SkillValue>(StringComparer.OrdinalIgnoreCase);
             skillValueList = new List<SkillValue>();
         }
 
@@ -1011,7 +1011,7 @@ namespace CombatManager
             skillsParsed = m.skillsParsed;
             if (m.skillsParsed)
             {
-                skillValueDictionary = new SortedDictionary<string, SkillValue>();
+                skillValueDictionary = new SortedDictionary<string, SkillValue>(StringComparer.OrdinalIgnoreCase);
                 foreach (SkillValue skillValue in m.skillValueDictionary.Values)
                 {
 
@@ -1182,7 +1182,7 @@ namespace CombatManager
             m.skillsParsed = skillsParsed;
             if (skillsParsed)
             {
-                m.skillValueDictionary = new SortedDictionary<string, SkillValue>();
+                m.skillValueDictionary = new SortedDictionary<string, SkillValue>(StringComparer.OrdinalIgnoreCase);
                 foreach (SkillValue skillValue in skillValueDictionary.Values)
                 {
 
