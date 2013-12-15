@@ -1,5 +1,6 @@
 ﻿1.5.4
 Fix issue with custom monsters being listed as Mythic
+Fix problem with hidden character names appearing on Init window
 Minor rules db additions
 
 1.5.3

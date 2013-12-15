@@ -192,6 +192,7 @@ namespace CombatManager
                 {
                     this.name = value;
                     Notify("Name");
+                    Notify("HiddenName");
 
                     if (this.IsBlank)
                     {
@@ -867,7 +868,11 @@ namespace CombatManager
                 if (_IsHidden != value)
                 {
                     _IsHidden = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("IsHidden")); }
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("IsHidden")); 
+                        PropertyChanged(this, new PropertyChangedEventArgs("HiddenName"));
+                    }
                 }
             }
         }
@@ -883,6 +888,22 @@ namespace CombatManager
                 {
                     _IsIdle = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("IsIdle")); }
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public string HiddenName
+        {
+            get
+            {
+                if (_IsHidden)
+                {
+                    return "??????";
+                }
+                else
+                {
+                    return name;
                 }
             }
         }
