@@ -58,6 +58,9 @@
     <Compile Include="CharacterActions.cs" />
     <Compile Include="CharacterAttacks.cs" />
     <Compile Include="CharacterClass.cs" />
+    <Compile Include="monster.blank.cs" />
+    <Compile Include="monster.skills.cs" />
+    <Compile Include="monster.imports.cs" />
     <Compile Include="CMRegexUtilities.cs" />
     <Compile Include="CMStringUtilities.cs" />
     <Compile Include="Coin.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="MonsterDB.cs" />
     <Compile Include="MonsterHtmlCreator.cs" />
     <Compile Include="ParsedFeat.cs" />
+    <Compile Include="Pathfinder.Herolab.Serializable.class.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyConverters.cs" />
     <Compile Include="RandomWeightChart.cs" />
