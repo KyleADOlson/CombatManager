@@ -58,6 +58,7 @@
     <Compile Include="CharacterActions.cs" />
     <Compile Include="CharacterAttacks.cs" />
     <Compile Include="CharacterClass.cs" />
+    <Compile Include="monster.herolab.cs" />
     <Compile Include="monster.blank.cs" />
     <Compile Include="monster.skills.cs" />
     <Compile Include="monster.imports.cs" />

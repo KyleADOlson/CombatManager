@@ -84,8 +84,7 @@ namespace CombatManager
                
         }
 
-        public MonsterBlockCreator(FlowDocument document, DocumentLinkHander linkHandler)
-            : base(document)
+        public MonsterBlockCreator(FlowDocument document, DocumentLinkHander linkHandler): base(document)
         {
             _LinkHandler = linkHandler;
         }
@@ -322,7 +321,7 @@ namespace CombatManager
         {
             List<Inline> lines = new List<Inline>();
 
-
+            bool multiblock = false;
             foreach (SpellBlockInfo blockinfo in list)
             {
                 string titleText = "";
@@ -339,8 +338,12 @@ namespace CombatManager
                     }
                     titleText += "Spells " + blockinfo.BlockType + " ";
                 }
-
-
+                if (multiblock)
+                {
+                    lines.Add(new LineBreak());
+                }
+                
+                multiblock = true;
                 lines.Add(new Bold(new Run(titleText)));
 
                 string text = "";

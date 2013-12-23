@@ -1407,50 +1407,7 @@ namespace CombatManager
             }
         }
 
-        private static string FixHeroLabAttackString(string text)
-        {
-            string attacks = text;
 
-
-            attacks = Weapon.ReplaceOriginalWeaponNames(attacks, false);
-
-            attacks = attacks.ToLower();
-
-            attacks = Regex.Replace(attacks, "and\r\n  ", "or");
-            attacks = Regex.Replace(attacks, "/20/", "/");
-            attacks = Regex.Replace(attacks, "/20\\)", ")");
-            attacks = Regex.Replace(attacks, " \\(from armor\\)", "");
-
-            return attacks;
-        }
-
-        private static string FixHeroLabFeats(string text)
-        {
-
-            string returnText = text;
-
-            if (returnText != null)
-            {
-                returnText = Regex.Replace(returnText, " ([-+][0-9]+)(/[-+][0-9]+)*", "");
-
-                returnText = Regex.Replace(returnText, " \\([0-9]+d[0-9]+\\)", "");
-                returnText = Regex.Replace(returnText, " \\([0-9]+/day\\)", "");
-            }
-
-            return returnText;
-        }
-
-        private static string FixHeroLabDefensiveAbilities(string text)
-        {
-            string returnText = text;
-
-            if (returnText != null)
-            {
-                returnText = Regex.Replace(returnText, " \\(Lv >=[0-9]+\\)", "");
-            }
-
-            return returnText;
-        }
 
         private static string GetLine(string start, string text, bool bFix)
         {
@@ -1495,59 +1452,9 @@ namespace CombatManager
             return returnText;
         }
 
-        private static string FixHeroLabList(string text)
-        {
-
-            string returnText = text;
-
-            if (returnText != null)
-            {
-                returnText = ReplaceHeroLabSpecialChar(returnText);
-                returnText = Weapon.ReplaceOriginalWeaponNames(returnText, false);
-                returnText = ReplaceColonItems(returnText);
-                
-            }
 
 
-            return returnText;
-        }
 
-        private static string ReplaceHeroLabSpecialChar(string text)
-        {
-            string returnText = text;
-
-            if (returnText != null)
-            {
-                returnText = returnText.Replace("&#151;", "-");
-            }
-            
-            return returnText;
-        
-        }
-
-        private static string ReplaceColonItems(string text)
-        {
-            Regex reg = new Regex(": (?<val>[-+/. \\p{L}0-9]+?)(?<mod> (\\+|-)[0-9]+)?((?<comma>,)|\r|\n|$)");
-
-            return reg.Replace(text, delegate(Match m)
-            {
-                string val = " (" + m.Groups["val"] + ")";
-
-                if (m.Groups["mod"].Success)
-                {
-                    val += m.Groups["mod"].Value;
-                }
-
-
-                if (m.Groups["comma"].Success)
-                {
-                    val += ",";
-                }
-
-                return val;
-            });
-
-        }
 
 
         private static string FixPCGenFeatList(string text)

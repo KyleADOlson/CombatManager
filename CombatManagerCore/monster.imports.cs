@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 ﻿using System.Diagnostics;
 ﻿using System.Linq;
+﻿using System.Net.Sockets;
 ﻿using System.Runtime.Serialization.Formatters;
 ﻿using System.Text;
 using System.Text.RegularExpressions;
@@ -502,206 +503,297 @@ namespace CombatManager
             foreach (var Character in doc.@public.character)
             {
                 
-                monster.name = (Character.name ?? "No Name Defined");
-                monster.race = (Character.race.name ?? "No Race Defined");
-                monster.alignment = (Character.alignment.name ?? "No Alignment Defined");
-                monster.size = (Character.size.name ?? "No Size Defined");
-                monster.space = (Character.size.space.value ?? "No Space Defined");
-                monster.reach = (Character.size.reach.value ?? "No Space Defined");
-                monster.cr = (Character.challengerating != null ? Character.challengerating.value : "No CR Defined");
-                monster.xp = (Character.xpaward != null ? Character.xpaward.value : "No XP Defined");
-                monster.className = (Character.classes != null ? Character.classes.summary : "No Classes Defined");
+                    monster.name = (Character.name ?? "No Name Defined");
+                    monster.race = (Character.race.name ?? "No Race Defined");
+                    monster.alignment = (Character.alignment.name ?? "No Alignment Defined");
+                    monster.size = (Character.size.name ?? "No Size Defined");
+                    monster.space = (Character.size.space.value ?? "No Space Defined");
+                    monster.reach = (Character.size.reach.value ?? "No Space Defined");
+                    monster.cr = (Character.challengerating != null ? Character.challengerating.value : "No CR Defined");
+                    monster.xp = (Character.xpaward != null ? Character.xpaward.value : "No XP Defined");
+                    monster.className = (Character.classes != null ? Character.classes.summary : "No Classes Defined");
 
-                if (Character.type != null)
-                {
-                    foreach (var type in Character.types.type)
+                    if (Character.type != null)
                     {
-                        monster.type = type.name;
+                        foreach (var type in Character.types.type)
+                        {
+                            monster.type = type.name;
+                        }
                     }
-                }
-                if (Character.type != null)
-                {
-                    foreach (var subtype in Character.subtypes.subtype)
+                    if (Character.type != null)
                     {
-                        monster.subType += subtype.name;
+                        foreach (var subtype in Character.subtypes.subtype)
+                        {
+                            monster.subType += subtype.name;
+                        }
                     }
-                }
-                if (Character.senses != null)
-                {
-                    foreach (var Sense in Character.senses.special)
+                    if (Character.senses.special != null)
                     {
-                        monster.senses += (string.IsNullOrEmpty(monster.senses) ? Sense.shortname : ", " + Sense.shortname);
+                        foreach (var Sense in Character.senses.special)
+                        {
+                            monster.senses += (string.IsNullOrEmpty(monster.senses) ? Sense.shortname : ", " + Sense.shortname);
+                        }
                     }
-                }
 
-                monster.hd = (Character.health.hitdice ?? "No HD Defined");
-                if (Character.health.hitpoints != null)
-                {
-                    int.TryParse(Character.health.hitpoints, out monster.hp);
+                    monster.hd = (Character.health.hitdice ?? "No HD Defined");
+                    if (Character.health.hitpoints != null)
+                    {
+                        int.TryParse(Character.health.hitpoints, out monster.hp);
                     
-                }
-                monster.gender = (Character.personal != null ?Character.personal.gender.ToString(): "No Gender Defined");
-                monster.description_visual = (Character.personal.description.Value ?? "No Visual Despription");
-                if (Character.languages != null)
-                {
-                    foreach (var language in Character.languages.language)
-                    {
-                        monster.languages += (string.IsNullOrEmpty(monster.languages) ? language.name : ", " + language.name);
                     }
-                }
+                    monster.gender = (Character.personal != null ?Character.personal.gender.ToString(): "No Gender Defined");
+                    monster.description_visual = (Character.personal.description.Value ?? "No Visual Despription");
+                    if (Character.languages != null)
+                    {
+                        foreach (var language in Character.languages.language)
+                        {
+                            monster.languages += (string.IsNullOrEmpty(monster.languages) ? language.name : ", " + language.name);
+                        }
+                    }
                 
-                monster.statsParsed = true;
-                if (Character.attributes != null)
-                {
+                    monster.statsParsed = true;
+                    if (Character.attributes != null)
+                    {
                     
-                    foreach (var stat in Character.attributes.attribute)
-	                    {
-	                        switch (stat.name)
+                        foreach (var stat in Character.attributes.attribute)
 	                        {
-	                            case "Strength":
+	                            switch (stat.name)
 	                            {
-	                                monster.strength = Int32.Parse(stat.attrvalue.modified);
-                                    break;
+	                                case "Strength":
+	                                {
+	                                    monster.strength = Int32.Parse(stat.attrvalue.modified);
+                                        break;
+	                                }
+                                    case "Dexterity":
+	                                {
+	                                    monster.dexterity = Int32.Parse(stat.attrvalue.modified);
+                                        break;
+	                                }
+                                    case "Constitution":
+	                                {
+	                                    monster.constitution = Int32.Parse(stat.attrvalue.modified);
+                                        break;
+	                                }
+                                    case "Intelligence":
+	                                {
+                                        monster.intelligence = Int32.Parse(stat.attrvalue.modified);
+                                        break;
+	                                }
+                                    case "Wisdom":
+	                                {
+                                        monster.wisdom = Int32.Parse(stat.attrvalue.modified);
+                                        break;
+	                                }
+                                    case "Charisma":
+	                                {
+                                        monster.charisma = Int32.Parse(stat.attrvalue.modified);
+                                        break;
+	                                }
 	                            }
-                                case "Dexterity":
-	                            {
-	                                monster.dexterity = Int32.Parse(stat.attrvalue.modified);
-                                    break;
-	                            }
-                                case "Constitution":
-	                            {
-	                                monster.constitution = Int32.Parse(stat.attrvalue.modified);
-                                    break;
-	                            }
-                                case "Intelligence":
-	                            {
-                                    monster.intelligence = Int32.Parse(stat.attrvalue.modified);
-                                    break;
-	                            }
-                                case "Wisdom":
-	                            {
-                                    monster.wisdom = Int32.Parse(stat.attrvalue.modified);
-                                    break;
-	                            }
-                                case "Charisma":
-	                            {
-                                    monster.charisma = Int32.Parse(stat.attrvalue.modified);
-                                    break;
-	                            }
-	                        }
                                 
-	                    }
-                }
+	                        }
+                    }
              
-                if (Character.saves == null) continue;
-                    foreach (var save in Character.saves.save)
-                    {
-                        switch (save.abbr)
+                    if (Character.saves == null) continue;
+                        foreach (var save in Character.saves.save)
                         {
-                            case "Fort":
+                            switch (save.abbr)
                             {
-                                int.TryParse(save.save, out monster.fort);
-                                break;
+                                case "Fort":
+                                {
+                                    int.TryParse(save.save, out monster.fort);
+                                    break;
+                                }
+                                case "Ref":
+                                {
+                                    int.TryParse(save.save, out monster.reflex);
+                                    break;
+                                }
+                                case "Will":
+                                {
+                                    int.TryParse(save.save, out monster.will);
+                                    break;
+                                }                              
                             }
-                            case "Ref":
-                            {
-                                int.TryParse(save.save, out monster.reflex);
-                                break;
-                            }
-                            case "Will":
-                            {
-                                int.TryParse(save.save, out monster.will);
-                                break;
-                            }                              
+                        }
+
+                    if (Character.immunities.special != null)
+                    {
+                        foreach (var Immunity in Character.immunities.special)
+                        {
+                            monster.immune += (string.IsNullOrEmpty(monster.immune) ? Immunity.shortname : ", " + Immunity.shortname);
                         }
                     }
-
-                if (Character.immunities.special != null)
-                {
-                    foreach (var Immunity in Character.immunities.special)
+                    if (Character.resistances.special != null)
                     {
-                        monster.immune += (string.IsNullOrEmpty(monster.immune) ? Immunity.shortname : ", " + Immunity.shortname);
+                        foreach (var Resistance in Character.resistances.special)
+                        {
+                            monster.resist += (string.IsNullOrEmpty(monster.resist) ? Resistance.shortname : ", " + Resistance.shortname);
+                        }
                     }
-                }
-                if (Character.resistances.special != null)
-                {
-                    foreach (var Resistance in Character.resistances.special)
+                    if (Character.weaknesses.special != null)
                     {
-                        monster.resist += (string.IsNullOrEmpty(monster.resist) ? Resistance.shortname : ", " + Resistance.shortname);
+                        foreach (var Weakness in Character.weaknesses.special)
+                        {
+                            monster.weaknesses += (string.IsNullOrEmpty(monster.weaknesses) ? Weakness.shortname : ", " + Weakness.shortname);
+                        }
                     }
-                }
-                if (Character.weaknesses.special != null)
-                {
-                    foreach (var Weakness in Character.weaknesses.special)
-                    {
-                        monster.weaknesses += (string.IsNullOrEmpty(monster.weaknesses) ? Weakness.shortname : ", " + Weakness.shortname);
-                    }
-                }
               
-                monster.acParsed = true;
+                    monster.acParsed = true;
 
-                if (Character.armorclass != null)
-                {
-                    int.TryParse(Character.armorclass.ac, out monster.fullAC);
+                    if (Character.armorclass != null)
+                    {
+                        int.TryParse(Character.armorclass.ac, out monster.fullAC);
 
-                    int.TryParse(Character.armorclass.touch, out monster.touchAC);
+                        int.TryParse(Character.armorclass.touch, out monster.touchAC);
 
-                    int.TryParse(Character.armorclass.flatfooted, out monster.flatFootedAC);
+                        int.TryParse(Character.armorclass.flatfooted, out monster.flatFootedAC);
 
-                    int.TryParse(Character.armorclass.fromarmor, out monster.armor);
+                        int.TryParse(Character.armorclass.fromarmor, out monster.armor);
   
-                    int.TryParse(Character.armorclass.fromshield, out monster.shield);
+                        int.TryParse(Character.armorclass.fromshield, out monster.shield);
    
-                    int.TryParse(Character.armorclass.fromdeflect, out monster.deflection);
+                        int.TryParse(Character.armorclass.fromdeflect, out monster.deflection);
              
-                    int.TryParse(Character.armorclass.fromdodge, out monster.dodge);
+                        int.TryParse(Character.armorclass.fromdodge, out monster.dodge);
              
-                    int.TryParse(Character.armorclass.fromnatural, out monster.naturalArmor);
-                }
+                        int.TryParse(Character.armorclass.fromnatural, out monster.naturalArmor);
+                    }
                 
-                monster.cmb = (Character.maneuvers.cmb ?? "10");
-                monster.cmd = (Character.maneuvers.cmd ?? "10");
-                if(Character.attack.baseattack != null)
-                {
-                    int.TryParse(Character.attack.baseattack, out monster.baseAtk);
-                }
-                if (Character.initiative != null)
-                {
-                    int.TryParse(Character.initiative.total, out monster.init);
-                }
-                if (Character.feats == null) continue;
-                    foreach (var feat in Character.feats.feat)
+                    monster.cmb = (Character.maneuvers.cmb ?? "10");
+                    monster.cmd = (Character.maneuvers.cmd ?? "10");
+                    if(Character.attack.baseattack != null)
                     {
-
-                        if (feat.name.Contains("- All"))
+                        int.TryParse(Character.attack.baseattack, out monster.baseAtk);
+                    }
+                    if (Character.initiative != null)
+                    {
+                        int.TryParse(Character.initiative.total, out monster.init);
+                    }
+                    if (Character.feats == null) continue;
+                        foreach (var feat in Character.feats.feat)
                         {
-                            string fixedfeat = feat.name.Replace(" - All", "");
-                            monster.AddFeat(fixedfeat);
+
+                            if (feat.name.Contains("- All"))
+                            {
+                                string fixedfeat = feat.name.Replace(" - All", "");
+                                monster.AddFeat(fixedfeat);
+
+                            }
+                            else
+                            {
+                                monster.AddFeat(feat.name);
+                            }
+
 
                         }
-                        else
-                        {
-                            monster.AddFeat(feat.name);
-                        }
+                    //if (Character.skills.skill != null)
+                    //{
+                    //    foreach (var Skill in Character.skills.skill)
+                    //    {
+                    //        monster.AddOrChangeSkill(Skill.name, Int32.Parse(Skill.value));
+                    //    }
+                    //}
+                        var sb = new StringBuilder();
+                    foreach (var spellclass in Character.spellclasses.spellclass)
+                    {
+                    
+                        //if (Character.spellsknown.spell != null)
+                        //    {
+
+                        //        var list = Character.spellsknown.spell.Select(Spellitem => Spellitem).ToList();
+
+                        //        foreach (var spell in list)
+                        //        {
+                        //            sb.Append(spell.@class + ",");
+
+                        //        }
+                        //        monster.spellsKnown = sb.ToString();
+
+                        //    }
+                        if (spellclass.spells != "Spontaneous")
+                                {
+
+                                    var list = new List<Herolab.Spell>();
+                                    list = Character.spellsmemorized.spell.ToList();
+                                    //var x = from spell in list
+                                    //   where spell.level == "1"
+                                    //   orderby spell.name
+                                    //   select spell;
+                                
+                                    var x = list.Where(spell => spell.@class == spellclass.name).OrderBy(spell => spell.level).ThenBy(spell => spell.name);
+                                
+                                    List<Class> acClasses = Character.classes.@class.ToList();
+                                    var Concentration = from acClass in acClasses
+                                        where acClass.name == spellclass.name
+                                        select new {acClass.concentrationcheck, acClass.casterlevel};
+                                    foreach (var VARIABLE in Concentration)
+                                    {
+
+                                        sb.Append(spellclass.name + " Spells Prepared " + "(CL "+ VARIABLE.casterlevel + "; concentration " + VARIABLE.concentrationcheck + ") ");
+                                        string tracker = "";
+                                        foreach (var spell in x)
+                                        {
+                                            if (tracker != spell.level)
+                                            {
+
+                                                sb.Append(spell.level + "-");
+                                            }
+
+                                            switch (spell.level)
+                                            {
+                                                case "0":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                                case "1":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                                case "2":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                                case "3":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                                case "4":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                                case "5":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                                case "6":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                                case "7":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                                case "8":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                                case "9":
+                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
+                                                    break;
+                                            
+                                            }
+                                        
+                                            tracker = spell.level;
+                                        }
+                                    }
+                                
+                                }
 
 
                     }
-                if (Character.skills.skill != null)
-                {
-                    foreach (var Skill in Character.skills.skill)
-                    {
-                        monster.AddOrChangeSkill(Skill.name, Int32.Parse(Skill.value));
-                    }
+                    monster.spellsPrepared = sb.ToString();
+                    monster.ParseSpellsPrepared();
                 }
-            }
+
+            
 
         }
         private static string HeroLabStatRegexString(string stat)
         {
             return StringCapitalizer.Capitalize(stat) + " ([0-9]+/)?(?<" + stat.ToLower() + ">([0-9]+|-))";
         }
-
-
         private static void ImportHeroLabBlock(string statsblock, Monster monster, bool readNameBlock = false)
         {
             if (readNameBlock)
@@ -1142,6 +1234,105 @@ namespace CombatManager
                 monster.SpellsKnown = spells;
             }
         }
+        private static string FixHeroLabAttackString(string text)
+        {
+
+
+            string attacks = text;
+
+
+            attacks = Weapon.ReplaceOriginalWeaponNames(attacks, false);
+
+            attacks = attacks.ToLower();
+
+            attacks = Regex.Replace(attacks, "and\r\n  ", "or");
+            attacks = Regex.Replace(attacks, "/20/", "/");
+            attacks = Regex.Replace(attacks, "/20\\)", ")");
+            attacks = Regex.Replace(attacks, " \\(from armor\\)", "");
+
+            return attacks;
+        }
+        private static string FixHeroLabFeats(string text)
+        {
+
+            string returnText = text;
+
+            if (returnText != null)
+            {
+                returnText = Regex.Replace(returnText, " ([-+][0-9]+)(/[-+][0-9]+)*", "");
+
+                returnText = Regex.Replace(returnText, " \\([0-9]+d[0-9]+\\)", "");
+                returnText = Regex.Replace(returnText, " \\([0-9]+/day\\)", "");
+            }
+
+            return returnText;
+        }
+        private static string FixHeroLabDefensiveAbilities(string text)
+        {
+            string returnText = text;
+
+            if (returnText != null)
+            {
+                returnText = Regex.Replace(returnText, " \\(Lv >=[0-9]+\\)", "");
+            }
+
+            return returnText;
+        }
+        private static string FixHeroLabList(string text)
+        {
+
+            string returnText = text;
+
+            if (returnText != null)
+            {
+                returnText = ReplaceHeroLabSpecialChar(returnText);
+                returnText = Weapon.ReplaceOriginalWeaponNames(returnText, false);
+                returnText = ReplaceColonItems(returnText);
+
+            }
+
+
+            return returnText;
+        }
+        private static string ReplaceHeroLabSpecialChar(string text)
+        {
+            string returnText = text;
+
+            if (returnText != null)
+            {
+                returnText = returnText.Replace("&#151;", "-");
+            }
+
+            return returnText;
+
+        }
+        private static string ReplaceColonItems(string text)
+        {
+            Regex reg = new Regex(": (?<val>[-+/. \\p{L}0-9]+?)(?<mod> (\\+|-)[0-9]+)?((?<comma>,)|\r|\n|$)");
+
+            return reg.Replace(text, delegate(Match m)
+            {
+                string val = " (" + m.Groups["val"] + ")";
+
+                if (m.Groups["mod"].Success)
+                {
+                    val += m.Groups["mod"].Value;
+                }
+
+
+                if (m.Groups["comma"].Success)
+                {
+                    val += ",";
+                }
+
+                return val;
+            });
+
+        }
+
+
+
+
     }
     
 }
