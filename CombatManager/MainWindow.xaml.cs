@@ -213,6 +213,7 @@ namespace CombatManager
             }
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
+            CombatState.alternateRoll = UserSettings.Settings.AlternateInitRoll;
             if (UserSettings.Settings.RunCombatViewService)
             {
                 StartService();
@@ -2242,7 +2243,7 @@ namespace CombatManager
         {
             if (UserSettings.Settings.AlternateInit3d6)
             {
-                return rand.Next(1, 7) + rand.Next(1, 7) + rand.Next(1, 7);
+                return UserSettings.Settings.AlternateInitDieRoll.Roll().Total;
             }
             else
             {
@@ -6360,7 +6361,7 @@ namespace CombatManager
             if (UserSettings.Settings.AlternateInit3d6)
             {
 
-                roll = new DieRoll(3, 6, mod);
+                roll = UserSettings.Settings.AlternateInitDieRoll;
             }
             else
             {
@@ -6492,7 +6493,7 @@ namespace CombatManager
                 if (UserSettings.Settings.AlternateInit3d6)
                 {
 
-                    roll = new DieRoll(3, 6, mod);
+                    roll = UserSettings.Settings.AlternateInitDieRoll;
                 }
                 else
                 {
@@ -6796,7 +6797,7 @@ namespace CombatManager
                     if (UserSettings.Settings.AlternateInit3d6)
                     {
 
-                        roll = new DieRoll(3, 6, mod);
+                        roll = UserSettings.Settings.AlternateInitDieRoll;
                     }
                     else
                     {

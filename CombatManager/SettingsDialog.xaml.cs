@@ -49,7 +49,16 @@ namespace CombatManager
             ConfirmApplicationCloseCheckbox.IsChecked = UserSettings.Settings.ConfirmClose;
 			ShowAllDamageDice.IsChecked = UserSettings.Settings.ShowAllDamageDice;
 			RollAlternativeInitCheckbox.IsChecked = UserSettings.Settings.AlternateInit3d6;
+            RollAlternateInitDiceBox.Text = UserSettings.Settings.AlternateInitRoll;
+
+            RollAlternateInitDiceBox.TextChanged += new TextChangedEventHandler(RollAlternateInitDiceBox_TextChanged);
 		}
+
+        void RollAlternateInitDiceBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            DieRoll dr = DieRoll.FromString(RollAlternateInitDiceBox.Text);
+            OKButton.IsEnabled = (dr != null);
+        }
 
 		private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
@@ -58,9 +67,11 @@ namespace CombatManager
             UserSettings.Settings.ConfirmClose = ConfirmApplicationCloseCheckbox.IsChecked.Value;
 			UserSettings.Settings.ShowAllDamageDice = ShowAllDamageDice.IsChecked.Value;
 			UserSettings.Settings.AlternateInit3d6 = RollAlternativeInitCheckbox.IsChecked.Value;
+            UserSettings.Settings.AlternateInitRoll = RollAlternateInitDiceBox.Text;
             UserSettings.Settings.SaveOptions();
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
+            CombatState.alternateRoll = UserSettings.Settings.AlternateInitRoll;
 
             DialogResult = true;
             Close();

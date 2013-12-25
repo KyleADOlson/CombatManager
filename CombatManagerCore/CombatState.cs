@@ -77,6 +77,7 @@ namespace CombatManager
         private static Random rand = new Random();
 
         public static bool use3d6;
+        public static string alternateRoll;
 		
 		private bool sortingList;
 
@@ -585,7 +586,7 @@ namespace CombatManager
         {
             if (use3d6)
             {
-                return rand.Next(1, 7) + rand.Next(1, 7) + rand.Next(1, 7);
+                return DieRoll.FromString(alternateRoll).Roll().Total;
             }
             else
             {
