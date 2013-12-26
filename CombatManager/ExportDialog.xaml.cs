@@ -86,6 +86,8 @@ namespace CombatManager
                                      Item = m
                                  });
 
+
+
                 }
                 else
                 {
@@ -175,16 +177,16 @@ namespace CombatManager
             }                            
 
             monstersView = new ListCollectionView(monstersList);
-            monstersView.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+            monstersView.SortDescriptions.Add(new SortDescription("Item.Name", ListSortDirection.Ascending));
 
             spellsView = new ListCollectionView(spellsList);
-            spellsView.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+            spellsView.SortDescriptions.Add(new SortDescription("Item.Name", ListSortDirection.Ascending));
 
 			featsView = new ListCollectionView(featsList);
-            featsView.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+            featsView.SortDescriptions.Add(new SortDescription("Item.Name", ListSortDirection.Ascending));
 
             conditionsView = new ListCollectionView(conditionsList);
-            conditionsView.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+            conditionsView.SortDescriptions.Add(new SortDescription("Item.Name", ListSortDirection.Ascending));
 
 			
             MonstersList.DataContext = monstersView;
@@ -199,25 +201,43 @@ namespace CombatManager
             ConditionsList.DataContext = conditionsView;
             SelectAllConditionsCheckbox.IsEnabled = conditionsList.Count > 0;
 
+
             selectedMonstersView = new ListCollectionView(monstersList);
-            selectedMonstersView.Filter = delegate(Object m) { return ((ExportItem)m).IsSelected; };
+            selectedMonstersView.Filter = m => ((ExportItem)m).IsSelected; 
+            monstersView.Filter = a => MatchesFilter(((Monster)((ExportItem)a).Item).Name, MonsterFilterTextBox);
+            MonsterFilterTextBox.TextChanged += (a, b) => { monstersView.Refresh(); selectedMonstersView.Refresh(); };
             MonstersTab.DataContext = selectedMonstersView;
 			
             selectedSpellsView = new ListCollectionView(spellsList);
-            selectedSpellsView.Filter = delegate(Object m) { return ((ExportItem)m).IsSelected; };
+            selectedSpellsView.Filter = m => ((ExportItem)m).IsSelected;
+            spellsView.Filter = a => MatchesFilter(((Spell)((ExportItem)a).Item).Name, SpellFilterTextBox);
+            SpellFilterTextBox.TextChanged += (a, b) => { spellsView.Refresh(); selectedSpellsView.Refresh(); };
             SpellsTab.DataContext = selectedSpellsView;
-			
+
             selectedFeatsView = new ListCollectionView(featsList);
-            selectedFeatsView.Filter = delegate(Object m) { return ((ExportItem)m).IsSelected; };
+            selectedFeatsView.Filter = m => ((ExportItem)m).IsSelected;
+            featsView.Filter = a => MatchesFilter(((Feat)((ExportItem)a).Item).Name, FeatFilterTextBox);
+            FeatFilterTextBox.TextChanged += (a, b) => { featsView.Refresh(); selectedFeatsView.Refresh(); };
             FeatsTab.DataContext = selectedFeatsView;
 
             selectedConditionsView = new ListCollectionView(conditionsList);
-            selectedConditionsView.Filter = delegate(Object m) { return ((ExportItem)m).IsSelected; };
+            selectedConditionsView.Filter = m => ((ExportItem)m).IsSelected;
+            conditionsView.Filter = a => MatchesFilter(((Condition)((ExportItem)a).Item).Name, ConditionFilterTextBox);
+            ConditionFilterTextBox.TextChanged += (a, b) => { conditionsView.Refresh(); selectedConditionsView.Refresh(); };
             ConditionsTab.DataContext = selectedConditionsView;
 
 
+
 			
-			
+        }
+
+        public bool MatchesFilter(string name, TextBox textBox)
+        {
+            if (name == null || name == "")
+            {
+                return true;
+            }
+            return (name.ToUpper().Contains(textBox.Text.Trim().ToUpper()));
         }
 
         private void OKButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -288,8 +308,9 @@ namespace CombatManager
 
         private void SelectAllMonstersCheckbox_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            foreach (var m in monstersList)
+            foreach (var m in from x in monstersList where MatchesFilter(GetExportItemName(x), MonsterFilterTextBox) select x)
             {
+
                 m.IsSelected = SelectAllMonstersCheckbox.IsChecked == true;
             }
 			UpdateOK();
@@ -300,7 +321,7 @@ namespace CombatManager
         private void SelectAllSpellsCheckbox_Click(object sender, RoutedEventArgs e)
         {
 
-            foreach (var m in spellsList)
+            foreach (var m in from x in spellsList where MatchesFilter(GetExportItemName(x), SpellFilterTextBox) select x)
             {
                 m.IsSelected = SelectAllSpellsCheckbox.IsChecked == true;
             }
@@ -309,7 +330,7 @@ namespace CombatManager
 
 		private void SelectAllFeatsCheckbox_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-            foreach (var m in featsList)
+            foreach (var m in from x in featsList where MatchesFilter(GetExportItemName(x), FeatFilterTextBox) select x)
             {
                 m.IsSelected = SelectAllFeatsCheckbox.IsChecked == true;
             }
@@ -325,29 +346,34 @@ namespace CombatManager
             ListBox listBox = null;
 			ObservableCollection<ExportItem> view  = null;
 			CheckBox box = null;
+            TextBox textbox = null;
 			if (item.Item is Monster)
 			{
 				view = monstersList;
 				box = SelectAllMonstersCheckbox;
                 listBox = MonstersList;
+                textbox = MonsterFilterTextBox;
 			}
 			else if (item.Item is Spell)
 			{
 				view = spellsList;
 				box = SelectAllSpellsCheckbox;
                 listBox = SpellsList;
+                textbox = SpellFilterTextBox;
 			}
 			else if (item.Item is Feat)
 			{
 				view = featsList;
 				box = SelectAllFeatsCheckbox;
                 listBox = FeatsList;
+                textbox = FeatFilterTextBox;
 			}
             else if (item.Item is Condition)
             {
                 view = conditionsList;
                 box = SelectAllConditionsCheckbox;
                 listBox = ConditionsList;
+                textbox = ConditionFilterTextBox;
             }
             System.Diagnostics.Debug.Assert(view != null);
            
@@ -355,18 +381,22 @@ namespace CombatManager
 			bool unselected = false;
             foreach (ExportItem x in view)
 			{
-				if (x.IsSelected)
-				{
-					selected = true;
-				}
-				else
-				{
-					unselected = true;
-				}
-				if (selected && unselected)
-				{
-					break;
-				}
+                if (MatchesFilter(GetExportItemName(x), textbox))
+                {
+
+                    if (x.IsSelected)
+                    {
+                        selected = true;
+                    }
+                    else
+                    {
+                        unselected = true;
+                    }
+                    if (selected && unselected)
+                    {
+                        break;
+                    }
+                }
 			}
 			
 			
@@ -380,6 +410,11 @@ namespace CombatManager
 				box.IsChecked = selected;
 			}
 			UpdateOK();
+        }
+
+        string GetExportItemName(ExportItem item)
+        {
+            return (string)item.Item.GetType().GetProperty("Name").GetGetMethod().Invoke(item.Item, new object[] { });
         }
 		
 		void UpdateOK()
@@ -434,7 +469,7 @@ namespace CombatManager
         private void SelectAllConditionsCheckbox_Click(object sender, RoutedEventArgs e)
         {
 
-            foreach (var m in conditionsList)
+            foreach (var m in from x in conditionsList where MatchesFilter(GetExportItemName(x), ConditionFilterTextBox) select x)
             {
                 m.IsSelected = SelectAllConditionsCheckbox.IsChecked == true;
             }
