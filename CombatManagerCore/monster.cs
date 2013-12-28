@@ -8362,8 +8362,16 @@ namespace CombatManager
         {
             get
             {
-                ParseSpellsPrepared();
+                if (_SpellsPreparedBlock == null)
+                {
+                    ParseSpellsPrepared();
+                }
+                
                 return _SpellsPreparedBlock;
+            }
+            set
+            {
+                _SpellsPreparedBlock = value;
             }
         }
 
@@ -8491,8 +8499,16 @@ namespace CombatManager
         {
             get
             {
-                ParseSpellsKnown();
+                if (_SpellsKnownBlock == null)
+                {
+                    ParseSpellsKnown(); 
+                }
+                
                 return _SpellsKnownBlock;
+            }
+            set
+            {
+                _SpellsKnownBlock = value;
             }
         }
 

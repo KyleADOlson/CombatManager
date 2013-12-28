@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 ﻿using System.Linq;
 ﻿using System.Net.Sockets;
 ﻿using System.Runtime.Serialization.Formatters;
+﻿using System.ServiceModel.Channels;
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -513,14 +514,14 @@ namespace CombatManager
                     monster.xp = (Character.xpaward != null ? Character.xpaward.value : "No XP Defined");
                     monster.className = (Character.classes != null ? Character.classes.summary : "No Classes Defined");
 
-                    if (Character.type != null)
+                    if (Character.types.type != null)
                     {
                         foreach (var type in Character.types.type)
                         {
                             monster.type = type.name;
                         }
                     }
-                    if (Character.type != null)
+                    if (Character.subtypes.subtype != null)
                     {
                         foreach (var subtype in Character.subtypes.subtype)
                         {
@@ -543,7 +544,7 @@ namespace CombatManager
                     }
                     monster.gender = (Character.personal != null ?Character.personal.gender.ToString(): "No Gender Defined");
                     monster.description_visual = (Character.personal.description.Value ?? "No Visual Despription");
-                    if (Character.languages != null)
+                    if (Character.languages.language != null)
                     {
                         foreach (var language in Character.languages.language)
                         {
@@ -670,7 +671,7 @@ namespace CombatManager
                     {
                         int.TryParse(Character.initiative.total, out monster.init);
                     }
-                    if (Character.feats == null) continue;
+                    if (Character.feats.feat == null) continue;
                         foreach (var feat in Character.feats.feat)
                         {
 
@@ -694,101 +695,247 @@ namespace CombatManager
                     //        monster.AddOrChangeSkill(Skill.name, Int32.Parse(Skill.value));
                     //    }
                     //}
-                        var sb = new StringBuilder();
-                    foreach (var spellclass in Character.spellclasses.spellclass)
-                    {
-                    
-                        //if (Character.spellsknown.spell != null)
-                        //    {
 
-                        //        var list = Character.spellsknown.spell.Select(Spellitem => Spellitem).ToList();
 
-                        //        foreach (var spell in list)
+
+
+
+
+                // change from creating string to spellblocks
+                // blocklist 
+                // blockinfo blocklist.Add(blockInfo);
+                // levelinfo blockInfo.Levels.Add(levelInfo);
+                // spellinfo levelInfo.Spells.Add(spellInfo);
+
+
+                    //foreach (var spellclass in Character.spellclasses.spellclass)
+                    //{
+
+                            //CreateSpellBlockStrings(Character,monster);
+                            CreateSpellBlocks(Character,monster);
+
+                        //monster.SpellsKnownBlock = CreateKnownBlockList(Character);
+
+                        
+
+                        //if (spellclass.spells != "Spontaneous")
                         //        {
-                        //            sb.Append(spell.@class + ",");
-
-                        //        }
-                        //        monster.spellsKnown = sb.ToString();
-
-                        //    }
-                        if (spellclass.spells != "Spontaneous")
-                                {
-
-                                    var list = new List<Herolab.Spell>();
-                                    list = Character.spellsmemorized.spell.ToList();
-                                    //var x = from spell in list
-                                    //   where spell.level == "1"
-                                    //   orderby spell.name
-                                    //   select spell;
+                        //            var bi = new SpellBlockInfo();
+                        //            List<Herolab.Spell> list = Character.spellsmemorized.spell.ToList();
+                        //            //var x = from spell in list
+                        //            //   where spell.level == "1"
+                        //            //   orderby spell.name
+                        //            //   select spell;
                                 
-                                    var x = list.Where(spell => spell.@class == spellclass.name).OrderBy(spell => spell.level).ThenBy(spell => spell.name);
+                        //            var x = list.Where(spell => spell.@class == spellclass.name).OrderBy(spell => spell.level).ThenBy(spell => spell.name);
                                 
-                                    List<Class> acClasses = Character.classes.@class.ToList();
-                                    var Concentration = from acClass in acClasses
-                                        where acClass.name == spellclass.name
-                                        select new {acClass.concentrationcheck, acClass.casterlevel};
-                                    foreach (var VARIABLE in Concentration)
-                                    {
-
-                                        sb.Append(spellclass.name + " Spells Prepared " + "(CL "+ VARIABLE.casterlevel + "; concentration " + VARIABLE.concentrationcheck + ") ");
-                                        string tracker = "";
-                                        foreach (var spell in x)
-                                        {
-                                            if (tracker != spell.level)
-                                            {
-
-                                                sb.Append(spell.level + "-");
-                                            }
-
-                                            switch (spell.level)
-                                            {
-                                                case "0":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                                case "1":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                                case "2":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                                case "3":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                                case "4":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                                case "5":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                                case "6":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                                case "7":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                                case "8":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                                case "9":
-                                                    sb.Append(spell.range != "Personal" ? spell.name + " (DC " + spell.dc + "), " : "");
-                                                    break;
-                                            
-                                            }
+                        //            List<Class> acClasses = Character.classes.@class.ToList();
+                        //            var Concentration = from acClass in acClasses
+                        //                where acClass.name == spellclass.name
+                        //                                select new { acClass.concentrationcheck, acClass.casterlevel, Spellfail = (acClass.arcanespellfailure != null ? acClass.arcanespellfailure.value:string.Empty) };
+                        //            int counter = x.Count();
+                        //            foreach (var VARIABLE in Concentration)
+                        //            {
                                         
-                                            tracker = spell.level;
-                                        }
-                                    }
-                                
-                                }
+                                        
 
+                        //                int levelcnt = 0;
+                        //                string tracker = "";
+                        //                while (counter != 0)
+                        //                {
+                        //                    bi.Concentration = Int32.Parse(VARIABLE.concentrationcheck);
+                        //                    bi.BlockType = "Prepared";
+                        //                    bi.Class = spellclass.name;
+                        //                    bi.SpellFailure = !string.IsNullOrEmpty(VARIABLE.Spellfail) ? Int32.Parse(VARIABLE.Spellfail) : default(int?);
+                        //                    bi.CasterLevel = Int32.Parse(VARIABLE.casterlevel);
 
-                    }
-                    monster.spellsPrepared = sb.ToString();
-                    monster.ParseSpellsPrepared();
+                        //                    sb.Append(spellclass.name + " Spells Prepared " + "(CL " + VARIABLE.casterlevel + "; concentration " + VARIABLE.concentrationcheck + ") ");
+                        //                    var li = new SpellLevelInfo();
+                        //                    int levelcnt1 = levelcnt;
+                        //                    var y = x.Where(spell => spell.level == levelcnt1.ToString());
+                        //                    levelcnt++;
+                        //                    //int cycle = y.Count();
+                                            
+                        //                    foreach (var spell in y)
+                        //                    {
+                        //                        var si = new SpellInfo();
+
+                        //                        if (tracker != spell.level)
+                        //                        {
+
+                        //                            li.Level = Int32.Parse(spell.level);
+                        //                            sb.Append(spell.level + "-");
+                                                    
+                        //                        }
+                        //                        //cycle--;
+                        //                        switch (spell.level)
+                        //                        {
+                        //                            case "0":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+                        //                                li.AtWill = true;
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+                        //                            case "1":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+                        //                            case "2":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+                        //                            case "3":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+                        //                            case "4":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+                        //                            case "5":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+                        //                            case "6":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+                        //                            case "7":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+                        //                            case "8":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+                        //                            case "9":
+                        //                                sb.Append(spell.range != "Personal"
+                        //                                    ? spell.name + " (DC " + spell.dc + "), "
+                        //                                    : "");
+                        //                                si.Name = spell.name;
+                        //                                si.DC = Int32.Parse(spell.dc);
+                        //                                si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        //                                si.Cast = (spell.castsleft != null && spell.castsleft != "0"
+                        //                                    ? Int32.Parse(spell.castsleft)
+                        //                                    : default(int?));
+                        //                                si.AlreadyCast = (spell.castsleft != null &&
+                        //                                                  spell.castsleft == "0");
+                        //                                break;
+
+                        //                        }
+                        //                        li.Spells.Add(si);
+                        //                        tracker = spell.level;
+                        //                        counter--;
+                        //                    }
+                        //                    if (y.Count() != 0)
+                        //                    {
+                        //                        bi.Levels.Add(li);
+
+                        //                    }
+                        //                }//while
+                        //            }//foreach
+                        //            if (bi.Levels.Count != 0)
+                        //                {
+                        //                    bl.Add(bi);
+                        //                }
+                        //    monster.SpellsPreparedBlock = bl;
+                        //        }//ifprepared
+                        
+
+                    //foreach character
+                    //monster.spellsPrepared = sb.ToString();
+                    //monster.ParseSpellsPrepared();
+                    //monster.ParseSpellsKnown();
                 }
 
             
 
+        }
+
+        private static void CreateKnownBlockList(Herolab.Character Character)
+        {
+            throw new NotImplementedException();
         }
         private static string HeroLabStatRegexString(string stat)
         {
@@ -1330,9 +1477,361 @@ namespace CombatManager
 
         }
 
+        private static string ExtractSpellName(string rawspellname)
+        {
+            string[] Separators = {",", "("};
+            string[] result;
+            string spellname = rawspellname.TrimEnd(new char[] {'D', ' '});
+            spellname = StringCapitalizer.Capitalize(rawspellname).Trim();
+            result = spellname.Split(Separators, StringSplitOptions.None);
+            if (result.Count() > 1)
+            {
+                return result[1].Trim().Contains("Lesser") || result[1].Trim().Contains("Greater") || result[1].Trim().Contains("Communal") || result[1].Trim().Contains("Mass") ? result[0].Trim() + ", " + result[1].Trim() : result[0].Trim();
+            }
+            return result[0].Trim();
+        }
+
+        private static void CreateSpellBlockStrings(Herolab.Character Character,Monster monster)
+        {
+            if (Character.spellclasses.spellclass != null)
+            {               
+                List<Class> acClasses = Character.classes.@class.ToList();
+                string Knowstring = "";
+                string Preparedstring = "";
+                foreach (var sc in Character.spellclasses.spellclass)
+                {
+                    if (sc.spells == "Spontaneous" && Character.spellsknown.spell != null)
+                    {
+                        List<Herolab.Spell> list = Character.spellsknown.spell.ToList();
+                        Knowstring += SpontaneousString(sc, list, acClasses);
+                    }
+                    if (sc.spells != "Spontaneous" && Character.spellsmemorized.spell != null)
+                    {
+                        List<Herolab.Spell> list = Character.spellsmemorized.spell.ToList();
+                       Preparedstring += PreparedString(sc, list, acClasses);
+                    }
+                    
+                }
+                monster.spellsKnown = Knowstring;
+                monster.spellsPrepared = Preparedstring;
+            }
+             
+        }
+
+        private static string PreparedString(Spellclass spellclass, List<Herolab.Spell> list, List<Class> acClasses)
+        {
+            var sb = new StringBuilder();
+            var x = list.Where(spell => spell.@class == spellclass.name).OrderBy(spell => spell.level).ThenBy(spell => spell.name);
+            var Header = from acClass in acClasses
+                         where acClass.name == spellclass.name
+                         select new { concentration = (acClass.concentrationcheck ?? "+0"), acClass.casterlevel, Spellfail = (acClass.arcanespellfailure != null ? acClass.arcanespellfailure.value : string.Empty) };
+
+            foreach (var VARIABLE in Header)
+            {  
+                sb.Append(spellclass.name + " Spells Prepared " + "(CL " + VARIABLE.casterlevel + "; concentration " + VARIABLE.concentration + ") ");
+                return getspellString(x, sb,spellclass,false).ToString();
+            }
+            return null;
+        }
+
+        private static string SpontaneousString(Spellclass spellclass, List<Herolab.Spell> list, List<Class> acClasses)
+        {
+            var sb = new StringBuilder();   
+            var x = list.Where(spell => spell.@class == spellclass.name).OrderBy(spell => spell.level).ThenBy(spell => spell.name); 
+            var Header = from acClass in acClasses
+                                where acClass.name == spellclass.name
+                                select new { concentration = (acClass.concentrationcheck??"+0"), acClass.casterlevel, Spellfail = (acClass.arcanespellfailure != null ? acClass.arcanespellfailure.value : string.Empty) };
+            
+            foreach (var VARIABLE in Header)
+            {
+               
+                    sb.Append(spellclass.name + " Spells Prepared " + "(CL " + VARIABLE.casterlevel + "; concentration " + VARIABLE.concentration + ") ");
+                    return getspellString(x, sb,spellclass,true).ToString();
+            }
+            return null;
+        }
+
+        private static StringBuilder getspellString(IEnumerable<Herolab.Spell> y, StringBuilder sb,Spellclass spellclass,bool perday)
+        {
+            string tracker = "";
+            foreach (var spell in y)
+            {
+                if(Int32.Parse(spell.level)> Int32.Parse(spellclass.maxspelllevel)){break;}
+                
+                if (tracker != spell.level)
+                {
+                    sb.Append(spell.level );
+                    if (perday)
+                    {
+                        switch (spell.level)
+                        {
+                            case "0":
+                                
+                                break;
+                           default:
+                                var list = spellclass.spelllevel.ToList();
+                                sb.Append(" ("+(from sl in list where sl.level == spell.level select sl.maxcasts).Single()+"/day)");
+                                break;
+                        }
+                        sb.Append("-");
+                    }
+                }
+                switch (spell.level)
+                {
+                    case "0":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name+ ", ");
+                        break;
+                    case "1":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name + ", ");
+                        break;
+                    case "2":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name + ", ");
+                        break;
+                    case "3":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name + ", ");
+                        break;
+                    case "4":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name + ", ");
+                        break;
+                    case "5":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name + ", ");
+                        break;
+                    case "6":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name + ", ");
+                        break;
+                    case "7":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name + ", ");
+                        break;
+                    case "8":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name + ", ");
+                        break;
+                    case "9":
+                        sb.Append(!spell.range.Equals("Personal", StringComparison.OrdinalIgnoreCase) && !spell.save.Equals("None", StringComparison.OrdinalIgnoreCase) ? spell.name + " (DC " + spell.dc + "), " : spell.name + ", ");
+                        break;
+                }
+                tracker = spell.level;
+                
+                
+            }
+            return sb;
+        }
+
+        private static void CreateSpellBlocks(Herolab.Character Character, Monster monster)
+        {
+            var KnowBlocklist = new ObservableCollection<SpellBlockInfo>();
+            var PreparedBlocklist = new ObservableCollection<SpellBlockInfo>();
+
+            if (Character.spellclasses.spellclass != null)
+            {
+                List<Class> acClasses = Character.classes.@class.ToList();
+
+                foreach (var sc in Character.spellclasses.spellclass)
+                {
+                    if (sc.spells == "Spontaneous" && Character.spellsknown.spell != null)
+                    {
+                        List<Herolab.Spell> list = Character.spellsknown.spell.ToList();
+                        KnowBlocklist.Add(SpontaneousBlock(sc, list, acClasses)); 
+                    }
+                    if (sc.spells != "Spontaneous" && Character.spellsmemorized.spell != null)
+                    {
+                        List<Herolab.Spell> list = Character.spellsmemorized.spell.ToList();
+                        if (PreparedBlock(sc, list, acClasses).Levels.Count != 0)
+                        {
+                            PreparedBlocklist.Add(PreparedBlock(sc, list, acClasses));
+                        }               
+                    }
+
+                }
+               monster.SpellsPreparedBlock = PreparedBlocklist;
+               monster.SpellsKnownBlock = KnowBlocklist;
+            }
+
+        }
+
+        private static SpellBlockInfo PreparedBlock(Spellclass spellclass, List<Herolab.Spell> list, List<Class> acClasses)
+        {
+            
+            var bi = new SpellBlockInfo();
+            var x = list.Where(spell => spell.@class == spellclass.name).OrderBy(spell => spell.level).ThenBy(spell => spell.name);
+            var Header = from acClass in acClasses
+                         where acClass.name == spellclass.name
+                         select new { concentration = (acClass.concentrationcheck ?? "+0"), acClass.casterlevel, Spellfail = (acClass.arcanespellfailure != null ? acClass.arcanespellfailure.value : string.Empty) };
+            int counter = x.Count();
+            int levelcnt = 0;
+
+            foreach (var VARIABLE in Header)
+            {
+                bi.Concentration = Int32.Parse(VARIABLE.concentration);
+                bi.BlockType = "Prepared";
+                bi.Class = spellclass.name;
+                bi.SpellFailure = !string.IsNullOrEmpty(VARIABLE.Spellfail) ? Int32.Parse(VARIABLE.Spellfail) : default(int?);
+                bi.CasterLevel = Int32.Parse(VARIABLE.casterlevel);
+                while (counter != 0)
+                {
+
+                    var li = new SpellLevelInfo();
+                    int levelcnt1 = levelcnt;
+                    var y = x.Where(spell => spell.level == levelcnt1.ToString());
+                    levelcnt++;
+                    if (y.Count() != 0)
+                    {
+                        bi.Levels.Add(getspellBlock(y, li, spellclass, false));
+
+                    }
+                    counter -= li.Spells.Count;
+                }
+                return bi;
+            }
+            return null;
+        }
+
+        private static SpellBlockInfo SpontaneousBlock(Spellclass spellclass, List<Herolab.Spell> list, List<Class> acClasses)
+        {
+
+            var bi = new SpellBlockInfo();
+            var x = list.Where(spell => spell.@class == spellclass.name).OrderBy(spell => spell.level).ThenBy(spell => spell.name);
+            var Header = from acClass in acClasses
+                         where acClass.name == spellclass.name
+                         select new { concentration = (acClass.concentrationcheck ?? "+0"), acClass.casterlevel, Spellfail = (acClass.arcanespellfailure != null ? acClass.arcanespellfailure.value : string.Empty) };
+            int counter = x.Count();
+            int levelcnt = 0;
+
+            foreach (var VARIABLE in Header)
+            {
+                bi.Concentration = Int32.Parse(VARIABLE.concentration);
+                bi.BlockType = "Spontaneous";
+                bi.Class = spellclass.name;
+                bi.SpellFailure = !string.IsNullOrEmpty(VARIABLE.Spellfail) ? Int32.Parse(VARIABLE.Spellfail) : default(int?);
+                bi.CasterLevel = Int32.Parse(VARIABLE.casterlevel);
+                while (counter != 0)
+                {
+
+                    var li = new SpellLevelInfo();
+                    int levelcnt1 = levelcnt;
+                    var y = x.Where(spell => spell.level == levelcnt1.ToString());
+                    levelcnt++;
+                    if (y.Count() != 0)
+                    {
+                        bi.Levels.Add(getspellBlock(y, li, spellclass, true));
+
+                    }
+                    if (levelcnt > Int32.Parse(spellclass.maxspelllevel)) { break; }
+                    counter -= li.Spells.Count;
+                }
+                return bi;
+            }
+            return null;
+        }
+
+        private static SpellLevelInfo getspellBlock(IEnumerable<Herolab.Spell> y, SpellLevelInfo li, Spellclass spellclass, bool perday)
+        {
+         
+            foreach (var spell in y)
+            {
+                var si = new SpellInfo();
+                //if (Int32.Parse(spell.level) > Int32.Parse(spellclass.maxspelllevel)) { break; }
+
+   
+                    li.Level = Int32.Parse(spell.level);
+                    if (perday)
+                    {
+                        switch (spell.level)
+                        {
+                            case "0":
+                                li.AtWill = true;
+                                break;
+                            default:
+                                var list = spellclass.spelllevel.ToList();
+                                li.PerDay = Int32.Parse((from sl in list where sl.level == spell.level select sl.maxcasts).Single());
+                                break;
+                        }
+                        
+                    }
+               
+                switch (spell.level)
+                {
+                    case "0":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        
+                        break;
+                    case "1":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        break;
+                    case "2":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        break;
+                    case "3":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        break;
+                    case "4":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        break;
+                    case "5":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        break;
+                    case "6":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        break;
+                    case "7":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        break;
+                    case "8":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        break;
+                    case "9":
+                        si.Name = spell.name;
+                        si.DC = Int32.Parse(spell.dc);
+                        si.Spell = Spell.ByName(ExtractSpellName(spell.name));
+                        si.Cast = (spell.castsleft != null && spell.castsleft != "0" ? Int32.Parse(spell.castsleft) : default(int?));
+                        si.AlreadyCast = (spell.castsleft != null && spell.castsleft == "0");
+                        break;
+                }
+                li.Spells.Add(si);
+                
+            }
+            return li;
+        }
+
 
 
 
     }
     
+
 }
