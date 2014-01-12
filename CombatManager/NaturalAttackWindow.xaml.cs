@@ -81,6 +81,8 @@ namespace CombatManager
                 AttackCountComboBox.Items.Add(item);
             }
 
+            EnableOK();
+
         }
 
         void NaturalAttackListBox_GotFocus(object sender, RoutedEventArgs e)

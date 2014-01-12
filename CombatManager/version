@@ -1,9 +1,12 @@
 ﻿1.5.4
 Fix issue with custom monsters being listed as Mythic
-Fix problem with hidden character names appearing on Init window"
+Fix problem with hidden character names appearing on Init window
 Allow alternate die rolls other than 3d6
 Minor rules db additions
 Export dialog sorts properly and has a filter
+Fix die roll parsing for multiple HD type monsters.
+Add ability to reroll all initiaitve without changing round
+Fix natual attack editor crash
 
 1.5.3
 Reduce memory load and improve startup speed

@@ -49,6 +49,7 @@ namespace CombatManager
             ConfirmApplicationCloseCheckbox.IsChecked = UserSettings.Settings.ConfirmClose;
 			ShowAllDamageDice.IsChecked = UserSettings.Settings.ShowAllDamageDice;
 			RollAlternativeInitCheckbox.IsChecked = UserSettings.Settings.AlternateInit3d6;
+            ShowHiddenInitValueBox.IsChecked = UserSettings.Settings.ShowHiddenInitValue;
             RollAlternateInitDiceBox.Text = UserSettings.Settings.AlternateInitRoll;
 
             RollAlternateInitDiceBox.TextChanged += new TextChangedEventHandler(RollAlternateInitDiceBox_TextChanged);
@@ -68,6 +69,7 @@ namespace CombatManager
 			UserSettings.Settings.ShowAllDamageDice = ShowAllDamageDice.IsChecked.Value;
 			UserSettings.Settings.AlternateInit3d6 = RollAlternativeInitCheckbox.IsChecked.Value;
             UserSettings.Settings.AlternateInitRoll = RollAlternateInitDiceBox.Text;
+            UserSettings.Settings.ShowHiddenInitValue = ShowHiddenInitValueBox.IsChecked.Value;
             UserSettings.Settings.SaveOptions();
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
