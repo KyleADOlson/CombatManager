@@ -533,8 +533,12 @@ namespace CombatManager
                 }
             }
         }
-
         public void RollInitiative()
+        {
+            RollInitiative(true);
+        }
+
+        public void RollInitiative(bool resetRound)
         {
             foreach (Character character in Characters)
             {
@@ -548,9 +552,10 @@ namespace CombatManager
 
             }
 
-
-
-            Round = 1;
+            if (resetRound)
+            {
+                Round = 1;
+            }
 
 
             if (CombatList.Count > 0)

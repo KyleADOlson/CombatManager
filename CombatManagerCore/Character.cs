@@ -631,63 +631,11 @@ namespace CombatManager
 
         public bool TryParseHP()
         {
-            int num  = 0;
-            int size = 0;
-            int plus = 0;
-            string text= monster.HD;
-            if (text != null)
+            DieRoll dr = DieRoll.FromString(monster.HD);
+            if (dr != null)
             {
-                text = text.Trim();
-                text = text.Trim(new char[] {'(',')'});
-            
-                int index = text.IndexOf('d');
-                if (index > 0)
-                {
-                    if (Int32.TryParse(text.Substring(0, index), out num))
-                    {
-                        text = text.Substring(index+1);
-
-                        index = text.IndexOf('+');
-
-                        if (index > 0)
-                        {
-                            string last = text.Substring(index + 1);
-                            text = text.Substring(0, index);
-
-                            Int32.TryParse(last, out plus);
-                        }
-                        else
-                        {
-                            index = text.IndexOf('-');
-                            if (index > 0)
-                            {
-                                string last = text.Substring(index + 1);
-                                text = text.Substring(0, index);
-
-                                Int32.TryParse(last, out plus);
-                                plus = -plus;
-                            }
-                        }
-
-
-                        if (Int32.TryParse(text, out size))
-                        {
-                            int hitPoints = plus;
-                            for (int i=0; i< num; i++)
-                            {
-                                hitPoints += rand.Next(1, size+1);
-                            }
-                            if (hitPoints < 1)
-                            {
-                                hitPoints = 1;
-                            }
-
-                            HP = hitPoints;
-                            return true;
-                        }                                        
-                    }
-                }
-
+                HP = dr.Roll().Total;
+                return true;
             }
 
             return false;

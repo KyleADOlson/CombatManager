@@ -170,6 +170,19 @@ namespace CombatManager
             }
         }
 
+        public string Text
+        {
+            get
+            {
+                return ToString();
+            }
+        }
+
+        public override string ToString()
+        {
+            return _Base + "-" + _Dex + "-" + _Tiebreaker;
+        }
+
 
 
         public int CompareTo(object obj)

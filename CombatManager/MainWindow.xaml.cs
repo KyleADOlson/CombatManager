@@ -2207,6 +2207,16 @@ namespace CombatManager
             }
         }
 
+        public void RollInitiativeWithoutReset()
+        {
+            using (var undoGroup = undo.CreateUndoGroup())
+            {
+                combatState.RollInitiative(false);
+
+
+            }
+        }
+
         public void MoveUpCharacter(Character ch)
         {
             using (var undoGroup = undo.CreateUndoGroup())
@@ -7811,6 +7821,26 @@ namespace CombatManager
                 }
             }
             
+
+        }
+
+        private void RollInitWithoutResetMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            RollInitiativeWithoutReset();
+
+
+            combatState.SortCombatList();
+        }
+        private void RollInitWithoutSortMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            RollInitiative();
+
+
+        }
+        private void RollInitWithoutResetSortMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            RollInitiativeWithoutReset();
+
 
         }
 
