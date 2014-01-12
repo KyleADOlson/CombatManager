@@ -1,3 +1,6 @@
+1.00
+Initial release
+
 0.09
 Fix crash when rolling skills
 Fix some crashes when switching tabs
