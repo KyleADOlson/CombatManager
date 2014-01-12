@@ -2,6 +2,7 @@
 Fix crash when rolling skills
 Fix some crashes when switching tabs
 Ellipsize names on initiative list
+Fix duplication problems with character lists when removing characters
 
 0.08
 Treasure page improvements

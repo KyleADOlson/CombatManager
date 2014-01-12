@@ -815,6 +815,11 @@ namespace CombatManager
 
                     if (_CombatList[i] != c)
                     {
+                        int index = _CombatList.IndexOf(c);
+                        if (index > i)
+                        {
+                            _CombatList.RemoveAt(index);
+                        }
                         _CombatList.Insert(i, c);
                     }
                 }
