@@ -96,7 +96,7 @@ namespace CombatManagerDroid
                 Button b = new Button(this);
                 b.Text = "Set #" + i;
                 l.AddView(b);
-                int item = i;
+                int item = i-1;
                 b.Click += (object sender, EventArgs e) => 
                 {
                     MeleeTabClicked(item);
@@ -109,6 +109,8 @@ namespace CombatManagerDroid
                 AddGroupClicked();
             };
             l.AddView(addButton);
+            Button addMeleeButton = FindViewById <Button>(Resource.Id.addMeleeButton);
+            addMeleeButton.Enabled = _Attacks.MeleeWeaponSets.Count > 0;
         }
 
         private void BuildMeleeGroup()
@@ -536,6 +538,7 @@ namespace CombatManagerDroid
             _Attacks.MeleeWeaponSets.Add(new List<WeaponItem>());
             visibleGroup = _Attacks.MeleeWeaponSets.Count - 1;
             BuildMeleeGroup();
+            BuildMeleeTabs();
         }
         
         public static Monster Monster

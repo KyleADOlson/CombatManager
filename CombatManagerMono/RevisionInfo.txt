@@ -1,3 +1,8 @@
+1.0.8
+Numerous internal bug fixes
+Fix tab bar
+Data/Monster update
+
 1.0.7
 Improved spell parsing
 Handled large CRs

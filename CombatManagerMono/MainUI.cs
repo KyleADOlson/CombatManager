@@ -51,10 +51,11 @@ namespace CombatManagerMono
 		{
 			_MainView = this;
 			
-			BackgroundColor = UIExtensions.RGBColor(0x0);
+            BackgroundColor = CMUIColors.PrimaryColorLight;
 			
 			toolbar = new ToolbarView();
-			
+            toolbar.BackgroundColor = CMUIColors.PrimaryColorLight;
+
 			currentTab = new CombatTab(_CombatState);
 
 			
@@ -150,13 +151,14 @@ namespace CombatManagerMono
 			base.LayoutSubviews ();
 			toolbar.SetWidth(Frame.Width);
 			toolbar.SetHeight(50);
-			toolbar.SetLocation(0, 0);
+            toolbar.SetLocation(0, 20);
 			toolbar.ButtonClicked += HandleToolbarButtonClicked;
+         
 			
 			
-			currentTab.SetLocation(0, toolbar.Frame.Height);
+            currentTab.SetLocation(0, toolbar.Frame.Bottom);
 			currentTab.SetWidth(Frame.Width);
-			currentTab.SetHeight(Frame.Height - toolbar.Frame.Height);
+            currentTab.SetHeight(Frame.Height - toolbar.Frame.Bottom);
 
 
 		}
