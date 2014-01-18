@@ -1,6 +1,8 @@
 1.0.8
-Numerous internal bug fixes
+Allow files to be opened from other applications
+Fix crash applying custom conditions
 Fix tab bar
+Numerous internal bug fixes
 Data/Monster update
 
 1.0.7

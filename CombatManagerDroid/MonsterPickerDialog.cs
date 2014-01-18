@@ -136,7 +136,7 @@ namespace CombatManagerDroid
         {
             if (_SelectedMonster != null)
             {
-                _State.AddMonster(_SelectedMonster, true, _IsMonsters); 
+                _State.AddMonster(_SelectedMonster, Context.GetCMPrefs().GetRollHP(), _IsMonsters); 
             }
         }
 

@@ -1,5 +1,6 @@
 1.01
 Fix weapon editor
+Add Monster HP Rolling option to settings
 
 1.00
 Initial release

@@ -1240,7 +1240,7 @@ namespace CombatManager
                 else
                 {
 
-                    using (FileStream stream = new FileStream(filename, FileMode.Open))
+                    using (FileStream stream = new FileStream(filename, FileMode.Open, FileAccess.Read))
                     {
 
                         XDocument doc = XDocument.Parse(new StreamReader(stream).ReadToEnd());

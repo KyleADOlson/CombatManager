@@ -16,7 +16,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>kyleolson.combatmanager</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.7</string>
+	<string>1.0.8</string>
 	<key>MinimumOSVersion</key>
 	<string>5.0</string>
 	<key>UIDeviceFamily</key>
@@ -34,6 +34,51 @@
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>Images/icondoc320</string>
+				<string>Images/icondoc64</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Combat Manager Party File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>kyleolson.combatmanager.partyfile</string>
+			</array>
+		</dict>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.plain-text</string>
+				<string>public.text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Combat Manager File</string>
+			<key>UTTypeIdentifier</key>
+			<string>kyleolson.combatmanager.partyfile</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>cmpt</string>
+					<string>por</string>
+				</array>
+				<key>public.mime-type</key>
+				<string>application/xml</string>
+			</dict>
+		</dict>
+
 	</array>
 </dict>
 </plist>

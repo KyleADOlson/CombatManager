@@ -29,15 +29,32 @@ namespace CombatManagerMono
         {
             DBSettings.UseDB = false;
 
+            NSUrl url = null;
+            if (options != null)
+            {
+                url = (NSUrl)options.ValueForKey(UIApplication.LaunchOptionsUrlKey);
+            }
+
             window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
             viewController = new CombatManagerMonoViewController ();
+            viewController.StartupUrl = url;
             window.RootViewController = viewController;
             window.MakeKeyAndVisible ();
 			
+
             return true;
         }
 
+        public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+        {
+            if (url != null)
+            {
+                viewController.LoadUrl(url);
+                return true;
+            }
+            return false;
+        }
         public static CombatManagerMonoViewController RootController
         {
             get

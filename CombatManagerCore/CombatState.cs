@@ -1381,7 +1381,7 @@ namespace CombatManager
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Character>));
 
                     // A FileStream is needed to read the XML document.
-                    FileStream fs = new FileStream(filename, FileMode.Open);
+                    FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
 
 
                     List<Character> list = (List<Character>)serializer.Deserialize(fs);
