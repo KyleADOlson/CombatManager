@@ -1,5 +1,7 @@
 ﻿1.5.6
 Hide names of follower monsters on combat list
+Removing a hotkey does not require restarting app
+Fix Hero Lab import of names on NPCs with a description
 
 1.5.5
 Fix zip dll yet again.

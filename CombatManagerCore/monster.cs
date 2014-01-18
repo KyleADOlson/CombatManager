@@ -1798,13 +1798,27 @@ namespace CombatManager
         {
             if (readNameBlock)
             {
-                StringReader reader = new StringReader(statsblock);
-                String name = reader.ReadLine();
-                int loc = name.IndexOf('\t');
-                if (loc != -1)
+
+                String name = "";
+
+                Regex nameRegex = new Regex("(?<name>.+?)\tCR");
+                Match sm = nameRegex.Match(statsblock);
+                if (sm.Success)
                 {
-                    name = name.Substring(0, loc);
+                    name = sm.Groups["name"].Value;
                 }
+                else
+                {
+                    StringReader reader = new StringReader(statsblock);
+                    name = reader.ReadLine();
+                    int loc = name.IndexOf('\t');
+                    if (loc != -1)
+                    {
+                        name = name.Substring(0, loc);
+                    }
+                }
+
+                
                 monster.Name = name;
             }
 

@@ -7739,11 +7739,12 @@ namespace CombatManager
                     CombatHotKey chk = hk;
                     try
                     {
-
-                        InputBindings.Add(new KeyBinding(new RelayCommand((object x) =>
+                        InputBinding ib = new KeyBinding(new RelayCommand((object x) =>
                         {
                             TakeHotkeyAction(chk);
-                        }), hk.Key, hk.Modifier));
+                        }), hk.Key, hk.Modifier);
+                        _HotKeys.Add(ib);
+                        InputBindings.Add(ib);
                     }
                     catch (NotSupportedException)
                     {
