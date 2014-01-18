@@ -481,15 +481,15 @@ namespace CombatManagerMono
             _BottomView.Frame = new RectangleF(0, Bounds.Height - _BottomSize, Bounds.Width, _BottomSize);
 
 
-            SizeF sideSize = new SizeF(_BottomView.Bounds.Height, _SideButtonSize + 2);
+            SizeF sideSize = new SizeF(_BottomView.Bounds.Height, _SideButtonSize);
 
             _RollButton.Bounds = sideSize.OriginRect();
-            _RollButton.Center = new PointF(_SideButtonSize/2.0f - 1, _BottomView.Bounds.Height/2.0f);
+            _RollButton.Center = new PointF(_SideButtonSize/2.0f, _BottomView.Bounds.Height/2.0f);
             _RollButton.Transform = CGAffineTransform.MakeRotation((float)Math.PI/2.0f);
 
             
             _ClearButton.Bounds = sideSize.OriginRect();
-            _ClearButton.Center = new PointF(_BottomView.Bounds.Width - _SideButtonSize/2.0f + 1, _BottomView.Bounds.Height/2.0f);
+            _ClearButton.Center = new PointF(_BottomView.Bounds.Width - _SideButtonSize/2.0f, _BottomView.Bounds.Height/2.0f);
             _ClearButton.Transform = CGAffineTransform.MakeRotation((float)Math.PI/2.0f);
 
             RectangleF dieSpace = new RectangleF(_SideButtonSize, 0, _BottomView.Bounds.Size.Width - _SideButtonSize * 2, 
