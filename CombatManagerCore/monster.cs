@@ -5340,12 +5340,12 @@ namespace CombatManager
             }
             if (bonus.MeleeDamage != null)
             {
-                int val = remove ? -bonus.AttackDamage.Value : bonus.AttackDamage.Value;
+                int val = remove ? -bonus.MeleeDamage.Value : bonus.MeleeDamage.Value;
                 Melee = ChangeAttackDamage(Melee, val, val, val);
             }
             if (bonus.RangedDamage != null)
             {
-                int val = remove ? -bonus.AttackDamage.Value : bonus.AttackDamage.Value;
+                int val = remove ? -bonus.RangedDamage.Value : bonus.RangedDamage.Value;
                 Ranged = ChangeAttackDamage(Ranged, val, val, val);
             }
             if (bonus.Fort != null)
@@ -8349,7 +8349,7 @@ namespace CombatManager
                 if (spellsPrepared != value)
                 {
                     spellsPrepared = value;
-                    _SpellsPreparedBlock = null;
+                    //_SpellsPreparedBlock = null;
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("SpellsPrepared"));
@@ -8357,7 +8357,7 @@ namespace CombatManager
                 }
             }
         }
-        [XmlIgnore]
+        [DataMember]
         public ObservableCollection<SpellBlockInfo> SpellsPreparedBlock
         {
             get
@@ -8485,7 +8485,7 @@ namespace CombatManager
                 if (spellsKnown != value)
                 {
                     spellsKnown = value;
-                    _SpellsKnownBlock = null;
+                    //_SpellsKnownBlock = null;
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("SpellsKnown"));
@@ -8494,7 +8494,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [DataMember]
         public ObservableCollection<SpellBlockInfo> SpellsKnownBlock
         {
             get
