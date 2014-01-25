@@ -6818,6 +6818,21 @@ namespace CombatManager
 
                     RollResult dmg = atk.Damage.Roll();
 
+                    RollResult bonusDmg = null;
+                    String bonusType = null;
+                    DieRoll bonusRoll = null;
+                    if (atk.Plus != null)
+                    {
+                        Regex plusRegex = new Regex("(?<die>[0-9]+d[0-9]+((\\+|-)[0-9]+)?) (?<type>[a-zA-Z]+)");
+                        Match dm = plusRegex.Match(atk.Plus);
+                        if (dm.Success)
+                        {
+                            bonusRoll = DieRoll.FromString(dm.Groups["die"].Value);
+                            bonusDmg = bonusRoll.Roll();
+                            bonusType = dm.Groups["type"].Value;
+                        }
+                    }
+
                     p.Inlines.Add(new Run(CMStringUtilities.PlusFormatNumber(mod) + " hit "));
 
                     int actualDie = 0;
@@ -6873,6 +6888,13 @@ namespace CombatManager
                         if (UserSettings.Settings.ShowAllDamageDice)
                         {
                             p.Inlines.Add(new Run("(" + dmgtext + ")"));
+                        }
+
+                        if (bonusRoll != null)
+                        {
+                            p.Inlines.Add(new Run("+"));
+                            p.Inlines.Add(CreateRollElement(bonusDmg.Total.ToString(), Colors.White, Colors.DarkMagenta));
+                            p.Inlines.Add(" " + bonusType);
                         }
                         
 

@@ -4254,18 +4254,38 @@ namespace CombatManager
             Constitution = null;
 
             //add channel resistance 4
-
+            DefensiveAbilities = ChangeSkillStringMod(DefensiveAbilities, "channel resistance", 4, true);
+            
             // add DR 15/bludgeoning and magic
+            DR = AddDR(null, "bludgeoning and magic", 5);
 
             //add immunity to cold and electricity
+            Immune = AddImmunity(Immune, "cold");
+            Immune = AddImmunity(Immune, "electricity");
 
             //add rejuvenation (su)
+            SpecialAbility ab = new SpecialAbility();
+            ab.Name = "Rejuvenation";
+            ab.Text = "When a lich is destroyed, its phylactery (which is generally hidden by the lich in a safe place far from where it chooses to dwell) immediately begins to rebuild the undead spellcaster's body nearby. This process takes 1d10 days—if the body is destroyed before that time passes, the phylactery merely starts the process anew. After this time passes, the lich wakens fully healed (albeit without any gear it left behind on its old body), usually with a burning need for revenge against those who previously destroyed it.";
+            ab.Type = "Su";
+            SpecialAbilitiesList.Add(ab);
 
             //add melee touch attack
+            AddNaturalAttack("touch", 1, 8);
 
             //add Fear Aura (su)
+            ab = new SpecialAbility();
+            ab.Name = "Fear Aura";
+            ab.Text = "Creatures of less than 5 HD in a 60-foot radius that look at the lich must succeed on a Will save or become frightened. Creatures with 5 HD or more must succeed at a Will save or be shaken for a number of rounds equal to the lich's Hit Dice. A creature that successfully saves cannot be affected again by the same lich's aura for 24 hours. This is a mind-affecting fear effect.";
+            ab.Type = "Su";
+            SpecialAbilitiesList.Add(ab);
 
             //add Paralyzing Touch (su)
+            ab = new SpecialAbility();
+            ab.Name = "Paralyzing Touch";
+            ab.Text = "Any living creature a lich hits with its touch attack must succeed on a Fortitude save or be permanently paralyzed. Remove paralysis or any spell that can remove a curse can free the victim (see the bestow curse spell description, with a DC equal to the lich's save DC). The effect cannot be dispelled. Anyone paralyzed by a lich seems dead, though a DC 20 Perception check or a DC 15 Heal check reveals that the victim is still alive.";
+            ab.Type = "Su";
+            SpecialAbilitiesList.Add(ab);
 
             //add +8 racial bonus on Perception, Sense Motive and Stealth.
 
@@ -4733,6 +4753,11 @@ namespace CombatManager
 
         public void AddNaturalAttack(string name, int count, int step)
         {
+            AddNaturalAttack(name, count, step, null);
+        }
+
+        public void AddNaturalAttack(string name, int count, int step, string plus)
+        {
            
             if (Weapon.Weapons.ContainsKey(name))
             {
@@ -4749,6 +4774,10 @@ namespace CombatManager
                         {
                             wi.Count = count;
                         }
+                        if (plus != null)
+                        {
+                            wi.Plus = plus;
+                        }
                         bAdded = true;
                         break;
                     }
@@ -4759,6 +4788,10 @@ namespace CombatManager
                 {
                     WeaponItem item = new WeaponItem(Weapon.Weapons[name]);
                     item.Count = count;
+                    if (plus != null)
+                    {
+                        item.Plus = plus;
+                    }
                     attacks.NaturalAttacks.Add(item);
                 }
 
@@ -4780,6 +4813,12 @@ namespace CombatManager
 
 
                 attack.Bonus = new List<int>() { BaseAtk + AbilityBonus(Strength) + mods.Attack };
+
+                if (plus != null)
+                {
+                    attack.Plus = plus;
+                }
+                
                 Melee = AddAttack(Melee, attack);
             }
 
