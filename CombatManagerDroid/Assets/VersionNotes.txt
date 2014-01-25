@@ -1,6 +1,7 @@
 1.01
 Fix weapon editor
 Add Monster HP Rolling option to settings
+Fix layout issues on some devices
 
 1.00
 Initial release

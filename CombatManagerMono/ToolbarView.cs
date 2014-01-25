@@ -41,6 +41,7 @@ namespace CombatManagerMono
 		GradientButton clickedButton = null;
 
         GradientButton _AboutButton;
+        GradientButton _SettingsButton;
 		
 		public ToolbarView ()
 		{
@@ -80,19 +81,37 @@ namespace CombatManagerMono
 			
 			clickedButton = buttons[0];
             clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
-			
+		
+            _SettingsButton = new GradientButton();
+            _SettingsButton.SetImage(UIImage.FromFile("Images/settings.png"), UIControlState.Normal);
+            //_SettingsButton.Border = 0;
+            //_SettingsButton.BackgroundColor = UIColor.Clear;
+            //_SettingsButton.Gradient = new GradientHelper(0x00000000.UIColor());
+            _SettingsButton.CornerRadius = 0;
+            _SettingsButton.TouchUpInside += SettingsButtonClicked;            
+            _SettingsButton.Frame = new RectangleF(Bounds.Width - 64, (Bounds.Height - 48.0f)/2.0f, 48f, 48f);
+
+            AddSubview (_SettingsButton);
+            	
             _AboutButton = new GradientButton();
             _AboutButton.SetImage(UIImage.FromFile("Images/External/info.png"), UIControlState.Normal);
-            _AboutButton.Border = 0;
-            _AboutButton.BackgroundColor = UIColor.Clear;
-            _AboutButton.Gradient = new GradientHelper(0x00000000.UIColor());
+            // _AboutButton.Border = 0;
+            //_AboutButton.BackgroundColor = UIColor.Clear;
+            //_AboutButton.Gradient = new GradientHelper(0x00000000.UIColor());
+            _AboutButton.CornerRadius = 0;
             _AboutButton.TouchUpInside += AboutButtonClicked;            
-            _AboutButton.Frame = new RectangleF(Bounds.Width - 32, (Bounds.Height - 32.0f)/2.0f, 32f, 32f);
+            _AboutButton.Frame = new RectangleF(Bounds.Width - 23, (Bounds.Height - 48.0f)/2.0f, 48f, 48f);
 
             Add (_AboutButton);
 			BackgroundColor = UIColor.Black;
 			
 		}
+
+
+        void SettingsButtonClicked (object sender, EventArgs e)
+        {
+
+        }
 
         void AboutButtonClicked (object sender, EventArgs e)
         {
@@ -116,7 +135,10 @@ namespace CombatManagerMono
 		public override void LayoutSubviews ()
 		{
 			base.LayoutSubviews ();
-            _AboutButton.Frame = new RectangleF(Bounds.Width - 32, (Bounds.Height - 32.0f)/2.0f, 32f, 32f);
+            float buttonSize = 44f;
+
+            _AboutButton.Frame = new RectangleF(Bounds.Width - 54, (Bounds.Height - buttonSize)/2.0f, buttonSize, buttonSize);
+            _SettingsButton.Frame = new RectangleF(Bounds.Width - 102, (Bounds.Height - buttonSize)/2.0f, buttonSize, buttonSize);
 
 
 		}

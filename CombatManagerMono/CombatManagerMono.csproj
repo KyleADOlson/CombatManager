@@ -47,7 +47,6 @@
     <ConsolePause>False</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>True</MtouchDebug>
-    <MtouchProfiling>True</MtouchProfiling>
     <IpaPackageName>
     </IpaPackageName>
     <MtouchArch>ARMv7</MtouchArch>
@@ -702,6 +701,8 @@
     </Content>
     <Content Include="Images\icondoc320.png" />
     <Content Include="Images\icondoc64.png" />
+    <Content Include="Images\settings.png" />
+    <Content Include="Images\settings%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />

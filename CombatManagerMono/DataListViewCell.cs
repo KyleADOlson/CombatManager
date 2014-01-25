@@ -42,9 +42,12 @@ namespace CombatManagerMono
         public override void LayoutSubviews()
         {
             base.LayoutSubviews();
-            RectangleF accessoryViewFrame = AccessoryView.Frame;
-            accessoryViewFrame.X = Frame.Width - accessoryViewFrame.Width - 1;
-            AccessoryView.Frame = accessoryViewFrame;
+            if (AccessoryView != null)
+            {
+                RectangleF accessoryViewFrame = AccessoryView.Frame;
+                accessoryViewFrame.X = Frame.Width - accessoryViewFrame.Width - 1;
+                AccessoryView.Frame = accessoryViewFrame;
+            }
         }
 	}
 }

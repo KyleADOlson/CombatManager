@@ -16,7 +16,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>kyleolson.combatmanager</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.8</string>
+	<string>1.0.9</string>
 	<key>MinimumOSVersion</key>
 	<string>5.0</string>
 	<key>UIDeviceFamily</key>
