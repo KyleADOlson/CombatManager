@@ -184,6 +184,13 @@ namespace CombatManagerDroid
                 resHtml.AppendHtml(" Dmg: ");
                 RenderRollResult(resHtml, res.Damage);
 
+                foreach (CombatState.BonusDamage bd in res.BonusDamage)
+                {
+                    resHtml.Append(" + ");
+                    RenderRollResult(resHtml, bd.Damage);
+                    resHtml.Append(" " + bd.DamageType);
+                }
+
                 if (res.CritResult != null)
                 {
                     resHtml.AppendHtml(" Crit: ");

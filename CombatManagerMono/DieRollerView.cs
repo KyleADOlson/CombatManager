@@ -10,6 +10,7 @@ using MonoTouch.CoreGraphics;
 using System.Text;
 using MonoTouch.Foundation;
 using System.IO;
+using System.Text.RegularExpressions;
 
 
 namespace CombatManagerMono
@@ -369,6 +370,13 @@ namespace CombatManagerMono
                 resHtml.AppendHtml(" Dmg: ");
                 RenderRollResult(resHtml, res.Damage);
 
+                foreach (BonusDamage bd in res.BonusDamage)
+                {
+                    resHtml.Append(" + ");
+                    RenderRollResult(resHtml, bd.Damage);
+                    resHtml.Append(" " + bd.DamageType);
+                }
+
                 if (res.CritResult != null)
                 {
                     resHtml.AppendHtml(" Crit: ");
@@ -538,10 +546,21 @@ namespace CombatManagerMono
 
         public class SingleAttackRoll
         {
+            public SingleAttackRoll()
+            {
+                BonusDamage = new List<BonusDamage>();
+            }
             public RollResult Result {get; set;}
             public RollResult Damage {get; set;}
             public RollResult CritResult {get; set;}
             public RollResult CritDamage {get; set;}
+            public List<BonusDamage> BonusDamage {get; set;}
+        }
+
+        public class BonusDamage
+        {
+            public String DamageType { get; set; }
+            public RollResult Damage { get; set; }
         }
 
         public class AttackSetResult
@@ -641,7 +660,19 @@ namespace CombatManagerMono
                         sr.Result = roll.Roll();
                         sr.Damage = atk.Damage.Roll();
 
-
+                        if (atk.Plus != null)
+                        {
+                            Regex plusRegex = new Regex("(?<die>[0-9]+d[0-9]+((\\+|-)[0-9]+)?) (?<type>[a-zA-Z]+)");
+                            Match dm = plusRegex.Match(atk.Plus);
+                            if (dm.Success)
+                            {
+                                DieRoll bonusRoll = DieRoll.FromString(dm.Groups["die"].Value);
+                                BonusDamage bd = new BonusDamage();
+                                bd.Damage = bonusRoll.Roll();
+                                bd.DamageType = dm.Groups["type"].Value;
+                                sr.BonusDamage.Add(bd);
+                            }
+                        }
 
                         if (sr.Result.Rolls[0].Result >= atk.CritRange)
                         {

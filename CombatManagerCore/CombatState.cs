@@ -28,6 +28,7 @@ using System.IO;
 using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace CombatManager
 {
@@ -1543,10 +1544,21 @@ namespace CombatManager
 
         public class SingleAttackRoll
         {
+            public SingleAttackRoll()
+            {
+                BonusDamage = new List<BonusDamage>();
+            }
             public RollResult Result {get; set;}
             public RollResult Damage {get; set;}
             public RollResult CritResult {get; set;}
             public RollResult CritDamage {get; set;}
+            public List<BonusDamage> BonusDamage {get; set;}
+        }
+
+        public class BonusDamage
+        {
+            public String DamageType { get; set; }
+            public RollResult Damage { get; set; }
         }
 
         public class AttackSetResult
@@ -1645,6 +1657,20 @@ namespace CombatManager
 
                         sr.Result = roll.Roll();
                         sr.Damage = atk.Damage.Roll();
+
+                        if (atk.Plus != null)
+                        {
+                            Regex plusRegex = new Regex("(?<die>[0-9]+d[0-9]+((\\+|-)[0-9]+)?) (?<type>[a-zA-Z]+)");
+                            Match dm = plusRegex.Match(atk.Plus);
+                            if (dm.Success)
+                            {
+                                DieRoll bonusRoll = DieRoll.FromString(dm.Groups["die"].Value);
+                                BonusDamage bd = new BonusDamage();
+                                bd.Damage = bonusRoll.Roll();
+                                bd.DamageType = dm.Groups["type"].Value;
+                                sr.BonusDamage.Add(bd);
+                            }
+                        }
 
 
 
