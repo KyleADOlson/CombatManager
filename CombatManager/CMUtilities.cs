@@ -46,7 +46,7 @@ namespace CombatManager
 
     public static class CMUIUtilities
     {
-        public static T FindVisualParent<T>(DependencyObject child)
+        public static T FindVisualParent<T>(this DependencyObject child)
           where T : DependencyObject
         {
             // get parent item
