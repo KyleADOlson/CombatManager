@@ -73,13 +73,11 @@ namespace CombatManager
         {
             LoadWeapons();		
         }
-
         public Weapon()
         {
             _CritRange = 20;
             _CritMultiplier = 2;
         }
-
         //create a blank weapon from an attack
         public Weapon(Attack attack, bool ranged, MonsterSize size)
         {
@@ -117,12 +115,8 @@ namespace CombatManager
             _RangedTouch = attack.RangedTouch;
             _AltDamage = attack.AltDamage;
             _AltDamageStat = attack.AltDamageStat;
-            _AltDamageDrain = attack.AltDamageDrain;
-
-            
-
+            _AltDamageDrain = attack.AltDamageDrain;          
         }
-
         public object Clone()
         {
             Weapon weapon = new Weapon();
@@ -157,7 +151,6 @@ namespace CombatManager
 
             return weapon;
         }
-
         public String Name
         {
             get { return _Name; }
@@ -182,7 +175,6 @@ namespace CombatManager
                 }
             }
         }
-
         [XmlIgnore]
         public String OriginalName
         {
@@ -232,8 +224,7 @@ namespace CombatManager
                 }
             }
  
-        }
-		
+        }		
 		[XmlIgnore]
 		public DieRoll DamageDie
 		{
@@ -243,7 +234,6 @@ namespace CombatManager
 			}
 			
 		}
-
         [XmlIgnore]
         public string DamageText
         {
@@ -273,7 +263,6 @@ namespace CombatManager
                 }
             }
         }
-
         public DieRoll SizeDamageDie(MonsterSize size)
         {
             if (DamageDie == null)
@@ -283,7 +272,6 @@ namespace CombatManager
 
             return DieRoll.StepDie(DamageDie, (size - MonsterSize.Medium));
         }
-
         public string SizeDamageText(MonsterSize size)
         {
             DieRoll roll = SizeDamageDie(size);
@@ -306,11 +294,8 @@ namespace CombatManager
             }
 
             return roll.Text + critText;
-        }
-
-		
+        }	
         private const string RegCritString = "((?<critrange>[0-9]+)-[0-9]+)?(/?x(?<critmultiplier>[0-9]+))?";
-
         public String Critical
         {
             get { return _Critical; }
@@ -318,10 +303,7 @@ namespace CombatManager
             {
                 if (_Critical != value)
                 {
-                    _Critical = value;
-
-
-                    
+                    _Critical = value;                  
                     _CritRange = 20;
                     _CritMultiplier = 2;
                     if (_Critical != null)
@@ -451,7 +433,6 @@ namespace CombatManager
                 }
             }
         }
-
         public bool Throw
         {
             get { return _Throw; }
@@ -464,8 +445,6 @@ namespace CombatManager
                 }
             }
         }
-
-
         public bool RangedTouch
         {
             get { return _RangedTouch; }
@@ -478,7 +457,6 @@ namespace CombatManager
                 }
             }
         }
-
         public bool AltDamage
         {
             get { return _AltDamage; }
@@ -491,8 +469,6 @@ namespace CombatManager
                 }
             }
         }
-
-
         public Stat AltDamageStat
         {
             get { return _AltDamageStat; }
@@ -505,9 +481,6 @@ namespace CombatManager
                 }
             }
         }
-
-
-
         public bool AltDamageDrain
         {
             get { return _AltDamageDrain; }
@@ -520,9 +493,6 @@ namespace CombatManager
                 }
             }
         }
-
-
-
         public string URL
         {
             get { return _URL; }
@@ -547,7 +517,6 @@ namespace CombatManager
                 }
             }
         }        
-
         public String Misfire
         {
             get { return _Misfire; }
@@ -572,8 +541,6 @@ namespace CombatManager
                 }
             }
         }
-
-
         [XmlArrayItem("Group")]
         public List<String> Groups
         {
@@ -591,8 +558,6 @@ namespace CombatManager
 
             }
         }
-
-
         [XmlIgnore]
         public int CritRange
         {
@@ -602,7 +567,6 @@ namespace CombatManager
 
             }
         }
-
         [XmlIgnore]
         public int CritMultiplier
         {
@@ -611,7 +575,6 @@ namespace CombatManager
                 return _CritMultiplier;
             }
         }
-
         [XmlIgnore]
         public int HandsUsed
         {
@@ -627,8 +590,7 @@ namespace CombatManager
                 }
 
             }
-        }	
-		
+        }			
 		[XmlIgnore]
         public bool TwoHanded
         {
@@ -638,7 +600,6 @@ namespace CombatManager
 				return HandsUsed == 2;
 			}
 		}
-
         [XmlIgnore]
         public bool Natural
         {
@@ -647,7 +608,6 @@ namespace CombatManager
                 return Class == "Natural";
             }
         }
-
         [XmlIgnore]
         public bool Ranged
         {
@@ -656,7 +616,6 @@ namespace CombatManager
                 return Hands == "Ranged" || Hands == "One-Handed Firearm" || Hands == "Two-Handed Firearm";
             }
         }
-
         [XmlIgnore]
         public bool Firearm
         {
@@ -665,8 +624,6 @@ namespace CombatManager
                 return Hands == "One-Handed Firearm" || Hands == "Two-Handed Firearm";
             }
         }
-
-
         [XmlIgnore]
         public bool Double
         {
@@ -675,7 +632,6 @@ namespace CombatManager
                 return Hands == "Double";
             }
         }
-
         [XmlIgnore]
         public bool Light
         {
@@ -685,7 +641,6 @@ namespace CombatManager
                     ;
             }
         }
-
         [XmlIgnore]
         public bool WeaponFinesse
         {
@@ -705,7 +660,6 @@ namespace CombatManager
                 }
             }
         }
-
         public static Dictionary<String, Weapon> Weapons
         {
             get
@@ -713,7 +667,6 @@ namespace CombatManager
                 return weapons;
             }
         }
-
         public static Dictionary<String, Weapon> WeaponsPlural
         {
             get
@@ -721,7 +674,6 @@ namespace CombatManager
                 return weaponsPlural;
             }
         }
-
         public static Dictionary<String, Weapon> WeaponsOriginalName
         {
             get
@@ -729,7 +681,6 @@ namespace CombatManager
                 return weaponsPlural;
             }
         }
-
         public static Dictionary<String, Weapon> WeaponsAltName
         {
             get
@@ -737,8 +688,6 @@ namespace CombatManager
                 return weaponsAltName;
             }
         }
-
-
         public static Weapon Find(string name)
         {
             if (weapons.ContainsKey(name))
@@ -760,8 +709,6 @@ namespace CombatManager
 
             return null;
         }
-
-
         static void LoadWeapons()
         {
             FileStream fs = null;
@@ -815,7 +762,6 @@ namespace CombatManager
                 }
             }
         }
-
         public static string ReplaceOriginalWeaponNames(string text, bool uppercase)
         {
             string returnText = text;

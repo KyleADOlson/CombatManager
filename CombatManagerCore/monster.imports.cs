@@ -1,25 +1,16 @@
 ﻿﻿using System;
-using System.ComponentModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-﻿using System.Diagnostics;
 ﻿using System.Linq;
-﻿using System.Net.Sockets;
-﻿using System.Runtime.Remoting.Metadata.W3cXsd2001;
-﻿using System.Runtime.Serialization.Formatters;
-﻿using System.ServiceModel.Channels;
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
-using System.Globalization;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Xml.Linq;
 using Herolab;
 using Ionic.Zip;
-using System.Threading.Tasks;
-﻿using Type = Herolab.Type;
+
 
 
 namespace CombatManager
@@ -509,7 +500,7 @@ namespace CombatManager
                 
                     monster.name = (HLCharacter.name ?? "No Name Defined");
                     monster.race = (HLCharacter.race.name ?? "No Race Defined");
-                    monster.alignment = (HLCharacter.alignment.name ?? "No Alignment Defined");
+                    monster.alignment = (AlignmentText(ParseAlignment(HLCharacter.alignment.name)) ?? "No Alignment Defined");
                     monster.size = (HLCharacter.size.name ?? "No Size Defined");
                     monster.space = (HLCharacter.size.space.value ?? "No Space Defined");
                     monster.reach = (HLCharacter.size.reach.value ?? "No Space Defined");
@@ -567,32 +558,74 @@ namespace CombatManager
 	                            {
 	                                case "Strength":
 	                                {
-	                                    monster.strength = Int32.Parse(stat.attrvalue.modified);
+	                                    if (stat.attrvalue.text != "-")
+	                                    {
+	                                        monster.strength = Int32.Parse(stat.attrvalue.modified);
+	                                    }
+	                                    else
+	                                    {
+	                                        monster.strength = null;
+	                                    }
                                         break;
 	                                }
                                     case "Dexterity":
 	                                {
-	                                    monster.dexterity = Int32.Parse(stat.attrvalue.modified);
+	                                    if (stat.attrvalue.text != "-")
+	                                    {
+	                                        monster.dexterity = Int32.Parse(stat.attrvalue.modified);
+	                                    }
+	                                    else
+	                                    {
+	                                        monster.dexterity = null;
+	                                    }
                                         break;
 	                                }
                                     case "Constitution":
 	                                {
-	                                    monster.constitution = Int32.Parse(stat.attrvalue.modified);
+	                                    if (stat.attrvalue.text != "-")
+	                                    {
+	                                        monster.constitution = Int32.Parse(stat.attrvalue.modified);
+	                                    }
+	                                    else
+	                                    {
+	                                        monster.constitution = null;
+	                                    }
                                         break;
 	                                }
                                     case "Intelligence":
 	                                {
-                                        monster.intelligence = Int32.Parse(stat.attrvalue.modified);
+	                                    if (stat.attrvalue.text != "-")
+	                                    {
+	                                        monster.intelligence = Int32.Parse(stat.attrvalue.modified);
+	                                    }
+	                                    else
+	                                    {
+	                                        monster.intelligence = null;
+	                                    }
                                         break;
 	                                }
                                     case "Wisdom":
 	                                {
-                                        monster.wisdom = Int32.Parse(stat.attrvalue.modified);
+	                                    if (stat.attrvalue.text != "-")
+	                                    {
+	                                        monster.wisdom = Int32.Parse(stat.attrvalue.modified);
+	                                    }
+	                                    else
+	                                    {
+	                                        monster.wisdom = null;
+	                                    }
                                         break;
 	                                }
                                     case "Charisma":
 	                                {
-                                        monster.charisma = Int32.Parse(stat.attrvalue.modified);
+	                                    if (stat.attrvalue.text != "-")
+	                                    {
+	                                        monster.charisma = Int32.Parse(stat.attrvalue.modified);
+	                                    }
+	                                    else
+	                                    {
+	                                        monster.charisma = null;
+	                                    }
                                         break;
 	                                }
 	                            }
@@ -672,21 +705,21 @@ namespace CombatManager
                     {
                         int.TryParse(HLCharacter.initiative.total, out monster.init);
                     }
-                    //if (HLCharacter.feats.feat != null)
-                    //{
-                    //    foreach (var feat in HLCharacter.feats.feat)
-                    //    {
-                    //        if (feat.name.Contains("- All"))
-                    //        {
-                    //            string fixedfeat = feat.name.Replace(" - All", "");
-                    //            monster.AddFeat(fixedfeat);
-                    //        }
-                    //        else
-                    //        {
-                    //            monster.AddFeat(feat.name);
-                    //        }
-                    //    }
-                    //}
+                    if (HLCharacter.feats.feat != null)
+                    {
+                        foreach (var feat in HLCharacter.feats.feat)
+                        {
+                            if (feat.name.Contains("- All"))
+                            {
+                                string fixedfeat = feat.name.Replace(" - All", "");
+                                monster.AddFeat(fixedfeat);
+                            }
+                            else
+                            {
+                                monster.AddFeat(feat.name);
+                            }
+                        }
+                    }
                           
                     if (HLCharacter.skills.skill != null)
                         {
@@ -703,14 +736,43 @@ namespace CombatManager
                     monster.ParseSpellLikeAbilities();
                     CreateSpellBlocks(HLCharacter,monster);
                     //CreateSLAblock();
-                var stt = new Attack();
-                stt.Masterwork = true;
+                // this is fucking retaraded 
+                //Attack
+                //list<Attack>
+                //Attackset
+                //CharacterAttacks()
+                //CharacterAttacks(ObservableCollection<AttackSet> melee, ObservableCollection<Attack> ranged)
+                //CharacterAttacks(Monster stats)
+                if (HLCharacter.melee.weapon != null)
+                {
+                    var x = HLCharacter.melee.weapon.Where(weapon => weapon.categorytext.Contains("Melee Weapon"));
+                    var melee = new ObservableCollection<AttackSet>();
+                    var ranged = new ObservableCollection<Attack>();
+                    foreach (var weapon in x)
+                    {
 
-            }
+                        var dd = new Tuple<int, int, int>(0,0,0);
+                        if (!string.IsNullOrEmpty(weapon.damage))
+                        {
+                            dd = Getdamageroll(weapon.damage);
+                        }
+                        var dr = new DieRoll(dd.Item1,dd.Item2,dd.Item3);
+                        var attk = new Attack(Int32.Parse(weapon.quantity),weapon.name, dr, weapon.attack);
+                        var atkst = new List<Attack> {attk};
+                        var attkset = new AttackSet {WeaponAttacks = atkst};
+                        melee.Add(attkset);
+
+                    }
+                    var chrattk = new CharacterAttacks(melee,ranged);
+                    monster.melee = monster.MeleeString(chrattk);
+                }
+                
+
+            }//foreach
 
             
 
-        }
+        }//import method
 
         private static string HeroLabStatRegexString(string stat)
         {
@@ -1244,7 +1306,6 @@ namespace CombatManager
             }
             return result[0].Trim();
         }
-
         private static void CreateSpellBlockStrings(Herolab.Character Character, Monster monster)
         {
             if (Character.spellclasses.spellclass != null)
@@ -1308,7 +1369,6 @@ namespace CombatManager
             }
 
         }
-
         private static string SLAString(List<Special> list)
         {
             string[] durations = { "Constant", "At will", "1/day", "2/day", "3/day", "4/day", "5/day", "6/day", "7/day" };
@@ -1387,8 +1447,6 @@ namespace CombatManager
             }
             return null;
         }
-
-
         private static SpellBlockInfo PreparedBlock(Spellclass spellclass, List<Herolab.Spell> list, List<Class> acClasses)
         {
             
@@ -1467,10 +1525,7 @@ namespace CombatManager
          
             foreach (var spell in y)
             {
-                var si = new SpellInfo();
-                //if (Int32.Parse(spell.level) > Int32.Parse(spellclass.maxspelllevel)) { break; }
-
-   
+                var si = new SpellInfo(); 
                     li.Level = Int32.Parse(spell.level);
                     if (perday)
                     {
@@ -1662,7 +1717,6 @@ namespace CombatManager
             
 
         }
-
         private static string Stringfromlist(IEnumerable<string> List)
         {
             
@@ -1682,6 +1736,21 @@ namespace CombatManager
             }
             return sb.ToString();
         }
+        private static Tuple<int,int,int> Getdamageroll(string roll)
+        {
+            char[] splt = { '+','-' };
+            char[] splitdie = {'d'};
+            var x = roll.Split(splt);
+            var y = x[0].Split(splitdie);
+            if (roll.Contains("-"))
+            {
+                x[1]=x[1].Insert(0, "-");
+            }
+            return (x.Count() > 1) ? new Tuple<int, int, int>(Int32.Parse(y[0]), Int32.Parse(y[1]), Int32.Parse(x[1])) : new Tuple<int,int,int>(Int32.Parse(y[0]), Int32.Parse(y[1]), 0);
+        }
+
+
+
     }
     
 
