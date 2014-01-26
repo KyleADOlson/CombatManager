@@ -27,6 +27,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace CombatManager
 {
@@ -45,6 +46,7 @@ namespace CombatManager
         private int nonlethalDamage;
         private int temporaryHP;
         private string notes;
+        private ObservableCollection<ActiveResource> resources;
 
         private Guid id;
 
@@ -87,6 +89,8 @@ namespace CombatManager
             MaxHP = monster.HP;
             initiativeFollowers = new ObservableCollection<Character>();
             initiativeFollowers.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(initiativeFollowers_CollectionChanged);
+            resources = new ObservableCollection<ActiveResource>();
+
         }
 
   
@@ -115,6 +119,8 @@ namespace CombatManager
                 ac.Condition = Condition.FindCondition("Incorporeal");
                 this.monster.AddCondition(ac);
             }
+
+            LoadResources();
 			
         }
 
@@ -127,6 +133,10 @@ namespace CombatManager
             character.maxHP = maxHP;
             character.notes = notes;
             character.ID = Guid.NewGuid();
+            foreach (ActiveResource r in resources)
+            {
+                character.resources.Add(new ActiveResource(r));
+            }
 
             character.isMonster = isMonster;
 
@@ -157,6 +167,21 @@ namespace CombatManager
         public override string ToString()
         {
             return Name;
+        }
+
+        private void LoadResources()
+        {
+            if (monster.SpecialAttacks != null)
+            {
+                //find rage
+                Match m = Regex.Match(monster.SpecialAttacks, "[Rr]age \\((?<count>[0-9]+) rounds?/day\\)");
+                if (m.Success)
+                {
+                    int count = int.Parse(m.Groups["count"].Value);
+                    ActiveResource r = new ActiveResource() { Name = "Rage", Max = count, Current = count, Uses = count + " rounds/day" };
+                    Resources.Add(r);
+                }
+            }
         }
 
 
@@ -840,6 +865,25 @@ namespace CombatManager
             }
         }
 
+        [DataMember]
+        public ObservableCollection<ActiveResource> Resources
+        {
+            get
+            {
+                return resources;
+            }
+            set
+            {
+                if (resources != value)
+                {
+                    resources = value;
+
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Resources")); }
+
+                }
+            }
+        }
+
         [XmlIgnore]
         public string HiddenName
         {
@@ -867,7 +911,7 @@ namespace CombatManager
                 }
                 return adjuster;
             }
-        }
+        }        
 
         public class CharacterAdjuster : INotifyPropertyChanged
         {

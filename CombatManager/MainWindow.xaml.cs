@@ -7867,6 +7867,34 @@ namespace CombatManager
 
         }
 
+        private void DescreaseResourceButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ActiveResource r = (ActiveResource)((FrameworkElement)sender).DataContext;
+            r.Current = Math.Max(0, r.Current - 1);
+        }
+
+        private void IncreaseResourceButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+            ActiveResource r = (ActiveResource)((FrameworkElement)sender).DataContext;
+            r.Current++;
+        }
+
+        private void DeleteResourceButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            FrameworkElement el = ((FrameworkElement)sender);
+
+            ListBox box = el.FindVisualParent<ListBox>();
+            Character c = (Character)box.DataContext;
+            c.Resources.Remove((ActiveResource)el.DataContext);
+        }
+
+        private void AddResourceButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {        	
+            Character c = (Character) ((FrameworkElement)sender).DataContext;
+			c.Resources.Add(new ActiveResource(){Name="Resource", Current=0});
+        }
+
 
     }
 

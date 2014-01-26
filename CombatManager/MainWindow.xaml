@@ -897,6 +897,19 @@
             					<Button x:Name="EditAttacksButton" Content="Edit Attacks" HorizontalAlignment="Right" Margin="0,1.852,1.666,0" Width="Auto" RenderTransformOrigin="0.24,0.617" Height="Auto" VerticalAlignment="Top" VerticalContentAlignment="Top" Padding="1,0,1,-1" FontSize="10.667" FontWeight="Normal" Background="{DynamicResource TabItemHotBackground}" Foreground="Black" Click="EditAttackButton_Click"/>
             				</Grid>
             			</TabItem>
+                        <TabItem Header="Resources">
+                        	<Grid>
+                        		<Grid.RowDefinitions>
+                        			<RowDefinition Height="0.507*"/>
+                        			<RowDefinition Height="0.493*"/>
+                        		</Grid.RowDefinitions>
+                        		<Grid.Background>
+                        			<SolidColorBrush Color="{DynamicResource SecondaryColorBDark}"/>
+                        		</Grid.Background>
+                        		<Button x:Name="AddResourceButton" Content="Add" HorizontalAlignment="Left" Width="75" d:LayoutOverrides="Height" Grid.RowSpan="1" Click="AddResourceButton_Click"/>
+                        		<ListBox ItemsSource="{Binding Resources}" Margin="0" Grid.Row="1" Grid.RowSpan="1" ItemTemplate="{DynamicResource ResouceItemTemplate}" Background="#0BFFFFFF" HorizontalContentAlignment="Stretch"/>
+                        	</Grid>
+                        </TabItem>
             		</TabControl>
             	</Grid>
 			</Grid>
@@ -1249,6 +1262,19 @@
                                 <Button x:Name="EditAttacksButton" Content="Edit Attacks" HorizontalAlignment="Right" Margin="0,1.852,1.666,0" Width="Auto" RenderTransformOrigin="0.24,0.617" Height="Auto" VerticalAlignment="Top" VerticalContentAlignment="Top" Padding="1,0,1,-1" FontSize="10.667" FontWeight="Normal" Background="{DynamicResource TabItemHotBackground}" Foreground="Black" Click="EditAttackButton_Click"/>
                             </Grid>
                         </TabItem>
+                        <TabItem Header="Resources">
+                        	<Grid>
+                        		<Grid.RowDefinitions>
+                        			<RowDefinition Height="0.507*"/>
+                        			<RowDefinition Height="0.493*"/>
+                        		</Grid.RowDefinitions>
+                        		<Grid.Background>
+                        			<SolidColorBrush Color="{DynamicResource SecondaryColorBDark}"/>
+                        		</Grid.Background>
+                        		<Button x:Name="AddResourceButton" Content="Add" HorizontalAlignment="Left" Width="75" d:LayoutOverrides="Height" Grid.RowSpan="1" Click="AddResourceButton_Click"/>
+                        		<ListBox ItemsSource="{Binding Resources}" Margin="0" Grid.Row="1" Grid.RowSpan="1" ItemTemplate="{DynamicResource ResouceItemTemplate}" Background="#0BFFFFFF" HorizontalContentAlignment="Stretch"/>
+                        	</Grid>
+                        </TabItem>
                     </TabControl>
                 </Grid>
                 <StackPanel Margin="1,6.803,0,8" Orientation="Horizontal" d:LayoutOverrides="Height">
@@ -1264,6 +1290,28 @@
                 <DataTrigger Binding="{Binding InitiativeLeader}" Value="{x:Null}"/>
             </DataTemplate.Triggers>
         </DataTemplate>
+		<DataTemplate x:Key="ResouceItemTemplate">
+    		<Grid Margin="1">
+    			<Grid.RowDefinitions>
+    				<RowDefinition/>			
+				</Grid.RowDefinitions>
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition/>
+    				<ColumnDefinition Width="26"/>
+    				<ColumnDefinition Width="30"/>
+    				<ColumnDefinition Width="26"/>
+    				<ColumnDefinition Width="30"/>
+    			</Grid.ColumnDefinitions>
+    			<TextBox Margin="0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Center"/>
+    			<Button x:Name="DescreaseResourceButton" Grid.ColumnSpan="1" Content="-" Grid.Column="1" Width="20" Height="20" HorizontalAlignment="Center" Style="{DynamicResource ButtonSecondaryStyle}" Margin="3,0" Click="DescreaseResourceButton_Click"/>
+    			<TextBox Grid.Column="2" TextWrapping="Wrap" Text="{Binding Current}" Width="30" VerticalAlignment="Center"/>
+    			<Button x:Name="IncreaseResourceButton" Content="+" Grid.Column="3" Width="20" Height="20" Style="{DynamicResource ButtonSecondaryStyle}" Margin="3,0" Click="IncreaseResourceButton_Click"/>
+    			<Button x:Name="DeleteResourceButton" Margin="7,0" RenderTransformOrigin="0.222,-0.601" Grid.Column="4"  Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Stretch" Click="DeleteResourceButton_Click" VerticalAlignment="Center">
+    				<Button.ToolTip>Delete</Button.ToolTip>
+    				<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+    			</Button>
+    		</Grid>
+    	</DataTemplate>
         <DataTemplate x:Key="CombatListItemTemplate">
             <Grid Background="#03000000">
             	<Grid.ContextMenu>
