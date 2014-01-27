@@ -149,6 +149,8 @@ namespace CombatManager
 
         private ServiceHost _CombatViewService;
 
+        private PipeServer _PipeServer;
+
         static string startupTimeText = "";
 
 
@@ -401,7 +403,58 @@ namespace CombatManager
             LoadHotkeys();
 
             PerformUpdateCheck();
+
+
+
+
+
             
+        }
+
+
+        void PipeServer_FileRecieved(object sender, PipeServer.PipeServerEventArgs e)
+        {
+
+            this.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    string file = e.File;
+
+                    HandleFile(file);
+                }));
+        }
+
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+
+        }
+
+        void HandleFile(string filename)
+        {
+            FileInfo file = new FileInfo(filename);
+
+            if (file.Exists)
+            {
+                if (file.Extension == ".cmpt" || file.Extension == ".por" || file.Extension == ".rpgrp")
+                {
+
+                    PlayersOrMonstersDialog dlg = new PlayersOrMonstersDialog();
+                    dlg.Filename = filename;
+                    dlg.Owner = this;
+                    if (dlg.ShowDialog() == true)
+                    {
+                        combatState.LoadPartyFiles(new string[] { filename }, dlg.Monsters);
+                    }
+                }
+                else if (file.Extension == ".cmx")
+                {
+                    ImportDateFromFile(filename);
+                }
+                else if (file.Extension == ".cmcs")
+                {
+                    LoadCombatStateFromFile(filename);
+                }
+            }
         }
 
         void MarkTime(string info, ref DateTime t, ref DateTime last)
@@ -453,6 +506,18 @@ namespace CombatManager
                 RestoreDefaultLayout();
                 SaveCombatViewLayout();
             }
+
+            string[] args = Environment.GetCommandLineArgs();
+            if (args != null && args.Length > 1)
+            {
+                string file = args[1];
+
+                HandleFile(file);
+            }
+
+            _PipeServer = new PipeServer(new WindowInteropHelper(this).Handle);
+            _PipeServer.FileRecieved += new EventHandler<PipeServer.PipeServerEventArgs>(PipeServer_FileRecieved);
+            _PipeServer.RunServer();
         }
 
         void SaveDefaultLayout()
@@ -700,28 +765,33 @@ namespace CombatManager
                 // Process open file dialog box results
                 if (result == true)
                 {
-                    try
-                    {
-
-                        CombatState cs = XmlLoader<CombatState>.Load(dlg.FileName);
-
-                        combatState.Copy(cs);
-
-                        combatView.Refresh();
-                        //currentPlayerView.Refresh();
-                        monsterView.Refresh();
-                        playerView.Refresh();
-
-
-                        combatState.SortCombatList(false, false);
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Failure saving combat state: " + ex.ToString());
-                    }
+                    LoadCombatStateFromFile(dlg.FileName);
                 }
+            }
+        }
+
+        void LoadCombatStateFromFile(string file)
+        {
+            try
+            {
+
+                CombatState cs = XmlLoader<CombatState>.Load(file);
+
+                combatState.Copy(cs);
+
+                combatView.Refresh();
+                //currentPlayerView.Refresh();
+                monsterView.Refresh();
+                playerView.Refresh();
+
+
+                combatState.SortCombatList(false, false);
+
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Failure saving combat state: " + ex.ToString());
             }
         }
 
@@ -1360,6 +1430,10 @@ namespace CombatManager
             AddCRsToCombo(BetweenCRHighCombo, crs);
             BetweenCRHighCombo.SelectedIndex = BetweenCRHighCombo.Items.Count - 1;
 
+            AddClassesToCombo(MonsterClassCombo);
+
+            AddEnvironmentsToCombo(MonsterEnvironmentCombo);
+
 
             monsterTabView = new ListCollectionView(Monster.Monsters);
             monsterTabView.SortDescriptions.Add(
@@ -1388,6 +1462,52 @@ namespace CombatManager
                 }
             }
 
+        }
+
+        private void AddClassesToCombo(ComboBox box)
+        {
+            
+            box.Items.Add("All Classes");
+            List<string> names = new List<string>();
+            foreach (CharacterClassEnum e in Enum.GetValues(typeof(CharacterClassEnum)))
+            {
+                if (e != CharacterClassEnum.None)
+                {
+                    names.Add(CharacterClass.GetName(e));
+                }
+
+            }
+            names.Sort();
+            foreach (String s in names)
+            {
+                box.Items.Add(s);
+            }
+            box.SelectedIndex = 0;
+        }
+
+        private void AddEnvironmentsToCombo(ComboBox box)
+        {
+            box.Items.Add("All Environments");
+
+            HashSet<String> set = new HashSet<string>();
+
+            foreach (Monster m in Monster.Monsters)
+            {
+                if (m.Environment != null && m.Environment.Trim().Length > 0 && m.Environment != "?")
+                {
+                    set.Add(m.Environment.ToLower().Capitalize().Trim());
+                }
+            }
+
+            List<String> list = new List<String>(set);
+            list.Sort();
+
+            foreach (String s in list)
+            {
+                box.Items.Add(s);
+            }
+
+            box.SelectedIndex = 0;
         }
 
         void monsterTabView_CurrentChanged(object sender, EventArgs e)
@@ -3152,6 +3272,28 @@ namespace CombatManager
                 RefreshMonsterTabView();
             }
         }
+		
+		
+        private void ClassCombo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            SaveMonsterTabFilter();
+        	
+            using (var undoGroup = undo.CreateUndoGroup())
+            {
+                RefreshMonsterTabView();
+            }
+        }
+
+
+        private void MonsterEnvironmentCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SaveMonsterTabFilter();
+
+            using (var undoGroup = undo.CreateUndoGroup())
+            {
+                RefreshMonsterTabView();
+            }
+        }
 
         private void MonsterTabFilterBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -3168,7 +3310,8 @@ namespace CombatManager
 
 
             return MonsterTextFilter(monster) && MonsterCRFilter(monster) && MonsterTypeFilter(monster)
-                && MonsterNPCFilter(monster) && SourceFilter(monster.Source);
+                && MonsterNPCFilter(monster) && SourceFilter(monster.Source) && MonsterClassFilter(monster)
+                && MonsterEnvironmentFilter(monster);
         }
 
         private bool MonsterTextFilter(Monster monster)
@@ -3275,6 +3418,43 @@ namespace CombatManager
                     return (monster.NPC == useNPC) && !custom;
                 }
             }
+        }
+
+        private bool MonsterClassFilter(Monster monster)
+        {
+            if (MonsterClassCombo.SelectedIndex == 0)
+            {
+                return true;
+            }
+
+            if (monster.Class == null)
+            {
+                return false;
+            }
+
+            return (monster.Class.ToUpper().Contains(((string)MonsterClassCombo.SelectedValue).ToUpper()));
+
+        }
+        private bool MonsterEnvironmentFilter(Monster monster)
+        {
+            if (MonsterEnvironmentCombo.SelectedIndex == 0)
+            {
+                return true;
+            }
+
+            if (monster.Environment == null)
+            {
+                return false;
+            }
+
+            string environment = ((string)MonsterEnvironmentCombo.SelectedValue).ToUpper();
+            if (environment.Length > 3 && environment.Substring(0, 4) == "ANY ")
+            {
+                environment = environment.Replace("ANY ", "");
+            }
+            
+            return (monster.Environment.ToUpper().Contains(environment) && !monster.Environment.ToUpper().Contains("NON-" + environment));
+
         }
 
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -7221,12 +7401,17 @@ namespace CombatManager
             fd.Filter = exportFileFilter;
             if (fd.ShowDialog() == true)
             {
-                ExportData x = XmlLoader<ExportData>.Load(fd.FileName);
-                ExportDialog dlg = new ExportDialog(x);
-                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                dlg.ShowDialog();
+                ImportDateFromFile(fd.FileName);
 
             }
+        }
+
+        private void ImportDateFromFile(string filename)
+        {
+            ExportData x = XmlLoader<ExportData>.Load(filename);
+            ExportDialog dlg = new ExportDialog(x);
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            dlg.ShowDialog();
         }
 
         private void ExportDataMenuItem_Click(object sender, RoutedEventArgs e)
@@ -7894,6 +8079,8 @@ namespace CombatManager
             Character c = (Character) ((FrameworkElement)sender).DataContext;
 			c.Resources.Add(new ActiveResource(){Name="Resource", Current=0});
         }
+
+
 
 
     }

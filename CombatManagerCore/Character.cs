@@ -174,11 +174,25 @@ namespace CombatManager
             if (monster.SpecialAttacks != null)
             {
                 //find rage
-                Match m = Regex.Match(monster.SpecialAttacks, "[Rr]age \\((?<count>[0-9]+) rounds?/day\\)");
+                Match m = Regex.Match(monster.SpecialAttacks, "[Rr]age \\((?<count>[0-9]+) rounds?/ ?day\\)");
                 if (m.Success)
                 {
                     int count = int.Parse(m.Groups["count"].Value);
                     ActiveResource r = new ActiveResource() { Name = "Rage", Max = count, Current = count, Uses = count + " rounds/day" };
+                    Resources.Add(r);
+                }
+
+
+            }
+
+            if (monster.SQ != null)
+            {
+                //find rage
+                Match m = Regex.Match(monster.SQ, "[Kk]i [Pp]ool \\((?<count>[0-9]+) points?,");
+                if (m.Success)
+                {
+                    int count = int.Parse(m.Groups["count"].Value);
+                    ActiveResource r = new ActiveResource() { Name = "Ki pool", Max = count, Current = count };
                     Resources.Add(r);
                 }
             }

@@ -176,25 +176,34 @@ namespace CombatManager
 
         private void CopyFrom(DieRoll old)
         {
-            
-            count = old.count;
-            fraction = old.fraction;
-            die = old.die;
-            mod = old.mod;
 
-
-            if (old.extraRolls != null)
+            if (old == null)
             {
-                extraRolls = new List<DieStep>();
-
-                foreach (DieStep step in old.extraRolls)
-                {
-                    extraRolls.Add(new DieStep(old.count, old.die));
-                }
+                count = 0;
+                die = 0;
+                mod = 0;
             }
             else
             {
-                extraRolls = null;
+                count = old.count;
+                fraction = old.fraction;
+                die = old.die;
+                mod = old.mod;
+
+
+                if (old.extraRolls != null)
+                {
+                    extraRolls = new List<DieStep>();
+
+                    foreach (DieStep step in old.extraRolls)
+                    {
+                        extraRolls.Add(new DieStep(old.count, old.die));
+                    }
+                }
+                else
+                {
+                    extraRolls = null;
+                }
             }
         }
 		

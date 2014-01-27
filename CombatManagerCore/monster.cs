@@ -164,7 +164,7 @@ namespace CombatManager
                 XDocument doc = XDocument.Load(new StreamReader(CoreContext.Context.Assets.Open(filename)));
     #else
 
-                XDocument doc = XDocument.Load(filename);
+                XDocument doc = XDocument.Load(Path.Combine(XmlLoader<Monster>.AssemblyDir, filename));
     #endif
                
                 foreach (var v in doc.Descendants("Monster"))

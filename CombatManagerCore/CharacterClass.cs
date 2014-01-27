@@ -69,6 +69,7 @@ namespace CombatManager
 
         static CharacterClass()
         {
+            _EnumToName[CharacterClassEnum.None] = "None";
             _EnumToName[CharacterClassEnum.Barbarian] = "Barbarian";
             _EnumToName[CharacterClassEnum.Bard] = "Bard";
             _EnumToName[CharacterClassEnum.Cleric] = "Cleric";

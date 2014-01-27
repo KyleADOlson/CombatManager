@@ -168,6 +168,11 @@
     <Compile Include="DragAdorner.cs" />
     <Compile Include="FeatBlockCreator.cs" />
     <Compile Include="ListViewDragDropManager.cs" />
+    <Compile Include="Pipes\PipeClient.cs" />
+    <Compile Include="Pipes\PipeServer.cs" />
+    <Compile Include="PlayersOrMonstersDialog.xaml.cs">
+      <DependentUpon>PlayersOrMonstersDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="RuleBlockCreator.cs" />
     <Compile Include="MonsterBlockCreator.cs" />
@@ -274,6 +279,10 @@
     <Page Include="OGLWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayersOrMonstersDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
       <Generator>MSBuild:Compile</Generator>

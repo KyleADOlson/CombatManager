@@ -3332,7 +3332,9 @@
         				<Image Height="16" Source="Images/reset-16.png" Stretch="Fill" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             		
         			</Button>
-        		</Grid>
+        			<ComboBox  Grid.Column="1" Height="23" Margin="427.5,4,0,0" x:Name="MonsterClassCombo" VerticalAlignment="Top" SelectionChanged="ClassCombo_SelectionChanged" HorizontalAlignment="Left" Width="96"/>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="525,4,0,0" Name="MonsterEnvironmentCombo" VerticalAlignment="Top" Width="122" Grid.Column="1" SelectionChanged="MonsterEnvironmentCombo_SelectionChanged" />
+                </Grid>
         	</TabItem>
         	<TabItem x:Name="RulesTab" IsSelected="True">
         		<TabItem.Header>

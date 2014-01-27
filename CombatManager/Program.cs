@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
+using CombatManager.Pipes;
+
 namespace CombatManager
 {
     class Program
@@ -16,7 +18,10 @@ namespace CombatManager
         {
             if (!mutex.WaitOne(TimeSpan.Zero, true))
             {
-
+                if (args.Length > 0)
+                {
+                    PipeClient.SendFile(args[0]);
+                }
             }
             else
             {
