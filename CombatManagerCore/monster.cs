@@ -32,10 +32,9 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
-using Herolab;
+
 using Ionic.Zip;
 using System.Threading.Tasks;
-
 
 
 namespace CombatManager
@@ -1229,8 +1228,6 @@ namespace CombatManager
             return m;
 		}
 
-
-
         void UpdateFromDetailsDB()
         {
             if (_DetailsID != 0)
@@ -1348,8 +1345,6 @@ namespace CombatManager
             return text;
         }
 
-
-
         private static string TypesString
         {
             get
@@ -1407,8 +1402,6 @@ namespace CombatManager
             }
         }
 
-
-
         private static string GetLine(string start, string text, bool bFix)
         {
             string returnText = null;
@@ -1451,11 +1444,6 @@ namespace CombatManager
 
             return returnText;
         }
-
-
-
-
-
 
         private static string FixPCGenFeatList(string text)
         {
@@ -1630,8 +1618,6 @@ namespace CombatManager
 
         }
 
-
-
         private static int FindModifierNumber(string text, string modifierName)
         {
             int value = 0;
@@ -1777,8 +1763,6 @@ namespace CombatManager
 
             return returnText;
         }
-
-
 
         private static string AddSR(string text, int value)
         {
@@ -2379,10 +2363,10 @@ namespace CombatManager
             Speed = AddFlyFromMove(Speed, 2, "average");
 
             //set bite & 2 claw attacks
-            AddNaturalAttack("bite", 1, 1);
+            AddNaturalAttack("bite", 2, 1);
 
 
-            AddNaturalAttack("claw", 2, 0);
+            AddNaturalAttack("claw", 1, 0);
 
             //add breath weapon
             SpecialAttacks = AddSpecialAttack(SpecialAttacks,
@@ -2945,18 +2929,38 @@ namespace CombatManager
             Constitution = null;
 
             //add channel resistance 4
-
+            DefensiveAbilities = ChangeSkillStringMod(DefensiveAbilities, "channel resistance", 4, true);
+            
             // add DR 15/bludgeoning and magic
+            DR = AddDR(null, "bludgeoning and magic", 5);
 
             //add immunity to cold and electricity
+            Immune = AddImmunity(Immune, "cold");
+            Immune = AddImmunity(Immune, "electricity");
 
             //add rejuvenation (su)
+            SpecialAbility ab = new SpecialAbility();
+            ab.Name = "Rejuvenation";
+            ab.Text = "When a lich is destroyed, its phylactery (which is generally hidden by the lich in a safe place far from where it chooses to dwell) immediately begins to rebuild the undead spellcaster's body nearby. This process takes 1d10 days—if the body is destroyed before that time passes, the phylactery merely starts the process anew. After this time passes, the lich wakens fully healed (albeit without any gear it left behind on its old body), usually with a burning need for revenge against those who previously destroyed it.";
+            ab.Type = "Su";
+            SpecialAbilitiesList.Add(ab);
 
             //add melee touch attack
+            AddNaturalAttack("touch", 1, 8);
 
             //add Fear Aura (su)
+            ab = new SpecialAbility();
+            ab.Name = "Fear Aura";
+            ab.Text = "Creatures of less than 5 HD in a 60-foot radius that look at the lich must succeed on a Will save or become frightened. Creatures with 5 HD or more must succeed at a Will save or be shaken for a number of rounds equal to the lich's Hit Dice. A creature that successfully saves cannot be affected again by the same lich's aura for 24 hours. This is a mind-affecting fear effect.";
+            ab.Type = "Su";
+            SpecialAbilitiesList.Add(ab);
 
             //add Paralyzing Touch (su)
+            ab = new SpecialAbility();
+            ab.Name = "Paralyzing Touch";
+            ab.Text = "Any living creature a lich hits with its touch attack must succeed on a Fortitude save or be permanently paralyzed. Remove paralysis or any spell that can remove a curse can free the victim (see the bestow curse spell description, with a DC equal to the lich's save DC). The effect cannot be dispelled. Anyone paralyzed by a lich seems dead, though a DC 20 Perception check or a DC 15 Heal check reveals that the victim is still alive.";
+            ab.Type = "Su";
+            SpecialAbilitiesList.Add(ab);
 
             //add +8 racial bonus on Perception, Sense Motive and Stealth.
 
@@ -3422,29 +3426,47 @@ namespace CombatManager
             }
         }
 
-        public void AddNaturalAttack(string naName, int count, int step)
+        public void AddNaturalAttack(string name, int count, int step)
         {
+            AddNaturalAttack(name, count, step, null);
+        }
 
-            if (Weapon.Weapons.ContainsKey(naName))
+        public void AddNaturalAttack(string name, int count, int step, string plus)
+        {
+           
+            if (Weapon.Weapons.ContainsKey(name))
             {
                 ObservableCollection<AttackSet> sets = new ObservableCollection<AttackSet>(MeleeAttacks);
-                ObservableCollection<Attack> naRanged = new ObservableCollection<Attack>(RangedAttacks);
-                CharacterAttacks attacks = new CharacterAttacks(sets, naRanged);
+                ObservableCollection<Attack> ranged = new ObservableCollection<Attack>(RangedAttacks);
+                CharacterAttacks attacks = new CharacterAttacks(sets, ranged);
 
-                bool bAttackalreadyExists = false;
-                foreach (WeaponItem wi in attacks.NaturalAttacks.Where(wi => !string.Equals(wi.Name, naName)))
+                bool bAdded = false;
+                foreach (WeaponItem wi in attacks.NaturalAttacks)
                 {
-                    if (wi.Count < count)
+                    if (String.Compare(wi.Name, Name, true) == 0)
                     {
-                        wi.Count = count;
+                        if (wi.Count < count)
+                        {
+                            wi.Count = count;
+                        }
+                        if (plus != null)
+                        {
+                            wi.Plus = plus;
+                        }
+                        bAdded = true;
+                        break;
                     }
-                    bAttackalreadyExists = true;
-                    break;
+
                 }
 
-                if (!bAttackalreadyExists)
+                if (!bAdded)
                 {
-                    WeaponItem item = new WeaponItem(Weapon.Weapons[naName]) { Count = count };
+                    WeaponItem item = new WeaponItem(Weapon.Weapons[name]);
+                    item.Count = count;
+                    if (plus != null)
+                    {
+                        item.Plus = plus;
+                    }
                     attacks.NaturalAttacks.Add(item);
                 }
 
@@ -3453,7 +3475,11 @@ namespace CombatManager
             else
             {
 
-                Attack attack = new Attack { CritMultiplier = 2, CritRange = 20, Name = naName, Count = count };
+                Attack attack = new Attack();
+                attack.CritMultiplier = 2;
+                attack.CritRange = 20;
+                attack.Name = name;
+                attack.Count = count;
                 MonsterSize monsterSize = SizeMods.GetSize(Size);
                 SizeMods mods = SizeMods.GetMods(monsterSize);
 
@@ -3462,6 +3488,12 @@ namespace CombatManager
 
 
                 attack.Bonus = new List<int>() { BaseAtk + AbilityBonus(Strength) + mods.Attack };
+
+                if (plus != null)
+                {
+                    attack.Plus = plus;
+                }
+                
                 Melee = AddAttack(Melee, attack);
             }
 
@@ -3990,11 +4022,11 @@ namespace CombatManager
 
             int diff = newBonus - oldBonus;
 
-            ////adjust perception (Redundant)
-            //if (!ChangeSkill("Perception", diff))
-            //{
-            //    Senses = ChangeSkillStringMod(Senses, "Perception", diff);
-            //}
+            //adjust perception
+            if (!ChangeSkill("Perception", diff))
+            {
+                Senses = ChangeSkillStringMod(Senses, "Perception", diff);
+            }
 
             //adjust save
             Will += diff;
@@ -4025,13 +4057,13 @@ namespace CombatManager
             //adjust skills
             ChangeSkillsForStat(Stat.Intelligence, diff);
 
-            // Why does this exist here? (Causes problems and unnecessary)
-            //CreatureTypeInfo info = CreatureTypeInfo.GetInfo(Type);
+
+            CreatureTypeInfo info = CreatureTypeInfo.GetInfo(Type);
             
-            ////get skill count
-            //int oldSkillCount = Math.Max(info.Skills + oldBonus, 1);
-            //int newSkillCount = Math.Max(info.Skills + newBonus, 1);
-            //AdjustSkills(newSkillCount * HDRoll.TotalCount - oldSkillCount * HDRoll.TotalCount);
+            //get skill count
+            int oldSkillCount = Math.Max(info.Skills + oldBonus, 1);
+            int newSkillCount = Math.Max(info.Skills + newBonus, 1);
+            AdjustSkills(newSkillCount * HDRoll.TotalCount - oldSkillCount * HDRoll.TotalCount);
 
         }
 
@@ -5170,6 +5202,10 @@ namespace CombatManager
             
         }
 
+        
+
+  
+
         public void BaseClone(Monster s)
         {
             foreach (ActiveCondition c in ActiveConditions)
@@ -5336,12 +5372,12 @@ namespace CombatManager
             }
             if (bonus.MeleeDamage != null)
             {
-                int val = remove ? -bonus.MeleeDamage.Value : bonus.MeleeDamage.Value;
+                int val = remove ? -bonus.MeleeDamage.Value : bonus.AttackDamage.Value;
                 Melee = ChangeAttackDamage(Melee, val, val, val);
             }
             if (bonus.RangedDamage != null)
             {
-                int val = remove ? -bonus.RangedDamage.Value : bonus.RangedDamage.Value;
+                int val = remove ? -bonus.RangedDamage.Value : bonus.AttackDamage.Value;
                 Ranged = ChangeAttackDamage(Ranged, val, val, val);
             }
             if (bonus.Fort != null)
@@ -5808,6 +5844,8 @@ namespace CombatManager
             return added;
         }
 
+
+
         public void AdjustSize(int diff)
         {
             MonsterSize sizeOld = SizeMods.GetSize(Size);
@@ -5863,6 +5901,194 @@ namespace CombatManager
                 Space = newMods.Space;
             }
         }
+
+
+        protected string ChangeAttackMods(string text, int diff)
+        {
+            if (text == null)
+            {
+                return null;
+            }
+            string returnText = text;
+
+			if (returnText.IndexOf(" or ") > 0)
+			{
+				List<string> orAttacks = new List<string>();
+				foreach (string subAttack in returnText.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
+					orAttacks.Add(ChangeAttackMods(subAttack, diff));
+
+				return string.Join(" or ", orAttacks.ToArray());
+			}
+
+			if (returnText.IndexOf(" and ") > 0)
+			{
+				List<string> andAttacks = new List<string>();
+				foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+					andAttacks.Add(ChangeAttackMods(subAttack, diff));
+
+				return string.Join(" and ", andAttacks.ToArray());
+			}			
+
+            //find mods 
+			return ChangeSingleAttackMods(diff, returnText);
+        }
+
+        private static string ChangeSingleAttackMods(int diff, string returnText)
+		{
+			Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+
+			returnText = regAttack.Replace(returnText, delegate(Match m)
+			{
+				Attack info = Attack.ParseAttack(m);
+				//get mod
+				for (int i = 0; i < info.Bonus.Count; i++)
+				{
+					info.Bonus[i] += diff;
+				}
+
+				return info.Text;
+
+			});
+			return returnText;
+		}
+
+        private static string ChangeAttackDieStep(string text, int diff)
+        {
+            if (text == null)
+            {
+                return null;
+            }
+            string returnText = text;
+
+            if (returnText.IndexOf(" or ") > 0)
+            {
+                List<string> orAttacks = new List<string>();
+                foreach (string subAttack in returnText.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
+                    orAttacks.Add(ChangeAttackDieStep(subAttack, diff));
+
+                return string.Join(" or ", orAttacks.ToArray());
+            }
+
+            if (returnText.IndexOf(" and ") > 0)
+            {
+                List<string> andAttacks = new List<string>();
+                foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+                    andAttacks.Add(ChangeAttackDieStep(subAttack, diff));
+
+                return string.Join(" and ", andAttacks.ToArray());
+            }
+
+            //find mods 
+            return ChangeSingleAttackDieStep(returnText, diff);
+        }
+
+
+        private static string ChangeSingleAttackDieStep(string text, int diff)
+        {
+            if (text == null)
+            {
+                return null;
+            }
+
+            string returnText = text;
+
+            Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+
+            returnText = regAttack.Replace(returnText, delegate(Match m)
+            {
+                Attack info = Attack.ParseAttack(m);
+
+
+                info.Damage = DieRoll.StepDie(info.Damage, diff);
+
+                return info.Text;
+
+            });
+
+            return returnText;
+
+        }
+
+		public string ChangeAttackDamage(string text, int diff, int diffPlusHalf, int halfDiff)
+		{
+
+			if (text == null)
+			{
+				return null;
+			}
+
+			string returnText = text;
+
+			if (text.IndexOf(" or ") > 0)
+			{
+				List<string> orAttack = new List<string>();
+				foreach (string subAttack in text.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
+					orAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
+
+				return string.Join(" or ", orAttack.ToArray());
+			}
+
+			if (text.IndexOf(" and ") > 0)
+			{
+				List<string> andAttack = new List<string>();
+				foreach (string subAttack in text.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+					andAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
+
+				return string.Join(" and ", andAttack.ToArray());
+			}
+
+			return changeAttack(diff, diffPlusHalf, halfDiff, returnText);
+		}
+
+		private string changeAttack(int diff, int diffPlusHalf, int halfDiff, string returnText)
+		{
+			Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+
+			returnText = regAttack.Replace(returnText, delegate(Match m)
+			{
+				Attack info = Attack.ParseAttack(m);
+
+				if (!info.AltDamage)
+				{
+					int applyDiff = diff;
+
+					if (info.Weapon != null)
+					{
+						if (info.Weapon.Class == "Natual" && info.Weapon.Light)
+						{
+							applyDiff = halfDiff;
+						}
+
+						else if (info.Weapon.Hands == "Two-Handed")
+						{
+							applyDiff = diffPlusHalf;
+						}
+					}
+
+
+					info.Damage.mod += applyDiff;
+
+					if (info.OffHandDamage != null)
+					{
+						if (HasFeat("Double Slice") || HasSpecialAbility("Superior Two-Weapon Fighting"))
+						{
+							info.OffHandDamage.mod += applyDiff;
+						}
+						else
+						{
+							info.OffHandDamage.mod += halfDiff;
+						}
+
+					}
+
+				}
+
+				return info.Text;
+
+			});
+			return returnText;
+		}
+
 
         private static string ChangeReachForSize(string reach, MonsterSize sizeOld, MonsterSize sizeNew, int diff)
         {
@@ -5936,6 +6162,305 @@ namespace CombatManager
 
             return removed;
         }
+
+
+
+        public string MeleeString(CharacterAttacks attacks)
+        {
+            string text = "";
+
+            
+            //find combat feats
+            CombatFeats cf = GetCombatFeats();
+
+            int offHandAttacks = 1 + (cf.improvedTwoWeaponFighting ? 1 : 0) + (cf.greaterTwoWeaponFighting ? 1 : 0);
+
+
+            bool firstSet = true;
+
+            List<List<WeaponItem>> setList = new List<List<WeaponItem>>();
+
+            foreach (List<WeaponItem> list in attacks.MeleeWeaponSets)
+            {
+                if (list.Count > 0)
+                {
+                    setList.Add(list);
+                }
+            }
+
+            
+
+
+            if (attacks.NaturalAttacks.Count > 0)
+            {
+                setList.Add(new List<WeaponItem>());
+            }
+
+
+
+            foreach (List<WeaponItem> set in setList)
+            {
+                List<Attack> attackSet = new List<Attack>();
+
+                //determine if we are have multiple attacks
+                bool hasOff = false;
+                bool hasHeavyOff = false;
+                foreach (WeaponItem item in set)
+                {
+                    if (item.Weapon.Hands == "Double" || !item.MainHand)
+                    {
+                        hasOff = true;
+                    }
+                    if (!item.MainHand && !item.Weapon.Light)
+                    {
+                        //ignore special cases
+                        if (!(string.Compare(item.Name, "Whip") == 0 && cf.whipMastery))
+                        {
+                            hasHeavyOff = true;
+                            break;
+                        }
+                    }
+                }
+
+                int handsUsed = 0;
+                foreach (WeaponItem item in set)
+                {
+
+                    //find feats for atttack
+                    AttackFeats af = GetAttackFeats(item);
+
+                    //create attack
+                    Attack attack = StartAttackFromItem(item, af, cf);
+
+                    //get hand related bonus
+                    int handMod = 0;
+                    int offHandMod = 0;
+                    GetHandMods(hasOff, hasHeavyOff, item, cf, out handMod, out offHandMod);                   
+
+                    //add bonuses
+                    attack.Bonus = new List<int>();
+                    int baseBonus = BaseAtk;
+                    bool firstBonus = true;
+                    int count = 0;
+                    while ((baseBonus > 0 || firstBonus) && (item.MainHand || count < offHandAttacks || cf.superiorTwoWeaponFighting))
+                    {
+                        attack.Bonus.Add(AttackBonus(baseBonus, handMod, item, cf, af));
+
+                        if (item.Weapon.Double)
+                        {
+                            if (cf.superiorTwoWeaponFighting || count < offHandAttacks)
+                            {
+                                attack.Bonus.Add(AttackBonus(baseBonus, offHandMod, item, cf, af));
+                            }
+                            
+                        }
+
+                        if (firstBonus && item.HasSpecialAbility("speed"))
+                        {
+                            attack.Bonus.Add(AttackBonus(baseBonus, 0, item, cf, af));
+                        }
+                        
+                        baseBonus -= 5;
+                        firstBonus = false;
+                        count++;
+
+                    }
+
+                    //set damage
+                    SetAttackDamageMod(attack, item, af, cf, false, false);
+
+                    //add to set
+                    attackSet.Add(attack);
+
+                    //add hands
+                    handsUsed += item.Weapon.HandsUsed;
+                }
+
+                bool hasWeaponAttack = (handsUsed > 0);
+
+                int handsToGive = (attacks.Hands - handsUsed);
+
+                foreach (WeaponItem item in attacks.NaturalAttacks)
+                {
+                    bool useAttack = true;
+                    int useCount = item.Count;
+
+                    //skip attack if hand full
+                    if (item.Weapon.IsHand && handsUsed > 0)
+                    {
+
+                        useAttack = false;
+                        handsUsed -= item.Count;
+
+                        if (handsToGive > 0)
+                        {
+                            handsToGive -= item.Count;
+                            useAttack = true;
+
+                            if (handsToGive < 0)
+                            {
+                                useCount = item.Count + handsToGive;
+                            }
+                        }
+
+                    }
+
+                    if (useAttack)
+                    {
+                        //find feats for atttack
+                        AttackFeats af = GetAttackFeats(item);
+
+                        //create attack
+                        Attack attack = StartAttackFromItem(item, af, cf);
+                        
+                        //set count
+                        attack.Count = useCount;
+
+                        //get hand related bonus
+                        int handMod = 0;
+                        if (hasWeaponAttack)
+                        {
+                            if (cf.multiAttack)
+                            {
+                                handMod = -2;
+                            }
+                            else
+                            {
+                                handMod = -5;
+                            }
+                        }
+                        else
+                        {
+                            if (item.Weapon.Light && (attacks.NaturalAttacks.Count > 1))
+                            {
+                                if (cf.multiAttack)
+                                {
+                                    handMod = -2;
+                                }
+                                else
+                                {
+                                    handMod = -5;
+                                }
+                            }
+                        }
+
+
+                        attack.Bonus = new List<int>();
+                        int baseBonus = BaseAtk;
+
+                        attack.Bonus.Add(AttackBonus(baseBonus, handMod, item, cf, af));
+
+                        //set damage
+                        SetAttackDamageMod(attack, item, af, cf, !((attacks.NaturalAttacks.Count > 1)||(item.Count > 1)) && set.Count == 0, set.Count > 0);
+
+                        //add to set
+                        attackSet.Add(attack);
+                    }
+                }
+
+                if (attackSet.Count > 0)
+                {
+                    //add text to string
+                    if (!firstSet)
+                    {
+                        text += " or ";
+                    }
+
+                    bool firstAttack = true;
+                    foreach (Attack atk in attackSet)
+                    {
+                        if (firstAttack)
+                        {
+                            firstAttack = false;
+                        }
+                        else
+                        {
+                            text += ", ";
+                        }
+
+                        text += atk.Text;
+                    }
+
+                    firstSet = false;
+                }
+            }
+
+            return text;
+        }
+
+        public string RangedString(CharacterAttacks attacks)
+        {
+            string text = null;
+
+
+            if (attacks.RangedWeapons != null && attacks.RangedWeapons.Count > 0)
+            {
+                
+                //find combat feats
+                CombatFeats cf = GetCombatFeats();
+
+                List<Attack> list = new List<Attack>();
+
+
+
+                foreach (WeaponItem item in attacks.RangedWeapons)
+                {
+                    AttackFeats af = GetAttackFeats(item);
+
+
+                    Attack attack = StartAttackFromItem(item, af, cf);
+
+
+                    attack.Bonus = new List<int>();
+                    int baseBonus = BaseAtk;
+                    bool firstBonus = true;
+                    int count = 0;
+                    while ((!item.Weapon.Throw && baseBonus > 0) || firstBonus)
+                    {
+                        attack.Bonus.Add(AttackBonus(baseBonus, 0, item, cf, af));
+
+                        if (firstBonus && item.HasSpecialAbility("speed"))
+                        {                            
+                            attack.Bonus.Add(AttackBonus(baseBonus, 0, item, cf, af));
+                        }
+
+                        baseBonus -= 5;
+                        firstBonus = false;
+                        count++;
+
+                    }
+
+                    SetRangedAttackDamageMod(attack, item, af, cf);
+
+
+                    list.Add(attack);
+                }
+
+
+                text = "";
+                bool firstAttack = true;
+                foreach (Attack atk in list)
+                {
+                    if (firstAttack)
+                    {
+                        firstAttack = false;
+                    }
+                    else
+                    {
+                        text += " or ";
+                    }
+
+                    text += atk.Text;
+                }
+
+                
+            }
+
+            return text;
+        }
+
+
+
 
         private struct AttackFeats
         {
@@ -6030,6 +6555,233 @@ namespace CombatManager
                 return "((Blue)|(Black)|(Green)|(Red)|(White)|(Brass)|(Bronze)|(Copper)|(Gold)|(Silver)) Dragon";
             }
         }
+
+
+
+        private Attack StartAttackFromItem(WeaponItem item, AttackFeats af, CombatFeats cf)
+        {
+            Attack attack = new Attack();
+            attack.Weapon = item.Weapon;
+
+            attack.CritMultiplier = item.Broken?2:item.Weapon.CritMultiplier;
+            attack.CritRange = item.Broken?20:item.Weapon.CritRange;
+
+
+            if (String.Compare(attack.Name, "Bite", true) == 0 && cf.savageBite)
+            {
+                attack.CritRange -=1;
+            }
+
+            if (af.improvedCritical || item.SpecialAbilitySet.ContainsKey("keen"))
+            {
+                attack.CritRange = 20 - (20 - attack.CritRange) * 2 - 1;
+            }
+
+            attack.Name = item.Name.ToLower();
+
+            attack.MagicBonus = item.MagicBonus;
+            attack.Masterwork = item.Masterwork;
+            attack.Broken = item.Broken;
+            attack.SpecialAbilities = item.SpecialAbilities;
+            attack.Plus = item.PlusText;
+
+            attack.RangedTouch = item.Weapon.RangedTouch;
+            attack.AltDamage = item.Weapon.AltDamage;
+            attack.AltDamageStat = item.Weapon.AltDamageStat;
+            attack.AltDamageDrain = item.Weapon.AltDamageDrain;
+			attack.TwoHanded = item.TwoHanded;
+
+            SetAttackDamageDie(item, attack, af, cf);
+
+            return attack;
+        }
+
+        private void SetAttackDamageDie(WeaponItem item, Attack attack, AttackFeats af, CombatFeats cf)
+        {
+            MonsterSize size = SizeMods.GetSize(Size);
+
+            attack.Damage = FindNextDieRoll(attack.Weapon.DmgM, 0);
+            attack.Count = item.Count;
+
+            if (item.Step == null)
+            {
+
+                if (attack.Damage != null)
+                {
+                    attack.Damage = DieRoll.StepDie(attack.Damage, ((int)size) - (int)MonsterSize.Medium);
+                }
+                else
+                {
+                    attack.Damage = new DieRoll(0, 0, 0);
+                }
+
+                if (af.improvedNaturalAttack)
+                {
+                    attack.Damage = DieRoll.StepDie(attack.Damage, 1);
+                }
+
+            }
+            else
+            {
+                attack.Damage.Step = item.Step;
+            }
+        }
+
+        private int WeaponStrengthDamageBonus(Attack attack, WeaponItem item, AttackFeats af, CombatFeats cf, bool onlyNatural, bool makeSecondary)
+        {
+
+            int strDamageBonus = AbilityBonus(Strength);
+
+            if (cf.powerfulBite && String.Compare(attack.Name, "Bite", true) == 0 && !makeSecondary)
+            {
+                strDamageBonus = AbilityBonus(Strength) * 2;
+            }
+            else if (((cf.savageBite || cf.isDragon) && String.Compare(attack.Name, "Bite", true) == 0) ||
+                (cf.isDragon && ((String.Compare(attack.Name, "Tail", true) == 0) || (String.Compare(attack.Name, "Tail Slap", true) == 0))) ||
+                attack.TwoHanded || item.TwoHanded || (onlyNatural && AbilityBonus(Strength) > 0) && !makeSecondary)
+            {
+
+                strDamageBonus += AbilityBonus(Strength) / 2;
+            }
+            else if (attack.Weapon.Light && !onlyNatural && !item.MainHand || makeSecondary)
+            {
+                strDamageBonus = AbilityBonus(Strength) / 2;
+            }
+
+            return strDamageBonus;
+        }
+
+        private int MeleeAbilityAttackBonus(WeaponItem item, CombatFeats cf)
+        {
+            int abilityAttackBonus = AbilityBonus(Strength);
+
+            if (cf.weaponFinesse && item.Weapon.WeaponFinesse)
+            {
+                abilityAttackBonus = Math.Max(abilityAttackBonus, AbilityBonus(Dexterity));
+            }
+
+            return abilityAttackBonus;
+
+        }
+
+        private int RangedAbilityAttackBonus(WeaponItem item, CombatFeats cf)
+        {
+            int abilityAttackBonus = AbilityBonus(Dexterity);
+
+            return abilityAttackBonus;
+
+        }
+
+        private void SetAttackDamageMod(Attack attack, WeaponItem item, AttackFeats af, CombatFeats cf, bool onlyNatural, bool makeSecondary)
+        {
+
+            int strDamageBonus;
+
+
+            
+            strDamageBonus = WeaponStrengthDamageBonus(attack, item, af, cf, onlyNatural, makeSecondary);
+            
+
+            attack.Damage.mod = strDamageBonus + WeaponSpecialBonus(attack, af);
+
+            if (item.Weapon.Double)
+            {
+                attack.OffHandDamage = (DieRoll)attack.Damage.Clone();
+
+                if (!cf.doubleSlice && !cf.superiorTwoWeaponFighting)
+                {
+                    attack.OffHandDamage.mod = WeaponStrengthDamageBonus(attack, item, af, cf, false, true);
+                }
+            }
+        }
+
+        
+        private void SetRangedAttackDamageMod(Attack attack, WeaponItem item, AttackFeats af, CombatFeats cf)
+        {
+            int strDamageBonus = 0;
+
+            if ((String.Compare(attack.Name, "Rock", true) == 0 && cf.rockThrowing))
+            {
+                strDamageBonus = AbilityBonus(Strength) + AbilityBonus(Strength) / 2;
+            }
+            else if (attack.Weapon.Throw || new Regex("composite", RegexOptions.IgnoreCase).Match(attack.Name).Success)
+            {
+                strDamageBonus = WeaponStrengthDamageBonus(attack, item, af, cf, false, false);
+            }
+
+
+            attack.Damage.mod = strDamageBonus + WeaponSpecialBonus(attack, af);
+        }
+
+        private int WeaponSpecialBonus(Attack attack, AttackFeats af)
+        {
+            return attack.MagicBonus + (attack.Broken ? -2 : 0) +
+                (af.weaponSpecialization ? 2 : 0) + (af.greaterWeaponSpecialization ? 2 : 0) + af.weaponTraining;
+        }
+
+
+        private int AttackBonus(int baseBonus, int handMod, WeaponItem item, CombatFeats cf, AttackFeats af)
+        {
+
+            MonsterSize size = SizeMods.GetSize(Size);
+            SizeMods mods = SizeMods.GetMods(size);
+
+            int abilityAttackBonus = 0;
+
+            if (item.Weapon.Ranged)
+            {
+                abilityAttackBonus = RangedAbilityAttackBonus(item, cf);
+            }
+            else
+            {
+                abilityAttackBonus = MeleeAbilityAttackBonus(item, cf);
+            }
+
+            return baseBonus + abilityAttackBonus + handMod + mods.Attack +
+                            (item.Masterwork ? 1 : 0) + item.MagicBonus + (item.Broken ? -2 : 0) + 
+                            (af.weaponFocus ? 1 : 0) + (af.greaterWeaponFocus ? 1 : 0) + af.weaponTraining;
+                            
+        }
+
+
+        void GetHandMods(bool hasOff, bool hasHeavyOff, WeaponItem item, CombatFeats cf, out int handMod, out int offHandMod)
+        {
+            handMod = 0;
+            offHandMod = 0;
+
+            if (hasOff && !cf.superiorTwoWeaponFighting)
+            {
+
+                offHandMod = -8;
+                if (hasHeavyOff)
+                {
+                    offHandMod -= 2;
+                }
+                if (cf.twoWeaponFighting || cf.multiweaponFighting)
+                {
+                    offHandMod += 6;
+                }
+
+                if (item.MainHand)
+                {
+                    handMod = -4;
+                    if (hasHeavyOff)
+                    {
+                        handMod -= 2;
+                    }
+                    if (cf.twoWeaponFighting || cf.multiweaponFighting)
+                    {
+                        handMod += 2;
+                    }
+                }
+                else
+                {
+                    handMod = offHandMod;
+                }
+            }
+        }
+
+
 
 
         public bool HasFeat(string feat)
@@ -7629,7 +8381,7 @@ namespace CombatManager
                 if (spellsPrepared != value)
                 {
                     spellsPrepared = value;
-                    //_SpellsPreparedBlock = null;
+                    _SpellsPreparedBlock = null;
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("SpellsPrepared"));
@@ -7642,11 +8394,7 @@ namespace CombatManager
         {
             get
             {
-                if (_SpellsPreparedBlock == null)
-                {
-                    ParseSpellsPrepared();
-                }
-                
+                ParseSpellsPrepared();
                 return _SpellsPreparedBlock;
             }
             set
@@ -7765,7 +8513,7 @@ namespace CombatManager
                 if (spellsKnown != value)
                 {
                     spellsKnown = value;
-                    //_SpellsKnownBlock = null;
+                    _SpellsKnownBlock = null;
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("SpellsKnown"));
@@ -7779,11 +8527,7 @@ namespace CombatManager
         {
             get
             {
-                if (_SpellsKnownBlock == null)
-                {
-                    ParseSpellsKnown(); 
-                }
-                
+                ParseSpellsKnown();
                 return _SpellsKnownBlock;
             }
             set
