@@ -88,10 +88,11 @@ class PipeServer
         {
             try
             {
-                pipeServer.EndWaitForConnection(null);
+                //pipeServer.Close();
             }
             catch (Exception ex)
             {
+                System.Console.WriteLine(ex.ToString());
             }
         }
 

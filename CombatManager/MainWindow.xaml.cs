@@ -387,6 +387,8 @@ namespace CombatManager
             CombatViewDockingManager.ManagerUnloading += new EventHandler(CombatViewDockingManager_ManagerUnloading);
             splash.Close();
 
+            Loaded += new RoutedEventHandler(MainWindow_Loaded);
+
             CalendarTab.DataContext = campaignInfo;
 			UpdateCampaignDayView();
 
@@ -507,6 +509,11 @@ namespace CombatManager
                 SaveCombatViewLayout();
             }
 
+        }
+
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
             string[] args = Environment.GetCommandLineArgs();
             if (args != null && args.Length > 1)
             {
@@ -519,6 +526,7 @@ namespace CombatManager
             _PipeServer.FileRecieved += new EventHandler<PipeServer.PipeServerEventArgs>(PipeServer_FileRecieved);
             _PipeServer.RunServer();
         }
+
 
         void SaveDefaultLayout()
         {
@@ -728,7 +736,10 @@ namespace CombatManager
                 {
                     SaveCombatViewLayout();
                 }
+
+                _PipeServer.EndServer();
             }
+            
 
         }
 
