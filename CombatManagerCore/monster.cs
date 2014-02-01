@@ -6697,12 +6697,12 @@ namespace CombatManager
             }
             if (bonus.MeleeDamage != null)
             {
-                int val = remove ? -bonus.AttackDamage.Value : bonus.AttackDamage.Value;
+                int val = remove ? -bonus.MeleeDamage.Value : bonus.MeleeDamage.Value;
                 Melee = ChangeAttackDamage(Melee, val, val, val);
             }
             if (bonus.RangedDamage != null)
             {
-                int val = remove ? -bonus.AttackDamage.Value : bonus.AttackDamage.Value;
+                int val = remove ? -bonus.RangedDamage.Value : bonus.RangedDamage.Value;
                 Ranged = ChangeAttackDamage(Ranged, val, val, val);
             }
             if (bonus.Fort != null)
