@@ -390,14 +390,8 @@
 				    	</TextBlock>
 				    	<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Foreground="White" TextTrimming="CharacterEllipsis">
 				    		<TextBlock.Text>
-				    			<MultiBinding Converter="{StaticResource CombatListWindowCharacterConverter}">
-				    				<Binding Path="CurrentCharacter"/>
-				    				<Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type local:CombatListWindow}}" />
-				    			</MultiBinding>
-				    		</TextBlock.Text>
-				    		<TextBlock.Effect>
-				    			<DropShadowEffect/>
-				    		</TextBlock.Effect>
+				    				<Binding Path="CurrentCharacter.HiddenName"/>
+			                </TextBlock.Text>
 				    	</TextBlock>
 				    </StackPanel>
                     </Grid>

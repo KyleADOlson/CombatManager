@@ -4,6 +4,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <CheckBox
+        android:text="Roll Monster HP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rollMonsterHPBox" />
+    <CheckBox
         android:text="Confirm Before Rolling, Sorting, or Resetting Initiative"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

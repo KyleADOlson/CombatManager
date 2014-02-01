@@ -168,6 +168,7 @@
     <Compile Include="CharacterActions.cs" />
     <Compile Include="IOSDeviceHareware.cs" />
     <Compile Include="DetailsDB.cs" />
+    <Compile Include="XElementExt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">
@@ -181,10 +182,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SpecificItemChart.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MagicItems.xml">
-      <DeployService-Deploy>True</DeployService-Deploy>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Feats.xml">
@@ -237,6 +234,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SpellsShort.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MagicItemsShort.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

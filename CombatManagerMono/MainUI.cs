@@ -27,6 +27,7 @@ using MonoTouch.UIKit;
 using CombatManager;
 using System.Drawing;
 using System.Threading;
+using System.IO;
 
 namespace CombatManagerMono
 {
@@ -51,10 +52,11 @@ namespace CombatManagerMono
 		{
 			_MainView = this;
 			
-			BackgroundColor = UIExtensions.RGBColor(0x0);
+            BackgroundColor = CMUIColors.PrimaryColorLight;
 			
 			toolbar = new ToolbarView();
-			
+            toolbar.BackgroundColor = CMUIColors.PrimaryColorLight;
+
 			currentTab = new CombatTab(_CombatState);
 
 			
@@ -150,13 +152,14 @@ namespace CombatManagerMono
 			base.LayoutSubviews ();
 			toolbar.SetWidth(Frame.Width);
 			toolbar.SetHeight(50);
-			toolbar.SetLocation(0, 0);
+            toolbar.SetLocation(0, 20);
 			toolbar.ButtonClicked += HandleToolbarButtonClicked;
+         
 			
 			
-			currentTab.SetLocation(0, toolbar.Frame.Height);
+            currentTab.SetLocation(0, toolbar.Frame.Bottom);
 			currentTab.SetWidth(Frame.Width);
-			currentTab.SetHeight(Frame.Height - toolbar.Frame.Height);
+            currentTab.SetHeight(Frame.Height - toolbar.Frame.Bottom);
 
 
 		}
@@ -214,6 +217,64 @@ namespace CombatManagerMono
 			}
 			
 		}
+
+        public override void MovedToSuperview()
+        {
+            if (StartupUrl != null)
+            {
+                LoadUrl(StartupUrl);
+
+                StartupUrl = null;
+            }
+
+
+        }
+
+        public void LoadUrl(NSUrl url)
+        {
+            UIAlertView alertView = new UIAlertView {        
+                Title = "Please select the location for the file",
+                Message = "You can either select the Players list or the Monsters list"
+
+            };        
+            alertView.AddButton("Players");    
+            alertView.AddButton("Monsters");
+            string filename = url.AbsoluteString.Replace("file://", "").Replace("%20", " ");
+
+
+            alertView.Clicked += (object sender, UIButtonEventArgs e) => 
+            {
+                try
+                {
+                    switch (e.ButtonIndex)
+                    {
+                    case 0:
+                        _CombatState.LoadPartyFiles(new string[] {filename}, false);
+                        break;
+                    case 1:
+                        _CombatState.LoadPartyFiles(new string[] {filename}, true);
+                        break;
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    try
+                    {
+                        File.Delete(filename);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+
+            };
+            alertView.Show();
+        }
 		
 		CombatTab CombatTab
 		{
@@ -294,6 +355,8 @@ namespace CombatManagerMono
 				return _MainView;
 			}
 		}
+
+        public NSUrl StartupUrl { get; set; }
 	}
 }
 

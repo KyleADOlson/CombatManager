@@ -63,8 +63,15 @@
 		</DataTemplate>
 		<DataTemplate x:Key="FollowerTemplate">
 			<Grid>
-				<TextBlock TextWrapping="Wrap" Text="{Binding Name}" Foreground="{Binding HP, Converter={StaticResource hpToBrushConverter}}" d:LayoutOverrides="Width, Height"/>
-			</Grid>
+                <TextBlock TextWrapping="Wrap" Foreground="{Binding HP, Converter={StaticResource hpToBrushConverter}}" d:LayoutOverrides="Width, Height">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource CustomCombatListCharacterConverter}">
+                            <Binding />
+                            <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type local:CustomCombatList}}" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
 		</DataTemplate>
 	</UserControl.Resources>
 

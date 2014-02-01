@@ -27,6 +27,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace CombatManager
 {
@@ -45,6 +46,7 @@ namespace CombatManager
         private int nonlethalDamage;
         private int temporaryHP;
         private string notes;
+        private ObservableCollection<ActiveResource> resources;
 
         private Guid id;
 
@@ -87,6 +89,8 @@ namespace CombatManager
             MaxHP = monster.HP;
             initiativeFollowers = new ObservableCollection<Character>();
             initiativeFollowers.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(initiativeFollowers_CollectionChanged);
+            resources = new ObservableCollection<ActiveResource>();
+
         }
 
   
@@ -115,6 +119,8 @@ namespace CombatManager
                 ac.Condition = Condition.FindCondition("Incorporeal");
                 this.monster.AddCondition(ac);
             }
+
+            LoadResources();
 			
         }
 
@@ -127,6 +133,10 @@ namespace CombatManager
             character.maxHP = maxHP;
             character.notes = notes;
             character.ID = Guid.NewGuid();
+            foreach (ActiveResource r in resources)
+            {
+                character.resources.Add(new ActiveResource(r));
+            }
 
             character.isMonster = isMonster;
 
@@ -157,6 +167,35 @@ namespace CombatManager
         public override string ToString()
         {
             return Name;
+        }
+
+        private void LoadResources()
+        {
+            if (monster.SpecialAttacks != null)
+            {
+                //find rage
+                Match m = Regex.Match(monster.SpecialAttacks, "[Rr]age \\((?<count>[0-9]+) rounds?/ ?day\\)");
+                if (m.Success)
+                {
+                    int count = int.Parse(m.Groups["count"].Value);
+                    ActiveResource r = new ActiveResource() { Name = "Rage", Max = count, Current = count, Uses = count + " rounds/day" };
+                    Resources.Add(r);
+                }
+
+
+            }
+
+            if (monster.SQ != null)
+            {
+                //find rage
+                Match m = Regex.Match(monster.SQ, "[Kk]i [Pp]ool \\((?<count>[0-9]+) points?,");
+                if (m.Success)
+                {
+                    int count = int.Parse(m.Groups["count"].Value);
+                    ActiveResource r = new ActiveResource() { Name = "Ki pool", Max = count, Current = count };
+                    Resources.Add(r);
+                }
+            }
         }
 
 
@@ -192,6 +231,7 @@ namespace CombatManager
                 {
                     this.name = value;
                     Notify("Name");
+                    Notify("HiddenName");
 
                     if (this.IsBlank)
                     {
@@ -630,63 +670,11 @@ namespace CombatManager
 
         public bool TryParseHP()
         {
-            int num  = 0;
-            int size = 0;
-            int plus = 0;
-            string text= monster.HD;
-            if (text != null)
+            DieRoll dr = DieRoll.FromString(monster.HD);
+            if (dr != null)
             {
-                text = text.Trim();
-                text = text.Trim(new char[] {'(',')'});
-            
-                int index = text.IndexOf('d');
-                if (index > 0)
-                {
-                    if (Int32.TryParse(text.Substring(0, index), out num))
-                    {
-                        text = text.Substring(index+1);
-
-                        index = text.IndexOf('+');
-
-                        if (index > 0)
-                        {
-                            string last = text.Substring(index + 1);
-                            text = text.Substring(0, index);
-
-                            Int32.TryParse(last, out plus);
-                        }
-                        else
-                        {
-                            index = text.IndexOf('-');
-                            if (index > 0)
-                            {
-                                string last = text.Substring(index + 1);
-                                text = text.Substring(0, index);
-
-                                Int32.TryParse(last, out plus);
-                                plus = -plus;
-                            }
-                        }
-
-
-                        if (Int32.TryParse(text, out size))
-                        {
-                            int hitPoints = plus;
-                            for (int i=0; i< num; i++)
-                            {
-                                hitPoints += rand.Next(1, size+1);
-                            }
-                            if (hitPoints < 1)
-                            {
-                                hitPoints = 1;
-                            }
-
-                            HP = hitPoints;
-                            return true;
-                        }                                        
-                    }
-                }
-
+                HP = dr.Roll().Total;
+                return true;
             }
 
             return false;
@@ -867,7 +855,11 @@ namespace CombatManager
                 if (_IsHidden != value)
                 {
                     _IsHidden = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("IsHidden")); }
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("IsHidden")); 
+                        PropertyChanged(this, new PropertyChangedEventArgs("HiddenName"));
+                    }
                 }
             }
         }
@@ -887,6 +879,41 @@ namespace CombatManager
             }
         }
 
+        [DataMember]
+        public ObservableCollection<ActiveResource> Resources
+        {
+            get
+            {
+                return resources;
+            }
+            set
+            {
+                if (resources != value)
+                {
+                    resources = value;
+
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Resources")); }
+
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public string HiddenName
+        {
+            get
+            {
+                if (_IsHidden)
+                {
+                    return "??????";
+                }
+                else
+                {
+                    return name;
+                }
+            }
+        }
+
         [XmlIgnore]
         public CharacterAdjuster Adjuster
         {
@@ -898,7 +925,7 @@ namespace CombatManager
                 }
                 return adjuster;
             }
-        }
+        }        
 
         public class CharacterAdjuster : INotifyPropertyChanged
         {

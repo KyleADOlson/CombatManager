@@ -71,6 +71,7 @@ namespace CombatManagerMono
         {
             uiLoaded = true;
             ui = new MainUI();
+            ui.StartupUrl = StartupUrl;
             RectangleF rect = View.Frame;
             rect = View.ConvertRectFromView(rect, View.Superview);
             rect.X = 0;
@@ -158,6 +159,14 @@ namespace CombatManagerMono
             });*/
 
         }
+
+        public NSUrl StartupUrl { get; set; }
+
+        public void LoadUrl(NSUrl url) 
+        {
+            ui.LoadUrl(url);
+        }
+
     }
 }
 

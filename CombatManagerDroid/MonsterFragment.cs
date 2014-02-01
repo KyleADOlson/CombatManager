@@ -143,7 +143,7 @@ namespace CombatManagerDroid
                 if (m != null)
                 {
 
-                    CombatFragment.CombatState.AddMonster(m, true, true);
+                    CombatFragment.CombatState.AddMonster(m, Activity.GetCMPrefs().GetRollHP(), true);
                 }
             };
 

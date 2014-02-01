@@ -90,17 +90,30 @@ namespace CombatManagerDroid
             int i=0;
             LinearLayout l = FindViewById<LinearLayout>(Resource.Id.meleeGroupLayout);
             l.RemoveAllViews();
+            if (_Attacks.MeleeWeaponSets.Count == 0)
+            {
+
+                TextView view = new TextView(this);
+                view.Text = "No Melee Sets";
+                l.AddView(view);
+            }
             foreach (var v in _Attacks.MeleeWeaponSets)
             {
                 i++;
                 Button b = new Button(this);
                 b.Text = "Set #" + i;
                 l.AddView(b);
-                int item = i;
+                int item = i-1;
                 b.Click += (object sender, EventArgs e) => 
                 {
                     MeleeTabClicked(item);
                 };
+                b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.init_button));
+
+                if (item == visibleGroup)
+                {
+                    b.Selected = true;
+                }
             }
             Button addButton = new Button(this);
             addButton.Text = "Add";
@@ -109,6 +122,8 @@ namespace CombatManagerDroid
                 AddGroupClicked();
             };
             l.AddView(addButton);
+            Button addMeleeButton = FindViewById <Button>(Resource.Id.addMeleeButton);
+            addMeleeButton.Enabled = _Attacks.MeleeWeaponSets.Count > 0;
         }
 
         private void BuildMeleeGroup()
@@ -118,11 +133,17 @@ namespace CombatManagerDroid
             if (visibleGroup < _Attacks.MeleeWeaponSets.Count)
             {
                 var vs = _Attacks.MeleeWeaponSets[visibleGroup];
+                if (vs.Count == 0)
+                {
+                    TextView view = new TextView(this);
+                    view.Text = "Empty";
+                    ml.AddView(view);
+                }
+
                 foreach (var atk in vs)
                 {
                     ml.AddView(CreateAttackView(atk, false, false));
                 }
-
             }
         }
 
@@ -275,6 +296,7 @@ namespace CombatManagerDroid
             {
                 visibleGroup = tab;
                 BuildMeleeGroup();
+                BuildMeleeTabs();
             }
         }
 
@@ -536,6 +558,7 @@ namespace CombatManagerDroid
             _Attacks.MeleeWeaponSets.Add(new List<WeaponItem>());
             visibleGroup = _Attacks.MeleeWeaponSets.Count - 1;
             BuildMeleeGroup();
+            BuildMeleeTabs();
         }
         
         public static Monster Monster

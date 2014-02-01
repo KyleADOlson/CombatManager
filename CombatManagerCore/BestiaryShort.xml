@@ -32395,7 +32395,7 @@
     <MonsterSource>Human petitioner</MonsterSource>
     <Alignment>Any</Alignment>
     <Size>Medium</Size>
-    <Type>alignment outsider</Type>
+    <Type>outsider</Type>
     <SubType>(extraplanar)</SubType>
     <Init>0</Init>
     <Senses>darkvision 60 ft., Perception +5</Senses>

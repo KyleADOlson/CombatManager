@@ -448,7 +448,9 @@ namespace CombatManagerMono
 			
 			
 			RectangleF button = new RectangleF(xColumnWidth * 2.0f, 0, xColumnWidth + 1.0f, yRowHeight * 2.0f);
+            button.Width -= 1;
             _NextButton.Frame = button;
+            button.Width += 1;
 			
             button.X = 0;
             button.Y = button.Bottom;
@@ -460,7 +462,9 @@ namespace CombatManagerMono
             _MoveDownButton.Frame = button;	
 
             button.X += xColumnWidth;
+            button.Width -= 1;
             _PrevButton.Frame = button;
+            button.Width += 1;
 			
 			RectangleF list = rect;
 			list.Y += button.Bottom;
@@ -474,7 +478,7 @@ namespace CombatManagerMono
 			_RollButton.Frame = button;
 			
             button.X += (rect.Width/2.0f);
-            button.Width += 2;
+            button.Width -=1;
             button.Height = button.Height/2.0f;
 			_SortButton.Frame = button;
 
@@ -572,7 +576,7 @@ namespace CombatManagerMono
 				
 				if (cell == null)
 				{
-					cell = new DataListViewCell (UITableViewCellStyle.Default, "CombatListViewCell");
+                    cell = new DataListViewCell (UITableViewCellStyle.Default, "CombatListViewCell");
 				}
 			
 				Character ch = state.CombatState.CombatList[indexPath.Row];
@@ -664,6 +668,7 @@ namespace CombatManagerMono
 			}
 			
 		}
+
 		
 		
 		private class ViewDelegate : UITableViewDelegate

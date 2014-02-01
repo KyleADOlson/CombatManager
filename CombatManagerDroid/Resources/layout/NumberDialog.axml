@@ -3,12 +3,12 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:minWidth="350px"
-    android:minHeight="25px">
+    android:minWidth="350dp"
+    android:minHeight="25dp">
     <LinearLayout
         android:orientation="horizontal"
-        android:minWidth="300px"
-        android:minHeight="25px"
+        android:minWidth="300dp"
+        android:minHeight="25dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout1">

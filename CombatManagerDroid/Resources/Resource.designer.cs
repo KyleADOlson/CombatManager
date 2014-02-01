@@ -680,11 +680,11 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f0700fa
 			public const int button4 = 2131165434;
 			
-			// aapt resource value: 0x7f070103
-			public const int byItemsButton = 2131165443;
+			// aapt resource value: 0x7f070104
+			public const int byItemsButton = 2131165444;
 			
-			// aapt resource value: 0x7f070102
-			public const int byLevelButton = 2131165442;
+			// aapt resource value: 0x7f070103
+			public const int byLevelButton = 2131165443;
 			
 			// aapt resource value: 0x7f070018
 			public const int cancelButton = 2131165208;
@@ -731,8 +731,8 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f0700ec
 			public const int cmdText = 2131165420;
 			
-			// aapt resource value: 0x7f070106
-			public const int coinButton = 2131165446;
+			// aapt resource value: 0x7f070107
+			public const int coinButton = 2131165447;
 			
 			// aapt resource value: 0x7f0700f6
 			public const int column1 = 2131165430;
@@ -764,11 +764,11 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070026
 			public const int conditionsLayout = 2131165222;
 			
-			// aapt resource value: 0x7f0700fe
-			public const int confirmBox = 2131165438;
+			// aapt resource value: 0x7f0700ff
+			public const int confirmBox = 2131165439;
 			
-			// aapt resource value: 0x7f07010b
-			public const int countButton = 2131165451;
+			// aapt resource value: 0x7f07010c
+			public const int countButton = 2131165452;
 			
 			// aapt resource value: 0x7f07009d
 			public const int crButton = 2131165341;
@@ -800,8 +800,8 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f0700bb
 			public const int deflectionText = 2131165371;
 			
-			// aapt resource value: 0x7f070101
-			public const int deleteButton = 2131165441;
+			// aapt resource value: 0x7f070102
+			public const int deleteButton = 2131165442;
 			
 			// aapt resource value: 0x7f070055
 			public const int descriptionTab = 2131165269;
@@ -878,14 +878,14 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f0700f2
 			public const int gearText = 2131165426;
 			
-			// aapt resource value: 0x7f070115
-			public const int generateItemsButton = 2131165461;
+			// aapt resource value: 0x7f070116
+			public const int generateItemsButton = 2131165462;
 			
-			// aapt resource value: 0x7f070109
-			public const int generateLevelButton = 2131165449;
+			// aapt resource value: 0x7f07010a
+			public const int generateLevelButton = 2131165450;
 			
-			// aapt resource value: 0x7f070107
-			public const int goodsButton = 2131165447;
+			// aapt resource value: 0x7f070108
+			public const int goodsButton = 2131165448;
 			
 			// aapt resource value: 0x7f070088
 			public const int hdButton = 2131165320;
@@ -947,11 +947,11 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070076
 			public const int itemView = 2131165302;
 			
-			// aapt resource value: 0x7f07010a
-			public const int itemsLayout = 2131165450;
+			// aapt resource value: 0x7f07010b
+			public const int itemsLayout = 2131165451;
 			
-			// aapt resource value: 0x7f07010c
-			public const int itemsLevelButton = 2131165452;
+			// aapt resource value: 0x7f07010d
+			public const int itemsLevelButton = 2131165453;
 			
 			// aapt resource value: 0x7f0700f0
 			public const int languagesText = 2131165424;
@@ -959,11 +959,11 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070072
 			public const int leftLayout = 2131165298;
 			
-			// aapt resource value: 0x7f070105
-			public const int levelButton = 2131165445;
+			// aapt resource value: 0x7f070106
+			public const int levelButton = 2131165446;
 			
-			// aapt resource value: 0x7f070104
-			public const int levelLayout = 2131165444;
+			// aapt resource value: 0x7f070105
+			public const int levelLayout = 2131165445;
 			
 			// aapt resource value: 0x7f070002
 			public const int linearLayout1 = 2131165186;
@@ -1016,14 +1016,14 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f07001b
 			public const int loadButton = 2131165211;
 			
-			// aapt resource value: 0x7f070108
-			public const int magicItemsButton = 2131165448;
-			
-			// aapt resource value: 0x7f07010d
-			public const int magicalArmorBox = 2131165453;
+			// aapt resource value: 0x7f070109
+			public const int magicItemsButton = 2131165449;
 			
 			// aapt resource value: 0x7f07010e
-			public const int magicalWeaponBox = 2131165454;
+			public const int magicalArmorBox = 2131165454;
+			
+			// aapt resource value: 0x7f07010f
+			public const int magicalWeaponBox = 2131165455;
 			
 			// aapt resource value: 0x7f07004f
 			public const int mainTab = 2131165263;
@@ -1091,8 +1091,8 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070036
 			public const int playerListLayout = 2131165238;
 			
-			// aapt resource value: 0x7f07010f
-			public const int potionBox = 2131165455;
+			// aapt resource value: 0x7f070110
+			public const int potionBox = 2131165456;
 			
 			// aapt resource value: 0x7f07002f
 			public const int prevButton = 2131165231;
@@ -1127,14 +1127,14 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f0700cd
 			public const int resistText = 2131165389;
 			
-			// aapt resource value: 0x7f070110
-			public const int ringBox = 2131165456;
-			
 			// aapt resource value: 0x7f070111
-			public const int rodBox = 2131165457;
+			public const int ringBox = 2131165457;
 			
-			// aapt resource value: 0x7f0700ff
-			public const int roll3d6Box = 2131165439;
+			// aapt resource value: 0x7f070112
+			public const int rodBox = 2131165458;
+			
+			// aapt resource value: 0x7f070100
+			public const int roll3d6Box = 2131165440;
 			
 			// aapt resource value: 0x7f070048
 			public const int rollButton = 2131165256;
@@ -1162,6 +1162,9 @@ namespace CombatManagerDroid
 			
 			// aapt resource value: 0x7f070032
 			public const int rollInitiativeButton = 2131165234;
+			
+			// aapt resource value: 0x7f0700fe
+			public const int rollMonsterHPBox = 2131165438;
 			
 			// aapt resource value: 0x7f070047
 			public const int rollText = 2131165255;
@@ -1205,8 +1208,8 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f070098
 			public const int skeletonLayout = 2131165336;
 			
-			// aapt resource value: 0x7f070100
-			public const int skillListView = 2131165440;
+			// aapt resource value: 0x7f070101
+			public const int skillListView = 2131165441;
 			
 			// aapt resource value: 0x7f0700ef
 			public const int skillsLinearLayout = 2131165423;
@@ -1247,8 +1250,8 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f0700cb
 			public const int srText = 2131165387;
 			
-			// aapt resource value: 0x7f070112
-			public const int staffBox = 2131165458;
+			// aapt resource value: 0x7f070113
+			public const int staffBox = 2131165459;
 			
 			// aapt resource value: 0x7f07008b
 			public const int statChangeButton = 2131165323;
@@ -1382,8 +1385,8 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f0700d6
 			public const int visualDescriptionText = 2131165398;
 			
-			// aapt resource value: 0x7f070113
-			public const int wandBox = 2131165459;
+			// aapt resource value: 0x7f070114
+			public const int wandBox = 2131165460;
 			
 			// aapt resource value: 0x7f0700cf
 			public const int weaknessText = 2131165391;
@@ -1400,8 +1403,8 @@ namespace CombatManagerDroid
 			// aapt resource value: 0x7f0700ac
 			public const int wisText = 2131165356;
 			
-			// aapt resource value: 0x7f070114
-			public const int wondrousItemBox = 2131165460;
+			// aapt resource value: 0x7f070115
+			public const int wondrousItemBox = 2131165461;
 			
 			// aapt resource value: 0x7f07001f
 			public const int xpText = 2131165215;

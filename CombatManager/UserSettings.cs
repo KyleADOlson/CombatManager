@@ -70,6 +70,8 @@ namespace CombatManager
         private bool _ConfirmClose;
         private bool _ShowAllDamageDice;
         private bool _AlternateInit3d6;
+        private string _AlternateInitRoll;
+        private bool _ShowHiddenInitValue;
 
         private bool _PlayerMiniMode;
         private bool _MonsterMiniMode;
@@ -113,6 +115,7 @@ namespace CombatManager
             _UseUltimateMagic = true;
             _UseUltimateCombat = true;
             _UseOther = true;
+            _AlternateInitRoll = "3d6";
             _PlayerMiniMode = false;
             _MonsterMiniMode = false;
             _RunCombatViewService = false;
@@ -280,6 +283,27 @@ namespace CombatManager
                 {
                     _AlternateInit3d6 = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AlternateInit3d6")); }
+                }
+            }
+        }
+
+        public DieRoll AlternateInitDieRoll
+        {
+            get
+            {
+                return DieRoll.FromString(AlternateInitRoll);
+            }
+        }
+
+        public String AlternateInitRoll
+        {
+            get { return _AlternateInitRoll; }
+            set
+            {
+                if (_AlternateInitRoll != value)
+                {
+                    _AlternateInitRoll = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AlternateInitRoll")); }
                 }
             }
         }
@@ -496,6 +520,19 @@ namespace CombatManager
             }
         }
 
+        public bool ShowHiddenInitValue
+        {
+            get { return _ShowHiddenInitValue; }
+            set
+            {
+                if (_ShowHiddenInitValue != value)
+                {
+                    _ShowHiddenInitValue = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ShowHiddenInitValue")); }
+                }
+            }
+        }
+
         void LoadOptions()
         {
             try
@@ -519,6 +556,7 @@ namespace CombatManager
                 MainWindowLeft = LoadIntValue("MainWindowLeft", int.MinValue);
                 MainWindowTop = LoadIntValue("MainWindowTop", int.MinValue);
                 SelectedTab = LoadIntValue("SelectedTab", 0);
+                AlternateInitRoll = LoadStringValue("AlternateInitRoll", "3d6");
                 AlternateInit3d6 = LoadBoolValue("AlternateInit3d6", false);
                 InitiativeShowPlayers = LoadBoolValue("InitiativeShowPlayers", true);
                 InitiativeShowMonsters = LoadBoolValue("InitiativeShowMonsters", true);
@@ -528,6 +566,7 @@ namespace CombatManager
                 InitiativeScale = LoadDoubleValue("InitiativeScale", 1.0);
                 InitiativeFlip  = LoadBoolValue("InitiativeFlip", false);
                 RunCombatViewService = LoadBoolValue("RunCombatViewService", false);
+                ShowHiddenInitValue = LoadBoolValue("ShowHiddenInitValue", false);
                 MonsterDBFilter = (MonsterSetFilter)LoadIntValue("MonsterDBFilter", (int)MonsterSetFilter.Monsters);
                 MonsterTabFilter = (MonsterSetFilter)LoadIntValue("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
 
@@ -563,7 +602,9 @@ namespace CombatManager
                         SaveBoolValue(key, "ConfirmClose", ConfirmClose);
                         SaveBoolValue(key, "ShowAllDamageDice", ShowAllDamageDice);
                         SaveBoolValue(key, "AlternateInit3d6", AlternateInit3d6);
+                        SaveStringValue(key, "AlternateInitRoll", AlternateInitRoll);
                         SaveBoolValue(key, "RunCombatViewService", RunCombatViewService);
+                        SaveBoolValue(key, "ShowHiddenInitValue", ShowHiddenInitValue);
                         
                     }
 
@@ -705,6 +746,31 @@ namespace CombatManager
             return value;
 
         }
+        public string LoadStringValue(String name, String defaultValue)
+        {
+            string value = defaultValue;
+            try
+            {
+                RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\\CombatManager");
+                if (key != null)
+                {
+                    RegistryValueKind ki = key.GetValueKind(name);
+
+                    if (ki == RegistryValueKind.DWord)
+                    {
+                        value = (String)key.GetValue(name);
+
+                    }
+                }
+            }
+            catch (IOException ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+
+            return value;
+
+        }
 
         public void SaveBoolValue(RegistryKey key, String name, bool value)
         {
@@ -722,6 +788,12 @@ namespace CombatManager
 
             key.SetValue(name, value, RegistryValueKind.DWord);
             
+        }
+        public void SaveStringValue(RegistryKey key, String name, string value)
+        {
+
+            key.SetValue(name, value, RegistryValueKind.String);
+
         }
 
         public static bool Loaded

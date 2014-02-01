@@ -514,9 +514,15 @@ namespace CombatManagerMono
 			{
 				
 				UpdateConditionDisplay();
-				
-				
-				((UITableView)View.Superview).ReloadData();
+
+                UIView v = this.View.Superview;
+
+                if (!(v is UITableView))
+                {
+                    v = v.Superview;
+                }
+               
+                ((UITableView)v).ReloadData();
 			}
 			else
 			{					

@@ -1,0 +1,28 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="CombatManager.PlayersOrMonstersDialog"
+	x:Name="Window"
+	Title="Open File"
+	Width="312.667" Height="219.333" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="51.259"/>
+			<RowDefinition Height="47.346"/>
+			<RowDefinition Height="48.357"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Grid.Row="3" Width="75" Margin="0,8,3,0" VerticalAlignment="Top" Click="CancelButton_Click"/>
+		<Button x:Name="MonstersButton" Content="Add to Monsters" Grid.Row="2" d:LayoutOverrides="Height" Margin="3" Click="MonstersButton_Click"/>
+		<Button x:Name="PlayersButton" Grid.Row="1" d:LayoutOverrides="Height" Margin="3" Click="PlayersButton_Click">
+			<Button.Content>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Add to Players"/>
+				</StackPanel>
+			</Button.Content>
+		</Button>
+		<TextBlock HorizontalAlignment="Left" Margin="8,16,0,0" TextWrapping="Wrap" Text="Where do you want to add these characters?" VerticalAlignment="Top"/>
+	</Grid>
+</Window>

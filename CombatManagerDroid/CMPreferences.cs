@@ -36,6 +36,13 @@ namespace CombatManagerDroid
                 return "use3d6";
             }
         }
+        public static string SettingRollHP
+        {
+            get
+            {
+                return "rollHP";
+            }
+        }
 
         public static ISharedPreferences GetCMPrefs(this Context c)
         {
@@ -45,6 +52,11 @@ namespace CombatManagerDroid
         public static bool GetConfirmInitiative(this ISharedPreferences p)
         {
             return p.GetBoolean(SettingConfirmInitiative, true);
+        }
+
+        public static bool GetRollHP(this ISharedPreferences p)
+        {
+            return p.GetBoolean(SettingRollHP, true);
         }
 
     }

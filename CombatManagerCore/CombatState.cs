@@ -28,6 +28,7 @@ using System.IO;
 using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace CombatManager
 {
@@ -77,6 +78,7 @@ namespace CombatManager
         private static Random rand = new Random();
 
         public static bool use3d6;
+        public static string alternateRoll;
 		
 		private bool sortingList;
 
@@ -532,8 +534,12 @@ namespace CombatManager
                 }
             }
         }
-
         public void RollInitiative()
+        {
+            RollInitiative(true);
+        }
+
+        public void RollInitiative(bool resetRound)
         {
             foreach (Character character in Characters)
             {
@@ -547,9 +553,10 @@ namespace CombatManager
 
             }
 
-
-
-            Round = 1;
+            if (resetRound)
+            {
+                Round = 1;
+            }
 
 
             if (CombatList.Count > 0)
@@ -585,7 +592,7 @@ namespace CombatManager
         {
             if (use3d6)
             {
-                return rand.Next(1, 7) + rand.Next(1, 7) + rand.Next(1, 7);
+                return DieRoll.FromString(alternateRoll).Roll().Total;
             }
             else
             {
@@ -814,6 +821,11 @@ namespace CombatManager
 
                     if (_CombatList[i] != c)
                     {
+                        int index = _CombatList.IndexOf(c);
+                        if (index > i)
+                        {
+                            _CombatList.RemoveAt(index);
+                        }
                         _CombatList.Insert(i, c);
                     }
                 }
@@ -1370,7 +1382,7 @@ namespace CombatManager
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Character>));
 
                     // A FileStream is needed to read the XML document.
-                    FileStream fs = new FileStream(filename, FileMode.Open);
+                    FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
 
 
                     List<Character> list = (List<Character>)serializer.Deserialize(fs);
@@ -1532,10 +1544,21 @@ namespace CombatManager
 
         public class SingleAttackRoll
         {
+            public SingleAttackRoll()
+            {
+                BonusDamage = new List<BonusDamage>();
+            }
             public RollResult Result {get; set;}
             public RollResult Damage {get; set;}
             public RollResult CritResult {get; set;}
             public RollResult CritDamage {get; set;}
+            public List<BonusDamage> BonusDamage {get; set;}
+        }
+
+        public class BonusDamage
+        {
+            public String DamageType { get; set; }
+            public RollResult Damage { get; set; }
         }
 
         public class AttackSetResult
@@ -1634,6 +1657,20 @@ namespace CombatManager
 
                         sr.Result = roll.Roll();
                         sr.Damage = atk.Damage.Roll();
+
+                        if (atk.Plus != null)
+                        {
+                            Regex plusRegex = new Regex("(?<die>[0-9]+d[0-9]+((\\+|-)[0-9]+)?) (?<type>[a-zA-Z]+)");
+                            Match dm = plusRegex.Match(atk.Plus);
+                            if (dm.Success)
+                            {
+                                DieRoll bonusRoll = DieRoll.FromString(dm.Groups["die"].Value);
+                                BonusDamage bd = new BonusDamage();
+                                bd.Damage = bonusRoll.Roll();
+                                bd.DamageType = dm.Groups["type"].Value;
+                                sr.BonusDamage.Add(bd);
+                            }
+                        }
 
 
 

@@ -18,8 +18,8 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
-        android:minWidth="200px"
-        android:minHeight="350px"
+        android:minWidth="200dp"
+        android:minHeight="350dp"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:id="@+id/linearLayout2"

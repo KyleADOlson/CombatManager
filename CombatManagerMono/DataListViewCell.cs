@@ -26,6 +26,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using CombatManager;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace CombatManagerMono
 {
@@ -36,6 +37,18 @@ namespace CombatManagerMono
 		public DataListViewCell (UITableViewCellStyle style, string reuseIdentifier) : base(style, reuseIdentifier)
 		{
 		}
+
+
+        public override void LayoutSubviews()
+        {
+            base.LayoutSubviews();
+            if (AccessoryView != null)
+            {
+                RectangleF accessoryViewFrame = AccessoryView.Frame;
+                accessoryViewFrame.X = Frame.Width - accessoryViewFrame.Width - 1;
+                AccessoryView.Frame = accessoryViewFrame;
+            }
+        }
 	}
 }
 
