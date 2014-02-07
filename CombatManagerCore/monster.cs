@@ -2625,7 +2625,7 @@ namespace CombatManager
         private void ParseSkills()
         {
             skillValueDictionary = new Dictionary<String, SkillValue>(new InsensitiveEqualityCompararer());
-            if (skills != null)
+            if (Skills != null)
             {
                 Regex skillReg = new Regex("([ \\p{L}]+)( )(\\(([- \\p{L}]+)\\) )?((\\+|-)[0-9]+)");
 
