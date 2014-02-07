@@ -124,7 +124,13 @@ namespace CombatManager
 	{
 		
 		
-		public static List<CharacterActionItem> GetActions(Character ch, Character selCh)
+        public static List<CharacterActionItem> GetActions(Character ch, Character selCh)
+        {
+            return GetActions(ch, selCh, null);
+
+        }
+
+        public static List<CharacterActionItem> GetActions(Character ch, Character selCh, List<Character> nearCharacters)
 		{
 			List<CharacterActionItem> items = new List<CharacterActionItem>();
 			
@@ -159,7 +165,7 @@ namespace CombatManager
 			
 			items.Add(new CharacterActionItem());
 			items.Add(new CharacterActionItem("Roll", "d20", GetRollItems(ch)));
-			items.Add(new CharacterActionItem("Initiative", "sort", GetInitiativeItems(ch, selCh)));
+            items.Add(new CharacterActionItem("Initiative", "sort", GetInitiativeItems(ch, selCh, nearCharacters)));
 			items.Add(new CharacterActionItem("Clone", "clone", CharacterActionType.Clone));
 			if (ch.IsMonster)
 			{
@@ -275,7 +281,7 @@ namespace CombatManager
             return items;
         }
 		
-		public static List<CharacterActionItem> GetInitiativeItems(Character ch, Character selectedChar)
+        public static List<CharacterActionItem> GetInitiativeItems(Character ch, Character selectedChar, List<Character> nearCharacters)
 		{
 			
 			List<CharacterActionItem> items = new List<CharacterActionItem>();
@@ -294,15 +300,37 @@ namespace CombatManager
 
             if (ch.InitiativeLeader != null)
             {
-                items.Add (new CharacterActionItem());
-                items.Add (new CharacterActionItem("Unlink Initiative", "link", CharacterActionType.UnlinkInitiative));
+                items.Add(new CharacterActionItem());
+                items.Add(new CharacterActionItem("Unlink Initiative", "link", CharacterActionType.UnlinkInitiative));
             }
             else if (selectedChar != null && selectedChar != ch && selectedChar.InitiativeLeader == null)
             {
                 items.Add(new CharacterActionItem());
-                items.Add (new CharacterActionItem("Link Initiative to " + selectedChar.Name, 
-                                                   "link", CharacterActionType.LinkInitiative, selectedChar));
+                items.Add(new CharacterActionItem("Link to " + selectedChar.Name, 
+                    "link", CharacterActionType.LinkInitiative, selectedChar));
             }
+            else if (nearCharacters != null)
+            {
+                List<CharacterActionItem> newItems = new List<CharacterActionItem>();
+
+                foreach (Character nearChar in nearCharacters)
+                {
+                    if (nearChar != ch && nearChar.InitiativeLeader == null)
+                    {
+
+                        newItems.Add(new CharacterActionItem("Link to " + nearChar.Name, 
+                            "link", CharacterActionType.LinkInitiative, nearChar));
+                    }
+                }
+
+                if (newItems.Count > 0)
+                {
+                    items.Add(new CharacterActionItem());
+                    items.AddRange(newItems);
+                }
+
+            }
+
 		
 		
 			return items;

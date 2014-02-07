@@ -1,3 +1,7 @@
+1.02
+Add back button to action dialog
+Add initiative linking
+
 1.01
 Fix weapon editor
 Add Monster HP Rolling option to settings

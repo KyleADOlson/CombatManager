@@ -131,6 +131,7 @@
     <Compile Include="XMLLoader.cs" />
     <Compile Include="DetailsDB.cs" />
     <Compile Include="XElementExt.cs" />
+    <Compile Include="ActiveResource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RuleShort.xml" />

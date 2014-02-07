@@ -43,6 +43,13 @@ namespace CombatManagerDroid
                 return "rollHP";
             }
         }
+        public static string SettingShowDieRoller
+        {
+            get
+            {
+                return "showDieRoller";
+            }
+        }
 
         public static ISharedPreferences GetCMPrefs(this Context c)
         {
@@ -59,6 +66,11 @@ namespace CombatManagerDroid
             return p.GetBoolean(SettingRollHP, true);
         }
 
+
+        public static bool GetShowDieRoller(this ISharedPreferences p)
+        {
+            return p.GetBoolean(SettingShowDieRoller, true);
+        }
     }
 }
 

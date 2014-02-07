@@ -20,6 +20,7 @@ namespace CombatManagerDroid
     {
         Character _Character;
         CombatState _State;
+        CharacterActionsAdapter _CharacterActionsAdapter;
 
         public ActionDialog(Context context, CombatState state) : base (context)
         {
@@ -34,6 +35,12 @@ namespace CombatManagerDroid
                 {
                     Dismiss ();
                 };
+
+            Button back  = (Button)FindViewById(Resource.Id.backButton);
+            back.Click += delegate
+            {
+                GoBack ();
+            };
 
 
         }
@@ -56,8 +63,9 @@ namespace CombatManagerDroid
                 ListView lv = (ListView)FindViewById(Resource.Id.actionListView);
                 lv.ItemClick += ListViewItemClick;
 
-                var ca = new CharacterActionsAdapter(Context, _Character);
+                var ca = new CharacterActionsAdapter(Context, _Character, _State);
                 lv.SetAdapter(ca);
+                _CharacterActionsAdapter = ca;
             }
         }
 
@@ -129,6 +137,14 @@ namespace CombatManagerDroid
             UIUtils.ShowTextDialog("Notes", _Character, Context ,true);
         }
 
+        void GoBack()
+        {
+            if (_CharacterActionsAdapter != null)
+            {
+                _CharacterActionsAdapter.MoveBack();
+                _CharacterActionsAdapter.NotifyDataSetChanged();
+            }
+        }
     }
 }
 

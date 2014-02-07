@@ -91,7 +91,7 @@ namespace CombatManagerMono
             _SettingsButton.TouchUpInside += SettingsButtonClicked;            
             _SettingsButton.Frame = new RectangleF(Bounds.Width - 64, (Bounds.Height - 48.0f)/2.0f, 48f, 48f);
 
-            AddSubview (_SettingsButton);
+            //AddSubview (_SettingsButton);
             	
             _AboutButton = new GradientButton();
             _AboutButton.SetImage(UIImage.FromFile("Images/External/info.png"), UIControlState.Normal);

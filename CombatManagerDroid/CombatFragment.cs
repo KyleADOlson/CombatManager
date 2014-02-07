@@ -103,9 +103,15 @@ namespace CombatManagerDroid
             ShowDieRolls(View);
         }
 
+        bool reloadingList;
         void ReloadInitiativeList()
         {
-            _InitListAdapter.NotifyDataSetChanged();
+            if (!reloadingList)
+            {
+                reloadingList = true;
+                _InitListAdapter.NotifyDataSetChanged();
+                reloadingList = false;
+            }
 
            
         }

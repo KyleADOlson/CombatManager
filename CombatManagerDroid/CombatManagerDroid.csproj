@@ -54,9 +54,7 @@
     <Compile Include="LibraryListAdapter.cs" />
     <Compile Include="LookupFragment.cs" />
     <Compile Include="CombatFragment.cs" />
-    <Compile Include="InitiativeListAdapter.cs">
-      <DependentUpon>FileDialog.cs</DependentUpon>
-    </Compile>
+    <Compile Include="InitiativeListAdapter.cs" />
     <Compile Include="CharacterListAdapter.cs" />
     <Compile Include="ActionDialog.cs" />
     <Compile Include="CharacterActionsAdapter.cs" />
@@ -85,14 +83,11 @@
     <Compile Include="ConditionDialog.cs" />
     <Compile Include="UIUtils.cs" />
     <Compile Include="HDDialog.cs" />
-    <Compile Include="SettingsDialog.cs">
-      <DependentUpon>CMPreferences.cs</DependentUpon>
-    </Compile>
+    <Compile Include="SettingsDialog.cs" />
     <Compile Include="AboutDialog.cs" />
     <Compile Include="CMPreferences.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\VersionNotes.txt" />

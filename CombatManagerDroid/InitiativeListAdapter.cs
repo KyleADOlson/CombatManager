@@ -110,23 +110,28 @@ namespace CombatManagerDroid
         
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            LinearLayout layout = (LinearLayout)convertView;
-            if (layout == null)
+            LinearLayout baseLayout = (LinearLayout)convertView;
+            if (baseLayout == null)
             {
-                layout = new LinearLayout(Application.Context);
+                baseLayout = new LinearLayout(Application.Context);
             }
-            layout.RemoveAllViews();
-            layout.LayoutParameters = new AbsListView.LayoutParams(
+            baseLayout.RemoveAllViews();
+            baseLayout.LayoutParameters = new AbsListView.LayoutParams(
                 new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MatchParent,
-                ViewGroup.LayoutParams.WrapContent));
+                    ViewGroup.LayoutParams.MatchParent,
+                    ViewGroup.LayoutParams.WrapContent));
+            baseLayout.Orientation = Orientation.Vertical;
+
+            LinearLayout layout = new LinearLayout(Application.Context);
+            baseLayout.AddView(layout);
+
             layout.SetGravity(GravityFlags.CenterVertical);
             
             Character c = _State.CombatList[position];
 
             ImageView rv = new ImageView(_View.Context);
             rv.SetImageDrawable(_View.Context.Resources.GetDrawable(
-            Resource.Drawable.target16));
+                Resource.Drawable.target16));
             layout.AddView(rv);
             rv.Visibility = c.IsReadying?ViewStates.Visible:ViewStates.Gone;
         
@@ -136,7 +141,7 @@ namespace CombatManagerDroid
             dv.SetImageDrawable(_View.Context.Resources.GetDrawable(
                 Resource.Drawable.hourglass16));
             layout.AddView(dv);
-            dv.Visibility =  c.IsDelaying?ViewStates.Visible:ViewStates.Gone;
+            dv.Visibility = c.IsDelaying?ViewStates.Visible:ViewStates.Gone;
 
 
 
@@ -146,7 +151,7 @@ namespace CombatManagerDroid
                 t = new TextView(Application.Context);
             }
             t.Text = _State.CombatList[position].Name;
-            t.SetTextColor (Android.Graphics.Color.Black);
+            t.SetTextColor(Android.Graphics.Color.Black);
             t.Ellipsize = Android.Text.TextUtils.TruncateAt.Middle;
             t.Gravity = GravityFlags.CenterVertical;
             t.SetSingleLine(true);
@@ -164,19 +169,19 @@ namespace CombatManagerDroid
             {
                 layout.SetBackgroundColor(new Android.Graphics.Color(0, 0, 0));
                 
-                t.SetTextColor (Android.Graphics.Color.White);
+                t.SetTextColor(Android.Graphics.Color.White);
             }
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
+                                               ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
             lp.Weight = 1.0f;
             t.LayoutParameters = lp;
 
-            t.Click += (object sender, EventArgs e) => 
+            t.Click += (object sender, EventArgs e) =>
             {
                 if (CharacterClicked != null)
                 {
-                    CharacterClicked(this, new CharacterEventArgs() {Character = c});
+                    CharacterClicked(this, new CharacterEventArgs() { Character = c });
                 }
 
             };
@@ -195,7 +200,8 @@ namespace CombatManagerDroid
             bu.SetBackgroundDrawable(_View.Context.Resources.GetDrawable(Resource.Drawable.blue_button));
             bu.Text = c.CurrentInitiative.ToString();
             bu.SetTextColor(new Android.Graphics.Color(0xff, 0xff, 0xff));
-            bu.Click += (object sender, EventArgs e) => {
+            bu.Click += (object sender, EventArgs e) =>
+            {
                 
                 new NumberDialog("CurrentInitiative", "Initiative", c, _View.Context).Show();
             };
@@ -211,38 +217,44 @@ namespace CombatManagerDroid
             b.SetBackgroundDrawable(_View.Context.Resources.GetDrawable(Resource.Drawable.blue_button));
 
            
-            var options = new List<string> (){"Move Down", "Move Up", "Ready", "Delay"};
+            var options = new List<string>(){ "Move Down", "Move Up", "Ready", "Delay" };
             PopupUtils.AttachSimpleStringPopover(c.Name,
-                                                 b,
-                                                 options,
-                                                 (v, index, val) => 
-                                                 {
-                switch (index)
+                b,
+                options,
+                (v, index, val) =>
                 {
-                case 0:
-                    _State.MoveDownCharacter(c);
-                    break;
-                case 1:
-                    _State.MoveUpCharacter(c);
-                    break;
-                case 2:
+                    switch (index)
+                    {
+                    case 0:
+                        _State.MoveDownCharacter(c);
+                        break;
+                    case 1:
+                        _State.MoveUpCharacter(c);
+                        break;
+                    case 2:
                     
-                    c.IsReadying = !c.IsReadying;
-                    break;
-                case 3:
-                    c.IsDelaying = !c.IsDelaying;
-                    break;
-                }
+                        c.IsReadying = !c.IsReadying;
+                        break;
+                    case 3:
+                        c.IsDelaying = !c.IsDelaying;
+                        break;
+                    }
 
-            });
+                });
 
             new ViewUpdateListener(c, layout, rv, dv, bu);
 
+            foreach (Character follower in c.InitiativeFollowers)
+            {
+                TextView tv = new TextView(_View.Context);
+                tv.SetPadding(10, 0, 0, 0);
+                tv.Text = follower.Name;
+                baseLayout.AddView(tv);
 
+            }
 
-            return layout;
+            return baseLayout;
         }
-
 
     }
 }

@@ -72,7 +72,6 @@
     <ConsolePause>False</ConsolePause>
     <BuildIpa>True</BuildIpa>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>A4C25775-99E2-44E2-BDE4-28979DDDB98C</CodesignProvision>
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>

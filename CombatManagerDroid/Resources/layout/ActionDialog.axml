@@ -24,11 +24,26 @@
         android:layout_height="fill_parent"
         android:id="@+id/linearLayout2"
         android:layout_weight="2">
-        <Button
-            android:text="Close"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/closeButton" />
+            android:id="@+id/linearLayout3">
+            <Button
+                android:text="Back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/backButton"
+                android:layout_weight="1" />
+            <Button
+                android:text="Close"
+                android:id="@+id/closeButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
         <ListView
             android:minWidth="25px"
             android:minHeight="25px"

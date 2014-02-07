@@ -23,13 +23,15 @@ namespace CombatManagerDroid
         Context _Context;
         Character _Character;
         List<CharacterActionItem> _ActionItems;
+        Stack<List<CharacterActionItem>> _ParentActionItems = new Stack<List<CharacterActionItem>>();
 
         
-        public CharacterActionsAdapter(Context context, Character character)
+        public CharacterActionsAdapter(Context context, Character character, CombatState state)
         {
             _Context = context;
             _Character = character;
-            _ActionItems = CharacterActions.GetActions(_Character, _Character);
+            _ActionItems = CharacterActions.GetActions(_Character, _Character, new List<Character>(
+                from x in state.Characters where x.IsMonster == _Character.IsMonster select x));
         }
 
         public override int Count
@@ -83,7 +85,19 @@ namespace CombatManagerDroid
 
         public void MoveToSubItems(CharacterActionItem ai)
         {
+            if (_ActionItems != null)
+            {
+                _ParentActionItems.Push(_ActionItems);
+            }
             _ActionItems = ai.SubItems;
+        }
+
+        public void MoveBack()
+        {
+            if (_ParentActionItems.Count > 0)
+            {
+                _ActionItems = _ParentActionItems.Pop();
+            }
         }
     }
 }

@@ -534,7 +534,7 @@ namespace CombatManagerMono
 			
 			Character ch = (Character)p.Data;
 			
-			List<CharacterActionItem> actions = CharacterActions.GetInitiativeItems(ch, _SelectedCharacter);
+            List<CharacterActionItem> actions = CharacterActions.GetInitiativeItems(ch, _SelectedCharacter, null);
 			p.Items.Clear();
 			foreach (CharacterActionItem it in actions)
 			{
