@@ -562,7 +562,7 @@
             		<TextBox Margin="101.3,3.917,0,3.106" VerticalAlignment="Stretch" Height="21.602" RenderTransformOrigin="2.172,0.865" Grid.Column="0" GotFocus="TextBox_GotFocus" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged" Grid.Row="0" Grid.ColumnSpan="1" Width="30" HorizontalAlignment="Left" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Maximum Hit Points" Text="{Binding MaxHP, UpdateSourceTrigger=PropertyChanged}" />
             		<Button x:Name="ConditionsBox" Grid.Column="1" Grid.Row="0" RenderTransformOrigin="0.5,0.5" ToolTip="Actions" Width="Auto" Height="22" GotKeyboardFocus="TextBox_GotKeyboardFocus" HorizontalAlignment="Stretch" Margin="2.353,3,23.4,3.625" Click="ConditionsBox_Click">
             			<Grid Width="16" Height="16">
-            				<Image Source="Images/d20-16.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            				<Image Source="Images/d20-16.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16"/>
 
             			</Grid>
             		</Button>
@@ -1014,7 +1014,7 @@
                 </Button>
                 <Button x:Name="ConditionsBox" Grid.Column="4" Grid.Row="0" RenderTransformOrigin="0.5,0.5" ToolTip="Actions" Width="Auto" Height="22" GotKeyboardFocus="TextBox_GotKeyboardFocus" HorizontalAlignment="Stretch" Margin="0,4.929,1,3.04" Click="ConditionsBox_Click">
                     <Grid Width="16" Height="16">
-                        <Image Source="Images/d20-16.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Image Source="Images/d20-16.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16"/>
 
                     </Grid>
                 </Button>
