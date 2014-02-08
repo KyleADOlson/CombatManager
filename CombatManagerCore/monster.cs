@@ -5382,14 +5382,6 @@ namespace CombatManager
             //adjust skills
             ChangeSkillsForStat(Stat.Intelligence, diff);
 
-
-            CreatureTypeInfo info = CreatureTypeInfo.GetInfo(Type);
-            
-            //get skill count
-            int oldSkillCount = Math.Max(info.Skills + oldBonus, 1);
-            int newSkillCount = Math.Max(info.Skills + newBonus, 1);
-            AdjustSkills(newSkillCount * HDRoll.TotalCount - oldSkillCount * HDRoll.TotalCount);
-
         }
 
         [XmlIgnore]
