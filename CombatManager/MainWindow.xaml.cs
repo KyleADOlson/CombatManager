@@ -405,11 +405,6 @@ namespace CombatManager
             LoadHotkeys();
 
             PerformUpdateCheck();
-
-
-
-
-
             
         }
 

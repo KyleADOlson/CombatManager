@@ -2625,7 +2625,7 @@ namespace CombatManager
         private void ParseSkills()
         {
             skillValueDictionary = new Dictionary<String, SkillValue>(new InsensitiveEqualityCompararer());
-            if (skills != null)
+            if (Skills != null)
             {
                 Regex skillReg = new Regex("([ \\p{L}]+)( )(\\(([- \\p{L}]+)\\) )?((\\+|-)[0-9]+)");
 
@@ -5381,14 +5381,6 @@ namespace CombatManager
 
             //adjust skills
             ChangeSkillsForStat(Stat.Intelligence, diff);
-
-
-            CreatureTypeInfo info = CreatureTypeInfo.GetInfo(Type);
-            
-            //get skill count
-            int oldSkillCount = Math.Max(info.Skills + oldBonus, 1);
-            int newSkillCount = Math.Max(info.Skills + newBonus, 1);
-            AdjustSkills(newSkillCount * HDRoll.TotalCount - oldSkillCount * HDRoll.TotalCount);
 
         }
 
