@@ -280,6 +280,7 @@ namespace CombatManager
                 _Monster.UpdateSkillValueList();
                 _SkillsView.Refresh();
                 _SelectableSkillsView.Refresh();
+                
             }
 		}
 		
@@ -389,6 +390,7 @@ namespace CombatManager
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             FixSenses();
+            _Monster.CreateSkillString();
             _OriginalMonster.CopyFrom(_Monster);
             DialogResult = true;
             Close();

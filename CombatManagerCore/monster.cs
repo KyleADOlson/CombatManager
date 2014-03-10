@@ -10357,6 +10357,28 @@ namespace CombatManager
             }
         }
 
+        public void CreateSkillString()
+        {
+            if (SkillValueDictionary.Count > 0)
+            {
+                string skillList = "";
+
+                int count = 0;
+
+                foreach (SkillValue val in SkillValueDictionary.Values)
+                {
+                    if (count > 0)
+                    {
+                        skillList += ", ";
+                    }
+
+                    skillList += val.Text;
+                    count++;
+                }
+                Skills = skillList;
+            }
+        }
+
         void SkillValuePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             SkillValue v = (SkillValue)sender;
