@@ -852,17 +852,21 @@
 							<Grid Margin="0,3,0,0"/>
 							<StackPanel Margin="0,3,0,0">
 								<TextBlock Text="Languages" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" HorizontalAlignment="Left" FontWeight="Bold"/>
-								<TextBox Text="{Binding Languages, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,0,8,0" Height="87" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+								<TextBox Text="{Binding Languages, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,0,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
 							</StackPanel>
 							<StackPanel Margin="0,3,0,0">
 								<TextBlock Text="SQ" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" FontWeight="Bold"/>
-								<TextBox  Text="{Binding SQ, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="87" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+								<TextBox  Text="{Binding SQ, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
 							</StackPanel>
 							<StackPanel Margin="0,3,0,0">
 								<TextBlock Text="Gear" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" FontWeight="Bold"/>
-								<TextBox Text="{Binding Gear, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="87" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
-							</StackPanel>
-						</StackPanel>
+								<TextBox Text="{Binding Gear, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,3,0,0">
+                                    <TextBlock Text="Other Gear" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" FontWeight="Bold"/>
+                                    <TextBox Text="{Binding OtherGear, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </StackPanel>
 					</Border>
                 </Grid>
                 </Border>

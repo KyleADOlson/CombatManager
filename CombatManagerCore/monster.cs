@@ -4881,6 +4881,14 @@ namespace CombatManager
             {
                 Ref += added ? 2 : -2;
             }
+            else if (feat == "Great Fortitude")
+            {
+                Fort += added ? 2 : -2;
+            }
+            else if (feat == "Iron Will")
+            {
+                Will += added ? 2 : -2;
+            }
             else if (feat == "Toughness")
             {
                 DieRoll roll = HDRoll;
