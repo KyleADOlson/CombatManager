@@ -2946,10 +2946,10 @@
         											</ListBox.ItemTemplate>
         										</ListBox>
         										<ComboBox Height="23" HorizontalAlignment="Right" x:Name="CombatTabNPCFilterBox" VerticalAlignment="Bottom" Width="70.25" SelectionChanged="CombatTabNPCFilterBox_SelectionChanged" Style="{DynamicResource ComboBoxStyle1}" Margin="0,0,0,25.71">
-        											<ComboBoxItem x:Name="CombatNPCFilterMonstersItem" Content="Monsters" IsSelected="True" />
+        											<ComboBoxItem x:Name="CombatNPCFilterMonstersItem" Content="Monsters"/>
         											<ComboBoxItem x:Name="CombatNPCFilterNPCItem" Content="NPCs"/>
         											<ComboBoxItem x:Name="CombatNPCFilterCustomItem" Content="Custom"/>
-        											<ComboBoxItem x:Name="CombatNPCFilterAllItem" Content="All"/>
+                                                    <ComboBoxItem x:Name="CombatNPCFilterAllItem" Content="All" IsSelected="True" />
             						
         										</ComboBox>
         										<Button x:Name="AddMonsterFromListButton" IsEnabled="{Binding CurrentItem, Converter={StaticResource itemExistsConverter}}" Margin="0,0,72.25,25.71" VerticalAlignment="Bottom" Click="AddMonsterFromListButton_Click" Height="23">
@@ -3086,10 +3086,10 @@
         				<ComboBoxItem x:Name="BetweenCRsItem" Content="Between"/>
         			</ComboBox>
         			<ComboBox  Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="34,4,0,0" x:Name="MonsterTabNPCComboBox" VerticalAlignment="Top" Width="80" SelectionChanged="MonsterCRFilterComboBox_SelectionChanged" SelectedIndex="3">
-        				<ComboBoxItem x:Name="NPCFilterMonstersComboItem" Content="Monsters" IsSelected="True" />
+        				<ComboBoxItem x:Name="NPCFilterMonstersComboItem" Content="Monsters"/>
         				<ComboBoxItem x:Name="NPCFilterNPCComboItem" Content="NPCs"/>
-        				<ComboBoxItem x:Name="NPCFilterCustomComboItem" Content="Custom"/>
-        				<ComboBoxItem x:Name="NPCFilterAllComboItem" Content="All"/>
+        				<ComboBoxItem x:Name="NPCFilterCustomComboItem" Content="Custom" />
+                        <ComboBoxItem x:Name="NPCFilterAllComboItem" Content="All" IsSelected="True" />
         			</ComboBox>
         			<Button x:Name="MonsterPrintButton" Grid.Column="1" HorizontalAlignment="Right" Margin="0,4,4.25,4" d:LayoutOverrides="Height" Click="MonsterPrintButton_Click">
         				<Image Height="16" Source="Images/PrintHS.png" Stretch="Fill" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
