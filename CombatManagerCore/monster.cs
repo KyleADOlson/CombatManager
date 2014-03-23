@@ -7245,14 +7245,14 @@ namespace CombatManager
 				return string.Join(" or ", orAttacks.ToArray());
 			}
 
-			if (returnText.IndexOf(" and ") > 0)
-			{
-				List<string> andAttacks = new List<string>();
-				foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
-					andAttacks.Add(ChangeAttackMods(subAttack, diff));
+            //if (returnText.IndexOf(" and ") > 0)
+            //{
+            //    List<string> andAttacks = new List<string>();
+            //    foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+            //        andAttacks.Add(ChangeAttackMods(subAttack, diff));
 
-				return string.Join(" and ", andAttacks.ToArray());
-			}			
+            //    return string.Join(" and ", andAttacks.ToArray());
+            //}			
 
             //find mods 
 			return ChangeSingleAttackMods(diff, returnText);
@@ -7294,14 +7294,14 @@ namespace CombatManager
                 return string.Join(" or ", orAttacks.ToArray());
             }
 
-            if (returnText.IndexOf(" and ") > 0)
-            {
-                List<string> andAttacks = new List<string>();
-                foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
-                    andAttacks.Add(ChangeAttackDieStep(subAttack, diff));
+            //if (returnText.IndexOf(" and ") > 0)
+            //{
+            //    List<string> andAttacks = new List<string>();
+            //    foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+            //        andAttacks.Add(ChangeAttackDieStep(subAttack, diff));
 
-                return string.Join(" and ", andAttacks.ToArray());
-            }
+            //    return string.Join(" and ", andAttacks.ToArray());
+            //}
 
             //find mods 
             return ChangeSingleAttackDieStep(returnText, diff);
@@ -7353,14 +7353,14 @@ namespace CombatManager
 				return string.Join(" or ", orAttack.ToArray());
 			}
 
-			if (text.IndexOf(" and ") > 0)
-			{
-				List<string> andAttack = new List<string>();
-				foreach (string subAttack in text.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
-					andAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
+            //if (text.IndexOf(" and ") > 0)
+            //{
+            //    List<string> andAttack = new List<string>();
+            //    foreach (string subAttack in text.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+            //        andAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
 
-				return string.Join(" and ", andAttack.ToArray());
-			}
+            //    return string.Join(" and ", andAttack.ToArray());
+            //}
 
 			return changeAttack(diff, diffPlusHalf, halfDiff, returnText);
 		}
