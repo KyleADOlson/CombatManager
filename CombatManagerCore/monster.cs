@@ -403,7 +403,7 @@ namespace CombatManager
 
         private bool skillsParsed;
         private bool skillValuesMayNeedUpdate;
-        private Dictionary<String, SkillValue> skillValueDictionary;
+        private SortedDictionary<String, SkillValue> skillValueDictionary;
         private List<SkillValue> skillValueList;
 
         private bool featsParsed;
@@ -833,7 +833,7 @@ namespace CombatManager
 
         public Monster()
         {
-            skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+            skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
             skillValueList = new List<SkillValue>();
         }
 
@@ -1011,7 +1011,7 @@ namespace CombatManager
             skillsParsed = m.skillsParsed;
             if (m.skillsParsed)
             {
-                skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+                skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
                 foreach (SkillValue skillValue in m.skillValueDictionary.Values)
                 {
 
@@ -1182,7 +1182,7 @@ namespace CombatManager
             m.skillsParsed = skillsParsed;
             if (skillsParsed)
             {
-                m.skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+                m.skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
                 foreach (SkillValue skillValue in skillValueDictionary.Values)
                 {
 
@@ -2624,7 +2624,7 @@ namespace CombatManager
 
         private void ParseSkills()
         {
-            skillValueDictionary = new Dictionary<String, SkillValue>(new InsensitiveEqualityCompararer());
+            skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
             if (Skills != null)
             {
                 Regex skillReg = new Regex("([ \\p{L}]+)( )(\\(([- \\p{L}]+)\\) )?((\\+|-)[0-9]+)");
@@ -10293,7 +10293,7 @@ namespace CombatManager
         }
 
         [XmlIgnore]
-        public Dictionary<String, SkillValue> SkillValueDictionary
+        public SortedDictionary<String, SkillValue> SkillValueDictionary
         {
             get
             {
@@ -10339,7 +10339,7 @@ namespace CombatManager
             }
             set
             {
-                skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+                skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
 
                 foreach (SkillValue val in value)
                 {
