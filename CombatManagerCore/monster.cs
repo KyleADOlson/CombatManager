@@ -1801,7 +1801,7 @@ namespace CombatManager
 
                 String name = "";
 
-                Regex nameRegex = new Regex("(?<name>.+?)\tCR");
+                Regex nameRegex = new Regex("(--------------------\r\n)?(?<name>.+?)(\t| +)CR");
                 Match sm = nameRegex.Match(statsblock);
                 if (sm.Success)
                 {
