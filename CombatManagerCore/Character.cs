@@ -767,7 +767,7 @@ namespace CombatManager
                     }
                     else
                     {
-                        adjust = adjust - TemporaryHP;
+                        adjust = adjust + TemporaryHP;
                         TemporaryHP = 0;
                     }
                 }

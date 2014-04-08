@@ -163,42 +163,42 @@ namespace CombatManager
                         levelInfo.Cast = levelMatch.IntValue("levelcast");
 
                         if (levelMatch.Groups["daily"].Success)
-                        {
-                            if (String.Compare(levelMatch.Groups["daily"].Value.Trim(), "At Will", true) == 0)
                             {
-                                levelInfo.AtWill = true;
-                            }
-                            else if (String.Compare(levelMatch.Groups["daily"].Value.Trim(), "Constant", true) == 0)
-                            {
-                                levelInfo.Constant = true;
-                            }
-                            else
-                            {
+                                if (String.Compare(levelMatch.Groups["daily"].Value.Trim(), "At Will", true) == 0)
+                                {
+                                    levelInfo.AtWill = true;
+                                }
+                                else if (String.Compare(levelMatch.Groups["daily"].Value.Trim(), "Constant", true) == 0)
+                                {
+                                    levelInfo.Constant = true;
+                                }
+                                else
+                                {
 
-                                levelInfo.PerDay = int.Parse(levelMatch.Groups["daily"].Value);
+                                    levelInfo.PerDay = int.Parse(levelMatch.Groups["daily"].Value);
+                                }
                             }
-                        }
 
                         levelInfo.More = levelMatch.IntValue("more");
 
                         SpellInfo prevInfo = null;
-                        foreach (Match spell in regSpell.Matches(levelMatch.Groups["spellblocks"].Value))
-                        {
-
-                            SpellInfo spellInfo = ParseSpell(spell, prevInfo);
-
-                            if (spellInfo != prevInfo && spellInfo.Name.Length > 0)
+                            foreach (Match spell in regSpell.Matches(levelMatch.Groups["spellblocks"].Value))
                             {
-                                levelInfo.Spells.Add(spellInfo);
+
+                                SpellInfo spellInfo = ParseSpell(spell, prevInfo);
+
+                                if (spellInfo != prevInfo && spellInfo.Name.Length > 0)
+                                {
+                                    levelInfo.Spells.Add(spellInfo);
+                                }
+
+                                prevInfo = spellInfo;
                             }
 
-                            prevInfo = spellInfo;
-                        }
-
                         if (levelInfo.Spells.Count > 0)
-                        {
-                            blockInfo.Levels.Add(levelInfo);
-                        }          
+                            {
+                                blockInfo.Levels.Add(levelInfo);
+                            }          
                     }
 
                     if (blockInfo.Levels.Count > 0)

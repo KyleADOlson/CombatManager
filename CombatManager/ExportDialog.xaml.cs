@@ -263,6 +263,10 @@ namespace CombatManager
             {
                 ExportData d = new ExportData();
                 d.Monsters.AddRange(from x in monstersList where x.IsSelected select (Monster)x.Item);
+                foreach (var source in d.Monsters.Where(source => source.SkillsParsed))
+                {
+                    source.SkillsParsed = false;
+                }
                 d.Spells.AddRange(from x in spellsList where x.IsSelected select (Spell)x.Item);
                 d.Feats.AddRange(from x in featsList where x.IsSelected select (Feat)x.Item);
                 d.Conditions.AddRange(from x in conditionsList where x.IsSelected select (Condition)x.Item);

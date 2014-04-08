@@ -115,7 +115,6 @@ namespace CombatManager
 
             return atk;
         }
-
         public static string AddPlus(string plus, string newPlus)
         {
             string text = plus;
@@ -137,8 +136,6 @@ namespace CombatManager
             }
             return text;
         }
-
-
         public int Count
         {
             get { return _Count; }
@@ -235,7 +232,6 @@ namespace CombatManager
                 }
             }
         }
-
         public Weapon Weapon
         {
             get { return _BaseWeapon; }
@@ -250,7 +246,6 @@ namespace CombatManager
                 }
             }
         }
-
         public bool Masterwork
         {
             get { return _Masterwork; }
@@ -263,8 +258,6 @@ namespace CombatManager
                 }
             }
         }
-
-
         public bool Broken
         {
             get { return _Broken; }
@@ -277,7 +270,6 @@ namespace CombatManager
                 }
             }
         }
-
         public int MagicBonus
         {
             get { return _MagicBonus; }
@@ -290,8 +282,6 @@ namespace CombatManager
                 }
             }
         }
-
-
         public String SpecialAbilities
         {
             get { return _SpecialAbilities; }
@@ -307,9 +297,7 @@ namespace CombatManager
 					}
                 }
             }
-        }
-
-        
+        }       
         public bool RangedTouch
         {
             get { return _RangedTouch; }
@@ -321,10 +309,7 @@ namespace CombatManager
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("RangedTouch")); }
                 }
             }
-        }
-
-        
-        
+        }        
         public bool AltDamage
         {
             get { return _AltDamage; }
@@ -336,9 +321,7 @@ namespace CombatManager
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AltDamage")); }
                 }
             }
-        }
-
-        
+        }       
         public Stat AltDamageStat
         {
             get { return _AltDamageStat; }
@@ -351,8 +334,6 @@ namespace CombatManager
                 }
             }
         }
-
-
 		public bool TwoHanded
 		{
 			get { return _TwoHanded; }
@@ -364,9 +345,7 @@ namespace CombatManager
 					if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TwoHanded")); }
 				}
 			}
-		}
-
-        
+		}       
         public bool AltDamageDrain
         {
             get { return _AltDamageDrain; }
@@ -379,19 +358,15 @@ namespace CombatManager
                 }
             }
         }
-
-
         [XmlIgnore]
         public string Text
         {
             get {return AttackText(this); }
         }
-
         public override string ToString()
         {
             return Text;
         }
-
         public static string DieRegexString
         {
             get
@@ -399,7 +374,6 @@ namespace CombatManager
                 return "([0-9/]+)(d)([0-9]+)((\\+|-)[0-9]+)?";
             }
         }
-
         public static string RegexString(string attackName)
         {
             string text =
@@ -419,7 +393,6 @@ namespace CombatManager
 
             return text;
         }
-
         private static string SpecialAbilityString
         {
             get
@@ -449,7 +422,6 @@ namespace CombatManager
                 return _SpecialAbilityString;
             }
         }
-
         public static Attack ParseAttack(Match m)
         {
             Attack info = new Attack();
@@ -568,8 +540,6 @@ namespace CombatManager
 
             return info;
         }
-
-
         private static int FindNextNum(string text)
         {
             int val = 0;
@@ -586,9 +556,6 @@ namespace CombatManager
             return val;
 
         }
-
-
-
         private static string AttackText(Attack info)
         {
             string text = "";
@@ -657,7 +624,6 @@ namespace CombatManager
 
             return text;
         }
-
         private static string AttackBonusText(List<int> bonus)
         {
             string text = "";
@@ -673,8 +639,7 @@ namespace CombatManager
             }
 
             return text;
-        }
-		
+        }		
 		[XmlIgnore]		
 		private string FullName
 		{

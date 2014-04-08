@@ -403,7 +403,7 @@ namespace CombatManager
 
         private bool skillsParsed;
         private bool skillValuesMayNeedUpdate;
-        private Dictionary<String, SkillValue> skillValueDictionary;
+        private SortedDictionary<String, SkillValue> skillValueDictionary;
         private List<SkillValue> skillValueList;
 
         private bool featsParsed;
@@ -833,7 +833,7 @@ namespace CombatManager
 
         public Monster()
         {
-            skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+            skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
             skillValueList = new List<SkillValue>();
         }
 
@@ -1011,7 +1011,7 @@ namespace CombatManager
             skillsParsed = m.skillsParsed;
             if (m.skillsParsed)
             {
-                skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+                skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
                 foreach (SkillValue skillValue in m.skillValueDictionary.Values)
                 {
 
@@ -1182,7 +1182,7 @@ namespace CombatManager
             m.skillsParsed = skillsParsed;
             if (skillsParsed)
             {
-                m.skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+                m.skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
                 foreach (SkillValue skillValue in skillValueDictionary.Values)
                 {
 
@@ -1801,7 +1801,7 @@ namespace CombatManager
 
                 String name = "";
 
-                Regex nameRegex = new Regex("(?<name>.+?)\tCR");
+                Regex nameRegex = new Regex("(--------------------\r\n)?(?<name>.+?)(\t| +)CR");
                 Match sm = nameRegex.Match(statsblock);
                 if (sm.Success)
                 {
@@ -2624,7 +2624,7 @@ namespace CombatManager
 
         private void ParseSkills()
         {
-            skillValueDictionary = new Dictionary<String, SkillValue>(new InsensitiveEqualityCompararer());
+            skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
             if (Skills != null)
             {
                 Regex skillReg = new Regex("([ \\p{L}]+)( )(\\(([- \\p{L}]+)\\) )?((\\+|-)[0-9]+)");
@@ -4881,6 +4881,14 @@ namespace CombatManager
             {
                 Ref += added ? 2 : -2;
             }
+            else if (feat == "Great Fortitude")
+            {
+                Fort += added ? 2 : -2;
+            }
+            else if (feat == "Iron Will")
+            {
+                Will += added ? 2 : -2;
+            }
             else if (feat == "Toughness")
             {
                 DieRoll roll = HDRoll;
@@ -5381,14 +5389,6 @@ namespace CombatManager
 
             //adjust skills
             ChangeSkillsForStat(Stat.Intelligence, diff);
-
-
-            CreatureTypeInfo info = CreatureTypeInfo.GetInfo(Type);
-            
-            //get skill count
-            int oldSkillCount = Math.Max(info.Skills + oldBonus, 1);
-            int newSkillCount = Math.Max(info.Skills + newBonus, 1);
-            AdjustSkills(newSkillCount * HDRoll.TotalCount - oldSkillCount * HDRoll.TotalCount);
 
         }
 
@@ -6697,12 +6697,12 @@ namespace CombatManager
             }
             if (bonus.MeleeDamage != null)
             {
-                int val = remove ? -bonus.AttackDamage.Value : bonus.AttackDamage.Value;
+                int val = remove ? -bonus.MeleeDamage.Value : bonus.MeleeDamage.Value;
                 Melee = ChangeAttackDamage(Melee, val, val, val);
             }
             if (bonus.RangedDamage != null)
             {
-                int val = remove ? -bonus.AttackDamage.Value : bonus.AttackDamage.Value;
+                int val = remove ? -bonus.RangedDamage.Value : bonus.RangedDamage.Value;
                 Ranged = ChangeAttackDamage(Ranged, val, val, val);
             }
             if (bonus.Fort != null)
@@ -7245,14 +7245,14 @@ namespace CombatManager
 				return string.Join(" or ", orAttacks.ToArray());
 			}
 
-			if (returnText.IndexOf(" and ") > 0)
-			{
-				List<string> andAttacks = new List<string>();
-				foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
-					andAttacks.Add(ChangeAttackMods(subAttack, diff));
+            //if (returnText.IndexOf(" and ") > 0)
+            //{
+            //    List<string> andAttacks = new List<string>();
+            //    foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+            //        andAttacks.Add(ChangeAttackMods(subAttack, diff));
 
-				return string.Join(" and ", andAttacks.ToArray());
-			}			
+            //    return string.Join(" and ", andAttacks.ToArray());
+            //}			
 
             //find mods 
 			return ChangeSingleAttackMods(diff, returnText);
@@ -7294,14 +7294,14 @@ namespace CombatManager
                 return string.Join(" or ", orAttacks.ToArray());
             }
 
-            if (returnText.IndexOf(" and ") > 0)
-            {
-                List<string> andAttacks = new List<string>();
-                foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
-                    andAttacks.Add(ChangeAttackDieStep(subAttack, diff));
+            //if (returnText.IndexOf(" and ") > 0)
+            //{
+            //    List<string> andAttacks = new List<string>();
+            //    foreach (string subAttack in returnText.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+            //        andAttacks.Add(ChangeAttackDieStep(subAttack, diff));
 
-                return string.Join(" and ", andAttacks.ToArray());
-            }
+            //    return string.Join(" and ", andAttacks.ToArray());
+            //}
 
             //find mods 
             return ChangeSingleAttackDieStep(returnText, diff);
@@ -7353,14 +7353,14 @@ namespace CombatManager
 				return string.Join(" or ", orAttack.ToArray());
 			}
 
-			if (text.IndexOf(" and ") > 0)
-			{
-				List<string> andAttack = new List<string>();
-				foreach (string subAttack in text.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
-					andAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
+            //if (text.IndexOf(" and ") > 0)
+            //{
+            //    List<string> andAttack = new List<string>();
+            //    foreach (string subAttack in text.Split(new string[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+            //        andAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
 
-				return string.Join(" and ", andAttack.ToArray());
-			}
+            //    return string.Join(" and ", andAttack.ToArray());
+            //}
 
 			return changeAttack(diff, diffPlusHalf, halfDiff, returnText);
 		}
@@ -10293,7 +10293,7 @@ namespace CombatManager
         }
 
         [XmlIgnore]
-        public Dictionary<String, SkillValue> SkillValueDictionary
+        public SortedDictionary<String, SkillValue> SkillValueDictionary
         {
             get
             {
@@ -10339,7 +10339,7 @@ namespace CombatManager
             }
             set
             {
-                skillValueDictionary = new Dictionary<string, SkillValue>(new InsensitiveEqualityCompararer());
+                skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
 
                 foreach (SkillValue val in value)
                 {
@@ -10362,6 +10362,28 @@ namespace CombatManager
             foreach (SkillValue v in skillValueList)
             {
                 v.PropertyChanged += new PropertyChangedEventHandler(SkillValuePropertyChanged);
+            }
+        }
+
+        public void CreateSkillString()
+        {
+            if (SkillValueDictionary.Count > 0)
+            {
+                string skillList = "";
+
+                int count = 0;
+
+                foreach (SkillValue val in SkillValueDictionary.Values)
+                {
+                    if (count > 0)
+                    {
+                        skillList += ", ";
+                    }
+
+                    skillList += val.Text;
+                    count++;
+                }
+                Skills = skillList;
             }
         }
 

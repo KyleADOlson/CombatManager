@@ -84,8 +84,7 @@ namespace CombatManager
                
         }
 
-        public MonsterBlockCreator(FlowDocument document, DocumentLinkHander linkHandler)
-            : base(document)
+        public MonsterBlockCreator(FlowDocument document, DocumentLinkHander linkHandler): base(document)
         {
             _LinkHandler = linkHandler;
         }
@@ -264,31 +263,72 @@ namespace CombatManager
                 }
 
             }
-            string spellsKnown = monster.SpellsKnown;
-            if (spellsKnown != null && spellsKnown.Length > 0)
+            if (monster.SpellsKnownBlock == null)
+            {
+                string spellsKnown = monster.SpellsKnown;
+                if (spellsKnown != null && spellsKnown.Length > 0)
+                {
+                    List<Inline> spellInlines = null;
+                    if (_LinkHandler != null)
+                    {
+                        spellInlines = CreateSpellsBlockItem(monster.SpellsKnownBlock);
+                    }
+
+                    if (spellInlines != null && spellInlines.Count > 0)
+                    {
+                        offenseParagraph.Inlines.AddRange(spellInlines);
+                    }
+                    else
+                    {
+                        if (spellsKnown.IndexOf("Spells Known ") == 0)
+                        {
+                            spellsKnown = spellsKnown.Substring("Spells Known ".Length);
+
+                        }
+                        offenseParagraph.Inlines.AddRange(CreateItemIfNotNull("Spells Known ", spellsKnown));
+                    }
+                }
+            }
+            else
             {
                 List<Inline> spellInlines = null;
                 if (_LinkHandler != null)
                 {
                     spellInlines = CreateSpellsBlockItem(monster.SpellsKnownBlock);
                 }
-
                 if (spellInlines != null && spellInlines.Count > 0)
                 {
                     offenseParagraph.Inlines.AddRange(spellInlines);
                 }
-                else
-                {
-                    if (spellsKnown.IndexOf("Spells Known ") == 0)
-                    {
-                        spellsKnown = spellsKnown.Substring("Spells Known ".Length);
 
+            }
+            if (monster.SpellsPreparedBlock == null)
+            {
+                string spellsPrepared = monster.SpellsPrepared;
+                if (spellsPrepared != null && spellsPrepared.Length > 0)
+                {
+                    List<Inline> spellInlines = null;
+                    if (_LinkHandler != null)
+                    {
+                        spellInlines = CreateSpellsBlockItem(monster.SpellsPreparedBlock);
                     }
-                    offenseParagraph.Inlines.AddRange(CreateItemIfNotNull("Spells Known ", spellsKnown));
+
+                    if (spellInlines != null && spellInlines.Count > 0)
+                    {
+                        offenseParagraph.Inlines.AddRange(spellInlines);
+                    }
+                    else
+                    {
+                        if (spellsPrepared.IndexOf("Spells Prepared ") == 0)
+                        {
+                            spellsPrepared = spellsPrepared.Substring("Spells Prepared ".Length);
+
+                        }
+                        offenseParagraph.Inlines.AddRange(CreateItemIfNotNull("Spells Prepared ", spellsPrepared));
+                    }
                 }
             }
-            string spellsPrepared = monster.SpellsPrepared;
-            if (spellsPrepared != null && spellsPrepared.Length > 0)
+            else
             {
                 List<Inline> spellInlines = null;
                 if (_LinkHandler != null)
@@ -299,15 +339,6 @@ namespace CombatManager
                 if (spellInlines != null && spellInlines.Count > 0)
                 {
                     offenseParagraph.Inlines.AddRange(spellInlines);
-                }
-                else
-                {
-                    if (spellsPrepared.IndexOf("Spells Prepared ") == 0)
-                    {
-                        spellsPrepared = spellsPrepared.Substring("Spells Prepared ".Length);
-
-                    }
-                    offenseParagraph.Inlines.AddRange(CreateItemIfNotNull("Spells Prepared ", spellsPrepared));
                 }
             }
 
@@ -322,7 +353,7 @@ namespace CombatManager
         {
             List<Inline> lines = new List<Inline>();
 
-
+            bool multiblock = false;
             foreach (SpellBlockInfo blockinfo in list)
             {
                 string titleText = "";
@@ -339,8 +370,12 @@ namespace CombatManager
                     }
                     titleText += "Spells " + blockinfo.BlockType + " ";
                 }
-
-
+                if (multiblock)
+                {
+                    lines.Add(new LineBreak());
+                }
+                
+                multiblock = true;
                 lines.Add(new Bold(new Run(titleText)));
 
                 string text = "";

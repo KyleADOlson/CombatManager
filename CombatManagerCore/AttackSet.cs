@@ -32,13 +32,11 @@ namespace CombatManager
         List<Attack> _NaturalAttacks;
 		
 		string _Name;
-
         public AttackSet()
         {
             _WeaponAttacks = new List<Attack>();
             _NaturalAttacks = new List<Attack>();
         }
-
         public List<Attack> WeaponAttacks
         {
             get
@@ -50,7 +48,6 @@ namespace CombatManager
                 _WeaponAttacks = value;
             }
         }
-
         public List<Attack> NaturalAttacks
         {
             get
@@ -61,8 +58,7 @@ namespace CombatManager
             {
                 _NaturalAttacks = value;
             }
-        }
-		
+        }		
 		public string Name
         {
             get
@@ -74,7 +70,6 @@ namespace CombatManager
                 _Name = value;
             }
         }
-
         public int Hands
         {
             get
@@ -105,7 +100,6 @@ namespace CombatManager
                 return Math.Max(hands, 0);
             }
         }
-
         public object Clone()
         {
             AttackSet set = new AttackSet();
@@ -126,7 +120,6 @@ namespace CombatManager
 
             return set;
         }
-
         public override string ToString()
         {
             string text = "";

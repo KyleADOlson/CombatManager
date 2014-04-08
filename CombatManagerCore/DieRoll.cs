@@ -549,7 +549,9 @@ namespace CombatManager
 
         public int AverageRoll()
         {
-            return ((die + 1) * count) / 2 + mod;
+            //return ((die + 1) * count) / 2 + mod;
+            return (int) (AllRolls.Sum(roll => (Math.Floor((decimal) ((roll.Die + 1)*roll.Count))/2))+mod);
+            
         }
 
 

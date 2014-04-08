@@ -21,8 +21,10 @@
 
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Globalization;
+﻿using System.Text;
+﻿using System.Text.RegularExpressions;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -32,6 +34,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Windows.Controls.Primitives;
+using System.Threading;
 
 namespace CombatManager
 {
@@ -277,6 +280,7 @@ namespace CombatManager
                 _Monster.UpdateSkillValueList();
                 _SkillsView.Refresh();
                 _SelectableSkillsView.Refresh();
+                
             }
 		}
 		
@@ -385,6 +389,8 @@ namespace CombatManager
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
+            FixSenses();
+            _Monster.CreateSkillString();
             _OriginalMonster.CopyFrom(_Monster);
             DialogResult = true;
             Close();
@@ -411,6 +417,23 @@ namespace CombatManager
                 OKButton.IsEnabled = NameTextBox.Text.Length > 0;
             }
         }
+
+	    private void FixSenses()
+	    {
+	        Type targeTypes = typeof(string);
+	        var objects = new object[2];
+            CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
+	        var xConverter = new SensesConverter();
+	        objects[0] = _Monster.Senses;
+	        objects[1] = _Monster.Perception;
+	        var senses = (string)xConverter.Convert(objects, targeTypes, null, currentCulture);
+	        string sensesText = "";
+	        if (senses.Length > 0)
+	        {
+	            sensesText += senses + "; ";
+	        }
+	       _Monster.Senses = sensesText + "Perception " + CMStringUtilities.PlusFormatNumber(_Monster.Perception);
+	    }
 
 			
 	}
