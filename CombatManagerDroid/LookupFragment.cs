@@ -211,6 +211,8 @@ namespace CombatManagerDroid
             b.Text = text;
             b.SetMinimumWidth(size);
             FilterLayout.AddView(b);
+            b.SetCompoundDrawablesWithIntrinsicBounds(Resources.GetDrawable(Resource.Drawable.down16), null, null, null);
+
             return b;
             
         }

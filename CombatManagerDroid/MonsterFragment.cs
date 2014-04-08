@@ -71,12 +71,12 @@ namespace CombatManagerDroid
 
         bool TypeFilter(Monster item)
         {
-            return _type == "All" || item.Type == _type;
+            return _type.StartsWith("All") || String.Compare(item.Type, _type, true) == 0;
         }
 
         bool CRFilter(Monster item)
         {
-            return _cr == "All" || item.CR == _cr;
+            return _cr.StartsWith("All") || item.CR == _cr;
         }
 
 
@@ -85,7 +85,7 @@ namespace CombatManagerDroid
             Button b = BuildFilterButton("group", 100);
            
             PopupUtils.AttachButtonStringPopover("Group", b, 
-                                                 new List<string> { "All", "Monsters", "NPCs" }, 
+                new List<string> { "All Monsters", "Monsters", "NPCs" }, 
                                             _group, (r1, index, val)=>
             {
                 _group = index;
@@ -94,8 +94,10 @@ namespace CombatManagerDroid
             });
             b = BuildFilterButton("type", 180);
 
-            List<String> cts = new List<string>(Monster.CreatureTypeNames);
-            cts.Insert(0, "All");
+            List<String> cts = new List<String>(from s in Monster.CreatureTypeNames
+                                                         select s.Capitalize());
+
+            cts.Insert(0, "All Types");
             PopupUtils.AttachButtonStringPopover("Type", b, 
                                                 cts, 
             0, (r1, index, val)=>
@@ -106,7 +108,7 @@ namespace CombatManagerDroid
             });
             b = BuildFilterButton("cr", 80);
             List<string> crs = new List<string>(Monster.CRList.Values);
-            crs.Insert(0, "All");
+            crs.Insert(0, "All CRs");
             PopupUtils.AttachButtonStringPopover("CR", b, 
                                                  crs, 
                                                  0, (r1, index, val)=>
@@ -125,6 +127,7 @@ namespace CombatManagerDroid
 
             _AdvancerButton = new Button(_v.Context);
             _AdvancerButton.Text = "Monster Advancer";
+            _AdvancerButton.SetCompoundDrawablesWithIntrinsicBounds(Resources.GetDrawable(Resource.Drawable.monster16), null, null, null);
             barLayout.AddView(_AdvancerButton);
 
             _AdvancerButton.Click += (object sender, EventArgs e) => 
@@ -136,6 +139,7 @@ namespace CombatManagerDroid
 
             _AddButton = new Button(_v.Context);
             _AddButton.Text = "Add to Combat";
+            _AddButton.SetCompoundDrawablesWithIntrinsicBounds(Resources.GetDrawable(Resource.Drawable.sword16), null, null, null);
             barLayout.AddView(_AddButton);
             _AddButton.Click += (object sender, EventArgs e) => 
             {

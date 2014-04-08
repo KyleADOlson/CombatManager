@@ -258,11 +258,31 @@ namespace CombatManagerDroid
                     string name = ea.Filename;
                     string fullname = Path.Combine(fd.Folder, name);
 
-                    List<Character> l = XmlListLoader<Character>.Load(fullname);
-                    foreach (var c in l)
+                    FileInfo file = new FileInfo(fullname);
+
+                    if (String.Compare(".por", file.Extension, true) == 0 || String.Compare(".rpgrp", file.Extension, true) == 0)
                     {
-                        c.IsMonster = monsters;
-                        _CombatState.AddCharacter(c);
+                        List<Monster> importmonsters = Monster.FromFile(fullname);
+
+                        if (importmonsters != null)
+                        {
+                            foreach (Monster m in importmonsters)
+                            {
+                                Character ch = new Character(m, false);
+                                ch.IsMonster = monsters;
+                                _CombatState.AddCharacter(ch);
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                        List<Character> l = XmlListLoader<Character>.Load(fullname);
+                        foreach (var c in l)
+                        {
+                            c.IsMonster = monsters;
+                            _CombatState.AddCharacter(c);
+                        }
                     }
 
                 };

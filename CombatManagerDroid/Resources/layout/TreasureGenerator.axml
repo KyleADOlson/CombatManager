@@ -11,15 +11,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout1">
         <Button
-            android:text="Level"
-            android:layout_width="wrap_content"
+            android:text="By Level"
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/byLevelButton" />
+            android:id="@+id/byLevelButton"
+            android:layout_weight="1" />
         <Button
-            android:text="Items"
-            android:layout_width="wrap_content"
+            android:text="By Items"
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/byItemsButton" />
+            android:id="@+id/byItemsButton"
+            android:layout_weight="1" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

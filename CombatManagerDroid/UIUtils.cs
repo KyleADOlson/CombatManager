@@ -147,6 +147,12 @@ namespace CombatManagerDroid
 
         }
 
+        public static void SetLeftDrawableResource(this Button b,  int resource)
+        {
+
+            b.SetCompoundDrawablesWithIntrinsicBounds(b.Context.Resources.GetDrawable(resource), null, null, null);
+        }
+
     }
 }
 

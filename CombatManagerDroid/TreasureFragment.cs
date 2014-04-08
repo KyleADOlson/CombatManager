@@ -35,6 +35,9 @@ namespace CombatManagerDroid
         static string _Group;
         static int _CL = -1;
 
+        ImageButton lookupButton;
+        ImageButton generatorButton;
+
         protected override List<MagicItem> GetItems ()
         {
 
@@ -126,11 +129,16 @@ namespace CombatManagerDroid
             ib.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.wand16));
             LeftLayout.AddView(ib);
             ib.Click += (object sender, EventArgs e) => {ShowLookup();};
+            ib.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.main_tab));
+            ib.Selected = true;
+            lookupButton = ib;
 
             ib = new ImageButton(_v.Context);
             ib.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.dice16));
             LeftLayout.AddView(ib);
             ib.Click += (object sender, EventArgs e) => {ShowGenerator();};
+            ib.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.main_tab));
+            generatorButton = ib;
 
             LayoutInflater vi = (LayoutInflater)_v.Context.GetSystemService(Context.LayoutInflaterService);
             _GeneratorLayout = vi.Inflate(Resource.Layout.TreasureGenerator, SearchReplacementLayout, false);
@@ -143,15 +151,19 @@ namespace CombatManagerDroid
             {
                 ShowLevel(true);
             };
+            b.Selected = true;
+            b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.main_tab));
             b = _GeneratorLayout.FindViewById<Button>(Resource.Id.byItemsButton);
             b.Click += (object sender, EventArgs e) => 
             {
                 ShowLevel(false);
             };
+            b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.main_tab));
             ShowLevel(_LevelVisible);
 
             //level generation
-            b = _GeneratorLayout.FindViewById<Button>(Resource.Id.levelButton);        
+            b = _GeneratorLayout.FindViewById<Button>(Resource.Id.levelButton); 
+                  
             List<String> levelList = new List<string>();
             for (int i=1; i<=20; i++)
             {
@@ -163,7 +175,8 @@ namespace CombatManagerDroid
                                                  {
                 _Level = index+1;
             });
-            b = _GeneratorLayout.FindViewById<Button>(Resource.Id.goodsButton);        
+            b = _GeneratorLayout.FindViewById<Button>(Resource.Id.goodsButton); 
+            b.SetLeftDrawableResource(Resource.Drawable.emerald16);       
             List<String> goodsList = new List<string>(){"None", "Normal", "Double", "Triple"};
 
             for (int i=4; i<=100; i++)
@@ -178,6 +191,7 @@ namespace CombatManagerDroid
 
             });
             b = _GeneratorLayout.FindViewById<Button>(Resource.Id.coinButton);
+            b.SetLeftDrawableResource(Resource.Drawable.coins16);
             PopupUtils.AttachButtonStringPopover("Coin", b, 
                                                  goodsList, "Coin {0}",
                                                  1, (r1, index, val)=>
@@ -186,6 +200,7 @@ namespace CombatManagerDroid
 
             });
             b = _GeneratorLayout.FindViewById<Button>(Resource.Id.magicItemsButton);
+            b.SetLeftDrawableResource(Resource.Drawable.wand16);
             PopupUtils.AttachButtonStringPopover("Items", b, 
                                                  goodsList, "Items {0}",
                                                  1, (r1, index, val)=>
@@ -195,10 +210,12 @@ namespace CombatManagerDroid
             });
             
             b = _GeneratorLayout.FindViewById<Button>(Resource.Id.generateLevelButton);
+            b.SetLeftDrawableResource(Resource.Drawable.treasure16);       
             b.Click += (object sender, EventArgs e) => {GenerateLevel();};
 
+
             //item generation
-            b = _GeneratorLayout.FindViewById<Button>(Resource.Id.countButton);        
+            b = _GeneratorLayout.FindViewById<Button>(Resource.Id.countButton);  
             List<String> countList = new List<string>();
             for (int i=1; i<=100; i++)
             {
@@ -226,6 +243,7 @@ namespace CombatManagerDroid
             {
                 GenerateItems();
             };
+            b.SetCompoundDrawablesWithIntrinsicBounds(Resources.GetDrawable(Resource.Drawable.treasure16), null, null, null);
 
             if (_GeneratorVisible)
             {
@@ -249,6 +267,8 @@ namespace CombatManagerDroid
 
         void ShowLookup()
         {
+            lookupButton.Selected = true;
+            generatorButton.Selected = false;
             SearchReplacementLayout.Visibility = ViewStates.Gone;
             SearchLayout.Visibility = ViewStates.Visible;
             FilterLayout.Visibility = ViewStates.Visible;
@@ -258,6 +278,8 @@ namespace CombatManagerDroid
 
         void ShowGenerator()
         {
+            lookupButton.Selected = false;
+            generatorButton.Selected = true;
             SearchReplacementLayout.Visibility = ViewStates.Visible;
             SearchLayout.Visibility = ViewStates.Gone;
             FilterLayout.Visibility = ViewStates.Gone;
@@ -273,6 +295,14 @@ namespace CombatManagerDroid
             levelLayout.Visibility = show?ViewStates.Visible:ViewStates.Gone;
             itemsLayout.Visibility = !show?ViewStates.Visible:ViewStates.Gone;
             _LevelVisible = show;
+
+            Button b;
+            b = _GeneratorLayout.FindViewById<Button>(Resource.Id.byLevelButton);
+            b.Selected = show;
+            b = _GeneratorLayout.FindViewById<Button>(Resource.Id.byItemsButton);
+            b.Selected = !show;
+
+
         }
 
         void GenerateLevel()

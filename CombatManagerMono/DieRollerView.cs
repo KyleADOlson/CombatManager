@@ -24,7 +24,7 @@ namespace CombatManagerMono
         GradientButton _ClearHtmlButton;
         GradientView _BottomView;
         GradientButton _DieTextButton;
-        UILabel _TitleLabel;
+        GradientButton _TitleButton;
 
         string _DieText;
 
@@ -36,17 +36,26 @@ namespace CombatManagerMono
 
         public static DieRollerView Roller {get; set;}
 
+        private static bool _Collapsed;
+
+        public event EventHandler _CollpasedChanged;
+
         public DieRollerView ()
         {
             Roller = this;
 
             BackgroundColor = CMUIColors.PrimaryColorDark;
+            ClipsToBounds = true;
 
-            _TitleLabel = new UILabel();
-            _TitleLabel.Text = "Die Roller";
-            _TitleLabel.BackgroundColor = UIColor.Clear;
-            _TitleLabel.TextColor = UIColor.White;
-            _TitleLabel.Font = UIFont.BoldSystemFontOfSize(17);
+
+            _TitleButton = new GradientButton();
+            _TitleButton.SetText("Die Roller");
+            _TitleButton.Font = UIFont.BoldSystemFontOfSize(17);
+            _TitleButton.CornerRadius = 0;
+            _TitleButton.TouchUpInside += (object sender, EventArgs e) => 
+            {
+                Collapsed = !Collapsed;
+            };
 
 
             _OutputView = new UIWebView();
@@ -80,7 +89,7 @@ namespace CombatManagerMono
             _BottomView.ClipsToBounds = true;
             _BottomView.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker);
 
-            Add (_TitleLabel);
+            Add (_TitleButton);
             Add (_OutputView);
             Add (_BottomView);
             Add (_ClearHtmlButton);
@@ -141,6 +150,7 @@ namespace CombatManagerMono
             _BottomView.Add (_DieTextButton);
             _DieTextButton.TouchUpInside += DieTextButtonClicked;
             _DieTextButton.TitleLabel.AdjustsFontSizeToFitWidth = true;
+            BringSubviewToFront(_TitleButton);
 
         }
 
@@ -481,7 +491,15 @@ namespace CombatManagerMono
 
         public override void LayoutSubviews ()
         {
-            _TitleLabel.Frame = new RectangleF(15, 0,  Bounds.Width * 2.0f/3.0f - 15f, _TopButtonSize);
+            if (_Collapsed)
+            {
+                _TitleButton.Frame = new RectangleF(0, 0, Bounds.Width, _TopButtonSize);
+            }
+            else
+            {
+                _TitleButton.Frame = new RectangleF(0, 0, Bounds.Width * 2.0f / 3.0f, _TopButtonSize);
+
+            }
 
             _ClearHtmlButton.Frame = new RectangleF(Bounds.Width * 2.0f/3.0f, 0, Bounds.Width/3.0f, _TopButtonSize);
             _OutputView.Frame = new RectangleF(0, _TopButtonSize, Bounds.Width, Bounds.Height - _BottomSize-1 - _TopButtonSize);
@@ -767,6 +785,34 @@ namespace CombatManagerMono
                 _Results.RemoveAt(_Results.Count - 1);
             }
         }
+
+        public bool Collapsed
+        {
+            get
+            {
+                return _Collapsed;
+            }
+            set
+            {
+                if (_Collapsed != value)
+                {
+                    _Collapsed = value;
+                    if (_CollpasedChanged != null)
+                    {
+                        _CollpasedChanged(this, new EventArgs());
+                    }
+                }
+            }
+        }
+
+        public float HiddenHeight
+        {
+            get
+            {
+                return _TopButtonSize;
+            }
+        }
+
 
     }
 }

@@ -1,3 +1,7 @@
+1.03
+Fix loading of herolab and pc gen files
+UI improvements
+
 1.02
 Add back button to action dialog
 Add initiative linking

@@ -215,6 +215,10 @@ namespace CombatManager
         {
             get
             {
+                if (altFeatMap == null)
+                {
+                    LoadFeats();
+                }
                 return altFeatMap;
             }
         }

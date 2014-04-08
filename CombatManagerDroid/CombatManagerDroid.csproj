@@ -276,6 +276,9 @@
     <AndroidResource Include="Resources\drawable\folder16.png" />
     <AndroidResource Include="Resources\layout\SettingsDialog.axml" />
     <AndroidResource Include="Resources\drawable\ic_sysbar_quicksettings.png" />
+    <AndroidResource Include="Resources\drawable\down16.png" />
+    <AndroidResource Include="Resources\drawable\emerald16.png" />
+    <AndroidResource Include="Resources\drawable\coins16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

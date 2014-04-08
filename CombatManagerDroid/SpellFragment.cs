@@ -7,9 +7,9 @@ namespace CombatManagerDroid
 {
     public class SpellFragment: LookupFragment<Spell>
     {
-        string _Class = "All";
+        string _Class = "All Classes";
         int _Level = -1;
-        string _School = "All";
+        string _School = "All Schools";
 
         protected override List<Spell> GetItems ()
         {
@@ -33,7 +33,7 @@ namespace CombatManagerDroid
 
         bool ClassFilter(Spell item)
         {
-            if (_Class == "All")
+            if (_Class == "All Classes")
             {
                 return true;
             }
@@ -50,7 +50,7 @@ namespace CombatManagerDroid
             {
                 return true;
             }
-            if (_Class == "All")
+            if (_Class == "All Classes")
             {
                 return item.IsLevel(_Level);
             }
@@ -63,7 +63,7 @@ namespace CombatManagerDroid
 
         bool SchoolFilter(Spell item)
         {
-            return _School == "All" || String.Compare(item.school, _School, true) == 0;
+            return _School == "All Schools" || String.Compare(item.school, _School, true) == 0;
         }
 
         protected override void BuildFilters()
@@ -73,7 +73,7 @@ namespace CombatManagerDroid
             b = BuildFilterButton("Spells", 180);
 
             List<String> classes = new List<string>( Spell.SpellAdjuster.Classes.Values );
-            classes.Insert(0, "All");
+            classes.Insert(0, "All Classes");
             PopupUtils.AttachButtonStringPopover("Classes", b, 
                                                  classes, 
                                                  0, (r1, index, val)=>
@@ -90,7 +90,7 @@ namespace CombatManagerDroid
             {
                 levels.Add(i.PastTense());
             }
-            levels.Insert(0, "All");
+            levels.Insert(0, "All Levels");
             PopupUtils.AttachButtonStringPopover("Levels", b, 
                                                  levels, 
                                                  0, (r1, index, val)=>
@@ -103,7 +103,7 @@ namespace CombatManagerDroid
             b = BuildFilterButton("Schools", 180);
 
             List<String> schools = new List<string>(Spell.Schools);
-            schools.Insert(0, "All");
+            schools.Insert(0, "All Schools");
             PopupUtils.AttachButtonStringPopover("Schools", b, 
                                                  schools, 
                                                  0, (r1, index, val)=>

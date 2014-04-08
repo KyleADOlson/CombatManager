@@ -60,6 +60,10 @@ namespace CombatManagerMono
 			AddSubview(_MonsterView);
 
             _DieView = new DieRollerView();
+            _DieView._CollpasedChanged += (object sender, EventArgs e) => 
+            {
+                LayoutSubviews();
+            };
             AddSubview(_DieView);
 			
 			_CombatList.CombatState = state;
@@ -111,17 +115,29 @@ namespace CombatManagerMono
 			loc.X += width + margin;
 			_MonsterList.Frame = loc;
 			
-			loc.X += width + margin;
-            loc.Height = Bounds.Height*2.0f/5.0f;
-            _MonsterView.Frame = loc;
+            if (_DieView.Collapsed)
+            {
+            
+                loc.X += width + margin;
+                loc.Height = Bounds.Height-_DieView.HiddenHeight;
+                _MonsterView.Frame = loc;
 
-            loc.Y = _MonsterView.Frame.Bottom;
-            loc.Height = Bounds.Height - loc.Y;
-            _DieView.Frame = loc;
+                loc.Y = _MonsterView.Frame.Bottom;
+                loc.Height = _DieView.HiddenHeight;
+                _DieView.Frame = loc;
+            }
+            else
+            {
+                loc.X += width + margin;
+                loc.Height = Bounds.Height*2.0f/5.0f;
+                _MonsterView.Frame = loc;
 
 
+                loc.Y = _MonsterView.Frame.Bottom;
+                loc.Height = Bounds.Height - loc.Y;
+                _DieView.Frame = loc;
 
-
+            }
 		}
 	}
 }
