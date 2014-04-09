@@ -749,14 +749,14 @@ namespace CombatManager
             int oldHP = HP + TemporaryHP;
             int adjust = val;
 
-            if (nonlethalDamage > 0)
+            if (NonlethalDamage > 0)
             {
                 if (adjust > 0)
                 {
-                    NonlethalDamage = 0;
+                    NonlethalDamage = (adjust == NonlethalDamage||adjust > NonlethalDamage?0:NonlethalDamage-adjust);
                 }
             }
-            else if (temporaryHP > 0)
+            if (temporaryHP > 0)
             {
                 if (adjust < 0)
                 {
@@ -783,11 +783,17 @@ namespace CombatManager
             {
                 RemoveConditionByName("dying");
                 RemoveConditionByName("stable");
+                RemoveConditionByName("unconscious");
                 AddConditionByName("dead");
+            }
+            else if (oldHP == 0 && effectiveHP == 0)
+            {
+                AddConditionByName("disabled");
             }
             else if (oldHP > 0 && effectiveHP == 0)
             {
                 AddConditionByName("disabled");
+                AddConditionByName("staggered");
             }
 
             else if (oldHP >= 0 && effectiveHP < 0)
@@ -801,20 +807,25 @@ namespace CombatManager
             }
             else if (oldHP <= MinHP && effectiveHP > MinHP && effectiveHP < 0)
             {
-                AddConditionByName("dying");
+                //AddConditionByName("dying");
+                AddConditionByName("stable");
                 RemoveConditionByName("dead");
             }
 
             else if (oldHP < 0 && effectiveHP == 0)
             {
                 AddConditionByName("disabled");
+                AddConditionByName("staggered");
                 RemoveConditionByName("dying");
                 RemoveConditionByName("dead");
+                RemoveConditionByName("stable");
             }
 
             else if (oldHP <= 0 && effectiveHP > 0)
             {
+                RemoveConditionByName("unconcious");
                 RemoveConditionByName("disabled");
+                RemoveConditionByName("staggered");
                 RemoveConditionByName("dying");
                 RemoveConditionByName("dead");
                 RemoveConditionByName("stable");
@@ -832,14 +843,21 @@ namespace CombatManager
                 {
                     if (nonlethalDamage == effectiveHP)
                     {
+                        RemoveConditionByName("unconscious");
                         AddConditionByName("staggered");
                     }
                     else
                     {
+                        RemoveConditionByName("disabled");
                         RemoveConditionByName("staggered");
                         AddConditionByName("unconscious");
                     }
                 }
+            }
+            else
+            {
+                RemoveConditionByName("staggered");
+                RemoveConditionByName("unconscious");
             }
 
             return HP;
