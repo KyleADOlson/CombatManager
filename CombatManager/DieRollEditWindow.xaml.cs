@@ -43,7 +43,6 @@ namespace CombatManager
         DieRoll _Roll;
         NotifyValue<int> _Mod;
         ObservableCollection<DieStep> _Steps;
-        
 
 		public DieRollEditWindow()
 		{
@@ -53,13 +52,16 @@ namespace CombatManager
             _Mod.PropertyChanged += new PropertyChangedEventHandler(Mod_PropertyChanged);
             DieRollBonusText.DataContext = _Mod;
 			UpdateUI();
-		}
+		}     
+        public int HPstatmod { get; set; }
+        public bool HasToughness { get; set; }
 
         public DieRoll Roll
         {
             get
             {
                 return _Roll;
+                
             }
             set
             {
@@ -81,8 +83,15 @@ namespace CombatManager
                     {
                         s.PropertyChanged += new PropertyChangedEventHandler(DieStep_PropertyChanged);
                     }
-
-                    _Mod.Value = _Roll.mod;
+                    if (HasToughness)
+                    {
+                        _Mod.Value = _Roll.mod != HPstatmod*_Roll.TotalCount + (_Roll.TotalCount < 3 ? 3 : _Roll.TotalCount)? _Roll.mod : 0;
+                    }
+                    else
+                    {
+                        _Mod.Value = _Roll.mod != HPstatmod * _Roll.TotalCount ? _Roll.mod : 0;
+                    }
+                    //_Mod.Value = _Roll.mod;
 
                     DieStepList.DataContext = _Steps;
                     UpdateUI();
@@ -111,8 +120,18 @@ namespace CombatManager
 
                 }
             }
-
-            roll.mod = _Mod.Value;
+            
+            
+                if (HasToughness)
+                {                  
+                        roll.mod = _Mod.Value == 0?HPstatmod*roll.TotalCount + (roll.TotalCount < 3 ? 3 : roll.TotalCount):roll.mod = _Mod.Value;       
+                }
+                else
+                {
+                    roll.mod = _Mod.Value == 0? HPstatmod * roll.TotalCount : roll.mod = _Mod.Value;
+                
+                }
+            
 
             return roll;
         }
@@ -133,13 +152,11 @@ namespace CombatManager
             OKButton.IsEnabled = MakeRoll().TotalCount > 0;
         }
 
-
-
         void Mod_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            
             UpdateUI();
         }
-
 
         void DieStep_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {

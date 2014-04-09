@@ -4294,8 +4294,8 @@ namespace CombatManager
             DieRoll roll = HDRoll;
             roll.die = 8;
             //add charisma and toughness
-            roll.mod = AbilityBonus(Charisma) * roll.count +
-                (roll.count < 3 ? 3 : roll.count);
+            roll.mod = AbilityBonus(Charisma) * roll.TotalCount +
+                (roll.TotalCount < 3 ? 3 : roll.TotalCount);
             HD = "(" + DieRollText(roll) + ")";
             HP = roll.AverageRoll();
 
@@ -4448,8 +4448,8 @@ namespace CombatManager
             DieRoll roll = HDRoll;
             roll.die = 8;
             //add charisma and toughness
-            roll.mod = AbilityBonus(Charisma) * roll.count + 
-                (roll.count<3? 3: roll.count);
+            roll.mod = AbilityBonus(Charisma) * roll.TotalCount + 
+                (roll.TotalCount<3? 3: roll.TotalCount);
             HD = "(" + DieRollText(roll) + ")";
             HP = roll.AverageRoll();
             
@@ -4893,7 +4893,7 @@ namespace CombatManager
             {
                 DieRoll roll = HDRoll;
 
-                int bonus = roll.count < 3 ? 3 : roll.count;
+                int bonus = roll.TotalCount< 3 ? 3 : roll.TotalCount;
 
                 roll.mod += added ? bonus : -bonus;
 
@@ -6250,10 +6250,10 @@ namespace CombatManager
             DieRoll hdRoll = FindNextDieRoll(HD, 0);
             if (hdRoll != null)
             {
-                hdRoll.mod += (diff * hdRoll.count) / hdRoll.fraction;
+                hdRoll.mod += (diff * hdRoll.TotalCount) / hdRoll.fraction;
                 HD = ReplaceDieRoll(HD, hdRoll, 0);
 
-                HP += diff * hdRoll.count;
+                HP += diff * hdRoll.TotalCount;
             }
                
         }
