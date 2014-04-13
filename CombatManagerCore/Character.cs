@@ -781,6 +781,8 @@ namespace CombatManager
 
             if (oldHP > MinHP && effectiveHP <= MinHP)
             {
+                RemoveConditionByName("staggered");
+                RemoveConditionByName("disabled");
                 RemoveConditionByName("dying");
                 RemoveConditionByName("stable");
                 RemoveConditionByName("unconscious");
@@ -788,6 +790,8 @@ namespace CombatManager
             }
             else if (oldHP == 0 && effectiveHP == 0)
             {
+                RemoveConditionByName("unconscious");
+                RemoveConditionByName("staggered");
                 AddConditionByName("disabled");
             }
             else if (oldHP > 0 && effectiveHP == 0)
@@ -800,20 +804,24 @@ namespace CombatManager
             {
                 if (!HasCondition("dead"))
                 {
+                    RemoveConditionByName("staggered");
                     RemoveConditionByName("disabled");
                     RemoveConditionByName("stable");
+                    AddConditionByName("unconscious");
                     AddConditionByName("dying");
                 }
             }
             else if (oldHP <= MinHP && effectiveHP > MinHP && effectiveHP < 0)
             {
                 //AddConditionByName("dying");
+                AddConditionByName("unconscious");
                 AddConditionByName("stable");
                 RemoveConditionByName("dead");
             }
 
             else if (oldHP < 0 && effectiveHP == 0)
             {
+                RemoveConditionByName("unconscious");
                 AddConditionByName("disabled");
                 AddConditionByName("staggered");
                 RemoveConditionByName("dying");
@@ -823,12 +831,18 @@ namespace CombatManager
 
             else if (oldHP <= 0 && effectiveHP > 0)
             {
-                RemoveConditionByName("unconcious");
+                RemoveConditionByName("unconscious");
                 RemoveConditionByName("disabled");
                 RemoveConditionByName("staggered");
                 RemoveConditionByName("dying");
                 RemoveConditionByName("dead");
                 RemoveConditionByName("stable");
+            }
+            else if(oldHP < 0 && effectiveHP > MinHP && adjust > 0)
+            {
+                RemoveConditionByName("dying");
+                AddConditionByName("unconscious");
+                AddConditionByName("stable");
             }
 
             else if (effectiveHP < oldHP && HasCondition("stable"))
@@ -836,10 +850,18 @@ namespace CombatManager
                 RemoveConditionByName("stable");
                 AddConditionByName("dying");
             }
-
+            else if (effectiveHP > 0)
+            {
+                RemoveConditionByName("unconscious");
+                RemoveConditionByName("disabled");
+                RemoveConditionByName("staggered");
+                RemoveConditionByName("dying");
+                RemoveConditionByName("dead");
+                RemoveConditionByName("stable");
+            }
             if (nonlethalDamage > 0 && nonlethalDamage >= effectiveHP)
             {
-                if (!HasCondition("dying") || HasCondition("disabled"))
+                if ((!HasCondition("dying") || HasCondition("disabled")) && !HasCondition("dead"))
                 {
                     if (nonlethalDamage == effectiveHP)
                     {
@@ -854,11 +876,11 @@ namespace CombatManager
                     }
                 }
             }
-            else
-            {
-                RemoveConditionByName("staggered");
-                RemoveConditionByName("unconscious");
-            }
+            //else
+            //{
+            //    RemoveConditionByName("staggered");
+            //    RemoveConditionByName("unconscious");
+            //}
 
             return HP;
         }
