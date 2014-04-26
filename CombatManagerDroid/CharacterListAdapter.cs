@@ -260,7 +260,7 @@ namespace CombatManagerDroid
                 button.Click += (object sender, EventArgs e) => {
                     AlertDialog.Builder builderSingle = new AlertDialog.Builder(parent.Context);
 
-                    builderSingle.SetTitle(c.Name);
+                    builderSingle.SetTitle(c.Name + " - " + ac.Condition.Name);
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(parent.Context,
                                                                                  Android.Resource.Layout.SelectDialogItem);
                     arrayAdapter.AddAll(options);
