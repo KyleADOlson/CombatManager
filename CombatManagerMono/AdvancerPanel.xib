@@ -1,1355 +1,272 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
-	<data>
-		<int key="IBDocument.SystemTarget">1296</int>
-		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
-		<string key="IBDocument.AppKitVersion">1138.47</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
-		</object>
-		<array key="IBDocument.IntegratedClassDependencies">
-			<string>IBUIButton</string>
-			<string>IBUIView</string>
-			<string>IBUILabel</string>
-			<string>IBProxyObject</string>
-		</array>
-		<array key="IBDocument.PluginDependencies">
-			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-		</array>
-		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
-			<integer value="1" key="NS.object.0"/>
-		</object>
-		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
-			<object class="IBProxyObject" id="841351856">
-				<string key="IBProxiedObjectIdentifier">IBFilesOwner</string>
-				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-			</object>
-			<object class="IBProxyObject" id="606714003">
-				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
-				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-			</object>
-			<object class="IBUIView" id="566199199">
-				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
-				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIView" id="889015948">
-						<reference key="NSNextResponder" ref="566199199"/>
-						<int key="NSvFlags">292</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIButton" id="101356605">
-								<reference key="NSNextResponder" ref="889015948"/>
-								<int key="NSvFlags">306</int>
-								<string key="NSFrameSize">{259, 30}</string>
-								<reference key="NSSuperview" ref="889015948"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="312036395"/>
-								<string key="NSReuseIdentifierKey">_NS:241</string>
-								<bool key="IBUIOpaque">NO</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<int key="IBUIContentHorizontalAlignment">0</int>
-								<int key="IBUIContentVerticalAlignment">0</int>
-								<string key="IBUINormalTitle">Monster Advancer</string>
-								<object class="NSColor" key="IBUIHighlightedTitleColor" id="610431499">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
-								</object>
-								<reference key="IBUINormalTitleColor" ref="610431499"/>
-								<object class="NSColor" key="IBUINormalTitleShadowColor" id="500046736">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MC41AA</bytes>
-								</object>
-								<object class="IBUIFontDescription" key="IBUIFontDescription" id="389568748">
-									<int key="type">2</int>
-									<double key="pointSize">15</double>
-								</object>
-								<object class="NSFont" key="IBUIFont" id="592725380">
-									<string key="NSName">Helvetica-Bold</string>
-									<double key="NSSize">15</double>
-									<int key="NSfFlags">16</int>
-								</object>
-							</object>
-						</array>
-						<string key="NSFrame">{{0, 3}, {259, 30}}</string>
-						<reference key="NSSuperview" ref="566199199"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="101356605"/>
-						<string key="NSReuseIdentifierKey">_NS:212</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="304675987">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MCAwAA</bytes>
-						</object>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-					</object>
-					<object class="IBUIView" id="312036395">
-						<reference key="NSNextResponder" ref="566199199"/>
-						<int key="NSvFlags">290</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIView" id="606993736">
-								<reference key="NSNextResponder" ref="312036395"/>
-								<int key="NSvFlags">276</int>
-								<array class="NSMutableArray" key="NSSubviews">
-									<object class="IBUIView" id="368430217">
-										<reference key="NSNextResponder" ref="606993736"/>
-										<int key="NSvFlags">274</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="IBUILabel" id="337285493">
-												<reference key="NSNextResponder" ref="368430217"/>
-												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{5, 0}, {160, 20}}</string>
-												<reference key="NSSuperview" ref="368430217"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="21197395"/>
-												<string key="NSReuseIdentifierKey">_NS:345</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<bool key="IBUIClipsSubviews">YES</bool>
-												<int key="IBUIContentMode">7</int>
-												<bool key="IBUIUserInteractionEnabled">NO</bool>
-												<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-												<string key="IBUIText">Simple Templates</string>
-												<object class="NSColor" key="IBUITextColor" id="262481866">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MSAxIDEAA</bytes>
-												</object>
-												<nil key="IBUIHighlightedColor"/>
-												<int key="IBUIBaselineAdjustment">1</int>
-												<float key="IBUIMinimumFontSize">10</float>
-												<reference key="IBUIFontDescription" ref="389568748"/>
-												<reference key="IBUIFont" ref="592725380"/>
-											</object>
-										</array>
-										<string key="NSFrame">{{5, 5}, {170, 20}}</string>
-										<reference key="NSSuperview" ref="606993736"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="337285493"/>
-										<string key="NSReuseIdentifierKey">_NS:212</string>
-										<object class="NSColor" key="IBUIBackgroundColor" id="679241577">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MSAwLjMyNTAwMzE1OTEgMC4wNzQwNzQwNzQwNwA</bytes>
-										</object>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-									</object>
-									<object class="IBUIButton" id="21197395">
-										<reference key="NSNextResponder" ref="606993736"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{5, 28}, {170, 37}}</string>
-										<reference key="NSSuperview" ref="606993736"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="530964263"/>
-										<string key="NSReuseIdentifierKey">_NS:241</string>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">Advanced</string>
-										<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-										<reference key="IBUIFontDescription" ref="389568748"/>
-										<reference key="IBUIFont" ref="592725380"/>
-									</object>
-									<object class="IBUIButton" id="530964263">
-										<reference key="NSNextResponder" ref="606993736"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{5, 68}, {170, 37}}</string>
-										<reference key="NSSuperview" ref="606993736"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="840475913"/>
-										<string key="NSReuseIdentifierKey">_NS:241</string>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">Size</string>
-										<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-										<reference key="IBUIFontDescription" ref="389568748"/>
-										<reference key="IBUIFont" ref="592725380"/>
-									</object>
-									<object class="IBUIButton" id="840475913">
-										<reference key="NSNextResponder" ref="606993736"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{5, 108}, {170, 37}}</string>
-										<reference key="NSSuperview" ref="606993736"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="889577183"/>
-										<string key="NSReuseIdentifierKey">_NS:241</string>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">Outsider</string>
-										<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-										<reference key="IBUIFontDescription" ref="389568748"/>
-										<reference key="IBUIFont" ref="592725380"/>
-									</object>
-									<object class="IBUIButton" id="889577183">
-										<reference key="NSNextResponder" ref="606993736"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{5, 148}, {170, 37}}</string>
-										<reference key="NSSuperview" ref="606993736"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="152268416"/>
-										<string key="NSReuseIdentifierKey">_NS:241</string>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">Augment Summoning</string>
-										<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-										<reference key="IBUIFontDescription" ref="389568748"/>
-										<reference key="IBUIFont" ref="592725380"/>
-									</object>
-								</array>
-								<string key="NSFrame">{{0, 5}, {180, 190}}</string>
-								<reference key="NSSuperview" ref="312036395"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="368430217"/>
-								<string key="NSReuseIdentifierKey">_NS:212</string>
-								<object class="NSColor" key="IBUIBackgroundColor" id="218485647">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4zMjA5ODc2NTQzIDEgMQA</bytes>
-								</object>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-							</object>
-							<object class="IBUIView" id="152268416">
-								<reference key="NSNextResponder" ref="312036395"/>
-								<int key="NSvFlags">276</int>
-								<array class="NSMutableArray" key="NSSubviews">
-									<object class="IBUIView" id="1019295976">
-										<reference key="NSNextResponder" ref="152268416"/>
-										<int key="NSvFlags">274</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="IBUILabel" id="679756023">
-												<reference key="NSNextResponder" ref="1019295976"/>
-												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{5, 0}, {160, 20}}</string>
-												<reference key="NSSuperview" ref="1019295976"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="222965035"/>
-												<string key="NSReuseIdentifierKey">_NS:345</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<bool key="IBUIClipsSubviews">YES</bool>
-												<int key="IBUIContentMode">7</int>
-												<bool key="IBUIUserInteractionEnabled">NO</bool>
-												<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-												<string key="IBUIText">Racial Hit Die</string>
-												<reference key="IBUITextColor" ref="262481866"/>
-												<nil key="IBUIHighlightedColor"/>
-												<int key="IBUIBaselineAdjustment">1</int>
-												<float key="IBUIMinimumFontSize">10</float>
-												<reference key="IBUIFontDescription" ref="389568748"/>
-												<reference key="IBUIFont" ref="592725380"/>
-											</object>
-										</array>
-										<string key="NSFrame">{{5, 5}, {170, 20}}</string>
-										<reference key="NSSuperview" ref="152268416"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="679756023"/>
-										<string key="NSReuseIdentifierKey">_NS:212</string>
-										<reference key="IBUIBackgroundColor" ref="679241577"/>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-									</object>
-									<object class="IBUIButton" id="222965035">
-										<reference key="NSNextResponder" ref="152268416"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{5, 28}, {170, 37}}</string>
-										<reference key="NSSuperview" ref="152268416"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="23757898"/>
-										<string key="NSReuseIdentifierKey">_NS:241</string>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">Racial Hit Die</string>
-										<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-										<reference key="IBUIFontDescription" ref="389568748"/>
-										<reference key="IBUIFont" ref="592725380"/>
-									</object>
-									<object class="IBUIButton" id="23757898">
-										<reference key="NSNextResponder" ref="152268416"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{5, 68}, {170, 37}}</string>
-										<reference key="NSSuperview" ref="152268416"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="497346883"/>
-										<string key="NSReuseIdentifierKey">_NS:241</string>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">Bonus Stat: Strength</string>
-										<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-										<reference key="IBUIFontDescription" ref="389568748"/>
-										<reference key="IBUIFont" ref="592725380"/>
-									</object>
-									<object class="IBUIButton" id="497346883">
-										<reference key="NSNextResponder" ref="152268416"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{5, 108}, {170, 37}}</string>
-										<reference key="NSSuperview" ref="152268416"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="113021644"/>
-										<string key="NSReuseIdentifierKey">_NS:241</string>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">Size Change - None</string>
-										<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-										<reference key="IBUIFontDescription" ref="389568748"/>
-										<reference key="IBUIFont" ref="592725380"/>
-									</object>
-								</array>
-								<string key="NSFrame">{{185, 5}, {180, 190}}</string>
-								<reference key="NSSuperview" ref="312036395"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="1019295976"/>
-								<string key="NSReuseIdentifierKey">_NS:212</string>
-								<reference key="IBUIBackgroundColor" ref="218485647"/>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-							</object>
-							<object class="IBUIView" id="113021644">
-								<reference key="NSNextResponder" ref="312036395"/>
-								<int key="NSvFlags">274</int>
-								<array class="NSMutableArray" key="NSSubviews">
-									<object class="IBUIView" id="517172108">
-										<reference key="NSNextResponder" ref="113021644"/>
-										<int key="NSvFlags">274</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="IBUILabel" id="378447093">
-												<reference key="NSNextResponder" ref="517172108"/>
-												<int key="NSvFlags">294</int>
-												<string key="NSFrame">{{5, 0}, {208, 20}}</string>
-												<reference key="NSSuperview" ref="517172108"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="227364183"/>
-												<string key="NSReuseIdentifierKey">_NS:345</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<bool key="IBUIClipsSubviews">YES</bool>
-												<int key="IBUIContentMode">7</int>
-												<bool key="IBUIUserInteractionEnabled">NO</bool>
-												<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-												<string key="IBUIText">Other</string>
-												<reference key="IBUITextColor" ref="262481866"/>
-												<nil key="IBUIHighlightedColor"/>
-												<int key="IBUIBaselineAdjustment">1</int>
-												<float key="IBUIMinimumFontSize">10</float>
-												<reference key="IBUIFontDescription" ref="389568748"/>
-												<reference key="IBUIFont" ref="592725380"/>
-											</object>
-										</array>
-										<string key="NSFrame">{{5, 5}, {285, 20}}</string>
-										<reference key="NSSuperview" ref="113021644"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="378447093"/>
-										<string key="NSReuseIdentifierKey">_NS:212</string>
-										<reference key="IBUIBackgroundColor" ref="679241577"/>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-									</object>
-									<object class="IBUIButton" id="227364183">
-										<reference key="NSNextResponder" ref="113021644"/>
-										<int key="NSvFlags">288</int>
-										<string key="NSFrame">{{5, 28}, {285, 37}}</string>
-										<reference key="NSSuperview" ref="113021644"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="434699419"/>
-										<string key="NSReuseIdentifierKey">_NS:241</string>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">Other Template</string>
-										<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-										<reference key="IBUIFontDescription" ref="389568748"/>
-										<reference key="IBUIFont" ref="592725380"/>
-									</object>
-									<object class="IBUIView" id="434699419">
-										<reference key="NSNextResponder" ref="113021644"/>
-										<int key="NSvFlags">292</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="IBUIButton" id="724026958">
-												<reference key="NSNextResponder" ref="434699419"/>
-												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{0, 3}, {139, 37}}</string>
-												<reference key="NSSuperview" ref="434699419"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="521473604"/>
-												<string key="NSReuseIdentifierKey">_NS:241</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-												<int key="IBUIContentHorizontalAlignment">0</int>
-												<int key="IBUIContentVerticalAlignment">0</int>
-												<int key="IBUIButtonType">1</int>
-												<string key="IBUINormalTitle">Size</string>
-												<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-												<object class="NSColor" key="IBUINormalTitleColor">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-												</object>
-												<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-												<reference key="IBUIFontDescription" ref="389568748"/>
-												<reference key="IBUIFont" ref="592725380"/>
-											</object>
-											<object class="IBUIButton" id="119755282">
-												<reference key="NSNextResponder" ref="434699419"/>
-												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{0, 40}, {139, 37}}</string>
-												<reference key="NSSuperview" ref="434699419"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="979463160"/>
-												<string key="NSReuseIdentifierKey">_NS:241</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-												<int key="IBUIContentHorizontalAlignment">0</int>
-												<int key="IBUIContentVerticalAlignment">0</int>
-												<int key="IBUIButtonType">1</int>
-												<string key="IBUINormalTitle">Size</string>
-												<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-												<object class="NSColor" key="IBUINormalTitleColor">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-												</object>
-												<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-												<reference key="IBUIFontDescription" ref="389568748"/>
-												<reference key="IBUIFont" ref="592725380"/>
-											</object>
-											<object class="IBUIButton" id="521473604">
-												<reference key="NSNextResponder" ref="434699419"/>
-												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{146, 3}, {139, 37}}</string>
-												<reference key="NSSuperview" ref="434699419"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="119755282"/>
-												<string key="NSReuseIdentifierKey">_NS:241</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-												<int key="IBUIContentHorizontalAlignment">0</int>
-												<int key="IBUIContentVerticalAlignment">0</int>
-												<int key="IBUIButtonType">1</int>
-												<string key="IBUINormalTitle">Size</string>
-												<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-												<object class="NSColor" key="IBUINormalTitleColor">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-												</object>
-												<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-												<reference key="IBUIFontDescription" ref="389568748"/>
-												<reference key="IBUIFont" ref="592725380"/>
-											</object>
-											<object class="IBUIButton" id="979463160">
-												<reference key="NSNextResponder" ref="434699419"/>
-												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{146, 40}, {139, 37}}</string>
-												<reference key="NSSuperview" ref="434699419"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="127626684"/>
-												<string key="NSReuseIdentifierKey">_NS:241</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-												<int key="IBUIContentHorizontalAlignment">0</int>
-												<int key="IBUIContentVerticalAlignment">0</int>
-												<int key="IBUIButtonType">1</int>
-												<string key="IBUINormalTitle">Size</string>
-												<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-												<object class="NSColor" key="IBUINormalTitleColor">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-												</object>
-												<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-												<reference key="IBUIFontDescription" ref="389568748"/>
-												<reference key="IBUIFont" ref="592725380"/>
-											</object>
-											<object class="IBUIButton" id="127626684">
-												<reference key="NSNextResponder" ref="434699419"/>
-												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{0, 77}, {139, 37}}</string>
-												<reference key="NSSuperview" ref="434699419"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="166973765"/>
-												<string key="NSReuseIdentifierKey">_NS:241</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-												<int key="IBUIContentHorizontalAlignment">0</int>
-												<int key="IBUIContentVerticalAlignment">0</int>
-												<int key="IBUIButtonType">1</int>
-												<string key="IBUINormalTitle">Size</string>
-												<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-												<object class="NSColor" key="IBUINormalTitleColor">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-												</object>
-												<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-												<reference key="IBUIFontDescription" ref="389568748"/>
-												<reference key="IBUIFont" ref="592725380"/>
-											</object>
-											<object class="IBUIButton" id="166973765">
-												<reference key="NSNextResponder" ref="434699419"/>
-												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{146, 77}, {139, 37}}</string>
-												<reference key="NSSuperview" ref="434699419"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="959829895"/>
-												<string key="NSReuseIdentifierKey">_NS:241</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-												<int key="IBUIContentHorizontalAlignment">0</int>
-												<int key="IBUIContentVerticalAlignment">0</int>
-												<int key="IBUIButtonType">1</int>
-												<string key="IBUINormalTitle">Size</string>
-												<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-												<object class="NSColor" key="IBUINormalTitleColor">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-												</object>
-												<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-												<reference key="IBUIFontDescription" ref="389568748"/>
-												<reference key="IBUIFont" ref="592725380"/>
-											</object>
-										</array>
-										<string key="NSFrame">{{5, 66}, {285, 118}}</string>
-										<reference key="NSSuperview" ref="113021644"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="724026958"/>
-										<string key="NSReuseIdentifierKey">_NS:212</string>
-										<reference key="IBUIBackgroundColor" ref="304675987"/>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-									</object>
-								</array>
-								<string key="NSFrame">{{370, 5}, {295, 190}}</string>
-								<reference key="NSSuperview" ref="312036395"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="517172108"/>
-								<string key="NSReuseIdentifierKey">_NS:212</string>
-								<reference key="IBUIBackgroundColor" ref="218485647"/>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-							</object>
-						</array>
-						<string key="NSFrame">{{0, 30}, {665, 200}}</string>
-						<reference key="NSSuperview" ref="566199199"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="606993736"/>
-						<string key="NSReuseIdentifierKey">_NS:212</string>
-						<reference key="IBUIBackgroundColor" ref="304675987"/>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-					</object>
-					<object class="IBUIButton" id="686661448">
-						<reference key="NSNextResponder" ref="566199199"/>
-						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{406, 3}, {188, 30}}</string>
-						<reference key="NSSuperview" ref="566199199"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
-						<string key="NSReuseIdentifierKey">_NS:241</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Add to Combat</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
-						</object>
-						<reference key="IBUINormalTitleColor" ref="262481866"/>
-						<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-						<object class="NSCustomResource" key="IBUINormalImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">sword-16.png</string>
-						</object>
-						<reference key="IBUIFontDescription" ref="389568748"/>
-						<reference key="IBUIFont" ref="592725380"/>
-					</object>
-					<object class="IBUIButton" id="959829895">
-						<reference key="NSNextResponder" ref="566199199"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{260, 3}, {35, 30}}</string>
-						<reference key="NSSuperview" ref="566199199"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="686661448"/>
-						<string key="NSReuseIdentifierKey">_NS:241</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<int key="IBUIButtonType">1</int>
-						<reference key="IBUIHighlightedTitleColor" ref="610431499"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzE0IDAuMzA5ODAzOTIxNiAwLjUyMTU2ODYyNzUAA</bytes>
-						</object>
-						<reference key="IBUINormalTitleShadowColor" ref="500046736"/>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<int key="type">2</int>
-							<int key="size">2</int>
-						</object>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">18</double>
-							<int key="NSfFlags">16</int>
-						</object>
-					</object>
-				</array>
-				<string key="NSFrameSize">{678, 230}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="889015948"/>
-				<string key="NSReuseIdentifierKey">_NS:212</string>
-				<reference key="IBUIBackgroundColor" ref="304675987"/>
-				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-			</object>
-		</array>
-		<object class="IBObjectContainer" key="IBDocument.Objects">
-			<array class="NSMutableArray" key="connectionRecords">
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">RacialSizeButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="497346883"/>
-					</object>
-					<int key="connectionID">49</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">RacialBonusButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="23757898"/>
-					</object>
-					<int key="connectionID">48</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="113021644"/>
-					</object>
-					<int key="connectionID">25</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">AugmentSummoningButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="889577183"/>
-					</object>
-					<int key="connectionID">46</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OutsiderButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="840475913"/>
-					</object>
-					<int key="connectionID">45</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">AdvancedButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="21197395"/>
-					</object>
-					<int key="connectionID">43</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">RacialView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="152268416"/>
-					</object>
-					<int key="connectionID">24</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">SimpleHeaderView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="368430217"/>
-					</object>
-					<int key="connectionID">26</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherHeaderView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="517172108"/>
-					</object>
-					<int key="connectionID">28</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">SimpleView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="606993736"/>
-					</object>
-					<int key="connectionID">23</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherTemplateButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="227364183"/>
-					</object>
-					<int key="connectionID">50</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">RacialHeaderView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="1019295976"/>
-					</object>
-					<int key="connectionID">27</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">RacialHitDieButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="222965035"/>
-					</object>
-					<int key="connectionID">47</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">SimpleSizeButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="530964263"/>
-					</object>
-					<int key="connectionID">44</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">view</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="566199199"/>
-					</object>
-					<int key="connectionID">56</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">AddMonsterButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="686661448"/>
-					</object>
-					<int key="connectionID">57</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">AdvancerHeaderView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="889015948"/>
-					</object>
-					<int key="connectionID">59</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">ResetButton</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="959829895"/>
-					</object>
-					<int key="connectionID">63</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherTemplateOptionView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="434699419"/>
-					</object>
-					<int key="connectionID">65</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherButton1</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="724026958"/>
-					</object>
-					<int key="connectionID">73</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherButton2</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="521473604"/>
-					</object>
-					<int key="connectionID">74</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherButton3</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="119755282"/>
-					</object>
-					<int key="connectionID">75</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherButton4</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="979463160"/>
-					</object>
-					<int key="connectionID">76</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherButton5</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="127626684"/>
-					</object>
-					<int key="connectionID">81</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">OtherButton6</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="166973765"/>
-					</object>
-					<int key="connectionID">82</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">AdvancerHeaderButtonTouchUpInside:</string>
-						<reference key="source" ref="101356605"/>
-						<reference key="destination" ref="841351856"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">60</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">AddMonsterButtonTouchUpInside:</string>
-						<reference key="source" ref="686661448"/>
-						<reference key="destination" ref="841351856"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">58</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">ResetButtonTouchUpInside:</string>
-						<reference key="source" ref="959829895"/>
-						<reference key="destination" ref="841351856"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">62</int>
-				</object>
-			</array>
-			<object class="IBMutableOrderedSet" key="objectRecords">
-				<array key="orderedObjects">
-					<object class="IBObjectRecord">
-						<int key="objectID">0</int>
-						<array key="object" id="0"/>
-						<reference key="children" ref="1000"/>
-						<nil key="parent"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-1</int>
-						<reference key="object" ref="841351856"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">File's Owner</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-2</int>
-						<reference key="object" ref="606714003"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">51</int>
-						<reference key="object" ref="566199199"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="889015948"/>
-							<reference ref="686661448"/>
-							<reference ref="959829895"/>
-							<reference ref="312036395"/>
-						</array>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">4</int>
-						<reference key="object" ref="312036395"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="113021644"/>
-							<reference ref="152268416"/>
-							<reference ref="606993736"/>
-						</array>
-						<reference key="parent" ref="566199199"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">11</int>
-						<reference key="object" ref="113021644"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="227364183"/>
-							<reference ref="517172108"/>
-							<reference ref="434699419"/>
-						</array>
-						<reference key="parent" ref="312036395"/>
-						<string key="objectName">OtherView</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">9</int>
-						<reference key="object" ref="152268416"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="497346883"/>
-							<reference ref="23757898"/>
-							<reference ref="222965035"/>
-							<reference ref="1019295976"/>
-						</array>
-						<reference key="parent" ref="312036395"/>
-						<string key="objectName">RacialView</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">5</int>
-						<reference key="object" ref="606993736"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="889577183"/>
-							<reference ref="840475913"/>
-							<reference ref="530964263"/>
-							<reference ref="21197395"/>
-							<reference ref="368430217"/>
-						</array>
-						<reference key="parent" ref="312036395"/>
-						<string key="objectName">SimpleView</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">38</int>
-						<reference key="object" ref="889577183"/>
-						<reference key="parent" ref="606993736"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">35</int>
-						<reference key="object" ref="840475913"/>
-						<reference key="parent" ref="606993736"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">33</int>
-						<reference key="object" ref="530964263"/>
-						<reference key="parent" ref="606993736"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">31</int>
-						<reference key="object" ref="21197395"/>
-						<reference key="parent" ref="606993736"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">8</int>
-						<reference key="object" ref="368430217"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="337285493"/>
-						</array>
-						<reference key="parent" ref="606993736"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">14</int>
-						<reference key="object" ref="337285493"/>
-						<reference key="parent" ref="368430217"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">41</int>
-						<reference key="object" ref="497346883"/>
-						<reference key="parent" ref="152268416"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">40</int>
-						<reference key="object" ref="23757898"/>
-						<reference key="parent" ref="152268416"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">39</int>
-						<reference key="object" ref="222965035"/>
-						<reference key="parent" ref="152268416"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">10</int>
-						<reference key="object" ref="1019295976"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="679756023"/>
-						</array>
-						<reference key="parent" ref="152268416"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">15</int>
-						<reference key="object" ref="679756023"/>
-						<reference key="parent" ref="1019295976"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">42</int>
-						<reference key="object" ref="227364183"/>
-						<reference key="parent" ref="113021644"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">12</int>
-						<reference key="object" ref="517172108"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="378447093"/>
-						</array>
-						<reference key="parent" ref="113021644"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">16</int>
-						<reference key="object" ref="378447093"/>
-						<reference key="parent" ref="517172108"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">52</int>
-						<reference key="object" ref="889015948"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="101356605"/>
-						</array>
-						<reference key="parent" ref="566199199"/>
-						<string key="objectName">AdvancerHeader</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">53</int>
-						<reference key="object" ref="101356605"/>
-						<reference key="parent" ref="889015948"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">55</int>
-						<reference key="object" ref="686661448"/>
-						<reference key="parent" ref="566199199"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">61</int>
-						<reference key="object" ref="959829895"/>
-						<reference key="parent" ref="566199199"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">64</int>
-						<reference key="object" ref="434699419"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="724026958"/>
-							<reference ref="521473604"/>
-							<reference ref="119755282"/>
-							<reference ref="979463160"/>
-							<reference ref="127626684"/>
-							<reference ref="166973765"/>
-						</array>
-						<reference key="parent" ref="113021644"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">69</int>
-						<reference key="object" ref="724026958"/>
-						<reference key="parent" ref="434699419"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">70</int>
-						<reference key="object" ref="521473604"/>
-						<reference key="parent" ref="434699419"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">71</int>
-						<reference key="object" ref="119755282"/>
-						<reference key="parent" ref="434699419"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">72</int>
-						<reference key="object" ref="979463160"/>
-						<reference key="parent" ref="434699419"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">77</int>
-						<reference key="object" ref="127626684"/>
-						<reference key="parent" ref="434699419"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">78</int>
-						<reference key="object" ref="166973765"/>
-						<reference key="parent" ref="434699419"/>
-					</object>
-				</array>
-			</object>
-			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="-1.CustomClassName">AdvancerPanel</string>
-				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="-2.CustomClassName">UIResponder</string>
-				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="10.CustomClassName">GradientView</string>
-				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="11.CustomClassName">GradientView</string>
-				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="12.CustomClassName">GradientView</string>
-				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="31.CustomClassName">GradientButton</string>
-				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="33.CustomClassName">GradientButton</string>
-				<string key="33.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="35.CustomClassName">GradientButton</string>
-				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="38.CustomClassName">GradientButton</string>
-				<string key="38.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="39.CustomClassName">GradientButton</string>
-				<string key="39.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="40.CustomClassName">GradientButton</string>
-				<string key="40.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="41.CustomClassName">GradientButton</string>
-				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="42.CustomClassName">GradientButton</string>
-				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="5.CustomClassName">GradientView</string>
-				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="51.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="52.CustomClassName">GradientView</string>
-				<string key="52.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="55.CustomClassName">GradientButton</string>
-				<string key="55.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="1" key="55.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
-				<string key="61.CustomClassName">GradientButton</string>
-				<string key="61.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="64.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="69.CustomClassName">GradientButton</string>
-				<string key="69.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="70.CustomClassName">GradientButton</string>
-				<string key="70.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="71.CustomClassName">GradientButton</string>
-				<string key="71.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="72.CustomClassName">GradientButton</string>
-				<string key="72.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="77.CustomClassName">GradientButton</string>
-				<string key="77.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="78.CustomClassName">GradientButton</string>
-				<string key="78.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="8.CustomClassName">GradientView</string>
-				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="9.CustomClassName">GradientView</string>
-				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			</dictionary>
-			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
-			<nil key="activeLocalization"/>
-			<dictionary class="NSMutableDictionary" key="localizations"/>
-			<nil key="sourceID"/>
-			<int key="maxID">82</int>
-		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">AdvancerPanel</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="AddMonsterButtonTouchUpInside:">id</string>
-						<string key="AdvancerHeaderButtonTouchUpInside:">id</string>
-						<string key="ResetButtonTouchUpInside:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="AddMonsterButtonTouchUpInside:">
-							<string key="name">AddMonsterButtonTouchUpInside:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="AdvancerHeaderButtonTouchUpInside:">
-							<string key="name">AdvancerHeaderButtonTouchUpInside:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="ResetButtonTouchUpInside:">
-							<string key="name">ResetButtonTouchUpInside:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="AddMonsterButton">GradientButton</string>
-						<string key="AdvancedButton">GradientButton</string>
-						<string key="AdvancerHeaderView">GradientView</string>
-						<string key="AugmentSummoningButton">GradientButton</string>
-						<string key="OtherButton1">GradientButton</string>
-						<string key="OtherButton2">GradientButton</string>
-						<string key="OtherButton3">GradientButton</string>
-						<string key="OtherButton4">GradientButton</string>
-						<string key="OtherButton5">GradientButton</string>
-						<string key="OtherButton6">GradientButton</string>
-						<string key="OtherHeaderView">GradientView</string>
-						<string key="OtherTemplateButton">GradientButton</string>
-						<string key="OtherTemplateOptionView">UIView</string>
-						<string key="OtherView">GradientView</string>
-						<string key="OutsiderButton">GradientButton</string>
-						<string key="RacialBonusButton">GradientButton</string>
-						<string key="RacialHeaderView">GradientView</string>
-						<string key="RacialHitDieButton">GradientButton</string>
-						<string key="RacialSizeButton">GradientButton</string>
-						<string key="RacialView">GradientView</string>
-						<string key="ResetButton">GradientButton</string>
-						<string key="SimpleHeaderView">GradientView</string>
-						<string key="SimpleSizeButton">GradientButton</string>
-						<string key="SimpleView">GradientView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="AddMonsterButton">
-							<string key="name">AddMonsterButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="AdvancedButton">
-							<string key="name">AdvancedButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="AdvancerHeaderView">
-							<string key="name">AdvancerHeaderView</string>
-							<string key="candidateClassName">GradientView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="AugmentSummoningButton">
-							<string key="name">AugmentSummoningButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherButton1">
-							<string key="name">OtherButton1</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherButton2">
-							<string key="name">OtherButton2</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherButton3">
-							<string key="name">OtherButton3</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherButton4">
-							<string key="name">OtherButton4</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherButton5">
-							<string key="name">OtherButton5</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherButton6">
-							<string key="name">OtherButton6</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherHeaderView">
-							<string key="name">OtherHeaderView</string>
-							<string key="candidateClassName">GradientView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherTemplateButton">
-							<string key="name">OtherTemplateButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherTemplateOptionView">
-							<string key="name">OtherTemplateOptionView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OtherView">
-							<string key="name">OtherView</string>
-							<string key="candidateClassName">GradientView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="OutsiderButton">
-							<string key="name">OutsiderButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="RacialBonusButton">
-							<string key="name">RacialBonusButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="RacialHeaderView">
-							<string key="name">RacialHeaderView</string>
-							<string key="candidateClassName">GradientView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="RacialHitDieButton">
-							<string key="name">RacialHitDieButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="RacialSizeButton">
-							<string key="name">RacialSizeButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="RacialView">
-							<string key="name">RacialView</string>
-							<string key="candidateClassName">GradientView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="ResetButton">
-							<string key="name">ResetButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="SimpleHeaderView">
-							<string key="name">SimpleHeaderView</string>
-							<string key="candidateClassName">GradientView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="SimpleSizeButton">
-							<string key="name">SimpleSizeButton</string>
-							<string key="candidateClassName">GradientButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="SimpleView">
-							<string key="name">SimpleView</string>
-							<string key="candidateClassName">GradientView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/AdvancerPanel.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">GradientButton</string>
-					<string key="superclassName">UIButton</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/GradientButton.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">GradientView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/GradientView.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
-		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1296" key="NS.object.0"/>
-		</object>
-		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">sword-16.png</string>
-			<string key="NS.object.0">{16, 16}</string>
-		</object>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
-	</data>
-</archive>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="1280" defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdvancerPanel">
+            <connections>
+                <outlet property="AddMonsterButton" destination="55" id="57"/>
+                <outlet property="AdvancedButton" destination="31" id="43"/>
+                <outlet property="AdvancerHeaderView" destination="52" id="59"/>
+                <outlet property="AugmentSummoningButton" destination="38" id="46"/>
+                <outlet property="OtherButton1" destination="69" id="73"/>
+                <outlet property="OtherButton2" destination="70" id="74"/>
+                <outlet property="OtherButton3" destination="71" id="75"/>
+                <outlet property="OtherButton4" destination="72" id="76"/>
+                <outlet property="OtherButton5" destination="77" id="81"/>
+                <outlet property="OtherButton6" destination="78" id="82"/>
+                <outlet property="OtherHeaderView" destination="12" id="28"/>
+                <outlet property="OtherTemplateButton" destination="42" id="50"/>
+                <outlet property="OtherTemplateOptionView" destination="64" id="65"/>
+                <outlet property="OtherView" destination="11" id="25"/>
+                <outlet property="OutsiderButton" destination="35" id="45"/>
+                <outlet property="RacialBonusButton" destination="40" id="48"/>
+                <outlet property="RacialHeaderView" destination="10" id="27"/>
+                <outlet property="RacialHitDieButton" destination="39" id="47"/>
+                <outlet property="RacialSizeButton" destination="41" id="49"/>
+                <outlet property="RacialView" destination="9" id="24"/>
+                <outlet property="ResetButton" destination="61" id="63"/>
+                <outlet property="SimpleHeaderView" destination="8" id="26"/>
+                <outlet property="SimpleSizeButton" destination="33" id="44"/>
+                <outlet property="SimpleView" destination="5" id="23"/>
+                <outlet property="view" destination="51" id="56"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="51">
+            <rect key="frame" x="0.0" y="0.0" width="678" height="230"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="52" userLabel="AdvancerHeader" customClass="GradientView">
+                    <rect key="frame" x="0.0" y="3" width="259" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="53">
+                            <rect key="frame" x="0.0" y="0.0" width="259" height="30"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" title="Monster Advancer">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="AdvancerHeaderButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="60"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="4">
+                    <rect key="frame" x="0.0" y="30" width="665" height="200"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="5" userLabel="SimpleView" customClass="GradientView">
+                            <rect key="frame" x="0.0" y="5" width="180" height="190"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" id="8" customClass="GradientView">
+                                    <rect key="frame" x="5" y="5" width="170" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Simple Templates" lineBreakMode="tailTruncation" minimumFontSize="10" id="14">
+                                            <rect key="frame" x="5" y="0.0" width="160" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="0.32500315909999999" blue="0.074074074069999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="31" customClass="GradientButton">
+                                    <rect key="frame" x="5" y="28" width="170" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Advanced">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="33" customClass="GradientButton">
+                                    <rect key="frame" x="5" y="68" width="170" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Size">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="35" customClass="GradientButton">
+                                    <rect key="frame" x="5" y="108" width="170" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Outsider">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="38" customClass="GradientButton">
+                                    <rect key="frame" x="5" y="148" width="170" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Augment Summoning">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.32098765429999998" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="9" userLabel="RacialView" customClass="GradientView">
+                            <rect key="frame" x="185" y="5" width="180" height="190"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" id="10" customClass="GradientView">
+                                    <rect key="frame" x="5" y="5" width="170" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Racial Hit Die" lineBreakMode="tailTruncation" minimumFontSize="10" id="15">
+                                            <rect key="frame" x="5" y="0.0" width="160" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="0.32500315909999999" blue="0.074074074069999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="39" customClass="GradientButton">
+                                    <rect key="frame" x="5" y="28" width="170" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Racial Hit Die">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="40" customClass="GradientButton">
+                                    <rect key="frame" x="5" y="68" width="170" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Bonus Stat: Strength">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="41" customClass="GradientButton">
+                                    <rect key="frame" x="5" y="108" width="170" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Size Change - None">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.32098765429999998" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="11" userLabel="OtherView" customClass="GradientView">
+                            <rect key="frame" x="370" y="5" width="295" height="190"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" id="12" customClass="GradientView">
+                                    <rect key="frame" x="5" y="5" width="285" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Other" lineBreakMode="tailTruncation" minimumFontSize="10" id="16">
+                                            <rect key="frame" x="5" y="0.0" width="208" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="0.32500315909999999" blue="0.074074074069999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="42" customClass="GradientButton">
+                                    <rect key="frame" x="5" y="28" width="285" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Other Template">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <view contentMode="scaleToFill" id="64">
+                                    <rect key="frame" x="5" y="66" width="285" height="118"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="69" customClass="GradientButton">
+                                            <rect key="frame" x="0.0" y="3" width="139" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Size">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="71" customClass="GradientButton">
+                                            <rect key="frame" x="0.0" y="40" width="139" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Size">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="70" customClass="GradientButton">
+                                            <rect key="frame" x="146" y="3" width="139" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Size">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="72" customClass="GradientButton">
+                                            <rect key="frame" x="146" y="40" width="139" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Size">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="77" customClass="GradientButton">
+                                            <rect key="frame" x="0.0" y="77" width="139" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Size">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="78" customClass="GradientButton">
+                                            <rect key="frame" x="146" y="77" width="139" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Size">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="0.32098765429999998" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="55" customClass="GradientButton">
+                    <rect key="frame" x="406" y="3" width="188" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Add to Combat" image="sword-16.png">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="AddMonsterButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="58"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="61" customClass="GradientButton">
+                    <rect key="frame" x="260" y="3" width="35" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="ResetButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="62"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="sword-16.png" width="16" height="16"/>
+    </resources>
+</document>
