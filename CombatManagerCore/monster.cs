@@ -156,6 +156,7 @@ namespace CombatManager
 
         private static List<Monster> LoadMonsterFromXml(String filename)
         {
+            String lastMonster = "";
             try
             {
 
@@ -166,7 +167,7 @@ namespace CombatManager
 
                 XDocument doc = XDocument.Load(Path.Combine(XmlLoader<Monster>.AssemblyDir, filename));
     #endif
-               
+
                 foreach (var v in doc.Descendants("Monster"))
                 {
                     Monster m = new Monster();
@@ -174,6 +175,11 @@ namespace CombatManager
                     m._DetailsID = GetElementIntValue(v, "id");
 
                     m.Name = GetElementStringValue(v, "Name");
+                    lastMonster = m.Name;
+                    if (lastMonster == "Khalfani Zuberi")
+                    {
+                        System.Diagnostics.Debug.WriteLine("Here");
+                    }
                     m.CR = GetElementStringValue(v, "CR");
                     m.XP = GetElementStringValue(v, "XP");
                     m.Alignment = GetElementStringValue(v, "Alignment");
@@ -190,9 +196,9 @@ namespace CombatManager
                     m.HP = GetElementIntValue(v, "HP");
                     m.HD = GetElementStringValue(v, "HD");
                     m.Saves = GetElementStringValue(v, "Saves");
-                    m.Fort = GetElementIntValue(v, "Fort");
-                    m.Ref = GetElementIntValue(v, "Ref");
-                    m.Will = GetElementIntValue(v, "Will");
+                    m.Fort = GetElementIntNullValue(v, "Fort");
+                    m.Ref = GetElementIntNullValue(v, "Ref");
+                    m.Will = GetElementIntNullValue(v, "Will");
                     m.DR = GetElementStringValue(v, "DR");
                     m.SR = GetElementStringValue(v, "SR");
                     m.Speed = GetElementStringValue(v, "Speed");
@@ -263,6 +269,7 @@ namespace CombatManager
             }
             catch (Exception)
             {
+                System.Diagnostics.Debug.WriteLine(lastMonster);
                 throw;
             }
 
@@ -308,9 +315,9 @@ namespace CombatManager
         private int hp;
         private String hd;
         private String saves;
-        private int fort;
-        private int reflex;
-        private int will;
+        private int? fort;
+        private int? reflex;
+        private int? will;
         private String save_mods;
         private String resist;
         private String dr;
@@ -1741,7 +1748,7 @@ namespace CombatManager
         {
             int? value = null;
             XElement el = it.Element(name);
-            if (el != null)
+            if (el != null && el.Value != "")
             {
                 try
                 {
@@ -3516,6 +3523,7 @@ namespace CombatManager
             bool refGood = false;
             bool willGood = false;
 
+
             //adjust saves
             if (typeInfo.SaveVariesCount == 0)
             {
@@ -3527,9 +3535,23 @@ namespace CombatManager
             else
             {
                 //calc saves
-                int baseFort = Fort - AbilityBonus(Type=="undead"?Charisma: Constitution);
-                int baseRef = Ref - AbilityBonus(Dexterity);
-                int baseWill = Will - AbilityBonus(Wisdom);
+                int baseFort = 0;
+                if (Fort != null)
+                {
+                    baseFort = Fort.Value - AbilityBonus(Type == "undead" ? Charisma : Constitution);
+                }
+
+                int baseRef = 0;
+                if (Ref != null)
+                {
+                    baseRef = Ref.Value - AbilityBonus(Dexterity);
+                }
+
+                int baseWill = 0;
+                if (Will != null)
+                {
+                    baseWill = Will.Value - AbilityBonus(Wisdom);
+                }
 
                 List<KeyValuePair<int, int>> list = new List<KeyValuePair<int, int>>();
 
@@ -3560,13 +3582,21 @@ namespace CombatManager
             }
 
 
-
-            Fort += CreatureTypeInfo.GetSave(fortGood, newHD.count)
-                     - CreatureTypeInfo.GetSave(fortGood, oldHD.count);
-            Will += CreatureTypeInfo.GetSave(willGood, newHD.count)
-                     - CreatureTypeInfo.GetSave(willGood, oldHD.count);
-            Ref += CreatureTypeInfo.GetSave(refGood, newHD.count)
-                     - CreatureTypeInfo.GetSave(refGood, oldHD.count);
+            if (Fort != null)
+            {
+                Fort += CreatureTypeInfo.GetSave(fortGood, newHD.count)
+                         - CreatureTypeInfo.GetSave(fortGood, oldHD.count);
+            }
+            if (Will != null)
+            {
+                Will += CreatureTypeInfo.GetSave(willGood, newHD.count)
+                         - CreatureTypeInfo.GetSave(willGood, oldHD.count);
+            }
+            if (Ref != null)
+            {
+                Ref += CreatureTypeInfo.GetSave(refGood, newHD.count)
+                         - CreatureTypeInfo.GetSave(refGood, oldHD.count);
+            }
 
 
 
@@ -8716,7 +8746,7 @@ namespace CombatManager
         }
 
         [DataMember]
-        public int Fort
+        public int? Fort
         {
             get
             {
@@ -8733,7 +8763,7 @@ namespace CombatManager
         }
 
         [DataMember]
-        public int Ref
+        public int? Ref
         {
             get
             {
@@ -8750,7 +8780,7 @@ namespace CombatManager
         }
 
         [DataMember]
-        public int Will
+        public int? Will
         {
             get
             {
@@ -10711,7 +10741,7 @@ namespace CombatManager
             }
         }
 
-        public int GetSave(SaveType type)
+        public int? GetSave(SaveType type)
         {
             if (type == SaveType.Fort)
             {

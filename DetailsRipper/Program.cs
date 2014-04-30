@@ -107,6 +107,15 @@ namespace DetailsRipper
 
             foreach (XElement x in docMagic.Descendants("MagicItem"))
             {
+                if (x.Element("CL") != null)
+                {
+                    if (x.Element("CL").Value == "varies")
+                    {
+                        x.Element("CL").Value = "0";
+                    }
+                }
+
+
                 TransferElementToDB(cn, command, x, MagicItem.DetailsFields);
             }
 
@@ -441,8 +450,9 @@ namespace DetailsRipper
 
             t.Commit();
 
+            SaveSpellAnnotations(docSpells);
             ApplySpellAnnotations(docSpells);
-            //SaveSpellAnnotations(docSpells);
+            
 
             SaveCopyFile(docSpells, "SpellsShort.xml");
 

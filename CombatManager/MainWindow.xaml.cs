@@ -6552,20 +6552,22 @@ namespace CombatManager
 
         private void RollSave(Character ch, Monster.SaveType type)
         {
-            int mod = ch.Monster.GetSave(type);
-            DieRoll roll;
-            if (UserSettings.Settings.AlternateInit3d6)
+            int? mod = ch.Monster.GetSave(type);
+            if (mod != null)
             {
+                DieRoll roll;
+                if (UserSettings.Settings.AlternateInit3d6)
+                {
 
-                roll = UserSettings.Settings.AlternateInitDieRoll;
+                    roll = UserSettings.Settings.AlternateInitDieRoll;
+                }
+                else
+                {
+                    roll = new DieRoll(1, 20, (int)mod);
+                }
+                RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
             }
-            else
-            {
-                roll = new DieRoll(1, 20, mod);
-            }
 
-
-            RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
 
         }
 

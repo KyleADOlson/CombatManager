@@ -1492,9 +1492,19 @@ namespace CombatManager
             {
             case RollType.Save:
                 {
-                    int mod = character.Monster.GetSave((Monster.SaveType)param1);
-                    DieRoll roll = new DieRoll(1, 20, mod);
-                    req.Result = roll.Roll();
+                    int? mod = character.Monster.GetSave((Monster.SaveType)param1);
+                    if (mod == null)
+                    {
+                        DieRoll roll = new DieRoll(1, 20, 0);
+                        RollResult res = roll.Roll();
+                        res.Rolls[0].Result = 1;
+                        req.Result = res;
+                    }
+                    else
+                    {
+                        DieRoll roll = new DieRoll(1, 20, (int)mod);
+                        req.Result = roll.Roll();
+                    }
                 }
                 break;
             case RollType.Skill:

@@ -94,8 +94,22 @@ namespace CombatManager
             }
         }
 
+        public static string PlusFormatNumber(int? number)
+        {
+            if (number == null)
+            {
+                return "-";
+            }
+            else return ((int)number).PlusFormat();
+        }
+
 
         public static string PlusFormat(this int number)
+        {
+            return PlusFormatNumber(number);
+        }
+
+        public static string PlusFormat(this int? number)
         {
             return PlusFormatNumber(number);
         }
