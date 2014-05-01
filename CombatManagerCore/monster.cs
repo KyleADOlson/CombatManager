@@ -1419,14 +1419,20 @@ namespace CombatManager
 
             foreach (var en in from v in f.Entries where v.FileName.StartsWith("statblocks_text") && !v.IsDirectory select v)
             {
-                MemoryStream m = new MemoryStream();
-                
-                StreamReader r = new StreamReader(en.OpenReader());
-                String block = r.ReadToEnd();
-                
-                Monster monster = new Monster();
-                ImportHeroLabBlock(block, monster, true);
-                monsters.Add(monster);
+                using (StreamReader r = new StreamReader(en.OpenReader()))
+                {
+                    String block = r.ReadToEnd();
+
+                    var otheren = f.Entries.First(v => v.FileName.Equals(en.FileName.Replace("statblocks_text", "statblocks_xml").Replace(".txt", ".xml")));
+
+                    XDocument doc = XDocument.Load(new StreamReader(otheren.OpenReader()));
+
+
+                    Monster monster = new Monster();
+                    ImportHeroLabBlock(block, doc, monster, true);
+                    monsters.Add(monster);
+                    
+                }
             }
 
             return monsters;
@@ -1799,9 +1805,12 @@ namespace CombatManager
         {
             return StringCapitalizer.Capitalize(stat) + " ([0-9]+/)?(?<" + stat.ToLower() + ">([0-9]+|-))";
         }
-
-
         private static void ImportHeroLabBlock(string statsblock, Monster monster, bool readNameBlock = false)
+        {
+            ImportHeroLabBlock(statsblock, null, monster, readNameBlock);
+        }
+
+        private static void ImportHeroLabBlock(string statsblock, XDocument doc, Monster monster, bool readNameBlock = false)
         {
             if (readNameBlock)
             {
@@ -1904,6 +1913,15 @@ namespace CombatManager
 
                 monster.XP = GetCRValue(monster.CR).ToString();
             }
+            else if (doc != null)
+            {
+                XElement el = doc.Element("document").Element("public").Element("character");
+                XElement cr = el.Element("challengerating");
+                String crText = cr.Attribute("text").Value;
+                monster.CR = crText.Substring(3);
+                XElement xp = el.Element("xpaward");
+                monster.XP = xp.Attribute("value").Value;
+            }
 
 
 
@@ -1935,11 +1953,21 @@ namespace CombatManager
                 monster.Type = "humanoid";
             }
 
+
+            string[] lines = statsblock.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
             string raceClass = GetLine("Male", statsblock, true);
             if (raceClass == null)
             {
                 raceClass = GetLine("Female", statsblock, true);
-                monster.Gender = "Female";
+                if (raceClass != null)
+                {
+                    monster.Gender = "Female";
+                }
+                else
+                {
+                    raceClass = lines[1];
+                }
             }
             else
             {
@@ -2317,6 +2345,21 @@ namespace CombatManager
         {
             string attacks = text;
 
+            string newAttacks = "";
+
+            foreach (char c in attacks)
+            {
+                if (c != 65533)
+                {
+                    newAttacks += c;
+                }
+                else
+                {
+                    newAttacks += 'x';
+                }
+            }
+
+            attacks = newAttacks;
 
             attacks = Weapon.ReplaceOriginalWeaponNames(attacks, false);
 

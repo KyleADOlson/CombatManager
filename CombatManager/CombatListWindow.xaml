@@ -420,6 +420,7 @@
                             </ComboBox>
                         </StackPanel>			
 					    <CheckBox x:Name="TopmostCheckbox" Content="Always on Top" Foreground="White" Checked="TopmostCheckbox_Checked" Unchecked="TopmostCheckbox_Checked" Grid.Row="2" d:LayoutOverrides="Width, Height" Grid.Column="2" Padding="4,0" Margin="4,4,4,6" VerticalAlignment="Bottom"/>
+					    <CheckBox x:Name="ShowConditionsCheckBox" Content="Show Conditions" Foreground="White" Margin="2" Checked="ShowConditionsCheckBox_Checked" Unchecked="ShowConditionsCheckBox_Unchecked" />
 				    </WrapPanel>
 			    </Expander.Content>
 		    </Expander>

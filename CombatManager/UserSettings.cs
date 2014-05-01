@@ -94,7 +94,7 @@ namespace CombatManager
         private bool _InitiativeShowMonsters;        
 		private bool  _InitiativeHideMonsterNames;
         private bool  _InitiativeHidePlayerNames;
-
+        private bool _InitiativeShowConditions;
 
 
         private bool _InitiativeAlwaysOnTop;
@@ -444,6 +444,18 @@ namespace CombatManager
                 }
             }
         }
+        public bool InitiativeShowConditions
+        {
+            get { return _InitiativeShowConditions; }
+            set
+            {
+                if (_InitiativeShowConditions != value)
+                {
+                    _InitiativeShowConditions = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("InitiativeShowConditions")); }
+                }
+            }
+        }
         public bool InitiativeAlwaysOnTop
         {
             get { return _InitiativeAlwaysOnTop; }
@@ -561,7 +573,8 @@ namespace CombatManager
                 InitiativeShowPlayers = LoadBoolValue("InitiativeShowPlayers", true);
                 InitiativeShowMonsters = LoadBoolValue("InitiativeShowMonsters", true);
                 InitiativeHideMonsterNames = LoadBoolValue("InitiativeHideMonsterNames", false);
-                InitiativeHidePlayerNames = LoadBoolValue("InitiativeHidePlayerNames", false); 
+                InitiativeHidePlayerNames = LoadBoolValue("InitiativeHidePlayerNames", false);
+                InitiativeShowConditions = LoadBoolValue("InitiativeShowConditions", false);
                 InitiativeAlwaysOnTop  = LoadBoolValue("InitiativeAlwaysOnTop", false);
                 InitiativeScale = LoadDoubleValue("InitiativeScale", 1.0);
                 InitiativeFlip  = LoadBoolValue("InitiativeFlip", false);
@@ -637,6 +650,7 @@ namespace CombatManager
                         SaveBoolValue(key, "InitiativeShowMonsters", InitiativeShowMonsters);
                         SaveBoolValue(key, "InitiativeHideMonsterNames", InitiativeHideMonsterNames);
                         SaveBoolValue(key, "InitiativeHidePlayerNames", InitiativeHidePlayerNames);
+                        SaveBoolValue(key, "InitiativeShowConditions", InitiativeShowConditions);
                         SaveBoolValue(key, "InitiativeAlwaysOnTop", InitiativeAlwaysOnTop);
                         SaveDoubleValue(key, "InitiativeScale", InitiativeScale);
                         SaveBoolValue(key, "InitiativeFlip", InitiativeFlip);

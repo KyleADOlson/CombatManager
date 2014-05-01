@@ -21,6 +21,7 @@
                 <Grid.RowDefinitions>
                 	<RowDefinition/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock x:Name="textBlock" Grid.Column="1" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,3" Foreground="{Binding HP, Converter={StaticResource hpToBrushConverter}}">
                            
@@ -47,7 +48,8 @@
                 <Image Source="images/hourglass-16.png"  Visibility="{Binding IsDelaying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Grid.Column="0" HorizontalAlignment="Right" Width="16"/>
                 <Image Source="images/target-16.png"  Visibility="{Binding IsReadying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Grid.Column="1"/>
                 </StackPanel>
-                <ListBox x:Name="FollowerListBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding}" Visibility="{Binding Count, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}"  Background="{x:Null}" BorderBrush="{x:Null}" IsHitTestVisible="False" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" ItemTemplate="{DynamicResource FollowerTemplate}" >
+				<ListBox x:Name="ConditionsListBox" Grid.Row="1" Grid.Column="1"  Background="{x:Null}" BorderBrush="{x:Null}"  ItemsSource="{Binding Stats.ActiveConditions}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemTemplate="{DynamicResource ConditionMiniTemplate}" ItemContainerStyle="{DynamicResource ConditionMiniContainerTemplate}"/>
+                <ListBox x:Name="FollowerListBox" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding}" Visibility="{Binding Count, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}"  Background="{x:Null}" BorderBrush="{x:Null}" IsHitTestVisible="False" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" ItemTemplate="{DynamicResource FollowerTemplate}" >
 
                 	
                 </ListBox>
@@ -73,6 +75,38 @@
                 </TextBlock>
             </Grid>
 		</DataTemplate>
+		<ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+        	<WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+		<DataTemplate x:Key="ConditionMiniTemplate">
+        	<Grid x:Name="MiniTemplateGrid">
+        		<Grid.ColumnDefinitions>
+        			<ColumnDefinition Width="16"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Width="16" Height="16" Source="{Binding Condition.Image, Converter={StaticResource StringImageSmallIconConverter}}"/>
+                <TextBlock Grid.Column="1" Padding="4,0,4,0" Text="{Binding Turns}" Visibility="{Binding Turns, Converter={StaticResource NotNullVisibilityCollapsedConverter}}" Foreground="Black" FontWeight="Bold"/>        		
+        	</Grid>
+        </DataTemplate>
+        <Style x:Key="ConditionMiniContainerTemplate" TargetType="{x:Type ListBoxItem}">
+        	<Setter Property="Background" Value="Transparent"/>
+        	<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        	<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        	<Setter Property="Padding" Value="3,3,3,3"/>
+        	<Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type ListBoxItem}">
+        				<Grid Margin="0">
+        					<Rectangle Margin="4,4,2,2" StrokeThickness="6" RadiusX="6" RadiusY="6" Fill="#51000000"/>
+        					<Rectangle Margin="2,2,4,4" StrokeThickness="6" RadiusX="6" RadiusY="6" Fill="White"/>
+        					<Border x:Name="Bd" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true" CornerRadius="6" Margin="0,0,2,2" BorderThickness="2">
+        						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        					</Border>
+                        </Grid>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>
 	</UserControl.Resources>
 
 	<Grid x:Name="LayoutRoot" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True">

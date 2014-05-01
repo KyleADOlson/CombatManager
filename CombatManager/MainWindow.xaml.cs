@@ -1683,6 +1683,8 @@ namespace CombatManager
             ClassFilterComboBox.SelectedIndex = 0;
             SpellLevelFilterComboBox.SelectedIndex = 0;
             SpellSchoolFilterComboBox.SelectedIndex = 0;
+            SpellSubschoolFilterComboBox.SelectedIndex = 0;
+            SpellDescriptorFilterComboBox.SelectedIndex = 0;
             CustomSpellFilterComboBox.SelectedIndex = 0;
         }
 
@@ -1950,6 +1952,16 @@ namespace CombatManager
             foreach (string school in Spell.Schools)
             {
                 SpellSchoolFilterComboBox.Items.Add(StringCapitalizeConverter.Capitalize(school));
+            }
+
+            foreach (string subschool in Spell.Subschools)
+            {
+                SpellSubschoolFilterComboBox.Items.Add(subschool);
+            }
+
+            foreach (string descriptor in Spell.Descriptors)
+            {
+                SpellDescriptorFilterComboBox.Items.Add(descriptor);
             }
 
 
@@ -2843,7 +2855,7 @@ namespace CombatManager
             }
 
             return result && SpellsClassViewFilter(ob) && SourceFilter(((Spell)ob).source)
-                && SpellSchoolFilter(ob) && SpellCustomFilter((Spell)ob);
+                && SpellSchoolFilter(ob) && SpellCustomFilter((Spell)ob) && SpellSubschoolFilter(ob) && SpellDescriptorFilter(ob);
         }
 
         private bool SpellsClassViewFilter(object ob)
@@ -2972,6 +2984,54 @@ namespace CombatManager
                 string text = (string)SpellSchoolFilterComboBox.SelectedItem;
 
                 return String.Compare(text, sp.school, true) == 0;
+            }
+        }
+
+
+        private bool SpellSubschoolFilter(object ob)
+        {
+            Spell sp = (Spell)ob;
+
+            if (SpellSubschoolFilterComboBox.SelectedIndex == 0)
+            {
+                return true;
+            }
+
+            else
+            {
+                string text = (string)SpellSubschoolFilterComboBox.SelectedItem;
+
+                if (!sp.subschool.NotNullString())
+                {
+                    return false;
+                }
+                else
+                {
+                    return sp.subschool.Contains(text);
+                }
+            }
+        }
+        private bool SpellDescriptorFilter(object ob)
+        {
+            Spell sp = (Spell)ob;
+
+            if (SpellDescriptorFilterComboBox.SelectedIndex == 0)
+            {
+                return true;
+            }
+
+            else
+            {
+                string text = (string)SpellDescriptorFilterComboBox.SelectedItem;
+
+                if (!sp.descriptor.NotNullString())
+                {
+                    return false;
+                }
+                else
+                {
+                    return sp.descriptor.Contains(text);
+                }
             }
         }
 

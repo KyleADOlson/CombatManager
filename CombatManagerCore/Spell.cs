@@ -138,6 +138,8 @@ namespace CombatManager
 
         private static ObservableCollection<Spell> _Spells;
         private static SortedDictionary<string, string> _Schools;
+        private static SortedSet<string> _Subschools;
+        private static SortedSet<string> _Descriptors;
         private static Dictionary<string, ObservableCollection<Spell>> _SpellDictionary;
 
         private static DBLoader<Spell> _SpellsDB;
@@ -203,13 +205,53 @@ namespace CombatManager
             _SpellDictionary = new Dictionary<string, ObservableCollection<Spell>>(new InsensitiveEqualityCompararer());
 
             _Schools = new SortedDictionary<string, string>();
+            _Subschools = new SortedSet<string>();
+            _Descriptors = new SortedSet<string>();
             foreach (Spell s in _Spells)
             {
                 string r = StringCapitalizer.Capitalize(s.school);
                 _Schools[r] = r;
                 AddSpellDictionaryItem(s);
 
+                //add subschool
+                if (s.subschool.NotNullString())
+                {
+                    foreach (String subschool in s.subschool.Split(new char[] { ',', ';' }))
+                    {
+                        _Subschools.Add(subschool.Trim());
+                    }
+                }
+
+                if (s.descriptor.NotNullString())
+                {
+                    //add descriptions
+                    foreach (String desc in s.descriptor.Split(new char[] {',',';'}))
+                    {
+                        _Descriptors.Add(desc.Trim());
+                    }
+                }
+
             }
+
+            List<String> doubles = new List<String>(_Subschools.Where(a => Regex.Match(a, "[a-zA-Z] or [a-zA-Z]").Success));
+            foreach (String dub in doubles)
+            {
+                _Subschools.Remove(dub);
+            }
+
+            _Descriptors.RemoveWhere(a => a.StartsWith("see text"));
+            List<String> ors = new List<String>(_Descriptors.Where(a => a.StartsWith("or ")));
+            foreach (String orstring in ors)
+            {
+                _Descriptors.Remove(orstring);
+                _Descriptors.Add(orstring.Substring(3));
+            }
+            doubles = new List<String>(_Descriptors.Where(a => Regex.Match(a, "[a-zA-Z] or [a-zA-Z]").Success));
+            foreach (String dub in doubles)
+            {
+                _Descriptors.Remove(dub);
+            }
+            
 
         }
 
@@ -361,6 +403,28 @@ namespace CombatManager
                     LoadSpells();
                 }
                 return _Schools.Values;
+            }
+        }
+        public static ICollection<string> Subschools
+        {
+            get
+            {
+                if (_Subschools == null)
+                {
+                    LoadSpells();
+                }
+                return _Subschools;
+            }
+        }
+        public static ICollection<string> Descriptors
+        {
+            get
+            {
+                if (_Descriptors == null)
+                {
+                    LoadSpells();
+                }
+                return _Descriptors;
             }
         }
 
