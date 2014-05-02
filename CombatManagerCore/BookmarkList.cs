@@ -72,6 +72,8 @@ namespace CombatManager
             if (bookmarks.FirstOrDefault((a) => (a.Name == b.Name && a.Type == b.Type && a.ID == b.ID  && a.Data == b.Data)) == null)
             {
                 bookmarks.Add(b);
+
+                SaveList();
                 return true;
             }
             else

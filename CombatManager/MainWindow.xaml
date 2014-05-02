@@ -3047,7 +3047,11 @@
         					<Button x:Name="EditCustomFeatButton" Content="Edit" HorizontalAlignment="Left" Margin="166,3,0,3" Width="75" Style="{DynamicResource ButtonMainStyle}" FontWeight="Bold" d:LayoutOverrides="Height" ToolTip="Edit this Custom Feat"
         						Visibility="{Binding IsCustom, Converter={StaticResource boolToVisibilityConverter}}" Click="EditCustomFeatButton_Click"/>
         					<Button x:Name="NewCustomFeatButton" Content="New" HorizontalAlignment="Left" Margin="8,3,0,3" Width="75" Style="{DynamicResource ButtonMainStyle}" FontWeight="Bold" ToolTip="Add a new Custom Feat" d:LayoutOverrides="Height" Click="NewCustomFeatButton_Click"/>
-        				</Grid>
+                            <Button FontWeight="Bold" HorizontalAlignment="Left" Margin="245,3,0,3" Name="BookmarkFeatButton" Style="{DynamicResource ButtonMainStyle}" ToolTip="Bookmark Feat" Click="BookmarkFeatButton_Click">
+
+                                <Image Width="16" Height="16" Source="Images\bookmark-16.png" Margin="3,3,3,3"/>
+                            </Button>
+                        </Grid>
         			</Border>
         		</Grid>
         	</TabItem>

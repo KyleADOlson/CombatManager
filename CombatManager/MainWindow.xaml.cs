@@ -8148,6 +8148,16 @@ namespace CombatManager
 			c.Resources.Add(new ActiveResource(){Name="Resource", Current=0});
         }
 
+        private void BookmarkFeatButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            Feat f = (Feat)featsView.CurrentItem;
+            if (f != null)
+            {
+                BookmarkList.List.AddFeat(f);
+            }
+        }
+
 
 
 
