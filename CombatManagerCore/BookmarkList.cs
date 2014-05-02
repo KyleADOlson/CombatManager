@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.ObjectModel;
+using System.IO;
 
 namespace CombatManager
 {
@@ -9,7 +11,7 @@ namespace CombatManager
     {
         static BookmarkList list;
 
-        List<Bookmark> bookmarks = new List<Bookmark>();
+        ObservableCollection<Bookmark> bookmarks = new ObservableCollection<Bookmark>();
 
 
         public static BookmarkList List
@@ -18,25 +20,36 @@ namespace CombatManager
             {
                 if (list == null)
                 {
-                    //load bookmark list
+                    list = XmlLoader<BookmarkList>.Load("BookmarkList.xml", true);
+
+                }
+                if (list == null)
+                {
+                    list = new BookmarkList();
                 }
                 return list;
             }
         }
 
-        private void SaveList()
+        private static void SaveList()
         {
-
+            XmlLoader<BookmarkList>.Save(list, "BookmarkList.xml", true);
         }
 
-        public void AddFeat(Feat feat)
+        public bool AddFeat(Feat feat)
         {
+            Bookmark b = new Bookmark();
+            b.Type = "feat";
+            b.Name = feat.Name;
+            b.ID = feat.Name;
+
+            return AddBookmark(b);
 
         }
 
         public void AddMonster(Monster monster)
         {
-
+            //Bookmark b = new Bo
         }
 
         public void AddSpell(Spell spell)
@@ -52,6 +65,27 @@ namespace CombatManager
         public void AddTreasure(Treasure treasure)
         {
 
+        }
+
+        private bool AddBookmark(Bookmark b)
+        {
+            if (bookmarks.FirstOrDefault((a) => (a.Name == b.Name && a.Type == b.Type && a.ID == b.ID  && a.Data == b.Data)) == null)
+            {
+                bookmarks.Add(b);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public ObservableCollection<Bookmark> Bookmarks
+        {
+            get
+            {
+                return list.bookmarks;
+            }
         }
     }
 }
