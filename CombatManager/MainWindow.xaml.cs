@@ -1683,6 +1683,8 @@ namespace CombatManager
             ClassFilterComboBox.SelectedIndex = 0;
             SpellLevelFilterComboBox.SelectedIndex = 0;
             SpellSchoolFilterComboBox.SelectedIndex = 0;
+            SpellSubschoolFilterComboBox.SelectedIndex = 0;
+            SpellDescriptorFilterComboBox.SelectedIndex = 0;
             CustomSpellFilterComboBox.SelectedIndex = 0;
         }
 
@@ -1950,6 +1952,16 @@ namespace CombatManager
             foreach (string school in Spell.Schools)
             {
                 SpellSchoolFilterComboBox.Items.Add(StringCapitalizeConverter.Capitalize(school));
+            }
+
+            foreach (string subschool in Spell.Subschools)
+            {
+                SpellSubschoolFilterComboBox.Items.Add(subschool);
+            }
+
+            foreach (string descriptor in Spell.Descriptors)
+            {
+                SpellDescriptorFilterComboBox.Items.Add(descriptor);
             }
 
 
@@ -2843,7 +2855,7 @@ namespace CombatManager
             }
 
             return result && SpellsClassViewFilter(ob) && SourceFilter(((Spell)ob).source)
-                && SpellSchoolFilter(ob) && SpellCustomFilter((Spell)ob);
+                && SpellSchoolFilter(ob) && SpellCustomFilter((Spell)ob) && SpellSubschoolFilter(ob) && SpellDescriptorFilter(ob);
         }
 
         private bool SpellsClassViewFilter(object ob)
@@ -2972,6 +2984,54 @@ namespace CombatManager
                 string text = (string)SpellSchoolFilterComboBox.SelectedItem;
 
                 return String.Compare(text, sp.school, true) == 0;
+            }
+        }
+
+
+        private bool SpellSubschoolFilter(object ob)
+        {
+            Spell sp = (Spell)ob;
+
+            if (SpellSubschoolFilterComboBox.SelectedIndex == 0)
+            {
+                return true;
+            }
+
+            else
+            {
+                string text = (string)SpellSubschoolFilterComboBox.SelectedItem;
+
+                if (!sp.subschool.NotNullString())
+                {
+                    return false;
+                }
+                else
+                {
+                    return sp.subschool.Contains(text);
+                }
+            }
+        }
+        private bool SpellDescriptorFilter(object ob)
+        {
+            Spell sp = (Spell)ob;
+
+            if (SpellDescriptorFilterComboBox.SelectedIndex == 0)
+            {
+                return true;
+            }
+
+            else
+            {
+                string text = (string)SpellDescriptorFilterComboBox.SelectedItem;
+
+                if (!sp.descriptor.NotNullString())
+                {
+                    return false;
+                }
+                else
+                {
+                    return sp.descriptor.Contains(text);
+                }
             }
         }
 
@@ -6552,20 +6612,22 @@ namespace CombatManager
 
         private void RollSave(Character ch, Monster.SaveType type)
         {
-            int mod = ch.Monster.GetSave(type);
-            DieRoll roll;
-            if (UserSettings.Settings.AlternateInit3d6)
+            int? mod = ch.Monster.GetSave(type);
+            if (mod != null)
             {
+                DieRoll roll;
+                if (UserSettings.Settings.AlternateInit3d6)
+                {
 
-                roll = UserSettings.Settings.AlternateInitDieRoll;
+                    roll = UserSettings.Settings.AlternateInitDieRoll;
+                }
+                else
+                {
+                    roll = new DieRoll(1, 20, (int)mod);
+                }
+                RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
             }
-            else
-            {
-                roll = new DieRoll(1, 20, mod);
-            }
 
-
-            RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
 
         }
 
@@ -8084,6 +8146,16 @@ namespace CombatManager
         {        	
             Character c = (Character) ((FrameworkElement)sender).DataContext;
 			c.Resources.Add(new ActiveResource(){Name="Resource", Current=0});
+        }
+
+        private void BookmarkFeatButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            Feat f = (Feat)featsView.CurrentItem;
+            if (f != null)
+            {
+                BookmarkList.List.AddFeat(f);
+            }
         }
 
 

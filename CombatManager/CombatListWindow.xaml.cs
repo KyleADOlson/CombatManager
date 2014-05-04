@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  CombatListWindow.xaml.cs
  *
  *  Copyright (C) 2010-2012 Kyle Olson, kyle@kyleolson.com
@@ -19,7 +19,7 @@
  *
  */
 
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -59,6 +59,7 @@ namespace CombatManager
                                         UserSettings.Settings.InitiativeHideMonsterNames);
             TopmostCheckbox.IsChecked = UserSettings.Settings.InitiativeAlwaysOnTop;
             FlipButton.IsChecked = UserSettings.Settings.InitiativeFlip;
+            ShowConditionsCheckBox.IsChecked = UserSettings.Settings.InitiativeShowConditions;
 
 
 			UpdateCombatListState();
@@ -120,6 +121,7 @@ namespace CombatManager
                 CombatList.HidePlayerNames = UserSettings.Settings.InitiativeHidePlayerNames;
                 CombatList.ShowMonsters = UserSettings.Settings.InitiativeShowMonsters;
                 CombatList.HideMonsterNames = UserSettings.Settings.InitiativeHideMonsterNames;
+                CombatList.ShowConditions = UserSettings.Settings.InitiativeShowConditions;
 			}
 				
 		}
@@ -205,6 +207,7 @@ namespace CombatManager
                 UserSettings.Settings.InitiativeHidePlayerNames = PlayersComboBox.SelectedIndex == 1;
                 UserSettings.Settings.InitiativeHideMonsterNames = MonstersComboBox.SelectedIndex == 1;
                 UserSettings.Settings.InitiativeAlwaysOnTop = TopmostCheckbox.IsChecked == true;
+                UserSettings.Settings.InitiativeShowConditions = ShowConditionsCheckBox.IsChecked == true;
 
                 UserSettings.Settings.SaveOptions(UserSettings.SettingsSaveSection.Initiative);
             }
@@ -242,6 +245,21 @@ namespace CombatManager
         {
             UpdateSettings();
 			UpdateCombatListState();
+        }
+
+        private void ShowConditionsCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+            UpdateSettings();
+            UpdateCombatListState();
+        }
+
+        private void ShowConditionsCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+            UpdateSettings();
+            UpdateCombatListState();
+
         }
         
 

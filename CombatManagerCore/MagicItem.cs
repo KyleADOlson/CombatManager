@@ -131,7 +131,7 @@ namespace CombatManager
 
         public static List<MagicItem> LoadMagicItemsFromXml(string filename)
         {
-              
+            XElement last = null;  
             try
             {
 
@@ -145,6 +145,7 @@ namespace CombatManager
                
                 foreach (var v in doc.Descendants("MagicItem"))
                 {
+                    last = v;
                     MagicItem m = new MagicItem();
 
                     m._DetailsID = v.ElementIntValue("id");

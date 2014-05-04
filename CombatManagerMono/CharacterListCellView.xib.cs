@@ -191,8 +191,9 @@ namespace CombatManagerMono
                     break;
                 case CharacterActionResult.NeedMonsterEditorDialog:
 				
-					_MonsterEditorDialog = new MonsterEditorDialog(Character.Monster);
-					MainUI.MainView.AddSubview(_MonsterEditorDialog.View);
+                    _MonsterEditorDialog = new MonsterEditorDialog(Character.Monster);
+                    MainUI.MainView.AddSubview(_MonsterEditorDialog.View);
+                 
                     break;
                 case CharacterActionResult.RollAttack:
                     DieRollerView.Roller.RollAttack((Attack)item.Tag, _Character);

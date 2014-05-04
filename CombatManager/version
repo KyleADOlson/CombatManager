@@ -1,10 +1,17 @@
-﻿1.5.6
+﻿1.5.7
+Data update
+Spell subschool and descriptor filters
+Optionally display conditions on initiative window
+More herorlab import fixes, subschool tracking for spells, show conditions on CombatList,
+
+1.5.6
 Add interface for tracking resources
 "plus" damage rolled on attacks
 class and environment monster filter
 Hide names of follower monsters on combat list
 Removing a hotkey does not require restarting app
 Fix Hero Lab import of names on NPCs with a description
+Fix temp hp math
 
 1.5.5
 Fix zip dll yet again.

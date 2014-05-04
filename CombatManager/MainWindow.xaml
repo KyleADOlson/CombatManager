@@ -3047,7 +3047,11 @@
         					<Button x:Name="EditCustomFeatButton" Content="Edit" HorizontalAlignment="Left" Margin="166,3,0,3" Width="75" Style="{DynamicResource ButtonMainStyle}" FontWeight="Bold" d:LayoutOverrides="Height" ToolTip="Edit this Custom Feat"
         						Visibility="{Binding IsCustom, Converter={StaticResource boolToVisibilityConverter}}" Click="EditCustomFeatButton_Click"/>
         					<Button x:Name="NewCustomFeatButton" Content="New" HorizontalAlignment="Left" Margin="8,3,0,3" Width="75" Style="{DynamicResource ButtonMainStyle}" FontWeight="Bold" ToolTip="Add a new Custom Feat" d:LayoutOverrides="Height" Click="NewCustomFeatButton_Click"/>
-        				</Grid>
+                            <Button FontWeight="Bold" HorizontalAlignment="Left" Margin="245,3,0,3" Name="BookmarkFeatButton" Style="{DynamicResource ButtonMainStyle}" ToolTip="Bookmark Feat" Click="BookmarkFeatButton_Click">
+
+                                <Image Width="16" Height="16" Source="Images\bookmark-16.png" Margin="3,3,3,3"/>
+                            </Button>
+                        </Grid>
         			</Border>
         		</Grid>
         	</TabItem>
@@ -3060,7 +3064,7 @@
         		</TabItem.Header>
         		<Grid x:Name="MonsterTabAddToCombatButton">
         			<Grid.RowDefinitions>
-        				<RowDefinition Height="29.912"/>
+        				<RowDefinition Height="Auto"/>
         				<RowDefinition Height="Auto"/>
         				<RowDefinition Height="126.43"/>
         				<RowDefinition/>
@@ -3069,34 +3073,20 @@
         			</Grid.RowDefinitions>
         			<Grid.ColumnDefinitions>
         				<ColumnDefinition Width="185.333"/>
-        				<ColumnDefinition Width="*"/>
-        			</Grid.ColumnDefinitions>
-        			<Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="5" RadiusX="5" Grid.RowSpan="6" Stroke="White" StrokeThickness="0"/>
-        			<Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="5" RadiusX="5" Grid.RowSpan="6" Stroke="White" StrokeThickness="0" Grid.Column="1"/>
-        			<ListBox x:Name="MonstersListBox" Margin="1,0,1,2.628" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" BorderBrush="White" />
+        				<ColumnDefinition Width="600*"/>
+                        <ColumnDefinition Width="32" />
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="5" RadiusX="5" Grid.RowSpan="6" Stroke="White" StrokeThickness="0"/>
+        			<Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0,2,0" RadiusY="5" RadiusX="5" Grid.RowSpan="6" Stroke="White" StrokeThickness="0" Grid.Column="1" Grid.ColumnSpan="2" />
+        			<ListBox x:Name="MonstersListBox" Margin="1,6,1,3" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" BorderBrush="White" />
         			<TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" x:Name="MonsterTabFilterBox" VerticalAlignment="Top" TextChanged="MonsterTabFilterBox_TextChanged" />
         			<Button x:Name="ClearMonsterText" HorizontalAlignment="Right" Margin="0,5.04,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Height="21.811" VerticalAlignment="Top" Click="ClearMonsterText_Click">
         				<Path Stretch="Fill" Stroke="Black" Data="M0,0 L1,1 M0,1 L1,0" StrokeThickness="3"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="14" Width="14"/>
         			</Button>
-        			<ComboBox x:Name="MonsterTypeFilterComboBox" Grid.Column="1" Margin="118,4,0,2.912" SelectionChanged="MonsterTypeFilterComboBox_SelectionChanged" Height="23" HorizontalAlignment="Left" Width="120">
-        				<ComboBoxItem x:Name="AllMonsterTypesItem" Content="All Types" IsSelected="True"/>
-        			</ComboBox>
-        			<ComboBox  Grid.Column="1" Height="23" Margin="242,4,0,0" x:Name="MonsterCRComboBox" VerticalAlignment="Top" SelectionChanged="MonsterCRFilterComboBox_SelectionChanged" HorizontalAlignment="Left" Width="73.5">
-        				<ComboBoxItem x:Name="AllMonsterCRsItem" Content="All CRs" IsSelected="True" />
-        				<ComboBoxItem x:Name="BetweenCRsItem" Content="Between"/>
-        			</ComboBox>
-        			<ComboBox  Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="34,4,0,0" x:Name="MonsterTabNPCComboBox" VerticalAlignment="Top" Width="80" SelectionChanged="MonsterCRFilterComboBox_SelectionChanged" SelectedIndex="3">
-        				<ComboBoxItem x:Name="NPCFilterMonstersComboItem" Content="Monsters"/>
-        				<ComboBoxItem x:Name="NPCFilterNPCComboItem" Content="NPCs"/>
-        				<ComboBoxItem x:Name="NPCFilterCustomComboItem" Content="Custom" />
-                        <ComboBoxItem x:Name="NPCFilterAllComboItem" Content="All" IsSelected="True" />
-        			</ComboBox>
-        			<Button x:Name="MonsterPrintButton" Grid.Column="1" HorizontalAlignment="Right" Margin="0,4,4.25,4" d:LayoutOverrides="Height" Click="MonsterPrintButton_Click">
+                    <Button x:Name="MonsterPrintButton" Grid.Column="2" HorizontalAlignment="Right" Margin="0,4,5,0" d:LayoutOverrides="Height" Click="MonsterPrintButton_Click" Height="Auto" VerticalAlignment="Top">
         				<Image Height="16" Source="Images/PrintHS.png" Stretch="Fill" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         			</Button>
-        			<ComboBox  Grid.Column="1" Height="23" Margin="319.5,4,0,0" x:Name="BetweenCRLowCombo" VerticalAlignment="Top" SelectionChanged="MonsterCRFilterComboBox_SelectionChanged" HorizontalAlignment="Left" Width="50"/>
-        			<ComboBox  Grid.Column="1" Height="23" Margin="373.5,4,0,0" x:Name="BetweenCRHighCombo" VerticalAlignment="Top" SelectionChanged="MonsterCRFilterComboBox_SelectionChanged" HorizontalAlignment="Left" Width="50"/>
-        			<FlowDocumentScrollViewer x:Name="MonsterFlowDocument" Grid.Column="1" Margin="1,0" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="2">
+                    <FlowDocumentScrollViewer x:Name="MonsterFlowDocument" Grid.Column="1" Margin="1,0,2,0" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2">
         				<FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
         			</FlowDocumentScrollViewer>
         			<Expander x:Name="MonsterAdvancerExpander" Grid.Column="1" HorizontalAlignment="Left" Margin="5,4,0,3.968" Grid.Row="4" d:LayoutOverrides="Height" Style="{DynamicResource ExpanderStyle1}" IsExpanded="False">
@@ -3309,14 +3299,14 @@
         					<CheckBox x:Name="AugmentSummoningCheck" Content="Augment Summoning" HorizontalAlignment="Left" Margin="8,0,0,15.332" VerticalAlignment="Bottom" Checked="MonsterAdvancerCheck_Checked" Unchecked="MonsterAdvancerCheck_Checked" Grid.Row="1" RenderTransformOrigin="0.519,0.706" />
         				</Grid>
         			</Expander>
-        			<Button Grid.Column="1" Margin="0,8,8,0" x:Name="AddToCombatButton" Click="AddToCombatButton_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="4" Height="26.248" >
+        			<Button Grid.Column="1" Margin="0,8,8,0" x:Name="AddToCombatButton" Click="AddToCombatButton_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="4" Height="26.248" Grid.ColumnSpan="2">
         				<StackPanel Orientation="Horizontal">
         					<Image Source="Images/sword-16.png" Width="16" Height="16" Margin="2,0"/>
         					<TextBlock Margin="2,0"><Run Text="Add To Combat"/></TextBlock>
         				</StackPanel>
 
         			</Button>
-        			<Border BorderThickness="1" Grid.Column="1" Grid.Row="1" Background="{DynamicResource PrimaryColorGradientBrush}" Padding="0,2,0,1">
+        			<Border BorderThickness="1" Grid.Column="1" Background="{DynamicResource PrimaryColorGradientBrush}" Padding="0,2,0,1" Grid.ColumnSpan="2" Margin="0" Grid.RowSpan="1" Grid.Row="1">
         				<Grid>
         					<Button x:Name="CustomizeMonsterButton" Content="Customize" HorizontalAlignment="Left" Margin="87,3,0,3" Width="75" d:LayoutOverrides="Height" Style="{DynamicResource ButtonMainStyle}" FontWeight="Bold" ToolTip="Create a new Custom Monster"
         						IsEnabled="{Binding Converter={StaticResource itemExistsConverter}}" Click="CustomizeMonsterButton_Click" />
@@ -3328,12 +3318,30 @@
         					<Button x:Name="NewCustomMonsterButton" Content="New" HorizontalAlignment="Left" Margin="8,3,0,3" Width="75" Style="{DynamicResource ButtonMainStyle}" FontWeight="Bold" ToolTip="Add a new Custom Monster" d:LayoutOverrides="Height" Click="NewCustomMonsterButton_Click"/>
         				</Grid>
         			</Border>
-        			<Button x:Name="ResetMonstersFilterButton" Grid.Column="1" HorizontalAlignment="Left" Margin="8,3.912,0,0" VerticalAlignment="Top" Click="ResetMonstersFilterButton_Click">
-        				<Image Height="16" Source="Images/reset-16.png" Stretch="Fill" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            		
-        			</Button>
-        			<ComboBox  Grid.Column="1" Height="23" Margin="427.5,4,0,0" x:Name="MonsterClassCombo" VerticalAlignment="Top" SelectionChanged="ClassCombo_SelectionChanged" HorizontalAlignment="Left" Width="96"/>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="525,4,0,0" Name="MonsterEnvironmentCombo" VerticalAlignment="Top" Width="122" Grid.Column="1" SelectionChanged="MonsterEnvironmentCombo_SelectionChanged" />
+                   <WrapPanel Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Name="wrapPanel1" Height="Auto">
+                        <Button x:Name="ResetMonstersFilterButton" Grid.Column="1" HorizontalAlignment="Left" Margin="8,3.912,0,0" VerticalAlignment="Top" Click="ResetMonstersFilterButton_Click">
+                            <Image Height="16" Source="Images/reset-16.png" Stretch="Fill" Width="16" />
+                        </Button>
+
+                        <ComboBox x:Name="MonsterTypeFilterComboBox" SelectionChanged="MonsterTypeFilterComboBox_SelectionChanged" Height="23" Width="120">
+                            <ComboBoxItem x:Name="AllMonsterTypesItem" Content="All Types" IsSelected="True" />
+                        </ComboBox>
+                        <ComboBox Height="23" x:Name="MonsterCRComboBox" SelectionChanged="MonsterCRFilterComboBox_SelectionChanged" Width="73.5">
+                            <ComboBoxItem x:Name="AllMonsterCRsItem" Content="All CRs" IsSelected="True" />
+                            <ComboBoxItem x:Name="BetweenCRsItem" Content="Between" />
+                        </ComboBox>
+                        <ComboBox Height="23" x:Name="MonsterTabNPCComboBox" Width="80" SelectionChanged="MonsterCRFilterComboBox_SelectionChanged" SelectedIndex="3">
+                            <ComboBoxItem x:Name="NPCFilterMonstersComboItem" Content="Monsters" />
+                            <ComboBoxItem x:Name="NPCFilterNPCComboItem" Content="NPCs" />
+                            <ComboBoxItem x:Name="NPCFilterCustomComboItem" Content="Custom" />
+                            <ComboBoxItem x:Name="NPCFilterAllComboItem" Content="All" IsSelected="True" />
+                        </ComboBox>
+                        <ComboBox Height="23" x:Name="BetweenCRLowCombo" SelectionChanged="MonsterCRFilterComboBox_SelectionChanged" Width="50" />
+                        <ComboBox Height="23" x:Name="BetweenCRHighCombo" SelectionChanged="MonsterCRFilterComboBox_SelectionChanged" Width="50" />
+                        <ComboBox Height="23" x:Name="MonsterClassCombo" SelectionChanged="ClassCombo_SelectionChanged" Width="96" />
+                        <ComboBox Height="23" Name="MonsterEnvironmentCombo" Width="122" SelectionChanged="MonsterEnvironmentCombo_SelectionChanged" />
+
+                    </WrapPanel>
                 </Grid>
         	</TabItem>
         	<TabItem x:Name="RulesTab" IsSelected="True">
@@ -3415,7 +3423,7 @@
         				<ComboBoxItem x:Name="AllCustomSpellFilterItem" Content="All" />
         				<ComboBoxItem x:Name="CustomCustomSpellFiterItem" Content="Custom" />
         			</ComboBox>
-        			<ComboBox x:Name="ClassFilterComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="107,3.912,0,3" Width="120" d:LayoutOverrides="Height" SelectionChanged="ClassFilterComboBox_SelectionChanged">
+        			<ComboBox x:Name="ClassFilterComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="107,3.912,0,3" Width="110" d:LayoutOverrides="Height" SelectionChanged="ClassFilterComboBox_SelectionChanged">
         				<ComboBoxItem x:Name="AllItem" Content="All Classes" IsSelected="True"/>
         				<ComboBoxItem x:Name="AlchemistItem" Content="Alchemist"/>
         				<ComboBoxItem x:Name="AntipaladinItem" Content="Antipaladin"/>
@@ -3432,7 +3440,7 @@
         				<ComboBoxItem x:Name="WitchItem" Content="Witch"/>
         				<ComboBoxItem x:Name="WizardItem" Content="Wizard"/>
         			</ComboBox>
-        			<ComboBox x:Name="SpellLevelFilterComboBox" Grid.Column="1" Margin="231,3.912,0,3" SelectedIndex="0" SelectionChanged="ClassFilterComboBox_SelectionChanged" HorizontalAlignment="Left" Width="80.667">
+        			<ComboBox x:Name="SpellLevelFilterComboBox" Grid.Column="1" Margin="221,3.912,0,3" SelectedIndex="0" SelectionChanged="ClassFilterComboBox_SelectionChanged" HorizontalAlignment="Left" Width="80.667">
         				<ComboBoxItem Content="All Levels"/>
         				<ComboBoxItem Content="0th Level"/>
         				<ComboBoxItem Content="1st Level"/>
@@ -3445,7 +3453,7 @@
         				<ComboBoxItem Content="8th Level"/>
         				<ComboBoxItem Content="9th Level"/>
         			</ComboBox>
-        			<ComboBox x:Name="SpellSchoolFilterComboBox" Grid.Column="1" Margin="315.667,3.912,254.833,3" SelectedIndex="0" SelectionChanged="ClassFilterComboBox_SelectionChanged">
+        			<ComboBox x:Name="SpellSchoolFilterComboBox" Grid.Column="1" Margin="305.667,3.912,0,3" SelectedIndex="0" SelectionChanged="ClassFilterComboBox_SelectionChanged" HorizontalAlignment="Left" Width="95">
         				<ComboBoxItem Content="All Schools"/>
         			</ComboBox>
         			<Button x:Name="SpellsPrintButton" Grid.Column="1" HorizontalAlignment="Right" Margin="0,4,4.25,4" d:LayoutOverrides="Height" Click="SpellsPrintButton_Click">
@@ -3463,6 +3471,12 @@
         						Visibility="{Binding IsCustom, Converter={StaticResource boolToVisibilityConverter}}" Click="EditCustomSpellButton_Click"/>
         				</Grid>
         			</Border>
+        			<ComboBox x:Name="SpellSubschoolFilterComboBox" Grid.Column="1" Margin="404.667,3.912,0,3" SelectedIndex="0" SelectionChanged="ClassFilterComboBox_SelectionChanged" HorizontalAlignment="Left" Width="105">
+        				<ComboBoxItem Content="All Subschools"/>
+        			</ComboBox>
+        			<ComboBox x:Name="SpellDescriptorFilterComboBox" Grid.Column="1" Margin="513.667,3.912,0,3" SelectedIndex="0" SelectionChanged="ClassFilterComboBox_SelectionChanged" HorizontalAlignment="Left" Width="105">
+        				<ComboBoxItem Content="All Descriptors"/>
+        			</ComboBox>
         		</Grid>
         	</TabItem>
                 
@@ -3691,7 +3705,31 @@
         			</TabControl>
         		</Grid>
         	</TabItem>
-        	<TabItem x:Name="CalendarTab" IsSelected="True" Visibility="Hidden">
+            <TabItem x:Name="BookmarksTab" IsSelected="True">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="16" Height="16" Source="Images\bookmark-16.png" />
+                        <TextBlock Text="Bookmarks" Margin="5,0,0,0" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="185.333"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+					<Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0,3,0" RadiusY="5" RadiusX="5" Stroke="White" StrokeThickness="0" Grid.Column="0"/>
+
+                	<Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0,0,0" RadiusY="5" RadiusX="5" Stroke="White" StrokeThickness="0" Grid.Column="1"/>
+                	<ListBox x:Name="BookmarksListBox" Margin="0,8,3,8"/>
+                	<FlowDocumentScrollViewer x:Name="BookmarksFlowDocument" Grid.Column="1" Margin="1,8,0,8" Background="White" VerticalScrollBarVisibility="Auto">
+                		<FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
+                	</FlowDocumentScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="CalendarTab" IsSelected="True" Visibility="Hidden">
         		<TabItem.Header>
         			<StackPanel Orientation="Horizontal">
         				<Image Width="16" Height="16" Source="Images\clock-16.png" />
