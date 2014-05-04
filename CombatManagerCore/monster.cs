@@ -1423,9 +1423,14 @@ namespace CombatManager
                 {
                     String block = r.ReadToEnd();
 
-                    var otheren = f.Entries.First(v => v.FileName.Equals(en.FileName.Replace("statblocks_text", "statblocks_xml").Replace(".txt", ".xml")));
+                    var otheren = f.Entries.FirstOrDefault(v => v.FileName.Equals(en.FileName.Replace("statblocks_text", "statblocks_xml").Replace(".txt", ".xml")));
 
-                    XDocument doc = XDocument.Load(new StreamReader(otheren.OpenReader()));
+                    XDocument doc = null;
+
+                    if (otheren != null)
+                    {
+                        doc = XDocument.Load(new StreamReader(otheren.OpenReader()));
+                    }
 
 
                     Monster monster = new Monster();
