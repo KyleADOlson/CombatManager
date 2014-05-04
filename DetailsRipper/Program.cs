@@ -450,7 +450,7 @@ namespace DetailsRipper
 
             t.Commit();
 
-            SaveSpellAnnotations(docSpells);
+            //SaveSpellAnnotations(docSpells);
             ApplySpellAnnotations(docSpells);
             
 
