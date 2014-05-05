@@ -1419,7 +1419,7 @@ namespace CombatManager
 
             foreach (var en in from v in f.Entries where v.FileName.StartsWith("statblocks_text") && !v.IsDirectory select v)
             {
-                using (StreamReader r = new StreamReader(en.OpenReader()))
+                using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("windows-1252")))
                 {
                     String block = r.ReadToEnd();
 
@@ -1817,7 +1817,7 @@ namespace CombatManager
 
         private static void ImportHeroLabBlock(string statsblock, XDocument doc, Monster monster, bool readNameBlock = false)
         {
-            statsblock = statsblock.Replace((char)65533, ' ');
+            statsblock = statsblock.Replace('×', 'x');
 
             if (readNameBlock)
             {
@@ -2296,7 +2296,7 @@ namespace CombatManager
             {
                 string spells = m.Groups["spells"].Value;
 
-                spells = spells.Replace((char)65533, ' ');
+                spells = FixSpellString(spells);
 
                 monster.SpellsKnown = spells;
             }
@@ -2309,11 +2309,22 @@ namespace CombatManager
             {
                 string spells = m.Groups["spells"].Value;
 
-                spells = spells.Replace((char)65533, ' ');
+                spells = FixSpellString(spells);
 
                 monster.SpellsPrepared = spells;
 
             }
+
+        }
+
+        private static string FixSpellString(string spells)
+        {
+
+            spells = spells.Replace('—', '-');
+            spells = spells.Replace("):", ")");
+            spells = spells.Replace("\r\n", " ");
+
+            return spells;
 
         }
 
@@ -2382,13 +2393,13 @@ namespace CombatManager
 
             foreach (char c in attacks)
             {
-                if (c != 65533)
+                if (c == 65533 || c == '×')
                 {
-                    newAttacks += c;
+                    newAttacks += 'x';
                 }
                 else
                 {
-                    newAttacks += 'x';
+                    newAttacks += c;
                 }
             }
 
@@ -2402,6 +2413,9 @@ namespace CombatManager
             attacks = Regex.Replace(attacks, "/20/", "/");
             attacks = Regex.Replace(attacks, "/20\\)", ")");
             attacks = Regex.Replace(attacks, " \\(from armor\\)", "");
+
+
+
 
             return attacks;
         }
