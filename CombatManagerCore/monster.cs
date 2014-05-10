@@ -1419,7 +1419,7 @@ namespace CombatManager
 
             foreach (var en in from v in f.Entries where v.FileName.StartsWith("statblocks_text") && !v.IsDirectory select v)
             {
-                using (StreamReader r = new StreamReader(en.OpenReader()))
+                using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("windows-1252")))
                 {
                     String block = r.ReadToEnd();
 
@@ -1817,6 +1817,8 @@ namespace CombatManager
 
         private static void ImportHeroLabBlock(string statsblock, XDocument doc, Monster monster, bool readNameBlock = false)
         {
+            statsblock = statsblock.Replace('×', 'x');
+
             if (readNameBlock)
             {
 
@@ -1926,6 +1928,11 @@ namespace CombatManager
                 monster.CR = crText.Substring(3);
                 XElement xp = el.Element("xpaward");
                 monster.XP = xp.Attribute("value").Value;
+            }
+            else
+            {
+                monster.CR = "0";
+                monster.xp = "0";
             }
 
 
@@ -2249,7 +2256,7 @@ namespace CombatManager
                 }
             }
 
-            string endAttacks = "[\\p{L}]+ Spells (Known|Prepared)|Special Attacks|Spell-Like Abilities|-------|Space [0-9]";
+            string endAttacks = "[\\p{L}()]+ Spells (Known|Prepared)|Special Attacks|[ \\p{L}()]+Spell-Like Abilities|-------|Space [0-9]";
 
             Regex regMelee = new Regex("\r\nMelee (?<melee>(.|\r|\n)+?)\r\n(Ranged|" + endAttacks + ")");
 
@@ -2276,17 +2283,49 @@ namespace CombatManager
             }
 
             monster.SpellLikeAbilities = GetLine("Spell-Like Abilities", statsblock, false);
+            if (monster.SpellLikeAbilities != null)
+            {
+                monster.SpellLikeAbilities = monster.SpellLikeAbilities.Replace((char)65533, ' ');
+            }
 
             Regex regSpells = new Regex(
-                "\r\n[ \\p{L}]+ (?<spells>Spells Known (.|\r|\n)+?)\r\n------");
+                "\r\n[ \\p{L}()]+ (?<spells>Spells Known (.|\r|\n)+?)\r\n------");
 
             m = regSpells.Match(statsblock);
             if (m.Success)
             {
                 string spells = m.Groups["spells"].Value;
 
+                spells = FixSpellString(spells);
+
                 monster.SpellsKnown = spells;
             }
+
+            Regex regSpellsPrepared = new Regex(
+                "\r\n[ \\p{L}()]+ (?<spells>Spells Prepared (.|\r|\n)+?)\r\n------");
+
+            m = regSpellsPrepared.Match(statsblock);
+            if (m.Success)
+            {
+                string spells = m.Groups["spells"].Value;
+
+                spells = FixSpellString(spells);
+
+                monster.SpellsPrepared = spells;
+
+            }
+
+        }
+
+        private static string FixSpellString(string spells)
+        {
+
+            spells = spells.Replace('—', '-');
+            spells = spells.Replace("):", ")");
+            spells = spells.Replace("\r\n", " ");
+
+            return spells;
+
         }
 
         private static string TypesString
@@ -2354,13 +2393,13 @@ namespace CombatManager
 
             foreach (char c in attacks)
             {
-                if (c != 65533)
+                if (c == 65533 || c == '×')
                 {
-                    newAttacks += c;
+                    newAttacks += 'x';
                 }
                 else
                 {
-                    newAttacks += 'x';
+                    newAttacks += c;
                 }
             }
 
@@ -2374,6 +2413,9 @@ namespace CombatManager
             attacks = Regex.Replace(attacks, "/20/", "/");
             attacks = Regex.Replace(attacks, "/20\\)", ")");
             attacks = Regex.Replace(attacks, " \\(from armor\\)", "");
+
+
+
 
             return attacks;
         }
