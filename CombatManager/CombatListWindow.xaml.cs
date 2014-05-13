@@ -62,9 +62,16 @@ namespace CombatManager
             ShowConditionsCheckBox.IsChecked = UserSettings.Settings.InitiativeShowConditions;
 
 
+            UserSettings.Settings.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Settings_PropertyChanged);
+
 			UpdateCombatListState();
             _SetupComplete = true;
 		}
+
+        void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            UpdateCharacterName();
+        }
 
         public int ComboIndex(bool show, bool hideNames)
         {
@@ -93,8 +100,65 @@ namespace CombatManager
                     _CombatState = value;
 					this.DataContext = _CombatState;
                     CombatList.CombatState = _CombatState;
+
+                    _CombatState.CombatList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(CombatList_CollectionChanged);
+                    _CombatState.CharacterAdded += new CombatStateCharacterEvent(CombatState_CharacterAdded);
+                    foreach (Character ch in _CombatState.CombatList)
+                    {
+                        ch.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Character_PropertyChanged);
+                    }
+
+                    _CombatState.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(CombatState_PropertyChanged);
+
+                    UpdateCharacterName();
+                
                 }
             }
+        }
+
+
+        void UpdateCharacterName()
+        {
+            if (CombatState == null || CombatState.CurrentCharacter == null)
+            {
+                CharacterNameText.Text = "";
+            }
+            if ((CombatState.CurrentCharacter.IsMonster && (UserSettings.Settings.InitiativeHideMonsterNames || !UserSettings.Settings.InitiativeShowMonsters))
+                || (!CombatState.CurrentCharacter.IsMonster && (UserSettings.Settings.InitiativeHidePlayerNames || !UserSettings.Settings.InitiativeShowPlayers)))
+            {
+                CharacterNameText.Text = "??????";
+            }
+            else
+            {
+                CharacterNameText.Text = CombatState.CurrentCharacter.HiddenName;
+            }
+
+        }
+
+        void CombatState_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "CurrentCharacter")
+            {
+                UpdateCharacterName();
+            }
+        }
+
+
+        void CombatState_CharacterAdded(object sender, CombatStateCharacterEventArgs e)
+        {
+            e.Character.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Character_PropertyChanged);
+        }
+
+        void Character_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (((Character)sender) == _CombatState.CurrentCharacter && e.PropertyName == "HiddenName")
+            {
+                UpdateCharacterName();
+            }
+        }
+
+        void CombatList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
         }
 		
 		public IInitiativeController Controller

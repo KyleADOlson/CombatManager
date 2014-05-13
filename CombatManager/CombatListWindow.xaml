@@ -388,10 +388,7 @@
 				    			<DropShadowEffect/>
 				    		</TextBlock.Effect>
 				    	</TextBlock>
-				    	<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Foreground="White" TextTrimming="CharacterEllipsis">
-				    		<TextBlock.Text>
-				    				<Binding Path="CurrentCharacter.HiddenName"/>
-			                </TextBlock.Text>
+				    	<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Foreground="White" TextTrimming="CharacterEllipsis" Name="CharacterNameText">
 				    	</TextBlock>
 				    </StackPanel>
                     </Grid>
