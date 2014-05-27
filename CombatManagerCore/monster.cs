@@ -262,6 +262,7 @@ namespace CombatManager
                     m.OtherGear = GetElementStringValue(v, "OtherGear");
                     m.MR = GetElementIntNullValue(v, "MR");
                     m.Mythic = GetElementStringValue(v, "Mythic");
+                    m.ProhibitedSchools = GetElementStringValue(v, "ProhibitedSchools");
                     
                     monsters.Add(m);
                 }
@@ -985,6 +986,7 @@ namespace CombatManager
             DescHTML = m.descHTML;
             Mythic = m.mythic;
             MR = m.mr;
+
 
 
             StatsParsed=m.statsParsed;
