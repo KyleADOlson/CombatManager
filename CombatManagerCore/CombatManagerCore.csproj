@@ -163,6 +163,7 @@
     </Content>
     <Content Include="RuleShort.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="SpecificItemChart.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

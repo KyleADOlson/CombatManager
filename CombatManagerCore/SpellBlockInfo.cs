@@ -90,6 +90,8 @@ namespace CombatManager
                 first = false;
                 _ClassRegexString += rule.Name;
             }
+            //Wizard Specialist "as class names"
+            _ClassRegexString += "|Abjurer|Conjurer|Diviner|Enchanter|Evoker|Illusionist|Necromancer|Transmuter";
             // special SLA names
             _ClassRegexString += "|Domain" + "|Bloodline" + "|Arcane School";
             

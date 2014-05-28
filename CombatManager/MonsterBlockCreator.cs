@@ -549,6 +549,7 @@ namespace CombatManager
                     }
                     if (lines.Count > 0)
                     {
+                        //Put each spell level on seperate line
                         lines.Add(new LineBreak());
                     }
 
@@ -562,7 +563,6 @@ namespace CombatManager
 
             if (lines.Count > 0)
             {
-                //Put each spell level on seperate line
                 lines.Add(new LineBreak());
             }
             
