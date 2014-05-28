@@ -1279,20 +1279,22 @@ namespace CombatManager
         {
             AddMonster(m, rollHP, true);
         }
-        public void AddMonster(Monster m, bool rollHP, bool monster)
+        public void AddMonster(Monster m, bool rollHP, bool monster, bool hidden = false)
         {
             Character character = new Character(m, rollHP);
             character.IsMonster = monster;
+            character.IsHidden = hidden;
             character.Name = GetUnusedName(character.Name);
             AddCharacter(character);
         }
 
-        public void AddBlank(bool monster)
+        public void AddBlank(bool monster, bool hidden = false )
         {
 
             Character character = new Character();
             character.IsBlank = true;
             character.IsMonster = monster;
+            character.IsHidden = hidden;
             character.Name = GetUnusedName(monster?"Monster":"Player");
             AddCharacter(character);
         }

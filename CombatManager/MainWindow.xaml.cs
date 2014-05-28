@@ -2278,7 +2278,7 @@ namespace CombatManager
 
             if (monster != null)
             {
-                combatState.AddMonster(monster, RollHPCheck.IsChecked == true);
+                combatState.AddMonster(monster, RollHPCheck.IsChecked == true, true, UserSettings.Settings.AddMonstersHidden);
             }
         }
 
@@ -2296,7 +2296,7 @@ namespace CombatManager
         {
             using (var group = undo.CreateUndoGroup())
             {
-                combatState.AddBlank(true);
+                combatState.AddBlank(true, UserSettings.Settings.AddMonstersHidden);
             }
 
             SaveCombatState();
@@ -3551,7 +3551,7 @@ namespace CombatManager
 
                 Monster monster = currentDBMonster;
 
-                combatState.AddMonster(monster,  RollHPCheck.IsChecked == true);
+                combatState.AddMonster(monster,  RollHPCheck.IsChecked == true, true, UserSettings.Settings.AddMonstersHidden);
             }
         }
 
