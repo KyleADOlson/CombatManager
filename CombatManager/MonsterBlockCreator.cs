@@ -33,7 +33,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
+﻿using System.Windows.Forms.VisualStyles;
+﻿using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -342,6 +343,9 @@ namespace CombatManager
                 }
             }
 
+                offenseParagraph.Inlines.AddRange(CreateItemIfNotNull("Opposition Schools: ", monster.ProhibitedSchools));
+                offenseParagraph.Inlines.AddRange(CreateItemIfNotNull("Bloodline: ",monster.Bloodline));
+                offenseParagraph.Inlines.AddRange(CreateItemIfNotNull("Domain: ",monster.SpellDomains));
 
             blocks.Add(offenseParagraph);
         }
@@ -360,6 +364,10 @@ namespace CombatManager
 
                 if (blockinfo.SpellLikeAbilities)
                 {
+                    if (blockinfo.Class != null)
+                    {
+                        titleText += blockinfo.Class + " ";
+                    }
                     titleText += "Spell-Like Abilities ";
                 }
                 else
@@ -403,18 +411,12 @@ namespace CombatManager
 
                 
                 lines.Add(new Run(text));
-
-                bool firstLevel = true;
+                //start spells on their own line
+                lines.Add(new LineBreak());
                 foreach (SpellLevelInfo levelinfo in blockinfo.Levels)
                 {
-                    text = "";
-
-                    if (!firstLevel)
-                    {
-                        text += " ";
-                    }
-                    firstLevel = false;
-
+                    //indentation of spell list
+                    text = "  ";
                     if (levelinfo.Level != null)
                     {
                         text += BlockCreator.PastTenseNumber(levelinfo.Level.Value);
@@ -423,6 +425,7 @@ namespace CombatManager
                     {
                         if (text.Length > 0)
                         {
+                            // space between spell level and number/day [3rd(3/day or 3rd (3/day)]
                             text += " ";
                         }
                         if (!blockinfo.SpellLikeAbilities)
@@ -542,6 +545,12 @@ namespace CombatManager
                         {
                             lines.Add(new Run(" (" + afterBlock + ")"));
                         }
+
+                    }
+                    if (lines.Count > 0)
+                    {
+                        //Put each spell level on seperate line
+                        lines.Add(new LineBreak());
                     }
 
                     if (levelinfo.More != null)
@@ -582,10 +591,8 @@ namespace CombatManager
                 tacticsParagraph.Inlines.AddRange(CreateItemIfNotNull("Before Combat ", monster.BeforeCombat));
                 tacticsParagraph.Inlines.AddRange(CreateItemIfNotNull("During Combat ", monster.DuringCombat));
                 tacticsParagraph.Inlines.AddRange(CreateItemIfNotNull("Morale ", monster.Morale));
-
+                tacticsParagraph.Inlines.AddRange(CreateItemIfNotNull("Base Statistics: ", monster.BaseStatistics));
                 blocks.Add(tacticsParagraph);
-
-
             }
         }
 

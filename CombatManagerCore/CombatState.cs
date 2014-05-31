@@ -1147,6 +1147,10 @@ namespace CombatManager
         {
             if (ch.InitiativeLeader != leader)
             {
+                if (ch.InitiativeLeader != null)
+                {
+                    UnlinkLeader(ch);
+                }
                 ch.InitiativeLeader = leader;
                 Character afterChar = leader;
                 if (leader.InitiativeFollowers.Count > 0)

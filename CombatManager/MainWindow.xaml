@@ -588,7 +588,7 @@
             			<TextBox x:Name="TempTextBox" HorizontalAlignment="Left" Margin="35.782,0.75,0,3.054" Grid.Row="0" RenderTransformOrigin="1.739,0.365" Grid.Column="0" GotFocus="TextBox_GotFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Temporary Hit Points" Width="26.562" Padding="0,1" Text="{Binding Adjuster.TemporaryHP, Converter={StaticResource HPModConverter}, UpdateSourceTrigger=PropertyChanged}"  KeyUp="TextBox_KeyUp" Tag="Temp" />
             			<TextBox x:Name="NLTextBox" Text="{Binding Adjuster.NonlethalDamage, Converter={StaticResource HPModConverter}, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="126.032,0.75,0,3.054" Grid.Row="0" RenderTransformOrigin="1.739,0.365" Grid.Column="0" GotFocus="TextBox_GotFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Nonlethal Damage" Width="26.562" Padding="0,1"  KeyUp="TextBox_KeyUp" Tag="NL" />
             			<TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="Auto" Text="Temp" FontWeight="Normal" Foreground="Black" FontSize="12" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top" Margin="2.578,3.75,0,0"/>
-            			<TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="Auto" Text="Non-Lethal" FontWeight="Normal" Foreground="Black" FontSize="12" VerticalAlignment="Top" Margin="64.594,3.75,0,0"/>
+            			<TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="Auto" Text="Nonlethal" FontWeight="Normal" Foreground="Black" FontSize="12" VerticalAlignment="Top" Margin="64.594,3.75,0,0"/>
             		</Grid>
             	</Grid>
             	<local:NotesPopup x:Name="NotesPopup"/>
