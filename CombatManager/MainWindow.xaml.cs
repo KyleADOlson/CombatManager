@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Configuration;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -35,6 +36,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using AxAcroPDFLib;
 using WinInterop = System.Windows.Interop;
 using System.Runtime.InteropServices;
 using System.Windows.Media;
@@ -52,6 +54,7 @@ using System.Threading;
 using System.Net;
 using System.Xml.Linq;
 using System.Reflection;
+using Path = System.IO.Path;
 
 namespace CombatManager
 {
@@ -391,6 +394,7 @@ namespace CombatManager
 
             CalendarTab.DataContext = campaignInfo;
 			UpdateCampaignDayView();
+            
 
 
             MarkTime("Setup UI", ref t, ref last);
@@ -408,6 +412,27 @@ namespace CombatManager
             
         }
 
+        private void pdfViewer_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPdfLoaction.Text)) return;
+            var location = Assembly.GetExecutingAssembly().Location;
+            var path = Path.Combine(Path.GetDirectoryName(location), "pdfload.pdf");
+            this.PdfBrowser.Source = new Uri(path, UriKind.RelativeOrAbsolute);
+            //PdfBrowser.Navigate(new Uri(path, UriKind.RelativeOrAbsolute));
+        }
+        private void PdfSelectClick(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog { DefaultExt = ".pdf", Filter = "PDF documents (.pdf)|*.pdf" };
+            dlg.ShowDialog();
+            if (string.IsNullOrEmpty(dlg.FileName)) return;
+            txtPdfLoaction.Text = dlg.FileName;
+        }
+        private void PdfOpenButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPdfLoaction.Text)) return;
+            PdfBrowser.Source = new Uri(txtPdfLoaction.Text,UriKind.RelativeOrAbsolute);
+            //PdfBrowser.Navigate(new Uri(txtPdfLoaction.Text, UriKind.RelativeOrAbsolute));
+        }
 
         void PipeServer_FileRecieved(object sender, PipeServer.PipeServerEventArgs e)
         {
@@ -3753,7 +3778,7 @@ namespace CombatManager
             System.IntPtr handle = (new WinInterop.WindowInteropHelper(this)).Handle;
             WinInterop.HwndSource.FromHwnd(handle).AddHook(new WinInterop.HwndSourceHook(WindowProc));
         }
-
+        [DebuggerStepThrough]
         private System.IntPtr WindowProc(
               System.IntPtr hwnd,
               int msg,
@@ -4635,7 +4660,9 @@ namespace CombatManager
                 conditionSelector.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
                 conditionSelector.Characters = GetViewSelectedCharacters(sender);
                 conditionSelector.ShowDialog();
-
+                //just added may not stay
+                UpdateMonsterFlowDocument();
+                //
                 UpdateSmallMonsterFlowDocument();
             }
         }
@@ -4657,8 +4684,6 @@ namespace CombatManager
                     _Condition = value;
                 }
             }
-
-
             public Character Character
             {
                 get
@@ -4670,8 +4695,6 @@ namespace CombatManager
                     _Character = value;
                 }
             }
-
-
             public ObservableCollection<Character> Targets
             {
                 get
@@ -4752,8 +4775,6 @@ namespace CombatManager
         {
             private Character _Leader;
             private Character _Character;
-
-
             public Character Character
             {
                 get
@@ -4765,9 +4786,6 @@ namespace CombatManager
                     _Character = value;
                 }
             }
-
-
-
             public Character Leader
             {
                 get
@@ -6366,6 +6384,8 @@ namespace CombatManager
             }
         }
 
+        #region Die roll section
+
         private void RollDiceButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             RollCurrentTextDie();
@@ -6479,15 +6499,15 @@ namespace CombatManager
                 if (res.Rolls.Count == 1 && res.Rolls[0].Die == 20 && (res.Rolls[0].Result == 20 || res.Rolls[0].Result == 1))
                 {
                     int result = res.Rolls[0].Result;
-                    p.Inlines.Add(CreateRollElement(res.Total.ToString() + " (" + result + ")", Colors.White,  (result == 1) ? Colors.Red : Colors.Green));
-                    
+                    p.Inlines.Add(CreateRollElement(res.Total.ToString() + " (" + result + ")", Colors.White, (result == 1) ? Colors.Red : Colors.Green));
+
                 }
                 else
                 {
                     p.Inlines.Add(CreateRollElement(res.Total.ToString()));
                 }
             }
-            
+
             bool firstIl = true;
             foreach (Inline il in p.Inlines)
             {
@@ -6517,7 +6537,7 @@ namespace CombatManager
 
         private void DieButtonPressed(object sender, RoutedEventArgs e)
         {
-            
+
             int die = int.Parse((string)((Button)sender).Tag);
 
             DieRoll roll = DieRoll.FromString(DieRollText.Text);
@@ -6534,7 +6554,7 @@ namespace CombatManager
                 roll = new DieRoll(1, die, mod);
             }
 
-            
+
             DieRollText.Text = roll.Text;
         }
 
@@ -6547,19 +6567,16 @@ namespace CombatManager
         {
             DieRollDocument.Blocks.Clear();
         }
-		
-		
 
         private void InstantDieButtonPressed(object sender, System.Windows.RoutedEventArgs e)
         {
-			
+
             int die = int.Parse((string)((Button)sender).Tag);
-        	
-			DieRoll roll = new DieRoll(1, 1, die, 0);
-			
+
+            DieRoll roll = new DieRoll(1, 1, die, 0);
+
             RollDie(roll, null, true);
         }
-
 
         private void FortitudeMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -6568,7 +6585,6 @@ namespace CombatManager
             List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
             RollSave(list, Monster.SaveType.Fort);
         }
-
 
         private void ReflexMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -6595,8 +6611,8 @@ namespace CombatManager
             {
                 Paragraph p = new Paragraph();
                 p.Margin = new Thickness(0);
-                
-                p.Inlines.Add(new Underline(new Run(SaveName(type) + " save" + (list.Count > 1?"s":""))));
+
+                p.Inlines.Add(new Underline(new Run(SaveName(type) + " save" + (list.Count > 1 ? "s" : ""))));
                 DieRollDocument.Blocks.Add(p);
             }
 
@@ -6631,6 +6647,60 @@ namespace CombatManager
 
         }
 
+        private void RollCombatManeuvers(List<Character> list, string manoeuvreType)
+        {
+            if (list.Count > 0)
+            {
+                Paragraph p = new Paragraph {Margin = new Thickness(0)};
+
+                p.Inlines.Add(new Underline(new Run(manoeuvreType + (list.Count > 1 ? "s" : ""))));
+                DieRollDocument.Blocks.Add(p);
+            }
+            foreach (Character ch in list)
+            {
+                RollCombatManoeuver(ch, manoeuvreType);
+            }
+        }
+
+        private void RollCombatManoeuver(Character ch, string maneuvreType)
+        {
+            int? mod = ch.Monster.GetManoeuver(maneuvreType);
+            if (mod == null) return;
+            DieRoll roll = UserSettings.Settings.AlternateInit3d6 ? UserSettings.Settings.AlternateInitDieRoll : new DieRoll(1, 20, (int) mod);
+            RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
+        }
+        private void RollManeuverMenuItem_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            SetupManeuverMenuItem((MenuItem)sender);
+
+        }
+        private void RollCombatManeuverMenuItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetupManeuverMenuItem((MenuItem)sender);
+        }
+
+        private void SetupManeuverMenuItem(MenuItem menuItem)
+        {
+            menuItem.Items.Clear();
+            foreach (var cm in Monster.CombatManeuvers.Select(Maneuver => new MenuItem {Header = Maneuver, Tag = Maneuver}))
+            {
+                
+                cm.Click += ManeuverMenuItemClick;
+                menuItem.Items.Add(cm);
+            }
+        }
+
+        void ManeuverMenuItemClick(object sender, RoutedEventArgs e)
+        {
+
+            MenuItem mi = (MenuItem)sender;
+
+            List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
+            var mt = (string)mi.Tag;
+            RollCombatManeuvers(list, mt);
+        }
+
+
         private string SaveName(Monster.SaveType type)
         {
             switch (type)
@@ -6639,11 +6709,40 @@ namespace CombatManager
                     return "Fort";
                 case Monster.SaveType.Ref:
                     return "Ref";
-                case Monster.SaveType.Will:
                 default:
                     return "Will";
             }
         }
+
+        //private string ManeuverName(Monster.ManeuverType manoeuvreType)
+        //{
+        //    switch (manoeuvreType)
+        //    {
+        //        case Monster.ManeuverType.Bull_Rush:
+        //            return "Bull Rush";
+        //        case Monster.ManeuverType.Dirty_Trick:
+        //            return "Dirty Trick";
+        //        case Monster.ManeuverType.Disarm:
+        //            return "Disarm";
+        //        case Monster.ManeuverType.Drag:
+        //            return "Drag";
+        //        case Monster.ManeuverType.Grapple:
+        //            return "Grapple";
+        //        case Monster.ManeuverType.Overrun:
+        //            return "Overrun";
+        //        case Monster.ManeuverType.Reposition:
+        //            return "Reposition";
+        //        case Monster.ManeuverType.Steal:
+        //            return "Steal";
+        //        case Monster.ManeuverType.Sunder:
+        //            return "Sunder";
+        //        case Monster.ManeuverType.Trip:
+        //            return "Sunder";
+        //        default:
+        //            return "Generic";
+        //    }
+        //}
+
 
         private void RollSkillMenuItem_Loaded(object sender, RoutedEventArgs e)
         {
@@ -6778,8 +6877,6 @@ namespace CombatManager
             UpdateRollAttacksMenuItem((MenuItem)sender);
         }
 
-
-
         private void RollAttacksMenuItem_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             UpdateRollAttacksMenuItem((MenuItem)sender);
@@ -6788,7 +6885,7 @@ namespace CombatManager
         private class AttackSetRollInfo
         {
 
-            public List<Character> Characters { get; set; } 
+            public List<Character> Characters { get; set; }
             public AttackSet Attacks;
         }
         private class AttackRollInfo
@@ -6837,7 +6934,7 @@ namespace CombatManager
                     }
 
 
-                    
+
                 }
 
                 if (ch != null)
@@ -6908,15 +7005,15 @@ namespace CombatManager
 
             Paragraph p = new Paragraph();
             Button b = AddDieRollButton(p);
-            
+
             p.Background = new SolidColorBrush((Color)FindResource("SecondaryColorBDarker"));
-            
+
             p.Margin = new Thickness(0, 2, 0, 0);
             b.Margin = new Thickness(3, 3, 1, 0);
 
             Run r = new Run(ch.Name);
             r.FontWeight = FontWeights.Bold;
-           
+
             r.Foreground = new SolidColorBrush(Colors.White);
             r.BaselineAlignment = BaselineAlignment.Center;
             p.Inlines.Add(r);
@@ -6944,7 +7041,7 @@ namespace CombatManager
                 cri.Characters = new List<Character>() { c };
                 cri.Attacks = ri.Attacks;
                 b.Tag = cri;
-                
+
                 b.Click += RollMeleeAttackItem_Click;
 
                 foreach (Attack atk in attacks)
@@ -6953,8 +7050,6 @@ namespace CombatManager
                 }
             }
         }
-
-
 
         void RollRangedAttackItem_Click(object sender, RoutedEventArgs e)
         {
@@ -7091,11 +7186,11 @@ namespace CombatManager
                     if (actualDie >= atk.CritRange || actualDie == 1)
                     {
                         string text = res.Total.ToString() + " (" + actualDie + ")";
-                        Inline co = CreateRollElement(text, Colors.White, 
-                            (actualDie==1)?Colors.Red:Colors.Green);
+                        Inline co = CreateRollElement(text, Colors.White,
+                            (actualDie == 1) ? Colors.Red : Colors.Green);
                         p.Inlines.Add(co);
                         p.Inlines.Add(" ");
-        
+
                     }
                     else
                     {
@@ -7104,7 +7199,7 @@ namespace CombatManager
                         p.Inlines.Add(" ");
                         p.Inlines.Add(new Run("(" + actualDie + ") "));
                     }
-        
+
 
                     if (actualDie != 1)
                     {
@@ -7129,7 +7224,7 @@ namespace CombatManager
                         }
 
                         p.Inlines.Add(CreateRollElement(dmg.Total.ToString(), Colors.White, Colors.Blue, dmgtext));
-                        
+
 
 
 
@@ -7144,7 +7239,7 @@ namespace CombatManager
                             p.Inlines.Add(CreateRollElement(bonusDmg.Total.ToString(), Colors.White, Colors.DarkMagenta));
                             p.Inlines.Add(" " + bonusType);
                         }
-                        
+
 
 
                         if (res.Rolls[0].Result >= atk.CritRange)
@@ -7202,6 +7297,62 @@ namespace CombatManager
             DieRollDocument.Blocks.Add(p);
             DieRollViewer.ScrollChildToBottom();
         }
+        private void LoadRecentDieRolls()
+        {
+            _RecentDieRolls = XmlListLoader<string>.Load("DieRolls.xml", true);
+
+            if (_RecentDieRolls == null)
+            {
+                _RecentDieRolls = new List<string>();
+            }
+
+            UpdateDieRollCombo();
+        }
+
+        private void SaveRecentDieRolls()
+        {
+            XmlListLoader<string>.Save(_RecentDieRolls, "DieRolls.xml", true);
+        }
+
+        private void AddRecentDieRoll(DieRoll roll)
+        {
+            if (roll != null)
+            {
+                string text = roll.Text;
+
+                _RecentDieRolls.RemoveAll(a => a == text);
+                _RecentDieRolls.Insert(0, text);
+
+                while (_RecentDieRolls.Count > 20)
+                {
+                    _RecentDieRolls.RemoveAt(20);
+                }
+
+                SaveRecentDieRolls();
+                UpdateDieRollCombo();
+            }
+
+        }
+        private void UpdateDieRollCombo()
+        {
+            string current = DieRollText.Text;
+
+            DieRollText.Items.Clear();
+
+            foreach (string text in _RecentDieRolls)
+            {
+                DieRollText.Items.Add(text);
+            }
+
+            if (DieRollText.Text != current)
+            {
+                DieRollText.Text = current;
+            }
+        }
+        
+        #endregion
+
+
 
         private void ResetMagicItemsFilterButton_Click(object sender, RoutedEventArgs e)
         {
@@ -7241,42 +7392,7 @@ namespace CombatManager
             ResetSpellFilters();
         }
 
-        private void LoadRecentDieRolls()
-        {
-            _RecentDieRolls = XmlListLoader<string>.Load("DieRolls.xml", true);
 
-            if (_RecentDieRolls == null)
-            {
-                _RecentDieRolls = new List<string>();
-            }
-
-            UpdateDieRollCombo();
-        }
-
-        private void SaveRecentDieRolls()
-        {
-            XmlListLoader<string>.Save(_RecentDieRolls, "DieRolls.xml", true); 
-        }
-
-        private void AddRecentDieRoll(DieRoll roll)
-        {
-            if (roll != null)
-            {
-                string text = roll.Text;
-
-                _RecentDieRolls.RemoveAll(a => a == text);
-                _RecentDieRolls.Insert(0, text);
-
-                while (_RecentDieRolls.Count > 20)
-                {
-                    _RecentDieRolls.RemoveAt(20);
-                }
-
-                SaveRecentDieRolls();
-                UpdateDieRollCombo();
-            }
-
-        }
 
         private void LoadCampaignInfo()
         {
@@ -7295,22 +7411,7 @@ namespace CombatManager
             XmlLoader<CampaignInfo>.Save(campaignInfo, "CurrentCampaignInfo.xml", true);
         }
 
-        private void UpdateDieRollCombo()
-        {
-            string current = DieRollText.Text;
 
-            DieRollText.Items.Clear();
-
-            foreach (string text in _RecentDieRolls)
-            {
-                DieRollText.Items.Add(text);
-            }
-
-            if (DieRollText.Text != current)
-            {
-                DieRollText.Text = current;
-            }
-        }
 
         private void MenuItem_IdleMonster(object sender, RoutedEventArgs e)
         {
@@ -7637,12 +7738,14 @@ namespace CombatManager
             }
         }
 
+        #region Campaign Section
+
         private void Add100YearButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(100);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(100);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7668,8 +7771,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(10);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(10);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7695,8 +7798,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7721,8 +7824,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMonths(1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMonths(1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7748,7 +7851,7 @@ namespace CombatManager
         {
             try
             {
-                
+
                 campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddDays(1);
                 SaveCampaignInfo();
             }
@@ -7775,8 +7878,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7788,8 +7891,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(-1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(-1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7801,9 +7904,9 @@ namespace CombatManager
         {
             try
             {
-                
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(15);
-            SaveCampaignInfo();
+
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(15);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7815,9 +7918,9 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-15);
-            SaveCampaignInfo();
-            
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-15);
+                SaveCampaignInfo();
+
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7829,9 +7932,9 @@ namespace CombatManager
         {
             try
             {
-                
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(1);
-            SaveCampaignInfo();
+
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7843,8 +7946,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7856,10 +7959,10 @@ namespace CombatManager
         {
             try
             {
-                
 
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddSeconds(6);
-            SaveCampaignInfo();
+
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddSeconds(6);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7880,40 +7983,42 @@ namespace CombatManager
             }
         }
 
-		private void UpdateCampaignDayView()
-		{
+        private void UpdateCampaignDayView()
+        {
             campaignDayView = new ListCollectionView(campaignInfo.EventsForDate(campaignInfo.SelectedDate));
             CampaignEventListBox.DataContext = campaignDayView;
-		}
+        }
 
-		private void GoToCurrentDate_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			campaignInfo.SelectedDate = campaignInfo.CurrentDate;
-			campaignInfo.DisplayDate = campaignInfo.CurrentDate;
-		}
+        private void GoToCurrentDate_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            campaignInfo.SelectedDate = campaignInfo.CurrentDate;
+            campaignInfo.DisplayDate = campaignInfo.CurrentDate;
+        }
 
-		private void campaignInfo_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			if (e.PropertyName == "SelectedDate")
-			{
-				UpdateCampaignDayView();	
-			}
-		}
+        private void campaignInfo_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "SelectedDate")
+            {
+                UpdateCampaignDayView();
+            }
+        }
 
-		private void AddCampaignEventButton_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			CampaignEventWindow w = new CampaignEventWindow();
-			CampaignEvent ce = new CampaignEvent();
-			ce.Start = campaignInfo.SelectedDate;
+        private void AddCampaignEventButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            CampaignEventWindow w = new CampaignEventWindow();
+            CampaignEvent ce = new CampaignEvent();
+            ce.Start = campaignInfo.SelectedDate;
             ce.End = ce.Start.AddHours(1);
             w.Event = ce;
-			w.Owner = this;
+            w.Owner = this;
             if (w.ShowDialog() == true)
             {
                 campaignInfo.AddEvent(w.Event);
                 SaveCampaignInfo();
             }
-		}
+        }
+        
+        #endregion
 
 		private void NameTextBox_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
@@ -7967,11 +8072,12 @@ namespace CombatManager
             t.Start();
             
         }
+        #region Hotkey Section
 
         private void HotKeysButton_Click(object sender, RoutedEventArgs e)
         {
-			var hkd = new HotKeysDialog();
-			hkd.Owner = this;
+            var hkd = new HotKeysDialog();
+            hkd.Owner = this;
             if (_CombatHotKeys == null)
             {
                 _CombatHotKeys = new List<CombatHotKey>();
@@ -7982,7 +8088,7 @@ namespace CombatManager
                 _CombatHotKeys = hkd.CombatHotKeys;
                 SaveHotkeys();
             }
-		
+
         }
 
         private void LoadHotkeys()
@@ -8026,7 +8132,7 @@ namespace CombatManager
 
                     }
                 }
-            
+
             }
 
         }
@@ -8096,10 +8202,11 @@ namespace CombatManager
                     }
                 }
             }
-            
+
 
         }
 
+        #endregion
         private void RollInitWithoutResetMenuItem_Click(object sender, RoutedEventArgs e)
         {
             RollInitiativeWithoutReset();
@@ -8119,6 +8226,8 @@ namespace CombatManager
 
 
         }
+
+        #region Tracked Resource Section
 
         private void DescreaseResourceButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -8143,10 +8252,12 @@ namespace CombatManager
         }
 
         private void AddResourceButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {        	
-            Character c = (Character) ((FrameworkElement)sender).DataContext;
-			c.Resources.Add(new ActiveResource(){Name="Resource", Current=0});
+        {
+            Character c = (Character)((FrameworkElement)sender).DataContext;
+            c.Resources.Add(new ActiveResource() { Name = "Resource", Current = 0 });
         }
+        
+        #endregion
 
         private void BookmarkFeatButton_Click(object sender, RoutedEventArgs e)
         {
@@ -8157,9 +8268,6 @@ namespace CombatManager
                 BookmarkList.List.AddFeat(f);
             }
         }
-
-
-
 
     }
 
@@ -8196,4 +8304,5 @@ namespace CombatManager
             _execute(parameter); 
         } 
     }
+
 }
