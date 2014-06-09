@@ -72,6 +72,7 @@ namespace CombatManager
         private bool _AlternateInit3d6;
         private string _AlternateInitRoll;
         private bool _ShowHiddenInitValue;
+        private bool _AddMonstersHidden;
 
         private bool _PlayerMiniMode;
         private bool _MonsterMiniMode;
@@ -545,6 +546,20 @@ namespace CombatManager
             }
         }
 
+        public bool AddMonstersHidden
+        {
+            get { return _AddMonstersHidden; }
+            set
+            {
+                if (_AddMonstersHidden != value)
+                {
+                    _AddMonstersHidden = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AddMonstersHidden")); }
+                }
+            }
+        }
+
+
         void LoadOptions()
         {
             try
@@ -580,6 +595,7 @@ namespace CombatManager
                 InitiativeFlip  = LoadBoolValue("InitiativeFlip", false);
                 RunCombatViewService = LoadBoolValue("RunCombatViewService", false);
                 ShowHiddenInitValue = LoadBoolValue("ShowHiddenInitValue", false);
+                AddMonstersHidden = LoadBoolValue("AddMonstersHidden", false);
                 MonsterDBFilter = (MonsterSetFilter)LoadIntValue("MonsterDBFilter", (int)MonsterSetFilter.Monsters);
                 MonsterTabFilter = (MonsterSetFilter)LoadIntValue("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
 
@@ -618,6 +634,7 @@ namespace CombatManager
                         SaveStringValue(key, "AlternateInitRoll", AlternateInitRoll);
                         SaveBoolValue(key, "RunCombatViewService", RunCombatViewService);
                         SaveBoolValue(key, "ShowHiddenInitValue", ShowHiddenInitValue);
+                        SaveBoolValue(key, "AddMonstersHidden", AddMonstersHidden);
                         
                     }
 

@@ -1,8 +1,12 @@
-﻿1.5.7
+﻿1.5.8
+Fix display of names on Initiative Window
+Add setting to allow monsters to be added hidden
+
+1.5.7
+Optionally display conditions on initiative window
 Data update
 Spell subschool and descriptor filters
-Optionally display conditions on initiative window
-More herorlab import fixes, subschool tracking for spells, show conditions on CombatList,
+More herolab import fixes
 
 1.5.6
 Add interface for tracking resources

@@ -122,6 +122,8 @@
     </Content>
     <Content Include="..\CombatManagerCore\SpellAnnotations.xml">
       <Link>SpellAnnotations.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\CombatManagerCore\Spells.xml">
       <Link>Spells.xml</Link>
