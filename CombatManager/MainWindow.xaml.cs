@@ -412,27 +412,6 @@ namespace CombatManager
             
         }
 
-        private void pdfViewer_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtPdfLoaction.Text)) return;
-            var location = Assembly.GetExecutingAssembly().Location;
-            var path = Path.Combine(Path.GetDirectoryName(location), "pdfload.pdf");
-            this.PdfBrowser.Source = new Uri(path, UriKind.RelativeOrAbsolute);
-            //PdfBrowser.Navigate(new Uri(path, UriKind.RelativeOrAbsolute));
-        }
-        private void PdfSelectClick(object sender, RoutedEventArgs e)
-        {
-            var dlg = new OpenFileDialog { DefaultExt = ".pdf", Filter = "PDF documents (.pdf)|*.pdf" };
-            dlg.ShowDialog();
-            if (string.IsNullOrEmpty(dlg.FileName)) return;
-            txtPdfLoaction.Text = dlg.FileName;
-        }
-        private void PdfOpenButtonClick(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtPdfLoaction.Text)) return;
-            PdfBrowser.Source = new Uri(txtPdfLoaction.Text,UriKind.RelativeOrAbsolute);
-            //PdfBrowser.Navigate(new Uri(txtPdfLoaction.Text, UriKind.RelativeOrAbsolute));
-        }
 
         void PipeServer_FileRecieved(object sender, PipeServer.PipeServerEventArgs e)
         {
