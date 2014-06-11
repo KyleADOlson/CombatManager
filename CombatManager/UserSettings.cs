@@ -73,6 +73,7 @@ namespace CombatManager
         private string _AlternateInitRoll;
         private bool _ShowHiddenInitValue;
         private bool _AddMonstersHidden;
+        private bool _StatsOpenByDefault;
 
         private bool _PlayerMiniMode;
         private bool _MonsterMiniMode;
@@ -558,6 +559,19 @@ namespace CombatManager
                 }
             }
         }
+        
+        public bool StatsOpenByDefault
+        {
+            get { return _StatsOpenByDefault; }
+            set
+            {
+                if (_StatsOpenByDefault != value)
+                {
+                    _StatsOpenByDefault = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("StatsOpenByDefault")); }
+                }
+            }
+        }
 
 
         void LoadOptions()
@@ -596,6 +610,7 @@ namespace CombatManager
                 RunCombatViewService = LoadBoolValue("RunCombatViewService", false);
                 ShowHiddenInitValue = LoadBoolValue("ShowHiddenInitValue", false);
                 AddMonstersHidden = LoadBoolValue("AddMonstersHidden", false);
+                StatsOpenByDefault = LoadBoolValue("StatsOpenByDefault", false); 
                 MonsterDBFilter = (MonsterSetFilter)LoadIntValue("MonsterDBFilter", (int)MonsterSetFilter.Monsters);
                 MonsterTabFilter = (MonsterSetFilter)LoadIntValue("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
 
@@ -635,6 +650,7 @@ namespace CombatManager
                         SaveBoolValue(key, "RunCombatViewService", RunCombatViewService);
                         SaveBoolValue(key, "ShowHiddenInitValue", ShowHiddenInitValue);
                         SaveBoolValue(key, "AddMonstersHidden", AddMonstersHidden);
+                        SaveBoolValue(key, "StatsOpenByDefault", StatsOpenByDefault);
                         
                     }
 

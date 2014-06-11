@@ -8158,6 +8158,14 @@ namespace CombatManager
             }
         }
 
+        private void StatsCheckBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (UserSettings.Settings.StatsOpenByDefault)
+            {
+                ((ToggleButton)sender).IsChecked = true;
+            }
+        }
+
 
 
 
