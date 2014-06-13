@@ -36,7 +36,6 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using AxAcroPDFLib;
 using WinInterop = System.Windows.Interop;
 using System.Runtime.InteropServices;
 using System.Windows.Media;
@@ -54,7 +53,6 @@ using System.Threading;
 using System.Net;
 using System.Xml.Linq;
 using System.Reflection;
-using Path = System.IO.Path;
 
 namespace CombatManager
 {
@@ -8247,6 +8245,17 @@ namespace CombatManager
                 BookmarkList.List.AddFeat(f);
             }
         }
+
+        private void StatsCheckBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (UserSettings.Settings.StatsOpenByDefault)
+            {
+                ((ToggleButton)sender).IsChecked = true;
+            }
+        }
+
+
+
 
     }
 

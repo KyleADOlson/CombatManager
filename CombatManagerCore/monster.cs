@@ -1032,12 +1032,19 @@ namespace CombatManager
             skillsParsed = m.skillsParsed;
             if (m.skillsParsed)
             {
-                skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
+                skillValueDictionary.Clear();
+                
                 foreach (SkillValue skillValue in m.skillValueDictionary.Values)
                 {
 
                     skillValueDictionary[skillValue.FullName] = (SkillValue)skillValue.Clone();
                 }
+                skillValueList.Clear();
+                foreach (SkillValue skillValue in m.skillValueList)
+                {
+                    skillValueList.Add(skillValue);
+                }
+                
             }
 
             featsParsed = m.featsParsed;
