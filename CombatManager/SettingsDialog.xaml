@@ -5,13 +5,13 @@
 	x:Class="CombatManager.SettingsDialog"
 	x:Name="Window"
 	Title="Settings"
-	Width="258" Height="234.583" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False">
+	Width="258" Height="281.583" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False">
 
-	<Grid x:Name="LayoutRoot" Margin="0">
+	<Grid x:Name="LayoutRoot" Margin="0,0,0,0">
 		<Grid.Background>
 			<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
 		</Grid.Background>
-		<Border BorderThickness="1" Margin="8,14,8,34.25" CornerRadius="6">
+		<Border BorderThickness="1" Margin="8,14,8,41.25" CornerRadius="6">
 			<Border.Background>
 				<SolidColorBrush Color="{DynamicResource SecondaryColorALight}"/>
 			</Border.Background>
@@ -22,10 +22,12 @@
 				<CheckBox x:Name="RollAlternativeInitCheckbox" Content="Roll Alternate Dice For d20 Rolls" HorizontalAlignment="Left" Margin="6,85.92,0,0" VerticalAlignment="Top"/>
 				<CheckBox x:Name="ShowAllDamageDice" Content="Show All Damage Dice in Die Roller" HorizontalAlignment="Left" Margin="6,65.96,0,0" VerticalAlignment="Top"/>
 				<TextBox Margin="25,105.019,78,0" TextWrapping="Wrap" Text="3d6" IsEnabled="{Binding IsChecked, ElementName=RollAlternativeInitCheckbox}" x:Name="RollAlternateInitDiceBox" VerticalAlignment="Top" />
-				<CheckBox x:Name="ShowHiddenInitValueBox" Content="Show Hidden Init Value" HorizontalAlignment="Left" Margin="6,126.979,0,0" VerticalAlignment="Top"/>
+				<CheckBox x:Name="AddMonstersHiddenBox" Content="Add Monsters Hidden" HorizontalAlignment="Left" Margin="6,126.979,0,0" VerticalAlignment="Top"/>
+				<CheckBox x:Name="ShowHiddenInitValueBox" Content="Show Hidden Init Value" HorizontalAlignment="Left" Margin="6,146.077,0,0" VerticalAlignment="Top"/>
+				<CheckBox x:Name="StatsOpenByDefaultCheckbox" Content="Stats Panel Begins Open" HorizontalAlignment="Left" Margin="6,165.175,0,0" VerticalAlignment="Top"/>
 			</Grid>
 		</Border>
-		<Button Content="OK" HorizontalAlignment="Right" Margin="0,0,87,8" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="Button_Click" x:Name="OKButton" />
-		<Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,8" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
+		<Button Content="OK" HorizontalAlignment="Right" Margin="0,0,87,13" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="Button_Click" x:Name="OKButton" />
+		<Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,13" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
 	</Grid>
 </Window>

@@ -1,4 +1,11 @@
-﻿1.5.7
+﻿1.5.8
+Fix display of names on Initiative Window
+Add setting to allow monsters to be added hidden
+Add spell formatting
+Remove 256x256 icon to keep XP from crashing
+Stats panel begins open option
+
+1.5.7
 Optionally display conditions on initiative window
 Data update
 Spell subschool and descriptor filters

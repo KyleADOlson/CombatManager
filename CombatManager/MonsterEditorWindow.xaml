@@ -231,8 +231,8 @@
 					<Button.ToolTip>Delete</Button.ToolTip>
 					<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
 				</Button>
-				<TextBox HorizontalAlignment="Stretch" Margin="1.446,3,23,3" TextWrapping="NoWrap" Text="{Binding Mod}" d:LayoutOverrides="Width" Grid.Column="1" VerticalAlignment="Top"/>
-				<TextBlock HorizontalAlignment="Stretch" Margin="3,5.98,2.554,0" TextWrapping="NoWrap" Text="{Binding FullName}" VerticalAlignment="Top" TextTrimming="CharacterEllipsis"/>
+				<TextBox HorizontalAlignment="Stretch" Margin="1.446,3,23,3" TextWrapping="NoWrap" Text="{Binding Mod, UpdateSourceTrigger=PropertyChanged}" d:LayoutOverrides="Width" Grid.Column="1" VerticalAlignment="Top"/>
+				<TextBlock HorizontalAlignment="Stretch" Margin="3,5.98,2.554,0" TextWrapping="NoWrap" Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" TextTrimming="CharacterEllipsis"/>
 			</Grid>
 		</DataTemplate>
 		<DataTemplate x:Key="SpecialAbilityTemplate">
@@ -242,7 +242,7 @@
 						<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
 					</Border.Background>
 				</Border>
-				<TextBox HorizontalAlignment="Stretch" Margin="8,8,78.864,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="Auto"/>
+				<TextBox HorizontalAlignment="Stretch" Margin="8,8,78.864,0" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="Auto"/>
 				<ComboBox HorizontalAlignment="Right" Margin="0,8,28,0" VerticalAlignment="Top" Width="46.864" SelectedIndex="{Binding AbilityTypeIndex}">
 					<ComboBoxItem Content="Ex"/>
 					<ComboBoxItem Content="Sp"/>
