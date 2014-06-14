@@ -243,7 +243,7 @@
             	</MenuItem>
             	<MenuItem x:Name="RollSkillMenuItem" Header="Skill" Loaded="RollSkillMenuItem_Loaded" DataContextChanged="RollSkillMenuItem_DataContextChanged"/>
                 <MenuItem x:Name="RollCMBMenuItem" Header="Combat Maneuver" Loaded="RollCombatManeuverMenuItem_Loaded" DataContextChanged="RollManeuverMenuItem_DataContextChanged"></MenuItem>
-                
+                <MenuItem x:Name="RollAbilityMenuItem" Header="Ability Check" Loaded="RollAbilityCheckMenuItem_Loaded"></MenuItem>
             </MenuItem>
             <MenuItem Header="Initiative">
                 <MenuItem.Icon>

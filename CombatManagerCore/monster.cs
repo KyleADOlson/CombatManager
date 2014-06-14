@@ -10770,7 +10770,8 @@ namespace CombatManager
 
         private int? ParseManoeuver(string maneuverName)
         {
-            var regex = new Regex(@"(?<bonus>(\+|-)\d+) "+maneuverName.ToLower());
+            
+            var regex = new Regex(@"((?<bonus>(\+|-)\d+) |(?<=\()(?<bonus>(\+|-)\d+).+?)" + maneuverName.ToLower());
             var x = regex.Match(CMB);
             
             return x.Success ? Int32.Parse(x.Groups["bonus"].Value) : CMB_Numeric;
