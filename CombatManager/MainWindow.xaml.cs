@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Configuration;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -391,6 +392,7 @@ namespace CombatManager
 
             CalendarTab.DataContext = campaignInfo;
 			UpdateCampaignDayView();
+            
 
 
             MarkTime("Setup UI", ref t, ref last);
@@ -3753,7 +3755,7 @@ namespace CombatManager
             System.IntPtr handle = (new WinInterop.WindowInteropHelper(this)).Handle;
             WinInterop.HwndSource.FromHwnd(handle).AddHook(new WinInterop.HwndSourceHook(WindowProc));
         }
-
+        [DebuggerStepThrough]
         private System.IntPtr WindowProc(
               System.IntPtr hwnd,
               int msg,
@@ -4635,7 +4637,9 @@ namespace CombatManager
                 conditionSelector.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
                 conditionSelector.Characters = GetViewSelectedCharacters(sender);
                 conditionSelector.ShowDialog();
-
+                //just added may not stay
+                UpdateMonsterFlowDocument();
+                //
                 UpdateSmallMonsterFlowDocument();
             }
         }
@@ -4657,8 +4661,6 @@ namespace CombatManager
                     _Condition = value;
                 }
             }
-
-
             public Character Character
             {
                 get
@@ -4670,8 +4672,6 @@ namespace CombatManager
                     _Character = value;
                 }
             }
-
-
             public ObservableCollection<Character> Targets
             {
                 get
@@ -4752,8 +4752,6 @@ namespace CombatManager
         {
             private Character _Leader;
             private Character _Character;
-
-
             public Character Character
             {
                 get
@@ -4765,9 +4763,6 @@ namespace CombatManager
                     _Character = value;
                 }
             }
-
-
-
             public Character Leader
             {
                 get
@@ -6366,842 +6361,996 @@ namespace CombatManager
             }
         }
 
-        private void RollDiceButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            RollCurrentTextDie();
-        }
+        #region Die roll section
 
-        private void DieRollText_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
+            private void RollDiceButton_Click(object sender, System.Windows.RoutedEventArgs e)
             {
                 RollCurrentTextDie();
             }
-        }
 
-        private void RollCurrentTextDie()
-        {
-            DieRoll roll = DieRoll.FromString(DieRollText.Text);
-
-            if (roll != null)
+            private void DieRollText_KeyUp(object sender, KeyEventArgs e)
             {
+                if (e.Key == Key.Enter)
+                {
+                    RollCurrentTextDie();
+                }
+            }
+
+            private void RollCurrentTextDie()
+            {
+                DieRoll roll = DieRoll.FromString(DieRollText.Text);
+
+                if (roll != null)
+                {
+                    RollDie(roll, null, true);
+                }
+
+                AddRecentDieRoll(roll);
+            }
+
+            private Button MakeDieRollButton()
+            {
+
+                Button b = new Button();
+                b.ToolTip = "Reroll";
+                Image im = CMUIUtilities.GetNamedImageControl("dice");
+                im.Width = 13;
+                im.Height = 13;
+                b.Content = im;
+                b.Padding = new Thickness(0);
+
+                return b;
+            }
+
+            private class DieRollerRollInfo
+            {
+                public DieRoll Roll { get; set; }
+                public string Header { get; set; }
+                public bool Full { get; set; }
+            }
+
+            private Button AddDieRollButton(Paragraph p)
+            {
+
+                p.Margin = new Thickness(0);
+                Button b = MakeDieRollButton();
+                InlineUIContainer c = new InlineUIContainer();
+                c.Child = b;
+                p.Inlines.Add(c);
+                p.Inlines.Add(" ");
+
+                return b;
+            }
+
+            private void RollDie(DieRoll roll, string header, bool full)
+            {
+                RollResult res = roll.Roll();
+
+
+                Paragraph p = new Paragraph();
+
+                Button b = AddDieRollButton(p);
+                b.Tag = new DieRollerRollInfo() { Roll = roll, Header = header, Full = full };
+                b.Click += new RoutedEventHandler(DieReroll_Click);
+
+                if (header != null)
+                {
+                    p.Inlines.Add(header);
+                }
+
+
+                if (full)
+                {
+
+                    p.Inlines.Add(CreateRollElement(res.Total.ToString()));
+                    string text = "=";
+
+                    bool first = true;
+                    foreach (DieResult die in res.Rolls)
+                    {
+                        if (!first)
+                        {
+                            text += "+";
+                        }
+                        first = false;
+                        if (die.Die == 20 && (die.Result == 20 || die.Result == 1))
+                        {
+                            p.Inlines.Add(new Run(text));
+                            p.Inlines.Add(new Bold(new Run(die.Result.ToString())));
+                            text = "";
+                        }
+                        else
+                        {
+                            text += die.Result;
+                        }
+                        text += "(d" + die.Die + ")";
+                    }
+                    if (res.Mod != 0)
+                    {
+                        text += CMStringUtilities.PlusFormatNumber(res.Mod);
+                    }
+                    p.Inlines.Add(new Run(text));
+                }
+                else
+                {
+                    if (res.Rolls.Count == 1 && res.Rolls[0].Die == 20 && (res.Rolls[0].Result == 20 || res.Rolls[0].Result == 1))
+                    {
+                        int result = res.Rolls[0].Result;
+                        p.Inlines.Add(CreateRollElement(res.Total.ToString() + " (" + result + ")", Colors.White, (result == 1) ? Colors.Red : Colors.Green));
+
+                    }
+                    else
+                    {
+                        p.Inlines.Add(CreateRollElement(res.Total.ToString()));
+                    }
+                }
+
+                bool firstIl = true;
+                foreach (Inline il in p.Inlines)
+                {
+                    if (firstIl)
+                    {
+                        firstIl = false;
+                    }
+                    else
+                    {
+                        il.BaselineAlignment = BaselineAlignment.Center;
+                    }
+                }
+
+                DieRollDocument.Blocks.Add(p);
+
+
+                DieRollViewer.ScrollChildToBottom();
+            }
+
+            Inline CreateRollElement(string text)
+            {
+                return CreateRollElement(text, Colors.White, Colors.Black);
+            }
+
+            Inline CreateRollElement(string text, Color foreground, Color background)
+            {
+                return CreateRollElement(text, foreground, background, null);
+            }
+
+            Inline CreateRollElement(string text, Color foreground, Color background, string tooltip)
+            {
+                return CreateRollElement(text, new SolidColorBrush(foreground), new SolidColorBrush(background), tooltip);
+            }
+
+            Inline CreateRollElement(string text, Brush foreground, Brush background, string tooltip)
+            {
+                Border b = new Border();
+                b.Background = background;
+
+                Inline rt = new Bold(new Run(text));
+                rt.Foreground = foreground;
+                b.CornerRadius = new CornerRadius(8);
+                TextBlock tb = new TextBlock(rt);
+                tb.HorizontalAlignment = HorizontalAlignment.Center;
+                b.Child = tb;
+                Thickness pad = b.Padding;
+                b.MinWidth = 15;
+                pad.Left += 4;
+                pad.Right += 4;
+                b.Padding = pad;
+                b.ToolTip = tooltip;
+
+
+                InlineUIContainer co = new InlineUIContainer(b);
+                co.BaselineAlignment = BaselineAlignment.Center;
+
+                return co;
+
+            }
+
+            void DieReroll_Click(object sender, RoutedEventArgs e)
+            {
+                Button b = (Button)sender;
+                DieRollerRollInfo r = (DieRollerRollInfo)b.Tag;
+
+                RollDie(r.Roll, r.Header, r.Full);
+            }
+
+            private void DieButtonPressed(object sender, RoutedEventArgs e)
+            {
+
+                int die = int.Parse((string)((Button)sender).Tag);
+
+                DieRoll roll = DieRoll.FromString(DieRollText.Text);
+                if (roll != null)
+                {
+                    roll.AddDie(die);
+                }
+                else
+                {
+                    int mod = 0;
+
+                    int.TryParse(DieRollText.Text, out mod);
+
+                    roll = new DieRoll(1, die, mod);
+                }
+
+
+                DieRollText.Text = roll.Text;
+            }
+
+            private void ClearDieText_Click(object sender, System.Windows.RoutedEventArgs e)
+            {
+                DieRollText.Text = "";
+            }
+
+            private void ClearDieRollDocumentButton_Click(object sender, RoutedEventArgs e)
+            {
+                DieRollDocument.Blocks.Clear();
+            }
+
+            private void InstantDieButtonPressed(object sender, System.Windows.RoutedEventArgs e)
+            {
+
+                int die = int.Parse((string)((Button)sender).Tag);
+
+                DieRoll roll = new DieRoll(1, 1, die, 0);
+
                 RollDie(roll, null, true);
             }
 
-            AddRecentDieRoll(roll);
-        }
-
-        private Button MakeDieRollButton()
-        {
-
-            Button b = new Button();
-            b.ToolTip = "Reroll";
-            Image im = CMUIUtilities.GetNamedImageControl("dice");
-            im.Width = 13;
-            im.Height = 13;
-            b.Content = im;
-            b.Padding = new Thickness(0);
-
-            return b;
-        }
-
-        private class DieRollerRollInfo
-        {
-            public DieRoll Roll { get; set; }
-            public string Header { get; set; }
-            public bool Full { get; set; }
-        }
-
-        private Button AddDieRollButton(Paragraph p)
-        {
-
-            p.Margin = new Thickness(0);
-            Button b = MakeDieRollButton();
-            InlineUIContainer c = new InlineUIContainer();
-            c.Child = b;
-            p.Inlines.Add(c);
-            p.Inlines.Add(" ");
-
-            return b;
-        }
-
-        private void RollDie(DieRoll roll, string header, bool full)
-        {
-            RollResult res = roll.Roll();
-
-
-            Paragraph p = new Paragraph();
-
-            Button b = AddDieRollButton(p);
-            b.Tag = new DieRollerRollInfo() { Roll = roll, Header = header, Full = full };
-            b.Click += new RoutedEventHandler(DieReroll_Click);
-
-            if (header != null)
-            {
-                p.Inlines.Add(header);
-            }
-
-
-            if (full)
-            {
-
-                p.Inlines.Add(CreateRollElement(res.Total.ToString()));
-                string text = "=";
-
-                bool first = true;
-                foreach (DieResult die in res.Rolls)
+            #region Save Roll Menu Support Code
+                private void FortitudeMenuItem_Click(object sender, RoutedEventArgs e)
                 {
-                    if (!first)
+                    MenuItem mi = (MenuItem)sender;
+
+                    List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
+                    RollSave(list, Monster.SaveType.Fort);
+                }
+
+                private void ReflexMenuItem_Click(object sender, RoutedEventArgs e)
+                {
+
+                    MenuItem mi = (MenuItem)sender;
+
+                    List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
+                    RollSave(list, Monster.SaveType.Ref);
+
+                }
+
+                private void WillMenuItem_Click(object sender, RoutedEventArgs e)
+                {
+                    MenuItem mi = (MenuItem)sender;
+
+                    List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
+                    RollSave(list, Monster.SaveType.Will);
+
+                }
+
+                private void RollSave(List<Character> list, Monster.SaveType type)
+                {
+                    if (list.Count > 0)
                     {
-                        text += "+";
-                    }
-                    first = false;
-                    if (die.Die == 20 && (die.Result == 20 || die.Result == 1))
-                    {
-                        p.Inlines.Add(new Run(text));
-                        p.Inlines.Add(new Bold(new Run(die.Result.ToString())));
-                        text = "";
-                    }
-                    else
-                    {
-                        text += die.Result;
-                    }
-                    text += "(d" + die.Die + ")";
-                }
-                if (res.Mod != 0)
-                {
-                    text += CMStringUtilities.PlusFormatNumber(res.Mod);
-                }
-                p.Inlines.Add(new Run(text));
-            }
-            else
-            {
-                if (res.Rolls.Count == 1 && res.Rolls[0].Die == 20 && (res.Rolls[0].Result == 20 || res.Rolls[0].Result == 1))
-                {
-                    int result = res.Rolls[0].Result;
-                    p.Inlines.Add(CreateRollElement(res.Total.ToString() + " (" + result + ")", Colors.White,  (result == 1) ? Colors.Red : Colors.Green));
-                    
-                }
-                else
-                {
-                    p.Inlines.Add(CreateRollElement(res.Total.ToString()));
-                }
-            }
-            
-            bool firstIl = true;
-            foreach (Inline il in p.Inlines)
-            {
-                if (firstIl)
-                {
-                    firstIl = false;
-                }
-                else
-                {
-                    il.BaselineAlignment = BaselineAlignment.Center;
-                }
-            }
-
-            DieRollDocument.Blocks.Add(p);
-
-
-            DieRollViewer.ScrollChildToBottom();
-        }
-
-        void DieReroll_Click(object sender, RoutedEventArgs e)
-        {
-            Button b = (Button)sender;
-            DieRollerRollInfo r = (DieRollerRollInfo)b.Tag;
-
-            RollDie(r.Roll, r.Header, r.Full);
-        }
-
-        private void DieButtonPressed(object sender, RoutedEventArgs e)
-        {
-            
-            int die = int.Parse((string)((Button)sender).Tag);
-
-            DieRoll roll = DieRoll.FromString(DieRollText.Text);
-            if (roll != null)
-            {
-                roll.AddDie(die);
-            }
-            else
-            {
-                int mod = 0;
-
-                int.TryParse(DieRollText.Text, out mod);
-
-                roll = new DieRoll(1, die, mod);
-            }
-
-            
-            DieRollText.Text = roll.Text;
-        }
-
-        private void ClearDieText_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            DieRollText.Text = "";
-        }
-
-        private void ClearDieRollDocumentButton_Click(object sender, RoutedEventArgs e)
-        {
-            DieRollDocument.Blocks.Clear();
-        }
-		
-		
-
-        private void InstantDieButtonPressed(object sender, System.Windows.RoutedEventArgs e)
-        {
-			
-            int die = int.Parse((string)((Button)sender).Tag);
-        	
-			DieRoll roll = new DieRoll(1, 1, die, 0);
-			
-            RollDie(roll, null, true);
-        }
-
-
-        private void FortitudeMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            MenuItem mi = (MenuItem)sender;
-
-            List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
-            RollSave(list, Monster.SaveType.Fort);
-        }
-
-
-        private void ReflexMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-            MenuItem mi = (MenuItem)sender;
-
-            List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
-            RollSave(list, Monster.SaveType.Ref);
-
-        }
-
-        private void WillMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            MenuItem mi = (MenuItem)sender;
-
-            List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
-            RollSave(list, Monster.SaveType.Will);
-
-        }
-
-        private void RollSave(List<Character> list, Monster.SaveType type)
-        {
-            if (list.Count > 0)
-            {
-                Paragraph p = new Paragraph();
-                p.Margin = new Thickness(0);
-                
-                p.Inlines.Add(new Underline(new Run(SaveName(type) + " save" + (list.Count > 1?"s":""))));
-                DieRollDocument.Blocks.Add(p);
-            }
-
-
-
-            foreach (Character ch in list)
-            {
-                RollSave(ch, type);
-            }
-
-
-        }
-
-        private void RollSave(Character ch, Monster.SaveType type)
-        {
-            int? mod = ch.Monster.GetSave(type);
-            if (mod != null)
-            {
-                DieRoll roll;
-                if (UserSettings.Settings.AlternateInit3d6)
-                {
-
-                    roll = UserSettings.Settings.AlternateInitDieRoll;
-                }
-                else
-                {
-                    roll = new DieRoll(1, 20, (int)mod);
-                }
-                RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
-            }
-
-
-        }
-
-        private string SaveName(Monster.SaveType type)
-        {
-            switch (type)
-            {
-                case Monster.SaveType.Fort:
-                    return "Fort";
-                case Monster.SaveType.Ref:
-                    return "Ref";
-                case Monster.SaveType.Will:
-                default:
-                    return "Will";
-            }
-        }
-
-        private void RollSkillMenuItem_Loaded(object sender, RoutedEventArgs e)
-        {
-            SetupSkillsMenuItem((MenuItem)sender);
-        }
-
-        private void RollSkillMenuItem_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            SetupSkillsMenuItem((MenuItem)sender);
-
-        }
-
-        void SetupSkillsMenuItem(MenuItem item)
-        {
-            item.Items.Clear();
-
-            foreach (Monster.SkillInfo info in Monster.SkillsDetails.Values)
-            {
-                MenuItem mi = new MenuItem();
-                mi.Header = info.Name;
-                mi.Tag = info;
-
-                if (info.Subtypes != null && info.Subtypes.Count > 0)
-                {
-                    foreach (string subtype in info.Subtypes)
-                    {
-                        MenuItem si = new MenuItem();
-                        si.Header = subtype;
-                        SkillValue s = new SkillValue(info.Name);
-                        s.Subtype = subtype;
-                        si.Tag = s;
-                        si.Click += new RoutedEventHandler(SkillSubtypeMenuItemClick);
-
-                        mi.Items.Add(si);
-
-                    }
-                }
-                else
-                {
-                    mi.Click += new RoutedEventHandler(SkillMenuItemClick);
-                }
-
-                item.Items.Add(mi);
-            }
-        }
-
-        void SkillMenuItemClick(object sender, RoutedEventArgs e)
-        {
-
-            MenuItem mi = (MenuItem)sender;
-
-            List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
-            RollSkillCheck(list, ((Monster.SkillInfo)mi.Tag).Name, null);
-        }
-
-        void SkillSubtypeMenuItemClick(object sender, RoutedEventArgs e)
-        {
-
-            MenuItem mi = (MenuItem)sender;
-
-            List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
-
-
-            SkillValue v = (SkillValue)mi.Tag;
-
-            RollSkillCheck(list, v.Name, v.Subtype);
-        }
-
-        private void RollSkillCheck(List<Character> list, string skill, string subtype)
-        {
-            if (list.Count > 0)
-            {
-                Paragraph p = new Paragraph();
-                p.Margin = new Thickness(0);
-
-                string name = skill;
-
-                if (subtype != null)
-                {
-                    name += " " + subtype;
-                }
-
-                p.Inlines.Add(new Underline(new Run(name + " check" + (list.Count > 1 ? "s" : ""))));
-                DieRollDocument.Blocks.Add(p);
-            }
-
-            foreach (Character ch in list)
-            {
-                RollSkillCheck(ch, skill, subtype);
-            }
-        }
-
-        private void RollSkillCheck(Character ch, string skill, string subtype)
-        {
-            Monster.SkillInfo info = Monster.SkillsDetails[skill];
-            SkillValue val = new SkillValue(skill, subtype);
-
-            if (!info.TrainedOnly || ch.Monster.SkillValueDictionary.ContainsKey(val.FullName))
-            {
-
-                int mod = ch.Monster.GetSkillMod(skill, subtype);
-
-
-                DieRoll roll;
-                if (UserSettings.Settings.AlternateInit3d6)
-                {
-
-                    roll = UserSettings.Settings.AlternateInitDieRoll;
-                }
-                else
-                {
-                    roll = new DieRoll(1, 20, mod);
-                }
-
-                RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
-            }
-            else
-            {
-                Paragraph p = new Paragraph();
-                p.Margin = new Thickness(0);
-
-
-                p.Inlines.Add(new Italic(new Run(ch.Name + " Untrained")));
-                DieRollDocument.Blocks.Add(p);
-            }
-
-            DieRollViewer.ScrollChildToBottom();
-        }
-
-        private void RollAttacksMenuItem_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            UpdateRollAttacksMenuItem((MenuItem)sender);
-        }
-
-
-
-        private void RollAttacksMenuItem_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            UpdateRollAttacksMenuItem((MenuItem)sender);
-        }
-
-        private class AttackSetRollInfo
-        {
-
-            public List<Character> Characters { get; set; } 
-            public AttackSet Attacks;
-        }
-        private class AttackRollInfo
-        {
-            public List<Character> Characters { get; set; }
-            public Attack Attack;
-        }
-
-        private void UpdateRollAttacksMenuItem(MenuItem sender)
-        {
-            MenuItem attacksItem = (MenuItem)sender;
-            attacksItem.Items.Clear();
-
-            if (attacksItem.DataContext is Character)
-            {
-                Character ch = (Character)attacksItem.DataContext;
-
-                List<Character> all = GetViewSelectedCharacters(sender);
-                Dictionary<string, List<Character>> meleesets = new Dictionary<string, List<Character>>();
-                Dictionary<string, List<Character>> rangedsets = new Dictionary<string, List<Character>>();
-
-                foreach (Character c in all)
-                {
-                    List<AttackSet> melee = c.Monster.MeleeAttacks;
-                    foreach (AttackSet set in melee)
-                    {
-                        string s = set.ToString();
-                        if (!meleesets.ContainsKey(s))
-                        {
-                            meleesets[s] = new List<Character>();
-                        }
-
-                        meleesets[s].Add(c);
-                    }
-
-                    List<Attack> ranged = c.Monster.RangedAttacks;
-                    foreach (Attack set in ranged)
-                    {
-                        string s = set.ToString();
-                        if (!rangedsets.ContainsKey(s))
-                        {
-                            rangedsets[s] = new List<Character>();
-                        }
-
-                        rangedsets[s].Add(c);
+                        Paragraph p = new Paragraph();
+                        p.Margin = new Thickness(0);
+
+                        p.Inlines.Add(new Underline(new Run(SaveName(type) + " save" + (list.Count > 1 ? "s" : ""))));
+                        DieRollDocument.Blocks.Add(p);
                     }
 
 
-                    
+
+                    foreach (Character ch in list)
+                    {
+                        RollSave(ch, type);
+                    }
+
+
                 }
 
-                if (ch != null)
+                private void RollSave(Character ch, Monster.SaveType type)
                 {
-                    List<AttackSet> melee = ch.Monster.MeleeAttacks;
-
-                    List<Attack> ranged = ch.Monster.RangedAttacks;
-
-                    foreach (AttackSet set in melee)
+                    int? mod = ch.Monster.GetSave(type);
+                    if (mod != null)
                     {
-                        MenuItem mi = new MenuItem();
-                        string s = set.ToString();
-                        mi.Header = set.ToString();
-
-                        if (meleesets[s].Count > 1)
+                        DieRoll roll;
+                        if (UserSettings.Settings.AlternateInit3d6)
                         {
 
-                            mi.SetNamedIcon("clone");
+                            roll = UserSettings.Settings.AlternateInitDieRoll;
                         }
                         else
                         {
-                            mi.SetNamedIcon("sword");
-
+                            roll = new DieRoll(1, 20, (int)mod);
                         }
-                        AttackSetRollInfo ri = new AttackSetRollInfo();
-                        ri.Characters = meleesets[s];
-                        ri.Characters.Sort((a, b) => String.Compare(a.Name, b.Name, true));
-                        ri.Attacks = set;
-                        mi.Tag = ri;
-
-                        mi.Click += new RoutedEventHandler(RollMeleeAttackItem_Click);
-                        attacksItem.Items.Add(mi);
+                        RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
                     }
 
-                    foreach (Attack attack in ranged)
+
+                }
+
+                private string SaveName(Monster.SaveType type)
+                {
+                    switch (type)
+                    {
+                        case Monster.SaveType.Fort:
+                            return "Fort";
+                        case Monster.SaveType.Ref:
+                            return "Ref";
+                        default:
+                            return "Will";
+                    }
+                } 
+            #endregion
+
+            #region Combat Maneuver Roll Menu Support Code
+
+                private void RollCombatManeuvers(List<Character> list, string manoeuvreType)
+                {
+                    if (list.Count > 0)
+                    {
+                        Paragraph p = new Paragraph { Margin = new Thickness(0) };
+
+                        p.Inlines.Add(new Underline(new Run(manoeuvreType + (list.Count > 1 ? "s" : ""))));
+                        DieRollDocument.Blocks.Add(p);
+                    }
+                    foreach (Character ch in list)
+                    {
+                        RollCombatManeuver(ch, manoeuvreType);
+                    }
+                }
+                private void RollCombatManeuver(Character ch, string maneuverType)
+                {
+                    int? mod = ch.Monster.GetManoeuver(maneuverType);
+                    if (mod == null) return;
+                    DieRoll roll = UserSettings.Settings.AlternateInit3d6 ? UserSettings.Settings.AlternateInitDieRoll : new DieRoll(1, 20, (int)mod);
+                    RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
+                }
+                private void RollManeuverMenuItem_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+                {
+                    SetupManeuverMenuItem((MenuItem)sender);
+
+                }
+                private void RollCombatManeuverMenuItem_Loaded(object sender, RoutedEventArgs e)
+                {
+                    SetupManeuverMenuItem((MenuItem)sender);
+                }
+                private void SetupManeuverMenuItem(MenuItem menuItem)
+                {
+                    menuItem.Items.Clear();
+
+                    foreach (var cm in Monster.CombatManeuvers.Select(Maneuver => new MenuItem { Header = Maneuver, Tag = Maneuver }))
+                    {
+
+                        cm.Click += ManeuverMenuItemClick;
+                        menuItem.Items.Add(cm);
+                    }
+                }
+                void ManeuverMenuItemClick(object sender, RoutedEventArgs e)
+                {
+
+                    MenuItem mi = (MenuItem)sender;
+
+                    List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
+                    var mt = (string)mi.Tag;
+                    RollCombatManeuvers(list, mt);
+                }
+        
+            #endregion
+
+            #region Ability Check Roll Menu Support Code
+                    private void RollAbilityCheckMenuItem_Loaded(object sender, RoutedEventArgs e)
+                        {
+                            SetupAbilityCheckMenuItem((MenuItem)sender);
+                        }
+                    private void SetupAbilityCheckMenuItem(MenuItem menuItem)
+                        {
+                                menuItem.Items.Clear();
+                                var Stats = Enum.GetNames(typeof(Stat));
+                            foreach (var Statistic in Stats.Select(Statistics => new MenuItem {Header = Statistics, Tag = Statistics}))
+                                {
+                                    Statistic.Click += AbilityCheckMenuItemClick;
+                                    menuItem.Items.Add(Statistic);
+                                }
+
+                        }
+                    void AbilityCheckMenuItemClick(object sender, RoutedEventArgs e)
+                        {
+                            MenuItem mi = (MenuItem)sender;
+
+                            List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
+                            var mt = (string)mi.Tag;
+                            RollAbilityCheck(list, mt);
+                        }
+                    private void RollAbilityCheck(List<Character> list, string Ability)
+                    {
+                        if (list.Count > 0)
+                        {
+                            Paragraph p = new Paragraph { Margin = new Thickness(0) };
+
+                            p.Inlines.Add(new Underline(new Run(Ability + (list.Count > 1 ? "s" : ""))));
+                            DieRollDocument.Blocks.Add(p);
+                        }
+                        foreach (Character ch in list)
+                            {
+                                RollAbilityCheck(ch, Ability);
+                            }
+                    }
+                    private void RollAbilityCheck(Character ch, string Ability)
+                    {   
+                        int? mod = Monster.AbilityBonus(ch.Monster.GetStat((Stat)Enum.Parse(typeof(Stat),Ability)));
+                        DieRoll roll = UserSettings.Settings.AlternateInit3d6 ? UserSettings.Settings.AlternateInitDieRoll : new DieRoll(1, 20, (int)mod);
+                        RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
+                    }
+                #endregion
+
+            #region Skill Roll Menu Support Code
+                private void RollSkillMenuItem_Loaded(object sender, RoutedEventArgs e)
+                {
+                    SetupSkillsMenuItem((MenuItem)sender);
+                }
+
+                private void RollSkillMenuItem_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+                {
+                    SetupSkillsMenuItem((MenuItem)sender);
+
+                }
+
+                void SetupSkillsMenuItem(MenuItem item)
+                {
+                    item.Items.Clear();
+
+                    foreach (Monster.SkillInfo info in Monster.SkillsDetails.Values)
                     {
                         MenuItem mi = new MenuItem();
-                        string s = attack.ToString();
-                        mi.Header = attack.ToString();
-                        if (rangedsets[s].Count > 1)
-                        {
+                        mi.Header = info.Name;
+                        mi.Tag = info;
 
-                            mi.SetNamedIcon("clone");
+                        if (info.Subtypes != null && info.Subtypes.Count > 0)
+                        {
+                            foreach (string subtype in info.Subtypes)
+                            {
+                                MenuItem si = new MenuItem();
+                                si.Header = subtype;
+                                SkillValue s = new SkillValue(info.Name);
+                                s.Subtype = subtype;
+                                si.Tag = s;
+                                si.Click += new RoutedEventHandler(SkillSubtypeMenuItemClick);
+
+                                mi.Items.Add(si);
+
+                            }
                         }
                         else
                         {
-
-                            mi.SetNamedIcon("bow");
-
+                            mi.Click += new RoutedEventHandler(SkillMenuItemClick);
                         }
 
-                        AttackRollInfo ri = new AttackRollInfo();
-                        ri.Characters = rangedsets[s];
-                        ri.Characters.Sort((a, b) => String.Compare(a.Name, b.Name, true));
-                        ri.Attack = attack;
-                        mi.Tag = ri;
-                        mi.Click += new RoutedEventHandler(RollRangedAttackItem_Click);
-                        attacksItem.Items.Add(mi);
-
+                        item.Items.Add(mi);
                     }
                 }
 
-            }
-        }
-
-        public Button CreateAttackCharacterHeader(Character ch)
-        {
-
-            Paragraph p = new Paragraph();
-            Button b = AddDieRollButton(p);
-            
-            p.Background = new SolidColorBrush((Color)FindResource("SecondaryColorBDarker"));
-            
-            p.Margin = new Thickness(0, 2, 0, 0);
-            b.Margin = new Thickness(3, 3, 1, 0);
-
-            Run r = new Run(ch.Name);
-            r.FontWeight = FontWeights.Bold;
-           
-            r.Foreground = new SolidColorBrush(Colors.White);
-            r.BaselineAlignment = BaselineAlignment.Center;
-            p.Inlines.Add(r);
-            DieRollDocument.Blocks.Add(p);
-
-            return b;
-        }
-
-        void RollMeleeAttackItem_Click(object sender, RoutedEventArgs e)
-        {
-            FrameworkElement mi = (FrameworkElement)sender;
-            Character ch = (Character)mi.DataContext;
-            AttackSetRollInfo ri = (AttackSetRollInfo)mi.Tag;
-            AttackSet set = ri.Attacks;
-
-            List<Attack> attacks = new List<Attack>();
-
-            attacks.AddRange(set.WeaponAttacks);
-            attacks.AddRange(set.NaturalAttacks);
-
-            foreach (Character c in ri.Characters)
-            {
-                Button b = CreateAttackCharacterHeader(c);
-                AttackSetRollInfo cri = new AttackSetRollInfo();
-                cri.Characters = new List<Character>() { c };
-                cri.Attacks = ri.Attacks;
-                b.Tag = cri;
-                
-                b.Click += RollMeleeAttackItem_Click;
-
-                foreach (Attack atk in attacks)
+                void SkillMenuItemClick(object sender, RoutedEventArgs e)
                 {
-                    RollAttack(c, atk);
+
+                    MenuItem mi = (MenuItem)sender;
+
+                    List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
+                    RollSkillCheck(list, ((Monster.SkillInfo)mi.Tag).Name, null);
                 }
-            }
-        }
 
-
-
-        void RollRangedAttackItem_Click(object sender, RoutedEventArgs e)
-        {
-            FrameworkElement mi = (FrameworkElement)sender;
-            Character ch = (Character)mi.DataContext;
-            var ri = (AttackRollInfo)mi.Tag;
-
-
-
-            Attack atk = (Attack)ri.Attack;
-
-            foreach (Character c in ri.Characters)
-            {
-
-                Button b = CreateAttackCharacterHeader(c);
-                AttackRollInfo cri = new AttackRollInfo();
-                cri.Characters = new List<Character>() { c };
-                cri.Attack = ri.Attack;
-                b.Tag = cri;
-                b.Click += RollRangedAttackItem_Click;
-
-                RollAttack(c, atk);
-            }
-        }
-
-        Inline CreateRollElement(string text)
-        {
-            return CreateRollElement(text, Colors.White, Colors.Black);
-        }
-
-        Inline CreateRollElement(string text, Color foreground, Color background)
-        {
-            return CreateRollElement(text, foreground, background, null);
-        }
-
-        Inline CreateRollElement(string text, Color foreground, Color background, string tooltip)
-        {
-            return CreateRollElement(text, new SolidColorBrush(foreground), new SolidColorBrush(background), tooltip);
-        }
-
-        Inline CreateRollElement(string text, Brush foreground, Brush background, string tooltip)
-        {
-            Border b = new Border();
-            b.Background = background;
-
-            Inline rt = new Bold(new Run(text));
-            rt.Foreground = foreground;
-            b.CornerRadius = new CornerRadius(8);
-            TextBlock tb = new TextBlock(rt);
-            tb.HorizontalAlignment = HorizontalAlignment.Center;
-            b.Child = tb;
-            Thickness pad = b.Padding;
-            b.MinWidth = 15;
-            pad.Left += 4;
-            pad.Right += 4;
-            b.Padding = pad;
-            b.ToolTip = tooltip;
-
-
-            InlineUIContainer co = new InlineUIContainer(b);
-            co.BaselineAlignment = BaselineAlignment.Center;
-
-            return co;
-
-        }
-
-        void RollAttack(Character ch, Attack atk)
-        {
-            Paragraph p = new Paragraph();
-            p.Margin = new Thickness(0);
-
-            string attackname = atk.Name;
-
-            if (atk.Weapon != null)
-            {
-                attackname = atk.Weapon.Name;
-            }
-
-
-            p.Inlines.Add(new Underline(new Run(StringCapitalizeConverter.Capitalize(attackname))));
-
-            int totalattacks = atk.Count * atk.Bonus.Count;
-
-
-            for (int atkcount = 0; atkcount < atk.Count; atkcount++)
-            {
-                foreach (int mod in atk.Bonus)
+                void SkillSubtypeMenuItemClick(object sender, RoutedEventArgs e)
                 {
-                    if (totalattacks > 0)
+
+                    MenuItem mi = (MenuItem)sender;
+
+                    List<Character> list = GetViewSelectedCharactersFromChar((Character)mi.DataContext);
+
+
+                    SkillValue v = (SkillValue)mi.Tag;
+
+                    RollSkillCheck(list, v.Name, v.Subtype);
+                }
+
+                private void RollSkillCheck(List<Character> list, string skill, string subtype)
+                {
+                    if (list.Count > 0)
                     {
-                        if (atk.Count > 0)
+                        Paragraph p = new Paragraph();
+                        p.Margin = new Thickness(0);
+
+                        string name = skill;
+
+                        if (subtype != null)
                         {
-                            p.Inlines.Add(new LineBreak());
+                            name += " " + subtype;
                         }
+
+                        p.Inlines.Add(new Underline(new Run(name + " check" + (list.Count > 1 ? "s" : ""))));
+                        DieRollDocument.Blocks.Add(p);
                     }
 
-                    DieRoll roll;
-                    if (UserSettings.Settings.AlternateInit3d6)
+                    foreach (Character ch in list)
+                    {
+                        RollSkillCheck(ch, skill, subtype);
+                    }
+                }
+
+                private void RollSkillCheck(Character ch, string skill, string subtype)
+                {
+                    Monster.SkillInfo info = Monster.SkillsDetails[skill];
+                    SkillValue val = new SkillValue(skill, subtype);
+
+                    if (!info.TrainedOnly || ch.Monster.SkillValueDictionary.ContainsKey(val.FullName))
                     {
 
-                        roll = UserSettings.Settings.AlternateInitDieRoll;
+                        int mod = ch.Monster.GetSkillMod(skill, subtype);
+
+
+                        DieRoll roll;
+                        if (UserSettings.Settings.AlternateInit3d6)
+                        {
+
+                            roll = UserSettings.Settings.AlternateInitDieRoll;
+                        }
+                        else
+                        {
+                            roll = new DieRoll(1, 20, mod);
+                        }
+
+                        RollDie(roll, ch.Name + " (" + CMStringUtilities.PlusFormatNumber(mod) + "): ", false);
                     }
                     else
                     {
-                        roll = new DieRoll(1, 20, mod);
+                        Paragraph p = new Paragraph();
+                        p.Margin = new Thickness(0);
+
+
+                        p.Inlines.Add(new Italic(new Run(ch.Name + " Untrained")));
+                        DieRollDocument.Blocks.Add(p);
                     }
 
-                    RollResult res = roll.Roll();
-
-                    RollResult dmg = atk.Damage.Roll();
-
-                    RollResult bonusDmg = null;
-                    String bonusType = null;
-                    DieRoll bonusRoll = null;
-                    if (atk.Plus != null)
-                    {
-                        Regex plusRegex = new Regex("(?<die>[0-9]+d[0-9]+((\\+|-)[0-9]+)?) (?<type>[a-zA-Z]+)");
-                        Match dm = plusRegex.Match(atk.Plus);
-                        if (dm.Success)
-                        {
-                            bonusRoll = DieRoll.FromString(dm.Groups["die"].Value);
-                            bonusDmg = bonusRoll.Roll();
-                            bonusType = dm.Groups["type"].Value;
-                        }
-                    }
-
-                    p.Inlines.Add(new Run(CMStringUtilities.PlusFormatNumber(mod) + " hit "));
-
-                    int actualDie = 0;
-                    foreach (DieResult val in res.Rolls)
-                    {
-                        actualDie += val.Result;
-                    }
-                    if (actualDie >= atk.CritRange || actualDie == 1)
-                    {
-                        string text = res.Total.ToString() + " (" + actualDie + ")";
-                        Inline co = CreateRollElement(text, Colors.White, 
-                            (actualDie==1)?Colors.Red:Colors.Green);
-                        p.Inlines.Add(co);
-                        p.Inlines.Add(" ");
-        
-                    }
-                    else
-                    {
-                        Inline co = CreateRollElement(res.Total.ToString());
-                        p.Inlines.Add(co);
-                        p.Inlines.Add(" ");
-                        p.Inlines.Add(new Run("(" + actualDie + ") "));
-                    }
-        
-
-                    if (actualDie != 1)
-                    {
-                        p.Inlines.Add(new Run("dmg "));
-
-                        string dmgtext = "";
-
-                        p.Inlines.Add(" ");
-                        foreach (DieResult dmgroll in dmg.Rolls)
-                        {
-                            if (dmgtext.Length > 0)
-                            {
-                                dmgtext += "+";
-                            }
-                            dmgtext += dmgroll.Result;
-                        }
-                        if (dmg.Mod != 0)
-                        {
-                            dmgtext += "+";
-                            dmgtext += dmg.Mod;
-
-                        }
-
-                        p.Inlines.Add(CreateRollElement(dmg.Total.ToString(), Colors.White, Colors.Blue, dmgtext));
-                        
-
-
-
-                        if (UserSettings.Settings.ShowAllDamageDice)
-                        {
-                            p.Inlines.Add(new Run("(" + dmgtext + ")"));
-                        }
-
-                        if (bonusRoll != null)
-                        {
-                            p.Inlines.Add(new Run("+"));
-                            p.Inlines.Add(CreateRollElement(bonusDmg.Total.ToString(), Colors.White, Colors.DarkMagenta));
-                            p.Inlines.Add(" " + bonusType);
-                        }
-                        
-
-
-                        if (res.Rolls[0].Result >= atk.CritRange)
-                        {
-                            RollResult critRes = roll.Roll();
-                            int actualCrit = critRes.Rolls[0].Result;
-
-                            int critTotal = dmg.Total;
-
-                            for (int i = 1; i < atk.CritMultiplier; i++)
-                            {
-                                RollResult crit = atk.Damage.Roll();
-                                critTotal += crit.Total;
-
-                                foreach (DieResult dmgroll in crit.Rolls)
-                                {
-                                    dmgtext += "+";
-                                    dmgtext += dmgroll.Result;
-                                }
-
-                                if (crit.Mod != 0)
-                                {
-                                    dmgtext += "+";
-                                    dmgtext += crit.Mod;
-
-                                }
-
-                            }
-
-                            string text = " Crit: ";
-                            text += critRes.Total;
-                            text += " (" + actualCrit + ")";
-                            if (actualCrit != 1)
-                            {
-                                text += " dmg " + critTotal;
-
-                                if (UserSettings.Settings.ShowAllDamageDice)
-                                {
-                                    text += " (" + dmgtext + ")";
-                                }
-
-
-                            }
-
-
-                            p.Inlines.Add(new Italic(new Run(text)));
-                        }
-
-                    }
-
+                    DieRollViewer.ScrollChildToBottom();
                 }
+        
+            #endregion
+
+            #region Attack Roll Menu Support Code
+
+                    private void RollAttacksMenuItem_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+                    {
+                        UpdateRollAttacksMenuItem((MenuItem)sender);
+                    }
+                    private void RollAttacksMenuItem_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+                    {
+                        UpdateRollAttacksMenuItem((MenuItem)sender);
+                    }
+                    private class AttackSetRollInfo
+                    {
+
+                        public List<Character> Characters { get; set; }
+                        public AttackSet Attacks;
+                    }
+                    private class AttackRollInfo
+                    {
+                        public List<Character> Characters { get; set; }
+                        public Attack Attack;
+                    }
+                    private void UpdateRollAttacksMenuItem(MenuItem sender)
+                    {
+                        MenuItem attacksItem = (MenuItem)sender;
+                        attacksItem.Items.Clear();
+
+                        if (attacksItem.DataContext is Character)
+                        {
+                            Character ch = (Character)attacksItem.DataContext;
+
+                            List<Character> all = GetViewSelectedCharacters(sender);
+                            Dictionary<string, List<Character>> meleesets = new Dictionary<string, List<Character>>();
+                            Dictionary<string, List<Character>> rangedsets = new Dictionary<string, List<Character>>();
+
+                            foreach (Character c in all)
+                            {
+                                List<AttackSet> melee = c.Monster.MeleeAttacks;
+                                foreach (AttackSet set in melee)
+                                {
+                                    string s = set.ToString();
+                                    if (!meleesets.ContainsKey(s))
+                                    {
+                                        meleesets[s] = new List<Character>();
+                                    }
+
+                                    meleesets[s].Add(c);
+                                }
+
+                                List<Attack> ranged = c.Monster.RangedAttacks;
+                                foreach (Attack set in ranged)
+                                {
+                                    string s = set.ToString();
+                                    if (!rangedsets.ContainsKey(s))
+                                    {
+                                        rangedsets[s] = new List<Character>();
+                                    }
+
+                                    rangedsets[s].Add(c);
+                                }
+
+
+
+                            }
+
+                            if (ch != null)
+                            {
+                                List<AttackSet> melee = ch.Monster.MeleeAttacks;
+
+                                List<Attack> ranged = ch.Monster.RangedAttacks;
+
+                                foreach (AttackSet set in melee)
+                                {
+                                    MenuItem mi = new MenuItem();
+                                    string s = set.ToString();
+                                    mi.Header = set.ToString();
+
+                                    if (meleesets[s].Count > 1)
+                                    {
+
+                                        mi.SetNamedIcon("clone");
+                                    }
+                                    else
+                                    {
+                                        mi.SetNamedIcon("sword");
+
+                                    }
+                                    AttackSetRollInfo ri = new AttackSetRollInfo();
+                                    ri.Characters = meleesets[s];
+                                    ri.Characters.Sort((a, b) => String.Compare(a.Name, b.Name, true));
+                                    ri.Attacks = set;
+                                    mi.Tag = ri;
+
+                                    mi.Click += new RoutedEventHandler(RollMeleeAttackItem_Click);
+                                    attacksItem.Items.Add(mi);
+                                }
+
+                                foreach (Attack attack in ranged)
+                                {
+                                    MenuItem mi = new MenuItem();
+                                    string s = attack.ToString();
+                                    mi.Header = attack.ToString();
+                                    if (rangedsets[s].Count > 1)
+                                    {
+
+                                        mi.SetNamedIcon("clone");
+                                    }
+                                    else
+                                    {
+
+                                        mi.SetNamedIcon("bow");
+
+                                    }
+
+                                    AttackRollInfo ri = new AttackRollInfo();
+                                    ri.Characters = rangedsets[s];
+                                    ri.Characters.Sort((a, b) => String.Compare(a.Name, b.Name, true));
+                                    ri.Attack = attack;
+                                    mi.Tag = ri;
+                                    mi.Click += new RoutedEventHandler(RollRangedAttackItem_Click);
+                                    attacksItem.Items.Add(mi);
+
+                                }
+                            }
+
+                        }
+                    }
+                    public Button CreateAttackCharacterHeader(Character ch)
+                    {
+
+                        Paragraph p = new Paragraph();
+                        Button b = AddDieRollButton(p);
+
+                        p.Background = new SolidColorBrush((Color)FindResource("SecondaryColorBDarker"));
+
+                        p.Margin = new Thickness(0, 2, 0, 0);
+                        b.Margin = new Thickness(3, 3, 1, 0);
+
+                        Run r = new Run(ch.Name);
+                        r.FontWeight = FontWeights.Bold;
+
+                        r.Foreground = new SolidColorBrush(Colors.White);
+                        r.BaselineAlignment = BaselineAlignment.Center;
+                        p.Inlines.Add(r);
+                        DieRollDocument.Blocks.Add(p);
+
+                        return b;
+                    }
+                    void RollMeleeAttackItem_Click(object sender, RoutedEventArgs e)
+                    {
+                        FrameworkElement mi = (FrameworkElement)sender;
+                        Character ch = (Character)mi.DataContext;
+                        AttackSetRollInfo ri = (AttackSetRollInfo)mi.Tag;
+                        AttackSet set = ri.Attacks;
+
+                        List<Attack> attacks = new List<Attack>();
+
+                        attacks.AddRange(set.WeaponAttacks);
+                        attacks.AddRange(set.NaturalAttacks);
+
+                        foreach (Character c in ri.Characters)
+                        {
+                            Button b = CreateAttackCharacterHeader(c);
+                            AttackSetRollInfo cri = new AttackSetRollInfo();
+                            cri.Characters = new List<Character>() { c };
+                            cri.Attacks = ri.Attacks;
+                            b.Tag = cri;
+
+                            b.Click += RollMeleeAttackItem_Click;
+
+                            foreach (Attack atk in attacks)
+                            {
+                                RollAttack(c, atk);
+                            }
+                        }
+                    }
+                    void RollRangedAttackItem_Click(object sender, RoutedEventArgs e)
+                    {
+                        FrameworkElement mi = (FrameworkElement)sender;
+                        Character ch = (Character)mi.DataContext;
+                        var ri = (AttackRollInfo)mi.Tag;
+
+
+
+                        Attack atk = (Attack)ri.Attack;
+
+                        foreach (Character c in ri.Characters)
+                        {
+
+                            Button b = CreateAttackCharacterHeader(c);
+                            AttackRollInfo cri = new AttackRollInfo();
+                            cri.Characters = new List<Character>() { c };
+                            cri.Attack = ri.Attack;
+                            b.Tag = cri;
+                            b.Click += RollRangedAttackItem_Click;
+
+                            RollAttack(c, atk);
+                        }
+                    }
+                    void RollAttack(Character ch, Attack atk)
+                    {
+                        Paragraph p = new Paragraph();
+                        p.Margin = new Thickness(0);
+
+                        string attackname = atk.Name;
+
+                        if (atk.Weapon != null)
+                        {
+                            attackname = atk.Weapon.Name;
+                        }
+
+
+                        p.Inlines.Add(new Underline(new Run(StringCapitalizeConverter.Capitalize(attackname))));
+
+                        int totalattacks = atk.Count * atk.Bonus.Count;
+
+
+                        for (int atkcount = 0; atkcount < atk.Count; atkcount++)
+                        {
+                            foreach (int mod in atk.Bonus)
+                            {
+                                if (totalattacks > 0)
+                                {
+                                    if (atk.Count > 0)
+                                    {
+                                        p.Inlines.Add(new LineBreak());
+                                    }
+                                }
+
+                                DieRoll roll;
+                                if (UserSettings.Settings.AlternateInit3d6)
+                                {
+
+                                    roll = UserSettings.Settings.AlternateInitDieRoll;
+                                }
+                                else
+                                {
+                                    roll = new DieRoll(1, 20, mod);
+                                }
+
+                                RollResult res = roll.Roll();
+
+                                RollResult dmg = atk.Damage.Roll();
+
+                                RollResult bonusDmg = null;
+                                String bonusType = null;
+                                DieRoll bonusRoll = null;
+                                if (atk.Plus != null)
+                                {
+                                    Regex plusRegex = new Regex("(?<die>[0-9]+d[0-9]+((\\+|-)[0-9]+)?) (?<type>[a-zA-Z]+)");
+                                    Match dm = plusRegex.Match(atk.Plus);
+                                    if (dm.Success)
+                                    {
+                                        bonusRoll = DieRoll.FromString(dm.Groups["die"].Value);
+                                        bonusDmg = bonusRoll.Roll();
+                                        bonusType = dm.Groups["type"].Value;
+                                    }
+                                }
+
+                                p.Inlines.Add(new Run(CMStringUtilities.PlusFormatNumber(mod) + " hit "));
+
+                                int actualDie = 0;
+                                foreach (DieResult val in res.Rolls)
+                                {
+                                    actualDie += val.Result;
+                                }
+                                if (actualDie >= atk.CritRange || actualDie == 1)
+                                {
+                                    string text = res.Total.ToString() + " (" + actualDie + ")";
+                                    Inline co = CreateRollElement(text, Colors.White,
+                                        (actualDie == 1) ? Colors.Red : Colors.Green);
+                                    p.Inlines.Add(co);
+                                    p.Inlines.Add(" ");
+
+                                }
+                                else
+                                {
+                                    Inline co = CreateRollElement(res.Total.ToString());
+                                    p.Inlines.Add(co);
+                                    p.Inlines.Add(" ");
+                                    p.Inlines.Add(new Run("(" + actualDie + ") "));
+                                }
+
+
+                                if (actualDie != 1)
+                                {
+                                    p.Inlines.Add(new Run("dmg "));
+
+                                    string dmgtext = "";
+
+                                    p.Inlines.Add(" ");
+                                    foreach (DieResult dmgroll in dmg.Rolls)
+                                    {
+                                        if (dmgtext.Length > 0)
+                                        {
+                                            dmgtext += "+";
+                                        }
+                                        dmgtext += dmgroll.Result;
+                                    }
+                                    if (dmg.Mod != 0)
+                                    {
+                                        dmgtext += "+";
+                                        dmgtext += dmg.Mod;
+
+                                    }
+
+                                    p.Inlines.Add(CreateRollElement(dmg.Total.ToString(), Colors.White, Colors.Blue, dmgtext));
+
+
+
+
+                                    if (UserSettings.Settings.ShowAllDamageDice)
+                                    {
+                                        p.Inlines.Add(new Run("(" + dmgtext + ")"));
+                                    }
+
+                                    if (bonusRoll != null)
+                                    {
+                                        p.Inlines.Add(new Run("+"));
+                                        p.Inlines.Add(CreateRollElement(bonusDmg.Total.ToString(), Colors.White, Colors.DarkMagenta));
+                                        p.Inlines.Add(" " + bonusType);
+                                    }
+
+
+
+                                    if (res.Rolls[0].Result >= atk.CritRange)
+                                    {
+                                        RollResult critRes = roll.Roll();
+                                        int actualCrit = critRes.Rolls[0].Result;
+
+                                        int critTotal = dmg.Total;
+
+                                        for (int i = 1; i < atk.CritMultiplier; i++)
+                                        {
+                                            RollResult crit = atk.Damage.Roll();
+                                            critTotal += crit.Total;
+
+                                            foreach (DieResult dmgroll in crit.Rolls)
+                                            {
+                                                dmgtext += "+";
+                                                dmgtext += dmgroll.Result;
+                                            }
+
+                                            if (crit.Mod != 0)
+                                            {
+                                                dmgtext += "+";
+                                                dmgtext += crit.Mod;
+
+                                            }
+
+                                        }
+
+                                        string text = " Crit: ";
+                                        text += critRes.Total;
+                                        text += " (" + actualCrit + ")";
+                                        if (actualCrit != 1)
+                                        {
+                                            text += " dmg " + critTotal;
+
+                                            if (UserSettings.Settings.ShowAllDamageDice)
+                                            {
+                                                text += " (" + dmgtext + ")";
+                                            }
+
+
+                                        }
+
+
+                                        p.Inlines.Add(new Italic(new Run(text)));
+                                    }
+
+                                }
+
+                            }
+                        }
+
+
+                        DieRollDocument.Blocks.Add(p);
+                        DieRollViewer.ScrollChildToBottom();
+                    }
+
+            #endregion
+
+            private void LoadRecentDieRolls()
+            {
+                _RecentDieRolls = XmlListLoader<string>.Load("DieRolls.xml", true);
+
+                if (_RecentDieRolls == null)
+                {
+                    _RecentDieRolls = new List<string>();
+                }
+
+                UpdateDieRollCombo();
             }
 
+            private void SaveRecentDieRolls()
+            {
+                XmlListLoader<string>.Save(_RecentDieRolls, "DieRolls.xml", true);
+            }
 
-            DieRollDocument.Blocks.Add(p);
-            DieRollViewer.ScrollChildToBottom();
-        }
+            private void AddRecentDieRoll(DieRoll roll)
+            {
+                if (roll != null)
+                {
+                    string text = roll.Text;
+
+                    _RecentDieRolls.RemoveAll(a => a == text);
+                    _RecentDieRolls.Insert(0, text);
+
+                    while (_RecentDieRolls.Count > 20)
+                    {
+                        _RecentDieRolls.RemoveAt(20);
+                    }
+
+                    SaveRecentDieRolls();
+                    UpdateDieRollCombo();
+                }
+
+            }
+
+            private void UpdateDieRollCombo()
+            {
+                string current = DieRollText.Text;
+
+                DieRollText.Items.Clear();
+
+                foreach (string text in _RecentDieRolls)
+                {
+                    DieRollText.Items.Add(text);
+                }
+
+                if (DieRollText.Text != current)
+                {
+                    DieRollText.Text = current;
+                }
+            }
+        
+        #endregion
+
+
 
         private void ResetMagicItemsFilterButton_Click(object sender, RoutedEventArgs e)
         {
@@ -7241,42 +7390,7 @@ namespace CombatManager
             ResetSpellFilters();
         }
 
-        private void LoadRecentDieRolls()
-        {
-            _RecentDieRolls = XmlListLoader<string>.Load("DieRolls.xml", true);
 
-            if (_RecentDieRolls == null)
-            {
-                _RecentDieRolls = new List<string>();
-            }
-
-            UpdateDieRollCombo();
-        }
-
-        private void SaveRecentDieRolls()
-        {
-            XmlListLoader<string>.Save(_RecentDieRolls, "DieRolls.xml", true); 
-        }
-
-        private void AddRecentDieRoll(DieRoll roll)
-        {
-            if (roll != null)
-            {
-                string text = roll.Text;
-
-                _RecentDieRolls.RemoveAll(a => a == text);
-                _RecentDieRolls.Insert(0, text);
-
-                while (_RecentDieRolls.Count > 20)
-                {
-                    _RecentDieRolls.RemoveAt(20);
-                }
-
-                SaveRecentDieRolls();
-                UpdateDieRollCombo();
-            }
-
-        }
 
         private void LoadCampaignInfo()
         {
@@ -7295,22 +7409,7 @@ namespace CombatManager
             XmlLoader<CampaignInfo>.Save(campaignInfo, "CurrentCampaignInfo.xml", true);
         }
 
-        private void UpdateDieRollCombo()
-        {
-            string current = DieRollText.Text;
 
-            DieRollText.Items.Clear();
-
-            foreach (string text in _RecentDieRolls)
-            {
-                DieRollText.Items.Add(text);
-            }
-
-            if (DieRollText.Text != current)
-            {
-                DieRollText.Text = current;
-            }
-        }
 
         private void MenuItem_IdleMonster(object sender, RoutedEventArgs e)
         {
@@ -7637,12 +7736,14 @@ namespace CombatManager
             }
         }
 
+        #region Campaign Section
+
         private void Add100YearButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(100);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(100);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7668,8 +7769,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(10);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(10);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7695,8 +7796,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7721,8 +7822,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMonths(1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMonths(1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7748,7 +7849,7 @@ namespace CombatManager
         {
             try
             {
-                
+
                 campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddDays(1);
                 SaveCampaignInfo();
             }
@@ -7775,8 +7876,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7788,8 +7889,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(-1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(-1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7801,9 +7902,9 @@ namespace CombatManager
         {
             try
             {
-                
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(15);
-            SaveCampaignInfo();
+
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(15);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7815,9 +7916,9 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-15);
-            SaveCampaignInfo();
-            
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-15);
+                SaveCampaignInfo();
+
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7829,9 +7930,9 @@ namespace CombatManager
         {
             try
             {
-                
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(1);
-            SaveCampaignInfo();
+
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7843,8 +7944,8 @@ namespace CombatManager
         {
             try
             {
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-1);
-            SaveCampaignInfo();
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-1);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7856,10 +7957,10 @@ namespace CombatManager
         {
             try
             {
-                
 
-            campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddSeconds(6);
-            SaveCampaignInfo();
+
+                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddSeconds(6);
+                SaveCampaignInfo();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -7880,40 +7981,42 @@ namespace CombatManager
             }
         }
 
-		private void UpdateCampaignDayView()
-		{
+        private void UpdateCampaignDayView()
+        {
             campaignDayView = new ListCollectionView(campaignInfo.EventsForDate(campaignInfo.SelectedDate));
             CampaignEventListBox.DataContext = campaignDayView;
-		}
+        }
 
-		private void GoToCurrentDate_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			campaignInfo.SelectedDate = campaignInfo.CurrentDate;
-			campaignInfo.DisplayDate = campaignInfo.CurrentDate;
-		}
+        private void GoToCurrentDate_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            campaignInfo.SelectedDate = campaignInfo.CurrentDate;
+            campaignInfo.DisplayDate = campaignInfo.CurrentDate;
+        }
 
-		private void campaignInfo_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			if (e.PropertyName == "SelectedDate")
-			{
-				UpdateCampaignDayView();	
-			}
-		}
+        private void campaignInfo_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "SelectedDate")
+            {
+                UpdateCampaignDayView();
+            }
+        }
 
-		private void AddCampaignEventButton_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			CampaignEventWindow w = new CampaignEventWindow();
-			CampaignEvent ce = new CampaignEvent();
-			ce.Start = campaignInfo.SelectedDate;
+        private void AddCampaignEventButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            CampaignEventWindow w = new CampaignEventWindow();
+            CampaignEvent ce = new CampaignEvent();
+            ce.Start = campaignInfo.SelectedDate;
             ce.End = ce.Start.AddHours(1);
             w.Event = ce;
-			w.Owner = this;
+            w.Owner = this;
             if (w.ShowDialog() == true)
             {
                 campaignInfo.AddEvent(w.Event);
                 SaveCampaignInfo();
             }
-		}
+        }
+        
+        #endregion
 
 		private void NameTextBox_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
@@ -7967,11 +8070,12 @@ namespace CombatManager
             t.Start();
             
         }
+        #region Hotkey Section
 
         private void HotKeysButton_Click(object sender, RoutedEventArgs e)
         {
-			var hkd = new HotKeysDialog();
-			hkd.Owner = this;
+            var hkd = new HotKeysDialog();
+            hkd.Owner = this;
             if (_CombatHotKeys == null)
             {
                 _CombatHotKeys = new List<CombatHotKey>();
@@ -7982,7 +8086,7 @@ namespace CombatManager
                 _CombatHotKeys = hkd.CombatHotKeys;
                 SaveHotkeys();
             }
-		
+
         }
 
         private void LoadHotkeys()
@@ -8026,7 +8130,7 @@ namespace CombatManager
 
                     }
                 }
-            
+
             }
 
         }
@@ -8096,10 +8200,11 @@ namespace CombatManager
                     }
                 }
             }
-            
+
 
         }
 
+        #endregion
         private void RollInitWithoutResetMenuItem_Click(object sender, RoutedEventArgs e)
         {
             RollInitiativeWithoutReset();
@@ -8119,6 +8224,8 @@ namespace CombatManager
 
 
         }
+
+        #region Tracked Resource Section
 
         private void DescreaseResourceButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -8143,10 +8250,12 @@ namespace CombatManager
         }
 
         private void AddResourceButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {        	
-            Character c = (Character) ((FrameworkElement)sender).DataContext;
-			c.Resources.Add(new ActiveResource(){Name="Resource", Current=0});
+        {
+            Character c = (Character)((FrameworkElement)sender).DataContext;
+            c.Resources.Add(new ActiveResource() { Name = "Resource", Current = 0 });
         }
+        
+        #endregion
 
         private void BookmarkFeatButton_Click(object sender, RoutedEventArgs e)
         {
@@ -8204,4 +8313,5 @@ namespace CombatManager
             _execute(parameter); 
         } 
     }
+
 }

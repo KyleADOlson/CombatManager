@@ -242,7 +242,8 @@
             		<MenuItem Header="Will" x:Name="WillMenuItem" Click="WillMenuItem_Click" />
             	</MenuItem>
             	<MenuItem x:Name="RollSkillMenuItem" Header="Skill" Loaded="RollSkillMenuItem_Loaded" DataContextChanged="RollSkillMenuItem_DataContextChanged"/>
-                
+                <MenuItem x:Name="RollCMBMenuItem" Header="Combat Maneuver" Loaded="RollCombatManeuverMenuItem_Loaded" DataContextChanged="RollManeuverMenuItem_DataContextChanged"></MenuItem>
+                <MenuItem x:Name="RollAbilityMenuItem" Header="Ability Check" Loaded="RollAbilityCheckMenuItem_Loaded"></MenuItem>
             </MenuItem>
             <MenuItem Header="Initiative">
                 <MenuItem.Icon>
@@ -2856,7 +2857,7 @@
         									</Grid.RowDefinitions>
         									<Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="0,2,0,0" RadiusY="5" RadiusX="5" Stroke="White" StrokeThickness="0" Grid.RowSpan="3"/>
         									<ListBox x:Name="playerListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CharacterDataTemplateSmall}" HorizontalContentAlignment="Stretch" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" GotFocus="playerListBox_GotFocus" SelectionMode="Extended" Grid.Row="1" />
-        									<Button Margin="5.931,4.988,0,0" Click="Button_Click" HorizontalAlignment="Left" Width="23.236" VerticalAlignment="Top" Height="21.96" Style="{DynamicResource ButtonMainStyle}" ToolTip="Add a Blank Party Member">
+                                            <Button Margin="5.931,4.988,0,0" Click="Button_Click" HorizontalAlignment="Left" Width="23.236" VerticalAlignment="Top" Height="21.96" Style="{DynamicResource ButtonMainStyle}" ToolTip="Add a Blank Party Member">
         										<Path Data="M3,0 L6,0 L6,3 L9,3 L9,6 L6,6 L6,9 L3,9 L3,6 L0,6 L0,3 L3,3 z" HorizontalAlignment="Center" StrokeStartLineCap="Round" Stretch="Fill" StrokeEndLineCap="Round" Width="15" Height="15" Stroke="#FF115E16" Fill="#FF3AE54D" VerticalAlignment="Center"/>
         									</Button>
         									<Button Margin="0,4.988,34.736,0" x:Name="SavePartyButton" Click="SavePartyButton_Click" VerticalAlignment="Top" Height="21.96" HorizontalAlignment="Right" Width="23.236" ToolTip="Save Party" Style="{DynamicResource ButtonMainStyle}" >
@@ -3772,6 +3773,7 @@
                     </Grid>
                 </Border>
             </TabItem>
+
         </TabControl>
         <Button x:Name="OGL_Button" Content="OGL" HorizontalAlignment="Left" Margin="15,4,0,8.168" Grid.Row="2" d:LayoutOverrides="Height" Width="30" Click="OGL_Button_Click" Style="{DynamicResource ButtonMainStyle}" FontSize="10.667"/>
         <Thumb x:Name="BottomThumb" Height="4.168" Margin="8.667,0,9,0" Grid.Row="2" VerticalAlignment="Bottom" DragDelta="BottomThumb_DragDelta" Cursor="SizeNS" Style="{DynamicResource ThumbStyle3}" />
