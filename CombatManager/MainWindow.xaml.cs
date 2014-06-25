@@ -306,6 +306,7 @@ namespace CombatManager
 
             combatListBox.DataContext = combatView;
             CurrentPlayerText.DataContext = combatState;
+            CurrentPlayerConditions.DataContext = combatState;
 
             combatState.CombatList.CollectionChanged += new NotifyCollectionChangedEventHandler(CombatList_CollectionChanged);
             

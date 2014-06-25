@@ -60,6 +60,7 @@ namespace CombatManager
             TopmostCheckbox.IsChecked = UserSettings.Settings.InitiativeAlwaysOnTop;
             FlipButton.IsChecked = UserSettings.Settings.InitiativeFlip;
             ShowConditionsCheckBox.IsChecked = UserSettings.Settings.InitiativeShowConditions;
+            ConditionSizeComboBox.SelectedIndex = UserSettings.Settings.InitiativeConditionsSize;
 
 
             UserSettings.Settings.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Settings_PropertyChanged);
@@ -186,6 +187,7 @@ namespace CombatManager
                 CombatList.ShowMonsters = UserSettings.Settings.InitiativeShowMonsters;
                 CombatList.HideMonsterNames = UserSettings.Settings.InitiativeHideMonsterNames;
                 CombatList.ShowConditions = UserSettings.Settings.InitiativeShowConditions;
+                CombatList.ConditionSize = UserSettings.Settings.InitiativeConditionsSizePercent;
 			}
 				
 		}
@@ -272,6 +274,7 @@ namespace CombatManager
                 UserSettings.Settings.InitiativeHideMonsterNames = MonstersComboBox.SelectedIndex == 1;
                 UserSettings.Settings.InitiativeAlwaysOnTop = TopmostCheckbox.IsChecked == true;
                 UserSettings.Settings.InitiativeShowConditions = ShowConditionsCheckBox.IsChecked == true;
+                UserSettings.Settings.InitiativeConditionsSize = ConditionSizeComboBox.SelectedIndex;
 
                 UserSettings.Settings.SaveOptions(UserSettings.SettingsSaveSection.Initiative);
             }
@@ -324,6 +327,12 @@ namespace CombatManager
             UpdateSettings();
             UpdateCombatListState();
 
+        }
+
+        private void ConditionSizeComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            UpdateSettings();
+            UpdateCombatListState();
         }
         
 

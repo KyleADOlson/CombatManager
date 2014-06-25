@@ -48,6 +48,7 @@ namespace CombatManager
         private bool _HidePlayerNames;
         private bool _HideMonsterNames;
         private bool _ShowConditions;
+        private double _ConditionSize;
 
 		
 		public CustomCombatList()
@@ -194,6 +195,18 @@ namespace CombatManager
                 }
             }
         }
+        public double ConditionSize
+        {
+            get { return _ConditionSize; }
+            set
+            {
+                if (_ConditionSize != value)
+                {
+                    _ConditionSize = value;
+                    RefreshView();
+                }
+            }
+        }
 
         public bool HidePlayerNames
         {
@@ -259,6 +272,7 @@ namespace CombatManager
 
                     box = (ListBox)LogicalTreeHelper.FindLogicalNode(grid, "ConditionsListBox");
                     box.Visibility = UserSettings.Settings.InitiativeShowConditions ? Visibility.Visible : Visibility.Collapsed;
+                    box.LayoutTransform = new ScaleTransform(_ConditionSize, _ConditionSize);
                 }
             }
         }

@@ -417,8 +417,17 @@
                             </ComboBox>
                         </StackPanel>			
 					    <CheckBox x:Name="TopmostCheckbox" Content="Always on Top" Foreground="White" Checked="TopmostCheckbox_Checked" Unchecked="TopmostCheckbox_Checked" Grid.Row="2" d:LayoutOverrides="Width, Height" Grid.Column="2" Padding="4,0" Margin="4,4,4,6" VerticalAlignment="Bottom"/>
-					    <CheckBox x:Name="ShowConditionsCheckBox" Content="Show Conditions" Foreground="White" Margin="2" Checked="ShowConditionsCheckBox_Checked" Unchecked="ShowConditionsCheckBox_Unchecked" />
-				    </WrapPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <CheckBox x:Name="ShowConditionsCheckBox" Content="Show Conditions" Foreground="White" Margin="2,4,2,2" Checked="ShowConditionsCheckBox_Checked" Unchecked="ShowConditionsCheckBox_Unchecked" />
+                            <ComboBox x:Name="ConditionSizeComboBox" Width="92" SelectedIndex="0" Margin="5,0,0,0" SelectionChanged="ConditionSizeComboBox_SelectionChanged" >
+                            	<ComboBoxItem Content="Smallest"/>
+                            	<ComboBoxItem Content="Smaller"/>
+                            	<ComboBoxItem Content="Normal"/>
+                            	<ComboBoxItem Content="Larger"/>
+                            	<ComboBoxItem Content="Largest"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </WrapPanel>
 			    </Expander.Content>
 		    </Expander>
 	    </Grid>

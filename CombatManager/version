@@ -4,6 +4,9 @@ Add setting to allow monsters to be added hidden
 Add spell formatting
 Remove 256x256 icon to keep XP from crashing
 Stats panel begins open option
+Add ability and combat maneuver rolls
+Resize conditions on initiative window
+Add conditions to initiative list and active player display
 
 1.5.7
 Optionally display conditions on initiative window

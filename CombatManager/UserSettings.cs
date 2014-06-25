@@ -98,6 +98,8 @@ namespace CombatManager
         private bool  _InitiativeHidePlayerNames;
         private bool _InitiativeShowConditions;
 
+        private int _InitiativeConditionsSize;
+
 
         private bool _InitiativeAlwaysOnTop;
         private double _InitiativeScale;
@@ -128,6 +130,7 @@ namespace CombatManager
             _MonsterDBFilter = MonsterSetFilter.Monsters;
             _MonsterTabFilter = MonsterSetFilter.Monsters;
             _SelectedTab = 0;
+            _InitiativeConditionsSize = 2;
             LoadOptions();
         }
 
@@ -458,6 +461,26 @@ namespace CombatManager
                 }
             }
         }
+
+        public int InitiativeConditionsSize
+        {
+            get { return _InitiativeConditionsSize; }
+            set
+            {
+                if (_InitiativeConditionsSize != value)
+                {
+                    _InitiativeConditionsSize = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("InitiativeConditionsSize")); }
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("InitiativeConditionsSizePercent")); }
+                    
+                }
+            }
+        }
+        public double InitiativeConditionsSizePercent
+        {
+            get { return .5 + .25 * (double)_InitiativeConditionsSize ; }
+        }
+
         public bool InitiativeAlwaysOnTop
         {
             get { return _InitiativeAlwaysOnTop; }
@@ -604,6 +627,7 @@ namespace CombatManager
                 InitiativeHideMonsterNames = LoadBoolValue("InitiativeHideMonsterNames", false);
                 InitiativeHidePlayerNames = LoadBoolValue("InitiativeHidePlayerNames", false);
                 InitiativeShowConditions = LoadBoolValue("InitiativeShowConditions", false);
+                InitiativeConditionsSize = LoadIntValue("InitiativeConditionsSize", 2);
                 InitiativeAlwaysOnTop  = LoadBoolValue("InitiativeAlwaysOnTop", false);
                 InitiativeScale = LoadDoubleValue("InitiativeScale", 1.0);
                 InitiativeFlip  = LoadBoolValue("InitiativeFlip", false);
@@ -684,6 +708,7 @@ namespace CombatManager
                         SaveBoolValue(key, "InitiativeHideMonsterNames", InitiativeHideMonsterNames);
                         SaveBoolValue(key, "InitiativeHidePlayerNames", InitiativeHidePlayerNames);
                         SaveBoolValue(key, "InitiativeShowConditions", InitiativeShowConditions);
+                        SaveIntValue(key, "InitiativeConditionsSize", InitiativeConditionsSize);
                         SaveBoolValue(key, "InitiativeAlwaysOnTop", InitiativeAlwaysOnTop);
                         SaveDoubleValue(key, "InitiativeScale", InitiativeScale);
                         SaveBoolValue(key, "InitiativeFlip", InitiativeFlip);
