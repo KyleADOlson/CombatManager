@@ -493,6 +493,11 @@ namespace CombatManager
                         }
                         lines.Add(link);
 
+                        if (spellInfo.Mythic)
+                        {
+                            lines.Add(new Run(" [M]"));
+                        }
+
 
                         String afterBlock = "";
                         After addAfter = delegate()

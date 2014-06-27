@@ -96925,4 +96925,3028 @@
     <Mythic>0</Mythic>
     <MT>0</MT>
   </Monster>
+  <Monster>
+    <Name>Speaker Of Murder</Name>
+    <CR>1</CR>
+    <XP>400</XP>
+    <Race>Tengu</Race>
+    <Class>bard 2</Class>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(tengu)</SubType>
+    <Init>3</Init>
+    <Senses>low-light vision; Perception +7</Senses>
+    <AC>17, touch 13, flat-footed 14</AC>
+    <AC_Mods>(+4 armor, +3 Dex)</AC_Mods>
+    <HP>14</HP>
+    <HD>(2d8+2)</HD>
+    <Saves>Fort +0, Ref +6, Will +3</Saves>
+    <Fort>0</Fort>
+    <Ref>6</Ref>
+    <Will>3</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>katana +2 (1d8+1/18-20), bite -3 (1d3)</Melee>
+    <Ranged>shortbow +4 (1d6/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 13, Dex 16, Con 10, Int 10, Wis 10, Cha 15</AbilitiyScores>
+    <BaseAtk>1</BaseAtk>
+    <CMB>2</CMB>
+    <CMD>15</CMD>
+    <Languages>Minkaian, Tengu, Tien</Languages>
+    <SQ>bardic knowledge +1, versatile performance (oratory), gifted linguist, swordtrained</SQ>
+    <Source>PFS S3-13</Source>
+    <IsTemplate>0</IsTemplate>
+    <Note>* See Ultimate Combat.</Note>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6018</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Speaker Of Murder Subtier 4-5</Name>
+    <CR>3</CR>
+    <XP>800</XP>
+    <Race>Tengu</Race>
+    <Class>bard 4</Class>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(tengu)</SubType>
+    <Init>3</Init>
+    <Senses>low-light vision; Perception +9</Senses>
+    <AC>18, touch 13, flat-footed 15</AC>
+    <AC_Mods>(+4 armor, +3 Dex, +1 shield)</AC_Mods>
+    <HP>21</HP>
+    <HD>(4d8)</HD>
+    <Saves>Fort +1, Ref +7, Will +4; +4 vs. bardic performance, language dependent, and sonic</Saves>
+    <Fort>1</Fort>
+    <Ref>7</Ref>
+    <Will>4</Will>
+    <Save_Mods>+4 vs. bardic performance, language dependent, and sonic</Save_Mods>
+    <Speed>30 ft.</Speed>
+    <Melee>katana* +4 (1d8+1/18-20), bite -1 (1d3)</Melee>
+    <Ranged>mwk shortbow +7 (1d6/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 13, Dex 16, Con 10, Int 10, Wis 10, Cha 16</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>4</CMB>
+    <CMD>17</CMD>
+    <Languages>Minkaian, Tengu, Tien</Languages>
+    <SQ>bardic knowledge +2, versatile performance (oratory), gifted linguist, swordtrained</SQ>
+    <Source>PFS S3-13</Source>
+    <IsTemplate>0</IsTemplate>
+    <Note>* See Ultimate Combat</Note>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6019</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Library Guard</Name>
+    <CR>3</CR>
+    <XP>800</XP>
+    <Race>Human</Race>
+    <Class>fighter 4</Class>
+    <Alignment>LN</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>2</Init>
+    <Senses>Perception +7</Senses>
+    <AC>16, touch 12, flat-footed 14</AC>
+    <AC_Mods>(+4 armor, +2 Dex)</AC_Mods>
+    <HP>34</HP>
+    <HD>(4d10+8)</HD>
+    <Saves>Fort +6, Ref +3, Will +4 (+1 vs. fear)</Saves>
+    <Fort>6</Fort>
+    <Ref>3</Ref>
+    <Will>4</Will>
+    <DefensiveAbilities>bravery +1</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>spear +8 (1d8+6/x3) or sap +7 (1d6 nonlethal+3)</Melee>
+    <Ranged>light crossbow +6 (1d8/19-20)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 17, Dex 14, Con 14, Int 10, Wis 12, Cha 8</AbilitiyScores>
+    <BaseAtk>4</BaseAtk>
+    <CMB>7</CMB>
+    <CMD>19</CMD>
+    <Languages>Common, Osiriani</Languages>
+    <SQ>armor training 1</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6020</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Curator Of The Great Library</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>Human</Race>
+    <Class>cleric of Nethys 7</Class>
+    <Alignment>LN</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>0</Init>
+    <Senses>Perception +6</Senses>
+    <Aura>deflection aura (+2, 1/day, 20 ft., 7 rounds)</Aura>
+    <AC>12, touch 10, flat-footed 12</AC>
+    <AC_Mods>(+2 armor)</AC_Mods>
+    <HP>49</HP>
+    <HD>(7d8+14)</HD>
+    <Saves>Fort +7, Ref +5, Will +11</Saves>
+    <Fort>7</Fort>
+    <Ref>5</Ref>
+    <Will>11</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>light mace +5 (1d6)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpellDomains>Knowledge, Protection (Defense subdomainAPG)</SpellDomains>
+    <AbilitiyScores>Str 10, Dex 10, Con 12, Int 14, Wis 16, Cha 13</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>5</CMB>
+    <CMD>15</CMD>
+    <Languages>Ancient Osiriani, Celestial, Common, Draconic, Dwarven, Jistka, Kelish, Osiriani, Sphinx, Tekritanin, Terran</Languages>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6021</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Khabekh-Shu</Name>
+    <CR>9</CR>
+    <XP>6400</XP>
+    <Race>human</Race>
+    <Class>sorcerer 10</Class>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>3</Init>
+    <Senses>low-light vision; Perception +4</Senses>
+    <AC>23, touch 15, flat-footed 19</AC>
+    <AC_Mods>(+4 armor, +1 deflection, +3 Dex, +1 dodge, +4 shield)</AC_Mods>
+    <HP>89</HP>
+    <HD>(10d6+52)</HD>
+    <Saves>Fort +7, Ref +8, Will +10</Saves>
+    <Fort>7</Fort>
+    <Ref>8</Ref>
+    <Will>10</Will>
+    <Resist>cold 5, fire 5</Resist>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk dagger +6 (1d4/19-20)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 10, Dex 16, Con 14, Int 12, Wis 8, Cha 16</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>5</CMB>
+    <CMD>20</CMD>
+    <Languages>Ancient Osiriani, Common, Osiriani, Sphinx</Languages>
+    <SQ>bloodline arcana (dazzled for 1 round per spell level on a failed save vs. evocation), voidwalkerAPG</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <Bloodline>starsoulAPG</Bloodline>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <BaseStatistics>Without his spells, Khabekh-shu's statistics are AC 15, touch 15, flat-footed 11; hp 74.</BaseStatistics>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6022</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Forgotten Pharaoh Cultist</Name>
+    <CR>5</CR>
+    <XP>1600</XP>
+    <Race>Human</Race>
+    <Class>fighter 4/sorcerer 2</Class>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>1</Init>
+    <Senses>Perception +4</Senses>
+    <AC>18, touch 11, flat-footed 17</AC>
+    <AC_Mods>(+3 armor, +1 Dex, +4 shield)</AC_Mods>
+    <HP>50</HP>
+    <HD>(6 HD; 4d10+2d6+17)</HD>
+    <Saves>Fort +7, Ref +3, Will +5 (+1 vs. fear)</Saves>
+    <Fort>7</Fort>
+    <Ref>3</Ref>
+    <Will>5</Will>
+    <DefensiveAbilities>bravery +1</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk falchion +11 (2d4+8/18-20)</Melee>
+    <Ranged>+1 heavy crossbow +7 (1d10+1/19-20)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 18, Dex 13, Con 14, Int 8, Wis 10, Cha 12</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>9</CMB>
+    <CMD>20</CMD>
+    <Languages>Ancient Osiriani, Common, Osiriani</Languages>
+    <SQ>armor training 1, bloodline arcana (gain luck bonus on saving throws when casting personal-range spells)</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <Bloodline>destined</Bloodline>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6023</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Mummy Golem</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>Mummy Golem</Race>
+    <MonsterSource>Tome of Horrors Complete 338</MonsterSource>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>construct</Type>
+    <Init>0</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +0</Senses>
+    <AC>20, touch 10, flat-footed 20</AC>
+    <AC_Mods>(+10 natural)</AC_Mods>
+    <HP>64</HP>
+    <HD>(8d10+20)</HD>
+    <Saves>Fort +2, Ref +2, Will +2</Saves>
+    <Fort>2</Fort>
+    <Ref>2</Ref>
+    <Will>2</Will>
+    <DR>10/magic and piercing or magic and slashing</DR>
+    <Immune>construct traits, magic</Immune>
+    <Speed>20 ft.</Speed>
+    <Melee>2 slams +13 (1d8+5 plus grab)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 20, Dex 10, Con -, Int -, Wis 11, Cha 1</AbilitiyScores>
+    <BaseAtk>8</BaseAtk>
+    <CMB>+13 (+17 grapple)</CMB>
+    <CMD>23</CMD>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6024</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Nameless Assassin</Name>
+    <CR>7</CR>
+    <XP>3200</XP>
+    <Race>Human</Race>
+    <Class>rogue (sniper) 5/assassin 3</Class>
+    <MonsterSource>Pathfinder RPG Advanced Player's Guide 134</MonsterSource>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>4</Init>
+    <Senses>Perception +13</Senses>
+    <AC>20, touch 17, flat-footed 15</AC>
+    <AC_Mods>(+3 armor, +2 deflection, +4 Dex, +1 dodge)</AC_Mods>
+    <HP>60</HP>
+    <HD>(8 HD; 8d8+21)</HD>
+    <Saves>Fort +4, Ref +10, Will +4; +1 vs. poison</Saves>
+    <Fort>4</Fort>
+    <Ref>10</Ref>
+    <Will>4</Will>
+    <Save_Mods>+1 vs. poison</Save_Mods>
+    <DefensiveAbilities>evasion, improved uncanny dodge</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk rapier +10 (1d6+1/18-20) or dagger +9 (1d4+1/19-20)</Melee>
+    <Ranged>+1 heavy repeating crossbow +11 (1d10+1/19-20 plus poison)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 12, Dex 18, Con 14, Int 10, Wis 14, Cha 8</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>6</CMB>
+    <CMD>23</CMD>
+    <Languages>Common, Osiriani</Languages>
+    <SQ>poison use, rogue talents (bleeding attack +5, finesse rogue)</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <ClassArchetypes>sniper</ClassArchetypes>
+    <id>6025</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Ubashki Lynx</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>Ubashki Lynx</Race>
+    <MonsterSource>Pathfinder Campaign Setting: Lost Kingdoms 20</MonsterSource>
+    <Alignment>NE</Alignment>
+    <Size>Large</Size>
+    <Type>undead</Type>
+    <Init>7</Init>
+    <Senses>darkvision 60 ft.; Perception +6</Senses>
+    <AC>17, touch 12, flat-footed 14</AC>
+    <AC_Mods>(+3 Dex, +5 natural, -1 size)</AC_Mods>
+    <HP>60</HP>
+    <HD>(8d8+24)</HD>
+    <Saves>Fort +4, Ref +7, Will +7</Saves>
+    <Fort>4</Fort>
+    <Ref>7</Ref>
+    <Will>7</Will>
+    <Immune>undead traits</Immune>
+    <Weaknesses>vulnerable to fire</Weaknesses>
+    <Speed>30 ft.</Speed>
+    <Melee>bite +11 (2d6+5 plus ubashki rot), 2 claws +10 (1d8+5)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilitiyScores>Str 21, Dex 17, Con -, Int 2, Wis 12, Cha 15</AbilitiyScores>
+    <BaseAtk>6</BaseAtk>
+    <CMB>12</CMB>
+    <CMD>25 (29 vs. trip)</CMD>
+    <RacialMods>+4 Acrobatics, +4 Stealth</RacialMods>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6026</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Gnoll Slaver</Name>
+    <CR>5</CR>
+    <XP>1600</XP>
+    <Race>Gnoll</Race>
+    <Class>ranger 4</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 155</MonsterSource>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(gnoll)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft.; Perception +8 (+10 in deserts)</Senses>
+    <AC>19, touch 13, flat-footed 16</AC>
+    <AC_Mods>(+4 armor, +3 Dex, +1 natural, +1 shield)</AC_Mods>
+    <HP>47</HP>
+    <HD>(6 HD; 2d8+4d10+16)</HD>
+    <Saves>Fort +9, Ref +7, Will +2</Saves>
+    <Fort>9</Fort>
+    <Ref>7</Ref>
+    <Will>2</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk scimitar +8 (1d8+4/18-20), mwk scorpion whipUE +8 (1d6+2)</Melee>
+    <Ranged>composite shortbow +8 (1d6+4/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 18, Dex 16, Con 14, Int 8, Wis 13, Cha 6</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>9</CMB>
+    <CMD>22</CMD>
+    <Languages>Gnoll, Osiriani</Languages>
+    <SQ>favored terrain (desert +2), hunter's bond (hyena), track +2, wild empathy +2</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <CompanionFamiliarLink>6028</CompanionFamiliarLink>
+    <id>6027</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Hyena Animal Companion</Name>
+    <CR>0</CR>
+    <XP>0</XP>
+    <Race>HYENA</Race>
+    <Class>animal companion 1</Class>
+    <Alignment>N</Alignment>
+    <Size>Small</Size>
+    <Type>animal</Type>
+    <Init>3</Init>
+    <Senses>low-light vision, scent; Perception +5</Senses>
+    <AC>16, touch 14, flat-footed 13</AC>
+    <AC_Mods>(+3 Dex, +2 natural, +1 size)</AC_Mods>
+    <HP>11</HP>
+    <HD>(2d8+2)</HD>
+    <Saves>Fort +4, Ref +6, Will +1</Saves>
+    <Fort>4</Fort>
+    <Ref>6</Ref>
+    <Will>1</Will>
+    <Speed>50 ft.</Speed>
+    <Melee>bite +2 (1d6 plus trip)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 10, Dex 17, Con 13, Int 2, Wis 13, Cha 6</AbilitiyScores>
+    <BaseAtk>1</BaseAtk>
+    <CMB>0</CMB>
+    <CMD>13 (17 vs. trip)</CMD>
+    <SQ>link, share spells, tricks (attack, come, defend, down, guard, heel, track)</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <CompanionFamiliarLink>6027</CompanionFamiliarLink>
+    <id>6028</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Sand Kraken</Name>
+    <CR>8</CR>
+    <XP>4800</XP>
+    <Race>Sand Kraken</Race>
+    <MonsterSource>Tome of Horrors Complete 520</MonsterSource>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>magical beast</Type>
+    <Init>4</Init>
+    <Senses>tremorsense 60 ft.; Perception +13</Senses>
+    <AC>21, touch 9, flat-footed 21</AC>
+    <AC_Mods>(+12 natural, -1 size)</AC_Mods>
+    <HP>105</HP>
+    <HD>(10d10+50)</HD>
+    <Saves>Fort +12, Ref +7, Will +5</Saves>
+    <Fort>12</Fort>
+    <Ref>7</Ref>
+    <Will>5</Will>
+    <Speed>10 ft., burrow 20 ft.</Speed>
+    <Melee>10 tentacle +12 (1d4+2 plus grab) or bite +14 (2d6+5)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft. (20 ft. with tentacles)</Reach>
+    <AbilitiyScores>Str 20, Dex 11, Con 21, Int 2, Wis 10, Cha 1</AbilitiyScores>
+    <BaseAtk>10</BaseAtk>
+    <CMB>+16 (+20 grapple)</CMB>
+    <CMD>26 (can't be tripped)</CMD>
+    <SQ>camouflage, tentacle regeneration</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6029</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Tetisurah</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Race>Gynosphinx</Race>
+    <Class>druid (desert druid) of Horus 4</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 257, Pathfinder RPG Advanced Player's Guide 99</MonsterSource>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>magical beast</Type>
+    <Init>8</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +23 (+25 in deserts)</Senses>
+    <AC>24, touch 13, flat-footed 20</AC>
+    <AC_Mods>(+4 Dex, +11 natural, -1 size)</AC_Mods>
+    <HP>132</HP>
+    <HD>(16 HD; 12d10+4d8+48)</HD>
+    <Saves>Fort +15, Ref +13, Will +14</Saves>
+    <Fort>15</Fort>
+    <Ref>13</Ref>
+    <Will>14</Will>
+    <Speed>40 ft., fly 60 ft. (poor)</Speed>
+    <Melee>2 claws +19 (2d6+5/19-20)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpellDomains>Fire</SpellDomains>
+    <AbilitiyScores>Str 20, Dex 18, Con 16, Int 20, Wis 22, Cha 21</AbilitiyScores>
+    <BaseAtk>15</BaseAtk>
+    <CMB>21</CMB>
+    <CMD>35 (39 vs. trip)</CMD>
+    <Languages>Ancient Osiriani, Common, Draconic, Druidic, Osiriani, Sphinx, Terran</Languages>
+    <SQ>desert endurance, desert native +2, nature bond (Fire domain), nature sense, sandwalker, wild empathy +9</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <ClassArchetypes>desert druid</ClassArchetypes>
+    <id>6030</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Jamirah</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Race>Lamia matriarch</Race>
+    <Class>rogue 8</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 2 175</MonsterSource>
+    <Alignment>CE</Alignment>
+    <Size>Large</Size>
+    <Type>monstrous humanoid</Type>
+    <SubType>(shapechanger)</SubType>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +28</Senses>
+    <AC>27, touch 15, flat-footed 21</AC>
+    <AC_Mods>(+4 armor, +6 Dex, +8 natural, -1 size)</AC_Mods>
+    <HP>159</HP>
+    <HD>(20 HD; 12d10+8d8+57)</HD>
+    <Saves>Fort +11, Ref +20, Will +15</Saves>
+    <Fort>11</Fort>
+    <Ref>20</Ref>
+    <Will>15</Will>
+    <DefensiveAbilities>evasion, improved uncanny dodge, trap sense +2</DefensiveAbilities>
+    <Immune>mind-affecting effects</Immune>
+    <SR>19</SR>
+    <Speed>40 ft., climb 40 ft., swim 40 ft.</Speed>
+    <Melee>+1 cruelUE longspear +23/+18/+13/+8 (1d8+7/19-20/x3 plus 1 Wisdom drain on first hit each round) or touch +21 (1d4 plus Wisdom drain)</Melee>
+    <Ranged>composite shortbow +23/+18/+13/+8 (1d6+4/x3)</Ranged>
+    <Space>10 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 18, Dex 23, Con 17, Int 18, Wis 20, Cha 24</AbilitiyScores>
+    <BaseAtk>18</BaseAtk>
+    <CMB>23</CMB>
+    <CMD>39 (can't be tripped)</CMD>
+    <Languages>Abyssal, Ancient Osiriani, Common, Draconic, Osiriani</Languages>
+    <SQ>change shape (fixed Medium humanoid form; alter self ), rogue talents (bleeding attack +4, ledge walker, resiliency, weapon training), trapfinding +4, undersized weapons</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>1</Climb>
+    <Burrow>0</Burrow>
+    <Swim>1</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6031</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Deka An-Keret</Name>
+    <CR>9</CR>
+    <XP>6400</XP>
+    <Race>human</Race>
+    <Class>cleric of Nethys 10</Class>
+    <Alignment>LN</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>0</Init>
+    <Senses>Perception +6</Senses>
+    <AC>15, touch 13, flat-footed 15</AC>
+    <AC_Mods>(+2 armor, +3 deflection)</AC_Mods>
+    <HP>38</HP>
+    <HD>(10d8-10)</HD>
+    <Saves>Fort +8, Ref +5, Will +15; +2 vs. mind-affecting</Saves>
+    <Fort>8</Fort>
+    <Ref>5</Ref>
+    <Will>15</Will>
+    <Save_Mods>+2 vs. mind-affecting</Save_Mods>
+    <SR>22</SR>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk heavy mace +6/+1 (1d8-2)</Melee>
+    <Ranged>hand of the acolyte mwk heavy mace +14 (1d8-2)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpellDomains>Knowledge, Magic</SpellDomains>
+    <AbilitiyScores>Str 7, Dex 11, Con 9, Int 14, Wis 22, Cha 15</AbilitiyScores>
+    <BaseAtk>7</BaseAtk>
+    <CMB>5</CMB>
+    <CMD>18</CMD>
+    <Languages>Ancient Osiriani, Celestial, Common, Osiriani</Languages>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>middle age</AgeCategory>
+    <id>6032</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Muminofrah</Name>
+    <CR>9</CR>
+    <XP>6400</XP>
+    <Race>human</Race>
+    <Class>aristocrat 6/bard (court bard) 4</Class>
+    <MonsterSource>Pathfinder RPG Advanced Player's Guide 81</MonsterSource>
+    <Alignment>CN</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>4</Init>
+    <Senses>Perception +10</Senses>
+    <AC>13, touch 11, flat-footed 13</AC>
+    <AC_Mods>(+2 armor, +1 deflection)</AC_Mods>
+    <HP>65</HP>
+    <HD>(10d8+20)</HD>
+    <Saves>Fort +7, Ref +6, Will +12; +4 vs. bardic performance, language-dependent, and sonic</Saves>
+    <Fort>7</Fort>
+    <Ref>6</Ref>
+    <Will>12</Will>
+    <Save_Mods>+4 vs. bardic performance, language-dependent, and sonic</Save_Mods>
+    <Speed>30 ft.</Speed>
+    <Melee>+1 dagger +9/+4 (1d4+2/19-20)</Melee>
+    <Ranged>+1 dagger +8 (1d4+2/19-20)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 13, Dex 10, Con 15, Int 8, Wis 12, Cha 18</AbilitiyScores>
+    <BaseAtk>7</BaseAtk>
+    <CMB>8</CMB>
+    <CMD>19</CMD>
+    <Languages>Common, Osiriani</Languages>
+    <SQ>heraldic expertiseAPG +2, versatile performance (sing)</SQ>
+    <Source>AP 81</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <ClassArchetypes>court bard</ClassArchetypes>
+    <id>6033</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Shokuran Owlbear</Name>
+    <CR>3</CR>
+    <XP>200</XP>
+    <Race>owlbear</Race>
+    <MonsterSource>Pathfinder RPG Bestiary 224, 295</MonsterSource>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>magical beast</Type>
+    <Init>7</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +12</Senses>
+    <AC>16, touch 13, flat-footed 13</AC>
+    <AC_Mods>(+3 Dex, +3 natural)</AC_Mods>
+    <HP>37</HP>
+    <HD>(5d10+10)</HD>
+    <Saves>Fort +8, Ref +7, Will +2</Saves>
+    <Fort>8</Fort>
+    <Ref>7</Ref>
+    <Will>2</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>bite +7 (1d6+2), 2 claws +7 (1d4+2 plus grab)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 15, Dex 16, Con 14, Int 2, Wis 12, Cha 10</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>+7 (+11 grapple)</CMB>
+    <CMD>20 (24 vs. trip)</CMD>
+    <Source>PFS S3-13</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <TemplatesApplied>young|</TemplatesApplied>
+    <AgeCategory>young</AgeCategory>
+    <id>6044</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Shokuran Owlbear Subtier 4-5</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>giant owlbear</Race>
+    <MonsterSource>Pathfinder RPG Bestiary 224, 294-295</MonsterSource>
+    <Alignment>N</Alignment>
+    <Size>Huge</Size>
+    <Type>magical beast</Type>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +14</Senses>
+    <AC>20, touch 10, flat-footed 18</AC>
+    <AC_Mods>(+2 Dex, +10 natural, -2 size)</AC_Mods>
+    <HP>67</HP>
+    <HD>(5d10+40)</HD>
+    <Saves>Fort +14, Ref +6, Will +4</Saves>
+    <Fort>14</Fort>
+    <Ref>6</Ref>
+    <Will>4</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>bite +11 (2d6+8), 2 claws +11 (1d8+8 plus grab)</Melee>
+    <Space>15 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilitiyScores>Str 27, Dex 14, Con 26, Int 2, Wis 16, Cha 14</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>+15 (+19 grapple)</CMB>
+    <CMD>27 (31 vs. trip)</CMD>
+    <Source>PFS S3-13</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <TemplatesApplied>advanced|</TemplatesApplied>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6045</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Kwankhonu</Name>
+    <CR>3</CR>
+    <XP>800</XP>
+    <Race>tengu</Race>
+    <Class>cavalier 4</Class>
+    <MonsterSource>Advanced Player's Guide 32</MonsterSource>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(tengu)</SubType>
+    <Init>2</Init>
+    <Senses>low-light vision; Perception +2</Senses>
+    <AC>20, touch 12, flat-footed 18</AC>
+    <AC_Mods>(+6 armor, +2 Dex, +2 shield)</AC_Mods>
+    <HP>34</HP>
+    <HD>(4d10+8)</HD>
+    <Saves>Fort +5, Ref +3, Will +1</Saves>
+    <Fort>5</Fort>
+    <Ref>3</Ref>
+    <Will>1</Will>
+    <Speed>20 ft.</Speed>
+    <Melee>mwk katana* +7 (1d8+4/18-20), bite +2 (1d3+1)</Melee>
+    <Ranged>shortbow +6 (1d6/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 16, Dex 15, Con 12, Int 10, Wis 10, Cha 12</AbilitiyScores>
+    <BaseAtk>4</BaseAtk>
+    <CMB>7</CMB>
+    <CMD>19</CMD>
+    <Languages>Common, Minkaian, Tengu, Tien</Languages>
+    <SQ>expert trainer +2, gifted linguist, mount (Jikon, axe beak), order of the cockatrice (braggart), swordtrained, tactician (1/ day, 5 rounds, standard action)</SQ>
+    <Source>PFS S3-13</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <Note>* See Ultimate Combat.&lt;br&gt;** See the Advanced Player's Guide.</Note>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <CompanionFamiliarLink>6047</CompanionFamiliarLink>
+    <id>6046</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Jikon</Name>
+    <CR>0</CR>
+    <XP>0</XP>
+    <Race>Axe beak</Race>
+    <Class>animal companion 4</Class>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>animal</Type>
+    <Init>4</Init>
+    <Senses>low-light vision; Perception +7</Senses>
+    <AC>17, touch 13, flat-footed 13</AC>
+    <AC_Mods>(+3 Dex, +1 dodge, +4 natural, -1 size)</AC_Mods>
+    <HP>30</HP>
+    <HD>(4d8+12)</HD>
+    <Saves>Fort +7, Ref +7, Will +1</Saves>
+    <Fort>7</Fort>
+    <Ref>7</Ref>
+    <Will>1</Will>
+    <Speed>50 ft.</Speed>
+    <Melee>bite +7 (1d8+7)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilitiyScores>Str 20, Dex 16, Con 16, Int 2, Wis 11, Cha 10</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>9</CMB>
+    <CMD>22</CMD>
+    <SQ>evasion, link</SQ>
+    <Source>PFS S3-13</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <CompanionFamiliarLink>6046</CompanionFamiliarLink>
+    <id>6047</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Kwankhonu Subtier 4-5</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>tengu</Race>
+    <Class>cavalier 7</Class>
+    <MonsterSource>Advanced Player's Guide 32</MonsterSource>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(tengu)</SubType>
+    <Init>2</Init>
+    <Senses>low-light vision; Perception +2</Senses>
+    <AC>21, touch 12, flat-footed 19</AC>
+    <AC_Mods>(+7 armor, +2 Dex, +2 shield)</AC_Mods>
+    <HP>57</HP>
+    <HD>(7d10+14)</HD>
+    <Saves>Fort +6, Ref +4, Will +2</Saves>
+    <Fort>6</Fort>
+    <Ref>4</Ref>
+    <Will>2</Will>
+    <Speed>20 ft.</Speed>
+    <Melee>+1 katana* +12/+7 (1d8+5/18-20), bite +5 (1d3+1)</Melee>
+    <Ranged>mwk shortbow +10/+5 (1d6/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 16, Dex 15, Con 12, Int 10, Wis 10, Cha 12</AbilitiyScores>
+    <BaseAtk>7</BaseAtk>
+    <CMB>10</CMB>
+    <CMD>22</CMD>
+    <Languages>Common, Minkaian, Tengu, Tien</Languages>
+    <SQ>expert trainer +3, mount (Jikon, axe beak), order of the cockatrice (braggart), tactician (2/day, 6 rounds, standard action), gifted linguist, swordtrained</SQ>
+    <Source>PFS S3-13</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <Note>* See Ultimate Combat.&lt;br&gt;** See the Advanced Player's Guide.</Note>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6048</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Jikon Subtier 4-5</Name>
+    <CR>0</CR>
+    <XP>0</XP>
+    <Race>Axe beak</Race>
+    <Class>animal companion 7</Class>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>animal</Type>
+    <Init>4</Init>
+    <Senses>low-light vision; Perception +7</Senses>
+    <AC>19, touch 13, flat-footed 15</AC>
+    <AC_Mods>(+3 Dex, +1 dodge, +6 natural, -1 size)</AC_Mods>
+    <HP>45</HP>
+    <HD>(6d8+18)</HD>
+    <Saves>Fort +8, Ref +8, Will +2</Saves>
+    <Fort>8</Fort>
+    <Ref>8</Ref>
+    <Will>2</Will>
+    <Speed>50 ft.</Speed>
+    <Melee>bite +8 (1d8+7)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilitiyScores>Str 21, Dex 17, Con 16, Int 2, Wis 11, Cha 10</AbilitiyScores>
+    <BaseAtk>4</BaseAtk>
+    <CMB>10</CMB>
+    <CMD>23</CMD>
+    <SQ>evasion, link</SQ>
+    <Source>PFS S3-13</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6049</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Goblin Commando</Name>
+    <CR>1/2</CR>
+    <XP>200</XP>
+    <Race>Goblin</Race>
+    <Class>ranger 1</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 156</MonsterSource>
+    <Alignment>NE</Alignment>
+    <Size>Small</Size>
+    <Type>humanoid</Type>
+    <SubType>(goblinoid)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft.; Perception +5</Senses>
+    <AC>17, touch 14, flat-footed 14</AC>
+    <AC_Mods>(+3 armor, +3 Dex, +1 size)</AC_Mods>
+    <HP>13</HP>
+    <HD>(1d10+3)</HD>
+    <Saves>Fort +4, Ref +5, Will +1</Saves>
+    <Fort>4</Fort>
+    <Ref>5</Ref>
+    <Will>1</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>horsechopper +3 (1d8+1/x3)</Melee>
+    <Ranged>shortbow +5 (1d4/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft. (10 ft. with horsechopper)</Reach>
+    <AbilitiyScores>Str 12, Dex 17, Con 15, Int 8, Wis 12, Cha 8</AbilitiyScores>
+    <BaseAtk>1</BaseAtk>
+    <CMB>1</CMB>
+    <CMD>14</CMD>
+    <Languages>Common, Goblin</Languages>
+    <SQ>track +1, wild empathy +0</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6050</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Skizzertz</Name>
+    <CR>1</CR>
+    <XP>400</XP>
+    <Race>goblin</Race>
+    <Class>cleric of Lamashtu 2</Class>
+    <Alignment>NE</Alignment>
+    <Size>Small</Size>
+    <Type>humanoid</Type>
+    <SubType>(goblinoid)</SubType>
+    <Init>4</Init>
+    <Senses>darkvision 60 ft.; Perception +3</Senses>
+    <AC>17, touch 15, flat-footed 13</AC>
+    <AC_Mods>(+2 armor, +4 Dex, +1 size)</AC_Mods>
+    <HP>16</HP>
+    <HD>(2d8+4)</HD>
+    <Saves>Fort +4, Ref +4, Will +5</Saves>
+    <Fort>4</Fort>
+    <Ref>4</Ref>
+    <Will>5</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk falchion +3 (1d6/18-20)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpellDomains>Strength, Trickery</SpellDomains>
+    <AbilitiyScores>Str 10, Dex 18, Con 13, Int 10, Wis 15, Cha 6</AbilitiyScores>
+    <BaseAtk>1</BaseAtk>
+    <CMB>0</CMB>
+    <CMD>14</CMD>
+    <Languages>Goblin</Languages>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6051</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Clanky</Name>
+    <CR>2</CR>
+    <XP>600</XP>
+    <Race>emerald automaton</Race>
+    <MonsterSource>see page 154</MonsterSource>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>construct</Type>
+    <Init>-1</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception -2</Senses>
+    <AC>13, touch 9, flat-footed 13</AC>
+    <AC_Mods>(-1 Dex, +4 natural)</AC_Mods>
+    <HP>36</HP>
+    <HD>(3d10+20)</HD>
+    <Saves>Fort +1, Ref +0, Will -1</Saves>
+    <Fort>1</Fort>
+    <Ref>0</Ref>
+    <Will>-1</Will>
+    <DR>2/adamantine</DR>
+    <Immune>construct traits</Immune>
+    <Weaknesses>magic dependent</Weaknesses>
+    <Speed>30 ft.</Speed>
+    <Melee>slam +6 (1d6+4)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 16, Dex 9, Con -, Int -, Wis 7, Cha 1</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>6</CMB>
+    <CMD>15</CMD>
+    <SQ>proficient</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6052</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>1</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Goblin Zombie</Name>
+    <CR>1/4</CR>
+    <XP>100</XP>
+    <Race>Goblin Zombie</Race>
+    <Alignment>NE</Alignment>
+    <Size>Small</Size>
+    <Type>undead</Type>
+    <Init>1</Init>
+    <Senses>darkvision 60 ft.; Perception +0</Senses>
+    <AC>13, touch 12, flat-footed 12</AC>
+    <AC_Mods>(+1 Dex, +1 natural, +1 size)</AC_Mods>
+    <HP>12</HP>
+    <HD>(2d8+3)</HD>
+    <Saves>Fort +0, Ref +1, Will +3</Saves>
+    <Fort>0</Fort>
+    <Ref>1</Ref>
+    <Will>3</Will>
+    <DR>5/slashing</DR>
+    <Immune>undead traits</Immune>
+    <Speed>30 ft.</Speed>
+    <Melee>slam +3 (1d4+1)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 13, Dex 13, Con -, Int -, Wis 10, Cha 10</AbilitiyScores>
+    <BaseAtk>1</BaseAtk>
+    <CMB>1</CMB>
+    <CMD>12</CMD>
+    <SQ>staggered</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6053</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Grulk</Name>
+    <CR>4</CR>
+    <XP>1200</XP>
+    <Race>bugbear</Race>
+    <Class>ranger 2</Class>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(goblinoid)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft., scent; Perception +9</Senses>
+    <AC>18, touch 13, flat-footed 15</AC>
+    <AC_Mods>(+2 armor, +3 Dex, +3 natural)</AC_Mods>
+    <HP>26</HP>
+    <HD>(5 HD; 3d8+2d10+2)</HD>
+    <Saves>Fort +4, Ref +9, Will +3</Saves>
+    <Fort>4</Fort>
+    <Ref>9</Ref>
+    <Will>3</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>morningstar +8 (1d8+4)</Melee>
+    <Ranged>composite longbow +8 (1d8+2/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 18, Dex 17, Con 11, Int 10, Wis 14, Cha 11</AbilitiyScores>
+    <BaseAtk>4</BaseAtk>
+    <CMB>8</CMB>
+    <CMD>21</CMD>
+    <Languages>Common, Goblin</Languages>
+    <SQ>stalker, track +1, wild empathy +2</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6054</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Advanced Fast Zombie</Name>
+    <CR>1</CR>
+    <XP>400</XP>
+    <Race>Advanced Fast Zombie</Race>
+    <MonsterSource>Pathfinder RPG Bestiary 288-289, 294</MonsterSource>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <Init>2</Init>
+    <Senses>darkvision 60 ft.; Perception +0</Senses>
+    <AC>14, touch 12, flat-footed 12</AC>
+    <AC_Mods>(+2 Dex, +2 natural)</AC_Mods>
+    <HP>16</HP>
+    <HD>(3d8+3)</HD>
+    <Saves>Fort +1, Ref +3, Will +3</Saves>
+    <Fort>1</Fort>
+    <Ref>3</Ref>
+    <Will>3</Will>
+    <Immune>undead traits</Immune>
+    <Speed>40 ft.</Speed>
+    <Melee>2 slams +5 (1d6+4)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 17, Dex 14, Con -, Int -, Wis 10, Cha 10</AbilitiyScores>
+    <BaseAtk>2</BaseAtk>
+    <CMB>5</CMB>
+    <CMD>17</CMD>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6055</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Echo Wood Outlaw</Name>
+    <CR>1</CR>
+    <XP>400</XP>
+    <Race>Human</Race>
+    <Class>fighter 1/rogue 1</Class>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>7</Init>
+    <Senses>Perception +6</Senses>
+    <AC>15, touch 13, flat-footed 12</AC>
+    <AC_Mods>(+2 armor, +3 Dex)</AC_Mods>
+    <HP>17</HP>
+    <HD>(2 HD; 1d10+1d8+3)</HD>
+    <Saves>Fort +3, Ref +5, Will +1</Saves>
+    <Fort>3</Fort>
+    <Ref>5</Ref>
+    <Will>1</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>short sword +4 (1d6+2/19-20) or dagger +4 (1d4+3/19-20)</Melee>
+    <Ranged>mwk light crossbow +5 (1d8/19-20 plus poison)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 14, Dex 17, Con 13, Int 10, Wis 12, Cha 8</AbilitiyScores>
+    <BaseAtk>1</BaseAtk>
+    <CMB>3</CMB>
+    <CMD>16</CMD>
+    <Languages>Common</Languages>
+    <SQ>trapfinding +1</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6056</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Echo Wood Scout</Name>
+    <CR>1/2</CR>
+    <XP>200</XP>
+    <Race>Human</Race>
+    <Class>rogue 1</Class>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>3</Init>
+    <Senses>Perception +4</Senses>
+    <AC>14, touch 13, flat-footed 11</AC>
+    <AC_Mods>(+1 armor, +3 Dex)</AC_Mods>
+    <HP>10</HP>
+    <HD>(1d8+6)</HD>
+    <Saves>Fort +2, Ref +5, Will +0</Saves>
+    <Fort>2</Fort>
+    <Ref>5</Ref>
+    <Will>0</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>short sword +3 (1d6+1/19-20) or dagger +3 (1d4+1/19-20)</Melee>
+    <Ranged>light crossbow +3 (1d8/19-20 plus poison)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 13, Dex 17, Con 14, Int 12, Wis 10, Cha 8</AbilitiyScores>
+    <BaseAtk>0</BaseAtk>
+    <CMB>1</CMB>
+    <CMD>14</CMD>
+    <Languages>Common</Languages>
+    <SQ>trapfinding +1</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6057</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Jaris Phenogian</Name>
+    <CR>2</CR>
+    <XP>600</XP>
+    <Race>human</Race>
+    <Class>rogue 2/transmuter 1</Class>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>6</Init>
+    <Senses>Perception +7</Senses>
+    <AC>16, touch 12, flat-footed 14</AC>
+    <AC_Mods>(+4 armor, +2 Dex)</AC_Mods>
+    <HP>23</HP>
+    <HD>(3 HD; 2d8+1d6+8)</HD>
+    <Saves>Fort +4, Ref +5, Will +3</Saves>
+    <Fort>4</Fort>
+    <Ref>5</Ref>
+    <Will>3</Will>
+    <DefensiveAbilities>evasion</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk short sword +4 (1d6-1/19-20)</Melee>
+    <Ranged>acid flask +3 ranged touch (1d6 acid)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 8, Dex 14, Con 14, Int 17, Wis 12, Cha 10</AbilitiyScores>
+    <BaseAtk>1</BaseAtk>
+    <CMB>0</CMB>
+    <CMD>12</CMD>
+    <Languages>Common, Dwarven, Goblin, Undercommon</Languages>
+    <SQ>arcane bond (ring), physical enhancement +1, rogue talents (slow reactions), trapfinding +1</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <ProhibitedSchools>divination, necromancy</ProhibitedSchools>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6058</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Tarrin Dars</Name>
+    <CR>4</CR>
+    <XP>1200</XP>
+    <Race>human</Race>
+    <Class>cleric of Norgorber 3/rogue 2</Class>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>6</Init>
+    <Senses>Perception +11</Senses>
+    <AC>17, touch 12, flat-footed 15</AC>
+    <AC_Mods>(+5 armor, +2 Dex)</AC_Mods>
+    <HP>38</HP>
+    <HD>(5 HD; 3d8+2d8+13)</HD>
+    <Saves>Fort +5, Ref +6, Will +6</Saves>
+    <Fort>5</Fort>
+    <Ref>6</Ref>
+    <Will>6</Will>
+    <DefensiveAbilities>evasion</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>+1 rapier +6 (1d6/18-20)</Melee>
+    <Ranged>light crossbow +5 (1d8/19-20)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpellDomains>Charm, Death</SpellDomains>
+    <AbilitiyScores>Str 8, Dex 14, Con 14, Int 10, Wis 17, Cha 12</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>2</CMB>
+    <CMD>14</CMD>
+    <Languages>Common</Languages>
+    <SQ>rogue talents (finesse rogue), trapfinding +1</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6059</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Animated Object</Name>
+    <CR>5</CR>
+    <XP>1600</XP>
+    <Race>Animated Object</Race>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>construct</Type>
+    <Init>0</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception -5</Senses>
+    <AC>16, touch 8, flat-footed 15</AC>
+    <AC_Mods>(-1 size, -1 Dex, +8 natural)</AC_Mods>
+    <HP>52</HP>
+    <HD>(4d10+30)</HD>
+    <Saves>Fort +1, Ref +0, Will -4 Hardness 8;</Saves>
+    <Fort>1</Fort>
+    <Ref>0</Ref>
+    <Will>-4</Will>
+    <Immune>construct traits</Immune>
+    <Speed>30 ft.</Speed>
+    <Melee>2 slams +9 (1d8+6 and grab)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilitiyScores>Str 22, Dex 8, Con -, Int -, Wis 1, Cha 1</AbilitiyScores>
+    <BaseAtk>4</BaseAtk>
+    <CMB>+11 (+15 grapple)</CMB>
+    <CMD>20</CMD>
+    <SQ>Construction Points</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6060</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Savisk</Name>
+    <CR>3</CR>
+    <XP>800</XP>
+    <Race>troglodyte</Race>
+    <Class>adept 4</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 267</MonsterSource>
+    <Alignment>CN</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(reptilian)</SubType>
+    <Init>4</Init>
+    <Senses>darkvision 90 ft.; Perception +2</Senses>
+    <AC>16, touch 10, flat-footed 16</AC>
+    <AC_Mods>(+6 natural)</AC_Mods>
+    <HP>33</HP>
+    <HD>(6 HD; 2d8+4d6+10)</HD>
+    <Saves>Fort +7, Ref +1, Will +6</Saves>
+    <Fort>7</Fort>
+    <Ref>1</Ref>
+    <Will>6</Will>
+    <Speed>30 ft.</Speed>
+    <Melee>club +3 (1d6), claw +3 (1d4), bite +3 (1d4) or 2 claws +3 (1d4), bite +3 (1d4)</Melee>
+    <Ranged>javelin +3 (1d6)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 10, Dex 10, Con 13, Int 8, Wis 14, Cha 11</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>3</CMB>
+    <CMD>13</CMD>
+    <Languages>Draconic</Languages>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6061</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Warden Of The Forgotten Pharaoh</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>Human</Race>
+    <Class>fighter 5/ranger 2</Class>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>5</Init>
+    <Senses>Perception +9</Senses>
+    <AC>19, touch 12, flat-footed 17</AC>
+    <AC_Mods>(+6 armor, +1 Dex, +1 dodge, +1 shield)</AC_Mods>
+    <HP>73</HP>
+    <HD>(7d10+30)</HD>
+    <Saves>Fort +10, Ref +5, Will +0 (+1 vs. fear)</Saves>
+    <Fort>10</Fort>
+    <Ref>5</Ref>
+    <Will>0</Will>
+    <DefensiveAbilities>bravery +1</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>+1 scimitar +13/+8 (1d6+7/18-20)</Melee>
+    <Ranged>mwk composite longbow +9/+4 (1d8+3/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 16, Dex 13, Con 16, Int 10, Wis 8, Cha 12</AbilitiyScores>
+    <BaseAtk>7</BaseAtk>
+    <CMB>10</CMB>
+    <CMD>21</CMD>
+    <Languages>Ancient Osiriani, Common, Osiriani</Languages>
+    <SQ>armor training 1, track +1, wild empathy +3</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6062</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Erayu</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Race>maftet</Race>
+    <Class>fighter 4</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 3 188</MonsterSource>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>monstrous humanoid</Type>
+    <Init>4</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +16</Senses>
+    <AC>25, touch 14, flat-footed 21</AC>
+    <AC_Mods>(+7 armor, +4 Dex, +3 natural, +1 shield)</AC_Mods>
+    <HP>105</HP>
+    <HD>(12 HD; 8d10+4d10+39)</HD>
+    <Saves>Fort +9, Ref +13, Will +9 (+1 vs. fear)</Saves>
+    <Fort>9</Fort>
+    <Ref>13</Ref>
+    <Will>9</Will>
+    <DefensiveAbilities>bravery +1</DefensiveAbilities>
+    <Speed>40 ft., fly 60 ft. (poor)</Speed>
+    <Melee>scimitar of the striking wing +17/+12/+7 (1d6+8/18-20), mwk scimitar +16/+11 (1d6+6/18-20)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 18, Dex 18, Con 16, Int 14, Wis 14, Cha 12</AbilitiyScores>
+    <BaseAtk>12</BaseAtk>
+    <CMB>16</CMB>
+    <CMD>30</CMD>
+    <Languages>Ancient Osiriani, Common, Osiriani, Sphinx</Languages>
+    <SQ>armor training 1, runic tattoos</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>old</AgeCategory>
+    <id>6063</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Kixexa</Name>
+    <CR>11</CR>
+    <XP>12800</XP>
+    <Race>noble efreeti</Race>
+    <MonsterSource>Pathfinder RPG Bestiary 140, 294</MonsterSource>
+    <Alignment>LE</Alignment>
+    <Size>Large</Size>
+    <Type>outsider</Type>
+    <SubType>(extraplanar, fire)</SubType>
+    <Init>9</Init>
+    <Senses>darkvision 60 ft., detect magic; Perception +20</Senses>
+    <AC>25, touch 15, flat-footed 19</AC>
+    <AC_Mods>(+5 Dex, +1 dodge, +10 natural, -1 size)</AC_Mods>
+    <HP>149</HP>
+    <HD>(13d10+78)</HD>
+    <Saves>Fort +10, Ref +13, Will +14</Saves>
+    <Fort>10</Fort>
+    <Ref>13</Ref>
+    <Will>14</Will>
+    <Immune>fire</Immune>
+    <Weaknesses>vulnerable to cold</Weaknesses>
+    <Speed>20 ft., fly 40 ft. (perfect)</Speed>
+    <Melee>2 slams +20 (2d6+8 plus 1d6 fire)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilitiyScores>Str 27, Dex 21, Con 22, Int 16, Wis 18, Cha 19</AbilitiyScores>
+    <BaseAtk>13</BaseAtk>
+    <CMB>22</CMB>
+    <CMD>38</CMD>
+    <Languages>Aquan, Auran, Common, Draconic, Ignan, Osirian, Terran; telepathy 100 ft.</Languages>
+    <SQ>change shape (humanoid or giant; alter self or giant form I)</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <TemplatesApplied>advanced|</TemplatesApplied>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6065</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Picasi</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Race>shaitan</Race>
+    <Class>monk 6</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 143</MonsterSource>
+    <Alignment>LN</Alignment>
+    <Size>Large</Size>
+    <Type>outsider</Type>
+    <SubType>(earth, extraplanar)</SubType>
+    <Init>7</Init>
+    <Senses>darkvision 60 ft., tremorsense 60 ft.; Perception +20</Senses>
+    <AC>26, touch 16, flat-footed 23</AC>
+    <AC_Mods>(+3 Dex, +1 monk, +3 Wis, +10 natural, -1 size)</AC_Mods>
+    <HP>127</HP>
+    <HD>(15 HD; 9d10+6d8+51)</HD>
+    <Saves>Fort +14, Ref +11, Will +14; +2 vs. enchantments</Saves>
+    <Fort>14</Fort>
+    <Ref>11</Ref>
+    <Will>14</Will>
+    <Save_Mods>+2 vs. enchantments</Save_Mods>
+    <DefensiveAbilities>evasion</DefensiveAbilities>
+    <DR>10/ adamantine (120 points)</DR>
+    <Immune>disease, electricity</Immune>
+    <Speed>40 ft., burrow 60 ft., climb 20 ft.</Speed>
+    <Melee>flurry of blows +19/+19/+14/+9 (2d6+7/19-20)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilitiyScores>Str 25, Dex 16, Con 17, Int 14, Wis 17, Cha 16</AbilitiyScores>
+    <BaseAtk>13</BaseAtk>
+    <CMB>+23 (+27 bull rush)</CMB>
+    <CMD>38 (40 vs. bull rush)</CMD>
+    <Languages>Aquan, Auran, Common, Ignan, Osiriani, Terran; telepathy 100 ft.</Languages>
+    <SQ>fast movement, high jump, ki pool (6 points, magic), maneuver training, slow fall 30 ft., stone glide</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>1</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6066</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Zealot Of The Forgotten Pharaoh</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>Human</Race>
+    <Class>barbarian (elemental kin) 7</Class>
+    <MonsterSource>Pathfinder RPG Advanced Player's Guide 78</MonsterSource>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>3</Init>
+    <Senses>Perception +11</Senses>
+    <AC>18, touch 11, flat-footed 15</AC>
+    <AC_Mods>(+7 armor, +3 Dex, -2 rage)</AC_Mods>
+    <HP>76</HP>
+    <HD>(7d12+25)</HD>
+    <Saves>Fort +10, Ref +5, Will +5</Saves>
+    <Fort>10</Fort>
+    <Ref>5</Ref>
+    <Will>5</Will>
+    <DefensiveAbilities>improved uncanny dodge</DefensiveAbilities>
+    <DR>1/-</DR>
+    <Resist>electricity 3</Resist>
+    <Speed>30 ft.</Speed>
+    <Melee>+1 longspear +14/+9 (1d8+8/x3) or mwk warhammer +13/+8 (1d8+7/x3)</Melee>
+    <Ranged>mwk javelin +11 (1d6+5)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 20, Dex 16, Con 17, Int 10, Wis 12, Cha 8</AbilitiyScores>
+    <BaseAtk>7</BaseAtk>
+    <CMB>12</CMB>
+    <CMD>23</CMD>
+    <Languages>Common, Osiriani</Languages>
+    <SQ>fast movement</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <ClassArchetypes>elemental kin</ClassArchetypes>
+    <id>6067</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Orchamus</Name>
+    <CR>9</CR>
+    <XP>6400</XP>
+    <Race>girtablilu</Race>
+    <Class>ranger 1</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 3 130</MonsterSource>
+    <Alignment>LN</Alignment>
+    <Size>Large</Size>
+    <Type>monstrous humanoid</Type>
+    <Init>8</Init>
+    <Senses>darkvision 60 ft., tremorsense 30 ft.; Perception +16</Senses>
+    <AC>24, touch 14, flat-footed 19</AC>
+    <AC_Mods>(+2 armor, +4 Dex, +1 dodge, +8 natural, -1 size)</AC_Mods>
+    <HP>116</HP>
+    <HD>(11d10+56)</HD>
+    <Saves>Fort +10, Ref +13, Will +10</Saves>
+    <Fort>10</Fort>
+    <Ref>13</Ref>
+    <Will>10</Will>
+    <Speed>50 ft.</Speed>
+    <Melee>mwk bardicheUE +18/+13/+8 (1d10+10/19-20) or 2 claws +17 (1d6+7 plus grab), sting +17 (1d6+7 plus poison)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft. (15 ft. with bardiche)</Reach>
+    <AbilitiyScores>Str 25, Dex 18, Con 20, Int 12, Wis 12, Cha 13</AbilitiyScores>
+    <BaseAtk>11</BaseAtk>
+    <CMB>+19 (+23 grapple)</CMB>
+    <CMD>34 (46 vs. trip)</CMD>
+    <Languages>Common, Girtablilu, Osiriani</Languages>
+    <SQ>scorpion empathy +11, track +1, undersized weapons, wild empathy +2</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6068</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Disciple Of The Forgotten Pharaoh</Name>
+    <CR>8</CR>
+    <XP>4800</XP>
+    <Race>Human</Race>
+    <Class>monk 9</Class>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>5</Init>
+    <Senses>Perception +13</Senses>
+    <AC>21, touch 21, flat-footed 15</AC>
+    <AC_Mods>(+2 deflection, +5 Dex, +1 dodge, +2 monk, +1 Wis)</AC_Mods>
+    <HP>95</HP>
+    <HD>(9d8+51)</HD>
+    <Saves>Fort +11, Ref +12, Will +10; +2 vs. enchantments</Saves>
+    <Fort>11</Fort>
+    <Ref>12</Ref>
+    <Will>10</Will>
+    <Save_Mods>+2 vs. enchantments</Save_Mods>
+    <DefensiveAbilities>improved evasion</DefensiveAbilities>
+    <Immune>disease</Immune>
+    <Speed>60 ft.</Speed>
+    <Melee>+1 unarmed strike +12/+7 (1d10+5) or +1 flurry of blows +13/+13/+8/+8 (1d10+5)</Melee>
+    <Ranged>mwk light crossbow +12 (1d8/19-20)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 18, Dex 20, Con 18, Int 10, Wis 12, Cha 8</AbilitiyScores>
+    <BaseAtk>6</BaseAtk>
+    <CMB>13</CMB>
+    <CMD>31</CMD>
+    <Languages>Ancient Osiriani, Common, Osiriani</Languages>
+    <SQ>fast movement, high jump, ki pool (5 points, cold iron/ magic), maneuver training, slow fall 40 ft., wholeness of body (9 hit points)</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6069</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Rathos</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Race>human</Race>
+    <Class>fighter 11</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 4 24</MonsterSource>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>2</Init>
+    <Senses>Perception +9</Senses>
+    <AC>27, touch 13, flat-footed 24</AC>
+    <AC_Mods>(+10 armor, +2 Dex, +1 dodge, +4 natural)</AC_Mods>
+    <HP>150</HP>
+    <HD>(11d10+85)</HD>
+    <Saves>Fort +15, Ref +5, Will +1 (+3 vs. fear)</Saves>
+    <Fort>15</Fort>
+    <Ref>5</Ref>
+    <Will>1</Will>
+    <DefensiveAbilities>bravery +3</DefensiveAbilities>
+    <DR>5/-</DR>
+    <Resist>acid 5, cold 5, electricity 5, fire 5, sonic 5</Resist>
+    <Speed>20 ft.</Speed>
+    <Melee>+1 bite +22 (1d8+11), 2 +1 slams +22 (2d6+11/19-20) or torturous touch +17 touch (2d6 plus 1d6 Dex damage and convulsions)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 22, Dex 14, Con 22, Int 10, Wis 6, Cha 6</AbilitiyScores>
+    <BaseAtk>11</BaseAtk>
+    <CMB>+17 (+19 sunder)</CMB>
+    <CMD>30 (32 vs. sunder)</CMD>
+    <RacialMods>+8 Intimidate</RacialMods>
+    <Languages>Common, Osiriani</Languages>
+    <SQ>armor training 3, twisted wish</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <TemplatesApplied>broken soul|</TemplatesApplied>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6070</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Rubila</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Race>girtablilu</Race>
+    <Class>rogue 8</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 3 130</MonsterSource>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>monstrous humanoid</Type>
+    <Init>9</Init>
+    <Senses>darkvision 60 ft., tremorsense 30 ft.; Perception +20</Senses>
+    <AC>27, touch 15, flat-footed 21</AC>
+    <AC_Mods>(+4 armor, +5 Dex, +1 dodge, +8 natural, -1 size)</AC_Mods>
+    <HP>163</HP>
+    <HD>(18 HD; 10d10+8d8+72)</HD>
+    <Saves>Fort +9, Ref +18, Will +11</Saves>
+    <Fort>9</Fort>
+    <Ref>18</Ref>
+    <Will>11</Will>
+    <DefensiveAbilities>evasion, improved uncanny dodge, trap sense +2</DefensiveAbilities>
+    <Speed>50 ft.</Speed>
+    <Melee>+2 short sword +22/+17/+12/+7 (1d6+8/17-20), 2 claws +15 (1d6+3 plus grab), sting +15 (1d6+3 plus poison)</Melee>
+    <Ranged>mwk dagger +21 (1d4+6/19-20)</Ranged>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilitiyScores>Str 22, Dex 21, Con 18, Int 13, Wis 14, Cha 14</AbilitiyScores>
+    <BaseAtk>16</BaseAtk>
+    <CMB>+23 (+27 grapple)</CMB>
+    <CMD>39 (51 vs. trip)</CMD>
+    <Languages>Common, Girtablilu, Osiriani</Languages>
+    <SQ>rogue talents (combat trick, finesse rogue, honeyed wordsAPG, surprise attack), scorpion empathy +10, trapfinding +4, undersized weapons</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6071</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Sargota</Name>
+    <CR>11</CR>
+    <XP>12800</XP>
+    <Race>shadow demon</Race>
+    <MonsterSource>Pathfinder RPG Bestiary 67</MonsterSource>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(chaotic, demon, evil, extraplanar, incorporeal)</SubType>
+    <Init>8</Init>
+    <Senses>darkvision 60 ft.; Perception +27</Senses>
+    <AC>20, touch 20, flat-footed 15</AC>
+    <AC_Mods>(+5 deflection, +4 Dex, +1 dodge)</AC_Mods>
+    <HP>119</HP>
+    <HD>(14d10+42)</HD>
+    <Saves>Fort +7, Ref +13, Will +11</Saves>
+    <Fort>7</Fort>
+    <Ref>13</Ref>
+    <Will>11</Will>
+    <DefensiveAbilities>incorporeal</DefensiveAbilities>
+    <DR>10/cold iron or good</DR>
+    <Immune>cold, electricity, poison</Immune>
+    <Resist>acid 10, fire 10</Resist>
+    <SR>22</SR>
+    <Weaknesses>sunlight powerlessness</Weaknesses>
+    <Speed>fly 40 ft. (perfect)</Speed>
+    <Melee>bite +18 touch (2d6 plus 1d6 cold), 2 claws +18 touch (1d8 plus 1d6 cold)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str -, Dex 18, Con 17, Int 14, Wis 14, Cha 20</AbilitiyScores>
+    <BaseAtk>14</BaseAtk>
+    <CMB>18</CMB>
+    <CMD>34</CMD>
+    <Languages>Abyssal, Common; telepathy 100 ft.</Languages>
+    <SQ>shadow blend, sprint</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>0</Land>
+    <TemplatesApplied>advanced|</TemplatesApplied>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6072</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Thmei</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Race>human</Race>
+    <Class>oracle 13</Class>
+    <MonsterSource>Pathfinder RPG Advanced Player's Guide 42</MonsterSource>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>7</Init>
+    <Senses>Perception +9</Senses>
+    <AC>28, touch 18, flat-footed 24</AC>
+    <AC_Mods>(+8 armor, +4 deflection, +3 Dex, +1 dodge, +2 natural)</AC_Mods>
+    <HP>111</HP>
+    <HD>(13d8+49)</HD>
+    <Saves>Fort +8, Ref +9, Will +11</Saves>
+    <Fort>8</Fort>
+    <Ref>9</Ref>
+    <Will>11</Will>
+    <Immune>disease, sickened condition</Immune>
+    <Speed>30 ft.</Speed>
+    <Melee>+1 ghost touch spear +10/+5 (1d8+1/x3)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 10, Dex 16, Con 14, Int 10, Wis 13, Cha 20</AbilitiyScores>
+    <BaseAtk>9</BaseAtk>
+    <CMB>12</CMB>
+    <CMD>27</CMD>
+    <Languages>Ancient Osiriani, Common, Kelish, Osiriani</Languages>
+    <SQ>oracle's curse (wasting), revelations (ancestral weapon [+1 ghost touch, 13 minutes/day], spirit shield [+6 AC, 50% ranged miss chance, 13 hours/day], spirit walk [13 rounds, 1/day], storm of souls [6d8, Fort half DC 21, 2/day])</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <Mystery>ancestorUM</Mystery>
+    <id>6073</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Lady Sophronia</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Race>Human</Race>
+    <Class>paladin of Sarenrae 11</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 144</MonsterSource>
+    <Alignment>LG</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <SubType>(augmented humanoid, human, incorporeal)</SubType>
+    <Init>5</Init>
+    <Senses>darkvision 60 ft.; Perception +23</Senses>
+    <Aura>courage (10 ft.), justice (10 ft.), resolve (10 ft.)</Aura>
+    <AC>27, touch 17, flat-footed 26</AC>
+    <AC_Mods>(+10 armor, +6 deflection, +1 Dex)</AC_Mods>
+    <HP>153</HP>
+    <HD>(11d10+88)</HD>
+    <Saves>Fort +19, Ref +10, Will +15</Saves>
+    <Fort>19</Fort>
+    <Ref>10</Ref>
+    <Will>15</Will>
+    <DefensiveAbilities>channel resistance +4, incorporeal, rejuvenation</DefensiveAbilities>
+    <Immune>charm, disease, fear, undead traits</Immune>
+    <Speed>fly 30 ft. (perfect)</Speed>
+    <Melee>+1 ghost touch longsword +20/+15/+10 (1d8+7/19-20) or corrupting touch +12 (12d6, Fort DC 21 half)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str -, Dex 12, Con -, Int 14, Wis 14, Cha 22</AbilitiyScores>
+    <BaseAtk>11</BaseAtk>
+    <CMB>12</CMB>
+    <CMD>28</CMD>
+    <Languages>Celestial, Common, Osiriani</Languages>
+    <SQ>divine bond (weapon +3, 2/day), lay on hands (5d6, 11/day), mercies (cursed, diseased, sickened)</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>0</Land>
+    <TemplatesApplied>ghost|</TemplatesApplied>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6074</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Cultist Of Areshkagal</Name>
+    <CR>9</CR>
+    <XP>6400</XP>
+    <Race>Maftet</Race>
+    <Class>rogue 6</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 3 188</MonsterSource>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>monstrous humanoid</Type>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +18</Senses>
+    <AC>23, touch 16, flat-footed 17</AC>
+    <AC_Mods>(+4 armor, +6 Dex, +3 natural)</AC_Mods>
+    <HP>113</HP>
+    <HD>(14 HD; 8d10+6d8+42)</HD>
+    <Saves>Fort +7, Ref +17, Will +9</Saves>
+    <Fort>7</Fort>
+    <Ref>17</Ref>
+    <Will>9</Will>
+    <DefensiveAbilities>evasion, trap sense +2, uncanny dodge</DefensiveAbilities>
+    <Speed>40 ft., fly 60 ft. (poor)</Speed>
+    <Melee>+1 scimitars +17/+17/+12/+12/+7 (1d6+6/15-20)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 20, Dex 22, Con 16, Int 12, Wis 12, Cha 13</AbilitiyScores>
+    <BaseAtk>12</BaseAtk>
+    <CMB>17</CMB>
+    <CMD>33</CMD>
+    <Languages>Abyssal, Common, Sphinx</Languages>
+    <SQ>rogue talents (combat trick, major magic, minor magic), runic tattoos, trapfinding +3</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6075</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Heqet</Name>
+    <CR>13</CR>
+    <XP>25600</XP>
+    <Race>human</Race>
+    <Class>cleric of Areshkagal 13</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 4 286</MonsterSource>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft.; Perception +20</Senses>
+    <AC>31, touch 16, flat-footed 29</AC>
+    <AC_Mods>(+8 armor, +4 deflection, +2 Dex, +2 natural, +5 shield)</AC_Mods>
+    <HP>154</HP>
+    <HD>(15d8+83)</HD>
+    <Saves>Fort +14, Ref +11, Will +18</Saves>
+    <Fort>14</Fort>
+    <Ref>11</Ref>
+    <Will>18</Will>
+    <DefensiveAbilities>channel resistance +5</DefensiveAbilities>
+    <DR>5/slashing</DR>
+    <Immune>undead traits</Immune>
+    <Resist>electricity 20</Resist>
+    <SR>25</SR>
+    <Speed>20 ft.</Speed>
+    <Melee>rod of the viper +17/+12 (1d8+6/19-20) or slam +14 (1d6+6)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpellDomains>Air, Evil (Demon subdomainAPG)</SpellDomains>
+    <AbilitiyScores>Str 18, Dex 14, Con -, Int 10, Wis 18, Cha 16</AbilitiyScores>
+    <BaseAtk>10</BaseAtk>
+    <CMB>14</CMB>
+    <CMD>30</CMD>
+    <Languages>Abyssal, Common, Osiriani</Languages>
+    <SQ>lost soul bond</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <TemplatesApplied>zombie lord|</TemplatesApplied>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6076</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Giant Mummified Crocodile</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Race>Mummified dire crocodile</Race>
+    <MonsterSource>Pathfinder RPG Bestiary 4 196, Pathfinder RPG Bestiary 51</MonsterSource>
+    <Alignment>NE</Alignment>
+    <Size>Gargantuan</Size>
+    <Type>undead</Type>
+    <SubType>(augmented animal)</SubType>
+    <Init>4</Init>
+    <Senses>darkvision 60 ft.; Perception +14</Senses>
+    <Aura>frightful presence (30 ft., DC 21, 1d6 rounds)</Aura>
+    <AC>25, touch 6, flat-footed 25</AC>
+    <AC_Mods>(+19 natural, -4 size)</AC_Mods>
+    <HP>126</HP>
+    <HD>(12d8+72)</HD>
+    <Saves>Fort +13, Ref +8, Will +8</Saves>
+    <Fort>13</Fort>
+    <Ref>8</Ref>
+    <Will>8</Will>
+    <DR>5/-</DR>
+    <Immune>undead traits</Immune>
+    <Weaknesses>vulnerable to sonic</Weaknesses>
+    <Speed>10 ft., swim 20 ft.</Speed>
+    <Speed_Mod>sprint</Speed_Mod>
+    <Melee>bite +20 (4d6+15/19-20 plus grab), tail slap +15 (6d8+7)</Melee>
+    <Space>20 ft.</Space>
+    <Reach>15 ft.</Reach>
+    <AbilitiyScores>Str 41, Dex 10, Con -, Int 1, Wis 14, Cha 20</AbilitiyScores>
+    <BaseAtk>9</BaseAtk>
+    <CMB>+28 (+32 grapple)</CMB>
+    <CMD>38 (42 vs. trip)</CMD>
+    <SQ>blessing of Areshkagal</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>1</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6077</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Areshkhesbed</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Race>gynosphinx</Race>
+    <MonsterSource>Pathfinder RPG Bestiary 171, 257; Pathfinder RPG Bestiary 4 60</MonsterSource>
+    <Alignment>CE</Alignment>
+    <Size>Large</Size>
+    <Type>outsider</Type>
+    <SubType>(air, chaotic, evil, native)</SubType>
+    <Init>7</Init>
+    <Senses>darkvision 60 ft., see invisibility; Perception +28</Senses>
+    <AC>27, touch 12, flat-footed 24</AC>
+    <AC_Mods>(+3 armor, +3 Dex, +12 natural, -1 size)</AC_Mods>
+    <HP>138</HP>
+    <HD>(12d10+72)</HD>
+    <HP_Mods>fast healing 5</HP_Mods>
+    <Saves>Fort +15, Ref +11, Will +14</Saves>
+    <Fort>15</Fort>
+    <Ref>11</Ref>
+    <Will>14</Will>
+    <DefensiveAbilities>ability healing</DefensiveAbilities>
+    <DR>10/magic</DR>
+    <Immune>disease, mind-affecting effects, poison</Immune>
+    <Resist>acid 10, cold 10, electricity 10, fire 10</Resist>
+    <SR>23</SR>
+    <Speed>80 ft., fly 160 ft. (perfect)</Speed>
+    <Melee>bite +19 (1d8+8), 2 claws +19 (3d6+8/19-20)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 26, Dex 17, Con 20, Int 20, Wis 27, Cha 25</AbilitiyScores>
+    <BaseAtk>12</BaseAtk>
+    <CMB>21</CMB>
+    <CMD>34 (42 vs. trip)</CMD>
+    <Languages>Abyssal, Ancient Osiriani, Auran, Common, Draconic, Osiriani, Sphinx</Languages>
+    <SQ>blessed life, divine swiftness, sacred site</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <TemplatesApplied>half-fiend|divine guardian|</TemplatesApplied>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6078</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>The Forgotten Pharaoh</Name>
+    <CR>13</CR>
+    <XP>25600</XP>
+    <Race>ib-possessed human</Race>
+    <Class>ex-cleric of Nethys 14</Class>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>6</Init>
+    <Senses>Perception +19</Senses>
+    <AC>27, touch 19, flat-footed 25</AC>
+    <AC_Mods>(+4 armor, +5 deflection, +2 Dex, +2 insight, +4 shield)</AC_Mods>
+    <HP>179</HP>
+    <HD>(14d8+113)</HD>
+    <Saves>Fort +19, Ref +12, Will +18</Saves>
+    <Fort>19</Fort>
+    <Ref>12</Ref>
+    <Will>18</Will>
+    <DR>10/adamantine (140 points)</DR>
+    <Immune>fear</Immune>
+    <Resist>fire 10</Resist>
+    <Speed>30 ft., fly 60 ft. (good)</Speed>
+    <Melee>+1 quarterstaff +17/+12 (1d6+4)</Melee>
+    <Ranged>ray +16 touch (by spell)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 14, Dex 14, Con 19, Int 10, Wis 12, Cha 20</AbilitiyScores>
+    <BaseAtk>10</BaseAtk>
+    <CMB>12</CMB>
+    <CMD>35</CMD>
+    <Languages>Ancient Osiriani, Common, Osiriani</Languages>
+    <SQ>ib of the pharaoh</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Female</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6079</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Userib</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Race>maftet</Race>
+    <Class>cleric of Areshkagal 9</Class>
+    <MonsterSource>Pathfinder RPG Bestiary 3 188</MonsterSource>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>monstrous humanoid</Type>
+    <Init>5</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +16</Senses>
+    <AC>26, touch 18, flat-footed 20</AC>
+    <AC_Mods>(+4 armor, +2 deflection, +5 Dex, +1 dodge, +3 natural, +1 shield)</AC_Mods>
+    <HP>161</HP>
+    <HD>(17 HD; 8d10+9d8+77)</HD>
+    <Saves>Fort +11, Ref +14, Will +17</Saves>
+    <Fort>11</Fort>
+    <Ref>14</Ref>
+    <Will>17</Will>
+    <Resist>electricity 10</Resist>
+    <Speed>40 ft., fly 60 ft. (poor)</Speed>
+    <Melee>+1 sickle +18/+13/+8 (1d6+7/19-20), +1 sickle +18/+13/+8 (1d6+7/19-20)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpellDomains>Air (Wind subdomainAPG), Trickery (Deception subdomainAPG)</SpellDomains>
+    <AbilitiyScores>Str 18, Dex 20, Con 16, Int 8, Wis 20, Cha 14</AbilitiyScores>
+    <BaseAtk>14</BaseAtk>
+    <CMB>18</CMB>
+    <CMD>34</CMD>
+    <Languages>Common, Sphinx</Languages>
+    <SQ>runic tattoos</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6080</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Burning Dervish</Name>
+    <CR>7</CR>
+    <XP>3200</XP>
+    <Race>Burning Dervish</Race>
+    <MonsterSource>Tome of Horrors Complete 89</MonsterSource>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(extraplanar, fire)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft.; Perception +14</Senses>
+    <AC>17, touch 14, flat-footed 13</AC>
+    <AC_Mods>(+3 Dex, +1 dodge, +3 natural)</AC_Mods>
+    <HP>58</HP>
+    <HD>(9d10+9)</HD>
+    <Saves>Fort +7, Ref +6, Will +8</Saves>
+    <Fort>7</Fort>
+    <Ref>6</Ref>
+    <Will>8</Will>
+    <Immune>fire</Immune>
+    <Weaknesses>vulnerability to cold</Weaknesses>
+    <Speed>30 ft., fly 20 ft. (perfect)</Speed>
+    <Melee>+1 falchion +14/+9 (2d4+7/18-20) or (in flame form) 2 slams +13 (1d6+4 plus 1d6 fire plus burn)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 18, Dex 16, Con 13, Int 13, Wis 15, Cha 15</AbilitiyScores>
+    <BaseAtk>9</BaseAtk>
+    <CMB>13</CMB>
+    <CMD>27</CMD>
+    <RacialMods>+2 Survival when tracking</RacialMods>
+    <Languages>Common, Ignan, Infernal</Languages>
+    <SQ>elemental endurance, flame form</SQ>
+    <Source>AP 82</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6081</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Machine Slayer Npc</Name>
+    <CR>8</CR>
+    <XP>4800</XP>
+    <Race>Human</Race>
+    <Class>ranger 9</Class>
+    <Alignment>CN</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>4</Init>
+    <Senses>Perception +13</Senses>
+    <AC>19, touch 14, flat-footed 15</AC>
+    <AC_Mods>(+5 armor, +4 Dex)</AC_Mods>
+    <HP>79</HP>
+    <HD>(9d10+25)</HD>
+    <Saves>Fort +9, Ref +11, Will +5</Saves>
+    <Fort>9</Fort>
+    <Ref>11</Ref>
+    <Will>5</Will>
+    <DefensiveAbilities>evasion</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>adamantine warhammer +12/+7 (1d8+2/3)</Melee>
+    <Ranged>mwk composite longbow +15/+10 (1d8+2/3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 14, Dex 18, Con 14, Int 8, Wis 12, Cha 10</AbilitiyScores>
+    <BaseAtk>9</BaseAtk>
+    <CMB>11</CMB>
+    <CMD>25</CMD>
+    <Languages>Common, Hallit</Languages>
+    <SQ>favored terrain (mountain +2, plains +4), hunter's bond (companions), swift tracker, track +4, wild empathy +9, woodland stride</SQ>
+    <Source>Numeria Land Of Fallen Stars</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6093</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Numerian Fluid Scavenger Npc</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>Human</Race>
+    <Class>alchemist 7</Class>
+    <MonsterSource>Pathfinder RPG Advanced Player's Guide 26</MonsterSource>
+    <Alignment>CN</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>6</Init>
+    <Senses>Perception +9</Senses>
+    <AC>16, touch 12, flat-footed 14</AC>
+    <AC_Mods>(+4 armor, +2 Dex)</AC_Mods>
+    <HP>56</HP>
+    <HD>(7d8+21)</HD>
+    <Saves>Fort +9, Ref +10, Will +2; +4 vs. poison</Saves>
+    <Fort>9</Fort>
+    <Ref>10</Ref>
+    <Will>2</Will>
+    <Save_Mods>+4 vs. poison</Save_Mods>
+    <Weaknesses>addicted</Weaknesses>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk longspear +6 (1d8/3)</Melee>
+    <Ranged>dart +7 (1d4 plus poison)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 10, Dex 14, Con 13, Int 18, Wis 8, Cha 12</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>5</CMB>
+    <CMD>17</CMD>
+    <Languages>Aklo, Common, Giant, Hallit, Orc</Languages>
+    <SQ>alchemy (alchemy crafting +7, identify potions), discoveries (acid bomb, enhance potion 4/day, latest dose, mutagen (+4/-2, +2 natural, 70 minutes), precise bombs [4 squares]), poison use, swift alchemy, swift poisoning</SQ>
+    <Source>Numeria Land Of Fallen Stars</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <ExtractsPrepared>Alchemist Extracts Prepared (CL 7th) 3rd-absorbing touchAPG, heroism 2nd-alchemical allocationAPG, barkskin, false life, invisibility 1st-bomber's eyeAPG, cure light wounds, disguise self, expeditious retreat, shield</ExtractsPrepared>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6096</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Numerian Gunslinger Npc</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Race>Human</Race>
+    <Class>gunslinger 6</Class>
+    <MonsterSource>Pathfinder RPG Ultimate Combat 9</MonsterSource>
+    <Alignment>CG</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>5</Init>
+    <Senses>Perception +11</Senses>
+    <AC>20, touch 16, flat-footed 15</AC>
+    <AC_Mods>(+4 armor, +1 deflection, +3 Dex, +2 dodge)</AC_Mods>
+    <HP>61</HP>
+    <HD>(6d10+24)</HD>
+    <Saves>Fort +8, Ref +9, Will +5</Saves>
+    <Fort>8</Fort>
+    <Ref>9</Ref>
+    <Will>5</Will>
+    <DefensiveAbilities>nimble +2</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk dagger +8/+3 (1d4+1/19-20)</Melee>
+    <Ranged>laser pistol +10 touch (1d8+3 fire) or mwk pistol +10 touch (1d8/x4)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 12, Dex 17, Con 14, Int 10, Wis 14, Cha 8</AbilitiyScores>
+    <BaseAtk>6</BaseAtk>
+    <CMB>7</CMB>
+    <CMD>23</CMD>
+    <Languages>Common</Languages>
+    <SQ>deeds (deadeye, gunslinger initiative, gunslinger's dodge, pistol-whip, quick clear, utility shot), gunsmith, rare resources</SQ>
+    <Source>Numeria Land Of Fallen Stars</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6098</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Technic League Hireling Npc</Name>
+    <CR>3</CR>
+    <XP>800</XP>
+    <Race>Human</Race>
+    <Class>rogue 4</Class>
+    <Alignment>CN</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>4</Init>
+    <Senses>Perception +8</Senses>
+    <AC>18, touch 14, flat-footed 14</AC>
+    <AC_Mods>(+3 armor, +4 Dex, +1 shield)</AC_Mods>
+    <HP>25</HP>
+    <HD>(4d8+4)</HD>
+    <Saves>Fort +5, Ref +9, Will +1</Saves>
+    <Fort>5</Fort>
+    <Ref>9</Ref>
+    <Will>1</Will>
+    <DefensiveAbilities>evasion, trap sense +1, uncanny dodge</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>dagger +4 (1d4+1/19-20)</Melee>
+    <Ranged>dagger +7 (1d4+1/19-20)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 13, Dex 18, Con 12, Int 14, Wis 8, Cha 10</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>4</CMB>
+    <CMD>18</CMD>
+    <Languages>Common, Giant, Hallit, Orc</Languages>
+    <SQ>implanted tracker chip, rogue talents (ledge walker, trap spotter), trapfinding +2</SQ>
+    <Source>Numeria Land Of Fallen Stars</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <id>6105</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Wayward Crusader Npc</Name>
+    <CR>4</CR>
+    <XP>1200</XP>
+    <Race>Human</Race>
+    <Class>paladin of Iomedae 5</Class>
+    <Alignment>LG</Alignment>
+    <Size>Medium</Size>
+    <Type>humanoid</Type>
+    <SubType>(human)</SubType>
+    <Init>-1</Init>
+    <Senses>Perception +1</Senses>
+    <Aura>courage (10 ft.)</Aura>
+    <AC>20, touch 9, flat-footed 20</AC>
+    <AC_Mods>(+9 armor, -1 Dex, +2 shield)</AC_Mods>
+    <HP>42</HP>
+    <HD>(5d10+10)</HD>
+    <Saves>Fort +8, Ref +3, Will +8</Saves>
+    <Fort>8</Fort>
+    <Ref>3</Ref>
+    <Will>8</Will>
+    <Immune>disease, fear</Immune>
+    <Speed>20 ft.</Speed>
+    <Melee>mwk cold iron longsword +9 (1d8+3/19-20) or mwk lance +9 (1d8+4/3)</Melee>
+    <Ranged>javelin +4 (1d6+3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 16, Dex 8, Con 13, Int 10, Wis 12, Cha 16</AbilitiyScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>8</CMB>
+    <CMD>17</CMD>
+    <Languages>Common</Languages>
+    <SQ>divine bond (mount), lay on hands (2d6, 5/day), mercy (sickened)</SQ>
+    <Source>Numeria Land Of Fallen Stars</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <CompanionFamiliarLink>6108</CompanionFamiliarLink>
+    <id>6107</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Crusader 's Mount</Name>
+    <CR>0</CR>
+    <XP>0</XP>
+    <Race>Horse</Race>
+    <Class>animal companion 5</Class>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>animal</Type>
+    <Init>2</Init>
+    <Senses>low-light vision, scent; Perception +9</Senses>
+    <AC>21, touch 11, flat-footed 19</AC>
+    <AC_Mods>(+4 armor, +2 Dex, +6 natural, -1 size)</AC_Mods>
+    <HP>37</HP>
+    <HD>(5d8+15)</HD>
+    <Saves>Fort +7, Ref +6, Will +4</Saves>
+    <Fort>7</Fort>
+    <Ref>6</Ref>
+    <Will>4</Will>
+    <Speed>50 ft.</Speed>
+    <Melee>bite +6 (1d4+4), 2 hooves +4 (1d6+2)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 19, Dex 14, Con 17, Int 6, Wis 12, Cha 6</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>8</CMB>
+    <CMD>20 (24 vs. trip)</CMD>
+    <Languages>Common (can't speak)</Languages>
+    <SQ>link, share spells</SQ>
+    <Source>Numeria Land Of Fallen Stars</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <CompanionFamiliarLink>6107</CompanionFamiliarLink>
+    <id>6108</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Jorqual</Name>
+    <CR>4</CR>
+    <XP>1200</XP>
+    <Race>undine</Race>
+    <Class>summoner 5</Class>
+    <MonsterSource>Pathfinder RPG Advanced Player's Guide 54, Pathfinder RPG Bestiary 2 275</MonsterSource>
+    <Alignment>CN</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(aquatic, native)</SubType>
+    <Init>0</Init>
+    <Senses>darkvision 60 ft.; Perception +7</Senses>
+    <AC>15, touch 11, flat-footed 15</AC>
+    <AC_Mods>(+4 armor, +1 deflection)</AC_Mods>
+    <HP>31</HP>
+    <HD>(5d8+5)</HD>
+    <Saves>Fort +4, Ref +1, Will +6</Saves>
+    <Fort>4</Fort>
+    <Ref>1</Ref>
+    <Will>6</Will>
+    <DefensiveAbilities>shield ally</DefensiveAbilities>
+    <Resist>cold 5</Resist>
+    <Speed>30 ft., swim 40 ft.</Speed>
+    <Melee>dagger +2 (1d4-1/19-20)</Melee>
+    <Ranged>light crossbow +3 (1d8/19-20)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 8, Dex 10, Con 12, Int 14, Wis 15, Cha 16</AbilitiyScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>2</CMB>
+    <CMD>13</CMD>
+    <Languages>Aklo, Aquan, Common, Draconic</Languages>
+    <SQ>amphibious, bond senses (5 rounds/day), eidolon, life link, water affinity</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <Gender>Male</Gender>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>1</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <CompanionFamiliarLink>6111</CompanionFamiliarLink>
+    <id>6110</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Crab Eidolon</Name>
+    <CR>0</CR>
+    <XP>0</XP>
+    <Race>Eidolon (quadruped base form)</Race>
+    <MonsterSource>Pathfinder RPG Advanced Player's Guide 58</MonsterSource>
+    <Alignment>CN</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(extraplanar)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft.; Perception +7</Senses>
+    <AC>23, touch 13, flat-footed 20</AC>
+    <AC_Mods>(+4 armor, +3 Dex, +6 natural)</AC_Mods>
+    <HP>30</HP>
+    <HD>(4d10+8)</HD>
+    <Saves>Fort +6, Ref +7, Will +1</Saves>
+    <Fort>6</Fort>
+    <Ref>7</Ref>
+    <Will>1</Will>
+    <DefensiveAbilities>evasion</DefensiveAbilities>
+    <Speed>40 ft., swim 40 ft.</Speed>
+    <Melee>2 claws +8 (1d6+3), bite +8 (1d8+3)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilitiyScores>Str 16, Dex 16, Con 14, Int 7, Wis 10, Cha 11</AbilitiyScores>
+    <BaseAtk>4</BaseAtk>
+    <CMB>7</CMB>
+    <CMD>20 (24 vs. trip)</CMD>
+    <Languages>Aquan, Common</Languages>
+    <SQ>evolutions (bite, claws, gills, improved damage [bite], improved damage [claw], limbs [legs, 3], pounce, swim), link, share spells</SQ>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>1</Swim>
+    <Land>1</Land>
+    <AgeCategory>Adult</AgeCategory>
+    <CompanionFamiliarLink>6110</CompanionFamiliarLink>
+    <id>6111</id>
+    <UniqueMonster>0</UniqueMonster>
+    <Variant>0</Variant>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
 </ArrayOfMonster>

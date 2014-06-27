@@ -106,7 +106,7 @@ namespace CombatManager
         private static string countdcblock = "((" + spellcountblock + "|" + dcblock + "|" + castblock + "|" + otherblock + ") *)+";
 
 
-        private static string spellblock = "((?<spellname>[\\p{Pd}'\\p{L}/ ]+)([*)])? *(?<countdc>\\(" + countdcblock + "\\))?,?)";
+        private static string spellblock = "((?<spellname>[\\p{Pd}'\\p{L}/ ]+)([*)])? *(?<superscript>\\[[MS]\\])? *(?<countdc>\\(" + countdcblock + "\\))?,?)";
         private static string levelblock = " *((?<level>([0-9]))(st|nd|rd|th)?) *(\\((((?<daily>[0-9]+)/day(; (?<levelcast>[0-9]+) cast)?|at will))\\))?-?(?<spellblocks>" + spellblock + "+) *((?<more>[0-9]+) more)? *";
 
 
@@ -252,6 +252,8 @@ namespace CombatManager
             blockInfo.RangedTouch = m.IntValue("rangedtouch");
             blockInfo.CasterLevel = m.IntValue("cl");
             blockInfo.SpellFailure = m.IntValue("spellfailure");
+
+            
         }
 
 
@@ -435,6 +437,16 @@ namespace CombatManager
             if (spell.Groups["onlytext"].Success)
             {
                 spellInfo.Only = spell.Groups["onlytext"].Value;
+            }
+
+            
+            if (spell.Groups["superscript"].Success)
+            {
+                string superscript = spell.Groups["superscript"].Value;
+                if (superscript.Contains("M"))
+                {
+                    spellInfo.Mythic = true;
+                }
             }
 
             return spellInfo;

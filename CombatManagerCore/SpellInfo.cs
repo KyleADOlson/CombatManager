@@ -41,6 +41,7 @@ namespace CombatManager
         private bool _AlreadyCast;
         private String _Only;
         private String _Other;
+        private bool _Mythic;
 
         public SpellInfo() { }
 
@@ -54,6 +55,7 @@ namespace CombatManager
             _AlreadyCast = old._AlreadyCast;
             _Only = old._Only;
             _Other = old._Other;
+            _Mythic = old._Mythic;
         }
 
         public object Clone()
@@ -155,6 +157,21 @@ namespace CombatManager
                 {
                     _Other = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Other")); }
+                }
+            }
+        }
+
+
+
+        public bool Mythic
+        {
+            get { return _Mythic; }
+            set
+            {
+                if (_Mythic != value)
+                {
+                    _Mythic = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Mythic")); }
                 }
             }
         }
