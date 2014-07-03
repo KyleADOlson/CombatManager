@@ -1253,6 +1253,24 @@ namespace CombatManager
 
         }
 
+        public void FixInitiativeLinks()
+        {
+            foreach (Character character in Characters)
+            {
+                if (character.InitiativeLeaderID != null)
+                {
+                    Character leader = GetCharacterByID(character.InitiativeLeaderID.Value);
+
+                    if (leader != null)
+                    {
+                        LinkInitiative(character, leader);
+                    }
+
+                }
+            }
+            FilterList();
+        }
+
 
         public Character GetCharacterByID(Guid ID)
         {

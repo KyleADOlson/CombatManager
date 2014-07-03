@@ -794,6 +794,7 @@ namespace CombatManager
                 playerView.Refresh();
 
 
+                combatState.FixInitiativeLinks();
                 combatState.SortCombatList(false, false);
 
 
