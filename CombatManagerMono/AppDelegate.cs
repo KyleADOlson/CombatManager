@@ -27,7 +27,7 @@ namespace CombatManagerMono
         //
         public override bool FinishedLaunching (UIApplication app, NSDictionary options)
         {
-            DBSettings.UseDB = false;
+            DBSettings.UseDB = true;
 
             NSUrl url = null;
             if (options != null)

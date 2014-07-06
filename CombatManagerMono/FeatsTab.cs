@@ -22,6 +22,9 @@
 using System;
 using CombatManager;
 using System.Drawing;
+using MonoTouch.UIKit;
+
+
 namespace CombatManagerMono
 {
 	public class FeatsTab: LookupTab<Feat>
@@ -29,6 +32,9 @@ namespace CombatManagerMono
 		ButtonStringPopover typeFilterPopover;
 		
 		GradientButton typeFilterButton;
+
+        GradientButton editButton;
+        GradientButton deleteButton;
 		
 		string typeFilter = null;	
 		
@@ -105,7 +111,60 @@ namespace CombatManagerMono
 			typeFilterButton = b;
 			
 			FilterView.AddSubview(b);
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new RectangleF(locX, locY, 90, bHeight);
+            locX += b.Frame.Width + marginX;
+            b.SetText("New");
+            b.TouchUpInside += NewButtonClicked;
+
+            FilterView.AddSubview(b);
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new RectangleF(locX, locY, 90, bHeight);
+            locX += b.Frame.Width + marginX;
+            b.SetText("Customize");
+            b.TouchUpInside += CustomizeButtonClicked;
+            FilterView.AddSubview(b);
+
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new RectangleF(locX, locY, 90, bHeight);
+            locX += b.Frame.Width + marginX;
+            b.SetText("Edit");
+            b.TouchUpInside += EditButtonClicked;
+            FilterView.AddSubview(b);
+
+            editButton = b;
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new RectangleF(locX, locY, 90, bHeight);
+            locX += b.Frame.Width + marginX;
+            b.SetText("Delete");
+            b.TouchUpInside += DeleteButtonClicked;
+            FilterView.AddSubview(b);
+
+            deleteButton = b;
+
+
 		}
+
+        protected override void ShowItem(Feat item)
+        {
+            base.ShowItem(item);
+            if (editButton != null)
+            {
+                editButton.Enabled = item != null && item.IsCustom;
+            }
+            if (deleteButton != null)
+            {
+                deleteButton.Enabled = item != null && item.IsCustom;
+            }
+        }
 
 		void HandleTypeFilterPopoverItemClicked (object sender, ButtonStringPopover.PopoverEventArgs e)
 		{
@@ -121,6 +180,80 @@ namespace CombatManagerMono
 			filterField.Text = "";
 			Filter();
 		}
+
+        void NewButtonClicked(object sender, EventArgs e)
+        {
+            Feat f = new Feat();
+            FeatEditorDialog dlg = new FeatEditorDialog(f);
+            dlg.OKClicked += (object se, EventArgs ea) => 
+            {
+                Feat.AddCustomFeat(f);
+                Filter(true);
+            };
+            MainUI.MainView.AddSubview(dlg.View);
+        }
+
+        void CustomizeButtonClicked(object sender, EventArgs e)
+        {
+            if (DisplayItem != null)
+            {
+                Feat clone = (Feat)DisplayItem.Clone();
+
+                FeatEditorDialog dlg = new FeatEditorDialog(clone);
+                dlg.OKClicked += (object se, EventArgs ea) => 
+                {
+                    clone.DBLoaderID = 0;
+                    Feat.AddCustomFeat(clone);
+                    Filter(true);
+                };
+                MainUI.MainView.AddSubview(dlg.View);
+            }
+        }
+
+        void EditButtonClicked(object sender, EventArgs e)
+        {
+            if (DisplayItem != null && DisplayItem.IsCustom)
+            {
+                Feat clone = (Feat)DisplayItem.Clone();
+
+                FeatEditorDialog dlg = new FeatEditorDialog(clone);
+                dlg.OKClicked += (object se, EventArgs ea) => 
+                {
+                    DisplayItem.CopyFrom(clone);
+                    Feat.UpdateCustomFeat(DisplayItem);
+                    Filter(true);
+                };
+                MainUI.MainView.AddSubview(dlg.View);
+            }
+        }
+
+        void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            if (DisplayItem != null && DisplayItem.IsCustom)
+            {
+                UIAlertView alertView = new UIAlertView    
+                {        
+                    Title = "Are you sure you want to delete this feat?",
+                    Message = "This feat will be deleted permanently"
+
+                };        
+                alertView.AddButton("Cancel");    
+                alertView.AddButton("OK");
+                alertView.Show();
+                alertView.Clicked += (object se, UIButtonEventArgs ea) => 
+                {
+                    if (ea.ButtonIndex == 1)
+                    {
+
+                        Feat.RemoveCustomFeat(DisplayItem);
+                        Filter(true);
+                    }
+                };
+
+            }
+        }
+
+
 	}
 }
 
