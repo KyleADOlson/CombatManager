@@ -173,6 +173,17 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="{x:Type TextBox}">
+             <Setter Property="Background" Value="White"/>
+			 <Setter Property="Foreground" Value="Black"/>
+			 <Setter Property="SelectionBrush" Value="#FF3399FF" />
+			 <Setter Property="BorderBrush" Value="#FFABADB3" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+             <Setter Property="Background" Value="#FFDDDDDD"/>
+			 <Setter Property="Foreground" Value="Black"/>
+			 <Setter Property="BorderBrush" Value="#FF707070" />
+        </Style>
 
         <CollectionViewSource  x:Key="SmallImages">
             <CollectionViewSource.Source>

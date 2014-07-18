@@ -74,6 +74,7 @@ namespace CombatManager
         private bool _ShowHiddenInitValue;
         private bool _AddMonstersHidden;
         private bool _StatsOpenByDefault;
+        private bool _CheckForUpdates;
 
         private bool _PlayerMiniMode;
         private bool _MonsterMiniMode;
@@ -123,6 +124,7 @@ namespace CombatManager
             _PlayerMiniMode = false;
             _MonsterMiniMode = false;
             _RunCombatViewService = false;
+            _CheckForUpdates = true;
             _MainWindowWidth = -1;
             _MainWindowHeight = -1;
             _MainWindowLeft = int.MinValue;
@@ -461,6 +463,18 @@ namespace CombatManager
                 }
             }
         }
+        public bool CheckForUpdates
+        {
+            get { return _CheckForUpdates; }
+            set
+            {
+                if (_CheckForUpdates != value)
+                {
+                    _CheckForUpdates = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CheckForUpdates")); }
+                }
+            }
+        }
 
         public int InitiativeConditionsSize
         {
@@ -634,7 +648,8 @@ namespace CombatManager
                 RunCombatViewService = LoadBoolValue("RunCombatViewService", false);
                 ShowHiddenInitValue = LoadBoolValue("ShowHiddenInitValue", false);
                 AddMonstersHidden = LoadBoolValue("AddMonstersHidden", false);
-                StatsOpenByDefault = LoadBoolValue("StatsOpenByDefault", false); 
+                StatsOpenByDefault = LoadBoolValue("StatsOpenByDefault", false);
+                CheckForUpdates = LoadBoolValue("CheckForUpdates", true); 
                 MonsterDBFilter = (MonsterSetFilter)LoadIntValue("MonsterDBFilter", (int)MonsterSetFilter.Monsters);
                 MonsterTabFilter = (MonsterSetFilter)LoadIntValue("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
 
@@ -675,6 +690,7 @@ namespace CombatManager
                         SaveBoolValue(key, "ShowHiddenInitValue", ShowHiddenInitValue);
                         SaveBoolValue(key, "AddMonstersHidden", AddMonstersHidden);
                         SaveBoolValue(key, "StatsOpenByDefault", StatsOpenByDefault);
+                        SaveBoolValue(key, "CheckForUpdates", CheckForUpdates);
                         
                     }
 
