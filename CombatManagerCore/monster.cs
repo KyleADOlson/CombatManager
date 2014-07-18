@@ -3234,31 +3234,8 @@ namespace CombatManager
             return returnText;
         }
 
-        private static string ChangeStartingMod(string text, int diff)
-        {
-            string returnText = text;
 
-            if (text != null)
-            {
-
-                Regex regName = new Regex("^(\\+|-)[0-9]+");
-
-                Match match = regName.Match(returnText);
-
-                if (match.Success)
-                {
-                    int val = int.Parse(match.Value);
-
-                    val += diff;
-
-                    returnText = regName.Replace(returnText, CMStringUtilities.PlusFormatNumber(val), 1);
-                }
-            }
-
-            return returnText;
-        }
-
-        private static string ChangeStartingModOrVal(string text, int diff)
+        public static string ChangeStartingModOrVal(string text, int diff)
         {
             string returnText = text;
 
@@ -5552,7 +5529,7 @@ namespace CombatManager
             }
 
             //adjust CMB
-            CMB = ChangeStartingMod(CMB, diff);
+            CMB = ChangeStartingModOrVal(CMB, diff);
 
             //adjust CMD
             CMD = ChangeCMD(CMD, diff);
