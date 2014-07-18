@@ -41,6 +41,7 @@ namespace CombatManager
 	{
 		public static RowsRet ExecuteCommand(this SqliteConnection sql, string command)
 		{
+            System.Diagnostics.Debug.WriteLine(command);
 			SqliteCommand cmd =  sql.CreateCommand();
 			cmd.CommandText = command;
 			
@@ -222,13 +223,16 @@ namespace CombatManager
 		
 		public RowsRet(SqliteDataReader rd)
 		{
+
+            #if !MONO
 			if (rd.Read())
 			{
 				_Headers = new Row(this);
 				
 				for (int i=0; i<rd.FieldCount; i++)
 				{
-					_ColumnIndexes[rd.GetString(i)] = i;	
+                    _ColumnIndexes[rd.GetString(i)] = i;
+	
 					_Headers.Cols.Add(rd.GetString(i));
 				}
 			}
@@ -243,6 +247,54 @@ namespace CombatManager
 				}
 				this.Rows.Add(row);
 			}
+            #else
+            bool first = true;
+            while (rd.Read())
+            {
+                if (first)
+                {
+                    first = false;
+                    _Headers = new Row(this);
+
+                    for (int i=0; i<rd.FieldCount; i++)
+                    {
+                        
+                        _ColumnIndexes[rd.GetName(i)] = i;
+
+                        _Headers.Cols.Add(rd.GetName(i));
+                    }
+                }
+
+
+                Row row = new Row(this);
+                int count = rd.FieldCount;
+                for (int i=0; i<count; i++)
+                {
+                    Type t = rd.GetFieldType(i);
+
+                    System.Diagnostics.Debug.WriteLine(rd.GetName(i) + " " + t.ToString() + " " + i);
+
+                    if (rd.IsDBNull(i))
+                    {
+                        row.Cols.Add(null);
+                    }
+                    else if (t == typeof(Int64))
+                    {
+                        row.Cols.Add(rd.GetInt64(i).ToString());
+                    }
+                    else if (t == typeof(String))
+                    {
+                        row.Cols.Add(rd.GetString(i));
+                    }
+                    else if (t == typeof(Object))
+                    {
+                        row.Cols.Add("");
+                    }
+
+                }
+                this.Rows.Add(row);
+            }
+            #endif
 		}
 
         public Row Headers
@@ -441,7 +493,9 @@ namespace CombatManager
                 string backtext = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 string backname = fullfilename + backtext + ".db";
 #else
-				sql = new SqliteConnection(fullfilename);
+                sql = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + fullfilename);
+
+                sql.Open();
 #endif
 				
 
@@ -533,7 +587,7 @@ namespace CombatManager
 
                     sql2.Open(newfile);
 #else
-					SqliteConnection sql2 = new SqliteConnection(newfile);
+                    SqliteConnection sql2 = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + newfile);
 					
 #endif
 					
@@ -556,7 +610,7 @@ namespace CombatManager
                     sql2.SkipHeaderRow = true;
                     sql.Open(fullfilename);
 #else
-					sql = new SqliteConnection(fullfilename);
+                    sql = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + fullfilename);
 #endif
                 }
 

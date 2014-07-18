@@ -43,6 +43,7 @@ namespace CombatManagerMono
 		public string Icon {get; set;}
 		public object Tag {get; set;}
 		public bool Disabled{get; set;}
+        public bool Selected{ get; set;}
 		public List<ButtonStringPopoverItem> Subitems {get;set;}
 		
 		public ButtonStringPopoverItem()
@@ -311,8 +312,13 @@ namespace CombatManagerMono
 					}
 					
 					UIImage image = state.GetCellIcon(indexPath.Row);
+                    if (item.Selected)
+                    {
+                        image = UIExtensions.GetSmallIcon("check");
+                    }
 					cell.ImageView.Image = image;
 					cell.ImageView.Frame = new RectangleF(0, 0, 16, 16);
+
 				}
 				
 	

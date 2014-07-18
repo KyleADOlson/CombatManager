@@ -716,7 +716,8 @@ namespace CombatManagerMono
 
         public void RollSave(Monster.SaveType type, Character ch)
         {
-            int mod = ch.Monster.GetSave(type);
+            int? save = ch.Monster.GetSave(type);
+            int mod = (save == null)?0:save.Value;
             DieRoll roll = new DieRoll(1, 20, mod);
 
             AddRoll (Monster.GetSaveText(type) + ": ", roll);

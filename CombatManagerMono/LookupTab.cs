@@ -167,7 +167,7 @@ namespace CombatManagerMono
 		{
 		}
 		
-		void ShowItem(T item)
+        protected virtual void ShowItem(T item)
 		{
 			if (CompareItems(item, default(T)))
 			{
@@ -179,6 +179,7 @@ namespace CombatManagerMono
 				_displayItem = ModifiedItem(item);
 				webView.LoadHtmlString(ItemHtml(_displayItem), new NSUrl("http://localhost/"));
 			}
+
 		}
 		
 		protected virtual T ModifiedItem(T item)
@@ -191,10 +192,14 @@ namespace CombatManagerMono
 			ShowItem (_selectedItem);
 		}
 
+        protected void Filter()
+        {
+            Filter(false);
+        }
 		
-		protected void Filter()
+        protected void Filter(bool reload)
 		{
-			if (sortedItems == null)
+            if (sortedItems == null || reload)
 			{
 				CreateSortedItems();
 			}
@@ -376,6 +381,13 @@ namespace CombatManagerMono
 		{
 			b.Font = UIFont.SystemFontOfSize(14);
 		}
+
+
+        protected void StyleDBButton(GradientButton b)
+        {
+            b.Font = UIFont.SystemFontOfSize(14);
+            b.Gradient = new GradientHelper(CMUIColors.SecondaryColorBMedium, CMUIColors.SecondaryColorBDarker);
+        }
 		
 		private class TableDelegate : UITableViewDelegate
 		{

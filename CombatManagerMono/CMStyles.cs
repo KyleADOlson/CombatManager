@@ -9,7 +9,7 @@ namespace CombatManagerMono
 
         public static void TextFieldStyle(GradientButton b, float fontsize = 15.0f)
         {
-            /*b.TitleLabel.TextColor =0xFF000000.UIColor();*/
+
             b.SetTitleColor(UIColor.Black, UIControlState.Normal);
             b.BorderColor = 0xFF777777.UIColor();
             b.Gradient = new GradientHelper(0xFFFFFFFF.UIColor());

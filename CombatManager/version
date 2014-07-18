@@ -1,4 +1,10 @@
-﻿1.5.8
+﻿1.6.0
+Fix initiative window crash
+
+1.5.9
+Installer fix
+
+1.5.8
 Fix display of names on Initiative Window
 Add setting to allow monsters to be added hidden
 Add spell formatting
@@ -7,6 +13,7 @@ Stats panel begins open option
 Add ability and combat maneuver rolls
 Resize conditions on initiative window
 Add conditions to initiative list and active player display
+Fix initiative links when loading combat state
 
 1.5.7
 Optionally display conditions on initiative window

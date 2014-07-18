@@ -236,6 +236,10 @@
     <Compile Include="TreasureTab.cs" />
     <Compile Include="SideTabBar.cs" />
     <Compile Include="TreasureGeneratorPage.cs" />
+    <Compile Include="FeatEditorDialog.cs" />
+    <Compile Include="FeatEditorDialog.designer.cs">
+      <DependentUpon>FeatEditorDialog.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="CombatManagerMonoViewController_iPhone.xib" />
@@ -278,6 +282,8 @@
     <InterfaceDefinition Include="NaturalAttackDialog_iPad.xib" />
     <InterfaceDefinition Include="AboutView_iPhone.xib" />
     <InterfaceDefinition Include="AboutView_iPad.xib" />
+    <InterfaceDefinition Include="FeatEditorDialog_iPhone.xib" />
+    <InterfaceDefinition Include="FeatEditorDialog_iPad.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

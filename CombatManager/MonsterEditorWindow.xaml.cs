@@ -183,7 +183,10 @@ namespace CombatManager
             DieRollEditWindow editWindow = new DieRollEditWindow();
             editWindow.Roll = DieRoll.FromString(Monster.HD);
             editWindow.HasToughness = _Monster.HasFeat("Toughness");
-            editWindow.HPstatmod = (int) (_Monster.Type != "undead" ? ((_Monster.Constitution/2) - 5) : ((_Monster.Charisma/2) - 5));
+            
+            editWindow.HPstatmod = (int) (_Monster.Type != "undead" ? 
+                ((((_Monster.Constitution!= null)?_Monster.Constitution:10)/2) - 5) : 
+                ((((_Monster.Charisma!=null)?_Monster.Charisma:10)/2) - 5));
             editWindow.Owner = this;
             editWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             if (editWindow.ShowDialog() == true)

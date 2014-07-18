@@ -43,6 +43,7 @@ namespace CombatManagerMono
 		PropertyInfo _Property;
 		PropertyFormatDelegate _FormatDelegate;
 		bool _Multiline;
+        bool _StringList;
 		String _Title;
 		ButtonStringPopover _ValueListPopover;
 		HDEditorDialog _HDDialog;
@@ -79,42 +80,42 @@ namespace CombatManagerMono
 		{
 			if (_ValueList == null)
 				{
-				if (_Property.PropertyType == typeof(string))
-				{
-					_TextBoxDialog = new TextBoxDialog();
-					_TextBoxDialog.HeaderText = DisplayTitle;
-					_TextBoxDialog.Value = (string)Value;
-					_TextBoxDialog.SingleLine = !_Multiline;
-					_TextBoxDialog.OKClicked += Handle_TextBoxDialogOKClicked;
-					_DialogParent.AddSubview(_TextBoxDialog.View);
-				}
-				else if (_Property.PropertyType == typeof(int) || _Property.PropertyType == typeof(int?))
-				{
-					NumberModifyPopover pop = new NumberModifyPopover();
-						pop.ShowOnView(_Button);
-					if (_Property.PropertyType == typeof(int?))
-					{
-						pop.Value = (int?)Value;
-					}
-					else
-					{
+                if (_Property.PropertyType == typeof(string))
+                {
+                    _TextBoxDialog = new TextBoxDialog();
+                    _TextBoxDialog.HeaderText = DisplayTitle;
+                    _TextBoxDialog.Value = (string)Value;
+                    _TextBoxDialog.SingleLine = !_Multiline;
+                    _TextBoxDialog.OKClicked += Handle_TextBoxDialogOKClicked;
+                    _DialogParent.AddSubview(_TextBoxDialog.View);
+                }
+                else if (_Property.PropertyType == typeof(int) || _Property.PropertyType == typeof(int?))
+                {
+                    NumberModifyPopover pop = new NumberModifyPopover();
+                    pop.ShowOnView(_Button);
+                    if (_Property.PropertyType == typeof(int?))
+                    {
+                        pop.Value = (int?)Value;
+                    }
+                    else
+                    {
 						
-						pop.Value = (int)Value;
-					}
-					pop.ValueType = DisplayTitle;
-					pop.Title = DisplayTitle;
-					pop.Data = _PropertyObject;
-					pop.Nullable = (_Property.PropertyType == typeof(int?));
-					pop.NumberModified += HandlePopNumberModified;
-				}
-				else if (_Property.PropertyType == typeof(DieRoll))
-				{
-					_HDDialog = new HDEditorDialog();
-					_HDDialog.HeaderText = DisplayTitle;
-					_HDDialog.DieRoll = (DieRoll)Value;
-					DialogParent.AddSubview(_HDDialog.View);
-					_HDDialog.OKClicked += Handle_HDDialogOKClicked;
-				}
+                        pop.Value = (int)Value;
+                    }
+                    pop.ValueType = DisplayTitle;
+                    pop.Title = DisplayTitle;
+                    pop.Data = _PropertyObject;
+                    pop.Nullable = (_Property.PropertyType == typeof(int?));
+                    pop.NumberModified += HandlePopNumberModified;
+                }
+                else if (_Property.PropertyType == typeof(DieRoll))
+                {
+                    _HDDialog = new HDEditorDialog();
+                    _HDDialog.HeaderText = DisplayTitle;
+                    _HDDialog.DieRoll = (DieRoll)Value;
+                    DialogParent.AddSubview(_HDDialog.View);
+                    _HDDialog.OKClicked += Handle_HDDialogOKClicked;
+                }
 			}
 		}
 
@@ -126,8 +127,41 @@ namespace CombatManagerMono
 		
 		void Handle_ValueListPopoverItemClicked (object sender, ButtonStringPopover.PopoverEventArgs e)
 		{
-			Value = e.Tag;	
+            if (StringList)
+            {
+                List<String> values = ((String)Value).Tokenize(',');
+
+                String clicked = (String)e.Tag;
+                if (values.Contains(clicked))
+                {
+                    if (values.Count > 1 || AllowEmptyStringList)
+                    {
+                        values.Remove(clicked);
+                    }
+                }
+                else
+                {
+                    values.Add(clicked);
+                }
+                Value = values.ToTokenString(',');
+            }
+
+            UpdateButton();
 		}
+
+        void Handle_ValueListWillShowPopover(object sender, WillShowPopoverEventArgs e)
+        {
+            if (StringList)
+            {
+                List<String> values = ((String)Value).Tokenize(',');
+
+                foreach (ButtonStringPopoverItem item in _ValueListPopover.Items)
+                {
+                    item.Selected = values.Contains((string)item.Tag);
+                }
+
+            }
+        }
 
 		void HandlePopNumberModified (object sender, NumberModifyEventArgs args)
 		{
@@ -227,7 +261,10 @@ namespace CombatManagerMono
 		
 		void UpdateButton()
 		{
-			_Button.SetText(CurrentText);
+            if (!Multiline)
+            {
+                _Button.SetText(CurrentText);
+            }
             if (_TextView != null)
             {
                 _TextView.Text = CurrentText;
@@ -239,18 +276,18 @@ namespace CombatManagerMono
 			get
 			{
 				string text = "";
-				if (_FormatDelegate != null)
-				{
-					text = _FormatDelegate(Value);	
-				}
-				else if (Value != null)
-				{
-					text = Value.ToString();
-				}
-				else if (_Property.PropertyType == typeof(int?))
-				{
-					text = "-";	
-				}
+                if (_FormatDelegate != null)
+                {
+                    text = _FormatDelegate(Value);	
+                }
+                else if (Value != null)
+                {
+                    text = Value.ToString();
+                }
+                else if (_Property.PropertyType == typeof(int?))
+                {
+                    text = "-";	
+                }
 				return text;
 			}
 			
@@ -297,6 +334,7 @@ namespace CombatManagerMono
                         _Button.Add(_TextView);
                         _Button.BringSubviewToFront(_TextView);
                         _TextView.Text = _Button.TitleLabel.Text;
+                        _Button.SetText("");
                     }
                     _TextView.Hidden = !_Multiline;
                 
@@ -353,6 +391,21 @@ namespace CombatManagerMono
 				_MaxIntValue = value;
 			}
 		}
+
+        public bool StringList
+        {
+            get
+            {
+                return _StringList;
+            }
+            set
+            {
+                _StringList = value;
+            }
+        }
+
+        public bool AllowEmptyStringList { get; set;}
+
 		public string DisplayTitle
 		{
 			get
@@ -409,6 +462,7 @@ namespace CombatManagerMono
 						{
 							_ValueListPopover.Items.Add(new ButtonStringPopoverItem() {Text = pair.Value, Tag = pair.Key});		
 						}
+                        _ValueListPopover.WillShowPopover += Handle_ValueListWillShowPopover;
 						_ValueListPopover.ItemClicked += Handle_ValueListPopoverItemClicked;
 					}
 						

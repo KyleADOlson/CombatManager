@@ -124,7 +124,7 @@ namespace CombatManager
             {
                 CharacterNameText.Text = "";
             }
-            if ((CombatState.CurrentCharacter.IsMonster && (UserSettings.Settings.InitiativeHideMonsterNames || !UserSettings.Settings.InitiativeShowMonsters))
+            else if ((CombatState.CurrentCharacter.IsMonster && (UserSettings.Settings.InitiativeHideMonsterNames || !UserSettings.Settings.InitiativeShowMonsters))
                 || (!CombatState.CurrentCharacter.IsMonster && (UserSettings.Settings.InitiativeHidePlayerNames || !UserSettings.Settings.InitiativeShowPlayers)))
             {
                 CharacterNameText.Text = "??????";

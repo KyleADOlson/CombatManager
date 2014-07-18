@@ -69,6 +69,38 @@ namespace CombatManager
             return StringCapitalizer.Capitalize(text);
         }
 
+        public static List<String> Tokenize(this String text, char token)
+        {
+            if (text == null)
+            {
+                return new List<String>();
+            }
+            List<String> strings = new List<String>();
+            foreach (string str in ((String)text).Split(new char[]{','}))
+            {
+                strings.Add(str.Trim());
+            }
+            return strings;
+        }
+
+        public static String ToTokenString(this List<String> strings, char token)
+        {
+            if (strings == null || strings.Count == 0)
+            {
+                return null;
+            }
+            String list = "";
+            foreach (String str in strings)
+            {
+                if (list != "")
+                {
+                    list += token + " ";
+                }
+                list += str;
+            }
+            return list;
+        }
+
 
         public static string PlusFormatSpaceNumber(int number)
         {
