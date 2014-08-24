@@ -883,6 +883,7 @@ namespace CombatManager
                     spell = (string)link.Tag;
                 }
 
+                spell = Spell.StandarizeSpellName(spell);
 
                 _LinkHandler(this, new DocumentLinkEventArgs(spell, "Spell"));
 

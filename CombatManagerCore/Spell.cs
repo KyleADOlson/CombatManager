@@ -331,36 +331,53 @@ namespace CombatManager
             {
                 return _SpellDictionary[CMStringUtilities.DecommaText(name)][0];
             }
-            else if (name.StartsWith("greater ", StringComparison.CurrentCultureIgnoreCase))
+            else
             {
-                string subname = name.Substring("greater ".Length) + ", Greater";
+                name = StandarizeSpellName(name);
 
-
-                if (_SpellDictionary.ContainsKey(subname))
+                if (_SpellDictionary.ContainsKey(name))
                 {
-                    return _SpellDictionary[subname][0];
+                    return _SpellDictionary[name][0];
                 }
-
             }
-            else if (name.StartsWith("lesser ", StringComparison.CurrentCultureIgnoreCase))
-            {
-                string subname = name.Substring("lesser ".Length) + ", Lesser";
-
-
-                if (_SpellDictionary.ContainsKey(subname))
-                {
-                    return _SpellDictionary[subname][0];
-                }
-
-            }
-
 
             return null;
-            
-                
         }
 
-        
+        public static string StandarizeSpellName(string name)
+        {
+            name = stripMeta(name);
+            
+            if (name.StartsWith("greater ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                name = name.Substring("greater ".Length) + ", Greater";
+            }
+
+            if (name.StartsWith("lesser ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                name = name.Substring("lesser ".Length) + ", Lesser";
+            }
+            
+            if (name.StartsWith("mass ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                name = name.Substring("mass ".Length) + ", Mass";
+            }
+
+            return name;
+        }
+
+        private static List<string> metaAdj = new List<string> { "quickened", "selective", "maximized", "empowered", "enlarged", "extended", "heightened", "silenced", "stilled", "widened" };
+        private static string stripMeta(string name)
+        {
+            foreach (string meta in metaAdj)
+            {
+                if (name.IndexOf(meta, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                {
+                    name = Regex.Replace(name, meta, string.Empty, RegexOptions.IgnoreCase);
+                }
+            }
+            return name.Trim();
+        }        
 
         public static ObservableCollection<Spell> Spells
         {
