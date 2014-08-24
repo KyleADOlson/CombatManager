@@ -29,6 +29,7 @@
                       <MultiBinding Converter="{StaticResource CustomCombatListCharacterConverter}">
                         <Binding />
                         <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type local:CustomCombatList}}" />
+						<Binding Path="HiddenName"/>
                       </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
