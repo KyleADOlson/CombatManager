@@ -170,7 +170,15 @@ namespace CombatManager
             topParagraph.Inlines.AddRange(CreateItemIfNotNull(null, false, monster.Type, " ", false));
             topParagraph.Inlines.AddRange(CreateItemIfNotNull(null, false, monster.SubType, null, false));
             topParagraph.Inlines.Add(new LineBreak());
-            topParagraph.Inlines.AddRange(CreateItemIfNotNull("Init ", true, monster.Init.PlusFormat(), "; ", false));
+            if (monster.DualInit != null)
+            {
+                topParagraph.Inlines.AddRange(CreateItemIfNotNull("Init ", true, monster.Init.PlusFormat(), "/", false));
+                topParagraph.Inlines.AddRange(CreateItemIfNotNull(null, true, monster.DualInit.PlusFormat(), ", dual initiative; ", false));
+            }
+            else
+            {
+                topParagraph.Inlines.AddRange(CreateItemIfNotNull("Init ", true, monster.Init.PlusFormat(), "; ", false));
+            }
             topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, monster.Senses, null, false));
             if (monster.Aura != null && monster.Aura.Length > 0)
             {
