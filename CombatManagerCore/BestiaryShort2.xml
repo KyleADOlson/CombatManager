@@ -46897,4 +46897,2263 @@
     <Mythic>0</Mythic>
     <MT>0</MT>
   </Monster>
+  <Monster>
+    <Name>Degenerate Serpentfolk</Name>
+    <CR>4</CR>
+    <XP>1200</XP>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>monstrous humanoid</Type>
+    <Init>5</Init>
+    <Senses>darkvision 60 ft., scent; Perception +13</Senses>
+    <AC>18, touch 11, flat-footed 17</AC>
+    <AC_Mods>(+1 Dex, +7 natural)</AC_Mods>
+    <HP>47</HP>
+    <HD>(5d10+20)</HD>
+    <Saves>Fort +7, Ref +5, Will +5</Saves>
+    <Fort>7</Fort>
+    <Ref>5</Ref>
+    <Will>5</Will>
+    <Immune>mind-affecting effects, paralysis, poison</Immune>
+    <SR>15</SR>
+    <Speed>30 ft.</Speed>
+    <Melee>dagger +10 (1d4+5/19-20), bite +6 (1d6+2 plus poison)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 20, Dex 13, Con 19, Int 4, Wis 13, Cha 6</AbilityScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>+10</CMB>
+    <CMD>21</CMD>
+    <RacialMods>+8 Escape Artist, +4 Perception</RacialMods>
+    <Languages>Aklo, Common, Draconic, Undercommon; telepathy 100 ft.</Languages>
+    <Environment> any land (usually jungles or underground)</Environment>
+    <Organization>solitary, pair, or cult (3-12)</Organization>
+    <Treasure>NPC gear (dagger, other treasure)</Treasure>
+    <Group>Serpentfolk</Group>
+    <Source>d20pfsrd</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6115</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Bone Priest</Name>
+    <CR>4</CR>
+    <XP>1200</XP>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft.; Perception +11</Senses>
+    <AC>16, touch 12, flat-footed 14</AC>
+    <AC_Mods>(+2 Dex, +4 natural)</AC_Mods>
+    <HP>37</HP>
+    <HD>(5d8+15)</HD>
+    <Saves>Fort +4, Ref +3, Will +7</Saves>
+    <Fort>4</Fort>
+    <Ref>3</Ref>
+    <Will>7</Will>
+    <DefensiveAbilities>channel resistance +2</DefensiveAbilities>
+    <DR>5/bludgeoning and magic</DR>
+    <Immune>cold, undead traits</Immune>
+    <Speed>30 ft.</Speed>
+    <Melee>mwk bastard sword +7 (1d10+3/19-20) or  slam +5 (1d4+3)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpellDomains>Madness</SpellDomains>
+    <AbilityScores>Str 14, Dex 15, Con -, Int 11, Wis 16, Cha 17</AbilityScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>+5</CMB>
+    <CMD>17</CMD>
+    <Languages>Common, Undercommon</Languages>
+    <Environment> any</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>standard (mwk bastard sword, other treasure)</Treasure>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6132</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Caustic Stalker</Name>
+    <CR>7</CR>
+    <XP>3200</XP>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(air, elemental, extraplanar)</SubType>
+    <Init>12</Init>
+    <Senses>darkvision 60 ft.; Perception +12</Senses>
+    <AC>19, touch 19, flat-footed 10</AC>
+    <AC_Mods>(+8 Dex, +1 dodge)</AC_Mods>
+    <HP>73</HP>
+    <HD>(7d10+35)</HD>
+    <Saves>Fort +10, Ref +13, Will +4</Saves>
+    <Fort>10</Fort>
+    <Ref>13</Ref>
+    <Will>4</Will>
+    <DefensiveAbilities>amorphous</DefensiveAbilities>
+    <DR>5/-</DR>
+    <Immune>acid, elemental traits</Immune>
+    <Weaknesses>vulnerable to wind</Weaknesses>
+    <Speed>fly 40 ft. (perfect)</Speed>
+    <Melee>2 slams +15 (1d6 plus chemical burn)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str -, Dex 27, Con 20, Int 5, Wis 14, Cha 11</AbilityScores>
+    <BaseAtk>7</BaseAtk>
+    <CMB>-</CMB>
+    <CMD>-</CMD>
+    <Languages>Auran</Languages>
+    <SQ>misty form</SQ>
+    <Environment> any underground</Environment>
+    <Organization>solitary, pair, smog (3-10)</Organization>
+    <Treasure>incidental</Treasure>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>0</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6133</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Emerald Automaton</Name>
+    <CR>4</CR>
+    <XP>1200</XP>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>construct</Type>
+    <Init>1</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +0</Senses>
+    <Aura>electricity (5 ft., DC 12)</Aura>
+    <AC>17, touch 11, flat-footed 16</AC>
+    <AC_Mods>(+1 Dex, +6 natural)</AC_Mods>
+    <HP>47</HP>
+    <HD>(5d10+20)</HD>
+    <Saves>Fort +1, Ref +2, Will +1</Saves>
+    <Fort>1</Fort>
+    <Ref>2</Ref>
+    <Will>1</Will>
+    <DR>5/adamantine</DR>
+    <Immune>construct traits</Immune>
+    <Weaknesses>magic dependent</Weaknesses>
+    <Speed>30 ft.</Speed>
+    <Melee>guisarme +10 (2d4+7/x3) or  longsword +10 (1d8+5/19-20), slam +5 (1d4+2)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft. (10 ft. with guisarme)</Reach>
+    <AbilityScores>Str 20, Dex 13, Con -, Int -, Wis 11, Cha 1</AbilityScores>
+    <BaseAtk>5</BaseAtk>
+    <CMB>+10 (+12 sunder)</CMB>
+    <CMD>21 (23 vs. sunder)</CMD>
+    <SQ>proficient</SQ>
+    <Environment> any</Environment>
+    <Organization>solitary, pair, or squad (3-8)</Organization>
+    <Treasure>incidental (guisarme, other treasure)</Treasure>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6134</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Lava Lurker</Name>
+    <CR>9</CR>
+    <XP>6400</XP>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(elemental, extraplanar, fire)</SubType>
+    <Init>5</Init>
+    <Senses>darkvision 60 ft., tremorsense 60 ft.; Perception +15</Senses>
+    <AC>22, touch 11, flat-footed 21</AC>
+    <AC_Mods>(+1 Dex, +11 natural)</AC_Mods>
+    <HP>114</HP>
+    <HD>(12d10+48)</HD>
+    <Saves>Fort +12, Ref +9, Will +4</Saves>
+    <Fort>12</Fort>
+    <Ref>9</Ref>
+    <Will>4</Will>
+    <Immune>electricity, elemental traits, fire</Immune>
+    <Weaknesses>vulnerable to cold, vulnerable to water</Weaknesses>
+    <Speed>30 ft., swim 30 ft. (in molten rock only)</Speed>
+    <Melee>2 slams +20 (1d6+8 plus burn)</Melee>
+    <Ranged>magma ball +14 (1d6+8 plus burn)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 26, Dex 13, Con 18, Int 5, Wis 10, Cha 11</AbilityScores>
+    <BaseAtk>12</BaseAtk>
+    <CMB>+20</CMB>
+    <CMD>31</CMD>
+    <RacialMods>+4 Stealth in magma</RacialMods>
+    <Languages>Ignan</Languages>
+    <Environment> any volcano or underground</Environment>
+    <Organization>solitary, pair, or flow (3-6)</Organization>
+    <Treasure>incidental</Treasure>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>1</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6135</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Moon Spider</Name>
+    <CR>2</CR>
+    <XP>600</XP>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>magical beast</Type>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft., low-light vision, tremorsense 60 ft.; Perception +10</Senses>
+    <AC>14, touch 12, flat-footed 12</AC>
+    <AC_Mods>(+2 Dex, +2 natural)</AC_Mods>
+    <HP>22</HP>
+    <HD>(3d10+6)</HD>
+    <Saves>Fort +5, Ref +5, Will +3</Saves>
+    <Fort>5</Fort>
+    <Ref>5</Ref>
+    <Will>3</Will>
+    <Speed>30 ft., climb 30 ft.</Speed>
+    <Melee>bite +4 (1d6+1 plus poison)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 12, Dex 15, Con 14, Int 5, Wis 14, Cha 7</AbilityScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>+4</CMB>
+    <CMD>16</CMD>
+    <RacialMods>+16 Climb, +4 Perception, +4 Stealth</RacialMods>
+    <Languages>Common (can't speak)</Languages>
+    <SQ>moon spider webs</SQ>
+    <Environment> temperate forest</Environment>
+    <Organization>solitary, pair, or colony (3-8)</Organization>
+    <Treasure>standard</Treasure>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>1</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6136</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Large Shadowfire Fire Elemental</Name>
+    <CR>7</CR>
+    <XP>3200</XP>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>outsider</Type>
+    <SubType>(elemental, extraplanar, fire)</SubType>
+    <Init>10</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +11</Senses>
+    <AC>20, touch 16, flat-footed 13</AC>
+    <AC_Mods>(+6 Dex, +1 dodge, +4 natural, -1 size)</AC_Mods>
+    <HP>60</HP>
+    <HD>(8d10+16)</HD>
+    <Saves>Fort +8, Ref +12, Will +4</Saves>
+    <Fort>8</Fort>
+    <Ref>12</Ref>
+    <Will>4</Will>
+    <DefensiveAbilities>fire absorption, incorporeal step, shadow blend (20% miss chance except in bright light)</DefensiveAbilities>
+    <DR>5/-</DR>
+    <Immune>cold, elemental traits, fire</Immune>
+    <Resist>electricity 10</Resist>
+    <SR>13</SR>
+    <Speed>50 ft.</Speed>
+    <Melee>2 slams +13 (1d8+3 plus shadow touch and burn)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 16, Dex 23, Con 14, Int 6, Wis 11, Cha 15</AbilityScores>
+    <BaseAtk>8</BaseAtk>
+    <CMB>+12</CMB>
+    <CMD>29</CMD>
+    <RacialMods>+8 Acrobatics when jumping</RacialMods>
+    <Languages>Ignan</Languages>
+    <Environment> any (Plane of Fire)</Environment>
+    <Organization>solitary, pair, or gang (3-8)</Organization>
+    <Treasure>none</Treasure>
+    <Group>Shadowfire Creature</Group>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>1</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6137</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Xiomorn</Name>
+    <CR>14</CR>
+    <XP>38400</XP>
+    <Alignment>LN</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(earth, elemental, extraplanar)</SubType>
+    <Init>8</Init>
+    <Senses>darkvision 60 ft., tremorsense 120 ft.; Perception +23</Senses>
+    <AC>28, touch 19, flat-footed 19</AC>
+    <AC_Mods>(+8 Dex, +1 dodge, +9 natural)</AC_Mods>
+    <HP>200</HP>
+    <HD>(16d10+112)</HD>
+    <HP_Mods>fast healing 5</HP_Mods>
+    <Saves>Fort +12, Ref +18, Will +14</Saves>
+    <Fort>12</Fort>
+    <Ref>18</Ref>
+    <Will>14</Will>
+    <DR>10/adamantine and bludgeoning</DR>
+    <Immune>elemental traits</Immune>
+    <SR>25</SR>
+    <Speed>40 ft., climb 40 ft.</Speed>
+    <Melee>4 claws +24 (2d4+6/19-20 plus crystallization)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 22, Dex 27, Con 25, Int 27, Wis 18, Cha 24</AbilityScores>
+    <BaseAtk>16</BaseAtk>
+    <CMB>+22 (+24 sunder)</CMB>
+    <CMD>41 (43 vs. sunder)</CMD>
+    <RacialMods>+4 Acrobatics when jumping</RacialMods>
+    <Languages>Terran; telepathy 300 ft.</Languages>
+    <SQ>item mastery</SQ>
+    <Environment> any</Environment>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>1</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Vault Keeper</AlternateNameForm>
+    <id>6138</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Mythic Xiomorn</Name>
+    <CR>20</CR>
+    <XP>307200</XP>
+    <Alignment>LN</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(earth, elemental, extraplanar, mythicMA)</SubType>
+    <Init>10</Init>
+    <Senses>darkvision 60 ft., tremorsense 120 ft.; Perception +26</Senses>
+    <Aura>frightful presence (30 ft., DC 27)</Aura>
+    <AC>38, touch 21, flat-footed 27</AC>
+    <AC_Mods>(+10 Dex, +1 dodge, +17 natural)</AC_Mods>
+    <HP>317</HP>
+    <HD>(19d10+213)</HD>
+    <HP_Mods>fast healing 5</HP_Mods>
+    <Saves>Fort +13, Ref +21, Will +17</Saves>
+    <Fort>13</Fort>
+    <Ref>21</Ref>
+    <Will>17</Will>
+    <DefensiveAbilities>block attacks, fortification (50%)</DefensiveAbilities>
+    <DR>10/ adamantine and bludgeoning and epic</DR>
+    <Immune>elemental traits</Immune>
+    <SR>31</SR>
+    <Speed>40 ft., burrow 30 ft., climb 40 ft., earth glide</Speed>
+    <Melee>4 claws +29 (2d4+10/19-20 plus crystallization)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 22, Dex 31, Con 25, Int 29, Wis 18, Cha 26</AbilityScores>
+    <BaseAtk>19</BaseAtk>
+    <CMB>+25 (+31 sunder)</CMB>
+    <CMD>46 (52 vs. sunder)</CMD>
+    <RacialMods>+8 Craft (sculptures), +8 Knowledge (arcana), +8 Knowledge (planes)</RacialMods>
+    <Languages>Terran; telepathy 300 ft.</Languages>
+    <SQ>item mastery (see xiomorn), item shaper, secret of the Vault Seed</SQ>
+    <Environment> any</Environment>
+    <Organization>solitary, pair, or foundation (2 plus 4-20 Vault Keepers)</Organization>
+    <Treasure>triple</Treasure>
+    <Group>Xiomorn</Group>
+    <Source>The Emerald Spire</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>1</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Vault Builder</AlternateNameForm>
+    <id>6139</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>8</MR>
+    <Mythic>1</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Black Jinni</Name>
+    <CR>15</CR>
+    <XP>51200</XP>
+    <Alignment>CE</Alignment>
+    <Size>Large</Size>
+    <Type>outsider</Type>
+    <SubType>(chaotic, evil, extraplanar)</SubType>
+    <Init>10</Init>
+    <Senses>darkvision 60 ft.; Perception +19</Senses>
+    <AC>30, touch 16, flat-footed 23</AC>
+    <AC_Mods>(+6 Dex, +1 dodge, +14 natural, -1 size)</AC_Mods>
+    <HP>230</HP>
+    <HD>(20d10+120)</HD>
+    <Saves>Fort +18, Ref +18, Will +10</Saves>
+    <Fort>18</Fort>
+    <Ref>18</Ref>
+    <Will>10</Will>
+    <DefensiveAbilities>freedom of movement, obscuring cloud</DefensiveAbilities>
+    <Immune>electricity, fire</Immune>
+    <Weaknesses>vulnerability to recitation</Weaknesses>
+    <Speed>40 ft., fly 60 ft. (average)</Speed>
+    <Melee>+1 conductive falchion +29/+24/+19/+14 (2d6+13/15-20 plus 1d10 electricity), gore +22 (2d8+4) or   2 claws +27 (2d6+8), gore +27 (2d8+8)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 26, Dex 22, Con 23, Int 12, Wis 15, Cha 18</AbilityScores>
+    <BaseAtk>20</BaseAtk>
+    <CMB>+29</CMB>
+    <CMD>46</CMD>
+    <Languages>Ancient Osiriani, Aquan, Auran, Ignan, Terran</Languages>
+    <SQ>aligned weapons, stormwalk</SQ>
+    <Environment> warm deserts</Environment>
+    <Organization>solitary, pair, or band (3-6)</Organization>
+    <Treasure>standard</Treasure>
+    <Source>d20pfsrd</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6226</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Hanshepsu</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>construct</Type>
+    <Init>4</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +15</Senses>
+    <AC>24, touch 14, flat-footed 20</AC>
+    <AC_Mods>(+4 Dex, +10 natural)</AC_Mods>
+    <HP>102</HP>
+    <HD>(15d10+20)</HD>
+    <Saves>Fort +5, Ref +11, Will +8</Saves>
+    <Fort>5</Fort>
+    <Ref>11</Ref>
+    <Will>8</Will>
+    <DR>10/-</DR>
+    <Immune>construct traits, magic</Immune>
+    <Speed>30 ft.</Speed>
+    <Melee>+1 heavy mace +23/+18/+13 (1d8+9)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 22, Dex 18, Con -, Int 11, Wis 13, Cha 5</AbilityScores>
+    <BaseAtk>15</BaseAtk>
+    <CMB>+21 (+23 bull rush)</CMB>
+    <CMD>35 (37 vs. bull rush)</CMD>
+    <Languages>Ancient Osiriani</Languages>
+    <SQ>soldier's training, warrior's mace</SQ>
+    <Environment> warm deserts (Osirion)</Environment>
+    <Organization>solitary or unit (2-20)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 83</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6232</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Living Sandstorm</Name>
+    <CR>11</CR>
+    <XP>12800</XP>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(earth, elemental)</SubType>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft., sandsight, tremorsense 60 ft.; Perception +18</Senses>
+    <AC>26, touch 17, flat-footed 19</AC>
+    <AC_Mods>(+6 Dex, +1 dodge, +9 natural)</AC_Mods>
+    <HP>147</HP>
+    <HD>(14d10+70)</HD>
+    <Saves>Fort +9, Ref +15, Will +12</Saves>
+    <Fort>9</Fort>
+    <Ref>15</Ref>
+    <Will>12</Will>
+    <DR>10/-</DR>
+    <Immune>elemental traits</Immune>
+    <Speed>30 ft., burrow 30 ft.</Speed>
+    <Melee>2 slams +24 (1d8+10 plus distraction)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 31, Dex 22, Con 21, Int 12, Wis 12, Cha 13</AbilityScores>
+    <BaseAtk>14</BaseAtk>
+    <CMB>+24 (+26 sunder)</CMB>
+    <CMD>41 (43 vs. sunder)</CMD>
+    <RacialMods>+8 Stealth in sand</RacialMods>
+    <Languages>Aquan, Auran, Common, Ignan, Terran</Languages>
+    <SQ>change shape (humanoid form or sandstorm form; polymorph), compression</SQ>
+    <Environment> any desert (Plane of Earth)</Environment>
+    <Organization>solitary, pair, or gang (3-8)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 83</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Humanoid</AlternateNameForm>
+    <id>6233</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Living Sandstorm</Name>
+    <CR>11</CR>
+    <XP>12800</XP>
+    <Alignment>N</Alignment>
+    <Size>Fine</Size>
+    <Type>outsider</Type>
+    <SubType>(earth, elemental, swarm)</SubType>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft., sandsight, tremorsense 60 ft.; Perception +18</Senses>
+    <AC>34, touch 25, flat-footed 27</AC>
+    <AC_Mods>(+6 Dex, +1 dodge, +9 natural, +8 size)</AC_Mods>
+    <HP>147</HP>
+    <HD>(14d10+70)</HD>
+    <Saves>Fort +9, Ref +15, Will +12</Saves>
+    <Fort>9</Fort>
+    <Ref>15</Ref>
+    <Will>12</Will>
+    <DefensiveAbilities>swarm traits</DefensiveAbilities>
+    <DR>10/-</DR>
+    <Immune>elemental traits, weapon damage</Immune>
+    <Speed>30 ft., fly 60 ft. (good)</Speed>
+    <Melee>swarm (6d6 plus distraction)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>0 ft.</Reach>
+    <AbilityScores>Str 1, Dex 22, Con 21, Int 12, Wis 12, Cha 13</AbilityScores>
+    <BaseAtk>14</BaseAtk>
+    <CMB>-</CMB>
+    <CMD>-</CMD>
+    <RacialMods>+8 Stealth in sand</RacialMods>
+    <Languages>Aquan, Auran, Common, Ignan, Terran</Languages>
+    <SQ>change shape (humanoid form or sandstorm form; polymorph)</SQ>
+    <Environment> any desert (Plane of Earth)</Environment>
+    <Organization>solitary, pair, or gang (3-8)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 83</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Sandstorm</AlternateNameForm>
+    <id>6234</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Ossumental</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Alignment>NE</Alignment>
+    <Size>Large</Size>
+    <Type>undead</Type>
+    <SubType>(earth)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft., tremorsense 100 ft.; Perception +26</Senses>
+    <AC>27, touch 12, flat-footed 24</AC>
+    <AC_Mods>(+3 Dex, +15 natural, -1 size)</AC_Mods>
+    <HP>161</HP>
+    <HD>(17d8+85)</HD>
+    <Saves>Fort +10, Ref +8, Will +12</Saves>
+    <Fort>10</Fort>
+    <Ref>8</Ref>
+    <Will>12</Will>
+    <DR>10/magic</DR>
+    <Immune>undead traits</Immune>
+    <Speed>30 ft., burrow 30 ft.</Speed>
+    <Melee>4 slams +21 (1d8+10/19-20)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 30, Dex 17, Con -, Int 9, Wis 14, Cha 21</AbilityScores>
+    <BaseAtk>12</BaseAtk>
+    <CMB>+23 (+27 bull rush, +25 overrun)</CMB>
+    <CMD>36 (38 vs. bull rush, 38 vs. overrun)</CMD>
+    <Languages>Ancient Osiriani, Terran</Languages>
+    <Environment> warm deserts (Osirion)</Environment>
+    <Organization>solitary or gang (2-8)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 83</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Earth</AlternateNameForm>
+    <id>6235</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Ossumental</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Alignment>NE</Alignment>
+    <Size>Large</Size>
+    <Type>undead</Type>
+    <SubType>(fire)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft., firesight; Perception +26</Senses>
+    <AC>27, touch 12, flat-footed 24</AC>
+    <AC_Mods>(+3 Dex, +15 natural, -1 size)</AC_Mods>
+    <HP>161</HP>
+    <HD>(17d8+85)</HD>
+    <Saves>Fort +10, Ref +8, Will +12</Saves>
+    <Fort>10</Fort>
+    <Ref>8</Ref>
+    <Will>12</Will>
+    <DR>10/magic</DR>
+    <Immune>fire, undead traits</Immune>
+    <Weaknesses>vulnerable to cold</Weaknesses>
+    <Speed>30 ft.</Speed>
+    <Melee>4 slams +21 (1d8+10/19-20)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 30, Dex 17, Con -, Int 9, Wis 14, Cha 21</AbilityScores>
+    <BaseAtk>12</BaseAtk>
+    <CMB>+23 (+27 bull rush, +25 overrun)</CMB>
+    <CMD>36 (38 vs. bull rush, 38 vs. overrun)</CMD>
+    <Languages>Ancient Osiriani, Ignan</Languages>
+    <Environment> warm deserts (Osirion)</Environment>
+    <Organization>solitary or gang (2-8)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 83</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Fire</AlternateNameForm>
+    <id>6236</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Ossumental</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Alignment>NE</Alignment>
+    <Size>Large</Size>
+    <Type>undead</Type>
+    <SubType>(air)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft., mistsight; Perception +26</Senses>
+    <AC>27, touch 12, flat-footed 24</AC>
+    <AC_Mods>(+3 Dex, +15 natural, -1 size)</AC_Mods>
+    <HP>161</HP>
+    <HD>(17d8+85)</HD>
+    <Saves>Fort +10, Ref +8, Will +12</Saves>
+    <Fort>10</Fort>
+    <Ref>8</Ref>
+    <Will>12</Will>
+    <DR>10/magic</DR>
+    <Immune>undead traits</Immune>
+    <Speed>30 ft., fly 90 ft. (good)</Speed>
+    <Melee>4 slams +21 (1d8+10/19-20)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 30, Dex 17, Con -, Int 9, Wis 14, Cha 21</AbilityScores>
+    <BaseAtk>12</BaseAtk>
+    <CMB>+23 (+27 bull rush, +25 overrun)</CMB>
+    <CMD>36 (38 vs. bull rush, 38 vs. overrun)</CMD>
+    <Languages>Ancient Osiriani, Auran</Languages>
+    <Environment> warm deserts (Osirion)</Environment>
+    <Organization>solitary or gang (2-8)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 83</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Air</AlternateNameForm>
+    <id>6237</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Ossumental</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Alignment>NE</Alignment>
+    <Size>Large</Size>
+    <Type>undead</Type>
+    <SubType>(water)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 60 ft., mistsight; Perception +26</Senses>
+    <AC>27, touch 12, flat-footed 24</AC>
+    <AC_Mods>(+3 Dex, +15 natural, -1 size)</AC_Mods>
+    <HP>161</HP>
+    <HD>(17d8+85)</HD>
+    <Saves>Fort +10, Ref +8, Will +12</Saves>
+    <Fort>10</Fort>
+    <Ref>8</Ref>
+    <Will>12</Will>
+    <DR>10/magic</DR>
+    <Immune>undead traits</Immune>
+    <Speed>30 ft., swim 90 ft.</Speed>
+    <Melee>4 slams +21 (1d8+10/19-20)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 30, Dex 17, Con -, Int 9, Wis 14, Cha 21</AbilityScores>
+    <BaseAtk>12</BaseAtk>
+    <CMB>+23 (+27 bull rush, +25 overrun)</CMB>
+    <CMD>36 (38 vs. bull rush, 38 vs. overrun)</CMD>
+    <Languages>Ancient Osiriani, Aquan</Languages>
+    <Environment> warm deserts (Osirion)</Environment>
+    <Organization>solitary or gang (2-8)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 83</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>1</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <AlternateNameForm>Water</AlternateNameForm>
+    <id>6238</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Elder Sphinx</Name>
+    <CR>16</CR>
+    <XP>76800</XP>
+    <Alignment>N</Alignment>
+    <Size>Gargantuan</Size>
+    <Type>magical beast</Type>
+    <Init>5</Init>
+    <Senses>darkvision 60 ft., low-light vision, true seeing; Perception +27</Senses>
+    <AC>29, touch 7, flat-footed 28</AC>
+    <AC_Mods>(+1 Dex, +22 natural, -4 size)</AC_Mods>
+    <HP>241</HP>
+    <HD>(21d10+126)</HD>
+    <Saves>Fort +18, Ref +15, Will +19</Saves>
+    <Fort>18</Fort>
+    <Ref>15</Ref>
+    <Will>19</Will>
+    <DefensiveAbilities>enciphered mind</DefensiveAbilities>
+    <DR>15/adamantine and magic</DR>
+    <Immune>petrification</Immune>
+    <SR>27</SR>
+    <Speed>40 ft., fly 60 ft. (poor)</Speed>
+    <Melee>2 claws +31 (2d6+14), 2 wings +26 (2d6+7)</Melee>
+    <Space>20 ft.</Space>
+    <Reach>15 ft.</Reach>
+    <AbilityScores>Str 39, Dex 12, Con 23, Int 26, Wis 30, Cha 25</AbilityScores>
+    <BaseAtk>21</BaseAtk>
+    <CMB>+39 (+41 bull rush)</CMB>
+    <CMD>50 (52 vs. bull rush, 54 vs. trip)</CMD>
+    <Languages>Abyssal, Aquan, Ancient Osiriani, Auran, Celestial, Common, Draconic, Giant, Ignan, Infernal, Jistka, Sphinx, Sylvan, Tekritanin, Terran; telepathy 100 ft.</Languages>
+    <SQ>enigma, sphinx monolith</SQ>
+    <Environment> warm deserts</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>standard</Treasure>
+    <Group>Sphinx</Group>
+    <Source>AP 83</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6239</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Festering Ulunat, The Unholy First</Name>
+    <CR>24</CR>
+    <XP>1228800</XP>
+    <Alignment>CE</Alignment>
+    <Size>Colossal</Size>
+    <Type>magical beast</Type>
+    <Init>5</Init>
+    <Senses>darkvision 600 ft., low-light vision, tremorsense 600 ft.; Perception +42</Senses>
+    <Aura>frightful presence (300 ft., DC 30)</Aura>
+    <AC>42, touch 7, flat-footed 37</AC>
+    <AC_Mods>(+5 Dex, +35 natural, -8 size)</AC_Mods>
+    <HP>525</HP>
+    <HD>(30d10+360)</HD>
+    <HP_Mods>regeneration 30</HP_Mods>
+    <Saves>Fort +29, Ref +24, Will +22</Saves>
+    <Fort>29</Fort>
+    <Ref>24</Ref>
+    <Will>22</Will>
+    <DefensiveAbilities>regeneration</DefensiveAbilities>
+    <DR>15/epic</DR>
+    <Immune>ability damage, bleed, disease, energy drain, fire, mind-affecting effects, paralysis, permanent wounds, petrification, poison, polymorph, sonic</Immune>
+    <SR>35</SR>
+    <Speed>60 ft., climb 60 ft., fly 90 ft. (poor), swim 40 ft.</Speed>
+    <Melee>bite +36 (4d8+14/19-20 plus 6d6 acid), 4 claws +36 (4d6+14/19-20)</Melee>
+    <Space>60 ft.</Space>
+    <Reach>60 ft.</Reach>
+    <AbilityScores>Str 38, Dex 21, Con 35, Int 3, Wis 30, Cha 20</AbilityScores>
+    <BaseAtk>30</BaseAtk>
+    <CMB>+52 (+54 bull rush, +56 sunder)</CMB>
+    <CMD>67 (69 vs. bull rush, 69 vs. sunder, 83 vs. trip)</CMD>
+    <Languages>Aklo (can't speak)</Languages>
+    <SQ>hibernation, massive, no breath</SQ>
+    <Environment> any (Sothis)</Environment>
+    <Organization>unique</Organization>
+    <Treasure>none</Treasure>
+    <Group>The Unholy First</Group>
+    <Source>AP 84</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>1</Climb>
+    <Burrow>0</Burrow>
+    <Swim>1</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6255</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Ammut</Name>
+    <CR>18</CR>
+    <XP>153600</XP>
+    <Alignment>LE</Alignment>
+    <Size>Huge</Size>
+    <Type>outsider</Type>
+    <SubType>(evil, native)</SubType>
+    <Init>10</Init>
+    <Senses>darkvision 60 ft., scent, tremorsense 60 ft., true seeing; Perception +30</Senses>
+    <Aura>fear aura (30 ft., DC 29)</Aura>
+    <AC>34, touch 14, flat-footed 28</AC>
+    <AC_Mods>(+6 Dex, +20 natural, -2 size)</AC_Mods>
+    <HP>290</HP>
+    <HD>(20d10+180)</HD>
+    <Saves>Fort +21, Ref +20, Will +13</Saves>
+    <Fort>21</Fort>
+    <Ref>20</Ref>
+    <Will>13</Will>
+    <DR>15/good and slashing</DR>
+    <Immune>disease, exhaustion, fatigue, fire, poison</Immune>
+    <Resist>acid 10, cold 10, electricity 10</Resist>
+    <SR>29</SR>
+    <Speed>40 ft.</Speed>
+    <Melee>bite +31 (4d6+19/19-20 plus grab), 2 claws +31 (2d6+13)</Melee>
+    <Space>15 ft.</Space>
+    <Reach>10 ft. (15 ft. with bite)</Reach>
+    <AbilityScores>Str 36, Dex 22, Con 29, Int 11, Wis 24, Cha 29</AbilityScores>
+    <BaseAtk>20</BaseAtk>
+    <CMB>+35 (+37 bull rush)</CMB>
+    <CMD>51 (53 vs. bull rush, 55 vs. trip)</CMD>
+    <Languages>Celestial, Infernal; telepathy 100 ft.</Languages>
+    <Environment> any (Osirion)</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 84</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6257</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Mummy Lord</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Race>Male human mummy lord</Race>
+    <Class>cleric of Set 9</Class>
+    <Alignment>LE</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <SubType>(human)</SubType>
+    <Init>2</Init>
+    <Senses>darkvision 60 ft.; Perception +5</Senses>
+    <Aura>great despair (30 ft., DC 19)</Aura>
+    <AC>18, touch 14, flat-footed 15</AC>
+    <AC_Mods>(+1 deflection, +2 Dex, +1 dodge, +4 natural)</AC_Mods>
+    <HP>107</HP>
+    <HD>(9d8+63)</HD>
+    <Saves>Fort +11, Ref +7, Will +11</Saves>
+    <Fort>11</Fort>
+    <Ref>7</Ref>
+    <Will>11</Will>
+    <DefensiveAbilities>channel resistance +4, undying will</DefensiveAbilities>
+    <DR>10/-</DR>
+    <Immune>cold, electricity, undead traits</Immune>
+    <Speed>30 ft.</Speed>
+    <Melee>+1 spear +12/+7 (1d8+8/x3 plus insidious mummy rot) or  slam +11 (1d6+7 plus insidious mummy rot)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <SpellDomains>Darkness, Evil</SpellDomains>
+    <AbilityScores>Str 20, Dex 14, Con -, Int 10, Wis 20, Cha 20</AbilityScores>
+    <BaseAtk>6</BaseAtk>
+    <CMB>+11</CMB>
+    <CMD>25</CMD>
+    <RacialMods>+8 Intimidate, +8 Sense Motive, +8 Stealth</RacialMods>
+    <Languages>Ancient Osiriani, Common</Languages>
+    <SQ>eyes of darkness (4 rounds/day)</SQ>
+    <Environment> any (Osirion)</Environment>
+    <Organization>solitary or court (mummy lord and 6-14 standard mummies or mummified creatures)</Organization>
+    <Treasure>NPC gear</Treasure>
+    <Source>AP 84</Source>
+    <IsTemplate>1</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6258</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Neshmaal</Name>
+    <CR>12</CR>
+    <XP>19200</XP>
+    <Alignment>CE</Alignment>
+    <Size>Large</Size>
+    <Type>outsider</Type>
+    <SubType>(extraplanar, incorporeal)</SubType>
+    <Init>11</Init>
+    <Senses>darkvision 60 ft.; Perception +18</Senses>
+    <Aura>alien dread (20 ft., DC 23)</Aura>
+    <AC>24, touch 24, flat-footed 16</AC>
+    <AC_Mods>(+7 deflection, +7 Dex, +1 dodge, -1 size)</AC_Mods>
+    <HP>149</HP>
+    <HD>(13d10+78)</HD>
+    <Saves>Fort +14, Ref +11, Will +12</Saves>
+    <Fort>14</Fort>
+    <Ref>11</Ref>
+    <Will>12</Will>
+    <DefensiveAbilities>incorporeal</DefensiveAbilities>
+    <Immune>cold</Immune>
+    <Resist>electricity 10, fire 10</Resist>
+    <SR>23</SR>
+    <Weaknesses>vulnerable to sonic</Weaknesses>
+    <Speed>fly 50 ft. (perfect)</Speed>
+    <Melee>3 tendrils +20 (2d8/19-20 plus energy drain)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str -, Dex 25, Con 22, Int 9, Wis 15, Cha 24</AbilityScores>
+    <BaseAtk>13</BaseAtk>
+    <CMB>+21</CMB>
+    <CMD>39</CMD>
+    <Languages>Aklo; telepathy 20 ft.</Languages>
+    <SQ>no breath</SQ>
+    <Environment> any</Environment>
+    <Organization>solitary, pair, or congregation (3-6)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 84</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>0</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6259</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Set Guardian</Name>
+    <CR>13</CR>
+    <XP>25600</XP>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>construct</Type>
+    <Init>1</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +3</Senses>
+    <AC>29, touch 9, flat-footed 27</AC>
+    <AC_Mods>(+1 Dex, +19 natural, -1 size)</AC_Mods>
+    <HP>151</HP>
+    <HD>(22d10+30)</HD>
+    <Saves>Fort +7, Ref +8, Will +10</Saves>
+    <Fort>7</Fort>
+    <Ref>8</Ref>
+    <Will>10</Will>
+    <DR>15/adamantine</DR>
+    <Immune>construct traits, fire</Immune>
+    <Weaknesses>unholy weaknesses</Weaknesses>
+    <Speed>40 ft.</Speed>
+    <Melee>2 slams +30 (2d12+9/18-20)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 28, Dex 13, Con -, Int -, Wis 17, Cha 21</AbilityScores>
+    <BaseAtk>22</BaseAtk>
+    <CMB>+32</CMB>
+    <CMD>43</CMD>
+    <SQ>freeze</SQ>
+    <Environment> any (Osirion)</Environment>
+    <Organization>solitary or sentinel (2-8)</Organization>
+    <Treasure>incidental (2 eye gems worth 2,000 gp each)</Treasure>
+    <Source>AP 84</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6260</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Shabti</Name>
+    <CR>1/2</CR>
+    <XP>200</XP>
+    <Race>Shabti</Race>
+    <Class>oracle 1</Class>
+    <Alignment>LN</Alignment>
+    <Size>Medium</Size>
+    <Type>outsider</Type>
+    <SubType>(native)</SubType>
+    <Init>1</Init>
+    <Senses>darkvision 60 ft.; Perception +3</Senses>
+    <AC>11, touch 11, flat-footed 10</AC>
+    <AC_Mods>(+1 Dex)</AC_Mods>
+    <HP>12</HP>
+    <HD>(1d8+4)</HD>
+    <Saves>Fort +3, Ref +1, Will +1</Saves>
+    <Fort>3</Fort>
+    <Ref>1</Ref>
+    <Will>1</Will>
+    <DefensiveAbilities>immune to undeath, resist level drain</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>club +0 (1d6)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 10, Dex 12, Con 16, Int 13, Wis 8, Cha 17</AbilityScores>
+    <BaseAtk>0</BaseAtk>
+    <CMB>+0</CMB>
+    <CMD>11</CMD>
+    <Languages>Celestial, Common</Languages>
+    <SQ>immortal, oracle's curse (haunted), past-life knowledge, revelations (coat of many stars), shattered soul</SQ>
+    <Environment> any</Environment>
+    <Organization>solitary or retinue (1 shabti with 2d4 human commoners)</Organization>
+    <Treasure>NPC gear (club, potion of cure moderate wounds)</Treasure>
+    <Source>AP 84</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>1</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>1</DontUseRacialHD>
+    <Mystery>heavens</Mystery>
+    <id>6261</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Annihilator Robot</Name>
+    <CR>16</CR>
+    <XP>76800</XP>
+    <Alignment>N</Alignment>
+    <Size>Gargantuan</Size>
+    <Type>construct</Type>
+    <SubType>(robot)</SubType>
+    <Init>6</Init>
+    <Senses>darkvision 120 ft., low-light vision, tremorsense 60 ft.; Perception +24</Senses>
+    <AC>31, touch 9, flat-footed 28</AC>
+    <AC_Mods>(+2 Dex, +1 dodge, +22 natural, -4 size)</AC_Mods>
+    <HP>250</HP>
+    <HD>(20d10+60 plus 80 hp force field)</HD>
+    <Saves>Fort +8, Ref +8, Will +7</Saves>
+    <Fort>8</Fort>
+    <Ref>8</Ref>
+    <Will>7</Will>
+    <DefensiveAbilities>hardness 10</DefensiveAbilities>
+    <Immune>cold, construct traits</Immune>
+    <Resist>electricity 30, fire 30</Resist>
+    <Weaknesses>vulnerable to critical hits, vulnerable to electricity</Weaknesses>
+    <Speed>50 ft., climb 30 ft.</Speed>
+    <Speed_Mod> booster jets</Speed_Mod>
+    <Melee>2 claws +28 (2d6+12/19-20)</Melee>
+    <Ranged>2 integrated chain guns +19 (8d6/4)</Ranged>
+    <Space>20 ft.</Space>
+    <Reach>20 ft.</Reach>
+    <AbilityScores>Str 34, Dex 15, Con -, Int 14, Wis 13, Cha 1</AbilityScores>
+    <BaseAtk>20</BaseAtk>
+    <CMB>+36</CMB>
+    <CMD>53 (61 vs. trip)</CMD>
+    <Languages>Common, Hallit</Languages>
+    <Environment> any (Numeria)</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>none</Treasure>
+    <Group>Robot</Group>
+    <Source>Inner Sea Bestiary</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>1</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6279</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Gearsman Robot</Name>
+    <CR>4</CR>
+    <XP>1200</XP>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>construct</Type>
+    <SubType>(robot)</SubType>
+    <Init>1</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +1</Senses>
+    <AC>20, touch 11, flat-footed 19</AC>
+    <AC_Mods>(+1 Dex, +9 natural)</AC_Mods>
+    <HP>42</HP>
+    <HD>(4d10+20)</HD>
+    <Saves>Fort +1, Ref +2, Will +2</Saves>
+    <Fort>1</Fort>
+    <Ref>2</Ref>
+    <Will>2</Will>
+    <DefensiveAbilities>hardness 10</DefensiveAbilities>
+    <Immune>construct traits</Immune>
+    <Weaknesses>vulnerable to critical hits, vulnerable to electricity</Weaknesses>
+    <Speed>20 ft.</Speed>
+    <Melee>slam +9 (1d4+7) or   mwk spear +10 (1d8+5/x3 plus 1d6 electricity)</Melee>
+    <Ranged>mwk spear +6 (1d8+6/x3)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 20, Dex 13, Con -, Int 10, Wis 13, Cha 1</AbilityScores>
+    <BaseAtk>4</BaseAtk>
+    <CMB>+9</CMB>
+    <CMD>20</CMD>
+    <Languages>Common, Hallit</Languages>
+    <SQ>adaptive learning, charge weapon, self-repair</SQ>
+    <Environment> any (Numeria)</Environment>
+    <Organization>solitary, pair, or squad (3-12)</Organization>
+    <Treasure>standard (masterwork spear, other treasure)</Treasure>
+    <Group>Robot</Group>
+    <Source>Inner Sea Bestiary</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6280</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Myrmidon Robot</Name>
+    <CR>11</CR>
+    <XP>12800</XP>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>construct</Type>
+    <SubType>(robot)</SubType>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft., low-light vision, superior optics; Perception +20</Senses>
+    <AC>25, touch 11, flat-footed 23</AC>
+    <AC_Mods>(+2 Dex, +14 natural, -1 size)</AC_Mods>
+    <HP>167</HP>
+    <HD>(15d10+30 plus 55 hp force shield)</HD>
+    <Saves>Fort +10, Ref +12, Will +10</Saves>
+    <Fort>10</Fort>
+    <Ref>12</Ref>
+    <Will>10</Will>
+    <DefensiveAbilities>hardness 10, resilient</DefensiveAbilities>
+    <Immune>cold, construct traits</Immune>
+    <Weaknesses>vulnerable to critical hits, vulnerable to electricity</Weaknesses>
+    <Speed>20 ft., fly 90 ft. (perfect)</Speed>
+    <Melee>2 claws +22 (1d6+8 plus grab), 2 quantum lashes +22 touch (1d10 force/19-20)</Melee>
+    <Ranged>integrated laser rifle +16 touch (2d10 fire)</Ranged>
+    <Space>10 ft.</Space>
+    <Reach>5 ft. (20 ft. with quantum lash)</Reach>
+    <AbilityScores>Str 27, Dex 15, Con -, Int 12, Wis 14, Cha 1</AbilityScores>
+    <BaseAtk>15</BaseAtk>
+    <CMB>+24 (+28 grapple)</CMB>
+    <CMD>36 (can't be tripped)</CMD>
+    <Languages>Common, Hallit</Languages>
+    <Environment> any (Numeria)</Environment>
+    <Organization>solitary or unit (2-6)</Organization>
+    <Treasure>none</Treasure>
+    <Group>Robot</Group>
+    <Source>Inner Sea Bestiary</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6281</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Petromin</Name>
+    <CR>1/3</CR>
+    <XP>135</XP>
+    <Alignment>N</Alignment>
+    <Size>Tiny</Size>
+    <Type>animal</Type>
+    <Init>2</Init>
+    <Senses>low-light vision; Perception +5</Senses>
+    <AC>14, touch 14, flat-footed 12</AC>
+    <AC_Mods>(+2 Dex, +2 size)</AC_Mods>
+    <HP>4</HP>
+    <HD>(1d8)</HD>
+    <Saves>Fort +2, Ref +4, Will +1</Saves>
+    <Fort>2</Fort>
+    <Ref>4</Ref>
+    <Will>1</Will>
+    <Speed>20 ft., climb 20 ft., fly 40 ft. (poor)</Speed>
+    <Melee>bite +4 (1d3-4)</Melee>
+    <Space>2 1/2 ft.</Space>
+    <Reach>0 ft.</Reach>
+    <AbilityScores>Str 3, Dex 15, Con 10, Int 2, Wis 12, Cha 7</AbilityScores>
+    <BaseAtk>0</BaseAtk>
+    <CMB>+0</CMB>
+    <CMD>6 (10 vs. trip)</CMD>
+    <RacialMods>+4 Stealth</RacialMods>
+    <SQ>cloaked, gliding flight, luminous</SQ>
+    <Environment> any deserts</Environment>
+    <Organization>solitary, pair, or gathering (3-8)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 85</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>1</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6286</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Pilo</Name>
+    <CR>2</CR>
+    <XP>600</XP>
+    <Alignment>N</Alignment>
+    <Size>Small</Size>
+    <Type>animal</Type>
+    <Init>1</Init>
+    <Senses>low-light vision, scent; Perception +8</Senses>
+    <AC>14, touch 12, flat-footed 13</AC>
+    <AC_Mods>(+1 Dex, +2 natural, +1 size)</AC_Mods>
+    <HP>19</HP>
+    <HD>(3d8+6)</HD>
+    <Saves>Fort +5, Ref +4, Will +3</Saves>
+    <Fort>5</Fort>
+    <Ref>4</Ref>
+    <Will>3</Will>
+    <DefensiveAbilities>roll up</DefensiveAbilities>
+    <Speed>30 ft.</Speed>
+    <Melee>gore +4 (1d6+1 plus poison), tail slap -1 (1d4)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 13, Dex 13, Con 14, Int 2, Wis 14, Cha 7</AbilityScores>
+    <BaseAtk>2</BaseAtk>
+    <CMB>+2 (+4 bull rush)</CMB>
+    <CMD>13 (15 vs. bull rush, 21 vs. trip)</CMD>
+    <Environment> any deserts</Environment>
+    <Organization>solitary or pair</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 85</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>1</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6287</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Sorico</Name>
+    <CR>1</CR>
+    <XP>400</XP>
+    <Alignment>N</Alignment>
+    <Size>Small</Size>
+    <Type>animal</Type>
+    <Init>1</Init>
+    <Senses>low-light vision, scent; Perception +6</Senses>
+    <AC>12, touch 12, flat-footed 11</AC>
+    <AC_Mods>(+1 Dex, +1 size)</AC_Mods>
+    <HP>13</HP>
+    <HD>(2d8+4)</HD>
+    <Saves>Fort +7, Ref +4, Will +2</Saves>
+    <Fort>7</Fort>
+    <Ref>4</Ref>
+    <Will>2</Will>
+    <Speed>30 ft., burrow 10 ft.</Speed>
+    <Melee>bite +2 (1d4), 2 claws +2 (1d4)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 10, Dex 13, Con 15, Int 2, Wis 14, Cha 7</AbilityScores>
+    <BaseAtk>1</BaseAtk>
+    <CMB>+0</CMB>
+    <CMD>11 (15 vs. trip)</CMD>
+    <Environment> any deserts</Environment>
+    <Organization>solitary, pair, or warren (3-36)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 85</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>1</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6288</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Collector Robot</Name>
+    <CR>3</CR>
+    <XP>800</XP>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>construct</Type>
+    <SubType>(robot)</SubType>
+    <Init>7</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +8</Senses>
+    <AC>16, touch 13, flat-footed 13</AC>
+    <AC_Mods>(+3 Dex, +3 natural)</AC_Mods>
+    <HP>31</HP>
+    <HD>(2d10+20)</HD>
+    <Saves>Fort +0, Ref +6, Will +2</Saves>
+    <Fort>0</Fort>
+    <Ref>6</Ref>
+    <Will>2</Will>
+    <DefensiveAbilities>all-around vision, hardness 10, reactive gyros</DefensiveAbilities>
+    <Immune>construct traits</Immune>
+    <Weaknesses>vulnerable to critical hits and electricity</Weaknesses>
+    <Speed>10 ft., fly 60 ft. (perfect)</Speed>
+    <Melee>2 slams +5 (1d4+3 plus grab)</Melee>
+    <Ranged>integrated stun gun +5 (1d8 nonlethal)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 17, Dex 17, Con -, Int 12, Wis 14, Cha 1</AbilityScores>
+    <BaseAtk>2</BaseAtk>
+    <CMB>+5</CMB>
+    <CMD>18</CMD>
+    <RacialMods>+4 Perception, +4 Survival to follow or identify tracks</RacialMods>
+    <Languages>Androffan</Languages>
+    <SQ>adaptive tracker</SQ>
+    <Environment> any (Numeria)</Environment>
+    <Organization>solitary, pair, or unit (3-6)</Organization>
+    <Treasure>none</Treasure>
+    <Group>Robot</Group>
+    <Source>AP 85</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6289</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Ghelarn</Name>
+    <CR>2</CR>
+    <XP>600</XP>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>aberration</Type>
+    <Init>0</Init>
+    <Senses>darkvision 60 ft., tremorsense 30 ft.; Perception +10</Senses>
+    <AC>14, touch 9, flat-footed 14</AC>
+    <AC_Mods>(+5 natural, -1 size)</AC_Mods>
+    <HP>22</HP>
+    <HD>(3d8+9)</HD>
+    <Saves>Fort +4, Ref +1, Will +5</Saves>
+    <Fort>4</Fort>
+    <Ref>1</Ref>
+    <Will>5</Will>
+    <DefensiveAbilities>carapace</DefensiveAbilities>
+    <Resist>fire 5</Resist>
+    <Weaknesses>vulnerable to sonic</Weaknesses>
+    <Speed>30 ft.</Speed>
+    <Melee>2 tentacles +4 (1d6+3)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 17, Dex 10, Con 16, Int 3, Wis 14, Cha 3</AbilityScores>
+    <BaseAtk>2</BaseAtk>
+    <CMB>+6</CMB>
+    <CMD>16</CMD>
+    <RacialMods>+4 Stealth (+14 in deserts)</RacialMods>
+    <SQ>hibernate</SQ>
+    <Environment> cold or temperate deserts</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 85</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6290</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Tsaalgrend</Name>
+    <CR>2</CR>
+    <XP>600</XP>
+    <Alignment>N</Alignment>
+    <Size>Small</Size>
+    <Type>plant</Type>
+    <Init>2</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +4</Senses>
+    <AC>14, touch 13, flat-footed 12</AC>
+    <AC_Mods>(+2 Dex, +1 natural, +1 size)</AC_Mods>
+    <HP>19</HP>
+    <HD>(3d8+6)</HD>
+    <Saves>Fort +5, Ref +3, Will +1</Saves>
+    <Fort>5</Fort>
+    <Ref>3</Ref>
+    <Will>1</Will>
+    <Immune>plant traits</Immune>
+    <Resist>acid 5, electricity 5</Resist>
+    <Weaknesses>light blindness, vulnerable to fire</Weaknesses>
+    <Speed>10 ft., climb 10 ft., fly 40 ft. (poor)</Speed>
+    <Melee>bite +5 (1d4+1 plus grab), 2 tendrils +0 (1d4 plus grab)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 13, Dex 15, Con 15, Int 3, Wis 10, Cha 8</AbilityScores>
+    <BaseAtk>2</BaseAtk>
+    <CMB>+2</CMB>
+    <CMD>14 (16 vs. trip)</CMD>
+    <Environment> any underground</Environment>
+    <Organization>solitary, pair, cluster (3-6), or pod (7-20)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 85</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>1</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6291</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Latten Mechanism</Name>
+    <CR>15</CR>
+    <XP>51200</XP>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>construct</Type>
+    <SubType>(extraplanar, heraldISG)</SubType>
+    <Init>8</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +22</Senses>
+    <AC>31, touch 13, flat-footed 27</AC>
+    <AC_Mods>(+4 Dex, +18 natural, -1 size)</AC_Mods>
+    <HP>147</HP>
+    <HD>(18d10+48)</HD>
+    <HP_Mods>fast healing 10</HP_Mods>
+    <Saves>Fort +8, Ref +12, Will +12</Saves>
+    <Fort>8</Fort>
+    <Ref>12</Ref>
+    <Will>12</Will>
+    <DR>10/adamantine and magic</DR>
+    <Immune>acid, construct traits</Immune>
+    <Resist>cold 30, fire 30</Resist>
+    <SR>26</SR>
+    <Speed>40 ft., burrow 20 ft., climb 20 ft.</Speed>
+    <Melee>bite +27 (6d8+13 plus grab and 6d8 acid or electricity)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 29, Dex 19, Con -, Int 21, Wis 18, Cha 16</AbilityScores>
+    <BaseAtk>18</BaseAtk>
+    <CMB>+28</CMB>
+    <CMD>42 (50 vs. trip)</CMD>
+    <Languages>Abyssal, Celestial, Common, Draconic, Infernal</Languages>
+    <SQ>always armed, change size, create soldiers, double damage against objects, emissary, integrated masterwork tools, master of crafting</SQ>
+    <Environment> any (Axis)</Environment>
+    <Organization>solitary or team (herald plus 1d6 clockwork soldiers and 1d6 clockwork servants)</Organization>
+    <Treasure>standard</Treasure>
+    <Source>AP 86</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>1</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6330</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Rhu-Chalik</Name>
+    <CR>6</CR>
+    <XP>2400</XP>
+    <Alignment>CE</Alignment>
+    <Size>Small</Size>
+    <Type>aberration</Type>
+    <Init>7</Init>
+    <Senses>darkvision 60 ft., see in darkness; Perception +10</Senses>
+    <AC>18, touch 14, flat-footed 15</AC>
+    <AC_Mods>(+4 armor, +3 Dex, +1 size)</AC_Mods>
+    <HP>68</HP>
+    <HD>(8d8+32)</HD>
+    <HP_Mods>fast healing 2</HP_Mods>
+    <Saves>Fort +6, Ref +5, Will +8</Saves>
+    <Fort>6</Fort>
+    <Ref>5</Ref>
+    <Will>8</Will>
+    <DefensiveAbilities>all-around vision</DefensiveAbilities>
+    <Immune>cold, disease</Immune>
+    <Speed>5 ft., fly 60 ft. (perfect)</Speed>
+    <Melee>4 tendrils +10 (1d4+1 plus pain touch)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 12, Dex 16, Con 19, Int 13, Wis 14, Cha 15</AbilityScores>
+    <BaseAtk>6</BaseAtk>
+    <CMB>+6</CMB>
+    <CMD>19</CMD>
+    <Languages>Aklo; telepathy 100 ft.</Languages>
+    <SQ>compression, no breath</SQ>
+    <Environment> any</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 86</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6331</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Observer Robot</Name>
+    <CR>2</CR>
+    <XP>600</XP>
+    <Alignment>N</Alignment>
+    <Size>Tiny</Size>
+    <Type>construct</Type>
+    <SubType>(robot)</SubType>
+    <Init>2</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +15</Senses>
+    <AC>18, touch 14, flat-footed 16</AC>
+    <AC_Mods>(+2 Dex, +4 natural, +2 size)</AC_Mods>
+    <HP>16</HP>
+    <HD>(3d10)</HD>
+    <Saves>Fort +1, Ref +5, Will +4</Saves>
+    <Fort>1</Fort>
+    <Ref>5</Ref>
+    <Will>4</Will>
+    <DefensiveAbilities>all-around vision, hardness 5</DefensiveAbilities>
+    <Immune>construct traits</Immune>
+    <Weaknesses>vulnerable to critical hits and electricity</Weaknesses>
+    <Speed>20 ft., fly 60 ft. (perfect)</Speed>
+    <Melee>2 claws +6 (1d2+1), integrated laser torch +6 (1d10)</Melee>
+    <Ranged>integrated stun gun +7 (1d8 plus nonlethal)</Ranged>
+    <Space>2 1/2 ft.</Space>
+    <Reach>0 ft. (5 ft. with integrated laser torch)</Reach>
+    <AbilityScores>Str 12, Dex 15, Con -, Int 10, Wis 17, Cha 1</AbilityScores>
+    <BaseAtk>3</BaseAtk>
+    <CMB>+3</CMB>
+    <CMD>14 (22 vs. trip)</CMD>
+    <RacialMods>+4 Perception</RacialMods>
+    <Languages>Androffan, Common</Languages>
+    <SQ>camouflage, transmit senses</SQ>
+    <Environment> any (Numeria)</Environment>
+    <Organization>solitary or deployment (2-12)</Organization>
+    <Treasure>none</Treasure>
+    <Group>Robot</Group>
+    <Source>AP 86</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6332</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Observer Robot Swarm</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Alignment>N</Alignment>
+    <Size>Tiny</Size>
+    <Type>construct</Type>
+    <SubType>(robot, swarm)</SubType>
+    <Init>8</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +30</Senses>
+    <AC>23, touch 17, flat-footed 18</AC>
+    <AC_Mods>(+4 Dex, +1 dodge, +6 natural, +2 size)</AC_Mods>
+    <HP>117</HP>
+    <HD>(18d10+18)</HD>
+    <Saves>Fort +6, Ref +12, Will +12</Saves>
+    <Fort>6</Fort>
+    <Ref>12</Ref>
+    <Will>12</Will>
+    <DefensiveAbilities>all-around vision, hardness 10, swarm traits</DefensiveAbilities>
+    <Immune>construct traits</Immune>
+    <Weaknesses>vulnerable to electricity</Weaknesses>
+    <Speed>30 ft., fly 60 ft. (perfect)</Speed>
+    <Melee>swarm (4d6 plus distraction and 2d6 fire)</Melee>
+    <Space>10 ft.</Space>
+    <Reach>0 ft.</Reach>
+    <AbilityScores>Str 12, Dex 19, Con -, Int 11, Wis 18, Cha 3</AbilityScores>
+    <BaseAtk>18</BaseAtk>
+    <CMB>-</CMB>
+    <CMD>-</CMD>
+    <RacialMods>+4 Perception</RacialMods>
+    <Languages>Androffan, Common</Languages>
+    <SQ>camouflage, transmit senses</SQ>
+    <Environment> any (Numeria)</Environment>
+    <Organization>solitary or cloud (2-5)</Organization>
+    <Treasure>none</Treasure>
+    <Group>Observer</Group>
+    <Source>AP 86</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6333</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Rust-Risen</Name>
+    <CR>2</CR>
+    <XP>600</XP>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <Init>5</Init>
+    <Senses>darkvision 60 ft.; Perception +7</Senses>
+    <AC>15, touch 11, flat-footed 14</AC>
+    <AC_Mods>(+1 Dex, +4 natural)</AC_Mods>
+    <HP>19</HP>
+    <HD>(3d8+6)</HD>
+    <Saves>Fort +3, Ref +2, Will +4</Saves>
+    <Fort>3</Fort>
+    <Ref>2</Ref>
+    <Will>4</Will>
+    <DefensiveAbilities>absorb electricity</DefensiveAbilities>
+    <Immune>undead traits</Immune>
+    <Weaknesses>malfunction</Weaknesses>
+    <Speed>30 ft.</Speed>
+    <Melee>arm drill +5 (1d6+3), metal jaw +5 (1d6+3)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 17, Dex 13, Con -, Int 5, Wis 12, Cha 14</AbilityScores>
+    <BaseAtk>2</BaseAtk>
+    <CMB>+5</CMB>
+    <CMD>16</CMD>
+    <RacialMods>+2 Perception</RacialMods>
+    <Languages>Common</Languages>
+    <SQ>augmentations</SQ>
+    <Environment> any</Environment>
+    <Organization>solitary, pair, or pack (3-12)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 86</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6334</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Irradiated Dead</Name>
+    <CR>7</CR>
+    <XP>3200</XP>
+    <Alignment>NE</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <Init>7</Init>
+    <Senses>darkvision 60 ft.; Perception +15</Senses>
+    <AC>19, touch 14, flat-footed 15</AC>
+    <AC_Mods>(+3 Dex, +1 dodge, +5 natural)</AC_Mods>
+    <HP>85</HP>
+    <HD>(10d8+40)</HD>
+    <Saves>Fort +6, Ref +6, Will +9</Saves>
+    <Fort>6</Fort>
+    <Ref>6</Ref>
+    <Will>9</Will>
+    <DefensiveAbilities>channel resistance +2</DefensiveAbilities>
+    <Immune>undead traits</Immune>
+    <Speed>30 ft.</Speed>
+    <Melee>2 slams +12 (1d6+5 plus radiation)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 20, Dex 16, Con -, Int 7, Wis 15, Cha 17</AbilityScores>
+    <BaseAtk>7</BaseAtk>
+    <CMB>+11</CMB>
+    <CMD>26</CMD>
+    <Languages>Common</Languages>
+    <Environment> any (Numeria)</Environment>
+    <Organization>solitary, pair, or gang (3-6)</Organization>
+    <Treasure>none</Treasure>
+    <Source>AP 87</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6365</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Thought Harvester Robot</Name>
+    <CR>10</CR>
+    <XP>9600</XP>
+    <Alignment>N</Alignment>
+    <Size>Medium</Size>
+    <Type>construct</Type>
+    <SubType>(robot)</SubType>
+    <Init>6</Init>
+    <Senses>darkvision 60 ft., low-light vision; Perception +19</Senses>
+    <AC>23, touch 13, flat-footed 20</AC>
+    <AC_Mods>(+2 Dex, +1 dodge, +10 natural)</AC_Mods>
+    <HP>131</HP>
+    <HD>(13d10+20 plus 40 hp force field)</HD>
+    <Saves>Fort +4, Ref +6, Will +8</Saves>
+    <Fort>4</Fort>
+    <Ref>6</Ref>
+    <Will>8</Will>
+    <DefensiveAbilities>hardness 10</DefensiveAbilities>
+    <Immune>construct traits</Immune>
+    <Resist>acid 10, cold 10, fire 10</Resist>
+    <Weaknesses>vulnerable to critical hits and electricity</Weaknesses>
+    <Speed>30 ft.</Speed>
+    <Melee>claw +19 (1d6+6 plus grab), 2 integrated nanite injectors +19 (1d4+6 plus harvest thoughts)</Melee>
+    <Ranged>integrated sonic rifle +15 ranged touch (3d6 sonic)</Ranged>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str 22, Dex 15, Con -, Int 12, Wis 15, Cha 1</AbilityScores>
+    <BaseAtk>13</BaseAtk>
+    <CMB>+19</CMB>
+    <CMD>32 (36 vs. trip)</CMD>
+    <Languages>Androffan, Common</Languages>
+    <Environment> any (Numeria)</Environment>
+    <Organization>solitary or squad (2-6)</Organization>
+    <Treasure>none</Treasure>
+    <Group>Robot</Group>
+    <Source>AP 87</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6366</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Warden Robot</Name>
+    <CR>9</CR>
+    <XP>6400</XP>
+    <Alignment>N</Alignment>
+    <Size>Large</Size>
+    <Type>construct</Type>
+    <SubType>(robot)</SubType>
+    <Init>8</Init>
+    <Senses>blindsight 30 ft., darkvision 60 ft., low-light vision; Perception +20</Senses>
+    <Aura>infrasonic field (30 ft., DC 17)</Aura>
+    <AC>23, touch 13, flat-footed 19</AC>
+    <AC_Mods>(+4 Dex, +10 natural, -1 size)</AC_Mods>
+    <HP>112</HP>
+    <HD>(15d10+30)</HD>
+    <Saves>Fort +8, Ref +12, Will +10</Saves>
+    <Fort>8</Fort>
+    <Ref>12</Ref>
+    <Will>10</Will>
+    <DefensiveAbilities>all-around vision, hardness 10, reactive armor, resilient</DefensiveAbilities>
+    <Immune>construct traits</Immune>
+    <Weaknesses>vulnerable to critical hits and electricity</Weaknesses>
+    <Speed>30 ft.</Speed>
+    <Melee>2 slams +18 (1d8+4)</Melee>
+    <Ranged>2 integrated sonic disruptors +18 ranged touch (2d8 sonic)</Ranged>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 18, Dex 19, Con -, Int 11, Wis 14, Cha 1</AbilityScores>
+    <BaseAtk>15</BaseAtk>
+    <CMB>+20</CMB>
+    <CMD>34</CMD>
+    <Languages>Androffan</Languages>
+    <Environment> any (Numeria)</Environment>
+    <Organization>solitary, pair, or sentry (3-12)</Organization>
+    <Treasure>none</Treasure>
+    <Group>Robot</Group>
+    <Source>AP 87</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6367</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Thorgothrel</Name>
+    <CR>8</CR>
+    <XP>4800</XP>
+    <Alignment>LE</Alignment>
+    <Size>Large</Size>
+    <Type>ooze</Type>
+    <Init>4</Init>
+    <Senses>blindsight 100 ft.; Perception +11</Senses>
+    <AC>21, touch 9, flat-footed 21</AC>
+    <AC_Mods>(+12 natural, -1 size)</AC_Mods>
+    <HP>100</HP>
+    <HD>(8d8+24 plus 40 hp force field)</HD>
+    <Saves>Fort +7, Ref +4, Will +7</Saves>
+    <Fort>7</Fort>
+    <Ref>4</Ref>
+    <Will>7</Will>
+    <Immune>cold, electricity, mind-affecting effects, ooze traits</Immune>
+    <Resist>acid 10</Resist>
+    <Speed>20 ft.</Speed>
+    <Melee>2 slams +11 (1d6+6 plus bleed)</Melee>
+    <Ranged>force ray +5 ranged touch (10d6 force)</Ranged>
+    <Space>10 ft.</Space>
+    <Reach>10 ft.</Reach>
+    <AbilityScores>Str 22, Dex 10, Con 17, Int 17, Wis 16, Cha 11</AbilityScores>
+    <BaseAtk>6</BaseAtk>
+    <CMB>+13</CMB>
+    <CMD>23 (25 vs. trip)</CMD>
+    <RacialMods>+4 Heal</RacialMods>
+    <Languages>Aklo, Common, Infernal; telepathy 100 ft.</Languages>
+    <SQ>no breath, poisonous sublimation</SQ>
+    <Environment> any</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>standard (silver armature worth 350 gp, other treasure)</Treasure>
+    <Source>AP 87</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6368</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Bogwiggle</Name>
+    <CR>1</CR>
+    <XP>400</XP>
+    <Alignment>CE</Alignment>
+    <Size>Small</Size>
+    <Type>aberration</Type>
+    <SubType>(aquatic)</SubType>
+    <Init>5</Init>
+    <Senses>darkvision 60 ft.; Perception +1</Senses>
+    <AC>12, touch 12, flat-footed 11</AC>
+    <AC_Mods>(+1 Dex, +1 size)</AC_Mods>
+    <HP>16</HP>
+    <HD>(3d8+3)</HD>
+    <Saves>Fort +2, Ref +2, Will +4</Saves>
+    <Fort>2</Fort>
+    <Ref>2</Ref>
+    <Will>4</Will>
+    <Speed>30 ft., swim 40 ft.</Speed>
+    <Melee>bite +4 (1d4+1), tongue -1 touch (sticky tongue)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft. (10 ft. with tongue)</Reach>
+    <AbilityScores>Str 13, Dex 12, Con 13, Int 3, Wis 12, Cha 6</AbilityScores>
+    <BaseAtk>2</BaseAtk>
+    <CMB>+2</CMB>
+    <CMD>13</CMD>
+    <RacialMods>+4 Perception in swamps, +8 Stealth in swamps</RacialMods>
+    <Languages>Boggard (can't speak)</Languages>
+    <SQ>amphibious, swamp stride</SQ>
+    <Environment> temperate swamps</Environment>
+    <Organization>solitary, pair, or pack (3-6)</Organization>
+    <Treasure>none</Treasure>
+    <Source>Monster Codex</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>1</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6397</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Frightful Haunter</Name>
+    <CR>8</CR>
+    <XP>4800</XP>
+    <Alignment>CE</Alignment>
+    <Size>Medium</Size>
+    <Type>undead</Type>
+    <SubType>(incorporeal)</SubType>
+    <Init>7</Init>
+    <Senses>darkvision 60 ft.; Perception +17</Senses>
+    <Aura>cowardice (30 ft.)</Aura>
+    <AC>16, touch 15, flat-footed 12</AC>
+    <AC_Mods>(+3 deflection, +3 Dex)</AC_Mods>
+    <HP>60</HP>
+    <HD>(8d8+24)</HD>
+    <HP_Mods>fast healing 0 (see special abilities)</HP_Mods>
+    <Saves>Fort +5, Ref +5, Will +9</Saves>
+    <Fort>5</Fort>
+    <Ref>5</Ref>
+    <Will>9</Will>
+    <Immune>haunts  Defensive Abilities channel resistance +3, incorporeal</Immune>
+    <Speed>fly 40 ft. (perfect)</Speed>
+    <Melee>terrifying touch +9 (3d8 plus Will DC 17 or shaken)</Melee>
+    <Space>5 ft.</Space>
+    <Reach>5 ft.</Reach>
+    <AbilityScores>Str -, Dex 17, Con -, Int 15, Wis 17, Cha 16</AbilityScores>
+    <BaseAtk>6</BaseAtk>
+    <CMB>+6</CMB>
+    <CMD>21</CMD>
+    <Languages>Common, Goblin</Languages>
+    <Environment> any</Environment>
+    <Organization>solitary, pair, or gang (3-6)</Organization>
+    <Treasure>none</Treasure>
+    <Source>Monster Codex</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>0</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6407</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Abrakarn Viper</Name>
+    <CR>13</CR>
+    <XP>25600</XP>
+    <Alignment>CE</Alignment>
+    <Size>Huge</Size>
+    <Type>construct</Type>
+    <SubType>(chaotic, evil)</SubType>
+    <Init>3</Init>
+    <Senses>darkvision 120 ft., low-light vision; Perception +4</Senses>
+    <AC>30, touch 11, flat-footed 27</AC>
+    <AC_Mods>(+3 Dex, +19 natural, -2 size)</AC_Mods>
+    <HP>139</HP>
+    <HD>(18d10+40)</HD>
+    <Saves>Fort +6, Ref +9, Will +10</Saves>
+    <Fort>6</Fort>
+    <Ref>9</Ref>
+    <Will>10</Will>
+    <DR>10/-</DR>
+    <Immune>construct traits</Immune>
+    <Resist>acid 10, cold 10, electricity 10, fire 10</Resist>
+    <SR>24</SR>
+    <Speed>40 ft.</Speed>
+    <Melee>3 bites +25 (2d8+9 plus poison)</Melee>
+    <Space>15 ft.</Space>
+    <Reach>15 ft.</Reach>
+    <AbilityScores>Str 28, Dex 17, Con -, Int -, Wis 19, Cha 1</AbilityScores>
+    <BaseAtk>18</BaseAtk>
+    <CMB>+29</CMB>
+    <CMD>42 (can't be tripped)</CMD>
+    <SQ>demon-souled, find master, guard, shield other</SQ>
+    <Environment> any land</Environment>
+    <Organization>solitary or pair</Organization>
+    <Treasure>none</Treasure>
+    <Source>Monster Codex</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>0</Fly>
+    <Climb>0</Climb>
+    <Burrow>0</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>6416</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
 </ArrayOfMonster>
