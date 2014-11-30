@@ -8037,39 +8037,42 @@ namespace CombatManager
 
         private void PerformUpdateCheck()
         {
-            Thread t = new Thread(() => 
-            { 
-                try
+            if (UserSettings.Settings.CheckForUpdates)
+            {
+                Thread t = new Thread(() =>
                 {
-                    HttpWebRequest rq1 = (HttpWebRequest)WebRequest.Create("http://CombatManager.com/version.xml");
-                    HttpWebResponse rsp1 = (HttpWebResponse)rq1.GetResponse();
-
-                    XDocument doc = XDocument.Load(rsp1.GetResponseStream());
-
-                    String val = doc.Root.Value;
-
-                    rsp1.Close();
-
-                    Version remotev = Version.Parse(val);
-                    Version localv = Assembly.GetExecutingAssembly().GetName().Version;
-
-                    if (remotev.CompareTo(localv) > 0)
+                    try
                     {
-                        Dispatcher.BeginInvoke((Action)(() =>
-                            {
-                                UpdateButton.Visibility = System.Windows.Visibility.Visible;
-                            }));
+                        HttpWebRequest rq1 = (HttpWebRequest)WebRequest.Create("http://CombatManager.com/version.xml");
+                        HttpWebResponse rsp1 = (HttpWebResponse)rq1.GetResponse();
+
+                        XDocument doc = XDocument.Load(rsp1.GetResponseStream());
+
+                        String val = doc.Root.Value;
+
+                        rsp1.Close();
+
+                        Version remotev = Version.Parse(val);
+                        Version localv = Assembly.GetExecutingAssembly().GetName().Version;
+
+                        if (remotev.CompareTo(localv) > 0)
+                        {
+                            Dispatcher.BeginInvoke((Action)(() =>
+                                {
+                                    UpdateButton.Visibility = System.Windows.Visibility.Visible;
+                                }));
+                        }
+
+
+
                     }
-                        
-
-
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine("Error loading version: \r\n" + ex.ToString());
-                }
-            });
-            t.Start();
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Error loading version: \r\n" + ex.ToString());
+                    }
+                });
+                t.Start();
+            }
             
         }
         #region Hotkey Section

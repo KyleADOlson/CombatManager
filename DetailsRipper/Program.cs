@@ -353,6 +353,12 @@ namespace DetailsRipper
                 x.Element("CR").Value = "0";
             }
 
+            string cmb = x.Element("CMB").Value;
+            if (cmb != null)
+            {
+                x.Element("CMB").Value = Monster.ChangeStartingModOrVal(cmb, 0);
+            }
+
         }
 
         static List<String> _SpellAnnotationFields = new List<string>()

@@ -151,7 +151,7 @@ namespace CombatManager
 
 
                 Regex regSpell = new Regex(spellblock);
-                Regex regSpells = new Regex("((?<classname>" + _ClassRegexString + " )?(?<sla>Spell-Like Abilities)|(?<classname>" + _ClassRegexString + " )?(Spells (?<blocktype>(Known|Prepared)) +))(\\(CL ((?<cl>([0-9]+))(st|nd|rd|th)?)([,;] *concentration *[\\p{Pd}+]?(?<concentration>[0-9]+)( \\[[\\p{Pd}+][0-9]+ [\\p{L} ]+\\])?)?([,;] *[\\p{Pd}+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[\\p{Pd}+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[\\p{Pd}+]?(?<rangedtouch>[0-9]+) ranged touch)?\\))[:\r\n]*" +
+                Regex regSpells = new Regex("((?<classname>" + _ClassRegexString + " )?(?<sla>Spell-Like Abilities)|(?<classname>" + _ClassRegexString + " )?(Spells (?<blocktype>(Known|Prepared)) +))(\\(CL ((?<cl>([0-9]+))(st|nd|rd|th)?)(?<altcl> \\[[0-9]+(st|nd|rd|th)? [A-Za-z]+\\.\\])?([,;] *concentration *[\\p{Pd}+]?(?<concentration>[0-9]+)( \\[[\\p{Pd}+][0-9]+ [\\p{L}. ]+\\])?)?([,;] *[\\p{Pd}+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[\\p{Pd}+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[\\p{Pd}+]?(?<rangedtouch>[0-9]+) ranged touch)?\\))[:\r\n]*" +
                     "(?<levelblocks>" + levelblock + "\r?\n?)+");
                 Regex regLevel = new Regex(levelblock);
 
@@ -269,7 +269,7 @@ namespace CombatManager
             //DebugTimer t = new DebugTimer("SLA Blocks", false, false);
 
             Regex regSpell = new Regex(slaspellblock);
-            Regex regSpells = new Regex("(?<classname>" + _ClassRegexString + " )?(?<sla>Spell-Like Abilities) *\\(CL ((?<cl>[0-9]+)(st|nd|rd|th)?)([,;] *concentration *[\\p{Pd}+]?(?<concentration>[0-9]+)( \\[[\\p{Pd}+][0-9]+ [\\p{L} ]+\\])?)?([,;] *[\\p{Pd}+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[\\p{Pd}+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[\\p{Pd}+]?(?<rangedtouch>[0-9]+) ranged touch)?\\)[:\r\n]*");
+            Regex regSpells = new Regex("(?<classname>" + _ClassRegexString + " )?(?<sla>Spell-Like Abilities) *\\(CL ((?<cl>[0-9]+)(st|nd|rd|th)?)(?<altcl> \\[[0-9]+(st|nd|rd|th)? [A-Za-z]+\\.\\])?([,;] *concentration *[\\p{Pd}+]?(?<concentration>[0-9]+)( \\[[\\p{Pd}+][0-9]+ [\\p{L} ]+\\])?)?([,;] *[\\p{Pd}+]?(?<spellfailure>[0-9]+)% spell failure)?([,;] *[\\p{Pd}+]?(?<meleetouch>[0-9]+) melee touch)?([,;] *[\\p{Pd}+]?(?<rangedtouch>[0-9]+) ranged touch)?\\)[:\r\n]*");
             Regex regLevel = new Regex(slablock);
 
           

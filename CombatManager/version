@@ -1,5 +1,9 @@
 ﻿1.6.0
 Fix initiative window crash
+Add setting to prevent update check
+Parse and display dual initiative
+Added additional fields to monster editor
+Fix HeroLab import issues with new versions of HeroLab
 
 1.5.9
 Installer fix

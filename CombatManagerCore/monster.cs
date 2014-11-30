@@ -190,6 +190,7 @@ namespace CombatManager
                     {
                         m.Init = GetElementIntValue(v, "Init");
                     }
+                    m.DualInit = GetElementIntNullValue(v, "DualInit");
                     m.Senses = GetElementStringValue(v, "Senses");
                     m.AC = GetElementStringValue(v, "AC");
                     m.AC_Mods = GetElementStringValue(v, "AC_Mods");
@@ -310,6 +311,7 @@ namespace CombatManager
         private String type;
         private String subType;
         private int init;
+        private int? dualinit;
         private String senses;
         private String ac;
         private String ac_mods;
@@ -921,6 +923,7 @@ namespace CombatManager
             Type=m.type;
             SubType=m.subType;
             Init=m.init;
+            DualInit = m.dualinit;
             Senses=m.senses;
             AC=m.ac;
             AC_Mods=m.ac_mods;
@@ -1099,6 +1102,7 @@ namespace CombatManager
             m.type=type;
             m.subType=subType;
             m.init=init;
+            m.dualinit =dualinit;
             m.senses=senses;
             m.ac=ac;
             m.ac_mods=ac_mods;
@@ -1838,6 +1842,9 @@ namespace CombatManager
         private static void ImportHeroLabBlock(string statsblock, XDocument doc, Monster monster, bool readNameBlock = false)
         {
             statsblock = statsblock.Replace('×', 'x');
+            statsblock = statsblock.Replace("\n", "\r\n");
+            statsblock = statsblock.Replace("\r\r\n", "\r\n");
+
 
             if (readNameBlock)
             {
@@ -2026,7 +2033,7 @@ namespace CombatManager
             //init, senses, perception
 
             //Init +7; Senses Darkvision (60 feet); Perception +2
-            Regex regSense = new Regex("Init (?<init>(\\+|-)[0-9]+)(; Senses )((?<senses>.+)(;|,) )?Perception (?<perception>(\\+|-)[0-9]+)");
+            Regex regSense = new Regex("Init (?<init>(\\+|-)[0-9]+)(/(?<dualinit>(\\+|-)[0-9]+), dual initiative)?(; Senses )((?<senses>.+)(;|,) )?Perception (?<perception>(\\+|-)[0-9]+)");
             m = regSense.Match(statsblock);
 
             if (m.Groups["init"].Success)
@@ -2036,6 +2043,14 @@ namespace CombatManager
             else
             {
                 monster.Init = 0;
+            }
+            if (m.Groups["dualinit"].Success)
+            {
+                monster.DualInit = int.Parse(m.Groups["dualinit"].Value);
+            }
+            else
+            {
+                monster.DualInit = null;
             }
             monster.Senses = "";
             if (m.Groups["senses"].Success)
@@ -3234,31 +3249,8 @@ namespace CombatManager
             return returnText;
         }
 
-        private static string ChangeStartingMod(string text, int diff)
-        {
-            string returnText = text;
 
-            if (text != null)
-            {
-
-                Regex regName = new Regex("^(\\+|-)[0-9]+");
-
-                Match match = regName.Match(returnText);
-
-                if (match.Success)
-                {
-                    int val = int.Parse(match.Value);
-
-                    val += diff;
-
-                    returnText = regName.Replace(returnText, CMStringUtilities.PlusFormatNumber(val), 1);
-                }
-            }
-
-            return returnText;
-        }
-
-        private static string ChangeStartingModOrVal(string text, int diff)
+        public static string ChangeStartingModOrVal(string text, int diff)
         {
             string returnText = text;
 
@@ -5552,7 +5544,7 @@ namespace CombatManager
             }
 
             //adjust CMB
-            CMB = ChangeStartingMod(CMB, diff);
+            CMB = ChangeStartingModOrVal(CMB, diff);
 
             //adjust CMD
             CMD = ChangeCMD(CMD, diff);
@@ -8771,6 +8763,23 @@ namespace CombatManager
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("Init"));
+                    }
+                }
+            }
+
+            [DataMember]
+            public int? DualInit
+            {
+                get
+                {
+                    return dualinit;
+                }
+                set
+                {
+                    dualinit = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("DualInit"));
                     }
                 }
             }
