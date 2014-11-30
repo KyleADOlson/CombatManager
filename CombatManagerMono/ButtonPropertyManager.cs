@@ -116,6 +116,11 @@ namespace CombatManagerMono
                     DialogParent.AddSubview(_HDDialog.View);
                     _HDDialog.OKClicked += Handle_HDDialogOKClicked;
                 }
+                else if (_Property.PropertyType == typeof(bool))
+                {
+                    Value = !(bool)Value;
+                    UpdateButton();
+                }
 			}
 		}
 
@@ -269,6 +274,21 @@ namespace CombatManagerMono
             {
                 _TextView.Text = CurrentText;
             }
+
+            if (_Property.PropertyType == typeof(bool))
+            {
+                if ((bool)Value)
+                {
+                    _Button.SetImage(UIImage.FromFile("Images/External/CheckBox.png"), UIControlState.Normal);
+
+                }
+                else
+                {
+
+                    _Button.SetImage(UIImage.FromFile("Images/External/CheckBoxUnchecked.png"), UIControlState.Normal);
+
+                }
+            }
 		}
 		
 		string CurrentText
@@ -279,6 +299,10 @@ namespace CombatManagerMono
                 if (_FormatDelegate != null)
                 {
                     text = _FormatDelegate(Value);	
+                }
+                if (_Property.PropertyType == typeof(bool))
+                {
+                    text = DisplayTitle;
                 }
                 else if (Value != null)
                 {

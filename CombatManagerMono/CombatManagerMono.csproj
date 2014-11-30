@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FBF8DA20-E124-43B8-9080-840F4BCF0453}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -240,6 +240,14 @@
     <Compile Include="FeatEditorDialog.designer.cs">
       <DependentUpon>FeatEditorDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SpellEditorDialog.cs" />
+    <Compile Include="SpellEditorDialog.designer.cs">
+      <DependentUpon>SpellEditorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpellLevelsDialog.cs" />
+    <Compile Include="SpellLevelsDialog.designer.cs">
+      <DependentUpon>SpellLevelsDialog.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="CombatManagerMonoViewController_iPhone.xib" />
@@ -284,6 +292,10 @@
     <InterfaceDefinition Include="AboutView_iPad.xib" />
     <InterfaceDefinition Include="FeatEditorDialog_iPhone.xib" />
     <InterfaceDefinition Include="FeatEditorDialog_iPad.xib" />
+    <InterfaceDefinition Include="SpellEditorDialog_iPhone.xib" />
+    <InterfaceDefinition Include="SpellEditorDialog_iPad.xib" />
+    <InterfaceDefinition Include="SpellLevelsDialog_iPhone.xib" />
+    <InterfaceDefinition Include="SpellLevelsDialog_iPad.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -721,5 +733,8 @@
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\.DS_Store" />
   </ItemGroup>
 </Project>

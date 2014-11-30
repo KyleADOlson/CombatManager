@@ -23,6 +23,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using CombatManager;
+using MonoTouch.UIKit;
+
+
 namespace CombatManagerMono
 {
 	public class SpellsTab: LookupTab<Spell>
@@ -36,6 +39,9 @@ namespace CombatManagerMono
 		GradientButton classFilterButton;
 		GradientButton levelFilterButton;
 		GradientButton schoolFilterButton;
+
+        GradientButton editButton;
+        GradientButton deleteButton;
 		
 		string classFilter = null;	
 		int? levelFilter;
@@ -197,6 +203,44 @@ namespace CombatManagerMono
 			schoolFilterButton = b;
 			
 			FilterView.AddSubview(b);
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new RectangleF(locX, locY, 90, bHeight);
+            locX += b.Frame.Width + marginX;
+            b.SetText("New");
+            b.TouchUpInside += NewButtonClicked;
+
+            FilterView.AddSubview(b);
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new RectangleF(locX, locY, 90, bHeight);
+            locX += b.Frame.Width + marginX;
+            b.SetText("Customize");
+            b.TouchUpInside += CustomizeButtonClicked;
+            FilterView.AddSubview(b);
+
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new RectangleF(locX, locY, 90, bHeight);
+            locX += b.Frame.Width + marginX;
+            b.SetText("Edit");
+            b.TouchUpInside += EditButtonClicked;
+            FilterView.AddSubview(b);
+
+            editButton = b;
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new RectangleF(locX, locY, 90, bHeight);
+            locX += b.Frame.Width + marginX;
+            b.SetText("Delete");
+            b.TouchUpInside += DeleteButtonClicked;
+            FilterView.AddSubview(b);
+
+            deleteButton = b;
 		}
 
 		void HandleSchoolFilterPopoverItemClicked (object sender, ButtonStringPopover.PopoverEventArgs e)
@@ -229,6 +273,79 @@ namespace CombatManagerMono
 			filterField.Text = "";
 			Filter();
 		}
+
+        void NewButtonClicked(object sender, EventArgs e)
+        {
+            Spell s = new Spell();
+            SpellEditorDialog dlg = new SpellEditorDialog(s);
+            dlg.OKClicked += (object se, EventArgs ea) => 
+            {
+                Spell.AddCustomSpell(s);
+                Filter(true);
+            };
+            MainUI.MainView.AddSubview(dlg.View);
+        }
+
+        void CustomizeButtonClicked(object sender, EventArgs e)
+        {
+            if (DisplayItem != null)
+            {
+                Spell clone = (Spell)DisplayItem.Clone();
+
+                SpellEditorDialog dlg = new SpellEditorDialog(clone);
+                dlg.OKClicked += (object se, EventArgs ea) => 
+                {
+                    clone.DBLoaderID = 0;
+                    Spell.AddCustomSpell(clone);
+                    Filter(true);
+                };
+                MainUI.MainView.AddSubview(dlg.View);
+            }
+        }
+
+        void EditButtonClicked(object sender, EventArgs e)
+        {
+            if (DisplayItem != null && DisplayItem.IsCustom)
+            {
+                Spell clone = (Spell)DisplayItem.Clone();
+
+                /*FeatEditorDialog dlg = new SpellEditorDialog(clone);
+                dlg.OKClicked += (object se, EventArgs ea) => 
+                {
+                    DisplayItem.CopyFrom(clone);
+                    Spell.UpdateCustomSpell(DisplayItem);
+                    Filter(true);
+                };
+                MainUI.MainView.AddSubview(dlg.View);*/
+            }
+        }
+
+        void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            if (DisplayItem != null && DisplayItem.IsCustom)
+            {
+                UIAlertView alertView = new UIAlertView    
+                {        
+                    Title = "Are you sure you want to delete this spell?",
+                    Message = "This spell will be deleted permanently"
+
+                };        
+                alertView.AddButton("Cancel");    
+                alertView.AddButton("OK");
+                alertView.Show();
+                alertView.Clicked += (object se, UIButtonEventArgs ea) => 
+                {
+                    if (ea.ButtonIndex == 1)
+                    {
+
+                        Spell.RemoveCustomSpell(DisplayItem);
+                        Filter(true);
+                    }
+                };
+
+            }
+        }
+
 	}
 }
 
