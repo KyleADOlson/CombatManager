@@ -932,6 +932,29 @@ namespace CombatManager
             
         }
 
+        public void CharacterActNow(Character character)
+        {
+            if (character != null)
+            {
+                if (character != CurrentCharacter && CurrentCharacter != null)
+                {
+                    if (character.IsIdle)
+                    {
+                        character.IsIdle = false;
+                    }
+
+
+                    character.IsDelaying = false;
+                    character.IsReadying = false;
+
+                    MoveCharacterBefore(character, CurrentCharacter);
+
+                    MovePrevious();
+
+                }
+            }
+        }
+
         private void CorrectCharacterLocation(Character character)
         {
 

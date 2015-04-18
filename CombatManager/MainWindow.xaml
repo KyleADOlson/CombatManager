@@ -290,6 +290,20 @@
                     <Image Source="/CombatManager;component/Images/delete-16.png" Width="16" Height="16"/>
                 </MenuItem.Icon>
             </MenuItem>
+            <Separator/>
+            <MenuItem x:Name="DelayMenuItem" Header="Delay" IsEnabled="{Binding IsNotReadyingOrDelaying}" Click="DelayMenuItem_Click">
+                <MenuItem.Icon>
+                    <Image Source="/CombatManager;component/Images/hourglass-16.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem x:Name="ReadyMenuItem" Header="Ready" IsEnabled="{Binding IsNotReadyingOrDelaying}" Click="ReadyMenuItem_Click">
+                <MenuItem.Icon>
+                    <Image Source="/CombatManager;component/Images/target-16.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem x:Name="ClearDelayReadyMenuItem" Header="Clear"  IsEnabled="{Binding IsNotReadyingOrDelaying, Converter={StaticResource boolInverter}}" Click="ClearDelayReadyMenuItem_Click" />
+            <MenuItem x:Name="ActNowMenuItem" Header="Act Now"  Click="ActNowMenuItem_Click" />
+
         </ContextMenu>
         <ContextMenu x:Key="ConditionContextMenu" IsVisibleChanged="ConditionContextMenu_IsVisibleChanged">
 
@@ -555,7 +569,7 @@
             			</Border.Background>
             		</Border>
             		<Button x:Name="HPButton" Grid.ColumnSpan="1" Content="HP" Grid.Column="0" Margin="2.218,2.991,0,3.438" Grid.Row="0" FontWeight="Bold" GotKeyboardFocus="TextBox_GotKeyboardFocus" HorizontalAlignment="Left" Style="{DynamicResource ButtonSecondaryStyle}" Click="HPButton_Click"/>
-            		<TextBox x:Name="HPTextBox" Text="{Binding Adjuster.HP, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="25.282,2.991,0,3.438" VerticalAlignment="Stretch" Height="Auto" Grid.Row="0" RenderTransformOrigin="1.739,0.365" Grid.Column="0" GotFocus="TextBox_GotFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Hit Points" KeyUp="TextBox_KeyUp" Width="30" Padding="0,1" Tag="HP" />
+            		<TextBox x:Name="HPTextBox" Text="{Binding Adjuster.HP, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="25.282,2.991,0,3.438" VerticalAlignment="Stretch" Height="Auto" Grid.Row="0" RenderTransformOrigin="1.739,0.365" Grid.Column="0" GotFocus="TextBox_GotFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Hit Points        Select and Press Enter to Adjust" KeyUp="TextBox_KeyUp" Width="30" Padding="0,1" Tag="HP" />
 
             		<Thumb x:Name="HPUpThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="56.67,3.917,0,13.531" Grid.Row="0" Grid.RowSpan="1" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="13.991" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle1}"/>
             		<Thumb x:Name="HPDownThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="56.67,14.5,0,3.438" Grid.Row="0" Grid.RowSpan="1" Height="Auto" VerticalAlignment="Stretch" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle2}" HorizontalAlignment="Left" Width="13.991"/>
@@ -1314,22 +1328,7 @@
     		</Grid>
     	</DataTemplate>
         <DataTemplate x:Key="CombatListItemTemplate">
-            <Grid Background="#03000000">
-            	<Grid.ContextMenu>
-            		<ContextMenu IsTextSearchCaseSensitive="True">
-            			<MenuItem x:Name="DelayMenuItem" Header="Delay" IsEnabled="{Binding IsNotReadyingOrDelaying}" Click="DelayMenuItem_Click">
-                            <MenuItem.Icon>
-                                <Image Source="/CombatManager;component/Images/hourglass-16.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-            			<MenuItem x:Name="ReadyMenuItem" Header="Ready" IsEnabled="{Binding IsNotReadyingOrDelaying}" Click="ReadyMenuItem_Click">
-                            <MenuItem.Icon>
-                                <Image Source="/CombatManager;component/Images/target-16.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-            			<MenuItem x:Name="ClearDelayReadyMenuItem" Header="Clear"  IsEnabled="{Binding IsNotReadyingOrDelaying, Converter={StaticResource boolInverter}}" Click="ClearDelayReadyMenuItem_Click" />
-            		</ContextMenu>
-            	</Grid.ContextMenu>
+            <Grid Background="#03000000" ContextMenu="{StaticResource CharacterContextMenu}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="16"/>
                     <ColumnDefinition Width="Auto"/>
@@ -3324,6 +3323,30 @@
         								<CheckBox Content="Charisma" Margin="108.666,72.874,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="HalfFiendCharismaCheck"  Click="MonsterAdvancerCheck_Checked"/>
         							</Grid>
         						</TabItem>
+        						<TabItem x:Name="OgrekinTab" Background="Transparent" BorderBrush="#00000000">
+        							<TabItem.Header>Ogrekin</TabItem.Header>
+        							<Grid Width="198">
+                                        <ComboBox Margin="8,5,49.5,0" VerticalAlignment="Top" SelectedIndex="0" x:Name="OgrekinBeneficialCombo" SelectionChanged="AdvancedMonsterMultiplierCombo_SelectionChanged">
+        								
+        									<ComboBoxItem Content="1: Oversized Limb"/>
+        									<ComboBoxItem Content="2: Oversized Maw"/>
+        									<ComboBoxItem Content="3: Quick Metabolism"/>
+        									<ComboBoxItem Content="4: Thick Skin"/>
+        									<ComboBoxItem Content="5: Vestigal Limb"/>
+        									<ComboBoxItem Content="6: Vestial Twin"/>
+        								</ComboBox>
+                                        <ComboBox Margin="8,30.96,49.5,52.112" SelectedIndex="0" x:Name="OgrekinDisadvantageousCommbo" SelectionChanged="AdvancedMonsterMultiplierCombo_SelectionChanged" d:LayoutOverrides="Height">
+        								
+        									<ComboBoxItem Content="1: Deformed Hand"/>
+        									<ComboBoxItem Content="2: Fragile"/>
+        									<ComboBoxItem Content="3: Light Sensitive"/>
+        									<ComboBoxItem Content="4: Obese"/>
+        									<ComboBoxItem Content="5: Stunted Legs"/>
+        									<ComboBoxItem Content="6: Weak Mind"/>
+        								</ComboBox>
+                                        <Button x:Name="OgrekinRandomButton" Content="Random" Margin="8,0,0,28.152" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" Click="OgrekinRandomButton_Click"/>
+        							</Grid>
+        						</TabItem>
         						<TabItem x:Name="SkeletonTab" Background="Transparent" BorderBrush="#00000000">
         							<TabItem.Header>Skeleton</TabItem.Header>
         							<Grid Width="198">
@@ -3342,8 +3365,10 @@
         							<Grid Width="198">
         								<ComboBox Margin="8,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80.5" SelectedIndex="0" x:Name="ZombieTypeComboBox" SelectionChanged="AdvancedMonsterMultiplierCombo_SelectionChanged">
         									<ComboBoxItem Content="Regular"/>
+											<ComboBoxItem Content="Juju"/>
         									<ComboBoxItem Content="Fast"/>
         									<ComboBoxItem Content="Plague"/>
+        									<ComboBoxItem Content="Void"/>
         								</ComboBox>
         							</Grid>
         						</TabItem>
