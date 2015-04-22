@@ -52,6 +52,8 @@
     <MtouchArch>ARMv7</MtouchArch>
     <MtouchI18n>
     </MtouchI18n>
+    <BuildIpa>true</BuildIpa>
+    <IpaIncludeArtwork>true</IpaIncludeArtwork>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -119,6 +121,7 @@
     <None Include="..\CombatManager\images\sort.ico">
       <Link>Images\External\sort.ico</Link>
     </None>
+    <None Include="RELEASE-NOTES.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -297,7 +300,6 @@
     <InterfaceDefinition Include="SpellLevelsDialog_iPhone.xib" />
     <InterfaceDefinition Include="SpellLevelsDialog_iPad.xib" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Content Include="Default-Landscape~ipad.png" />
     <Content Include="Default-Portrait~ipad.png" />
@@ -737,4 +739,5 @@
   <ItemGroup>
     <BundleResource Include="Resources\.DS_Store" />
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

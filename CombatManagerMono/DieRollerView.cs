@@ -187,7 +187,7 @@ namespace CombatManagerMono
             }
         }
 
-        [Export("HandleDieSwipe")]
+        [Export("HandleDieSwipe:")]
         void HandleDieSwipe(UISwipeGestureRecognizer rec)
         {
             GradientButton b =  _Recs[rec];
