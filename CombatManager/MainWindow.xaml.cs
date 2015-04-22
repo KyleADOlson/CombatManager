@@ -1785,6 +1785,13 @@ namespace CombatManager
                     monster.Name = "Half-Celestial " + monster.Name;
                 }
             }
+            if (OtherTemplateTabControl.SelectedItem == OgrekinTab)
+            {
+                if (monster.MakeOgrekin(OgrekinBeneficialCombo.SelectedIndex + 1, OgrekinDisadvantageousCommbo.SelectedIndex + 1))
+                {
+                    monster.Name = "Ogrekin " + monster.Name;
+                }
+            }
             if (OtherTemplateTabControl.SelectedItem == SkeletonTab)
             {
                 bool bloody = (BloodySkeletonCheckBox.IsChecked == true);
@@ -1839,6 +1846,14 @@ namespace CombatManager
                     else if (zt == Monster.ZombieType.Plague)
                     {
                         monster.Name = "Plague " + monster.Name;
+                    }
+                    else if (zt == Monster.ZombieType.Juju)
+                    {
+                        monster.Name = "Juju " + monster.Name;
+                    }
+                    else if (zt == Monster.ZombieType.Void)
+                    {
+                        monster.Name = "Void " + monster.Name;
                     }
 
                 }
@@ -5234,6 +5249,16 @@ namespace CombatManager
             }
         }
 
+        private void ActNowMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            using (var undoGroup = undo.CreateUndoGroup())
+            {
+
+                Character ch = (Character)((FrameworkElement)sender).DataContext;
+                combatState.CharacterActNow(ch);
+            }
+        }
+
         private void DelayMenuItem_Click(object sender, RoutedEventArgs e)
         {
             using (var undoGroup = undo.CreateUndoGroup())
@@ -8278,6 +8303,14 @@ namespace CombatManager
             {
                 ((ToggleButton)sender).IsChecked = true;
             }
+        }
+
+        private void OgrekinRandomButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            int beneficial = rand.Next(6);
+            int disadventageous = rand.Next(6);
+            OgrekinBeneficialCombo.SelectedIndex = beneficial;
+            OgrekinDisadvantageousCommbo.SelectedIndex = disadventageous;
         }
 
 

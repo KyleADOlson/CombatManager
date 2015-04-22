@@ -21666,52 +21666,6 @@
     <MT>0</MT>
   </Monster>
   <Monster>
-    <Name>Sabosan</Name>
-    <CR>5</CR>
-    <XP>1600</XP>
-    <Alignment>NE</Alignment>
-    <Size>Medium</Size>
-    <Type>monstrous humanoid</Type>
-    <Init>4</Init>
-    <Senses>blindsense 60 ft., darkvision 60 ft., scent; Perception +14</Senses>
-    <AC>18, touch 14, flat-footed 14</AC>
-    <AC_Mods>(+4 Dex, +4 natural)</AC_Mods>
-    <HP>52</HP>
-    <HD>(7d10+14)</HD>
-    <Saves>Fort +4, Ref +9, Will +6</Saves>
-    <Fort>4</Fort>
-    <Ref>9</Ref>
-    <Will>6</Will>
-    <Speed>30 ft., fly 40 ft. (good)</Speed>
-    <Melee>bite +10 (1d6+3 plus bleed 3), 2 claws +10 (1d6+3) or shortspear +10 (1d6+3), bite +5 (1d6+1 plus bleed 3), claw +5 (1d6+1)</Melee>
-    <Space>5 ft.</Space>
-    <Reach>5 ft.</Reach>
-    <AbilitiyScores>Str 16, Dex 18, Con 15, Int 9, Wis 13, Cha 10</AbilitiyScores>
-    <BaseAtk>7</BaseAtk>
-    <CMB>+10</CMB>
-    <CMD>24</CMD>
-    <Languages>Abyssal, Polyglot</Languages>
-    <Environment> warm forests or underground</Environment>
-    <Organization>solitary, hunting party (2-6), or clan (7-12)</Organization>
-    <Treasure>standard</Treasure>
-    <Source>AP 40</Source>
-    <IsTemplate>0</IsTemplate>
-    <CharacterFlag>0</CharacterFlag>
-    <CompanionFlag>0</CompanionFlag>
-    <Fly>1</Fly>
-    <Climb>0</Climb>
-    <Burrow>0</Burrow>
-    <Swim>0</Swim>
-    <Land>1</Land>
-    <AgeCategory>adult</AgeCategory>
-    <DontUseRacialHD>0</DontUseRacialHD>
-    <id>1062</id>
-    <UniqueMonster>0</UniqueMonster>
-    <MR>0</MR>
-    <Mythic>0</Mythic>
-    <MT>0</MT>
-  </Monster>
-  <Monster>
     <Name>Tikoloshe</Name>
     <CR>3</CR>
     <XP>800</XP>
@@ -51245,6 +51199,59 @@
     <AgeCategory>adult</AgeCategory>
     <DontUseRacialHD>0</DontUseRacialHD>
     <id>2037</id>
+    <UniqueMonster>0</UniqueMonster>
+    <MR>0</MR>
+    <Mythic>0</Mythic>
+    <MT>0</MT>
+  </Monster>
+  <Monster>
+    <Name>Ancient Forest Dragon</Name>
+    <CR>19</CR>
+    <XP>204800</XP>
+    <Alignment>CE</Alignment>
+    <Size>Gargantuan</Size>
+    <Type>dragon</Type>
+    <SubType>(earth)</SubType>
+    <Init>3</Init>
+    <Senses>dragon senses, tremorsense 60 ft.; Perception +33</Senses>
+    <Aura>frightful presence (300 ft., DC 29)</Aura>
+    <AC>39, touch 5, flat-footed 39</AC>
+    <AC_Mods>(-1 Dex, +34 natural, -4 size)</AC_Mods>
+    <HP>387</HP>
+    <HD>(25d12+225)</HD>
+    <Saves>Fort +22, Ref +13, Will +21</Saves>
+    <Fort>22</Fort>
+    <Ref>13</Ref>
+    <Will>21</Will>
+    <DR>10/adamantine</DR>
+    <Immune>paralysis, poison, sleep</Immune>
+    <SR>30</SR>
+    <Speed>40 ft., burrow 20 ft., climb 30 ft., fly 250 ft. (clumsy)</Speed>
+    <Melee>bite +36 (4d6+19/19-20), 2 claws +34 (2d8+13), gore +34 (2d8+19), tail slap +32 (2d8+19)</Melee>
+    <Space>20 ft.</Space>
+    <Reach>15 ft. (20 ft. with bite and gore)</Reach>
+    <AbilitiyScores>Str 37, Dex 8, Con 26, Int 20, Wis 21, Cha 20</AbilitiyScores>
+    <BaseAtk>25</BaseAtk>
+    <CMB>+42</CMB>
+    <CMD>51 (55 vs. trip)</CMD>
+    <Languages>Common, Draconic, Elven, Goblin, Sylvan, Terran</Languages>
+    <SQ>change shape, sound imitation, woodland stride</SQ>
+    <Environment> any forest</Environment>
+    <Organization>solitary</Organization>
+    <Treasure>triple</Treasure>
+    <Group>Imperial Dragon</Group>
+    <Source>PFRPG Bestiary 3</Source>
+    <IsTemplate>0</IsTemplate>
+    <CharacterFlag>0</CharacterFlag>
+    <CompanionFlag>0</CompanionFlag>
+    <Fly>1</Fly>
+    <Climb>1</Climb>
+    <Burrow>1</Burrow>
+    <Swim>0</Swim>
+    <Land>1</Land>
+    <AgeCategory>ancient</AgeCategory>
+    <DontUseRacialHD>0</DontUseRacialHD>
+    <id>2038</id>
     <UniqueMonster>0</UniqueMonster>
     <MR>0</MR>
     <Mythic>0</Mythic>

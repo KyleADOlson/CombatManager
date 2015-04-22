@@ -80,6 +80,7 @@ namespace CombatManager
         private bool _MainHand;
 		private bool _TwoHanded;
         private string _Plus;
+        private bool _NoMods;
         private DieStep _Step;
         private Dictionary<string, WeaponItemPlus> _PlusList;
 
@@ -106,6 +107,7 @@ namespace CombatManager
             Broken = attack.Broken;
             SpecialAbilities = attack.SpecialAbilities;
 			TwoHanded = attack.TwoHanded;
+            
 
             if (Weapon.Class == "Natural" )
             {
@@ -148,6 +150,7 @@ namespace CombatManager
             item.MainHand = MainHand;
             item.Plus = Plus;
             item.Step = Step;
+            item.NoMods = NoMods;
 			item.TwoHanded = TwoHanded;
 
             return item;
@@ -325,6 +328,19 @@ namespace CombatManager
                     {
                         _PlusList = null;
                     }
+                }
+            }
+        }
+
+        public bool NoMods
+        {
+            get { return _NoMods; }
+            set
+            {
+                if (_NoMods != value)
+                {
+                    _NoMods = value;
+                    OnPropertyChanged("NoMods");
                 }
             }
         }

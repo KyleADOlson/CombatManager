@@ -1842,6 +1842,7 @@ namespace CombatManager
         private static void ImportHeroLabBlock(string statsblock, XDocument doc, Monster monster, bool readNameBlock = false)
         {
             statsblock = statsblock.Replace('×', 'x');
+            statsblock = statsblock.Replace("Ã—", "x");
             statsblock = statsblock.Replace("\n", "\r\n");
             statsblock = statsblock.Replace("\r\r\n", "\r\n");
 
@@ -4577,8 +4578,10 @@ namespace CombatManager
         public enum ZombieType
         {
             Normal = 0,
-            Fast = 1,
-            Plague = 2
+            Juju = 1,
+            Fast = 2,
+            Plague = 3,
+            Void = 4
         }
 
         public bool MakeZombie(ZombieType zombieType)
@@ -4590,45 +4593,383 @@ namespace CombatManager
                 return false;
             }
 
-            //Make Neutral Evil
-            AlignmentType al = new AlignmentType() ;
-            al.Moral = MoralAxis.Evil;
-            al.Order = OrderAxis.Neutral;
-            Alignment = AlignmentText(al);
             
 
             //change type
             Type = "undead";
 
-
-
-            //adjust strength
-            AdjustStrength(2);
-
-            //Adjust dex
-            AdjustDexterity(-2);
-
-            //Adjust Charisma
-            if (Charisma == null)
+            if (zombieType == ZombieType.Juju)
             {
-                charisma = 10;
+
+                //Make Evil
+                AlignmentType align = ParseAlignment(Alignment);
+                align.Moral = MoralAxis.Evil;
+                Alignment = AlignmentText(align);
+                
+
+                //adjust natural armor
+                AdjustNaturalArmor(3);
+
+                //change hd
+                ChangeHDToDie(8);       
+
+                //Defensive Abilities: Juju zombies gain channel resistance +4, 
+                DefensiveAbilities = ChangeSkillStringMod(DefensiveAbilities, "channel resistance", 4, true);
+                
+                //DR 5/magic and slashing (or DR 10/magic and slashing if it has 11 HD or more), 
+                DR = AddDR(DR, "magic", (HDRoll.count <= 11) ? 5 : 10);
+                DR = AddDR(DR, "slashing", (HDRoll.count <= 11) ? 5 : 10);
+                
+                //and fire resistance 10. 
+                Resist = AddResitance(Resist, "fire", 10);
+                
+                //They are immune to cold, electricity, and magic missile.
+                Immune = AddImmunity(Immune, "cold");
+                Immune = AddImmunity(Immune, "electricity");
+                Immune = AddImmunity(Immune, "magic missile");
+
+                //Speed: A winged juju zombie’s maneuverability drops to clumsy. If the base creature flew magically, its fly speed is unchanged. Retain all other movement types.
+                Speed = SetFlyQuality(Speed, "clumsy");
+
+                //Attacks: A juju zombie retains all the natural weapons, manufactured weapon attacks, and weapon proficiencies of the base creature. It also gains a slam attack that deals damage based on the juju zombie’s size, but as if it were one size category larger than its actual size.
+                //add slam (+1 diestep)
+                AddNaturalAttack("slam", 1, 1);
+                
+                //Abilities: Increase from the base creature as follows: Str +4, Dex +2. A juju zombie has no Constitution score; as an undead, it uses its Charisma in place of Constitution when calculating hit points, Fortitude saves, or any special ability that relies on Constitution.
+                AdjustStrength(4);
+                AdjustDexterity(2);
+
+                //Feats: A juju zombie gains Improved Initiative and Toughness as bonus feats.
+                AddFeat("Improved Initiative");
+                AddFeat("Toughness");
+
+                //Skills: A juju zombie gains a +8 racial bonus on all Climb checks.
+                AddRacialSkillBonus("Climb", 8);
+
             }
             else
             {
-                AdjustCharisma(10 - Charisma.Value);
+
+                //Make Neutral Evil
+                AlignmentType al = new AlignmentType();
+                al.Moral = MoralAxis.Evil;
+                al.Order = OrderAxis.Neutral;
+                Alignment = AlignmentText(al);
+
+                //adjust strength
+                AdjustStrength(2);
+
+                //Adjust dex
+                AdjustDexterity(-2);
+
+                //Adjust Charisma
+                if (Charisma == null)
+                {
+                    charisma = 10;
+                }
+                else
+                {
+                    AdjustCharisma(10 - Charisma.Value);
+                }
+
+                //Adjust Wisdom
+                if (Wisdom == null)
+                {
+                    wisdom = 10;
+                }
+                else
+                {
+                    AdjustWisdom(10 - Wisdom.Value);
+                }
+
+                //change hd
+                ChangeHDToDie(8);
+                
+                DieRoll roll = HDRoll;
+
+                //change saves
+                Fort = roll.count / 3 + AbilityBonus(Charisma);
+                Ref = roll.count / 3 + AbilityBonus(Dexterity);
+                Will = roll.count / 2 + AbilityBonus(Wisdom);
+
+                //change cr
+                int count = HDRoll.count;
+                if (count == 1)
+                {
+                    Adjuster.CR = "1/4";
+                }
+                else if (count == 2)
+                {
+                    Adjuster.CR = "1/4";
+                }
+                else if (count <= 12)
+                {
+                    Adjuster.CR = ((count - 1) / 2).ToString();
+                }
+                else
+                {
+                    Adjuster.CR = ((count - 12) / 3 + 6).ToString();
+                }
+
+
+
+                //remove special abilities
+                RemoveAllForUndead();
+
+
+                //add darkvision
+                Senses = ChangeDarkvisionAtLeast(Senses, 60);
+
+
+                //add natural ac
+                MonsterSize ms = SizeMods.GetSize(Size);
+                if (ms >= MonsterSize.Small)
+                {
+                    int bonus = 0;
+
+                    if (ms < MonsterSize.Gargantuan)
+                    {
+                        bonus = ((int)ms) - (int)MonsterSize.Tiny;
+                    }
+                    else if (ms == MonsterSize.Gargantuan)
+                    {
+                        bonus = +7;
+                    }
+                    else if (ms == MonsterSize.Colossal)
+                    {
+                        bonus += 11;
+                    }
+
+                    AdjustNaturalArmor(bonus - NaturalArmor);
+                }
+
+
+
+                //add undead imuinites
+                Immune = AddToStringList(Immune, "undead immunities");
+
+
+                //add DR/5 slashing
+                DR = AddDR(DR, "slashing", 5);
+
+                //make fly clumsy
+                Speed = SetFlyQuality(Speed, "clumsy");
+
+                //adjust BAB
+                AdjustBaseAttack(roll.count * 3 / 4 - BaseAtk, true);
+
+
+                //add slam (+1 diestep)
+                AddNaturalAttack("slam", 1, 1);
+
+                //add toughness
+                AddFeat("Toughness");
+
+                //add staggered SQ
+                SQ = AddToStringList(SQ, "staggered");
+                SpecialAbility ab = new SpecialAbility();
+                ab.Name = "Staggered";
+                ab.Type = "Ex";
+                ab.Text = "Zombies have poor reflexes and can only perform a single move action or standard action each round. A zombie can move up to its speed and attack in the same round as a charge action.";
+                SpecialAbilitiesList.Add(ab);
+
+                //set values for zombie subtypes
+                if (zombieType == ZombieType.Fast || zombieType == ZombieType.Void)
+                {
+                    //speed + 10
+                    Speed = ChangeStartingNumber(Speed, 10);
+
+                    //remove DR
+                    DR = null;
+
+                    //remove staggered
+                    SQ = RemoveFromStringList(SQ, "staggered");
+                    SpecialAbilitiesList.Clear();
+
+                    //Quick Strikes
+                    SpecialAttacks = AddToStringList(SpecialAttacks, "quick strikes");
+                    ab = new SpecialAbility();
+                    ab.Name = "Quick Strikes";
+                    ab.Type = "Ex";
+                    ab.Text = "Whenever a fast zombie takes a full-attack action, it can make one additional slam attack at its highest base attack bonus.";
+                    SpecialAbilitiesList.Add(ab);
+                    //switch to 2 slams for quick strikes
+                    AddNaturalAttack("slam", 2, 1);
+
+                    //Add dex to change from -2 to +2
+                    AdjustDexterity(4);
+
+                    if (zombieType == ZombieType.Void)
+                    {
+                        //Tongue attack
+                        AddNaturalAttack("tongue", 1, 5, null, true);
+
+                        //Blood Drain
+                        SpecialAttacks = AddToStringList(SpecialAttacks, "blood drain");
+                        ab = new SpecialAbility();
+                        ab.Name = "Blood Drain";
+                        ab.Type = "Ex";
+                        ab.Text = "If a void zombie hits a living creature with its tongue attack, it drains blood, dealing 2 points of Strength damage before the tongue detaches.";
+                        SpecialAbilitiesList.Add(ab);
+                    }
+                }
+                else if (zombieType == ZombieType.Plague)
+                {
+                    //remove DR
+                    DR = null;
+
+                    //get save dc
+                    int dc = 10 + roll.count / 2 + AbilityBonus(Charisma);
+
+                    //add death burst
+                    SpecialAttacks = AddToStringList(SpecialAttacks, "death burst (DC " + dc + ")");
+                    ab = new SpecialAbility();
+                    ab.Name = "Death Burst";
+                    ab.Type = "Ex";
+                    ab.Text = "When a plague zombie dies, it explodes in a burst of decay. All creatures adjacent to the plague zombie are exposed to its plague as if struck by a slam attack and must make a Fortitude save or contract zombie rot.";
+                    SpecialAbilitiesList.Add(ab);
+
+                    //add disease
+                    Melee = SetPlusOnMeleeAttacks(Melee, "disease", true);
+                    ab = new SpecialAbility();
+                    ab.Name = "Zombie Rot";
+                    ab.Type = "Su";
+                    ab.Text = "The slam attack — as well as any other natural attacks — of a plague zombie carries the zombie rot disease.\r\n\r\n" +
+                                "Zombie rot: slam; save Fort DC " + dc + "; onset 1d4 days; frequency 1/day; effect 1d2 Con, this damage cannot be healed while the creature is infected; cure 2 consecutive saves. Anyone who dies while infected rises as a plague zombie in 2d6 hours.";
+                    SpecialAbilitiesList.Add(ab);
+
+                }
             }
 
-            //Adjust Wisdom
-            if (Wisdom == null)
+
+            return true;
+        }
+
+        public bool MakeOgrekin(int benefit, int disadvantage)
+        {
+            AdjustCR(1);
+
+            SubType = "giant";
+
+            //Armor Class: Natural armor improves by +3.
+            AdjustNaturalArmor(3);
+
+            //Ability Scores: Str +6, Con +4, Int –2, Cha –2.
+            AdjustStrength(6);
+            AdjustConstitution(4);
+            AdjustIntelligence(-2);
+            AdjustCharisma(-2);
+
+            switch (benefit)
             {
-                wisdom = 10;
-            }
-            else
-            {
-                AdjustWisdom(10 - Wisdom.Value);
+                case 1:
+                    //1: Oversized Limb: The ogrekin can wield weapons one size category larger than normal without any penalty and 
+                    SQ = AddToStringList(SQ, "oversized limb");
+
+                    //gains a +2 bonus to its Strength.
+                    AdjustStrength(2);
+                    
+                    break;
+
+                    
+                case 2:
+                    //2: Oversized Maw: The ogrekin gains a bite attack (1d4).
+                    SQ = AddToStringList(SQ, "oversized maw");
+                    AddNaturalAttack("bite", 1, -1);
+                    break;
+
+                case 3:
+                //3: Quick Metabolism: The ogrekin gains a +2 racial bonus on Fortitude saves.
+                    SQ = AddToStringList(SQ, "quick metabolism");
+                    if (Fort != null)
+                    {
+                        Fort += 2;
+                    }
+                    break;
+
+                case 4:
+                    //4: Thick Skin: Improve natural armor bonus by +2.
+                    SQ = AddToStringList(SQ, "thick skin");
+                    AdjustNaturalArmor(2);
+                    break;
+
+                case 5:
+                //5: Vestigial Limb: Vestigial third arm (can't be used to use items) grants a +4 racial bonus on grapple checks.
+                    SQ = AddToStringList(SQ, "vestigial limb");                   
+                    
+                    break;
+
+                case 6:
+                    //6: Vestigial Twin: A malformed twin's head juts out from the ogrekin, providing the ogrekin with all-around vision.
+                    SQ = AddToStringList(SQ, "vestigial twin");
+                    Senses = AddSense(Senses, "all-around vision");
+
+                    break;
+
             }
 
-            //change hd
+            switch (disadvantage)
+            {
+                case 1:
+                    //1: Deformed Hand: One hand can't wield weapons; –2 penalty on attack rolls with two-handed weapons.
+                    SQ = AddToStringList(SQ, "deformed hand");
+                    break;
+
+
+                case 2:
+                    //2: Fragile: The ogrekin is particularly frail and gaunt. It loses its +4 racial bonus to Con.
+                    SQ = AddToStringList(SQ, "fragile");
+                    AdjustConstitution(4);
+                    break;
+
+
+                case 3:
+                    //3: Light Sensitive: The ogrekin gains light sensitivity.
+                    SQ = AddToStringList(SQ, "light sensitive");
+                    break;
+
+
+                case 4:
+                    //4: Obese: The ogrekin takes a –2 penalty to Dexterity (minimum score of 1).
+                    SQ = AddToStringList(SQ, "obese");
+                    if (Dexterity > 3)
+                    {
+                        AdjustDexterity(-2);
+                    }
+                    else if (Dexterity == 3)
+                    {
+                        AdjustDexterity(-1);
+                    }
+                    break;
+                        
+
+                case 5:
+                    //5: Stunted Legs: The ogrekin's base speed is reduced by 10 feet (minimum base speed of 5 feet).
+                    SQ = AddToStringList(SQ, "stunted legs");
+
+                    Adjuster.LandSpeed = Math.Min(Adjuster.LandSpeed - 10, 5);
+
+                    break;
+
+
+                case 6:
+                    //6: Weak Mind: The ogrekin's head is huge and misshapen. It gains a –2 penalty on Will saving throws.
+                    SQ = AddToStringList(SQ, "weak mind");
+                    if (Will != null)
+                    {
+                        Will -= 2;
+                    }
+                    break;
+
+            }
+
+
+            return true;
+        }
+
+
+        public void ChangeHDToDie(int die) 
+        {
             DieRoll roll = HDRoll;
             roll.die = 8;
 
@@ -4661,149 +5002,6 @@ namespace CombatManager
 
             roll.mod = Math.Max(3, roll.count);
             HP = roll.AverageRoll();
-
-            //change saves
-            Fort = roll.count / 3 + AbilityBonus(Charisma);
-            Ref = roll.count / 3 + AbilityBonus(Dexterity);
-            Will = roll.count / 2 + AbilityBonus(Wisdom);
-
-            //change cr
-            int count = HDRoll.count;
-            if (count == 1)
-            {
-                Adjuster.CR = "1/4";
-            }
-            else if (count == 2)
-            {
-                Adjuster.CR = "1/4";
-            }
-            else if (count <= 12)
-            {
-                Adjuster.CR = ((count - 1) / 2).ToString();
-            }
-            else
-            {
-                Adjuster.CR = ((count - 12) / 3 + 6).ToString();
-            }
-
-
-
-            //remove special abilities
-            RemoveAllForUndead();
-
-
-            //add darkvision
-            Senses = ChangeDarkvisionAtLeast(Senses, 60);
-
-
-            //add natural ac
-            MonsterSize ms = SizeMods.GetSize(Size);
-            if (ms >= MonsterSize.Small)
-            {
-                int bonus = 0;
-
-                if (ms < MonsterSize.Gargantuan)
-                {
-                    bonus = ((int)ms) - (int)MonsterSize.Tiny;
-                }
-                else if (ms == MonsterSize.Gargantuan)
-                {
-                    bonus = +7;
-                }
-                else if (ms == MonsterSize.Colossal)
-                {
-                    bonus += 11;
-                }
-
-                AdjustNaturalArmor(bonus - NaturalArmor);
-            }
-
-
-
-            //add undead imuinites
-            Immune = AddToStringList(Immune, "undead immunities");
-
-
-            //add DR/5 slashing
-            DR = AddDR(DR, "slashing", 5);
-
-            //make fly clumsy
-            Speed = SetFlyQuality(Speed, "clumsy");
-
-            //adjust BAB
-            AdjustBaseAttack(roll.count * 3 / 4 - BaseAtk, true);
-
-
-            //add slam (+1 diestep)
-            AddNaturalAttack("slam", 1, 1);
-
-            //add toughness
-            AddFeat("Toughness");
-
-            //add staggered SQ
-            SQ = AddToStringList(SQ, "staggered");
-            SpecialAbility ab = new SpecialAbility();
-            ab.Name = "Staggered";
-            ab.Type = "Ex";
-            ab.Text = "Zombies have poor reflexes and can only perform a single move action or standard action each round. A zombie can move up to its speed and attack in the same round as a charge action.";
-            SpecialAbilitiesList.Add(ab);
-
-            //set values for zombie subtypes
-            if (zombieType == ZombieType.Fast)
-            {
-                //speed + 10
-                Speed = ChangeStartingNumber(Speed, 10);
-
-                //remove DR
-                DR = null;
-
-                //remove staggered
-                SQ = RemoveFromStringList(SQ, "staggered");
-                SpecialAbilitiesList.Clear();
-
-                //Quick Strikes
-                SpecialAttacks = AddToStringList(SpecialAttacks, "quick strikes");
-                ab = new SpecialAbility();
-                ab.Name = "Quick Strikes";
-                ab.Type = "Ex";
-                ab.Text = "Whenever a fast zombie takes a full-attack action, it can make one additional slam attack at its highest base attack bonus.";
-                SpecialAbilitiesList.Add(ab);
-                //switch to 2 slams for quick strikes
-                AddNaturalAttack("slam", 2, 1);
-
-                //Add dex to change from -2 to +2
-                AdjustDexterity(4);
-            }
-            else if (zombieType == ZombieType.Plague)
-            {
-                //remove DR
-                DR = null;
-
-                //get save dc
-                int dc = 10 + roll.count / 2 + AbilityBonus(Charisma);
-
-                //add death burst
-                SpecialAttacks = AddToStringList(SpecialAttacks, "death burst (DC " + dc + ")");
-                ab = new SpecialAbility();
-                ab.Name = "Death Burst";
-                ab.Type = "Ex";
-                ab.Text = "When a plague zombie dies, it explodes in a burst of decay. All creatures adjacent to the plague zombie are exposed to its plague as if struck by a slam attack and must make a Fortitude save or contract zombie rot.";
-                SpecialAbilitiesList.Add(ab);
-
-                //add disease
-                Melee = SetPlusOnMeleeAttacks(Melee, "disease", true);
-                ab = new SpecialAbility();
-                ab.Name = "Zombie Rot";
-                ab.Type = "Su";
-                ab.Text = "The slam attack — as well as any other natural attacks — of a plague zombie carries the zombie rot disease.\r\n\r\n" + 
-                            "Zombie rot: slam; save Fort DC " + dc + "; onset 1d4 days; frequency 1/day; effect 1d2 Con, this damage cannot be healed while the creature is infected; cure 2 consecutive saves. Anyone who dies while infected rises as a plague zombie in 2d6 hours.";
-                SpecialAbilitiesList.Add(ab);
-
-            }
-
-
-
-            return true;
         }
 
         public void AdjustBaseAttack(int diff, bool fix)
@@ -4870,7 +5068,14 @@ namespace CombatManager
             AddNaturalAttack(name, count, step, null);
         }
 
+
         public void AddNaturalAttack(string name, int count, int step, string plus)
+        {
+
+            AddNaturalAttack(name, count, step, plus, false);
+        }
+
+        public void AddNaturalAttack(string name, int count, int step, string plus, bool noDamageBonus)
         {
            
             if (Weapon.Weapons.ContainsKey(name))
@@ -4906,6 +5111,14 @@ namespace CombatManager
                     {
                         item.Plus = plus;
                     }
+                    if (noDamageBonus)
+                    {
+                        item.NoMods = true;
+
+                        DieRoll damageRoll = new DieRoll(0, 1, 0);
+                        damageRoll = DieRoll.StepDie(damageRoll, step);
+                        item.Step = damageRoll.Step;
+                    }
                     attacks.NaturalAttacks.Add(item);
                 }
 
@@ -4922,7 +5135,7 @@ namespace CombatManager
                 MonsterSize monsterSize = SizeMods.GetSize(Size);
                 SizeMods mods = SizeMods.GetMods(monsterSize);
 
-                DieRoll damageRoll = new DieRoll(0, 1, AbilityBonus(Strength));
+                DieRoll damageRoll = new DieRoll(0, 1, noDamageBonus?0:AbilityBonus(Strength));
                 attack.Damage = DieRoll.StepDie(damageRoll, (int)monsterSize + step);
 
 
@@ -7459,7 +7672,11 @@ namespace CombatManager
                     }
 
                     //set damage
-                    SetAttackDamageMod(attack, item, af, cf, false, false);
+
+                    if (!item.NoMods)
+                    {
+                        SetAttackDamageMod(attack, item, af, cf, false, false);
+                    }
 
                     //add to set
                     attackSet.Add(attack);
@@ -7543,8 +7760,10 @@ namespace CombatManager
                         attack.Bonus.Add(AttackBonus(baseBonus, handMod, item, cf, af));
 
                         //set damage
-                        SetAttackDamageMod(attack, item, af, cf, !((attacks.NaturalAttacks.Count > 1)||(item.Count > 1)) && set.Count == 0, set.Count > 0);
-
+                        if (!item.NoMods)
+                        {
+                            SetAttackDamageMod(attack, item, af, cf, !((attacks.NaturalAttacks.Count > 1) || (item.Count > 1)) && set.Count == 0, set.Count > 0);
+                        }
                         //add to set
                         attackSet.Add(attack);
                     }
@@ -7793,7 +8012,7 @@ namespace CombatManager
             if (item.Step == null)
             {
 
-                if (attack.Damage != null)
+                if (attack.Damage != null && !item.NoMods)
                 {
                     attack.Damage = DieRoll.StepDie(attack.Damage, ((int)size) - (int)MonsterSize.Medium);
                 }
