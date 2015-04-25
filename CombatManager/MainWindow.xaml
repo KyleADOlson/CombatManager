@@ -1374,7 +1374,7 @@
                 <TextBox Grid.Column="5" Text="{Binding CurrentInitiative, UpdateSourceTrigger=PropertyChanged}" 
 					Background="{Binding HasInitiativeChanged, ConverterParameter={StaticResource SecondaryColorBLighter}, Converter={StaticResource changedToBrushConverter}}" 
 					Margin="2.999,2,3,1" Width="24" VerticalAlignment="Center" Height="19"/>
-					
+                <local:NotesPopup x:Name="NotesPopup"/>
                 <ListBox x:Name="FollowersListBox" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="6" 
 				ItemsSource="{Binding InitiativeFollowers}"
 				Visibility="{Binding InitiativeFollowers.Count, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}"  ItemTemplate="{DynamicResource InitiativeFollowerItemTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" IsHitTestVisible="False" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch"/>
