@@ -138,7 +138,7 @@ namespace CombatManagerMono
                 UISwipeGestureRecognizer rec = new UISwipeGestureRecognizer();
                 rec.Direction = UISwipeGestureRecognizerDirection.Up | UISwipeGestureRecognizerDirection.Down;
                 rec.Delegate = new SwipeGestureDelegate();
-                rec.AddTarget(this, new ObjCRuntime.Selector("HandleDieSwipe"));
+                rec.AddTarget(this, new ObjCRuntime.Selector("HandleDieSwipe:"));
                 _Recs[rec] = b;
 
                 b.AddGestureRecognizer(rec);
