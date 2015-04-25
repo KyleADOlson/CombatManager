@@ -217,7 +217,7 @@ namespace CombatManagerDroid
             b.SetBackgroundDrawable(_View.Context.Resources.GetDrawable(Resource.Drawable.blue_button));
 
            
-            var options = new List<string>(){ "Move Down", "Move Up", "Ready", "Delay" };
+            var options = new List<string>(){ "Move Down", "Move Up", "Ready", "Delay", "Act Now" };
             PopupUtils.AttachSimpleStringPopover(c.Name,
                 b,
                 options,
@@ -238,6 +238,9 @@ namespace CombatManagerDroid
                     case 3:
                         c.IsDelaying = !c.IsDelaying;
                         break;
+                case 4:
+                    _State.CharacterActNow(c);
+                    break;
                     }
 
                 });

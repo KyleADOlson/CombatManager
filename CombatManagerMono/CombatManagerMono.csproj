@@ -64,6 +64,10 @@
     <ConsolePause>False</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchArch>ARMv7</MtouchArch>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -96,6 +100,9 @@
     <MtouchI18n>
     </MtouchI18n>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <BuildIpa>true</BuildIpa>
+    <IpaIncludeArtwork>true</IpaIncludeArtwork>
+    <IpaMetadata>Info.plist</IpaMetadata>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

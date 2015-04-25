@@ -55,6 +55,7 @@ namespace CombatManager
 		MoveAfterInitiative,
 		Delay,
 		Ready,
+        ActNow,
         RollAttackSet,
         RollAttack,
         RollSave,
@@ -297,6 +298,7 @@ namespace CombatManager
 			items.Add(new CharacterActionItem());		
 			items.Add(new CharacterActionItem("Ready", "target", CharacterActionType.Ready));
 			items.Add(new CharacterActionItem("Delay", "hourglass", CharacterActionType.Delay));
+            items.Add(new CharacterActionItem("Act Now", "next", CharacterActionType.ActNow));
 
             if (ch.InitiativeLeader != null)
             {
@@ -453,6 +455,13 @@ namespace CombatManager
                 {
                     primaryChar.IsReadying = false;
                 }
+                break;
+            case CharacterActionType.ActNow:
+                if (primaryChar.IsIdle)
+                {
+                    primaryChar.IsIdle = false;
+                }
+                state.CharacterActNow(primaryChar);
                 break;
             case CharacterActionType.LinkInitiative:
                 Character targetChar = (Character)param;
