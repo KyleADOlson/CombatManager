@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace CombatManagerMono
@@ -82,10 +82,10 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton VerbalButton { get; set; }
 
 		[Action ("OnCancelButtonClicked:")]
-		partial void OnCancelButtonClicked (MonoTouch.Foundation.NSObject sender);
+		partial void OnCancelButtonClicked (Foundation.NSObject sender);
 
 		[Action ("OnOkButtonClicked:")]
-		partial void OnOkButtonClicked (MonoTouch.Foundation.NSObject sender);
+		partial void OnOkButtonClicked (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

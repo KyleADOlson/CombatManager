@@ -22,9 +22,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using System.Drawing;
+using Foundation;
+using UIKit;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -67,13 +67,13 @@ namespace CombatManagerMono
 		}
 		
 		
-		[MonoTouch.Foundation.Export("Close:")]
-		public void Close (MonoTouch.UIKit.UIButton sender)
+		[Foundation.Export("Close:")]
+		public void Close (UIKit.UIButton sender)
 		{
 			_PopoverController.Dismiss(true);	
 		}
 		
-		public virtual SizeF PresentationSize
+		public virtual CGSize PresentationSize
 		{
 			get
 			{

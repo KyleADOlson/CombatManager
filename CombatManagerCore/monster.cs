@@ -131,25 +131,7 @@ namespace CombatManager
         {
             get
             {
-#if (!MONO  || ANDROID)
-#if ANDROID
                 return false;
-#else
-                return false;
-#endif
-#else
-                IOSDeviceHardware.IOSHardware hw =  IOSDeviceHardware.Version;
-                if ( hw == IOSDeviceHardware.IOSHardware.iPad ||
-                    hw == IOSDeviceHardware.IOSHardware.iPad3G)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
-#endif
 
             }
         }

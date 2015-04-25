@@ -21,9 +21,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using CoreGraphics;
 using CombatManager;
-using MonoTouch.UIKit;
+using UIKit;
 
 
 namespace CombatManagerMono
@@ -143,8 +143,8 @@ namespace CombatManagerMono
 			//class filter
 			b = new GradientButton();
 			StyleFilterButton(b);
-			b.Frame = new RectangleF(locX, locY, 100, bHeight);
-			locX += b.Frame.Width + marginX;
+			b.Frame = new CGRect(locX, locY, 100, bHeight);
+            locX += (float)b.Frame.Width + marginX;
 			b.SetText(AllClassesText);
 			classFilterPopover = new ButtonStringPopover(b);
 			classFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = AllClassesText, Tag=null});
@@ -166,8 +166,8 @@ namespace CombatManagerMono
 			//level filter
 			b = new GradientButton();
 			StyleFilterButton(b);
-			b.Frame = new RectangleF(locX, locY, 80, bHeight);
-			locX += b.Frame.Width + marginX;
+			b.Frame = new CGRect(locX, locY, 80, bHeight);
+            locX += (float)b.Frame.Width + marginX;
 			b.SetText(AllLevelsText);
 			levelFilterPopover = new ButtonStringPopover(b);
 			levelFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = AllLevelsText, Tag=null});
@@ -188,8 +188,8 @@ namespace CombatManagerMono
 			//school filter
 			b = new GradientButton();
 			StyleFilterButton(b);
-			b.Frame = new RectangleF(locX, locY, 100, bHeight);
-			locX += b.Frame.Width + marginX;
+			b.Frame = new CGRect(locX, locY, 100, bHeight);
+            locX += (float)b.Frame.Width + marginX;
 			b.SetText(AllSchoolsText);
 			schoolFilterPopover = new ButtonStringPopover(b);
 			schoolFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = AllSchoolsText, Tag=null});
@@ -206,8 +206,8 @@ namespace CombatManagerMono
 
             b = new GradientButton();
             StyleDBButton(b);
-            b.Frame = new RectangleF(locX, locY, 90, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 90, bHeight);
+            locX += (float)b.Frame.Width + marginX;
             b.SetText("New");
             b.TouchUpInside += NewButtonClicked;
 
@@ -215,8 +215,8 @@ namespace CombatManagerMono
 
             b = new GradientButton();
             StyleDBButton(b);
-            b.Frame = new RectangleF(locX, locY, 90, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 90, bHeight);
+            locX += (float)b.Frame.Width + marginX;
             b.SetText("Customize");
             b.TouchUpInside += CustomizeButtonClicked;
             FilterView.AddSubview(b);
@@ -224,8 +224,8 @@ namespace CombatManagerMono
 
             b = new GradientButton();
             StyleDBButton(b);
-            b.Frame = new RectangleF(locX, locY, 90, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 90, bHeight);
+            locX += (float)b.Frame.Width + marginX;
             b.SetText("Edit");
             b.TouchUpInside += EditButtonClicked;
             FilterView.AddSubview(b);
@@ -234,8 +234,8 @@ namespace CombatManagerMono
 
             b = new GradientButton();
             StyleDBButton(b);
-            b.Frame = new RectangleF(locX, locY, 90, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 90, bHeight);
+            locX += (float)b.Frame.Width + marginX;
             b.SetText("Delete");
             b.TouchUpInside += DeleteButtonClicked;
             FilterView.AddSubview(b);

@@ -22,11 +22,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
 using System.ComponentModel;
-using System.Drawing;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -44,7 +44,7 @@ namespace CombatManagerMono
             base.LayoutSubviews();
             if (AccessoryView != null)
             {
-                RectangleF accessoryViewFrame = AccessoryView.Frame;
+                CGRect accessoryViewFrame = AccessoryView.Frame;
                 accessoryViewFrame.X = Frame.Width - accessoryViewFrame.Width - 1;
                 AccessoryView.Frame = accessoryViewFrame;
             }

@@ -19,12 +19,12 @@
  *
  */
 
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using MonoTouch.Foundation;
+using Foundation;
 using System.Collections.ObjectModel;
 using CombatManager;
 
@@ -146,7 +146,7 @@ namespace CombatManagerMono
                 
             }
             
-            public override int RowsInSection (UITableView tableView, int section)
+            public override nint RowsInSection (UITableView tableView, nint section)
             {
                 return state._CurrentFeats.Count;
             }
@@ -167,7 +167,7 @@ namespace CombatManagerMono
                 cell.TextLabel.Font = UIFont.SystemFontOfSize(15);
 
                 GradientButton b = new GradientButton();
-                b.Frame = new RectangleF(0, 3, 160, 22);
+                b.Frame = new CGRect(0, 3, 160, 22);
                 b.TitleLabel.Font = UIFont.SystemFontOfSize(15);
                 CMStyles.TextFieldStyle(b);
                 b.SetText (f.Choice.NullToEmpty());
@@ -176,10 +176,10 @@ namespace CombatManagerMono
                 UIButton x = new UIButton();
                 UIImage redx = UIImage.FromFile("Images/External/redx.png");
                 x.SetImage(redx, UIControlState.Normal);
-                x.Frame = new RectangleF(165, 0, redx.Size.Width, redx.Size.Height);
+                x.Frame = new CGRect(165, 0, redx.Size.Width, redx.Size.Height);
                 x.TouchUpInside += (sender, e) => state.DeleteButtonClicked(f);
 
-                view.Bounds = new RectangleF(0, 0, x.Frame.Right, x.Frame.Bottom);
+                view.Bounds = new CGRect(0, 0, x.Frame.Right, x.Frame.Bottom);
                 view.Add(b);
                 view.Add(x);
 
@@ -243,7 +243,7 @@ namespace CombatManagerMono
 
             }
             
-            public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+            public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
             {
                 return 28;
             }           
@@ -267,7 +267,7 @@ namespace CombatManagerMono
                 
             }
             
-            public override int RowsInSection (UITableView tableView, int section)
+            public override nint RowsInSection (UITableView tableView, nint section)
             {
                 return state._FilteredFeats.Count;
             }
@@ -284,7 +284,7 @@ namespace CombatManagerMono
                 Feat f =  state._FilteredFeats[indexPath.Row];
 
                 GradientButton addButton = new GradientButton();
-                addButton.Bounds = new RectangleF(0, 0, 100, 24);
+                addButton.Bounds = new CGRect(0, 0, 100, 24);
                 addButton.SetText("Add");
                 addButton.SetImage(UIExtensions.GetSmallIcon("prev"), UIControlState.Normal);
                 addButton.ImageEdgeInsets = new UIEdgeInsets(0, 0, 0, 5);
@@ -322,7 +322,7 @@ namespace CombatManagerMono
 
             }
             
-            public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+            public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
             {
                 return 26;
             }

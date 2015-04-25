@@ -21,8 +21,8 @@
 
 using System;
 using CombatManager;
-using System.Drawing;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using UIKit;
 
 
 namespace CombatManagerMono
@@ -96,8 +96,8 @@ namespace CombatManagerMono
 			//type filter
 			b = new GradientButton();
 			StyleFilterButton(b);
-			b.Frame = new RectangleF(locX, locY, 100, bHeight);
-			locX += b.Frame.Width + marginX;
+			b.Frame = new CGRect(locX, locY, 100, bHeight);
+            locX += (float)b.Frame.Width + marginX;
 			b.SetText(AllTypesText);
 			typeFilterPopover = new ButtonStringPopover(b);
 			typeFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = AllTypesText, Tag=null});
@@ -114,8 +114,8 @@ namespace CombatManagerMono
 
             b = new GradientButton();
             StyleDBButton(b);
-            b.Frame = new RectangleF(locX, locY, 90, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 90, bHeight);
+            locX += (float)b.Frame.Width + marginX;
             b.SetText("New");
             b.TouchUpInside += NewButtonClicked;
 
@@ -123,8 +123,8 @@ namespace CombatManagerMono
 
             b = new GradientButton();
             StyleDBButton(b);
-            b.Frame = new RectangleF(locX, locY, 90, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 90, bHeight);
+            locX += (float)(b.Frame.Width + marginX);
             b.SetText("Customize");
             b.TouchUpInside += CustomizeButtonClicked;
             FilterView.AddSubview(b);
@@ -132,8 +132,8 @@ namespace CombatManagerMono
 
             b = new GradientButton();
             StyleDBButton(b);
-            b.Frame = new RectangleF(locX, locY, 90, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 90, bHeight);
+            locX += (float)b.Frame.Width + marginX;
             b.SetText("Edit");
             b.TouchUpInside += EditButtonClicked;
             FilterView.AddSubview(b);
@@ -142,8 +142,8 @@ namespace CombatManagerMono
 
             b = new GradientButton();
             StyleDBButton(b);
-            b.Frame = new RectangleF(locX, locY, 90, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 90, bHeight);
+            locX += (float)b.Frame.Width + marginX;
             b.SetText("Delete");
             b.TouchUpInside += DeleteButtonClicked;
             FilterView.AddSubview(b);

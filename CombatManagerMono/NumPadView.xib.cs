@@ -23,8 +23,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace CombatManagerMono
 {
@@ -62,15 +62,15 @@ namespace CombatManagerMono
 		{
 		}
 		
-		partial void numberPressed (MonoTouch.Foundation.NSObject sender)
+		partial void numberPressed (Foundation.NSObject sender)
 		{
 			if (NumberPressed != null)
 			{
-				NumberPressed(this, new NumPadEventArgs() {Key = ((UIButton)sender).Tag});
+                NumberPressed(this, new NumPadEventArgs() {Key = (int)((UIButton)sender).Tag});
 			}
 		}
 
-		partial void delPressed (MonoTouch.Foundation.NSObject sender)
+		partial void delPressed (Foundation.NSObject sender)
 		{
 			if (DeletePressed != null)
 			{
@@ -78,7 +78,7 @@ namespace CombatManagerMono
 			}
 		}
 
-		partial void enterPressed (MonoTouch.Foundation.NSObject sender)
+		partial void enterPressed (Foundation.NSObject sender)
 		{
 			if (EnterPressed != null)
 			{

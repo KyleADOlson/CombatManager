@@ -19,10 +19,10 @@
  *
  */
 
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System;
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -67,7 +67,7 @@ namespace CombatManagerMono
 				TextField.Hidden = false;
 				TextView.Hidden = true;
 				
-				RectangleF rect = BackgroundView.Frame;
+				CGRect rect = BackgroundView.Frame;
 				rect.Height -= 220;
 				rect.Y += 100;
 				BackgroundView.Frame = rect;
@@ -110,12 +110,12 @@ namespace CombatManagerMono
 			}
 		}
 		
-		partial void CancelButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void CancelButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			HandleCancel();
 		}
 		
-		partial void OKButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void OKButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			if (SingleLine)
 			{

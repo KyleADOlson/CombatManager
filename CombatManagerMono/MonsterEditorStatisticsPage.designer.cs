@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace CombatManagerMono
@@ -19,7 +19,7 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton AuraButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView AvailableSkillsTable { get; set; }
+		UIKit.UITableView AvailableSkillsTable { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton BaseAtkButton { get; set; }
@@ -40,7 +40,7 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton GearButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView KnownSkillsTable { get; set; }
+		UIKit.UITableView KnownSkillsTable { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton LanguagesButton { get; set; }

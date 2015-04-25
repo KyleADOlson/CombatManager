@@ -23,10 +23,10 @@ using System;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using System.Drawing;
-using MonoTouch.CoreGraphics;
+using Foundation;
+using UIKit;
+using CoreGraphics;
+using CoreGraphics;
 using CombatManager;
 using System.Text.RegularExpressions;
 
@@ -66,7 +66,7 @@ namespace CombatManagerMono
 			advancerPanel = new AdvancerPanel();
 			
 			this.BottomView = advancerPanel.View;
-			BottomViewHeight = advancerPanel.View.Frame.Height;
+            BottomViewHeight = (float)advancerPanel.View.Frame.Height;
 			advancerPanel.AddMonsterClicked += HandleAdvancerPanelAddMonsterClicked;
 			advancerPanel.AdvancementChanged += HandleAdvancerPanelAdvancementChanged;
 		}
@@ -95,8 +95,8 @@ namespace CombatManagerMono
 			//set filter
 			b = new GradientButton();
 			StyleFilterButton(b);
-			b.Frame = new RectangleF(locX, locY, 100, bHeight);
-			locX += b.Frame.Width + marginX;
+			b.Frame = new CGRect(locX, locY, 100, bHeight);
+            locX += (float)b.Frame.Width + marginX;
 			b.SetText(AllSetText);
 			setFilterPopover = new ButtonStringPopover(b);
 			setFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = AllSetText, Tag=null});
@@ -111,8 +111,8 @@ namespace CombatManagerMono
 			//type filter
 			b = new GradientButton();
 			StyleFilterButton(b);
-			b.Frame = new RectangleF(locX, locY, 150, bHeight);
-			locX += b.Frame.Width + marginX;
+			b.Frame = new CGRect(locX, locY, 150, bHeight);
+            locX += (float)b.Frame.Width + marginX;
 			
 			b.SetText(AllTypeText);
 			typePopover = new ButtonStringPopover(b);
@@ -132,8 +132,8 @@ namespace CombatManagerMono
 			//CR filter
 			b = new GradientButton();
 			StyleFilterButton(b);
-			b.Frame = new RectangleF(locX, locY, 100, bHeight);
-			locX += b.Frame.Width + marginX;
+			b.Frame = new CGRect(locX, locY, 100, bHeight);
+            locX += (float)b.Frame.Width + marginX;
 			
 			b.SetText(AllCRText);
 			crFilterPopover = new ButtonStringPopover(b);

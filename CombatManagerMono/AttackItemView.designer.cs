@@ -4,7 +4,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -15,13 +15,13 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientView HandView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel HandLabel { get; set; }
+		UIKit.UILabel HandLabel { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientView NameView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel NameLabel { get; set; }
+		UIKit.UILabel NameLabel { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton DeleteButton { get; set; }

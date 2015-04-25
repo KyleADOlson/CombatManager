@@ -23,10 +23,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
-using System.Drawing;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -200,7 +200,7 @@ namespace CombatManagerMono
 			}
 			
 
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				if (parent!= null)
 				{
@@ -226,7 +226,7 @@ namespace CombatManagerMono
 			}
 		
 			
-			public override int RowsInSection (UITableView tableView, int section)
+			public override nint RowsInSection (UITableView tableView, nint section)
 			{
 				if (parent._currentViewMonsters == null)
 				{

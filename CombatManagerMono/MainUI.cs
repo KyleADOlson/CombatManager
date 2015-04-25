@@ -22,10 +22,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
-using System.Drawing;
+using CoreGraphics;
 using System.Threading;
 using System.IO;
 
@@ -150,16 +150,16 @@ namespace CombatManagerMono
 		{
 			
 			base.LayoutSubviews ();
-			toolbar.SetWidth(Frame.Width);
+            toolbar.SetWidth((float)Frame.Width);
 			toolbar.SetHeight(50);
             toolbar.SetLocation(0, 20);
 			toolbar.ButtonClicked += HandleToolbarButtonClicked;
          
 			
 			
-            currentTab.SetLocation(0, toolbar.Frame.Bottom);
-			currentTab.SetWidth(Frame.Width);
-            currentTab.SetHeight(Frame.Height - toolbar.Frame.Bottom);
+            currentTab.SetLocation(0, (float)toolbar.Frame.Bottom);
+            currentTab.SetWidth((float)Frame.Width);
+            currentTab.SetHeight((float)Frame.Height - (float)toolbar.Frame.Bottom);
 
 
 		}

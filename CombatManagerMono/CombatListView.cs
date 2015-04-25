@@ -22,13 +22,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Drawing;
-using MonoTouch.CoreGraphics;
+using CoreGraphics;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -425,20 +425,20 @@ namespace CombatManagerMono
 		public override void LayoutSubviews ()
 		{
 			base.LayoutSubviews ();
-			RectangleF rect = ConvertRectFromView(Frame, Superview);
+			CGRect rect = ConvertRectFromView(Frame, Superview);
 
-            float xColumnWidth = (rect.Width/3.0f);		
-            float yRowHeight = buttonHeight;
+            double xColumnWidth = (rect.Width/3.0d);		
+            double yRowHeight = buttonHeight;
 			
-            RectangleF statusRect = new RectangleF(0, 0, xColumnWidth*2.0f + 1.0f, buttonHeight);
+            CGRect statusRect = new CGRect(0, 0, new nfloat(xColumnWidth*2.0d + 1.0d), new nfloat(buttonHeight));
 			_CurrentCharacterView.Frame = statusRect;
 
-			RectangleF labelRect  = _CurrentCharacterView.Bounds;
+			CGRect labelRect  = _CurrentCharacterView.Bounds;
 			labelRect.X += labelMarginX;
 			labelRect.Width -= 2 * labelMarginX;			
 			_CurrentCharacterLabel.Frame = labelRect;
 			
-            statusRect.Y += yRowHeight;
+            statusRect.Y += new nfloat(yRowHeight);
 			_RoundView.Frame = statusRect;
 
 			labelRect  = _RoundView.Bounds;
@@ -447,7 +447,7 @@ namespace CombatManagerMono
 			_RoundLabel.Frame = labelRect;
 			
 			
-			RectangleF button = new RectangleF(xColumnWidth * 2.0f, 0, xColumnWidth + 1.0f, yRowHeight * 2.0f);
+            CGRect button = new CGRect(new nfloat(xColumnWidth * 2.0f), new nfloat(0), new nfloat(xColumnWidth + 1.0d), new nfloat(yRowHeight * 2.0d));
             button.Width -= 1;
             _NextButton.Frame = button;
             button.Width += 1;
@@ -458,15 +458,15 @@ namespace CombatManagerMono
             _MoveUpButton.Frame = button;
 
 
-            button.X += xColumnWidth;
+            button.X += new nfloat(xColumnWidth);
             _MoveDownButton.Frame = button;	
 
-            button.X += xColumnWidth;
+            button.X += new nfloat(xColumnWidth);
             button.Width -= 1;
             _PrevButton.Frame = button;
             button.Width += 1;
 			
-			RectangleF list = rect;
+			CGRect list = rect;
 			list.Y += button.Bottom;
             list.Height -= list.Y + buttonHeight*2;
 			_ListView.Frame = list;
@@ -565,7 +565,7 @@ namespace CombatManagerMono
 				
 			}
 			
-			public override int RowsInSection (UITableView tableView, int section)
+			public override nint RowsInSection (UITableView tableView, nint section)
 			{
 				return state.CombatState.CombatList.Count;
 			}
@@ -594,7 +594,7 @@ namespace CombatManagerMono
                 float accHeight = 30f;
 				
 				
-				UIView buttonView = new UIView(new RectangleF(0, 0, 79, accHeight));
+				UIView buttonView = new UIView(new CGRect(0, 0, 79, accHeight));
 				
                 float xPos = 0;
 				GradientButton b = new GradientButton();
@@ -603,7 +603,7 @@ namespace CombatManagerMono
                 {
                     UIImageView view = new UIImageView();
                     view.Image = ch.IsReadying?state._ReadyingImage:state._DelayingImage;
-                    view.Frame = new RectangleF(new PointF(xPos, (accHeight - 16f)/2.0f), new SizeF(16, 16));
+                    view.Frame = new CGRect(new CGPoint(xPos, (accHeight - 16f)/2.0f), new CGSize(16, 16));
                     buttonView.Add (view);
                     xPos += 18;
                 }
@@ -613,7 +613,7 @@ namespace CombatManagerMono
                     
                     UIImageView view = new UIImageView();
                     view.Image = state._LinkImage;
-                    view.Frame = new RectangleF(new PointF(xPos, (accHeight - 16f)/2.0f), new SizeF(16, 16));
+                    view.Frame = new CGRect(new CGPoint(xPos, (accHeight - 16f)/2.0f), new CGSize(16, 16));
                     buttonView.Add (view);
                     xPos += 18;
                 }
@@ -621,22 +621,22 @@ namespace CombatManagerMono
 
 				b.SetTitle(ch.CurrentInitiative.ToString(), UIControlState.Normal);
 				b.CornerRadius = 0;
-				b.Frame = new RectangleF(xPos, 0, 40, accHeight);
+				b.Frame = new CGRect(xPos, 0, 40, accHeight);
 				b.TouchUpInside += state.InitButtonTouchUpInside;
 				b.Data = ch;
 				buttonView.AddSubview(b);
 
-                xPos += b.Frame.Width - 1;
+                xPos += (float)(b.Frame.Width - 1);
 
 				b = new GradientButton();
 				b.SetImage(UIExtensions.GetSmallIcon("lightning"), UIControlState.Normal);
 				b.CornerRadius = 0;
-				b.Frame = new RectangleF(xPos, 0, 40, accHeight);
+				b.Frame = new CGRect(xPos, 0, 40, accHeight);
 				
 				buttonView.AddSubview(b);
 				b.Data = ch;
 
-                xPos += b.Frame.Width -1;
+                xPos += (float)(b.Frame.Width -1);
 
                 buttonView.SetWidth(xPos);
 				
@@ -696,7 +696,7 @@ namespace CombatManagerMono
 				}
 			}
 			
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 28;
 			}

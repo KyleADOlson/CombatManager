@@ -22,8 +22,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
 using System.Text.RegularExpressions;
 
@@ -99,7 +99,7 @@ namespace CombatManagerMono
 			SelectionTable.ReloadData();
 		}
 		
-		partial void StepperValueChanged (MonoTouch.UIKit.UIStepper sender)
+		partial void StepperValueChanged (UIKit.UIStepper sender)
 		{
 			 UpdateDuration();
 		}
@@ -108,7 +108,7 @@ namespace CombatManagerMono
 		{
 			if (_SelectedButton != sender.Tag)
 			{
-				_SelectedButton = sender.Tag;
+                _SelectedButton = (int)sender.Tag;
 				UpdateButtons();
 				SelectionTable.ReloadData();
 				
@@ -322,7 +322,7 @@ namespace CombatManagerMono
 				
 			}
 			
-			public override int RowsInSection (UITableView tableView, int section)
+			public override nint RowsInSection (UITableView tableView, nint section)
 			{
 				return state._VisibleConditions.Count ;
 			}
@@ -369,7 +369,7 @@ namespace CombatManagerMono
 				}
 			}
 			
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 26;
 			}

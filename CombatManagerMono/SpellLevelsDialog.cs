@@ -1,9 +1,9 @@
 ﻿
 using System;
-using System.Drawing;
+using CoreGraphics;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 using CombatManager;
 using System.Collections.Generic;
@@ -90,7 +90,7 @@ namespace CombatManagerMono
 
             }
 
-            public override int RowsInSection (UITableView tableView, int section)
+            public override nint RowsInSection (UITableView tableView, nint section)
             {
                 return state._spell.Adjuster.Levels.Count;
             }
@@ -113,7 +113,7 @@ namespace CombatManagerMono
                 cell.TextLabel.Font = UIFont.SystemFontOfSize(15);
 
                 GradientButton b = new GradientButton();
-                b.Frame = new RectangleF(0, 3, 160, 22);
+                b.Frame = new CGRect(0, 3, 160, 22);
                 b.TitleLabel.Font = UIFont.SystemFontOfSize(15);
                 CMStyles.TextFieldStyle(b);
                 b.SetText(info.Class);
@@ -122,10 +122,10 @@ namespace CombatManagerMono
                 UIButton x = new UIButton();
                 UIImage redx = UIImage.FromFile("Images/External/redx.png");
                 x.SetImage(redx, UIControlState.Normal);
-                x.Frame = new RectangleF(165, 0, redx.Size.Width, redx.Size.Height);
+                x.Frame = new CGRect(165, 0, redx.Size.Width, redx.Size.Height);
                 x.TouchUpInside += (sender, e) => state.DeleteLevelClicked(info);
 
-                view.Bounds = new RectangleF(0, 0, x.Frame.Right, x.Frame.Bottom);
+                view.Bounds = new CGRect(0, 0, x.Frame.Right, x.Frame.Bottom);
                 view.Add(b);
                 view.Add(x);
 
@@ -165,7 +165,7 @@ namespace CombatManagerMono
             {
             }
 
-            public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+            public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
             {
                 return 30;
             }

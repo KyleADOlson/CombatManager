@@ -20,8 +20,8 @@
  */
 
 using System;
-using MonoTouch.CoreGraphics;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using UIKit;
 using System.Collections.Generic;
 
 namespace CombatManagerMono

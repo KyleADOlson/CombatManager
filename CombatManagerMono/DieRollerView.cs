@@ -1,14 +1,14 @@
 using System;
-using System.Drawing;
+using CoreGraphics;
 using System.Linq;
 using System.Collections.Generic;
 
-using MonoTouch.UIKit;
+using UIKit;
 
 using CombatManager;
-using MonoTouch.CoreGraphics;
+using CoreGraphics;
 using System.Text;
-using MonoTouch.Foundation;
+using Foundation;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -138,7 +138,7 @@ namespace CombatManagerMono
                 UISwipeGestureRecognizer rec = new UISwipeGestureRecognizer();
                 rec.Direction = UISwipeGestureRecognizerDirection.Up | UISwipeGestureRecognizerDirection.Down;
                 rec.Delegate = new SwipeGestureDelegate();
-                rec.AddTarget(this, new MonoTouch.ObjCRuntime.Selector("HandleDieSwipe"));
+                rec.AddTarget(this, new ObjCRuntime.Selector("HandleDieSwipe"));
                 _Recs[rec] = b;
 
                 b.AddGestureRecognizer(rec);
@@ -193,7 +193,7 @@ namespace CombatManagerMono
             GradientButton b =  _Recs[rec];
             _BottomView.BringSubviewToFront(b);
 
-            int value = b.Tag;
+            int value = (int)b.Tag;
 
             DieRoll r = DieRoll.FromString("1d" + value);
 
@@ -259,11 +259,11 @@ namespace CombatManagerMono
             DieRoll roll = DieRoll.FromString(_DieText);
             if (roll == null)
             {
-                roll = new DieRoll(1, ((UIButton)sender).Tag, 0);
+                roll = new DieRoll(1, (int)((UIButton)sender).Tag, 0);
             }
             else
             {
-                roll.AddDie(new DieStep(1, ((UIButton)sender).Tag)); 
+                roll.AddDie(new DieStep(1, (int)((UIButton)sender).Tag)); 
             }
             
             SlideView((UIView)sender, false);
@@ -493,35 +493,35 @@ namespace CombatManagerMono
         {
             if (_Collapsed)
             {
-                _TitleButton.Frame = new RectangleF(0, 0, Bounds.Width, _TopButtonSize);
+                _TitleButton.Frame = new CGRect(0, 0, Bounds.Width, _TopButtonSize);
             }
             else
             {
-                _TitleButton.Frame = new RectangleF(0, 0, Bounds.Width * 2.0f / 3.0f, _TopButtonSize);
+                _TitleButton.Frame = new CGRect(0, 0, Bounds.Width * 2.0f / 3.0f, _TopButtonSize);
 
             }
 
-            _ClearHtmlButton.Frame = new RectangleF(Bounds.Width * 2.0f/3.0f, 0, Bounds.Width/3.0f, _TopButtonSize);
-            _OutputView.Frame = new RectangleF(0, _TopButtonSize, Bounds.Width, Bounds.Height - _BottomSize-1 - _TopButtonSize);
+            _ClearHtmlButton.Frame = new CGRect(Bounds.Width * 2.0f/3.0f, 0, Bounds.Width/3.0f, _TopButtonSize);
+            _OutputView.Frame = new CGRect(0, _TopButtonSize, Bounds.Width, Bounds.Height - _BottomSize-1 - _TopButtonSize);
 
-            _BottomView.Frame = new RectangleF(0, Bounds.Height - _BottomSize, Bounds.Width, _BottomSize);
+            _BottomView.Frame = new CGRect(0, Bounds.Height - _BottomSize, Bounds.Width, _BottomSize);
 
 
-            SizeF sideSize = new SizeF(_BottomView.Bounds.Height, _SideButtonSize);
+            CGSize sideSize = new CGSize(_BottomView.Bounds.Height, _SideButtonSize);
 
             _RollButton.Bounds = sideSize.OriginRect();
-            _RollButton.Center = new PointF(_SideButtonSize/2.0f, _BottomView.Bounds.Height/2.0f);
+            _RollButton.Center = new CGPoint(_SideButtonSize/2.0f, _BottomView.Bounds.Height/2.0f);
             _RollButton.Transform = CGAffineTransform.MakeRotation((float)Math.PI/2.0f);
 
             
             _ClearButton.Bounds = sideSize.OriginRect();
-            _ClearButton.Center = new PointF(_BottomView.Bounds.Width - _SideButtonSize/2.0f, _BottomView.Bounds.Height/2.0f);
+            _ClearButton.Center = new CGPoint(_BottomView.Bounds.Width - _SideButtonSize/2.0f, _BottomView.Bounds.Height/2.0f);
             _ClearButton.Transform = CGAffineTransform.MakeRotation((float)Math.PI/2.0f);
 
-            RectangleF dieSpace = new RectangleF(_SideButtonSize, 0, _BottomView.Bounds.Size.Width - _SideButtonSize * 2, 
+            CGRect dieSpace = new CGRect(_SideButtonSize, 0, _BottomView.Bounds.Size.Width - _SideButtonSize * 2, 
                                                  _BottomView.Bounds.Size.Height - _TextHeight);
 
-            SizeF dieSize = new SizeF(dieSpace.Width/4, dieSpace.Height/2);
+            CGSize dieSize = new CGSize(dieSpace.Width/4, dieSpace.Height/2);
 
 
             for (int i=0; i<_DieButtons.Count; i++)
@@ -530,9 +530,9 @@ namespace CombatManagerMono
 
                 int column = i%4;
                 int row = i/4;
-                PointF p = new PointF(dieSpace.X + column * dieSize.Width, 
+                CGPoint p = new CGPoint(dieSpace.X + column * dieSize.Width, 
                                       dieSpace.Y + dieSize.Height * row);
-                SizeF s = dieSize;
+                CGSize s = dieSize;
 
                 s.Width -=2;
                 p.X += 1;
@@ -542,12 +542,12 @@ namespace CombatManagerMono
 
 
 
-                b.Frame = new RectangleF(p, s);
+                b.Frame = new CGRect(p, s);
 
 
                 if (b.BonusImage != null)
                 {
-                    RectangleF rect = b.BonusImage.Size.OriginRect();
+                    CGRect rect = b.BonusImage.Size.OriginRect();
                     rect.X = (b.Frame.Width - rect.Width)/2.0f;
                     rect.Y = 5;
                     b.BonusImageRect = rect;
@@ -556,7 +556,7 @@ namespace CombatManagerMono
 
             }
 
-            _DieTextButton.Frame = new RectangleF(_SideButtonSize, _BottomView.Bounds.Height - _TextHeight, 
+            _DieTextButton.Frame = new CGRect(_SideButtonSize, _BottomView.Bounds.Height - _TextHeight, 
                                             dieSpace.Width, _TextHeight);
 
 

@@ -138,6 +138,10 @@ namespace CombatManager
                 List<MagicItem> magicItems = new List<MagicItem>();
     #if ANDROID
                 XDocument doc = XDocument.Load(new StreamReader(CoreContext.Context.Assets.Open(filename)));
+    #elif MONO
+                XDocument doc = XDocument.Load(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/..", filename));
+                         
+
     #else
 
                 XDocument doc = XDocument.Load(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), filename));

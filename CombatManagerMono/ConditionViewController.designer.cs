@@ -25,7 +25,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -39,19 +39,19 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientView BottomView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView SelectionTable { get; set; }
+		UIKit.UITableView SelectionTable { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField FilterText { get; set; }
+		UIKit.UITextField FilterText { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientView TitleView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel DurationLabel { get; set; }
+		UIKit.UILabel DurationLabel { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIStepper DurationStepper { get; set; }
+		UIKit.UIStepper DurationStepper { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton ConditionsTab { get; set; }
@@ -69,7 +69,7 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton FavoritesTab { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIWebView ConditionDetailWebView { get; set; }
+		UIKit.UIWebView ConditionDetailWebView { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton ApplyButton { get; set; }
@@ -78,15 +78,15 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton CloseButton { get; set; }
 
 		[Action ("StepperValueChanged:")]
-		partial void StepperValueChanged (MonoTouch.UIKit.UIStepper sender);
+		partial void StepperValueChanged (UIKit.UIStepper sender);
 
 		[Action ("TabButtonClicked:")]
-		partial void TabButtonClicked (MonoTouch.UIKit.UIButton sender);
+		partial void TabButtonClicked (UIKit.UIButton sender);
 
 		[Action ("ApplyButtonClicked:")]
-		partial void ApplyButtonClicked (MonoTouch.UIKit.UIButton sender);
+		partial void ApplyButtonClicked (UIKit.UIButton sender);
 
 		[Action ("CloseButtonClicked:")]
-		partial void CloseButtonClicked (MonoTouch.Foundation.NSObject sender);
+		partial void CloseButtonClicked (Foundation.NSObject sender);
 	}
 }

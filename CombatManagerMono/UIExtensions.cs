@@ -22,9 +22,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using System.Drawing;
+using Foundation;
+using UIKit;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -63,7 +63,7 @@ namespace CombatManagerMono
 		
     public static void SetWidth(this UIView view, float width)
         {
-            RectangleF frame = view.Frame;
+            CGRect frame = view.Frame;
             frame.Width = width;
             view.Frame = frame;
             
@@ -71,21 +71,21 @@ namespace CombatManagerMono
         
         public static void SetHeight(this UIView view, float height)
         {
-            RectangleF frame = view.Frame;
+            CGRect frame = view.Frame;
             frame.Height = height;
             view.Frame = frame;
             
         }   
 
         
-        public static void SetSize(this UIView view, SizeF size)
+        public static void SetSize(this UIView view, CGSize size)
         {
-            view.SetSize(size.Width, size.Height);
+            view.SetSize((float)size.Width, (float)size.Height);
         }
 
         public static void SetSize(this UIView view, float width, float height)
         {
-            RectangleF frame = view.Frame;
+            CGRect frame = view.Frame;
             frame.Height = height;
             frame.Width = width;
             view.Frame = frame;
@@ -94,7 +94,7 @@ namespace CombatManagerMono
         
         public static void SetX(this UIView view, float x)
         {
-            RectangleF frame = view.Frame;
+            CGRect frame = view.Frame;
             frame.X = x;
             view.Frame = frame;
             
@@ -102,21 +102,21 @@ namespace CombatManagerMono
         
         public static void SetY(this UIView view, float y)
         {
-            RectangleF frame = view.Frame;
+            CGRect frame = view.Frame;
             frame.Y = y;
             view.Frame = frame;
             
         }
         
-        public static void SetLocation(this UIView view, PointF loc)
+        public static void SetLocation(this UIView view, CGPoint loc)
         {
-            view.SetLocation(loc.X, loc.Y);
+            view.SetLocation((float)loc.X, (float)loc.Y);
         }
         
         public static void SetLocation(this UIView view, float x, float y)
         {
-            RectangleF frame = view.Frame;
-            PointF loc = frame.Location;
+            CGRect frame = view.Frame;
+            CGPoint loc = frame.Location;
             loc.X = x;
             loc.Y = y;
             frame.Location = loc;
@@ -126,7 +126,7 @@ namespace CombatManagerMono
         
         public static void SetPosition(this UIView view, float x, float y, float width, float height)
         {
-            RectangleF frame = view.Frame;
+            CGRect frame = view.Frame;
             frame.X = x;
             frame.Y = y;
             frame.Height = height;
@@ -182,19 +182,19 @@ namespace CombatManagerMono
             return (str == null)?"":str;
         }
 
-        public static RectangleF OriginRect(this SizeF size)
+        public static CGRect OriginRect(this CGSize size)
         {
-            return new RectangleF(new Point(0, 0), size);
+            return new CGRect(new CGPoint(0, 0), size);
         }
 
-        public static PointF Center(this RectangleF rect)
+        public static CGPoint Center(this CGRect rect)
         {
-            return new PointF(rect.Height/2.0f, rect.Width/2.0f);
+            return new CGPoint(rect.Height/2.0f, rect.Width/2.0f);
         }
 
-        public static PointF Add(this PointF p1, PointF p2)
+        public static CGPoint Add(this CGPoint p1, CGPoint p2)
         {
-            return new PointF(p1.X + p2.X, p1.Y + p2.Y);
+            return new CGPoint(p1.X + p2.X, p1.Y + p2.Y);
         }
 		
 	}

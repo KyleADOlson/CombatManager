@@ -19,11 +19,11 @@
  *
  */
 
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System;
 using System.Collections.Generic;
-using MonoTouch.Foundation;
+using Foundation;
 using CombatManager;
 
 namespace CombatManagerMono
@@ -736,7 +736,7 @@ namespace CombatManagerMono
 			return monster;
 		}
 		
-		partial void AddMonsterButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void AddMonsterButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			if (AddMonsterClicked != null)
 			{
@@ -744,12 +744,12 @@ namespace CombatManagerMono
 			}
 		}
 		
-		partial void AdvancerHeaderButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void AdvancerHeaderButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			
 		}
 		
-		partial void ResetButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void ResetButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			ResetFilters();
 		}

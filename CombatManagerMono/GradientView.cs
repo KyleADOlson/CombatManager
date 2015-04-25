@@ -20,10 +20,10 @@
  */
 
 using System;
-using MonoTouch.CoreGraphics;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
-using System.Drawing;
+using CoreGraphics;
+using UIKit;
+using Foundation;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -52,7 +52,7 @@ namespace CombatManagerMono
 		
 		
 		
-		public override void Draw (RectangleF rect)
+		public override void Draw (CGRect rect)
 		{
 			rect.X += _border/2.0f;
 			rect.Width -= _border;

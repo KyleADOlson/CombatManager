@@ -19,12 +19,12 @@
  *
  */
 
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using MonoTouch.Foundation;
+using Foundation;
 using CombatManager;
 
 namespace CombatManagerMono
@@ -260,7 +260,7 @@ namespace CombatManagerMono
                 this.state = state;
             }
             
-            public override int RowsInSection (UITableView tableView, int section)
+            public override nint RowsInSection (UITableView tableView, nint section)
             {
                 return state._SelectableSkills.Count;
             }
@@ -303,7 +303,7 @@ namespace CombatManagerMono
                 state.UpdateSkillButtons();
             }
             
-            public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+            public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
             {
                 return 24;
             }
@@ -317,7 +317,7 @@ namespace CombatManagerMono
                 this.state = state;
             }
             
-            public override int RowsInSection (UITableView tableView, int section)
+            public override nint RowsInSection (UITableView tableView, nint section)
             {
                 return state._CurrentSkills.Count;
             }
@@ -377,7 +377,7 @@ namespace CombatManagerMono
             {
             }
             
-            public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+            public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
             {
                 return 24;
             }

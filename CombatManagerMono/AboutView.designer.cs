@@ -4,7 +4,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -12,10 +12,10 @@ namespace CombatManagerMono
 	partial class AboutView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIButton OKButton { get; set; }
+		UIKit.UIButton OKButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIWebView WebView { get; set; }
+		UIKit.UIWebView WebView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

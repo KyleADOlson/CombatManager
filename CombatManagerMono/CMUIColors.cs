@@ -20,7 +20,7 @@
  */
 
 using System;
-using MonoTouch.UIKit;
+using UIKit;
 namespace CombatManagerMono
 {
 	public static class CMUIColors

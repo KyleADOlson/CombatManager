@@ -4,7 +4,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -12,13 +12,13 @@ namespace CombatManagerMono
 	partial class MonsterEditorFeatsPage
 	{
 		[Outlet]
-		MonoTouch.UIKit.UITableView CurrentFeatsView { get; set; }
+		UIKit.UITableView CurrentFeatsView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView AvailableFeatsView { get; set; }
+		UIKit.UITableView AvailableFeatsView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField FilterTextView { get; set; }
+		UIKit.UITextField FilterTextView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

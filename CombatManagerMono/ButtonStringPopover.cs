@@ -22,12 +22,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Drawing;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -187,7 +187,7 @@ namespace CombatManagerMono
 		
 		public void RecalcHeight()
 		{
-			float height = 0;
+			nfloat height = 0;
 			foreach (ButtonStringPopoverItem  item in _CurrentItems)
 			{
 				if (item.Text.IsEmptyOrNull())
@@ -200,21 +200,21 @@ namespace CombatManagerMono
 				}
 			}
 			
-			float width = 200;
+			nfloat width = 200;
 			
 			if (_AccessoryView != null)
 			{
-				width += Math.Min(_AccessoryView.Frame.Width, 400);
-				height = Math.Max(height, _AccessoryView.Frame.Height);
+                width += new nfloat(Math.Min((double)_AccessoryView.Frame.Width, 400d));
+                height = new nfloat(Math.Max(height, (double)_AccessoryView.Frame.Height));
 			}
 			
-			height = Math.Min(height, 400);
+            height = new nfloat(Math.Min(height, 400));
 			
-			_controller.SetPopoverContentSize(new SizeF(width, height), true);
+			_controller.SetPopoverContentSize(new CGSize(width, height), true);
 			
 			if (_AccessoryView != null)
 			{
-				RectangleF rect = _AccessoryView.Frame;
+				CGRect rect = _AccessoryView.Frame;
 				rect.X = 0;
 				rect.Y = 0;
 				rect.Width = width-200;
@@ -224,7 +224,7 @@ namespace CombatManagerMono
 			
 			}
 			
-			RectangleF tbRect = new RectangleF();
+			CGRect tbRect = new CGRect();
 			tbRect.X = width-200;
 			tbRect.Y = 0;
 			tbRect.Width = 200;
@@ -281,7 +281,7 @@ namespace CombatManagerMono
 				
 			}
 			
-			public override int RowsInSection (UITableView tableView, int section)
+			public override nint RowsInSection (UITableView tableView, nint section)
 			{
 				return state._CurrentItems.Count;
 			}
@@ -317,7 +317,7 @@ namespace CombatManagerMono
                         image = UIExtensions.GetSmallIcon("check");
                     }
 					cell.ImageView.Image = image;
-					cell.ImageView.Frame = new RectangleF(0, 0, 16, 16);
+					cell.ImageView.Frame = new CGRect(0, 0, 16, 16);
 
 				}
 				
@@ -378,7 +378,7 @@ namespace CombatManagerMono
 			}
 			
 			
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{				
 				if (state._CurrentItems[indexPath.Row].Text.IsEmptyOrNull())
 				{

@@ -2,8 +2,8 @@ using System;
 
 using System;
 using System.Runtime.InteropServices;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace CombatManager
 {

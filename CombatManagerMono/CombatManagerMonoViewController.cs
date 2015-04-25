@@ -1,10 +1,10 @@
 using System;
-using System.Drawing;
+using CoreGraphics;
 using System.Threading;
 using System.Collections.Generic;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 using CombatManager;
 
@@ -72,7 +72,7 @@ namespace CombatManagerMono
             uiLoaded = true;
             ui = new MainUI();
             ui.StartupUrl = StartupUrl;
-            RectangleF rect = View.Frame;
+            CGRect rect = View.Frame;
             rect = View.ConvertRectFromView(rect, View.Superview);
             rect.X = 0;
             rect.Y = 0;
@@ -110,7 +110,7 @@ namespace CombatManagerMono
         public void LayoutView()
         {
             
-            RectangleF rect = View.Frame;
+            CGRect rect = View.Frame;
             rect = View.ConvertRectFromView(rect, View.Superview);
             
 
@@ -128,23 +128,23 @@ namespace CombatManagerMono
             if (!uiLoaded)
             {
                 UIImage im = UIImage.FromFile("Images/Icon.png");
-                float y = (View.Bounds.Height - im.Size.Height)/2.0f;
-                float x = View.Bounds.Width/5.0f;
+                double y = (View.Bounds.Height - im.Size.Height)/2.0d;
+                double x = View.Bounds.Width/5.0d;
 
                 if (_LoadingIcons.Count == 0)
                 {
                     UIImageView die = new UIImageView(im);
-                    die.Frame = new RectangleF(new PointF(x, y), im.Size);
+                        die.Frame = new CGRect(new CGPoint(new nfloat(x), new nfloat(y)), im.Size);
                     
                     View.Add (die);
                     _LoadingIcons.Add(die);
                 }
                 else
                 {
-                    RectangleF last = _LoadingIcons[_LoadingIcons.Count - 1].Frame;
+                    CGRect last = _LoadingIcons[_LoadingIcons.Count - 1].Frame;
 
                     UIImageView die = new UIImageView(im);
-                    die.Frame = new RectangleF(new PointF(last.X + im.Size.Width, last.Top), im.Size);
+                    die.Frame = new CGRect(new CGPoint(last.X + im.Size.Width, last.Top), im.Size);
                     
                     View.Add (die);
                     _LoadingIcons.Add(die);

@@ -25,7 +25,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -42,16 +42,16 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton addButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel numberLabel { get; set; }
+		UIKit.UILabel numberLabel { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIPickerView pickerView { get; set; }
+		UIKit.UIPickerView pickerView { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton NullButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel NumPadLabel { get; set; }
+		UIKit.UILabel NumPadLabel { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton NumberButton1 { get; set; }
@@ -87,30 +87,30 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton ClearButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView NumPadView { get; set; }
+		UIKit.UIView NumPadView { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton SwapButton { get; set; }
 
 		[Action ("SwapButtonTouchUpInside:")]
-		partial void SwapButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void SwapButtonTouchUpInside (Foundation.NSObject sender);
 
 		[Action ("NumberTouchUpInside:")]
-		partial void NumberTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void NumberTouchUpInside (Foundation.NSObject sender);
 
 		[Action ("ClearButtonTouchUpInside:")]
-		partial void ClearButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void ClearButtonTouchUpInside (Foundation.NSObject sender);
 
 		[Action ("SubtractClicked:")]
-		partial void SubtractClicked (MonoTouch.Foundation.NSObject sender);
+		partial void SubtractClicked (Foundation.NSObject sender);
 
 		[Action ("SetClicked:")]
-		partial void SetClicked (MonoTouch.Foundation.NSObject sender);
+		partial void SetClicked (Foundation.NSObject sender);
 
 		[Action ("AddClicked:")]
-		partial void AddClicked (MonoTouch.Foundation.NSObject sender);
+		partial void AddClicked (Foundation.NSObject sender);
 
 		[Action ("NullButtonTouchUpInside:")]
-		partial void NullButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void NullButtonTouchUpInside (Foundation.NSObject sender);
 	}
 }

@@ -20,11 +20,11 @@
  */
 
 
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System;
 using System.Collections.Generic;
-using MonoTouch.Foundation;
+using Foundation;
 using CombatManager;
 
 namespace CombatManagerMono
@@ -214,7 +214,7 @@ namespace CombatManagerMono
 			}
 		}
 		
-		partial void OKButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void OKButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			if (_DieSteps.Count > 0)
 			{
@@ -222,17 +222,17 @@ namespace CombatManagerMono
 			}
 		}
 		
-		partial void CancelButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void CancelButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			HandleCancel();
 		}
 		
-		partial void AddDieButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void AddDieButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			
 		}
 		
-		partial void ModButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void ModButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			
 			_NumberPop = new NumberModifyPopover();
@@ -272,7 +272,7 @@ namespace CombatManagerMono
 				this.state = state;
 			}
 			
-			public override int RowsInSection (UITableView tableView, int section)
+			public override nint RowsInSection (UITableView tableView, nint section)
 			{
 				return state._DieSteps.Count;
 			}
@@ -290,16 +290,16 @@ namespace CombatManagerMono
 				
 				
 				
-				UIView buttonView = new UIView(new RectangleF(0, 0, bWidth*4 + 1, bHeight));
+				UIView buttonView = new UIView(new CGRect(0, 0, bWidth*4 + 1, bHeight));
 				GradientButton b = new GradientButton();
 				b.SetText(step.Count.ToString());
 				StyleButton(b);
-				b.Frame = new RectangleF(0, 0, bWidth, bHeight);
+				b.Frame = new CGRect(0, 0, bWidth, bHeight);
 				b.TouchUpInside += HandleCountTouchUpInside;
 				b.Tag = indexPath.Row;
 				buttonView.AddSubview(b);
 				
-				UILabel l = new UILabel(new RectangleF(bWidth, 0, bWidth, bHeight));
+				UILabel l = new UILabel(new CGRect(bWidth, 0, bWidth, bHeight));
 				l.Text = "d";
 				l.TextAlignment = UITextAlignment.Center;
 				l.BackgroundColor = UIColor.Clear;
@@ -308,7 +308,7 @@ namespace CombatManagerMono
 				b = new GradientButton();
 				b.SetText(step.Die.ToString());
 				StyleButton(b);
-				b.Frame = new RectangleF(bWidth*2, 0, bWidth, bHeight);
+				b.Frame = new CGRect(bWidth*2, 0, bWidth, bHeight);
 				b.TouchUpInside += HandleDieTouchUpInside;
 				b.Tag = indexPath.Row;
 				buttonView.AddSubview(b);
@@ -316,7 +316,7 @@ namespace CombatManagerMono
 				b = new GradientButton();
 				b.SetImage(UIExtensions.GetSmallIcon("delete"), UIControlState.Normal);
 				StyleButton(b);
-				b.Frame = new RectangleF(bWidth*3, 0, bWidth + 1, bHeight);
+				b.Frame = new CGRect(bWidth*3, 0, bWidth + 1, bHeight);
 				buttonView.AddSubview(b);
 				b.Tag = indexPath.Row;
 				b.TouchUpInside += HandleDeleteTouchUpInside;
@@ -333,7 +333,7 @@ namespace CombatManagerMono
 			void HandleCountTouchUpInside (object sender, EventArgs e)
 			{
 				
-				int index = ((UIButton)sender).Tag;
+                int index = (int)((UIButton)sender).Tag;
 				lastSelectedIndex = index;
 				DieStep step = state._DieSteps[index];
 				state._NumberPop = new NumberModifyPopover();
@@ -353,7 +353,7 @@ namespace CombatManagerMono
 			}
 			void HandleDieTouchUpInside (object sender, EventArgs e)
 			{
-				int index = ((UIButton)sender).Tag;
+                int index = (int)((UIButton)sender).Tag;
 				lastSelectedIndex = index;
 				DieStep step = state._DieSteps[index];
 				state._NumberPop = new NumberModifyPopover();
@@ -375,7 +375,7 @@ namespace CombatManagerMono
 
 			void HandleDeleteTouchUpInside (object sender, EventArgs e)
 			{
-				int index = ((UIButton)sender).Tag;
+                int index = (int)((UIButton)sender).Tag;
 				state._DieSteps.RemoveAt(index);
 				state.UpdateDieRoll();
 			}
@@ -406,7 +406,7 @@ namespace CombatManagerMono
 				
 			}
 			
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 28;
 			}

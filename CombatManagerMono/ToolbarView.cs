@@ -22,9 +22,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using System.Drawing;
+using Foundation;
+using UIKit;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -58,7 +58,7 @@ namespace CombatManagerMono
 			foreach (string s in names)
 			{
 				GradientButton b = new GradientButton();
-				b.Frame = (new RectangleF(pos, 0, buttonWidth, 50));
+				b.Frame = (new CGRect(pos, 0, buttonWidth, 50));
 				b.SetImage(UIExtensions.GetSmallIcon(images[i]), UIControlState.Normal);
 
 				b.Border = 1;
@@ -89,7 +89,7 @@ namespace CombatManagerMono
             //_SettingsButton.Gradient = new GradientHelper(0x00000000.UIColor());
             _SettingsButton.CornerRadius = 0;
             _SettingsButton.TouchUpInside += SettingsButtonClicked;            
-            _SettingsButton.Frame = new RectangleF(Bounds.Width - 64, (Bounds.Height - 48.0f)/2.0f, 48f, 48f);
+            _SettingsButton.Frame = new CGRect(Bounds.Width - 64, (Bounds.Height - 48.0f)/2.0f, 48f, 48f);
 
             //AddSubview (_SettingsButton);
             	
@@ -100,7 +100,7 @@ namespace CombatManagerMono
             //_AboutButton.Gradient = new GradientHelper(0x00000000.UIColor());
             _AboutButton.CornerRadius = 0;
             _AboutButton.TouchUpInside += AboutButtonClicked;            
-            _AboutButton.Frame = new RectangleF(Bounds.Width - 23, (Bounds.Height - 48.0f)/2.0f, 48f, 48f);
+            _AboutButton.Frame = new CGRect(Bounds.Width - 23, (Bounds.Height - 48.0f)/2.0f, 48f, 48f);
 
             Add (_AboutButton);
 			BackgroundColor = UIColor.Black;
@@ -128,7 +128,7 @@ namespace CombatManagerMono
 			clickedButton = (GradientButton)sender;
 			if (ButtonClicked != null)
 			{
-				ButtonClicked(this, ((UIButton)sender).Tag);
+                ButtonClicked(this, (int)((UIButton)sender).Tag);
 			}
             clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
 		}
@@ -137,8 +137,8 @@ namespace CombatManagerMono
 			base.LayoutSubviews ();
             float buttonSize = 44f;
 
-            _AboutButton.Frame = new RectangleF(Bounds.Width - 54, (Bounds.Height - buttonSize)/2.0f, buttonSize, buttonSize);
-            _SettingsButton.Frame = new RectangleF(Bounds.Width - 102, (Bounds.Height - buttonSize)/2.0f, buttonSize, buttonSize);
+            _AboutButton.Frame = new CGRect(Bounds.Width - 54, (Bounds.Height - buttonSize)/2.0f, buttonSize, buttonSize);
+            _SettingsButton.Frame = new CGRect(Bounds.Width - 102, (Bounds.Height - buttonSize)/2.0f, buttonSize, buttonSize);
 
 
 		}

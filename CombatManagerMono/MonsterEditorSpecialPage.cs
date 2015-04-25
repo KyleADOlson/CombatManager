@@ -19,11 +19,11 @@
  *
  */
 
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System;
 using System.Collections.Generic;
-using MonoTouch.Foundation;
+using Foundation;
 using CombatManager;
 
 namespace CombatManagerMono
@@ -118,17 +118,17 @@ namespace CombatManagerMono
             foreach (SpecialAbilityView v in _AbilityViews)
             {
                 float xLoc = ((count%2) == 0)?itemXGap:(itemXGap*2.0f+itemWidth);
-                v.Frame = new RectangleF(xLoc, yLoc, itemWidth, itemHeight);
+                v.Frame = new CGRect(xLoc, yLoc, itemWidth, itemHeight);
                 if (count%2==1)
                 {
                     yLoc += itemHeight + itemYGap;
                 }
-                lastY = v.Frame.Bottom;
+                lastY = (float)v.Frame.Bottom;
                 count++;
             }
 
 
-            SpecialScrollView.ContentSize = new SizeF((itemXGap + itemWidth) * 2.0f, lastY);
+            SpecialScrollView.ContentSize = new CGSize((itemXGap + itemWidth) * 2.0f, lastY);
         }
 
         

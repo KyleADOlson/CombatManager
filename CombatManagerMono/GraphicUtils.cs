@@ -20,10 +20,10 @@
  */
 
 using System;
-using MonoTouch.UIKit;
-using MonoTouch.CoreGraphics;
-using MonoTouch.Foundation;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
+using Foundation;
+using CoreGraphics;
 using System.Collections.Generic;
 
 
@@ -31,7 +31,7 @@ namespace CombatManagerMono
 {
 	public static class GraphicUtils
 	{      
-        public static void RoundRectPath(CGContext cr, RectangleF rect, float cornerRadius, bool[] skipCorner = null)
+        public static void RoundRectPath(CGContext cr, CGRect rect, float cornerRadius, bool[] skipCorner = null)
         {
             if (skipCorner == null)
             {
@@ -55,7 +55,7 @@ namespace CombatManagerMono
 
 
 
-		public static void RoundRectPath(CGContext cr, RectangleF rect, float[] cornerRadii)
+		public static void RoundRectPath(CGContext cr, CGRect rect, float[] cornerRadii)
 		{
             if (cornerRadii == null || cornerRadii.Length != 4)
             {
@@ -84,13 +84,14 @@ namespace CombatManagerMono
 		{
 			return CreateNormalGradient(color, color);
 		}
+            
 		
-		public static CGGradient CreateNormalGradient(float r1, float g1, float b1, float a1, 
-                                   float r2, float g2, float b2, float a2)
+		public static CGGradient CreateNormalGradient(nfloat r1, nfloat g1, nfloat b1, nfloat a1, 
+                                   nfloat r2, nfloat g2, nfloat b2, nfloat a2)
 		{
 
-			float [] components = new float[] {r1, g1, b1, a1, r2, g2, b2, a2};
-			float [] locations = new float[] {0f, 1f};
+			nfloat [] components = new nfloat[] {r1, g1, b1, a1, r2, g2, b2, a2};
+			nfloat [] locations = new nfloat[] {0f, 1f};
     
 		    CGColorSpace space = CGColorSpace.CreateDeviceRGB();
 					
@@ -104,8 +105,8 @@ namespace CombatManagerMono
 		
 		public static CGGradient CreateNormalGradient(UIColor c1, UIColor c2)
 		{
-			float[] f1 = c1.CGColor.Components;	
-			float[] f2 = c2.CGColor.Components;	
+			nfloat[] f1 = c1.CGColor.Components;	
+			nfloat[] f2 = c2.CGColor.Components;	
 			
 			return CreateNormalGradient(f1[0], f1[1], f1[2], f1[3], f2[0], f2[1], f2[2], f2[3]);
 		}
@@ -113,11 +114,11 @@ namespace CombatManagerMono
 		public static CGGradient CreateGradient(List<UIColor> colors, List<float> points)
 		{
 			
-			List<float> colorf = new List<float>();
+			List<nfloat> colorf = new List<nfloat>();
 			
 			foreach (UIColor c in colors)
 			{
-				float r, g, b, a;
+				nfloat r, g, b, a;
 				c.GetRGBA(out r, out g, out b, out a);
 				colorf.Add(r);
 				colorf.Add(g);
@@ -125,9 +126,14 @@ namespace CombatManagerMono
 				colorf.Add(a);
 				
 			}
-			float [] components = colorf.ToArray();
+			nfloat [] components = colorf.ToArray();
 			
-			float [] locations = points.ToArray();
+            nfloat[] locations = new nfloat[points.Count];
+            for (int i = 0; i < points.Count; i++)
+            {
+                locations[i] = points[i];
+            }
+                
     
 		    CGColorSpace space = CGColorSpace.CreateDeviceRGB();
 					
@@ -139,12 +145,12 @@ namespace CombatManagerMono
 		}
 		
 
-        public static void DrawRoundRect(this CGContext cr, CGGradient gradient, RectangleF rect, float cornerRadius, float angle = (float)-Math.PI/2.0f)
+        public static void DrawRoundRect(this CGContext cr, CGGradient gradient, CGRect rect, float cornerRadius, float angle = (float)-Math.PI/2.0f)
         {		
             DrawRoundRect(cr, gradient, rect, new float[]{cornerRadius, cornerRadius, cornerRadius, cornerRadius}, angle);
         }
 		
-    	public static void DrawRoundRect(this CGContext cr, CGGradient gradient, RectangleF rect, float[] cornerRadii, float angle = (float)-Math.PI/2.0f)
+    	public static void DrawRoundRect(this CGContext cr, CGGradient gradient, CGRect rect, float[] cornerRadii, float angle = (float)-Math.PI/2.0f)
 		{
 			
 			cr.SaveState();
@@ -152,8 +158,8 @@ namespace CombatManagerMono
 		    RoundRectPath(cr, rect, cornerRadii);
 		    
 		    cr.Clip();
-		    PointF startg = RectIntersect(angle, rect);
-		    PointF endg = RectIntersect(angle + (float)Math.PI, rect);
+		    CGPoint startg = RectIntersect(angle, rect);
+		    CGPoint endg = RectIntersect(angle + (float)Math.PI, rect);
 		    cr.DrawLinearGradient(gradient, startg, endg,  0);
 		    gradient.Dispose();
     
@@ -161,26 +167,26 @@ namespace CombatManagerMono
     		cr.RestoreState();	
 		}
 		
-		public static PointF RectIntersect(float rangle, RectangleF rect)
+		public static CGPoint RectIntersect(float rangle, CGRect rect)
 		{	
 		    if (rect.Width == 0 || rect.Height == 0)
 		    {
-		        return new PointF(0, 0);
+		        return new CGPoint(0, 0);
 		    }
     
 		    float vx = (float)Math.Cos(rangle);
 		    float vy = (float)Math.Sin(rangle);
 		    
-		    float px = rect.Width/2;
-		    float py = rect.Height/2;
+            float px = (float)rect.Width/2;
+            float py = (float)rect.Height/2;
 		    
 		    
 		   
 		    
-		    float x1 = rect.X;
-		    float y1 = rect.Y;
-		    float x2 = x1 + rect.Width;
-		    float y2 = y1 + rect.Height;
+            float x1 = (float)rect.X;
+            float y1 = (float)rect.Y;
+            float x2 = (float)x1 + (float)rect.Width;
+            float y2 = (float)y1 + (float)rect.Height;
     
     
 		    float [] t = new float[] {0, 0, 0, 0};
@@ -225,7 +231,7 @@ namespace CombatManagerMono
 		    }
 		    
 		
-		    return new PointF(px+minVal*vx, py+minVal*vy);	
+		    return new CGPoint(px+minVal*vx, py+minVal*vy);	
 		    
 		}
 

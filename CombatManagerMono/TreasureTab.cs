@@ -1,7 +1,7 @@
 using System;
 
 using CombatManager;
-using System.Drawing;
+using CoreGraphics;
 using System.Collections.Generic;
 
 namespace CombatManagerMono
@@ -104,8 +104,8 @@ namespace CombatManagerMono
             //group filter
             b = new GradientButton();
             StyleFilterButton(b);
-            b.Frame = new RectangleF(locX, locY, 120, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 120, bHeight);
+            locX += (float)b.Frame.Width + marginX;
             b.SetText(AllGroupText);
             _GroupFilterPopover = new ButtonStringPopover(b);
             _GroupFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = AllGroupText, Tag=null});
@@ -122,8 +122,8 @@ namespace CombatManagerMono
             //cl filter
             b = new GradientButton();
             StyleFilterButton(b);
-            b.Frame = new RectangleF(locX, locY, 75, bHeight);
-            locX += b.Frame.Width + marginX;
+            b.Frame = new CGRect(locX, locY, 75, bHeight);
+            locX += (float)b.Frame.Width + marginX;
             
             b.SetText(AllCLText);
             _CLFilterPopover = new ButtonStringPopover(b);
@@ -189,7 +189,7 @@ namespace CombatManagerMono
             }
         }
 
-        protected override MonoTouch.UIKit.UIImage DefaultTabImage
+        protected override UIKit.UIImage DefaultTabImage
         {
             get
             {

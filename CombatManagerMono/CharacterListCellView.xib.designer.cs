@@ -4,7 +4,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -12,7 +12,7 @@ namespace CombatManagerMono
 	partial class CharacterListCellView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIImageView IndicatorView { get; set; }
+		UIKit.UIImageView IndicatorView { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton hpButton { get; set; }
@@ -33,10 +33,10 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton tempHPButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableViewCell cellmain { get; set; }
+		UIKit.UITableViewCell cellmain { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView nameContainer { get; set; }
+		UIKit.UIView nameContainer { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton nameField { get; set; }

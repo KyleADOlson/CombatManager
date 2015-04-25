@@ -20,7 +20,7 @@
  */
 
 using System;
-using System.Drawing;
+using CoreGraphics;
 
 using CombatManager;
 namespace CombatManagerMono
@@ -57,8 +57,8 @@ namespace CombatManagerMono
 			//type filter
 			b = new GradientButton();
 			StyleFilterButton(b);
-			b.Frame = new RectangleF(locX, locY, 220, bHeight);
-			locX += b.Frame.Width + marginX;
+			b.Frame = new CGRect(locX, locY, 220, bHeight);
+            locX += (float)b.Frame.Width + marginX;
 			
 			b.SetText(AllTypeText);
 			typePopover = new ButtonStringPopover(b);
@@ -79,8 +79,8 @@ namespace CombatManagerMono
 			//subtype filter
 			b = new GradientButton();
 			StyleFilterButton(b);
-			b.Frame = new RectangleF(locX, locY, 100, bHeight);
-			locX += b.Frame.Width + marginX;
+			b.Frame = new CGRect(locX, locY, 100, bHeight);
+            locX += (float)b.Frame.Width + marginX;
 			
 			b.SetText(AllSubtypeText);
 			subtypePopover = new ButtonStringPopover(b);

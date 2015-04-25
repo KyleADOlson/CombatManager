@@ -4,7 +4,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -15,16 +15,16 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientView ButtonAreaView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView monsterTable { get; set; }
+		UIKit.UITableView monsterTable { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField filterTextBox { get; set; }
+		UIKit.UITextField filterTextBox { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton addButton { get; set; }
+		UIKit.UIButton addButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton closeButton { get; set; }
+		UIKit.UIButton closeButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

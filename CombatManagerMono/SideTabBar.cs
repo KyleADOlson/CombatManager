@@ -1,12 +1,12 @@
 
 using System;
-using System.Drawing;
+using CoreGraphics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.CoreGraphics;
+using Foundation;
+using UIKit;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -137,11 +137,11 @@ namespace CombatManagerMono
 
             float y = 0;
             float x = 0;
-            float width = Bounds.Width;
+            float width = (float)Bounds.Width;
             foreach (GradientButton b in _Buttons)
             {
-                b.Bounds = new SizeF(TabHeight, width).OriginRect();
-                b.Center = b.Bounds.Center().Add (new PointF(x, y));
+                b.Bounds = new CGSize(TabHeight, width).OriginRect();
+                b.Center = b.Bounds.Center().Add (new CGPoint(x, y));
                 b.Transform = CGAffineTransform.MakeRotation((float)-Math.PI/2.0f);
                 y += TabHeight;
             }

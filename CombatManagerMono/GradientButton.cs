@@ -20,10 +20,10 @@
  */
 
 using System;
-using MonoTouch.CoreGraphics;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
-using System.Drawing;
+using CoreGraphics;
+using UIKit;
+using Foundation;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -42,7 +42,7 @@ namespace CombatManagerMono
 		object _Data;
 
         private UIImage _BonusImage;
-        private RectangleF _BonusImageRect;
+        private CGRect _BonusImageRect;
 
 		
 		public GradientButton (IntPtr p) : base(p)
@@ -87,7 +87,7 @@ namespace CombatManagerMono
 
        
 		
-		public override void Draw (RectangleF rect)
+		public override void Draw (CGRect rect)
 		{
 			SetNeedsDisplay();
 			
@@ -292,7 +292,7 @@ namespace CombatManagerMono
             }
         }
 
-        public RectangleF BonusImageRect
+        public CGRect BonusImageRect
         {
             get
             {

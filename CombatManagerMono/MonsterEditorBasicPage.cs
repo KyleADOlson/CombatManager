@@ -19,12 +19,12 @@
  *
  */
 
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System;
 using System.Collections.Generic;
 using CombatManager;
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {

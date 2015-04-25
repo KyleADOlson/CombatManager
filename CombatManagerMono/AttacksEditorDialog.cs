@@ -1,10 +1,10 @@
 
 using System;
-using System.Drawing;
+using CoreGraphics;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
 using System.Collections.ObjectModel;
 
@@ -415,8 +415,8 @@ namespace CombatManagerMono
         private void SetupAttackViews()
         {
             
-            RectangleF rect = EditingView.Bounds;
-            rect.Location = new PointF(0, 0);
+            CGRect rect = EditingView.Bounds;
+            rect.Location = new CGPoint(0, 0);
 
             float topScrollMargin = 0;
             float bottomScrollMargin = 0;
@@ -439,14 +439,14 @@ namespace CombatManagerMono
                     _DeleteSetButton.Hidden = true;
                 }
 
-                RectangleF viewRect = rect;
+                CGRect viewRect = rect;
                 viewRect.Height = bottomScrollMargin;
                 _SetChoiceView.Frame = viewRect;
 
                 viewRect.Y = rect.Bottom - bottomScrollMargin;
                 _SetControlView.Frame = viewRect;
 
-                RectangleF buttonRect = viewRect.Size.OriginRect();
+                CGRect buttonRect = viewRect.Size.OriginRect();
                 buttonRect.Width *= .5f;
                 buttonRect.Inflate(-3, -3);
                 _AddAttackButton.Frame = buttonRect;
@@ -523,7 +523,7 @@ namespace CombatManagerMono
                         AttackItemView v = new AttackItemView(a);
                         _ScrollView.Add (v.View);
                         v.View.SetLocation(_AttackMargin, y);
-                        float height = v.View.Bounds.Height;
+                        float height = (float)v.View.Bounds.Height;
                         y+= height + _AttackMargin;
                         v.DeleteClicked += HandleDeleteClicked;
                         _AttackItems.Add(v);
@@ -548,7 +548,7 @@ namespace CombatManagerMono
                     NaturalAttackItemView v = new NaturalAttackItemView(w, _Monster);
                     _ScrollView.Add (v.View);
                     v.View.SetLocation(_AttackMargin, y);
-                    float height = v.View.Bounds.Height;
+                    float height = (float)v.View.Bounds.Height;
                     y+= height + _AttackMargin;
                     v.DeleteClicked += HandleNaturalDeleteClicked;
                     v.ItemChanged += HandledNaturalItemChanged;
@@ -557,7 +557,7 @@ namespace CombatManagerMono
             }
 
             
-            _ScrollView.ContentSize = new SizeF(_ScrollView.Bounds.Width, y);
+            _ScrollView.ContentSize = new CGSize(_ScrollView.Bounds.Width, y);
 
             EnableButtons();
         }

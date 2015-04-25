@@ -4,7 +4,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -12,10 +12,10 @@ namespace CombatManagerMono
 	partial class OpenDialog
 	{
 		[Outlet]
-		MonoTouch.UIKit.UITableView FileTableView { get; set; }
+		UIKit.UITableView FileTableView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel TitleLabel { get; set; }
+		UIKit.UILabel TitleLabel { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientView TitleView { get; set; }
@@ -27,10 +27,10 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientView ButtonView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton BackgroundButton { get; set; }
+		UIKit.UIButton BackgroundButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField FileNameText { get; set; }
+		UIKit.UITextField FileNameText { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton OKButton { get; set; }

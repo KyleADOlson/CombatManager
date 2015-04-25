@@ -83,6 +83,16 @@ namespace CombatManager
                 {
                     System.Diagnostics.Debug.WriteLine("AssemblyDir");
                     _AssemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+
+                    #if MONO
+                    int loc = _AssemblyDir.IndexOf("/.monotouch");
+                    if (loc > 0) 
+                    {
+                        _AssemblyDir = _AssemblyDir.Substring(0, loc);
+                    }
+
+                    #endif
                 }
                 return _AssemblyDir;
             }

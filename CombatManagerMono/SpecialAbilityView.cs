@@ -1,10 +1,10 @@
 using System;
-using System.Drawing;
+using CoreGraphics;
 using System.Linq;
 using System.Collections.Generic;
 
 
-using MonoTouch.UIKit;
+using UIKit;
 
 using CombatManager;
 
@@ -77,14 +77,14 @@ namespace CombatManagerMono
 
         public override void LayoutSubviews ()
         {
-            SizeF s = _DeleteImage.Size;
-            _DeleteButton.Frame = new RectangleF(new PointF(Bounds.Width - s.Width - borderMargin, borderMargin), s);
+            CGSize s = _DeleteImage.Size;
+            _DeleteButton.Frame = new CGRect(new CGPoint(Bounds.Width - s.Width - borderMargin, borderMargin), s);
 
-            _TypeButton.Frame = new RectangleF(_DeleteButton.Frame.X - 60, borderMargin, 60, topHeight);
+            _TypeButton.Frame = new CGRect(_DeleteButton.Frame.X - 60, borderMargin, 60, topHeight);
 
-            _NameButton.Frame = new RectangleF(borderMargin,borderMargin, _TypeButton.Frame.X - borderMargin, topHeight);
+            _NameButton.Frame = new CGRect(borderMargin,borderMargin, _TypeButton.Frame.X - borderMargin, topHeight);
 
-            _SpecialTextButton.Frame = new RectangleF(borderMargin, _NameButton.Frame.Bottom, Frame.Width-borderMargin*2.0f, Frame.Height - _NameButton.Frame.Bottom - borderMargin);
+            _SpecialTextButton.Frame = new CGRect(borderMargin, _NameButton.Frame.Bottom, Frame.Width-borderMargin*2.0f, Frame.Height - _NameButton.Frame.Bottom - borderMargin);
             _SpecialTextManager.TextView.Frame = _SpecialTextButton.Bounds;
 
 

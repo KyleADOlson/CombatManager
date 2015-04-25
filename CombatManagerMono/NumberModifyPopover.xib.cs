@@ -23,8 +23,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace CombatManagerMono
 {
@@ -216,7 +216,7 @@ namespace CombatManagerMono
 			}
 		}
 		
-	    partial void AddClicked (MonoTouch.Foundation.NSObject sender)
+	    partial void AddClicked (Foundation.NSObject sender)
 		{
 			if (NumberModified != null && _Value != null)
 			{
@@ -224,7 +224,7 @@ namespace CombatManagerMono
 			}
 		}
 		
-		partial void SubtractClicked (MonoTouch.Foundation.NSObject sender)
+		partial void SubtractClicked (Foundation.NSObject sender)
 		{
 			if (NumberModified != null && _Value != null)
 			{
@@ -233,7 +233,7 @@ namespace CombatManagerMono
 			
 		}
 		
-		partial void SetClicked(MonoTouch.Foundation.NSObject sender)
+		partial void SetClicked(Foundation.NSObject sender)
 		{
 			if (NumberModified != null)
 			{
@@ -242,7 +242,7 @@ namespace CombatManagerMono
 				
 		}
 		
-		partial void NullButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void NullButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			if (_Nullable)
 			{
@@ -253,7 +253,7 @@ namespace CombatManagerMono
 			}
 		}
 		
-		partial void NumberTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void NumberTouchUpInside (Foundation.NSObject sender)
 		{
 			if (_NumPadValue < 1000)
 			{
@@ -263,17 +263,17 @@ namespace CombatManagerMono
 			{
 				_NumPadValue = (_NumPadValue%1000)*10;
 			}
-			_NumPadValue += ((GradientButton)sender).Tag;
+            _NumPadValue += (int)((GradientButton)sender).Tag;
 			UpdateNumPadLabel();
 		}
 		
-		partial void ClearButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void ClearButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			_NumPadValue = 0;
 			UpdateNumPadLabel();
 		}
 		
-		partial void SwapButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void SwapButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			_NumPadMode = !_NumPadMode;
             NSUserDefaults.StandardUserDefaults.SetBool(_NumPadMode, "NumPadMode");
@@ -314,7 +314,7 @@ namespace CombatManagerMono
 				{
 					int mod = (int)Math.Pow(10, 3-i);
 					
-					val+= pickerView.SelectedRowInComponent(i) * mod;
+                    val+= (int)pickerView.SelectedRowInComponent(i) * mod;
 					
 				}
 				
@@ -387,12 +387,12 @@ namespace CombatManagerMono
 				_Parent = parent;	
 			}
 			
-			public override string GetTitle (UIPickerView pickerView, int row, int component)
+			public override string GetTitle (UIPickerView pickerView, nint row, nint component)
 			{
 				return row.ToString();
 			}
 			
-			public override void Selected (UIPickerView pickerView, int row, int component)
+			public override void Selected (UIPickerView pickerView, nint row, nint component)
 			{
 				if (_Parent.ValueType != null)
 				{
@@ -410,12 +410,12 @@ namespace CombatManagerMono
 				_Parent = parent;	
 			}
 			
-			public override int GetComponentCount (UIPickerView pickerView)
+			public override nint GetComponentCount (UIPickerView pickerView)
 			{
 				return 4;
 			}
 			
-			public override int GetRowsInComponent (UIPickerView pickerView, int component)
+			public override nint GetRowsInComponent (UIPickerView pickerView, nint component)
 			{
 				return 10;
 			}

@@ -22,10 +22,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
-using System.Drawing;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -53,7 +53,7 @@ namespace CombatManagerMono
 			_MonsterList.CharacterSelectionChanged += HandlePlayerListCharacterSelectionChanged;
 			AddSubview(_MonsterList);
 			
-			_MonsterView = new UIWebView(new RectangleF(0, 0, 100, 100));
+			_MonsterView = new UIWebView(new CGRect(0, 0, 100, 100));
 			_MonsterView.BackgroundColor = UIColor.Brown;
 			_MonsterView.LoadHtmlString("<html></html>", new NSUrl("http://localhost/"));
 		
@@ -95,17 +95,17 @@ namespace CombatManagerMono
 		{
 			base.LayoutSubviews ();
 			
-			RectangleF rect = ConvertRectFromView(Frame, Superview);
+			CGRect rect = ConvertRectFromView(Frame, Superview);
 			
 			float margin = 2.0f;
 			float width = 0;
 			
 			
-			width = rect.Width / 4.0f;
+            width = (float)(rect.Width / 4.0f);
 			
 			width -= margin;
 			
-			RectangleF loc = new RectangleF(0, 0, width, rect.Height);
+			CGRect loc = new CGRect(0, 0, width, rect.Height);
 			
 			_CombatList.Frame = loc;
 			

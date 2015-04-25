@@ -19,11 +19,11 @@
  *
  */
 
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System;
 using CombatManager;
-using MonoTouch.Foundation;
+using Foundation;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -138,12 +138,12 @@ namespace CombatManagerMono
 			}
 		}
 		
-		partial void OKButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void OKButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			
 			View.RemoveFromSuperview();
 		}
-		partial void CancelButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void CancelButtonTouchUpInside (Foundation.NSObject sender)
 		{
 			
 			View.RemoveFromSuperview();
@@ -196,9 +196,9 @@ namespace CombatManagerMono
 			}
 		}
 		
-		partial void TabButtonTouchUpInside (MonoTouch.Foundation.NSObject sender)
+		partial void TabButtonTouchUpInside (Foundation.NSObject sender)
 		{
-			ShowPage(((UIView)sender).Tag);
+            ShowPage((int)((UIView)sender).Tag);
 		}
 		
 		private void StyleTab(GradientButton b, bool selected)

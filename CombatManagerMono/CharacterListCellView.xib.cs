@@ -23,11 +23,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
 using System.ComponentModel;
-using System.Drawing;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -80,7 +80,7 @@ namespace CombatManagerMono
 
 		public CharacterListCellView ()
 		{
-			MonoTouch.Foundation.NSBundle.MainBundle.LoadNib ("CharacterListCellView", this, null);
+			Foundation.NSBundle.MainBundle.LoadNib ("CharacterListCellView", this, null);
 			Initialize ();
 			
 			
@@ -241,7 +241,7 @@ namespace CombatManagerMono
                 //show waiting dialog
             }
 
-			UIWebView v = new UIWebView(new RectangleF(0, 0, 180, 120));
+			UIWebView v = new UIWebView(new CGRect(0, 0, 180, 120));
 			v.LoadHtmlString(MonsterHtmlCreator.CreateHtml(_Character.Monster, _Character, true), new NSUrl("http://localhost/")); 
 			_ActionsPopover.AccessoryView = v;
 
@@ -679,7 +679,7 @@ namespace CombatManagerMono
 				{
 					GradientButton b = new GradientButton();
 					
-					b.Frame = new System.Drawing.RectangleF(xLoc, yLoc, ConditionWidth, ConditionHeight);
+					b.Frame = new CGRect(xLoc, yLoc, ConditionWidth, ConditionHeight);
 					b.SetImage(UIExtensions.GetSmallIcon(c.Condition.Image), UIControlState.Normal);
 					View.AddSubview(b);
 					if (c.Turns != null)
@@ -711,7 +711,7 @@ namespace CombatManagerMono
 						xLoc = ConditionMargin;
 						yLoc += ConditionHeight + ConditionMargin;
 					}
-					UIWebView v = new UIWebView(new RectangleF(0, 0, 300, 300));
+					UIWebView v = new UIWebView(new CGRect(0, 0, 300, 300));
 					v.LoadHtmlString(ConditionViewController.ConditionHTML(c.Condition), new NSUrl("http://localhost/")); 
 					p.AccessoryView = v;
 						
@@ -773,7 +773,7 @@ namespace CombatManagerMono
 		}
 		
 		
-		public static float ConditionViewHeight(Character ch, float width)
+		public static float ConditionViewHeight(Character ch, double width)
 		{
 			
 			

@@ -1,10 +1,10 @@
 using System;
-using System.Drawing;
+using CoreGraphics;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
+using Foundation;
 using System.Collections.ObjectModel;
-using MonoTouch.UIKit;
+using UIKit;
 using CombatManager;
 
 namespace CombatManagerMono

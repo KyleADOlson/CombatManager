@@ -4,7 +4,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -69,7 +69,7 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton ResetButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView OtherTemplateOptionView { get; set; }
+		UIKit.UIView OtherTemplateOptionView { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientButton OtherButton1 { get; set; }
@@ -84,13 +84,13 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton OtherButton4 { get; set; }
 
 		[Action ("AddMonsterButtonTouchUpInside:")]
-		partial void AddMonsterButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void AddMonsterButtonTouchUpInside (Foundation.NSObject sender);
 
 		[Action ("AdvancerHeaderButtonTouchUpInside:")]
-		partial void AdvancerHeaderButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void AdvancerHeaderButtonTouchUpInside (Foundation.NSObject sender);
 
 		[Action ("ResetButtonTouchUpInside:")]
-		partial void ResetButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void ResetButtonTouchUpInside (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

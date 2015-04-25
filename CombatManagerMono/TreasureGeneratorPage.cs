@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using CoreGraphics;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.IO;
 
 using CombatManager;
-using MonoTouch.MessageUI;
+using MessageUI;
 
 namespace CombatManagerMono
 {
@@ -247,7 +247,7 @@ namespace CombatManagerMono
 
             public override void Finished (MFMailComposeViewController controller, MFMailComposeResult result, NSError error)
             {
-                _MV.DismissModalViewControllerAnimated(true);
+                _MV.DismissModalViewController(true);
             }
         }
 
@@ -307,8 +307,8 @@ namespace CombatManagerMono
                 TreasureGenerator gen = new TreasureGenerator();
 
                 t = new Treasure();
-                int count = _CountButton.Tag;
-                ItemLevel level = (ItemLevel)_ChartLevelButton.Tag;
+                int count = (int)_CountButton.Tag;
+                ItemLevel level = (ItemLevel)(int)_ChartLevelButton.Tag;
 
                 TreasureGenerator.RandomItemType types = (TreasureGenerator.RandomItemType)0;
 
@@ -316,7 +316,7 @@ namespace CombatManagerMono
                 {
                     if ((bool)b.Data)
                     {
-                        var v = (TreasureGenerator.RandomItemType)b.Tag;
+                        var v = (TreasureGenerator.RandomItemType)(int)b.Tag;
 
                         switch (v )
                         {
@@ -360,10 +360,10 @@ namespace CombatManagerMono
             else
             {
                 TreasureGenerator gen = new TreasureGenerator();
-                gen.Coin = _CoinButton.Tag;
-                gen.Level = _LevelButton.Tag;
-                gen.Items = _ItemsButton.Tag;
-                gen.Goods = _GoodsButton.Tag;
+                gen.Coin = (int)_CoinButton.Tag;
+                gen.Level = (int)_LevelButton.Tag;
+                gen.Items = (int)_ItemsButton.Tag;
+                gen.Goods = (int)_GoodsButton.Tag;
 
                 t = gen.Generate();
             }
@@ -399,39 +399,39 @@ namespace CombatManagerMono
             base.LayoutSubviews ();
 
             _SelectionView.SetLocation(0, 0);
-            _SelectionView.SetSize(_SelectionWidth, Bounds.Height);
+            _SelectionView.SetSize((float)_SelectionWidth, (float)Bounds.Height);
 
-            _WebView.SetLocation(_SelectionView.Frame.Right, _ButtonHeight + _ButtonMargin * 2.0f);
-            _WebView.SetSize(Bounds.Width - _SelectionView.Frame.Right, Bounds.Height - _ButtonMargin * 2.0f);
+            _WebView.SetLocation((float)_SelectionView.Frame.Right, (float)_ButtonHeight + _ButtonMargin * 2.0f);
+            _WebView.SetSize((float)Bounds.Width - (float)_SelectionView.Frame.Right, (float)Bounds.Height - _ButtonMargin * 2.0f);
 
             _EmailButton.SetSize(100f, _ButtonHeight);
-            _EmailButton.SetLocation(Bounds.Width - _EmailButton.Bounds.Width - _ButtonMargin, _ButtonMargin);
+            _EmailButton.SetLocation((float)Bounds.Width - (float)_EmailButton.Bounds.Width - _ButtonMargin, _ButtonMargin);
 
 
 
             //size selection view items
             _LevelTab.SetLocation(14f, 10f);
-            _LevelTab.SetWidth((_SelectionView.Bounds.Width - 28f)/2.0f);
+            _LevelTab.SetWidth(((float)_SelectionView.Bounds.Width - 28f)/2.0f);
             _LevelTab.SetHeight(40f);
 
-            _ItemsTab.SetLocation(_LevelTab.Frame.Right, 10f);
+            _ItemsTab.SetLocation((float)_LevelTab.Frame.Right, 10f);
             _ItemsTab.SetSize(_LevelTab.Bounds.Size);
 
 
-            _GenerateButton.SetSize(_SelectionView.Bounds.Width - 10f, 40f);
-            _GenerateButton.SetLocation(5f, _SelectionView.Bounds.Height - 50f);
+            _GenerateButton.SetSize((float)_SelectionView.Bounds.Width - 10f, 40f);
+            _GenerateButton.SetLocation(5f, (float)_SelectionView.Bounds.Height - 50f);
             _GenerateButton.ImageEdgeInsets = new UIEdgeInsets(0, 0, 0, 10);
 
-            _ItemsView.SetLocation(5f, _ItemsTab.Frame.Bottom);
-            _ItemsView.SetSize(_SelectionView.Bounds.Width - 10.0f, _GenerateButton.Frame.Top - _ItemsView.Frame.Top - 5.0f);
+            _ItemsView.SetLocation(5f, (float)_ItemsTab.Frame.Bottom);
+            _ItemsView.SetSize((float)_SelectionView.Bounds.Width - 10.0f, (float)_GenerateButton.Frame.Top - (float)_ItemsView.Frame.Top - 5.0f);
 
             _LevelView.Frame = _ItemsView.Frame;
 
             //size level view items
 
-            RectangleF levelRect = _LevelView.Bounds.Size.OriginRect();
+            CGRect levelRect = _LevelView.Bounds.Size.OriginRect();
 
-            RectangleF buttonRect = levelRect;
+            CGRect buttonRect = levelRect;
             buttonRect.Inflate(-_ButtonMargin, 0);
             buttonRect.Y = _ButtonMargin;
             buttonRect.Height = _ButtonHeight;

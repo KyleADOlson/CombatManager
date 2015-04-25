@@ -22,12 +22,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using CombatManager;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Drawing;
+using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -268,36 +268,36 @@ namespace CombatManagerMono
 		{
 			base.LayoutSubviews ();
 			
-			RectangleF rect = ConvertRectFromView(Frame, Superview);
+			CGRect rect = ConvertRectFromView(Frame, Superview);
 			
-			float bWidth = (rect.Width + 3.0f) /4;
-			float buttonHeight = 40;
-			RectangleF button = new RectangleF(0, 0, bWidth, buttonHeight);
+			double bWidth = (rect.Width + 3.0d) /4;
+            double buttonHeight = 40;
+            CGRect button = new CGRect(0, 0, new nfloat(bWidth), new nfloat(buttonHeight));
 			blankButton.Frame = button;
-			button.X += bWidth - 1.0f;
+            button.X += new nfloat(bWidth - 1.0d);
 			monsterButton.Frame = button;
-			button.X += bWidth - 1.0f;
+            button.X += new nfloat(bWidth - 1.0d);
 			openButton.Frame = button;
-			button.X += bWidth - 1.0f;
+            button.X += new nfloat(bWidth - 1.0d);
 			saveButton.Frame = button;
 			
 			
 			
-			RectangleF list = rect;
-			list.Y += button.Y + buttonHeight;
-			list.Height -= buttonHeight * 2;
+			CGRect list = rect;
+            list.Y += new nfloat(button.Y + buttonHeight);
+            list.Height -= new nfloat(buttonHeight * 2);
 			listView.Frame = list;
 			
 			button.Y = listView.Frame.Bottom;
 			
 			clearButton.Frame = button;
 			
-			RectangleF bottomFrame = button;
+			CGRect bottomFrame = button;
 			bottomFrame.X = 0;
 			bottomFrame.Width = button.X;
 			bottomFrame.Height++;
 			bottomView.Frame = bottomFrame;
-			RectangleF labelFrame = bottomView.Bounds;
+			CGRect labelFrame = bottomView.Bounds;
 			labelFrame.X += 5;
 			labelFrame.Width -= 10;
 			bottomLabel.Frame = labelFrame;
@@ -409,7 +409,7 @@ namespace CombatManagerMono
 				
 			}
 			
-			public override int RowsInSection (UITableView tableView, int section)
+			public override nint RowsInSection (UITableView tableView, nint section)
 			{
 				if (state.currentCharacters == null)
 				{
@@ -428,12 +428,12 @@ namespace CombatManagerMono
 					customCellController = new CharacterListCellView ();
 					cell = customCellController.Cell;
 					cell.Tag = Environment.TickCount;
-					this._cellControllers.Add (cell.Tag, customCellController);
+                    this._cellControllers.Add ((int)cell.Tag, customCellController);
 					customCellController.CharacterListView = this.state;
 				}
 				else
 				{
-					customCellController = this._cellControllers[cell.Tag];
+                    customCellController = this._cellControllers[(int)cell.Tag];
 				}
 				
 				Character ch = state.currentCharacters[indexPath.Row];
@@ -509,9 +509,9 @@ namespace CombatManagerMono
 				}
 			}
 			
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
-				return 79 + CharacterListCellView.ConditionViewHeight(state.currentCharacters[indexPath.Row], tableView.Bounds.Width);
+                return 79 + CharacterListCellView.ConditionViewHeight(state.currentCharacters[indexPath.Row], (double)tableView.Bounds.Width);
 			}
 			
 			public override UITableViewCellEditingStyle EditingStyleForRow (UITableView tableView, NSIndexPath indexPath)

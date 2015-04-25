@@ -21,8 +21,8 @@
 
 using System;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace CombatManagerMono
 {
@@ -81,7 +81,7 @@ namespace CombatManagerMono
 		public CombatManagerMono.GradientView TitleGradient { get; set; }
 
 		[Action ("CancelButtonClicked:")]
-		public void CancelButtonClicked (MonoTouch.Foundation.NSObject sender)
+		public void CancelButtonClicked (Foundation.NSObject sender)
 		{
 			if (HandleCancel())
 			{
@@ -90,7 +90,7 @@ namespace CombatManagerMono
 		}
 
 		[Action ("OKButtonClicked:")]
-		public void OKButtonClicked (MonoTouch.Foundation.NSObject sender)
+		public void OKButtonClicked (Foundation.NSObject sender)
 		{
 			if (HandleOK())
 			{

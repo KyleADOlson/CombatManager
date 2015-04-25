@@ -25,7 +25,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -39,7 +39,7 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientView HeaderView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel HeaderLabel { get; set; }
+		UIKit.UILabel HeaderLabel { get; set; }
 
 		[Outlet]
 		CombatManagerMono.GradientView ModView { get; set; }
@@ -57,18 +57,18 @@ namespace CombatManagerMono
 		CombatManagerMono.GradientButton AddDieButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView DieTableView { get; set; }
+		UIKit.UITableView DieTableView { get; set; }
 
 		[Action ("AddDieButtonTouchUpInside:")]
-		partial void AddDieButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void AddDieButtonTouchUpInside (Foundation.NSObject sender);
 
 		[Action ("ModButtonTouchUpInside:")]
-		partial void ModButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void ModButtonTouchUpInside (Foundation.NSObject sender);
 
 		[Action ("OKButtonTouchUpInside:")]
-		partial void OKButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void OKButtonTouchUpInside (Foundation.NSObject sender);
 
 		[Action ("CancelButtonTouchUpInside:")]
-		partial void CancelButtonTouchUpInside (MonoTouch.Foundation.NSObject sender);
+		partial void CancelButtonTouchUpInside (Foundation.NSObject sender);
 	}
 }

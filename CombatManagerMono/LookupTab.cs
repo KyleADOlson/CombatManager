@@ -22,9 +22,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using System.Drawing;
+using Foundation;
+using UIKit;
+using CoreGraphics;
 using CombatManager;
 using System.ComponentModel;
 
@@ -71,14 +71,14 @@ namespace CombatManagerMono
 			listTable.Delegate = new TableDelegate(this);
 			listTable.DataSource = new TableSource(this);
 			AddSubview(listTable);
-			filterField = new UITextField(new Rectangle(0, 0, 100, 23));
+			filterField = new UITextField(new CGRect(0, 0, 100, 23));
 			filterField.BorderStyle = UITextBorderStyle.RoundedRect;
 			filterField.EditingChanged += HandleFilterFieldEditingChanged;
 			filterField.AllEditingEvents += HandleFilterFieldAllEditingEvents;
 			filterField.ClearButtonMode = UITextFieldViewMode.Always;
 			AddSubview(filterField);
 			filterText = "";
-			_FilterView = new UIView(new RectangleF(0, 0, 100, 0));
+			_FilterView = new UIView(new CGRect(0, 0, 100, 0));
 			_FilterView.BackgroundColor = CMUIColors.PrimaryColorDark;
 			AddSubview(_FilterView);
 			_ResetButton = new GradientButton();
@@ -108,7 +108,7 @@ namespace CombatManagerMono
 			
 			
 			Filter();
-			webView = new UIWebView(new RectangleF(100, 0, 100, 100));
+			webView = new UIWebView(new CGRect(100, 0, 100, 100));
 			AddSubview(webView);
 			
 			if (currentViewItems.Count > 0)
@@ -310,13 +310,13 @@ namespace CombatManagerMono
 		{
 			base.LayoutSubviews ();
 			
-			RectangleF rect = ConvertRectFromView(Frame, Superview);
+			CGRect rect = ConvertRectFromView(Frame, Superview);
 			
             float sideTabSize = 0;
             if (ShowSideBar)
             {
                 sideTabSize = SideTabWidth;
-                _SideTabBar.Frame = new RectangleF(0, 0,sideTabSize, rect.Height);
+                _SideTabBar.Frame = new CGRect(0, 0,sideTabSize, rect.Height);
                 _SideTabBar.Hidden = false;
             }
 
@@ -326,38 +326,38 @@ namespace CombatManagerMono
 			
 			listTable.SetLocation(sideTabSize, 40);
 			listTable.SetWidth(SideWidth-5);
-			listTable.SetHeight(rect.Height-25);
+            listTable.SetHeight((float)rect.Height-25);
 			
 
-            float xLoc = listTable.Frame.Right + 0.5f;
+            float xLoc = (float)listTable.Frame.Right + 0.5f;
 
-			_FilterView.Frame = new RectangleF(xLoc + 10.0f, 0,  rect.Width-xLoc-10.0f, FilterHeight);
+			_FilterView.Frame = new CGRect(xLoc + 10.0f, 0,  rect.Width-xLoc-10.0f, FilterHeight);
 			
-			float webViewHeight = rect.Height-FilterHeight;
+            float webViewHeight = (float)rect.Height-FilterHeight;
 			
 			if (_BottomViewHeight > 0 && BottomView != null)
 			{
 				webViewHeight -= _BottomViewHeight;	
 			}
 			
-			 webView.Frame = new RectangleF(xLoc, FilterHeight, rect.Width-xLoc, webViewHeight);
+			 webView.Frame = new CGRect(xLoc, FilterHeight, rect.Width-xLoc, webViewHeight);
 			
 			if (BottomView != null)
 			{
-				RectangleF bottomFrame = webView.Frame;
+				CGRect bottomFrame = webView.Frame;
 				bottomFrame.Y = bottomFrame.Y + bottomFrame.Height;
 				bottomFrame.Height = _BottomViewHeight;
 				_BottomView.Frame = bottomFrame;
 			}
 			
-			_ResetButton.SetLocation(FilterView.Frame.Width - 40 , 5);
+            _ResetButton.SetLocation((float)FilterView.Frame.Width - 40 , 5);
 			_ResetButton.SetWidth(30);
 			_ResetButton.SetHeight(30);
 
             if (ShowSideBar)
             {
 
-                RectangleF rectTabView = new RectangleF(_SideTabBar.Frame.Right, _SideTabBar.Frame.Top, Bounds.Width - _SideTabBar.Frame.Width, Bounds.Height);
+                CGRect rectTabView = new CGRect(_SideTabBar.Frame.Right, _SideTabBar.Frame.Top, Bounds.Width - _SideTabBar.Frame.Width, Bounds.Height);
 
                 foreach (var view in from x in _SideTabBar.Tabs where ((LookupSideTabItem)x.Tag) != null select ((LookupSideTabItem)x.Tag).View)
                 {
@@ -369,7 +369,7 @@ namespace CombatManagerMono
             }
 		}
 		
-		public override void Draw (RectangleF rect)
+		public override void Draw (CGRect rect)
 		{
 			base.Draw (rect);
 		
@@ -398,7 +398,7 @@ namespace CombatManagerMono
 				this.tab = tab;
 			}
 			
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				if (tab!= null)
 				{
@@ -435,7 +435,7 @@ namespace CombatManagerMono
 				this.tab = tab;
 			}
 			
-			public override int RowsInSection (UITableView tableView, int section)
+			public override nint RowsInSection (UITableView tableView, nint section)
 			{
 				return tab.currentViewItems.Count;
 			}

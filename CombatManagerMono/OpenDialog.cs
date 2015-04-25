@@ -19,13 +19,13 @@
  *
  */
 
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace CombatManagerMono
 {
@@ -281,7 +281,7 @@ namespace CombatManagerMono
 				
 			}
 			
-			public override int RowsInSection (UITableView tableView, int section)
+			public override nint RowsInSection (UITableView tableView, nint section)
 			{
 				return state.files.Count;
 			}
@@ -353,7 +353,7 @@ namespace CombatManagerMono
 			
 			
 			
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 28;
 			}
