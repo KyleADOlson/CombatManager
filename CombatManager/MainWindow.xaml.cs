@@ -7015,7 +7015,7 @@ namespace CombatManager
                                     string s = set.ToString();
                                     mi.Header = set.ToString();
 
-                                    if (meleesets[s].Count > 1)
+                                    if (meleesets[s] != null && meleesets[s].Count > 1)
                                     {
 
                                         mi.SetNamedIcon("clone");
