@@ -85,7 +85,25 @@ namespace CombatManagerDroid
                     ShowActionDialog(c, parent.Context);
                 };
 
+                EventHandler<View.LongClickEventArgs> handler = (object sender, View.LongClickEventArgs e) => 
+                {
+                    ClipData data = ClipData.NewPlainText("", "");
+                    View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
+                    v.StartDrag(data, shadowBuilder, v, 0);
 
+                };
+                v.LongClickable = true;
+                v.LongClick += handler;
+                v.FindViewById<Button>(Resource.Id.nameEditText).LongClick += handler;
+                v.FindViewById<Button>(Resource.Id.hpButton).LongClick += handler;
+                v.FindViewById<Button>(Resource.Id.hpMaxButton).LongClick += handler;
+                v.FindViewById<Button>(Resource.Id.initButton).LongClick += handler;
+                v.FindViewById<ImageButton>(Resource.Id.actionButton).LongClick += handler;
+                v.FindViewById<Button>(Resource.Id.nameEditText).LongClickable = true;
+                v.FindViewById<Button>(Resource.Id.hpButton).LongClickable = true;
+                v.FindViewById<Button>(Resource.Id.hpMaxButton).LongClickable = true;
+                v.FindViewById<Button>(Resource.Id.initButton).LongClickable = true;
+                v.FindViewById<ImageButton>(Resource.Id.actionButton).LongClickable = true;
             }
             v.Tag = position;
 
@@ -98,6 +116,45 @@ namespace CombatManagerDroid
             _Handlers.Add(cch);
 
             return v;
+        }
+
+        public class ListOnDragListener : Java.Lang.Object, View.IOnDragListener 
+        {
+
+            View _view;
+            View _layout;
+            CharacterListAdapter _ad;
+
+            public ListOnDragListener(CharacterListAdapter ad, View view, View layout)
+            {
+                _ad = ad;
+                _view = view;
+                _layout = layout;
+            }
+
+            public bool OnDrag(View v, DragEvent e)
+            {
+                switch (e.Action)
+                {
+                case DragAction.Entered:
+                    break;
+                case DragAction.Exited:
+                    break;
+                case DragAction.Ended:
+                    break;
+                case DragAction.Drop:
+                    View dropView = (View)e.LocalState;
+                    if (dropView.Parent is ListView)
+                    {
+                        if ((ListView)dropView.Parent).Adapter is CharacterListAdapter)
+                        {
+
+                        }
+                    }
+                    break;
+                }
+                return true;
+            }
         }
 
         ActionDialog _ActionDialog = null;

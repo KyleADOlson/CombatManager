@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.kyleolson.combatmanager" android:versionName="1.02" android:versionCode="12">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.kyleolson.combatmanager" android:versionName="1.03" android:versionCode="13">
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="15" />
 	<supports-screens android:smallScreens="false" android:normalScreens="false" android:largeScreens="true" android:xlargeScreens="true" />
 	<application android:label="Combat Manager" android:icon="@drawable/Icon">

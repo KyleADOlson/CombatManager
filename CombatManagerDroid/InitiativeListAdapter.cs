@@ -114,6 +114,8 @@ namespace CombatManagerDroid
             if (baseLayout == null)
             {
                 baseLayout = new LinearLayout(Application.Context);
+                baseLayout.LongClickable = true;
+
             }
             baseLayout.RemoveAllViews();
             baseLayout.LayoutParameters = new AbsListView.LayoutParams(
@@ -121,11 +123,13 @@ namespace CombatManagerDroid
                     ViewGroup.LayoutParams.MatchParent,
                     ViewGroup.LayoutParams.WrapContent));
             baseLayout.Orientation = Orientation.Vertical;
+            baseLayout.Tag = position;
 
             LinearLayout layout = new LinearLayout(Application.Context);
             baseLayout.AddView(layout);
 
             layout.SetGravity(GravityFlags.CenterVertical);
+
             
             Character c = _State.CombatList[position];
 
@@ -155,8 +159,8 @@ namespace CombatManagerDroid
             t.Ellipsize = Android.Text.TextUtils.TruncateAt.Middle;
             t.Gravity = GravityFlags.CenterVertical;
             t.SetSingleLine(true);
-            
-            layout.SetBackgroundColor(new Android.Graphics.Color(0xee, 0xee, 0xee));
+
+            SetLayoutBackground(baseLayout, layout, false);
             if (_State.CurrentCharacter == _State.CombatList[position])
             {
                 ImageView iv = new ImageView(Application.Context);
@@ -183,6 +187,14 @@ namespace CombatManagerDroid
                 {
                     CharacterClicked(this, new CharacterEventArgs() { Character = c });
                 }
+
+            };
+            t.LongClickable = true;
+            t.LongClick += (object sender, View.LongClickEventArgs e) => 
+            {
+                ClipData data = ClipData.NewPlainText("", "");
+                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(baseLayout);
+                baseLayout.StartDrag(data, shadowBuilder, baseLayout, 0);
 
             };
           
@@ -256,7 +268,112 @@ namespace CombatManagerDroid
 
             }
 
+            baseLayout.SetOnDragListener(new ListOnDragListener(this, baseLayout, layout));
+
             return baseLayout;
+        }
+
+        public class ListOnDragListener : Java.Lang.Object, View.IOnDragListener 
+        {
+
+            View _view;
+            View _layout;
+            InitiativeListAdapter _ad;
+
+            public ListOnDragListener(InitiativeListAdapter ad, View view, View layout)
+            {
+                _ad = ad;
+                _view = view;
+                _layout = layout;
+            }
+
+            public bool OnDrag(View v, DragEvent e)
+            {
+                switch (e.Action)
+                {
+                case DragAction.Entered:
+                    if (SharedParent(e))
+                    {
+                        _ad.SetLayoutBackground(_view, _layout, true);
+                    }
+                    break;
+                case DragAction.Exited:
+                    if (SharedParent(e))
+                    {
+                        _ad.SetLayoutBackground(_view, _layout, false);
+                    }
+                    break;
+                case DragAction.Ended:
+                    if (SharedParent(e))
+                    {
+                        _ad.SetLayoutBackground(_view, _layout, false);
+                    }
+                    break;
+                case DragAction.Drop:
+
+                    if (SharedParent(e))
+                    {
+
+                        View vdrop = (View)e.LocalState;
+                        int tag1 = (int)_view.Tag;
+
+                        int tag2 = (int)((View)e.LocalState).Tag;
+
+                        if (tag1 != tag2 && tag1 < _ad._State.CombatList.Count &&
+                            tag2 < _ad._State.CombatList.Count)
+                        {
+                            Character c1 = _ad._State.CombatList[tag1];
+                            Character c2 = _ad._State.CombatList[tag2];
+                            _ad._State.MoveCharacterBefore(c2, c1);
+
+                        }
+                            
+
+                    }
+                       
+
+                    break;
+                }
+                return true;
+            }
+
+            private bool SharedParent(DragEvent e)
+            {
+                View vdrop = (View)e.LocalState;
+                return vdrop.Parent == _view.Parent;
+
+            }
+            
+        }
+
+        public void SetLayoutBackground(View baseLayout, View layout, bool drag)
+        {
+            Character c = _State.CombatList[(int)baseLayout.Tag];
+            if (c != null)
+            {
+                if (drag)
+                {
+                    if (_Character == c)
+                    {
+                        layout.SetBackgroundColor(new Android.Graphics.Color(0x44, 0x44, 0x44));
+                    }
+                    else
+                    {
+                        layout.SetBackgroundColor(new Android.Graphics.Color(0xaa, 0xaa, 0xaa));
+                    }
+                }
+                else
+                {
+                    if (_Character == c)
+                    {
+                        layout.SetBackgroundColor(new Android.Graphics.Color(0x0, 0x0, 0x0));
+                    }
+                    else
+                    {
+                        layout.SetBackgroundColor(new Android.Graphics.Color(0xee, 0xee, 0xee));
+                    }
+                }
+            }
         }
 
     }

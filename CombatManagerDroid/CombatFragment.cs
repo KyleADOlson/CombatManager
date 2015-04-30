@@ -175,6 +175,12 @@ namespace CombatManagerDroid
 
             _InitListAdapter.CharacterClicked += (sender, e) =>
             {
+                if (_SelectedCharacter != e.Character)
+                {
+                    _SelectedCharacter = e.Character;
+                    _InitListAdapter.Character = e.Character;
+                    _InitListAdapter.NotifyDataSetChanged();
+                }
                 ShowCharacter(v, e.Character);
             };
             
@@ -189,6 +195,8 @@ namespace CombatManagerDroid
                 ShowCharacter(v, c);
 
             };
+
+
 
 
             AddCharacterList(inflater, container, v, Resource.Id.playerListLayout, false);
