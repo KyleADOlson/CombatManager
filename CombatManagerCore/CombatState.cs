@@ -1400,6 +1400,73 @@ namespace CombatManager
             return checkname;
 
         }
+
+        public void MoveDroppedCharacter(Character chMove, Character chTarget, bool toMonster)
+        {
+            if (chMove != chTarget)
+            {
+                if (chMove.IsMonster != toMonster)
+                {
+                    RegroupFollowers(chMove);
+                    UnlinkLeader(chMove);
+                    chMove.IsMonster = toMonster;
+
+                    Characters.Remove(chMove);
+
+                    if (chTarget != null)
+                    {
+                        int index = Characters.IndexOf(chTarget);
+                        Characters.Insert(index, chMove);
+                    }
+                    else
+                    {
+                        Characters.Add(chMove);
+                    }
+                }
+                else
+                {
+                    Characters.Remove(chMove);
+
+                    if (chMove.InitiativeFollowers != null && chMove.InitiativeFollowers.Count > 0)
+                    {
+                        foreach (Character ch in chMove.InitiativeFollowers)
+                        {
+                            Characters.Remove(ch);
+                        }
+                    }
+
+                    if (chTarget != null)
+                    {
+                        int index = Characters.IndexOf(chTarget);
+                        Characters.Insert(index, chMove);
+
+                        if (chMove.InitiativeFollowers != null && chMove.InitiativeFollowers.Count > 0)
+                        {
+                            foreach (Character ch in chMove.InitiativeFollowers)
+                            {
+                                index++;
+                                Characters.Insert(index, ch);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Characters.Add(chMove);
+
+                        if (chMove.InitiativeFollowers != null && chMove.InitiativeFollowers.Count > 0)
+                        {
+                            foreach (Character ch in chMove.InitiativeFollowers)
+                            {
+                                Characters.Add(ch);
+                            }
+                        }
+
+                    }
+                }
+
+            }
+
+        }
 		
 		public void SavePartyFile(string filename, bool saveMonsters)
 		{
