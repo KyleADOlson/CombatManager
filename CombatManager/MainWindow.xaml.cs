@@ -1172,72 +1172,12 @@ namespace CombatManager
                     }
                 }
 
-                if (chMove != chTarget)
-                {
-                    if (chMove.IsMonster != toMonster)
-                    {
-
-                        MoveCharacter(chMove, toMonster);
-
-                        combatState.Characters.Remove(chMove);
-
-                        if (chTarget != null)
-                        {
-                            int index = combatState.Characters.IndexOf(chTarget);
-                            combatState.Characters.Insert(index, chMove);
-                        }
-                        else
-                        {
-                            combatState.Characters.Add(chMove);
-                        }
-                    }
-                    else
-                    {
-                        combatState.Characters.Remove(chMove);
-
-                        if (chMove.InitiativeFollowers != null && chMove.InitiativeFollowers.Count > 0)
-                        {
-                            foreach (Character ch in chMove.InitiativeFollowers)
-                            {
-                                combatState.Characters.Remove(ch);
-                            }
-                        }
-
-                        if (chTarget != null)
-                        {
-                            int index = combatState.Characters.IndexOf(chTarget);
-                            combatState.Characters.Insert(index, chMove);
-
-                            if (chMove.InitiativeFollowers != null && chMove.InitiativeFollowers.Count > 0)
-                            {
-                                foreach (Character ch in chMove.InitiativeFollowers)
-                                {
-                                    index++;
-                                    combatState.Characters.Insert(index, ch);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            combatState.Characters.Add(chMove);
-
-                            if (chMove.InitiativeFollowers != null && chMove.InitiativeFollowers.Count > 0)
-                            {
-                                foreach (Character ch in chMove.InitiativeFollowers)
-                                {
-                                    combatState.Characters.Add(ch);
-                                }
-                            }
-
-                        }
-                    }
-                    
-                }
-
-
+                combatState.MoveDroppedCharacter(chMove, chTarget, toMonster);
             }
 
         }
+
+       
 
 
         void monsterView_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -7015,7 +6955,7 @@ namespace CombatManager
                                     string s = set.ToString();
                                     mi.Header = set.ToString();
 
-                                    if (meleesets[s].Count > 1)
+                                    if (meleesets[s] != null && meleesets[s].Count > 1)
                                     {
 
                                         mi.SetNamedIcon("clone");
@@ -8311,6 +8251,30 @@ namespace CombatManager
             int disadventageous = rand.Next(6);
             OgrekinBeneficialCombo.SelectedIndex = beneficial;
             OgrekinDisadvantageousCommbo.SelectedIndex = disadventageous;
+        }
+
+        private void ColorMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem mi = (MenuItem)sender;
+
+            Character root = (Character)((FrameworkElement)sender).DataContext;
+
+            List<Character> list = GetViewSelectedCharactersFromChar(root);
+
+            bool newState = !root.IsHidden;
+
+            uint? color = null;
+
+            if (mi.Name == "RedColorMenuItem")
+            {
+                color =  0xffff0000;
+            }
+
+            foreach (Character ch in list)
+            {
+                ch.Color = color;
+            }
+
         }
 
 

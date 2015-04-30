@@ -61,6 +61,8 @@ namespace CombatManager
         private bool _IsHidden;
         private bool _IsIdle;
 
+        private uint? color;
+
 
         //unsaved data
         private bool isActive;
@@ -155,6 +157,7 @@ namespace CombatManager
             character.initiativeRolled = initiativeRolled;
             character._IsHidden = _IsHidden;
             character._IsIdle = _IsIdle;
+            character.color = color;
 
             if (initiativeCount != null)
             {
@@ -612,6 +615,23 @@ namespace CombatManager
                     this.isReadying = value;
                     Notify("IsReadying");
                     Notify("IsNotReadyingOrDelaying");
+                }
+            }
+        }
+
+        [DataMember]
+        public uint? Color
+        {
+            get
+            {
+                return color;
+            }
+            set
+            {
+                if (this.color != value)
+                {
+                    this.color = value;
+                    Notify("Color");
                 }
             }
         }

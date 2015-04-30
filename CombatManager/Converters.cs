@@ -316,6 +316,38 @@ namespace CombatManager
         }
     }
 
+    [ValueConversion(typeof(uint?), typeof(Brush))]
+    class NullableUintToBrushConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (targetType != typeof(Brush))
+            {
+                return null;
+            }
+
+            if (value == null)
+            {
+                return null;
+            }
+            else
+            {
+                uint ui = ((uint?)value).Value;
+                byte a = (byte)(ui >> 24);
+                byte r = (byte)(ui >> 16);
+                byte g = (byte)(ui >> 8);
+                byte b = (byte)ui;
+                return new SolidColorBrush(Color.FromArgb(a, r, g, b));
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return null;
+        }
+    }
+
+
     [ValueConversion(typeof(int?), typeof(string))]
     class TurnsConverter : IValueConverter
     {
