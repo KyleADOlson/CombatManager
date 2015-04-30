@@ -49,6 +49,7 @@
         <local:BoolToVisibilityCollapsedConverter x:Key="BoolToVisibilityCollapsedConverter"/>
         <local:ChangedToBrushConverter x:Key="changedToBrushConverter"/>
         <local:HPToBrushConverter x:Key="hpToBrushConverter"/>
+        <local:NullableUintToBrushConverter x:Key="nullableUintToBrushConverter"/>
         <local:AbilityValueConverter x:Key="AbilityValueConverter"/>
         <local:AbilityBonusConverter x:Key="AbilityBonusConverter"/>
         <local:BonusValueConverter x:Key="BonusValueConverter"/>

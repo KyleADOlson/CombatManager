@@ -8313,6 +8313,30 @@ namespace CombatManager
             OgrekinDisadvantageousCommbo.SelectedIndex = disadventageous;
         }
 
+        private void ColorMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem mi = (MenuItem)sender;
+
+            Character root = (Character)((FrameworkElement)sender).DataContext;
+
+            List<Character> list = GetViewSelectedCharactersFromChar(root);
+
+            bool newState = !root.IsHidden;
+
+            uint? color = null;
+
+            if (mi.Name == "RedColorMenuItem")
+            {
+                color =  0xffff0000;
+            }
+
+            foreach (Character ch in list)
+            {
+                ch.Color = color;
+            }
+
+        }
+
 
 
 

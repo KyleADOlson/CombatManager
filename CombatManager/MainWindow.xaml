@@ -230,6 +230,12 @@
                     <Image Source="/CombatManager;component/Images/NoteHS.png" Width="16" Height="16"/>
                 </MenuItem.Icon>
             </MenuItem>
+            <MenuItem Header="Color">
+                <MenuItem Header="None" x:Name="NoColorMenuItem" Click="ColorMenuItem_Click">
+                </MenuItem>
+                <MenuItem Header="Red" x:Name="RedColorMenuItem" Click="ColorMenuItem_Click">                    
+                </MenuItem>
+            </MenuItem>
             <Separator/>
             <MenuItem Header="Roll">
                 <MenuItem.Icon>
@@ -540,7 +546,7 @@
                 	</BooleanAnimationUsingKeyFrames>
                 </Storyboard>
             </DataTemplate.Resources>
-            <Grid x:Name="CharacterGrid" Width="Auto" Height="Auto" ContextMenu="{StaticResource CharacterContextMenu}" Background="#01FFFFFF" d:DesignWidth="206.586">
+            <Grid x:Name="CharacterGrid" Width="Auto" Height="Auto" ContextMenu="{StaticResource CharacterContextMenu}" d:DesignWidth="206.586">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
@@ -551,10 +557,11 @@
                     <RowDefinition Height="Auto" MinHeight="0"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+            	<Rectangle Grid.ColumnSpan="2" Fill="{Binding Color, Converter={StaticResource nullableUintToBrushConverter}}" Margin="1" RadiusY="5" RadiusX="5" StrokeThickness="1" StrokeLineJoin="Round" Grid.RowSpan="2"/>
             	<Grid Grid.ColumnSpan="8" Margin="1,0,1,0.375" Grid.Row="1">
             		<Grid.RowDefinitions>
-            		  <RowDefinition/>
-                      <RowDefinition Height="Auto"/>
+            			<RowDefinition/>
+            			<RowDefinition Height="Auto"/>
             		</Grid.RowDefinitions>
             		<Grid.ColumnDefinitions>
             			<ColumnDefinition/>
@@ -912,19 +919,19 @@
             					<Button x:Name="EditAttacksButton" Content="Edit Attacks" HorizontalAlignment="Right" Margin="0,1.852,1.666,0" Width="Auto" RenderTransformOrigin="0.24,0.617" Height="Auto" VerticalAlignment="Top" VerticalContentAlignment="Top" Padding="1,0,1,-1" FontSize="10.667" FontWeight="Normal" Background="{DynamicResource TabItemHotBackground}" Foreground="Black" Click="EditAttackButton_Click"/>
             				</Grid>
             			</TabItem>
-                        <TabItem Header="Resources">
-                        	<Grid>
-                        		<Grid.RowDefinitions>
-                        			<RowDefinition Height="0.507*"/>
-                        			<RowDefinition Height="0.493*"/>
-                        		</Grid.RowDefinitions>
-                        		<Grid.Background>
-                        			<SolidColorBrush Color="{DynamicResource SecondaryColorBDark}"/>
-                        		</Grid.Background>
-                        		<Button x:Name="AddResourceButton" Content="Add" HorizontalAlignment="Left" Width="75" d:LayoutOverrides="Height" Grid.RowSpan="1" Click="AddResourceButton_Click"/>
-                        		<ListBox ItemsSource="{Binding Resources}" Margin="0" Grid.Row="1" Grid.RowSpan="1" ItemTemplate="{DynamicResource ResouceItemTemplate}" Background="#0BFFFFFF" HorizontalContentAlignment="Stretch"/>
-                        	</Grid>
-                        </TabItem>
+            			<TabItem Header="Resources">
+            				<Grid>
+            					<Grid.RowDefinitions>
+            						<RowDefinition Height="0.507*"/>
+            						<RowDefinition Height="0.493*"/>
+            					</Grid.RowDefinitions>
+            					<Grid.Background>
+            						<SolidColorBrush Color="{DynamicResource SecondaryColorBDark}"/>
+            					</Grid.Background>
+            					<Button x:Name="AddResourceButton" Content="Add" HorizontalAlignment="Left" Width="75" d:LayoutOverrides="Height" Grid.RowSpan="1" Click="AddResourceButton_Click"/>
+            					<ListBox ItemsSource="{Binding Resources}" Margin="0" Grid.Row="1" Grid.RowSpan="1" ItemTemplate="{DynamicResource ResouceItemTemplate}" Background="#0BFFFFFF" HorizontalContentAlignment="Stretch"/>
+            				</Grid>
+            			</TabItem>
             		</TabControl>
             	</Grid>
 			</Grid>
@@ -973,333 +980,334 @@
                     <RowDefinition Height="29.969"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Border Grid.ColumnSpan="1" Margin="0,0.344,0.5,1" Grid.Row="0" HorizontalAlignment="Stretch" CornerRadius="0" BorderThickness="1" Grid.Column="3" d:LayoutOverrides="HorizontalAlignment">
-                    <Border.BorderBrush>
-                        <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
-                    </Border.BorderBrush>
-                    <Border.Background>
-                        <SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
-                    </Border.Background>
-                    <Grid>
-                    	<Grid.ToolTip>
-                    	       <StackPanel>
-                    	           <TextBlock>  
-                    	           	<TextBlock.Text>                 	           
-                    					<MultiBinding StringFormat="HP {0}/{1}">
-                    						<Binding Path="HP"/>
-                    						<Binding Path="MaxHP"/>
-                    					</MultiBinding>       
-                                    </TextBlock.Text>                           
-                                 </TextBlock>
-                    	       </StackPanel>
-                    	   </Grid.ToolTip>
-                    	<TextBox x:Name="HPTextBox" Text="{Binding HP, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Margin="0,2.491,18,1.938" VerticalAlignment="Stretch" Height="Auto" Grid.Row="0" RenderTransformOrigin="1.739,0.365" Grid.Column="0" GotFocus="TextBox_GotFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" KeyUp="TextBox_KeyUp" Width="27.386" />
-                    	<Popup x:Name="popup" Placement="Bottom" StaysOpen="False" PlacementTarget="{Binding ElementName=HPTextBox}" AllowsTransparency="True" Grid.ColumnSpan="1" Margin="0,0,18.394,-3.344">
-                    		<Grid >
-                    			<Grid.ColumnDefinitions>
-                    				<ColumnDefinition Width="33"/>
-                    				<ColumnDefinition />
-                    				<ColumnDefinition />
-                    			</Grid.ColumnDefinitions>
-                    			<Rectangle RadiusX="6" RadiusY="6" Stroke="White" Grid.Column="0" Grid.ColumnSpan="3">
-                    				<Rectangle.Fill>
-                    					<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-                    				</Rectangle.Fill>
-                    			</Rectangle>
-                    			<TextBox x:Name="textBox" Width="30" VerticalAlignment="Center" HorizontalAlignment="Left" Height="20" Margin="6,3,0,3" Text="" KeyUp="textBox_KeyUp" TextChanged="textBox_TextChanged" IsVisibleChanged="textBox_IsVisibleChanged" />
-                    			<Button Width="16" Height="16" Grid.Column="1" Margin="3,3,0,3" Background="{DynamicResource characterButtonBrush}" VerticalAlignment="Center" x:Name="SubractHPButton" Click="SubractHPButton_Click" FontWeight="Bold" FontSize="13.333" >
+            	<Rectangle Grid.ColumnSpan="6" Fill="{Binding Color, Converter={StaticResource nullableUintToBrushConverter}}" Margin="0,0.344,0,0" RadiusY="5" RadiusX="5" Grid.RowSpan="2" StrokeThickness="1" StrokeLineJoin="Round"/>
+            	<Border Grid.ColumnSpan="1" Margin="0,0.344,0.5,1" Grid.Row="0" HorizontalAlignment="Stretch" CornerRadius="0" BorderThickness="1" Grid.Column="3" d:LayoutOverrides="HorizontalAlignment">
+            		<Border.BorderBrush>
+            			<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+            		</Border.BorderBrush>
+            		<Border.Background>
+            			<SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
+            		</Border.Background>
+            		<Grid>
+            			<Grid.ToolTip>
+            				<StackPanel>
+            					<TextBlock>  
+            						<TextBlock.Text>                 	           
+            							<MultiBinding StringFormat="HP {0}/{1}">
+            								<Binding Path="HP"/>
+            								<Binding Path="MaxHP"/>
+            							</MultiBinding>       
+            						</TextBlock.Text>                           
+            					</TextBlock>
+            				</StackPanel>
+            			</Grid.ToolTip>
+            			<TextBox x:Name="HPTextBox" Text="{Binding HP, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Margin="0,2.491,18,1.938" VerticalAlignment="Stretch" Height="Auto" Grid.Row="0" RenderTransformOrigin="1.739,0.365" Grid.Column="0" GotFocus="TextBox_GotFocus" GotKeyboardFocus="TextBox_GotKeyboardFocus" KeyUp="TextBox_KeyUp" Width="27.386" />
+            			<Popup x:Name="popup" Placement="Bottom" StaysOpen="False" PlacementTarget="{Binding ElementName=HPTextBox}" AllowsTransparency="True" Grid.ColumnSpan="1" Margin="0,0,18.394,-3.344">
+            				<Grid >
+            					<Grid.ColumnDefinitions>
+            						<ColumnDefinition Width="33"/>
+            						<ColumnDefinition />
+            						<ColumnDefinition />
+            					</Grid.ColumnDefinitions>
+            					<Rectangle RadiusX="6" RadiusY="6" Stroke="White" Grid.Column="0" Grid.ColumnSpan="3">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<TextBox x:Name="textBox" Width="30" VerticalAlignment="Center" HorizontalAlignment="Left" Height="20" Margin="6,3,0,3" Text="" KeyUp="textBox_KeyUp" TextChanged="textBox_TextChanged" IsVisibleChanged="textBox_IsVisibleChanged" />
+            					<Button Width="16" Height="16" Grid.Column="1" Margin="3,3,0,3" Background="{DynamicResource characterButtonBrush}" VerticalAlignment="Center" x:Name="SubractHPButton" Click="SubractHPButton_Click" FontWeight="Bold" FontSize="13.333" >
 
-                    				<Path Data="M 1,4 7,4 " Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
-                    			</Button>
-                    			<Button Width="16" Height="16" Grid.Column="2" Margin="0,3,3,3" Background="{DynamicResource characterButtonBrush}" VerticalAlignment="Center" x:Name="AddHPButton" Click="AddHPButton_Click" FontWeight="Bold" FontSize="13.333" >
+            						<Path Data="M 1,4 7,4 " Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+            					</Button>
+            					<Button Width="16" Height="16" Grid.Column="2" Margin="0,3,3,3" Background="{DynamicResource characterButtonBrush}" VerticalAlignment="Center" x:Name="AddHPButton" Click="AddHPButton_Click" FontWeight="Bold" FontSize="13.333" >
 
-                    				<Path Data="M 1,4 L 7,4 M4,1 L4,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
-                    			</Button>
-                    		</Grid>
-                    	</Popup>
+            						<Path Data="M 1,4 L 7,4 M4,1 L4,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+            					</Button>
+            				</Grid>
+            			</Popup>
 
-                    	<Thumb x:Name="HPUpThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="0,3.417,2,12.031" Grid.Row="0" Grid.RowSpan="1" HorizontalAlignment="Right" Width="13.991" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle1}"/>
-                    	<Thumb x:Name="HPDownThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="0,14,2,1.938" Grid.Row="0" Grid.RowSpan="1" Height="Auto" VerticalAlignment="Stretch" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle2}" HorizontalAlignment="Right" Width="13.991"/></Grid>
-                </Border>
-                <TextBox x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Name}" Grid.ColumnSpan="2" Margin="2.875,4.04,4,4" Grid.Column="1" GotFocus="NameTextBox_GotFocus" MouseRightButtonDown="NameTextBox_MouseRightButtonDown" PreviewMouseRightButtonDown="NameTextBox_PreviewMouseRightButtonDown" />
-                <local:NotesPopup x:Name="NotesPopup"/>
-                <Button x:Name="DeleteButton" Margin="3.495,8,3.494,5.969" RenderTransformOrigin="0.222,-0.601" Grid.Column="5" Click="DeleteButton_Click" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" GotKeyboardFocus="TextBox_GotKeyboardFocus" Style="{DynamicResource ButtonSecondaryStyle}">
-                    <Button.ToolTip>Delete</Button.ToolTip>
-                    <Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
-                </Button>
-                <Button x:Name="ConditionsBox" Grid.Column="4" Grid.Row="0" RenderTransformOrigin="0.5,0.5" ToolTip="Actions" Width="Auto" Height="22" GotKeyboardFocus="TextBox_GotKeyboardFocus" HorizontalAlignment="Stretch" Margin="0,4.929,1,3.04" Click="ConditionsBox_Click">
-                    <Grid Width="16" Height="16">
-                        <Image Source="Images/d20-16.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16"/>
+            			<Thumb x:Name="HPUpThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="0,3.417,2,12.031" Grid.Row="0" Grid.RowSpan="1" HorizontalAlignment="Right" Width="13.991" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle1}"/>
+            			<Thumb x:Name="HPDownThumb" Grid.ColumnSpan="1" Grid.Column="0" Margin="0,14,2,1.938" Grid.Row="0" Grid.RowSpan="1" Height="Auto" VerticalAlignment="Stretch" DragStarted="HPThumb_DragStarted" DragDelta="HPThumb_DragDelta" DragCompleted="HPThumb_DragCompleted" Style="{DynamicResource ThumbStyle2}" HorizontalAlignment="Right" Width="13.991"/></Grid>
+            	</Border>
+            	<TextBox x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Name}" Grid.ColumnSpan="2" Margin="2.875,4.04,4,4" Grid.Column="1" GotFocus="NameTextBox_GotFocus" MouseRightButtonDown="NameTextBox_MouseRightButtonDown" PreviewMouseRightButtonDown="NameTextBox_PreviewMouseRightButtonDown" />
+            	<local:NotesPopup x:Name="NotesPopup"/>
+            	<Button x:Name="DeleteButton" Margin="3.495,8,3.494,5.969" RenderTransformOrigin="0.222,-0.601" Grid.Column="5" Click="DeleteButton_Click" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" GotKeyboardFocus="TextBox_GotKeyboardFocus" Style="{DynamicResource ButtonSecondaryStyle}">
+            		<Button.ToolTip>Delete</Button.ToolTip>
+            		<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+            	</Button>
+            	<Button x:Name="ConditionsBox" Grid.Column="4" Grid.Row="0" RenderTransformOrigin="0.5,0.5" ToolTip="Actions" Width="Auto" Height="22" GotKeyboardFocus="TextBox_GotKeyboardFocus" HorizontalAlignment="Stretch" Margin="0,4.929,1,3.04" Click="ConditionsBox_Click">
+            		<Grid Width="16" Height="16">
+            			<Image Source="Images/d20-16.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16"/>
 
-                    </Grid>
-                </Button>
-                <TextBox x:Name="NotesTextBox" Height="39.627" Margin="1.5,0,5.871,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Notes}" VerticalAlignment="Top" Grid.ColumnSpan="5" Visibility="Collapsed" AcceptsReturn="True" BorderBrush="#FF979595" VerticalScrollBarVisibility="Auto" Grid.Column="1" d:LayoutOverrides="GridBox"/>
-                <Grid x:Name="ConditionsGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Visibility="{Binding Stats.ActiveConditions.Count, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}" Margin="0" d:LayoutOverrides="GridBox">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" MinHeight="22" />
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" x:Name="ConditionMiniBox" ItemsSource="{Binding Stats.ActiveConditions}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemTemplate="{DynamicResource ConditionMiniTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" ItemContainerStyle="{DynamicResource ConditionMiniContainerTemplate}"/>
-                </Grid>
-                <Grid  x:Name="StatsGrid" Grid.ColumnSpan="6" Grid.Column="0"  Grid.Row="1" HorizontalAlignment="Stretch" Visibility="Collapsed" Margin="0,0,3.871,0" d:LayoutOverrides="GridBox"
+            		</Grid>
+            	</Button>
+            	<TextBox x:Name="NotesTextBox" Height="39.627" Margin="1.5,0,5.871,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Notes}" VerticalAlignment="Top" Grid.ColumnSpan="5" Visibility="Collapsed" AcceptsReturn="True" BorderBrush="#FF979595" VerticalScrollBarVisibility="Auto" Grid.Column="1" d:LayoutOverrides="GridBox"/>
+            	<Grid x:Name="ConditionsGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Visibility="{Binding Stats.ActiveConditions.Count, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}" Margin="0" d:LayoutOverrides="GridBox">
+            		<Grid.RowDefinitions>
+            			<RowDefinition Height="Auto" MinHeight="22" />
+            			<RowDefinition/>
+            		</Grid.RowDefinitions>
+            		<Grid.ColumnDefinitions>
+            			<ColumnDefinition/>
+            		</Grid.ColumnDefinitions>
+            		<ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" x:Name="ConditionMiniBox" ItemsSource="{Binding Stats.ActiveConditions}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemTemplate="{DynamicResource ConditionMiniTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" ItemContainerStyle="{DynamicResource ConditionMiniContainerTemplate}"/>
+            	</Grid>
+            	<Grid  x:Name="StatsGrid" Grid.ColumnSpan="6" Grid.Column="0"  Grid.Row="1" HorizontalAlignment="Stretch" Visibility="Collapsed" Margin="0,0,3.871,0" d:LayoutOverrides="GridBox"
 					>
-                    <TabControl Padding="1" Background="#00F9F9F9" BorderBrush="#008C8E94">
-                        <TabItem Header="Base" >
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="0"/>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="1"/>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="1"/>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="1"/>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="3"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0"/>
-                                    <ColumnDefinition Width="63"/>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="63"/>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="63"/>
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Grid.Row="5" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="6" d:LayoutOverrides="GridBox">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="1" Width="Auto" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="3" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="5" HorizontalAlignment="Stretch" Margin="0" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="1" Width="Auto" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="5" HorizontalAlignment="Stretch" Margin="0,-0.289,0,0.289" Grid.Row="1" Width="Auto" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock Margin="5,5,29.167,0" TextWrapping="Wrap" Text="Str" Foreground="White" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Monster.Adjuster.Strength, Converter={StaticResource AbilityValueConverter}}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <TextBlock Margin="5,5,29.167,0" TextWrapping="Wrap" Text="Dex" Grid.Column="3" Foreground="White" RenderTransformOrigin="0.275,0.535" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Monster.Adjuster.Dexterity, Converter={StaticResource AbilityValueConverter}}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" Grid.Row="1" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <TextBlock Margin="5,5,29.167,6.792" TextWrapping="Wrap" Text="Con" d:LayoutOverrides="Height" Grid.Column="5" Foreground="White" Grid.Row="1" TextAlignment="Center" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Monster.Adjuster.Constitution, Converter={StaticResource AbilityValueConverter}}" Margin="0,2,2,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" Grid.Row="1" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <TextBlock Margin="3.066,5,29.167,0" TextWrapping="Wrap" Text="Int" Grid.Row="3" Foreground="White" Grid.Column="1" TextAlignment="Center" Width="29.934" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Monster.Adjuster.Intelligence, Converter={StaticResource AbilityValueConverter}}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <TextBlock Margin="3.066,5,29.167,0" TextWrapping="Wrap" Text="Wis" Grid.Column="3" Grid.Row="3" Foreground="White" TextAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Monster.Adjuster.Wisdom, Converter={StaticResource AbilityValueConverter}}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <TextBlock HorizontalAlignment="Stretch" Margin="3.066,5,29.167,6.792" TextWrapping="Wrap" Text="Cha" Grid.Column="5" d:LayoutOverrides="Height" Grid.Row="3" Foreground="White" Width="Auto" TextAlignment="Center" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Monster.Adjuster.Charisma, Converter={StaticResource AbilityValueConverter}}" Margin="0,2,2,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0.129,0,-0.129" Grid.Row="7" Width="Auto" Grid.ColumnSpan="6">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock Grid.Column="1" Margin="5,5,23.416,0" Grid.Row="5" TextWrapping="Wrap" Text="Speed" VerticalAlignment="Top" HorizontalAlignment="Stretch" FontWeight="Bold" d:LayoutOverrides="Width" Foreground="White"/>
-                                <TextBlock Grid.Column="2" Margin="-19.417,5,3,0" Grid.Row="5" Visibility="{Binding Monster, Converter={StaticResource notNullVisibilityConverter}}"  TextWrapping="NoWrap" ToolTip="{Binding Stats.Speed}"  HorizontalAlignment="Stretch" Grid.ColumnSpan="5" VerticalAlignment="Top" Foreground="White" d:LayoutOverrides="GridBox" Text="{Binding Stats.Speed}" TextTrimming="CharacterEllipsis"/>
+            		<TabControl Padding="1" Background="#00F9F9F9" BorderBrush="#008C8E94">
+            			<TabItem Header="Base" >
+            				<Grid>
+            					<Grid.RowDefinitions>
+            						<RowDefinition Height="0"/>
+            						<RowDefinition Height="26"/>
+            						<RowDefinition Height="1"/>
+            						<RowDefinition Height="26"/>
+            						<RowDefinition Height="1"/>
+            						<RowDefinition Height="26"/>
+            						<RowDefinition Height="1"/>
+            						<RowDefinition Height="26"/>
+            						<RowDefinition Height="3"/>
+            					</Grid.RowDefinitions>
+            					<Grid.ColumnDefinitions>
+            						<ColumnDefinition Width="0"/>
+            						<ColumnDefinition Width="63"/>
+            						<ColumnDefinition />
+            						<ColumnDefinition Width="63"/>
+            						<ColumnDefinition />
+            						<ColumnDefinition Width="63"/>
+            						<ColumnDefinition />
+            					</Grid.ColumnDefinitions>
+            					<Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Grid.Row="5" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="6" d:LayoutOverrides="GridBox">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="1" Width="Auto" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="3" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="5" HorizontalAlignment="Stretch" Margin="0" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="1" Width="Auto" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="5" HorizontalAlignment="Stretch" Margin="0,-0.289,0,0.289" Grid.Row="1" Width="Auto" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<TextBlock Margin="5,5,29.167,0" TextWrapping="Wrap" Text="Str" Foreground="White" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Monster.Adjuster.Strength, Converter={StaticResource AbilityValueConverter}}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<TextBlock Margin="5,5,29.167,0" TextWrapping="Wrap" Text="Dex" Grid.Column="3" Foreground="White" RenderTransformOrigin="0.275,0.535" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Monster.Adjuster.Dexterity, Converter={StaticResource AbilityValueConverter}}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" Grid.Row="1" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<TextBlock Margin="5,5,29.167,6.792" TextWrapping="Wrap" Text="Con" d:LayoutOverrides="Height" Grid.Column="5" Foreground="White" Grid.Row="1" TextAlignment="Center" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Monster.Adjuster.Constitution, Converter={StaticResource AbilityValueConverter}}" Margin="0,2,2,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" Grid.Row="1" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<TextBlock Margin="3.066,5,29.167,0" TextWrapping="Wrap" Text="Int" Grid.Row="3" Foreground="White" Grid.Column="1" TextAlignment="Center" Width="29.934" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Monster.Adjuster.Intelligence, Converter={StaticResource AbilityValueConverter}}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<TextBlock Margin="3.066,5,29.167,0" TextWrapping="Wrap" Text="Wis" Grid.Column="3" Grid.Row="3" Foreground="White" TextAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Monster.Adjuster.Wisdom, Converter={StaticResource AbilityValueConverter}}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<TextBlock HorizontalAlignment="Stretch" Margin="3.066,5,29.167,6.792" TextWrapping="Wrap" Text="Cha" Grid.Column="5" d:LayoutOverrides="Height" Grid.Row="3" Foreground="White" Width="Auto" TextAlignment="Center" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Monster.Adjuster.Charisma, Converter={StaticResource AbilityValueConverter}}" Margin="0,2,2,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0.129,0,-0.129" Grid.Row="7" Width="Auto" Grid.ColumnSpan="6">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<TextBlock Grid.Column="1" Margin="5,5,23.416,0" Grid.Row="5" TextWrapping="Wrap" Text="Speed" VerticalAlignment="Top" HorizontalAlignment="Stretch" FontWeight="Bold" d:LayoutOverrides="Width" Foreground="White"/>
+            					<TextBlock Grid.Column="2" Margin="-19.417,5,3,0" Grid.Row="5" Visibility="{Binding Monster, Converter={StaticResource notNullVisibilityConverter}}"  TextWrapping="NoWrap" ToolTip="{Binding Stats.Speed}"  HorizontalAlignment="Stretch" Grid.ColumnSpan="5" VerticalAlignment="Top" Foreground="White" d:LayoutOverrides="GridBox" Text="{Binding Stats.Speed}" TextTrimming="CharacterEllipsis"/>
 
-                                <ComboBox SelectedIndex="{Binding Stats.Alignment, Converter={StaticResource AlignmentIndexConverter}}" Margin="1,3,27.416,0" Width="Auto" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="7" BorderBrush="{x:Null}" Grid.ColumnSpan="1" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3">
-                                    <ComboBoxItem Content="LG"/>
-                                    <ComboBoxItem Content="NG"/>
-                                    <ComboBoxItem Content="CG"/>
-                                    <ComboBoxItem Content="LN"/>
-                                    <ComboBoxItem Content="N"/>
-                                    <ComboBoxItem Content="CN"/>
-                                    <ComboBoxItem Content="LE"/>
-                                    <ComboBoxItem Content="NE"/>
-                                    <ComboBoxItem Content="CE"/>
-                                </ComboBox>
-                                <ComboBox SelectedIndex="{Binding Monster.Adjuster.MonsterSize}" HorizontalAlignment="Stretch" Margin="-8,3,1,0" Width="Auto" VerticalAlignment="Top" Grid.Row="7" Grid.Column="4" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3">
-                                    <ComboBoxItem Content="Fine"/>
-                                    <ComboBoxItem Content="Diminutive"/>
-                                    <ComboBoxItem Content="Tiny"/>
-                                    <ComboBoxItem Content="Small"/>
-                                    <ComboBoxItem Content="Medium"/>
-                                    <ComboBoxItem Content="Large"/>
-                                    <ComboBoxItem Content="Huge"/>
-                                    <ComboBoxItem Content="Gargantuan"/>
-                                    <ComboBoxItem Content="Colossal"/>
-                                </ComboBox>
-                                <ComboBox SelectedIndex="{Binding Stats.Type, Converter={StaticResource MonsterTypeIndexConverter}}" HorizontalAlignment="Stretch" Margin="-27,3,8,0" Width="Auto" VerticalAlignment="Top" Grid.Column="2" Grid.Row="7" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3">
-                                    <ComboBoxItem Content="Aberration" />
-                                    <ComboBoxItem Content="Animal" />
-                                    <ComboBoxItem Content="Construct" />
-                                    <ComboBoxItem Content="Dragon" />
-                                    <ComboBoxItem Content="Fey" />
-                                    <ComboBoxItem Content="Humanoid" />
-                                    <ComboBoxItem Content="Magical Beast" />
-                                    <ComboBoxItem Content="Monstrous Humanoid" />
-                                    <ComboBoxItem Content="Ooze" />
-                                    <ComboBoxItem Content="Outsider" />
-                                    <ComboBoxItem Content="Plant" />
-                                    <ComboBoxItem Content="Undead" />
-                                    <ComboBoxItem Content="Vermin" />
-                                </ComboBox>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="Combat">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="0"/>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="1"/>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="1"/>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="3"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0"/>
-                                    <ColumnDefinition Width="63"/>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="63"/>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="63"/>
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Rectangle Grid.Column="5" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="1" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="1" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Top" Text="AC" Margin="3.274,5,29.726,0" Foreground="White" TextAlignment="Center" Width="Auto"/>
-                                <TextBox Text="{Binding Stats.FullAC}" HorizontalAlignment="Right" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" Margin="0,2,3,0" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <TextBlock Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="Touch" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0.089,5,26.637,0" Grid.RowSpan="1" Foreground="White" Width="Auto" TextAlignment="Center" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Stats.TouchAC}" HorizontalAlignment="Right" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" BorderBrush="{x:Null}" Margin="0,2,3,0" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <TextBlock Grid.Column="5" Grid.Row="1" TextWrapping="Wrap" Text="Flat" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="3,5,29.726,0" Foreground="White" TextAlignment="Center" Width="Auto" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Stats.FlatFootedAC}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" Grid.Column="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<ComboBox SelectedIndex="{Binding Stats.Alignment, Converter={StaticResource AlignmentIndexConverter}}" Margin="1,3,27.416,0" Width="Auto" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="7" BorderBrush="{x:Null}" Grid.ColumnSpan="1" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3">
+            						<ComboBoxItem Content="LG"/>
+            						<ComboBoxItem Content="NG"/>
+            						<ComboBoxItem Content="CG"/>
+            						<ComboBoxItem Content="LN"/>
+            						<ComboBoxItem Content="N"/>
+            						<ComboBoxItem Content="CN"/>
+            						<ComboBoxItem Content="LE"/>
+            						<ComboBoxItem Content="NE"/>
+            						<ComboBoxItem Content="CE"/>
+            					</ComboBox>
+            					<ComboBox SelectedIndex="{Binding Monster.Adjuster.MonsterSize}" HorizontalAlignment="Stretch" Margin="-8,3,1,0" Width="Auto" VerticalAlignment="Top" Grid.Row="7" Grid.Column="4" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3">
+            						<ComboBoxItem Content="Fine"/>
+            						<ComboBoxItem Content="Diminutive"/>
+            						<ComboBoxItem Content="Tiny"/>
+            						<ComboBoxItem Content="Small"/>
+            						<ComboBoxItem Content="Medium"/>
+            						<ComboBoxItem Content="Large"/>
+            						<ComboBoxItem Content="Huge"/>
+            						<ComboBoxItem Content="Gargantuan"/>
+            						<ComboBoxItem Content="Colossal"/>
+            					</ComboBox>
+            					<ComboBox SelectedIndex="{Binding Stats.Type, Converter={StaticResource MonsterTypeIndexConverter}}" HorizontalAlignment="Stretch" Margin="-27,3,8,0" Width="Auto" VerticalAlignment="Top" Grid.Column="2" Grid.Row="7" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3">
+            						<ComboBoxItem Content="Aberration" />
+            						<ComboBoxItem Content="Animal" />
+            						<ComboBoxItem Content="Construct" />
+            						<ComboBoxItem Content="Dragon" />
+            						<ComboBoxItem Content="Fey" />
+            						<ComboBoxItem Content="Humanoid" />
+            						<ComboBoxItem Content="Magical Beast" />
+            						<ComboBoxItem Content="Monstrous Humanoid" />
+            						<ComboBoxItem Content="Ooze" />
+            						<ComboBoxItem Content="Outsider" />
+            						<ComboBoxItem Content="Plant" />
+            						<ComboBoxItem Content="Undead" />
+            						<ComboBoxItem Content="Vermin" />
+            					</ComboBox>
+            				</Grid>
+            			</TabItem>
+            			<TabItem Header="Combat">
+            				<Grid>
+            					<Grid.RowDefinitions>
+            						<RowDefinition Height="0"/>
+            						<RowDefinition Height="26"/>
+            						<RowDefinition Height="1"/>
+            						<RowDefinition Height="26"/>
+            						<RowDefinition Height="1"/>
+            						<RowDefinition Height="26"/>
+            						<RowDefinition Height="3"/>
+            					</Grid.RowDefinitions>
+            					<Grid.ColumnDefinitions>
+            						<ColumnDefinition Width="0"/>
+            						<ColumnDefinition Width="63"/>
+            						<ColumnDefinition />
+            						<ColumnDefinition Width="63"/>
+            						<ColumnDefinition />
+            						<ColumnDefinition Width="63"/>
+            						<ColumnDefinition />
+            					</Grid.ColumnDefinitions>
+            					<Rectangle Grid.Column="5" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="1" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="1" Width="Auto" Grid.RowSpan="1" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<TextBlock Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Top" Text="AC" Margin="3.274,5,29.726,0" Foreground="White" TextAlignment="Center" Width="Auto"/>
+            					<TextBox Text="{Binding Stats.FullAC}" HorizontalAlignment="Right" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" BorderBrush="{x:Null}" Margin="0,2,3,0" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<TextBlock Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="Touch" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0.089,5,26.637,0" Grid.RowSpan="1" Foreground="White" Width="Auto" TextAlignment="Center" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Stats.TouchAC}" HorizontalAlignment="Right" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" BorderBrush="{x:Null}" Margin="0,2,3,0" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<TextBlock Grid.Column="5" Grid.Row="1" TextWrapping="Wrap" Text="Flat" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="3,5,29.726,0" Foreground="White" TextAlignment="Center" Width="Auto" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Stats.FlatFootedAC}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Row="1" Grid.Column="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
 
-                                <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0.129,1,-0.129" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="Fort" Grid.Column="1" Foreground="White" Grid.Row="3" TextAlignment="Center" d:LayoutOverrides="Height" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Stats.Fort}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0.129,1,-0.129" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock Margin="3.066,5,29.167,6.287" TextWrapping="Wrap" Text="Ref" Grid.Column="3" Foreground="White" Grid.Row="3" TextAlignment="Center" d:LayoutOverrides="Height" Width="28" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Stats.Ref}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <Rectangle Grid.Column="5" Margin="0.089,0.129,0,-0.129" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock Margin="3.066,5,26.637,6.287" TextWrapping="Wrap" Text="Will" Grid.Column="5" Foreground="White" Grid.Row="3" TextAlignment="Center" d:LayoutOverrides="Height" Grid.ColumnSpan="2"/>
-                                <TextBox Text="{Binding Stats.Will}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
-                                <Rectangle Grid.Column="5" HorizontalAlignment="Stretch" Margin="0" Grid.Row="5" Width="Auto" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="5" Width="Auto" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="5" Width="Auto" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="BAB" Grid.Column="1" Foreground="White" Grid.Row="5" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox"/>
-                                <TextBox Text="{Binding Stats.BaseAtk}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
-                                <TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="CMB" Grid.Column="3" Foreground="White" Grid.Row="5" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox"/>
-                                <TextBox Text="{Binding Stats.CMB_Numeric}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
-                                <TextBlock Margin="4.449,5,30.55,6.287" TextWrapping="Wrap" Text="CMD" Grid.Column="5" Foreground="White" Grid.Row="5" TextAlignment="Center" Width="28" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox"/>
-                                <TextBox Text="{Binding Stats.CMD_Numeric}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" Grid.Row="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="Attacks">
-                            <Grid >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="21.373"/>
-                                    <RowDefinition Height="0.505*"/>
-                                    <RowDefinition Height="17.96"/>
-                                    <RowDefinition Height="0.495*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <Rectangle Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock Text="Melee"  Grid.Row="0" Grid.Column="0" Foreground="White" Margin="3,0,65.167,1" FontWeight="Bold" VerticalAlignment="Bottom"/>
-                                <TextBlock Text="{Binding Stats.Melee}" Visibility="{Binding Stats.Melee, Converter={StaticResource NotNullVisibilityCollapsedConverter}}" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Foreground="White" Margin="3,0,3,2"/>
-                                <TextBlock Text="Ranged" Grid.Row="2" Grid.Column="0" Foreground="White" Margin="3,1,41.5,1" FontWeight="Bold" d:LayoutOverrides="GridBox"/>
-                                <TextBlock Text="{Binding Stats.Ranged}" Visibility="{Binding Stats.Ranged, Converter={StaticResource NotNullVisibilityCollapsedConverter}}" Grid.Row="3" Grid.Column="0"  TextWrapping="Wrap" Foreground="White" Margin="3,0,3,2"/>
-                                <Button x:Name="EditAttacksButton" Content="Edit Attacks" HorizontalAlignment="Right" Margin="0,1.852,1.666,0" Width="Auto" RenderTransformOrigin="0.24,0.617" Height="Auto" VerticalAlignment="Top" VerticalContentAlignment="Top" Padding="1,0,1,-1" FontSize="10.667" FontWeight="Normal" Background="{DynamicResource TabItemHotBackground}" Foreground="Black" Click="EditAttackButton_Click"/>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="Resources">
-                        	<Grid>
-                        		<Grid.RowDefinitions>
-                        			<RowDefinition Height="0.507*"/>
-                        			<RowDefinition Height="0.493*"/>
-                        		</Grid.RowDefinitions>
-                        		<Grid.Background>
-                        			<SolidColorBrush Color="{DynamicResource SecondaryColorBDark}"/>
-                        		</Grid.Background>
-                        		<Button x:Name="AddResourceButton" Content="Add" HorizontalAlignment="Left" Width="75" d:LayoutOverrides="Height" Grid.RowSpan="1" Click="AddResourceButton_Click"/>
-                        		<ListBox ItemsSource="{Binding Resources}" Margin="0" Grid.Row="1" Grid.RowSpan="1" ItemTemplate="{DynamicResource ResouceItemTemplate}" Background="#0BFFFFFF" HorizontalContentAlignment="Stretch"/>
-                        	</Grid>
-                        </TabItem>
-                    </TabControl>
-                </Grid>
-                <StackPanel Margin="1,6.803,0,8" Orientation="Horizontal" d:LayoutOverrides="Height">
-                	<Image x:Name="FollowerImage" Source="images\lock-16.png" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0"
-                		Visibility="{Binding InitiativeLeader, Converter={StaticResource NotNullVisibilityCollapsedConverter}}"/>
-                	<Image x:Name="HiddenImage" Source="images\blind-16.png" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="15.166" Margin="0"
-                		Visibility="{Binding IsHidden, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" ToolTip="Hidden"/>
-                	<Image x:Name="IdleImage" Source="images\zzz-16.png" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="15.166" Margin="0"
-                		Visibility="{Binding IsIdle, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" ToolTip="Idle"/>
-                </StackPanel>
+            					<Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0.129,1,-0.129" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="Fort" Grid.Column="1" Foreground="White" Grid.Row="3" TextAlignment="Center" d:LayoutOverrides="Height" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Stats.Fort}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0.129,1,-0.129" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<TextBlock Margin="3.066,5,29.167,6.287" TextWrapping="Wrap" Text="Ref" Grid.Column="3" Foreground="White" Grid.Row="3" TextAlignment="Center" d:LayoutOverrides="Height" Width="28" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Stats.Ref}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<Rectangle Grid.Column="5" Margin="0.089,0.129,0,-0.129" Grid.Row="3" Width="Auto" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<TextBlock Margin="3.066,5,26.637,6.287" TextWrapping="Wrap" Text="Will" Grid.Column="5" Foreground="White" Grid.Row="3" TextAlignment="Center" d:LayoutOverrides="Height" Grid.ColumnSpan="2"/>
+            					<TextBox Text="{Binding Stats.Will}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" Grid.Row="3" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" GotFocus="TextBox_GotFocus" />
+            					<Rectangle Grid.Column="5" HorizontalAlignment="Stretch" Margin="0" Grid.Row="5" Width="Auto" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="5" Width="Auto" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,1,0" Grid.Row="5" Width="Auto" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="BAB" Grid.Column="1" Foreground="White" Grid.Row="5" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox"/>
+            					<TextBox Text="{Binding Stats.BaseAtk}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
+            					<TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="CMB" Grid.Column="3" Foreground="White" Grid.Row="5" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox"/>
+            					<TextBox Text="{Binding Stats.CMB_Numeric}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
+            					<TextBlock Margin="4.449,5,30.55,6.287" TextWrapping="Wrap" Text="CMD" Grid.Column="5" Foreground="White" Grid.Row="5" TextAlignment="Center" Width="28" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox"/>
+            					<TextBox Text="{Binding Stats.CMD_Numeric}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" Grid.Row="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
+            				</Grid>
+            			</TabItem>
+            			<TabItem Header="Attacks">
+            				<Grid >
+            					<Grid.RowDefinitions>
+            						<RowDefinition Height="21.373"/>
+            						<RowDefinition Height="0.505*"/>
+            						<RowDefinition Height="17.96"/>
+            						<RowDefinition Height="0.495*"/>
+            					</Grid.RowDefinitions>
+            					<Grid.ColumnDefinitions>
+            						<ColumnDefinition/>
+            					</Grid.ColumnDefinitions>
+            					<Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<Rectangle Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
+            						<Rectangle.Fill>
+            							<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+            						</Rectangle.Fill>
+            					</Rectangle>
+            					<TextBlock Text="Melee"  Grid.Row="0" Grid.Column="0" Foreground="White" Margin="3,0,65.167,1" FontWeight="Bold" VerticalAlignment="Bottom"/>
+            					<TextBlock Text="{Binding Stats.Melee}" Visibility="{Binding Stats.Melee, Converter={StaticResource NotNullVisibilityCollapsedConverter}}" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Foreground="White" Margin="3,0,3,2"/>
+            					<TextBlock Text="Ranged" Grid.Row="2" Grid.Column="0" Foreground="White" Margin="3,1,41.5,1" FontWeight="Bold" d:LayoutOverrides="GridBox"/>
+            					<TextBlock Text="{Binding Stats.Ranged}" Visibility="{Binding Stats.Ranged, Converter={StaticResource NotNullVisibilityCollapsedConverter}}" Grid.Row="3" Grid.Column="0"  TextWrapping="Wrap" Foreground="White" Margin="3,0,3,2"/>
+            					<Button x:Name="EditAttacksButton" Content="Edit Attacks" HorizontalAlignment="Right" Margin="0,1.852,1.666,0" Width="Auto" RenderTransformOrigin="0.24,0.617" Height="Auto" VerticalAlignment="Top" VerticalContentAlignment="Top" Padding="1,0,1,-1" FontSize="10.667" FontWeight="Normal" Background="{DynamicResource TabItemHotBackground}" Foreground="Black" Click="EditAttackButton_Click"/>
+            				</Grid>
+            			</TabItem>
+            			<TabItem Header="Resources">
+            				<Grid>
+            					<Grid.RowDefinitions>
+            						<RowDefinition Height="0.507*"/>
+            						<RowDefinition Height="0.493*"/>
+            					</Grid.RowDefinitions>
+            					<Grid.Background>
+            						<SolidColorBrush Color="{DynamicResource SecondaryColorBDark}"/>
+            					</Grid.Background>
+            					<Button x:Name="AddResourceButton" Content="Add" HorizontalAlignment="Left" Width="75" d:LayoutOverrides="Height" Grid.RowSpan="1" Click="AddResourceButton_Click"/>
+            					<ListBox ItemsSource="{Binding Resources}" Margin="0" Grid.Row="1" Grid.RowSpan="1" ItemTemplate="{DynamicResource ResouceItemTemplate}" Background="#0BFFFFFF" HorizontalContentAlignment="Stretch"/>
+            				</Grid>
+            			</TabItem>
+            		</TabControl>
+            	</Grid>
+            	<StackPanel Margin="1,6.803,0,8" Orientation="Horizontal" d:LayoutOverrides="Height">
+            		<Image x:Name="FollowerImage" Source="images\lock-16.png" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0"
+            			Visibility="{Binding InitiativeLeader, Converter={StaticResource NotNullVisibilityCollapsedConverter}}"/>
+            		<Image x:Name="HiddenImage" Source="images\blind-16.png" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="15.166" Margin="0"
+            			Visibility="{Binding IsHidden, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" ToolTip="Hidden"/>
+            		<Image x:Name="IdleImage" Source="images\zzz-16.png" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="15.166" Margin="0"
+            			Visibility="{Binding IsIdle, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" ToolTip="Idle"/>
+            	</StackPanel>
             </Grid>
             <DataTemplate.Triggers>
                 <DataTrigger Binding="{Binding InitiativeLeader}" Value="{x:Null}"/>
@@ -1351,33 +1359,34 @@
                         <TextBlock Text="{Binding InitiativeCount.Text}" TextWrapping="Wrap" Grid.Row="0" FontSize="12" Visibility="{Binding Source={x:Static local:UserSettings.Settings}, Path=ShowHiddenInitValue, Converter={StaticResource BoolToVisibilityCollapsedConverter}}"/>
                     </StackPanel>
                 </Grid.ToolTip>
-                <Path Data="M1,4 L5,4 L5,1 L11,6 L5,11 L5,8 L1,8 z" Width="12" Height="12" Visibility="{Binding IsActive, Converter={StaticResource boolToVisibilityConverter}}" StrokeLineJoin="Round" StrokeThickness="1" Margin="3,5.98,1,5.98" Fill="#FF13EB0C" IsHitTestVisible="False" />
-                                	<Image Source="images/hourglass-16.png"  Visibility="{Binding IsDelaying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Margin="0,3,0,3" Grid.Column="1"/>
-                	<Image Source="images/target-16.png"  Visibility="{Binding IsReadying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Margin="0,3,0,3" Grid.Column="2"/>
-					<StackPanel Grid.Column="3" Orientation="Horizontal">
-					<TextBlock x:Name="NameTextBlock" Text="{Binding Name}"  Foreground="{Binding HP, Converter={StaticResource hpToBrushConverter}}" 
-						Margin="0,0,0,0" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
-						<ListBox x:Name="CurrentPlayerConditions" ItemsSource="{Binding Stats.ActiveConditions}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemTemplate="{DynamicResource ConditionMiniTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle4}" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-							<ListBox.RenderTransform>
-								<TransformGroup>
-									<ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
-									<SkewTransform/>
-									<RotateTransform/>
-									<TranslateTransform/>
-								</TransformGroup>
-							</ListBox.RenderTransform>
-						</ListBox>
+                <Rectangle Grid.ColumnSpan="6" Fill="{Binding Color, Converter={StaticResource nullableUintToBrushConverter}}" Margin="1.25,1,0,0" StrokeThickness="1" StrokeLineJoin="Round" RadiusX="3" RadiusY="5"/>
+            	<Path Data="M1,4 L5,4 L5,1 L11,6 L5,11 L5,8 L1,8 z" Width="12" Height="12" Visibility="{Binding IsActive, Converter={StaticResource boolToVisibilityConverter}}" StrokeLineJoin="Round" StrokeThickness="1" Margin="3,5.98,1,5.98" Fill="#FF13EB0C" IsHitTestVisible="False" />
+            	<Image Source="images/hourglass-16.png"  Visibility="{Binding IsDelaying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Margin="0,3,0,3" Grid.Column="1"/>
+            	<Image Source="images/target-16.png"  Visibility="{Binding IsReadying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Margin="0,3,0,3" Grid.Column="2"/>
+            	<StackPanel Grid.Column="3" Orientation="Horizontal">
+            		<TextBlock x:Name="NameTextBlock" Text="{Binding Name}"  Foreground="{Binding HP, Converter={StaticResource hpToBrushConverter}}" 
+            			Margin="0,0,0,0" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+            		<ListBox x:Name="CurrentPlayerConditions" ItemsSource="{Binding Stats.ActiveConditions}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemTemplate="{DynamicResource ConditionMiniTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle4}" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            			<ListBox.RenderTransform>
+            				<TransformGroup>
+            					<ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
+            					<SkewTransform/>
+            					<RotateTransform/>
+            					<TranslateTransform/>
+            				</TransformGroup>
+            			</ListBox.RenderTransform>
+            		</ListBox>
 
-					</StackPanel>
+            	</StackPanel>
 				
-                <TextBlock Grid.Column="4" Text="Init:" Margin="6,0,3,0" FontStyle="Italic" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="5" Text="{Binding CurrentInitiative, UpdateSourceTrigger=PropertyChanged}" 
-					Background="{Binding HasInitiativeChanged, ConverterParameter={StaticResource SecondaryColorBLighter}, Converter={StaticResource changedToBrushConverter}}" 
-					Margin="2.999,2,3,1" Width="24" VerticalAlignment="Center" Height="19"/>
-                <local:NotesPopup x:Name="NotesPopup"/>
-                <ListBox x:Name="FollowersListBox" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="6" 
-				ItemsSource="{Binding InitiativeFollowers}"
-				Visibility="{Binding InitiativeFollowers.Count, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}"  ItemTemplate="{DynamicResource InitiativeFollowerItemTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" IsHitTestVisible="False" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch"/>
+            	<TextBlock Grid.Column="4" Text="Init:" Margin="6,0,3,0" FontStyle="Italic" VerticalAlignment="Center"/>
+            	<TextBox Grid.Column="5" Text="{Binding CurrentInitiative, UpdateSourceTrigger=PropertyChanged}" 
+            		Background="{Binding HasInitiativeChanged, ConverterParameter={StaticResource SecondaryColorBLighter}, Converter={StaticResource changedToBrushConverter}}" 
+            		Margin="2.999,2,4,1" Width="24" VerticalAlignment="Center" Height="19"/>
+            	<local:NotesPopup x:Name="NotesPopup"/>
+            	<ListBox x:Name="FollowersListBox" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="6" 
+            		ItemsSource="{Binding InitiativeFollowers}"
+            		Visibility="{Binding InitiativeFollowers.Count, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}"  ItemTemplate="{DynamicResource InitiativeFollowerItemTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" IsHitTestVisible="False" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch"/>
 			</Grid>
 			<DataTemplate.Triggers>
 				
