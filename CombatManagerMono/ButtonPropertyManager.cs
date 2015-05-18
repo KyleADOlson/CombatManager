@@ -150,6 +150,10 @@ namespace CombatManagerMono
                 }
                 Value = values.ToTokenString(',');
             }
+            else
+            {
+                Value = e.Tag;
+            }
 
             UpdateButton();
 		}

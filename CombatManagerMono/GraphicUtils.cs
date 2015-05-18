@@ -23,7 +23,6 @@ using System;
 using UIKit;
 using CoreGraphics;
 using Foundation;
-using CoreGraphics;
 using System.Collections.Generic;
 
 

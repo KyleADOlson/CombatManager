@@ -105,7 +105,11 @@ namespace CombatManager
                 if (_AppDataDir == null)
                 {
                     System.Diagnostics.Debug.WriteLine("AppDataDir");
+                    #if ANDROID
+                    _AppDataDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    #else
                     _AppDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                    #endif
                     _AppDataDir = Path.Combine(_AppDataDir, AppDataSubDir);
 
                     if (!Directory.Exists(_AppDataDir))

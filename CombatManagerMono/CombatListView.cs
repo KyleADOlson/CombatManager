@@ -28,7 +28,6 @@ using CombatManager;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using CoreGraphics;
-using CoreGraphics;
 
 namespace CombatManagerMono
 {
@@ -577,7 +576,8 @@ namespace CombatManagerMono
 				if (cell == null)
 				{
                     cell = new DataListViewCell (UITableViewCellStyle.Default, "CombatListViewCell");
-				}
+				
+                }
 			
 				Character ch = state.CombatState.CombatList[indexPath.Row];
 				
@@ -664,6 +664,8 @@ namespace CombatManagerMono
 				{
 					CharacterActions.TakeAction(state._CombatState, item.Action, ch, new List<Character>() {ch}, item.Tag);
 				}
+
+              
 				
 			}
 			
@@ -708,6 +710,7 @@ namespace CombatManagerMono
 				}
 			}
 		}
+
 	}
 }
 

@@ -25,13 +25,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button1"
-                android:tag="5000" />
+                android:tag="5000"
+                android:textStyle="bold" />
             <Button
                 android:text="+1k"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button2"
-                android:tag="1000" />
+                android:tag="1000"
+                android:textStyle="bold" />
             <TextView
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -46,14 +48,16 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button3"
-                android:tag="-1000" />
+                android:tag="-1000"
+                android:textStyle="bold" />
             <Button
                 android:text="-5k"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button4"
                 android:tag="-5000"
-                android:linksClickable="false" />
+                android:linksClickable="false"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -68,13 +72,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button1"
-                android:tag="500" />
+                android:tag="500"
+                android:textStyle="bold" />
             <Button
                 android:text="+100"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button2"
-                android:tag="100" />
+                android:tag="100"
+                android:textStyle="bold" />
             <TextView
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -89,13 +95,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button3"
-                android:tag="-100" />
+                android:tag="-100"
+                android:textStyle="bold" />
             <Button
                 android:text="-500"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button4"
-                android:tag="-500" />
+                android:tag="-500"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -110,13 +118,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button1"
-                android:tag="50" />
+                android:tag="50"
+                android:textStyle="bold" />
             <Button
                 android:text="+10"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button2"
-                android:tag="10" />
+                android:tag="10"
+                android:textStyle="bold" />
             <TextView
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -131,13 +141,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button3"
-                android:tag="-10" />
+                android:tag="-10"
+                android:textStyle="bold" />
             <Button
                 android:text="-50"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button4"
-                android:tag="-50" />
+                android:tag="-50"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -152,13 +164,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button1"
-                android:tag="5" />
+                android:tag="5"
+                android:textStyle="bold" />
             <Button
                 android:text="+1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button2"
-                android:tag="1" />
+                android:tag="1"
+                android:textStyle="bold" />
             <TextView
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -173,13 +187,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button3"
-                android:tag="-1" />
+                android:tag="-1"
+                android:textStyle="bold" />
             <Button
                 android:text="-5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button4"
-                android:tag="-5" />
+                android:tag="-5"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

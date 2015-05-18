@@ -236,6 +236,8 @@ namespace CombatManagerDroid
                 _MonsterList = lv;
             }
 
+            lv.SetOnDragListener(new ListOnDragListener(monsters, v));
+
             cl.FindViewById<ImageButton>(Resource.Id.blankButton).Click += 
                 (object sender, EventArgs e) => 
                 {
@@ -342,6 +344,48 @@ namespace CombatManagerDroid
             v.FindViewById<LinearLayout>(id).AddView(cl);
 
         }
+
+        class ListOnDragListener : Java.Lang.Object, View.IOnDragListener 
+        {
+
+            View _listview;
+            bool _monsters;
+
+            public ListOnDragListener(bool monsters, View listview)
+            {
+                _listview = listview;
+                _monsters = monsters;
+            }
+
+            public bool OnDrag(View v, DragEvent e)
+            {
+                switch (e.Action)
+                {
+                case DragAction.Entered:
+                    break;
+                case DragAction.Exited:
+                    break;
+                case DragAction.Ended:
+                    break;
+                case DragAction.Drop:
+                    View dropView = (View)e.LocalState;
+                    if (dropView.Parent is ListView)
+                    {
+                        if (((ListView)dropView.Parent).Adapter is CharacterListAdapter)
+                        {
+                            CharacterListAdapter dropAd = (CharacterListAdapter)((ListView)dropView.Parent).Adapter;
+                            Character dropChar = dropAd[(int)dropView.Tag];
+
+                            CombatFragment.CombatState.MoveDroppedCharacter(dropChar, null, _monsters);
+
+                        }
+                    }
+                    break;
+                }
+                return true;
+            }
+        }
+
 
         private void ShowCharacter(View v, Character c)
         {
@@ -468,7 +512,15 @@ namespace CombatManagerDroid
 
         public static void SaveCombatState()
         {
-            XmlLoader<CombatState>.Save(_CombatState, "CombatState.xml", true);
+            try
+            {
+                XmlLoader<CombatState>.Save(_CombatState, "CombatState.xml", true);
+            }
+            catch (Exception ex)
+            {
+
+                DebugLogger.WriteLine(ex.ToString());
+            }
         }
 
         private void LoadCombatState()

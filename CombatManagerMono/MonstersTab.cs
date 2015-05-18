@@ -26,7 +26,6 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using CoreGraphics;
-using CoreGraphics;
 using CombatManager;
 using System.Text.RegularExpressions;
 

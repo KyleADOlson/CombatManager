@@ -48,7 +48,7 @@
                         d1p1:id="@+id/characterText"
                         d1p1:layout_width="fill_parent"
                         d1p1:layout_height="wrap_content"
-                        d1p1:ellipsize="end"
+                        d1p1:ellipsize="middle"
                         d1p1:paddingRight="4dp"
                         d1p1:paddingLeft="4dp"
                         d1p1:singleLine="true"

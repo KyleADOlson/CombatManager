@@ -1425,8 +1425,14 @@ namespace CombatManager
 
             foreach (var en in from v in f.Entries where v.FileName.StartsWith("statblocks_text") && !v.IsDirectory select v)
             {
+                #if MONO
+
+                using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("utf-8")))
+                {
+                #else
                 using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("windows-1252")))
                 {
+                #endif
                     String block = r.ReadToEnd();
 
                     var otheren = f.Entries.FirstOrDefault(v => v.FileName.Equals(en.FileName.Replace("statblocks_text", "statblocks_xml").Replace(".txt", ".xml")));

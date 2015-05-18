@@ -104,6 +104,7 @@ namespace CombatManagerDroid
                 v.FindViewById<Button>(Resource.Id.hpMaxButton).LongClickable = true;
                 v.FindViewById<Button>(Resource.Id.initButton).LongClickable = true;
                 v.FindViewById<ImageButton>(Resource.Id.actionButton).LongClickable = true;
+                v.SetOnDragListener(new ListOnDragListener(this, v));
             }
             v.Tag = position;
 
@@ -121,14 +122,12 @@ namespace CombatManagerDroid
         public class ListOnDragListener : Java.Lang.Object, View.IOnDragListener 
         {
 
-            View _view;
             View _layout;
             CharacterListAdapter _ad;
 
-            public ListOnDragListener(CharacterListAdapter ad, View view, View layout)
+            public ListOnDragListener(CharacterListAdapter ad, View layout)
             {
                 _ad = ad;
-                _view = view;
                 _layout = layout;
             }
 
@@ -144,11 +143,24 @@ namespace CombatManagerDroid
                     break;
                 case DragAction.Drop:
                     View dropView = (View)e.LocalState;
-                    if (dropView.Parent is ListView)
+                    if (dropView != _layout && dropView.Parent is ListView)
                     {
-                        if ((ListView)dropView.Parent).Adapter is CharacterListAdapter)
+                        if (((ListView)dropView.Parent).Adapter is CharacterListAdapter)
                         {
+                            CharacterListAdapter dropAd = (CharacterListAdapter)((ListView)dropView.Parent).Adapter;
 
+
+                            try
+                            {
+                                Character targetChar = _ad._Characters[(int)_layout.Tag];
+                                Character dropChar = dropAd._Characters[(int)dropView.Tag];
+
+                                _ad._State.MoveDroppedCharacter(dropChar, targetChar, targetChar.IsMonster);
+                            }
+                            catch (Exception ex)
+                            {
+                                System.Diagnostics.Debug.Write(ex.ToString());
+                            }
                         }
                     }
                     break;

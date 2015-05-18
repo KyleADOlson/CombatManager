@@ -6,7 +6,6 @@ using System.Collections.ObjectModel;
 
 using Foundation;
 using UIKit;
-using CoreGraphics;
 
 namespace CombatManagerMono
 {

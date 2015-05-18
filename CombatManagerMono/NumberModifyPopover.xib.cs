@@ -96,7 +96,6 @@ namespace CombatManagerMono
 		
 		public NumberModifyPopover (IntPtr handle) : base(handle)
 		{
-			Initialize ();
 			
 			
 		}
@@ -104,13 +103,18 @@ namespace CombatManagerMono
 		[Export("initWithCoder:")]
 		public NumberModifyPopover (NSCoder coder) : base(coder)
 		{
-			Initialize ();
 		}
 
 		public NumberModifyPopover () : base("NumberModifyPopover", null)
 		{
-			Initialize ();
 		}
+
+        public override void ViewDidLoad()
+        {
+
+            Initialize ();
+
+        }
 
 		void Initialize ()
 		{

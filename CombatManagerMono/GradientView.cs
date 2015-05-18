@@ -23,7 +23,6 @@ using System;
 using CoreGraphics;
 using UIKit;
 using Foundation;
-using CoreGraphics;
 
 namespace CombatManagerMono
 {

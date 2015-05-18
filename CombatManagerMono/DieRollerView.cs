@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using UIKit;
 
 using CombatManager;
-using CoreGraphics;
 using System.Text;
 using Foundation;
 using System.IO;

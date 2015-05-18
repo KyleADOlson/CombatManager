@@ -295,6 +295,8 @@ namespace CombatManager
 				items.Add(new CharacterActionItem("Move After " + selectedChar.Name, "arrowsdown", CharacterActionType.MoveAfterInitiative, selectedChar));
 	
 			}
+            items.Add(new CharacterActionItem());
+            items.Add(new CharacterActionItem("Roll", "d20p", CharacterActionType.RollInitiative));
 			items.Add(new CharacterActionItem());		
 			items.Add(new CharacterActionItem("Ready", "target", CharacterActionType.Ready));
 			items.Add(new CharacterActionItem("Delay", "hourglass", CharacterActionType.Delay));
@@ -442,6 +444,10 @@ namespace CombatManager
 			case CharacterActionType.MoveBeforeInitiative:
 				state.MoveCharacterBefore(primaryChar, (Character)param);
 				break;
+            case CharacterActionType.RollInitiative:
+                state.RollIndividualInitiative(primaryChar);
+                state.SortCombatList(false, false);
+                break;
             case CharacterActionType.Ready:
                 primaryChar.IsReadying = !primaryChar.IsReadying;
                 if (primaryChar.IsReadying && primaryChar.IsDelaying)
