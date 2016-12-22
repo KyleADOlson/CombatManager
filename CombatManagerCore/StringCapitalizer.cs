@@ -50,7 +50,7 @@ namespace CombatManager
 
         public static string Capitalize(string text)
         {
-            if (string.IsNullOrEmpty(text))
+            if (!string.IsNullOrEmpty(text))
             {
 
                 Regex regWord = new Regex("\\w+('s)?");

@@ -105,6 +105,12 @@
     <Content Include="..\CombatManagerCore\Feats.xml">
       <Link>Feats.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="..\CombatManagerCore\FeatsRaw.xml">
+      <Link>FeatsRaw.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\CombatManagerCore\MagicItems.xml">
       <Link>MagicItems.xml</Link>
