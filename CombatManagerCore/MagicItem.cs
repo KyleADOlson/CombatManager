@@ -157,7 +157,14 @@ namespace CombatManager
                     Debug.Assert(m._DetailsID != 0);
 
                     m._Name = v.ElementValue("Name");
-                    m._CL = v.ElementIntValue("CL");
+                    if (v.ElementValue("CL") != "-")
+                    {
+                        m._CL = v.ElementIntValue("CL");
+                    }
+                    else
+                    {
+                        m._CL = 0;
+                    }
                     m._Group = v.ElementValue("Group");
                     m._Source = v.ElementValue("Source");
                     m._MagicItems = v.ElementValue("MagicItems");

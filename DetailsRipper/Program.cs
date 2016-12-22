@@ -54,6 +54,7 @@ namespace DetailsRipper
 
             CleanupMonsters();
 
+            CleanupFeats();
 
 
             cn.Close();
@@ -143,8 +144,14 @@ namespace DetailsRipper
                 RemoveIfNotNull(x, s);
             }
 
-
-            cm.ExecuteNonQuery();
+            try
+            {
+                cm.ExecuteNonQuery();
+            }
+            catch (System.Data.SQLite.SQLiteException)
+            {
+                System.Diagnostics.Debug.WriteLine("Duplicate ID: " + p1.Value);
+            }
         }
 
         static void CleanupMonsters()
@@ -172,6 +179,8 @@ namespace DetailsRipper
 
                 XElement oldElement;
                 string monName = x.Element("Name").Value;
+
+
                 string source = x.Element("Source").Value;
                 Debug.Assert(source != null);
                 if (Regex.Match(source, "Tome of Horrors").Success)
@@ -235,6 +244,7 @@ namespace DetailsRipper
 
                 XElement oldElement;
                 string monName = x.Element("Name").Value;
+
                 if (monsterList.TryGetValue(monName, out oldElement))
                 {
                     dupcount++;
@@ -346,6 +356,12 @@ namespace DetailsRipper
             {
                 x.Element("Name").Value = name.ToLower().Capitalize();
             }
+            else if (name.StartsWith("\""))
+            {
+                name = name.Substring(0, 1) + name.Substring(1, 1).ToUpper() + name.Substring(2);
+                x.Element("Name").Value = name;
+            }
+
 
             string cr = x.Element("CR").Value;
             if (cr == "-")
@@ -378,6 +394,9 @@ namespace DetailsRipper
                 "WandCost",
                 "Bonus"
             };
+
+
+
 
         static void CleanupSpells()
         {
@@ -522,6 +541,53 @@ namespace DetailsRipper
             SaveCopyFile(docClone, "SpellAnnotations.xml");
         }
 
+        static void CleanupFeats()
+        {
+
+
+            XDocument docFeats = XDocument.Load("FeatsRaw.xml");
+
+            foreach (XElement feat in docFeats.Descendants("Feat"))
+            {
+                foreach (XElement xe in feat.Elements())
+                {
+                    String name = xe.Name.LocalName.Capitalize();
+      
+                    xe.Name = name;
+                }
+
+                XElement pr = feat.Element("Prerequisites");
+                if (pr != null)
+                {
+                    if (pr.Value == "-")
+                    {
+                        pr.Value = "";
+                    }
+                    //unfix back to typo
+                    pr.Name = "Prerequistites";
+                }
+
+                XElement desc = feat.Element("Description");
+                if (desc != null)
+                {
+                    desc.Name = "Summary";
+                }
+
+
+                XElement ft = feat.Element("Fulltext");
+                ft.Name = "Detail";
+
+
+                XElement dp = new XElement("DetailParsed");
+                dp.Value = "true";
+                feat.Add(dp);
+            }
+
+            
+
+            SaveCopyFile(docFeats, "Feats.xml");
+        }
+
         private static void SaveCopyFile(XDocument doc, String filename)
         {
 
@@ -588,7 +654,7 @@ namespace DetailsRipper
         public static void FixNum(this XElement x)
         {
             int outVal;
-            if (!int.TryParse(x.Value, out outVal))
+            if (x != null && !int.TryParse(x.Value, out outVal))
             {
                 Regex reg = new Regex("-?[0-9]+");
                 Match m = reg.Match(x.Value);

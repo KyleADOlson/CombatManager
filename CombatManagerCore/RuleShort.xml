@@ -4055,4 +4055,88 @@
     <Source>Ultimate Campaign</Source>
     <Type>Character Background</Type>
   </Rule>
+  <Rule>
+    <ID>782</ID>
+    <Name>Kineticist</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Classes</Type>
+  </Rule>
+  <Rule>
+    <ID>783</ID>
+    <Name>Kinetic Blasts</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Occult Class Features</Type>
+  </Rule>
+  <Rule>
+    <ID>784</ID>
+    <Name>Composite Blasts</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Occult Class Features</Type>
+  </Rule>
+  <Rule>
+    <ID>785</ID>
+    <Name>Defense Wild Talents</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Occult Class Features</Type>
+  </Rule>
+  <Rule>
+    <ID>786</ID>
+    <Name>Infusion Wild Talents</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Occult Class Features</Type>
+  </Rule>
+  <Rule>
+    <ID>787</ID>
+    <Name>Utility Wild Talents</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Occult Class Features</Type>
+  </Rule>
+  <Rule>
+    <ID>788</ID>
+    <Name>Medium</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Classes</Type>
+  </Rule>
+  <Rule>
+    <ID>789</ID>
+    <Name>Mesmerist</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Classes</Type>
+  </Rule>
+  <Rule>
+    <ID>790</ID>
+    <Name>Occultist</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Classes</Type>
+  </Rule>
+  <Rule>
+    <ID>791</ID>
+    <Name>Implement Schools</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Occult Class Features</Type>
+  </Rule>
+  <Rule>
+    <ID>792</ID>
+    <Name>Psychic</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Classes</Type>
+  </Rule>
+  <Rule>
+    <ID>793</ID>
+    <Name>Psychic Disciplines</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Occult Class Features</Type>
+  </Rule>
+  <Rule>
+    <ID>794</ID>
+    <Name>Spiritualist</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Classes</Type>
+  </Rule>
+  <Rule>
+    <ID>795</ID>
+    <Name>Phantoms</Name>
+    <Source>Occult Adventures</Source>
+    <Type>Occult Class Features</Type>
+  </Rule>
 </ArrayOfRule>
