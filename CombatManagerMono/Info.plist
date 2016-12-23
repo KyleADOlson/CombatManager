@@ -22,7 +22,7 @@
 	<key>CFBundleVersion</key>
 	<string>1.1.2.1</string>
 	<key>MinimumOSVersion</key>
-	<string>5.1.1</string>
+	<string>6.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>2</integer>
@@ -85,5 +85,7 @@
 	</array>
 	<key>CFBundleShortVersionString</key>
 	<string>1.1.2</string>
+	<key>CFBundleName</key>
+	<string>CombatMan</string>
 </dict>
 </plist>
