@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("CombatManagerCore")]
-[assembly: AssemblyCopyright("Copyright © Kyle Olson 2010-2015")]
+[assembly: AssemblyCopyright("Copyright © Kyle Olson 2010-2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
