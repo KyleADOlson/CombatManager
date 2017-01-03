@@ -375,6 +375,12 @@ namespace DetailsRipper
                 x.Element("CMB").Value = Monster.ChangeStartingModOrVal(cmb, 0);
             }
 
+            XElement ability = x.Element("AbilityScores");
+            if (ability != null)
+            {
+                ability.Name = "AbilitiyScores";
+            }
+
         }
 
         static List<String> _SpellAnnotationFields = new List<string>()

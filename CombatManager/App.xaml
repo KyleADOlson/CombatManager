@@ -9,8 +9,8 @@
     StartupUri="MainWindow.xaml">
     <Application.Resources>
         <system:String x:Key="ApplicationTitle">Combat Manager</system:String>
-        <system:String x:Key="ApplicationVersion">1.6.2</system:String>
-        <system:String x:Key="ApplicationCopyright">© 2010-2016 Kyle Olson</system:String>
+        <system:String x:Key="ApplicationVersion">1.6.3</system:String>
+        <system:String x:Key="ApplicationCopyright">© 2010-2017 Kyle Olson</system:String>
 				<Color x:Key="PrimaryColorLighter">#BBDBDD</Color>
 		 <Color x:Key="PrimaryColorLight">#AFDBDD</Color>
 		 <Color x:Key="PrimaryColorMedium">#87B9BB</Color>
