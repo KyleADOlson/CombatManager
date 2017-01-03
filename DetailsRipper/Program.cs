@@ -375,6 +375,12 @@ namespace DetailsRipper
                 x.Element("CMB").Value = Monster.ChangeStartingModOrVal(cmb, 0);
             }
 
+            XElement ability = x.Element("AbilityScores");
+            if (ability != null)
+            {
+                ability.Name = "AbilitiyScores";
+            }
+
         }
 
         static List<String> _SpellAnnotationFields = new List<string>()
@@ -543,7 +549,7 @@ namespace DetailsRipper
 
         static void CleanupFeats()
         {
-
+            SortedSet<String> names = new SortedSet<string>();
 
             XDocument docFeats = XDocument.Load("FeatsRaw.xml");
 
@@ -555,6 +561,18 @@ namespace DetailsRipper
       
                     xe.Name = name;
                 }
+
+
+
+                if (feat.Element("Type").Value == "Mythic")
+                {
+                    if (names.Contains(feat.Element("Name").Value))
+                    {
+                        feat.Element("Name").Value = "Mythic " + feat.Element("Name").Value;
+                    }
+                }
+
+                names.Add(feat.Element("Name").Value);
 
                 XElement pr = feat.Element("Prerequisites");
                 if (pr != null)

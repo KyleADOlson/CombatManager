@@ -15,7 +15,7 @@
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AssemblyName>CombatManagerDroid</AssemblyName>
-    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <ReleaseVersion>1.04</ReleaseVersion>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
@@ -41,7 +41,7 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <DefineConstants>RELEASE</DefineConstants>
     <AndroidKeyStore>True</AndroidKeyStore>
-    <AndroidSigningKeyStore>/Users/kyleolson/Documents/combatmanager/CombatManagerDroid/mono.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyStore>/Users/kyleolson/Documents/code/CombatManagerDroid/mono.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>@hysteria11</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>monokey</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>@hysteria11</AndroidSigningKeyPass>
