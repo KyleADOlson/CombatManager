@@ -1,75 +1,88 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio to store outlets and
-// actions made in the UI designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// This file has been generated automatically by Xamarin Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
 using System.CodeDom.Compiler;
 
 namespace CombatManagerMono
 {
-	[Register ("SpellLevelsDialog")]
-	partial class SpellLevelsDialog
-	{
-		[Outlet]
-		CombatManagerMono.GradientButton AddButton { get; set; }
+    [Register ("SpellLevelsDialog")]
+    partial class SpellLevelsDialog
+    {
+        [Outlet]
+        CombatManagerMono.GradientButton AddButton { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientView BackgroundView { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton CancelButton { get; set; }
+        [Outlet]
+        CombatManagerMono.GradientView BackgroundView { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton ClassButton { get; set; }
 
-		[Outlet]
-		UIKit.UITableView LevelsTable { get; set; }
+        [Outlet]
+        CombatManagerMono.GradientButton CancelButton { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton OKButton { get; set; }
 
-		[Action ("AddButtonClicked:")]
-		partial void AddButtonClicked (Foundation.NSObject sender);
+        [Outlet]
+        CombatManagerMono.GradientButton ClassButton { get; set; }
 
-		[Action ("CancelButtonClicked:")]
-		partial void CancelButtonClicked (Foundation.NSObject sender);
 
-		[Action ("OkButtonClicked:")]
-		partial void OkButtonClicked (Foundation.NSObject sender);
-		
-		void ReleaseDesignerOutlets ()
-		{
-			if (AddButton != null) {
-				AddButton.Dispose ();
-				AddButton = null;
-			}
+        [Outlet]
+        UIKit.UITableView LevelsTable { get; set; }
 
-			if (BackgroundView != null) {
-				BackgroundView.Dispose ();
-				BackgroundView = null;
-			}
 
-			if (CancelButton != null) {
-				CancelButton.Dispose ();
-				CancelButton = null;
-			}
+        [Outlet]
+        CombatManagerMono.GradientButton OKButton { get; set; }
 
-			if (ClassButton != null) {
-				ClassButton.Dispose ();
-				ClassButton = null;
-			}
 
-			if (LevelsTable != null) {
-				LevelsTable.Dispose ();
-				LevelsTable = null;
-			}
+        [Action ("AddButtonClicked:")]
+        partial void AddButtonClicked (Foundation.NSObject sender);
 
-			if (OKButton != null) {
-				OKButton.Dispose ();
-				OKButton = null;
-			}
-		}
-	}
+
+        [Action ("CancelButtonClicked:")]
+        partial void CancelButtonClicked (Foundation.NSObject sender);
+
+
+        [Action ("OkButtonClicked:")]
+        partial void OkButtonClicked (Foundation.NSObject sender);
+
+        [Action ("CancelButtonClicked:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void CancelButtonClicked (CombatManagerMono.GradientButton sender);
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (AddButton != null) {
+                AddButton.Dispose ();
+                AddButton = null;
+            }
+
+            if (BackgroundView != null) {
+                BackgroundView.Dispose ();
+                BackgroundView = null;
+            }
+
+            if (CancelButton != null) {
+                CancelButton.Dispose ();
+                CancelButton = null;
+            }
+
+            if (ClassButton != null) {
+                ClassButton.Dispose ();
+                ClassButton = null;
+            }
+
+            if (LevelsTable != null) {
+                LevelsTable.Dispose ();
+                LevelsTable = null;
+            }
+
+            if (OKButton != null) {
+                OKButton.Dispose ();
+                OKButton = null;
+            }
+        }
+    }
 }

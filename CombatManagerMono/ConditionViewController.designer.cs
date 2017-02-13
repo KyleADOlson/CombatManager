@@ -1,92 +1,168 @@
-/*
- *  ConditionViewController.designer.cs
- *
- *  Copyright (C) 2010-2012 Kyle Olson, kyle@kyleolson.com
- *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  as published by the Free Software Foundation; either version 2
- *  of the License, or (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- * 
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- *
- */
-
 // WARNING
 //
-// This file has been generated automatically by MonoDevelop to store outlets and
-// actions made in the Xcode designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// This file has been generated automatically by Xamarin Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
+using System.CodeDom.Compiler;
 
 namespace CombatManagerMono
 {
-	[Register ("ConditionViewController")]
-	partial class ConditionViewController
-	{
-		[Outlet]
-		CombatManagerMono.GradientView TopView { get; set; }
+    [Register ("ConditionViewController")]
+    partial class ConditionViewController
+    {
+        [Outlet]
+        CombatManagerMono.GradientView TopView { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientView BottomView { get; set; }
 
-		[Outlet]
-		UIKit.UITableView SelectionTable { get; set; }
+        [Outlet]
+        CombatManagerMono.GradientView BottomView { get; set; }
 
-		[Outlet]
-		UIKit.UITextField FilterText { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientView TitleView { get; set; }
+        [Outlet]
+        UIKit.UITableView SelectionTable { get; set; }
 
-		[Outlet]
-		UIKit.UILabel DurationLabel { get; set; }
 
-		[Outlet]
-		UIKit.UIStepper DurationStepper { get; set; }
+        [Outlet]
+        UIKit.UITextField FilterText { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton ConditionsTab { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton SpellsTab { get; set; }
+        [Outlet]
+        CombatManagerMono.GradientView TitleView { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton AfflictionsTab { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton CustomTab { get; set; }
+        [Outlet]
+        UIKit.UILabel DurationLabel { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton FavoritesTab { get; set; }
 
-		[Outlet]
-		UIKit.UIWebView ConditionDetailWebView { get; set; }
+        [Outlet]
+        UIKit.UIStepper DurationStepper { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton ApplyButton { get; set; }
 
-		[Outlet]
-		CombatManagerMono.GradientButton CloseButton { get; set; }
+        [Outlet]
+        CombatManagerMono.GradientButton ConditionsTab { get; set; }
 
-		[Action ("StepperValueChanged:")]
-		partial void StepperValueChanged (UIKit.UIStepper sender);
 
-		[Action ("TabButtonClicked:")]
-		partial void TabButtonClicked (UIKit.UIButton sender);
+        [Outlet]
+        CombatManagerMono.GradientButton SpellsTab { get; set; }
 
-		[Action ("ApplyButtonClicked:")]
-		partial void ApplyButtonClicked (UIKit.UIButton sender);
 
-		[Action ("CloseButtonClicked:")]
-		partial void CloseButtonClicked (Foundation.NSObject sender);
-	}
+        [Outlet]
+        CombatManagerMono.GradientButton AfflictionsTab { get; set; }
+
+
+        [Outlet]
+        CombatManagerMono.GradientButton CustomTab { get; set; }
+
+
+        [Outlet]
+        CombatManagerMono.GradientButton FavoritesTab { get; set; }
+
+
+        [Outlet]
+        UIKit.UIWebView ConditionDetailWebView { get; set; }
+
+
+        [Outlet]
+        CombatManagerMono.GradientButton ApplyButton { get; set; }
+
+
+        [Outlet]
+        CombatManagerMono.GradientButton CloseButton { get; set; }
+
+
+        [Action ("StepperValueChanged:")]
+        partial void StepperValueChanged (UIKit.UIStepper sender);
+
+
+        [Action ("TabButtonClicked:")]
+        partial void TabButtonClicked (UIKit.UIButton sender);
+
+
+        [Action ("ApplyButtonClicked:")]
+        partial void ApplyButtonClicked (UIKit.UIButton sender);
+
+
+        [Action ("CloseButtonClicked:")]
+        partial void CloseButtonClicked (Foundation.NSObject sender);
+
+        [Action ("CloseButtonClicked:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void CloseButtonClicked (CombatManagerMono.GradientButton sender);
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (AfflictionsTab != null) {
+                AfflictionsTab.Dispose ();
+                AfflictionsTab = null;
+            }
+
+            if (ApplyButton != null) {
+                ApplyButton.Dispose ();
+                ApplyButton = null;
+            }
+
+            if (BottomView != null) {
+                BottomView.Dispose ();
+                BottomView = null;
+            }
+
+            if (CloseButton != null) {
+                CloseButton.Dispose ();
+                CloseButton = null;
+            }
+
+            if (ConditionDetailWebView != null) {
+                ConditionDetailWebView.Dispose ();
+                ConditionDetailWebView = null;
+            }
+
+            if (ConditionsTab != null) {
+                ConditionsTab.Dispose ();
+                ConditionsTab = null;
+            }
+
+            if (CustomTab != null) {
+                CustomTab.Dispose ();
+                CustomTab = null;
+            }
+
+            if (DurationLabel != null) {
+                DurationLabel.Dispose ();
+                DurationLabel = null;
+            }
+
+            if (FavoritesTab != null) {
+                FavoritesTab.Dispose ();
+                FavoritesTab = null;
+            }
+
+            if (FilterText != null) {
+                FilterText.Dispose ();
+                FilterText = null;
+            }
+
+            if (SelectionTable != null) {
+                SelectionTable.Dispose ();
+                SelectionTable = null;
+            }
+
+            if (SpellsTab != null) {
+                SpellsTab.Dispose ();
+                SpellsTab = null;
+            }
+
+            if (TitleView != null) {
+                TitleView.Dispose ();
+                TitleView = null;
+            }
+
+            if (TopView != null) {
+                TopView.Dispose ();
+                TopView = null;
+            }
+        }
+    }
 }

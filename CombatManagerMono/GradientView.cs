@@ -26,9 +26,8 @@ using Foundation;
 
 namespace CombatManagerMono
 {
-
-	[Register("GradientView")]
-	public class GradientView : UIView
+    
+	public partial class GradientView : UIView
 	{
 		UIColor _color1 = UIExtensions.RGBColor(0x222222);
 		UIColor _color2 = UIExtensions.RGBColor(0xAAAAAA);
