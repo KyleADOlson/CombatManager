@@ -55,7 +55,7 @@ namespace CombatManagerDroid
             items.Sort((a, b) => ItemName(a).CompareTo(ItemName(b)));
             _FilteredItems = new List<T>(items);
 
-            ItemList.SetAdapter(new LookupAdapter(this));
+            ItemList.Adapter = (new LookupAdapter(this));
             ItemList.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => 
             {
                 _SelectedItem = _FilteredItems[e.Position];

@@ -60,12 +60,12 @@ namespace CombatManagerDroid
                 if (LayoutID == LayoutFromTab(x))
                 {
                     b.Selected = true;
-                    b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.init_button));
+                    b.Background = (Resources.GetDrawable(Resource.Drawable.init_button));
                 }
                 else
                   
                 {
-                    b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.init_button));
+                    b.Background = (Resources.GetDrawable(Resource.Drawable.init_button));
                 }
             }
         }
@@ -103,25 +103,18 @@ namespace CombatManagerDroid
             {
             case Resource.Id.mainTab:
                 return Resource.Layout.MonsterEditor;
-                break;
             case Resource.Id.defenseTab:
                 return Resource.Layout.MonsterEditorDefense;
-                break;
             case Resource.Id.offenseTab:
                 return Resource.Layout.MonsterEditorOffense;
-                break;
             case Resource.Id.statsTab:
                 return Resource.Layout.MonsterEditorStats;
-                break;
             case Resource.Id.featsTab:
                 return Resource.Layout.MonsterEditorFeats;
-                break;
             case Resource.Id.specialTab:
                 return Resource.Layout.MonsterEditorSpecial;
-                break;
             case Resource.Id.descriptionTab:
                 return Resource.Layout.MonsterEditorDescription;
-                break;
             }
             return 0;
         }
@@ -132,25 +125,18 @@ namespace CombatManagerDroid
             {
             case Resource.Id.mainTab:
                 return new MonsterEditorMainActivity();
-                break;
             case Resource.Id.defenseTab:
                 return new MonsterEditorDefenseActivity();
-                break;
             case Resource.Id.offenseTab:
                 return new MonsterEditorOffenseActivity();
-                break;
             case Resource.Id.statsTab:
                 return new MonsterEditorStatsActivity();
-                break;
             case Resource.Id.featsTab:
                 return new MonsterEditorFeatsActivity();
-                break;
             case Resource.Id.specialTab:
                 return new MonsterEditorSpecialActivity();
-                break;
             case Resource.Id.descriptionTab:
                 return new MonsterEditorDescriptionActivity();
-                break;
             }
             return null;
         }

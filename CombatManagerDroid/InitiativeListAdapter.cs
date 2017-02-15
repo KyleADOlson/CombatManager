@@ -209,7 +209,7 @@ namespace CombatManagerDroid
             bu.SetHeight(45);
             bu.SetWidth(45);
             layout.AddView(bu);
-            bu.SetBackgroundDrawable(_View.Context.Resources.GetDrawable(Resource.Drawable.blue_button));
+            bu.Background = (_View.Context.Resources.GetDrawable(Resource.Drawable.blue_button));
             bu.Text = c.CurrentInitiative.ToString();
             bu.SetTextColor(new Android.Graphics.Color(0xff, 0xff, 0xff));
             bu.Click += (object sender, EventArgs e) =>
@@ -226,7 +226,7 @@ namespace CombatManagerDroid
             b.SetMinimumHeight(45);
             b.SetMaxWidth(45);
             b.SetMinimumWidth(45);
-            b.SetBackgroundDrawable(_View.Context.Resources.GetDrawable(Resource.Drawable.blue_button));
+            b.Background = (_View.Context.Resources.GetDrawable(Resource.Drawable.blue_button));
 
            
             var options = new List<string>(){ "Move Down", "Move Up", "Ready", "Delay", "Act Now" };

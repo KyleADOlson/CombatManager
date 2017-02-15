@@ -108,7 +108,7 @@ namespace CombatManagerDroid
                 {
                     MeleeTabClicked(item);
                 };
-                b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.init_button));
+                b.Background = (Resources.GetDrawable(Resource.Drawable.init_button));
 
                 if (item == visibleGroup)
                 {

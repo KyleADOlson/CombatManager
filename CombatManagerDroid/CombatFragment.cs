@@ -87,11 +87,11 @@ namespace CombatManagerDroid
         {
             if (_MonsterList != null)
             {
-                _MonsterList.SetAdapter(new CharacterListAdapter(_CombatState, true));
+                _MonsterList.Adapter = (new CharacterListAdapter(_CombatState, true));
             }
             if (_PlayerList != null)
             {
-                _PlayerList.SetAdapter(new CharacterListAdapter(_CombatState, false));
+                _PlayerList.Adapter = (new CharacterListAdapter(_CombatState, false));
             }
             
             SaveCombatState();
@@ -171,7 +171,7 @@ namespace CombatManagerDroid
 
             ListView lv = v.FindViewById<ListView>(Resource.Id.initiativeList);
             _InitListAdapter = new InitiativeListAdapter(_CombatState, v);
-            lv.SetAdapter (_InitListAdapter);
+            lv.Adapter = (_InitListAdapter);
 
             _InitListAdapter.CharacterClicked += (sender, e) =>
             {
@@ -218,7 +218,7 @@ namespace CombatManagerDroid
 
             ListView lv = cl.FindViewById<ListView>(Resource.Id.characterList);
 
-            lv.SetAdapter(new CharacterListAdapter(_CombatState, monsters));
+            lv.Adapter = (new CharacterListAdapter(_CombatState, monsters));
             lv.ItemSelected += (sender, e) => {
                 Character c = ((BaseAdapter<Character>)lv.Adapter)[e.Position];
                 ShowCharacter(v, c);

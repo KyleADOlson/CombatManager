@@ -64,7 +64,7 @@ namespace CombatManagerDroid
                 lv.ItemClick += ListViewItemClick;
 
                 var ca = new CharacterActionsAdapter(Context, _Character, _State);
-                lv.SetAdapter(ca);
+                lv.Adapter = ca;
                 _CharacterActionsAdapter = ca;
             }
         }

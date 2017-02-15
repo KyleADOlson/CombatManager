@@ -29,8 +29,7 @@ namespace CombatManagerDroid
             Rules,
             Treasure
         }
-
-        int count = 1;
+        
 
 
 

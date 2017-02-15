@@ -129,7 +129,7 @@ namespace CombatManagerDroid
             ib.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.wand16));
             LeftLayout.AddView(ib);
             ib.Click += (object sender, EventArgs e) => {ShowLookup();};
-            ib.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.main_tab));
+            ib.Background = (Resources.GetDrawable(Resource.Drawable.main_tab));
             ib.Selected = true;
             lookupButton = ib;
 
@@ -137,7 +137,7 @@ namespace CombatManagerDroid
             ib.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.dice16));
             LeftLayout.AddView(ib);
             ib.Click += (object sender, EventArgs e) => {ShowGenerator();};
-            ib.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.main_tab));
+            ib.Background = (Resources.GetDrawable(Resource.Drawable.main_tab));
             generatorButton = ib;
 
             LayoutInflater vi = (LayoutInflater)_v.Context.GetSystemService(Context.LayoutInflaterService);
@@ -152,13 +152,13 @@ namespace CombatManagerDroid
                 ShowLevel(true);
             };
             b.Selected = true;
-            b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.main_tab));
+            b.Background = (Resources.GetDrawable(Resource.Drawable.main_tab));
             b = _GeneratorLayout.FindViewById<Button>(Resource.Id.byItemsButton);
             b.Click += (object sender, EventArgs e) => 
             {
                 ShowLevel(false);
             };
-            b.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.main_tab));
+            b.Background = (Resources.GetDrawable(Resource.Drawable.main_tab));
             ShowLevel(_LevelVisible);
 
             //level generation

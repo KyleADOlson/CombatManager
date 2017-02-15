@@ -144,7 +144,7 @@ namespace CombatManagerDroid
             FileViewAdapter ad = new FileViewAdapter(this, _Context, Folder);
             adapter = ad;
 
-            v.SetAdapter(ad);
+            v.Adapter = (ad);
             v.ItemClick += (object sender, AdapterView.ItemClickEventArgs e)  => 
             {
                 EditText t = FindViewById<EditText>(Resource.Id.fileName);

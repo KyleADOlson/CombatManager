@@ -56,7 +56,7 @@ namespace CombatManagerDroid
 
             ListView lv = ((ListView)FindViewById(Resource.Id.monsterListView)); 
 
-            lv.SetAdapter(
+            lv.Adapter = (
                _Adapter);
             lv.ItemClick += 
             (object sender, AdapterView.ItemClickEventArgs e) => { 
@@ -81,7 +81,7 @@ namespace CombatManagerDroid
         {
             ListView lv = ((ListView)FindViewById(Resource.Id.monsterListView)); 
             int index = _VisibleMonsters.IndexOf(m);
-            if (index != null)
+            if (index != -1)
             {
                 TextView tv = (TextView)lv.GetItemViewAt(index);
                 if (tv != null)

@@ -108,7 +108,7 @@ namespace CombatManagerDroid
             FilterList();
             _Adapter = new ConditionsAdapter(this);
             ListView lv = FindViewById<ListView>(Resource.Id.itemList);
-            lv.SetAdapter(_Adapter);
+            lv.Adapter = (_Adapter);
             lv.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => 
             {
                 e.View.Selected = true;
