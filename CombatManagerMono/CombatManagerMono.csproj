@@ -40,7 +40,7 @@
     <MtouchDebug>True</MtouchDebug>
     <MtouchProfiling>True</MtouchProfiling>
     <MtouchLink>None</MtouchLink>
-    <MtouchArch>ARMv7</MtouchArch>
+    <MtouchArch>i386</MtouchArch>
     <MtouchI18n>
     </MtouchI18n>
     <CodesignKey>iPhone Developer</CodesignKey>
@@ -126,7 +126,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>iPhone Distribution: Kyle Olson (ABMPP786M3)</CodesignKey>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <IpaPackageName>
     </IpaPackageName>
@@ -138,6 +138,7 @@
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <IpaMetadata>Info.plist</IpaMetadata>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <CodesignProvision>ad945e69-e36e-41ce-ba24-95102653cda4</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AppStore|iPhoneSimulator'">
     <MtouchSdkVersion>10.2</MtouchSdkVersion>
