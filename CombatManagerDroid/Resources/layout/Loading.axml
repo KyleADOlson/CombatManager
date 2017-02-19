@@ -4,13 +4,15 @@
     p1:minHeight="25px"
     p1:layout_width="fill_parent"
     p1:layout_height="fill_parent"
-    p1:id="@+id/relativeLayout1">
+    p1:id="@+id/relativeLayout1"
+    p1:background="#ffc9c9c9">
     <ImageView
         p1:src="@drawable/DiePencil"
         p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
         p1:id="@+id/imageView1"
-        p1:scaleType="centerCrop" />
+        p1:scaleType="center"
+        p1:layout_centerInParent="true" />
     <TextView
         p1:text="Loading"
         p1:textAppearance="?android:attr/textAppearanceMedium"

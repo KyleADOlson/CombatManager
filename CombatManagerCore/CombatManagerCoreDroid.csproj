@@ -14,7 +14,8 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AssemblyName>CombatManagerCoreDroid</AssemblyName>
-    <ReleaseVersion>1.04</ReleaseVersion>
+    <ReleaseVersion>1.05</ReleaseVersion>
+    <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -51,8 +52,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Services" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Resources\values\" />
   </ItemGroup>
@@ -132,9 +135,5 @@
     <Compile Include="DetailsDB.cs" />
     <Compile Include="XElementExt.cs" />
     <Compile Include="ActiveResource.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="RuleShort.xml" />
-    <Content Include="SpellsShort.xml" />
   </ItemGroup>
 </Project>
