@@ -344,232 +344,235 @@ namespace CombatManagerDroid
 			public const int foot16 = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int hand16 = 2130837574;
+			public const int gear2 = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int handicapped16 = 2130837575;
+			public const int hand16 = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int hourglass16 = 2130837576;
+			public const int handicapped16 = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int ic_sysbar_quicksettings = 2130837577;
+			public const int hourglass16 = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int Icon = 2130837578;
+			public const int ic_sysbar_quicksettings = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int import16 = 2130837579;
+			public const int Icon = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int incorporeal16 = 2130837580;
+			public const int import16 = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int info = 2130837581;
+			public const int incorporeal16 = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int info2x = 2130837582;
+			public const int info = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
-			public const int init_button = 2130837583;
+			public const int info2x = 2130837583;
 			
 			// aapt resource value: 0x7f020050
-			public const int invisible16 = 2130837584;
+			public const int init_button = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int keys16 = 2130837585;
+			public const int invisible16 = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int lasso16 = 2130837586;
+			public const int keys16 = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int LeftArrow24 = 2130837587;
+			public const int lasso16 = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int LeftArrow242x = 2130837588;
+			public const int LeftArrow24 = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int lightning16 = 2130837589;
+			public const int LeftArrow242x = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int lightning162x = 2130837590;
+			public const int lightning16 = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int link16 = 2130837591;
+			public const int lightning162x = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int lock16 = 2130837592;
+			public const int link16 = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int magearmor16 = 2130837593;
+			public const int lock16 = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int mail16 = 2130837594;
+			public const int magearmor16 = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int mail162x = 2130837595;
+			public const int mail16 = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int main_tab = 2130837596;
+			public const int mail162x = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int monster16 = 2130837597;
+			public const int main_tab = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int nauseated16 = 2130837598;
+			public const int monster16 = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int next16 = 2130837599;
+			public const int nauseated16 = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int NoteHS = 2130837600;
+			public const int next16 = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notes16 = 2130837601;
+			public const int NoteHS = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int openHS = 2130837602;
+			public const int notes16 = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int openHS2x = 2130837603;
+			public const int openHS = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int panic16 = 2130837604;
+			public const int openHS2x = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int pencil16 = 2130837605;
+			public const int panic16 = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int person16 = 2130837606;
+			public const int pencil16 = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int personwindow16 = 2130837607;
+			public const int person16 = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int pin16 = 2130837608;
+			public const int personwindow16 = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int poison16 = 2130837609;
+			public const int pin16 = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int prev16 = 2130837610;
+			public const int poison16 = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int PrintHS = 2130837611;
+			public const int prev16 = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int prone16 = 2130837612;
+			public const int PrintHS = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int qm16 = 2130837613;
+			public const int prone16 = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int reaper16 = 2130837614;
+			public const int qm16 = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int redx = 2130837615;
+			public const int reaper16 = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int redx2x = 2130837616;
+			public const int redx = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int reset16 = 2130837617;
+			public const int redx2x = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int RightArrow24 = 2130837618;
+			public const int reset16 = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int RightArrow242x = 2130837619;
+			public const int RightArrow24 = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int rock16 = 2130837620;
+			public const int RightArrow242x = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int saveHS = 2130837621;
+			public const int rock16 = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int saveHS2x = 2130837622;
+			public const int saveHS = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int scared16 = 2130837623;
+			public const int saveHS2x = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int screen16 = 2130837624;
+			public const int scared16 = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int scroll16 = 2130837625;
+			public const int screen16 = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int scrolleffect16 = 2130837626;
+			public const int scroll16 = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int shaken16 = 2130837627;
+			public const int scrolleffect16 = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int sheet = 2130837628;
+			public const int shaken16 = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int shield16 = 2130837629;
+			public const int sheet = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int shielderror16 = 2130837630;
+			public const int shield16 = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int sick16 = 2130837631;
+			public const int shielderror16 = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int sleep16 = 2130837632;
+			public const int sick16 = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int slow16 = 2130837633;
+			public const int sleep16 = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int sort16 = 2130837634;
+			public const int slow16 = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int stable16 = 2130837635;
+			public const int sort16 = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int star16 = 2130837636;
+			public const int stable16 = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int star162x = 2130837637;
+			public const int star16 = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int stop16 = 2130837638;
+			public const int star162x = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int stunned16 = 2130837639;
+			public const int stop16 = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int sword16 = 2130837640;
+			public const int stunned16 = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int swordsingle16 = 2130837641;
+			public const int sword16 = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int target16 = 2130837642;
+			public const int swordsingle16 = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int treasure16 = 2130837643;
+			public const int target16 = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int treasure162x = 2130837644;
+			public const int treasure16 = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int unlock16 = 2130837645;
+			public const int treasure162x = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int wand16 = 2130837646;
+			public const int unlock16 = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int zoomin16 = 2130837647;
+			public const int wand16 = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int zoomout16 = 2130837648;
+			public const int zoomin16 = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int zzz16 = 2130837649;
+			public const int zoomout16 = 2130837649;
+			
+			// aapt resource value: 0x7f020092
+			public const int zzz16 = 2130837650;
 			
 			static Drawable()
 			{

@@ -63,7 +63,7 @@
                 android:background="@drawable/main_tab" />
         </LinearLayout>
         <ImageButton
-            android:src="@drawable/ic_sysbar_quicksettings"
+            android:src="@drawable/gear2"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:id="@+id/settingsButton"

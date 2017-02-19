@@ -287,6 +287,7 @@
     <AndroidResource Include="Resources\drawable\down16.png" />
     <AndroidResource Include="Resources\drawable\emerald16.png" />
     <AndroidResource Include="Resources\drawable\coins16.png" />
+    <AndroidResource Include="Resources\drawable\gear2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ItemGroup>
