@@ -101,3 +101,5 @@ CombatManagerDroid/com.kyleolson.combatmanager.apk
 /CombatManagerCore/Rules.laccdb
 .DS_Store
 ._.DS_Store
+CombatManager.VC.opendb
+.vs/

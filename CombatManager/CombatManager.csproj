@@ -154,6 +154,10 @@
       <DependentUpon>ManualAttacksEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Maps\GameMap.cs" />
+    <Compile Include="Maps\GameMapDisplayWindow.xaml.cs">
+      <DependentUpon>GameMapDisplayWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\GameMapList.cs" />
     <Compile Include="MonsterEditorWindow.xaml.cs">
       <DependentUpon>MonsterEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -265,6 +269,10 @@
     <Page Include="ManualAttacksEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Maps\GameMapDisplayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MonsterEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -490,6 +498,8 @@
     <Resource Include="license.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\globe-16.png" />
+    <Resource Include="Images\square.png" />
     <Resource Include="Images\pdfIcon-16.png" />
     <Resource Include="Images\bookmark-16.png" />
     <Content Include="Images\d10-16%402x.png">

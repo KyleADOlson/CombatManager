@@ -53,6 +53,7 @@ using System.Threading;
 using System.Net;
 using System.Xml.Linq;
 using System.Reflection;
+using CombatManager.Maps;
 
 namespace CombatManager
 {
@@ -131,6 +132,8 @@ namespace CombatManager
 
         private CombatListWindow combatListWindow;
 
+        private GameMapDisplayWindow mapDisplayWindow;
+
         List<CheckBox> treasureCheckboxesList;
 
         List<string> _RecentDieRolls;
@@ -153,6 +156,8 @@ namespace CombatManager
         private PipeServer _PipeServer;
 
         static string startupTimeText = "";
+
+        private GameMapList gameMapList;
 
 
 
@@ -199,8 +204,6 @@ namespace CombatManager
 
             LoadRecentDieRolls();
             MarkTime("Die Rolls", ref t, ref last);
-
-            LoadCampaignInfo();
 
 
             mainWindowLoaded = true;
@@ -391,9 +394,6 @@ namespace CombatManager
 
             Loaded += new RoutedEventHandler(MainWindow_Loaded);
 
-            CalendarTab.DataContext = campaignInfo;
-			UpdateCampaignDayView();
-            
 
 
             MarkTime("Setup UI", ref t, ref last);
@@ -7359,25 +7359,6 @@ namespace CombatManager
 
 
 
-        private void LoadCampaignInfo()
-        {
-            campaignInfo = XmlLoader<CampaignInfo>.Load("CurrentCampaignInfo.xml", true);
-
-            if (campaignInfo == null)
-            {
-                campaignInfo = new CampaignInfo();
-            }
-			
-			campaignInfo.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(campaignInfo_PropertyChanged);
-        }
-
-        private void SaveCampaignInfo()
-        {
-            XmlLoader<CampaignInfo>.Save(campaignInfo, "CurrentCampaignInfo.xml", true);
-        }
-
-
-
         private void MenuItem_IdleMonster(object sender, RoutedEventArgs e)
         {
             using (var undoGroup = undo.CreateUndoGroup())
@@ -7704,284 +7685,7 @@ namespace CombatManager
         }
 
         #region Campaign Section
-
-        private void Add100YearButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(100);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void Remove100YearButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(-100);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-
-        private void Add10YearButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(10);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void Remove10YearButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(-10);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-
-        private void AddYearButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void RemoveYearButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddYears(-1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void AddMonthButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMonths(1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void RemoveMonthButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMonths(-1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void AddDayButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddDays(1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void RemoveDayButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddDays(-1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void AddHourButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void RemoveHourButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddHours(-1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void Add10MinuteButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(15);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void Remove10MinuteButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-15);
-                SaveCampaignInfo();
-
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void Add1MinuteButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void Remove1MinuteButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddMinutes(-1);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void Add6SecButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddSeconds(6);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void Remove6SecButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                campaignInfo.CurrentDate = campaignInfo.CurrentDate.AddSeconds(-6);
-                SaveCampaignInfo();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-        }
-
-        private void UpdateCampaignDayView()
-        {
-            campaignDayView = new ListCollectionView(campaignInfo.EventsForDate(campaignInfo.SelectedDate));
-            CampaignEventListBox.DataContext = campaignDayView;
-        }
-
-        private void GoToCurrentDate_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            campaignInfo.SelectedDate = campaignInfo.CurrentDate;
-            campaignInfo.DisplayDate = campaignInfo.CurrentDate;
-        }
-
-        private void campaignInfo_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "SelectedDate")
-            {
-                UpdateCampaignDayView();
-            }
-        }
-
-        private void AddCampaignEventButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            CampaignEventWindow w = new CampaignEventWindow();
-            CampaignEvent ce = new CampaignEvent();
-            ce.Start = campaignInfo.SelectedDate;
-            ce.End = ce.Start.AddHours(1);
-            w.Event = ce;
-            w.Owner = this;
-            if (w.ShowDialog() == true)
-            {
-                campaignInfo.AddEvent(w.Event);
-                SaveCampaignInfo();
-            }
-        }
+   
         
         #endregion
 
@@ -8277,10 +7981,83 @@ namespace CombatManager
 
         }
 
+        private void CreateMapsButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == true)
+            {
+                LoadMap(dialog.FileName);
+
+            }
+        }
+        private void LoadMap(String filename)
+        {
+            if (!File.Exists(filename))
+            {
+                //error out
+            }
+            else
+            {
 
 
+                
 
+                GameMap gameMap = new GameMap();
+                gameMap.Image = new BitmapImage(new Uri(filename));
+
+
+                gameMap.CellSize = new Size(100.0D, 100.0D);
+                gameMap.CellOrigin = new Point(25, 25);
+
+                gameMap.Scale = 1D;
+
+                FileInfo info = new FileInfo(filename);
+                gameMap.Name = info.Name;
+
+
+                gameMapList.Maps.Add(gameMap);
+
+                ShowMap(gameMap);
+            }
+        }
+
+        private void ShowMap(GameMap gameMap)
+        {
+
+            if (mapDisplayWindow == null)
+            {
+                mapDisplayWindow = new GameMapDisplayWindow();
+                mapDisplayWindow.Closed += new EventHandler((s, re) =>
+                {
+                    mapDisplayWindow = null;
+                });
+            }
+
+            mapDisplayWindow.Map = gameMap;
+
+            mapDisplayWindow.Show();
+            mapDisplayWindow.Activate();
+        }
+
+        private void GameMapListBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (gameMapList == null)
+            {
+                gameMapList = new GameMapList();
+                GameMapListBox.DataContext = gameMapList.Maps;
+            }
+        }
+
+        private void GameMapListItemGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                ShowMap((GameMap)((Grid)sender).DataContext);
+            }
+        }
     }
+
 
     public class RelayCommand : ICommand 
     { 

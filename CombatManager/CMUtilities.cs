@@ -149,6 +149,30 @@ namespace CombatManager
         {
             mi.Icon = GetNamedImageControl(name); ;
         }
+
+        public static Size Multiply(this Size oldSize, double scale) 
+        {
+            return new Size(oldSize.Width * scale, oldSize.Height * scale);
+        }
+
+        public static Size Divide(this Size oldSize, double scale)
+        {
+            return new Size(oldSize.Width / scale, oldSize.Height / scale);
+        }
+
+
+        public static Point Multiply(this Point oldPoint, double scale)
+        {
+            return new Point(oldPoint.X * scale, oldPoint.Y * scale);
+        }
+
+        public static Point Divide(this Point oldPoint, double scale)
+        {
+            return new Point(oldPoint.X / scale, oldPoint.Y / scale);
+        }
+    
+    
+
     }
 
 

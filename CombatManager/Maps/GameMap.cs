@@ -25,113 +25,167 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Windows.Media;
+using System.Windows;
+using System.Windows.Media.Imaging;
+using CombatManager;
 
 namespace CombatManager.Maps
 {
     public class GameMap : INotifyPropertyChanged
     {
 
-        public enum CellType
-        {
-            Square = 0,
-            Hex = 1
-        }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private int _Columns;
-        private int _Rows;
-        private float _CellWidth;
-        private float _CellHeight;
-        private CellType _Type;
-        private ImageSource _Image;
-        private Decimal _CellScale;
+        Point cellOrigin;
 
-        public int Columns
+        double scale;
+
+        double cellSizeWidth;
+        double cellSizeHeight;
+
+        String sourceFile;
+
+        BitmapImage image;
+
+        String name;
+
+        public double Scale
         {
-            get { return _Columns; }
+            get { return scale; }
             set
             {
-                if (_Columns != value)
+                double setValue = value.Clamp(.01, 20);
+
+                if (scale != setValue)
                 {
-                    _Columns = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Columns")); }
-                }
-            }
-        }
-        public int Rows
-        {
-            get { return _Rows; }
-            set
-            {
-                if (_Rows != value)
-                {
-                    _Rows = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Height")); }
-                }
-            }
-        }
-        public float CellWidth
-        {
-            get { return _CellWidth; }
-            set
-            {
-                if (_CellWidth != value)
-                {
-                    _CellWidth = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CellWidth")); }
-                }
-            }
-        }
-        public float CellHeight
-        {
-            get { return _CellHeight; }
-            set
-            {
-                if (_CellHeight != value)
-                {
-                    _CellHeight = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CellHeight")); }
-                }
-            }
-        }
-        public CellType Type
-        {
-            get { return _Type; }
-            set
-            {
-                if (_Type != value)
-                {
-                    _Type = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Type")); }
-                }
-            }
-        }
-        public ImageSource Image
-        {
-            get { return _Image; }
-            set
-            {
-                if (_Image != value)
-                {
-                    _Image = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Image")); }
+                    scale = setValue;
+                    Notify("Scale");
                 }
             }
         }
 
 
-        public Decimal CellScale
+        public Size CellSize
         {
-            get { return _CellScale; }
+            get { return new Size(cellSizeWidth, cellSizeHeight); }
             set
             {
-                if (_CellScale != value)
+                bool width = false;
+                bool height = false;
+                if (cellSizeWidth != value.Width)
                 {
-                    _CellScale = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CellScale")); }
+                    cellSizeWidth = value.Width;
+                    width = true;
                 }
+                if (cellSizeHeight != value.Height)
+                {
+                    cellSizeHeight = value.Height;
+                    height = true;
+                }
+                if (width || height)
+                {
+                    if (width)
+                    {
+                        Notify("CellSizeWidth");
+                    }
+                    if (height)
+                    {
+                        Notify("CellSizeHeight");
+                    }
+                    Notify("CellSize");
+                }
+            }
+        }
+
+        public double CellSizeWidth
+        {
+            get { return cellSizeWidth; }
+            set
+            {
+                if (cellSizeWidth != value)
+                {
+                    cellSizeWidth = value;
+                    Notify("CellSize");
+                    Notify("CellSizeWidth");
+                }
+            }
+        }
+        public double CellSizeHeight
+        {
+            get { return cellSizeHeight; }
+            set
+            {
+                if (cellSizeHeight != value)
+                {
+                    cellSizeHeight = value;
+                    Notify("CellSize");
+                    Notify("CellSizeHeight");
+                }
+            }
+        }
+
+        public String SourceFile
+        {
+            get { return sourceFile; }
+            set
+            {
+                if (sourceFile != value)
+                {
+                    sourceFile = value;
+                    Notify("SourceFile");
+                }
+            }
+        }
+
+        public BitmapImage Image
+        {
+            get { return image; }
+            set
+            {
+                if (image != value)
+                {
+                    image = value;
+                    
+                    Notify("Image");
+                    
+                }
+            }
+        }
+        public Point CellOrigin
+        {
+            get { return cellOrigin; }
+            set
+            {
+                if (cellOrigin != value)
+                {
+                    cellOrigin = value;
+                    Notify("CellOrigin");
+                }
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                if (name != value)
+                {
+                    name = value;
+                    Notify("Name");
+                }
+            }
+        }
+
+        private void Notify(string prop)
+        {
+            if (this.PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
 
