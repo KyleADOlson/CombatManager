@@ -121,10 +121,6 @@ namespace CombatManager.Maps
 
         private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            double ticks = e.Delta / 120D;
-            double scale = map.Scale;
-            double tp = scale * .1f;
-            scale += tp * ticks;
 
 
         }

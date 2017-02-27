@@ -2592,7 +2592,7 @@
                         <TextBlock Text="Combat"/>
                     </StackPanel>
                 </TabItem.Header>
-                <Grid Margin="0,0,0,0" d:LayoutOverrides="VerticalMargin" >
+                <Grid Margin="0,0,0,0" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0"/>
                         <RowDefinition Height="35

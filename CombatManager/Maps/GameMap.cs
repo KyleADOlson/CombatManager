@@ -70,30 +70,8 @@ namespace CombatManager.Maps
             get { return new Size(cellSizeWidth, cellSizeHeight); }
             set
             {
-                bool width = false;
-                bool height = false;
-                if (cellSizeWidth != value.Width)
-                {
-                    cellSizeWidth = value.Width;
-                    width = true;
-                }
-                if (cellSizeHeight != value.Height)
-                {
-                    cellSizeHeight = value.Height;
-                    height = true;
-                }
-                if (width || height)
-                {
-                    if (width)
-                    {
-                        Notify("CellSizeWidth");
-                    }
-                    if (height)
-                    {
-                        Notify("CellSizeHeight");
-                    }
-                    Notify("CellSize");
-                }
+                CellSizeWidth = value.Width;
+                CellSizeHeight = value.Height;
             }
         }
 
@@ -102,9 +80,13 @@ namespace CombatManager.Maps
             get { return cellSizeWidth; }
             set
             {
-                if (cellSizeWidth != value)
+
+                double setValue = value.Clamp(1, 2000);
+
+
+                if (cellSizeWidth != setValue)
                 {
-                    cellSizeWidth = value;
+                    cellSizeWidth = setValue;
                     Notify("CellSize");
                     Notify("CellSizeWidth");
                 }
@@ -115,9 +97,10 @@ namespace CombatManager.Maps
             get { return cellSizeHeight; }
             set
             {
-                if (cellSizeHeight != value)
+                double setValue = value.Clamp(1, 2000);
+                if (cellSizeHeight != setValue)
                 {
-                    cellSizeHeight = value;
+                    cellSizeHeight = setValue;
                     Notify("CellSize");
                     Notify("CellSizeHeight");
                 }
