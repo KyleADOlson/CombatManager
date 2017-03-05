@@ -69,6 +69,8 @@
     <Reference Include="AvalonDock.Themes">
       <HintPath>..\AvalonDock\AvalonDock.Themes.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationFramework.Classic" />
     <Reference Include="PresentationUI" />
@@ -81,6 +83,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>v4.0</RequiredTargetFramework>
     </Reference>
@@ -152,6 +155,9 @@
     <Compile Include="MagicItemBlockCreator.cs" />
     <Compile Include="ManualAttacksEditWindow.xaml.cs">
       <DependentUpon>ManualAttacksEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\FogOfWarControl.xaml.cs">
+      <DependentUpon>FogOfWarControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Maps\GameMap.cs" />
     <Compile Include="Maps\GameMapDisplayWindow.xaml.cs">
@@ -269,6 +275,10 @@
     <Page Include="ManualAttacksEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Maps\FogOfWarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Maps\GameMapDisplayWindow.xaml">
       <SubType>Designer</SubType>
@@ -498,10 +508,12 @@
     <Resource Include="license.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Globe.ico" />
     <Resource Include="Images\globe-16.png" />
     <Resource Include="Images\square.png" />
     <Resource Include="Images\pdfIcon-16.png" />
     <Resource Include="Images\bookmark-16.png" />
+    <Resource Include="Images\blacksquare-16.png" />
     <Content Include="Images\d10-16%402x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -183,20 +183,8 @@ namespace CombatManager
                     {
                     
 #else
-                string path;
-                if (!appData)
-                {
-                    // A FileStream is needed to read the XML document.
-                    path = AssemblyDir;
-                }
-                else
-                {
-                    path  = AppDataDir;
 
-
-                }
-
-                string file = Path.Combine(path, filename);
+                String file = SaveFileName(filename, appData);
 
                 if (new FileInfo(file).Exists)
                 {
@@ -243,19 +231,8 @@ namespace CombatManager
 
         public static void Save(T list, string filename, bool appData)
         {
-            string path;
-            if (!appData)
-            {
-                path = AssemblyDir;
-            }
-            else
-            {
-                path = AppDataDir;
 
-            }
-        
-
-            string file = Path.Combine(path, filename);
+            String file = SaveFileName(filename, appData);
             Save(list, file);
         }
 
@@ -287,6 +264,35 @@ namespace CombatManager
             #endif
 
 
+        }
+
+        public static void Delete(String filename, bool appData)
+        {
+            String file = SaveFileName(filename, appData);
+
+            FileInfo info = new FileInfo(file);
+            if (info.Exists)
+            {
+                info.Delete();
+            }
+        }
+
+        public static String SaveFileName(String filename, bool appData)
+        {
+            string path;
+            if (!appData)
+            {
+                path = AssemblyDir;
+            }
+            else
+            {
+                path = AppDataDir;
+
+            }
+
+
+            return Path.Combine(path, filename);
+            
         }
 
         static void serializer_UnknownAttribute(object sender, XmlAttributeEventArgs e)

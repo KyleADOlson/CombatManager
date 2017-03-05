@@ -19,7 +19,7 @@
  *
  */
 
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,6 +36,7 @@ using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Runtime.InteropServices;
+using System.Windows.Shapes;
 
 namespace CombatManager
 {
@@ -170,8 +171,200 @@ namespace CombatManager
         {
             return new Point(oldPoint.X / scale, oldPoint.Y / scale);
         }
-    
-    
+
+        public static Color FindColor(this FrameworkElement element, String name)
+        {
+            return (Color)element.FindResource(name);
+        }
+
+        public static Brush FindSolidBrush(this FrameworkElement element, String name)
+        {
+            return new SolidColorBrush(element.FindColor(name));
+        }
+
+        public static Point Center(this Rect rect)
+        {
+            return new Point(rect.X + rect.Width / 2.0, rect.Y + rect.Height / 2.0);
+
+        }
+
+        public static double CircleSize(this Rect rect)
+        {
+            return Math.Min(rect.Width / 2.0, rect.Height / 2.0);
+        }
+
+
+
+        public static Rect ScaleCenter(this Rect r, double x, double y)
+        {
+            Rect rectOut = r;
+            double newWidth = r.Width * x;
+            double newHeight = r.Height * y;
+
+            double widthInflate = (newWidth - r.Width) / 2.0;
+            double heightInflate = (newHeight - r.Height) / 2.0;
+            rectOut.Inflate(widthInflate, heightInflate);
+            return rectOut;
+        }
+
+
+        public static Geometry RectanglePath(this Rect rect)
+        {
+            return rect.RectanglePath(0);
+        }
+
+        public static Geometry RectanglePath(this Rect rect, double borderWidth)
+        {
+
+            double diff = borderWidth / 2.0;
+
+            Rect shrinkRect = rect;
+            shrinkRect.Inflate(-diff, -diff);
+
+            return new RectangleGeometry(shrinkRect);
+
+        }
+
+        public static Geometry CirclePath(this Rect rect)
+        {
+            return rect.CirclePath(0);
+        }
+
+        public static Geometry CirclePath(this Rect rect, double borderWidth)
+        {
+            double circleSize = rect.CircleSize() - (borderWidth / 2.0);
+
+            return new EllipseGeometry(rect.Center(), circleSize, circleSize);
+               
+        }
+
+        public static Geometry DiamondPath(this Rect rect)
+        {
+            return rect.DiamondPath(0);
+        }
+
+
+
+
+
+
+        public static Geometry DiamondPath(this Rect rect, double borderWidth)
+        {
+            double diff = borderWidth / 2.0;
+
+            Point p1 = new Point(rect.X + rect.Width / 2.0, rect.Y + diff);
+            Point p2 = new Point(rect.X + rect.Width - diff, rect.Y + rect.Height / 2.0);
+            Point p3 = new Point(rect.X + rect.Width / 2.0, rect.Y + rect.Height - diff);
+            Point p4 = new Point(rect.X + diff, rect.Y + rect.Height / 2.0);
+
+            return CreatePathGeometry(new Point[] { p1, p2, p3, p4 });
+
+        }
+        public static Geometry TargetPath(this Rect rect)
+        {
+            return rect.TargetPath(0);
+        }
+        public static Geometry TargetPath(this Rect rect, double borderWidth)
+        {
+
+            double diff = borderWidth / 2.0;
+            double fullRadius = rect.CircleSize() - diff;
+            double bigRadius = fullRadius * .8;
+            double smallRadius = bigRadius * .7;
+
+            Rect diffRect = rect;
+            diffRect.Inflate(-diff, -diff);
+
+            EllipseGeometry ellipseOut = new EllipseGeometry(rect.Center(), bigRadius, bigRadius);
+            EllipseGeometry ellipseIn = new EllipseGeometry(rect.Center(), smallRadius, smallRadius);
+
+            CombinedGeometry cg = new CombinedGeometry(GeometryCombineMode.Xor, ellipseOut, ellipseIn);
+
+            Rect wRect = diffRect.ScaleCenter(1, .1);
+            Rect hRect = diffRect.ScaleCenter(.1, 1);
+
+            cg = new CombinedGeometry(GeometryCombineMode.Union, new RectangleGeometry(wRect), cg);
+            cg = new CombinedGeometry(GeometryCombineMode.Union, new RectangleGeometry(hRect), cg);
+
+            Rect cRect = diffRect.ScaleCenter(.3, .3);
+            cg = new CombinedGeometry(GeometryCombineMode.Exclude, cg, new RectangleGeometry(cRect));
+            return cg;
+
+        }
+        public static Geometry StarPath(this Rect rect)
+        {
+            return rect.StarPath(0);
+        }
+        public static Geometry StarPath(this Rect rect, double borderWidth)
+        {
+
+            double diff = borderWidth / 2.0;
+            double radius = (rect.CircleSize() - diff)* .8;
+            Point center = rect.Center();
+                
+            float innerScale = (float)(Math.Cos(2.0 * Math.PI / 5.0) / Math.Cos(Math.PI / 5.0));
+
+
+
+            Point[] points = new Point[10];
+
+            for (int i = 0; i < 5; i++)
+            {
+                double angle = ((double) i) * (Math.PI * 2.0) / 5.0f - Math.PI/2.0 ;
+                points[i*2] = new Point(center.X + Math.Cos(angle) * radius, center.Y + Math.Sin(angle) * radius);
+                angle += Math.PI * 2.0 / 10.0;
+                points[i*2+1] = new Point(center.X + Math.Cos(angle) * radius * innerScale, center.Y + Math.Sin(angle) * radius * innerScale);
+
+            }
+            
+
+            return CreatePathGeometry(points);       
+
+        }
+
+        public static PathGeometry CreatePathGeometry(Point[] points)
+        {
+            if (points.Length > 0)
+            {
+                Point start = points[0];
+                List<LineSegment> segments = new List<LineSegment>();
+                for (int i = 1; i < points.Length; i++)
+                {
+                    segments.Add(new LineSegment(points[i], true));
+                }
+                PathFigure figure = new PathFigure(start, segments, true);
+                PathGeometry geometry = new PathGeometry();
+                geometry.Figures.Add(figure);
+                return geometry;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static DependencyObject FindLogicalNode(this DependencyObject ob, string name)
+        {
+            return LogicalTreeHelper.FindLogicalNode(ob, name);
+        }
+
+
+
+        public const String PrimaryColorLight = "PrimaryColorLight";
+        public const String PrimaryColorMedium = "PrimaryColorMedium";
+        public const String PrimaryColorDark = "PrimaryColorDark";
+        public const String PrimaryColorDarker = "PrimaryColorDarker";
+        public const String SecondaryColorALighter = "SecondaryColorALighter";
+        public const String SecondaryColorALight = "SecondaryColorALight";
+        public const String SecondaryColorAMedium = "SecondaryColorAMedium";
+        public const String SecondaryColorADark = "SecondaryColorADark";
+        public const String SecondaryColorADarker = "SecondaryColorADarker";
+        public const String SecondaryColorBLighter = "SecondaryColorBLighter";
+        public const String SecondaryColorBLight = "SecondaryColorBLight";
+        public const String SecondaryColorBMedium = "SecondaryColorBMedium";
+        public const String SecondaryColorBDark = "SecondaryColorBDark";
+        public const String SecondaryColorBDarker = "SecondaryColorBDarker";
+
 
     }
 
@@ -183,7 +376,7 @@ namespace CombatManager
             get
             {
                 String path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                path = Path.Combine(path, "Combat Manager");
+                path = System.IO.Path.Combine(path, "Combat Manager");
 
                 if (!Directory.Exists(path))
                 {
@@ -194,6 +387,20 @@ namespace CombatManager
             }
         }
 
+    }
+
+    public abstract class SimpleNotifyClass : INotifyPropertyChanged
+    {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void Notify(string prop)
+        {
+            if (this.PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
     }
 
 

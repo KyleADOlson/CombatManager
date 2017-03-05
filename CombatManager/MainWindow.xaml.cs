@@ -100,10 +100,7 @@ namespace CombatManager
 
         bool combatLayoutLoaded;
         bool restoreDefaultLayout;
-
-        //campaign info
-        CampaignInfo campaignInfo;
-		ListCollectionView campaignDayView;
+        
 
         //for dragging top and left
         double dragStartLeft;
@@ -133,8 +130,9 @@ namespace CombatManager
         private CombatListWindow combatListWindow;
 
         private GameMapDisplayWindow mapDisplayWindow;
+        private GameMapDisplayWindow playerMapDisplayWindow;
 
-        List<CheckBox> treasureCheckboxesList;
+         List<CheckBox> treasureCheckboxesList;
 
         List<string> _RecentDieRolls;
 
@@ -5888,6 +5886,14 @@ namespace CombatManager
             {
                 combatListWindow.Close();
             }
+            if (mapDisplayWindow != null)
+            {
+                mapDisplayWindow.Close();
+            }
+            if (playerMapDisplayWindow != null)
+            {
+                playerMapDisplayWindow.Close();
+            }
         }
 
         private void ResetInitiaitveButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -8000,27 +8006,14 @@ namespace CombatManager
             else
             {
 
-
+                GameMap gameMap = gameMapList.CreateMap(filename);
                 
-
-                GameMap gameMap = new GameMap();
-                gameMap.Image = new BitmapImage(new Uri(filename));
-
-
-                gameMap.CellSize = new Size(100.0D, 100.0D);
-                gameMap.CellOrigin = new Point(25, 25);
-
-                gameMap.Scale = 1D;
-
-                FileInfo info = new FileInfo(filename);
-                gameMap.Name = info.Name;
-
-
-                gameMapList.Maps.Add(gameMap);
-
+              
                 ShowMap(gameMap);
             }
         }
+
+        private GameMap lastGameMap;
 
         private void ShowMap(GameMap gameMap)
         {
@@ -8034,27 +8027,106 @@ namespace CombatManager
                 });
             }
 
+            lastGameMap = gameMap;
+
             mapDisplayWindow.Map = gameMap;
 
             mapDisplayWindow.Show();
             mapDisplayWindow.Activate();
+
+            mapDisplayWindow.ShowPlayerMap += (e) => { ShowMapPlayer(); };
+        }
+
+        private void ShowMapPlayer()
+        {
+
+            if (playerMapDisplayWindow == null)
+            {
+                playerMapDisplayWindow = new GameMapDisplayWindow(true);
+                playerMapDisplayWindow.Closed += new EventHandler((s, re) =>
+                {
+                    playerMapDisplayWindow = null;
+                });
+            }
+
+            playerMapDisplayWindow.Map = lastGameMap;
+
+            playerMapDisplayWindow.Show();
+            playerMapDisplayWindow.Activate();
         }
 
         private void GameMapListBox_Loaded(object sender, RoutedEventArgs e)
         {
             if (gameMapList == null)
             {
-                gameMapList = new GameMapList();
+
+
+                try
+                {
+                    gameMapList = XmlLoader<GameMapList>.Load("GameMaps.xml", true);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.Write(ex);
+                }
+                if (gameMapList == null)
+                {
+                    gameMapList = new GameMapList();
+
+                }
+                gameMapList.MapChanged += GameMapList_MapChanged;
+                gameMapList.Maps.CollectionChanged += GameMapList_CollectionChanged;
                 GameMapListBox.DataContext = gameMapList.Maps;
             }
+        }
+
+        private void GameMapList_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+
+            XmlLoader<GameMapList>.Save(gameMapList, "GameMaps.xml", true);
+        }
+
+        private void GameMapList_MapChanged(GameMapList.MapStub map)
+        {
+
+            XmlLoader<GameMapList>.Save(gameMapList, "GameMaps.xml", true);
         }
 
         private void GameMapListItemGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
             {
-                ShowMap((GameMap)((Grid)sender).DataContext);
+                GameMapList.MapStub stub = (GameMapList.MapStub)((Grid)sender).DataContext;
+
+                OpenMapStub(stub);
+
             }
+        }
+
+        private void OpenMapStub(GameMapList.MapStub stub)
+        {
+
+            if (stub.Map == null)
+            {
+                gameMapList.LoadStub(stub);
+            }
+
+            ShowMap(stub.Map);
+        }
+
+        private void MapDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            GameMapList.MapStub stub = (GameMapList.MapStub)((Button)sender).DataContext;
+            gameMapList.RemoveMap(stub);
+        }
+
+        private void MapViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            GameMapList.MapStub stub = (GameMapList.MapStub)((Button)sender).DataContext;
+
+            OpenMapStub(stub);
+
         }
     }
 
