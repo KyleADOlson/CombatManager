@@ -370,8 +370,8 @@
             <TextBlock x:Name="textBlock" HorizontalAlignment="Right" Margin="0,7,248,8" TextWrapping="Wrap" Text="Name" Width="35"/>
             <TextBox x:Name="MapNameTextBox" Margin="0,3,24,3" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalAlignment="Right" Width="219" MaxLines="1"/>
         </Grid>
-        <Grid x:Name="ScaleGrid" Height="31" VerticalAlignment="Top" Grid.Column="1" Margin="293,0,0,0" HorizontalAlignment="Left">
-            <Rectangle HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="105">
+        <Grid x:Name="ScaleGrid" Height="31" VerticalAlignment="Top" Grid.Column="1" Margin="293,0,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Width="123">
+            <Rectangle HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="123">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
                 </Rectangle.Fill>
@@ -379,10 +379,12 @@
                     <SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
                 </Rectangle.Stroke>
             </Rectangle>
-            <TextBox HorizontalAlignment="Left" Margin="43,3,0,3" x:Name="ScaleBox" Width="52" Text="{Binding Scale, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
+            <TextBox HorizontalAlignment="Left" Margin="54,3,0,3" x:Name="ScaleBox" Width="52" Text="{Binding Scale, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
             <TextBlock HorizontalAlignment="Left" Margin="10,7,0,8" x:Name="textBlock1" Width="28" ><Run Text="Scale"/></TextBlock>
+            <Button x:Name="ScaleUpButton" Content="+" HorizontalAlignment="Left" Height="11" Margin="41,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleUpButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
+            <Button x:Name="ScaleDownButton" Content="-" HorizontalAlignment="Left" Height="11" Margin="108,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleDownButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
         </Grid>
-        <Grid x:Name="GridSizeGrid" Grid.Column="2" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="303">
+        <Grid x:Name="GridSizeGrid" Grid.Column="2" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="302" Margin="18,1,0,0" Grid.RowSpan="2">
             <Rectangle Height="31" VerticalAlignment="Top" StrokeThickness="1  ">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="{DynamicResource SecondaryColorALighter}"/>
@@ -399,7 +401,15 @@
             <CheckBox x:Name="ShowGridCheckBox" Content="Show Grid" HorizontalAlignment="Left" Margin="204,7,0,0" VerticalAlignment="Top" Click="ShowGridCheckBox_Click" IsChecked="{Binding ShowGrid}"/>
         </Grid>
 
-        <Rectangle Fill="{DynamicResource LightBorderBrush}" Grid.Row="1" Margin="0,0,0,-2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+        <Rectangle Grid.Row="1" Margin="0,0,0,-2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="#FF969696" Offset="0"/>
+                    <GradientStop Color="#FFC0BDBD" Offset="1"/>
+                    <GradientStop Color="#FFBFBFBF" Offset="0.022"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
         <Button Height="22" Margin="1.664,9.734,0,0" x:Name="SetOriginButton" VerticalAlignment="Top" Click="SetOriginButton_Click" Padding="4,1" d:LayoutOverrides="VerticalAlignment, Width, TopMargin, BottomMargin" Grid.Row="1"  Style="{DynamicResource SimpleButton}" ToolTip="Set Grid Origin" Width="28" HorizontalAlignment="Left" >
             <StackPanel Orientation="Horizontal">
                 <Image Source="/CombatManager;component/Images/target-16.png"/>
@@ -416,7 +426,7 @@
 
         </Button>
         <Button Height="22" Margin="1.664,63.734,0,0" x:Name="SetMarkerButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="SetMarkerButton_Click" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="27.998" ToolTip="Set Markers" >
-            
+
             <Path x:Name="MarkerButtonPath"  Data="M0,0 L0,1 L1,1 L1,0 Z" Height="16" Stretch="Fill" Width="16" Fill="#FF474747" />
 
         </Button>

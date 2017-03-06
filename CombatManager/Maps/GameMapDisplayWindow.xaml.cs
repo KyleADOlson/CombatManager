@@ -14,6 +14,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using WinInterop = System.Windows.Interop;
 
 namespace CombatManager.Maps
@@ -296,16 +297,16 @@ namespace CombatManager.Maps
             {
                 if (WindowState != WindowState.Maximized)
                 {
-                    ShowInTaskbar = false;
                     WindowStyle = WindowStyle.None;
+                    Topmost = true;
                     WindowState = WindowState.Maximized;
                     
 
                 }
                 else
                 {
-                    ShowInTaskbar = true;
                     WindowStyle = WindowStyle.SingleBorderWindow;
+                    Topmost = false;
                     WindowState = WindowState.Normal;
                 }
                 Hide();
@@ -1019,6 +1020,70 @@ namespace CombatManager.Maps
 
         private void ShowGridCheckBox_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        DispatcherTimer scaleTimer;
+
+
+        private void ScaleUpButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            scaleTimer?.Stop();
+            scaleTimer = null;
+
+            scaleTimer = new DispatcherTimer();
+            scaleTimer.Tick += ScaleTimer_TickUp;
+            scaleTimer.Interval = new TimeSpan(30000);
+            scaleTimer.Start();
+            double diff = Math.Pow(1.1, 1);
+            ChangeScale(diff);
+
+        }
+
+        private void ScaleTimer_TickUp(object sender, EventArgs e)
+        {
+
+            double diff = Math.Pow(1.1, 1);
+            ChangeScale(diff);
+        }
+
+        private void ChangeScale(double diff)
+        {
+            map.Scale = map.Scale * diff;
+        }
+
+        private void ScaleUpButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+            scaleTimer?.Stop();
+            scaleTimer = null;
+        }
+
+        private void ScaleDownButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            scaleTimer?.Stop();
+            scaleTimer = null;
+
+            scaleTimer = new DispatcherTimer();
+            scaleTimer.Tick += ScaleTimer_TickDown;
+            scaleTimer.Interval = new TimeSpan(30000);
+            scaleTimer.Start();
+            double diff = Math.Pow(1.1, 1);
+            ChangeScale(diff);
+        }
+
+        private void ScaleTimer_TickDown(object sender, EventArgs e)
+        {
+            double diff = Math.Pow(1.1, -1);
+            ChangeScale(diff);
+        }
+
+        private void ScaleDownButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            scaleTimer?.Stop();
+            scaleTimer = null;
 
         }
     }

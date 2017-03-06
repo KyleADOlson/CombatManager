@@ -7999,18 +7999,30 @@ namespace CombatManager
         }
         private void LoadMap(String filename)
         {
-            if (!File.Exists(filename))
+            bool succeeded = false;
+            if (File.Exists(filename))
             {
-                //error out
-            }
-            else
-            {
+                try
+                {
 
-                GameMap gameMap = gameMapList.CreateMap(filename);
-                
-              
-                ShowMap(gameMap);
+                    BitmapImage image = new BitmapImage(new Uri(filename));
+
+                    GameMap gameMap = gameMapList.CreateMap(filename);
+
+
+                    ShowMap(gameMap);
+                    succeeded = true;
+                }
+                catch (Exception)
+                {
+                }
             }
+            if (!succeeded)
+            {
+                MessageBox.Show("Unable to create map", "Map Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            
         }
 
         private GameMap lastGameMap;
@@ -8118,7 +8130,15 @@ namespace CombatManager
         {
 
             GameMapList.MapStub stub = (GameMapList.MapStub)((Button)sender).DataContext;
+
+            if (mapDisplayWindow != null && mapDisplayWindow.Map == stub.Map)
+            {
+                mapDisplayWindow.Close();
+            }
+
             gameMapList.RemoveMap(stub);
+
+            
         }
 
         private void MapViewButton_Click(object sender, RoutedEventArgs e)

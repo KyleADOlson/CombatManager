@@ -608,7 +608,7 @@ namespace CombatManager.Maps
 
         static string CreateFogFileName(int id)
         {
-            return "GameMap_" + id + "fog";
+            return "GameMap_" + id + ".fog";
         }
         static string CreateFileName(int id)
         {
@@ -668,6 +668,11 @@ namespace CombatManager.Maps
         public static void Delete(int id)
         {
             XmlLoader<GameMap>.Delete(CreateFileName(id), true);
+            FileInfo info = new FileInfo(XmlLoader<GameMap>.SaveFileName(CreateFogFileName(id), true));
+            if (info.Exists)
+            {
+                info.Delete();
+            }
         }
 
         public void FireFogOrMarkerChanged()

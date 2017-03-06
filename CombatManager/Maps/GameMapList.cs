@@ -89,6 +89,7 @@ namespace CombatManager.Maps
             {
                 name = map.Name;
                 id = map.Id;
+                this.map = map;
 
             }
             public string Name

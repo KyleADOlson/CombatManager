@@ -29,7 +29,7 @@ namespace CombatManager.Maps
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-
+            
 
             GameMap map = (GameMap)DataContext;
             if (map != null)
@@ -96,13 +96,15 @@ namespace CombatManager.Maps
                     drawRect.X = UseGridOrigin.X;
                     drawRect.Y += drawRect.Height;
                 }
+                
                 foreach (KeyValuePair<int, List<GameMap.Marker>> pair in map.Markers)
                 {
+
                     foreach (GameMap.Marker m in pair.Value)
                     {
                         DrawMarker(drawingContext, pair.Key, m);
                     }
-
+   
                 }
 
             }
@@ -126,6 +128,42 @@ namespace CombatManager.Maps
             }
         }
 
+        public Geometry CreateMarkerPath(int index, GameMap.Marker marker)
+        {
+            GameMap map = (GameMap)DataContext;
+            if (map != null)
+            {
+                GameMap.MapCell cell = map.IndexToCell(index);
+
+                Rect rect = CellRect(cell);
+
+                double penWidth = CurrentScale;
+
+
+                switch (marker.Style)
+                {
+                    case GameMap.MarkerStyle.Square:
+
+
+                        return rect.RectanglePath(penWidth);
+                    case GameMap.MarkerStyle.Circle:
+
+                        Rect cicleRect = rect;
+                        cicleRect.ScaleCenter(.9, .9);
+
+                        return rect.CirclePath(penWidth);
+                    case GameMap.MarkerStyle.Diamond:
+                        return rect.DiamondPath(penWidth);
+                    case GameMap.MarkerStyle.Target:
+                        return rect.TargetPath(penWidth);
+                    case GameMap.MarkerStyle.Star:
+                        return rect.StarPath(0);
+                }
+            }
+
+            return null;
+        }
+
         public void DrawMarker(DrawingContext context, int index, GameMap.Marker marker)
         {
             GameMap map = (GameMap)DataContext;
@@ -138,37 +176,15 @@ namespace CombatManager.Maps
                 Color brushColor = marker.Color;
                 brushColor.A = (byte)(brushColor.A / 2);
 
-                double penWidth = CurrentScale;
+                double penWidth = Math.Min(UseCellSize.Width, UseCellSize.Height)/25.0;
 
 
                 Brush b = new SolidColorBrush(brushColor);
                 Pen p = new Pen(new SolidColorBrush(marker.Color), penWidth);
 
-
-                switch (marker.Style)
-                {
-                    case GameMap.MarkerStyle.Square:
-
-
-                        context.DrawGeometry(b, p, rect.RectanglePath(penWidth));
-                        break;
-                    case GameMap.MarkerStyle.Circle:
-
-                        Rect cicleRect = rect;
-                        cicleRect.ScaleCenter(.9, .9);
-
-                        context.DrawGeometry(b, p, rect.CirclePath(penWidth));
-                        break;
-                    case GameMap.MarkerStyle.Diamond:
-                        context.DrawGeometry(b, p, rect.DiamondPath(penWidth));
-                        break;
-                    case GameMap.MarkerStyle.Target:
-                        context.DrawGeometry(b, p, rect.TargetPath(penWidth));
-                        break;
-                    case GameMap.MarkerStyle.Star:
-                        context.DrawGeometry(b, p, rect.StarPath(0));
-                        break;
-                }
+                
+                context.DrawGeometry(b, p, CreateMarkerPath(index, marker));
+                
 
 
 
