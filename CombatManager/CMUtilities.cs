@@ -37,6 +37,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Runtime.InteropServices;
 using System.Windows.Shapes;
+using System.Windows.Media.Imaging;
 
 namespace CombatManager
 {
@@ -346,6 +347,11 @@ namespace CombatManager
         public static DependencyObject FindLogicalNode(this DependencyObject ob, string name)
         {
             return LogicalTreeHelper.FindLogicalNode(ob, name);
+        }
+
+        public static BitmapImage LoadBitmapFromImagesDir(String filename)
+        {
+            return new BitmapImage(new Uri("pack://application:,,,/Images/" + filename));
         }
 
 

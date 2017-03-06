@@ -1,19 +1,24 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WinInterop = System.Windows.Interop;
 
 namespace CombatManager.Maps
 {
-    enum GameMapActionMode
+    public enum GameMapActionMode
     {
         None,
         SetOrigin,
@@ -30,6 +35,7 @@ namespace CombatManager.Maps
         GameMapActionMode mode;
 
         bool settingFog;
+        bool settingMarkers;
         bool draggingMap;
         bool newFogState;
 
@@ -37,6 +43,9 @@ namespace CombatManager.Maps
 
         GameMap.MarkerStyle markerStyle = GameMap.MarkerStyle.Square;
         Color markerColor = Colors.Red;
+        bool eraseMode = false;
+
+        int brushSize = 1;
 
         public delegate void MapEventDelegate(GameMap map);
 
@@ -49,7 +58,7 @@ namespace CombatManager.Maps
         public GameMapDisplayWindow(bool playerMode)
         {
             InitializeComponent();
-            
+            LoadActionButtonState();
             UpdateActionButtons();
 
             this.playerMode = playerMode;
@@ -59,13 +68,19 @@ namespace CombatManager.Maps
             {
                 HideGMControls();
             }
+
+            
         }
+
+
+
 
         private void HideGMControls()
         {
             RootGrid.ColumnDefinitions[0].Width = new System.Windows.GridLength(0);
             NameGrid.Visibility = Visibility.Collapsed;
             GridSizeGrid.Visibility = Visibility.Collapsed;
+            ShowActionButtons(false);
             var v = ScaleGrid.Margin;
             v.Left = 0;
             ScaleGrid.Margin = v;
@@ -129,7 +144,7 @@ namespace CombatManager.Maps
             {
                 UpdateMapImage();
             }
-            else if(e.PropertyName == "CellSize" || e.PropertyName == "CellOrigin")
+            else if(e.PropertyName == "CellSize" || e.PropertyName == "CellOrigin" || e.PropertyName == "ShowGrid")
             {
                 UpdateGridBrush();
             }
@@ -157,17 +172,29 @@ namespace CombatManager.Maps
 
         void UpdateGridBrush()
         {
-            double xSize = map.CellSize.Width / map.Image.Width;
-            double ySize = map.CellSize.Height / map.Image.Height;
-            double xStart = map.CellOrigin.X / map.Image.Width;
-            double yStart = map.CellOrigin.Y / map.Image.Height;
+            if (map != null)
+            {
+                if (map.ShowGrid)
+                {
+                    double xSize = map.CellSize.Width / map.Image.Width;
+                    double ySize = map.CellSize.Height / map.Image.Height;
+                    double xStart = map.CellOrigin.X / map.Image.Width;
+                    double yStart = map.CellOrigin.Y / map.Image.Height;
 
-            ImageBrush brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/square.png")));
-            brush.TileMode = TileMode.Tile;
-            brush.Viewport = new Rect(xStart, yStart, xSize, ySize);
+                    ImageBrush brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/square.png")));
+                    brush.TileMode = TileMode.Tile;
+                    brush.Viewport = new Rect(xStart, yStart, xSize, ySize);
 
-            MapGridCanvas.Background = brush;
-            FogOfWar.InvalidateVisual();
+                    MapGridCanvas.Background = brush;
+                    FogOfWar.InvalidateVisual();
+                }
+                else
+                {
+                    MapGridCanvas.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                        
+                        FogOfWar.InvalidateVisual();
+                }
+            }
         }
 
         private void SetOriginButton_Click(object sender, RoutedEventArgs e)
@@ -189,6 +216,7 @@ namespace CombatManager.Maps
                 mode = newMode;
             }
             UpdateActionButtons();
+            SaveActionButtonState();
         }
 
 
@@ -221,38 +249,96 @@ namespace CombatManager.Maps
 
         private void MapGridCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Point p = e.GetPosition((Canvas)sender);
-            lastPosition = p;
-            switch (mode)
+            if (e.ClickCount == 1)
             {
-                case GameMapActionMode.SetOrigin:
+                Point p = e.GetPosition((Canvas)sender);
+                lastPosition = p;
+                switch (mode)
+                {
+                    case GameMapActionMode.SetOrigin:
 
-                    p = p.Divide(UseScale);
-                    map.CellOrigin = p;
-                    //UpdateGridBrush();
-                    break;
-                case GameMapActionMode.SetFog:
-
-                    {
-                        GameMap.MapCell cell = PointToCell(p);
-
-                        map[cell.X, cell.Y] = !map[cell.X, cell.Y];
-                        map.FireFogOrMarkerChanged();
-                        settingFog = true;
-                        newFogState = map[cell.X, cell.Y];
+                        p = p.Divide(UseScale);
+                        map.CellOrigin = p;
+                        //UpdateGridBrush();
                         break;
-                    }
-                case GameMapActionMode.SetMarker:
+                    case GameMapActionMode.SetFog:
+
+                        {
+                            GameMap.MapCell cell = PointToCell(p);
+                            if (CellOnBoard(cell))
+                            {
+                                List<GameMap.MapCell> list = PointToCellArray(p, brushSize);
+
+                                newFogState = !map[cell.X, cell.Y];
+                                foreach (var c in list)
+                                {
+                                    if (CellOnBoard(c))
+                                    {
+                                        map[c.X, c.Y] = newFogState;
+                                    }
+                                }
+                                map.FireFogOrMarkerChanged();
+                                settingFog = true;
+                            }
+                            break;
+                        }
+                    case GameMapActionMode.SetMarker:
+                        {
+                            SetMarkers(p);
+                            settingMarkers = true;
+
+                        }
+                        break;
+
+                }
+            }
+            else if (e.ClickCount == 2)
+            {
+                if (WindowState != WindowState.Maximized)
+                {
+                    ShowInTaskbar = false;
+                    WindowStyle = WindowStyle.None;
+                    WindowState = WindowState.Maximized;
+                    
+
+                }
+                else
+                {
+                    ShowInTaskbar = true;
+                    WindowStyle = WindowStyle.SingleBorderWindow;
+                    WindowState = WindowState.Normal;
+                }
+                Hide();
+                Show();
+            }
+        }
+
+        private void SetMarkers(Point p)
+        {
+            GameMap.MapCell cell = PointToCell(p);
+            if (CellOnBoard(cell))
+            {
+                List<GameMap.MapCell> list = PointToCellArray(p, brushSize);
+
+                foreach (var c in list)
+                {
+                    if (CellOnBoard(c))
                     {
-                        GameMap.MapCell cell = PointToCell(p);
-                        GameMap.Marker marker = new GameMap.Marker();
-                        marker.Style = markerStyle;
-                        marker.Color = markerColor;
-                        map.SetMarker(cell, marker);
-
+                        if (eraseMode)
+                        {
+                            map.DeleteAllMarkers(c);
+                        }
+                        else
+                        {
+                            GameMap.Marker marker = new GameMap.Marker();
+                            marker.Style = markerStyle;
+                            marker.Color = markerColor;
+                            map.SetMarker(c, marker);
+                        }
                     }
-                    break;
-
+                }
+                map.SaveMap(false);
+                map.FireFogOrMarkerChanged();
             }
         }
 
@@ -334,17 +420,41 @@ namespace CombatManager.Maps
                 else
                 {
 
-
                     GameMap.MapCell cell = PointToCell(p);
 
-                    if (map[cell.X, cell.Y] != newFogState)
+                    List<GameMap.MapCell> list = PointToCellArray(p, brushSize);
+                    bool changed = false;
+                    foreach (var c in list)
                     {
-                        map[cell.X, cell.Y] = newFogState;
+                        if (CellOnBoard(c))
+                        {
+                            if (map[c.X, c.Y] != newFogState)
+                            {
+                                map[c.X, c.Y] = newFogState;
+                                changed = true;
+                            }
+                        }
+                    }
+                    if (changed)
+                    {
                         map.FireFogOrMarkerChanged();
                     }
+
                 }
 
                 lastPosition = p;
+            }
+            else if (settingMarkers)
+            {
+                if (e.LeftButton == MouseButtonState.Released)
+                {
+                    settingMarkers = false;
+                    map.SaveMap(true);
+                }
+                else
+                {
+                    SetMarkers(p);
+                }
             }
             if (draggingMap)
             {
@@ -415,6 +525,57 @@ namespace CombatManager.Maps
             return cell;
         }
 
+        private List<GameMap.MapCell> PointToCellArray(Point p, int size)
+        {
+            List<GameMap.MapCell> list = new List<GameMap.MapCell>();
+
+            if (size == 1)
+            {
+                
+                list.Add(PointToCell(p));
+            }
+            else if (size.IsOdd())
+            {
+
+
+                GameMap.MapCell c = PointToCell(p);
+
+                int minx = c.X - size / 2;
+                int miny = c.Y - size / 2;
+                int maxx = c.X + size / 2;
+                int maxy = c.Y + size / 2;
+
+                for (int y = miny; y <= maxy; y++)
+                {
+                    for (int x = minx; x <= maxx; x++)
+                    {
+                        list.Add(new GameMap.MapCell(x, y));
+                    }
+                }
+
+            }
+            else
+            {
+                Point start = p;
+                start.X = start.X - UseCellSize.Width * ((double)size)/2.0 + UseCellSize.Width / 2.0;
+                start.Y = start.Y - UseCellSize.Height * ((double)size)/2.0 + UseCellSize.Height / 2.0;
+
+                for (int x = 0; x < size; x++)
+                {
+                    for (int y = 0; y < size; y++)
+                    {
+                        list.Add(PointToCell(new Point(start.X + UseCellSize.Width * (double)x,
+                            start.Y + UseCellSize.Width * (double)y)));
+                    }
+                }
+            }
+
+
+            return list;
+        }
+        
+
+
 
         private bool CellOnBoard(GameMap.MapCell cell)
         {
@@ -437,37 +598,190 @@ namespace CombatManager.Maps
             SetActionButtonState(SetMarkerButton, (mode == GameMapActionMode.SetMarker));
             SetActionButtonState(MarkerOptionsButton, (mode == GameMapActionMode.SetMarker));
 
-            UpdateMarkerButtonImage(); 
-            
+            BrushSizeComboBox.SelectedIndex = brushSize - 1;
+            UpdateMarkerButtonImage();
 
+        }
+
+        private void SaveActionButtonState()
+        {
+            if (actionButtonStateLoaded)
+            {
+                XmlLoader<ActionButtonState>.Save(GetActionButtonState(),
+                    "GameMapDisplayWindowActionButtonState.xml", true);
+            }
+        }
+
+        bool actionButtonStateLoaded = false;
+
+        private void LoadActionButtonState()
+        {
+            try
+            {
+                ActionButtonState state = XmlLoader<ActionButtonState>.Load(
+                    "GameMapDisplayWindowActionButtonState.xml", true);
+                if (state != null)
+                {
+                    mode = state.Mode;
+                    brushSize = state.BrushSize;
+                    markerColor = state.MarkerColor;
+                    markerStyle = state.MarkerStyle;
+                    eraseMode = state.EraseMode;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            actionButtonStateLoaded = true;
+        }
+
+        private ActionButtonState GetActionButtonState()
+        {
+            return new ActionButtonState()
+            {
+                Mode = this.mode,
+                MarkerStyle = markerStyle,
+                MarkerColor = markerColor,
+                BrushSize = brushSize,
+                EraseMode = eraseMode,
+            };
+        }
+
+
+        public class ActionButtonState
+        {
+            GameMapActionMode mode;
+            GameMap.MarkerStyle markerStyle;
+            Color markerColor;
+            int brushSize;
+            bool eraseMode;
+
+            public GameMapActionMode Mode
+            {
+                get
+                {
+                    return mode;
+                }
+
+                set
+                {
+                    mode = value;
+                }
+            }
+
+            public GameMap.MarkerStyle MarkerStyle
+            {
+                get
+                {
+                    return markerStyle;
+                }
+
+                set
+                {
+                    markerStyle = value;
+                }
+            }
+
+            public Color MarkerColor
+            {
+                get
+                {
+                    return markerColor;
+                }
+
+                set
+                {
+                    markerColor = value;
+                }
+            }
+
+            public int BrushSize
+            {
+                get
+                {
+                    return brushSize;
+                }
+
+                set
+                {
+                    brushSize = value;
+                }
+            }
+
+            public bool EraseMode
+            {
+                get
+                {
+                    return eraseMode;
+                }
+
+                set
+                {
+                    eraseMode = value;
+                }
+            }
+        }
+
+
+        void ShowActionButtons(bool show)
+        {
+            ShowPlayerWindowButton.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+            SetOriginButton.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+            SetFogButton.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+            FogOptionsButton.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+            SetMarkerButton.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+            MarkerOptionsButton.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
         }
 
         void UpdateMarkerButtonImage()
         {
-            MarkerButtonPath.Fill = new SolidColorBrush(markerColor);
-            Rect rect = new Rect(0, 0, 1, 1);
-            switch (markerStyle)
+            if (!eraseMode)
             {
-                case GameMap.MarkerStyle.Circle:
-                    MarkerButtonPath.Data = rect.CirclePath();
-                    break;
-                case GameMap.MarkerStyle.Square:
-                    MarkerButtonPath.Data = rect.RectanglePath();
-                    break;
-                case GameMap.MarkerStyle.Diamond:
-                    MarkerButtonPath.Data = rect.DiamondPath();
-                    break;
-                case GameMap.MarkerStyle.Target:
-                    MarkerButtonPath.Data = rect.TargetPath();
-                    break;
-                case GameMap.MarkerStyle.Star:
-                    MarkerButtonPath.Data = rect.StarPath();
-                    break;
-
+                Path path = new Path();
+                path.Data = GetUnitMarkerStylePath(markerStyle);
+                path.Fill = new SolidColorBrush(markerColor);
+                path.Height = 16;
+                path.Width = 16;
+                path.Stretch = Stretch.Fill;
+                SetMarkerButton.Content = path;
             }
+            else
+            {
+                Image image = new Image();
+                image.Source = CMUIUtilities.LoadBitmapFromImagesDir("eraser-48.png");
+                SetMarkerButton.Content = image;
+            }
+           
         }
 
-        void SetActionButtonState(Button b, bool state)
+        Geometry GetUnitMarkerStylePath(GameMap.MarkerStyle style)
+        {
+
+            Rect rect = new Rect(0, 0, 1, 1);
+            return GetMarkerStylePath(rect, style);
+        }
+
+        Geometry GetMarkerStylePath(Rect rect, GameMap.MarkerStyle style)
+        {
+            switch (style)
+            {
+                case GameMap.MarkerStyle.Circle:
+                    return rect.CirclePath();
+                case GameMap.MarkerStyle.Square:
+                    return rect.RectanglePath();
+                case GameMap.MarkerStyle.Diamond:
+                    return rect.DiamondPath();
+                case GameMap.MarkerStyle.Target:
+                    return rect.TargetPath();
+                case GameMap.MarkerStyle.Star:
+                    return rect.StarPath();
+            }
+
+            return null;
+        }
+
+    void SetActionButtonState(Button b, bool state)
         {
             b.Background = this.FindSolidBrush(state ? CMUIUtilities.SecondaryColorALight : CMUIUtilities.SecondaryColorADark);
 
@@ -516,6 +830,28 @@ namespace CombatManager.Maps
             menu.PlacementTarget = MarkerOptionsButton;
             menu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
             menu.IsOpen = true;
+
+            MenuItem shapeMenu = (MenuItem)menu.FindLogicalNode("ShapeMenuItem");
+            foreach (object c in shapeMenu.Items)
+            {
+                MenuItem mi = c as MenuItem;
+                if (mi != null)
+                {
+                    int i = int.Parse(mi.Tag as String);
+                    if (i >= 0)
+                    {
+                        Path path = new Path();
+                        path.Data = GetUnitMarkerStylePath((GameMap.MarkerStyle)i);
+                        path.Fill = new SolidColorBrush(markerColor);
+                        path.Height = 16;
+                        path.Width = 16;
+                        path.Stretch = Stretch.Fill;
+                        mi.Icon = path;
+                    }
+                }
+            }
+
+
             SetMode(GameMapActionMode.SetMarker, false);
         }
 
@@ -523,8 +859,19 @@ namespace CombatManager.Maps
         {
             String shapeTag = (String)((FrameworkElement)sender).Tag;
             int id = int.Parse(shapeTag);
-            markerStyle = (GameMap.MarkerStyle)id;
+
+            if (id == -1)
+            {
+                eraseMode = true;
+            }
+            else
+            {
+                markerStyle = (GameMap.MarkerStyle)id;
+                eraseMode = false;
+            }
             UpdateMarkerButtonImage();
+
+            SaveActionButtonState();
         }
 
 
@@ -532,6 +879,8 @@ namespace CombatManager.Maps
         {
             markerColor = ((SolidColorBrush)((MenuItem)sender).Background).Color;
             UpdateMarkerButtonImage();
+
+            SaveActionButtonState();
 
 
         }
@@ -560,6 +909,9 @@ namespace CombatManager.Maps
             if (CellOnBoard(cell))
             {
                 map.DeleteAllMarkers(cell);
+
+                map.FireFogOrMarkerChanged();
+                map.SaveMap(false);
             }       
         }
 
@@ -657,6 +1009,17 @@ namespace CombatManager.Maps
         private void MapGridCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
         {
                 
+        }
+
+        private void BrushSizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            brushSize = BrushSizeComboBox.SelectedIndex + 1;
+            SaveActionButtonState();
+        }
+
+        private void ShowGridCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

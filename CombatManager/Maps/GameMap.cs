@@ -516,8 +516,6 @@ namespace CombatManager.Maps
             }
             list.Clear();
             list.Add(marker);
-            FireFogOrMarkerChanged();
-            SaveMap(false);
         
         }
 
@@ -534,8 +532,6 @@ namespace CombatManager.Maps
             {
                 markers.Remove(index);
             }
-            FireFogOrMarkerChanged();
-            SaveMap(false);
         }
 
         public int CellIndex(GameMap.MapCell cell)

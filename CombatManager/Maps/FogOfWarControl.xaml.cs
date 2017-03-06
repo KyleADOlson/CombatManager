@@ -54,7 +54,20 @@ namespace CombatManager.Maps
 
                             rectStart.Width = drawRect.X - rectStart.X;
 
-                            drawingContext.DrawRectangle(b, null, rectStart);
+                            Rect finalRect = rectStart;
+
+                            if (playerMode)
+                            {
+                                double extra = finalRect.Height * .01;
+                                finalRect.Y -= extra;
+                                finalRect.Height += extra * 2.0;
+                            }
+
+
+                            drawingContext.DrawRectangle(b, null, finalRect);
+
+
+
                         }
                         
                     };
