@@ -58,6 +58,8 @@
                     <Image Source="/CombatManager;component/Images/delete-16.png"/>
                 </MenuItem.Icon>
             </MenuItem>
+            <MenuItem x:Name="ShowControlsItem" Header="ShowControls" Click="ShowControlsItem_Click">
+            </MenuItem>
         </ContextMenu>
 
         <Style x:Key="FocusVisual">
@@ -361,44 +363,51 @@
         <Grid x:Name="NameGrid" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="293" Grid.Column="1">
             <Rectangle HorizontalAlignment="Left" Width="293" Height="31" VerticalAlignment="Top">
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="{DynamicResource SecondaryColorBLight}"/>
+                    <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
                 </Rectangle.Fill>
-                <Rectangle.Stroke>
-                    <SolidColorBrush Color="{DynamicResource SecondaryColorBDark}"/>
-                </Rectangle.Stroke>
             </Rectangle>
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Right" Margin="0,7,248,8" TextWrapping="Wrap" Text="Name" Width="35"/>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Right" Margin="0,7,248,8" TextWrapping="Wrap" Text="Name" Width="35" FontWeight="Bold"/>
             <TextBox x:Name="MapNameTextBox" Margin="0,3,24,3" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalAlignment="Right" Width="219" MaxLines="1"/>
         </Grid>
-        <Grid x:Name="ScaleGrid" Height="31" VerticalAlignment="Top" Grid.Column="1" Margin="293,0,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Width="123">
+        <Grid x:Name="ScaleGrid" Height="31" VerticalAlignment="Top" Grid.Column="1" Margin="293,0,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Width="123" MouseLeftButtonDown="ScaleGrid_MouseLeftButtonDown">
             <Rectangle HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="123">
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
+                    <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
                 </Rectangle.Fill>
-                <Rectangle.Stroke>
-                    <SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
-                </Rectangle.Stroke>
             </Rectangle>
             <TextBox HorizontalAlignment="Left" Margin="54,3,0,3" x:Name="ScaleBox" Width="52" Text="{Binding Scale, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
-            <TextBlock HorizontalAlignment="Left" Margin="10,7,0,8" x:Name="textBlock1" Width="28" ><Run Text="Scale"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="8,7,0,8" x:Name="textBlock1" Width="30" FontWeight="Bold" ><Run Text="Scale"/></TextBlock>
             <Button x:Name="ScaleUpButton" Content="+" HorizontalAlignment="Left" Height="11" Margin="41,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleUpButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
             <Button x:Name="ScaleDownButton" Content="-" HorizontalAlignment="Left" Height="11" Margin="108,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleDownButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
         </Grid>
-        <Grid x:Name="GridSizeGrid" Grid.Column="2" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="302" Margin="18,1,0,0" Grid.RowSpan="2">
-            <Rectangle Height="31" VerticalAlignment="Top" StrokeThickness="1  ">
+        <Grid x:Name="GridSizeGrid" Grid.Column="2" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="302" Margin="18,0,0,0">
+            <Rectangle Height="31" VerticalAlignment="Top" StrokeThickness="1  " Margin="0">
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="{DynamicResource SecondaryColorALighter}"/>
+                    <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
                 </Rectangle.Fill>
-                <Rectangle.Stroke>
-                    <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
-                </Rectangle.Stroke>
             </Rectangle>
-            <TextBox Margin="86,3,0,3" x:Name="textBox1" VerticalContentAlignment="Center" Text="{Binding CellSizeWidth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="45" />
-            <TextBlock HorizontalAlignment="Left" Margin="10,7,0,7" x:Name="textBlock2" Text="Grid Pixels" Width="57" />
-            <TextBlock HorizontalAlignment="Left" Margin="136,7,0,7" x:Name="textBlock3" Text="Y" Width="7" />
-            <TextBox HorizontalAlignment="Left" Margin="148,3,0,3" x:Name="textBox2" Text="{Binding CellSizeHeight, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="45" />
-            <TextBlock HorizontalAlignment="Left" Margin="74,7,0,7" x:Name="textBlock3_Copy" Text="X" Width="7" />
-            <CheckBox x:Name="ShowGridCheckBox" Content="Show Grid" HorizontalAlignment="Left" Margin="204,7,0,0" VerticalAlignment="Top" Click="ShowGridCheckBox_Click" IsChecked="{Binding ShowGrid}"/>
+            <Ellipse HorizontalAlignment="Left" Margin="71.5,7.75,0,5.25" StrokeThickness="2" Width="16.75">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
+                </Ellipse.Fill>
+                <Ellipse.Stroke>
+                    <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+                </Ellipse.Stroke>
+            </Ellipse>
+            <Ellipse Margin="136.416,7.75,148.834,5.25" StrokeThickness="2">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
+                </Ellipse.Fill>
+                <Ellipse.Stroke>
+                    <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+                </Ellipse.Stroke>
+            </Ellipse>
+            <TextBox Margin="91.916,3,0,3" x:Name="textBox1" VerticalContentAlignment="Center" Text="{Binding CellSizeWidth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="40.75" />
+            <TextBlock HorizontalAlignment="Left" Margin="6.625,8,0,7" x:Name="textBlock2" Text="Grid Pixels" Width="62.375" FontWeight="Bold" />
+            <TextBlock HorizontalAlignment="Left" Margin="141.416,8,0,7" x:Name="textBlock3" Text="Y" Width="7" FontWeight="Bold" />
+            <TextBox HorizontalAlignment="Left" Margin="156.832,3,0,3" x:Name="textBox2" Text="{Binding CellSizeHeight, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="40.834" />
+            <TextBlock HorizontalAlignment="Left" Margin="75.75,8,0,7" x:Name="textBlock3_Copy" Text="X" Width="10" FontWeight="Bold" />
+            <CheckBox x:Name="ShowGridCheckBox" Content="Show Grid" HorizontalAlignment="Left" Margin="209,9,0,0" VerticalAlignment="Top" Click="ShowGridCheckBox_Click" IsChecked="{Binding ShowGrid}" FontWeight="Bold"/>
         </Grid>
 
         <Rectangle Grid.Row="1" Margin="0,0,0,-2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
@@ -441,11 +450,8 @@
         </Button>
         <Rectangle HorizontalAlignment="Left" Height="31" StrokeThickness="1  " VerticalAlignment="Top" Width="50">
             <Rectangle.Fill>
-                <SolidColorBrush Color="{DynamicResource SecondaryColorALighter}"/>
+                <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
             </Rectangle.Fill>
-            <Rectangle.Stroke>
-                <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
-            </Rectangle.Stroke>
         </Rectangle>
         <Button Height="22" Margin="10,4,10,0" x:Name="ShowPlayerWindowButton" VerticalAlignment="Top" Click="ShowPlayerWindowButton_Click" Padding="4,1"  Style="{DynamicResource SimpleButton}" ToolTip="Show Player Window" >
             <StackPanel Orientation="Horizontal">

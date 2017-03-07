@@ -66,6 +66,11 @@ namespace CombatManager.Maps
         {
             GameMap map = GameMap.LoadMap(stub.Id);
             stub.Map = map;
+            if (stub.SourceFile == null)
+            {
+                stub.SourceFile = map.SourceFile;
+            }
+
             map.CanSave = true;
 
             return map;
@@ -81,6 +86,7 @@ namespace CombatManager.Maps
         public class MapStub : SimpleNotifyClass
         {
             String name;
+            String sourceFile;
             int id;
             GameMap map;
 
@@ -90,6 +96,7 @@ namespace CombatManager.Maps
                 name = map.Name;
                 id = map.Id;
                 this.map = map;
+                this.sourceFile = map.SourceFile;
 
             }
             public string Name
@@ -139,12 +146,30 @@ namespace CombatManager.Maps
                 }
             }
 
+            public string SourceFile
+            {
+                get
+                {
+                    return sourceFile;
+                }
+
+                set
+                {
+                    sourceFile = value;
+                }
+            }
+
             private void Map_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
             {
                 if (e.PropertyName == "Name")
                 {
                     name = map.Name;
                     Notify("Name");
+                }
+                else if (e.PropertyName == "SourceFile")
+                {
+                    sourceFile = map.SourceFile;
+                    Notify("SourceFile");
                 }
             }
         }

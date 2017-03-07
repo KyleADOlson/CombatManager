@@ -364,7 +364,7 @@ namespace CombatManager.Maps
             {
                 rightClickDown = false;
 
-                if (!playerMode)
+                if (!playerMode || controlsHidden)
                 {
 
                     GameMap.MapCell cell = PointToCell(rightClickPosition);
@@ -386,20 +386,24 @@ namespace CombatManager.Maps
 
                         mi = (MenuItem)menu.FindLogicalNode("ToggleFogItem");
                         mi.DataContext = cell;
+                        mi.Visibility = !playerMode ? Visibility.Visible : Visibility.Collapsed;
 
                         mi = (MenuItem)menu.FindLogicalNode("DeleteMarkerItem");
-                        mi.Visibility = hasMarkers ? Visibility.Visible : Visibility.Collapsed;
+                        mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
                         mi.DataContext = cell;
 
 
                         mi = (MenuItem)menu.FindLogicalNode("NameBoxItem");
-                        mi.Visibility = hasMarkers ? Visibility.Visible : Visibility.Collapsed;
+                        mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
 
                         if (hasMarkers)
                         {
                             mi.DataContext = map.GetMarkers(cell)[0];
                         }
 
+
+                        mi = (MenuItem)menu.FindLogicalNode("ShowControlsItem");
+                        mi.Visibility = controlsHidden ? Visibility.Visible : Visibility.Collapsed;
 
 
 
@@ -1050,7 +1054,7 @@ namespace CombatManager.Maps
 
         private void ChangeScale(double diff)
         {
-            map.Scale = map.Scale * diff;
+            UseScale = UseScale * diff;
         }
 
         private void ScaleUpButton_MouseUp(object sender, MouseButtonEventArgs e)
@@ -1085,6 +1089,28 @@ namespace CombatManager.Maps
             scaleTimer?.Stop();
             scaleTimer = null;
 
+        }
+
+        bool controlsHidden;
+        GridLength controlRowDefinition;
+
+        private void ScaleGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                controlRowDefinition = RootGrid.RowDefinitions[0].Height;
+                RootGrid.RowDefinitions[0].Height = new System.Windows.GridLength(0);
+                controlsHidden = true;
+            }
+        }
+
+        private void ShowControlsItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (controlsHidden)
+            {
+                controlsHidden = false;
+                RootGrid.RowDefinitions[0].Height = controlRowDefinition;
+            }
         }
     }
 }

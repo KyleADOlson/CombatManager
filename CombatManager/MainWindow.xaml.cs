@@ -8047,6 +8047,11 @@ namespace CombatManager
             mapDisplayWindow.Activate();
 
             mapDisplayWindow.ShowPlayerMap += (e) => { ShowMapPlayer(); };
+
+            if (playerMapDisplayWindow != null)
+            {
+                playerMapDisplayWindow.Map = lastGameMap;
+            }
         }
 
         private void ShowMapPlayer()
@@ -8130,13 +8135,16 @@ namespace CombatManager
         {
 
             GameMapList.MapStub stub = (GameMapList.MapStub)((Button)sender).DataContext;
-
-            if (mapDisplayWindow != null && mapDisplayWindow.Map == stub.Map)
+            if (MessageBoxResult.Yes == MessageBox.Show("Are you sure you want to delete " + stub.Name, "Delete Map", MessageBoxButton.YesNo, MessageBoxImage.Question))
             {
-                mapDisplayWindow.Close();
-            }
 
-            gameMapList.RemoveMap(stub);
+                if (mapDisplayWindow != null && mapDisplayWindow.Map == stub.Map)
+                {
+                    mapDisplayWindow.Close();
+                }
+
+                gameMapList.RemoveMap(stub);
+            }
 
             
         }
@@ -8147,6 +8155,18 @@ namespace CombatManager
 
             OpenMapStub(stub);
 
+        }
+
+        private void MapFileButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            GameMapList.MapStub stub = (GameMapList.MapStub)((Button)sender).DataContext;
+            ExploreFile(stub.SourceFile);
+        }
+
+        public void ExploreFile(string filePath)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", filePath));
         }
     }
 

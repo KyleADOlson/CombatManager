@@ -2510,20 +2510,29 @@
             </Setter>
         </Style>
         <DataTemplate x:Key="GameMapListItemTemplate">
-            <Grid Width="295.267" MouseDown="GameMapListItemGrid_MouseDown">
-                <Button x:Name="MapViewButton" HorizontalAlignment="Left" Margin="0" Width="29.167" Click="MapViewButton_Click">
-                    <Button.Content>
-
-                        <Image HorizontalAlignment="Left" Width="16" Height="16" Grid.Row="4" Source="Images/globe-16.png"></Image>
-                    </Button.Content>
+            <Grid MouseDown="GameMapListItemGrid_MouseDown" d:DesignWidth="537.501">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="309"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="MapViewButton" HorizontalAlignment="Left"  Click="MapViewButton_Click" d:LayoutOverrides="TopMargin, BottomMargin">
+                    <StackPanel Orientation="Horizontal">
+                        <Image HorizontalAlignment="Left" Width="16" Height="16" Grid.Row="4" Source="Images/globe-16.png"/>
+                        <TextBlock Text="Open" Margin="3,0"/>
+                    </StackPanel>
                 </Button>
-                <TextBlock x:Name="textBlock" HorizontalAlignment="Stretch" Margin="34.167,4.98,32.667,5.02" TextWrapping="Wrap" Text="{Binding Name}" d:LayoutOverrides="Height"/>
-                <Button x:Name="MapDeleteButton"  HorizontalAlignment="Right" Width="27.667" Click="MapDeleteButton_Click" >
-                    <Button.Content>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Images/delete-16.png" Width="16" Height="16" Margin="0,1,0,0" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button.Content>
+                <TextBlock x:Name="textBlock" Margin="10,4.98,36.083,5.02" TextWrapping="Wrap" Text="{Binding Name}" ToolTip="{Binding Name}" d:LayoutOverrides="Height, TopMargin, BottomMargin" Grid.ColumnSpan="1" Grid.Column="1" Width="Auto" TextTrimming="CharacterEllipsis"/>
+                <Button x:Name="MapDeleteButton"  HorizontalAlignment="Right" Width="27.667" Click="MapDeleteButton_Click" Margin="0,0,3.416,0" Grid.Column="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/delete-16.png" Width="16" Height="16" Margin="0,1,0,0" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <TextBlock x:Name="textBlock1" Grid.Column="2" HorizontalAlignment="Stretch" Margin="37.251,4.98,5.375,6" TextWrapping="Wrap" Text="{Binding SourceFile, FallbackValue=Filename}" ToolTip="{Binding SourceFile}" d:LayoutOverrides="Height, TopMargin, BottomMargin" FontStyle="Italic" Foreground="#FF515151" TextTrimming="CharacterEllipsis"/>
+                <Button x:Name="MapFileButton"  HorizontalAlignment="Left" Width="27.667" Margin="4.584,0,0,0" Grid.Column="2" d:LayoutOverrides="TopMargin, BottomMargin" Click="MapFileButton_Click" ToolTip="Show Image in Explorer" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/folderopen-32.png" Width="16" Height="16" Margin="0,1,0,0" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" VerticalAlignment="Center"/>
+                    </StackPanel>
                 </Button>
             </Grid>
         </DataTemplate>
@@ -3820,9 +3829,19 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="CreateMapButton" Click="CreateMapsButton_Click" Content="Create Map"/>
+                    <Rectangle RadiusX="10" RadiusY="10" StrokeThickness="0">
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="CreateMapButton" Click="CreateMapsButton_Click" Margin="10,10,0,0" Height="24" Width="154">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/openHS@2x.png" Width="16"/>
+                            <TextBlock Text="Create Map From File" Margin="3,0,0,0"/>
+                        </StackPanel>
+                    </Button>
 
-                    <ListBox x:Name="GameMapListBox" Margin="5,25,5,5" ItemsSource="{Binding}" Loaded="GameMapListBox_Loaded" ItemTemplate="{DynamicResource GameMapListItemTemplate}"/>
+                    <ListBox x:Name="GameMapListBox" Margin="10,39,10,10" ItemsSource="{Binding}" Loaded="GameMapListBox_Loaded" ItemTemplate="{DynamicResource GameMapListItemTemplate}"/>
                 </Grid>
             </TabItem>
         </TabControl>

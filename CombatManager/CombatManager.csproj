@@ -518,6 +518,13 @@
     <Resource Include="license.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\folderopen-16.png" />
+    <Resource Include="Images\folderopen-32.png" />
+    <Resource Include="Images\Generic_Document.png" />
+    <Resource Include="Images\mail-16%402x.png" />
+    <Resource Include="Images\mail-16.png" />
+    <Resource Include="Images\openHS%402x.png" />
+    <Resource Include="Images\emerald-16%402x.png" />
     <Resource Include="Images\emerald-16.png" />
     <Resource Include="Images\eraser-48.png" />
     <Resource Include="Images\Globe.ico" />
@@ -528,6 +535,12 @@
     <Resource Include="Images\blacksquare-16.png" />
     <Resource Include="Images\coins-16.png" />
     <Resource Include="Images\check-16.png" />
+    <Resource Include="Images\book-16%402x.png" />
+    <Resource Include="Images\CheckBox%402x.png" />
+    <Resource Include="Images\CheckBox.png" />
+    <Resource Include="Images\CheckBoxUnchecked%402x.png" />
+    <Resource Include="Images\CheckBoxUnchecked.png" />
+    <Resource Include="Images\coins-16%402x.png" />
     <Content Include="Images\d10-16%402x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
