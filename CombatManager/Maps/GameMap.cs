@@ -72,7 +72,7 @@ namespace CombatManager.Maps
         {
 
             CellSize = new Size(100.0D, 100.0D);
-            CellOrigin = new Point(25, 25);
+            CellOrigin = new Point(0, 0);
             Scale = 1D;
             TableScale = 1D;
         
