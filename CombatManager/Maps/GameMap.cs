@@ -58,6 +58,8 @@ namespace CombatManager.Maps
         BitArray fog;
 
         bool showGrid = true;
+        Color gridColor = Color.FromArgb(255, 255, 255, 255);
+        
 
         int id;
 
@@ -493,7 +495,19 @@ namespace CombatManager.Maps
                 canSave = value;
             }
         }
-        
+
+        public Color GridColor
+        {
+            get => gridColor;
+            set
+            {
+                if (gridColor != value)
+                {
+                    gridColor = value;
+                    Notify("GridColor");
+                }
+            }
+        }
 
         public void SetMarker(MapCell cell, Marker marker)
         {

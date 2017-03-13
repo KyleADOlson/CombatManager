@@ -28718,7 +28718,7 @@
     <XP>25600</XP>
     <Alignment>LE</Alignment>
     <Size>Medium</Size>
-    <Type>female pit fiend-bound human sorcerer 13 humanoid</Type>
+    <Type>humanoid</Type>
     <SubType>(human)</SubType>
     <Init>4</Init>
     <Senses>darkvision 60 ft., see in darkness; Perception +14</Senses>

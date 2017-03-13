@@ -628,7 +628,7 @@
                             <Image x:Name="IdleImage" Source="images\zzz-16.png" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="16" Margin="0"
             					Visibility="{Binding IsIdle, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Width="16" ToolTip="Idle"/>
                         </StackPanel>
-                        <TextBox Grid.Column="1" x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" Margin="3.168,5,8,3.04" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.ColumnSpan="1" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Name" d:LayoutOverrides="GridBox" GotFocus="NameTextBox_GotFocus" />
+                        <TextBox Grid.Column="1" x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" Margin="3.168,5,8,3.04" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.ColumnSpan="1" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Name" d:LayoutOverrides="GridBox" GotFocus="NameTextBox_GotFocus" Initialized="NameTextBox_Initialized" SizeChanged="NameTextBox_SizeChanged" />
                     </Grid>
 
                     <Button x:Name="DeleteButton" Margin="0,8,0,5.969" RenderTransformOrigin="0.222,-0.601" Grid.Column="0" Click="DeleteButton_Click" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" GotKeyboardFocus="TextBox_GotKeyboardFocus" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Right" d:LayoutOverrides="Width">
@@ -2510,7 +2510,7 @@
             </Setter>
         </Style>
         <DataTemplate x:Key="GameMapListItemTemplate">
-            <Grid MouseDown="GameMapListItemGrid_MouseDown" d:DesignWidth="537.501">
+            <Grid MouseDown="GameMapListItemGrid_MouseDown" MouseUp="GameMapListItemGrid_MouseUp"  d:DesignWidth="537.501">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="55"/>
                     <ColumnDefinition Width="309"/>
@@ -3769,6 +3769,7 @@
                                                     <ComboBoxItem Content="x20"/>
                                                 </ComboBox>
                                             </Grid>
+                                            <Button x:Name="CurrentCRButton" Content="Current CR" HorizontalAlignment="Left" Margin="96,7,0,0" VerticalAlignment="Top" Width="76" Click="CurrentCRButton_Click"/>
                                         </Grid>
                                     </TabItem>
                                     <TabItem Header="Items">

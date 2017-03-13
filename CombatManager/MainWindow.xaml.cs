@@ -1307,67 +1307,31 @@ namespace CombatManager
 
         void LoadBestiary()
         {
-            SortedDictionary<String, String> types = new SortedDictionary<String, String>();
+            HashSet<String> types = new HashSet<string>();
             SortedDictionary<double, String> crs = new SortedDictionary<double, string>();
 
-            Regex regslash = new Regex("/");
 
-
-            foreach (Monster monster in Monster.Monsters)
+            foreach (String typename in Monster.CreatureTypeNames)
             {
-                if (monster.Type != null && monster.Type.Length > 0)
-                {
+                types.Add(typename);
+            }
 
-                    string type = monster.Type.Trim();
+            crs[1.0 / 8.0] = "1/8";
+            crs[1.0 / 6.0] = "1/6";
+            crs[1.0 / 4.0] = "1/4";
+            crs[1.0 / 3.0] = "1/3";
+            crs[1.0 / 2.0] = "1/2";
 
-                    type = type[0].ToString().ToUpper() + type.Substring(1);
-                    if (!types.ContainsKey(type))
-                    {
-                        types.Add(type, type);
-                    }
-
-                }
-
-                if (monster.CR != null && monster.CR.Length > 0)
-                {
-                    if (!crs.ContainsValue(monster.CR.Trim()))
-                    {
-
-                        Match match = regslash.Match(monster.CR);
-                        if (match.Success)
-                        {
-                            string text = monster.CR.Substring(match.Index + match.Length);
-
-                            double val;
-                            if (double.TryParse(text, out val))
-                            {
-                                crs.Add(1.0 / val, monster.CR.Trim());
-                            }
-
-                        }
-                        else
-                        {
-                            double val;
-                            if (double.TryParse(monster.CR, out val))
-                            {
-
-                                crs.Add(val, monster.CR.Trim());
-                            }
-                        }
-                    }
-                }
-
-
-
+            for (int i = 1; i < 31; i++)
+            {
+                crs[i] = i.ToString();
             }
 
 
-            foreach (String type in types.Keys)
+            foreach (String type in types)
             {
                 ComboBoxItem item = new ComboBoxItem();
-
-
-
+                
                 item.Content = type;
                 MonsterTypeFilterComboBox.Items.Add(item);
             }
@@ -3916,6 +3880,9 @@ namespace CombatManager
         [DllImport("User32")]
         internal static extern IntPtr MonitorFromWindow(IntPtr handle, int flags);
 
+        [DllImport("User32")]
+        private static extern int SetForegroundWindow(IntPtr hWnd);
+
         private void MonsterAdvancerCheck_Checked(object sender, RoutedEventArgs e)
         {
             using (var undoGroup = undo.CreateUndoGroup())
@@ -5363,6 +5330,34 @@ namespace CombatManager
 
                 }
             }
+        }
+
+        private void CurrentCRButton_Click(object sender, RoutedEventArgs e)
+        {
+            int cr;
+            if (int.TryParse(combatState.CR, out cr))
+            {
+                TreasureLevelComboBox.SelectedIndex = (cr - 1).Clamp(0, TreasureLevelComboBox.Items.Count - 1); 
+            }
+
+
+            int multiplier = 1;
+            foreach (Monster m in from c in combatState.Characters where c.IsMonster select c.Monster)
+            {
+                if (m.Treasure == "double")
+                {
+                    multiplier = 2;
+                }
+                else if (m.Treasure == "triple")
+                {
+                    multiplier = 3;
+                    break;
+                }
+            }
+
+            CoinAmountComboBox.SelectedIndex = multiplier;
+            GoodsAmountComboBox.SelectedIndex = multiplier;
+            ItemsAmountComboBox.SelectedIndex = multiplier;
         }
 
         private void ConditionContextMenu_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -7705,6 +7700,85 @@ namespace CombatManager
 			// TODO: Add event handler implementation here.
 		}
 
+
+        private void NameTextBox_Initialized(object sender, EventArgs e)
+        {
+
+            Character character = (Character)((FrameworkElement)sender).DataContext;
+            TextBox box = sender as TextBox;
+            Action func = () =>
+            {
+                DrawingBrush brush = CreateBoxBrush(box, character);
+                box.Background = brush;
+            };
+
+            character.PropertyChanged += (s, ea) =>
+            {
+                if (ea.PropertyName == "HP" || ea.PropertyName == "MaxHP")
+                {
+                    func();
+                }
+            };
+
+            func();
+        }
+
+        private void TextBoxCharacter_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+        }
+
+        private void NameTextBox_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
+
+            Character character = (Character)((FrameworkElement)sender).DataContext;
+
+            TextBox box = sender as TextBox;
+
+            
+            DrawingBrush brush = CreateBoxBrush(box, character);
+
+            box.Background = brush;
+            
+        }
+
+        private DrawingBrush CreateBoxBrush(TextBox box, Character character)
+        {
+            DrawingBrush brush = new DrawingBrush();
+
+            Color backColor = CMUIUtilities.FindColor(box, CMUIUtilities.SecondaryColorBLighter);
+            Color barColor = Colors.White;
+
+
+            RectangleGeometry backGeo = new RectangleGeometry(new Rect(0, 0, 1, 1));
+            GeometryDrawing backDrawing = new GeometryDrawing(new SolidColorBrush(backColor), null, backGeo);
+
+            double percent = 0.0;
+
+            if (character.MaxHP > 0)
+            {
+                percent = (((double)character.HP) / (double)character.MaxHP).Clamp(0, 1);
+            }
+            Size barSize = new Size( 1, 1);
+            barSize.Width = barSize.Width * percent;
+
+
+            RectangleGeometry barGeo = new RectangleGeometry(new Rect(barSize));
+            GeometryDrawing barDrawing = new GeometryDrawing(
+                new SolidColorBrush(
+                    barColor), 
+                    null, barGeo);
+
+            DrawingGroup dg = new DrawingGroup();
+            dg.Children.Add(backDrawing);
+            dg.Children.Add(barDrawing);
+
+            brush.Drawing = dg;
+            brush.Viewbox = new Rect(0, 0, 1, 1);
+
+            return brush;
+        }
+
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://combatmanager.com");
@@ -8046,6 +8120,10 @@ namespace CombatManager
             mapDisplayWindow.Show();
             mapDisplayWindow.Activate();
 
+            Application.Current.Dispatcher.Invoke(new Action(() => {
+                SetForegroundWindow(new WindowInteropHelper(mapDisplayWindow).Handle);
+            }));
+
             mapDisplayWindow.ShowPlayerMap += (e) => { ShowMapPlayer(); };
 
             if (playerMapDisplayWindow != null)
@@ -8070,6 +8148,11 @@ namespace CombatManager
 
             playerMapDisplayWindow.Show();
             playerMapDisplayWindow.Activate();
+
+
+            Application.Current.Dispatcher.Invoke(new Action(() => {
+                SetForegroundWindow(new WindowInteropHelper(playerMapDisplayWindow).Handle);
+            }));
         }
 
         private void GameMapListBox_Loaded(object sender, RoutedEventArgs e)
@@ -8109,10 +8192,20 @@ namespace CombatManager
             XmlLoader<GameMapList>.Save(gameMapList, "GameMaps.xml", true);
         }
 
+        bool openMapOnUp = false;
+
         private void GameMapListItemGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ClickCount == 2)
+            if (e.ClickCount == 1)
             {
+                openMapOnUp = true;
+            }
+        }
+        private void GameMapListItemGrid_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (openMapOnUp)
+            {
+                openMapOnUp = false;
                 GameMapList.MapStub stub = (GameMapList.MapStub)((Grid)sender).DataContext;
 
                 OpenMapStub(stub);
@@ -8168,6 +8261,7 @@ namespace CombatManager
         {
             System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", filePath));
         }
+
     }
 
 

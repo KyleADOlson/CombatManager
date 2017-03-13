@@ -795,45 +795,21 @@ namespace CombatManager
 
                     _crs = new SortedDictionary<double, string>();
 
-                    Regex regslash = new Regex("/");
 
+                    _crs[1.0 / 8.0] = "1/8";
+                    _crs[1.0 / 6.0] = "1/6";
+                    _crs[1.0 / 4.0] = "1/4";
+                    _crs[1.0 / 3.0] = "1/3";
+                    _crs[1.0 / 2.0] = "1/2";
 
-                    foreach (Monster monster in Monster.Monsters)
+                    for (int i = 1; i < 31; i++)
                     {
-
-                        if (monster.CR != null && monster.CR.Length > 0)
-                        {
-                            if (!_crs.ContainsValue(monster.CR.Trim()))
-                            {
-
-                                Match match = regslash.Match(monster.CR);
-                                if (match.Success)
-                                {
-                                    string text = monster.CR.Substring(match.Index + match.Length);
-
-                                    double val;
-                                    if (double.TryParse(text, out val))
-                                    {
-                                        _crs.Add(1.0 / val, monster.CR.Trim());
-                                    }
-
-                                }
-                                else
-                                {
-                                    double val;
-                                    if (double.TryParse(monster.CR, out val))
-                                    {
-
-                                        _crs.Add(val, monster.CR.Trim());
-                                    }
-                                }
-                            }
-                        }
-
-
-
+                        _crs[i] = i.ToString();
                     }
+                    
+
                 }
+                
                 return _crs;
             }
         }

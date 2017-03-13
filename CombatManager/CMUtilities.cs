@@ -173,6 +173,21 @@ namespace CombatManager
             return new Point(oldPoint.X / scale, oldPoint.Y / scale);
         }
 
+        public static Point Add(this Point oldPoint, double scalar)
+        {
+            return new Point(oldPoint.X + scalar, oldPoint.Y + scalar);
+        }
+
+        public static Point Add(this Point oldPoint, double sX, double sY)
+        {
+            return new Point(oldPoint.X + sX, oldPoint.Y + sY);
+        }
+
+        public static Point Add(this Point oldPoint, Point addPoint)
+        {
+            return new Point(oldPoint.X + addPoint.X, oldPoint.Y + addPoint.Y);
+        }
+
         public static Color FindColor(this FrameworkElement element, String name)
         {
             return (Color)element.FindResource(name);

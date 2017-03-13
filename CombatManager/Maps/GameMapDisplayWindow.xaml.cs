@@ -48,6 +48,8 @@ namespace CombatManager.Maps
 
         int brushSize = 1;
 
+        bool fullscreen;
+
         public delegate void MapEventDelegate(GameMap map);
 
         public event MapEventDelegate ShowPlayerMap;
@@ -59,7 +61,11 @@ namespace CombatManager.Maps
         public GameMapDisplayWindow(bool playerMode)
         {
             InitializeComponent();
-            LoadActionButtonState();
+            if (!playerMode)
+            {
+                LoadActionButtonState();
+            }
+
             UpdateActionButtons();
 
             this.playerMode = playerMode;
@@ -145,7 +151,8 @@ namespace CombatManager.Maps
             {
                 UpdateMapImage();
             }
-            else if(e.PropertyName == "CellSize" || e.PropertyName == "CellOrigin" || e.PropertyName == "ShowGrid")
+            else if(e.PropertyName == "CellSize" || e.PropertyName == "CellOrigin" 
+                || e.PropertyName == "ShowGrid" || e.PropertyName == "GridColor")
             {
                 UpdateGridBrush();
             }
@@ -182,11 +189,15 @@ namespace CombatManager.Maps
                     double xStart = map.CellOrigin.X / map.Image.Width;
                     double yStart = map.CellOrigin.Y / map.Image.Height;
 
-                    ImageBrush brush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/square.png")));
-                    brush.TileMode = TileMode.Tile;
-                    brush.Viewport = new Rect(xStart, yStart, xSize, ySize);
+                    RectangleGeometry r = new RectangleGeometry(new Rect(0, 0, 100, 100));
+                    Pen p = new Pen(new SolidColorBrush(map.GridColor), 1);
+                    GeometryDrawing gd = new GeometryDrawing(null, p, r);
+                    DrawingBrush db = new DrawingBrush(gd);
+                    db.TileMode = TileMode.Tile;
+                    db.Viewport = new Rect(xStart, yStart, xSize, ySize);
+                    
 
-                    MapGridCanvas.Background = brush;
+                    MapGridCanvas.Background = db;
                     FogOfWar.InvalidateVisual();
                 }
                 else
@@ -216,6 +227,7 @@ namespace CombatManager.Maps
             {
                 mode = newMode;
             }
+            FogOfWar.DrawAnchor = mode == GameMapActionMode.SetOrigin;
             UpdateActionButtons();
             SaveActionButtonState();
         }
@@ -295,22 +307,16 @@ namespace CombatManager.Maps
             }
             else if (e.ClickCount == 2)
             {
-                if (WindowState != WindowState.Maximized)
+                if (fullscreen)
                 {
-                    WindowStyle = WindowStyle.None;
-                    Topmost = true;
-                    WindowState = WindowState.Maximized;
-                    
-
+                    ExitFullScreen();
                 }
                 else
                 {
-                    WindowStyle = WindowStyle.SingleBorderWindow;
-                    Topmost = false;
-                    WindowState = WindowState.Normal;
+                    EnterFullScreen();
+
+
                 }
-                Hide();
-                Show();
             }
         }
 
@@ -364,50 +370,58 @@ namespace CombatManager.Maps
             {
                 rightClickDown = false;
 
-                if (!playerMode || controlsHidden)
+                GameMap.MapCell cell = PointToCell(rightClickPosition);
+
+                rightClickCell = cell;
+
+                if (CellOnBoard(cell))
                 {
+                    bool hasMarkers = map.CellHasMarkers(cell);
 
-                    GameMap.MapCell cell = PointToCell(rightClickPosition);
 
-                    rightClickCell = cell;
+                    ContextMenu menu = (ContextMenu)Resources["MapContextMenu"];
+                    menu.DataContext = cell;
 
-                    if (CellOnBoard(cell))
+                    menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
+                    menu.IsOpen = true;
+
+                    MenuItem mi;
+
+                    mi = (MenuItem)menu.FindLogicalNode("ToggleFogItem");
+                    mi.DataContext = cell;
+                    mi.Visibility = !playerMode ? Visibility.Visible : Visibility.Collapsed;
+
+                    mi = (MenuItem)menu.FindLogicalNode("DeleteMarkerItem");
+                    mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
+                    mi.DataContext = cell;
+
+
+                    mi = (MenuItem)menu.FindLogicalNode("NameBoxItem");
+                    mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
+
+                    if (hasMarkers)
                     {
-                        bool hasMarkers = map.CellHasMarkers(cell);
-
-
-                        ContextMenu menu = (ContextMenu)Resources["MapContextMenu"];
-                        menu.DataContext = cell;
-
-                        menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
-                        menu.IsOpen = true;
-
-                        MenuItem mi;
-
-                        mi = (MenuItem)menu.FindLogicalNode("ToggleFogItem");
-                        mi.DataContext = cell;
-                        mi.Visibility = !playerMode ? Visibility.Visible : Visibility.Collapsed;
-
-                        mi = (MenuItem)menu.FindLogicalNode("DeleteMarkerItem");
-                        mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
-                        mi.DataContext = cell;
-
-
-                        mi = (MenuItem)menu.FindLogicalNode("NameBoxItem");
-                        mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
-
-                        if (hasMarkers)
-                        {
-                            mi.DataContext = map.GetMarkers(cell)[0];
-                        }
-
-
-                        mi = (MenuItem)menu.FindLogicalNode("ShowControlsItem");
-                        mi.Visibility = controlsHidden ? Visibility.Visible : Visibility.Collapsed;
-
-
-
+                        mi.DataContext = map.GetMarkers(cell)[0];
                     }
+
+
+                    mi = (MenuItem)menu.FindLogicalNode("ShowControlsItem");
+                    mi.Visibility = controlsHidden ? Visibility.Visible : Visibility.Collapsed;
+
+                    mi = (MenuItem)menu.FindLogicalNode("HideControlsItem");
+                    mi.Visibility = controlsHidden ? Visibility.Collapsed : Visibility.Visible;
+
+                    mi = (MenuItem)menu.FindLogicalNode("ExitFullScreenItem");
+                    mi.Visibility = fullscreen ? Visibility.Visible : Visibility.Collapsed;
+
+                    mi = (MenuItem)menu.FindLogicalNode("EnterFullScreenItem");
+                    mi.Visibility = fullscreen ? Visibility.Collapsed : Visibility.Visible;
+
+
+
+
+
+
                 }
             }
         }
@@ -610,7 +624,7 @@ namespace CombatManager.Maps
 
         private void SaveActionButtonState()
         {
-            if (actionButtonStateLoaded)
+            if (actionButtonStateLoaded && !playerMode)
             {
                 XmlLoader<ActionButtonState>.Save(GetActionButtonState(),
                     "GameMapDisplayWindowActionButtonState.xml", true);
@@ -1093,14 +1107,13 @@ namespace CombatManager.Maps
 
         bool controlsHidden;
         GridLength controlRowDefinition;
+        GridLength actionColumnDefinition;
 
         private void ScaleGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
             {
-                controlRowDefinition = RootGrid.RowDefinitions[0].Height;
-                RootGrid.RowDefinitions[0].Height = new System.Windows.GridLength(0);
-                controlsHidden = true;
+                HideControls();
             }
         }
 
@@ -1108,9 +1121,99 @@ namespace CombatManager.Maps
         {
             if (controlsHidden)
             {
-                controlsHidden = false;
-                RootGrid.RowDefinitions[0].Height = controlRowDefinition;
+                showControls();
             }
+        }
+
+
+        private void HideControlsItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (!controlsHidden)
+            {
+                HideControls();
+            }
+        }
+
+        void HideControls()
+        {
+            controlRowDefinition = RootGrid.RowDefinitions[0].Height;
+            actionColumnDefinition = RootGrid.ColumnDefinitions[0].Width;
+            RootGrid.RowDefinitions[0].Height = new System.Windows.GridLength(0);
+            if (!playerMode)
+            {
+
+                RootGrid.ColumnDefinitions[0].Width = new System.Windows.GridLength(0);
+            }
+            
+            MapScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            MapScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+
+
+
+            NameGrid.Visibility = Visibility.Collapsed;
+            GridSizeGrid.Visibility = Visibility.Collapsed;
+            ScaleGrid.Visibility = Visibility.Collapsed;
+
+            ShowActionButtons(false);
+
+            controlsHidden = true;
+
+        }
+
+        void showControls()
+        {
+            controlsHidden = false;
+            RootGrid.RowDefinitions[0].Height = controlRowDefinition;
+            if (!playerMode)
+            {
+                RootGrid.ColumnDefinitions[0].Width = actionColumnDefinition;
+            }
+            MapScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            MapScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+
+            ScaleGrid.Visibility = Visibility.Visible;
+
+            if (!playerMode)
+            {
+                NameGrid.Visibility = Visibility.Visible;
+                GridSizeGrid.Visibility = Visibility.Visible;
+
+                ShowActionButtons(true);
+            }
+        }
+
+        private void EnterFullScreenItem_Click(object sender, RoutedEventArgs e)
+        {
+            EnterFullScreen();
+        }
+
+        private void ExitFullScreenItem_Click(object sender, RoutedEventArgs e)
+        {
+            ExitFullScreen();
+        }
+
+        private void EnterFullScreen()
+        {
+            WindowStyle = WindowStyle.None;
+            Topmost = true;
+            WindowState = WindowState.Maximized;
+            fullscreen = true;
+
+     
+            Hide();
+            Show();
+        }
+
+        private void ExitFullScreen()
+        {
+
+            WindowStyle = WindowStyle.SingleBorderWindow;
+            Topmost = false;
+            WindowState = WindowState.Normal;
+            fullscreen = false;
+
+            Hide();
+            Show();
         }
     }
 }

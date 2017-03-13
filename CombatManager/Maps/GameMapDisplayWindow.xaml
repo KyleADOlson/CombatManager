@@ -5,7 +5,8 @@
         xmlns:CombatManagerMaps="clr-namespace:CombatManager.Maps" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Themes1="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" mc:Ignorable="d"  x:Class="CombatManager.Maps.GameMapDisplayWindow" 
        
-        Title="Game Map" Height="477.75" Width="773.5" DataContext="{Binding}"  Icon="/Images/Globe.ico" >
+        xmlns:xwpf="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"  
+        Title="Game Map" Height="545.25" Width="901" DataContext="{Binding}"  Icon="/Images/Globe.ico" >
     <Window.Resources>
         <ContextMenu x:Key="FogOfWarContextMenu">
 
@@ -58,7 +59,13 @@
                     <Image Source="/CombatManager;component/Images/delete-16.png"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem x:Name="ShowControlsItem" Header="ShowControls" Click="ShowControlsItem_Click">
+            <MenuItem x:Name="ShowControlsItem" Header="Show Controls" Click="ShowControlsItem_Click">
+            </MenuItem>
+            <MenuItem x:Name="HideControlsItem" Header="Hide Controls" Click="HideControlsItem_Click">
+            </MenuItem>
+            <MenuItem x:Name="EnterFullScreenItem" Header="Enter Full Screen" Click="EnterFullScreenItem_Click">
+            </MenuItem>
+            <MenuItem x:Name="ExitFullScreenItem" Header="Exit Full Screen" Click="ExitFullScreenItem_Click">
             </MenuItem>
         </ContextMenu>
 
@@ -357,7 +364,7 @@
         </Grid.ColumnDefinitions>
         <Rectangle Grid.Column="1" Height="31" StrokeThickness="1  " VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0">
             <Rectangle.Fill>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkColorKey}}"/>
+                <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
             </Rectangle.Fill>
         </Rectangle>
         <Grid x:Name="NameGrid" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="293" Grid.Column="1">
@@ -380,8 +387,8 @@
             <Button x:Name="ScaleUpButton" Content="+" HorizontalAlignment="Left" Height="11" Margin="41,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleUpButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
             <Button x:Name="ScaleDownButton" Content="-" HorizontalAlignment="Left" Height="11" Margin="108,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleDownButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
         </Grid>
-        <Grid x:Name="GridSizeGrid" Grid.Column="2" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="302" Margin="18,0,0,0">
-            <Rectangle Height="31" VerticalAlignment="Top" StrokeThickness="1  " Margin="0">
+        <Grid x:Name="GridSizeGrid" Grid.Column="2" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="420" Margin="18,0,0,0">
+            <Rectangle Height="31" VerticalAlignment="Top" StrokeThickness="1  " Margin="0,0,49,0">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
                 </Rectangle.Fill>
@@ -394,7 +401,7 @@
                     <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
                 </Ellipse.Stroke>
             </Ellipse>
-            <Ellipse Margin="136.416,7.75,148.834,5.25" StrokeThickness="2">
+            <Ellipse Margin="136.5,8,0,5" StrokeThickness="2" HorizontalAlignment="Left" Width="17">
                 <Ellipse.Fill>
                     <SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
                 </Ellipse.Fill>
@@ -407,7 +414,10 @@
             <TextBlock HorizontalAlignment="Left" Margin="141.416,8,0,7" x:Name="textBlock3" Text="Y" Width="7" FontWeight="Bold" />
             <TextBox HorizontalAlignment="Left" Margin="156.832,3,0,3" x:Name="textBox2" Text="{Binding CellSizeHeight, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="40.834" />
             <TextBlock HorizontalAlignment="Left" Margin="75.75,8,0,7" x:Name="textBlock3_Copy" Text="X" Width="10" FontWeight="Bold" />
-            <CheckBox x:Name="ShowGridCheckBox" Content="Show Grid" HorizontalAlignment="Left" Margin="209,9,0,0" VerticalAlignment="Top" Click="ShowGridCheckBox_Click" IsChecked="{Binding ShowGrid}" FontWeight="Bold"/>
+            <CheckBox x:Name="ShowGridCheckBox" Content="Grid" HorizontalAlignment="Left" Margin="209,9,0,0" VerticalAlignment="Top" Click="ShowGridCheckBox_Click" IsChecked="{Binding ShowGrid}" FontWeight="Bold"/>
+            <xwpf:ColorPicker HorizontalAlignment="Left" Height="25" Margin="265,3,0,0"  VerticalAlignment="Top" Width="98" SelectedColor="{Binding GridColor}" ToolTip="Grid Color">
+
+            </xwpf:ColorPicker>
         </Grid>
 
         <Rectangle Grid.Row="1" Margin="0,0,0,-2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
@@ -419,10 +429,19 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Button Height="22" Margin="1.664,9.734,0,0" x:Name="SetOriginButton" VerticalAlignment="Top" Click="SetOriginButton_Click" Padding="4,1" d:LayoutOverrides="VerticalAlignment, Width, TopMargin, BottomMargin" Grid.Row="1"  Style="{DynamicResource SimpleButton}" ToolTip="Set Grid Origin" Width="28" HorizontalAlignment="Left" >
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/CombatManager;component/Images/target-16.png"/>
-            </StackPanel>
+        <Button Height="22" Margin="1.664,9.734,0,0" x:Name="SetOriginButton" VerticalAlignment="Top" Click="SetOriginButton_Click" Padding="4,1" d:LayoutOverrides="VerticalAlignment, Width, TopMargin, BottomMargin" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Width="28" HorizontalAlignment="Left" >
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/CombatManager;component/Images/target-16.png"/>
+                </StackPanel>
+            </Button.Content>
+            <Button.ToolTip>
+                <TextBlock>
+                Set Grid Anchor
+          <LineBreak /> 
+                Choose any point where two gridlines meet
+                </TextBlock>
+            </Button.ToolTip>
 
         </Button>
         <Button Height="22" Margin="1.664,36.734,0,0" x:Name="SetFogButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin" Click="SetFogButton_Click" HorizontalAlignment="Left" Width="28" ToolTip="Set Fog of War" >
@@ -434,14 +453,14 @@
             </Grid>
 
         </Button>
-        <Button Height="22" Margin="1.664,63.734,0,0" x:Name="SetMarkerButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="SetMarkerButton_Click" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="27.998" ToolTip="Set Markers" >
-
-            <Path x:Name="MarkerButtonPath"  Data="M0,0 L0,1 L1,1 L1,0 Z" Height="16" Stretch="Fill" Width="16" Fill="#FF474747" />
-
-        </Button>
         <Button Height="22" Margin="29.664,36.734,0,0" x:Name="FogOptionsButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="FogOptionsButton_Click" d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin" ToolTip="Fog of War Options" HorizontalAlignment="Left" Width="18.206" >
             <Path Data="M0,0 L4,6 L8,0 Z" Height="6.875" Stretch="Fill" Width="8.208" Fill="#FF474747" />
 
+
+        </Button>
+        <Button Height="22" Margin="1.664,63.734,0,0" x:Name="SetMarkerButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="SetMarkerButton_Click" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="27.998" ToolTip="Set Markers" >
+
+            <Path x:Name="MarkerButtonPath"  Data="M0,0 L0,1 L1,1 L1,0 Z" Height="16" Stretch="Fill" Width="16" Fill="#FF474747" />
 
         </Button>
         <Button Height="22" Margin="29.662,63.734,0,0" x:Name="MarkerOptionsButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="MarkerOptionsButton_Click" HorizontalAlignment="Left" Width="18.208" ToolTip="Marker Options" >

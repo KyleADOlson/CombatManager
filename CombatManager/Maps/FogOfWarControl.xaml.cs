@@ -25,6 +25,7 @@ namespace CombatManager.Maps
         }
 
         bool playerMode;
+        bool drawAnchor;
 
         protected override void OnRender(DrawingContext drawingContext)
         {
@@ -107,8 +108,31 @@ namespace CombatManager.Maps
    
                 }
 
+                Point anchorPoint = map.CellOrigin;
+                anchorPoint = anchorPoint.Multiply(UseScale);
+
+
+                if (drawAnchor)
+                {
+                    LineGeometry ln = new LineGeometry(anchorPoint.Add(-15, -15), anchorPoint.Add(15, 15));
+
+                    LineGeometry ln2 = new LineGeometry(anchorPoint.Add(-15, 15), anchorPoint.Add(15, -15));
+
+                    EllipseGeometry ellipse = new EllipseGeometry(anchorPoint, 12, 12);
+
+
+                    Pen p = new Pen(new SolidColorBrush(Color.FromRgb(255, 0, 0)), 2.0);
+
+                    drawingContext.DrawGeometry(null, p, ln);
+                    drawingContext.DrawGeometry(null, p, ln2);
+                    drawingContext.DrawGeometry(null, p, ellipse);
+
+                }
+
+
+
             }
-            
+
         }
 
         public bool PlayerMode
@@ -122,6 +146,23 @@ namespace CombatManager.Maps
                 if (playerMode != value)
                 {
                     playerMode = value;
+                    InvalidateVisual();
+                }
+
+            }
+        }
+
+        public bool DrawAnchor
+        {
+            get
+            {
+                return drawAnchor;
+            }
+            set
+            {
+                if (drawAnchor != value)
+                {
+                    drawAnchor = value;
                     InvalidateVisual();
                 }
 

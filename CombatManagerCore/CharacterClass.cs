@@ -59,7 +59,24 @@ namespace CombatManager
         Loremaster,
         MysticTheurge,
         PathfinderChronicler,
-        Shadowdancer
+        Shadowdancer,
+        BattleHerald,
+        HolyVindicator,
+        HorizonWalker,
+        Kineticist,
+        MasterChymist,
+        MasterSpy,
+        Medium,
+        Mesmerist,
+        NatureWarden,
+        Ninja,
+        Occultist,
+        Psychic,
+        RageProphet,
+        Samurai,
+        Spiritualist,
+        StalwartDefender,
+
     }
 
     public static class CharacterClass
@@ -100,6 +117,23 @@ namespace CombatManager
             _EnumToName[CharacterClassEnum.MysticTheurge] = "Mystic Theurge";
             _EnumToName[CharacterClassEnum.PathfinderChronicler] = "Pathfinder Chronicler";
             _EnumToName[CharacterClassEnum.Shadowdancer] = "Shadowdancer";
+            _EnumToName[CharacterClassEnum.BattleHerald] = "Battle Herald";
+            _EnumToName[CharacterClassEnum.HolyVindicator] = "Holy Vindicator";
+            _EnumToName[CharacterClassEnum.HorizonWalker] = "Horizon Walker";
+            _EnumToName[CharacterClassEnum.Kineticist] = "Kineticist";
+            _EnumToName[CharacterClassEnum.MasterChymist] = "Master Chymist";
+            _EnumToName[CharacterClassEnum.MasterSpy] = "Master Spy";
+            _EnumToName[CharacterClassEnum.Medium] = "Medium";
+            _EnumToName[CharacterClassEnum.Mesmerist] = "Mesmerist";
+            _EnumToName[CharacterClassEnum.NatureWarden] = "Nature Warden";
+            _EnumToName[CharacterClassEnum.Ninja] = "Ninja";
+            _EnumToName[CharacterClassEnum.Occultist] = "Occultist";
+            _EnumToName[CharacterClassEnum.Psychic] = "Psychic";
+            _EnumToName[CharacterClassEnum.RageProphet] = "Rage Prophet";
+            _EnumToName[CharacterClassEnum.Samurai] = "Samurai";
+            _EnumToName[CharacterClassEnum.Spiritualist] = "Spiritualist";
+            _EnumToName[CharacterClassEnum.StalwartDefender] = "Stalwart Defender";
+
 
             foreach (KeyValuePair<CharacterClassEnum, string> pair in _EnumToName)
             {
