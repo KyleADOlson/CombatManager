@@ -141,7 +141,6 @@
     <Compile Include="AttacksWindow.xaml.cs">
       <DependentUpon>AttacksWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BarTextBox.cs" />
     <Compile Include="CampaignEventWindow.xaml.cs">
       <DependentUpon>CampaignEventWindow.xaml</DependentUpon>
     </Compile>
