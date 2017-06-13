@@ -679,14 +679,35 @@ namespace CombatManager
             {
                 if (this.monster != value)
                 {
+                    if (monster != null)
+                    {
+                        monster.PropertyChanged -= Monster_PropertyChanged;
+
+                    }
+
                     this.monster = value;
+
+                    if (monster != null)
+                    {
+                        monster.PropertyChanged += Monster_PropertyChanged;
+
+                    }
 
                     Notify("Monster");
                 }
             }
         }
 
-
+        private void Monster_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "HP")
+            {
+                if (MaxHP != monster.HP)
+                {
+                    MaxHP = monster.HP;
+                }
+            }
+        }
 
         public bool TryParseHP()
         {
