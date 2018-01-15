@@ -119,6 +119,40 @@ namespace CombatManager
 
     }
 
+    [ValueConversion(typeof(bool), typeof(String))]
+    class BoolStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string[] parameters = (parameter as string).Split(new char[] { '|' });
+            if ((bool)value)
+            {
+                return parameters.Length > 0 ? parameters[0] : null;
+
+            }
+            else
+            {
+                return parameters.Length > 1 ? parameters[1] : null;
+            }
+            
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            String text = value as String;
+
+            string[] parameters = (parameter as string).Split(new char[] { '|' });
+            if (parameters.Length > 0)
+            {
+                return parameters[0] == text;
+            }
+            return false;
+
+        }
+
+
+    }
+
     [ValueConversion(typeof(bool), typeof(Visibility))]
     class BoolToVisibilityConverter : IValueConverter
     {

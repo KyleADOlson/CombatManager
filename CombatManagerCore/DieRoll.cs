@@ -30,6 +30,7 @@ using System.Globalization;
 using System.IO;
 using System.ServiceModel;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -291,7 +292,7 @@ namespace CombatManager
             return new DieRoll(this);
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public DieStep Step
         {
             get
@@ -305,7 +306,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int TotalCount
         {
             get
@@ -555,7 +556,7 @@ namespace CombatManager
         }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int count
         {
             get { return _count; }
@@ -569,7 +570,7 @@ namespace CombatManager
         }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int fraction
         {
             get { return _fraction; }
@@ -583,7 +584,7 @@ namespace CombatManager
         }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int die
         {
             get { return _die; }
@@ -597,7 +598,7 @@ namespace CombatManager
         }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int mod
         {
             get { return _mod; }
@@ -611,7 +612,7 @@ namespace CombatManager
         }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public List<DieStep> extraRolls
         {
             get { return _extraRolls; }
@@ -624,7 +625,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public List<DieStep> AllRolls
         {
             get
@@ -781,7 +782,7 @@ namespace CombatManager
 
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public string Text
         {
             get

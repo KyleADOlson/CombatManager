@@ -30,6 +30,7 @@ using System.Xml.Serialization;
 using ScottsUtils;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -711,11 +712,11 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         private string Oldname { get; set; }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public String Name
         {
             get { return name; }
@@ -2063,7 +2064,7 @@ namespace CombatManager
             }
         }
         
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public String nameforsort
         {
             get
@@ -2072,7 +2073,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool IsCustom
         {
             get
@@ -2099,7 +2100,7 @@ namespace CombatManager
             return name;
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public SpellAdjuster Adjuster
         {
             get

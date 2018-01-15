@@ -33,6 +33,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using Newtonsoft.Json;
 
 namespace CombatManager.Maps
 {
@@ -197,7 +198,7 @@ namespace CombatManager.Maps
 
         
         
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public BitmapImage Image
         {
             get
@@ -267,7 +268,7 @@ namespace CombatManager.Maps
         }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public BitArray Fog
         {
             get
@@ -306,7 +307,7 @@ namespace CombatManager.Maps
         }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int CellsWidth
         {
             get
@@ -315,7 +316,7 @@ namespace CombatManager.Maps
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int CellsHeight
         {
             get
@@ -324,7 +325,7 @@ namespace CombatManager.Maps
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public Size ActualCellSize
         {
             get
@@ -336,7 +337,7 @@ namespace CombatManager.Maps
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public Size TableCellSize
         {
             get
@@ -348,7 +349,7 @@ namespace CombatManager.Maps
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public Point GridOrigin
         {
             get
@@ -365,7 +366,7 @@ namespace CombatManager.Maps
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public Point ActualGridOrigin
         {
             get
@@ -374,7 +375,7 @@ namespace CombatManager.Maps
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public Point TableGridOrigin
         {
             get
@@ -383,7 +384,7 @@ namespace CombatManager.Maps
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public Dictionary<int, List<Marker>> Markers
         {
             get
@@ -482,7 +483,7 @@ namespace CombatManager.Maps
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool CanSave
         {
             get

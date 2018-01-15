@@ -27,6 +27,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -529,7 +530,7 @@ namespace CombatManager
             return -1;
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public ConditionType Type
         {
             get

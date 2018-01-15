@@ -35,7 +35,7 @@ using System.Xml.Linq;
 
 using Ionic.Zip;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -8453,7 +8453,7 @@ namespace CombatManager
 
         #region Monster Properties
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public int Perception
             {
                 get
@@ -8633,7 +8633,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             protected DieRoll HDRoll
             {
                 get
@@ -8646,7 +8646,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public CreatureType CreatureType
             {
                 get
@@ -8659,7 +8659,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public List<AttackSet> MeleeAttacks
             {
                 get
@@ -8751,7 +8751,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public List<Attack> RangedAttacks
             {
                 get
@@ -9319,7 +9319,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public ObservableCollection<SpellBlockInfo> SpellLikeAbilitiesBlock
             {
                 get
@@ -10057,7 +10057,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public ObservableCollection<SpellBlockInfo> SpellsPreparedBlock
             {
                 get
@@ -10174,7 +10174,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public ObservableCollection<SpellBlockInfo> SpellsKnownBlock
             {
                 get
@@ -10547,7 +10547,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public SortedDictionary<String, SkillValue> SkillValueDictionary
             {
                 get
@@ -10872,7 +10872,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public long? XPValue
             {
                 get
@@ -10891,7 +10891,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public bool NPC
             {
                 get
@@ -10908,7 +10908,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public bool IsCustom
             {
                 get
@@ -10917,7 +10917,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public int DBLoaderID
             {
                 get
@@ -10939,7 +10939,7 @@ namespace CombatManager
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public MonsterAdjuster Adjuster
             {
                 get

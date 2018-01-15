@@ -28,6 +28,7 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -35,7 +36,7 @@ namespace CombatManager
     [DataContract]
     public class Character : INotifyPropertyChanged
     {
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public object UndoInfo { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -211,7 +212,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public Monster Stats
         {
             get
@@ -382,7 +383,7 @@ namespace CombatManager
         }
 
         [DataMember]
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool IsActive
         {
             get
@@ -520,7 +521,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public Character InitiativeLeader
         {
             get
@@ -563,7 +564,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public ObservableCollection<Character> InitiativeFollowers
         {
             get
@@ -573,7 +574,7 @@ namespace CombatManager
         }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool HasFollowers
         {
             get
@@ -636,7 +637,7 @@ namespace CombatManager
             }
         }
 		
-		[XmlIgnore]
+		[XmlIgnore, JsonIgnore]
         public bool IsNotReadyingOrDelaying
         {
             get
@@ -759,7 +760,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int MinHP
         {
             get
@@ -979,7 +980,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public string HiddenName
         {
             get
@@ -995,7 +996,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public CharacterAdjuster Adjuster
         {
             get

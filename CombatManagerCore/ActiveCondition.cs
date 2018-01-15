@@ -26,7 +26,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -93,7 +93,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int? EndTurn
         {
             get { return _EndTurn; }
@@ -107,7 +107,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public InitiativeCount InitiativeCount
         {
             get { return _InitiativeCount; }
@@ -121,7 +121,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public ConditionBonus Bonus
         {
             get

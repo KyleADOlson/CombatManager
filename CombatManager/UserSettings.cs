@@ -28,6 +28,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Microsoft.Win32;
 using System.IO;
+using CombatManager.WinUtil;
 
 namespace CombatManager
 {
@@ -615,43 +616,46 @@ namespace CombatManager
         {
             try
             {
-                RollHP = LoadBoolValue("RollHP", false);
-                UseCore = LoadBoolValue("UseCore", true);
-                UseAPG = LoadBoolValue("UseAPG", true);
-                UseChronicles = LoadBoolValue("UseChronicles", true);
-                UseModules = LoadBoolValue("UseModules", true); 
-                UseUltimateMagic = LoadBoolValue("UseUltimateMagic", true);
-                UseUltimateCombat = LoadBoolValue("UseUltimateCombat", true);
-                UseOther = LoadBoolValue("UseOther", true);
-                ConfirmCharacterDelete = LoadBoolValue("ConfirmCharacterDelete", false);
-                ConfirmInitiativeRoll = LoadBoolValue("ConfirmInitiativeRoll", false);
-                ConfirmClose = LoadBoolValue("ConfirmClose", false);
-                ShowAllDamageDice = LoadBoolValue("ShowAllDamageDice", false);
-                PlayerMiniMode = LoadBoolValue("PlayerMiniMode", false);
-                MonsterMiniMode = LoadBoolValue("MonsterMiniMode", false);
-                MainWindowWidth = LoadIntValue("MainWindowWidth", -1);
-                MainWindowHeight = LoadIntValue("MainWindowHeight", -1);
-                MainWindowLeft = LoadIntValue("MainWindowLeft", int.MinValue);
-                MainWindowTop = LoadIntValue("MainWindowTop", int.MinValue);
-                SelectedTab = LoadIntValue("SelectedTab", 0);
-                AlternateInitRoll = LoadStringValue("AlternateInitRoll", "3d6");
-                AlternateInit3d6 = LoadBoolValue("AlternateInit3d6", false);
-                InitiativeShowPlayers = LoadBoolValue("InitiativeShowPlayers", true);
-                InitiativeShowMonsters = LoadBoolValue("InitiativeShowMonsters", true);
-                InitiativeHideMonsterNames = LoadBoolValue("InitiativeHideMonsterNames", false);
-                InitiativeHidePlayerNames = LoadBoolValue("InitiativeHidePlayerNames", false);
-                InitiativeShowConditions = LoadBoolValue("InitiativeShowConditions", false);
-                InitiativeConditionsSize = LoadIntValue("InitiativeConditionsSize", 2);
-                InitiativeAlwaysOnTop  = LoadBoolValue("InitiativeAlwaysOnTop", false);
-                InitiativeScale = LoadDoubleValue("InitiativeScale", 1.0);
-                InitiativeFlip  = LoadBoolValue("InitiativeFlip", false);
-                RunCombatViewService = LoadBoolValue("RunCombatViewService", false);
-                ShowHiddenInitValue = LoadBoolValue("ShowHiddenInitValue", false);
-                AddMonstersHidden = LoadBoolValue("AddMonstersHidden", false);
-                StatsOpenByDefault = LoadBoolValue("StatsOpenByDefault", false);
-                CheckForUpdates = LoadBoolValue("CheckForUpdates", true); 
-                MonsterDBFilter = (MonsterSetFilter)LoadIntValue("MonsterDBFilter", (int)MonsterSetFilter.Monsters);
-                MonsterTabFilter = (MonsterSetFilter)LoadIntValue("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
+
+                RegistryKey key = RegistryHelper.LoadCU();
+                
+                RollHP = key.LoadBool("RollHP", false);
+                UseCore = key.LoadBool("UseCore", true);
+                UseAPG = key.LoadBool("UseAPG", true);
+                UseChronicles = key.LoadBool("UseChronicles", true);
+                UseModules = key.LoadBool("UseModules", true); 
+                UseUltimateMagic = key.LoadBool("UseUltimateMagic", true);
+                UseUltimateCombat = key.LoadBool("UseUltimateCombat", true);
+                UseOther = key.LoadBool("UseOther", true);
+                ConfirmCharacterDelete = key.LoadBool("ConfirmCharacterDelete", false);
+                ConfirmInitiativeRoll = key.LoadBool("ConfirmInitiativeRoll", false);
+                ConfirmClose = key.LoadBool("ConfirmClose", false);
+                ShowAllDamageDice = key.LoadBool("ShowAllDamageDice", false);
+                PlayerMiniMode = key.LoadBool("PlayerMiniMode", false);
+                MonsterMiniMode = key.LoadBool("MonsterMiniMode", false);
+                MainWindowWidth = key.LoadInt("MainWindowWidth", -1);
+                MainWindowHeight = key.LoadInt("MainWindowHeight", -1);
+                MainWindowLeft = key.LoadInt("MainWindowLeft", int.MinValue);
+                MainWindowTop = key.LoadInt("MainWindowTop", int.MinValue);
+                SelectedTab = key.LoadInt("SelectedTab", 0);
+                AlternateInitRoll = key.LoadString("AlternateInitRoll", "3d6");
+                AlternateInit3d6 = key.LoadBool("AlternateInit3d6", false);
+                InitiativeShowPlayers = key.LoadBool("InitiativeShowPlayers", true);
+                InitiativeShowMonsters = key.LoadBool("InitiativeShowMonsters", true);
+                InitiativeHideMonsterNames = key.LoadBool("InitiativeHideMonsterNames", false);
+                InitiativeHidePlayerNames = key.LoadBool("InitiativeHidePlayerNames", false);
+                InitiativeShowConditions = key.LoadBool("InitiativeShowConditions", false);
+                InitiativeConditionsSize = key.LoadInt("InitiativeConditionsSize", 2);
+                InitiativeAlwaysOnTop  = key.LoadBool("InitiativeAlwaysOnTop", false);
+                InitiativeScale = key.LoadDouble("InitiativeScale", 1.0);
+                InitiativeFlip  = key.LoadBool("InitiativeFlip", false);
+                RunCombatViewService = key.LoadBool("RunCombatViewService", false);
+                ShowHiddenInitValue = key.LoadBool("ShowHiddenInitValue", false);
+                AddMonstersHidden = key.LoadBool("AddMonstersHidden", false);
+                StatsOpenByDefault = key.LoadBool("StatsOpenByDefault", false);
+                CheckForUpdates = key.LoadBool("CheckForUpdates", true); 
+                MonsterDBFilter = (MonsterSetFilter)key.LoadInt("MonsterDBFilter", (int)MonsterSetFilter.Monsters);
+                MonsterTabFilter = (MonsterSetFilter)key.LoadInt("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
 
                 optionsLoaded = true;
             }
@@ -674,65 +678,65 @@ namespace CombatManager
                 try
                 {
 
-                    RegistryKey key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\CombatManager", RegistryKeyPermissionCheck.Default);
+                    RegistryKey key = RegistryHelper.LoadCU();
 
 
                     if (section == SettingsSaveSection.All)
                     {
-                        SaveBoolValue(key, "RollHP", RollHP);
-                        SaveBoolValue(key, "ConfirmCharacterDelete", ConfirmCharacterDelete);
-                        SaveBoolValue(key, "ConfirmInitiativeRoll", ConfirmInitiativeRoll);
-                        SaveBoolValue(key, "ConfirmClose", ConfirmClose);
-                        SaveBoolValue(key, "ShowAllDamageDice", ShowAllDamageDice);
-                        SaveBoolValue(key, "AlternateInit3d6", AlternateInit3d6);
-                        SaveStringValue(key, "AlternateInitRoll", AlternateInitRoll);
-                        SaveBoolValue(key, "RunCombatViewService", RunCombatViewService);
-                        SaveBoolValue(key, "ShowHiddenInitValue", ShowHiddenInitValue);
-                        SaveBoolValue(key, "AddMonstersHidden", AddMonstersHidden);
-                        SaveBoolValue(key, "StatsOpenByDefault", StatsOpenByDefault);
-                        SaveBoolValue(key, "CheckForUpdates", CheckForUpdates);
+                        key.SaveBool("RollHP", RollHP);
+                        key.SaveBool("ConfirmCharacterDelete", ConfirmCharacterDelete);
+                        key.SaveBool("ConfirmInitiativeRoll", ConfirmInitiativeRoll);
+                        key.SaveBool("ConfirmClose", ConfirmClose);
+                        key.SaveBool("ShowAllDamageDice", ShowAllDamageDice);
+                        key.SaveBool("AlternateInit3d6", AlternateInit3d6);
+                        key.SaveString("AlternateInitRoll", AlternateInitRoll);
+                        key.SaveBool("RunCombatViewService", RunCombatViewService);
+                        key.SaveBool("ShowHiddenInitValue", ShowHiddenInitValue);
+                        key.SaveBool("AddMonstersHidden", AddMonstersHidden);
+                        key.SaveBool("StatsOpenByDefault", StatsOpenByDefault);
+                        key.SaveBool("CheckForUpdates", CheckForUpdates);
                         
                     }
 
                     if (section == SettingsSaveSection.WindowState || section == SettingsSaveSection.All)
                     {
-                        SaveBoolValue(key, "PlayerMiniMode", PlayerMiniMode);
-                        SaveBoolValue(key, "MonsterMiniMode", MonsterMiniMode);
-                        SaveIntValue(key, "MainWindowWidth", MainWindowWidth);
-                        SaveIntValue(key, "MainWindowHeight", MainWindowHeight);
-                        SaveIntValue(key, "MainWindowLeft", MainWindowLeft);
-                        SaveIntValue(key, "MainWindowTop", MainWindowTop);
-                        SaveIntValue(key, "SelectedTab", SelectedTab);
+                        key.SaveBool("PlayerMiniMode", PlayerMiniMode);
+                        key.SaveBool("MonsterMiniMode", MonsterMiniMode);
+                        key.SaveInt("MainWindowWidth", MainWindowWidth);
+                        key.SaveInt("MainWindowHeight", MainWindowHeight);
+                        key.SaveInt("MainWindowLeft", MainWindowLeft);
+                        key.SaveInt("MainWindowTop", MainWindowTop);
+                        key.SaveInt("SelectedTab", SelectedTab);
                     }
 
                     if (section == SettingsSaveSection.Sources || section == SettingsSaveSection.All)
                     {
 
-                        SaveBoolValue(key, "UseCore", UseCore);
-                        SaveBoolValue(key, "UseAPG", UseAPG);
-                        SaveBoolValue(key, "UseChronicles", UseChronicles);
-                        SaveBoolValue(key, "UseModules", UseModules);
-                        SaveBoolValue(key, "UseUltimateMagic", UseUltimateMagic);
-                        SaveBoolValue(key, "UseUltimateCombat", UseUltimateCombat);
-                        SaveBoolValue(key, "UseOther", UseOther);
+                        key.SaveBool("UseCore", UseCore);
+                        key.SaveBool("UseAPG", UseAPG);
+                        key.SaveBool("UseChronicles", UseChronicles);
+                        key.SaveBool("UseModules", UseModules);
+                        key.SaveBool("UseUltimateMagic", UseUltimateMagic);
+                        key.SaveBool("UseUltimateCombat", UseUltimateCombat);
+                        key.SaveBool("UseOther", UseOther);
                     }
 
                     if (section == SettingsSaveSection.All || section == SettingsSaveSection.Initiative)
                     {
-                        SaveBoolValue(key, "InitiativeShowPlayers", InitiativeShowPlayers);
-                        SaveBoolValue(key, "InitiativeShowMonsters", InitiativeShowMonsters);
-                        SaveBoolValue(key, "InitiativeHideMonsterNames", InitiativeHideMonsterNames);
-                        SaveBoolValue(key, "InitiativeHidePlayerNames", InitiativeHidePlayerNames);
-                        SaveBoolValue(key, "InitiativeShowConditions", InitiativeShowConditions);
-                        SaveIntValue(key, "InitiativeConditionsSize", InitiativeConditionsSize);
-                        SaveBoolValue(key, "InitiativeAlwaysOnTop", InitiativeAlwaysOnTop);
-                        SaveDoubleValue(key, "InitiativeScale", InitiativeScale);
-                        SaveBoolValue(key, "InitiativeFlip", InitiativeFlip);
+                        key.SaveBool("InitiativeShowPlayers", InitiativeShowPlayers);
+                        key.SaveBool("InitiativeShowMonsters", InitiativeShowMonsters);
+                        key.SaveBool("InitiativeHideMonsterNames", InitiativeHideMonsterNames);
+                        key.SaveBool("InitiativeHidePlayerNames", InitiativeHidePlayerNames);
+                        key.SaveBool("InitiativeShowConditions", InitiativeShowConditions);
+                        key.SaveInt("InitiativeConditionsSize", InitiativeConditionsSize);
+                        key.SaveBool("InitiativeAlwaysOnTop", InitiativeAlwaysOnTop);
+                        key.SaveDouble("InitiativeScale", InitiativeScale);
+                        key.SaveBool("InitiativeFlip", InitiativeFlip);
                     }
                     if (section == SettingsSaveSection.All || section == SettingsSaveSection.Filters)
                     {
-                        SaveIntValue(key, "MonsterDBFilter", (int)MonsterDBFilter);
-                        SaveIntValue(key, "MonsterTabFilter", (int)MonsterTabFilter);
+                        key.SaveInt("MonsterDBFilter", (int)MonsterDBFilter);
+                        key.SaveInt("MonsterTabFilter", (int)MonsterTabFilter);
                     }
 
 
@@ -749,140 +753,8 @@ namespace CombatManager
             }
         }
 
-        public bool LoadBoolValue(string name, bool defaultValue)
-        {
-
-            bool value = defaultValue;
-
-            try
-            {
-                RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\\CombatManager");
-                if (key != null)
-                {
-                    RegistryValueKind ki = key.GetValueKind(name);
-
-                    if (ki == RegistryValueKind.DWord)
-                    {
-                        int val = (int)key.GetValue(name);
-
-                        value = (val != 0);
-                    }
-                }
-            }
-            catch (IOException ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-            }
-
-            return value;
 
 
-        }
-
-        public double LoadDoubleValue(String name, double defaultValue)
-        {
-            double value = defaultValue;
-            try
-            {
-                RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\\CombatManager");
-                if (key != null)
-                {
-                    RegistryValueKind ki = key.GetValueKind(name);
-
-                    if (ki == RegistryValueKind.String)
-                    {
-                        String val = (String)key.GetValue(name);
-
-                        if (val != null)
-                        {
-                            double.TryParse(val, out value);
-                        }
-                    }
-                }
-            }
-            catch (IOException ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-            }
-
-            return value;
-    
-        }
-
-        public int LoadIntValue(String name, int defaultValue)
-        {
-            int value = defaultValue;
-            try
-            {
-                RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\\CombatManager");
-                if (key != null)
-                {
-                    RegistryValueKind ki = key.GetValueKind(name);
-
-                    if (ki == RegistryValueKind.DWord)
-                    {
-                        value = (int)key.GetValue(name);
-
-                    }
-                }
-            }
-            catch (IOException ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-            }
-
-            return value;
-
-        }
-        public string LoadStringValue(String name, String defaultValue)
-        {
-            string value = defaultValue;
-            try
-            {
-                RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software\\CombatManager");
-                if (key != null)
-                {
-                    RegistryValueKind ki = key.GetValueKind(name);
-
-                    if (ki == RegistryValueKind.DWord)
-                    {
-                        value = (String)key.GetValue(name);
-
-                    }
-                }
-            }
-            catch (IOException ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-            }
-
-            return value;
-
-        }
-
-        public void SaveBoolValue(RegistryKey key, String name, bool value)
-        {
-
-            key.SetValue(name, value ? 1 : 0, RegistryValueKind.DWord);
-        }
-
-        public void SaveDoubleValue(RegistryKey key, String name, double value)
-        {
-            key.SetValue(name, value.ToString(), RegistryValueKind.String);
-        }
-
-        public void SaveIntValue(RegistryKey key, String name, int value)
-        {
-
-            key.SetValue(name, value, RegistryValueKind.DWord);
-            
-        }
-        public void SaveStringValue(RegistryKey key, String name, string value)
-        {
-
-            key.SetValue(name, value, RegistryValueKind.String);
-
-        }
 
         public static bool Loaded
         {

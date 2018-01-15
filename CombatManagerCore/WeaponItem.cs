@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -359,7 +360,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public string PlusText
         {
             get
@@ -415,7 +416,7 @@ namespace CombatManager
         }
             
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public SortedDictionary<string, string> SpecialAbilitySet
         {
             get
@@ -453,7 +454,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public string Name
         {
             get
@@ -464,7 +465,7 @@ namespace CombatManager
         }
 
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public string FullName
         {
             get

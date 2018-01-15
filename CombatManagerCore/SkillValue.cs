@@ -29,6 +29,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using System.Globalization;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -132,7 +133,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public string Text
         {
             get
@@ -148,7 +149,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public string FullName
         {
             get

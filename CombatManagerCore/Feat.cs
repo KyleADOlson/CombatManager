@@ -32,6 +32,7 @@ using System.Xml;
 using System.Globalization;
 using System.IO;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -440,7 +441,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool IsCustom
         {
             get
@@ -449,7 +450,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public ICollection<String> Types
         {
             get

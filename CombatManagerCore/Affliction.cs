@@ -27,6 +27,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -270,7 +271,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public string Text
         {
             get

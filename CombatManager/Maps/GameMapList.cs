@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -127,7 +128,7 @@ namespace CombatManager.Maps
                 }
             }
 
-            [XmlIgnore]
+            [XmlIgnore, JsonIgnore]
             public GameMap Map
             {
                 get

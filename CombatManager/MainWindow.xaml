@@ -348,6 +348,16 @@
             <MenuItem Header="Delete From All Characters" Click="ConditionMenuItem_DeleteFromAll"/>
         </ContextMenu>
         <ContextMenu x:Key="MainMenu">
+            <MenuItem Header="Login" x:Name="LoginMenuItem" Click="LoginMenuItem_Click">
+                <MenuItem.Icon>
+                    <Image Source="/CombatManager;component/Images/globe-16.png" Width="16" Height="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Upload Combat State" x:Name="SaveCombatStateToCloudMenuItem" Click="SaveCombatStateToCloudMenuItem_Click">
+            </MenuItem>
+            <MenuItem Header="Download Combat State" x:Name="LoadCombatStateFromCloudMenuItem" Click="LoadCombatStateFromCloudMenuItem_Click" >
+            </MenuItem>
+            <Separator/>
             <MenuItem Header="Load Combat State" x:Name="LoadCombatStateMenuItem" Click="LoadCombatStateMenuItem_Click">
                 <MenuItem.Icon>
                     <Image Source="/CombatManager;component/Images/openHS.png" Width="16" Height="16"/>
@@ -2557,7 +2567,7 @@
         <Rectangle RadiusX="7" RadiusY="7" StrokeThickness="3" x:Name="MainRectangle1" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" MouseLeftButtonUp="MainRectangle_MouseLeftButtonUp" MouseMove="MainRectangle_MouseMove" Stroke="Black" Margin="0" Grid.RowSpan="3" />
         <Rectangle Fill="{DynamicResource MediumBackgroundBrush}" RadiusX="6" RadiusY="6" StrokeThickness="3" x:Name="MainRectangle" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" MouseLeftButtonUp="MainRectangle_MouseLeftButtonUp" MouseMove="MainRectangle_MouseMove" Stroke="White" Margin="1" Grid.RowSpan="3" />
         <Button Height="34.667" HorizontalAlignment="Stretch" Margin="8,4,9,0" x:Name="TitleBarButton" VerticalAlignment="Top" Focusable="False" IsTabStop="False" Style="{DynamicResource TitleBarButtonStyle}" MouseDoubleClick="TitleBarButton_MouseDoubleClick">
-            <Rectangle Fill="{DynamicResource MediumBackgroundBrush}" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" />
+            <Button x:Name="LoginButton"  Style="{DynamicResource ButtonMainStyle}"  Content="{Binding LoggedIn, ConverterParameter=Logout|Login, Converter={StaticResource BoolStringConverter}, FallbackValue=Login}" Margin="0,12,87,0" VerticalAlignment="Top" Click="LoginButton_Click" HorizontalAlignment="Right" Width="53"/>
         </Button>
         <Button x:Name="TitleBarMenuButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment"  Margin="8,0,0,1" Style="{DynamicResource ButtonMainStyle}" Height="29.667" Click="TitleBarMenuButton_Click">
 
@@ -3015,6 +3025,12 @@
                                         <AvalonDock:DockableContent x:Name="SelectedMonsterContent" Title="Selected Monster" IsCloseable="False">
 
                                             <FlowDocumentScrollViewer Background="White" x:Name="SmallMonsterFlowDocument" VerticalScrollBarVisibility="Auto" FontSize="12" Grid.Row="3" Margin="0,0.184,0,0" Grid.ColumnSpan="2" Foreground="Black">
+                                                <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" FontSize="12" TextAlignment="Left" />
+                                            </FlowDocumentScrollViewer>
+                                        </AvalonDock:DockableContent>
+                                        <AvalonDock:DockableContent x:Name="ExtraTab" Title="ExtraTab" IsCloseable="False">
+
+                                            <FlowDocumentScrollViewer Background="White" x:Name="ExtraTabFlowDocument" VerticalScrollBarVisibility="Auto" FontSize="12" Grid.Row="3" Margin="0,0.184,0,0" Grid.ColumnSpan="2" Foreground="Black">
                                                 <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" FontSize="12" TextAlignment="Left" />
                                             </FlowDocumentScrollViewer>
                                         </AvalonDock:DockableContent>

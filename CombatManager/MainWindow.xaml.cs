@@ -54,6 +54,9 @@ using System.Net;
 using System.Xml.Linq;
 using System.Reflection;
 using CombatManager.Maps;
+using CombatManager.Login;
+using CombatManager.Service;
+using System.Threading.Tasks;
 
 namespace CombatManager
 {
@@ -97,6 +100,9 @@ namespace CombatManager
 
         //combat round        
         CombatState combatState;
+
+        //server login state
+        LoginState loginState;
 
         bool combatLayoutLoaded;
         bool restoreDefaultLayout;
@@ -161,12 +167,11 @@ namespace CombatManager
 
         public MainWindow()
         {
-
-
-
 #if !DEBUG
             App.Current.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(Current_DispatcherUnhandledException);
 #endif
+
+
             SplashScreen splash = new SplashScreen();
             splash.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             splash.Show();
@@ -177,10 +182,17 @@ namespace CombatManager
             InitializeComponent();
 
 
+            loginState = new LoginState();
+            loginState.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName == "Token")
+                {
+                    CombatManagerService.Service.Token = loginState.Token;
+                }
+            };
+            var lsTask = loginState.LoadAsync();
 
             RestoreWindowState();
-
-
 
             this.SourceInitialized += new EventHandler(win_SourceInitialized);
             MarkTime("Preload", ref t, ref last);
@@ -392,7 +404,7 @@ namespace CombatManager
 
             Loaded += new RoutedEventHandler(MainWindow_Loaded);
 
-
+            LoginButton.DataContext = loginState;
 
             MarkTime("Setup UI", ref t, ref last);
 
@@ -784,16 +796,7 @@ namespace CombatManager
 
                 CombatState cs = XmlLoader<CombatState>.Load(file);
 
-                combatState.Copy(cs);
-
-                combatView.Refresh();
-                //currentPlayerView.Refresh();
-                monsterView.Refresh();
-                playerView.Refresh();
-
-
-                combatState.FixInitiativeLinks();
-                combatState.SortCombatList(false, false);
+                SetCombatState(cs);
 
 
             }
@@ -801,6 +804,20 @@ namespace CombatManager
             {
                 System.Diagnostics.Debug.WriteLine("Failure saving combat state: " + ex.ToString());
             }
+        }
+
+        void SetCombatState(CombatState cs)
+        {
+            combatState.Copy(cs);
+
+            combatView.Refresh();
+            //currentPlayerView.Refresh();
+            monsterView.Refresh();
+            playerView.Refresh();
+
+
+            combatState.FixInitiativeLinks();
+            combatState.SortCombatList(false, false);
         }
 
         void SaveCombatState()
@@ -5749,6 +5766,9 @@ namespace CombatManager
         private void TitleBarMenuButton_Click(object sender, RoutedEventArgs e)
         {
             ContextMenu menu = (ContextMenu)Resources["MainMenu"];
+            MenuItem item = (MenuItem)LogicalTreeHelper.FindLogicalNode(menu, "LoginMenuItem");
+            item.Header = loginState.LoggedIn ? "Logout" : "Login";
+
 
             menu.PlacementTarget = (Button)sender;
             menu.Placement = PlacementMode.Bottom;
@@ -5919,6 +5939,16 @@ namespace CombatManager
 
 
                 UpdateCurrentMonsterFlowDocument();
+
+                String foo = Newtonsoft.Json.JsonConvert.SerializeObject(sender);
+                if (foo != null)
+                {
+                    ExtraTabFlowDocument.Document.Blocks.Clear();
+                    Paragraph p = new Paragraph();
+                    p.Inlines.Add(new Run(foo));
+
+                    ExtraTabFlowDocument.Document.Blocks.AddRange(new List<Block>() { p });
+                }
             }
         }
 
@@ -8262,6 +8292,68 @@ namespace CombatManager
             System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", filePath));
         }
 
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginClick();
+        }
+
+        void LoginClick()
+        {
+            if (loginState.LoggedIn)
+            {
+                Logout();
+            }
+            else
+            {
+                Login();
+            }
+        }
+
+        void Login()
+        {
+            LoginDialog dialog = new LoginDialog();
+            dialog.Owner = this;
+            dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            dialog.Callback = (res) =>
+            {
+                loginState.UpdateLogin(res.Token, res.Service, res.Id);
+                dialog.Close();
+            };
+            dialog.ShowDialog();
+        }
+
+        void Logout()
+        {
+            loginState.UpdateLogin(null, null, null);
+        }
+
+        private void LoginMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            LoginClick();
+        }
+
+        private async void SaveCombatStateToCloudMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (loginState.LoggedIn)
+            {
+                await CombatManagerService.Service.SaveCombatState(combatState, "default", "0");
+            }
+                    
+        }
+
+        private async void LoadCombatStateFromCloudMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (loginState.LoggedIn)
+            {
+               CombatStateServiceResponse resp = await CombatManagerService.Service.LoadCombatState("0");
+
+
+                if (resp.data.combat_state != null)
+                {
+                    SetCombatState(resp.data.combat_state);
+                }
+            }
+        }
     }
 
 

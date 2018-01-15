@@ -25,7 +25,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Xml.Serialization;
-
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -78,7 +78,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public DateTime LastStart
         {
             get { return _LastStart; }

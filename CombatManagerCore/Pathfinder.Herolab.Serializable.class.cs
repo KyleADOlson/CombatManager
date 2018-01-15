@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -514,7 +515,7 @@ namespace Herolab {
         public string eyes { get; set; }
         [XmlAttribute]
         public Gender gender { get; set; }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool genderSpecified { get; set; }
         [XmlAttribute]
         public string hair { get; set; }
@@ -894,7 +895,7 @@ namespace Herolab {
         public string attrname { get; set; }
         [XmlAttribute]
         public SkillTools tools { get; set; }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool toolsSpecified { get; set; }
         [XmlAttribute, DefaultValue(skillArmorcheck.no)]
         public skillArmorcheck armorcheck { get; set; }

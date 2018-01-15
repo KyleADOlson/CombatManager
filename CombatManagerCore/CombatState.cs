@@ -29,6 +29,7 @@ using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -247,7 +248,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public ObservableCollection<Character> CombatList
         {
             get 
@@ -289,7 +290,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public List<SimpleCombatListItem> SimpleCombatList
         {
             get
@@ -359,7 +360,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public Character CurrentCharacter
         {
             get { return _CurrentCharacter; }
@@ -384,7 +385,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public InitiativeCount CurrentInitiativeCount
         {
             get

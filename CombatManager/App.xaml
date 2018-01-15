@@ -43,6 +43,7 @@
         <local:ItemExistsConverter x:Key="itemExistsConverter"/>
         <local:GreaterThanConverter x:Key="GreaterThanConverter"/>
         <local:BoolInverter x:Key="boolInverter"/>
+        <local:BoolStringConverter x:Key="BoolStringConverter"/>
         <local:NotNullVisibilityConverter x:Key="notNullVisibilityConverter"/>
         <local:NotNullVisibilityCollapsedConverter x:Key="NotNullVisibilityCollapsedConverter"/>
         <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>

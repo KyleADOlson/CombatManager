@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,7 +57,7 @@ namespace CombatManager
         }
 		
 		
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int IntType
 		{
 			
@@ -64,7 +65,7 @@ namespace CombatManager
             set { _Type = (CombatHotKeyType)value; }
 		}
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool AltKey
         {
             get { return GetModifier(ModifierKeys.Alt); }
@@ -73,7 +74,7 @@ namespace CombatManager
                 SetModifier(ModifierKeys.Alt, value);
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool ShiftKey
         {
             get { return GetModifier(ModifierKeys.Shift); }
@@ -82,7 +83,7 @@ namespace CombatManager
                 SetModifier(ModifierKeys.Shift, value);
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool CtrlKey
         {
             get { return GetModifier(ModifierKeys.Control); }

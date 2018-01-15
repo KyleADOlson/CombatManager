@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -87,7 +88,7 @@ namespace CombatManager
             }
         }
 
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public String Text
         {
             get

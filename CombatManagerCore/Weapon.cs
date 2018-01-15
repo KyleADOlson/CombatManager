@@ -27,6 +27,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace CombatManager
 {
@@ -175,7 +176,7 @@ namespace CombatManager
                 }
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public String OriginalName
         {
             get { return _OriginalName; }
@@ -225,7 +226,7 @@ namespace CombatManager
             }
  
         }		
-		[XmlIgnore]
+		[XmlIgnore, JsonIgnore]
 		public DieRoll DamageDie
 		{
 			get
@@ -234,7 +235,7 @@ namespace CombatManager
 			}
 			
 		}
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public string DamageText
         {
             get
@@ -558,7 +559,7 @@ namespace CombatManager
 
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int CritRange
         {
             get
@@ -567,7 +568,7 @@ namespace CombatManager
 
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int CritMultiplier
         {
             get
@@ -575,7 +576,7 @@ namespace CombatManager
                 return _CritMultiplier;
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public int HandsUsed
         {
             get
@@ -591,7 +592,7 @@ namespace CombatManager
 
             }
         }			
-		[XmlIgnore]
+		[XmlIgnore, JsonIgnore]
         public bool TwoHanded
         {
 			
@@ -600,7 +601,7 @@ namespace CombatManager
 				return HandsUsed == 2;
 			}
 		}
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool Natural
         {
             get
@@ -608,7 +609,7 @@ namespace CombatManager
                 return Class == "Natural";
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool Ranged
         {
             get
@@ -616,7 +617,7 @@ namespace CombatManager
                 return Hands == "Ranged" || Hands == "One-Handed Firearm" || Hands == "Two-Handed Firearm";
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool Firearm
         {
             get
@@ -624,7 +625,7 @@ namespace CombatManager
                 return Hands == "One-Handed Firearm" || Hands == "Two-Handed Firearm";
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool Double
         {
             get
@@ -632,7 +633,7 @@ namespace CombatManager
                 return Hands == "Double";
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool Light
         {
             get
@@ -641,7 +642,7 @@ namespace CombatManager
                     ;
             }
         }
-        [XmlIgnore]
+        [XmlIgnore, JsonIgnore]
         public bool WeaponFinesse
         {
             get
