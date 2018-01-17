@@ -105,6 +105,10 @@ CombatManager.VC.opendb
 .vs/
 UpgradeLog.htm
 
+#ZippedResouorces
+ZipDll/Resources/zippedResources.zip
+
+
 # NuGet Packages
 *.nupkg
 # The packages folder can be ignored because of Package Restore
