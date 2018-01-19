@@ -10,6 +10,7 @@ using Android.Views;
 using Android.Widget;
 using System.IO;
 using System.Security.AccessControl;
+using Android.Support.V4.Content;
 
 namespace CombatManagerDroid
 {
@@ -259,14 +260,14 @@ namespace CombatManagerDroid
                 {
 
                     t.Text = ((FileInfo)_Items[position]).Name;                
-                    t.SetCompoundDrawablesWithIntrinsicBounds(_Context.Resources.GetDrawable(Resource.Drawable.file16), null, null, null);
+                    t.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_Context, Resource.Drawable.file16), null, null, null);
 
                 }
                 if (_Items[position] is DirectoryInfo)
                 {
 
                     t.Text = ((DirectoryInfo)_Items[position]).Name;                
-                    t.SetCompoundDrawablesWithIntrinsicBounds(_Context.Resources.GetDrawable(Resource.Drawable.folder16), null, null, null);
+                    t.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_Context, Resource.Drawable.folder16), null, null, null);
 
                 }
                

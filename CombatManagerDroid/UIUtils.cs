@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System.Reflection;
+using Android.Support.V4.Content;
 
 namespace CombatManagerDroid
 {
@@ -150,7 +151,12 @@ namespace CombatManagerDroid
         public static void SetLeftDrawableResource(this Button b,  int resource)
         {
 
-            b.SetCompoundDrawablesWithIntrinsicBounds(b.Context.Resources.GetDrawable(resource), null, null, null);
+            b.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(b.Context, resource), null, null, null);
+        }
+
+        public static void IsTablet(this Context context)
+        {
+
         }
 
     }

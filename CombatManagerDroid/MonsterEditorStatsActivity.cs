@@ -8,6 +8,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Content;
 using Android.Views;
 using Android.Widget;
 
@@ -84,14 +85,14 @@ namespace CombatManagerDroid
                     EditText et = new EditText(this);
                     et.Text = v.Subtype;
                     et.LayoutParameters = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.FillParent,
+                        ViewGroup.LayoutParams.MatchParent,
                         ViewGroup.LayoutParams.MatchParent, 1f);
                     row.AddView(et);
                 }
                 else
                 {
                     t.LayoutParameters = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.FillParent,
+                        ViewGroup.LayoutParams.MatchParent,
                         ViewGroup.LayoutParams.MatchParent, 1f);
 
                 }
@@ -112,7 +113,7 @@ namespace CombatManagerDroid
 
 
                 ImageButton b = new ImageButton(this);
-                b.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.redx));
+                b.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.redx));
                
                 row.AddView(b);
                 b.Tag = v.FullName;

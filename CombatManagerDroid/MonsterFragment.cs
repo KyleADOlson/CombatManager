@@ -8,6 +8,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Content;
 using Android.Views;
 using Android.Widget;
 
@@ -127,7 +128,7 @@ namespace CombatManagerDroid
 
             _AdvancerButton = new Button(_v.Context);
             _AdvancerButton.Text = "Monster Advancer";
-            _AdvancerButton.SetCompoundDrawablesWithIntrinsicBounds(Resources.GetDrawable(Resource.Drawable.monster16), null, null, null);
+            _AdvancerButton.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.monster16), null, null, null);
             barLayout.AddView(_AdvancerButton);
 
             _AdvancerButton.Click += (object sender, EventArgs e) => 
@@ -139,7 +140,7 @@ namespace CombatManagerDroid
 
             _AddButton = new Button(_v.Context);
             _AddButton.Text = "Add to Combat";
-            _AddButton.SetCompoundDrawablesWithIntrinsicBounds(Resources.GetDrawable(Resource.Drawable.sword16), null, null, null);
+            _AddButton.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.sword16), null, null, null);
             barLayout.AddView(_AddButton);
             _AddButton.Click += (object sender, EventArgs e) => 
             {

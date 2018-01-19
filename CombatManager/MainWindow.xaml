@@ -251,7 +251,7 @@
                 <MenuItem x:Name="RollCMBMenuItem" Header="Combat Maneuver" Loaded="RollCombatManeuverMenuItem_Loaded" DataContextChanged="RollManeuverMenuItem_DataContextChanged"></MenuItem>
                 <MenuItem x:Name="RollAbilityMenuItem" Header="Ability Check" Loaded="RollAbilityCheckMenuItem_Loaded"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Initiative">
+            <MenuItem Header="Initiative &amp; Groups">
                 <MenuItem.Icon>
                     <Image Source="/CombatManager;component/Images/sort-16.png" Width="16" Height="16"/>
                 </MenuItem.Icon>
@@ -260,7 +260,7 @@
                         <Image Source="/CombatManager;component/Images/d20-32.ico" Width="16" Height="16"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="InitiativeMenuItem" Header="Link Initiative" 
+                <MenuItem x:Name="InitiativeMenuItem" Header="Link Initiative (Group With)" 
             		ItemContainerStyle="{StaticResource InitiativeMenuItemStyle}" 
             		IsVisibleChanged="InitiativeMenuItem_IsVisibleChanged" DataContextChanged="InitiativeMenuItem_DataContextChanged"
                       >
@@ -273,6 +273,13 @@
                         <Image Source="/CombatManager;component/Images/link-16.png" Width="16" Height="16"/>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem x:Name="GroupAllSelectedMenuItem" Header="Group All Selected Characters" Click="MenuItem_GroupAllSelected"
+                      >
+                    <MenuItem.Icon>
+                        <Image Source="/CombatManager;component/Images/link-16.png" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
 
             </MenuItem>
             <MenuItem Header="Clone" Click="MenuItem_Clone">
@@ -3835,10 +3842,10 @@
                             <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="CreateMapButton" Click="CreateMapsButton_Click" Margin="10,10,0,0" Height="24" Width="154">
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="CreateMapButton" Click="CreateMapsButton_Click" Margin="10,10,0,0" Height="24" Width="196">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Images/openHS@2x.png" Width="16"/>
-                            <TextBlock Text="Create Map From File" Margin="3,0,0,0"/>
+                            <TextBlock Text="Create Map From Image File" Margin="3,0,0,0"/>
                         </StackPanel>
                     </Button>
 

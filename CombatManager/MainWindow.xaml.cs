@@ -603,8 +603,23 @@ namespace CombatManager
                 e.Handled = false;
                 Exception ex = e.Exception;
 
+
+                WriteExceptionFile("", ex);
+
                 
-                string file = System.IO.Path.Combine(CMFileUtilities.AppDataDir, "error" + DateTime.Now.Ticks + ".txt");
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+
+        void WriteExceptionFile(String name, Exception ex)
+        {
+            try
+            {
+                string file = System.IO.Path.Combine(CMFileUtilities.AppDataDir, "error" + name + DateTime.Now.Ticks + ".txt");
 
 
 
@@ -626,17 +641,12 @@ namespace CombatManager
 
                     }
                 }
-
-
-                
             }
             catch (Exception)
             {
 
             }
-
         }
-
         void RestoreWindowState()
         {
             PartyMiniModeButton.IsChecked = UserSettings.Settings.PlayerMiniMode;
@@ -5110,6 +5120,35 @@ namespace CombatManager
                 }
             }
         }
+        
+        private void MenuItem_GroupAllSelected(object sender, RoutedEventArgs e)
+        {
+
+            using (var undoGroup = undo.CreateUndoGroup())
+            {
+                List<Character> list = GetViewSelectedCharacters(sender);
+                if (list.Count > 0)
+                {
+
+
+                    Character start = list[0];
+
+                    List<Character> followers;
+                    
+                    combatState.UnlinkLeader(start);
+                    if (list.Count > 1)
+                    {
+                        followers = list.GetRange(1, list.Count - 1);
+                        foreach (Character c in followers)
+                        {
+                            combatState.LinkInitiative(c, start);
+                        }
+                    }
+
+                }
+
+            }
+        }
 
         private void playerListBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -8064,6 +8103,7 @@ namespace CombatManager
         private void CreateMapsButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image Files(*.bmp;*.gif;*.jpg;*.png)|*.bmp;*.gif;*.jpg;*.png";
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == true)
             {
@@ -8073,6 +8113,7 @@ namespace CombatManager
         }
         private void LoadMap(String filename)
         {
+            Exception e = null;
             bool succeeded = false;
             if (File.Exists(filename))
             {
@@ -8083,17 +8124,18 @@ namespace CombatManager
 
                     GameMap gameMap = gameMapList.CreateMap(filename);
 
-
                     ShowMap(gameMap);
                     succeeded = true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    e = ex;
+                    WriteExceptionFile("map", ex);
                 }
             }
             if (!succeeded)
             {
-                MessageBox.Show("Unable to create map", "Map Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unable to create map" + ((e==null)?"":("\r\n"+e.ToString())), "Map Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             
@@ -8228,7 +8270,7 @@ namespace CombatManager
         {
 
             GameMapList.MapStub stub = (GameMapList.MapStub)((Button)sender).DataContext;
-            if (MessageBoxResult.Yes == MessageBox.Show("Are you sure you want to delete " + stub.Name, "Delete Map", MessageBoxButton.YesNo, MessageBoxImage.Question))
+            if (MessageBoxResult.Yes == MessageBox.Show("Are you sure you want to delete " + stub.Name + "?", "Delete Map", MessageBoxButton.YesNo, MessageBoxImage.Question))
             {
 
                 if (mapDisplayWindow != null && mapDisplayWindow.Map == stub.Map)

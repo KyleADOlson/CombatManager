@@ -6,8 +6,10 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Content;
 using Android.Views;
 using Android.Widget;
 
@@ -220,7 +222,8 @@ namespace CombatManagerDroid
                 }
                 else
                 {
-                    t.SetTextColor(t.Context.Resources.GetColor(Android.Resource.Color.PrimaryTextDark));
+                    Color c = new Color(ContextCompat.GetColor(t.Context, Android.Resource.Color.PrimaryTextDark));
+                    t.SetTextColor(c);
                     t.SetBackgroundColor(new Android.Graphics.Color(0, 0, 0));
                 }
             }

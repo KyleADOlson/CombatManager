@@ -24,7 +24,8 @@ namespace CombatManager.Maps
         None,
         SetOrigin,
         SetFog,
-        SetMarker
+        SetMarker,
+        SetCorner
     }
 
     /// <summary>
@@ -75,11 +76,8 @@ namespace CombatManager.Maps
             {
                 HideGMControls();
             }
-
             
         }
-
-
 
 
         private void HideGMControls()
@@ -214,6 +212,12 @@ namespace CombatManager.Maps
             SetMode(GameMapActionMode.SetOrigin, true);
         }
 
+
+        private void SetCornerButton_Click(object sender, RoutedEventArgs e)
+        {
+            SetMode(GameMapActionMode.SetCorner, true);
+        }
+
         void SetMode(GameMapActionMode newMode, bool flip)
         {
             if (newMode == mode)
@@ -227,7 +231,8 @@ namespace CombatManager.Maps
             {
                 mode = newMode;
             }
-            FogOfWar.DrawAnchor = mode == GameMapActionMode.SetOrigin;
+            FogOfWar.DrawAnchor = (mode == GameMapActionMode.SetOrigin ||
+                        mode == GameMapActionMode.SetCorner);
             UpdateActionButtons();
             SaveActionButtonState();
         }
@@ -273,6 +278,13 @@ namespace CombatManager.Maps
                         p = p.Divide(UseScale);
                         map.CellOrigin = p;
                         //UpdateGridBrush();
+                        break;
+                    case GameMapActionMode.SetCorner:
+                        p = p.Divide(UseScale);
+
+                        Size s = map.CellOrigin.Difference(p);
+                        map.CellSize = s;
+
                         break;
                     case GameMapActionMode.SetFog:
 
@@ -372,58 +384,66 @@ namespace CombatManager.Maps
 
                 GameMap.MapCell cell = PointToCell(rightClickPosition);
 
-                rightClickCell = cell;
+                ShowContextMenu(cell);
+            }
+        }
 
-                if (CellOnBoard(cell))
+        void ShowContextMenu(GameMap.MapCell cell)
+        {
+            ContextMenu menu = (ContextMenu)Resources["MapContextMenu"];
+            if (menu.IsOpen)
+            {
+                return;
+            }
+
+            rightClickCell = cell;
+
+            menu.DataContext = cell;
+
+            bool hasMarkers = map.CellHasMarkers(cell);
+                
+            menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
+            menu.IsOpen = true;
+
+            MenuItem mi;
+
+            if (CellOnBoard(cell))
+            {
+                    
+                mi = (MenuItem)menu.FindLogicalNode("ToggleFogItem");
+                mi.DataContext = cell;
+                mi.Visibility = !playerMode ? Visibility.Visible : Visibility.Collapsed;
+
+                mi = (MenuItem)menu.FindLogicalNode("DeleteMarkerItem");
+                mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
+                mi.DataContext = cell;
+
+
+                mi = (MenuItem)menu.FindLogicalNode("NameBoxItem");
+                mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
+
+                if (hasMarkers)
                 {
-                    bool hasMarkers = map.CellHasMarkers(cell);
-
-
-                    ContextMenu menu = (ContextMenu)Resources["MapContextMenu"];
-                    menu.DataContext = cell;
-
-                    menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
-                    menu.IsOpen = true;
-
-                    MenuItem mi;
-
-                    mi = (MenuItem)menu.FindLogicalNode("ToggleFogItem");
-                    mi.DataContext = cell;
-                    mi.Visibility = !playerMode ? Visibility.Visible : Visibility.Collapsed;
-
-                    mi = (MenuItem)menu.FindLogicalNode("DeleteMarkerItem");
-                    mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
-                    mi.DataContext = cell;
-
-
-                    mi = (MenuItem)menu.FindLogicalNode("NameBoxItem");
-                    mi.Visibility = (hasMarkers && !playerMode) ? Visibility.Visible : Visibility.Collapsed;
-
-                    if (hasMarkers)
-                    {
-                        mi.DataContext = map.GetMarkers(cell)[0];
-                    }
-
-
-                    mi = (MenuItem)menu.FindLogicalNode("ShowControlsItem");
-                    mi.Visibility = controlsHidden ? Visibility.Visible : Visibility.Collapsed;
-
-                    mi = (MenuItem)menu.FindLogicalNode("HideControlsItem");
-                    mi.Visibility = controlsHidden ? Visibility.Collapsed : Visibility.Visible;
-
-                    mi = (MenuItem)menu.FindLogicalNode("ExitFullScreenItem");
-                    mi.Visibility = fullscreen ? Visibility.Visible : Visibility.Collapsed;
-
-                    mi = (MenuItem)menu.FindLogicalNode("EnterFullScreenItem");
-                    mi.Visibility = fullscreen ? Visibility.Collapsed : Visibility.Visible;
-
-
-
-
-
-
+                    mi.DataContext = map.GetMarkers(cell)[0];
                 }
             }
+            else
+            {
+                menu.SetElementsVisibility(new string[] { "ToggleFogItem", "DeleteMarkerItem", "NameBoxItem" }, Visibility.Collapsed);
+            }
+
+
+            mi = (MenuItem)menu.FindLogicalNode("ShowControlsItem");
+            mi.Visibility = controlsHidden ? Visibility.Visible : Visibility.Collapsed;
+
+            mi = (MenuItem)menu.FindLogicalNode("HideControlsItem");
+            mi.Visibility = controlsHidden ? Visibility.Collapsed : Visibility.Visible;
+
+            mi = (MenuItem)menu.FindLogicalNode("ExitFullScreenItem");
+            mi.Visibility = fullscreen ? Visibility.Visible : Visibility.Collapsed;
+
+            mi = (MenuItem)menu.FindLogicalNode("EnterFullScreenItem");
+            mi.Visibility = fullscreen ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void MapGridCanvas_MouseMove(object sender, MouseEventArgs e)
@@ -616,6 +636,7 @@ namespace CombatManager.Maps
             SetActionButtonState(FogOptionsButton, (mode == GameMapActionMode.SetFog));
             SetActionButtonState(SetMarkerButton, (mode == GameMapActionMode.SetMarker));
             SetActionButtonState(MarkerOptionsButton, (mode == GameMapActionMode.SetMarker));
+            SetActionButtonState(SetCornerButton, (mode == GameMapActionMode.SetCorner));
 
             BrushSizeComboBox.SelectedIndex = brushSize - 1;
             UpdateMarkerButtonImage();
@@ -896,6 +917,9 @@ namespace CombatManager.Maps
 
         private void Color_Click(object sender, RoutedEventArgs e)
         {
+            eraseMode = false;
+
+
             markerColor = ((SolidColorBrush)((MenuItem)sender).Background).Color;
             UpdateMarkerButtonImage();
 
@@ -934,15 +958,17 @@ namespace CombatManager.Maps
             }       
         }
 
+        private bool scrollOnSize;
+        private double scrollOnSizeX;
+        private double scrollOnSizeY;
+
         private void MapScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             var scrollControl = sender as ScrollViewer;
             if (!e.Handled && sender != null)
             {
-                Point point = e.GetPosition(MapGridCanvas);
-                
-
-               
+                double steps = ((double)e.Delta) / 120.0;
+             
                 e.Handled = true;
                 var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
                 eventArg.RoutedEvent = UIElement.MouseWheelEvent;
@@ -952,33 +978,25 @@ namespace CombatManager.Maps
                 int delta = e.Delta;
                 if (delta != 0)
                 {
-                    double steps = ((double)e.Delta) / 120.0;
                     double diff = Math.Pow(1.1, steps);
-                   
-                    double mapWidthStart = MapScrollViewer.ScrollableWidth;
-                    double mapHeightStart = MapScrollViewer.ScrollableHeight;
 
-
-
-                    double offsetX = MapScrollViewer.HorizontalOffset;
-                    double offsetY = MapScrollViewer.VerticalOffset;
-
-
+                    Size mapSizeStart = new Size(MapScrollViewer.ViewportWidth, MapScrollViewer.ViewportHeight);
+                    
+                    double vertOffset = MapScrollViewer.VerticalOffset;
+                    double horzOffset = MapScrollViewer.HorizontalOffset;
+                    
                     UseScale = UseScale * diff;
 
+                    Size mapSizeEnd = mapSizeStart.Multiply(diff);
+
+                    Point mapSizeDiff = mapSizeEnd.Subtract(mapSizeStart);
+                    
+                    double scrollOnSizeX = horzOffset * diff +  mapSizeDiff.X/2.0;
+                    double scrollOnSizeY = vertOffset * diff +  mapSizeDiff.Y/2.0;
+
+                    MapScrollViewer.ScrollTo(scrollOnSizeX, scrollOnSizeY);
 
 
-                    double mapWidthEnd = mapWidthStart * diff;
-                    double mapHeightEnd = mapHeightStart * diff;
-
-                    double mapWidthDiff = mapWidthEnd - mapWidthStart;
-                    double mapHeightDiff = mapHeightEnd - mapHeightStart;
-
-
-                    MapScrollViewer.ScrollToHorizontalOffset(offsetX + mapWidthDiff/2.0);
-                    MapScrollViewer.ScrollToVerticalOffset(offsetY + mapHeightDiff / 2.0);
-
-                   
                 }
 
 
@@ -989,6 +1007,7 @@ namespace CombatManager.Maps
                 
             }
         }
+
 
         private double UseScale
         {
@@ -1215,5 +1234,11 @@ namespace CombatManager.Maps
             Hide();
             Show();
         }
+
+        private void MapScrollViewerGrid_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ShowContextMenu(new GameMap.MapCell(-1, -1));
+        }
+
     }
 }

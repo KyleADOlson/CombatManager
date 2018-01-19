@@ -15,6 +15,7 @@ using Android.Widget;
 using CombatManager;
 using Android.Webkit;
 using System.Threading;
+using Android.Support.V4.Content;
 
 namespace CombatManagerDroid
 {
@@ -211,7 +212,7 @@ namespace CombatManagerDroid
             b.Text = text;
             b.SetMinimumWidth(size);
             FilterLayout.AddView(b);
-            b.SetCompoundDrawablesWithIntrinsicBounds(Resources.GetDrawable(Resource.Drawable.down16), null, null, null);
+            b.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.down16), null, null, null);
 
             return b;
             
