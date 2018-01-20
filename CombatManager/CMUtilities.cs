@@ -198,8 +198,19 @@ namespace CombatManager
 
             return new Size(Math.Abs(oldPoint.X - subPoint.X), Math.Abs(oldPoint.Y - subPoint.Y));
         }
-        
-        
+
+        public static Point Subtract(this Point oldPoint, Point subPoint)
+        {
+            return new Point(oldPoint.X - subPoint.X, oldPoint.Y - subPoint.Y);
+        }
+
+
+        public static Point Lerp(this Point pt1, Point pt2, double pct)
+        {
+            Point diff = pt2.Subtract(pt1);
+            Point change = diff.Multiply(pct.Clamp(0, 1));
+            return pt2.Add(change);
+        }
 
         public static Color FindColor(this FrameworkElement element, String name)
         {
@@ -431,6 +442,8 @@ namespace CombatManager
         {
             return new Size(sv.ScrollableWidth, sv.ScrollableHeight);
         }
+
+
 
 
         public const String PrimaryColorLight = "PrimaryColorLight";

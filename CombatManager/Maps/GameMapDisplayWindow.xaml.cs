@@ -319,15 +319,18 @@ namespace CombatManager.Maps
             }
             else if (e.ClickCount == 2)
             {
-                if (fullscreen)
-                {
-                    ExitFullScreen();
-                }
-                else
-                {
-                    EnterFullScreen();
+                if (mode != GameMapActionMode.SetCorner &&
+                    mode != GameMapActionMode.SetOrigin)
 
-
+                {
+                    if (fullscreen)
+                    {
+                        ExitFullScreen();
+                    }
+                    else
+                    {
+                        EnterFullScreen();
+                    }
                 }
             }
         }
@@ -955,12 +958,8 @@ namespace CombatManager.Maps
 
                 map.FireFogOrMarkerChanged();
                 map.SaveMap(false);
-            }       
+            }
         }
-
-        private bool scrollOnSize;
-        private double scrollOnSizeX;
-        private double scrollOnSizeY;
 
         private void MapScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -989,22 +988,15 @@ namespace CombatManager.Maps
 
                     Size mapSizeEnd = mapSizeStart.Multiply(diff);
 
-                    Point mapSizeDiff = mapSizeEnd.Subtract(mapSizeStart);
-                    
-                    double scrollOnSizeX = horzOffset * diff +  mapSizeDiff.X/2.0;
-                    double scrollOnSizeY = vertOffset * diff +  mapSizeDiff.Y/2.0;
+                    Point mapSizeDiff = mapSizeEnd.Subtract(mapSizeStart).Divide(2.0);
 
+                    double scrollOnSizeX = horzOffset * diff + mapSizeDiff.X;
+                    double scrollOnSizeY = vertOffset * diff + mapSizeDiff.Y;
+                   
                     MapScrollViewer.ScrollTo(scrollOnSizeX, scrollOnSizeY);
-
-
                 }
-
-
                 var parent = ((Control)sender).Parent as UIElement;
                 parent.RaiseEvent(eventArg);
-
-
-                
             }
         }
 

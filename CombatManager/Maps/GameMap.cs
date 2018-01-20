@@ -652,8 +652,6 @@ namespace CombatManager.Maps
             }
 
             return map;
-            
-
         }
 
 
