@@ -49,6 +49,8 @@ namespace CombatManager.Maps
         double cellSizeWidth;
         double cellSizeHeight;
 
+        bool cachedMap;
+
         String sourceFile;
 
         BitmapImage image;
@@ -81,14 +83,14 @@ namespace CombatManager.Maps
 
         }
 
-        public GameMap(int id, String filename) : this()
+        public GameMap(int id, String filename, string name) : this()
         {
             this.Id = id;
             SourceFile = filename;
-
+            cachedMap = true;
 
             FileInfo info = new FileInfo(filename);
-            Name = info.Name.Substring(0, info.Name.Length - info.Extension.Length);
+            Name = name;
         }
 
 
@@ -165,6 +167,39 @@ namespace CombatManager.Maps
             }
         }
 
+        public bool CachedMap
+        {
+            get { return cachedMap; }
+            set
+            {
+                if (cachedMap != value)
+                {
+                    cachedMap = value;
+                    NotifyAndSave("CachedMap");
+                }
+            }
+        }
+
+        public void ForceUpdateSourceFile(String name)
+        {
+            sourceFile = name;
+
+            bool notifyImage = false;
+            if (image != null)
+            {
+                image = null;
+                notifyImage = true;
+
+            }
+
+            NotifyAndSave("SourceFile");
+            if (notifyImage)
+            {
+                Notify("Image");
+            }
+            
+        }
+
         public String SourceFile
         {
             get { return sourceFile; }
@@ -172,8 +207,7 @@ namespace CombatManager.Maps
             {
                 if (sourceFile != value)
                 {
-                    sourceFile = value;
-                    NotifyAndSave("SourceFile");
+                    ForceUpdateSourceFile(value);
                 }
             }
         }
@@ -204,7 +238,12 @@ namespace CombatManager.Maps
             {
                 if (image == null && sourceFile != null)
                 {
-                   image = new BitmapImage(new Uri(sourceFile));
+                   image = new BitmapImage();
+                   image.BeginInit();
+                   image.UriSource = new Uri(sourceFile);
+                   image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                   image.CacheOption = BitmapCacheOption.OnLoad;
+                   image.EndInit();
                 }
                 return image;
             }

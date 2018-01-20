@@ -8102,15 +8102,23 @@ namespace CombatManager
 
         private void CreateMapsButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image Files(*.bmp;*.gif;*.jpg;*.png)|*.bmp;*.gif;*.jpg;*.png";
-            dialog.Multiselect = false;
+            var dialog = GetMapFileDialog();
             if (dialog.ShowDialog() == true)
             {
                 LoadMap(dialog.FileName);
 
             }
         }
+
+        private OpenFileDialog GetMapFileDialog()
+        {
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image Files(*.bmp;*.gif;*.jpg;*.png)|*.bmp;*.gif;*.jpg;*.png";
+            dialog.Multiselect = false;
+            return dialog;
+        }
+
         private void LoadMap(String filename)
         {
             Exception e = null;
@@ -8137,9 +8145,13 @@ namespace CombatManager
             {
                 MessageBox.Show("Unable to create map" + ((e==null)?"":("\r\n"+e.ToString())), "Map Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            
         }
+
+        private void UpdateMap(String filename, GameMapList.MapStub stub)
+        {
+            gameMapList.UpdateMap(filename, stub);
+        }
+
 
         private GameMap lastGameMap;
 
@@ -8294,9 +8306,15 @@ namespace CombatManager
 
         private void MapFileButton_Click(object sender, RoutedEventArgs e)
         {
+            var dialog = GetMapFileDialog();
+            if (dialog.ShowDialog() == true)
+            {
 
-            GameMapList.MapStub stub = (GameMapList.MapStub)((Button)sender).DataContext;
-            ExploreFile(stub.SourceFile);
+                GameMapList.MapStub stub = (GameMapList.MapStub)((Button)sender).DataContext;
+              
+                UpdateMap(dialog.FileName, stub);
+            }
+            
         }
 
         public void ExploreFile(string filePath)

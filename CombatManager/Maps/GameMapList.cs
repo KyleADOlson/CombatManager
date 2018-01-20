@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
@@ -9,9 +10,10 @@ namespace CombatManager.Maps
 {
     public class GameMapList
     {
+        const String MapsDir = "Maps";
+
         ObservableCollection<MapStub> maps = new ObservableCollection<MapStub>();
-
-
+        
         public delegate void MapChangedDelegate(GameMapList.MapStub map);
 
         public event MapChangedDelegate MapChanged;
@@ -48,10 +50,35 @@ namespace CombatManager.Maps
                 MapChanged((GameMapList.MapStub)sender);
             }
         }
+       
+        [XmlIgnore]
+        public static String MapFileDir
+        {
+            get
+            {
+               return CMFileUtilities.AppDataSubDir(MapsDir);
+            }
+        }
+
+        public static string GetMapFileName(int mapiId, String name)
+        {
+            FileInfo file = new FileInfo(name);
+            String filename = "MapFile" + mapiId + file.Extension;
+            return Path.Combine(MapFileDir, filename);
+        }
+        
 
         public GameMap CreateMap(String name)
         {
-            GameMap map = new GameMap(Id++, name);
+            FileInfo file = new FileInfo(name);
+
+            int newId = Id++;
+
+            String filename = GetMapFileName(newId, name);
+
+            file.CopyTo(filename);
+
+            GameMap map = new GameMap(newId, filename, file.Name.Substring(0, file.Name.Length - file.Extension.Length));
 
             MapStub stub = new MapStub(map);
 
@@ -78,8 +105,43 @@ namespace CombatManager.Maps
 
         public void RemoveMap(MapStub stub)
         {
+            DeleteMapFile(stub);
             Maps.Remove(stub);
             GameMap.Delete(stub.Id);
+        }
+
+        public void DeleteMapFile(MapStub stub)
+        {
+            if (stub.CachedMap)
+            {
+                try
+                {
+                    File.Delete(stub.SourceFile);
+                }
+                catch (Exception ex)
+                {
+                    if (ex != null)
+                    {
+
+                    }
+                }
+            }
+        }
+
+
+        public void UpdateMap(String name, MapStub stub)
+        {
+            GameMap map = stub.Map;
+            DeleteMapFile(stub);
+
+            FileInfo file = new FileInfo(name);
+            
+            String filename = GetMapFileName(stub.Id, name);
+
+            file.CopyTo(filename);
+
+            map.ForceUpdateSourceFile(filename);
+
         }
 
 
@@ -89,6 +151,7 @@ namespace CombatManager.Maps
             String sourceFile;
             int id;
             GameMap map;
+            bool cachedMap;
 
             public MapStub() { }
             public MapStub(GameMap map)
@@ -97,6 +160,7 @@ namespace CombatManager.Maps
                 id = map.Id;
                 this.map = map;
                 this.sourceFile = map.SourceFile;
+                this.cachedMap = map.CachedMap;
 
             }
             public string Name
@@ -146,6 +210,18 @@ namespace CombatManager.Maps
                 }
             }
 
+            public bool CachedMap
+            {
+                get
+                {
+                    return cachedMap;
+                }
+                set
+                {
+                    cachedMap = value;
+                }
+            }
+
             public string SourceFile
             {
                 get
@@ -170,6 +246,11 @@ namespace CombatManager.Maps
                 {
                     sourceFile = map.SourceFile;
                     Notify("SourceFile");
+                }
+                else if (e.PropertyName == "CachedMap")
+                {
+                    cachedMap = map.CachedMap;
+                    Notify("CachedMap");
                 }
             }
         }

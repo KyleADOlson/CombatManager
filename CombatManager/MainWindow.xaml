@@ -642,7 +642,7 @@
                         <Button.ToolTip>Delete</Button.ToolTip>
                         <Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
                     </Button>
-                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="Auto" Grid.Column="0" Text="Mod" TextWrapping="Wrap" d:LayoutOverrides="HorizontalAlignment, Height, GridBox" ToolTip="Initiative Modifier" Grid.ColumnSpan="1" Margin="0,8.04,48.793,5.969" FontWeight="Bold"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="Auto" Grid.Column="0" Text="Mod" TextWrapping="Wrap" ToolTip="Initiative Modifier" Grid.ColumnSpan="1" Margin="0,8.04,48.793,5.969" FontWeight="Bold"/>
                     <TextBox Text="{Binding Stats.Init, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Margin="0,5,20.498,3.04" VerticalAlignment="Stretch" Height="Auto" RenderTransformOrigin="2.172,0.865" Grid.Column="0" GotFocus="TextBox_GotFocus" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged" GotKeyboardFocus="TextBox_GotKeyboardFocus" ToolTip="Initiative Modifier" Width="26.168" />
                 </Grid>
                 <Popup x:Name="popup" Placement="Bottom" StaysOpen="False" PlacementTarget="{Binding ElementName=HPButton}" AllowsTransparency="True">
@@ -890,9 +890,9 @@
                                         <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
                                     </Rectangle.Fill>
                                 </Rectangle>
-                                <TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="BAB" Grid.Column="1" Foreground="White" Grid.Row="5" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox"/>
+                                <TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="BAB" Grid.Column="1" Foreground="White" Grid.Row="5" TextAlignment="Center" Grid.ColumnSpan="2" />
                                 <TextBox Text="{Binding Stats.Adjuster.BaseAtk}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
-                                <TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="CMB" Grid.Column="3" Foreground="White" Grid.Row="5" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox"/>
+                                <TextBlock Margin="5,5,29.167,6.287" TextWrapping="Wrap" Text="CMB" Grid.Column="3" Foreground="White" Grid.Row="5" TextAlignment="Center" Grid.ColumnSpan="2"/>
                                 <TextBox Text="{Binding Stats.CMB_Numeric}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
                                 <TextBlock Margin="4.449,5,30.55,6.287" TextWrapping="Wrap" Text="CMD" Grid.Column="5" Foreground="White" Grid.Row="5" TextAlignment="Center" Width="28" Grid.ColumnSpan="2" d:LayoutOverrides="Height, GridBox"/>
                                 <TextBox Text="{Binding Stats.CMD_Numeric}" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" Grid.Column="5" HorizontalAlignment="Right" Grid.Row="5" BorderBrush="{x:Null}" TextAlignment="Center" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" GotFocus="TextBox_GotFocus" />
@@ -2520,25 +2520,28 @@
             <Grid MouseDown="GameMapListItemGrid_MouseDown" MouseUp="GameMapListItemGrid_MouseUp"  d:DesignWidth="537.501">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="55"/>
-                    <ColumnDefinition Width="309"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="267.6"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="MapViewButton" HorizontalAlignment="Left"  Click="MapViewButton_Click" d:LayoutOverrides="TopMargin, BottomMargin">
+                <Button x:Name="MapViewButton" HorizontalAlignment="Left"  Click="MapViewButton_Click" Margin="0,0,0,-0.4">
                     <StackPanel Orientation="Horizontal">
                         <Image HorizontalAlignment="Left" Width="16" Height="16" Grid.Row="4" Source="Images/globe-16.png"/>
                         <TextBlock Text="Open" Margin="3,0"/>
                     </StackPanel>
                 </Button>
-                <TextBlock x:Name="textBlock" Margin="10,4.98,36.083,5.02" TextWrapping="Wrap" Text="{Binding Name}" ToolTip="{Binding Name}" d:LayoutOverrides="Height, TopMargin, BottomMargin" Grid.ColumnSpan="1" Grid.Column="1" Width="Auto" TextTrimming="CharacterEllipsis"/>
-                <Button x:Name="MapDeleteButton"  HorizontalAlignment="Right" Width="27.667" Click="MapDeleteButton_Click" Margin="0,0,3.416,0" Grid.Column="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/delete-16.png" Width="16" Height="16" Margin="0,1,0,0" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
-                <TextBlock x:Name="textBlock1" Grid.Column="2" HorizontalAlignment="Stretch" Margin="37.251,4.98,5.375,6" TextWrapping="Wrap" Text="{Binding SourceFile, FallbackValue=Filename}" ToolTip="{Binding SourceFile}" d:LayoutOverrides="Height, TopMargin, BottomMargin" FontStyle="Italic" Foreground="#FF515151" TextTrimming="CharacterEllipsis"/>
-                <Button x:Name="MapFileButton"  HorizontalAlignment="Left" Width="27.667" Margin="4.584,0,0,0" Grid.Column="2" d:LayoutOverrides="TopMargin, BottomMargin" Click="MapFileButton_Click" ToolTip="Show Image in Explorer" >
+                <TextBlock x:Name="textBlock" Margin="9.8,5,10.2,4.6" TextWrapping="Wrap" Text="{Binding Name}" ToolTip="{Binding Name}" Grid.ColumnSpan="1" Grid.Column="1" Width="Auto" TextTrimming="CharacterEllipsis"/>
+
+                <Button x:Name="MapFileButton"  HorizontalAlignment="Stretch" Width="Auto" Margin="5,0,5,-0.4" Grid.Column="2" Click="MapFileButton_Click" ToolTip="Update Image File" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Images/folderopen-32.png" Width="16" Height="16" Margin="0,1,0,0" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" VerticalAlignment="Center"/>
+                        <TextBlock>Update Map File</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="MapDeleteButton"  HorizontalAlignment="Left" Width="Auto" Click="MapDeleteButton_Click" Margin="0,0,3,-0.4" Grid.Column="3" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/delete-16.png" Width="16" Height="16" Margin="0,1,0,0" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" VerticalAlignment="Center"/>
+                        <TextBlock>Delete</TextBlock>
                     </StackPanel>
                 </Button>
             </Grid>

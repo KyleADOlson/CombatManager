@@ -483,6 +483,18 @@ namespace CombatManager
             }
         }
 
+        public static string AppDataSubDir(String name)
+        {
+            String path = System.IO.Path.Combine(AppDataDir, name);
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            return path;
+        }
+
     }
 
     public abstract class SimpleNotifyClass : INotifyPropertyChanged

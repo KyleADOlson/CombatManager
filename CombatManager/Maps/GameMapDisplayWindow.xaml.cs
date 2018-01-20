@@ -153,6 +153,9 @@ namespace CombatManager.Maps
                 || e.PropertyName == "ShowGrid" || e.PropertyName == "GridColor")
             {
                 UpdateGridBrush();
+            } else if (e.PropertyName == "Image")
+            {
+                UpdateMapImage();
             }
         }
 
