@@ -162,6 +162,11 @@ namespace CombatManager
             return new Size(oldSize.Width / scale, oldSize.Height / scale);
         }
 
+        public static Point Subtract(this Size size1, Size size2)
+        {
+            return new Point(size1.Width - size2.Width, size1.Height - size2.Height);
+        }
+
 
         public static Point Multiply(this Point oldPoint, double scale)
         {
@@ -186,6 +191,25 @@ namespace CombatManager
         public static Point Add(this Point oldPoint, Point addPoint)
         {
             return new Point(oldPoint.X + addPoint.X, oldPoint.Y + addPoint.Y);
+        }
+
+        public static Size Difference(this Point oldPoint, Point subPoint)
+        {
+
+            return new Size(Math.Abs(oldPoint.X - subPoint.X), Math.Abs(oldPoint.Y - subPoint.Y));
+        }
+
+        public static Point Subtract(this Point oldPoint, Point subPoint)
+        {
+            return new Point(oldPoint.X - subPoint.X, oldPoint.Y - subPoint.Y);
+        }
+
+
+        public static Point Lerp(this Point pt1, Point pt2, double pct)
+        {
+            Point diff = pt2.Subtract(pt1);
+            Point change = diff.Multiply(pct.Clamp(0, 1));
+            return pt2.Add(change);
         }
 
         public static Color FindColor(this FrameworkElement element, String name)
@@ -368,6 +392,57 @@ namespace CombatManager
         {
             return new BitmapImage(new Uri("pack://application:,,,/Images/" + filename));
         }
+
+        public static DependencyObject SetElementVisibility(this DependencyObject dep, String name, Visibility visibility)
+        {
+            UIElement ui = dep.FindLogicalNode(name) as UIElement;
+
+            if (ui != null)
+            {
+                ui.Visibility = visibility;
+            }
+
+            return dep;
+        }
+
+        public static DependencyObject SetElementsVisibility(this DependencyObject dep, String [] names, Visibility visibility)
+        {
+            foreach (String name in names)
+            {
+                dep.SetElementVisibility(name, visibility);
+            }
+            
+            return dep;
+        }
+
+        public static void ScrollBy(this ScrollViewer viewer, double x, double y)
+        {
+            double newX = viewer.HorizontalOffset + x;
+            double newY = viewer.VerticalOffset + y;
+
+            viewer.ScrollToHorizontalOffset(newX);
+            viewer.ScrollToVerticalOffset(newY);
+
+        }
+
+        public static void ScrollTo(this ScrollViewer viewer, double x, double y)
+        {
+          
+            viewer.ScrollToHorizontalOffset(x);
+            viewer.ScrollToVerticalOffset(y);
+
+        }
+
+        public static Size ActualSize(this FrameworkElement fe)
+        {
+            return new Size(fe.ActualWidth, fe.ActualHeight);
+        }
+
+        public static Size ScrollableSize(this ScrollViewer sv)
+        {
+            return new Size(sv.ScrollableWidth, sv.ScrollableHeight);
+        }
+
 
 
 

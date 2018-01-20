@@ -14,6 +14,7 @@ using Android.Widget;
 using CombatManager;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
+using Android.Support.V4.Content;
 
 namespace CombatManagerDroid
 {
@@ -108,7 +109,7 @@ namespace CombatManagerDroid
                 {
                     MeleeTabClicked(item);
                 };
-                b.Background = (Resources.GetDrawable(Resource.Drawable.init_button));
+                b.Background = ContextCompat.GetDrawable(this, Resource.Drawable.init_button);
 
                 if (item == visibleGroup)
                 {
@@ -214,7 +215,7 @@ namespace CombatManagerDroid
                     for (int i=0; i<hc; i++)
                     {
                         ImageView handImage = new ImageView(this);
-                        handImage.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.hand16));
+                        handImage.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.hand16));
                         handView.AddView(handImage);
                     }
 
@@ -280,7 +281,7 @@ namespace CombatManagerDroid
 
             //delete
             ImageButton deleteButton = new ImageButton(this);
-            deleteButton.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.redx));
+            deleteButton.SetImageDrawable(ContextCompat.GetDrawable(this, Resource.Drawable.redx));
             deleteButton.Click += (object sender, EventArgs e) => 
             {
                 DeleteClicked(atk, ranged, natural);

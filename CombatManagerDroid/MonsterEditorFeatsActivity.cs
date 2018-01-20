@@ -82,7 +82,7 @@ namespace CombatManagerDroid
                 row.AddView(t);
 
                 ImageButton b = new ImageButton(this);
-                b.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.redx));
+                b.SetImageDrawable(Android.Support.V4.Content.ContextCompat.GetDrawable(this, Resource.Drawable.redx));
               
                 row.AddView(b);
                 String feat = s;

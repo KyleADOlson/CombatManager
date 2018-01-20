@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.kyleolson.combatmanager" android:versionName="1.05" android:versionCode="15" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="16" />
+	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="19" />
 	<supports-screens android:smallScreens="false" android:normalScreens="false" android:largeScreens="true" android:xlargeScreens="true" />
-	<application android:label="Combat Manager" android:icon="@drawable/Icon"></application>
+	<application android:label="Combat Manager" android:icon="@drawable/folder16"></application>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>

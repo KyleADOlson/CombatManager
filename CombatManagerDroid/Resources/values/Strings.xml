@@ -3,4 +3,5 @@
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">CombatManagerDroid</string>
 	<string name="roll_initiative">Roll\nInitiative</string>
+  <string name="roll_initiative_short">Init</string>
 </resources>

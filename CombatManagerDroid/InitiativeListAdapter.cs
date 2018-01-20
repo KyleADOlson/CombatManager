@@ -8,6 +8,8 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Content;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 
@@ -111,6 +113,7 @@ namespace CombatManagerDroid
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             LinearLayout baseLayout = (LinearLayout)convertView;
+            
             if (baseLayout == null)
             {
                 baseLayout = new LinearLayout(Application.Context);
@@ -125,7 +128,7 @@ namespace CombatManagerDroid
             baseLayout.Orientation = Orientation.Vertical;
             baseLayout.Tag = position;
 
-            LinearLayout layout = new LinearLayout(Application.Context);
+            SizeButtonLinearLayout layout = new SizeButtonLinearLayout(Application.Context);
             baseLayout.AddView(layout);
 
             layout.SetGravity(GravityFlags.CenterVertical);
@@ -134,7 +137,7 @@ namespace CombatManagerDroid
             Character c = _State.CombatList[position];
 
             ImageView rv = new ImageView(_View.Context);
-            rv.SetImageDrawable(_View.Context.Resources.GetDrawable(
+            rv.SetImageDrawable(ContextCompat.GetDrawable(_View.Context,
                 Resource.Drawable.target16));
             layout.AddView(rv);
             rv.Visibility = c.IsReadying?ViewStates.Visible:ViewStates.Gone;
@@ -142,7 +145,7 @@ namespace CombatManagerDroid
 
         
             ImageView dv = new ImageView(_View.Context);
-            dv.SetImageDrawable(_View.Context.Resources.GetDrawable(
+            dv.SetImageDrawable(ContextCompat.GetDrawable(_View.Context,
                 Resource.Drawable.hourglass16));
             layout.AddView(dv);
             dv.Visibility = c.IsDelaying?ViewStates.Visible:ViewStates.Gone;
@@ -164,7 +167,7 @@ namespace CombatManagerDroid
             if (_State.CurrentCharacter == _State.CombatList[position])
             {
                 ImageView iv = new ImageView(Application.Context);
-                iv.SetImageDrawable(Application.Context.Resources.GetDrawable(Resource.Drawable.next16));
+                iv.SetImageDrawable(ContextCompat.GetDrawable(_View.Context, Resource.Drawable.next16));
 
                 layout.AddView(iv);
             }
@@ -206,10 +209,11 @@ namespace CombatManagerDroid
             //init button
             Button bu = new Button(_View.Context);
 
-            bu.SetHeight(45);
-            bu.SetWidth(45);
+            bu.SetMinHeight(45);
+            float width = TypedValue.ApplyDimension(ComplexUnitType.Dip, 25f, _View.Context.Resources.DisplayMetrics);
+            bu.SetWidth((int)width);
             layout.AddView(bu);
-            bu.Background = (_View.Context.Resources.GetDrawable(Resource.Drawable.blue_button));
+            bu.Background = (ContextCompat.GetDrawable(_View.Context, Resource.Drawable.blue_button));
             bu.Text = c.CurrentInitiative.ToString();
             bu.SetTextColor(new Android.Graphics.Color(0xff, 0xff, 0xff));
             bu.Click += (object sender, EventArgs e) =>
@@ -217,16 +221,18 @@ namespace CombatManagerDroid
                 
                 new NumberDialog("CurrentInitiative", "Initiative", c, _View.Context).Show();
             };
+            layout.SetButton(bu);
+            
 
             //action button
             ImageButton b = new ImageButton(_View.Context);
-            b.SetImageDrawable(_View.Context.Resources.GetDrawable(Resource.Drawable.lightning16));
+            b.SetImageDrawable(ContextCompat.GetDrawable(_View.Context, Resource.Drawable.lightning16));
             layout.AddView(b);
             b.SetMaxHeight(45);
             b.SetMinimumHeight(45);
             b.SetMaxWidth(45);
             b.SetMinimumWidth(45);
-            b.Background = (_View.Context.Resources.GetDrawable(Resource.Drawable.blue_button));
+            b.Background = (ContextCompat.GetDrawable(_View.Context, Resource.Drawable.blue_button));
 
            
             var options = new List<string>(){ "Move Down", "Move Up", "Ready", "Delay", "Act Now" };
@@ -271,6 +277,31 @@ namespace CombatManagerDroid
             baseLayout.SetOnDragListener(new ListOnDragListener(this, baseLayout, layout));
 
             return baseLayout;
+        }
+
+        public class SizeButtonLinearLayout : LinearLayout
+        {
+            Button b;
+
+           public SizeButtonLinearLayout(Context context) : base(context)
+           {
+           }
+
+            public void SetButton(Button b)
+            {
+                this.b = b;
+            }
+
+            protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
+            {
+                base.OnSizeChanged(w, h, oldw, oldh);
+
+                if (b != null && (b.Height != h || b.Width != h))
+                {
+                    b.SetHeight(h);
+                    b.SetWidth(h);
+                }
+            }
         }
 
         public class ListOnDragListener : Java.Lang.Object, View.IOnDragListener 

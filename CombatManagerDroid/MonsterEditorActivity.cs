@@ -13,6 +13,7 @@ using Android.Widget;
 
 using CombatManager;
 using System.Reflection;
+using Android.Support.V4.Content;
 
 namespace CombatManagerDroid
 {		
@@ -60,12 +61,12 @@ namespace CombatManagerDroid
                 if (LayoutID == LayoutFromTab(x))
                 {
                     b.Selected = true;
-                    b.Background = (Resources.GetDrawable(Resource.Drawable.init_button));
+                    b.Background = (ContextCompat.GetDrawable(this, Resource.Drawable.init_button));
                 }
                 else
                   
                 {
-                    b.Background = (Resources.GetDrawable(Resource.Drawable.init_button));
+                    b.Background = (ContextCompat.GetDrawable(this, Resource.Drawable.init_button));
                 }
             }
         }

@@ -13,6 +13,7 @@ using Android.Widget;
 
 using CombatManager;
 using Android.Graphics.Drawables;
+using Android.Support.V4.Content;
 
 namespace CombatManagerDroid
 {
@@ -299,7 +300,7 @@ namespace CombatManagerDroid
             {
 
                 int resID = v.Context.Resources.GetIdentifier(ac.Condition.Image.Replace("-", "").ToLower()   + "16", "drawable", v.Context.PackageName);
-                Drawable d = v.Context.Resources.GetDrawable(resID);
+                Drawable d = ContextCompat.GetDrawable(v.Context, resID);
 
                 View button;
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, 60);

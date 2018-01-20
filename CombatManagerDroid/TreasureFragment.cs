@@ -12,6 +12,7 @@ using Android.Widget;
 
 using CombatManager;
 using Android.Webkit;
+using Android.Support.V4.Content;
 
 namespace CombatManagerDroid
 {
@@ -126,18 +127,18 @@ namespace CombatManagerDroid
         protected override void BuildAdditionalLayouts()
         {
             ImageButton ib = new ImageButton(_v.Context);
-            ib.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.wand16));
+            ib.SetImageDrawable(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.wand16));
             LeftLayout.AddView(ib);
             ib.Click += (object sender, EventArgs e) => {ShowLookup();};
-            ib.Background = (Resources.GetDrawable(Resource.Drawable.main_tab));
+            ib.Background = (ContextCompat.GetDrawable(_v.Context, Resource.Drawable.main_tab));
             ib.Selected = true;
             lookupButton = ib;
 
             ib = new ImageButton(_v.Context);
-            ib.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.dice16));
+            ib.SetImageDrawable(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.dice16));
             LeftLayout.AddView(ib);
             ib.Click += (object sender, EventArgs e) => {ShowGenerator();};
-            ib.Background = (Resources.GetDrawable(Resource.Drawable.main_tab));
+            ib.Background = (ContextCompat.GetDrawable(_v.Context, Resource.Drawable.main_tab));
             generatorButton = ib;
 
             LayoutInflater vi = (LayoutInflater)_v.Context.GetSystemService(Context.LayoutInflaterService);
@@ -152,13 +153,13 @@ namespace CombatManagerDroid
                 ShowLevel(true);
             };
             b.Selected = true;
-            b.Background = (Resources.GetDrawable(Resource.Drawable.main_tab));
+            b.Background = (ContextCompat.GetDrawable(_v.Context, Resource.Drawable.main_tab));
             b = _GeneratorLayout.FindViewById<Button>(Resource.Id.byItemsButton);
             b.Click += (object sender, EventArgs e) => 
             {
                 ShowLevel(false);
             };
-            b.Background = (Resources.GetDrawable(Resource.Drawable.main_tab));
+            b.Background = (ContextCompat.GetDrawable(_v.Context, Resource.Drawable.main_tab));
             ShowLevel(_LevelVisible);
 
             //level generation
@@ -243,7 +244,7 @@ namespace CombatManagerDroid
             {
                 GenerateItems();
             };
-            b.SetCompoundDrawablesWithIntrinsicBounds(Resources.GetDrawable(Resource.Drawable.treasure16), null, null, null);
+            b.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.treasure16), null, null, null);
 
             if (_GeneratorVisible)
             {

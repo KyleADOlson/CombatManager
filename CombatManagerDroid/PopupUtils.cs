@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Android.Content;
 using Android.Views;
 using Android.Graphics.Drawables;
+using Android.Support.V4.Content;
 
 namespace CombatManagerDroid
 {
@@ -116,7 +117,7 @@ namespace CombatManagerDroid
             {
                 return null;
             }
-            Drawable d = con.Resources.GetDrawable(resID);
+            Drawable d = ContextCompat.GetDrawable(con, resID);
             return d;
         }
 
