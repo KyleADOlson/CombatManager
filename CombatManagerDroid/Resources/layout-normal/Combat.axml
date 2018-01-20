@@ -21,7 +21,7 @@
             d1p1:minHeight="25px"
             d1p1:layout_width="fill_parent"
             d1p1:layout_height="fill_parent"
-            d1p1:id="@+id/linearLayout2"
+            d1p1:id="@+id/combatListLayout"
             d1p1:layout_weight="1"
             d1p1:background="#A63E3C">
             <LinearLayout

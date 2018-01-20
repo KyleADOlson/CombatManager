@@ -19,8 +19,8 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <ReleaseVersion>1.05</ReleaseVersion>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <AndroidKeyStore>true</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Users\kylea\Documents\CombatManager\CombatManagerDroid\mono.keystore</AndroidSigningKeyStore>
+    <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Users\Kyle\Documents\git\CombatManager\CombatManagerDroid\mono.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>@hysteria11</AndroidSigningStorePass>
     <AndroidSigningKeyPass>@hysteria11</AndroidSigningKeyPass>
     <AndroidSigningKeyAlias>monokey</AndroidSigningKeyAlias>
@@ -111,9 +111,14 @@
     <None Include="packages.config" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\VersionNotes.txt" />
-    <AndroidResource Include="Resources\layout-port\Main.axml" />
+    <AndroidResource Include="Resources\layout-normal-port\Main.axml" />
     <AndroidResource Include="Resources\layout-normal\Combat.axml" />
     <AndroidResource Include="Resources\layout-normal-port\Combat.axml" />
+    <AndroidResource Include="Resources\layout\about_program_dialog_layout.axml" />
+    <AndroidResource Include="Resources\layout-small-port\Main.axml" />
+    <AndroidResource Include="Resources\layout-small-port\Combat.axml" />
+    <AndroidResource Include="Resources\layout-xlarge\Combat.axml" />
+    <AndroidResource Include="Resources\layout-xlarge-port\Combat.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -381,5 +386,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
+    <Folder Include="Resources\layout-large-port\" />
+    <Folder Include="Resources\layout-large\" />
+    <Folder Include="Resources\layout-small\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\blue_button_inverse.xml" />
   </ItemGroup>
 </Project>

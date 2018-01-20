@@ -15,6 +15,7 @@ using Android.Widget;
 using CombatManager;
 using Android.Webkit;
 using System.IO;
+using Android.Support.V4.Content;
 
 namespace CombatManagerDroid
 {
@@ -24,7 +25,7 @@ namespace CombatManagerDroid
         static Character _ViewCharacter;
 
         static Character _SelectedCharacter;
-       
+
         ListView _MonsterList;
         ListView _PlayerList;
 
@@ -44,9 +45,9 @@ namespace CombatManagerDroid
         };
 
 
-        public override void OnCreate (Bundle savedInstanceState)
+        public override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate (savedInstanceState);
+            base.OnCreate(savedInstanceState);
 
             if (_CombatState == null)
             {
@@ -63,19 +64,19 @@ namespace CombatManagerDroid
             _CombatState.PropertyChanged += HandleCombatStatePropertyChanged;
             _CombatState.Characters.CollectionChanged += HandledCombatStateCharactersChanged;
             _CombatState.RollRequested += HandleRollRequested;
-           
+
             _CombatState.CombatList.CollectionChanged += HandleCombatListChanged;
             _CombatState.CharacterSortCompleted += HandleCharacterSortCompleted;
 
         }
 
-        void HandleCharacterSortCompleted (object sender, EventArgs e)
+        void HandleCharacterSortCompleted(object sender, EventArgs e)
         {
-            
+
             ReloadInitiativeList();
         }
 
-        void HandleCombatListChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        void HandleCombatListChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (!_CombatState.SortingList)
             {
@@ -83,7 +84,7 @@ namespace CombatManagerDroid
             }
         }
 
-        void HandledCombatStateCharactersChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        void HandledCombatStateCharactersChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (_MonsterList != null)
             {
@@ -93,11 +94,11 @@ namespace CombatManagerDroid
             {
                 _PlayerList.Adapter = (new CharacterListAdapter(_CombatState, false));
             }
-            
+
             SaveCombatState();
         }
 
-        void HandleRollRequested (object sender, CombatState.RollEventArgs e)
+        void HandleRollRequested(object sender, CombatState.RollEventArgs e)
         {
             _RollResults.Add(e.Roll);
             ShowDieRolls(View);
@@ -113,7 +114,7 @@ namespace CombatManagerDroid
                 reloadingList = false;
             }
 
-           
+
         }
 
         void ReloadXPText()
@@ -124,12 +125,12 @@ namespace CombatManagerDroid
             }
             else
             {
-                _XPText.Text = "CR: " + (_CombatState.XP.Value > 0?Monster.EstimateCR(_CombatState.XP.Value):"0") + " XP: " + _CombatState.XP;
+                _XPText.Text = "CR: " + (_CombatState.XP.Value > 0 ? Monster.EstimateCR(_CombatState.XP.Value) : "0") + " XP: " + _CombatState.XP;
             }
 
         }
 
-        void HandleCombatStatePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void HandleCombatStatePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "CurrentCharacter")
             {
@@ -143,25 +144,25 @@ namespace CombatManagerDroid
             }
         }
 
-        public override Android.Views.View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View v = inflater.Inflate(Resource.Layout.Combat, container, false);
 
-            v.FindViewById<Button>(Resource.Id.nextButton).Click += 
-                delegate {NextClicked();};
-            v.FindViewById<Button>(Resource.Id.prevButton).Click += 
-                delegate {PrevClicked();};
-            v.FindViewById<Button>(Resource.Id.upButton).Click += 
-                delegate {UpClicked();};
-            v.FindViewById<Button>(Resource.Id.downButton).Click += 
-                delegate {DownClicked();};
-            v.FindViewById<Button>(Resource.Id.rollInitiativeButton).Click += 
-            delegate {RollInitiativeClicked();};
-            v.FindViewById<Button>(Resource.Id.sortButton).Click += (object sender, EventArgs e) => 
+            v.FindViewById<Button>(Resource.Id.nextButton).Click +=
+                delegate { NextClicked(); };
+            v.FindViewById<Button>(Resource.Id.prevButton).Click +=
+                delegate { PrevClicked(); };
+            v.FindViewById<Button>(Resource.Id.upButton).Click +=
+                delegate { UpClicked(); };
+            v.FindViewById<Button>(Resource.Id.downButton).Click +=
+                delegate { DownClicked(); };
+            v.FindViewById<Button>(Resource.Id.rollInitiativeButton).Click +=
+            delegate { RollInitiativeClicked(); };
+            v.FindViewById<Button>(Resource.Id.sortButton).Click += (object sender, EventArgs e) =>
             {
                 SortInitiativeClicked();
             };
-            v.FindViewById<Button>(Resource.Id.resetButton).Click += (object sender, EventArgs e) => 
+            v.FindViewById<Button>(Resource.Id.resetButton).Click += (object sender, EventArgs e) =>
             {
                 ResetInitiativeClicked();
             };
@@ -183,8 +184,8 @@ namespace CombatManagerDroid
                 }
                 ShowCharacter(v, e.Character);
             };
-            
-            lv.ItemClick +=  (sender, e) => {
+
+            lv.ItemClick += (sender, e) => {
                 Character c = ((BaseAdapter<Character>)lv.Adapter)[e.Position];
                 if (_SelectedCharacter != c)
                 {
@@ -197,16 +198,67 @@ namespace CombatManagerDroid
             };
 
 
+            CombatListButton = v.FindViewById<Button>(Resource.Id.combatListButton);
+            PlayerListButton = v.FindViewById<Button>(Resource.Id.playerListButton);
+            MonsterListButton = v.FindViewById<Button>(Resource.Id.monsterListButton);
+
+            CombatListLayout = v.FindViewById<View>(Resource.Id.combatListLayout);
+            PlayerListLayout = v.FindViewById<View>(Resource.Id.playerListLayout);
+            MonsterListLayout = v.FindViewById<View>(Resource.Id.monsterListLayout);
+
+
+            SetupColumnTabButton(CombatListButton, 0);
+            SetupColumnTabButton(PlayerListButton, 1);
+            SetupColumnTabButton(MonsterListButton, 2);
+            
 
 
             AddCharacterList(inflater, container, v, Resource.Id.playerListLayout, false);
             AddCharacterList(inflater, container, v, Resource.Id.monsterListLayout, true);
+
+            if (CombatListButton != null)
+            {
+                ShowList(0);
+            }
 
             ShowCharacter(v, _ViewCharacter);
 
             SetupDieRoller(v);
 
             return v;
+        }
+
+        void SetupColumnTabButton(Button tb,  int tab)
+        {
+            if (tb != null)
+            {
+                tb.Click += (sender, e) =>
+                {
+                    ShowList(tab);
+                };
+            }
+
+        }
+
+        View CombatListLayout;
+        View PlayerListLayout;
+        View MonsterListLayout;
+
+        Button CombatListButton;
+        Button PlayerListButton;
+        Button MonsterListButton;
+
+        void ShowList(int id)
+        {
+            CombatListButton.Background = ContextCompat.GetDrawable(Context, (id == 0) ?
+                Resource.Drawable.blue_button_inverse : Resource.Drawable.blue_button);
+            CombatListLayout.Visibility = (id == 0) ? ViewStates.Visible : ViewStates.Gone;
+            PlayerListButton.Background = ContextCompat.GetDrawable(Context, (id == 1) ?
+                Resource.Drawable.blue_button_inverse : Resource.Drawable.blue_button);
+            PlayerListLayout.Visibility = (id == 1) ? ViewStates.Visible : ViewStates.Gone;
+            MonsterListButton.Background = ContextCompat.GetDrawable(Context, (id == 2) ?
+                Resource.Drawable.blue_button_inverse: Resource.Drawable.blue_button);
+            MonsterListLayout.Visibility = (id == 2) ? ViewStates.Visible : ViewStates.Gone;
         }
 
         private void AddCharacterList(LayoutInflater inflater, ViewGroup container, View v, int id, bool monsters)
