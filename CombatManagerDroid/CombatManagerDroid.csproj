@@ -131,6 +131,7 @@
     <AndroidResource Include="Resources\layout-xlarge-port\Main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout-small\Combat.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -398,7 +399,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="Resources\layout-small\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\blue_button_inverse.xml" />
