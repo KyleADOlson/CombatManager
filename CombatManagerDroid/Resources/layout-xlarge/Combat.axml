@@ -207,7 +207,7 @@
             d1p1:minHeight="25px"
             d1p1:layout_width="fill_parent"
             d1p1:layout_height="match_parent"
-            d1p1:id="@+id/linearLayout12"
+            d1p1:id="@+id/dieRollerLayout"
             d1p1:layout_weight="1">
             <LinearLayout
                 d1p1:orientation="horizontal"

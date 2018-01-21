@@ -209,9 +209,9 @@ namespace CombatManagerDroid
             //init button
             Button bu = new Button(_View.Context);
 
-            bu.SetMinHeight(45);
-            float width = TypedValue.ApplyDimension(ComplexUnitType.Dip, 25f, _View.Context.Resources.DisplayMetrics);
-            bu.SetWidth((int)width);
+            int buttonSize = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 40f, _View.Context.Resources.DisplayMetrics);
+            bu.SetMinHeight((int)buttonSize);
+            bu.SetWidth((int)buttonSize);
             layout.AddView(bu);
             bu.Background = (ContextCompat.GetDrawable(_View.Context, Resource.Drawable.blue_button));
             bu.Text = c.CurrentInitiative.ToString();
@@ -228,10 +228,10 @@ namespace CombatManagerDroid
             ImageButton b = new ImageButton(_View.Context);
             b.SetImageDrawable(ContextCompat.GetDrawable(_View.Context, Resource.Drawable.lightning16));
             layout.AddView(b);
-            b.SetMaxHeight(45);
-            b.SetMinimumHeight(45);
-            b.SetMaxWidth(45);
-            b.SetMinimumWidth(45);
+            b.SetMaxHeight(buttonSize);
+            b.SetMinimumHeight(buttonSize);
+            b.SetMaxWidth(buttonSize);
+            b.SetMinimumWidth(buttonSize);
             b.Background = (ContextCompat.GetDrawable(_View.Context, Resource.Drawable.blue_button));
 
            

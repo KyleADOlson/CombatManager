@@ -394,7 +394,7 @@
                 android:minHeight="25px"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/linearLayout12">
+                android:id="@+id/weaknessLayout">
                 <TextView
                     android:text="Weakness"
                     android:textAppearance="?android:attr/textAppearanceMedium"

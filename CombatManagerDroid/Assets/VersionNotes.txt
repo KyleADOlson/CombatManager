@@ -1,3 +1,6 @@
+1.07
+Phone functionality
+
 1.03
 Fix loading of herolab and pc gen files
 UI improvements

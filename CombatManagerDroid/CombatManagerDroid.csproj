@@ -113,12 +113,24 @@
     <None Include="Assets\VersionNotes.txt" />
     <AndroidResource Include="Resources\layout-normal-port\Main.axml" />
     <AndroidResource Include="Resources\layout-normal\Combat.axml" />
-    <AndroidResource Include="Resources\layout-normal-port\Combat.axml" />
+    <AndroidResource Include="Resources\layout-normal-port\Combat.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\about_program_dialog_layout.axml" />
     <AndroidResource Include="Resources\layout-small-port\Main.axml" />
-    <AndroidResource Include="Resources\layout-small-port\Combat.axml" />
+    <AndroidResource Include="Resources\layout-small-port\Combat.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout-xlarge\Combat.axml" />
     <AndroidResource Include="Resources\layout-xlarge-port\Combat.axml" />
+    <AndroidResource Include="Resources\layout-large\Combat.axml" />
+    <AndroidResource Include="Resources\layout-large-port\Combat.axml" />
+    <AndroidResource Include="Resources\layout-large-port\Main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout-xlarge-port\Main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -386,8 +398,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="Resources\layout-large-port\" />
-    <Folder Include="Resources\layout-large\" />
     <Folder Include="Resources\layout-small\" />
   </ItemGroup>
   <ItemGroup>

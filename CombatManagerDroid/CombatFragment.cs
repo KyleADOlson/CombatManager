@@ -33,6 +33,18 @@ namespace CombatManagerDroid
 
         InitiativeListAdapter _InitListAdapter;
 
+        
+        View CombatListLayout;
+        View PlayerListLayout;
+        View MonsterListLayout;
+
+        Button CombatListButton;
+        Button PlayerListButton;
+        Button MonsterListButton;
+
+        WebView characterView;
+        View dieRollerLayout;
+
         //die roller
         static string _DieText = "";
         static List<object> _RollResults = new List<object>();
@@ -206,6 +218,9 @@ namespace CombatManagerDroid
             PlayerListLayout = v.FindViewById<View>(Resource.Id.playerListLayout);
             MonsterListLayout = v.FindViewById<View>(Resource.Id.monsterListLayout);
 
+            dieRollerLayout = v.FindViewById<View>(Resource.Id.dieRollerLayout);
+            characterView = v.FindViewById<WebView>(Resource.Id.characterView);
+
 
             SetupColumnTabButton(CombatListButton, 0);
             SetupColumnTabButton(PlayerListButton, 1);
@@ -240,14 +255,6 @@ namespace CombatManagerDroid
 
         }
 
-        View CombatListLayout;
-        View PlayerListLayout;
-        View MonsterListLayout;
-
-        Button CombatListButton;
-        Button PlayerListButton;
-        Button MonsterListButton;
-
         void ShowList(int id)
         {
             CombatListButton.Background = ContextCompat.GetDrawable(Context, (id == 0) ?
@@ -259,6 +266,9 @@ namespace CombatManagerDroid
             MonsterListButton.Background = ContextCompat.GetDrawable(Context, (id == 2) ?
                 Resource.Drawable.blue_button_inverse: Resource.Drawable.blue_button);
             MonsterListLayout.Visibility = (id == 2) ? ViewStates.Visible : ViewStates.Gone;
+            
+            characterView.Visibility = (id == 0) ? ViewStates.Visible : ViewStates.Gone;
+            dieRollerLayout.Visibility = (id != 0) ? ViewStates.Visible : ViewStates.Gone;
         }
 
         private void AddCharacterList(LayoutInflater inflater, ViewGroup container, View v, int id, bool monsters)

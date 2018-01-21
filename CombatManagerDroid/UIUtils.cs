@@ -12,6 +12,7 @@ using Android.Views;
 using Android.Widget;
 using System.Reflection;
 using Android.Support.V4.Content;
+using Android.Content.Res;
 
 namespace CombatManagerDroid
 {
@@ -154,9 +155,12 @@ namespace CombatManagerDroid
             b.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(b.Context, resource), null, null, null);
         }
 
-        public static void IsTablet(this Context context)
+        public static bool IsTablet(this Context context)
         {
+            ScreenLayout screenSize = context.Resources.Configuration.ScreenLayout &
+                    ScreenLayout.SizeMask;
 
+            return screenSize == ScreenLayout.SizeLarge || screenSize == ScreenLayout.SizeXlarge;
         }
 
     }

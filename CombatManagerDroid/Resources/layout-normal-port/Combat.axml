@@ -10,11 +10,12 @@
     <LinearLayout
         d1p1:orientation="horizontal"
         d1p1:minWidth="25px"
-        d1p1:minHeight="50px"
+        d1p1:minHeight="70px"
         d1p1:layout_width="fill_parent"
-        d1p1:layout_height="wrap_content"
+        d1p1:layout_height="fill_parent"
         d1p1:id="@+id/linearLayout8"
-        d1p1:background="#A6833C">
+        d1p1:background="#A6833C"
+        d1p1:layout_weight="1.85">
         <Button
             d1p1:text="Combat"
             d1p1:layout_width="match_parent"
@@ -23,7 +24,8 @@
             d1p1:layout_weight="1"
             d1p1:textColor="#FFFFFFFF"
             d1p1:background="@drawable/blue_button"
-            d1p1:drawableLeft="@drawable/sword16" />
+            d1p1:drawableLeft="@drawable/sword16"
+            d1p1:padding="5dp" />
         <Button
             d1p1:layout_width="match_parent"
             d1p1:layout_height="fill_parent"
@@ -32,7 +34,8 @@
             d1p1:textColor="#FFFFFFFF"
             d1p1:background="@drawable/blue_button"
             d1p1:drawableLeft="@drawable/person16"
-            d1p1:text="Characters" />
+            d1p1:text="Characters"
+            d1p1:padding="5dp" />
         <Button
             d1p1:layout_width="match_parent"
             d1p1:layout_height="fill_parent"
@@ -41,7 +44,8 @@
             d1p1:textColor="#FFFFFFFF"
             d1p1:background="@drawable/blue_button"
             d1p1:drawableLeft="@drawable/monster16"
-            d1p1:text="Monsters" />
+            d1p1:text="Monsters"
+            d1p1:padding="5dp" />
     </LinearLayout>
     <LinearLayout
         d1p1:orientation="horizontal"
@@ -50,7 +54,7 @@
         d1p1:layout_width="fill_parent"
         d1p1:layout_height="fill_parent"
         d1p1:id="@+id/linearLayout11"
-        d1p1:layout_weight="1">
+        d1p1:layout_weight="0.65">
         <LinearLayout
             d1p1:orientation="vertical"
             d1p1:minWidth="25px"
@@ -167,36 +171,28 @@
                 d1p1:background="#A63E3C">
                 <Button
                     d1p1:text="@string/roll_initiative"
-                    d1p1:layout_width="wrap_content"
-                    d1p1:layout_height="fill_parent"
+                    d1p1:layout_width="fill_parent"
+                    d1p1:layout_height="wrap_content"
                     d1p1:id="@+id/rollInitiativeButton"
-                    d1p1:layout_weight="1"
+                    d1p1:layout_weight=".8"
                     d1p1:drawableLeft="@drawable/d2040"
                     d1p1:background="@drawable/init_button" />
-                <LinearLayout
-                    d1p1:orientation="vertical"
-                    d1p1:minWidth="25px"
-                    d1p1:minHeight="25px"
-                    d1p1:layout_width="wrap_content"
+                <Button
+                    d1p1:text="Sort"
+                    d1p1:layout_width="fill_parent"
                     d1p1:layout_height="fill_parent"
-                    d1p1:id="@+id/linearLayout10"
-                    d1p1:layout_weight="1">
-                    <Button
-                        d1p1:text="Sort"
-                        d1p1:layout_width="fill_parent"
-                        d1p1:layout_height="fill_parent"
-                        d1p1:id="@+id/sortButton"
-                        d1p1:layout_weight="1"
-                        d1p1:background="@drawable/init_button" />
-                    <Button
-                        d1p1:text="Reset"
-                        d1p1:layout_width="fill_parent"
-                        d1p1:layout_height="fill_parent"
-                        d1p1:id="@+id/resetButton"
-                        d1p1:layout_weight="1"
-                        d1p1:background="@drawable/init_button"
-                        d1p1:fitsSystemWindows="false" />
-                </LinearLayout>
+                    d1p1:id="@+id/sortButton"
+                    d1p1:layout_weight="1.1"
+                    d1p1:drawableLeft="@drawable/sort16"
+                    d1p1:background="@drawable/init_button" />
+                <Button
+                    d1p1:text="Reset"
+                    d1p1:layout_width="fill_parent"
+                    d1p1:layout_height="fill_parent"
+                    d1p1:id="@+id/resetButton"
+                    d1p1:layout_weight="1.1"
+                    d1p1:background="@drawable/init_button"
+                    d1p1:drawableLeft="@drawable/reset16" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -229,7 +225,7 @@
         d1p1:background="#ff27cbdb"
         d1p1:layout_width="fill_parent"
         d1p1:layout_height="fill_parent"
-        d1p1:layout_weight="3">
+        d1p1:layout_weight="1.5">
         <WebView
             d1p1:layout_width="match_parent"
             d1p1:layout_height="match_parent"
@@ -245,7 +241,7 @@
             d1p1:minHeight="25px"
             d1p1:layout_width="fill_parent"
             d1p1:layout_height="match_parent"
-            d1p1:id="@+id/linearLayout12"
+            d1p1:id="@+id/dieRollerLayout"
             d1p1:layout_weight="1">
             <LinearLayout
                 d1p1:orientation="horizontal"
