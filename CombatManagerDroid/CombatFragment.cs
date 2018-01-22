@@ -257,13 +257,14 @@ namespace CombatManagerDroid
 
         void ShowList(int id)
         {
-            CombatListButton.Background = ContextCompat.GetDrawable(Context, (id == 0) ?
+            Context c = CombatListButton.Context;
+            CombatListButton.Background = ContextCompat.GetDrawable(c, (id == 0) ?
                 Resource.Drawable.blue_button_inverse : Resource.Drawable.blue_button);
             CombatListLayout.Visibility = (id == 0) ? ViewStates.Visible : ViewStates.Gone;
-            PlayerListButton.Background = ContextCompat.GetDrawable(Context, (id == 1) ?
+            PlayerListButton.Background = ContextCompat.GetDrawable(c, (id == 1) ?
                 Resource.Drawable.blue_button_inverse : Resource.Drawable.blue_button);
             PlayerListLayout.Visibility = (id == 1) ? ViewStates.Visible : ViewStates.Gone;
-            MonsterListButton.Background = ContextCompat.GetDrawable(Context, (id == 2) ?
+            MonsterListButton.Background = ContextCompat.GetDrawable(c, (id == 2) ?
                 Resource.Drawable.blue_button_inverse: Resource.Drawable.blue_button);
             MonsterListLayout.Visibility = (id == 2) ? ViewStates.Visible : ViewStates.Gone;
             
