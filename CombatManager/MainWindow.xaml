@@ -1344,7 +1344,7 @@
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="CombatListItemTemplate">
-            <Grid Background="#03000000" ContextMenu="{StaticResource CharacterContextMenu}">
+            <Grid Background="#03000000" ContextMenu="{StaticResource CharacterContextMenu}" ContextMenuOpening="Grid_ContextMenuOpening">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="16"/>
                     <ColumnDefinition Width="Auto"/>
