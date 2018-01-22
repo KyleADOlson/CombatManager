@@ -76,8 +76,17 @@ namespace CombatManagerDroid
             DirectoryInfo info = new DirectoryInfo(Folder);
             if (info.Parent != null)
             {
-                _Folder = info.Parent.FullName;
-                UpdateFolderDisplay();
+                String oldFolder = _Folder;
+                try
+                {
+                    _Folder = info.Parent.FullName;
+                    UpdateFolderDisplay();
+                }
+                catch (Exception)
+                {
+                    _Folder = oldFolder;
+                    UpdateFolderDisplay();
+                }
             }
         }
 

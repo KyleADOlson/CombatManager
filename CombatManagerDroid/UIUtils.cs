@@ -137,15 +137,26 @@ namespace CombatManagerDroid
             };
         }
 
-        public static void ShowOKCancelDialog(Context context, String message, Action okAction)
+        public static void ShowOKCancelDialog(this Context context, String message, Action okAction, Action cancelAction = null)
         {
             AlertDialog.Builder bui = new AlertDialog.Builder(context);
             bui.SetMessage(message);
             bui.SetPositiveButton("OK", (a, x) => {
-                okAction();
+                okAction?.Invoke();
             });
-            bui.SetNegativeButton("Cancel", (a, x) => {});
+            bui.SetNegativeButton("Cancel", (a, x) => { cancelAction?.Invoke(); });
             bui.Show();  
+
+        }
+
+        public static void ShowOKDialog(this Context context, String message, Action okAction = null)
+        {
+            AlertDialog.Builder bui = new AlertDialog.Builder(context);
+            bui.SetMessage(message);
+            bui.SetPositiveButton("OK", (a, x) => {
+
+                okAction?.Invoke();
+            });
 
         }
 
