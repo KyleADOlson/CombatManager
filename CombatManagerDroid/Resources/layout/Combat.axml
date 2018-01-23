@@ -318,7 +318,9 @@
                         d1p1:layout_height="fill_parent"
                         d1p1:layout_weight="3"
                         d1p1:background="@drawable/main_tab" />
-                    <EditText
+                  <EditText
+                        d1p1:maxLines="1"
+                        d1p1:inputType="text"
                         d1p1:layout_width="match_parent"
                         d1p1:layout_height="fill_parent"
                         d1p1:id="@+id/rollText"

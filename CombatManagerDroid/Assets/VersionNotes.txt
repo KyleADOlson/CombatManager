@@ -1,3 +1,10 @@
+1.09
+Layout updates
+Remember which tab you were on when app restarts
+
+1.08
+Crash fixes
+
 1.07
 Phone functionality
 

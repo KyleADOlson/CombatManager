@@ -35,25 +35,7 @@
                 android:id="@+id/addButton" />
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:gravity="right"
-        android:background="#ff47aaaf">
-        <Button
-            android:text="OK"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/okButton"
-            android:layout_marginRight="10dp" />
-        <Button
-            android:text="Cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cancelButton" />
-    </LinearLayout>
+
+  <include
+      layout="@layout/MonsterEditorOkCancel" />
 </LinearLayout>

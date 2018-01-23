@@ -41,7 +41,9 @@
             android:layout_width="200dp"
             android:layout_height="fill_parent"
             android:id="@+id/linearLayout4">
-            <EditText
+          <EditText
+                android:maxLines="1"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/filterText" />

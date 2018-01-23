@@ -25,7 +25,7 @@
                 android:orientation="vertical"
                 android:minWidth="25px"
                 android:minHeight="25px"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/linearLayout3"
                 android:background="#ffcdcdcd">
@@ -50,7 +50,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/textView1"
                             android:gravity="center"
-                            android:minWidth="75dp" />
+                            android:minWidth="65sp" />
                         <EditText
                             android:inputType="number"
                             android:id="@+id/speedText"
@@ -74,7 +74,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/textView1"
                             android:gravity="center"
-                            android:minWidth="75dp" />
+                            android:minWidth="65sp" />
                         <EditText
                             android:inputType="number"
                             android:id="@+id/flyText"
@@ -110,7 +110,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/textView1"
                             android:gravity="center"
-                            android:minWidth="75dp" />
+                            android:minWidth="65sp" />
                         <EditText
                             android:inputType="number"
                             android:id="@+id/climbText"
@@ -133,7 +133,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/textView1"
                             android:gravity="center"
-                            android:minWidth="75dp" />
+                            android:minWidth="65sp" />
                         <EditText
                             android:inputType="number"
                             android:id="@+id/burrowText"
@@ -156,7 +156,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/textView1"
                             android:gravity="center"
-                            android:minWidth="75dp" />
+                            android:minWidth="65sp" />
                         <EditText
                             android:inputType="number"
                             android:id="@+id/swimText"
@@ -187,7 +187,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/textView1"
                             android:gravity="center"
-                            android:minWidth="75dp" />
+                            android:minWidth="65sp" />
                         <EditText
                             android:inputType="number"
                             android:id="@+id/spaceText"
@@ -210,7 +210,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/textView1"
                             android:gravity="center"
-                            android:minWidth="75dp" />
+                            android:minWidth="65sp" />
                         <EditText
                             android:inputType="number"
                             android:id="@+id/reachText"
@@ -278,9 +278,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" />
-                <EditText
-                    android:maxLines="1"
-                    android:inputType="text"
+              <EditText
+                android:maxLines="1"
+                android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/specialAttacksText"
@@ -291,9 +291,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" />
-                <EditText
-                    android:maxLines="1"
-                    android:inputType="text"
+              <EditText
+                android:maxLines="1"
+                android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spellLikeAbilitiesText"
@@ -304,9 +304,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" />
-                <EditText
-                    android:maxLines="1"
-                    android:inputType="text"
+              <EditText
+                android:maxLines="1"
+                android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spellsKnownText"
@@ -317,9 +317,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" />
-                <EditText
-                    android:maxLines="1"
-                    android:inputType="text"
+              <EditText
+                android:maxLines="1"
+                android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spellsPreparedText"

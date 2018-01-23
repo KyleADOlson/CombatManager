@@ -233,7 +233,8 @@ namespace CombatManagerDroid
 
             if (CombatListButton != null)
             {
-                ShowList(0);
+
+                ShowList(CMPreferences.GetLastCombatTab(v.Context));
             }
 
             ShowCharacter(v, _ViewCharacter);
@@ -257,19 +258,27 @@ namespace CombatManagerDroid
 
         void ShowList(int id)
         {
-            Context c = CombatListButton.Context;
-            CombatListButton.Background = ContextCompat.GetDrawable(c, (id == 0) ?
-                Resource.Drawable.blue_button_inverse : Resource.Drawable.blue_button);
-            CombatListLayout.Visibility = (id == 0) ? ViewStates.Visible : ViewStates.Gone;
-            PlayerListButton.Background = ContextCompat.GetDrawable(c, (id == 1) ?
-                Resource.Drawable.blue_button_inverse : Resource.Drawable.blue_button);
-            PlayerListLayout.Visibility = (id == 1) ? ViewStates.Visible : ViewStates.Gone;
-            MonsterListButton.Background = ContextCompat.GetDrawable(c, (id == 2) ?
-                Resource.Drawable.blue_button_inverse: Resource.Drawable.blue_button);
-            MonsterListLayout.Visibility = (id == 2) ? ViewStates.Visible : ViewStates.Gone;
-            
-            characterView.Visibility = (id == 0) ? ViewStates.Visible : ViewStates.Gone;
-            dieRollerLayout.Visibility = (id != 0) ? ViewStates.Visible : ViewStates.Gone;
+            if (CombatListButton != null)
+            {
+                //get a context, any context
+                Context c = CombatListButton.Context;
+
+                CMPreferences.SetLastCombatTab(CombatListButton.Context, id);
+
+
+                CombatListButton.Background = ContextCompat.GetDrawable(c, (id == 0) ?
+                    Resource.Drawable.blue_button_inverse : Resource.Drawable.blue_button);
+                CombatListLayout.Visibility = (id == 0) ? ViewStates.Visible : ViewStates.Gone;
+                PlayerListButton.Background = ContextCompat.GetDrawable(c, (id == 1) ?
+                    Resource.Drawable.blue_button_inverse : Resource.Drawable.blue_button);
+                PlayerListLayout.Visibility = (id == 1) ? ViewStates.Visible : ViewStates.Gone;
+                MonsterListButton.Background = ContextCompat.GetDrawable(c, (id == 2) ?
+                    Resource.Drawable.blue_button_inverse : Resource.Drawable.blue_button);
+                MonsterListLayout.Visibility = (id == 2) ? ViewStates.Visible : ViewStates.Gone;
+
+                characterView.Visibility = (id == 0) ? ViewStates.Visible : ViewStates.Gone;
+                dieRollerLayout.Visibility = (id != 0) ? ViewStates.Visible : ViewStates.Gone;
+            }
         }
 
         private void AddCharacterList(LayoutInflater inflater, ViewGroup container, View v, int id, bool monsters)

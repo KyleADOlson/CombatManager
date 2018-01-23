@@ -132,6 +132,19 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout-small\Combat.axml" />
+    <AndroidResource Include="Resources\layout-port\editor_tab_bar.axml" />
+    <AndroidResource Include="Resources\layout-port\MonsterEditorStats.axml" />
+    <AndroidResource Include="Resources\layout-port\MonsterEditorDefense.axml" />
+    <AndroidResource Include="Resources\layout-port\MonsterEditorDescription.axml" />
+    <AndroidResource Include="Resources\layout-port\MonsterEditorFeats.axml" />
+    <AndroidResource Include="Resources\layout-port\MonsterEditorOffense.axml" />
+    <AndroidResource Include="Resources\layout-port\MonsterEditorSpecial.axml" />
+    <AndroidResource Include="Resources\layout-port\MonsterAdvancer.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditor.axml" />
+    <AndroidResource Include="Resources\layout-port\MonsterEditor.axml" />
+    <AndroidResource Include="Resources\layout\MonsterEditorOkCancel.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

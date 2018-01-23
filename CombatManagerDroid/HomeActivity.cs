@@ -22,12 +22,12 @@ namespace CombatManagerDroid
     {
         enum HomePage
         {
-            Combat,
-            Monsters,
-            Feats,
-            Spells,
-            Rules,
-            Treasure
+            Combat = 0 ,
+            Monsters = 1,
+            Feats = 2,
+            Spells = 3,
+            Rules = 4,
+            Treasure = 5
         }
         
 
@@ -40,8 +40,7 @@ namespace CombatManagerDroid
         RuleFragment _RuleFragment;
         CombatFragment _CombatFragment;
         TreasureFragment _TreasureFragment;
-
-        static HomePage _LastFragment = HomePage.Combat;
+        
 
         
         ProgressDialog _ProgressDialog;
@@ -96,6 +95,7 @@ namespace CombatManagerDroid
             {
                 ShowSettings();
             };
+            
 
             ShowLastFragment();
 
@@ -105,7 +105,7 @@ namespace CombatManagerDroid
 
         void ShowLastFragment()
         {
-            switch (_LastFragment)
+            switch (LastFragment)
             {
             case HomePage.Combat:
                 ShowCombatFragment();
@@ -138,6 +138,18 @@ namespace CombatManagerDroid
 
             }
         }
+
+        private HomePage LastFragment
+        {
+            get
+            {
+                return (HomePage)CMPreferences.GetLastMainTab(this);
+            }
+            set
+            {
+                CMPreferences.SetLastMainTab(this, (int)value);
+            }
+        }
         
         private void ShowCombatFragment()
         {
@@ -146,9 +158,9 @@ namespace CombatManagerDroid
             //{
                 _CombatFragment = new CombatFragment();
             //}
-            _LastFragment = HomePage.Combat;
+            LastFragment = HomePage.Combat;
             TransitionBodyFragment(_CombatFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
         
         private void ShowMonsterFragment()
@@ -158,10 +170,10 @@ namespace CombatManagerDroid
             //{
                 _MonsterFragment = new MonsterFragment();
             //}
-            _LastFragment = HomePage.Monsters;
+            LastFragment = HomePage.Monsters;
             
             TransitionBodyFragment(_MonsterFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
         static bool _LoadingFragment;
@@ -203,9 +215,9 @@ namespace CombatManagerDroid
             //{
                 _FeatFragment = new FeatFragment();
             //}
-            _LastFragment = HomePage.Feats;
+            LastFragment = HomePage.Feats;
             TransitionBodyFragment(_FeatFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
         private void ShowSpellsFragment()
@@ -215,10 +227,10 @@ namespace CombatManagerDroid
             //{
                 _SpellFragment = new SpellFragment();
             //}
-            _LastFragment = HomePage.Spells;
+            LastFragment = HomePage.Spells;
             
             TransitionBodyFragment(_SpellFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
         private void ShowRulesFragment()
@@ -259,10 +271,10 @@ namespace CombatManagerDroid
             //{
                 _RuleFragment = new RuleFragment();
             //}
-            _LastFragment = HomePage.Rules;
+            LastFragment = HomePage.Rules;
 
             TransitionBodyFragment(_RuleFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
 
@@ -301,9 +313,9 @@ namespace CombatManagerDroid
             //{
                 _TreasureFragment = new TreasureFragment();
             //}
-            _LastFragment = HomePage.Treasure;
+            LastFragment = HomePage.Treasure;
             TransitionBodyFragment(_TreasureFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
         private void TransitionBodyFragment(Fragment fragment)

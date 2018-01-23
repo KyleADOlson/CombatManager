@@ -121,7 +121,7 @@ namespace CombatManagerDroid
 
             }
             baseLayout.RemoveAllViews();
-            baseLayout.LayoutParameters = new AbsListView.LayoutParams(
+            baseLayout.LayoutParameters = new LinearLayout.LayoutParams(
                 new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MatchParent,
                     ViewGroup.LayoutParams.WrapContent));
