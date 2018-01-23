@@ -1415,7 +1415,7 @@ namespace CombatManager
 
             foreach (Monster m in Monster.Monsters)
             {
-                if (m.Environment != null && m.Environment.Trim().Length > 0 && m.Environment != "?")
+                if (m.Environment != null && m.Environment.Trim().Length > 0 && m.Environment.Trim() != "?")
                 {
                     set.Add(m.Environment.ToLower().Capitalize().Trim());
                 }
