@@ -55,37 +55,80 @@ namespace CombatManagerDroid
             Resource.Id.treasureButton
         };
 
+        List<int> _ImageButtonId = new List<int>
+        {
+            Resource.Id.combatImageButton,
+            Resource.Id.monstersImageButton,
+            Resource.Id.featsImageButton,
+            Resource.Id.spellsImageButton,
+            Resource.Id.rulesImageButton,
+            Resource.Id.treasureImageButton
+        };
+
         protected override void OnCreate (Bundle bundle)
         {
 
             base.OnCreate (bundle);
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Main);
-            FindViewById<Button>(Resource.Id.monstersButton).Click += delegate
+            Button monstersButton = FindViewById<Button>(Resource.Id.monstersButton);
+            if (monstersButton != null)
             {
-                ShowMonsterFragment();
-            };
-            FindViewById<Button>(Resource.Id.featsButton).Click += delegate
+
+                FindViewById<Button>(Resource.Id.monstersButton).Click += delegate
+                {
+                    ShowMonsterFragment();
+                };
+                FindViewById<Button>(Resource.Id.featsButton).Click += delegate
+                {
+                    ShowFeatsFragment();
+                };
+                FindViewById<Button>(Resource.Id.spellsButton).Click += delegate
+                {
+                    ShowSpellsFragment();
+                };
+                FindViewById<Button>(Resource.Id.combatButton).Click += delegate
+                {
+                    ShowCombatFragment();
+                };
+                FindViewById<Button>(Resource.Id.rulesButton).Click += delegate
+                {
+                    ShowRulesFragment();
+                };
+                FindViewById<Button>(Resource.Id.treasureButton).Click += delegate
+                {
+                    ShowTreasureFragment();
+                };
+            }
+            ImageButton b = FindViewById<ImageButton>(Resource.Id.monstersImageButton);
+            if (b != null)
             {
-                ShowFeatsFragment();
-            };
-            FindViewById<Button>(Resource.Id.spellsButton).Click += delegate
-            {
-                ShowSpellsFragment();
-            };
-            FindViewById<Button>(Resource.Id.combatButton).Click += delegate
-            {
-                ShowCombatFragment();
-            };
-            FindViewById<Button>(Resource.Id.rulesButton).Click += delegate
-            {
-                ShowRulesFragment();
-            };
-            FindViewById<Button>(Resource.Id.treasureButton).Click += delegate
-            {
-                ShowTreasureFragment();
-            };
-            ImageButton b = FindViewById<ImageButton>(Resource.Id.helpButton);
+                FindViewById<ImageButton>(Resource.Id.monstersImageButton).Click += delegate
+                {
+                    ShowMonsterFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.featsImageButton).Click += delegate
+                {
+                    ShowFeatsFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.spellsImageButton).Click += delegate
+                {
+                    ShowSpellsFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.combatImageButton).Click += delegate
+                {
+                    ShowCombatFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.rulesImageButton).Click += delegate
+                {
+                    ShowRulesFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.treasureImageButton).Click += delegate
+                {
+                    ShowTreasureFragment();
+                };
+            }
+            b = FindViewById<ImageButton>(Resource.Id.helpButton);
             b.Click += delegate
             {
                 ShowHelp();
@@ -134,7 +177,15 @@ namespace CombatManagerDroid
             for (int i=0; i<6; i++)
             {
                 Button b = FindViewById<Button>(_ButtonId[i]);
-                b.Selected = i == (int)selectedPage;
+                if (b != null)
+                {
+                    b.Selected = i == (int)selectedPage;
+                }
+                ImageButton ib = FindViewById<ImageButton>(_ImageButtonId[i]);
+                if (ib != null)
+                {
+                    ib.Selected = i == (int)selectedPage;
+                }
 
             }
         }
