@@ -22,6 +22,22 @@ namespace CombatManagerDroid
         private static Monster _SourceMonster;
         private static Monster _EditMonster;
 
+        int[] buttonResources = new int[] {Resource.Id.mainTab,
+                                Resource.Id.defenseTab,
+                                Resource.Id.offenseTab,
+                                Resource.Id.statsTab,
+                                Resource.Id.featsTab,
+                                Resource.Id.specialTab,
+                Resource.Id.descriptionTab };
+        int[] imageButtonResources = new int[] {Resource.Id.mainImageTab,
+                                Resource.Id.defenseImageTab,
+                                Resource.Id.offenseImageTab,
+                                Resource.Id.statsImageTab,
+                                Resource.Id.featsImageTab,
+                                Resource.Id.specialImageTab,
+                                Resource.Id.descriptionImageTab };
+
+
         protected override void OnCreate (Bundle bundle)
         {
             base.OnCreate (bundle);
@@ -42,17 +58,12 @@ namespace CombatManagerDroid
                 OKClicked();
             };
 
-            foreach (int x in new int [] {Resource.Id.mainTab,
-                                Resource.Id.defenseTab,
-                                Resource.Id.offenseTab,
-                                Resource.Id.statsTab,
-                                Resource.Id.featsTab,
-                                Resource.Id.specialTab,
-                Resource.Id.descriptionTab})
+
+            foreach (int x in GetCurrentButtons())
             {
                 
                 int a = x;
-                Button b = FindViewById<Button>(x);
+                View b = FindViewById<View>(x);
                 b.Click += delegate
                 {
                     TabClicked(a);
@@ -68,6 +79,22 @@ namespace CombatManagerDroid
                 {
                     b.Background = (ContextCompat.GetDrawable(this, Resource.Drawable.init_button));
                 }
+            }
+        }
+
+        private int[] GetCurrentButtons()
+        {
+
+            View v = FindViewById<View>(Resource.Id.mainTab);
+            
+
+            if (v != null)
+            {
+                return buttonResources;
+            }
+            else
+            {
+                return imageButtonResources;
             }
         }
 
@@ -102,20 +129,27 @@ namespace CombatManagerDroid
         {
             switch (tab)
             {
-            case Resource.Id.mainTab:
-                return Resource.Layout.MonsterEditor;
-            case Resource.Id.defenseTab:
-                return Resource.Layout.MonsterEditorDefense;
-            case Resource.Id.offenseTab:
-                return Resource.Layout.MonsterEditorOffense;
-            case Resource.Id.statsTab:
-                return Resource.Layout.MonsterEditorStats;
-            case Resource.Id.featsTab:
-                return Resource.Layout.MonsterEditorFeats;
-            case Resource.Id.specialTab:
-                return Resource.Layout.MonsterEditorSpecial;
-            case Resource.Id.descriptionTab:
-                return Resource.Layout.MonsterEditorDescription;
+                case Resource.Id.mainTab:
+                case Resource.Id.mainImageTab:
+                    return Resource.Layout.MonsterEditor;
+                case Resource.Id.defenseTab:
+                case Resource.Id.defenseImageTab:
+                    return Resource.Layout.MonsterEditorDefense;
+                case Resource.Id.offenseTab:
+                case Resource.Id.offenseImageTab:
+                    return Resource.Layout.MonsterEditorOffense;
+                case Resource.Id.statsTab:
+                case Resource.Id.statsImageTab:
+                    return Resource.Layout.MonsterEditorStats;
+                case Resource.Id.featsTab:
+                case Resource.Id.featsImageTab:
+                    return Resource.Layout.MonsterEditorFeats;
+                case Resource.Id.specialTab:
+                case Resource.Id.specialImageTab:
+                    return Resource.Layout.MonsterEditorSpecial;
+                case Resource.Id.descriptionTab:
+                case Resource.Id.descriptionImageTab:
+                    return Resource.Layout.MonsterEditorDescription;
             }
             return 0;
         }
@@ -124,20 +158,27 @@ namespace CombatManagerDroid
         {
             switch (tab)
             {
-            case Resource.Id.mainTab:
-                return new MonsterEditorMainActivity();
-            case Resource.Id.defenseTab:
-                return new MonsterEditorDefenseActivity();
-            case Resource.Id.offenseTab:
-                return new MonsterEditorOffenseActivity();
-            case Resource.Id.statsTab:
-                return new MonsterEditorStatsActivity();
-            case Resource.Id.featsTab:
-                return new MonsterEditorFeatsActivity();
-            case Resource.Id.specialTab:
-                return new MonsterEditorSpecialActivity();
-            case Resource.Id.descriptionTab:
-                return new MonsterEditorDescriptionActivity();
+                case Resource.Id.mainTab:
+                case Resource.Id.mainImageTab:
+                    return new MonsterEditorMainActivity();
+                case Resource.Id.defenseTab:
+                case Resource.Id.defenseImageTab:
+                    return new MonsterEditorDefenseActivity();
+                case Resource.Id.offenseTab:
+                case Resource.Id.offenseImageTab:
+                    return new MonsterEditorOffenseActivity();
+                case Resource.Id.statsTab:
+                case Resource.Id.statsImageTab:
+                    return new MonsterEditorStatsActivity();
+                case Resource.Id.featsTab:
+                case Resource.Id.featsImageTab:
+                    return new MonsterEditorFeatsActivity();
+                case Resource.Id.specialTab:
+                case Resource.Id.specialImageTab:
+                    return new MonsterEditorSpecialActivity();
+                case Resource.Id.descriptionTab:
+                case Resource.Id.descriptionImageTab:
+                    return new MonsterEditorDescriptionActivity();
             }
             return null;
         }
