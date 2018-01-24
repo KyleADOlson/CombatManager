@@ -278,9 +278,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" />
-              <EditText
-                android:maxLines="1"
-                android:inputType="text"
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/specialAttacksText"
@@ -291,9 +291,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" />
-              <EditText
-                android:maxLines="1"
-                android:inputType="text"
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spellLikeAbilitiesText"
@@ -304,9 +304,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" />
-              <EditText
-                android:maxLines="1"
-                android:inputType="text"
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spellsKnownText"
@@ -317,9 +317,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" />
-              <EditText
-                android:maxLines="1"
-                android:inputType="text"
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spellsPreparedText"
@@ -327,7 +327,6 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-  <include
-      layout="@layout/MonsterEditorOkCancel" />
+    <include
+        layout="@layout/MonsterEditorOkCancel" />
 </LinearLayout>
