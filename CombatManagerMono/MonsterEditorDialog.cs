@@ -68,11 +68,18 @@ namespace CombatManagerMono
 		{
 			base.ViewDidLoad ();
 			
+            if (View.Bounds.Height > View.Bounds.Width)
+            {
+                View.SetSize((float)View.Bounds.Height, (float)View.Bounds.Width);
+            }
+
 			BackgroundView.BackgroundColor = UIColor.Clear;
 			BackgroundView.BorderColor = UIExtensions.RGBColor(0xFFFFFF);
 			BackgroundView.Border = 2.0f;
 			BackgroundView.Gradient = new GradientHelper(CMUIColors.SecondaryColorADark);
-			
+
+  
+
 			HeaderView.BackgroundColor = UIColor.Clear;
 			HeaderView.Border = 0;
 			HeaderView.Gradient = new GradientHelper(CMUIColors.PrimaryColorDark);
