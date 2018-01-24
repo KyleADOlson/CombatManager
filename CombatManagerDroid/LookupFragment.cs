@@ -178,12 +178,14 @@ namespace CombatManagerDroid
                 }
             }
         }
-
-        protected LinearLayout FilterLayout
+        
+        protected Apmem.FlowLayout FilterLayout
         {
             get
             {
-                return _v.FindViewById<LinearLayout>(Resource.Id.filterLayout);
+
+                return  _v.FindViewById<Apmem.FlowLayout>(Resource.Id.filterLayout);
+
             }
         }
 
@@ -206,12 +208,32 @@ namespace CombatManagerDroid
             }
         }
 
-        protected Button BuildFilterButton(String text, int size)
+        List<LinearLayout> filterLevels = new List<LinearLayout>();
+
+        protected void CreateMultipleLevelLayout(int levels)
+        {
+            for (int i = 0; i < levels; i++)
+            {
+                LinearLayout l = new LinearLayout(_v.Context);
+                filterLevels.Add(l);
+                FilterLayout.AddView(l);
+            }
+
+        }
+
+        protected Button BuildFilterButton(String text, int size, int? level = null)
         {
             Button b = new Button(_v.Context);
             b.Text = text;
             b.SetMinimumWidth(size);
-            FilterLayout.AddView(b);
+            if (level != null)
+            {
+                filterLevels[level.Value].AddView(b);
+            }
+            else
+            {
+                FilterLayout.AddView(b);
+            }
             b.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.down16), null, null, null);
 
             return b;
