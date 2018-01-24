@@ -139,11 +139,12 @@ namespace CombatManager
     #if ANDROID
                 XDocument doc = XDocument.Load(new StreamReader(CoreContext.Context.Assets.Open(filename)));
     #elif MONO
-                XDocument doc = XDocument.Load(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/..", filename));
+
+                XDocument doc = XDocument.Load(Path.Combine(XmlLoader<MagicItem>.AssemblyDir, filename));
                          
 
     #else
-
+                F
                 XDocument doc = XDocument.Load(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), filename));
     #endif
                
