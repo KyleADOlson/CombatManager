@@ -144,7 +144,6 @@ namespace CombatManager
                          
 
     #else
-                F
                 XDocument doc = XDocument.Load(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), filename));
     #endif
                
