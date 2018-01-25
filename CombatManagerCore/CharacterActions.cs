@@ -167,7 +167,7 @@ namespace CombatManager
 			items.Add(new CharacterActionItem());
 			items.Add(new CharacterActionItem("Roll", "d20", GetRollItems(ch)));
             items.Add(new CharacterActionItem("Initiative", "sort", GetInitiativeItems(ch, selCh, nearCharacters)));
-			items.Add(new CharacterActionItem("Clone", "clone", CharacterActionType.Clone));
+			items.Add(new CharacterActionItem("Clone", "clone", CharacterActionType.Clone)); 
 			if (ch.IsMonster)
 			{
 				items.Add(new CharacterActionItem("Move to Party", "prev", CharacterActionType.MoveToParty));
@@ -176,6 +176,9 @@ namespace CombatManager
 			{
 				items.Add(new CharacterActionItem("Move to Monsters", "next", CharacterActionType.MoveToMonsters));
 			}
+            items.Add(new CharacterActionItem());
+            items.Add(new CharacterActionItem("Copy to Custom", "import", CharacterActionType.CopyToCustom));
+
 			items.Add(new CharacterActionItem());
 			items.Add(new CharacterActionItem("Delete", "delete", CharacterActionType.Delete));
 			
@@ -379,142 +382,147 @@ namespace CombatManager
 			
 			switch (action)
 			{
-			case CharacterActionType.MakeIdle:
-				foreach (Character ch in allChars)
-				{
-					ch.IsIdle = true;
-				}
-				state.FilterList();
-				break;
-			case CharacterActionType.RemoveIdle:
-				foreach (Character ch in allChars)
-				{
-					ch.IsIdle = false;
-				}
-				state.FilterList();
-				break;
-			case CharacterActionType.Clone:
-				foreach (Character ch in allChars)
-				{
-					state.CloneCharacter(ch);
-				}
-				break;
-			case CharacterActionType.Delete:
-				foreach (Character ch in allChars)
-				{
-					state.RemoveCharacter(ch);
-				}
-				break;
-			case CharacterActionType.MoveToMonsters:
-				foreach (Character ch in allChars)
-				{
-					if (!ch.IsMonster)
-					{
-						state.RemoveCharacter(ch);
-						ch.IsMonster = true;
-						state.AddCharacter(ch);
-					}
+			    case CharacterActionType.MakeIdle:
+				    foreach (Character ch in allChars)
+				    {
+					    ch.IsIdle = true;
+				    }
+				    state.FilterList();
+				    break;
+			    case CharacterActionType.RemoveIdle:
+				    foreach (Character ch in allChars)
+				    {
+					    ch.IsIdle = false;
+				    }
+				    state.FilterList();
+				    break;
+			    case CharacterActionType.Clone:
+				    foreach (Character ch in allChars)
+				    {
+					    state.CloneCharacter(ch);
+				    }
+				    break;
+			    case CharacterActionType.Delete:
+				    foreach (Character ch in allChars)
+				    {
+					    state.RemoveCharacter(ch);
+				    }
+				    break;
+			    case CharacterActionType.MoveToMonsters:
+				    foreach (Character ch in allChars)
+				    {
+					    if (!ch.IsMonster)
+					    {
+						    state.RemoveCharacter(ch);
+						    ch.IsMonster = true;
+						    state.AddCharacter(ch);
+					    }
 					
-				}
-				state.FilterList();
-				break;
-			case CharacterActionType.MoveToParty:
-				foreach (Character ch in allChars)
-				{
-					if (ch.IsMonster)
-					{
-						state.RemoveCharacter(ch);
-						ch.IsMonster = false;
-						state.AddCharacter(ch);
-					}
+				    }
+				    state.FilterList();
+				    break;
+			    case CharacterActionType.MoveToParty:
+				    foreach (Character ch in allChars)
+				    {
+					    if (ch.IsMonster)
+					    {
+						    state.RemoveCharacter(ch);
+						    ch.IsMonster = false;
+						    state.AddCharacter(ch);
+					    }
 					
 					
-				}
-				state.FilterList();
-				break;
-			case CharacterActionType.MoveUpInitiative:
-				state.MoveUpCharacter(primaryChar);
-				break;
-			case CharacterActionType.MoveDownInitiative:
-				state.MoveDownCharacter(primaryChar);
-				break;
-			case CharacterActionType.MoveAfterInitiative:
-				state.MoveCharacterAfter(primaryChar, (Character)param);
-				break;
-			case CharacterActionType.MoveBeforeInitiative:
-				state.MoveCharacterBefore(primaryChar, (Character)param);
-				break;
-            case CharacterActionType.RollInitiative:
-                state.RollIndividualInitiative(primaryChar);
-                state.SortCombatList(false, false);
-                break;
-            case CharacterActionType.Ready:
-                primaryChar.IsReadying = !primaryChar.IsReadying;
-                if (primaryChar.IsReadying && primaryChar.IsDelaying)
-                {
-                    primaryChar.IsDelaying = false;
-                }
-                break;
-            case CharacterActionType.Delay:
-                primaryChar.IsDelaying = !primaryChar.IsDelaying;
-                if (primaryChar.IsReadying && primaryChar.IsDelaying)
-                {
-                    primaryChar.IsReadying = false;
-                }
-                break;
-            case CharacterActionType.ActNow:
-                if (primaryChar.IsIdle)
-                {
-                    primaryChar.IsIdle = false;
-                }
-                state.CharacterActNow(primaryChar);
-                break;
-            case CharacterActionType.LinkInitiative:
-                Character targetChar = (Character)param;
-                if (primaryChar != targetChar  && targetChar.InitiativeLeader == null)
-                {
-                    state.LinkInitiative(primaryChar, (Character)param);
-                }
-                break;
-            case CharacterActionType.UnlinkInitiative:
-                state.UnlinkLeader(primaryChar);
-                break;
-			case CharacterActionType.AddConditon:	
-				if (param != null)
-				{
-					Condition c = (Condition)param;
-					foreach (Character ch in allChars)
-					{
-						ActiveCondition a = new ActiveCondition();
-						a.Condition = c;
-						ch.Stats.AddCondition(a);
-						Condition.PushRecentCondition(a.Condition);
-					}
-				}
-				else
-				{
-					res = CharacterActionResult.NeedConditionDialog;
-				}
-				break;
-			case CharacterActionType.EditNotes:
-				res = CharacterActionResult.NeedNotesDialog;
-				break;
-			case CharacterActionType.EditMonster:
-				res = CharacterActionResult.NeedMonsterEditorDialog;
-				break;
-            case CharacterActionType.RollAttack:
-                res = CharacterActionResult.RollAttack;
-                break;
-            case CharacterActionType.RollAttackSet:
-                res = CharacterActionResult.RollAttackSet;
-                break;
-            case CharacterActionType.RollSave:
-                res = CharacterActionResult.RollSave;
-                break;
-            case CharacterActionType.RollSkill:
-                res = CharacterActionResult.RollSkill;
-                break;
-			}
+				    }
+				    state.FilterList();
+				    break;
+			    case CharacterActionType.MoveUpInitiative:
+				    state.MoveUpCharacter(primaryChar);
+				    break;
+			    case CharacterActionType.MoveDownInitiative:
+				    state.MoveDownCharacter(primaryChar);
+				    break;
+			    case CharacterActionType.MoveAfterInitiative:
+				    state.MoveCharacterAfter(primaryChar, (Character)param);
+				    break;
+			    case CharacterActionType.MoveBeforeInitiative:
+				    state.MoveCharacterBefore(primaryChar, (Character)param);
+				    break;
+                case CharacterActionType.RollInitiative:
+                    state.RollIndividualInitiative(primaryChar);
+                    state.SortCombatList(false, false);
+                    break;
+                case CharacterActionType.Ready:
+                    primaryChar.IsReadying = !primaryChar.IsReadying;
+                    if (primaryChar.IsReadying && primaryChar.IsDelaying)
+                    {
+                        primaryChar.IsDelaying = false;
+                    }
+                    break;
+                case CharacterActionType.Delay:
+                    primaryChar.IsDelaying = !primaryChar.IsDelaying;
+                    if (primaryChar.IsReadying && primaryChar.IsDelaying)
+                    {
+                        primaryChar.IsReadying = false;
+                    }
+                    break;
+                case CharacterActionType.ActNow:
+                    if (primaryChar.IsIdle)
+                    {
+                        primaryChar.IsIdle = false;
+                    }
+                    state.CharacterActNow(primaryChar);
+                    break;
+                case CharacterActionType.LinkInitiative:
+                    Character targetChar = (Character)param;
+                    if (primaryChar != targetChar  && targetChar.InitiativeLeader == null)
+                    {
+                        state.LinkInitiative(primaryChar, (Character)param);
+                    }
+                    break;
+                case CharacterActionType.UnlinkInitiative:
+                    state.UnlinkLeader(primaryChar);
+                    break;
+			    case CharacterActionType.AddConditon:	
+				    if (param != null)
+				    {
+					    Condition c = (Condition)param;
+					    foreach (Character ch in allChars)
+					    {
+						    ActiveCondition a = new ActiveCondition();
+						    a.Condition = c;
+						    ch.Stats.AddCondition(a);
+						    Condition.PushRecentCondition(a.Condition);
+					    }
+				    }
+				    else
+				    {
+					    res = CharacterActionResult.NeedConditionDialog;
+				    }
+				    break;
+			    case CharacterActionType.EditNotes:
+				    res = CharacterActionResult.NeedNotesDialog;
+				    break;
+			    case CharacterActionType.EditMonster:
+				    res = CharacterActionResult.NeedMonsterEditorDialog;
+				    break;
+                case CharacterActionType.RollAttack:
+                    res = CharacterActionResult.RollAttack;
+                    break;
+                case CharacterActionType.RollAttackSet:
+                    res = CharacterActionResult.RollAttackSet;
+                    break;
+                case CharacterActionType.RollSave:
+                    res = CharacterActionResult.RollSave;
+                    break;
+                case CharacterActionType.RollSkill:
+                    res = CharacterActionResult.RollSkill;
+                    break;
+                case CharacterActionType.CopyToCustom:
+                    Monster m = primaryChar.Monster;
+                    MonsterDB.DB.AddMonster(m);
+                    Monster.Monsters.Add(m);
+                    break;
+            }
 			return res;
 		}
 	}

@@ -1,6 +1,8 @@
 1.09
 Layout updates
 Remember which tab you were on when app restarts
+Import Monsters, Feats, Spells, and Conditions
+Edit DB Monsters
 
 1.08
 Crash fixes
