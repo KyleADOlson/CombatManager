@@ -51,6 +51,12 @@ namespace CombatManagerDroid
 
             });
         }
+
+        protected override void DeleteItem(Feat item)
+        {
+            Feat.RemoveCustomFeat(item);
+            RefreshPage();
+        }
     }
 }
 

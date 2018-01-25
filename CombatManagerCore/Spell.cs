@@ -393,6 +393,10 @@ namespace CombatManager
 
         public static void AddCustomSpell(Spell s)
         {
+            if (_Spells == null)
+            {
+                LoadSpells();
+            }
             _SpellsDB.AddItem(s);
             Spells.Add(s);
         }

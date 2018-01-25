@@ -118,6 +118,12 @@ namespace CombatManagerDroid
 
             });
         }
+
+        protected override void DeleteItem(Spell item)
+        {
+            Spell.RemoveCustomSpell(item);
+            RefreshPage();
+        }
     }
 }
 

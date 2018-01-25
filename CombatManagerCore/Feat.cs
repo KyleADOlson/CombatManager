@@ -536,6 +536,11 @@ namespace CombatManager
         }
         public static void AddCustomFeat(Feat f)
         {
+            if (feats == null)
+            {
+                LoadFeats();
+            }
+
             _FeatsDB.AddItem(f);
             if (!featMap.ContainsKey(f.Name))
             {
