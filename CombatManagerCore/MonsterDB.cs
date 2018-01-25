@@ -78,6 +78,12 @@ namespace CombatManager
             }
         }
 
+        public void AddMonsterNotify(Monster monster)
+        {
+            AddMonster(monster);
+            MonsterUpdated?.Invoke(monster);
+        }
+
 
         public void AddMonster(Monster monster)
         {

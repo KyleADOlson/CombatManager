@@ -125,8 +125,25 @@ namespace CombatManagerDroid
 
             });
             b = new Button(_v.Context);
+            b.Text = "New";
+            b.Click += (sender, e) =>
+            {
+                NewItem();
+            };
+            FilterLayout.AddView(b);
+            NewButton = b;
+
+            b = new Button(_v.Context);
+            b.Text = "Customize";
+            b.Click += (sender, e) =>
+            {
+                CustomizeItem();
+            };
+            FilterLayout.AddView(b);
+            CustomizeButton = b;
+
+            b = new Button(_v.Context);
             b.Text = "Edit";
-            b.SetLeftDrawableResource(Resource.Drawable.pencil16);
             b.Click += (sender, e) =>
             {
                 EditItem();
@@ -369,6 +386,34 @@ namespace CombatManagerDroid
 
             Context.StartActivity(intent);
             
+        }
+
+        void NewItem()
+        {
+            MonsterEditorActivity.SourceMonster = Monster.BlankMonster();
+            MonsterEditorActivity.DBMonster = true;
+
+            Intent intent = new Intent(this.Context, (Java.Lang.Class)new MonsterEditorMainActivity().Class);
+            intent.AddFlags(ActivityFlags.NewTask);
+
+            Context.StartActivity(intent);
+        }
+
+        void CustomizeItem()
+        {
+            if (SelectedItem != null)
+            {
+                Monster sourceMonster  = SelectedItem.Clone() as Monster;
+                sourceMonster.DBLoaderID = 0;
+                MonsterEditorActivity.SourceMonster = sourceMonster;
+                MonsterEditorActivity.DBMonster = true;
+
+                Intent intent = new Intent(this.Context, (Java.Lang.Class)new MonsterEditorMainActivity().Class);
+                intent.AddFlags(ActivityFlags.NewTask);
+
+                Context.StartActivity(intent);
+            }
+
         }
 
         public override void OnCreate(Bundle savedInstanceState)

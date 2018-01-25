@@ -34,10 +34,6 @@ namespace CombatManagerDroid
 
         Button deleteButton;
 
-        protected Button EditButton
-        {
-            get; set;
-        }
 
         static T _SelectedItem;
 
@@ -216,7 +212,24 @@ namespace CombatManagerDroid
                 }
             }
         }
-        
+
+
+        protected Button EditButton
+        {
+            get; set;
+        }
+
+
+        protected Button NewButton
+        {
+            get; set;
+        }
+
+        protected Button CustomizeButton
+        {
+            get; set;
+        }
+
         protected virtual void DeleteItem(T item)
         {
 

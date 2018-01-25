@@ -110,7 +110,15 @@ namespace CombatManagerDroid
 
             if (DBMonster)
             {
-                MonsterDB.DB.UpdateMonster(_SourceMonster);
+                if (_SourceMonster.DBLoaderID == 0)
+                {
+                    Monster.Monsters.Add(_SourceMonster);
+                    MonsterDB.DB.AddMonsterNotify(_SourceMonster);
+                }
+                else
+                { 
+                    MonsterDB.DB.UpdateMonster(_SourceMonster);
+                }
             };
 
             GoHome();
