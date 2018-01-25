@@ -572,6 +572,18 @@ namespace CombatManager
             _FeatsDB.UpdateItem(f);
         }
 
+        public static IEnumerable<Feat> DBFeats
+        {
+            get
+            {
+                if (feats == null)
+                {
+                    LoadFeats();
+                }
+                return _FeatsDB.Items;
+            }
+        }
+
 
     }
 }

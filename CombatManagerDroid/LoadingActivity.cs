@@ -30,7 +30,7 @@ namespace CombatManagerDroid
             SetContentView (Resource.Layout.Loading);
 
             Thread t = new Thread(new ThreadStart(delegate {
-                DBSettings.UseDB = false;
+                //DBSettings.UseDB = false;
 
                 Dictionary<String, Weapon> w = Weapon.Weapons;
 

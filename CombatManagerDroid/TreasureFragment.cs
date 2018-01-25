@@ -56,6 +56,11 @@ namespace CombatManagerDroid
             return item.Name;
         }
 
+        protected override bool IsCustom(MagicItem item)
+        {
+            return false;
+        }
+
 
         protected override void BuildFilters()
         {

@@ -62,7 +62,7 @@ namespace CombatManager
         }
     }
 
-    public class XmlLoader<T>
+    public static class XmlLoader<T>
     {
 
         private static Dictionary<string, string> xmlAttributeErrors;
@@ -121,17 +121,9 @@ namespace CombatManager
                 return _AppDataDir;
             }
         }
+        
 
-       
-
-
-
-        public static T Load(string filename)
-        {
-            return Load(filename, false);
-        }
-
-        public static T Load(string filename, bool appData)
+        public static T Load(string filename, bool appData = false)
         {
             T set = default(T);
 

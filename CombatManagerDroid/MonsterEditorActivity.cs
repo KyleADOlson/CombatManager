@@ -21,6 +21,7 @@ namespace CombatManagerDroid
     {
         private static Monster _SourceMonster;
         private static Monster _EditMonster;
+        private static bool _DBMonster;
 
         int[] buttonResources = new int[] {Resource.Id.mainTab,
                                 Resource.Id.defenseTab,
@@ -106,6 +107,12 @@ namespace CombatManagerDroid
         void OKClicked()
         {
             _SourceMonster.CopyFrom(EditMonster);
+
+            if (DBMonster)
+            {
+                MonsterDB.DB.UpdateMonster(_SourceMonster);
+            };
+
             GoHome();
         }
         void CancelClicked()
@@ -201,6 +208,14 @@ namespace CombatManagerDroid
                 _EditMonster = (Monster)_SourceMonster.Clone();
             }
         }
+
+        public static bool DBMonster
+        {
+            get => _DBMonster;
+            set => _DBMonster = value;
+        }
+
+
         protected static Monster EditMonster
         {
             get

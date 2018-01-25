@@ -446,7 +446,7 @@ namespace CombatManager
                 }
                 else if (file.Extension == ".cmx")
                 {
-                    ImportDateFromFile(filename);
+                    ImportDataFromFile(filename);
                 }
                 else if (file.Extension == ".cmcs")
                 {
@@ -7588,12 +7588,12 @@ namespace CombatManager
             fd.Filter = exportFileFilter;
             if (fd.ShowDialog() == true)
             {
-                ImportDateFromFile(fd.FileName);
+                ImportDataFromFile(fd.FileName);
 
             }
         }
 
-        private void ImportDateFromFile(string filename)
+        private void ImportDataFromFile(string filename)
         {
             ExportData x = XmlLoader<ExportData>.Load(filename);
             ExportDialog dlg = new ExportDialog(x);

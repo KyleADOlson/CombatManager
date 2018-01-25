@@ -409,6 +409,17 @@ namespace CombatManager
             _SpellsDB.UpdateItem(s);
         }
 
+        public static IEnumerable<Spell> DBSpells
+        {
+            get
+            {
+                if (_Spells == null)
+                {
+                    LoadSpells();
+                }
+                return _SpellsDB.Items;
+            }
+        }
 
 
         public static ICollection<string> Schools

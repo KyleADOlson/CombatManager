@@ -28,8 +28,16 @@ namespace CombatManagerDroid
         
         protected abstract String ItemHtml(T item);
 
+        protected abstract bool IsCustom(T item);
+
         public View _v;
 
+        Button deleteButton;
+
+        protected Button EditButton
+        {
+            get; set;
+        }
 
         static T _SelectedItem;
 
@@ -52,9 +60,7 @@ namespace CombatManagerDroid
 
             _v = v;
 
-            items = GetItems();
-            items.Sort((a, b) => ItemName(a).CompareTo(ItemName(b)));
-            _FilteredItems = new List<T>(items);
+            ResetItems();
 
             ItemList.Adapter = (new LookupAdapter(this));
             ItemList.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => 
@@ -68,11 +74,38 @@ namespace CombatManagerDroid
                 UpdateFilter();
             };
             BuildFilters();
+
+            deleteButton = new Button(_v.Context);
+            deleteButton.Text = "Delete";
+            deleteButton.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.delete16), null, null, null);
+
+            deleteButton.Click += (sender, e) =>
+            {
+                DeleteClicked();
+            };
+
+            FilterLayout.AddView(deleteButton);
+
+
             FilterItems();
             BuildAdditionalLayouts();
             RefreshItem();
 
             return v;
+        }
+
+        private void ResetItems()
+        {
+
+            items = GetItems();
+            items.Sort((a, b) => ItemName(a).CompareTo(ItemName(b)));
+            _FilteredItems = new List<T>(items);
+        }
+
+        public void RefreshPage()
+        {
+            ResetItems();
+            UpdateFilter();
         }
 
         public void UpdateFilter()
@@ -176,7 +209,17 @@ namespace CombatManagerDroid
                     
                     wv.LoadUrl("about:blank");
                 }
+                deleteButton.Visibility = IsCustom(item) ? ViewStates.Visible : ViewStates.Gone;
+                if (EditButton != null)
+                {
+                    EditButton.Visibility = deleteButton.Visibility;
+                }
             }
+        }
+        
+        protected virtual void DeleteItem(T item)
+        {
+
         }
         
         protected Apmem.FlowLayout FilterLayout
@@ -284,6 +327,17 @@ namespace CombatManagerDroid
             }
         }
        
+
+        void DeleteClicked()
+        {
+
+            UIUtils.ShowOKCancelDialog(Activity, "Delete " + ItemName(SelectedItem) + "?", () =>
+            {
+                DeleteItem(SelectedItem);
+                ResetItems();
+                UpdateFilter();
+            });
+        }
 
         class LookupAdapter : BaseAdapter
         {

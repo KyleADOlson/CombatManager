@@ -13,6 +13,7 @@ using Android.Views;
 using Android.Webkit;
 using Android.Widget;
 using Android.OS;
+using System.IO;
 
 namespace CombatManagerDroid
 {
@@ -30,10 +31,7 @@ namespace CombatManagerDroid
             Treasure = 5
         }
         
-
-
-
-
+        
         MonsterFragment _MonsterFragment;
         FeatFragment _FeatFragment;
         SpellFragment _SpellFragment;
@@ -136,8 +134,29 @@ namespace CombatManagerDroid
             b = FindViewById<ImageButton>(Resource.Id.settingsButton);
             b.Click += delegate
             {
-                ShowSettings();
+
+                UIUtils.ShowListPopover(b, "Options", new List<string> {
+                "Import",
+                "Export",
+                "Settings",
+                },
+                (option) =>
+                {
+                    switch (option)
+                    {
+                        case 0:
+                            ShowImport();
+                            break;
+                        case 1:
+                            ShowExport();
+                            break;
+                        case 2:
+                            ShowSettings();
+                            break;
+                    }
+                });
             };
+                
             
 
             ShowLastFragment();
@@ -398,6 +417,114 @@ namespace CombatManagerDroid
             dlg.Show();
         }
 
+        void ShowImport()
+        {
+            FileDialog fd = new FileDialog(this, new List<string>() { ".cmx" }, true);
+            fd.Show();
+
+            fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
+            {
+
+                string name = ea.Filename;
+                string fullname = Path.Combine(fd.Folder, name);
+
+                FileInfo file = new FileInfo(fullname);
+                ShowImportDialog(fullname);
+            };
+        }
+
+        void ShowImportDialog(String filename)
+        {
+            try
+            {
+                ExportData data = XmlLoader<ExportData>.Load(filename);
+
+
+                ImportExportDialog ied = new ImportExportDialog(this, data, true);
+                ied.Show();
+                ied.DialogComplete += (sender, e) =>
+                {
+                    foreach (Monster m in e.Data.Monsters)
+                    {
+                        m.DBLoaderID = 0;
+                        MonsterDB.DB.AddMonster(m);
+                        Monster.Monsters.Add(m);
+                    }
+                    foreach (Spell s in e.Data.Spells)
+                    {
+                        s.DBLoaderID = 0;
+                        Spell.AddCustomSpell(s);
+                    }
+                    foreach (Feat s in e.Data.Feats)
+                    {
+                        s.DBLoaderID = 0;
+                        Feat.AddCustomFeat(s);
+                    }
+                    foreach (Condition s in e.Data.Conditions)
+                    {
+                        Condition.CustomConditions.Add(s);
+                    }
+                    if (e.Data.Conditions.Count > 0)
+                    {
+                        Condition.SaveCustomConditions();
+                    }
+
+                    RefreshForImport(e.Data);
+
+                };
+
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.WriteLine(ex.ToString());
+            }
+        }
+
+        void RefreshForImport(ExportData data)
+        {
+            if (LastFragment == HomePage.Monsters && data.Monsters.Count > 0)
+            {
+                _MonsterFragment.RefreshPage();
+            }
+            if (LastFragment == HomePage.Spells && data.Spells.Count > 0)
+            {
+                _SpellFragment.RefreshPage();
+            }
+            if (LastFragment == HomePage.Feats && data.Feats.Count > 0)
+            {
+                _FeatFragment.RefreshPage();
+            }
+        }
+
+
+        void ShowExport()
+        {
+
+            ExportData data = ExportData.DataFromDBs();
+
+            ImportExportDialog ied = new ImportExportDialog(this, data, true);
+            ied.Show();
+            ied.DialogComplete += (sender, e) =>
+            {
+                FileDialog fd = new FileDialog(this, new List<string>() { ".cmx" }, false);
+                fd.Text = "export.cmx";
+                fd.Show();
+
+                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
+                {
+
+                    string name = ea.Filename;
+                    string fullname = Path.Combine(fd.Folder, name);
+
+                    FileInfo file = new FileInfo(fullname);
+
+                    fullname = fullname.TrimEnd('.') + ".cmx";
+
+                    XmlLoader<ExportData>.Save(e.Data, fullname);
+
+                };
+            };
+        }
 
 
         /*private void CreateLibraryAdapter()

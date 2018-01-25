@@ -44,8 +44,8 @@
         android:id="@+id/fileName"
         android:autoText="false"
         android:singleLine="true"
-                  android:maxLines="1"
-                  android:inputType="text" />
+        android:maxLines="1"
+        android:inputType="text" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"

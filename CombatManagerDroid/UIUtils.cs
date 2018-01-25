@@ -137,6 +137,30 @@ namespace CombatManagerDroid
             };
         }
 
+        public delegate void ListPopoverResponseHandler(int item);
+
+        public static void ShowListPopover(View v, String title, List<String> options, ListPopoverResponseHandler handler )
+        {
+
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(v.Context);
+
+            builderSingle.SetTitle(title);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                v.Context,
+                Android.Resource.Layout.SelectDialogItem);
+            arrayAdapter.AddAll(options);
+
+
+            builderSingle.SetAdapter(arrayAdapter, (se, ev) => {
+                string val = arrayAdapter.GetItem(ev.Which);
+                handler?.Invoke(ev.Which);
+
+            });
+
+            builderSingle.Show();
+        }
+    
+
         public static void ShowOKCancelDialog(this Context context, String message, Action okAction, Action cancelAction = null)
         {
             AlertDialog.Builder bui = new AlertDialog.Builder(context);

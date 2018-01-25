@@ -29,6 +29,10 @@ namespace CombatManagerDroid
             return item.Name;
         }
 
+        protected override bool IsCustom(Rule item)
+        {
+            return false;
+        }
         protected override bool CustomFilterItem(Rule item)
         {
             return TypeFilter(item) && SubtypeFilter(item);

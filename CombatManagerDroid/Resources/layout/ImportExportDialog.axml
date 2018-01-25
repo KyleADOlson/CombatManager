@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:grid="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="Select Items to Import"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleTextView" />
+    <org.apmem.tools.layouts.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="Monsters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/monstersTabButton"
+            android:background="@drawable/init_button"
+            android:padding="10dp" />
+        <Button
+            android:text="Spells"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spellsTabButton"
+            android:background="@drawable/init_button"
+            android:padding="10dp" />
+        <Button
+            android:text="Feats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/featsTabButton"
+            android:background="@drawable/init_button"
+            android:padding="10dp" />
+        <Button
+            android:text="Conditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/conditionsTabButton"
+            android:background="@drawable/init_button"
+            android:padding="10dp" />
+    </org.apmem.tools.layouts.FlowLayout>
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/itemListView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="1"
+        android:background="#FFFFFFFF" />
+    <Button
+        android:text="Select All"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectAllButton"
+        android:background="@drawable/blue_button"
+        android:padding="10dp"
+        android:textColor="#FFFFFFFF" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2">
+        <Button
+            android:text="OK"
+            android:id="@+id/okButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/init_button" />
+        <Button
+            android:text="Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/cancelButton"
+            android:layout_weight="1"
+            android:background="@drawable/init_button" />
+    </LinearLayout>
+</LinearLayout>

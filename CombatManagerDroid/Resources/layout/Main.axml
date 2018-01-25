@@ -11,67 +11,60 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout2"
         android:gravity="right">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:id="@+id/linearLayout1"
+        <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <Button
-                android:text="Combat"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/combatButton"
-                android:drawableLeft="@drawable/sword16"
-                android:background="@drawable/main_tab" />
-            <Button
-                android:text="Monsters"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/monstersButton"
-                android:drawableLeft="@drawable/monster16"
-                android:background="@drawable/main_tab" />
-            <Button
-                android:text="Feats"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/featsButton"
-                android:drawableLeft="@drawable/star16"
-                android:background="@drawable/main_tab" />
-            <Button
-                android:text="Spells"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/spellsButton"
-                android:drawableLeft="@drawable/scroll16"
-                android:background="@drawable/main_tab" />
-            <Button
-                android:text="Rules"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/rulesButton"
-                android:drawableLeft="@drawable/book16"
-                android:background="@drawable/main_tab" />
-            <Button
-                android:text="Treasure"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/treasureButton"
-                android:drawableLeft="@drawable/treasure16"
-                android:background="@drawable/main_tab" />
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/combatImageButton"
+            android:src="@drawable/sword16"
+            android:background="@drawable/main_tab" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/monstersImageButton"
+            android:src="@drawable/monster16"
+            android:background="@drawable/main_tab" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/featsImageButton"
+            android:src="@drawable/star16"
+            android:background="@drawable/main_tab" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/spellsImageButton"
+            android:src="@drawable/scroll16"
+            android:background="@drawable/main_tab" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/rulesImageButton"
+            android:src="@drawable/book16"
+            android:background="@drawable/main_tab" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/treasureImageButton"
+            android:src="@drawable/treasure16"
+            android:background="@drawable/main_tab" />
         <ImageButton
             android:src="@drawable/gear2"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:id="@+id/settingsButton"
             android:background="@drawable/main_tab" />
         <ImageButton
             android:src="@drawable/info"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:id="@+id/helpButton"
             android:background="@drawable/main_tab" />
     </LinearLayout>

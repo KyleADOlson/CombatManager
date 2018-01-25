@@ -59,6 +59,11 @@ namespace CombatManagerDroid
         {
             return item.Name;
         }
+        
+        protected override bool IsCustom(Monster item)
+        {
+            return item != null && item.IsCustom;
+        }
 
         protected override bool CustomFilterItem(Monster item)
         {
@@ -67,7 +72,8 @@ namespace CombatManagerDroid
 
         bool NPCFilter(Monster item)
         {
-            return _group == 0 || (_group == 1 && !item.NPC) || (_group == 2 && item.NPC);
+            return _group == 0 || (_group == 1 && !item.NPC && !IsCustom(item)) || (_group == 2 && item.NPC && !IsCustom(item))
+                || (_group == 3 && IsCustom(item));
         }
 
         bool TypeFilter(Monster item)
@@ -86,7 +92,7 @@ namespace CombatManagerDroid
             Button b = BuildFilterButton("group", 100);
            
             PopupUtils.AttachButtonStringPopover("Group", b, 
-                new List<string> { "All Monsters", "Monsters", "NPCs" }, 
+                new List<string> { "All Monsters", "Monsters", "NPCs", "Custom" }, 
                                             _group, (r1, index, val)=>
             {
                 _group = index;
@@ -118,6 +124,15 @@ namespace CombatManagerDroid
                 UpdateFilter();
 
             });
+            b = new Button(_v.Context);
+            b.Text = "Edit";
+            b.SetLeftDrawableResource(Resource.Drawable.pencil16);
+            b.Click += (sender, e) =>
+            {
+                EditItem();
+            };
+            FilterLayout.AddView(b);
+            EditButton = b;
 
         }
         protected override void BuildAdditionalLayouts()
@@ -322,17 +337,57 @@ namespace CombatManagerDroid
             }
 
             UpdateTemplateView();
+            
 
         }
 
         protected override void ShowItem(Monster item)
         {
             Monster monster = AdvanceMonster(item);
-
-           
+            
 
             base.ShowItem(monster);
         }
+
+        protected override void DeleteItem(Monster item)
+        {
+            if (item.IsCustom)
+            {
+                MonsterDB.DB.DeleteMonster(item);
+                Monster.Monsters.Remove(item);
+
+            }
+        }
+
+        void EditItem()
+        {
+            MonsterEditorActivity.SourceMonster = SelectedItem;
+            MonsterEditorActivity.DBMonster = true;
+
+            Intent intent = new Intent(this.Context, (Java.Lang.Class)new MonsterEditorMainActivity().Class);
+            intent.AddFlags(ActivityFlags.NewTask);
+
+            Context.StartActivity(intent);
+            
+        }
+
+        public override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            MonsterDB.MonsterUpdated += MonsterUpdated;
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            MonsterDB.MonsterUpdated -= MonsterUpdated;
+        }
+
+        public void MonsterUpdated(Monster m)
+        {
+            RefreshPage();
+        }
+
 
         bool AdvancerBoxChecked(int id)
         {
