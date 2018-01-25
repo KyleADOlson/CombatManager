@@ -84,6 +84,7 @@
     </MtouchI18n>
     <BuildIpa>true</BuildIpa>
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -98,6 +99,7 @@
     </IpaPackageName>
     <MtouchI18n>
     </MtouchI18n>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -113,6 +115,7 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <IpaPackageName>
     </IpaPackageName>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
@@ -133,6 +136,7 @@
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <IpaMetadata>Info.plist</IpaMetadata>
     <CodesignProvision>ad945e69-e36e-41ce-ba24-95102653cda4</CodesignProvision>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AppStore|iPhoneSimulator'">
     <MtouchSdkVersion>10.2</MtouchSdkVersion>
@@ -174,6 +178,7 @@
       <Link>Images\External\sort.ico</Link>
     </None>
     <None Include="RELEASE-NOTES.txt" />
+    <None Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -353,11 +358,7 @@
     <InterfaceDefinition Include="SpellLevelsDialog_iPad.xib" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default-Landscape~ipad.png" />
-    <Content Include="Default-Portrait~ipad.png" />
     <Content Include="icon.png" />
-    <Content Include="settingsicon.png" />
-    <Content Include="spotlighticon.png" />
     <Content Include="RevisionInfo.txt" />
     <Content Include="Images\Icon.png" />
     <Content Include="..\CombatManager\images\ArrangeWindowsHS.png">
@@ -678,14 +679,6 @@
     </Content>
     <Content Include="about.html" />
     <Content Include="Images\DiePencil.jpg" />
-    <Content Include="Default-Portrait%402x.png" />
-    <Content Include="Default-Landscape%402x.png" />
-    <Content Include="App.png" />
-    <Content Include="RetinaApp.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="RetinaSettings.png" />
-    <Content Include="RetinaSpotlight.png" />
     <Content Include="..\CombatManager\images\LeftArrow-24.png">
       <Link>Images\External\LeftArrow-24.png</Link>
     </Content>
@@ -790,12 +783,32 @@
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork.png" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <BundleResource Include="Resources\Icon-76.png" />
-    <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\RetinaApp.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\spotlighticon.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\RetinaSpotlight.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\settingsicon.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\RetinaSettings.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-Portrait~ipad.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-Landscape~ipad.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-Landscape%402x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DiePencil.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Spot1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Spot167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Spot40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Spot20.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DiePencilPort.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\DiePencilPortPro.png" />
   </ItemGroup>
 </Project>
