@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:apmem="http://schemas.android.com/apk/res/Apmem"
+    xmlns:apmem="http://schemas.android.com/apk/res/Apmem"
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
@@ -50,23 +50,29 @@
         android:layout_height="fill_parent"
         android:id="@+id/linearLayout2"
         android:layout_weight="1">
-        <org.apmem.tools.layouts.FlowLayout
-            android:orientation="horizontal"
+      <HorizontalScrollView
             android:minHeight=" 0dp"
             android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minHeight=" 0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/filterLayout" />
-        <WebView
-            android:id="@+id/itemView"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bottomLayout" />
-    </LinearLayout>
+      </HorizontalScrollView>
+          <WebView
+              android:id="@+id/itemView"
+              android:layout_width="fill_parent"
+              android:layout_height="match_parent"
+              android:layout_weight="1" />
+          <LinearLayout
+              android:orientation="vertical"
+              android:minWidth="0dp"
+              android:minHeight="0dp"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/bottomLayout" />
+        </LinearLayout>
+
 </LinearLayout>

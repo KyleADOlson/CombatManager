@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/titleTextView" />
-    <org.apmem.tools.layouts.FlowLayout
-        android:layout_width="match_parent"
+  <LinearLayout
+      android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
             android:text="Monsters"
@@ -41,7 +41,7 @@
             android:id="@+id/conditionsTabButton"
             android:background="@drawable/init_button"
             android:padding="10dp" />
-    </org.apmem.tools.layouts.FlowLayout>
+    </LinearLayout>
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
@@ -78,4 +78,5 @@
             android:layout_weight="1"
             android:background="@drawable/init_button" />
     </LinearLayout>
+
 </LinearLayout>

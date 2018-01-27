@@ -235,12 +235,12 @@ namespace CombatManagerDroid
 
         }
         
-        protected Apmem.FlowLayout FilterLayout
+        protected LinearLayout FilterLayout
         {
             get
             {
 
-                return  _v.FindViewById<Apmem.FlowLayout>(Resource.Id.filterLayout);
+                return  _v.FindViewById<LinearLayout> (Resource.Id.filterLayout);
 
             }
         }
