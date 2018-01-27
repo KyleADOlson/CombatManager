@@ -120,11 +120,12 @@ namespace CombatManagerDroid
                 baseLayout.LongClickable = true;
 
             }
+
             baseLayout.RemoveAllViews();
-            baseLayout.LayoutParameters = new LinearLayout.LayoutParams(
-                new ViewGroup.LayoutParams(
+            baseLayout.LayoutParameters = 
+                new AbsListView.LayoutParams(
                     ViewGroup.LayoutParams.MatchParent,
-                    ViewGroup.LayoutParams.WrapContent));
+                    ViewGroup.LayoutParams.WrapContent);
             baseLayout.Orientation = Orientation.Vertical;
             baseLayout.Tag = position;
 
@@ -180,7 +181,7 @@ namespace CombatManagerDroid
             }
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(
-                                               ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
+                                              ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
             lp.Weight = 1.0f;
             t.LayoutParameters = lp;
 
@@ -275,7 +276,7 @@ namespace CombatManagerDroid
             }
 
             baseLayout.SetOnDragListener(new ListOnDragListener(this, baseLayout, layout));
-
+            
             return baseLayout;
         }
 
