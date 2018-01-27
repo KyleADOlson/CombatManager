@@ -10,7 +10,9 @@
         android:layout_height="fill_parent"
         android:id="@+id/skillListView"
         android:layout_weight="1" />
-    <EditText
+  <EditText
+                android:maxLines="1"
+                android:inputType="text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/subtypeText" />

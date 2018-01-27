@@ -28,6 +28,8 @@ namespace CombatManagerDroid
 
         List<Condition> _FilteredList;
 
+        Button deleteButton;
+
         public ConditionDialog(Context context, CombatState state, Character character) : base (context)
         {
             RequestWindowFeature((int)WindowFeatures.NoTitle);
@@ -36,6 +38,8 @@ namespace CombatManagerDroid
 
             _State = state;
             _Character = character;
+
+            deleteButton = FindViewById<Button>(Resource.Id.deleteButton);
 
             Button close = (Button)FindViewById(Resource.Id.cancelButton);
             close.Click += delegate
@@ -84,6 +88,21 @@ namespace CombatManagerDroid
                 RefreshList();
             };
 
+
+            ListView lv = FindViewById<ListView>(Resource.Id.itemList);
+            lv.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
+            {
+                e.View.Selected = true;
+                _SelectedIndex = e.Position;
+                _Adapter.NotifyDataSetChanged();
+                ShowSelection();
+            };
+
+            deleteButton.Click += (sender, e) =>
+            {
+                DeleteSelectedItem();
+            };
+
             PrepareList();
         }
 
@@ -109,16 +128,7 @@ namespace CombatManagerDroid
             _Adapter = new ConditionsAdapter(this);
             ListView lv = FindViewById<ListView>(Resource.Id.itemList);
             lv.Adapter = (_Adapter);
-            lv.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => 
-            {
-                e.View.Selected = true;
-                _SelectedIndex = e.Position;
-                _Adapter.NotifyDataSetChanged();
-                ShowSelection();
-            };
             ShowSelection();
-
-
         }
 
 
@@ -143,6 +153,13 @@ namespace CombatManagerDroid
 
             _FilteredList = new List<Condition>(from x in Condition.Conditions where x.Type == t && FilterText(filterText, x) select x);
 
+            if (t == ConditionType.Condition)
+            {
+                _FilteredList.AddRange(Condition.CustomConditions);
+                _FilteredList.Sort((a, b) => a.Name.CompareTo(b.Name));
+            }
+
+
             if (_SelectedIndex > _FilteredList.Count)
             {
                 _SelectedIndex = 0;
@@ -153,9 +170,6 @@ namespace CombatManagerDroid
         {
             return filterText == null || c.Name.ToUpper().Contains(filterText.ToUpper());
         }
-
-
-
 
         Drawable ItemImage(object item)
         {
@@ -187,6 +201,14 @@ namespace CombatManagerDroid
             }
         }
 
+        void DeleteSelectedItem()
+        {
+            Condition.CustomConditions.Remove(SelectedCondition);
+            Condition.SaveCustomConditions();
+            RefreshList();
+
+        }
+
         void ShowSelection()
         {
             WebView wv = FindViewById<WebView>(Resource.Id.conditionView);
@@ -200,6 +222,7 @@ namespace CombatManagerDroid
                 wv.LoadDataWithBaseURL(null, ConditionHtmlCreator.CreateHtml(SelectedCondition), "text/html", "utf-8", null);
  
             }
+            deleteButton.Visibility = SelectedCondition.Custom ? ViewStates.Visible : ViewStates.Gone;
         }
 
         class ConditionsAdapter : BaseAdapter

@@ -20,36 +20,42 @@
             android:layout_height="fill_parent"
             android:layout_weight="1">
             <Button
+                android:text="Combat"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:id="@+id/combatButton"
                 android:drawableLeft="@drawable/sword16"
                 android:background="@drawable/main_tab" />
             <Button
+                android:text="Monsters"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:id="@+id/monstersButton"
                 android:drawableLeft="@drawable/monster16"
                 android:background="@drawable/main_tab" />
             <Button
+                android:text="Feats"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:id="@+id/featsButton"
                 android:drawableLeft="@drawable/star16"
                 android:background="@drawable/main_tab" />
             <Button
+                android:text="Spells"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:id="@+id/spellsButton"
                 android:drawableLeft="@drawable/scroll16"
                 android:background="@drawable/main_tab" />
             <Button
+                android:text="Rules"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:id="@+id/rulesButton"
                 android:drawableLeft="@drawable/book16"
                 android:background="@drawable/main_tab" />
             <Button
+                android:text="Treasure"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:id="@+id/treasureButton"

@@ -131,7 +131,12 @@ namespace CombatManager
                 Paragraph sourceParagraph = new Paragraph();
 
                 sourceParagraph.Margin = new Thickness(0);
-                CreateItemIfNotNull(sourceParagraph.Inlines, "Source ", SourceInfo.GetSource(monster.Source));
+                String source = SourceInfo.GetSource(monster.Source);
+                if (source == "")
+                {
+                    source = monster.Source;
+                }
+                CreateItemIfNotNull(sourceParagraph.Inlines, "Source ", source) ;
                 blocks.Add(sourceParagraph);
             }
 

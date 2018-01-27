@@ -13,6 +13,7 @@ using Android.Views;
 using Android.Webkit;
 using Android.Widget;
 using Android.OS;
+using System.IO;
 
 namespace CombatManagerDroid
 {
@@ -22,26 +23,22 @@ namespace CombatManagerDroid
     {
         enum HomePage
         {
-            Combat,
-            Monsters,
-            Feats,
-            Spells,
-            Rules,
-            Treasure
+            Combat = 0 ,
+            Monsters = 1,
+            Feats = 2,
+            Spells = 3,
+            Rules = 4,
+            Treasure = 5
         }
         
-
-
-
-
+        
         MonsterFragment _MonsterFragment;
         FeatFragment _FeatFragment;
         SpellFragment _SpellFragment;
         RuleFragment _RuleFragment;
         CombatFragment _CombatFragment;
         TreasureFragment _TreasureFragment;
-
-        static HomePage _LastFragment = HomePage.Combat;
+        
 
         
         ProgressDialog _ProgressDialog;
@@ -56,37 +53,80 @@ namespace CombatManagerDroid
             Resource.Id.treasureButton
         };
 
+        List<int> _ImageButtonId = new List<int>
+        {
+            Resource.Id.combatImageButton,
+            Resource.Id.monstersImageButton,
+            Resource.Id.featsImageButton,
+            Resource.Id.spellsImageButton,
+            Resource.Id.rulesImageButton,
+            Resource.Id.treasureImageButton
+        };
+
         protected override void OnCreate (Bundle bundle)
         {
 
             base.OnCreate (bundle);
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Main);
-            FindViewById<Button>(Resource.Id.monstersButton).Click += delegate
+            Button monstersButton = FindViewById<Button>(Resource.Id.monstersButton);
+            if (monstersButton != null)
             {
-                ShowMonsterFragment();
-            };
-            FindViewById<Button>(Resource.Id.featsButton).Click += delegate
+
+                FindViewById<Button>(Resource.Id.monstersButton).Click += delegate
+                {
+                    ShowMonsterFragment();
+                };
+                FindViewById<Button>(Resource.Id.featsButton).Click += delegate
+                {
+                    ShowFeatsFragment();
+                };
+                FindViewById<Button>(Resource.Id.spellsButton).Click += delegate
+                {
+                    ShowSpellsFragment();
+                };
+                FindViewById<Button>(Resource.Id.combatButton).Click += delegate
+                {
+                    ShowCombatFragment();
+                };
+                FindViewById<Button>(Resource.Id.rulesButton).Click += delegate
+                {
+                    ShowRulesFragment();
+                };
+                FindViewById<Button>(Resource.Id.treasureButton).Click += delegate
+                {
+                    ShowTreasureFragment();
+                };
+            }
+            ImageButton b = FindViewById<ImageButton>(Resource.Id.monstersImageButton);
+            if (b != null)
             {
-                ShowFeatsFragment();
-            };
-            FindViewById<Button>(Resource.Id.spellsButton).Click += delegate
-            {
-                ShowSpellsFragment();
-            };
-            FindViewById<Button>(Resource.Id.combatButton).Click += delegate
-            {
-                ShowCombatFragment();
-            };
-            FindViewById<Button>(Resource.Id.rulesButton).Click += delegate
-            {
-                ShowRulesFragment();
-            };
-            FindViewById<Button>(Resource.Id.treasureButton).Click += delegate
-            {
-                ShowTreasureFragment();
-            };
-            ImageButton b = FindViewById<ImageButton>(Resource.Id.helpButton);
+                FindViewById<ImageButton>(Resource.Id.monstersImageButton).Click += delegate
+                {
+                    ShowMonsterFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.featsImageButton).Click += delegate
+                {
+                    ShowFeatsFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.spellsImageButton).Click += delegate
+                {
+                    ShowSpellsFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.combatImageButton).Click += delegate
+                {
+                    ShowCombatFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.rulesImageButton).Click += delegate
+                {
+                    ShowRulesFragment();
+                };
+                FindViewById<ImageButton>(Resource.Id.treasureImageButton).Click += delegate
+                {
+                    ShowTreasureFragment();
+                };
+            }
+            b = FindViewById<ImageButton>(Resource.Id.helpButton);
             b.Click += delegate
             {
                 ShowHelp();
@@ -94,8 +134,30 @@ namespace CombatManagerDroid
             b = FindViewById<ImageButton>(Resource.Id.settingsButton);
             b.Click += delegate
             {
-                ShowSettings();
+
+                UIUtils.ShowListPopover(b, "Options", new List<string> {
+                "Import",
+                "Export",
+                "Settings",
+                },
+                (option) =>
+                {
+                    switch (option)
+                    {
+                        case 0:
+                            ShowImport();
+                            break;
+                        case 1:
+                            ShowExport();
+                            break;
+                        case 2:
+                            ShowSettings();
+                            break;
+                    }
+                });
             };
+                
+            
 
             ShowLastFragment();
 
@@ -105,7 +167,7 @@ namespace CombatManagerDroid
 
         void ShowLastFragment()
         {
-            switch (_LastFragment)
+            switch (LastFragment)
             {
             case HomePage.Combat:
                 ShowCombatFragment();
@@ -134,8 +196,28 @@ namespace CombatManagerDroid
             for (int i=0; i<6; i++)
             {
                 Button b = FindViewById<Button>(_ButtonId[i]);
-                b.Selected = i == (int)selectedPage;
+                if (b != null)
+                {
+                    b.Selected = i == (int)selectedPage;
+                }
+                ImageButton ib = FindViewById<ImageButton>(_ImageButtonId[i]);
+                if (ib != null)
+                {
+                    ib.Selected = i == (int)selectedPage;
+                }
 
+            }
+        }
+
+        private HomePage LastFragment
+        {
+            get
+            {
+                return (HomePage)CMPreferences.GetLastMainTab(this);
+            }
+            set
+            {
+                CMPreferences.SetLastMainTab(this, (int)value);
             }
         }
         
@@ -146,9 +228,9 @@ namespace CombatManagerDroid
             //{
                 _CombatFragment = new CombatFragment();
             //}
-            _LastFragment = HomePage.Combat;
+            LastFragment = HomePage.Combat;
             TransitionBodyFragment(_CombatFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
         
         private void ShowMonsterFragment()
@@ -158,10 +240,10 @@ namespace CombatManagerDroid
             //{
                 _MonsterFragment = new MonsterFragment();
             //}
-            _LastFragment = HomePage.Monsters;
+            LastFragment = HomePage.Monsters;
             
             TransitionBodyFragment(_MonsterFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
         static bool _LoadingFragment;
@@ -203,9 +285,9 @@ namespace CombatManagerDroid
             //{
                 _FeatFragment = new FeatFragment();
             //}
-            _LastFragment = HomePage.Feats;
+            LastFragment = HomePage.Feats;
             TransitionBodyFragment(_FeatFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
         private void ShowSpellsFragment()
@@ -215,10 +297,10 @@ namespace CombatManagerDroid
             //{
                 _SpellFragment = new SpellFragment();
             //}
-            _LastFragment = HomePage.Spells;
+            LastFragment = HomePage.Spells;
             
             TransitionBodyFragment(_SpellFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
         private void ShowRulesFragment()
@@ -259,10 +341,10 @@ namespace CombatManagerDroid
             //{
                 _RuleFragment = new RuleFragment();
             //}
-            _LastFragment = HomePage.Rules;
+            LastFragment = HomePage.Rules;
 
             TransitionBodyFragment(_RuleFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
 
@@ -301,9 +383,9 @@ namespace CombatManagerDroid
             //{
                 _TreasureFragment = new TreasureFragment();
             //}
-            _LastFragment = HomePage.Treasure;
+            LastFragment = HomePage.Treasure;
             TransitionBodyFragment(_TreasureFragment);
-            SetTabState(_LastFragment);
+            SetTabState(LastFragment);
         }
 
         private void TransitionBodyFragment(Fragment fragment)
@@ -335,6 +417,114 @@ namespace CombatManagerDroid
             dlg.Show();
         }
 
+        void ShowImport()
+        {
+            FileDialog fd = new FileDialog(this, new List<string>() { ".cmx" }, true);
+            fd.Show();
+
+            fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
+            {
+
+                string name = ea.Filename;
+                string fullname = Path.Combine(fd.Folder, name);
+
+                FileInfo file = new FileInfo(fullname);
+                ShowImportDialog(fullname);
+            };
+        }
+
+        void ShowImportDialog(String filename)
+        {
+            try
+            {
+                ExportData data = XmlLoader<ExportData>.Load(filename);
+
+
+                ImportExportDialog ied = new ImportExportDialog(this, data, true);
+                ied.Show();
+                ied.DialogComplete += (sender, e) =>
+                {
+                    foreach (Monster m in e.Data.Monsters)
+                    {
+                        m.DBLoaderID = 0;
+                        MonsterDB.DB.AddMonster(m);
+                        Monster.Monsters.Add(m);
+                    }
+                    foreach (Spell s in e.Data.Spells)
+                    {
+                        s.DBLoaderID = 0;
+                        Spell.AddCustomSpell(s);
+                    }
+                    foreach (Feat s in e.Data.Feats)
+                    {
+                        s.DBLoaderID = 0;
+                        Feat.AddCustomFeat(s);
+                    }
+                    foreach (Condition s in e.Data.Conditions)
+                    {
+                        Condition.CustomConditions.Add(s);
+                    }
+                    if (e.Data.Conditions.Count > 0)
+                    {
+                        Condition.SaveCustomConditions();
+                    }
+
+                    RefreshForImport(e.Data);
+
+                };
+
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.WriteLine(ex.ToString());
+            }
+        }
+
+        void RefreshForImport(ExportData data)
+        {
+            if (LastFragment == HomePage.Monsters && data.Monsters.Count > 0)
+            {
+                _MonsterFragment.RefreshPage();
+            }
+            if (LastFragment == HomePage.Spells && data.Spells.Count > 0)
+            {
+                _SpellFragment.RefreshPage();
+            }
+            if (LastFragment == HomePage.Feats && data.Feats.Count > 0)
+            {
+                _FeatFragment.RefreshPage();
+            }
+        }
+
+
+        void ShowExport()
+        {
+
+            ExportData data = ExportData.DataFromDBs();
+
+            ImportExportDialog ied = new ImportExportDialog(this, data, true);
+            ied.Show();
+            ied.DialogComplete += (sender, e) =>
+            {
+                FileDialog fd = new FileDialog(this, new List<string>() { ".cmx" }, false);
+                fd.Text = "export.cmx";
+                fd.Show();
+
+                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
+                {
+
+                    string name = ea.Filename;
+                    string fullname = Path.Combine(fd.Folder, name);
+
+                    FileInfo file = new FileInfo(fullname);
+
+                    fullname = fullname.TrimEnd('.') + ".cmx";
+
+                    XmlLoader<ExportData>.Save(e.Data, fullname);
+
+                };
+            };
+        }
 
 
         /*private void CreateLibraryAdapter()

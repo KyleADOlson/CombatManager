@@ -28,6 +28,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView1" />
             <EditText
+                android:maxLines="1"
+                android:inputType="text"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/environmentText"
@@ -39,6 +41,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView2" />
             <EditText
+                android:maxLines="1"
+                android:inputType="text"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/organizationText"
@@ -52,8 +56,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/treasureText"
-                android:singleLine="true" />
+                android:id="@+id/treasureText" />
             <TextView
                 android:text="Before Combat"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -61,6 +64,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView4" />
             <EditText
+                android:maxLines="1"
+                android:inputType="text"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/beforeCombatText"
@@ -112,25 +117,7 @@
                 android:singleLine="true" />
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:gravity="right"
-        android:background="#ff47aaaf">
-        <Button
-            android:text="OK"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/okButton"
-            android:layout_marginRight="10dp" />
-        <Button
-            android:text="Cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cancelButton" />
-    </LinearLayout>
+
+  <include
+      layout="@layout/MonsterEditorOkCancel" />
 </LinearLayout>

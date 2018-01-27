@@ -27,7 +27,7 @@ namespace CombatManagerDroid
         
         private static Monster _Monster;
 
-        private CharacterAttacks _Attacks;
+        private static CharacterAttacks _Attacks;
 
         int visibleGroup = 0;
 
@@ -40,9 +40,12 @@ namespace CombatManagerDroid
             
             SetContentView (Resource.Layout.AttacksEditor);
 
-            var sets = new ObservableCollection<AttackSet>(_Monster.MeleeAttacks);
-            var ranged = new ObservableCollection<Attack>(_Monster.RangedAttacks);
-            _Attacks = new CharacterAttacks(sets, ranged);
+            if (_Attacks == null)
+            {
+                var sets = new ObservableCollection<AttackSet>(_Monster.MeleeAttacks);
+                var ranged = new ObservableCollection<Attack>(_Monster.RangedAttacks);
+                _Attacks = new CharacterAttacks(sets, ranged);
+            }
 
             BuildMeleeTabs();
             BuildMeleeGroup();
@@ -54,13 +57,14 @@ namespace CombatManagerDroid
             {
                 _Monster.Melee = _Monster.MeleeString(_Attacks);
                 _Monster.Ranged = _Monster.RangedString(_Attacks);
+                _Attacks = null;
                 Finish();
             };
 
             b = FindViewById<Button>(Resource.Id.cancelButton);
             b.Click += (object sender, EventArgs e) => 
             {
-                
+                _Attacks = null;
                 Finish();
             };
               
@@ -82,8 +86,13 @@ namespace CombatManagerDroid
             {
                 AddAttack(false, false, true);
             };
+            
+        }
 
-
+        public override void OnBackPressed()
+        {
+            _Attacks = null;
+            base.OnBackPressed();
         }
 
         private void BuildMeleeTabs()

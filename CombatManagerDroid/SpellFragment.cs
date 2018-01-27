@@ -26,6 +26,11 @@ namespace CombatManagerDroid
             return item.Name;
         }
 
+        protected override bool IsCustom(Spell item)
+        {
+            return item != null && item.IsCustom;
+        }
+
         protected override bool CustomFilterItem(Spell item)
         {
             return ClassFilter(item) && LevelFilter(item) && SchoolFilter(item);
@@ -112,6 +117,12 @@ namespace CombatManagerDroid
                 UpdateFilter();
 
             });
+        }
+
+        protected override void DeleteItem(Spell item)
+        {
+            Spell.RemoveCustomSpell(item);
+            RefreshPage();
         }
     }
 }

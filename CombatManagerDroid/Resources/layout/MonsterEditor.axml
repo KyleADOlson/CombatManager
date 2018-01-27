@@ -38,7 +38,9 @@
                     android:layout_height="fill_parent"
                     android:id="@+id/textView1"
                     android:gravity="center" />
-                <EditText
+              <EditText
+                  android:maxLines="1"
+                  android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/nameText" />
@@ -74,7 +76,9 @@
                     android:layout_height="fill_parent"
                     android:id="@+id/typeButton"
                     android:minWidth="75dp" />
-                <EditText
+              <EditText
+                  android:maxLines="1"
+                  android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/subtypesText" />
@@ -93,7 +97,9 @@
                     android:layout_height="fill_parent"
                     android:id="@+id/textView2"
                     android:gravity="center" />
-                <EditText
+              <EditText
+                  android:maxLines="1"
+                  android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/sensesText"
@@ -126,7 +132,9 @@
                     android:layout_height="fill_parent"
                     android:id="@+id/textView4"
                     android:gravity="center" />
-                <EditText
+              <EditText
+                  android:maxLines="1"
+                  android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/raceText"
@@ -138,7 +146,9 @@
                     android:layout_height="fill_parent"
                     android:id="@+id/textView5"
                     android:gravity="center" />
-                <EditText
+              <EditText
+                  android:maxLines="1"
+                  android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/classText"
@@ -167,7 +177,7 @@
                         android:id="@+id/textView6"
                         android:gravity="center"
                         android:minWidth="55dp" />
-                    <EditText
+                  <EditText
                         android:inputType="number"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"

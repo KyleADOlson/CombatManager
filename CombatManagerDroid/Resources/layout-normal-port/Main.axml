@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:gravity="right">
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/combatImageButton"
+            android:src="@drawable/sword16"
+            android:background="@drawable/main_tab" />
+      <ImageButton
+          android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/monstersImageButton"
+            android:src="@drawable/monster16"
+            android:background="@drawable/main_tab" />
+      <ImageButton
+          android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/featsImageButton"
+            android:src="@drawable/star16"
+            android:background="@drawable/main_tab" />
+      <ImageButton
+          android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/spellsImageButton"
+            android:src="@drawable/scroll16"
+            android:background="@drawable/main_tab" />
+      <ImageButton
+          android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/rulesImageButton"
+            android:src="@drawable/book16"
+            android:background="@drawable/main_tab" />
+      <ImageButton
+          android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/treasureImageButton"
+            android:src="@drawable/treasure16"
+            android:background="@drawable/main_tab" />
+        <ImageButton
+            android:src="@drawable/gear2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/settingsButton"
+            android:background="@drawable/main_tab" />
+        <ImageButton
+            android:src="@drawable/info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/helpButton"
+            android:background="@drawable/main_tab" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/bodyLayout" />
+</LinearLayout>

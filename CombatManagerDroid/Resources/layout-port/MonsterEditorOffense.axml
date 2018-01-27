@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffafdbdd">
+    <include
+        layout="@layout/editor_tab_bar" />
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView1"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/bodyLayout"
+            android:layout_weight="1">
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3"
+                android:background="#ffcdcdcd">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/movementLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout4">
+                        <TextView
+                            android:text="Speed"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1"
+                            android:gravity="center"
+                            android:minWidth="65sp" />
+                        <EditText
+                            android:inputType="number"
+                            android:id="@+id/speedText"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:minWidth="45dp"
+                            android:singleLine="true"
+                            android:numeric="integer" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout4">
+                        <TextView
+                            android:text="Fly"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1"
+                            android:gravity="center"
+                            android:minWidth="65sp" />
+                        <EditText
+                            android:inputType="number"
+                            android:id="@+id/flyText"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
+                        <Button
+                            android:text="Button"
+                            android:id="@+id/flyQualityButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/movementLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout4">
+                        <TextView
+                            android:text="Climb"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1"
+                            android:gravity="center"
+                            android:minWidth="65sp" />
+                        <EditText
+                            android:inputType="number"
+                            android:id="@+id/climbText"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout4">
+                        <TextView
+                            android:text="Burrow"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1"
+                            android:gravity="center"
+                            android:minWidth="65sp" />
+                        <EditText
+                            android:inputType="number"
+                            android:id="@+id/burrowText"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout4">
+                        <TextView
+                            android:text="Swim"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1"
+                            android:gravity="center"
+                            android:minWidth="65sp" />
+                        <EditText
+                            android:inputType="number"
+                            android:id="@+id/swimText"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/movementLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout4">
+                        <TextView
+                            android:text="Space"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1"
+                            android:gravity="center"
+                            android:minWidth="65sp" />
+                        <EditText
+                            android:inputType="number"
+                            android:id="@+id/spaceText"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout4">
+                        <TextView
+                            android:text="Reach"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1"
+                            android:gravity="center"
+                            android:minWidth="65sp" />
+                        <EditText
+                            android:inputType="number"
+                            android:id="@+id/reachText"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:minWidth="45dp"
+                            android:singleLine="true" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout5" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/linearLayout6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="Open Attacks Editor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/attacksEditorButton" />
+                <TextView
+                    android:text="Melee"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2" />
+                <Button
+                    android:text="Melee Attacks"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/meleeAttacksButton"
+                    android:gravity="left" />
+                <TextView
+                    android:text="Ranged"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3" />
+                <Button
+                    android:text="Ranged Attacks"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rangedAttacksButton"
+                    android:gravity="left" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout7">
+                <TextView
+                    android:text="Special Attacks"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4" />
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/specialAttacksText"
+                    android:singleLine="true" />
+                <TextView
+                    android:text="Spell-Like Abilities"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4" />
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spellLikeAbilitiesText"
+                    android:singleLine="true" />
+                <TextView
+                    android:text="Spells Known"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4" />
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spellsKnownText"
+                    android:singleLine="true" />
+                <TextView
+                    android:text="Spells Prepared"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4" />
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spellsPreparedText"
+                    android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <include
+        layout="@layout/MonsterEditorOkCancel" />
+</LinearLayout>

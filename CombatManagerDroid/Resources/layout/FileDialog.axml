@@ -43,7 +43,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/fileName"
         android:autoText="false"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:maxLines="1"
+        android:inputType="text" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"

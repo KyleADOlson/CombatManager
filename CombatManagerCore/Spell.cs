@@ -394,6 +394,10 @@ namespace CombatManager
 
         public static void AddCustomSpell(Spell s)
         {
+            if (_Spells == null)
+            {
+                LoadSpells();
+            }
             _SpellsDB.AddItem(s);
             Spells.Add(s);
         }
@@ -410,6 +414,17 @@ namespace CombatManager
             _SpellsDB.UpdateItem(s);
         }
 
+        public static IEnumerable<Spell> DBSpells
+        {
+            get
+            {
+                if (_Spells == null)
+                {
+                    LoadSpells();
+                }
+                return _SpellsDB.Items;
+            }
+        }
 
 
         public static ICollection<string> Schools

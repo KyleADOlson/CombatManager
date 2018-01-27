@@ -121,9 +121,10 @@ namespace CombatManagerDroid
         void ShowMonsterEditor()
         {
             MonsterEditorActivity.SourceMonster = _Character.Monster;
+            MonsterEditorActivity.DBMonster = false;
 
             Intent intent = new Intent(this.Context, (Java.Lang.Class) new MonsterEditorMainActivity().Class); 
-            intent.AddFlags(ActivityFlags.NewTask); 
+            intent.AddFlags(ActivityFlags.NewTask);
             Context.StartActivity(intent);
         }
 

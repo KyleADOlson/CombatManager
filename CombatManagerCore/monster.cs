@@ -113,14 +113,12 @@ namespace CombatManager
 	            }
 	            monsterSet1.AddRange(npcSet1);
 			}
-		
-#if!MONO
+	
             if (DBSettings.UseDB)
             {
                 List<Monster> dbMonsters = new List<Monster>(MonsterDB.DB.Monsters);
                 monsterSet1.AddRange(dbMonsters);
             }
-#endif
 			 
             monsters = new ObservableCollection<Monster>(monsterSet1);
 

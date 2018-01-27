@@ -36,6 +36,8 @@ namespace CombatManager
         private static MonsterDB db;
 
         private bool _MythicCorrected;
+        
+        public static event Action<Monster> MonsterUpdated;
 
 
         public MonsterDB()
@@ -76,6 +78,12 @@ namespace CombatManager
             }
         }
 
+        public void AddMonsterNotify(Monster monster)
+        {
+            AddMonster(monster);
+            MonsterUpdated?.Invoke(monster);
+        }
+
 
         public void AddMonster(Monster monster)
         {
@@ -96,6 +104,7 @@ namespace CombatManager
         public void UpdateMonster(Monster monster)
         {
             _DBLoader.UpdateItem(monster);
+            MonsterUpdated?.Invoke(monster);
         }
 
         public void DeleteMonster(Monster monster)

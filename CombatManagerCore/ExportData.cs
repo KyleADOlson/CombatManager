@@ -86,5 +86,34 @@ namespace CombatManager
             }
         }
 
+        public static ExportData DataFromDBs()
+        {
+            ExportData data = new ExportData();
+
+            foreach (Monster m in MonsterDB.DB.Monsters)
+            {
+                data.Monsters.Add(m);
+            }
+            data.Monsters.Sort((a, b) => a.Name.CompareTo(b.Name));
+            foreach (Spell s in Spell.DBSpells)
+            {
+                data.Spells.Add(s);
+            }
+            data.Feats.Sort((a, b) => a.Name.CompareTo(b.Name));
+            foreach (Feat f in Feat.DBFeats)
+            {
+                data.Feats.Add(f);
+            }
+            data.Feats.Sort((a, b) => a.Name.CompareTo(b.Name));
+            foreach (Condition c in Condition.CustomConditions)
+            {
+                data.Conditions.Add(c);
+            }
+            data.Conditions.Sort((a, b) => a.Name.CompareTo(b.Name));
+
+
+            return data;
+        }
+
     }
 }

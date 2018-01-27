@@ -537,6 +537,11 @@ namespace CombatManager
         }
         public static void AddCustomFeat(Feat f)
         {
+            if (feats == null)
+            {
+                LoadFeats();
+            }
+
             _FeatsDB.AddItem(f);
             if (!featMap.ContainsKey(f.Name))
             {
@@ -571,6 +576,18 @@ namespace CombatManager
         public static void UpdateCustomFeat(Feat f)
         {
             _FeatsDB.UpdateItem(f);
+        }
+
+        public static IEnumerable<Feat> DBFeats
+        {
+            get
+            {
+                if (feats == null)
+                {
+                    LoadFeats();
+                }
+                return _FeatsDB.Items;
+            }
         }
 
 

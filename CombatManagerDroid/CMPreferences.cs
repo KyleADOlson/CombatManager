@@ -8,6 +8,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using CombatManager;
 
 namespace CombatManagerDroid
 {        
@@ -71,6 +72,49 @@ namespace CombatManagerDroid
         {
             return p.GetBoolean(SettingShowDieRoller, true);
         }
+
+        private const String SettingMainTab = "mainTab";
+        private const String SettingCombatTab = "combatTab";
+
+        static int? lastMainTab;
+        static int? lastCombatTab;
+
+        public static int GetLastMainTab(Context c)
+        {
+            if (lastMainTab == null)
+            {
+                lastMainTab = c.GetCMPrefs().GetInt(SettingMainTab, 0);
+            }
+            return lastMainTab.Value;
+        }
+
+        public static void SetLastMainTab(Context c, int value)
+        {
+            lastMainTab = value;
+            ISharedPreferences sp = c.GetCMPrefs();
+            var ed = sp.Edit();
+            ed.PutInt(SettingMainTab, value);
+            ed.Commit();
+        }
+
+        public static int GetLastCombatTab(Context c)
+        {
+            if (lastCombatTab == null)
+            {
+                lastCombatTab = c.GetCMPrefs().GetInt(SettingCombatTab, 0);
+            }
+            return lastCombatTab.Value;
+        }
+
+        public static void SetLastCombatTab(Context c, int value)
+        {
+            lastCombatTab = value;
+            ISharedPreferences sp = c.GetCMPrefs();
+            var ed = sp.Edit();
+            ed.PutInt(SettingCombatTab, value.Clamp(0, 2));
+            ed.Commit();
+        }
+
     }
 }
 

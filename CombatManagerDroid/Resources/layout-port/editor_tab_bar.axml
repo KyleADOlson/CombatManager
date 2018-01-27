@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linearLayout1"
+    android:background="#ff47aaaf">
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/mainImageTab"
+        android:src="@drawable/person16" />
+  <ImageButton
+      android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/defenseImageTab"
+        android:src="@drawable/shield16" />
+  <ImageButton
+      android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/offenseImageTab"
+        android:src="@drawable/sword16" />
+  <ImageButton
+      android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/statsImageTab"
+        android:src="@drawable/pencil16" />
+  <ImageButton
+      android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/featsImageTab"
+        android:src="@drawable/star16" />
+  <ImageButton
+      android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/specialImageTab"
+        android:src="@drawable/lightning16" />
+  <ImageButton
+      android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:id="@+id/descriptionImageTab"
+        android:src="@drawable/book16" />
+</LinearLayout>

@@ -23,7 +23,21 @@ namespace CombatManagerDroid
         List<String> _Extensions;
         FileViewAdapter adapter;
 
-        public string Text{ get; set; }
+        String _Text;
+
+        public string Text
+        {
+            get => _Text;
+            set
+            {
+                _Text = value;
+                EditText t = FindViewById<EditText>(Resource.Id.fileName);
+                if (t != null)
+                {
+                    t.Text = _Text ?? "";
+                }
+            }
+        }
 
         public class FileDialogEventArgs
         {
@@ -49,8 +63,11 @@ namespace CombatManagerDroid
             ((Button)FindViewById(Resource.Id.cancelButton)).Click += 
                 (object sender, EventArgs e) => {Dismiss();};
             
-            //EditText t = FindViewById<EditText>(Resource.Id.fileName);
-
+            EditText t = FindViewById<EditText>(Resource.Id.fileName);
+            if (Text != null)
+            {
+                t.Text = Text;
+            }
             
             Button b = FindViewById<Button>(Resource.Id.folderUpButton);
             b.Click += (object sender, EventArgs e) => { MoveUpFolder();};
@@ -76,8 +93,17 @@ namespace CombatManagerDroid
             DirectoryInfo info = new DirectoryInfo(Folder);
             if (info.Parent != null)
             {
-                _Folder = info.Parent.FullName;
-                UpdateFolderDisplay();
+                String oldFolder = _Folder;
+                try
+                {
+                    _Folder = info.Parent.FullName;
+                    UpdateFolderDisplay();
+                }
+                catch (Exception)
+                {
+                    _Folder = oldFolder;
+                    UpdateFolderDisplay();
+                }
             }
         }
 

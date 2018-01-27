@@ -28,7 +28,11 @@ namespace CombatManagerDroid
         
         protected abstract String ItemHtml(T item);
 
+        protected abstract bool IsCustom(T item);
+
         public View _v;
+
+        Button deleteButton;
 
 
         static T _SelectedItem;
@@ -52,9 +56,7 @@ namespace CombatManagerDroid
 
             _v = v;
 
-            items = GetItems();
-            items.Sort((a, b) => ItemName(a).CompareTo(ItemName(b)));
-            _FilteredItems = new List<T>(items);
+            ResetItems();
 
             ItemList.Adapter = (new LookupAdapter(this));
             ItemList.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => 
@@ -68,11 +70,38 @@ namespace CombatManagerDroid
                 UpdateFilter();
             };
             BuildFilters();
+
+            deleteButton = new Button(_v.Context);
+            deleteButton.Text = "Delete";
+            deleteButton.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.delete16), null, null, null);
+
+            deleteButton.Click += (sender, e) =>
+            {
+                DeleteClicked();
+            };
+
+            FilterLayout.AddView(deleteButton);
+
+
             FilterItems();
             BuildAdditionalLayouts();
             RefreshItem();
 
             return v;
+        }
+
+        private void ResetItems()
+        {
+
+            items = GetItems();
+            items.Sort((a, b) => ItemName(a).CompareTo(ItemName(b)));
+            _FilteredItems = new List<T>(items);
+        }
+
+        public void RefreshPage()
+        {
+            ResetItems();
+            UpdateFilter();
         }
 
         public void UpdateFilter()
@@ -176,14 +205,43 @@ namespace CombatManagerDroid
                     
                     wv.LoadUrl("about:blank");
                 }
+                deleteButton.Visibility = IsCustom(item) ? ViewStates.Visible : ViewStates.Gone;
+                if (EditButton != null)
+                {
+                    EditButton.Visibility = deleteButton.Visibility;
+                }
             }
         }
 
+
+        protected Button EditButton
+        {
+            get; set;
+        }
+
+
+        protected Button NewButton
+        {
+            get; set;
+        }
+
+        protected Button CustomizeButton
+        {
+            get; set;
+        }
+
+        protected virtual void DeleteItem(T item)
+        {
+
+        }
+        
         protected LinearLayout FilterLayout
         {
             get
             {
-                return _v.FindViewById<LinearLayout>(Resource.Id.filterLayout);
+
+                return  _v.FindViewById<LinearLayout> (Resource.Id.filterLayout);
+
             }
         }
 
@@ -206,12 +264,32 @@ namespace CombatManagerDroid
             }
         }
 
-        protected Button BuildFilterButton(String text, int size)
+        List<LinearLayout> filterLevels = new List<LinearLayout>();
+
+        protected void CreateMultipleLevelLayout(int levels)
+        {
+            for (int i = 0; i < levels; i++)
+            {
+                LinearLayout l = new LinearLayout(_v.Context);
+                filterLevels.Add(l);
+                FilterLayout.AddView(l);
+            }
+
+        }
+
+        protected Button BuildFilterButton(String text, int size, int? level = null)
         {
             Button b = new Button(_v.Context);
             b.Text = text;
             b.SetMinimumWidth(size);
-            FilterLayout.AddView(b);
+            if (level != null)
+            {
+                filterLevels[level.Value].AddView(b);
+            }
+            else
+            {
+                FilterLayout.AddView(b);
+            }
             b.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.down16), null, null, null);
 
             return b;
@@ -262,6 +340,17 @@ namespace CombatManagerDroid
             }
         }
        
+
+        void DeleteClicked()
+        {
+
+            UIUtils.ShowOKCancelDialog(Activity, "Delete " + ItemName(SelectedItem) + "?", () =>
+            {
+                DeleteItem(SelectedItem);
+                ResetItems();
+                UpdateFilter();
+            });
+        }
 
         class LookupAdapter : BaseAdapter
         {

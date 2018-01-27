@@ -1,3 +1,15 @@
+1.09
+Layout updates
+Remember which tab you were on when app restarts
+Import Monsters, Feats, Spells, and Conditions
+Edit DB Monsters
+
+1.08
+Crash fixes
+
+1.07
+Phone functionality
+
 1.03
 Fix loading of herolab and pc gen files
 UI improvements

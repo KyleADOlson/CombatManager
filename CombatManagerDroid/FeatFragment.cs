@@ -24,6 +24,11 @@ namespace CombatManagerDroid
             return item.Name;
         }
 
+        protected override bool IsCustom(Feat item)
+        {
+            return item != null && item.IsCustom;
+        }
+
         protected override bool CustomFilterItem(Feat item)
         {
             return (_Type == "All") || (item.Type.Contains(_Type));
@@ -45,6 +50,12 @@ namespace CombatManagerDroid
                 UpdateFilter();
 
             });
+        }
+
+        protected override void DeleteItem(Feat item)
+        {
+            Feat.RemoveCustomFeat(item);
+            RefreshPage();
         }
     }
 }

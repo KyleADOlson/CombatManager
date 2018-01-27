@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
@@ -42,6 +43,8 @@
             android:layout_height="fill_parent"
             android:id="@+id/linearLayout4">
             <EditText
+                android:maxLines="1"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/filterText" />
@@ -54,11 +57,27 @@
                 android:listSelector="#fff33d3d"
                 android:drawSelectorOnTop="false" />
         </LinearLayout>
-        <WebView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/conditionView"
-            android:layout_weight="1" />
+            android:id="@+id/linearLayout101"
+            android:layout_weight="1"
+            android:orientation="vertical">
+          <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Delete"
+              android:drawableLeft="@drawable/delete16"
+              android:id="@+id/deleteButton"
+              tools:visibility="visible"
+              android:visibility="gone" />
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/conditionView"
+                android:layout_weight="1"
+                xmlns:tools="http://schemas.android.com/tools"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

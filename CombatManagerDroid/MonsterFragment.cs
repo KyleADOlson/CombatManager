@@ -59,6 +59,11 @@ namespace CombatManagerDroid
         {
             return item.Name;
         }
+        
+        protected override bool IsCustom(Monster item)
+        {
+            return item != null && item.IsCustom;
+        }
 
         protected override bool CustomFilterItem(Monster item)
         {
@@ -67,7 +72,8 @@ namespace CombatManagerDroid
 
         bool NPCFilter(Monster item)
         {
-            return _group == 0 || (_group == 1 && !item.NPC) || (_group == 2 && item.NPC);
+            return _group == 0 || (_group == 1 && !item.NPC && !IsCustom(item)) || (_group == 2 && item.NPC && !IsCustom(item))
+                || (_group == 3 && IsCustom(item));
         }
 
         bool TypeFilter(Monster item)
@@ -86,7 +92,7 @@ namespace CombatManagerDroid
             Button b = BuildFilterButton("group", 100);
            
             PopupUtils.AttachButtonStringPopover("Group", b, 
-                new List<string> { "All Monsters", "Monsters", "NPCs" }, 
+                new List<string> { "All Monsters", "Monsters", "NPCs", "Custom" }, 
                                             _group, (r1, index, val)=>
             {
                 _group = index;
@@ -118,6 +124,32 @@ namespace CombatManagerDroid
                 UpdateFilter();
 
             });
+            b = new Button(_v.Context);
+            b.Text = "New";
+            b.Click += (sender, e) =>
+            {
+                NewItem();
+            };
+            FilterLayout.AddView(b);
+            NewButton = b;
+
+            b = new Button(_v.Context);
+            b.Text = "Customize";
+            b.Click += (sender, e) =>
+            {
+                CustomizeItem();
+            };
+            FilterLayout.AddView(b);
+            CustomizeButton = b;
+
+            b = new Button(_v.Context);
+            b.Text = "Edit";
+            b.Click += (sender, e) =>
+            {
+                EditItem();
+            };
+            FilterLayout.AddView(b);
+            EditButton = b;
 
         }
         protected override void BuildAdditionalLayouts()
@@ -322,17 +354,85 @@ namespace CombatManagerDroid
             }
 
             UpdateTemplateView();
+            
 
         }
 
         protected override void ShowItem(Monster item)
         {
             Monster monster = AdvanceMonster(item);
-
-           
+            
 
             base.ShowItem(monster);
         }
+
+        protected override void DeleteItem(Monster item)
+        {
+            if (item.IsCustom)
+            {
+                MonsterDB.DB.DeleteMonster(item);
+                Monster.Monsters.Remove(item);
+
+            }
+        }
+
+        void EditItem()
+        {
+            MonsterEditorActivity.SourceMonster = SelectedItem;
+            MonsterEditorActivity.DBMonster = true;
+
+            Intent intent = new Intent(this.Context, (Java.Lang.Class)new MonsterEditorMainActivity().Class);
+            intent.AddFlags(ActivityFlags.NewTask);
+
+            Context.StartActivity(intent);
+            
+        }
+
+        void NewItem()
+        {
+            MonsterEditorActivity.SourceMonster = Monster.BlankMonster();
+            MonsterEditorActivity.DBMonster = true;
+
+            Intent intent = new Intent(this.Context, (Java.Lang.Class)new MonsterEditorMainActivity().Class);
+            intent.AddFlags(ActivityFlags.NewTask);
+
+            Context.StartActivity(intent);
+        }
+
+        void CustomizeItem()
+        {
+            if (SelectedItem != null)
+            {
+                Monster sourceMonster  = SelectedItem.Clone() as Monster;
+                sourceMonster.DBLoaderID = 0;
+                MonsterEditorActivity.SourceMonster = sourceMonster;
+                MonsterEditorActivity.DBMonster = true;
+
+                Intent intent = new Intent(this.Context, (Java.Lang.Class)new MonsterEditorMainActivity().Class);
+                intent.AddFlags(ActivityFlags.NewTask);
+
+                Context.StartActivity(intent);
+            }
+
+        }
+
+        public override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            MonsterDB.MonsterUpdated += MonsterUpdated;
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            MonsterDB.MonsterUpdated -= MonsterUpdated;
+        }
+
+        public void MonsterUpdated(Monster m)
+        {
+            RefreshPage();
+        }
+
 
         bool AdvancerBoxChecked(int id)
         {

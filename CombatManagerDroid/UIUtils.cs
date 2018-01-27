@@ -12,6 +12,7 @@ using Android.Views;
 using Android.Widget;
 using System.Reflection;
 using Android.Support.V4.Content;
+using Android.Content.Res;
 
 namespace CombatManagerDroid
 {
@@ -136,15 +137,50 @@ namespace CombatManagerDroid
             };
         }
 
-        public static void ShowOKCancelDialog(Context context, String message, Action okAction)
+        public delegate void ListPopoverResponseHandler(int item);
+
+        public static void ShowListPopover(View v, String title, List<String> options, ListPopoverResponseHandler handler )
+        {
+
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(v.Context);
+
+            builderSingle.SetTitle(title);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                v.Context,
+                Android.Resource.Layout.SelectDialogItem);
+            arrayAdapter.AddAll(options);
+
+
+            builderSingle.SetAdapter(arrayAdapter, (se, ev) => {
+                string val = arrayAdapter.GetItem(ev.Which);
+                handler?.Invoke(ev.Which);
+
+            });
+
+            builderSingle.Show();
+        }
+    
+
+        public static void ShowOKCancelDialog(this Context context, String message, Action okAction, Action cancelAction = null)
         {
             AlertDialog.Builder bui = new AlertDialog.Builder(context);
             bui.SetMessage(message);
             bui.SetPositiveButton("OK", (a, x) => {
-                okAction();
+                okAction?.Invoke();
             });
-            bui.SetNegativeButton("Cancel", (a, x) => {});
+            bui.SetNegativeButton("Cancel", (a, x) => { cancelAction?.Invoke(); });
             bui.Show();  
+
+        }
+
+        public static void ShowOKDialog(this Context context, String message, Action okAction = null)
+        {
+            AlertDialog.Builder bui = new AlertDialog.Builder(context);
+            bui.SetMessage(message);
+            bui.SetPositiveButton("OK", (a, x) => {
+
+                okAction?.Invoke();
+            });
 
         }
 
@@ -154,9 +190,12 @@ namespace CombatManagerDroid
             b.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(b.Context, resource), null, null, null);
         }
 
-        public static void IsTablet(this Context context)
+        public static bool IsTablet(this Context context)
         {
+            ScreenLayout screenSize = context.Resources.Configuration.ScreenLayout &
+                    ScreenLayout.SizeMask;
 
+            return screenSize == ScreenLayout.SizeLarge || screenSize == ScreenLayout.SizeXlarge;
         }
 
     }
