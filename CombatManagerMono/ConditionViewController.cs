@@ -80,6 +80,7 @@ namespace CombatManagerMono
 			
 			StyleButton(ApplyButton);
 			StyleButton(CloseButton);
+            StyleButton(DeleteButton);
 			
 			TitleView.CornerRadius = 0;
 			
@@ -298,10 +299,11 @@ namespace CombatManagerMono
 			if (_SelectedCondition == null)
 			{
 				ConditionDetailWebView.LoadHtmlString("", new NSUrl("http://localhost/"));
-			}
+                DeleteButton.Hidden = true;
+            }
 			else
 			{
-	
+                DeleteButton.Hidden = !_SelectedCondition.Custom;
 				ConditionDetailWebView.LoadHtmlString(ConditionHTML(_SelectedCondition), new NSUrl("http://localhost/"));
 			}
 		}
@@ -351,8 +353,23 @@ namespace CombatManagerMono
 
 			
 		}
-		
-		private class ViewDelegate : UITableViewDelegate
+
+        partial void DeleteClicked(GradientButton sender)
+        {
+            if (_SelectedCondition.Custom)
+            {
+
+                Condition.CustomConditions.Remove(_SelectedCondition);
+                Condition.SaveCustomConditions();
+                _VisibleConditions.Remove(_SelectedCondition);
+                RebuildConditionList();
+                SelectionTable.ReloadData();
+                UpdateConditionDisplay();
+
+            }
+        }
+
+        private class ViewDelegate : UITableViewDelegate
 		{
 			ConditionViewController state;
 			public ViewDelegate(ConditionViewController state)	

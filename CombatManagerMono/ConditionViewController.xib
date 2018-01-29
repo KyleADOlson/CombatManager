@@ -22,6 +22,7 @@
                 <outlet property="TitleView" destination="62" id="64"/>
                 <outlet property="TopView" destination="9" id="18"/>
                 <outlet property="view" destination="56" id="61"/>
+                <outlet property="DeleteButton" destination="890" id="name-outlet-890"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -112,7 +113,7 @@
                                         <action selector="TabButtonClicked:" destination="-1" eventType="touchUpInside" id="43"/>
                                     </connections>
                                 </button>
-                                <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="23" customClass="GradientButton">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="23" customClass="GradientButton">
                                     <rect key="frame" x="262" y="5" width="83" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -176,6 +177,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" title="Apply">
                                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                     </state>
                                     <state key="highlighted">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -190,6 +192,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" title="Close">
                                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                     </state>
                                     <state key="highlighted">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -198,10 +201,21 @@
                                         <action selector="CloseButtonClicked:" destination="-1" eventType="touchUpInside" id="60"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="890" customClass="GradientButton">
+                                    <rect key="frame" x="263" y="5" width="72" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="Delete">
+                                        <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="DeleteClicked:" destination="-1" id="1446" eventType="touchUpInside"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
-                        <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="13">
+                        <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="13" clipsSubviews="YES">
                             <rect key="frame" x="0.0" y="121" width="209" height="237"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -231,11 +245,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Default-Landscape.png" width="1024" height="748"/>
-        <image name="Default-Portrait.png" width="768" height="1004"/>
         <image name="icon.png" width="72" height="72"/>
-        <image name="settingsicon.png" width="29" height="29"/>
-        <image name="spotlighticon.png" width="50" height="50"/>
         <image name="Images/Icon.png" width="57" height="57"/>
         <image name="Images/External/ArrangeWindowsHS.png" width="16" height="16"/>
         <image name="Images/External/arrowcurveleft-16.png" width="16" height="16"/>
@@ -340,7 +350,6 @@
         <image name="Images/External/check-16.png" width="16" height="16"/>
         <image name="Images/External/info.png" width="24" height="24"/>
         <image name="Images/DiePencil.jpg" width="2048" height="1536"/>
-        <image name="App.png" width="72" height="72"/>
         <image name="RetinaApp.png" width="144" height="144"/>
         <image name="RetinaSettings.png" width="58" height="58"/>
         <image name="RetinaSpotlight.png" width="100" height="100"/>

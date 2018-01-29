@@ -53,6 +53,15 @@ namespace CombatManagerMono
             t.Start();
             
         }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            _BackgroundView.Frame = View.Bounds;
+
+        }
+
         
 
                      
