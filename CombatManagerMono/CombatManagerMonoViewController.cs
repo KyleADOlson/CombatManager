@@ -129,7 +129,8 @@ namespace CombatManagerMono
             {
                 UIImage im = UIImage.FromFile("Images/Icon.png");
                 double y = (View.Bounds.Height - im.Size.Height)/2.0d;
-                double x = View.Bounds.Width/5.0d;
+                    double x = View.Bounds.Width/5.0d;
+
 
                 if (_LoadingIcons.Count == 0)
                 {

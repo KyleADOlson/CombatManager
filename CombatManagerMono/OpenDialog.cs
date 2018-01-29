@@ -58,13 +58,15 @@ namespace CombatManagerMono
 		
 		private string _SaveFile;
 		
-		public OpenDialog() : this(true)
-		{
-			
-		}
 		
-		public OpenDialog (bool openMode) : base ("OpenDialog", null)
+		public OpenDialog (bool openMode = true, List<String> openExtensions = null) : base ("OpenDialog", null)
 		{
+            if (openExtensions != null)
+            {
+                _OpenExtensions = openExtensions;
+            }
+
+
 			_OpenMode = openMode;
 			
 			files = new List<string>();
@@ -93,6 +95,12 @@ namespace CombatManagerMono
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+            if (View.Bounds.Height > View.Bounds.Width)
+            {
+                View.SetSize((float)View.Bounds.Height, (float)View.Bounds.Width);
+            }
+
 			
 			ButtonView.CornerRadius = 0;
             ButtonView.Border = 0;
@@ -178,9 +186,9 @@ namespace CombatManagerMono
 				if (isLegal)
 				{
 				
-					if (!Regex.Match(name, Regex.Escape(".cmpt") + "$", RegexOptions.IgnoreCase).Success)
+					if (!Regex.Match(name, Regex.Escape(DefaultExtension) + "$", RegexOptions.IgnoreCase).Success)
 					{
-						name += ".cmpt";
+                        name += DefaultExtension;
 						shortName = name;
 					}
 					
@@ -256,6 +264,15 @@ namespace CombatManagerMono
 			// Return true for supported orientations
 			return true;
 		}
+
+
+        public String DefaultExtension
+        {
+            get
+            {
+                return _OpenExtensions[0].TrimStart('*');
+            }
+        }
 		
 		
 		public void UpdateOK()

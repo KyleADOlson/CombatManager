@@ -45,12 +45,14 @@ namespace CombatManagerMono
 		
 		
 		string typeFilter = null;	
-		bool ? npcFilter = null; 
+		int npcFilter = 0; 
 		string crFilter;
 		
 		const string AllSetText = "All";
 		const string AllTypeText = "All Types";
 		const string AllCRText = "All CRs";
+
+        MonsterEditorDialog monsterDialog;
 		
 		public MonstersTab (CombatState state) : base (state)
 		{
@@ -98,9 +100,10 @@ namespace CombatManagerMono
             locX += (float)b.Frame.Width + marginX;
 			b.SetText(AllSetText);
 			setFilterPopover = new ButtonStringPopover(b);
-			setFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = AllSetText, Tag=null});
-			setFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = "Monsters", Tag=false});
-			setFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = "NPCs", Tag=true});
+			setFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = AllSetText, Tag=0});
+			setFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = "Monsters", Tag=1});
+            setFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = "NPCs", Tag=2});
+            setFilterPopover.Items.Add(new ButtonStringPopoverItem() {Text = "Custom", Tag=3});
 			setFilterPopover.SetButtonText = true;
 			setFilterPopover.ItemClicked += HandleSetFilterPopoverItemClicked;
 			setFilterButton = b;
@@ -147,8 +150,113 @@ namespace CombatManagerMono
 			crFilterButton = b;
 			
 			FilterView.AddSubview(b);
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new CGRect(locX, locY, 60, bHeight);
+            locX += (float)b.Frame.Width + marginX;
+            b.SetText("New");
+            b.TouchUpInside += NewButtonClicked;
+
+            FilterView.AddSubview(b);
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new CGRect(locX, locY, 75, bHeight);
+            locX += (float)(b.Frame.Width + marginX);
+            b.SetText("Customize");
+            b.TouchUpInside += CustomizeButtonClicked;
+            FilterView.AddSubview(b);
+
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new CGRect(locX, locY, 60, bHeight);
+            locX += (float)b.Frame.Width + marginX;
+            b.SetText("Edit");
+            b.TouchUpInside += EditButtonClicked;
+            FilterView.AddSubview(b);
+
+            //editButton = b;
+
+            b = new GradientButton();
+            StyleDBButton(b);
+            b.Frame = new CGRect(locX, locY, 60, bHeight);
+            locX += (float)b.Frame.Width + marginX;
+            b.SetText("Delete");
+            b.TouchUpInside += DeleteButtonClicked;
+            FilterView.AddSubview(b);
+
+            //deleteButton = b;
 			
 		}
+
+        void NewButtonClicked (object sender,  EventArgs e)
+        {
+            monsterDialog = new MonsterEditorDialog((Monster)Monster.BlankMonster());
+            monsterDialog.MonsterEditorComplete += (s, monster) => 
+            {
+                MonsterDB.DB.AddMonster(monster);
+                Monster.Monsters.Add(monster);
+                Filter(true);
+            };            
+
+            MainUI.MainView.AddSubview(monsterDialog.View);
+        }
+
+        void CustomizeButtonClicked (object sender, EventArgs e)
+        {
+            monsterDialog = new MonsterEditorDialog((Monster)SelectedItem.Clone());
+            monsterDialog.MonsterEditorComplete += (s, monster) => 
+            {
+                MonsterDB.DB.AddMonster(monster);
+                Monster.Monsters.Add(monster);
+                Filter(true);
+            };   
+            MainUI.MainView.AddSubview(monsterDialog.View);
+        }
+
+        void EditButtonClicked (object sender, EventArgs e)
+        {
+            if (SelectedItem.IsCustom)
+            {
+                monsterDialog = new MonsterEditorDialog((Monster)SelectedItem.Clone());
+                monsterDialog.MonsterEditorComplete += (s, monster) => 
+                {
+                    MonsterDB.DB.UpdateMonster(monster);
+                    Filter(true);
+                };
+                MainUI.MainView.AddSubview(monsterDialog.View);
+            }
+        }
+
+        UIAlertView alertView;
+
+        void DeleteButtonClicked (object sender, EventArgs e)
+        {
+            if (SelectedItem.IsCustom)
+            {
+                alertView = new UIAlertView    
+                {        
+                    Title = "Are you sure you want to delete this monster?",
+                    Message = SelectedItem.Name + " will be deleted permanently"
+
+                };        
+                alertView.AddButton("Cancel");    
+                alertView.AddButton("OK");
+                alertView.Show();
+                alertView.Clicked += (object se, UIButtonEventArgs ea) => 
+                {
+                    if (ea.ButtonIndex == 1)
+                    {
+
+                        MonsterDB.DB.DeleteMonster(SelectedItem);
+                        Monster.Monsters.Remove(SelectedItem);
+                        Filter(true);
+                    }
+                };
+            }
+        }
 
 		void HandleCrFilterPopoverItemClicked (object sender, ButtonStringPopover.PopoverEventArgs e)
 		{
@@ -160,7 +268,7 @@ namespace CombatManagerMono
 
 		void HandleSetFilterPopoverItemClicked (object sender, ButtonStringPopover.PopoverEventArgs e)
 		{
-			npcFilter = (bool ?) e.Tag;
+			npcFilter = (int) e.Tag;
 			Filter();
 		}
 
@@ -179,7 +287,20 @@ namespace CombatManagerMono
 		
 		private bool NPCFilterMatch(Monster item)
 		{
-			return npcFilter == null || item.NPC == npcFilter;
+            switch (npcFilter)
+            {
+                case 0:
+                    return true;
+                case 1:
+                    return (!item.IsCustom && !item.NPC);
+                
+                case 2:
+                    return (!item.IsCustom && item.NPC);
+                case 3:
+                default:
+                    return item.IsCustom;
+            }
+
 		}
 		
 		private bool TypeFilterMatch(Monster item)
@@ -229,7 +350,7 @@ namespace CombatManagerMono
 		protected override void ResetButtonClicked ()
 		{
 			typeFilter = null;	
-			npcFilter = false; 
+			npcFilter = 0; 
 			crFilter = null;
 			
 			typeFilterButton.SetText(AllTypeText);

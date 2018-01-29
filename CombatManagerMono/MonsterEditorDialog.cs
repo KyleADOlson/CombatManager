@@ -44,6 +44,11 @@ namespace CombatManagerMono
 		MonsterEditorFeatsPage _FeatsPage;
 		MonsterEditorSpecialPage _SpecialPage;
 		MonsterEditorDescriptionPage _DescriptionPage;
+
+
+        public delegate void MonsterEditorCompleteDelegate(MonsterEditorDialog sender, Monster monster);
+
+        public event MonsterEditorCompleteDelegate MonsterEditorComplete;
 		
 		static bool UserInterfaceIdiomIsPhone
 		{
@@ -149,6 +154,8 @@ namespace CombatManagerMono
 		{
 			
 			View.RemoveFromSuperview();
+
+            MonsterEditorComplete?.Invoke(this, Monster);
 		}
 		partial void CancelButtonTouchUpInside (Foundation.NSObject sender)
 		{

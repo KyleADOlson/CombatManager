@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeatEditorDialog">
@@ -20,7 +21,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2">
-            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+            <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fmv-jB-gss">
@@ -28,18 +29,18 @@
                     <autoresizingMask key="autoresizingMask"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal">
-                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="highlighted">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="CancelButtonClicked:" destination="-1" eventType="touchUpInside" id="QLt-eS-HBj"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" id="yxK-8M-NO3" customClass="GradientView">
-                    <rect key="frame" x="167" y="116" width="690" height="547"/>
+                    <rect key="frame" x="223" y="154.5" width="920" height="729.5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VRa-WA-w3Q" customClass="GradientButton">
@@ -47,10 +48,10 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="OK">
                                 <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="OKButtonClicked:" destination="-1" eventType="touchUpInside" id="2AZ-zN-f9a"/>
+                                <action selector="OKButtonClicked:" destination="-1" id="464" eventType="touchUpInside"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S4p-B3-RtD" customClass="GradientButton">
@@ -58,10 +59,10 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="CancelButtonClicked:" destination="-1" eventType="touchUpInside" id="Jz5-YX-fnP"/>
+                                <action selector="CancelButtonClicked:" destination="-1" id="497" eventType="touchUpInside"/>
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4hG-dM-YUC">
@@ -132,17 +133,132 @@
                             <state key="normal" title="Button"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
         </view>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
-    </simulatedMetricsContainer>
+    <resources>
+        <image name="icon.png" width="72" height="72"/>
+        <image name="Images/Icon.png" width="57" height="57"/>
+        <image name="Images/External/ArrangeWindowsHS.png" width="16" height="16"/>
+        <image name="Images/External/arrowcurveleft-16.png" width="16" height="16"/>
+        <image name="Images/External/arrowcurveright-16.png" width="16" height="16"/>
+        <image name="Images/External/arrowdown-16.png" width="16" height="16"/>
+        <image name="Images/External/arrowsdown-16.png" width="16" height="16"/>
+        <image name="Images/External/arrowsup-16.png" width="16" height="16"/>
+        <image name="Images/External/arrowup-16.png" width="16" height="16"/>
+        <image name="Images/External/battery-low-16.png" width="16" height="16"/>
+        <image name="Images/External/bell-16.png" width="16" height="16"/>
+        <image name="Images/External/bleeding-16.png" width="16" height="16"/>
+        <image name="Images/External/blind-16.png" width="16" height="16"/>
+        <image name="Images/External/book-16.png" width="16" height="16"/>
+        <image name="Images/External/bow-16.png" width="16" height="16"/>
+        <image name="Images/External/broken-16.png" width="16" height="16"/>
+        <image name="Images/External/brush-16.png" width="16" height="16"/>
+        <image name="Images/External/bulb-16.png" width="16" height="16"/>
+        <image name="Images/External/CheckBox.png" width="27" height="27"/>
+        <image name="Images/External/CheckBoxUnchecked.png" width="27" height="27"/>
+        <image name="Images/External/claw-16.png" width="16" height="16"/>
+        <image name="Images/External/clock-16.png" width="16" height="16"/>
+        <image name="Images/External/clone-16.png" width="16" height="16"/>
+        <image name="Images/External/cower-16.png" width="16" height="16"/>
+        <image name="Images/External/d20-16.png" width="16" height="16"/>
+        <image name="Images/External/d20-32.png" width="32" height="32"/>
+        <image name="Images/External/d20-40.png" width="40" height="40"/>
+        <image name="Images/External/dazed-16.png" width="16" height="16"/>
+        <image name="Images/External/dazzled-16.png" width="16" height="16"/>
+        <image name="Images/External/dead-16.png" width="16" height="16"/>
+        <image name="Images/External/deaf-16.png" width="16" height="16"/>
+        <image name="Images/External/delete-16.png" width="16" height="16"/>
+        <image name="Images/External/dice-16.png" width="16" height="16"/>
+        <image name="Images/External/disease-16.png" width="16" height="16"/>
+        <image name="Images/External/ellipsis-16.png" width="16" height="16"/>
+        <image name="Images/External/exhausted-16.png" width="16" height="16"/>
+        <image name="Images/External/facinated-16.png" width="16" height="16"/>
+        <image name="Images/External/fatigued-16.png" width="16" height="16"/>
+        <image name="Images/External/flagblue-16.png" width="16" height="16"/>
+        <image name="Images/External/flaggreen-16.png" width="16" height="16"/>
+        <image name="Images/External/flagred-16.png" width="16" height="16"/>
+        <image name="Images/External/foot-16.png" width="16" height="16"/>
+        <image name="Images/External/hand-16.png" width="16" height="16"/>
+        <image name="Images/External/handicapped-16.png" width="16" height="16"/>
+        <image name="Images/External/hourglass-16.png" width="16" height="16"/>
+        <image name="Images/External/import-16.png" width="16" height="16"/>
+        <image name="Images/External/incorporeal-16.png" width="16" height="16"/>
+        <image name="Images/External/invisible-16.png" width="16" height="16"/>
+        <image name="Images/External/keys-16.png" width="16" height="16"/>
+        <image name="Images/External/lasso-16.png" width="16" height="16"/>
+        <image name="Images/External/lightning-16.png" width="16" height="16"/>
+        <image name="Images/External/link-16.png" width="16" height="16"/>
+        <image name="Images/External/lock-16.png" width="16" height="16"/>
+        <image name="Images/External/magearmor-16.png" width="16" height="16"/>
+        <image name="Images/External/monster-16.png" width="16" height="16"/>
+        <image name="Images/External/nauseated-16.png" width="16" height="16"/>
+        <image name="Images/External/next-16.png" width="16" height="16"/>
+        <image name="Images/External/NoteHS.png" width="16" height="16"/>
+        <image name="Images/External/notes-16.png" width="16" height="16"/>
+        <image name="Images/External/openHS.png" width="16" height="16"/>
+        <image name="Images/External/panic-16.png" width="16" height="16"/>
+        <image name="Images/External/pencil-16.png" width="16" height="16"/>
+        <image name="Images/External/person-16.png" width="16" height="16"/>
+        <image name="Images/External/personwindow-16.png" width="16" height="16"/>
+        <image name="Images/External/pin-16.png" width="16" height="16"/>
+        <image name="Images/External/poison-16.png" width="16" height="16"/>
+        <image name="Images/External/prev-16.png" width="16" height="16"/>
+        <image name="Images/External/PrintHS.png" width="16" height="16"/>
+        <image name="Images/External/prone-16.png" width="16" height="16"/>
+        <image name="Images/External/qm-16.png" width="16" height="16"/>
+        <image name="Images/External/reaper-16.png" width="16" height="16"/>
+        <image name="Images/External/redx.png" width="28" height="28"/>
+        <image name="Images/External/reset-16.png" width="16" height="16"/>
+        <image name="Images/External/rock-16.png" width="16" height="16"/>
+        <image name="Images/External/saveHS.png" width="16" height="16"/>
+        <image name="Images/External/scared-16.png" width="16" height="16"/>
+        <image name="Images/External/screen-16.png" width="16" height="16"/>
+        <image name="Images/External/scroll-16.png" width="16" height="16"/>
+        <image name="Images/External/scrolleffect-16.png" width="16" height="16"/>
+        <image name="Images/External/shaken-16.png" width="16" height="16"/>
+        <image name="Images/External/sheet.png" width="16" height="16"/>
+        <image name="Images/External/shield-16.png" width="16" height="16"/>
+        <image name="Images/External/shield-error-16.png" width="16" height="16"/>
+        <image name="Images/External/sick-16.png" width="16" height="16"/>
+        <image name="Images/External/sleep-16.png" width="16" height="16"/>
+        <image name="Images/External/slow-16.png" width="16" height="16"/>
+        <image name="Images/External/sort-16.png" width="16" height="16"/>
+        <image name="Images/External/stable-16.png" width="16" height="16"/>
+        <image name="Images/External/star-16.png" width="16" height="16"/>
+        <image name="Images/External/stop-16.png" width="16" height="16"/>
+        <image name="Images/External/stunned-16.png" width="16" height="16"/>
+        <image name="Images/External/sword-16.png" width="16" height="16"/>
+        <image name="Images/External/sword-single-16.png" width="16" height="16"/>
+        <image name="Images/External/target-16.png" width="16" height="16"/>
+        <image name="Images/External/treasure-16.png" width="16" height="16"/>
+        <image name="Images/External/unlock-16.png" width="16" height="16"/>
+        <image name="Images/External/wand-16.png" width="16" height="16"/>
+        <image name="Images/External/zoomin-16.png" width="16" height="16"/>
+        <image name="Images/External/zoomout-16.png" width="16" height="16"/>
+        <image name="Images/External/zzz-16.png" width="16" height="16"/>
+        <image name="Images/Sort.png" width="24" height="24"/>
+        <image name="Images/Refresh.png" width="24" height="24"/>
+        <image name="Images/External/check-16.png" width="16" height="16"/>
+        <image name="Images/External/info.png" width="24" height="24"/>
+        <image name="Images/DiePencil.jpg" width="2048" height="1536"/>
+        <image name="Images/External/LeftArrow-24.png" width="24" height="24"/>
+        <image name="Images/External/RightArrow-24.png" width="24" height="24"/>
+        <image name="Images/External/mail-16.png" width="16" height="16"/>
+        <image name="Images/External/d12-16.png" width="16" height="16"/>
+        <image name="Images/External/d20p-16.png" width="16" height="16"/>
+        <image name="Images/External/d4-16.png" width="16" height="16"/>
+        <image name="Images/External/d6-16.png" width="16" height="16"/>
+        <image name="Images/External/d10-16.png" width="16" height="16"/>
+        <image name="Images/External/d8-16.png" width="16" height="16"/>
+        <image name="Images/External/d100-16.png" width="16" height="16"/>
+        <image name="Images/icondoc320.png" width="320" height="320"/>
+        <image name="Images/icondoc64.png" width="64" height="64"/>
+        <image name="Images/settings.png" width="128" height="128"/>
+    </resources>
 </document>

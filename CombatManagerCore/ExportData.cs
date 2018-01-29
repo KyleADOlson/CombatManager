@@ -115,5 +115,25 @@ namespace CombatManager
             return data;
         }
 
+        public void Append(ExportData data)
+        {
+            foreach (Monster m in data.Monsters)
+            {
+                _Monsters.Add(m);
+            }
+            foreach (Spell s in data.Spells)
+            {
+                _Spells.Add(s);
+            }
+            foreach (Feat f in data.Feats)
+            {
+                _Feats.Add(f);
+            }
+            foreach (Condition c in data.Conditions)
+            {
+                _Conditions.Add(c);
+            }
+        }
+
     }
 }

@@ -37,6 +37,7 @@ namespace CombatManagerMono
 
             window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
+
             viewController = new CombatManagerMonoViewController ();
             viewController.StartupUrl = url;
             window.RootViewController = viewController;

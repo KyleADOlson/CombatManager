@@ -177,6 +177,7 @@
     <Compile Include="DetailsDB.cs" />
     <Compile Include="XElementExt.cs" />
     <Compile Include="ActiveResource.cs" />
+    <Compile Include="ExportData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">
