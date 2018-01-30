@@ -192,12 +192,12 @@ namespace CombatManagerMono
 			ShowItem (_selectedItem);
 		}
 
-        protected void Filter()
+        public void Filter()
         {
             Filter(false);
         }
 		
-        protected void Filter(bool reload)
+        public void Filter(bool reload)
 		{
             if (sortedItems == null || reload)
 			{
@@ -305,6 +305,11 @@ namespace CombatManagerMono
             return null;
         }
 
+        public T SelectedItem
+        {
+            get => _selectedItem;
+        }
+
 		
 		public override void LayoutSubviews ()
 		{
@@ -372,9 +377,6 @@ namespace CombatManagerMono
 		public override void Draw (CGRect rect)
 		{
 			base.Draw (rect);
-		
-			
-			
 		}
 		
 		protected void StyleFilterButton(GradientButton b)

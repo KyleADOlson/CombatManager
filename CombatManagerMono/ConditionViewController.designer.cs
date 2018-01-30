@@ -72,6 +72,10 @@ namespace CombatManagerMono
         [Outlet]
         CombatManagerMono.GradientButton CloseButton { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        CombatManagerMono.GradientButton DeleteButton { get; set; }
+
 
         [Action ("StepperValueChanged:")]
         partial void StepperValueChanged (UIKit.UIStepper sender);
@@ -91,6 +95,10 @@ namespace CombatManagerMono
         [Action ("CloseButtonClicked:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void CloseButtonClicked (CombatManagerMono.GradientButton sender);
+
+        [Action ("DeleteClicked:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void DeleteClicked (CombatManagerMono.GradientButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -127,6 +135,11 @@ namespace CombatManagerMono
             if (CustomTab != null) {
                 CustomTab.Dispose ();
                 CustomTab = null;
+            }
+
+            if (DeleteButton != null) {
+                DeleteButton.Dispose ();
+                DeleteButton = null;
             }
 
             if (DurationLabel != null) {

@@ -38,6 +38,11 @@ namespace CombatManagerMono
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            if (View.Bounds.Height > View.Bounds.Width)
+            {
+                View.SetSize((float)View.Bounds.Height, (float)View.Bounds.Width);
+            }
             
             // Perform any additional setup after loading the view, typically from a nib.
             BackgroundView.BackgroundColor = UIColor.Clear;
@@ -73,18 +78,27 @@ namespace CombatManagerMono
                 CMStyles.TextFieldStyle(b, 15f);
             }
 
+            OKButton.TouchUpInside += (sender, e) => 
+            {
+                HandleOK();
+            };
+            CancelButton.TouchUpInside += (sender, e)=>
+            {
+                HandleCancel();
+            };
+
 
 
         }
 
         partial void OKButtonClicked(NSObject sender)
         {
-            HandleOK();
+            //HandleOK();
         }
 
         partial void CancelButtonClicked(NSObject sender)
         {
-            HandleCancel();
+            //HandleCancel();
 
         }
     }

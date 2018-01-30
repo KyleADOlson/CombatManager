@@ -190,9 +190,14 @@ namespace CombatManagerMono
 					_TextBoxDialog.OKClicked += Handle_NotesTextBoxDialogOKClicked;
                     break;
                 case CharacterActionResult.NeedMonsterEditorDialog:
+                        Monster newMonster = (Monster)Character.Monster.Clone();
 				
-                    _MonsterEditorDialog = new MonsterEditorDialog(Character.Monster);
-                    MainUI.MainView.AddSubview(_MonsterEditorDialog.View);
+                        _MonsterEditorDialog = new MonsterEditorDialog(newMonster);
+                        _MonsterEditorDialog.MonsterEditorComplete += (sd, monster) => 
+                        {
+                            Character.Monster.CopyFrom(newMonster);
+                        };
+                        MainUI.MainView.AddSubview(_MonsterEditorDialog.View);
                  
                     break;
                 case CharacterActionResult.RollAttack:

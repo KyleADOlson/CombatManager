@@ -25,6 +25,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using CoreGraphics;
+using CombatManager;
 
 namespace CombatManagerMono
 {
@@ -42,6 +43,10 @@ namespace CombatManagerMono
 
         GradientButton _AboutButton;
         GradientButton _SettingsButton;
+
+        ButtonStringPopover settingsPopover;
+
+        ImportExportDialog ieDialog;
 		
 		public ToolbarView ()
 		{
@@ -91,8 +96,31 @@ namespace CombatManagerMono
             _SettingsButton.TouchUpInside += SettingsButtonClicked;            
             _SettingsButton.Frame = new CGRect(Bounds.Width - 64, (Bounds.Height - 48.0f)/2.0f, 48f, 48f);
 
-            //AddSubview (_SettingsButton);
-            	
+            AddSubview (_SettingsButton);
+
+            settingsPopover = new ButtonStringPopover(_SettingsButton);
+            var pi = new ButtonStringPopoverItem(){ Text = "Import"};
+            settingsPopover.Items.Add(pi);
+            pi = new ButtonStringPopoverItem { Text = "Export"};
+            settingsPopover.Items.Add(pi);
+            settingsPopover.ItemClicked += (sender, eee) => 
+            {
+                switch (eee.Index)
+                {
+                    case 0:
+
+                        Import();                    
+
+                        break;
+                    case 1:
+
+                        Export();
+                        
+                        break;
+                }
+            };
+
+
             _AboutButton = new GradientButton();
             _AboutButton.SetImage(UIImage.FromFile("Images/External/info.png"), UIControlState.Normal);
             // _AboutButton.Border = 0;
@@ -106,6 +134,96 @@ namespace CombatManagerMono
 			BackgroundColor = UIColor.Black;
 			
 		}
+
+        void Import()
+        {
+            OpenDialog ofd = new OpenDialog(true, new List<string>(){"*.cmx"});
+            ofd.FilesOpened += (sn, ee) => 
+            {
+                try
+                {
+                    ExportData data = new ExportData();
+                    foreach (var x in ee.Files)
+                    {
+                        try
+                        {
+                            ExportData newData = XmlLoader<ExportData>.Load(x);
+                            data.Append(newData);
+                        }
+                        catch (Exception ex)
+                        {
+                            DebugLogger.WriteLine(ex.ToString());
+                        }
+                    }
+
+
+                    ieDialog = new ImportExportDialog(data, true);
+                    ieDialog.ImportExportComplete += (sss, e) => 
+                    {
+                        ExportData newData = e.Data;
+
+
+                        foreach (Monster m in e.Data.Monsters)
+                        {
+                            m.DBLoaderID = 0;
+                            MonsterDB.DB.AddMonster(m);
+                            Monster.Monsters.Add(m);
+                        }
+                        foreach (Spell s in e.Data.Spells)
+                        {
+                            s.DBLoaderID = 0;
+                            Spell.AddCustomSpell(s);
+                        }
+                        foreach (Feat s in e.Data.Feats)
+                        {
+                            s.DBLoaderID = 0;
+                            Feat.AddCustomFeat(s);
+                        }
+                        foreach (Condition s in e.Data.Conditions)
+                        {
+                            Condition.CustomConditions.Add(s);
+                        }
+                        if (e.Data.Conditions.Count > 0)
+                        {
+                            Condition.SaveCustomConditions();
+                        }
+                        MainUI.MainView.ReloadTabs();
+
+
+
+                    };
+                    MainUI.MainView.AddSubview(ieDialog.View);
+                }
+                catch (Exception ex)
+                {
+                    DebugLogger.WriteLine(ex.ToString());
+                }
+            };
+            MainUI.MainView.AddSubview(ofd.View);
+
+        }
+
+        void Export()
+        {
+            ieDialog = new ImportExportDialog(ExportData.DataFromDBs(), true);
+            ieDialog.ImportExportComplete += (sss, e) => 
+            {
+                OpenDialog ofd = new OpenDialog(false, new List<string>(){"*.cmx"});
+                ofd.FilesOpened += (sn, ee) => 
+                {
+                    try
+                    {
+                        XmlLoader<ExportData>.Save(e.Data, ee.Files[0]);
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugLogger.WriteLine(ex.ToString());
+                    }
+                };
+                MainUI.MainView.AddSubview(ofd.View);
+            };
+            MainUI.MainView.AddSubview(ieDialog.View);
+        }
 
 
         void SettingsButtonClicked (object sender, EventArgs e)

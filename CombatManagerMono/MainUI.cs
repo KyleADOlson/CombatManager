@@ -275,6 +275,13 @@ namespace CombatManagerMono
             };
             alertView.Show();
         }
+
+        public void ReloadTabs()
+        {
+            _monstersTab?.Filter(true);
+            _featsTab?.Filter(true);
+            _rulesTab?.Filter(true);
+        }
 		
 		CombatTab CombatTab
 		{

@@ -53,6 +53,15 @@ namespace CombatManagerMono
             t.Start();
             
         }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            _BackgroundView.Frame = View.Bounds;
+
+        }
+
         
 
                      
@@ -129,7 +138,8 @@ namespace CombatManagerMono
             {
                 UIImage im = UIImage.FromFile("Images/Icon.png");
                 double y = (View.Bounds.Height - im.Size.Height)/2.0d;
-                double x = View.Bounds.Width/5.0d;
+                    double x = View.Bounds.Width/5.0d;
+
 
                 if (_LoadingIcons.Count == 0)
                 {
