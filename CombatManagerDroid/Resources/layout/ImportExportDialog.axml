@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/titleTextView" />
-  <LinearLayout
+    <combatmanagerdroid.controls.FlowLayout
       android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
@@ -41,7 +41,7 @@
             android:id="@+id/conditionsTabButton"
             android:background="@drawable/init_button"
             android:padding="10dp" />
-    </LinearLayout>
+    </combatmanagerdroid.controls.FlowLayout>
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
@@ -78,5 +78,4 @@
             android:layout_weight="1"
             android:background="@drawable/init_button" />
     </LinearLayout>
-
 </LinearLayout>

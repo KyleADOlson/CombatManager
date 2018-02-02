@@ -216,31 +216,23 @@
                 d1p1:layout_width="fill_parent"
                 d1p1:layout_height="wrap_content"
                 d1p1:id="@+id/linearLayout16"
-                d1p1:layout_gravity="center_vertical">
-                <TextView
-                    d1p1:text="Die Roller"
-                    d1p1:textAppearance="?android:attr/textAppearanceMedium"
-                    d1p1:id="@+id/textView1"
-                    d1p1:layout_width="match_parent"
-                    d1p1:layout_height="match_parent"
-                    d1p1:layout_weight="1"
-                    d1p1:gravity="center_vertical"
-                    d1p1:layout_marginRight="10dp"
-                    d1p1:layout_marginLeft="5dp" />
+                d1p1:layout_gravity="center_vertical"
+				d1p1:layout_weight="1">
+
+				<WebView
+                d1p1:layout_width="fill_parent"
+                d1p1:layout_height="match_parent"
+                d1p1:id="@+id/rollWebView"
+                d1p1:layout_marginLeft="2dp"
+                d1p1:layout_marginRight="2dp"
+                d1p1:layout_marginBottom="2dp"
+				d1p1:layout_weight="1" />
                 <Button
                     d1p1:text="Clear"
                     d1p1:layout_width="wrap_content"
                     d1p1:layout_height="35dp"
                     d1p1:id="@+id/clearInitiativeButton" />
             </LinearLayout>
-            <WebView
-                d1p1:layout_width="fill_parent"
-                d1p1:layout_height="match_parent"
-                d1p1:id="@+id/rollWebView"
-                d1p1:layout_weight="1"
-                d1p1:layout_marginLeft="2dp"
-                d1p1:layout_marginRight="2dp"
-                d1p1:layout_marginBottom="2dp" />
             <LinearLayout
                 d1p1:orientation="horizontal"
                 d1p1:minWidth="25px"
@@ -255,7 +247,7 @@
                     d1p1:id="@+id/rollD4Button"
                     d1p1:layout_weight="1"
                     d1p1:tag="4"
-                    d1p1:background="@drawable/main_tab" />
+                    d1p1:background="@drawable/main_tab_small" />
                 <ImageButton
                     d1p1:src="@drawable/d6162x"
                     d1p1:layout_width="match_parent"
@@ -263,7 +255,7 @@
                     d1p1:id="@+id/rollD6Button"
                     d1p1:layout_weight="1"
                     d1p1:tag="6"
-                    d1p1:background="@drawable/main_tab" />
+                    d1p1:background="@drawable/main_tab_small" />
                 <ImageButton
                     d1p1:src="@drawable/d8162x"
                     d1p1:layout_width="match_parent"
@@ -271,7 +263,7 @@
                     d1p1:id="@+id/rollD8Button"
                     d1p1:layout_weight="1"
                     d1p1:tag="8"
-                    d1p1:background="@drawable/main_tab" />
+                    d1p1:background="@drawable/main_tab_small" />
                 <ImageButton
                     d1p1:src="@drawable/d10162x"
                     d1p1:layout_width="match_parent"
@@ -279,7 +271,7 @@
                     d1p1:id="@+id/rollD10Button"
                     d1p1:layout_weight="1"
                     d1p1:tag="10"
-                    d1p1:background="@drawable/main_tab" />
+                    d1p1:background="@drawable/main_tab_small" />
                 <ImageButton
                     d1p1:src="@drawable/d12162x"
                     d1p1:layout_width="match_parent"
@@ -287,7 +279,7 @@
                     d1p1:id="@+id/rollD12Button"
                     d1p1:layout_weight="1"
                     d1p1:tag="12"
-                    d1p1:background="@drawable/main_tab" />
+                    d1p1:background="@drawable/main_tab_small" />
                 <ImageButton
                     d1p1:src="@drawable/d20p162x"
                     d1p1:id="@+id/rollD20Button"
@@ -295,7 +287,7 @@
                     d1p1:layout_width="match_parent"
                     d1p1:layout_height="fill_parent"
                     d1p1:layout_weight="1"
-                    d1p1:background="@drawable/main_tab" />
+                    d1p1:background="@drawable/main_tab_small" />
                 <ImageButton
                     d1p1:src="@drawable/d100162x"
                     d1p1:layout_width="match_parent"
@@ -303,7 +295,7 @@
                     d1p1:id="@+id/rollD100Button"
                     d1p1:layout_weight="1"
                     d1p1:tag="100"
-                    d1p1:background="@drawable/main_tab" />
+                    d1p1:background="@drawable/main_tab_small" />
             </LinearLayout>
             <LinearLayout
                 d1p1:orientation="horizontal"

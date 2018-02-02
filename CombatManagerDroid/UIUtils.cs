@@ -30,26 +30,27 @@ namespace CombatManagerDroid
 
             Dialog d = new Dialog(context);
             d.SetCanceledOnTouchOutside(true);
-            d.SetContentView(multiline?Resource.Layout.MultilineTextDialog:Resource.Layout.TextDialog);
+            d.SetContentView(multiline ? Resource.Layout.MultilineTextDialog : Resource.Layout.TextDialog);
             d.SetTitle(property);
 
             var prop = ob.GetType().GetProperty(property);
-            String val = (string)prop.GetGetMethod().Invoke(ob, new object[]{}); 
+            String val = (string)prop.GetGetMethod().Invoke(ob, new object[] { });
 
             ((EditText)d.FindViewById(Resource.Id.textField)).Text = val;
 
-            ((Button)d.FindViewById(Resource.Id.okButton)).Click += 
-                delegate {
-                    
-                        prop.GetSetMethod().Invoke(ob, new object[] {
-                    ((EditText)d.FindViewById(Resource.Id.textField)).Text});
-                        d.Dismiss();
-                    };
-            
-            ((Button)d.FindViewById(Resource.Id.cancelButton)).Click += 
-            delegate {d.Dismiss();  };
+            ((Button)d.FindViewById(Resource.Id.okButton)).Click +=
+                delegate
+                {
 
-            
+                    prop.GetSetMethod().Invoke(ob, new object[] {
+                    ((EditText)d.FindViewById(Resource.Id.textField)).Text});
+                    d.Dismiss();
+                };
+
+            ((Button)d.FindViewById(Resource.Id.cancelButton)).Click +=
+            delegate { d.Dismiss(); };
+
+
 
 
             d.Show();
@@ -57,7 +58,7 @@ namespace CombatManagerDroid
 
         public static View GetItemViewAt(this ListView view, int index)
         {
-            View v = view.GetChildAt(index - 
+            View v = view.GetChildAt(index -
               view.FirstVisiblePosition);
 
             return v;
@@ -65,28 +66,28 @@ namespace CombatManagerDroid
 
         public static Button GetButton(this Activity x, int resource)
         {
-            return (Button)x.FindViewById (resource);
+            return (Button)x.FindViewById(resource);
         }
         public static Button GetButton(this Dialog x, int resource)
         {
-            return (Button)x.FindViewById (resource);
+            return (Button)x.FindViewById(resource);
         }
         public static Button GetButton(this View x, int resource)
         {
-            return (Button)x.FindViewById (resource);
+            return (Button)x.FindViewById(resource);
         }
-        
+
         public static EditText GetEditText(this Activity x, int resource)
         {
-            return (EditText)x.FindViewById (resource);
+            return (EditText)x.FindViewById(resource);
         }
         public static EditText GetEditText(this Dialog x, int resource)
         {
-            return (EditText)x.FindViewById (resource);
+            return (EditText)x.FindViewById(resource);
         }
         public static EditText GetEditText(this View x, int resource)
         {
-            return (EditText)x.FindViewById (resource);
+            return (EditText)x.FindViewById(resource);
         }
 
         public static void MakeNumber(this EditText et)
@@ -98,48 +99,50 @@ namespace CombatManagerDroid
         public static void SetTextSizeDip(this TextView t, float size)
         {
 
-           t.SetTextSize(Android.Util.ComplexUnitType.Dip, size);
+            t.SetTextSize(Android.Util.ComplexUnitType.Dip, size);
         }
 
         public static void AttachButtonStringList(View v, object ob, int id, String property, List<String> options)
         {
             AttachButtonStringList(v, ob, id, property, options, "{0}");
         }
-        
+
         public static void AttachButtonStringList(View v, object ob, int id, String property, List<String> options, string format)
         {
 
             PropertyInfo pi = ob.GetType().GetProperty(property);
-            
+
             Button t = v.FindViewById<Button>(id);
-            String text = (string)pi.GetGetMethod().Invoke(ob, new object[]{});
+            String text = (string)pi.GetGetMethod().Invoke(ob, new object[] { });
             t.Text = String.Format(format, text);
-            t.Click += (object sender, EventArgs e) => {
-                
-                
+            t.Click += (object sender, EventArgs e) =>
+            {
+
+
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(v.Context);
-                
+
                 builderSingle.SetTitle(property);
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                     v.Context,
                     Android.Resource.Layout.SelectDialogSingleChoice);
                 arrayAdapter.AddAll(options);
-                
-                
-                builderSingle.SetAdapter (arrayAdapter, (se, ev)=> {
+
+
+                builderSingle.SetAdapter(arrayAdapter, (se, ev) =>
+                {
                     string val = arrayAdapter.GetItem(ev.Which);
                     t.Text = String.Format(format, val);
-                    pi.GetSetMethod().Invoke(ob, new object[]{val});
-                    
+                    pi.GetSetMethod().Invoke(ob, new object[] { val });
+
                 });
-                
+
                 builderSingle.Show();
             };
         }
 
         public delegate void ListPopoverResponseHandler(int item);
 
-        public static void ShowListPopover(View v, String title, List<String> options, ListPopoverResponseHandler handler )
+        public static void ShowListPopover(View v, String title, List<String> options, ListPopoverResponseHandler handler)
         {
 
             AlertDialog.Builder builderSingle = new AlertDialog.Builder(v.Context);
@@ -151,7 +154,8 @@ namespace CombatManagerDroid
             arrayAdapter.AddAll(options);
 
 
-            builderSingle.SetAdapter(arrayAdapter, (se, ev) => {
+            builderSingle.SetAdapter(arrayAdapter, (se, ev) =>
+            {
                 string val = arrayAdapter.GetItem(ev.Which);
                 handler?.Invoke(ev.Which);
 
@@ -159,17 +163,18 @@ namespace CombatManagerDroid
 
             builderSingle.Show();
         }
-    
+
 
         public static void ShowOKCancelDialog(this Context context, String message, Action okAction, Action cancelAction = null)
         {
             AlertDialog.Builder bui = new AlertDialog.Builder(context);
             bui.SetMessage(message);
-            bui.SetPositiveButton("OK", (a, x) => {
+            bui.SetPositiveButton("OK", (a, x) =>
+            {
                 okAction?.Invoke();
             });
             bui.SetNegativeButton("Cancel", (a, x) => { cancelAction?.Invoke(); });
-            bui.Show();  
+            bui.Show();
 
         }
 
@@ -177,14 +182,15 @@ namespace CombatManagerDroid
         {
             AlertDialog.Builder bui = new AlertDialog.Builder(context);
             bui.SetMessage(message);
-            bui.SetPositiveButton("OK", (a, x) => {
+            bui.SetPositiveButton("OK", (a, x) =>
+            {
 
                 okAction?.Invoke();
             });
 
         }
 
-        public static void SetLeftDrawableResource(this Button b,  int resource)
+        public static void SetLeftDrawableResource(this Button b, int resource)
         {
 
             b.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(b.Context, resource), null, null, null);
@@ -198,6 +204,21 @@ namespace CombatManagerDroid
             return screenSize == ScreenLayout.SizeLarge || screenSize == ScreenLayout.SizeXlarge;
         }
 
+        public static bool IsOrientationPortrait(this Context context)
+        {
+            var ori = context.Resources.Configuration.Orientation;
+
+            return (ori == Android.Content.Res.Orientation.Portrait);
+
+        }
+
+        public static bool IsOrientationLandscape(this Context context)
+        {
+            var ori = context.Resources.Configuration.Orientation;
+
+            return (ori == Android.Content.Res.Orientation.Landscape);
+
+        }
     }
 }
 

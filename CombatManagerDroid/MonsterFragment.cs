@@ -158,8 +158,10 @@ namespace CombatManagerDroid
             BottomLayout.AddView(barLayout);
             barLayout.Orientation = Orientation.Horizontal;
 
+            bool portrait = _v.Context.IsOrientationPortrait();
+
             _AdvancerButton = new Button(_v.Context);
-            _AdvancerButton.Text = "Monster Advancer";
+            _AdvancerButton.Text = portrait?"Advancer":"Monster Advancer";
             _AdvancerButton.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.monster16), null, null, null);
             barLayout.AddView(_AdvancerButton);
 
@@ -171,7 +173,7 @@ namespace CombatManagerDroid
             };
 
             _AddButton = new Button(_v.Context);
-            _AddButton.Text = "Add to Combat";
+            _AddButton.Text = portrait ? "Add":"Add to Combat";
             _AddButton.SetCompoundDrawablesWithIntrinsicBounds(ContextCompat.GetDrawable(_v.Context, Resource.Drawable.sword16), null, null, null);
             barLayout.AddView(_AddButton);
             _AddButton.Click += (object sender, EventArgs e) => 
