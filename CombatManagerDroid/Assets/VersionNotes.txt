@@ -1,3 +1,12 @@
+1.12
+Layout and die roller fixes
+
+1.11
+More crash fixes for older devices
+
+1.10
+Crash fixes
+
 1.09
 Layout updates
 Remember which tab you were on when app restarts
