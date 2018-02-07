@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\FlowLayout.cs" />
+    <Compile Include="FeatDialog.cs" />
     <Compile Include="ImportExportDialog.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,6 +182,9 @@
     <AndroidResource Include="Resources\layout\CheckboxItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\FeatDialog.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -221,7 +225,9 @@
     <AndroidResource Include="Resources\layout\MonsterEditorOffense.axml" />
     <AndroidResource Include="Resources\layout\MonsterEditorSpecial.axml" />
     <AndroidResource Include="Resources\layout\MonsterEditorStats.axml" />
-    <AndroidResource Include="Resources\layout\SkillPickerDialog.axml" />
+    <AndroidResource Include="Resources\layout\SkillPickerDialog.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\redx.png" />
     <AndroidResource Include="Resources\layout\FeatPickerDialog.axml" />
     <AndroidResource Include="Resources\layout\SpecialAbility.axml" />

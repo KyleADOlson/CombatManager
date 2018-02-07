@@ -102,28 +102,29 @@ namespace CombatManagerDroid
             t.SetTextSize(Android.Util.ComplexUnitType.Dip, size);
         }
 
-        public static void AttachButtonStringList(View v, object ob, int id, String property, List<String> options)
+        public static void AttachButtonStringList(View v, object ob, int id, String property, List<String> options, string format = "{0}")
         {
-            AttachButtonStringList(v, ob, id, property, options, "{0}");
+
+            Button t = v.FindViewById<Button>(id);
+            t.AttachButtonStringList(ob, property, options, format);
         }
 
-        public static void AttachButtonStringList(View v, object ob, int id, String property, List<String> options, string format)
+        public static void AttachButtonStringList(this Button t, object ob, String property, List<String> options, string format = "{0}")
         {
 
             PropertyInfo pi = ob.GetType().GetProperty(property);
 
-            Button t = v.FindViewById<Button>(id);
             String text = (string)pi.GetGetMethod().Invoke(ob, new object[] { });
             t.Text = String.Format(format, text);
             t.Click += (object sender, EventArgs e) =>
             {
 
 
-                AlertDialog.Builder builderSingle = new AlertDialog.Builder(v.Context);
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(t.Context);
 
                 builderSingle.SetTitle(property);
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                    v.Context,
+                    t.Context,
                     Android.Resource.Layout.SelectDialogSingleChoice);
                 arrayAdapter.AddAll(options);
 
@@ -219,6 +220,71 @@ namespace CombatManagerDroid
             return (ori == Android.Content.Res.Orientation.Landscape);
 
         }
+
+        public static void AttachEditTextString(this EditText t, object ob, String property)
+        {
+            PropertyInfo pi = ob.GetType().GetProperty(property);
+            
+            t.Text = (string)pi.GetGetMethod().Invoke(ob, new object[] { });
+
+            t.TextChanged += (sender, e) => { pi.GetSetMethod().Invoke(ob, new object[] { t.Text }); };
+        }
+
+        public static void AttachEditTextIntNull(this EditText t, object ob, String property)
+        {
+            PropertyInfo pi = ob.GetType().GetProperty(property);
+            
+            int? inputVal = (int?)pi.GetGetMethod().Invoke(ob, new object[] { });
+            if (inputVal == null)
+            {
+                t.Text = "";
+            }
+            else
+            {
+                t.Text = inputVal.ToString();
+            }
+
+            t.TextChanged += (sender, e) => {
+
+                int? val = null;
+                int parseVal = 0;
+                if (int.TryParse(t.Text, out parseVal))
+                {
+                    val = parseVal;
+                }
+
+                pi.GetSetMethod().Invoke(ob, new object[] { val });
+
+
+            };
+        }
+
+
+        public static void AttachEditTextInt(this EditText t, object ob, String property)
+        {
+            PropertyInfo pi = ob.GetType().GetProperty(property);
+            
+            int inputVal = (int)pi.GetGetMethod().Invoke(ob, new object[] { });
+
+            t.Text = inputVal.ToString();
+
+
+            t.TextChanged += (sender, e) => {
+
+                int parseVal = 0;
+                if (int.TryParse(t.Text, out parseVal))
+                {
+
+                    pi.GetSetMethod().Invoke(ob, new object[] { parseVal });
+                }
+            };
+        }
+
+        public static bool StringEmptyOrNull(this String s)
+        {
+            return s == null || s.Length == 0;
+        }
+
     }
 }
 

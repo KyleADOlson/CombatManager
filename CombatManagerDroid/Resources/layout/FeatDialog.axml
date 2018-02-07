@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="320dp"
+    android:layout_height="fill_parent"
+    android:scrollbars="none"
+    android:background="#ffafdbdd">
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView1"
+        android:layout_weight="1"
+        android:scrollbars="vertical">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bodyLayout"
+            android:layout_weight="1"
+            android:scrollbars="none">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/default_color"
+                android:shadowColor="#ff000000"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1"
+                android:layout_margin="5dp"
+                android:textSize="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp" 
+                 android:id="@+id/nameText"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:id="@+id/typesButton"/>
+              <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prerequisites"
+                android:foreground="@color/default_color"
+                android:textColor="@color/default_color"
+                android:shadowColor="#ff000000"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1"
+                android:layout_margin="5dp"
+                android:textSize="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"  
+                 android:id="@+id/prerequisitesText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Benefit"
+                android:foreground="@color/default_color"
+                android:textColor="@color/default_color"
+                android:shadowColor="#ff000000"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1"
+                android:layout_margin="5dp"
+                android:textSize="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp" 
+                 android:id="@+id/benefitText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Normal"
+                android:foreground="@color/default_color"
+                android:textColor="@color/default_color"
+                android:shadowColor="#ff000000"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1"
+                android:layout_margin="5dp"
+                android:textSize="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"  
+                 android:id="@+id/normalText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Special"
+                android:foreground="@color/default_color"
+                android:textColor="@color/default_color"
+                android:shadowColor="#ff000000"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1"
+                android:layout_margin="5dp"
+                android:textSize="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"  
+                 android:id="@+id/specialText" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:gravity="right"
+        android:background="#ff47aaaf">
+        <Button
+            android:text="OK"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/okButton"
+            android:layout_marginRight="10dp"
+            android:minWidth="120dp" />
+        <Button
+            android:text="Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancelButton"
+            android:minWidth="120dp" />
+    </LinearLayout>
+</LinearLayout>

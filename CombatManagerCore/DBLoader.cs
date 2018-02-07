@@ -272,7 +272,7 @@ namespace CombatManager
                 {
                     Type t = rd.GetFieldType(i);
 
-                    System.Diagnostics.Debug.WriteLine(rd.GetName(i) + " " + t.ToString() + " " + i);
+                    //System.Diagnostics.Debug.WriteLine(rd.GetName(i) + " " + t.ToString() + " " + i);
 
                     if (rd.IsDBNull(i))
                     {
