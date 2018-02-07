@@ -110,7 +110,8 @@ namespace CombatManagerDroid
                 FeatDialog fd = new FeatDialog(_v.Context, SelectedItem);
                 fd.FeatComplete += (sender, e) =>
                 {
-                    Feat.UpdateCustomFeat(e);
+                    SelectedItem.CopyFrom(e);
+                    Feat.UpdateCustomFeat(SelectedItem);
                     RefreshPage();
                 };
                 fd.Show();
