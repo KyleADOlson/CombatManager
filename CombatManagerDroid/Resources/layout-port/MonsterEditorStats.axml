@@ -85,9 +85,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" />
-              <EditText
-                android:maxLines="1"
-                android:inputType="text"
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/racialModsText"
@@ -98,9 +98,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView5" />
-              <EditText
-                android:maxLines="1"
-                android:inputType="text"
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/auraText"
@@ -157,9 +157,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView9" />
-              <EditText
-                android:maxLines="1"
-                android:inputType="text"
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/languagesText"
@@ -171,8 +171,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/textView8" />
                 <EditText
-                  android:maxLines="1"
-                  android:inputType="text"
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/sqText"
@@ -183,9 +183,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView10" />
-              <EditText
-                android:maxLines="1"
-                android:inputType="text"
+                <EditText
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/gearText"
@@ -193,27 +193,7 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:gravity="right"
-        android:background="#ff47aaaf">
-        <Button
-            android:text="OK"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/okButton"
-            android:layout_marginRight="10dp"
-            android:minWidth="120dp" />
-        <Button
-            android:text="Cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cancelButton"
-            android:minWidth="120dp" />
-    </LinearLayout>
+
+  <include
+      layout="@layout/MonsterEditorOkCancel" />
 </LinearLayout>

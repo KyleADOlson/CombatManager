@@ -116,6 +116,7 @@
     <Compile Include="MonsterEditorSpecialActivity.cs" />
     <Compile Include="MonsterEditorDescriptionActivity.cs" />
     <Compile Include="SkillPickerDialog.cs" />
+    <Compile Include="SpellEditorActivity.cs" />
     <Compile Include="TextSelectionAdapater.cs" />
     <Compile Include="FeatPickerDialog.cs" />
     <Compile Include="AttacksEditorActivity.cs" />
@@ -183,6 +184,13 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\FeatDialog.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SpellEditor.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\TextComboDialog.axml" />
+    <AndroidResource Include="Resources\layout\SpellLevelItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -465,6 +473,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\main_tab_small.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.26.1.0.1\build\MonoAndroid80\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.26.1.0.1\build\MonoAndroid80\Xamarin.Android.Support.Annotations.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

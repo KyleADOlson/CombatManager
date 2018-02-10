@@ -2,6 +2,8 @@ using System;
 using CombatManager;
 using System.Collections.Generic;
 using Android.Widget;
+using Android.Content;
+using Android.OS;
 
 namespace CombatManagerDroid
 {
@@ -10,6 +12,15 @@ namespace CombatManagerDroid
         string _Class = "All Classes";
         int _Level = -1;
         string _School = "All Schools";
+
+        public override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            Spell.SpellsDBUpdated += (added, updated, removed) =>
+            {
+                RefreshPage();
+            };
+        }
 
         protected override List<Spell> GetItems ()
         {
@@ -117,12 +128,67 @@ namespace CombatManagerDroid
                 UpdateFilter();
 
             });
+
+            b = new Button(_v.Context);
+            b.Text = "New";
+            b.Click += (sender, e) =>
+            {
+                NewItem();
+            };
+            FilterLayout.AddView(b);
+            NewButton = b;
+
+            b = new Button(_v.Context);
+            b.Text = "Customize";
+            b.Click += (sender, e) =>
+            {
+                CustomizeItem();
+            };
+            FilterLayout.AddView(b);
+            CustomizeButton = b;
+
+            b = new Button(_v.Context);
+            b.Text = "Edit";
+            b.Click += (sender, e) =>
+            {
+                EditItem();
+            };
+            FilterLayout.AddView(b);
+            EditButton = b;
+        }
+
+        void NewItem()
+        {
+            SpellEditorActivity.Spell = SelectedItem;
+            SpellEditorActivity.EditorAction = SpellEditorActivity.EditorActionType.Add;
+            Intent intent = new Intent(_v.Context, Java.Lang.Class.FromType(typeof(SpellEditorActivity)));
+
+            _v.Context.StartActivity(intent);
+        }
+
+        void CustomizeItem()
+        {
+            Spell newSpell = SelectedItem.Clone() as Spell;
+            newSpell.DBLoaderID = 0;
+            SpellEditorActivity.Spell = SelectedItem;
+            SpellEditorActivity.EditorAction = SpellEditorActivity.EditorActionType.Add;
+            Intent intent = new Intent(_v.Context, Java.Lang.Class.FromType(typeof(SpellEditorActivity)));
+
+            _v.Context.StartActivity(intent);
+        }
+
+        void EditItem()
+        {
+            SpellEditorActivity.Spell = SelectedItem;
+            SpellEditorActivity.EditorAction = SpellEditorActivity.EditorActionType.Update;
+            Intent intent = new Intent(_v.Context, Java.Lang.Class.FromType(typeof(SpellEditorActivity)));
+
+            _v.Context.StartActivity(intent);
         }
 
         protected override void DeleteItem(Spell item)
         {
             Spell.RemoveCustomSpell(item);
-            RefreshPage();
         }
     }
 }

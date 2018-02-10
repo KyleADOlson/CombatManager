@@ -13,6 +13,7 @@ using Android.Widget;
 using System.Reflection;
 using Android.Support.V4.Content;
 using Android.Content.Res;
+using System.ComponentModel;
 
 namespace CombatManagerDroid
 {
@@ -109,7 +110,7 @@ namespace CombatManagerDroid
             t.AttachButtonStringList(ob, property, options, format);
         }
 
-        public static void AttachButtonStringList(this Button t, object ob, String property, List<String> options, string format = "{0}")
+        public static void AttachButtonStringList(this Button t, object ob, String property, IEnumerable<String> options, string format = "{0}")
         {
 
             PropertyInfo pi = ob.GetType().GetProperty(property);
@@ -126,7 +127,7 @@ namespace CombatManagerDroid
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                     t.Context,
                     Android.Resource.Layout.SelectDialogSingleChoice);
-                arrayAdapter.AddAll(options);
+                arrayAdapter.AddAll(new List<string>(options));
 
 
                 builderSingle.SetAdapter(arrayAdapter, (se, ev) =>
@@ -283,6 +284,94 @@ namespace CombatManagerDroid
         public static bool StringEmptyOrNull(this String s)
         {
             return s == null || s.Length == 0;
+        }
+
+        public static void AttachBool(this CheckBox t, object ob, String property)
+        {
+            PropertyInfo pi = ob.GetType().GetProperty(property);
+
+            bool inputVal = (bool)pi.GetGetMethod().Invoke(ob, new object[] { });
+
+            t.Checked = inputVal;
+            
+            t.CheckedChange += (sender, e) => 
+            {
+                pi.GetSetMethod().Invoke(ob, new object[] { t.Checked });
+            };
+        }
+
+        public static void AttachTextCombo(this Button b, object ob, String property, IEnumerable<String> options, String title = null)
+        {
+            b.Text = GetProperty<string>(ob, property);
+            b.Click += (sender, e) =>
+            {
+                ShowTextComboDialog(property, ob, options, b.Context, title);
+            };
+            if (ob is INotifyPropertyChanged)
+            {
+                INotifyPropertyChanged pc = ob as INotifyPropertyChanged;
+                pc.PropertyChanged += (sender, e) =>
+                {
+                    b.Text = GetProperty<string>(ob, property);
+                };
+            }
+
+        }
+
+
+        public static void ShowTextComboDialog(String property, Object ob, IEnumerable<String> options, Context context, String title = null)
+        {
+
+
+            Dialog d = new Dialog(context);
+            d.SetCanceledOnTouchOutside(true);
+            d.SetContentView(Resource.Layout.TextComboDialog);
+            d.SetTitle(title ?? property);
+
+            String val = GetProperty<String>(ob, property);
+
+            EditText edit = ((EditText)d.FindViewById(Resource.Id.textField));
+            edit.Text = val;
+            edit.RequestFocus();
+
+            ((Button)d.FindViewById(Resource.Id.okButton)).Click +=
+                delegate {
+
+                    SetProperty<String>(ob, property,
+                    ((EditText)d.FindViewById(Resource.Id.textField)).Text?.Trim());
+                    d.Dismiss();
+                };
+
+            ((Button)d.FindViewById(Resource.Id.cancelButton)).Click +=
+            delegate { d.Dismiss(); };
+
+
+            ListView view = ((ListView)d.FindViewById(Resource.Id.itemListView));
+            List<String> optionsList = new List<string>(options);
+            view.Adapter = new ArrayAdapter<String>(context, Android.Resource.Layout.SimpleListItem1, new List<string>(options));
+            view.ItemClick += (sender, e) =>
+            {
+                if (e.Position >= 0 && e.Position < optionsList.Count)
+                    edit.Text = optionsList[e.Position];
+
+            };
+
+
+            d.Window.SetSoftInputMode(SoftInput.StateVisible);
+            d.Show();
+        }
+
+        public static T GetProperty<T>(this Object ob, String property)
+        {
+
+            var prop = ob.GetType().GetProperty(property);
+            return (T)prop.GetGetMethod().Invoke(ob, new object[] { });
+        }
+        public static void SetProperty<T>(this Object ob, String property, T value)
+        {
+
+            var prop = ob.GetType().GetProperty(property);
+            prop.GetSetMethod().Invoke(ob, new object[] { value });
         }
 
     }

@@ -395,7 +395,7 @@ namespace CombatManagerDroid
             MonsterEditorActivity.SourceMonster = Monster.BlankMonster();
             MonsterEditorActivity.DBMonster = true;
 
-            Intent intent = new Intent(this.Context, (Java.Lang.Class)new MonsterEditorMainActivity().Class);
+            Intent intent = new Intent(this.Context, Java.Lang.Class.FromType(typeof(MonsterEditorMainActivity)));
             intent.AddFlags(ActivityFlags.NewTask);
 
             Context.StartActivity(intent);
