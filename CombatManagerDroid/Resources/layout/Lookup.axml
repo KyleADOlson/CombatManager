@@ -50,17 +50,12 @@
         android:layout_height="fill_parent"
         android:id="@+id/linearLayout2"
         android:layout_weight="1">
-      <HorizontalScrollView
-            android:minHeight=" 0dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-        <LinearLayout
+        <combatmanagerdroid.controls.FlowLayout
             android:orientation="horizontal"
             android:minHeight=" 0dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/filterLayout" />
-      </HorizontalScrollView>
           <WebView
               android:id="@+id/itemView"
               android:layout_width="fill_parent"

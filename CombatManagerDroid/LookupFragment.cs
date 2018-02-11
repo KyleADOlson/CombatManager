@@ -16,6 +16,7 @@ using CombatManager;
 using Android.Webkit;
 using System.Threading;
 using Android.Support.V4.Content;
+using CombatManagerDroid.Controls;
 
 namespace CombatManagerDroid
 {
@@ -235,12 +236,12 @@ namespace CombatManagerDroid
 
         }
         
-        protected LinearLayout FilterLayout
+        protected FlowLayout FilterLayout
         {
             get
             {
 
-                return  _v.FindViewById<LinearLayout> (Resource.Id.filterLayout);
+                return  _v.FindViewById<FlowLayout> (Resource.Id.filterLayout);
 
             }
         }

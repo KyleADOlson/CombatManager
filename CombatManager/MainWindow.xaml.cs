@@ -684,11 +684,19 @@ namespace CombatManager
                 if (UserSettings.Settings.MainWindowLeft != int.MinValue && UserSettings.Settings.MainWindowTop != int.MinValue)
                 {
                     EnumMonitorData data = new EnumMonitorData();
+
+                    System.IntPtr handle = new WindowInteropHelper(this).EnsureHandle();
+                    double scaleFactor = ((double)GetDpiForWindow(handle))/96.0;
+                    if (scaleFactor == 0)
+                    {
+                        scaleFactor = 1;
+                    }
+                    
                     data.Rect = new RECT(
-                        UserSettings.Settings.MainWindowLeft,
-                        UserSettings.Settings.MainWindowTop,
-                        (int)(UserSettings.Settings.MainWindowLeft + Width),
-                        (int)(UserSettings.Settings.MainWindowTop + Height));
+                        (int)(UserSettings.Settings.MainWindowLeft * scaleFactor),
+                        (int)(UserSettings.Settings.MainWindowTop * scaleFactor),
+                        (int)((UserSettings.Settings.MainWindowLeft + Width) * scaleFactor),
+                        (int)((UserSettings.Settings.MainWindowTop + Height) * scaleFactor));
                     data.FoundMatch = false;
                     IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf(data));
                     Marshal.StructureToPtr(data, ptr, false);
@@ -3909,6 +3917,9 @@ namespace CombatManager
 
         [DllImport("User32")]
         private static extern int SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("User32")]
+        private static extern UInt32 GetDpiForWindow(IntPtr hwnd);
 
         private void MonsterAdvancerCheck_Checked(object sender, RoutedEventArgs e)
         {

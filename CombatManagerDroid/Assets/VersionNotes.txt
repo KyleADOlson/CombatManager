@@ -1,3 +1,12 @@
+1.15
+Spell editor
+
+1.14
+Feat editor
+
+1.13
+Crash fix
+
 1.12
 Layout and die roller fixes
 

@@ -327,7 +327,6 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-  <include
-      layout="@layout/MonsterEditorOkCancel" />
+    <include
+        layout="@layout/MonsterEditorOkCancel" />
 </LinearLayout>

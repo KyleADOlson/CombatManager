@@ -143,7 +143,18 @@ namespace CombatManager
         private static SortedSet<string> _Descriptors;
         private static Dictionary<string, ObservableCollection<Spell>> _SpellDictionary;
 
+        private static SortedSet<string> _CastingTimeOptions;
+        private static SortedSet<string> _RangeOptions;
+        private static SortedSet<string> _AreaOptions;
+        private static SortedSet<string> _TargetsOptions;
+        private static SortedSet<string> _DurationOptions;
+        private static SortedSet<string> _SavingThrowOptions;
+        private static SortedSet<string> _SpellResistanceOptions;
+
         private static DBLoader<Spell> _SpellsDB;
+
+        public delegate void SpellsDBUpdatedDelegate(ICollection<Spell> added, ICollection<Spell> updated, ICollection<Spell> removed);
+        public static SpellsDBUpdatedDelegate SpellsDBUpdated;
 
 
         static Spell()
@@ -208,6 +219,13 @@ namespace CombatManager
             _Schools = new SortedDictionary<string, string>();
             _Subschools = new SortedSet<string>();
             _Descriptors = new SortedSet<string>();
+            _CastingTimeOptions = new SortedSet<string>();
+            _RangeOptions = new SortedSet<string>();
+            _AreaOptions = new SortedSet<string>();
+            _TargetsOptions = new SortedSet<string>();
+            _DurationOptions = new SortedSet<string>();
+            _SavingThrowOptions = new SortedSet<string>();
+            _SpellResistanceOptions = new SortedSet<string>();
             foreach (Spell s in _Spells)
             {
                 string r = StringCapitalizer.Capitalize(s.school);
@@ -228,10 +246,12 @@ namespace CombatManager
                     //add descriptions
                     foreach (String desc in s.descriptor.Split(new char[] {',',';'}))
                     {
-                        _Descriptors.Add(desc.Trim());
+                        _Descriptors.Add(desc.Trim().TrimEnd(new char[] { 'U', 'M' }));
                     }
                 }
 
+               
+                
             }
 
             List<String> doubles = new List<String>(_Subschools.Where(a => Regex.Match(a, "[a-zA-Z] or [a-zA-Z]").Success));
@@ -252,9 +272,211 @@ namespace CombatManager
             {
                 _Descriptors.Remove(dub);
             }
+
+            MakeOptions();
             
 
         }
+
+        private static void MakeOptions()
+        {
+
+            //Casting Time
+			_CastingTimeOptions.Add("1 hour");
+			_CastingTimeOptions.Add("1 immediate action");
+			_CastingTimeOptions.Add("1 minute");
+			_CastingTimeOptions.Add("1 minute per page");
+			_CastingTimeOptions.Add("1 minute/lb. created");
+			_CastingTimeOptions.Add("1 round");
+			_CastingTimeOptions.Add("1 round; see text");
+			_CastingTimeOptions.Add("1 standard action");
+			_CastingTimeOptions.Add("1 standard action or see text");
+			_CastingTimeOptions.Add("10 minutes");
+			_CastingTimeOptions.Add("10 minutes; see text");
+			_CastingTimeOptions.Add("12 hours");
+			_CastingTimeOptions.Add("2 rounds");
+			_CastingTimeOptions.Add("24 hours");
+			_CastingTimeOptions.Add("3 full rounds");
+			_CastingTimeOptions.Add("3 rounds");
+			_CastingTimeOptions.Add("30 minutes");
+			_CastingTimeOptions.Add("6 rounds");
+			_CastingTimeOptions.Add("at least 10 minutes; see text");
+			_CastingTimeOptions.Add("see text");
+            
+            //Range
+            _RangeOptions.Add("0 ft.");
+			_RangeOptions.Add("0 ft.; see text");
+			_RangeOptions.Add("1 mile");
+			_RangeOptions.Add("1 mile/level");
+			_RangeOptions.Add("10 ft.");
+			_RangeOptions.Add("120 ft.");
+			_RangeOptions.Add("15 ft.");
+			_RangeOptions.Add("2 miles");
+			_RangeOptions.Add("20 ft.");
+			_RangeOptions.Add("30 ft.");
+			_RangeOptions.Add("40 ft.");
+			_RangeOptions.Add("40 ft./level");
+			_RangeOptions.Add("5 miles");
+			_RangeOptions.Add("50 ft.");
+			_RangeOptions.Add("60 ft.");
+			_RangeOptions.Add("anywhere within the area to be warded");
+			_RangeOptions.Add("Area 10-ft.-radius emanation around the creature");
+			_RangeOptions.Add("close (25 ft. + 5 ft./2 levels)");
+			_RangeOptions.Add("close (25 ft. + 5 ft./2 levels) or see text");
+			_RangeOptions.Add("close (25 ft. + 5 ft./2 levels)/100 ft.; see text");
+			_RangeOptions.Add("close (25 ft. + 5 ft./2 levels); see text");
+			_RangeOptions.Add("long (400 ft. + 40 ft./level)");
+			_RangeOptions.Add("medium (100 ft. + 10 ft. level)");
+			_RangeOptions.Add("medium (100 ft. + 10 ft./level)");
+			_RangeOptions.Add("personal");
+			_RangeOptions.Add("personal and touch");
+			_RangeOptions.Add("personal or close (25 ft. + 5 ft./2 levels)");
+			_RangeOptions.Add("personal or touch");
+			_RangeOptions.Add("see text");
+			_RangeOptions.Add("touch");
+			_RangeOptions.Add("touch; see text");
+			_RangeOptions.Add("unlimited");
+			_RangeOptions.Add("up to 10 ft./level");
+
+            //Area
+            _AreaOptions.Add("10-ft. square/level; see text");
+			_AreaOptions.Add("10-ft.-radius emanation centered on you");
+			_AreaOptions.Add("10-ft.-radius emanation from touched creature");
+			_AreaOptions.Add("10-ft.-radius emanation, centered on you");
+			_AreaOptions.Add("10-ft.-radius spherical emanation, centered on you");
+			_AreaOptions.Add("10-ft.-radius spread");
+			_AreaOptions.Add("120-ft. line");
+			_AreaOptions.Add("20-ft.-radius burst");
+			_AreaOptions.Add("20-ft.-radius emanation");
+			_AreaOptions.Add("20-ft.-radius emanation centered on a creature, object, or point in space");
+			_AreaOptions.Add("20-ft.-radius emanation centered on a point in space");
+			_AreaOptions.Add("20-ft.-radius spread");
+			_AreaOptions.Add("2-mile-radius circle, centered on you; see text");
+			_AreaOptions.Add("30-ft. cube/level (S)");
+			_AreaOptions.Add("40 ft./level radius cylinder 40 ft. high");
+			_AreaOptions.Add("40-ft. radius emanating from the touched point");
+			_AreaOptions.Add("40-ft.-radius emanation");
+			_AreaOptions.Add("40-ft.-radius emanation centered on you");
+			_AreaOptions.Add("50-ft.-radius burst, centered on you");
+			_AreaOptions.Add("5-ft.-radius emanation centered on you");
+			_AreaOptions.Add("5-ft.-radius spread; or one solid object or one crystalline creature");
+			_AreaOptions.Add("60-ft. cube/level (S)");
+			_AreaOptions.Add("60-ft. line from you");
+			_AreaOptions.Add("60-ft. line-shaped emanation from you");
+			_AreaOptions.Add("80-ft.-radius burst");
+			_AreaOptions.Add("80-ft.-radius spread (S)");
+			_AreaOptions.Add("all allies and foes within a 40-ft.-radius burst centered on you");
+			_AreaOptions.Add("all magical effects and magic items within a 40-ft.-radius burst, or one magic item (see text)");
+			_AreaOptions.Add("all metal objects within a 40-ft.-radius burst");
+			_AreaOptions.Add("barred cage (20-ft. cube) or windowless cell (10-ft. cube)");
+			_AreaOptions.Add("circle, centered on you, with a radius of 400 ft. + 40 ft./level");
+			_AreaOptions.Add("cloud spreads in 20-ft. radius, 20 ft. high");
+			_AreaOptions.Add("cone-shaped burst");
+			_AreaOptions.Add("cone-shaped emanation");
+			_AreaOptions.Add("creatures and objects within 10-ft.-radius spread");
+			_AreaOptions.Add("creatures and objects within a 5-ft.-radius burst");
+			_AreaOptions.Add("creatures in a 20-ft.-radius spread");
+			_AreaOptions.Add("creatures within a 20-ft.-radius spread");
+			_AreaOptions.Add("cylinder (10-ft. radius, 40-ft. high)");
+			_AreaOptions.Add("cylinder (20-ft. radius, 40 ft. high)");
+			_AreaOptions.Add("cylinder (40-ft. radius, 20 ft. high)");
+			_AreaOptions.Add("dirt in an area up to 750 ft. square and up to 10 ft. deep (S)");
+			_AreaOptions.Add("four 40-ft.-radius spreads, see text");
+			_AreaOptions.Add("line from your hand");
+			_AreaOptions.Add("living creatures within a 10-ft.-radius burst");
+			_AreaOptions.Add("nonchaotic creatures in a 40-ft.-radius spread centered on you");
+			_AreaOptions.Add("nonevil creatures in a 40-ft.-radius spread centered on you");
+			_AreaOptions.Add("nongood creatures in a 40-ft.-radius spread centered on you");
+			_AreaOptions.Add("nonlawful creatures in a 40-ft.-radius spread centered on you");
+			_AreaOptions.Add("nonlawful creatures within a burst that fills a 30-ft. cube");
+			_AreaOptions.Add("one 20-ft. cube/level (S)");
+			_AreaOptions.Add("one 20-ft. square/level");
+			_AreaOptions.Add("one 30-ft. cube/level (S)");
+			_AreaOptions.Add("one or more living creatures within a 10-ft.-radius burst");
+			_AreaOptions.Add("or Target one 20-ft. cube/level  or one fire-based magic item (S)");
+			_AreaOptions.Add("plants in a 40-ft.-radius spread");
+			_AreaOptions.Add("see text");
+			_AreaOptions.Add("several living creatures within a 40-ft.-radius burst");
+			_AreaOptions.Add("several living creatures, no two of which may be more than 30 ft. apart");
+			_AreaOptions.Add("several undead creatures within a 40-ft.-radius burst");
+			_AreaOptions.Add("Target object touched");
+			_AreaOptions.Add("Target or object touched or up to 5 sq. ft./level");
+			_AreaOptions.Add("Target or one creature, one object, or a 5-ft. cube");
+			_AreaOptions.Add("Target or see text");
+			_AreaOptions.Add("Target, Effect, or  see text");
+			_AreaOptions.Add("The caster and all allies within a 50-ft. burst, centered on the caster");
+			_AreaOptions.Add("two 10-ft. cubes per level (S)");
+			_AreaOptions.Add("up to 10-ft.-radius/level emanation centered on you");
+			_AreaOptions.Add("up to 200 sq. ft./level (S)");
+			_AreaOptions.Add("up to one 10-ft. cube/level (S)");
+			_AreaOptions.Add("up to two 10-ft. cubes/level (S)");
+			_AreaOptions.Add("water in a volume of 10 ft./level by 10 ft./level by 2 ft./level (S)");
+
+            //Targets
+			_TargetsOptions.Add("creature or object touchedobject touched");
+			_TargetsOptions.Add("creature touched");
+			_TargetsOptions.Add("one animal");
+			_TargetsOptions.Add("one creature");
+			_TargetsOptions.Add("one creature or object");
+			_TargetsOptions.Add("one creature or object/level, no two of which can be more than 30 ft. apart");
+			_TargetsOptions.Add("one creature/level");
+			_TargetsOptions.Add("one creature/level in a 20-ft.-radius burst centered on you");
+			_TargetsOptions.Add("one creature/level touched");
+			_TargetsOptions.Add("one creature/level, no two of which can be more than 30 ft. apart");
+			_TargetsOptions.Add("one humanoid creature");
+			_TargetsOptions.Add("one humanoid creature/level, no two of which can be more than 30 ft. apart");
+			_TargetsOptions.Add("one living creature");
+			_TargetsOptions.Add("one living creature/level, no two of which may be more than 30 ft. apart");
+			_TargetsOptions.Add("one melee weapon");
+			_TargetsOptions.Add("one undead creature");
+			_TargetsOptions.Add("see text");
+			_TargetsOptions.Add("up to one creature per level, all within 30 ft. of each other");
+			_TargetsOptions.Add("up to one touched creature/level");
+			_TargetsOptions.Add("weapon touched");
+			_TargetsOptions.Add("you");
+			_TargetsOptions.Add("you or creature touched");
+
+            //Duration
+            _DurationOptions.Add("1 round/level");
+            _DurationOptions.Add("1 min/level");
+            _DurationOptions.Add("1 hour/level");
+            _DurationOptions.Add("1 day/level");
+            _DurationOptions.Add("concentration");
+            _DurationOptions.Add("instantaneous");
+            _DurationOptions.Add("permanent");
+            _DurationOptions.Add("see text");
+
+            //Saving Throw
+            _SavingThrowOptions.Add("Fortitude half");
+			_SavingThrowOptions.Add("Fortitude half; see text");
+			_SavingThrowOptions.Add("Fortitude negates");
+			_SavingThrowOptions.Add("Fortitude negates (harmless)");
+			_SavingThrowOptions.Add("Fortitude partial");
+			_SavingThrowOptions.Add("Fortitude partial; see text");
+			_SavingThrowOptions.Add("Reflex half");
+			_SavingThrowOptions.Add("Reflex half; see text");
+			_SavingThrowOptions.Add("Reflex negates");
+			_SavingThrowOptions.Add("Reflex negates (harmless)");
+			_SavingThrowOptions.Add("Reflex partial");
+			_SavingThrowOptions.Add("Reflex partial; see text");
+			_SavingThrowOptions.Add("Will disbelief");
+			_SavingThrowOptions.Add("Will half");
+			_SavingThrowOptions.Add("Will half; see text");
+			_SavingThrowOptions.Add("Will negates");
+			_SavingThrowOptions.Add("Will negates (harmless)");
+			_SavingThrowOptions.Add("Will partial");
+			_SavingThrowOptions.Add("Will partial; see text");
+			_SavingThrowOptions.Add("none");
+			_SavingThrowOptions.Add("none; see text");
+			_SavingThrowOptions.Add("see text");
+
+            //SpellResistance
+			_SpellResistanceOptions.Add("no");
+			_SpellResistanceOptions.Add("see text");
+			_SpellResistanceOptions.Add("yes");
+			_SpellResistanceOptions.Add("yes (harmless)");
+        }
+
 
         static void Spell_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -392,6 +614,8 @@ namespace CombatManager
             }
         }
 
+ 
+
         public static void AddCustomSpell(Spell s)
         {
             if (_Spells == null)
@@ -400,6 +624,7 @@ namespace CombatManager
             }
             _SpellsDB.AddItem(s);
             Spells.Add(s);
+            SpellsDBUpdated?.Invoke(new List<Spell>() { s }, new List<Spell>(), new List<Spell>());
         }
 
         public static void RemoveCustomSpell(Spell s)
@@ -407,11 +632,18 @@ namespace CombatManager
 
             _SpellsDB.DeleteItem(s);
             Spells.Remove(s);
+            SpellsDBUpdated?.Invoke(new List<Spell>(), new List<Spell>(), new List<Spell>() { s });
         }
 
-        public static void UpdateCustomSpell(Spell s)
+        public static void UpdateCustomSpell(Spell s, bool updateData = false)
         {
             _SpellsDB.UpdateItem(s);
+            if (updateData)
+            {
+                Spell old = Spells.FirstOrDefault((c) => c.DBLoaderID == s.DBLoaderID);
+                old.CopyFrom(s);
+            }
+            SpellsDBUpdated?.Invoke(new List<Spell>(), new List<Spell>() { s }, new List<Spell>());
         }
 
         public static IEnumerable<Spell> DBSpells
@@ -458,6 +690,63 @@ namespace CombatManager
                     LoadSpells();
                 }
                 return _Descriptors;
+            }
+        }
+
+        
+        public static ICollection<string> CastingTimeOptions
+        {
+            get
+            {
+                return _CastingTimeOptions;
+            }
+        }
+
+        public static ICollection<string> RangeOptions
+        {
+            get
+            {
+                return _RangeOptions;
+            }
+        }
+
+        public static ICollection<string> AreaOptions
+        {
+            get
+            {
+                return _AreaOptions;
+            }
+        }
+
+        public static ICollection<string> TargetsOptions
+        {
+            get
+            {
+                return _TargetsOptions;
+            }
+        }
+
+        public static ICollection<string> DurationOptions
+        {
+            get
+            {
+                return _DurationOptions;
+            }
+        }
+
+        public static ICollection<string> SavingThrowOptions
+        {
+            get
+            {
+                return _SavingThrowOptions;
+            }
+        }
+
+        public static ICollection<string> SpellResistanceOptions
+        {
+            get
+            {
+                return _SavingThrowOptions;
             }
         }
 
@@ -2715,6 +3004,18 @@ namespace CombatManager
                 {
                     return _Levels;
                 }             
+            }
+
+            public bool ContainsClass(String className)
+            {
+                foreach (LevelAdjusterInfo li in _Levels)
+                {
+                    if (li.Class == className)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
 
             public ObservableCollection<LevelAdjusterInfo> UnusedLevels

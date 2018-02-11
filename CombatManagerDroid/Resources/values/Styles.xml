@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+  <style name="SpellText"  parent="android:style/Widget.Material.TextView">
+    <item name="android:paddingBottom">5dp</item>
+    <item name="android:paddingTop">7dp</item>
+    <item name="android:paddingRight">7dp</item>
+    <item name="android:paddingLeft">8dp</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+  <style name="SpellTextOnLight" parent="SpellText">
+    <item name="android:textColor">#ffffff</item>
+    <item name="android:shadowColor">#ff000000</item>
+    <item name="android:shadowDx">2</item>
+    <item name="android:shadowDy">2</item>
+  </style>
+  <style name="SpellCheckBox" parent="android:style/Widget.Material.CompoundButton.CheckBox">
+
+    <item name="android:textColor">#ffffff</item>
+  </style>
+</resources>

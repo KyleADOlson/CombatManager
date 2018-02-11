@@ -1,4 +1,7 @@
-﻿1.6.5
+﻿1.6.6
+Fix occasional problems with High DPI and disconnecting monitors.
+
+1.6.5
 Data Update
 Maps UI improvments
 Prevent maps from crashing on older .Net Framework installs
