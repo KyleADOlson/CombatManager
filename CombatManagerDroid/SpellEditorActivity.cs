@@ -96,6 +96,17 @@ namespace CombatManagerDroid
                     SpellLevelListView.Adapter = new SpellLevelAdapter(this, SpellLevelListView.Context);
                 });
             };
+
+            spell.PropertyChanged += (sender, e) =>
+            {
+                UpdateOK();
+            };
+            spell.Adjuster.PropertyChanged += (sender, e) =>
+            {
+                UpdateOK();
+            };
+
+            UpdateOK();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -115,6 +126,12 @@ namespace CombatManagerDroid
                     break;
             }
             Finish();
+        }
+
+        void UpdateOK()
+        {
+            OKButton.Enabled = Spell.Name.NotNullString();
+
         }
 
         Button OKButton

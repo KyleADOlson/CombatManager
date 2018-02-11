@@ -1,3 +1,6 @@
+1.15
+Spell editor
+
 1.14
 Feat editor
 

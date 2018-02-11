@@ -159,7 +159,7 @@ namespace CombatManagerDroid
 
         void NewItem()
         {
-            SpellEditorActivity.Spell = SelectedItem;
+            SpellEditorActivity.Spell = new Spell();
             SpellEditorActivity.EditorAction = SpellEditorActivity.EditorActionType.Add;
             Intent intent = new Intent(_v.Context, Java.Lang.Class.FromType(typeof(SpellEditorActivity)));
 
