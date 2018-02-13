@@ -366,40 +366,47 @@ namespace CombatManager
 
         private static void CreateSpecialAbilitiesSection(Monster monster, StringBuilder  blocks)
         {
-            if (monster.SpecialAbilitiesList.Count > 0)
+            try
             {
-
-                blocks.CreateSectionHeader("SPECIAL ABILITIES");
-
-				blocks.AppendOpenTag("p");
-				
-
-                foreach (SpecialAbility spec in monster.SpecialAbilitiesList)
+                if (monster.SpecialAbilitiesList.Count > 0)
                 {
-                    if (spec.Name.Length > 0)
+
+                    blocks.CreateSectionHeader("SPECIAL ABILITIES");
+
+                    blocks.AppendOpenTag("p");
+
+
+                    foreach (SpecialAbility spec in monster.SpecialAbilitiesList)
                     {
-
-                        string type = spec.Type;
-
-                        if (spec.ConstructionPoints != null)
+                        if (spec.Name != null && spec.Name.Length > 0)
                         {
-                            type += ", " + spec.ConstructionPoints + " CP";
+
+                            string type = spec.Type;
+
+                            if (spec.ConstructionPoints != null)
+                            {
+                                type += ", " + spec.ConstructionPoints + " CP";
+                            }
+
+                            blocks.CreateItemIfNotNull(spec.Name + " (" + type + ") "
+                                , spec.Text);
+                        }
+                        else
+                        {
+
+                            blocks.CreateItemIfNotNull(null, spec.Text);
                         }
 
-                        blocks.CreateItemIfNotNull(spec.Name + " (" + type + ") "
-                            , spec.Text);
-                    }
-                    else
-                    {
-
-                        blocks.CreateItemIfNotNull(null, spec.Text);
                     }
 
-                }
-				
-				blocks.AppendCloseTag("p");
+                    blocks.AppendCloseTag("p");
 
 
+                } 
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.WriteLine(ex.ToString());
             }
         }
 
