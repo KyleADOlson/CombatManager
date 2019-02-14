@@ -203,6 +203,9 @@ namespace CombatManager
             LoadRecentDieRolls();
             MarkTime("Die Rolls", ref t, ref last);
 
+            System.Diagnostics.Debug.Write(SourceInfo.UnfoundSourcesList);
+            
+
 
             mainWindowLoaded = true;
             UpdateMonsterFlowDocument();
@@ -489,8 +492,15 @@ namespace CombatManager
             if (!combatLayoutLoaded)
             {
                 //AvalonDock.ThemeFactory.ChangeTheme(new Uri("/AvalonDock.Themes;component/themes/dev2010.xaml", UriKind.RelativeOrAbsolute));
+                try
+                {
+                    AvalonDock.ThemeFactory.ChangeColors((Color)FindResource("PrimaryColorDarker"));
+                }
+                catch
+                {
 
-                AvalonDock.ThemeFactory.ChangeColors((Color)FindResource("PrimaryColorDarker"));
+                }
+
                 SaveDefaultLayout();
                 LoadCombatViewLayout();
                 combatLayoutLoaded = true;
