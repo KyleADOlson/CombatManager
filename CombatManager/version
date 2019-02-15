@@ -1,5 +1,7 @@
 ﻿1.6.6
+Data Update
 Fix occasional problems with High DPI and disconnecting monitors.
+Fix crashing issue with some Windows machines
 
 1.6.5
 Data Update
