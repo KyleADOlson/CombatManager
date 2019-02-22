@@ -681,43 +681,81 @@ namespace CombatManager
 
                 if (UserSettings.Settings.MainWindowLeft != int.MinValue && UserSettings.Settings.MainWindowTop != int.MinValue)
                 {
+                    double scaleFactor = GetScaleFactor();
+
                     EnumMonitorData data = new EnumMonitorData();
-
-                    System.IntPtr handle = new WindowInteropHelper(this).EnsureHandle();
-                    double scaleFactor = ((double)GetDpiForWindow(handle))/96.0;
-                    if (scaleFactor == 0)
+                    try
                     {
-                        scaleFactor = 1;
+
+                        data.Rect = new RECT(
+                            (int)(UserSettings.Settings.MainWindowLeft * scaleFactor),
+                            (int)(UserSettings.Settings.MainWindowTop * scaleFactor),
+                            (int)((UserSettings.Settings.MainWindowLeft + Width) * scaleFactor),
+                            (int)((UserSettings.Settings.MainWindowTop + Height) * scaleFactor));
+                        data.FoundMatch = false;
+                        IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf(data));
+                        Marshal.StructureToPtr(data, ptr, false);
+
+                        EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, EnumMonitors, ptr);
+
+                        data = (EnumMonitorData)Marshal.PtrToStructure(ptr, typeof(EnumMonitorData));
+
+                        if (data.FoundMatch)
+                        {
+                            WindowStartupLocation = System.Windows.WindowStartupLocation.Manual;
+                            Left = UserSettings.Settings.MainWindowLeft;
+                            Top = UserSettings.Settings.MainWindowTop;
+                        }
+                        else
+                        {
+                            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                        }
                     }
-                    
-                    data.Rect = new RECT(
-                        (int)(UserSettings.Settings.MainWindowLeft * scaleFactor),
-                        (int)(UserSettings.Settings.MainWindowTop * scaleFactor),
-                        (int)((UserSettings.Settings.MainWindowLeft + Width) * scaleFactor),
-                        (int)((UserSettings.Settings.MainWindowTop + Height) * scaleFactor));
-                    data.FoundMatch = false;
-                    IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf(data));
-                    Marshal.StructureToPtr(data, ptr, false);
-
-                    EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, EnumMonitors, ptr);
-
-                    data = (EnumMonitorData)Marshal.PtrToStructure(ptr, typeof(EnumMonitorData));
-
-                    if (data.FoundMatch)
+                    catch (Exception ex)
                     {
-                        WindowStartupLocation = System.Windows.WindowStartupLocation.Manual;
-                        Left = UserSettings.Settings.MainWindowLeft;
-                        Top = UserSettings.Settings.MainWindowTop;
+                        System.Console.WriteLine(ex.ToString());
                     }
-                    else
-                    {
-                        WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                    }
+
                 }
+                   
 
                 MonsterTabNPCComboBox.SelectedIndex = (int)UserSettings.Settings.MonsterTabFilter;
                 CombatTabNPCFilterBox.SelectedIndex = (int)UserSettings.Settings.MonsterDBFilter;
             }
+        }
+
+        double GetScaleFactor()
+        {
+
+            System.IntPtr handle = new WindowInteropHelper(this).EnsureHandle();
+
+            double scaleFactor = 1;
+
+            try
+            {
+                scaleFactor = ((double)GetDpiForWindow(handle)) / 96.0;
+            }
+            catch (Exception)
+            {
+                //Win 8 might want this block, but safety reasons not adding it.
+                /*try
+                {
+
+                    IntPtr monitor = MonitorFromWindow(handle, MONITOR_DEFAULTTONEAREST);
+                    uint x, y;
+                    GetDpiForMonitor(monitor, DpiType.Effective, out x, out y);
+                    scaleFactor = ((double)x) / 96.0;
+                }
+                catch (Exception)
+                {
+                }*/
+            }
+            if (scaleFactor == 0)
+            {
+                scaleFactor = 1;
+            }
+
+            return scaleFactor;
         }
 
         struct EnumMonitorData
@@ -3702,7 +3740,6 @@ namespace CombatManager
             System.IntPtr handle = (new WinInterop.WindowInteropHelper(this)).Handle;
             WinInterop.HwndSource.FromHwnd(handle).AddHook(new WinInterop.HwndSourceHook(WindowProc));
         }
-        [DebuggerStepThrough]
         private System.IntPtr WindowProc(
               System.IntPtr hwnd,
               int msg,
@@ -3727,7 +3764,6 @@ namespace CombatManager
             MINMAXINFO mmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
 
             // Adjust the maximized size and position to fit the work area of the correct monitor
-            int MONITOR_DEFAULTTONEAREST = 0x00000002;
             System.IntPtr monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
 
             if (monitor != System.IntPtr.Zero)
@@ -3737,12 +3773,13 @@ namespace CombatManager
                 GetMonitorInfo(monitor, monitorInfo);
                 RECT rcWorkArea = monitorInfo.rcWork;
                 RECT rcMonitorArea = monitorInfo.rcMonitor;
+                double scaleFactor = 1;
                 mmi.ptMaxPosition.x = Math.Abs(rcWorkArea.left - rcMonitorArea.left);
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
-                mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);
-                mmi.ptMaxSize.y = Math.Abs(rcWorkArea.bottom - rcWorkArea.top);
-                mmi.ptMinTrackSize.x = (int)MinWidth;
-                mmi.ptMinTrackSize.y = (int)MinHeight;
+                mmi.ptMaxSize.x = (int)(Math.Abs(rcWorkArea.right - rcWorkArea.left) * scaleFactor );
+                mmi.ptMaxSize.y = (int)(Math.Abs(rcWorkArea.bottom - rcWorkArea.top) * scaleFactor);
+                mmi.ptMinTrackSize.x = (int)(MinWidth *scaleFactor);
+                mmi.ptMinTrackSize.y = (int)(MinHeight * scaleFactor);
             }
 
             Marshal.StructureToPtr(mmi, lParam, true);
@@ -3913,6 +3950,21 @@ namespace CombatManager
 
         [DllImport("User32")]
         private static extern UInt32 GetDpiForWindow(IntPtr hwnd);
+
+        [DllImport("Shcore.dll")]
+        private static extern IntPtr GetDpiForMonitor([In]IntPtr hmonitor, [In]DpiType dpiType, [Out]out uint dpiX, [Out]out uint dpiY);
+
+        public enum DpiType
+        {
+            Effective = 0,
+            Angular = 1,
+            Raw = 2,
+        }
+
+
+        public int MONITOR_DEFAULTTONEAREST = 0x00000002;
+
+
 
         private void MonsterAdvancerCheck_Checked(object sender, RoutedEventArgs e)
         {

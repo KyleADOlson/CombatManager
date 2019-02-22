@@ -1209,7 +1209,7 @@ namespace CombatManager.Maps
         private void EnterFullScreen()
         {
             WindowStyle = WindowStyle.None;
-            Topmost = true;
+            Topmost = false;
             WindowState = WindowState.Maximized;
             fullscreen = true;
 

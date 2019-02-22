@@ -1,4 +1,10 @@
-﻿1.6.6
+﻿1.6.8
+Fix for old Windows
+
+1.6.7
+Fix missing NPC file
+
+1.6.6
 Data Update
 Fix occasional problems with High DPI and disconnecting monitors.
 Fix crashing issue with some Windows machines
