@@ -325,10 +325,10 @@ namespace CombatManager
             mediumChart = new RandomWeightChart<RandomItemType>();
             majorChart = new RandomWeightChart<RandomItemType>();
 
-            /*minorChart.AddItem(16, RandomItemType.Mundane10);
+            minorChart.AddItem(16, RandomItemType.Mundane10);
             minorChart.AddItem(14, RandomItemType.Mundane11t50);
             minorChart.AddItem(10, RandomItemType.Mundane51t100);
-            minorChart.AddItem(4, RandomItemType.Mundane100);*/
+            minorChart.AddItem(4, RandomItemType.Mundane100);
             minorChart.AddItem(11, RandomItemType.Armor);
             minorChart.AddItem(14, RandomItemType.Weapon);
             minorChart.AddItem(8, RandomItemType.Potion);
@@ -339,8 +339,8 @@ namespace CombatManager
             minorChart.AddItem(2, RandomItemType.Wand);
             minorChart.AddItem(2, RandomItemType.Ring);
 
-            /*mediumChart.AddItem(4, RandomItemType.Mundane51t100);
-            mediumChart.AddItem(10, RandomItemType.Mundane100);*/
+            mediumChart.AddItem(4, RandomItemType.Mundane51t100);
+            mediumChart.AddItem(10, RandomItemType.Mundane100);
             mediumChart.AddItem(2, RandomItemType.Armor);
             mediumChart.AddItem(3, RandomItemType.Weapon);
             mediumChart.AddItem(2, RandomItemType.Rod);

@@ -363,6 +363,7 @@ namespace CombatManager
             LoadSettings();
 
             treasureCheckboxesList = new List<CheckBox>(new CheckBox[] {
+                GenerateMundaneCheck,
                         	GenerateMagicalArmorCheck,
                 GenerateMagicalWeaponCheck,
                 GeneratePotionCheck,
@@ -5649,9 +5650,21 @@ namespace CombatManager
                             generate = true;
                         }
                     }
+                    else if (ItemGenerateLevelComboBox.SelectedIndex == 1)
+                    {
+                        if ((types &
+                            ~TreasureGenerator.RandomItemType.Mundane10 & ~TreasureGenerator.RandomItemType.Mundane11t50)
+                            != TreasureGenerator.RandomItemType.None)
+                        {
+                            generate = true;
+                        }
+                    } 
                     else
                     {
-                        if (types != TreasureGenerator.RandomItemType.None)
+                        if ((types &
+                            ~TreasureGenerator.RandomItemType.Mundane10 & ~TreasureGenerator.RandomItemType.Mundane11t50 &
+                            ~TreasureGenerator.RandomItemType.Mundane51t100 & ~TreasureGenerator.RandomItemType.Mundane51t100)
+                            != TreasureGenerator.RandomItemType.None)
                         {
                             generate = true;
                         }
@@ -5668,8 +5681,26 @@ namespace CombatManager
             TreasureGenerator.RandomItemType types = TreasureGenerator.RandomItemType.None;
             if (mainWindowLoaded)
             {
+                if (GenerateMundaneCheck.IsChecked == true)
+                {
+                    switch (ItemGenerateLevelComboBox.SelectedIndex)
+                    {
+                        case 0:
+                            types |= TreasureGenerator.RandomItemType.Mundane10;
+                            types |= TreasureGenerator.RandomItemType.Mundane11t50;
+                            break;
+                        case 1:
+                            types |= TreasureGenerator.RandomItemType.Mundane51t100;
+                            types |= TreasureGenerator.RandomItemType.Mundane100;
+                            break;
+                        case 2:
+                        default:
+                            break;
 
 
+                    }
+                   
+                }
                 if (GenerateMagicalArmorCheck.IsChecked == true)
                 {
                     types |= TreasureGenerator.RandomItemType.MagicalArmor;

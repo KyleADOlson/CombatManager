@@ -715,7 +715,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CombatManager.Core, Version=1.6.7.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:CombatManager.Core, Version=1.6.8.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_6869E998D01C8D03A17E40DC0A0441E7"
@@ -1170,15 +1170,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Combat Manager"
-        "ProductCode" = "8:{88AF61EE-3054-4DF4-A9D9-390C3A9D8371}"
-        "PackageCode" = "8:{71B58EAF-AA3B-49C1-8FD7-BF173A6545BD}"
+        "ProductCode" = "8:{675CFEC2-7154-49B4-A436-71C80127CE4D}"
+        "PackageCode" = "8:{7E4B8839-E4F1-4D5F-B695-1CD2B01F66DF}"
         "UpgradeCode" = "8:{D3BA9248-E13B-4D16-A80A-2F435C82C97B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.8"
+        "ProductVersion" = "8:1.6.9"
         "Manufacturer" = "8:Kyle Olson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

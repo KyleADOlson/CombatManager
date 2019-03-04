@@ -3784,6 +3784,15 @@
                                     </TabItem>
                                     <TabItem Header="Items">
                                         <Grid Background="#FFE5E5E5">
+
+                                            <ComboBox x:Name="ItemGenerateCountComboBox" Margin="47.544,5,76,0" VerticalAlignment="Top" SelectedIndex="0" Loaded="ItemGenerateCountComboBox_Loaded">
+                                                <ComboBoxItem Content="1"/>
+                                            </ComboBox>
+                                            <ComboBox x:Name="ItemGenerateLevelComboBox" Margin="47.544,33.666,51.27,0" VerticalAlignment="Top" SelectedIndex="0" SelectionChanged="ItemGenerateLevelComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="Minor" />
+                                                <ComboBoxItem Content="Medium" />
+                                                <ComboBoxItem Content="Major" />
+                                            </ComboBox>
                                             <Border CornerRadius="6" VerticalAlignment="Top" Margin="8,59.626,0,0" HorizontalAlignment="Left" BorderThickness="2" Width="163" Padding="2">
                                                 <Border.BorderBrush>
                                                     <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
@@ -3792,6 +3801,7 @@
                                                     <SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
                                                 </Border.Background>
                                                 <StackPanel >
+                                                    <CheckBox x:Name="GenerateMundaneCheck" Content="Mundane" IsChecked="False" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
                                                     <CheckBox x:Name="GenerateMagicalArmorCheck" Content="Magical Armor" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
                                                     <CheckBox x:Name="GenerateMagicalWeaponCheck" Content="Magical Weapon" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
                                                     <CheckBox x:Name="GeneratePotionCheck" Content="Potion" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
@@ -3803,24 +3813,16 @@
                                                     <CheckBox x:Name="GenerateWondrousItemCheck" Content="Wondrous Item" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
                                                 </StackPanel>
                                             </Border>
-                                            <ComboBox x:Name="ItemGenerateCountComboBox" Margin="47.544,5,76,0" VerticalAlignment="Top" SelectedIndex="0" Loaded="ItemGenerateCountComboBox_Loaded">
-                                                <ComboBoxItem Content="1"/>
-                                            </ComboBox>
                                             <TextBlock HorizontalAlignment="Left" Margin="6.54,8,0,0" TextWrapping="Wrap" Text="Count" VerticalAlignment="Top"/>
-                                            <Button x:Name="GenerateItemsButton" HorizontalAlignment="Center" Width="75" Margin="0,270.501,0,0" VerticalAlignment="Top" Click="GenerateItemsButton_Click">
+                                            <Button x:Name="GenerateItemsButton" HorizontalAlignment="Center" Width="75" Margin="0,270.501,0,5" VerticalAlignment="Bottom" Click="GenerateItemsButton_Click">
                                                 <StackPanel Orientation="Horizontal">
                                                     <Image Source="Images/treasure-16.png" Width="16" Height="16" />
                                                     <TextBlock Text="Generate"/>
                                                 </StackPanel>
                                             </Button>
-                                            <ComboBox x:Name="ItemGenerateLevelComboBox" Margin="47.544,33.666,51.27,0" VerticalAlignment="Top" SelectedIndex="0" SelectionChanged="ItemGenerateLevelComboBox_SelectionChanged">
-                                                <ComboBoxItem Content="Minor" />
-                                                <ComboBoxItem Content="Medium" />
-                                                <ComboBoxItem Content="Major" />
-                                            </ComboBox>
                                             <TextBlock HorizontalAlignment="Left" Margin="6.54,36.666,0,0" TextWrapping="Wrap" Text="Level" VerticalAlignment="Top"/>
-                                            <Button x:Name="TreasureSelectAllButton" Content="Select All" Margin="8,234.167,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Click="TreasureSelectAllButton_Click"/>
-                                            <Button x:Name="TreasureUnselectAllButton" Content="Unselect All" Margin="0,234.167,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="TreasureUnselectAllButton_Click"/>
+                                            <Button x:Name="TreasureSelectAllButton" Content="Select All" Margin="7,253,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Click="TreasureSelectAllButton_Click"/>
+                                            <Button x:Name="TreasureUnselectAllButton" Content="Unselect All" Margin="0,251,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="TreasureUnselectAllButton_Click"/>
                                         </Grid>
                                     </TabItem>
                                 </TabControl>
