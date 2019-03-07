@@ -135,31 +135,37 @@ namespace CombatManagerDroid
 
         private void OkClicked()
         {
-            EditText t = FindViewById<EditText>(Resource.Id.fileName);
-
-            if (_Load)
+            try
             {
-                if (File.Exists(Path.Combine(Folder, t.Text.Trim())))
+                EditText t = FindViewById<EditText>(Resource.Id.fileName);
+
+                if (_Load)
                 {
-                    Text = t.Text.Trim();
-                    Dismiss();
-                    if (DialogComplete != null)
+                    if (File.Exists(Path.Combine(Folder, t.Text.Trim())))
                     {
-                        DialogComplete(this, new FileDialogEventArgs() { Filename = Text });
+                        Text = t.Text.Trim();
+                        Dismiss();
+                        if (DialogComplete != null)
+                        {
+                            DialogComplete(this, new FileDialogEventArgs() { Filename = Text });
+                        }
+                    }
+                }
+                else
+                {
+                    if (t.Text.Trim().Length > 0)
+                    {
+                        Text = t.Text.Trim();
+                        Dismiss();
+                        if (DialogComplete != null)
+                        {
+                            DialogComplete(this, new FileDialogEventArgs() { Filename = Text });
+                        }
                     }
                 }
             }
-            else
+            catch (Exception)
             {
-                if (t.Text.Trim().Length > 0)
-                {
-                    Text = t.Text.Trim();
-                    Dismiss();
-                    if (DialogComplete != null)
-                    {
-                        DialogComplete(this, new FileDialogEventArgs() { Filename = Text });
-                    }
-                }
             }
         }
 

@@ -1,3 +1,7 @@
+1.16
+Data update
+Fix file dialog IO crashes
+
 1.15
 Spell editor
 
