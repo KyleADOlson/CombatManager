@@ -2042,7 +2042,9 @@ namespace CombatManager
             }
 
 
-            Regex regHP = new Regex("hp (?<hp>[0-9]+) ((?<hd>\\([-+0-9d]+\\))|(\\(\\)))");
+            //Regex regHP = new Regex("(hp (?<hp>[0-9]+)) ((?<hd>\\([-+0-9d]+\\))|(\\(\\)))|\\(\\d+ HD; (?<hd>[-+0-9d]+\\))");
+            Regex regHP = new Regex(@"(hp (?<hp>[0-9]+)) ((?<hd>\([-+0-9d]+\))|(\(\))|\(\d+ HD; (?<hd>[-+0-9d]+)\))");
+
             m = regHP.Match(statsblock);
             if (m.Groups["hp"].Success)
             {
@@ -2317,11 +2319,12 @@ namespace CombatManager
 
         private static string FixSpellString(string spells)
         {
-
+            spells = spells.Replace("â€”", "-");
             spells = spells.Replace('—', '-');
             spells = spells.Replace("):", ")");
             spells = spells.Replace("\r\n", " ");
-
+            //remove Sources
+            spells = Regex.Replace(spells,@"\[\D+\]", "");
             return spells;
 
         }
