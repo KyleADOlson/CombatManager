@@ -73,7 +73,7 @@
     							<DropShadowEffect/>
     						</TextBlock.Effect>
     					</TextBlock>
-    					<TextBox x:Name="CustomNameBox" Margin="0.001,3,4,3" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" TextChanged="CustomNameBox_TextChanged"/>
+    					<TextBox x:Name="CustomNameBox" Margin="0.001,3,4,3" TextWrapping="Wrap" VerticalContentAlignment="Top"  VerticalAlignment="Top" Grid.Column="1" TextChanged="CustomNameBox_TextChanged"/>
     				</Grid>
     			</Border>
     			<Border BorderThickness="1" Margin="5.445,36.96,8,0" VerticalAlignment="Top" CornerRadius="6" Height="76.373" d:LayoutOverrides="VerticalAlignment">
@@ -87,7 +87,7 @@
     							<DropShadowEffect/>
     						</TextBlock.Effect>
     					</TextBlock>
-    					<TextBox x:Name="CustomTextBox" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"
+                        <TextBox x:Name="CustomTextBox" TextWrapping="Wrap" VerticalContentAlignment="Top"  AcceptsReturn="True" AcceptsTab="True"
     						Height="49.413" VerticalAlignment="Bottom" Margin="3,0,4,3"
             			/>
     				</Grid>

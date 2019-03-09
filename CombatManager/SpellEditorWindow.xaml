@@ -363,7 +363,7 @@
 							<CheckBox Content="Verbal" IsChecked="{Binding Adjuster.Verbal}" HorizontalAlignment="Left" Margin="0,19.96,0,0" VerticalAlignment="Top"/>
 							<CheckBox Content="Somatic"  IsChecked="{Binding Adjuster.Somatic}"  Margin="75.556,19.96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.175,0.82" HorizontalAlignment="Left"/>
 							<CheckBox Content="Material"  IsChecked="{Binding Adjuster.Material}"  HorizontalAlignment="Left" Margin="0,42.92,0,0" VerticalAlignment="Top"/>
-							<TextBox Margin="0,62.88,0,0" TextWrapping="Wrap" Text="{Binding Adjuster.MaterialText}" RenderTransformOrigin="0.246,0.385" VerticalAlignment="Top"/>
+							<TextBox Margin="0,62.88,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Adjuster.MaterialText}" RenderTransformOrigin="0.246,0.385" VerticalAlignment="Top"/>
 							<CheckBox Content="Focus"  IsChecked="{Binding Adjuster.Focus}"  HorizontalAlignment="Left" Margin="0,92.372,0,0" VerticalAlignment="Top"/>
 							<CheckBox Content="Divine Focus"  IsChecked="{Binding Adjuster.DivineFocus}"  HorizontalAlignment="Left" Margin="75.556,92.372,0,0" VerticalAlignment="Top"/>
 							<TextBox TextWrapping="Wrap" Text="{Binding Adjuster.FocusText}" VerticalAlignment="Top" RenderTransformOrigin="0.246,0.385" Margin="0,112.332,0,0"/>
@@ -378,7 +378,7 @@
 						</Border.Background>
 						<Grid>
 							<TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Style="{DynamicResource LabelStyle}" Foreground="Black"/>
-							<TextBox Margin="0,19.96,0,0" TextWrapping="Wrap" Text="{Binding description}" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto"/>
+							<TextBox Margin="0,19.96,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding description}" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto"/>
 						</Grid>
 					</Border>
 				</Grid>

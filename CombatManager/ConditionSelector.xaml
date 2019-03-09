@@ -250,7 +250,7 @@
     			<RowDefinition Height="66"/>
     			<RowDefinition Height="3"/>
     		</Grid.RowDefinitions>
-    		<TextBox x:Name="ConditionFilterText" Margin="8,0.5,0,3.79" TextWrapping="Wrap" d:LayoutOverrides="Height" TextChanged="ConditionFilterText_TextChanged" Grid.Row="1" KeyDown="ConditionFilterText_KeyDown" 
+            <TextBox x:Name="ConditionFilterText" Margin="8,0.5,0,3.79" TextWrapping="Wrap" VerticalContentAlignment="Top"   d:LayoutOverrides="Height" TextChanged="ConditionFilterText_TextChanged" Grid.Row="1" KeyDown="ConditionFilterText_KeyDown" 
 				/>
         	
     		<ListBox x:Name="ConditionsListBox" Margin="8,0.21,0,0" Grid.Row="2" ItemsSource="{Binding}" ItemTemplate="{DynamicResource ConditionItemTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" MouseDoubleClick="ConditionsListBox_MouseDoubleClick" HorizontalContentAlignment="Stretch" Grid.RowSpan="2"
@@ -306,7 +306,7 @@
     					</Grid>
     				</RadioButton>
     				<TextBlock HorizontalAlignment="Left" Margin="16.872,0,0,5" TextWrapping="Wrap" Text="Details:" VerticalAlignment="Bottom"/>
-    				<TextBox TextWrapping="Wrap" Margin="59.242,0,86.5,2" VerticalAlignment="Bottom" MaxLength="20" MaxLines="1" Name="DetailsTextBox" />
+                    <TextBox TextWrapping="Wrap"  VerticalContentAlignment="Top" Margin="59.242,0,86.5,2" VerticalAlignment="Bottom" MaxLength="20" MaxLines="1" Name="DetailsTextBox" />
     			     
                 </Grid>
     		</Border>

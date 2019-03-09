@@ -21,7 +21,7 @@
 				<CheckBox x:Name="ConfirmCharacterDeleteCheckbox" Content="Confirm Character Delete" HorizontalAlignment="Left" Margin="6,46,0,0" VerticalAlignment="Top"/>
 				<CheckBox x:Name="RollAlternativeInitCheckbox" Content="Roll Alternate Dice For d20 Rolls" HorizontalAlignment="Left" Margin="6,85.92,0,0" VerticalAlignment="Top"/>
 				<CheckBox x:Name="ShowAllDamageDice" Content="Show All Damage Dice in Die Roller" HorizontalAlignment="Left" Margin="6,65.96,0,0" VerticalAlignment="Top"/>
-				<TextBox Margin="25,105.019,78,0" TextWrapping="Wrap" Text="3d6" IsEnabled="{Binding IsChecked, ElementName=RollAlternativeInitCheckbox}" x:Name="RollAlternateInitDiceBox" VerticalAlignment="Top" />
+				<TextBox Margin="25,105.019,78,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="3d6" IsEnabled="{Binding IsChecked, ElementName=RollAlternativeInitCheckbox}" x:Name="RollAlternateInitDiceBox" VerticalAlignment="Top" />
 				<CheckBox x:Name="AddMonstersHiddenBox" Content="Add Monsters Hidden" HorizontalAlignment="Left" Margin="6,126.979,0,0" VerticalAlignment="Top"/>
 				<CheckBox x:Name="ShowHiddenInitValueBox" Content="Show Hidden Init Value" HorizontalAlignment="Left" Margin="6,146.077,0,0" VerticalAlignment="Top"/>
 				<CheckBox x:Name="StatsOpenByDefaultCheckbox" Content="Stats Panel Begins Open" HorizontalAlignment="Left" Margin="6,165.175,0,0" VerticalAlignment="Top"/>

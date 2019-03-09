@@ -27,7 +27,7 @@
     				<ColumnDefinition/>
     			</Grid.ColumnDefinitions>
     			<ListBox x:Name="NaturalAttackListBox" Margin="8" ItemsSource="{Binding}" ItemTemplate="{DynamicResource NaturalAttackItemTemplate}" />
-    			<TextBox x:Name="AttackName" Margin="8,31.54,8,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" TextChanged="AttackName_TextChanged" />
+    			<TextBox x:Name="AttackName" Margin="8,31.54,8,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Grid.Column="1" TextChanged="AttackName_TextChanged" />
     			<Border BorderThickness="1" Height="19.54" Margin="8,8,8,0" VerticalAlignment="Top" CornerRadius="6" Grid.Column="1">
     				<Border.Background>
     					<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
@@ -47,7 +47,7 @@
     				</Border.Background>
     				<TextBlock TextWrapping="Wrap" Text="Type" Foreground="White" Margin="5,0,0,0"/>
     			</Border>
-    			<TextBox x:Name="AttackType" Grid.Column="1" Margin="8,0,8,7.873" TextWrapping="Wrap" VerticalAlignment="Bottom" IsEnabled="False" TextChanged="AttackType_TextChanged" />
+    			<TextBox x:Name="AttackType" Grid.Column="1" Margin="8,0,8,7.873" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Bottom" IsEnabled="False" TextChanged="AttackType_TextChanged" />
     			<Border BorderThickness="1" Height="19.54" Margin="8,107,8,0" VerticalAlignment="Top" CornerRadius="6" Grid.Column="1">
     				<Border.Background>
     					<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
@@ -61,7 +61,7 @@
     				</Border.Background>
     				<TextBlock TextWrapping="Wrap" Text="Plus" Foreground="White" Margin="5,0,0,0"/>
     			</Border>
-    			<TextBox x:Name="PlusTextBox" Margin="10.934,33.04,8,0" TextWrapping="Wrap" Grid.Column="2" Height="69.96" VerticalAlignment="Top" TextChanged="PlusTextBox_TextChanged" />
+    			<TextBox x:Name="PlusTextBox" Margin="10.934,33.04,8,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Grid.Column="2" Height="69.96" VerticalAlignment="Top" TextChanged="PlusTextBox_TextChanged" />
             </Grid>
     	</Border>
         

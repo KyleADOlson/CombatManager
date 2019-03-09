@@ -49,7 +49,7 @@
                 <Button x:Name="UnselectAllButton" Content="Unselect All" Margin="87,8,116.667,0" VerticalAlignment="Top" Click="UnselectAllButton_Click"/>
             </Grid>
     	</Border>
-    	<TextBox HorizontalAlignment="Left" Margin="54,0,0,34.373" TextWrapping="Wrap" Text="{Binding HPChange}" VerticalAlignment="Bottom" Width="48" Name="HPChangeBox" FontWeight="Bold" />
+    	<TextBox HorizontalAlignment="Left" Margin="54,0,0,34.373" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding HPChange}" VerticalAlignment="Bottom" Width="48" Name="HPChangeBox" FontWeight="Bold" />
         
     </Grid>
 </Window>

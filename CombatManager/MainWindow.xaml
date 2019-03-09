@@ -1049,16 +1049,17 @@
 
                     </Grid>
                 </Button>
-                <TextBox x:Name="NotesTextBox" Height="39.627" Margin="1.5,0,5.871,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Notes}" VerticalAlignment="Top" Grid.ColumnSpan="5" Visibility="Collapsed" AcceptsReturn="True" BorderBrush="#FF979595" VerticalScrollBarVisibility="Auto" Grid.Column="1" d:LayoutOverrides="GridBox"/>
+                <TextBox x:Name="NotesTextBox" Height="39.627" Margin="1.5,0,5.871,0" Grid.Row="1" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Notes}" VerticalAlignment="Top" Grid.ColumnSpan="5" Visibility="Collapsed" AcceptsReturn="True" BorderBrush="#FF979595" VerticalScrollBarVisibility="Auto" Grid.Column="1" d:LayoutOverrides="GridBox"/>
                 <Grid x:Name="ConditionsGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Visibility="{Binding Stats.ActiveConditions.Count, Converter={StaticResource IntGreaterThanZeroVisibilityCollapsedConverter}}" Margin="0" d:LayoutOverrides="GridBox">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" MinHeight="22" />
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="103*"/>
+                        <ColumnDefinition Width="76*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" x:Name="ConditionMiniBox" ItemsSource="{Binding Stats.ActiveConditions}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemTemplate="{DynamicResource ConditionMiniTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" ItemContainerStyle="{DynamicResource ConditionMiniContainerTemplate}"/>
+                    <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="ConditionMiniBox" ItemsSource="{Binding Stats.ActiveConditions}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemTemplate="{DynamicResource ConditionMiniTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" ItemContainerStyle="{DynamicResource ConditionMiniContainerTemplate}" Margin="0,0,-0.2,0"/>
                 </Grid>
                 <Grid  x:Name="StatsGrid" Grid.ColumnSpan="6" Grid.Column="0"  Grid.Row="1" HorizontalAlignment="Stretch" Visibility="Collapsed" Margin="0,0,3.871,0" d:LayoutOverrides="GridBox"
 					>
@@ -1333,9 +1334,9 @@
                     <ColumnDefinition Width="26"/>
                     <ColumnDefinition Width="30"/>
                 </Grid.ColumnDefinitions>
-                <TextBox Margin="0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Center"/>
+                <TextBox Margin="0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Name}" VerticalAlignment="Center"/>
                 <Button x:Name="DescreaseResourceButton" Grid.ColumnSpan="1" Content="-" Grid.Column="1" Width="20" Height="20" HorizontalAlignment="Center" Style="{DynamicResource ButtonSecondaryStyle}" Margin="3,0" Click="DescreaseResourceButton_Click"/>
-                <TextBox Grid.Column="2" TextWrapping="Wrap" Text="{Binding Current}" Width="30" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="2" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Current}" Width="30" VerticalAlignment="Center"/>
                 <Button x:Name="IncreaseResourceButton" Content="+" Grid.Column="3" Width="20" Height="20" Style="{DynamicResource ButtonSecondaryStyle}" Margin="3,0" Click="IncreaseResourceButton_Click"/>
                 <Button x:Name="DeleteResourceButton" Margin="7,0" RenderTransformOrigin="0.222,-0.601" Grid.Column="4"  Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Stretch" Click="DeleteResourceButton_Click" VerticalAlignment="Center">
                     <Button.ToolTip>Delete</Button.ToolTip>
@@ -2095,7 +2096,7 @@
                     <Button.ToolTip>Delete</Button.ToolTip>
                     <Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
                 </Button>
-                <TextBox Grid.Row="1" Grid.ColumnSpan="4" TextWrapping="Wrap" Text="{Binding Details}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" Margin="2,0"/>
+                <TextBox Grid.Row="1" Grid.ColumnSpan="4" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Details}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" Margin="2,0"/>
             </Grid>
 
         </DataTemplate>
@@ -2565,9 +2566,9 @@
             <RowDefinition Height="34.128"/>
         </Grid.RowDefinitions>
         <Rectangle RadiusX="7" RadiusY="7" StrokeThickness="3" x:Name="MainRectangle1" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" MouseLeftButtonUp="MainRectangle_MouseLeftButtonUp" MouseMove="MainRectangle_MouseMove" Stroke="Black" Margin="0" Grid.RowSpan="3" />
-        <Rectangle Fill="{DynamicResource MediumBackgroundBrush}" RadiusX="6" RadiusY="6" StrokeThickness="3" x:Name="MainRectangle" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" MouseLeftButtonUp="MainRectangle_MouseLeftButtonUp" MouseMove="MainRectangle_MouseMove" Stroke="White" Margin="1" Grid.RowSpan="3" />
+        <Rectangle Fill="{DynamicResource FancyBackgroundBrush}" RadiusX="6" RadiusY="6" StrokeThickness="3" x:Name="MainRectangle" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" MouseLeftButtonUp="MainRectangle_MouseLeftButtonUp" MouseMove="MainRectangle_MouseMove" Stroke="White" Margin="1" Grid.RowSpan="3" />
         <Button Height="34.667" HorizontalAlignment="Stretch" Margin="8,4,9,0" x:Name="TitleBarButton" VerticalAlignment="Top" Focusable="False" IsTabStop="False" Style="{DynamicResource TitleBarButtonStyle}" MouseDoubleClick="TitleBarButton_MouseDoubleClick">
-            <Rectangle Fill="{DynamicResource MediumBackgroundBrush}" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" />
+            <Rectangle MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" />
         </Button>
         <Button x:Name="TitleBarMenuButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment"  Margin="8,0,0,1" Style="{DynamicResource ButtonMainStyle}" Height="29.667" Click="TitleBarMenuButton_Click">
 
@@ -2616,7 +2617,7 @@
                 <Path Stretch="Fill" Stroke="White" Data="M0,0 L1,0 L1,1 L0,1 z" StrokeThickness="3" Margin="0.334,0.501,-0.334,-0.501"  StrokeLineJoin="Round"/>
             </Grid>
         </Button>
-        <TabControl Margin="8.667,3,9,0" Grid.Row="1" BorderBrush="#008C8E94" BorderThickness="1,1,0,1" Style="{DynamicResource TabControlStyle1}" x:Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
+        <TabControl Margin="8.667,3,9,0" Grid.Row="1" BorderBrush="#008C8E94" BorderThickness="1,1,0,1" Style="{DynamicResource TabControlStyle1}" x:Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged" Background="Transparent">
             <TabItem x:Name="CombatTab" IsSelected="True">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -2646,21 +2647,22 @@
                     <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Grid.RowSpan="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="188.737"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="47*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid Margin="0,1,3,0">
+                        <Grid Margin="0,1,2.8,-0.4">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="0.592*"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="0.408*"/>
                             </Grid.RowDefinitions>
                         </Grid>
-                        <GridSplitter Width="3" Margin="0">
+                        <GridSplitter Width="3" Margin="0,0,38.6,-0.4" Grid.ColumnSpan="2">
                             <GridSplitter.Background>
                                 <SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
                             </GridSplitter.Background>
                         </GridSplitter>
-                        <AvalonDock:DockingManager x:Name="CombatViewDockingManager" Margin="0,1,0,0" RenderTransformOrigin="0.615,0.493" Grid.ColumnSpan="2" Background="#FFE9ECFA">
+                        <AvalonDock:DockingManager x:Name="CombatViewDockingManager" Margin="0,1,-0.2,-0.4" RenderTransformOrigin="0.615,0.493" Grid.ColumnSpan="3" Background="#FFE9ECFA">
                             <AvalonDock:ResizingPanel Orientation="Horizontal">
                                 <AvalonDock:ResizingPanel Orientation="Vertical" AvalonDock:ResizingPanel.ResizeWidth="187">
                                     <AvalonDock:DockablePane >
@@ -3032,7 +3034,7 @@
                                     <AvalonDock:DockablePane>
                                         <AvalonDock:DockableContent x:Name="MonsterDBContent" Title="Monster DB" IsCloseable="False">
                                             <Grid x:Name="MonsterDBBoxGrid" Grid.Row="3" Margin="2,1.432,2,2">
-                                                <TextBox x:Name="monsterFilterBox" Margin="0,0,27,0" VerticalAlignment="Top" TextWrapping="Wrap" KeyDown="monsterFilterBox_KeyDown" Background="White" Foreground="Black" />
+                                                <TextBox x:Name="monsterFilterBox" Margin="0,0,27,0" VerticalAlignment="Top" TextWrapping="Wrap" VerticalContentAlignment="Top" KeyDown="monsterFilterBox_KeyDown" Background="White" Foreground="Black" />
                                                 <Button x:Name="ClearText" HorizontalAlignment="Right" VerticalAlignment="Top" Width="23" Height="21.96" RenderTransformOrigin="0.395,-0.152" Click="ClearFilter_Click" ToolTip="Clear" Style="{DynamicResource ButtonSecondaryStyle}" >
                                                     <Path Stretch="Fill" Stroke="White" Data="M0,0 L1,1 M0,1 L1,0" StrokeThickness="3"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="14" Width="14"/>
                                                 </Button>
@@ -3122,7 +3124,7 @@
                     <FlowDocumentScrollViewer x:Name="FeatFlowDocument" Grid.Column="1" Margin="1,32.96,1,8" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="1" Foreground="Black">
                         <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
                     </FlowDocumentScrollViewer>
-                    <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" x:Name="featFilterBox" VerticalAlignment="Top" TextChanged="featFilterBox_TextChanged" />
+                    <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="featFilterBox" VerticalAlignment="Top" TextChanged="featFilterBox_TextChanged" />
                     <Button x:Name="ClearFeatText" HorizontalAlignment="Right" Margin="0,5.04,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Height="21.811" VerticalAlignment="Top" Click="ClearFeatText_Click">
                         <Path Stretch="Fill" Stroke="Black" Data="M0,0 L1,1 M0,1 L1,0" StrokeThickness="3"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="14" Width="14"/>
                     </Button>
@@ -3178,7 +3180,7 @@
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="5" RadiusX="5" Grid.RowSpan="6" Stroke="White" StrokeThickness="0"/>
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0,2,0" RadiusY="5" RadiusX="5" Grid.RowSpan="6" Stroke="White" StrokeThickness="0" Grid.Column="1" Grid.ColumnSpan="2" />
                     <ListBox x:Name="MonstersListBox" Margin="1,6,1,3" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" BorderBrush="White" Background="White" Foreground="Black" />
-                    <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" x:Name="MonsterTabFilterBox" VerticalAlignment="Top" TextChanged="MonsterTabFilterBox_TextChanged" />
+                    <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="MonsterTabFilterBox" VerticalAlignment="Top" TextChanged="MonsterTabFilterBox_TextChanged" />
                     <Button x:Name="ClearMonsterText" HorizontalAlignment="Right" Margin="0,5.04,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Height="21.811" VerticalAlignment="Top" Click="ClearMonsterText_Click">
                         <Path Stretch="Fill" Stroke="Black" Data="M0,0 L1,1 M0,1 L1,0" StrokeThickness="3"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="14" Width="14"/>
                     </Button>
@@ -3495,7 +3497,7 @@
                     <FlowDocumentScrollViewer x:Name="RuleFlowDocument" Grid.Column="1" Margin="1,0,1,2.628" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="3" Grid.Row="1" Foreground="Black">
                         <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
                     </FlowDocumentScrollViewer>
-                    <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" x:Name="RulesTabFilterBox" VerticalAlignment="Top" TextChanged="RulesTabFilterBox_TextChanged" />
+                    <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="RulesTabFilterBox" VerticalAlignment="Top" TextChanged="RulesTabFilterBox_TextChanged" />
                     <Button x:Name="ClearRuleFilterText" HorizontalAlignment="Right" Margin="0,5.04,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Height="21.811" VerticalAlignment="Top" Click="ClearRuleFilterText_Click">
                         <Path Stretch="Fill" Stroke="Black" Data="M0,0 L1,1 M0,1 L1,0" StrokeThickness="3"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="14" Width="14"/>
                     </Button>
@@ -3537,7 +3539,7 @@
                     <FlowDocumentScrollViewer x:Name="SpellFlowDocument" Grid.Column="1" Margin="1,32.96,1,8" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="1" Foreground="Black">
                         <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
                     </FlowDocumentScrollViewer>
-                    <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" x:Name="spellFilterBox" TextChanged="spellFilterBox_TextChanged" VerticalAlignment="Top" />
+                    <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="spellFilterBox" TextChanged="spellFilterBox_TextChanged" VerticalAlignment="Top" />
                     <Button x:Name="ClearSpellText" HorizontalAlignment="Right" Margin="0,5.189,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Click="ClearSpellText_Click" Height="21.811" VerticalAlignment="Top">
                         <Path Stretch="Fill" Stroke="Black" Data="M0,0 L1,1 M0,1 L1,0" StrokeThickness="3"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="14" Width="14"/>
                     </Button>
@@ -3640,7 +3642,7 @@
                                 <FlowDocumentScrollViewer x:Name="MagicItemFlowDocument" Grid.Column="1" Margin="1,0,1,2.628" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="3" Grid.Row="1">
                                     <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
                                 </FlowDocumentScrollViewer>
-                                <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" x:Name="MagicItemsTabFilterBox" VerticalAlignment="Top" TextChanged="MagicItemsTabFilterBox_TextChanged" />
+                                <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="MagicItemsTabFilterBox" VerticalAlignment="Top" TextChanged="MagicItemsTabFilterBox_TextChanged" />
                                 <Button x:Name="ClearMagicItemFilterText" HorizontalAlignment="Right" Margin="0,5.04,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Height="21.811" VerticalAlignment="Top" Click="ClearMagicItemFilterText_Click">
                                     <Path Stretch="Fill" Stroke="Black" Data="M0,0 L1,1 M0,1 L1,0" StrokeThickness="3"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="14" Width="14"/>
                                 </Button>

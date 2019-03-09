@@ -24,6 +24,6 @@
         <ListBox x:Name="WeaponListBox" Margin="8,34,8,33.96" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate1}" MouseDoubleClick="WeaponListBox_MouseDoubleClick"/>
         <Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,8" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
         <Button IsEnabled="{Binding CurrentItem, Converter={StaticResource itemExistsConverter}}" Content="OK" Margin="146,0,87,8" VerticalAlignment="Bottom" IsDefault="True" Click="Button_Click"/>
-        <TextBox x:Name="NameFilterBox" Margin="8,8,8,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="NameFilterBox_TextChanged"/>
+        <TextBox x:Name="NameFilterBox" Margin="8,8,8,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" TextChanged="NameFilterBox_TextChanged"/>
 	</Grid>
 </Window>

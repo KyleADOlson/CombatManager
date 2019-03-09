@@ -21,8 +21,8 @@
 				</Grid.ColumnDefinitions>
 				<TextBlock TextWrapping="Wrap" Text="Count" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2,0"/>
 				<TextBlock TextWrapping="Wrap" Text="Die" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="2" d:LayoutOverrides="Width" Margin="2,0"/>
-				<TextBox Grid.Column="1" Margin="2.805,4.004,2,4.004" TextWrapping="Wrap" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" d:LayoutOverrides="Height" />
-				<TextBox Grid.Column="3" Margin="2,4.004" TextWrapping="Wrap" Text="{Binding Die, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" d:LayoutOverrides="Height" />
+                <TextBox Grid.Column="1" Margin="2.805,4.004,2,4.004" TextWrapping="Wrap" VerticalContentAlignment="Top"  Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" d:LayoutOverrides="Height" />
+                <TextBox Grid.Column="3" Margin="2,4.004" TextWrapping="Wrap" VerticalContentAlignment="Top"  Text="{Binding Die, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" d:LayoutOverrides="Height" />
 				<Button x:Name="DeleteButton" Margin="0,7.004,0,6.964" RenderTransformOrigin="0.222,-0.601" Grid.Column="4" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Center" Click="DeleteButton_Click">
 					<Button.ToolTip>Delete</Button.ToolTip>
 					<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="White" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
@@ -49,7 +49,7 @@
 				<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
 			</Border.Background>
 			<Grid>
-				<TextBox Margin="5.999,19.96,8,0" TextWrapping="Wrap" x:Name="DieRollBonusText" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+				<TextBox Margin="5.999,19.96,8,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="DieRollBonusText" Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
 				<TextBlock Margin="5.999,4,0,0" TextWrapping="Wrap" Text="Mod" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/></Grid>
 		</Border>
 	</Grid>

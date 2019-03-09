@@ -52,7 +52,7 @@
     			<Grid ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <CheckBox x:Name="SelectAllMonstersCheckbox" Content="Select All" HorizontalAlignment="Left" Margin="0,2.707,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" Click="SelectAllMonstersCheckbox_Click" IsChecked="True" />
                     <ListBox x:Name="MonstersList" ItemTemplate="{DynamicResource ExportItemTemplate}" ItemsSource="{Binding}" Margin="0,39.765,0,0" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}"/>
-                    <TextBox x:Name="MonsterFilterTextBox" Margin="0,17.805,0,0" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBox x:Name="MonsterFilterTextBox" Margin="0,17.805,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top"  VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                 </Grid>
     		</TabItem>
             <TabItem x:Name="SpellsTab">
@@ -62,7 +62,7 @@
                 <Grid>
     				<CheckBox x:Name="SelectAllSpellsCheckbox" Content="Select All" HorizontalAlignment="Left" Margin="0,2.707,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" IsChecked="True" Click="SelectAllSpellsCheckbox_Click" />
     				<ListBox x:Name="SpellsList" ItemTemplate="{DynamicResource ExportItemTemplate}" ItemsSource="{Binding}" Margin="0,39.765,0,0" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}"/>
-    				<TextBox x:Name="SpellFilterTextBox" Margin="0,17.805,0,0" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBox x:Name="SpellFilterTextBox" Margin="0,17.805,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top"  VerticalAlignment="Top" d:LayoutOverrides="Width"/>
     			</Grid>
             </TabItem>
             <TabItem x:Name="FeatsTab" Margin="-2,-2,-2,-1">
@@ -72,7 +72,7 @@
             	<Grid>
             		<CheckBox x:Name="SelectAllFeatsCheckbox" Content="Select All" HorizontalAlignment="Left" Margin="0,2.707,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" IsChecked="True" Click="SelectAllFeatsCheckbox_Click" />
             		<ListBox x:Name="FeatsList" ItemTemplate="{DynamicResource ExportItemTemplate}" ItemsSource="{Binding}" Margin="0,39.765,0,0" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}"/>
-            		<TextBox x:Name="FeatFilterTextBox" Margin="0,17.805,0,0" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBox x:Name="FeatFilterTextBox" Margin="0,17.805,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top"  VerticalAlignment="Top" d:LayoutOverrides="Width"/>
             	</Grid>
             </TabItem>
             <TabItem x:Name="ConditionsTab">
@@ -82,7 +82,7 @@
             	<Grid>
             		<CheckBox x:Name="SelectAllConditionsCheckbox" Content="Select All" HorizontalAlignment="Left" Margin="0,2.707,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" IsChecked="True" Click="SelectAllConditionsCheckbox_Click" />
             		<ListBox x:Name="ConditionsList" ItemTemplate="{DynamicResource ExportItemTemplate}" ItemsSource="{Binding}" Margin="0,39.765,0,0" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}"/>
-            		<TextBox x:Name="ConditionFilterTextBox" Margin="0,17.805,0,0" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBox x:Name="ConditionFilterTextBox" Margin="0,17.805,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top"  VerticalAlignment="Top" d:LayoutOverrides="Width"/>
             	</Grid>
     		</TabItem>
     	</TabControl>

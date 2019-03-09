@@ -242,14 +242,14 @@
 						<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
 					</Border.Background>
 				</Border>
-				<TextBox HorizontalAlignment="Stretch" Margin="8,8,78.864,0" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="Auto"/>
+				<TextBox HorizontalAlignment="Stretch" Margin="8,8,78.864,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="Auto"/>
 				<ComboBox HorizontalAlignment="Right" Margin="0,8,28,0" VerticalAlignment="Top" Width="46.864" SelectedIndex="{Binding AbilityTypeIndex}">
 					<ComboBoxItem Content="Ex"/>
 					<ComboBoxItem Content="Sp"/>
 					<ComboBoxItem Content="Su"/>
 					<ComboBoxItem Content="-"/>
 				</ComboBox>
-				<TextBox Margin="8,33.99,8,8.01" TextWrapping="Wrap" Text="{Binding Text}" VerticalAlignment="Stretch" Height="70" VerticalScrollBarVisibility="Auto" Width="Auto"/>
+				<TextBox Margin="8,33.99,8,8.01" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Text}" VerticalAlignment="Stretch" Height="70" VerticalScrollBarVisibility="Auto" Width="Auto"/>
 				<Button x:Name="SpecialAbilityDeleteButton" RenderTransformOrigin="0.222,-0.601" Grid.Column="0" Width="16" Height="16" Grid.Row="0" Grid.ColumnSpan="1" VerticalAlignment="Top" HorizontalAlignment="Right" Style="{DynamicResource ButtonSecondaryStyle}" Margin="0,10.294,8,0" Click="SpecialAbilityDeleteButton_Click">
 					<Button.ToolTip>Delete</Button.ToolTip>
 					<Path Data="M1,1 L7,7 M7,1 L1,7" Width="8" Height="8" Stroke="Black" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
@@ -683,10 +683,10 @@
 								</Border.Effect>
 								<Grid Height="89.68" VerticalAlignment="Top">
 									<TextBlock HorizontalAlignment="Left" Margin="6.039,63.72,0,0" TextWrapping="Wrap" Text="Space" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold"/>
-									<TextBox Text="{Binding Adjuster.LandSpeed}" HorizontalAlignment="Left" Margin="47.917,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" d:LayoutOverrides="VerticalAlignment" RenderTransformOrigin="0.369,0.335"/>
+									<TextBox Text="{Binding Adjuster.LandSpeed}" HorizontalAlignment="Left" Margin="47.917,8,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Width="30" d:LayoutOverrides="VerticalAlignment" RenderTransformOrigin="0.369,0.335"/>
 									<TextBlock Margin="89.711,63.72,0,0" TextWrapping="Wrap" Text="Reach" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="Black" FontWeight="Bold"/>
 									<TextBlock HorizontalAlignment="Left" Margin="89.711,11,0,0" TextWrapping="Wrap" Text="Fly" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold"/>
-									<TextBox Text="{Binding Adjuster.FlySpeed, Converter={StaticResource SpeedValueConverter}}" Margin="135.125,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.369,0.335" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="30"/>
+									<TextBox Text="{Binding Adjuster.FlySpeed, Converter={StaticResource SpeedValueConverter}}" Margin="135.125,8,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" RenderTransformOrigin="0.369,0.335" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="30"/>
 									<ComboBox HorizontalAlignment="Right" Margin="0,8,8,0" VerticalAlignment="Top" Width="79.5" SelectedIndex="{Binding Adjuster.FlyQuality}">
 										<ComboBoxItem Content="Clumsy"/>
 										<ComboBoxItem Content="Poor"/>
@@ -694,14 +694,14 @@
 										<ComboBoxItem Content="Good"/>
 										<ComboBoxItem Content="Perfect"/>
 									</ComboBox>
-									<TextBox Text="{Binding Adjuster.ClimbSpeed, Converter={StaticResource SpeedValueConverter}}" HorizontalAlignment="Left" Margin="47.917,33.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.369,0.335"/>
+									<TextBox Text="{Binding Adjuster.ClimbSpeed, Converter={StaticResource SpeedValueConverter}}" HorizontalAlignment="Left" Margin="47.917,33.96,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.369,0.335"/>
 									<TextBlock Margin="89.711,37.76,125.5,31.96" TextWrapping="Wrap" Text="Burrow" Foreground="Black" FontWeight="Bold" d:LayoutOverrides="Width, Height"/>
-									<TextBox Text="{Binding Adjuster.BurrowSpeed, Converter={StaticResource SpeedValueConverter}}" Margin="135.125,33.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.369,0.335" HorizontalAlignment="Left" Width="30"/>
+									<TextBox Text="{Binding Adjuster.BurrowSpeed, Converter={StaticResource SpeedValueConverter}}" Margin="135.125,33.96,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" RenderTransformOrigin="0.369,0.335" HorizontalAlignment="Left" Width="30"/>
 									<TextBlock HorizontalAlignment="Left" Margin="169.125,36.76,0,32.96" TextWrapping="Wrap" Text="Swim" Foreground="Black" RenderTransformOrigin="0.32,0.477" FontWeight="Bold" d:LayoutOverrides="Height"/>
-									<TextBox Text="{Binding Adjuster.SwimSpeed, Converter={StaticResource SpeedValueConverter}}" Margin="0,34.76,8,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.369,0.335" HorizontalAlignment="Right" Width="30"/>
+									<TextBox Text="{Binding Adjuster.SwimSpeed, Converter={StaticResource SpeedValueConverter}}" Margin="0,34.76,8,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" RenderTransformOrigin="0.369,0.335" HorizontalAlignment="Right" Width="30"/>
 									<TextBlock HorizontalAlignment="Left" Margin="6.176,37.76,0,31.96" TextWrapping="Wrap" Text="Climb" Foreground="Black" FontWeight="Bold" d:LayoutOverrides="Height"/>
-									<TextBox Text="{Binding Space, Converter={StaticResource FtPropertyConverter}}" HorizontalAlignment="Left" Margin="47.917,60.72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
-									<TextBox Text="{Binding Reach, Converter={StaticResource FtPropertyConverter}}" Margin="135.125,60.72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.958,0.555" HorizontalAlignment="Left" Width="30"/>
+									<TextBox Text="{Binding Space, Converter={StaticResource FtPropertyConverter}}" HorizontalAlignment="Left" Margin="47.917,60.72,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Width="30"/>
+									<TextBox Text="{Binding Reach, Converter={StaticResource FtPropertyConverter}}" Margin="135.125,60.72,0,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" RenderTransformOrigin="1.958,0.555" HorizontalAlignment="Left" Width="30"/>
 									<TextBlock HorizontalAlignment="Left" Margin="4.332,11,0,0" TextWrapping="Wrap" Text="Speed" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold"/>
 								</Grid>
 							</Border>
@@ -756,13 +756,13 @@
 								</Border.Background>
 								<Grid>
 									<TextBlock HorizontalAlignment="Left" Margin="8,5,0,0" TextWrapping="Wrap" Text="Special Attacks" VerticalAlignment="Top" Foreground="White" d:LayoutOverrides="VerticalAlignment" FontWeight="Bold"/>
-									<TextBox Margin="8,24.84,8,0" Text="{Binding SpecialAttacks}" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" d:LayoutOverrides="VerticalAlignment" VerticalScrollBarVisibility="Auto"/>
+									<TextBox Margin="8,24.84,8,0" Text="{Binding SpecialAttacks}" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Height="60" d:LayoutOverrides="VerticalAlignment" VerticalScrollBarVisibility="Auto"/>
 									<TextBlock HorizontalAlignment="Left" Margin="8,88.84,0,0" TextWrapping="Wrap" Text="Spell-Like Abilities" VerticalAlignment="Top" Foreground="White" d:LayoutOverrides="VerticalAlignment" FontWeight="Bold"/>
-									<TextBox Margin="8,108.8,8,0" Text="{Binding Adjuster.SpellLikeAbilities}" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" VerticalScrollBarVisibility="Auto"/>
+									<TextBox Margin="8,108.8,8,0" Text="{Binding Adjuster.SpellLikeAbilities}" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Height="60" VerticalScrollBarVisibility="Auto"/>
 									<TextBlock HorizontalAlignment="Left" Margin="8,172.8,0,0" TextWrapping="Wrap" Text="Spells Known" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
-									<TextBox Margin="8,192.76,8,0" Text="{Binding Adjuster.SpellsKnown}" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" VerticalScrollBarVisibility="Auto"/>
+									<TextBox Margin="8,192.76,8,0" Text="{Binding Adjuster.SpellsKnown}" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Height="60" VerticalScrollBarVisibility="Auto"/>
 									<TextBlock HorizontalAlignment="Left" Margin="8,256.76,0,0" TextWrapping="Wrap" Text="Spells Prepared" VerticalAlignment="Top" Foreground="White" FontWeight="Bold"/>
-									<TextBox Margin="8,276.72,8,0" Text="{Binding Adjuster.SpellsPrepared}" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" VerticalScrollBarVisibility="Auto"/></Grid>
+									<TextBox Margin="8,276.72,8,0" Text="{Binding Adjuster.SpellsPrepared}" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Height="60" VerticalScrollBarVisibility="Auto"/></Grid>
 							</Border>
 						</Grid>
 					</Border>
@@ -819,7 +819,7 @@
 							<TextBlock Text="Racial Modifiers" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,4.25,0,0" Foreground="White" FontWeight="Bold"/>
 							<TextBox Text="{Binding RacialMods, UpdateSourceTrigger=PropertyChanged}" Margin="8,24.21,8,0" VerticalAlignment="Top"/>
 							<TextBlock Text="Aura" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" Margin="8,50.17,0,35.71" d:LayoutOverrides="Height, GridBox"/>
-							<TextBox x:Name="AuraTextBox" Margin="8,0,8,9.75" TextWrapping="Wrap" Text="{Binding Aura}" VerticalAlignment="Bottom"/></Grid>
+							<TextBox x:Name="AuraTextBox" Margin="8,0,8,9.75" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Aura}" VerticalAlignment="Bottom"/></Grid>
 					</Border>
 					<Border Margin="0,111.673,5.991,8" CornerRadius="6">
 						<Border.Effect>
@@ -852,19 +852,19 @@
 							<Grid Margin="0,3,0,0"/>
 							<StackPanel Margin="0,3,0,0">
 								<TextBlock Text="Languages" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" HorizontalAlignment="Left" FontWeight="Bold"/>
-								<TextBox Text="{Binding Languages, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,0,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+								<TextBox Text="{Binding Languages, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,0,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalContentAlignment="Top"/>
 							</StackPanel>
 							<StackPanel Margin="0,3,0,0">
 								<TextBlock Text="SQ" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" FontWeight="Bold"/>
-								<TextBox  Text="{Binding SQ, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+								<TextBox  Text="{Binding SQ, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalContentAlignment="Top"/>
 							</StackPanel>
 							<StackPanel Margin="0,3,0,0">
 								<TextBlock Text="Gear" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" FontWeight="Bold"/>
-								<TextBox Text="{Binding Gear, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+								<TextBox Text="{Binding Gear, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalContentAlignment="Top"/>
                                 </StackPanel>
                                 <StackPanel Margin="0,3,0,0">
                                     <TextBlock Text="Other Gear" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,0,0,3" Foreground="White" FontWeight="Bold"/>
-                                    <TextBox Text="{Binding OtherGear, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+                                    <TextBox Text="{Binding OtherGear, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="3,3,8,0" Height="58" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalContentAlignment="Top"/>
                                 </StackPanel>
                             </StackPanel>
 					</Border>
@@ -1163,11 +1163,11 @@
                     			<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Organization" VerticalAlignment="Top" Margin="3,2,11,2" Foreground="White" FontWeight="Bold"/>
                     			<TextBox Text="{Binding Organization}" />
                                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Treasure" VerticalAlignment="Top" Margin="3,2,11,2" Foreground="White" FontWeight="Bold"/>
-                    			<TextBox Text="{Binding Treasure}" Height="55" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                    			<TextBox Text="{Binding Treasure}" Height="55" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
                                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Before Combat" VerticalAlignment="Top" Margin="3,2,11,2" Foreground="White" FontWeight="Bold"/>
-                    			<TextBox Text="{Binding BeforeCombat}" Height="72" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                    			<TextBox Text="{Binding BeforeCombat}" Height="72" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
                                 <TextBlock TextWrapping="Wrap" Text="During Combat" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="3,2,11,2" Foreground="White" FontWeight="Bold"/>
-                    			<TextBox Text="{Binding DuringCombat}" Height="73" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                    			<TextBox Text="{Binding DuringCombat}" Height="73" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
                             </StackPanel>
                         </Border>
                         <Border Grid.Column="1" Padding="6" CornerRadius="6">
@@ -1179,11 +1179,11 @@
                         	</Border.Background>
                             <StackPanel >
                                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Morale" VerticalAlignment="Top" Margin="3,2,4,2" FontWeight="Bold" Foreground="White"/>
-                    			<TextBox Text="{Binding Morale}" Width="304.797" Height="62" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                    			<TextBox Text="{Binding Morale}" Width="304.797" Height="62" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
                                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Visual Description" VerticalAlignment="Top" Margin="3,2,4,2" FontWeight="Bold" Foreground="White"/>
-                    			<TextBox Text="{Binding Description_Visual}" Width="304.797" Height="62" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+                    			<TextBox Text="{Binding Description_Visual}" Width="304.797" Height="62" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
                                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Margin="3,2,4,2" FontWeight="Bold" Foreground="White"/>
-                                <TextBox Text="{Binding Description}" TextWrapping="Wrap" AcceptsReturn="True" Height="159.96" Margin="0,0,0.001,0" VerticalScrollBarVisibility="Auto" TextChanged="TextBox_TextChanged"/>
+                                <TextBox Text="{Binding Description}" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" Height="159.96" Margin="0,0,0.001,0" VerticalScrollBarVisibility="Auto" TextChanged="TextBox_TextChanged"/>
             		      </StackPanel>
                       </Border>
                     </Grid>

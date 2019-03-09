@@ -70,7 +70,13 @@
         <local:ParenthesesPropertyConverter x:Key="ParenthesesPropertyConverter"/>
         <local:SpellSchoolIndexConverter x:Key="SpellSchoolIndexConverter"/>
         <local:KeyToStringConverter x:Key="KeyToStringConverter"/>
-        <Style x:Key="ButtonMainStyle" TargetType="{x:Type Control}">
+        <Style x:Key="ControlStyle" TargetType="{x:Type Control}">
+            <Setter Property="FontFamily" Value="/CombatManager;component/Fonts/#Cabin"/>
+        </Style>
+        <Style x:Key="ButtonBaseStyle" BasedOn="{StaticResource ControlStyle}" TargetType="{x:Type Control}">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ButtonMainStyle" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="{x:Type Control}">
             <Setter Property="Background" Value="{DynamicResource PrimaryColorGradientBrush}" />
             <Setter Property="Foreground" Value="White"/>
             <Style.Triggers>
@@ -81,11 +87,11 @@
             </Style.Triggers>
 
         </Style>
-		 <Style x:Key="ButtonSecondaryStyle" TargetType="{x:Type Control}">
+        <Style x:Key="ButtonSecondaryStyle" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="{x:Type Control}">
             <Setter Property="Background" Value="{DynamicResource SecondaryColorBGradientBrush}" />
             <Setter Property="Foreground" Value="White"/>
         </Style>
-		 <Style x:Key="ButtonSecondaryAStyle" TargetType="{x:Type Control}">
+        <Style x:Key="ButtonSecondaryAStyle" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="{x:Type Control}">
             <Setter Property="Background" Value="{DynamicResource SecondaryColorAGradientBrush}" />
             <Setter Property="Foreground" Value="White"/>
         </Style>
@@ -116,8 +122,11 @@
         			<GradientStop Color="{DynamicResource SecondaryColorBDarker}" Offset="0.447"/>
         			<GradientStop Color="{DynamicResource SecondaryColorBLight}" Offset="0"/>
         </LinearGradientBrush>
-		
-		 <Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
+        <ImageBrush x:Key="FancyBackgroundBrush" ImageSource="Images/CM-Back.png">
+            
+        </ImageBrush>
+
+        <Style x:Key="TabControlStyle1"  BasedOn="{StaticResource ControlStyle}" TargetType="{x:Type TabControl}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="Padding" Value="4,4,4,4"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -186,6 +195,7 @@
 			 <Setter Property="Foreground" Value="Black"/>
 			 <Setter Property="SelectionBrush" Value="#FF3399FF" />
 			 <Setter Property="BorderBrush" Value="#FFABADB3" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
         <Style TargetType="{x:Type Button}">
              <Setter Property="Background" Value="#FFDDDDDD"/>

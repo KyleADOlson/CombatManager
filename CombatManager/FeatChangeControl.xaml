@@ -40,7 +40,7 @@
 			</Grid.ColumnDefinitions>
 			<ListBox x:Name="CurrentFeatsBox" Margin="0,0,8,25.96" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" HorizontalContentAlignment="Stretch" SelectionChanged="CurrentFeatsBox_SelectionChanged" Grid.RowSpan="2" />
 			<ListBox x:Name="SelectFeatBox" Margin="8,1.96,0,25.96" Grid.Column="1" ItemsSource="{Binding}" MouseDoubleClick="SelectFeatBox_MouseDoubleClick" ItemTemplate="{DynamicResource DataTemplate1}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Width="280" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" />
-			<TextBox x:Name="FeatFilterTextBox" Grid.Column="1" Margin="8,0,0,2.04" TextWrapping="Wrap" TextChanged="FeatFilterTextBox_TextChanged" d:LayoutOverrides="Height" />
+        <TextBox x:Name="FeatFilterTextBox" Grid.Column="1" Margin="8,0,0,2.04" TextWrapping="Wrap" VerticalContentAlignment="Top"  TextChanged="FeatFilterTextBox_TextChanged" d:LayoutOverrides="Height" />
 			<Button x:Name="AddButton" Content="Add" Grid.Column="1" HorizontalAlignment="Right" Width="75" Click="AddButton_Click" Grid.Row="1" VerticalAlignment="Bottom"/>
 
 	</Grid>

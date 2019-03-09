@@ -37,10 +37,10 @@
         <Rectangle Grid.Row="1" Fill="{DynamicResource PrimaryColorGradientBrush}"/>
         
         <TextBlock HorizontalAlignment="Left" Margin="8,3,0,3" Grid.Row="1" TextWrapping="Wrap" Text="Melee" FontWeight="Bold" d:LayoutOverrides="Height" Foreground="White"/>
-        <TextBox x:Name="MeleeTextBox" Margin="8,3.84,8,8" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="MeleeTextBox" Margin="8,3.84,8,8" Grid.Row="2" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto"/>
         <Rectangle Grid.Row="3" Fill="{DynamicResource PrimaryColorGradientBrush}"/>
         <TextBlock HorizontalAlignment="Left" Margin="8,3,0,3" Grid.Row="3" TextWrapping="Wrap" Text="Ranged" FontWeight="Bold" d:LayoutOverrides="Height" Foreground="White"/>
-        <TextBox x:Name="RangedTextBox" Margin="8,5.067,8,8" Grid.Row="4" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="RangedTextBox" Margin="8,5.067,8,8" Grid.Row="4" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto"/>
         <Rectangle Grid.Row="5">
         	<Rectangle.Fill>
         		<SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>

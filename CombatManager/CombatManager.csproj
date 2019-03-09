@@ -396,6 +396,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <Resource Include="Fonts\Cabin-Bold.otf" />
+    <Resource Include="Fonts\Cabin-BoldItalic.otf" />
+    <Resource Include="Fonts\Cabin-Italic.otf" />
+    <Resource Include="Fonts\Cabin-Medium.otf" />
+    <Resource Include="Fonts\Cabin-MediumItalic.otf" />
+    <Resource Include="Fonts\Cabin-Regular.otf" />
+    <Resource Include="Fonts\Cabin-SemiBold.otf" />
+    <Resource Include="Fonts\Cabin-SemiBoldItalic.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -562,6 +570,8 @@
     <Resource Include="Images\CheckBoxUnchecked%402x.png" />
     <Resource Include="Images\CheckBoxUnchecked.png" />
     <Resource Include="Images\coins-16%402x.png" />
+    <Resource Include="Images\CombatManagerGraphic.png" />
+    <Resource Include="Images\CM-Back.png" />
     <Content Include="Images\d10-16%402x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

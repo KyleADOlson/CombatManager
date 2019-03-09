@@ -8554,7 +8554,7 @@
     <CMD>14</CMD>
     <RacialMods>+4 Linguistics, +2 Perception, +2 Stealth</RacialMods>
     <Languages>Common, Tengu</Languages>
-    <SQ>advanced rogue talents (rumormongerUC), gifted linguist, grand hoaxUC, natural born liarUC, rogue talents (convincing lieUC), swordtrained</SQ>
+    <SQ>advanced rogue talents (rumormonger), gifted linguist, grand hoax, natural born liar, rogue talents (convincing lie), swordtrained</SQ>
     <Environment> any</Environment>
     <Organization>solitary</Organization>
     <Treasure>NPC gear (masterwork studded leather, masterwork rapier, masterwork light crossbow with 20 bolts, potions of cure light wounds [2], potion of invisibility, alchemist's fire, antitoxin, smokesticks [2], tanglefoot bag, thunderstone, other treasure)</Treasure>
@@ -10947,7 +10947,7 @@
     <BaseAtk>2</BaseAtk>
     <CMB>+2</CMB>
     <CMD>14</CMD>
-    <SQ>briberyPOTIS, conceal itemPOTIS, distractionPOTIS, rogue talents (fast stealth)</SQ>
+    <SQ>bribery, conceal item, distraction, rogue talents (fast stealth)</SQ>
     <Environment> any oceans or coastlines</Environment>
     <Organization>solitary, pair, or team (3-5)</Organization>
     <Treasure>NPC gear (masterwork studded leather, sap, masterwork scimitar, shortbow with 20 arrows, potion of eagle's splendor, potions of invisibility [2], other treasure)</Treasure>
@@ -11213,7 +11213,7 @@
     <CMD>17</CMD>
     <RacialMods>+2 Perception</RacialMods>
     <Languages>Common, Elven, Shoanti, Varisian</Languages>
-    <SQ>elf blood, poison use, rogue talents (bleeding attack +3, lasting poisonAPG), trapfinding +2</SQ>
+    <SQ>elf blood, poison use, rogue talents (bleeding attack +3, lasting poison), trapfinding +2</SQ>
     <Environment> any urban (Magnimar)</Environment>
     <Organization>solitary</Organization>
     <Treasure>NPC gear (+1 studded leather, +1 hand crossbow, daggers (5), short sword, potion of cure moderate wounds, potions of invisibility [2], shadow essence, other treasure)</Treasure>
@@ -18581,7 +18581,7 @@
     <SQ>favored terrain (forest +2), martial training, swift tracking  Other</SQ>
     <Environment> temperate forests</Environment>
     <Organization>solitary, pair, or band (3-6)</Organization>
-    <Treasure>standard (sickle, masterwork composite longbow [Str +4] with 20 arrows, wooden armorAPG, other treasure)</Treasure>
+    <Treasure>standard (sickle, masterwork composite longbow [Str +4] with 20 arrows, wooden armor, other treasure)</Treasure>
     <Source>AP 73</Source>
     <IsTemplate>0</IsTemplate>
     <CharacterFlag>0</CharacterFlag>
@@ -22596,7 +22596,7 @@
     <CR>1/2</CR>
     <XP>200</XP>
     <Race>Female changeling</Race>
-    <Class>witchAPG 1</Class>
+    <Class>witch 1</Class>
     <Alignment>LN</Alignment>
     <Size>Medium</Size>
     <Type>humanoid</Type>
@@ -30496,7 +30496,7 @@
     <Will>1</Will>
     <Save_Mods>+2 vs. mind-affecting effects and poison</Save_Mods>
     <Speed>30 ft.</Speed>
-    <Melee>naginataUC +5 (1d8+4/x4) or claw +4 (1d4+4)</Melee>
+    <Melee>naginata +5 (1d8+4/x4) or claw +4 (1d4+4)</Melee>
     <Ranged>longbow +3 (1d8/x3)</Ranged>
     <Space>5 ft.</Space>
     <Reach>5 ft. (10 ft. with naginata)</Reach>
@@ -31947,7 +31947,7 @@
     <CR>1/2</CR>
     <XP>200</XP>
     <Race>Male samsaran</Race>
-    <Class>oracleAPG 1</Class>
+    <Class>oracle 1</Class>
     <Alignment>N</Alignment>
     <Size>Medium</Size>
     <Type>humanoid</Type>
@@ -34851,7 +34851,7 @@
     <CR>1/2</CR>
     <XP>200</XP>
     <Race>Female wyvaran</Race>
-    <Class>inquisitorAPG 1</Class>
+    <Class>inquisitor 1</Class>
     <Alignment>LN</Alignment>
     <Size>Medium</Size>
     <Type>dragon</Type>
@@ -35796,13 +35796,13 @@
     <Ranged>sling +9 (1d4+2)</Ranged>
     <Space>5 ft.</Space>
     <Reach>5 ft.</Reach>
-    <SpellDomains>DesertUM</SpellDomains>
+    <SpellDomains>Desert</SpellDomains>
     <AbilitiyScores>Str 14, Dex 16, Con 14, Int 10, Wis 16, Cha 8</AbilitiyScores>
     <BaseAtk>6</BaseAtk>
     <CMB>+8</CMB>
     <CMD>23</CMD>
     <Languages>Common, Druidic, Osiriani</Languages>
-    <SQ>nature bond (Desert domainUM), nature sense, trackless step, wild empathy +8, woodland stride</SQ>
+    <SQ>nature bond (Desert domain), nature sense, trackless step, wild empathy +8, woodland stride</SQ>
     <Environment> any (Osirion)</Environment>
     <Organization>solitary</Organization>
     <Treasure>NPC gear (+1 leather armor, mwk scimitar, sling with 10 bullets, belt of incredible dexterity +2, campfire bead, ring of protection +1, wand of cure moderate wounds [16 charges], wand of endure elements [20 charges], 40 gp)</Treasure>
@@ -38710,7 +38710,7 @@
     <SQ>change shape (boar; beast shape I), copper boar form, dwarf blood, shock cestus</SQ>
     <Environment> any (Heaven)</Environment>
     <Organization>solitary, pair, or team (3-5)</Organization>
-    <Treasure>standard (masterwork cestusUE, other treasure)</Treasure>
+    <Treasure>standard (masterwork cestus, other treasure)</Treasure>
     <Source>Inner Sea Gods</Source>
     <IsTemplate>0</IsTemplate>
     <CharacterFlag>0</CharacterFlag>
@@ -39862,7 +39862,7 @@
     <Burrow>0</Burrow>
     <Swim>0</Swim>
     <Land>1</Land>
-    <ExtractsPrepared>Alchemist Extracts Prepared (CL 7th) 3rd-absorbing touchAPG, heroism 2nd-alchemical allocationAPG, barkskin, false life, invisibility 1st-bomber's eyeAPG, cure light wounds, disguise self, expeditious retreat, shield</ExtractsPrepared>
+    <ExtractsPrepared>Alchemist Extracts Prepared (CL 7th) 3rd-absorbing touch, heroism 2nd-alchemical allocation, barkskin, false life, invisibility 1st-bomber's eye, cure light wounds, disguise self, expeditious retreat, shield</ExtractsPrepared>
     <DontUseRacialHD>0</DontUseRacialHD>
     <id>6095</id>
     <UniqueMonster>0</UniqueMonster>
@@ -40685,7 +40685,7 @@
     <Alignment>LN</Alignment>
     <Size>Medium</Size>
     <Type>outsider</Type>
-    <SubType>(earth, elemental, extraplanar, mythicMA)</SubType>
+    <SubType>(earth, elemental, extraplanar, mythic)</SubType>
     <Init>10</Init>
     <Senses>darkvision 60 ft., tremorsense 120 ft.; Perception +26</Senses>
     <Aura>frightful presence (30 ft., DC 27)</Aura>
@@ -41632,7 +41632,7 @@
     <Alignment>N</Alignment>
     <Size>Large</Size>
     <Type>construct</Type>
-    <SubType>(extraplanar, heraldISG)</SubType>
+    <SubType>(extraplanar, herald)</SubType>
     <Init>8</Init>
     <Senses>darkvision 60 ft., low-light vision; Perception +22</Senses>
     <AC>31, touch 13, flat-footed 27</AC>
@@ -42631,7 +42631,7 @@
     <Size>Large</Size>
     <Type>aberration</Type>
     <Init>8</Init>
-    <Senses>darkvision 60 ft., diagnose diseaseUM, true seeing; Perception +26</Senses>
+    <Senses>darkvision 60 ft., diagnose disease, true seeing; Perception +26</Senses>
     <AC>30, touch 25, flat-footed 26</AC>
     <AC_Mods>(+4 Dex, +12 insight, +5 natural, -1 size)</AC_Mods>
     <HP>200</HP>
@@ -43408,7 +43408,7 @@
     <Alignment>NE</Alignment>
     <Size>Large</Size>
     <Type>outsider</Type>
-    <SubType>(evil, heraldISG)</SubType>
+    <SubType>(evil, herald)</SubType>
     <Init>8</Init>
     <Senses>darkvision 60 ft., scent, see in darkness; Perception +23</Senses>
     <Aura>frightful presence (30 ft., DC 22), unluck (30 ft.)</Aura>
@@ -43568,7 +43568,7 @@
     <Alignment>N</Alignment>
     <Size>Colossal</Size>
     <Type>construct</Type>
-    <SubType>(colossusB4, mythicMA)</SubType>
+    <SubType>(colossusB4, mythic)</SubType>
     <Init>1</Init>
     <Senses>darkvision 60 ft., low-light vision; Perception +11</Senses>
     <Aura>blazing courage (30 ft.), selective antimagic (30 ft.)</Aura>
@@ -43797,7 +43797,7 @@
     <CMB>+4</CMB>
     <CMD>16</CMD>
     <Languages>Common, Halfling</Languages>
-    <SQ>gaseous form, rogue talents (strong impressionAPG), shadowless, spider climb, trapfinding +1</SQ>
+    <SQ>gaseous form, rogue talents (strong impression), shadowless, spider climb, trapfinding +1</SQ>
     <Environment> any</Environment>
     <Organization>gang (2-8) or family (vampire plus 2-8)</Organization>
     <Treasure>NPC Gear (chain shirt, dagger, other treasure)</Treasure>
@@ -46124,7 +46124,7 @@
     <Alignment>LE</Alignment>
     <Size>Large</Size>
     <Type>outsider</Type>
-    <SubType>(evil, giant, heraldISG, lawful)</SubType>
+    <SubType>(evil, giant, herald, lawful)</SubType>
     <Init>3</Init>
     <Senses>darkvision 120 ft., low-light vision; Perception +21</Senses>
     <Aura>courage (20 ft.)</Aura>
@@ -46761,7 +46761,7 @@
     <SQ>change shape (human, hybrid, and wolf; polymorph), favored terrain (forest +2), hunter's bond (companions), lycanthropic empathy (wolves and dire wolves), track +2, trapfinding +2, wild empathy +3</SQ>
     <Environment> Any land</Environment>
     <Organization>solitary, pair, pack (2-4), or warband (2-6 silverblood werewolves, 2-8 werewolves, and 10-20 hobgoblins)</Organization>
-    <Treasure>NPC gear (mwk chain shirt, mwk buckler, mwk bardiche, mwk composite longbow [+4 Str] with 20 arrows, cloak of resistance +1, backpack, bear trapsAPG [2], masterwork thieves' tools, other treasure)</Treasure>
+    <Treasure>NPC gear (mwk chain shirt, mwk buckler, mwk bardiche, mwk composite longbow [+4 Str] with 20 arrows, cloak of resistance +1, backpack, bear traps [2], masterwork thieves' tools, other treasure)</Treasure>
     <Group>Silverblood Lycanthrope</Group>
     <Source>Andoran Birthplace Of Freedom</Source>
     <IsTemplate>1</IsTemplate>
@@ -46813,7 +46813,7 @@
     <SQ>change shape (human, hybrid, and wolf; polymorph), favored terrain (forest +2), hunter's bond (companions), lycanthropic empathy (wolves and dire wolves), track +2, trapfinding +2, wild empathy +3</SQ>
     <Environment> Any land</Environment>
     <Organization>solitary, pair, pack (2-4), or warband (2-6 silverblood werewolves, 2-8 werewolves, and 10-20 hobgoblins)</Organization>
-    <Treasure>NPC gear (mwk chain shirt, mwk buckler, mwk bardiche, mwk composite longbow [+4 Str] with 20 arrows, cloak of resistance +1, backpack, bear trapsAPG [2], masterwork thieves' tools, other treasure)</Treasure>
+    <Treasure>NPC gear (mwk chain shirt, mwk buckler, mwk bardiche, mwk composite longbow [+4 Str] with 20 arrows, cloak of resistance +1, backpack, bear traps [2], masterwork thieves' tools, other treasure)</Treasure>
     <Group>Silverblood Lycanthrope</Group>
     <Source>Andoran Birthplace Of Freedom</Source>
     <IsTemplate>1</IsTemplate>
@@ -48110,7 +48110,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 5th; concentration +9)   7 PE-dispel magic (3 PE), id insinuation IOA (2 PE, DC 16), object readingOA (1 PE), scorching ray (2 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 5th; concentration +9)   7 PE-dispel magic (3 PE), id insinuation IOA (2 PE, DC 16), object reading (1 PE), scorching ray (2 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Baku Dreamweaver</Name>
@@ -48160,7 +48160,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 18th; concentration +26)  30 PE-deep slumber (3 PE, DC 21), dream scanOA (5 PE, DC 23), dream voyageOA (9 PE), incorporeal chainsOA (6 PE), modify memory (5 PE, DC 23)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 18th; concentration +26)  30 PE-deep slumber (3 PE, DC 21), dream scan (5 PE, DC 23), dream voyage (9 PE), incorporeal chains (6 PE), modify memory (5 PE, DC 23)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Caulborn Thoughtkeeper</Name>
@@ -48211,7 +48211,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 9th; concentration +15)   10 PE-burst of insightOA (1 PE), emotive blockOA (3 PE, DC 19), greater oneiric horrorOA (4 PE, DC 20), mind thrust III OA (3 PE, DC 19), mindscape doorOA (3 PE, DC 19), mindwipeOA (4 PE, DC 20), telekinetic maneuverOA (3 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 9th; concentration +15)   10 PE-burst of insight (1 PE), emotive block (3 PE, DC 19), greater oneiric horror (4 PE, DC 20), mind thrust III OA (3 PE, DC 19), mindscape door (3 PE, DC 19), mindwipe (4 PE, DC 20), telekinetic maneuver (3 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Cerebric Cyst</Name>
@@ -48260,7 +48260,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 10th; concentration +14)   9 PE-mind thrust IIIOA (3 PE, DC 17), synaptic pulseOA (3 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 10th; concentration +14)   9 PE-mind thrust IIIOA (3 PE, DC 17), synaptic pulse (3 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Chyzaedu</Name>
@@ -48360,7 +48360,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 9th; concentration +14)  12 PE-detect magic (0 PE), hypercognitionOA (2 PE), instigate psychic duelOA (2 PE, DC 17), mind thrust IIOA (2 PE, DC 17), mindlinkOA (1 PE), mindscape doorOA (3 PE, DC 18), psychic asylumOA (5 PE), synaptic pulseOA (3 PE, DC 18), thought shield IIIOA (4 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 9th; concentration +14)  12 PE-detect magic (0 PE), hypercognition (2 PE), instigate psychic duel (2 PE, DC 17), mind thrust IIOA (2 PE, DC 17), mindlink (1 PE), mindscape door (3 PE, DC 18), psychic asylum (5 PE), synaptic pulse (3 PE, DC 18), thought shield IIIOA (4 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Dark Empath</Name>
@@ -48410,7 +48410,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 3rd; concentration +5)   3 PE-mind thrust IOA (1 PE, DC 13), paranoiaOA (1 PE, DC 13), thought echoOA (1 PE, DC 13)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 3rd; concentration +5)   3 PE-mind thrust IOA (1 PE, DC 13), paranoia (1 PE, DC 13), thought echo (1 PE, DC 13)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Painajai</Name>
@@ -48465,7 +48465,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 14th; concentration +18)   25 PE-cognitive blockOA (3 PE, DC 17), confusion (4 PE, DC 18), fear (4 PE, DC 18), greater oneiric horrorOA (4 PE, DC 18), hungry pitAPG (5 PE, DC 19), mental barrier IIOA (3 PE), mirage arcana (5 PE, DC 19), nightmare (5 PE, DC 19), phantasmal killer (4 PE, DC 18), synaptic pulseOA (3 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 14th; concentration +18)   25 PE-cognitive block (3 PE, DC 17), confusion (4 PE, DC 18), fear (4 PE, DC 18), greater oneiric horror (4 PE, DC 18), hungry pit (5 PE, DC 19), mental barrier IIOA (3 PE), mirage arcana (5 PE, DC 19), nightmare (5 PE, DC 19), phantasmal killer (4 PE, DC 18), synaptic pulse (3 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Mnemor</Name>
@@ -48518,7 +48518,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 6th; concentration +9)   16 PE-aversionOA (2 PE, DC 15), calm emotions (2 PE, DC 15), confusion (4 PE, DC 17), deja vuOA (1 PE), invisibility (2 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 6th; concentration +9)   16 PE-aversion (2 PE, DC 15), calm emotions (2 PE, DC 15), confusion (4 PE, DC 17), deja vu (1 PE), invisibility (2 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Dreamthief Hag</Name>
@@ -48570,7 +48570,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 10th; concentration +15)   15 PE-dream councilOA (5 PE, DC 20), dream scanOA (5 PE, DC 20), dream travelOA (6 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 10th; concentration +15)   15 PE-dream council (5 PE, DC 20), dream scan (5 PE, DC 20), dream travel (6 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Duergar Tyrant</Name>
@@ -48627,7 +48627,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 3rd; concentration +3)  5 PE-ironskinMC (2 PE), mind thrust IOA (1 PE)  Kineticist Wild Talents Known  Defense-flesh of stone  Infusions-extended range, kinetic blade (2d6)  Kinetic Blasts-earth blast (2d6+6)  Utility-basic geokinesis, kinetic cover</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 3rd; concentration +3)  5 PE-ironskin (2 PE), mind thrust IOA (1 PE)  Kineticist Wild Talents Known  Defense-flesh of stone  Infusions-extended range, kinetic blade (2d6)  Kinetic Blasts-earth blast (2d6+6)  Utility-basic geokinesis, kinetic cover</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Echohusk</Name>
@@ -48729,7 +48729,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 10th, concentration +14)   24 PE-anticipate thoughtsOA (2 PE, DC 16), ego whip IVOA (6 PE, DC 20), globe of invulnerability (4 PE), id insinuation IIIOA (4 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 10th, concentration +14)   24 PE-anticipate thoughts (2 PE, DC 16), ego whip IVOA (6 PE, DC 20), globe of invulnerability (4 PE), id insinuation IIIOA (4 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Fear Eater</Name>
@@ -48877,7 +48877,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 14th, concentration +16)  15 PE-explode headOA (5 PE, DC 18), greater synaptic pulseOA (5 PE, DC 18), lightning bolt (3 PE, DC 19), mental barrier IIIOA (4 PE), mind probeOA (4 PE, DC 16), mind thrust IVOA (4 PE, DC 16), synapse overloadOA (5 PE, DC 17), synaptic scrambleOA (4 PE, DC 17), thought shield IVOA (5 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 14th, concentration +16)  15 PE-explode head (5 PE, DC 18), greater synaptic pulse (5 PE, DC 18), lightning bolt (3 PE, DC 19), mental barrier IIIOA (4 PE), mind probe (4 PE, DC 16), mind thrust IVOA (4 PE, DC 16), synapse overload (5 PE, DC 17), synaptic scramble (4 PE, DC 17), thought shield IVOA (5 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Cantor</Name>
@@ -49084,7 +49084,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 20th; concentration +27)   27 PE-demand offeringOA (2 PE, DC 19), ego whip VOA (6 PE, DC 23), id insinuation IVOA (5 PE, DC 22), mass inflict painOA (6 PE, DC 23), mind thrust VIOA (6 PE, DC 23), psychic crush VOA (9 PE, DC 26), telekinetic stormOA (9 PE, DC 26)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 20th; concentration +27)   27 PE-demand offering (2 PE, DC 19), ego whip VOA (6 PE, DC 23), id insinuation IVOA (5 PE, DC 22), mass inflict pain (6 PE, DC 23), mind thrust VIOA (6 PE, DC 23), psychic crush VOA (9 PE, DC 26), telekinetic storm (9 PE, DC 26)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Prana Ghost</Name>
@@ -49108,7 +49108,7 @@
     <Ref>15</Ref>
     <Will>10</Will>
     <Save_Mods>+2 vs. enchantments</Save_Mods>
-    <DefensiveAbilities>AC bonus, dual mindedARG, incorporeal, rejuvenation</DefensiveAbilities>
+    <DefensiveAbilities>AC bonus, dual minded, incorporeal, rejuvenation</DefensiveAbilities>
     <Immune>dazing, disease, effects requiring a physical body, exhaustion, fatigue, nonlethal damage, paralysis, poison, sleep effects, stunning</Immune>
     <Weaknesses>living prana</Weaknesses>
     <Speed>fly 30 ft. (perfect)</Speed>
@@ -49120,7 +49120,7 @@
     <BaseAtk>8</BaseAtk>
     <CMB>+15</CMB>
     <CMD>35</CMD>
-    <RacialMods>+10 Perception, +8 Sense Motive, +8 Stealth  Feats AlertnessB, Combat Reflexes, Extra Wild Talent, Improved InitiativeB, Improved Unarmed Strike, Snake FangUC, Snake SidewindUC, Snake StyleUC, ToughnessB, Weapon Focus (unarmed strike)</RacialMods>
+    <RacialMods>+10 Perception, +8 Sense Motive, +8 Stealth  Feats AlertnessB, Combat Reflexes, Extra Wild Talent, Improved InitiativeB, Improved Unarmed Strike, Snake Fang, Snake Sidewind, Snake Style, ToughnessB, Weapon Focus (unarmed strike)</RacialMods>
     <Languages>Celestial, Common, Elven</Languages>
     <SQ>burn (3 points/round, maximum 8), elemental wisdom, elf blood, expanded element (aether), gather power, infusion specialization 3, internal buffer 2, supercharge</SQ>
     <Environment> any</Environment>
@@ -49197,7 +49197,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 21st; concentration +29)   20 PE-aura alterationOA (3 PE, DC 21), emotive blockOA (3 PE, DC 21), greater possessionOA (8 PE, DC 26), id insinuation VOA (6 PE, DC 24), instigate psychic duelOA (2 PE, DC 20), mass synesthesiaOA (6 PE, DC 24), psychic surgeryOA (5 PE, DC 25), suggestion (3 PE, DC 21), synaptic scrambleOA (4 PE, DC 22)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 21st; concentration +29)   20 PE-aura alteration (3 PE, DC 21), emotive block (3 PE, DC 21), greater possession (8 PE, DC 26), id insinuation VOA (6 PE, DC 24), instigate psychic duel (2 PE, DC 20), mass synesthesia (6 PE, DC 24), psychic surgery (5 PE, DC 25), suggestion (3 PE, DC 21), synaptic scramble (4 PE, DC 22)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Psyche Serpent</Name>
@@ -49349,7 +49349,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 4th; concentration +8)  5 PE-babbleOA (2 PE, DC 16), blur (2 PE), deja vuOA (1 PE, DC 15), hideous laughter (1 PE, DC 15), hold person (2 PE, DC 16), hypnotism (1 PE, DC 15), id insinuation IOA (2 PE, DC 16), paranoiaOA (1 PE, DC 15)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 4th; concentration +8)  5 PE-babble (2 PE, DC 16), blur (2 PE), deja vu (1 PE, DC 15), hideous laughter (1 PE, DC 15), hold person (2 PE, DC 16), hypnotism (1 PE, DC 15), id insinuation IOA (2 PE, DC 16), paranoia (1 PE, DC 15)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Avatarana</Name>
@@ -49438,7 +49438,7 @@
     <SQ>implements, psychic learning</SQ>
     <Environment> any land</Environment>
     <Organization>solitary, pair, or clan (3-12)</Organization>
-    <Treasure>NPC gear (studded leather, nine-ring broadswordUE, ring, rod, other treasure)</Treasure>
+    <Treasure>NPC gear (studded leather, nine-ring broadsword, ring, rod, other treasure)</Treasure>
     <Group>Samsaran</Group>
     <Source>Occult Bestiary</Source>
     <IsTemplate>0</IsTemplate>
@@ -49455,7 +49455,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 1st; concentration +2)  5 PE-burst of insightOA (1 PE), detect psychic significanceOA (0 PE), object readingOA (2 PE), psychic readingOA (1 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 1st; concentration +2)  5 PE-burst of insight (1 PE), detect psychic significance (0 PE), object reading (2 PE), psychic reading (1 PE)</PsychicMagic>
     <Implements>Implements  Evocation (rod, 2 points)-Resonant intense focus (+1); Focus energy ray (1d6), radiance (1 min.)  Illusion (ring, 2 points)-Resonant distortion (10%); Focus minor figment (1 round)</Implements>
   </Monster>
   <Monster>
@@ -49506,7 +49506,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 9th, concentration +14)   12 PE-anticipate thoughtsOA (2 PE, DC 17), call spiritOA (5 PE, DC 20), command (1 PE, DC 16), disguise self (1 PE, DC 16), hypnotism (1 PE, DC 16), instigate psychic duelOA (2 PE, DC 17), suggestion (2 PE, DC 17), synesthesiaOA (3 PE, DC 18)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 9th, concentration +14)   12 PE-anticipate thoughts (2 PE, DC 17), call spirit (5 PE, DC 20), command (1 PE, DC 16), disguise self (1 PE, DC 16), hypnotism (1 PE, DC 16), instigate psychic duel (2 PE, DC 17), suggestion (2 PE, DC 17), synesthesia (3 PE, DC 18)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Seugathi Savant</Name>
@@ -49560,7 +49560,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 15th; concentration +19)   12 PE-anticipate thoughtsOA (2 PE, DC 16), detect thoughts (2 PE, DC 16), levitate (2 PE), mental barrier IVU, OA (5 PE), mind fog (5 PE, DC 19), psychic crush IOA (5 PE, DC 19), suggestion (2 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 15th; concentration +19)   12 PE-anticipate thoughts (2 PE, DC 16), detect thoughts (2 PE, DC 16), levitate (2 PE), mental barrier IVU, OA (5 PE), mind fog (5 PE, DC 19), psychic crush IOA (5 PE, DC 19), suggestion (2 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Shotalashu</Name>
@@ -49813,7 +49813,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 7th; concentration +11)  7 PE-burst of adrenalineOA (1 PE), haste (3 PE), mental blockOA (2 PE, DC 16), spider climb (2 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 7th; concentration +11)  7 PE-burst of adrenaline (1 PE), haste (3 PE), mental block (2 PE, DC 16), spider climb (2 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Xill Matriarch</Name>
@@ -49911,7 +49911,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 6th; concentration +7)   5 PE-mindlinkOA (1 PE, DC 12), silent image (1 PE, DC 12), suggestion (2 PE, DC 13)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 6th; concentration +7)   5 PE-mindlink (1 PE, DC 12), silent image (1 PE, DC 12), suggestion (2 PE, DC 13)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Yithian Elder</Name>
@@ -49962,7 +49962,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 19th; concentration +27)  22 PE-hypercognitionOA (2 PE), intellect fortress IIIOA (6 PE), major mind swapOA (9 PE, DC 29), mental barrier VOA (6 PE), mind probeOA (4 PE, DC 24), remote viewingOA (5 PE), thought shield VOA (6 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 19th; concentration +27)  22 PE-hypercognition (2 PE), intellect fortress IIIOA (6 PE), major mind swap (9 PE, DC 29), mental barrier VOA (6 PE), mind probe (4 PE, DC 24), remote viewing (5 PE), thought shield VOA (6 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Aquatic Elf</Name>
@@ -50299,8 +50299,8 @@
     <Reach>5 ft.</Reach>
     <AbilitiyScores>Str 13, Dex 15, Con 18, Int 18, Wis 16, Cha 17</AbilitiyScores>
     <BaseAtk>10</BaseAtk>
-    <CMB>+11 (+15 dirty trickAPG)</CMB>
-    <CMD>23 (25 vs. dirty trickAPG)</CMD>
+    <CMB>+11 (+15 dirty trick)</CMB>
+    <CMD>23 (25 vs. dirty trick)</CMD>
     <Languages>Celestial, Common, Draconic, Halfling; speak with animals, truespeech</Languages>
     <SQ>fabricated forgery, imitator</SQ>
     <Environment> any urban (Nirvana)</Environment>
@@ -51461,7 +51461,7 @@
     <Ref>17</Ref>
     <Will>20</Will>
     <Save_Mods>+8 vs. mind-affecting effects</Save_Mods>
-    <DefensiveAbilities>morphic anatomy, psychic warding, unstoppableMA</DefensiveAbilities>
+    <DefensiveAbilities>morphic anatomy, psychic warding, unstoppable</DefensiveAbilities>
     <DR>20/epic</DR>
     <Immune>poison</Immune>
     <Resist>acid 20, cold 20, electricity 20, sonic 20</Resist>
@@ -51474,7 +51474,7 @@
     <CMB>+30 (+32 bull rush)</CMB>
     <CMD>53 (55 vs. bull rush)</CMD>
     <Languages>Aklo, Common, Draconic, Giant; truespeech</Languages>
-    <SQ>bestow knowledge, lantern of civilization, mimetic memory, morphic body, mythic immortalityMA, uplift</SQ>
+    <SQ>bestow knowledge, lantern of civilization, mimetic memory, morphic body, mythic immortality, uplift</SQ>
     <Environment> any</Environment>
     <Organization>solitary, pair, or cabal (6-10)</Organization>
     <Treasure>standard</Treasure>
@@ -51597,7 +51597,7 @@
     <SubType>(extraplanar, lawful, mythic, water)</SubType>
     <Init>21</Init>
     <Senses>darkvision 60 ft., detect chaos, low-light vision, mistsight, true seeing; Perception +38</Senses>
-    <Aura>mythic presenceMA (30 ft., DC 30)</Aura>
+    <Aura>mythic presence (30 ft., DC 30)</Aura>
     <AC>44, touch 17, flat-footed 36</AC>
     <AC_Mods>(+7 armor, +8 Dex, +20 natural, -1 size)</AC_Mods>
     <HP>469</HP>
@@ -51623,10 +51623,10 @@
     <CMD>52</CMD>
     <RacialMods>+4 Perception</RacialMods>
     <Languages>Aquan, Auran, Celestial; telepathy 100 ft.</Languages>
-    <SQ>archive, change shape (1 human form and 1 merfolk form; polymorph), mythic immortality, mythic spellcastingMA, mythic spell-like abilities, mythic spellpowerMA (2/day)</SQ>
+    <SQ>archive, change shape (1 human form and 1 merfolk form; polymorph), mythic immortality, mythic spellcasting, mythic spell-like abilities, mythic spellpower (2/day)</SQ>
     <Environment> any (lawful planes)</Environment>
     <Organization>solitary</Organization>
-    <Treasure>standard (+2 axiomatic keen potentMA bronze spear, other treasure)</Treasure>
+    <Treasure>standard (+2 axiomatic keen potent bronze spear, other treasure)</Treasure>
     <Source>PFRPG Bestiary 5</Source>
     <IsTemplate>0</IsTemplate>
     <CharacterFlag>0</CharacterFlag>
@@ -51642,7 +51642,7 @@
     <MR>9</MR>
     <Mythic>1</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 19th; concentration +28)  24 PE-detect mindscapeOA (2 PE, DC 21), divide mindOA (9 PE), enshroud thoughtsOA (2 PE), greater create mindscapeOA (6 PE, DC 25), hypercognitionOA (2 PE), intellect fortress IIIOA (6 PE), mind probeOA (4 PE, DC 23), mindlinkOA (1 PE), mindscape doorOA (3 PE, DC 22), psychic asylumOA (5 PE), psychic readingOA (1 PE), thought shield VOA (6 PE), tower of iron will VOA (9 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 19th; concentration +28)  24 PE-detect mindscape (2 PE, DC 21), divide mind (9 PE), enshroud thoughts (2 PE), greater create mindscape (6 PE, DC 25), hypercognition (2 PE), intellect fortress IIIOA (6 PE), mind probe (4 PE, DC 23), mindlink (1 PE), mindscape door (3 PE, DC 22), psychic asylum (5 PE), psychic reading (1 PE), thought shield VOA (6 PE), tower of iron will VOA (9 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Exscinder Archon</Name>
@@ -51732,7 +51732,7 @@
     <SQ>graven wings, stoneblade</SQ>
     <Environment> any (Heaven)</Environment>
     <Organization>solitary or pair</Organization>
-    <Treasure>standard (mithral full plate, +3 conductiveUE greatsword, other treasure)</Treasure>
+    <Treasure>standard (mithral full plate, +3 conductive greatsword, other treasure)</Treasure>
     <Group>Archon</Group>
     <Source>PFRPG Bestiary 5</Source>
     <IsTemplate>0</IsTemplate>
@@ -52384,7 +52384,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 6th; concentration +8)   16 PE-aversionOA (2 PE, DC 14), fly (3 PE), major image (3 PE, DC 15), mental barrier IOA (2 PE), mind thrust IIOA (2 PE, DC 14), silent image (1 PE, DC 13)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 6th; concentration +8)   16 PE-aversion (2 PE, DC 14), fly (3 PE), major image (3 PE, DC 15), mental barrier IOA (2 PE), mind thrust IIOA (2 PE, DC 14), silent image (1 PE, DC 13)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Caller In Darkness</Name>
@@ -52435,7 +52435,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 10th; concentration +12)  12 PE-aversionOA (2 PE, DC 15), emotive blockOA (3 PE, DC 16), greater oneiric horrorOA (4 PE, DC 17), mind thrust VOA (5 PE, DC 18), paranoiaOA (2 PE, DC 15), telempathic projectionOA (1 PE, DC 14)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 10th; concentration +12)  12 PE-aversion (2 PE, DC 15), emotive block (3 PE, DC 16), greater oneiric horror (4 PE, DC 17), mind thrust VOA (5 PE, DC 18), paranoia (2 PE, DC 15), telempathic projection (1 PE, DC 14)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Cameroceras</Name>
@@ -53909,7 +53909,7 @@
     <Type>construct</Type>
     <SubType>(extraplanar, mythic)</SubType>
     <Init>6</Init>
-    <Senses>darkvision 60 ft., low-light vision, mythic sightMA (2) 30 ft.; Perception +34</Senses>
+    <Senses>darkvision 60 ft., low-light vision, mythic sight (2) 30 ft.; Perception +34</Senses>
     <Aura>corruption (60 ft.), unholy aura (DC 24)</Aura>
     <AC>44, touch 20, flat-footed 38</AC>
     <AC_Mods>(+4 deflection, +6 Dex, +24 natural, +4 profane, -4 size)</AC_Mods>
@@ -53919,7 +53919,7 @@
     <Fort>14</Fort>
     <Ref>20</Ref>
     <Will>18</Will>
-    <DefensiveAbilities>absorb good magic, unchangingMA</DefensiveAbilities>
+    <DefensiveAbilities>absorb good magic, unchanging</DefensiveAbilities>
     <DR>15/adamantine and epic</DR>
     <Immune>acid, cold, construct traits, electricity, fire</Immune>
     <SR>33</SR>
@@ -53932,7 +53932,7 @@
     <CMB>+47</CMB>
     <CMD>71</CMD>
     <Languages>Abyssal, Celestial</Languages>
-    <SQ>always a chanceMA, extra mythic powerMA</SQ>
+    <SQ>always a chance, extra mythic power</SQ>
     <Environment> any (Abyss)</Environment>
     <Organization>solitary, pair, or catastrophe (3-13)</Organization>
     <Treasure>standard</Treasure>
@@ -54447,7 +54447,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 10th; concentration +13)  5 PE-deja vuOA (1 PE), telekinetic projectileOA (0 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 10th; concentration +13)  5 PE-deja vu (1 PE), telekinetic projectile (0 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Adult Astral Dragon</Name>
@@ -54502,7 +54502,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 16th; concentration +21)  11 PE-analyze auraOA (3 PE), aversionOA (2 PE, DC 17), deja vuOA (1 PE), id insinuation IOA (3 PE, DC 18), telekinetic projectileOA (0 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 16th; concentration +21)  11 PE-analyze aura (3 PE), aversion (2 PE, DC 17), deja vu (1 PE), id insinuation IOA (3 PE, DC 18), telekinetic projectile (0 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Ancient Astral Dragon</Name>
@@ -54557,7 +54557,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 24th; concentration +31),  19 PE-analyze auraOA (3 PE), aversionOA (2 PE, DC 19), deja vuOA (1 PE), possessionOA (5 PE, DC 22), telekinetic projectileOA (0 PE), thoughtsenseOA (4 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 24th; concentration +31),  19 PE-analyze aura (3 PE), aversion (2 PE, DC 19), deja vu (1 PE), possession (5 PE, DC 22), telekinetic projectile (0 PE), thoughtsense (4 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Young Dream Dragon</Name>
@@ -54607,7 +54607,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 1st; concentration +5)  5 PE-lullaby (0 PE, DC 14), mirror strikeUC (1 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 1st; concentration +5)  5 PE-lullaby (0 PE, DC 14), mirror strike (1 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Adult Dream Dragon</Name>
@@ -54661,7 +54661,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 17th; concentration +23)  11 PE-euphoric cloudACG (2 PE, DC 18), invisibility (2 PE), lullaby (0 PE, DC 16), mirror strikeUC (1 PE), thought shield IIOA</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 17th; concentration +23)  11 PE-euphoric cloud (2 PE, DC 18), invisibility (2 PE), lullaby (0 PE, DC 16), mirror strike (1 PE), thought shield IIOA</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Ancient Dream Dragon</Name>
@@ -54715,7 +54715,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 25th; concentration +33)  19 PE-dream (4 PE), dream travelOA (5 PE), euphoric cloudACG (2 PE, DC 21), invisibility (2 PE), lullaby (0 PE, DC 19), mirror strikeUC (1 PE), thought shield IIOA</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 25th; concentration +33)  19 PE-dream (4 PE), dream travel (5 PE), euphoric cloud (2 PE, DC 21), invisibility (2 PE), lullaby (0 PE, DC 19), mirror strike (1 PE), thought shield IIOA</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Young Etheric Dragon</Name>
@@ -54873,7 +54873,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 21st; concentration +27)  17 PE-chill metal (2 PE, DC 17), mage hand (0 PE), mind thrust IOA (1 PE), telekinetic maneuverOA (3 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 21st; concentration +27)  17 PE-chill metal (2 PE, DC 17), mage hand (0 PE), mind thrust IOA (1 PE), telekinetic maneuver (3 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Young Nightmare Dragon</Name>
@@ -55078,7 +55078,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 6th; concentration +9)  3 PE-forbid actionUM (1 PE, DC 14), mending (0 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 6th; concentration +9)  3 PE-forbid action (1 PE, DC 14), mending (0 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Adult Occult Dragon</Name>
@@ -55130,7 +55130,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 12th; concentration +17)  9 PE-augury (2 PE), blood biographyAPG (3 PE), forbid actionUM (1 PE; DC 16), invisibility (2 PE), mending (0 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 12th; concentration +17)  9 PE-augury (2 PE), blood biography (3 PE), forbid action (1 PE; DC 16), invisibility (2 PE), mending (0 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Ancient Occult Dragon</Name>
@@ -55182,7 +55182,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 20th; concentration +27)  17 PE-augury (2 PE), blood biographyAPG (3 PE), cognitive blockOA (3 PE), debilitating portentUC (4 PE), divination (4 PE), forbid actionUM (1 PE, DC 19), invisibility (2 PE), mending (0 PE), speak with dead (3 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 20th; concentration +27)  17 PE-augury (2 PE), blood biography (3 PE), cognitive block (3 PE), debilitating portent (4 PE), divination (4 PE), forbid action (1 PE, DC 19), invisibility (2 PE), mending (0 PE), speak with dead (3 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Dragonkin</Name>
@@ -55280,7 +55280,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 12th; concentration +14)   10 PE-burst of adrenalineOA (1 PE), condensed etherOA (4 PE), mindlinkOA (1 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 12th; concentration +14)   10 PE-burst of adrenaline (1 PE), condensed ether (4 PE), mindlink (1 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Jungle Drake</Name>
@@ -55978,7 +55978,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 2nd; concentration +4)  15 PE-deja vuOA (1 PE), ghost sound (0 PE), disguise self (1 PE), mage hand (0 PE), mindlinkOA (1 PE, DC 13), open/ close (0 PE), teleport (self only, 5 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 2nd; concentration +4)  15 PE-deja vu (1 PE), ghost sound (0 PE), disguise self (1 PE), mage hand (0 PE), mindlink (1 PE, DC 13), open/ close (0 PE), teleport (self only, 5 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Chicken</Name>
@@ -56726,7 +56726,7 @@
     <RacialMods>+8 Stealth in rocky terrain</RacialMods>
     <Languages>Common, Giant, Terran</Languages>
     <Environment> warm hills or mountains</Environment>
-    <Organization>solitary, pair, or cult (2-5 plus 35% noncombatants and one oracleAPG of 4th-7th level)</Organization>
+    <Organization>solitary, pair, or cult (2-5 plus 35% noncombatants and one oracle of 4th-7th level)</Organization>
     <Treasure>standard</Treasure>
     <Group>Giant</Group>
     <Source>PFRPG Bestiary 5</Source>
@@ -56834,7 +56834,7 @@
     <CMB>+21</CMB>
     <CMD>69</CMD>
     <Languages>Common, Elven, Sylvan, Terran</Languages>
-    <SQ>divine sourceMA, sylvan grace</SQ>
+    <SQ>divine source, sylvan grace</SQ>
     <Environment> temperate forests or swamps</Environment>
     <Organization>solitary</Organization>
     <Treasure>double</Treasure>
@@ -56901,7 +56901,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 14th; concentration +17)   12 PE-explode headOA (5 PE, DC 18), mind thrust IIOA (2 PE, DC 15)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 14th; concentration +17)   12 PE-explode head (5 PE, DC 18), mind thrust IIOA (2 PE, DC 15)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Lead Golem</Name>
@@ -57045,7 +57045,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 5th, concentration +9)   7 PE-anticipate thoughtsOA (2 PE, DC 16), mind thrust II OA (2 PE, DC 16), sleep (1 PE, DC 15)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 5th, concentration +9)   7 PE-anticipate thoughts (2 PE, DC 16), mind thrust II OA (2 PE, DC 16), sleep (1 PE, DC 15)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Gray Goo</Name>
@@ -57245,7 +57245,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 9th; concentration +11)   12 PE-crushing despair (4 PE, DC 16), feast on fearACG (5 PE, DC 17), miserable pityUM (affects host and self; 2 PE, DC 14), overwhelming griefUM (4 PE, DC 16), terrible remorseUM (4 PE, DC 16)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 9th; concentration +11)   12 PE-crushing despair (4 PE, DC 16), feast on fear (5 PE, DC 17), miserable pity (affects host and self; 2 PE, DC 14), overwhelming grief (4 PE, DC 16), terrible remorse (4 PE, DC 16)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Grim Reaper</Name>
@@ -57873,8 +57873,8 @@
     <Languages>Aquan, Common, Sylvan</Languages>
     <SQ>amphibious, undersized weapons</SQ>
     <Environment> temperate oceans or coastlines</Environment>
-    <Organization>solitary, pair, band (3-6), or school (7-20 plus 3 huntersACG of 2nd level and 1 spellcaster mentor of 7th level)</Organization>
-    <Treasure>standard (mwk harpoonUE, 6 javelins, other treasure)</Treasure>
+    <Organization>solitary, pair, band (3-6), or school (7-20 plus 3 hunters of 2nd level and 1 spellcaster mentor of 7th level)</Organization>
+    <Treasure>standard (mwk harpoon, 6 javelins, other treasure)</Treasure>
     <Source>PFRPG Bestiary 5</Source>
     <IsTemplate>0</IsTemplate>
     <CharacterFlag>0</CharacterFlag>
@@ -58574,7 +58574,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 23rd; concentration +32)   40 PE-create greater mindscapeOA (7 PE, DC 26), dream councilOA (7 PE, DC 26), dream scanOA (6 PE, DC 25), dream voyageOA (9 PE, DC 28), greater dispel magic (6 PE), id insinuation IVOA (5 PE, DC 24), microcosmOA (9 PE, DC 28), mind probeOA (5 PE, DC 26), nightmare (5 PE, DC 24), psychic imageOA (9 PE, DC 28).</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 23rd; concentration +32)   40 PE-create greater mindscape (7 PE, DC 26), dream council (7 PE, DC 26), dream scan (6 PE, DC 25), dream voyage (9 PE, DC 28), greater dispel magic (6 PE), id insinuation IVOA (5 PE, DC 24), microcosm (9 PE, DC 28), mind probe (5 PE, DC 26), nightmare (5 PE, DC 24), psychic image (9 PE, DC 28).</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Lusca</Name>
@@ -58676,7 +58676,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 12th; concentration +17; Wis-based)   25 PE-analyze auraOA (3 PE), aversionOA (2 PE, DC 17), enshroud thoughtsOA (2 PE), mind thrust VIOA (6 PE, DC 21), psychic asylumOA (5 PE), psychic crush IOA (5 PE, DC 20), quintessenceOA (1 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 12th; concentration +17; Wis-based)   25 PE-analyze aura (3 PE), aversion (2 PE, DC 17), enshroud thoughts (2 PE), mind thrust VIOA (6 PE, DC 21), psychic asylum (5 PE), psychic crush IOA (5 PE, DC 20), quintessence (1 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Maharishi Manu</Name>
@@ -58729,7 +58729,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 16th; concentration +22; Wisdom-based)   27 PE-catatoniaOA (3 PE, DC 19), cognitive blockOA (3 PE, DC 19), divide mindOA (9 PE), mind thrust IVOA (4 PE, DC 20), remote viewingOA (5 PE), retrocognitionOA (5 PE), unshakable zealOA (7 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 16th; concentration +22; Wisdom-based)   27 PE-catatonia (3 PE, DC 19), cognitive block (3 PE, DC 19), divide mind (9 PE), mind thrust IVOA (4 PE, DC 20), remote viewing (5 PE), retrocognition (5 PE), unshakable zeal (7 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Rishi Manu</Name>
@@ -58783,7 +58783,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 14th; concentration +19; Wisdom-based)   19 PE-anticipate thoughtsOA (2 PE), burst of insightOA (1 PE), dream councilOA (6 PE, DC 21), synapse overloadOA (5 PE, DC 20), remote viewingOA (5 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 14th; concentration +19; Wisdom-based)   19 PE-anticipate thoughts (2 PE), burst of insight (1 PE), dream council (6 PE, DC 21), synapse overload (5 PE, DC 20), remote viewing (5 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Solar Pitri</Name>
@@ -58840,7 +58840,7 @@
     <MR>8</MR>
     <Mythic>1</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 20th; concentration +29; Wisdom-based)  36 PE-awaken constructOA (6 PE, DC 25), divide mindOA (9 PE), ego whip VOA (7 PE, DC 26), greater create mindscapeOA (6 PE, DC 25), mindscape doorOA (5 PE, DC 24), retrocognitionOA (5 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 20th; concentration +29; Wisdom-based)  36 PE-awaken construct (6 PE, DC 25), divide mind (9 PE), ego whip VOA (7 PE, DC 26), greater create mindscape (6 PE, DC 25), mindscape door (5 PE, DC 24), retrocognition (5 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Twilight Pitri</Name>
@@ -58897,7 +58897,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (Sp) (CL 18th; concentration +26; Wisdom-based)  45 PE-aversionOA (2 PE, DC 20), awaken (5 PE), awaken constructOA (6 PE), babbleOA (3 PE, DC 21), ego whip VOA (7 PE, DC 25), greater synaptic pulseOA (5 PE, DC 23), mind thrust VIOA (6 PE, DC 24), mindwipeOA (4 PE, DC 22), psychic imageOA (9 PE), psychic surgeryOA (6 PE), synapse overloadOA (5 PE, DC 23)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (Sp) (CL 18th; concentration +26; Wisdom-based)  45 PE-aversion (2 PE, DC 20), awaken (5 PE), awaken construct (6 PE), babble (3 PE, DC 21), ego whip VOA (7 PE, DC 25), greater synaptic pulse (5 PE, DC 23), mind thrust VIOA (6 PE, DC 24), mindwipe (4 PE, DC 22), psychic image (9 PE), psychic surgery (6 PE), synapse overload (5 PE, DC 23)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Chalicotherium</Name>
@@ -59771,7 +59771,7 @@
     <Languages>Sasquatch</Languages>
     <SQ>forest walker, own two feet, simian empathy</SQ>
     <Environment> warm forests</Environment>
-    <Organization>solitary, pair, family (3-7), or tribe (8-30 plus 8-30 noncombatants, 1 chieftain [3rd- to 5th-level hunterACG or ranger], 1 shaman [3rd- to 5th-level druid or shamanACG], and 1d4 gorillas or 1 monkey swarmB2)</Organization>
+    <Organization>solitary, pair, family (3-7), or tribe (8-30 plus 8-30 noncombatants, 1 chieftain [3rd- to 5th-level hunter or ranger], 1 shaman [3rd- to 5th-level druid or shaman], and 1d4 gorillas or 1 monkey swarmB2)</Organization>
     <Treasure>NPC gear (spear, 2 bolas, other treasure)</Treasure>
     <Source>PFRPG Bestiary 5</Source>
     <IsTemplate>0</IsTemplate>
@@ -60049,7 +60049,7 @@
     <Ref>16</Ref>
     <Will>9</Will>
     <Save_Mods>second save</Save_Mods>
-    <DefensiveAbilities>reform, swarm traits, unstoppableMA</DefensiveAbilities>
+    <DefensiveAbilities>reform, swarm traits, unstoppable</DefensiveAbilities>
     <DR>10/epic</DR>
     <Speed>30 ft., climb 30 ft., swim 30 ft.</Speed>
     <Melee>swarm +14 (4d6-2 plus 4d6 blight, curse of lycanthropy, disease, and distraction)</Melee>
@@ -60101,7 +60101,7 @@
     <Ref>18</Ref>
     <Will>13</Will>
     <Save_Mods>second save</Save_Mods>
-    <DefensiveAbilities>reform, swarm traits, unstoppableMA</DefensiveAbilities>
+    <DefensiveAbilities>reform, swarm traits, unstoppable</DefensiveAbilities>
     <DR>10/epic</DR>
     <Immune>mind-affecting effects, weapon damage</Immune>
     <Speed>10 ft., climb 10 ft., fly 40 ft. (good)</Speed>
@@ -60154,7 +60154,7 @@
     <Ref>21</Ref>
     <Will>13</Will>
     <Save_Mods>second save</Save_Mods>
-    <DefensiveAbilities>profane protection, swarm traits, unstoppableMA</DefensiveAbilities>
+    <DefensiveAbilities>profane protection, swarm traits, unstoppable</DefensiveAbilities>
     <DR>10/epic</DR>
     <Immune>weapon damage</Immune>
     <Speed>5 ft., fly 40 ft. (good)</Speed>
@@ -60386,7 +60386,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 8th; concentration +11)   20 PE-cognitive blockOA (3 PE, DC 16), ego whip IOA (3 PE, DC 16), mind probeOA (4 PE, DC 17), mind thrust IIIOA (3 PE, DC 16), possessionOA (5 PE, DC 18), synaptic pulseOA (3 PE, DC 16), thought shield IIIOA (4 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 8th; concentration +11)   20 PE-cognitive block (3 PE, DC 16), ego whip IOA (3 PE, DC 16), mind probe (4 PE, DC 17), mind thrust IIIOA (3 PE, DC 16), possession (5 PE, DC 18), synaptic pulse (3 PE, DC 16), thought shield IIIOA (4 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Psychepore</Name>
@@ -61821,8 +61821,8 @@
     <Reach>5 ft.</Reach>
     <AbilitiyScores>Str 14, Dex 24, Con 19, Int 15, Wis 17, Cha 18</AbilitiyScores>
     <BaseAtk>6</BaseAtk>
-    <CMB>+12 (+14 stealAPG)</CMB>
-    <CMD>25 (27 vs. stealAPG)</CMD>
+    <CMB>+12 (+14 steal)</CMB>
+    <CMD>25 (27 vs. steal)</CMD>
     <Languages>Aklo, Common, Sylvan</Languages>
     <SQ>no shadow</SQ>
     <Environment> any land</Environment>
@@ -61924,7 +61924,7 @@
     <CMB>+48</CMB>
     <CMD>60 (64 vs. trip)</CMD>
     <Languages>Aquan, Auran, Celestial, Common, Draconic, Sylvan, Terran</Languages>
-    <SQ>change shape, competent casterMA, dragon cantrips, gaseous form, mirage castle, mythic spellcastingMA, pearl soul</SQ>
+    <SQ>change shape, competent caster, dragon cantrips, gaseous form, mirage castle, mythic spellcasting, pearl soul</SQ>
     <Environment> any water</Environment>
     <Organization>solitary</Organization>
     <Treasure>triple</Treasure>
@@ -62654,7 +62654,7 @@
     <Ref>21</Ref>
     <Will>24</Will>
     <Save_Mods>+8 vs. mind-affecting, second save</Save_Mods>
-    <DefensiveAbilities>fortification (50%), iron resilience, unstoppableMA</DefensiveAbilities>
+    <DefensiveAbilities>fortification (50%), iron resilience, unstoppable</DefensiveAbilities>
     <DR>20/epic</DR>
     <Immune>aging, daze, death effects, disease, divinations, stagger, stun</Immune>
     <SR>39</SR>
@@ -62670,7 +62670,7 @@
     <SQ>powerful blows (slam)</SQ>
     <Environment> any</Environment>
     <Organization>solitary</Organization>
-    <Treasure>standard (+3 axiomatic tetsuboUE, danava mantle, other treasure)</Treasure>
+    <Treasure>standard (+3 axiomatic tetsubo, danava mantle, other treasure)</Treasure>
     <Group>Titan</Group>
     <Source>PFRPG Bestiary 5</Source>
     <IsTemplate>0</IsTemplate>
@@ -62903,7 +62903,7 @@
     <Immune>construct traits, petrification, polymorph</Immune>
     <Resist>acid 10, electricity 10, fire 10</Resist>
     <Speed>30 ft.</Speed>
-    <Melee>2 slams +7 (1d4)  Spell-like Abilities (CL 1st; concentration +3)  At will-decrepit disguiseOA (self only), ghost sound, mending, quintessenceOA (self only)</Melee>
+    <Melee>2 slams +7 (1d4)  Spell-like Abilities (CL 1st; concentration +3)  At will-decrepit disguise (self only), ghost sound, mending, quintessence (self only)</Melee>
     <Space>5 ft.</Space>
     <Reach>5 ft.</Reach>
     <AbilitiyScores>Str 10, Dex 18, Con 17, Int 15, Wis 17, Cha 14</AbilitiyScores>
@@ -62984,7 +62984,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 5th; concentration +5)  8 PE-burst of adrenalineOA (1 PE), burst of insightOA (1 PE), ego whip IOA (3 PE, DC 13), levitate (2 PE), paranoiaOA (2 PE, DC 12)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 5th; concentration +5)  8 PE-burst of adrenaline (1 PE), burst of insight (1 PE), ego whip IOA (3 PE, DC 13), levitate (2 PE), paranoia (2 PE, DC 12)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Turul</Name>
@@ -64106,8 +64106,8 @@
     <Reach>5 ft.</Reach>
     <AbilitiyScores>Str 12, Dex 17, Con 12, Int 17, Wis 16, Cha 13</AbilitiyScores>
     <BaseAtk>5</BaseAtk>
-    <CMB>+5 (+7 stealAPG)</CMB>
-    <CMD>19 (21 vs. stealAPG)</CMD>
+    <CMB>+5 (+7 steal)</CMB>
+    <CMD>19 (21 vs. steal)</CMD>
     <RacialMods>+8 Sleight of Hand</RacialMods>
     <Languages>Abyssal, Aklo, Auran, Common; speak with animals (birds only)</Languages>
     <SQ>apportation</SQ>
@@ -64622,7 +64622,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 10th; concentration +13)   20 PE-control summoned creatureUM (4 PE, DC 17), demand (8 PE, DC 21), fear (4 PE, DC 17), quickened true strike (1 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 10th; concentration +13)   20 PE-control summoned creature (4 PE, DC 17), demand (8 PE, DC 21), fear (4 PE, DC 17), quickened true strike (1 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Zygomind</Name>
@@ -66998,7 +66998,7 @@
     <SQ>fat extractor</SQ>
     <Environment> any urban</Environment>
     <Organization>solitary, pair, or gang (3-5)</Organization>
-    <Treasure>standard (potion of infernal healingISWG, potion of youthful appearanceUM, cauldron, flint and steel, sack, sewing needle, other treasure)</Treasure>
+    <Treasure>standard (potion of infernal healing, potion of youthful appearance, cauldron, flint and steel, sack, sewing needle, other treasure)</Treasure>
     <Source>AP 105</Source>
     <IsTemplate>0</IsTemplate>
     <CharacterFlag>0</CharacterFlag>
@@ -68564,7 +68564,7 @@
     <SQ>immovable object</SQ>
     <Environment> any (Heaven)</Environment>
     <Organization>solitary, pair, or squad (3-6)</Organization>
-    <Treasure>double (+2 full plate, +4 impactUE lucerne hammerAPG, other treasure)</Treasure>
+    <Treasure>double (+2 full plate, +4 impact lucerne hammer, other treasure)</Treasure>
     <Group>Archon</Group>
     <Source>AP 107</Source>
     <IsTemplate>0</IsTemplate>
@@ -69615,7 +69615,7 @@
     <CMD>33</CMD>
     <RacialMods>+4 Bluff, +4 Heal, +4 Intimidate</RacialMods>
     <Languages>Common, Infernal</Languages>
-    <SQ>shadow traveler, slayer talents (evasionUC, finesse rogue, ranger combat style [3]), stalker, swift tracker, track +5</SQ>
+    <SQ>shadow traveler, slayer talents (evasion, finesse rogue, ranger combat style [3]), stalker, swift tracker, track +5</SQ>
     <Environment> any land</Environment>
     <Organization>solitary or cabal (1 plus 4 ostiarius kytonsB4)</Organization>
     <Treasure>NPC gear (+1 mithral chain shirt, +1 cold iron sickle [2], ring of protection +1, belt of incredible dexterity +2, cloak of resistance +3, other treasure)</Treasure>
@@ -69892,7 +69892,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 6th; concentration +8)   5 PE-babbleOA (2 PE, DC 14), id insinuation IOA (2 PE, DC 14), mental blockOA (1 PE, DC 13), mind thrust IOA (1 PE, DC 13), telekinetic projectileOA (1 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 6th; concentration +8)   5 PE-babble (2 PE, DC 14), id insinuation IOA (2 PE, DC 14), mental block (1 PE, DC 13), mind thrust IOA (1 PE, DC 13), telekinetic projectile (1 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Pallid Wriggler Swarm</Name>
@@ -75750,7 +75750,7 @@
     <Resist>acid 30</Resist>
     <SR>40</SR>
     <Speed>50 ft., swim 50 ft., air walk</Speed>
-    <Melee>+5 cruelUE dispelling burstUE unholy flail +47/+42/+37/+32 (3d6+19/19-20), +1 heavy shield +43/+38 (2d6+15/19-20), 3 claws +41 (1d6+7), 3 tail slaps +41 (2d6+7/19-20 plus poison)</Melee>
+    <Melee>+5 cruel dispelling burst unholy flail +47/+42/+37/+32 (3d6+19/19-20), +1 heavy shield +43/+38 (2d6+15/19-20), 3 claws +41 (1d6+7), 3 tail slaps +41 (2d6+7/19-20 plus poison)</Melee>
     <Space>15 ft.</Space>
     <Reach>15 ft.</Reach>
     <AbilitiyScores>Str 38, Dex 21, Con 42, Int 33, Wis 30, Cha 33</AbilitiyScores>
@@ -75761,7 +75761,7 @@
     <SQ>amphibious, change shape (humanoid and serpentine; shapechange)</SQ>
     <Environment> any (Hell)</Environment>
     <Organization>solitary (unique)</Organization>
-    <Treasure>triple (+5 arrow deflection bashing heavy steel shield, +5 cruelUE dispelling burstUE unholy flail, Horn of Lies, other treasure)</Treasure>
+    <Treasure>triple (+5 arrow deflection bashing heavy steel shield, +5 cruel dispelling burst unholy flail, Horn of Lies, other treasure)</Treasure>
     <Group>Archdevil</Group>
     <Source>PFRPG Bestiary 6</Source>
     <IsTemplate>0</IsTemplate>
@@ -76049,7 +76049,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 18th; concentration +23)   24 PE-cure serious wounds (3 PE), dancing lights (0 PE), detect mindscapeOA (2 PE), dream councilOA (5 PE), etheric shardsOA (5 PE, DC 20), greater create mindscapeOA (6 PE), lesser restoration (2 PE), message (0 PE), mindscape doorOA (3 PE), mindwipeOA (4 PE, DC 19), symbol of sleep (5 PE, DC 20), thought shield IVOA (5 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 18th; concentration +23)   24 PE-cure serious wounds (3 PE), dancing lights (0 PE), detect mindscape (2 PE), dream council (5 PE), etheric shards (5 PE, DC 20), greater create mindscape (6 PE), lesser restoration (2 PE), message (0 PE), mindscape door (3 PE), mindwipe (4 PE, DC 19), symbol of sleep (5 PE, DC 20), thought shield IVOA (5 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Veranallia</Name>
@@ -76774,7 +76774,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 8th; concentration +12)   10 PE-aversionOA (2 PE, DC 16), hallucinatory terrain (4 PE, DC 18), hold person (2 PE, DC 16), invisibility (2 PE, DC 16), telekinetic maneuverOA (0 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 8th; concentration +12)   10 PE-aversion (2 PE, DC 16), hallucinatory terrain (4 PE, DC 18), hold person (2 PE, DC 16), invisibility (2 PE, DC 16), telekinetic maneuver (0 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Boggle</Name>
@@ -78199,7 +78199,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 14th; concentration +20)   14 PE-mass inflict painOA (6 PE, DC 22), mind thrust VOA (4 PE, DC 20), oneiric horrorOA (2 PE, DC 18)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 14th; concentration +20)   14 PE-mass inflict pain (6 PE, DC 22), mind thrust VOA (4 PE, DC 20), oneiric horror (2 PE, DC 18)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Brimorak</Name>
@@ -78570,7 +78570,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 6th; concentration +9)  20 PE-babbleOA (2 PE, DC 15), battlemind linkUM (4 PE), greater synaptic pulseOA (4 PE, DC 17), mad hallucinationUM (2 PE, DC 15), mind probeOA (4 PE, DC 17), mindwipeOA (4 PE, DC 17), paranoiaOA (1 PE, DC 14), placebo effectOA (2 PE), synaptic overloadOA (4 PE, DC 17), synaptic scrambleOA (3 PE, DC 16), synesthesiaOA (3 PE, DC 16)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 6th; concentration +9)  20 PE-babble (2 PE, DC 15), battlemind link (4 PE), greater synaptic pulse (4 PE, DC 17), mad hallucination (2 PE, DC 15), mind probe (4 PE, DC 17), mindwipe (4 PE, DC 17), paranoia (1 PE, DC 14), placebo effect (2 PE), synaptic overload (4 PE, DC 17), synaptic scramble (3 PE, DC 16), synesthesia (3 PE, DC 16)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Devil Monkey</Name>
@@ -79688,7 +79688,7 @@
     <Type>outsider</Type>
     <SubType>(azata, chaotic, extraplanar, good)</SubType>
     <Init>19</Init>
-    <Senses>blindsense 60 ft., darkvision 60 ft., detect aberrationAPG, detect evil, detect law, low-light vision, see in darkness, true seeing; Perception +50</Senses>
+    <Senses>blindsense 60 ft., darkvision 60 ft., detect aberration, detect evil, detect law, low-light vision, see in darkness, true seeing; Perception +50</Senses>
     <Aura>primal aura (30 ft.)</Aura>
     <AC>46, touch 34, flat-footed 31</AC>
     <AC_Mods>(+4 armor, +15 Dex, +10 insight, +8 natural, -1 size)</AC_Mods>
@@ -80782,7 +80782,7 @@
     <CMD>41 (43 vs. disarm and trip)</CMD>
     <Languages>Common, Giant</Languages>
     <Environment> any land</Environment>
-    <Organization>solitary, pair, or colony (3-16 plus 1-3 oraclesAPG or witchesAPG of 5th-9th level, 2-5 rogues of 5th-9th level, and one high priest clericGMG of 7th-10th level along with 2-5 leukodaemonsB2 and 1-4 gholes)</Organization>
+    <Organization>solitary, pair, or colony (3-16 plus 1-3 oracles or witches of 5th-9th level, 2-5 rogues of 5th-9th level, and one high priest cleric of 7th-10th level along with 2-5 leukodaemonsB2 and 1-4 gholes)</Organization>
     <Treasure>standard (mwk light flail, 4 rocks or corpses, other treasure)</Treasure>
     <Group>Giant</Group>
     <Source>PFRPG Bestiary 6</Source>
@@ -80833,7 +80833,7 @@
     <Languages>Common, Giant</Languages>
     <SQ>militant</SQ>
     <Environment> any land (Shadow Plane)</Environment>
-    <Organization>solitary, gang (2-5), family (6-13, 1 cleric or witchAPG of 5th-8th level, and 1 fighter or barbarian chief of 7th-10th level), or company (14-33 plus 1 fighter or barbarian chief of 7th-10th level)</Organization>
+    <Organization>solitary, gang (2-5), family (6-13, 1 cleric or witch of 5th-8th level, and 1 fighter or barbarian chief of 7th-10th level), or company (14-33 plus 1 fighter or barbarian chief of 7th-10th level)</Organization>
     <Treasure>standard (+1 breastplate, mwk spiked chain, other treasure)</Treasure>
     <Group>Giant</Group>
     <Source>PFRPG Bestiary 6</Source>
@@ -80884,7 +80884,7 @@
     <Languages>Common, Giant</Languages>
     <SQ>sinister synergy</SQ>
     <Environment> any land or underground</Environment>
-    <Organization>solitary, pair, or cabal (3-13, 1-4 necromancers of 3rd-5th level, 1-4 clerics or oraclesAPG of 3rd-5th level, 1 monarch of 5th- 9th level [typically cleric or necromancer],  plus numerous giant skeletons, zombie giants, and other undead minions)</Organization>
+    <Organization>solitary, pair, or cabal (3-13, 1-4 necromancers of 3rd-5th level, 1-4 clerics or oracles of 3rd-5th level, 1 monarch of 5th- 9th level [typically cleric or necromancer],  plus numerous giant skeletons, zombie giants, and other undead minions)</Organization>
     <Treasure>standard (mwk breastplate, mwk scythe, other treasure)</Treasure>
     <Group>Giant</Group>
     <Source>PFRPG Bestiary 6</Source>
@@ -81797,7 +81797,7 @@
     <SR>41</SR>
     <Speed>50 ft., swim 30 ft.</Speed>
     <Speed_Mod> air walk, water walk</Speed_Mod>
-    <Melee>+5 spellstealingUE unholy quarterstaff +52/+47/+42/+37 (1d6+20/19-20 plus curse of ages), +5 spellstealingUE unholy quarterstaff +52/+47/+42 (1d6+20/19-20 plus curse of ages) or  touch +51 (curse of ages)</Melee>
+    <Melee>+5 spellstealing unholy quarterstaff +52/+47/+42/+37 (1d6+20/19-20 plus curse of ages), +5 spellstealing unholy quarterstaff +52/+47/+42 (1d6+20/19-20 plus curse of ages) or  touch +51 (curse of ages)</Melee>
     <Ranged>4 Stygian bolts +44 (10d6 plus memory loss)</Ranged>
     <Space>5 ft.</Space>
     <Reach>5 ft.</Reach>
@@ -81809,7 +81809,7 @@
     <SQ>craft item, Horseman traits, reach of the Styx, transform mount</SQ>
     <Environment> any (Abaddon)</Environment>
     <Organization>solitary or mounted (Charon and the Pale Horse)</Organization>
-    <Treasure>triple (+5 spellstealingUE unholy quarterstaff, other treasure)</Treasure>
+    <Treasure>triple (+5 spellstealing unholy quarterstaff, other treasure)</Treasure>
     <Group>Horseman</Group>
     <Source>PFRPG Bestiary 6</Source>
     <IsTemplate>0</IsTemplate>
@@ -84157,7 +84157,7 @@
     <Type>outsider</Type>
     <SubType>(extraplanar, psychopomp)</SubType>
     <Init>24</Init>
-    <Senses>darkvision 60 ft., discern next of kinACG, low-light vision, spiritsense, true seeing; Perception +30</Senses>
+    <Senses>darkvision 60 ft., discern next of kin, low-light vision, spiritsense, true seeing; Perception +30</Senses>
     <AC>32, touch 30, flat-footed 22</AC>
     <AC_Mods>(+10 Dex, +10 insight, +2 natural)</AC_Mods>
     <HP>275</HP>
@@ -87982,7 +87982,7 @@
     <Languages>Aquan, Common, Draconic, Giant, Undercommon</Languages>
     <SQ>amphibious</SQ>
     <Environment> any coastal (Sightless Sea)</Environment>
-    <Organization>solitary, pair, hunting party (3-9), or war band (10-18 plus 1 mesmeristOA or psychicOA of 3rd-6th level)</Organization>
+    <Organization>solitary, pair, hunting party (3-9), or war band (10-18 plus 1 mesmerist or psychic of 3rd-6th level)</Organization>
     <Treasure>standard (Gargantuan +1 returning spear, other treasure)</Treasure>
     <Group>Giant</Group>
     <Source>AP 120</Source>
@@ -88000,7 +88000,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 19th; concentration +24)   20 PE-anticipate thoughtsOA (2 PE, DC 17), greater synaptic pulseOA (5 PE, DC 20), mental barrier IVOA (5 PE), mindlinkOA (1 PE), mind probeOA (4 PE, DC 19), mind thrust VOA (5 PE, DC 20), riding possessionOA (4 PE, DC 19)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 19th; concentration +24)   20 PE-anticipate thoughts (2 PE, DC 17), greater synaptic pulse (5 PE, DC 20), mental barrier IVOA (5 PE), mindlink (1 PE), mind probe (4 PE, DC 19), mind thrust VOA (5 PE, DC 20), riding possession (4 PE, DC 19)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Onyx Scourge</Name>
@@ -88882,7 +88882,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 9th; concentration +12)   22 PE-detect psychic significanceOA (1 PE), hallucinatory terrain (DC 17, 4 PE), identify (1 PE), locate object (2 PE), make whole (2 PE), mirage arcana (DC 18, 5 PE), object readingOA (1 PE), shatter (DC 15, 2 PE), sound burst (DC 15, 2 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 9th; concentration +12)   22 PE-detect psychic significance (1 PE), hallucinatory terrain (DC 17, 4 PE), identify (1 PE), locate object (2 PE), make whole (2 PE), mirage arcana (DC 18, 5 PE), object reading (1 PE), shatter (DC 15, 2 PE), sound burst (DC 15, 2 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Smoke Sentinel</Name>
@@ -90912,7 +90912,7 @@
     <DR>15/good and piercing</DR>
     <SR>28</SR>
     <Speed>40 ft.</Speed>
-    <Melee>+2 urumiUE +24/+19/+14/+9 (1d8+6/15-20)</Melee>
+    <Melee>+2 urumi +24/+19/+14/+9 (1d8+6/15-20)</Melee>
     <Space>5 ft.</Space>
     <Reach>5 ft. (10 ft. with urumi)</Reach>
     <AbilitiyScores>Str 19, Dex 22, Con 21, Int 16, Wis 18, Cha 15</AbilitiyScores>
@@ -90924,7 +90924,7 @@
     <SQ>change shape (any humanoid; alter self), inconspicuous urumi, urumi affinity</SQ>
     <Environment> any</Environment>
     <Organization>solitary, pair, or muster (3-6)</Organization>
-    <Treasure>standard (+2 urumiUE, other treasure)</Treasure>
+    <Treasure>standard (+2 urumi, other treasure)</Treasure>
     <Group>Rakshasa</Group>
     <Source>AP 130</Source>
     <IsTemplate>0</IsTemplate>
@@ -91306,7 +91306,7 @@
     <Size>Huge</Size>
     <Type>plant</Type>
     <Init>10</Init>
-    <Senses>low-light vision, thoughtsenseOA, tremorsense 120 ft.; Perception +17</Senses>
+    <Senses>low-light vision, thoughtsense, tremorsense 120 ft.; Perception +17</Senses>
     <Aura>supplication (30 ft., DC 24)</Aura>
     <AC>30, touch 14, flat-footed 24</AC>
     <AC_Mods>(+6 Dex, +16 natural, -2 size)</AC_Mods>

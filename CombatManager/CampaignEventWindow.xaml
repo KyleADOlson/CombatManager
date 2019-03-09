@@ -18,9 +18,9 @@
 			<SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
 		</Grid.Background>
 		<TextBlock HorizontalAlignment="Left" Margin="9.093,8,0,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top"/>
-		<TextBox Margin="9.093,27.96,11.447,0" TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Top"/>
+        <TextBox Margin="9.093,27.96,11.447,0" TextWrapping="Wrap" VerticalContentAlignment="Top"  Text="{Binding Title}" VerticalAlignment="Top"/>
 		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Details" VerticalAlignment="Top" Margin="9.093,0,0,0" Grid.Row="2" RenderTransformOrigin="0.445,3.338" d:LayoutOverrides="GridBox"/>
-		<TextBox Margin="5.646,19.96,11.447,0" TextWrapping="Wrap" Text="{Binding Details}" AcceptsTab="True" AcceptsReturn="True" Grid.Row="2" d:LayoutOverrides="GridBox"/>
+        <TextBox Margin="5.646,19.96,11.447,0" TextWrapping="Wrap" VerticalContentAlignment="Top"   Text="{Binding Details}" AcceptsTab="True" AcceptsReturn="True" Grid.Row="2" d:LayoutOverrides="GridBox"/>
 		<Button Content="Cancel" HorizontalAlignment="Right" Margin="0,7.5,8,9.04" Width="75" IsCancel="True" Grid.Row="3" d:LayoutOverrides="Height, GridBox"/>
 		<Button Content="OK" HorizontalAlignment="Right" Margin="0,7.5,87,9.04" Width="75" IsDefault="True" Grid.Row="3" Click="Button_Click" d:LayoutOverrides="Height, GridBox"/>
 		<TextBlock Margin="9.093,5.521,0,0" TextWrapping="Wrap" Text="Start" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1"/>

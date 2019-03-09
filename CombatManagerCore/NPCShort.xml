@@ -28491,7 +28491,7 @@
     <CMB>+19</CMB>
     <CMD>37</CMD>
     <Languages>Aklo, Undercommon; telepathy 100 ft.</Languages>
-    <SQ>frighteningAPG, rogue talents (bleeding attack +7, combat trick, crippling strike, hunter's surpriseAPG, strong impressionAPG, weapon training)</SQ>
+    <SQ>frightening, rogue talents (bleeding attack +7, combat trick, crippling strike, hunter's surprise, strong impression, weapon training)</SQ>
     <Source>AP 41</Source>
     <IsTemplate>0</IsTemplate>
     <Gender>Male</Gender>
@@ -35382,7 +35382,7 @@
     <Fort>13</Fort>
     <Ref>8</Ref>
     <Will>7</Will>
-    <DefensiveAbilities>improved uncanny dodge, naked courageAPG</DefensiveAbilities>
+    <DefensiveAbilities>improved uncanny dodge, naked courage</DefensiveAbilities>
     <Resist>cold 10</Resist>
     <Weaknesses>schizophrenic</Weaknesses>
     <Speed>30 ft., swim 40 ft.</Speed>
@@ -38977,7 +38977,7 @@
     <Melee>+2 scythe +15/+10 (2d4+9/19-20/x4) or  slam +12 (1d6+7)</Melee>
     <Space>5 ft.</Space>
     <Reach>5 ft.</Reach>
-    <SpellDomains>Death (Murder subdomainAPG), Evil (Daemon subdomainAPG)</SpellDomains>
+    <SpellDomains>Death (Murder subdomain), Evil (Daemon subdomain)</SpellDomains>
     <AbilitiyScores>Str 21, Dex 14, Con -, Int 10, Wis 19, Cha 18</AbilitiyScores>
     <BaseAtk>7</BaseAtk>
     <CMB>+12</CMB>
@@ -42112,7 +42112,7 @@
     <CMB>+8</CMB>
     <CMD>24</CMD>
     <Languages>Common, Erutaki</Languages>
-    <SQ>favored terrain (cold +2), possessed, terrain bondAPG, track +3, wild empathy +6, woodland stride</SQ>
+    <SQ>favored terrain (cold +2), possessed, terrain bond, track +3, wild empathy +6, woodland stride</SQ>
     <Source>AP 51</Source>
     <IsTemplate>0</IsTemplate>
     <Gender>Male</Gender>

@@ -78,25 +78,25 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBox Margin="8,27.96,8,0" TextWrapping="Wrap" Text="{Binding Prerequistites}" VerticalAlignment="Top"/>
+                <TextBox Margin="8,27.96,8,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Prerequistites}" VerticalAlignment="Top"/>
                 <TextBlock Text="Benefit" Style="{DynamicResource LabelStyle}" Margin="8,53.92,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBox Margin="8,73.88,8,8" TextWrapping="Wrap" Text="{Binding Benefit}" VerticalScrollBarVisibility="Auto"/>
+                <TextBox Margin="8,73.88,8,8" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Benefit}" VerticalScrollBarVisibility="Auto"/>
                 <TextBlock Text="Normal" Style="{DynamicResource LabelStyle}" Margin="8,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBox Margin="8,27.96,8,0" TextWrapping="Wrap" Text="{Binding Normal}" VerticalAlignment="Top" Grid.Column="1" Height="90" VerticalScrollBarVisibility="Auto"/>
+                <TextBox Margin="8,27.96,8,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Normal}" VerticalAlignment="Top" Grid.Column="1" Height="90" VerticalScrollBarVisibility="Auto"/>
                 <TextBlock Text="Special" Style="{DynamicResource LabelStyle}" Margin="8.2,122,0,0" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Top">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBox Margin="8.2,141,7.6,8.2" TextWrapping="Wrap" Text="{Binding Special}" Grid.Column="1" VerticalScrollBarVisibility="Auto"/>
+                <TextBox Margin="8.2,141,7.6,8.2" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Special}" Grid.Column="1" VerticalScrollBarVisibility="Auto"/>
             </Grid>
         </Border>
         <Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,16.667,8" Grid.Row="1" Width="75" VerticalAlignment="Bottom" IsCancel="True" Name="CancelButton" />

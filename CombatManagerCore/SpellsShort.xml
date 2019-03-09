@@ -54869,7 +54869,7 @@
     <name>Storm Of Blades</name>
     <school>conjuration</school>
     <subschool>creation</subschool>
-    <spell_level>cleric/oracle 3, magusUM 2, sorcerer/wizard 2</spell_level>
+    <spell_level>cleric/oracle 3, magus 2, sorcerer/wizard 2</spell_level>
     <duration>instantaneous</duration>
     <dismissible>0</dismissible>
     <shapeable>0</shapeable>
@@ -59371,7 +59371,7 @@
     <divine_focus>1</divine_focus>
     <ranger>3</ranger>
     <SLA_Level>3</SLA_Level>
-    <short_description>As chameleon strideAPG, but affecting all nearby creatures.</short_description>
+    <short_description>As chameleon stride, but affecting all nearby creatures.</short_description>
     <language_dependent>0</language_dependent>
     <id>1895</id>
     <mythic>0</mythic>
@@ -64549,7 +64549,7 @@
   <Spell>
     <name>Spore Burst</name>
     <school>conjuration</school>
-    <descriptor>poisonUM</descriptor>
+    <descriptor>poison</descriptor>
     <spell_level>druid 2, ranger 3, shaman 2, witch 2</spell_level>
     <duration>see text</duration>
     <dismissible>0</dismissible>
@@ -64872,7 +64872,7 @@
     <name>Puzzle Box</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>curseUM, mind-affecting</descriptor>
+    <descriptor>curse, mind-affecting</descriptor>
     <spell_level>bard 2, sorcerer/wizard 3, witch 3</spell_level>
     <duration>1 round/level or permanent; see text</duration>
     <dismissible>0</dismissible>
@@ -65095,7 +65095,7 @@
   <Spell>
     <name>Drain Poison</name>
     <school>transmutation</school>
-    <descriptor>poisonUM</descriptor>
+    <descriptor>poison</descriptor>
     <spell_level>alchemist 3, antipaladin 3, cleric/oracle 3, druid 3, ranger 3, witch 3</spell_level>
     <duration>24 hours</duration>
     <dismissible>0</dismissible>
@@ -65126,7 +65126,7 @@
     <name>Garden Of Peril</name>
     <school>conjuration</school>
     <subschool>creation</subschool>
-    <descriptor>poisonUM</descriptor>
+    <descriptor>poison</descriptor>
     <spell_level>druid 2, ranger 2, sorcerer/wizard 2, summoner/unchained summoner 2, witch 2</spell_level>
     <duration>1 round/level (D)</duration>
     <dismissible>1</dismissible>
@@ -65213,7 +65213,7 @@
   <Spell>
     <name>Poison Breath</name>
     <school>evocation</school>
-    <descriptor>poisonUM</descriptor>
+    <descriptor>poison</descriptor>
     <spell_level>cleric/oracle 7, druid 6, witch 7</spell_level>
     <area>cone-shaped burst</area>
     <duration>instantaneous</duration>
@@ -65241,7 +65241,7 @@
   <Spell>
     <name>Sword To Snake</name>
     <school>transmutation</school>
-    <descriptor>poisonUM</descriptor>
+    <descriptor>poison</descriptor>
     <spell_level>cleric/oracle 4, druid 4, shaman 4, sorcerer/wizard 4, summoner/unchained summoner 4</spell_level>
     <duration>1 round/level (D)</duration>
     <dismissible>1</dismissible>
@@ -65272,7 +65272,7 @@
   <Spell>
     <name>Toxic Rupture</name>
     <school>necromancy</school>
-    <descriptor>poisonUM</descriptor>
+    <descriptor>poison</descriptor>
     <spell_level>druid 3, shaman 3, sorcerer/wizard 3, witch 3</spell_level>
     <duration>instantaneous</duration>
     <dismissible>0</dismissible>
@@ -65300,7 +65300,7 @@
   <Spell>
     <name>Venomous Bite</name>
     <school>transmutation</school>
-    <descriptor>poisonUM</descriptor>
+    <descriptor>poison</descriptor>
     <spell_level>alchemist 2, druid 2, ranger 2, shaman 2, summoner/unchained summoner 2, witch 2</spell_level>
     <duration>1 round/level (D)</duration>
     <dismissible>1</dismissible>
@@ -67290,7 +67290,7 @@
   <Spell>
     <name>Inflict Pain</name>
     <school>enchantment</school>
-    <descriptor>mind-affecting, painUM</descriptor>
+    <descriptor>mind-affecting, pain</descriptor>
     <spell_level>antipaladin 2, inquisitor 2, medium 2, mesmerist 2, occultist 2, psychic 2, sorcerer/wizard 3, spiritualist 2, witch 3</spell_level>
     <duration>1 round/level</duration>
     <dismissible>0</dismissible>
@@ -67323,7 +67323,7 @@
   <Spell>
     <name>Inflict Pain, Mass</name>
     <school>enchantment</school>
-    <descriptor>mind-affecting, painUM</descriptor>
+    <descriptor>mind-affecting, pain</descriptor>
     <spell_level>antipaladin 4, inquisitor 5, medium 4, mesmerist 5, occultist 5, psychic 6, sorcerer/wizard 7, spiritualist 5, witch 7</spell_level>
     <duration>1 round/level</duration>
     <dismissible>0</dismissible>
@@ -70400,7 +70400,7 @@
     <name>Implanted Projection</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>mesmerist 3, psychic 3</spell_level>
     <duration>1 day/level</duration>
     <dismissible>0</dismissible>
@@ -70455,7 +70455,7 @@
     <name>Jealous Rage</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>antipaladin 2, bard 2, bloodrager 2, mesmerist 2, psychic 3, shaman 3, spiritualist 2, witch 3</spell_level>
     <duration>1 minute/level (D)</duration>
     <dismissible>1</dismissible>
@@ -70485,7 +70485,7 @@
   <Spell>
     <name>Mindshock</name>
     <school>divination</school>
-    <descriptor>mind-affecting, painUM</descriptor>
+    <descriptor>mind-affecting, pain</descriptor>
     <spell_level>antipaladin 2, bloodrager 2, inquisitor 2, medium 2, occultist 2, psychic 2, shaman 2, spiritualist 2, witch 2</spell_level>
     <duration>1 round/level (D)</duration>
     <dismissible>1</dismissible>
@@ -70517,7 +70517,7 @@
     <name>Psychic Leech</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>bloodrager 3, magus 3, medium 3, mesmerist 2, psychic 2, sorcerer/wizard 3, spiritualist 2, witch 2</spell_level>
     <duration>1 minute/level (D)</duration>
     <dismissible>1</dismissible>
@@ -70578,7 +70578,7 @@
   <Spell>
     <name>Retributive Reparations</name>
     <school>necromancy</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>antipaladin 3, inquisitor 3, occultist 3, spiritualist 3, witch 4</spell_level>
     <duration>1 day/level or until triggered, and permanent; see text</duration>
     <dismissible>0</dismissible>
@@ -70686,7 +70686,7 @@
     <name>Mantle Of Doubt</name>
     <school>illusion</school>
     <subschool>phantasm</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>mesmerist 6, psychic 8</spell_level>
     <duration>1 round/level (D)</duration>
     <dismissible>1</dismissible>
@@ -70780,7 +70780,7 @@
     <name>Psychonaut Manifestation</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>psychic 2</spell_level>
     <duration>1 round/level (D)</duration>
     <dismissible>1</dismissible>
@@ -70888,7 +70888,7 @@
   <Spell>
     <name>Night Blindness</name>
     <school>necromancy</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>antipaladin 1, bard 1, bloodrager 1, cleric/oracle 2, mesmerist 1, psychic 1, shaman 2, sorcerer/wizard 1, spiritualist 2, witch 1</spell_level>
     <duration>1 day/level (D)</duration>
     <dismissible>1</dismissible>
@@ -71111,7 +71111,7 @@
   <Spell>
     <name>Venomous Promise</name>
     <school>transmutation</school>
-    <descriptor>language-dependent, poisonUM</descriptor>
+    <descriptor>language-dependent, poison</descriptor>
     <spell_level>antipaladin 3, bard 3, mesmerist 3, shaman 3, witch 3</spell_level>
     <duration>permanent or until triggered</duration>
     <dismissible>0</dismissible>
@@ -71240,7 +71240,7 @@
     <name>Curse Of Keeping</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>antipaladin 2, mesmerist 2, shaman 2, witch 2</spell_level>
     <duration>1 day/level</duration>
     <dismissible>0</dismissible>
@@ -71450,7 +71450,7 @@
     <name>Shadow Enchantment</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>bard 3, mesmerist 3, psychic 3, sorcerer/wizard 3</spell_level>
     <duration>see text</duration>
     <dismissible>0</dismissible>
@@ -71478,7 +71478,7 @@
     <name>Shadow Enchantment, Greater</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>bard 6, mesmerist 6, psychic 6, sorcerer/wizard 6</spell_level>
     <duration>see text</duration>
     <dismissible>0</dismissible>
@@ -71813,7 +71813,7 @@
     <name>Shadow Endurance</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>bard 5, mesmerist 5, shaman 5, sorcerer/wizard 6, spiritualist 5</spell_level>
     <duration>1 hour/level until discharged, then 1 minute/level; see text</duration>
     <dismissible>0</dismissible>
@@ -72696,7 +72696,7 @@
   <Spell>
     <name>Rune Of Ruin</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>alchemist 4, bard 4, inquisitor 4, sorcerer/wizard 5, witch 5</spell_level>
     <duration>instantaneous</duration>
     <dismissible>0</dismissible>
@@ -72871,7 +72871,7 @@
     <name>Heckle</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>bard 2, bloodrager 2, magus 3, mesmerist 2, psychic 2, sorcerer/wizard 2</spell_level>
     <duration>1 minute/level</duration>
     <dismissible>0</dismissible>
@@ -72901,7 +72901,7 @@
     <name>Stage Fright</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>antipaladin 3, bard 3, inquisitor 3, mesmerist 3, psychic 3, sorcerer/wizard 3, witch 3</spell_level>
     <duration>1 round/level</duration>
     <dismissible>0</dismissible>
@@ -73158,7 +73158,7 @@
   <Spell>
     <name>Dancing Darkness</name>
     <school>evocation</school>
-    <descriptor>darkness, shadowUM</descriptor>
+    <descriptor>darkness, shadow</descriptor>
     <spell_level>antipaladin 1, bard 1, magus 1, shaman 1, psychic 1, sorcerer/wizard 1, spiritualist 1, witch 1</spell_level>
     <duration>1 minute/level (D)</duration>
     <dismissible>1</dismissible>
@@ -73277,7 +73277,7 @@
   <Spell>
     <name>Penumbral Disguise</name>
     <school>conjuration</school>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>alchemist 3, bard 3, inquisitor 3, mesmerist 3, occultist 3, sorcerer/wizard 3, witch 3</spell_level>
     <duration>10 minutes/level (D)</duration>
     <dismissible>1</dismissible>
@@ -73307,7 +73307,7 @@
   <Spell>
     <name>Shield Of Darkness</name>
     <school>evocation</school>
-    <descriptor>darkness, shadowUM</descriptor>
+    <descriptor>darkness, shadow</descriptor>
     <spell_level>antipaladin 3, cleric/oracle 3, inquisitor 3, shaman 3, spiritualist 3</spell_level>
     <duration>1 round/level (D)</duration>
     <dismissible>1</dismissible>
@@ -73370,7 +73370,7 @@
   <Spell>
     <name>Touch Of Blindness</name>
     <school>necromancy</school>
-    <descriptor>darkness, shadowUM</descriptor>
+    <descriptor>darkness, shadow</descriptor>
     <spell_level>antipaladin 1, bard 1, cleric/oracle 1, sorcerer/wizard 1, shaman 1, witch 1</spell_level>
     <duration>1 round/level (see text)</duration>
     <dismissible>0</dismissible>
@@ -73432,7 +73432,7 @@
     <name>Baleful Shadow Transmutation</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>alchemist 6, bard 6, druid 7, medium 6, shaman 6, sorcerer/wizard 6, spiritualist 6, summoner/unchained summoner 6, witch 6</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -73465,7 +73465,7 @@
   <Spell>
     <name>Masochistic Shadow</name>
     <school>necromancy</school>
-    <descriptor>evil, shadowUM</descriptor>
+    <descriptor>evil, shadow</descriptor>
     <spell_level>antipaladin 4, bloodrager 4, magus 4, occultist 4, shaman 4, sorcerer/wizard 4, witch 4</spell_level>
     <duration>1 round/level (D)</duration>
     <dismissible>1</dismissible>
@@ -73496,7 +73496,7 @@
     <name>Shadow Transmutation</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>bard 6, medium 6, shaman 6, sorcerer/wizard 6, spiritualist 6, summoner/unchained summoner 6, witch 6</spell_level>
     <duration>see text</duration>
     <dismissible>0</dismissible>
@@ -73528,7 +73528,7 @@
     <name>Shadow Transmutation, Greater</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>shaman 9, sorcerer/wizard 9, witch 9</spell_level>
     <duration>see text</duration>
     <dismissible>0</dismissible>
@@ -73589,7 +73589,7 @@
     <name>Shadowform</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>antipaladin 4, bard 4, mesmerist 4, psychic 4, sorcerer/wizard 4, spiritualist 4, witch 4</spell_level>
     <duration>1 round/level (D)</duration>
     <dismissible>1</dismissible>
@@ -73619,7 +73619,7 @@
   <Spell>
     <name>Umbral Infusion</name>
     <school>necromancy</school>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>alchemist 4, antipaladin 4, cleric/oracle 4, occultist 4, psychic 4, shaman 4, sorcerer/wizard 4, witch 4</spell_level>
     <duration>1 minute/level</duration>
     <dismissible>0</dismissible>
@@ -73651,7 +73651,7 @@
   <Spell>
     <name>Umbral Infusion, Mass</name>
     <school>necromancy</school>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>cleric/oracle 8, sorcerer/wizard 8, witch 8</spell_level>
     <duration>1 minute/level</duration>
     <dismissible>0</dismissible>
@@ -74095,7 +74095,7 @@
   <Spell>
     <name>Conditional Curse</name>
     <school>necromancy</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>antipaladin 4, cleric/oracle 4, inquisitor 4, medium 3, mesmerist 3, occultist 4, psychic 5, shaman 4, sorcerer/wizard 5, spiritualist 5, witch 4</spell_level>
     <duration>permanent (see text)</duration>
     <dismissible>0</dismissible>
@@ -74226,7 +74226,7 @@
   <Spell>
     <name>Contingent Venom</name>
     <school>necromancy</school>
-    <descriptor>poisonUM</descriptor>
+    <descriptor>poison</descriptor>
     <spell_level>shaman 4, sorcerer/wizard 4</spell_level>
     <duration>permanent until discharged (D)</duration>
     <dismissible>1</dismissible>
@@ -74369,7 +74369,7 @@
     <name>Curse Of The Outcast</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>curseUM, emotionUM, mind-affecting</descriptor>
+    <descriptor>curse, emotion, mind-affecting</descriptor>
     <spell_level>bard 4, cleric/oracle 6, inquisitor 4, mesmerist 4, shaman 6, witch 6</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -74400,7 +74400,7 @@
     <name>Dark Whispers</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>language-dependent, shadowUM</descriptor>
+    <descriptor>language-dependent, shadow</descriptor>
     <spell_level>antipaladin 1, bard 2, cleric/oracle 2, sorcerer/wizard 2, summoner/unchained summoner 2, witch 2</spell_level>
     <duration>10 minutes/level (D)</duration>
     <dismissible>1</dismissible>
@@ -75081,7 +75081,7 @@
   <Spell>
     <name>Ghost Brand</name>
     <school>transmutation</school>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>bard 4, occultist 3, spiritualist 4, witch 4</spell_level>
     <duration>1 day/level (D)</duration>
     <dismissible>1</dismissible>
@@ -75511,7 +75511,7 @@
     <name>Life Of Crime</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>curseUM, mind-affecting</descriptor>
+    <descriptor>curse, mind-affecting</descriptor>
     <spell_level>antipaladin 4, bard 6, mesmerist 6, psychic 8, sorcerer/wizard 8</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -75755,7 +75755,7 @@
   <Spell>
     <name>Open Book</name>
     <school>divination</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>antipaladin 2, bard 2, inquisitor 2, mesmerist 2, psychic 2, sorcerer/wizard 3, witch 3</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -75965,7 +75965,7 @@
     <name>Poisonous Balm</name>
     <school>conjuration</school>
     <subschool>healing</subschool>
-    <descriptor>poisonUM, ruse</descriptor>
+    <descriptor>poison, ruse</descriptor>
     <spell_level>cleric/oracle 4, druid 5, occultist 4, shaman 4, witch 5</spell_level>
     <duration>instantaneous, then 1 hour or until triggered plus 6 rounds; see text</duration>
     <dismissible>0</dismissible>
@@ -75996,7 +75996,7 @@
     <name>Pox Of Rumors</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>curseUM, mind-affecting</descriptor>
+    <descriptor>curse, mind-affecting</descriptor>
     <spell_level>bard 5, cleric/oracle 7, mesmerist 5, psychic 7, sorcerer/wizard 7, spiritualist 5, witch 7</spell_level>
     <duration>1 day/level</duration>
     <dismissible>0</dismissible>
@@ -76368,7 +76368,7 @@
     <name>They Know</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, fear</descriptor>
+    <descriptor>emotion, fear</descriptor>
     <spell_level>bard 3, inquisitor 3, mesmerist 3, paladin 3, psychic 4, shaman 4, witch 4</spell_level>
     <duration>1 minute/level (D)</duration>
     <dismissible>1</dismissible>
@@ -77003,7 +77003,7 @@
   <Spell>
     <name>Spellcurse</name>
     <school>necromancy</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>antipaladin 2, cleric/oracle 3, inquisitor 2, occultist 4, psychic 3, shaman 4, witch 3</spell_level>
     <duration>instantaneous</duration>
     <dismissible>0</dismissible>
@@ -77290,7 +77290,7 @@
   <Spell>
     <name>Alaznist's Jinx</name>
     <school>evocation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>antipaladin 4, bard 4, cleric/oracle 6, inquisitor 5, occultist 5, psychic 6, shaman 5, sorcerer/wizard 6, witch 5</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -77323,7 +77323,7 @@
   <Spell>
     <name>Flexile Curse</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>bard 3, cleric/oracle 5, inquisitor 3, psychic 5, sorcerer/wizard 5, witch 3</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -77353,7 +77353,7 @@
   <Spell>
     <name>Irregular Size</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>antipaladin 3, bloodrager 4, cleric/oracle 3, medium 2, mesmerist 3, occultist 3, shaman 3, sorcerer/wizard 4, spiritualist 4, witch 3</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -77387,7 +77387,7 @@
   <Spell>
     <name>Itching Curse</name>
     <school>necromancy</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>antipaladin 1, bard 1, druid 1, inquisitor 1, occultist 1, shaman 1, sorcerer/wizard 1, witch 1</spell_level>
     <duration>1 hour/level (D)</duration>
     <dismissible>1</dismissible>
@@ -77419,7 +77419,7 @@
   <Spell>
     <name>Kalistocrat's Nightmare</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>alchemist 2, bard 2, cleric/oracle 3, inquisitor 2, investigator 2, magus 2, occultist 2, sorcerer/wizard 3, witch 2</spell_level>
     <duration>1 hour/level (see text)</duration>
     <dismissible>0</dismissible>
@@ -77452,7 +77452,7 @@
   <Spell>
     <name>Lost Legacy</name>
     <school>enchantment</school>
-    <descriptor>curseUM, mind-affecting</descriptor>
+    <descriptor>curse, mind-affecting</descriptor>
     <spell_level>bard 6, cleric/oracle 7, inquisitor 6, occultist 6, psychic 7, sorcerer/wizard 7, witch 6</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -77724,7 +77724,7 @@
     <name>Apathy</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>bard 4, mesmerist 4, psychic 5, sorcerer/wizard 5, witch 5</spell_level>
     <duration>1 hour/level</duration>
     <dismissible>0</dismissible>
@@ -77753,7 +77753,7 @@
     <name>Assumed Likeness</name>
     <school>illusion</school>
     <subschool>phantasm</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>bard 1, magus 2, medium 1, mesmerist 1, occultist 2, psychic 2, sorcerer/wizard 2</spell_level>
     <duration>10 minutes/level (D)</duration>
     <dismissible>1</dismissible>
@@ -77843,7 +77843,7 @@
   <Spell>
     <name>Daggermark's Exchange</name>
     <school>transmutation</school>
-    <descriptor>poisonUM</descriptor>
+    <descriptor>poison</descriptor>
     <spell_level>alchemist 2, cleric/oracle 3, druid 2, occultist 3, psychic 3, sorcerer/wizard 3</spell_level>
     <duration>instantaneous</duration>
     <dismissible>0</dismissible>
@@ -78129,7 +78129,7 @@
   <Spell>
     <name>Rotting Alliance</name>
     <school>necromancy</school>
-    <descriptor>curseUM, diseaseUM</descriptor>
+    <descriptor>curse, disease</descriptor>
     <spell_level>cleric/oracle 8, druid 8, inquisitor 6, occultist 6, witch 8</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -78183,7 +78183,7 @@
     <name>Searching Shadows</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>shadowUM</descriptor>
+    <descriptor>shadow</descriptor>
     <spell_level>bard 2, sorcerer/wizard 2</spell_level>
     <duration>concentration</duration>
     <dismissible>0</dismissible>
@@ -78209,7 +78209,7 @@
     <name>Seeds Of Influence</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>bard 3, medium 3, mesmerist 3, psychic 4, sorcerer/wizard 4, witch 4</spell_level>
     <duration>1 hour/level (D)</duration>
     <dismissible>1</dismissible>
@@ -78239,7 +78239,7 @@
     <name>Seeds Of Influence, Greater</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>bard 5, medium 4, mesmerist 5, psychic 7, sorcerer/wizard 7, witch 7</spell_level>
     <duration>1 day/level (D)</duration>
     <dismissible>1</dismissible>
@@ -78380,7 +78380,7 @@
   <Spell>
     <name>Violent Accident</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>cleric/oracle 2, mesmerist 2, occultist 2, witch 2</spell_level>
     <duration>1 day or until discharged</duration>
     <dismissible>0</dismissible>
@@ -79122,7 +79122,7 @@
     <name>Absurdity</name>
     <school>illusion</school>
     <subschool>phantasm</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>bard 2, medium 2, mesmerist 2, psychic 2, spiritualist 2</spell_level>
     <duration>1 minute/level (D)</duration>
     <dismissible>1</dismissible>
@@ -79316,7 +79316,7 @@
     <name>Barbed Chains</name>
     <school>conjuration</school>
     <subschool>summoning</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>antipaladin 1, bloodrager 1, cleric/oracle 1, inquisitor 1, occultist 1, shaman 1, summoner/unchained summoner 1</spell_level>
     <duration>instantaneous</duration>
     <dismissible>0</dismissible>
@@ -79477,7 +79477,7 @@
     <name>Charnel House</name>
     <school>illusion</school>
     <subschool>shadow</subschool>
-    <descriptor>evil, shadowUM</descriptor>
+    <descriptor>evil, shadow</descriptor>
     <spell_level>antipaladin 3, cleric/oracle 5, mesmerist 5, psychic 5, sorcerer/wizard 5, witch 5</spell_level>
     <area>20-ft. cube (S)</area>
     <duration>10 minutes/level</duration>
@@ -79706,7 +79706,7 @@
   <Spell>
     <name>Curse Of Fell Seasons</name>
     <school>transmutation</school>
-    <descriptor>curseUM, darkness</descriptor>
+    <descriptor>curse, darkness</descriptor>
     <spell_level>druid 9, shaman 9, sorcerer/wizard 9, witch 9</spell_level>
     <area>2-mile radius emanating from the touched point</area>
     <duration>permanent (D)</duration>
@@ -79736,7 +79736,7 @@
   <Spell>
     <name>Curse Of Night</name>
     <school>evocation</school>
-    <descriptor>curseUM, darkness</descriptor>
+    <descriptor>curse, darkness</descriptor>
     <spell_level>cleric/oracle 8, druid 8, sorcerer/wizard 8, witch 8</spell_level>
     <area>1-mile radius emanating from the touched point</area>
     <duration>permanent (D)</duration>
@@ -79767,7 +79767,7 @@
   <Spell>
     <name>Curse Terrain, Lesser</name>
     <school>necromancy</school>
-    <descriptor>curseUM, evil</descriptor>
+    <descriptor>curse, evil</descriptor>
     <spell_level>cleric/oracle 2, druid 2, shaman 2, sorcerer/wizard 2, witch 2</spell_level>
     <area>300-ft. radius emanating from the touched point</area>
     <duration>1 day (D)</duration>
@@ -79800,7 +79800,7 @@
   <Spell>
     <name>Curse Terrain</name>
     <school>necromancy</school>
-    <descriptor>curseUM, evil</descriptor>
+    <descriptor>curse, evil</descriptor>
     <spell_level>cleric/oracle 4, druid 4, shaman 4, sorcerer/wizard 4, witch 4</spell_level>
     <area>1-mile radius emanating from the touched point</area>
     <duration>1 day (D)</duration>
@@ -79833,7 +79833,7 @@
   <Spell>
     <name>Curse Terrain, Greater</name>
     <school>necromancy</school>
-    <descriptor>curseUM, evil</descriptor>
+    <descriptor>curse, evil</descriptor>
     <spell_level>cleric/oracle 6, druid 6, shaman 6, sorcerer/wizard 6, witch 6</spell_level>
     <area>5-mile radius emanating from the touched point</area>
     <duration>1 day (D)</duration>
@@ -79866,7 +79866,7 @@
   <Spell>
     <name>Curse Terrain, Supreme</name>
     <school>necromancy</school>
-    <descriptor>curseUM, evil</descriptor>
+    <descriptor>curse, evil</descriptor>
     <spell_level>cleric/oracle 8, druid 8, shaman 8, sorcerer/wizard 8, witch 8</spell_level>
     <area>5-mile radius emanating from the touched point</area>
     <duration>1 day (D)</duration>
@@ -80015,7 +80015,7 @@
     <name>Dreadscape</name>
     <school>illusion</school>
     <subschool>phantasm</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>bard 3, medium 3, mesmerist 3, psychic 4, sorcerer/wizard 4</spell_level>
     <duration>10 minutes/level</duration>
     <dismissible>0</dismissible>
@@ -80565,7 +80565,7 @@
     <name>Night Terrors</name>
     <school>illusion</school>
     <subschool>phantasm</subschool>
-    <descriptor>emotionUM, evil, mind-affecting</descriptor>
+    <descriptor>emotion, evil, mind-affecting</descriptor>
     <spell_level>bard 6, mesmerist 6, psychic 6, sorcerer/wizard 6, witch 6</spell_level>
     <duration>1 day/level (D)</duration>
     <dismissible>1</dismissible>
@@ -80595,7 +80595,7 @@
     <name>Pessimism</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>bard 4, medium 4, mesmerist 4, psychic 5, sorcerer/wizard 5, witch 5</spell_level>
     <duration>1 hour/level</duration>
     <dismissible>0</dismissible>
@@ -80686,7 +80686,7 @@
     <name>Phobia</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>bard 5, mesmerist 5, psychic 6, sorcerer/wizard 6, witch 6</spell_level>
     <duration>instantaneous</duration>
     <dismissible>0</dismissible>
@@ -80845,7 +80845,7 @@
   <Spell>
     <name>Rigor Mortis</name>
     <school>transmutation</school>
-    <descriptor>painUM</descriptor>
+    <descriptor>pain</descriptor>
     <spell_level>cleric/oracle 4, magus 4, occultist 4, psychic 4, shaman 4, sorcerer/wizard 4, spiritualist 3, witch 4</spell_level>
     <duration>instantaneous; see text</duration>
     <dismissible>0</dismissible>
@@ -81350,7 +81350,7 @@
     <name>Besmara's Grasping Depths</name>
     <school>necromancy</school>
     <subschool>haunted</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>cleric/oracle 5, inquisitor 6, shaman 6, spiritualist 5, witch 6</spell_level>
     <area>one 5-ft. cube/level (S)</area>
     <duration>see text</duration>
@@ -81381,7 +81381,7 @@
     <name>Crafter's Nightmare</name>
     <school>necromancy</school>
     <subschool>haunted</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>bard 2, druid 2, medium 1, mesmerist 2, occultist 2, psychic 2, sorcerer/wizard 2, spiritualist 2, witch 2</spell_level>
     <area>one 5-ft. cube/level (S)</area>
     <duration>1 day/level (D)</duration>
@@ -81417,7 +81417,7 @@
     <name>Frigid Souls</name>
     <school>necromancy</school>
     <subschool>haunted</subschool>
-    <descriptor>cold, emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>cold, emotion, fear, mind-affecting</descriptor>
     <spell_level>cleric/oracle 4, druid 4, ranger 3, shaman 4, sorcerer/wizard 4, witch 4</spell_level>
     <area>one 5-ft. cube/level (S)</area>
     <duration>1 hour/level (D)</duration>
@@ -81451,7 +81451,7 @@
     <name>Grim Stalker</name>
     <school>necromancy</school>
     <subschool>haunted</subschool>
-    <descriptor>death, emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>death, emotion, fear, mind-affecting</descriptor>
     <spell_level>cleric/oracle 7, magus 6, shaman 7, sorcerer/wizard 7, summoner/unchained summoner 6, witch 7</spell_level>
     <duration>1 day/level (D)</duration>
     <dismissible>1</dismissible>
@@ -81484,7 +81484,7 @@
     <name>Horrifying Visage</name>
     <school>necromancy</school>
     <subschool>haunted</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>bard 3, cleric/oracle 3, inquisitor 3, magus 3, psychic 3, shaman 3, sorcerer/wizard 3, spiritualist 3, witch 3</spell_level>
     <area>one 5-ft. cube/level (S)</area>
     <duration>1 day/level (D)</duration>
@@ -81520,7 +81520,7 @@
     <name>Mischievous Shadow</name>
     <school>necromancy</school>
     <subschool>haunted</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>bard 4, magus 4, medium 3, shaman 4, sorcerer/wizard 4, spiritualist 4, summoner/unchained summoner 4, witch 4</spell_level>
     <area>one 5-ft. cube/level (S)</area>
     <duration>1 day/level (D)</duration>
@@ -81555,7 +81555,7 @@
     <name>Skin Tag</name>
     <school>necromancy</school>
     <subschool>haunted</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>alchemist 1, medium 1, occultist 1, shaman 1, sorcerer/wizard 1, witch 1</spell_level>
     <duration>1 day plus 1 day/level (D)</duration>
     <dismissible>1</dismissible>
@@ -81587,7 +81587,7 @@
     <name>Unsettling Presence</name>
     <school>necromancy</school>
     <subschool>haunted</subschool>
-    <descriptor>emotionUM, fear, mind-affecting</descriptor>
+    <descriptor>emotion, fear, mind-affecting</descriptor>
     <spell_level>bard 2, medium 1, mesmerist 2, occultist 2, psychic 2, shaman 2, sorcerer/wizard 2, witch 2</spell_level>
     <area>one 5-ft. cube/level (S)</area>
     <duration>1 hour/level (D)</duration>
@@ -81621,7 +81621,7 @@
     <name>Urgathoa's Beacon</name>
     <school>necromancy</school>
     <subschool>haunted</subschool>
-    <descriptor>emotionUM, evil, fear, mind-affecting</descriptor>
+    <descriptor>emotion, evil, fear, mind-affecting</descriptor>
     <spell_level>antipaladin 2, cleric/oracle 2, inquisitor 2</spell_level>
     <area>one 5-ft. cube/level (S)</area>
     <duration>1 hour/level (D)</duration>
@@ -82498,7 +82498,7 @@
   <Spell>
     <name>Painful Revelation</name>
     <school>abjuration</school>
-    <descriptor>mind-affecting, painUM</descriptor>
+    <descriptor>mind-affecting, pain</descriptor>
     <spell_level>antipaladin 2, bard 2, mesmerist 2, psychic 2, sorcerer/wizard 2</spell_level>
     <duration>1 hour/level or until discharged</duration>
     <dismissible>0</dismissible>
@@ -84614,7 +84614,7 @@
     <name>Debilitating Pain</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>mind-affecting, painUM</descriptor>
+    <descriptor>mind-affecting, pain</descriptor>
     <spell_level>psychic 3, witch 3</spell_level>
     <duration>1 round/3 levels</duration>
     <dismissible>0</dismissible>
@@ -84639,7 +84639,7 @@
     <name>Debilitating Pain, Mass</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>mind-affecting, painUM</descriptor>
+    <descriptor>mind-affecting, pain</descriptor>
     <spell_level>psychic 5, witch 5</spell_level>
     <duration>1 round/3 levels</duration>
     <dismissible>0</dismissible>
@@ -86109,7 +86109,7 @@
   <Spell>
     <name>Sun's Disdain</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>bloodrager 2, cleric/oracle 2, inquisitor 2, shaman 2, sorcerer/wizard 2, witch 2</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -86139,7 +86139,7 @@
   <Spell>
     <name>Sun's Disdain, Mass</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>bloodrager 5, cleric/oracle 5, inquisitor 5, shaman 5, sorcerer/wizard 5, witch 5</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -86220,7 +86220,7 @@
   <Spell>
     <name>Contest Of Skill</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>bard 2, cleric/oracle 3, magus 2, paladin 2</spell_level>
     <duration>1 minute/level</duration>
     <dismissible>0</dismissible>
@@ -87254,7 +87254,7 @@
     <name>Slave To Sin</name>
     <school>enchantment</school>
     <subschool>compulsion</subschool>
-    <descriptor>emotionUM, mind-affecting</descriptor>
+    <descriptor>emotion, mind-affecting</descriptor>
     <spell_level>bard 2, cleric/oracle 3, inquisitor 3, mesmerist 2, paladin 2, sorcerer/wizard 3, witch 3</spell_level>
     <duration>1 round/level</duration>
     <dismissible>0</dismissible>
@@ -87384,7 +87384,7 @@
   <Spell>
     <name>Brand Of Conformity</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>inquisitor 1</spell_level>
     <duration>1 day/level</duration>
     <dismissible>0</dismissible>
@@ -87407,7 +87407,7 @@
   <Spell>
     <name>Brand Of Hobbling</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>inquisitor 2</spell_level>
     <duration>1 day/level</duration>
     <dismissible>0</dismissible>
@@ -87430,7 +87430,7 @@
   <Spell>
     <name>Brand Of Tracking</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>inquisitor 4</spell_level>
     <duration>permanent</duration>
     <dismissible>0</dismissible>
@@ -87806,7 +87806,7 @@
   <Spell>
     <name>Mark Of Blood</name>
     <school>transmutation</school>
-    <descriptor>curseUM</descriptor>
+    <descriptor>curse</descriptor>
     <spell_level>bloodrager 2, inquisitor 2, sorcerer/wizard 2, witch 2</spell_level>
     <duration>1 minute and permanent (see text)</duration>
     <dismissible>0</dismissible>

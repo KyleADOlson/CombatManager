@@ -4616,7 +4616,7 @@ namespace CombatManager
                         if (condition.Affliction != null)
                         {
                             Paragraph p = new Paragraph(new Run(condition.Affliction.Text));
-                            p.FontFamily = new FontFamily("Segoe UI");
+                            p.FontFamily = new FontFamily("Cabin");
                             p.FontSize = 12.0;
                             viewer.Document.Blocks.Add(p);
                         }
