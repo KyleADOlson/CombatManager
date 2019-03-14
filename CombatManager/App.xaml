@@ -11,25 +11,25 @@
         <system:String x:Key="ApplicationTitle">Combat Manager</system:String>
         <system:String x:Key="ApplicationVersion">1.6.9</system:String>
         <system:String x:Key="ApplicationCopyright">© 2010-2019 Kyle Olson</system:String>
-				<Color x:Key="PrimaryColorLighter">#BBDBDD</Color>
-		 <Color x:Key="PrimaryColorLight">#AFDBDD</Color>
-		 <Color x:Key="PrimaryColorMedium">#87B9BB</Color>
-		 <Color x:Key="PrimaryColorDark">#6F8B8C</Color>  		 
-		 <Color x:Key="PrimaryColorDarker">#2C767A</Color>   		   		
-		 <Color x:Key="SecondaryColorALighter">#FFF2D8</Color>
-		 <Color x:Key="SecondaryColorALight">#FFEDC9</Color>
-		 <Color x:Key="SecondaryColorAMedium">#FFE8B8</Color>
-		 <Color x:Key="SecondaryColorADark">#BFB297</Color>  
-		 <Color x:Key="SecondaryColorADarker">#A6833C</Color>     
-		 <Color x:Key="SecondaryColorBLighter">#FFD9D8</Color>
-		 <Color x:Key="SecondaryColorBLight">#FFCBC9</Color>
-		 <Color x:Key="SecondaryColorBMedium">#FFB9B8</Color>
-		 <Color x:Key="SecondaryColorBDark">#BF9897</Color>  
-		 <Color x:Key="SecondaryColorBDarker">#A63E3C</Color>     
-        
-        
 
-         
+         <Color x:Key="PrimaryColorLighter"   >#708FA3</Color>
+		 <Color x:Key="PrimaryColorLight"     >#29526D</Color>
+		 <Color x:Key="PrimaryColorMedium"    >#486F88</Color>
+		 <Color x:Key="PrimaryColorDark"      >#123852</Color>  		 
+		 <Color x:Key="PrimaryColorDarker"    >#032236</Color>
+         <Color x:Key="SecondaryColorALighter">#FFD0AA</Color>
+		 <Color x:Key="SecondaryColorALight"  >#D4996A</Color>
+		 <Color x:Key="SecondaryColorAMedium" >#AA6B39</Color>
+		 <Color x:Key="SecondaryColorADark"   >#804415</Color>  
+		 <Color x:Key="SecondaryColorADarker" >#552600</Color>
+         <Color x:Key="SecondaryColorBLighter">#FFE2AA</Color>
+		 <Color x:Key="SecondaryColorBLight"  >#D4B06A</Color>
+		 <Color x:Key="SecondaryColorBMedium" >#AA8339</Color>
+		 <Color x:Key="SecondaryColorBDark"   >#805B15</Color>  
+		 <Color x:Key="SecondaryColorBDarker" >#553800</Color>
+
+
+
         <LinearGradientBrush x:Key="characterButtonBrush" EndPoint="0,1" StartPoint="0,0">
             <GradientStop Color="#FFF3F3F3" Offset="0"/>
             <GradientStop Color="#FF9D5B5B" Offset="0.5"/>
@@ -38,6 +38,47 @@
         </LinearGradientBrush>      		
         <DropShadowEffect x:Key="ConditionShadow" BlurRadius="4" ShadowDepth="2"/>     		
         <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94"/>
+
+        <SolidColorBrush x:Key="PrimaryColorLighterBrush" Color="{DynamicResource PrimaryColorLighter}"/>
+        <SolidColorBrush x:Key="PrimaryColorLightBrush" Color="{DynamicResource PrimaryColorLight}"/>
+        <SolidColorBrush x:Key="PrimaryColorMediumBrush" Color="{DynamicResource PrimaryColorMedium}"/>
+        <SolidColorBrush x:Key="PrimaryColorDarkBrush" Color="{DynamicResource PrimaryColorDark}"/>
+        <SolidColorBrush x:Key="PrimaryColorDarkerBrush" Color="{DynamicResource PrimaryColorDarker}"/>
+
+        <SolidColorBrush x:Key="SecondaryColorALighterBrush" Color="{DynamicResource SecondaryColorALighter}"/>
+        <SolidColorBrush x:Key="SecondaryColorALightBrush" Color="{DynamicResource   SecondaryColorALight}"/>
+        <SolidColorBrush x:Key="SecondaryColorAMediumBrush" Color="{DynamicResource  SecondaryColorAMedium}"/>
+        <SolidColorBrush x:Key="SecondaryColorADarkBrush" Color="{DynamicResource    SecondaryColorADark}"/>
+        <SolidColorBrush x:Key="SecondaryColorADarkerBrush" Color="{DynamicResource  SecondaryColorADarker}"/>
+
+        <SolidColorBrush x:Key="SecondaryColorBLighterBrush" Color="{DynamicResource SecondaryColorBLighter}"/>
+        <SolidColorBrush x:Key="SecondaryColorBLightBrush" Color="{DynamicResource   SecondaryColorBLight}"/>
+        <SolidColorBrush x:Key="SecondaryColorBMediumBrush" Color="{DynamicResource  SecondaryColorBMedium}"/>
+        <SolidColorBrush x:Key="SecondaryColorBDarkBrush" Color="{DynamicResource    SecondaryColorBDark}"/>
+        <SolidColorBrush x:Key="SecondaryColorBDarkerBrush" Color="{DynamicResource  SecondaryColorBDarker}"/>
+
+        <SolidColorBrush x:Key="LightBorderBrush" Color="White" />
+        <SolidColorBrush x:Key="TextOnSecondaryADarkerBrush" Color="White" />
+        <SolidColorBrush x:Key="TextOnPrimaryDarkerBrush" Color="White" />
+        <SolidColorBrush x:Key="RectangleBorderBrush" Color="White"/>
+
+
+        <LinearGradientBrush x:Key="PrimaryColorGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="{DynamicResource PrimaryColorDarker}" Offset="0.447"/>
+            <GradientStop Color="{DynamicResource PrimaryColorLight}" Offset="0"/>
+        </LinearGradientBrush>
+
+
+        <LinearGradientBrush x:Key="SecondaryColorAGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="{DynamicResource SecondaryColorADarker}" Offset="0.447"/>
+            <GradientStop Color="{DynamicResource SecondaryColorALight}" Offset="0"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SecondaryColorBGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="{DynamicResource SecondaryColorBDarker}" Offset="0.447"/>
+            <GradientStop Color="{DynamicResource SecondaryColorBLight}" Offset="0"/>
+        </LinearGradientBrush>
+        <ImageBrush x:Key="FancyBackgroundBrush" ImageSource="Images/CM-Back.png"/>
+        
         <local:AttackToTypeImageConverter x:Key="AttackToTypeImageConverter"/>   
         <local:ActiveToBrushConverter x:Key="activeToBrushConverter"/>
         <local:ItemExistsConverter x:Key="itemExistsConverter"/>
@@ -75,32 +116,45 @@
         </Style>
         <Style x:Key="ButtonBaseStyle" BasedOn="{StaticResource ControlStyle}" TargetType="{x:Type Control}">
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource LightBorderBrush}"/>
         </Style>
         <Style x:Key="ButtonMainStyle" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="{x:Type Control}">
-            <Setter Property="Background" Value="{DynamicResource PrimaryColorGradientBrush}" />
+            <Setter Property="Background" Value="{DynamicResource PrimaryColorDarkBrush}" />
             <Setter Property="Foreground" Value="White"/>
             <Style.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Background" Value="{DynamicResource PrimaryColorLightBrush}"/>
                     <Setter Property="Foreground" Value="DarkGray"/>
                 </Trigger>
             </Style.Triggers>
 
         </Style>
         <Style x:Key="ButtonSecondaryStyle" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="{x:Type Control}">
-            <Setter Property="Background" Value="{DynamicResource SecondaryColorBGradientBrush}" />
+            <Setter Property="Background" Value="{DynamicResource SecondaryColorBDarkBrush}" />
             <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryColorBLightBrush}"/>
+                    <Setter Property="Foreground" Value="DarkGray"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="ButtonSecondaryAStyle" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="{x:Type Control}">
-            <Setter Property="Background" Value="{DynamicResource SecondaryColorAGradientBrush}" />
+            <Setter Property="Background" Value="{DynamicResource SecondaryColorADarkBrush}" />
             <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryColorALightBrush}"/>
+                    <Setter Property="Foreground" Value="DarkGray"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="TabBorderStyle" TargetType="{x:Type Border}">
             <Setter Property="Padding" Value="6"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="BorderBrush">
                 <Setter.Value>
-                    <SolidColorBrush Color="{DynamicResource PrimaryColorDark}"/>
+                    <SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="Background">
@@ -109,28 +163,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <LinearGradientBrush x:Key="PrimaryColorGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        	<GradientStop Color="{DynamicResource PrimaryColorDarker}" Offset="0.447"/>
-        	<GradientStop Color="{DynamicResource PrimaryColorLight}" Offset="0"/>
-        </LinearGradientBrush>
 
-        <LinearGradientBrush x:Key="SecondaryColorAGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        			<GradientStop Color="{DynamicResource SecondaryColorADarker}" Offset="0.447"/>
-        			<GradientStop Color="{DynamicResource SecondaryColorALight}" Offset="0"/>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="SecondaryColorBGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        			<GradientStop Color="{DynamicResource SecondaryColorBDarker}" Offset="0.447"/>
-        			<GradientStop Color="{DynamicResource SecondaryColorBLight}" Offset="0"/>
-        </LinearGradientBrush>
-        <ImageBrush x:Key="FancyBackgroundBrush" ImageSource="Images/CM-Back.png">
-            
-        </ImageBrush>
+
 
         <Style x:Key="TabControlStyle1"  BasedOn="{StaticResource ControlStyle}" TargetType="{x:Type TabControl}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="Padding" Value="4,4,4,4"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource TabControlNormalBorderBrush}"/>
             <Setter Property="Background" Value="#F9F9F9"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>

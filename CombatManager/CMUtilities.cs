@@ -222,6 +222,18 @@ namespace CombatManager
             return new SolidColorBrush(element.FindColor(name));
         }
 
+        public static Color ToColor(this UInt32 source)
+        {
+
+            byte[] bytes = BitConverter.GetBytes(source);
+            return Color.FromArgb(bytes[3], bytes[2], bytes[1], bytes[0]);
+        }
+
+        public static UInt32 ToUInt32(this Color color)
+        {
+            return BitConverter.ToUInt32(new byte[] { color.B, color.G, color.R, color.A }, 0);
+        }
+
         public static Point Center(this Rect rect)
         {
             return new Point(rect.X + rect.Width / 2.0, rect.Y + rect.Height / 2.0);

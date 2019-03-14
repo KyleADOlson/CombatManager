@@ -70,6 +70,7 @@
     <Compile Include="CMRegexUtilities.cs" />
     <Compile Include="CMStringUtilities.cs" />
     <Compile Include="Coin.cs" />
+    <Compile Include="Personalization\ColorScheme.cs" />
     <Compile Include="CombatState.cs" />
     <Compile Include="Condition.cs" />
     <Compile Include="ConditionBonus.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="MonsterHtmlCreator.cs" />
     <Compile Include="ParsedFeat.cs" />
     <Compile Include="Pathfinder.Herolab.Serializable.class.cs" />
+    <Compile Include="Personalization\ColorSchemeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyConverters.cs" />
     <Compile Include="RandomWeightChart.cs" />
@@ -142,6 +144,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Condition.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DefaultColorSchemes.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Equipment.xml">

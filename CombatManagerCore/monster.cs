@@ -275,10 +275,8 @@ namespace CombatManager
 
         public void NotifyPropertyChanged(string property)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            
         }
 
         private String name;
@@ -8195,7 +8193,7 @@ namespace CombatManager
                         retString += m.Groups["start"].Value;
                     }
 
-                    Regex regValues = new Regex("(?<name>[ \\p{L}]+ \\+(?<val>[0-9]+)");
+                    Regex regValues = new Regex("(?<name>[ \\p{L}]+ \\+(?<val>[0-9]+))");
 
                     bool weaponFound = false;
                     retString += "weapon training (" + regValues.Replace(m.Groups["values"].Value, delegate(Match ma)

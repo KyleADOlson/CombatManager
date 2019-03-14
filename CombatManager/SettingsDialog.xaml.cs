@@ -19,7 +19,8 @@
  *
  */
 
-﻿using System;
+using CombatManager.Personalization;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -56,6 +57,16 @@ namespace CombatManager
             CheckForUpdatesCheckbox.IsChecked = UserSettings.Settings.CheckForUpdates;
 
             RollAlternateInitDiceBox.TextChanged += new TextChangedEventHandler(RollAlternateInitDiceBox_TextChanged);
+
+            foreach (ColorScheme scheme in ColorSchemeManager.Manager.ColorSchemes)
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = scheme.Name;
+                ColorSchemeCombo.Items.Add(item);
+            }
+
+            ColorSchemeCombo.SelectedIndex = Math.Min(ColorSchemeManager.Manager.ColorSchemes.Count - 1, UserSettings.Settings.ColorScheme);
+
 		}
 
         void RollAlternateInitDiceBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -76,6 +87,7 @@ namespace CombatManager
             UserSettings.Settings.AddMonstersHidden = AddMonstersHiddenBox.IsChecked.Value;
             UserSettings.Settings.StatsOpenByDefault = StatsOpenByDefaultCheckbox.IsChecked.Value;
             UserSettings.Settings.CheckForUpdates = CheckForUpdatesCheckbox.IsChecked.Value;
+            UserSettings.Settings.ColorScheme = ColorSchemeCombo.SelectedIndex;
             UserSettings.Settings.SaveOptions();
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
@@ -85,6 +97,18 @@ namespace CombatManager
             Close();
              
 		}
-			
-	}
+
+        private void ColorSchemeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ColorManager.SetNewScheme(ColorSchemeCombo.SelectedIndex);
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ColorSchemeCombo.SelectedIndex != UserSettings.Settings.ColorScheme)
+            {
+                ColorManager.PrepareCurrentScheme();
+            }
+        }
+    }
 }

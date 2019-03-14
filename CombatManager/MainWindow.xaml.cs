@@ -54,6 +54,7 @@ using System.Net;
 using System.Xml.Linq;
 using System.Reflection;
 using CombatManager.Maps;
+using CombatManager.Personalization;
 
 namespace CombatManager
 {
@@ -71,9 +72,9 @@ namespace CombatManager
         ListCollectionView combatView;
         ICollectionView monsterView;
         ICollectionView playerView;
-        
+
         //ListCollectionView currentPlayerView;
-        
+
         ICollectionView spellsView;
         ICollectionView featsView;
         ICollectionView dbView;
@@ -100,7 +101,7 @@ namespace CombatManager
 
         bool combatLayoutLoaded;
         bool restoreDefaultLayout;
-        
+
 
         //for dragging top and left
         double dragStartLeft;
@@ -132,7 +133,7 @@ namespace CombatManager
         private GameMapDisplayWindow mapDisplayWindow;
         private GameMapDisplayWindow playerMapDisplayWindow;
 
-         List<CheckBox> treasureCheckboxesList;
+        List<CheckBox> treasureCheckboxesList;
 
         List<string> _RecentDieRolls;
 
@@ -186,7 +187,7 @@ namespace CombatManager
             MarkTime("Preload", ref t, ref last);
 
             LoadBestiary();
-            MarkTime("Bestiary",ref t, ref last);
+            MarkTime("Bestiary", ref t, ref last);
 
             LoadSpells();
             MarkTime("Spells", ref t, ref last);
@@ -204,7 +205,7 @@ namespace CombatManager
             MarkTime("Die Rolls", ref t, ref last);
 
             System.Diagnostics.Debug.Write(SourceInfo.UnfoundSourcesList);
-            
+
 
 
             mainWindowLoaded = true;
@@ -252,7 +253,7 @@ namespace CombatManager
 
 
             monsterView = new ListCollectionView(combatState.Characters);
-            monsterView.Filter += delegate(object item)
+            monsterView.Filter += delegate (object item)
                             {
                                 if (item == null)
                                 {
@@ -268,7 +269,7 @@ namespace CombatManager
 
             playerView = new ListCollectionView(combatState.Characters);
             playerView.CurrentChanged += new EventHandler(playerView_CurrentChanged);
-            playerView.Filter = delegate(object item)
+            playerView.Filter = delegate (object item)
                             {
                                 if (item == null)
                                 {
@@ -280,7 +281,7 @@ namespace CombatManager
             playerListBox.SelectionChanged += new SelectionChangedEventHandler(monsterListBox_SelectionChanged);
 
             combatView = new ListCollectionView(combatState.CombatList);
-            combatView.Filter += delegate(object item)
+            combatView.Filter += delegate (object item)
             {
                 if (item == null)
                 {
@@ -313,7 +314,7 @@ namespace CombatManager
             CurrentPlayerConditions.DataContext = combatState;
 
             combatState.CombatList.CollectionChanged += new NotifyCollectionChangedEventHandler(CombatList_CollectionChanged);
-            
+
             //currentPlayerView.CurrentChanging += new CurrentChangingEventHandler(currentPlayerView_CurrentChanging);
             //currentPlayerView.CurrentChanged += new EventHandler(currentPlayerView_CurrentChanged);
 
@@ -347,7 +348,7 @@ namespace CombatManager
             monsterListBox.Drop += new DragEventHandler(characterListBox_Drop);
             monsterListDragManager.ProcessDrop += new EventHandler<ProcessDropEventArgs<Character>>(monsterListDragManager_ProcessDrop);
             monsterListDragManager.ManagerDragOver += new EventHandler(characterListDragManager_ManagerDragOver);
-            
+
 
 
 
@@ -359,12 +360,12 @@ namespace CombatManager
 
             NextCommand.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
             PrevCommand.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
-            
+
             LoadSettings();
 
             treasureCheckboxesList = new List<CheckBox>(new CheckBox[] {
                 GenerateMundaneCheck,
-                        	GenerateMagicalArmorCheck,
+                            GenerateMagicalArmorCheck,
                 GenerateMagicalWeaponCheck,
                 GeneratePotionCheck,
                 GenerateRingCheck,
@@ -410,7 +411,7 @@ namespace CombatManager
             LoadHotkeys();
 
             PerformUpdateCheck();
-            
+
         }
 
 
@@ -486,7 +487,7 @@ namespace CombatManager
         {
             SaveCombatViewLayout();
         }
-        
+
 
         void CombatViewDockingManager_Loaded(object sender, RoutedEventArgs e)
         {
@@ -532,8 +533,13 @@ namespace CombatManager
             _PipeServer = new PipeServer(new WindowInteropHelper(this).Handle);
             _PipeServer.FileRecieved += new EventHandler<PipeServer.PipeServerEventArgs>(PipeServer_FileRecieved);
             _PipeServer.RunServer();
+
+            ColorManager.PrepareCurrentScheme();
+
+
         }
 
+ 
 
         void SaveDefaultLayout()
         {
@@ -3627,17 +3633,36 @@ namespace CombatManager
 
         }
 
+
+        private void BottomThumb_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+        double rightDragWidth;
+
         private void RightThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
-            double xadjust = this.Width + e.HorizontalChange;
+            rightDragWidth += e.HorizontalChange;
 
 
-            if (xadjust >= 0)
-            {
-                this.Width = xadjust;
+            this.Width = Math.Max(rightDragWidth, MinWidth);
 
-            }
+            
+        }
 
+
+        private void RightThumb_DragStarted(object sender, DragStartedEventArgs e)
+        {
+            rightDragWidth = this.Width;
+        }
+
+
+        private void RightThumb_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+        }
+
+        private void RightThumb_MouseMove(object sender, MouseEventArgs e)
+        {
         }
 
         private void LeftThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
@@ -5042,14 +5067,21 @@ namespace CombatManager
 
                     if (monsters != null)
                     {
+
+                        Character ch = null;
                         foreach (Monster m in monsters)
                         {
 
-                            Character ch = new Character(m, false);
+                            ch = new Character(m, false);
 
                             ch.IsMonster = (view != playerView);
 
                             AddCharacter(ch);
+                        }
+
+                        if (monsters.Count == 1)
+                        {
+                            ch.OriginalFilename = filename;
                         }
                     }
                 }
@@ -8226,7 +8258,15 @@ namespace CombatManager
 
             if (mi.Name == "RedColorMenuItem")
             {
-                color =  0xffff0000;
+                color = 0xffff0000;
+            }
+            if (mi.Name == "BlueColorMenuItem")
+            {
+                color = 0xff0000ff; 
+            }
+            if (mi.Name == "GreenColorMenuItem")
+            {
+                color = 0xff00ff00;
             }
 
             foreach (Character ch in list)
@@ -8458,6 +8498,31 @@ namespace CombatManager
             System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", filePath));
         }
 
+        private void ReloadMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            bool succeeded = false;
+            try
+            {
+                Character ch = (Character)((MenuItem)sender).DataContext;
+                FileInfo info = new FileInfo(ch.OriginalFilename);
+                if (info.Exists)
+                {
+                    var monsters = Monster.FromFile(ch.OriginalFilename);
+                    if (monsters != null && monsters.Count == 1)
+                    {
+                        ch.Monster = monsters[0];
+                        succeeded = true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+            if (!succeeded)
+            {
+                MessageBox.Show("Unable to reload from file");
+            }
+        }
     }
 
 

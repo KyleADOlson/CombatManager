@@ -1542,14 +1542,20 @@ namespace CombatManager
 
             if (monsters != null)
             {
+                Character ch = null;
+
                 foreach (Monster m in monsters)
                 {
-
-                    Character ch = new Character(m, false);
+                    ch = new Character(m, false);
 
                     ch.IsMonster = isMonster;
 
                     AddCharacter(ch);
+                }
+
+                if (monsters.Count == 1)
+                {
+                    ch.OriginalFilename = filename;
                 }
             }
             

@@ -106,6 +106,8 @@ namespace CombatManager
         private double _InitiativeScale;
         private bool _InitiativeFlip;
 
+        private int _ColorScheme;
+
 
 
         private bool optionsLoaded;
@@ -133,6 +135,7 @@ namespace CombatManager
             _MonsterTabFilter = MonsterSetFilter.Monsters;
             _SelectedTab = 0;
             _InitiativeConditionsSize = 2;
+            _ColorScheme = 0;
             LoadOptions();
         }
 
@@ -532,6 +535,26 @@ namespace CombatManager
             }
         }
 
+        public int ColorScheme
+        {
+            get { return _ColorScheme; }
+            set
+            {
+                if (_ColorScheme != value)
+                {
+                    _ColorScheme = value;
+                    if (optionsLoaded)
+                    {
+                        ColorManager.PrepareCurrentScheme();
+                    }
+
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ColorScheme")); }
+
+                }
+            }
+        }
+
+
         public MonsterSetFilter MonsterDBFilter
         {
             get { return _MonsterDBFilter; }
@@ -652,6 +675,7 @@ namespace CombatManager
                 CheckForUpdates = LoadBoolValue("CheckForUpdates", true); 
                 MonsterDBFilter = (MonsterSetFilter)LoadIntValue("MonsterDBFilter", (int)MonsterSetFilter.Monsters);
                 MonsterTabFilter = (MonsterSetFilter)LoadIntValue("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
+                ColorScheme = LoadIntValue("ColorScheme", 0);
 
                 optionsLoaded = true;
             }
@@ -691,6 +715,7 @@ namespace CombatManager
                         SaveBoolValue(key, "AddMonstersHidden", AddMonstersHidden);
                         SaveBoolValue(key, "StatsOpenByDefault", StatsOpenByDefault);
                         SaveBoolValue(key, "CheckForUpdates", CheckForUpdates);
+                        SaveIntValue(key, "ColorScheme", ColorScheme);
                         
                     }
 
@@ -891,7 +916,8 @@ namespace CombatManager
                 return (_Settings != null && _Settings.optionsLoaded);
             }
         }
- 
+
+
 
 
         public static UserSettings Settings
@@ -905,6 +931,7 @@ namespace CombatManager
                 return _Settings;
             }
         }
+
 
     }
 

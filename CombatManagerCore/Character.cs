@@ -64,6 +64,9 @@ namespace CombatManager
         private uint? color;
 
 
+        private String originalFilename;
+
+
         //unsaved data
         private bool isActive;
         private int currentInitiative;
@@ -82,6 +85,7 @@ namespace CombatManager
         private CharacterAdjuster adjuster;
 
         private static Random rand = new Random();
+
 
         public Character()
         {
@@ -163,6 +167,8 @@ namespace CombatManager
             {
                 character.InitiativeCount = new InitiativeCount(InitiativeCount);
             }
+
+            character.originalFilename = originalFilename;
 
             return character;
         }
@@ -645,6 +651,8 @@ namespace CombatManager
             }
         }
 
+        
+
         void initiativeFollowers_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             Notify("HasFollowers");
@@ -679,6 +687,7 @@ namespace CombatManager
             {
                 if (this.monster != value)
                 {
+                    bool replacement = monster != null;
                     if (monster != null)
                     {
                         monster.PropertyChanged -= Monster_PropertyChanged;
@@ -694,6 +703,13 @@ namespace CombatManager
                     }
 
                     Notify("Monster");
+                    Notify("Stats");
+                    if (replacement && monster != null)
+                    {
+                        MaxHP = monster.HP;
+                        monster.NotifyPropertyChanged("Init");
+                    }
+
                 }
             }
         }
@@ -975,6 +991,24 @@ namespace CombatManager
 
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Resources")); }
 
+                }
+            }
+        }
+
+        [DataMember]
+        public string OriginalFilename
+        {
+            get
+            {
+                return this.originalFilename;
+            }
+            set
+            {
+
+                if (this.originalFilename != value)
+                {
+                    this.originalFilename = value;
+                    Notify("OriginalFilename");
                 }
             }
         }

@@ -1,5 +1,9 @@
 ﻿1.6.9
+Color scheme option
+Fix spell annotation bugs
 Add mundane treasure option
+Prevent resize below min width/height
+Allow reload of imported monster from previous location
 
 1.6.8
 Fix for old Windows

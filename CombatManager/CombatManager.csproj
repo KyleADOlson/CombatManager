@@ -72,8 +72,6 @@
     <Reference Include="AvalonDock.Themes">
       <HintPath>..\AvalonDock\AvalonDock.Themes.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -92,10 +90,6 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.4.3\lib\net45\System.Windows.Interactivity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>v4.0</RequiredTargetFramework>
     </Reference>
@@ -150,6 +144,7 @@
     <Compile Include="Cloud\CloudConnection.cs" />
     <Compile Include="Cloud\MonsterLibrary.cs" />
     <Compile Include="CMUtilities.cs" />
+    <Compile Include="ColorManager.cs" />
     <Compile Include="CombatHotKey.cs" />
     <Compile Include="CombatListWindow.xaml.cs">
       <DependentUpon>CombatListWindow.xaml</DependentUpon>

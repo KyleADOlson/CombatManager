@@ -5,30 +5,36 @@
 	x:Class="CombatManager.SettingsDialog"
 	x:Name="Window"
 	Title="Settings"
-	Width="258" Height="299.583" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False">
+	Width="258" Height="331" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False" VerticalAlignment="Top" d:DesignHeight="324">
 
-	<Grid x:Name="LayoutRoot" Margin="0,0,0,0">
-		<Grid.Background>
-			<SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
-		</Grid.Background>
-		<Border BorderThickness="1" Margin="8,14,8,41.25" CornerRadius="6">
-			<Border.Background>
-				<SolidColorBrush Color="{DynamicResource SecondaryColorALight}"/>
-			</Border.Background>
-			<Grid>
-				<CheckBox x:Name="ConfirmApplicationCloseCheckbox" Content="Confirm on Application Close" HorizontalAlignment="Left" Margin="6,6,0,0" VerticalAlignment="Top"/>
-				<CheckBox x:Name="ConfirmInitiativeCheckbox" Content="Confirm Initiative Roll/Sort" HorizontalAlignment="Left" Margin="6,26,0,0" VerticalAlignment="Top"/>
-				<CheckBox x:Name="ConfirmCharacterDeleteCheckbox" Content="Confirm Character Delete" HorizontalAlignment="Left" Margin="6,46,0,0" VerticalAlignment="Top"/>
-				<CheckBox x:Name="RollAlternativeInitCheckbox" Content="Roll Alternate Dice For d20 Rolls" HorizontalAlignment="Left" Margin="6,85.92,0,0" VerticalAlignment="Top"/>
-				<CheckBox x:Name="ShowAllDamageDice" Content="Show All Damage Dice in Die Roller" HorizontalAlignment="Left" Margin="6,65.96,0,0" VerticalAlignment="Top"/>
-				<TextBox Margin="25,105.019,78,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="3d6" IsEnabled="{Binding IsChecked, ElementName=RollAlternativeInitCheckbox}" x:Name="RollAlternateInitDiceBox" VerticalAlignment="Top" />
-				<CheckBox x:Name="AddMonstersHiddenBox" Content="Add Monsters Hidden" HorizontalAlignment="Left" Margin="6,126.979,0,0" VerticalAlignment="Top"/>
-				<CheckBox x:Name="ShowHiddenInitValueBox" Content="Show Hidden Init Value" HorizontalAlignment="Left" Margin="6,146.077,0,0" VerticalAlignment="Top"/>
-				<CheckBox x:Name="StatsOpenByDefaultCheckbox" Content="Stats Panel Begins Open" HorizontalAlignment="Left" Margin="6,165.175,0,0" VerticalAlignment="Top"/>
-				<CheckBox x:Name="CheckForUpdatesCheckbox" Content="Check For Updates" HorizontalAlignment="Left" Margin="6,184.273,0,0" VerticalAlignment="Top"/>
-			</Grid>
-		</Border>
-		<Button Content="OK" HorizontalAlignment="Right" Margin="0,0,87,13" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="Button_Click" x:Name="OKButton" />
-		<Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,13" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
-	</Grid>
+    <Grid x:Name="LayoutRoot" Margin="0,0,0,0" VerticalAlignment="Top">
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
+        </Grid.Background>
+        <Border BorderThickness="1" Margin="8,14,8,41.25" CornerRadius="0" VerticalAlignment="Top">
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
+            </Border.Background>
+            <StackPanel>
+                <CheckBox x:Name="ConfirmApplicationCloseCheckbox" Content="Confirm on Application Close" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                <CheckBox x:Name="ConfirmInitiativeCheckbox" Content="Confirm Initiative Roll/Sort" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                <CheckBox x:Name="ConfirmCharacterDeleteCheckbox" Content="Confirm Character Delete" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                <CheckBox x:Name="RollAlternativeInitCheckbox" Content="Roll Alternate Dice For d20 Rolls" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                <CheckBox x:Name="ShowAllDamageDice" Content="Show All Damage Dice in Die Roller" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                <TextBox Margin="26,5,156,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="3d6" IsEnabled="{Binding IsChecked, ElementName=RollAlternativeInitCheckbox}" x:Name="RollAlternateInitDiceBox" VerticalAlignment="Top" />
+                <CheckBox x:Name="AddMonstersHiddenBox" Content="Add Monsters Hidden" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                <CheckBox x:Name="ShowHiddenInitValueBox" Content="Show Hidden Init Value" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                <CheckBox x:Name="StatsOpenByDefaultCheckbox" Content="Stats Panel Begins Open" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                <CheckBox x:Name="CheckForUpdatesCheckbox" Content="Check For Updates" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Color Scheme:" Margin="6,8,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <ComboBox x:Name="ColorSchemeCombo"  Width="130" Margin="6,5,4,8" SelectionChanged="ColorSchemeCombo_SelectionChanged">
+                        
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Button Content="OK" HorizontalAlignment="Right" Margin="0,0,87,13" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="Button_Click" x:Name="OKButton" />
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,13" VerticalAlignment="Bottom" Width="75" IsCancel="True" Click="CancelButton_Click"/>
+    </Grid>
 </Window>
