@@ -49,6 +49,8 @@ namespace CombatManager.Maps
         double cellSizeWidth;
         double cellSizeHeight;
 
+        bool squareCellSize;
+
         bool cachedMap;
 
         String sourceFile;
@@ -61,6 +63,9 @@ namespace CombatManager.Maps
 
         bool showGrid = true;
         Color gridColor = Color.FromArgb(255, 255, 255, 255);
+
+        double rotation;
+        bool flip;
         
 
         int id;
@@ -79,6 +84,7 @@ namespace CombatManager.Maps
             CellOrigin = new Point(0, 0);
             Scale = 1D;
             TableScale = 1D;
+            SquareCellSize = true;
         
 
         }
@@ -147,8 +153,19 @@ namespace CombatManager.Maps
                 if (cellSizeWidth != setValue)
                 {
                     cellSizeWidth = setValue;
+                    bool notifyHeight = false;
+                    if (squareCellSize && cellSizeWidth != cellSizeHeight)
+                    {
+                        cellSizeHeight = cellSizeWidth;
+                        notifyHeight = true;
+                    }
+
                     Notify("CellSize");
                     NotifyAndSave("CellSizeWidth");
+                    if (notifyHeight)
+                    {
+                        Notify("CellSizeHeight");
+                    }
                 }
             }
         }
@@ -161,8 +178,42 @@ namespace CombatManager.Maps
                 if (cellSizeHeight != setValue)
                 {
                     cellSizeHeight = setValue;
+
+                    bool notifyWidth = false ;
+                    if (squareCellSize && cellSizeWidth != cellSizeHeight)
+                    {
+                        cellSizeWidth = cellSizeHeight;
+                        notifyWidth = true;
+                    }
+
                     Notify("CellSize");
                     NotifyAndSave("CellSizeHeight");
+                    if (notifyWidth)
+                    {
+
+                        Notify("CellSizeWidth");
+                    }
+                }
+            }
+        }
+
+        public bool SquareCellSize
+        {
+            get { return squareCellSize; }
+            set
+            {
+                if (squareCellSize != value)
+                {
+                    squareCellSize = value;
+                    Notify("SquareCellSize");
+
+                    if (squareCellSize && cellSizeWidth != cellSizeHeight)
+                    {
+                        cellSizeHeight = cellSizeWidth;
+                        Notify("CellSize");
+                        Notify("CellSizeHeight");
+                    }
+
                 }
             }
         }

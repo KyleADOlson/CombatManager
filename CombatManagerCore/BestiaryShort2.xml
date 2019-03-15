@@ -48110,7 +48110,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 5th; concentration +9)   7 PE-dispel magic (3 PE), id insinuation IOA (2 PE, DC 16), object reading (1 PE), scorching ray (2 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 5th; concentration +9)   7 PE-dispel magic (3 PE), id insinuation I (2 PE, DC 16), object reading (1 PE), scorching ray (2 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Baku Dreamweaver</Name>
@@ -48260,7 +48260,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 10th; concentration +14)   9 PE-mind thrust IIIOA (3 PE, DC 17), synaptic pulse (3 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 10th; concentration +14)   9 PE-mind thrust III (3 PE, DC 17), synaptic pulse (3 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Chyzaedu</Name>
@@ -48360,7 +48360,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 9th; concentration +14)  12 PE-detect magic (0 PE), hypercognition (2 PE), instigate psychic duel (2 PE, DC 17), mind thrust IIOA (2 PE, DC 17), mindlink (1 PE), mindscape door (3 PE, DC 18), psychic asylum (5 PE), synaptic pulse (3 PE, DC 18), thought shield IIIOA (4 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 9th; concentration +14)  12 PE-detect magic (0 PE), hypercognition (2 PE), instigate psychic duel (2 PE, DC 17), mind thrust II (2 PE, DC 17), mindlink (1 PE), mindscape door (3 PE, DC 18), psychic asylum (5 PE), synaptic pulse (3 PE, DC 18), thought shield III (4 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Dark Empath</Name>
@@ -48410,7 +48410,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 3rd; concentration +5)   3 PE-mind thrust IOA (1 PE, DC 13), paranoia (1 PE, DC 13), thought echo (1 PE, DC 13)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 3rd; concentration +5)   3 PE-mind thrust I (1 PE, DC 13), paranoia (1 PE, DC 13), thought echo (1 PE, DC 13)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Painajai</Name>
@@ -48465,7 +48465,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 14th; concentration +18)   25 PE-cognitive block (3 PE, DC 17), confusion (4 PE, DC 18), fear (4 PE, DC 18), greater oneiric horror (4 PE, DC 18), hungry pit (5 PE, DC 19), mental barrier IIOA (3 PE), mirage arcana (5 PE, DC 19), nightmare (5 PE, DC 19), phantasmal killer (4 PE, DC 18), synaptic pulse (3 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 14th; concentration +18)   25 PE-cognitive block (3 PE, DC 17), confusion (4 PE, DC 18), fear (4 PE, DC 18), greater oneiric horror (4 PE, DC 18), hungry pit (5 PE, DC 19), mental barrier II (3 PE), mirage arcana (5 PE, DC 19), nightmare (5 PE, DC 19), phantasmal killer (4 PE, DC 18), synaptic pulse (3 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Mnemor</Name>
@@ -48627,7 +48627,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 3rd; concentration +3)  5 PE-ironskin (2 PE), mind thrust IOA (1 PE)  Kineticist Wild Talents Known  Defense-flesh of stone  Infusions-extended range, kinetic blade (2d6)  Kinetic Blasts-earth blast (2d6+6)  Utility-basic geokinesis, kinetic cover</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 3rd; concentration +3)  5 PE-ironskin (2 PE), mind thrust I (1 PE)  Kineticist Wild Talents Known  Defense-flesh of stone  Infusions-extended range, kinetic blade (2d6)  Kinetic Blasts-earth blast (2d6+6)  Utility-basic geokinesis, kinetic cover</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Echohusk</Name>
@@ -48729,7 +48729,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 10th, concentration +14)   24 PE-anticipate thoughts (2 PE, DC 16), ego whip IVOA (6 PE, DC 20), globe of invulnerability (4 PE), id insinuation IIIOA (4 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 10th, concentration +14)   24 PE-anticipate thoughts (2 PE, DC 16), ego whip IVOA (6 PE, DC 20), globe of invulnerability (4 PE), id insinuation III (4 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Fear Eater</Name>
@@ -48877,7 +48877,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 14th, concentration +16)  15 PE-explode head (5 PE, DC 18), greater synaptic pulse (5 PE, DC 18), lightning bolt (3 PE, DC 19), mental barrier IIIOA (4 PE), mind probe (4 PE, DC 16), mind thrust IVOA (4 PE, DC 16), synapse overload (5 PE, DC 17), synaptic scramble (4 PE, DC 17), thought shield IVOA (5 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 14th, concentration +16)  15 PE-explode head (5 PE, DC 18), greater synaptic pulse (5 PE, DC 18), lightning bolt (3 PE, DC 19), mental barrier III (4 PE), mind probe (4 PE, DC 16), mind thrust IVOA (4 PE, DC 16), synapse overload (5 PE, DC 17), synaptic scramble (4 PE, DC 17), thought shield IVOA (5 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Cantor</Name>
@@ -49084,7 +49084,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 20th; concentration +27)   27 PE-demand offering (2 PE, DC 19), ego whip VOA (6 PE, DC 23), id insinuation IVOA (5 PE, DC 22), mass inflict pain (6 PE, DC 23), mind thrust VIOA (6 PE, DC 23), psychic crush VOA (9 PE, DC 26), telekinetic storm (9 PE, DC 26)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 20th; concentration +27)   27 PE-demand offering (2 PE, DC 19), ego whip VOA (6 PE, DC 23), id insinuation IVOA (5 PE, DC 22), mass inflict pain (6 PE, DC 23), mind thrust VI (6 PE, DC 23), psychic crush VOA (9 PE, DC 26), telekinetic storm (9 PE, DC 26)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Prana Ghost</Name>
@@ -49349,7 +49349,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 4th; concentration +8)  5 PE-babble (2 PE, DC 16), blur (2 PE), deja vu (1 PE, DC 15), hideous laughter (1 PE, DC 15), hold person (2 PE, DC 16), hypnotism (1 PE, DC 15), id insinuation IOA (2 PE, DC 16), paranoia (1 PE, DC 15)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 4th; concentration +8)  5 PE-babble (2 PE, DC 16), blur (2 PE), deja vu (1 PE, DC 15), hideous laughter (1 PE, DC 15), hold person (2 PE, DC 16), hypnotism (1 PE, DC 15), id insinuation I (2 PE, DC 16), paranoia (1 PE, DC 15)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Avatarana</Name>
@@ -49402,7 +49402,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 12th; concentration +16)   20 PE-detect magic (0 PE), dimension door (4 PE), dispel magic (3 PE), displacement (3 PE), dominate person (5 PE, DC 19), ego whip IIIOA (5 PE, DC 19), expeditious retreat (1 PE), greater invisibility (4 PE), mage hand (0 PE), mind thrust V OA (5 PE, DC 19), misdirection (2 PE, DC 16), psychic crush IOA (5 PE, DC 19), ray of enfeeblement (1 PE, DC 15), see invisibility (2 PE), spider climb (2 PE), telekinesis (5 PE, DC 19)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 12th; concentration +16)   20 PE-detect magic (0 PE), dimension door (4 PE), dispel magic (3 PE), displacement (3 PE), dominate person (5 PE, DC 19), ego whip III (5 PE, DC 19), expeditious retreat (1 PE), greater invisibility (4 PE), mage hand (0 PE), mind thrust V OA (5 PE, DC 19), misdirection (2 PE, DC 16), psychic crush I (5 PE, DC 19), ray of enfeeblement (1 PE, DC 15), see invisibility (2 PE), spider climb (2 PE), telekinesis (5 PE, DC 19)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Reborn Samsaran</Name>
@@ -49560,7 +49560,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 15th; concentration +19)   12 PE-anticipate thoughts (2 PE, DC 16), detect thoughts (2 PE, DC 16), levitate (2 PE), mental barrier IVU, OA (5 PE), mind fog (5 PE, DC 19), psychic crush IOA (5 PE, DC 19), suggestion (2 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 15th; concentration +19)   12 PE-anticipate thoughts (2 PE, DC 16), detect thoughts (2 PE, DC 16), levitate (2 PE), mental barrier IVU, OA (5 PE), mind fog (5 PE, DC 19), psychic crush I (5 PE, DC 19), suggestion (2 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Shotalashu</Name>
@@ -49962,7 +49962,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 19th; concentration +27)  22 PE-hypercognition (2 PE), intellect fortress IIIOA (6 PE), major mind swap (9 PE, DC 29), mental barrier VOA (6 PE), mind probe (4 PE, DC 24), remote viewing (5 PE), thought shield VOA (6 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 19th; concentration +27)  22 PE-hypercognition (2 PE), intellect fortress III (6 PE), major mind swap (9 PE, DC 29), mental barrier VOA (6 PE), mind probe (4 PE, DC 24), remote viewing (5 PE), thought shield VOA (6 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Aquatic Elf</Name>
@@ -51642,7 +51642,7 @@
     <MR>9</MR>
     <Mythic>1</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 19th; concentration +28)  24 PE-detect mindscape (2 PE, DC 21), divide mind (9 PE), enshroud thoughts (2 PE), greater create mindscape (6 PE, DC 25), hypercognition (2 PE), intellect fortress IIIOA (6 PE), mind probe (4 PE, DC 23), mindlink (1 PE), mindscape door (3 PE, DC 22), psychic asylum (5 PE), psychic reading (1 PE), thought shield VOA (6 PE), tower of iron will VOA (9 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 19th; concentration +28)  24 PE-detect mindscape (2 PE, DC 21), divide mind (9 PE), enshroud thoughts (2 PE), greater create mindscape (6 PE, DC 25), hypercognition (2 PE), intellect fortress III (6 PE), mind probe (4 PE, DC 23), mindlink (1 PE), mindscape door (3 PE, DC 22), psychic asylum (5 PE), psychic reading (1 PE), thought shield VOA (6 PE), tower of iron will VOA (9 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Exscinder Archon</Name>
@@ -52336,7 +52336,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 2nd; concentration +2)  12 PE-expeditious retreat (1 PE), mind thrust IOA (1 PE, DC 11), silent image (1 PE, DC 11)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 2nd; concentration +2)  12 PE-expeditious retreat (1 PE), mind thrust I (1 PE, DC 11), silent image (1 PE, DC 11)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Brain Mole Monarch</Name>
@@ -52384,7 +52384,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 6th; concentration +8)   16 PE-aversion (2 PE, DC 14), fly (3 PE), major image (3 PE, DC 15), mental barrier IOA (2 PE), mind thrust IIOA (2 PE, DC 14), silent image (1 PE, DC 13)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 6th; concentration +8)   16 PE-aversion (2 PE, DC 14), fly (3 PE), major image (3 PE, DC 15), mental barrier I (2 PE), mind thrust II (2 PE, DC 14), silent image (1 PE, DC 13)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Caller In Darkness</Name>
@@ -54502,7 +54502,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 16th; concentration +21)  11 PE-analyze aura (3 PE), aversion (2 PE, DC 17), deja vu (1 PE), id insinuation IOA (3 PE, DC 18), telekinetic projectile (0 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 16th; concentration +21)  11 PE-analyze aura (3 PE), aversion (2 PE, DC 17), deja vu (1 PE), id insinuation I (3 PE, DC 18), telekinetic projectile (0 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Ancient Astral Dragon</Name>
@@ -54819,7 +54819,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 14th; concentration +17)  9 PE-mage hand (0 PE), mind thrust IOA (1 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 14th; concentration +17)  9 PE-mage hand (0 PE), mind thrust I (1 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Ancient Etheric Dragon</Name>
@@ -54873,7 +54873,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 21st; concentration +27)  17 PE-chill metal (2 PE, DC 17), mage hand (0 PE), mind thrust IOA (1 PE), telekinetic maneuver (3 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 21st; concentration +27)  17 PE-chill metal (2 PE, DC 17), mage hand (0 PE), mind thrust I (1 PE), telekinetic maneuver (3 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Young Nightmare Dragon</Name>
@@ -56901,7 +56901,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 14th; concentration +17)   12 PE-explode head (5 PE, DC 18), mind thrust IIOA (2 PE, DC 15)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 14th; concentration +17)   12 PE-explode head (5 PE, DC 18), mind thrust II (2 PE, DC 15)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Lead Golem</Name>
@@ -57448,7 +57448,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 1st; concentration +2)   6 PE-daze monster (2 PE, DC 13), detect magic (0 PE), id insinuation IOA (2 PE, DC 13), mage hand (0 PE), open/close (0 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 1st; concentration +2)   6 PE-daze monster (2 PE, DC 13), detect magic (0 PE), id insinuation I (2 PE, DC 13), mage hand (0 PE), open/close (0 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Guardian Scroll</Name>
@@ -58676,7 +58676,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 12th; concentration +17; Wis-based)   25 PE-analyze aura (3 PE), aversion (2 PE, DC 17), enshroud thoughts (2 PE), mind thrust VIOA (6 PE, DC 21), psychic asylum (5 PE), psychic crush IOA (5 PE, DC 20), quintessence (1 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 12th; concentration +17; Wis-based)   25 PE-analyze aura (3 PE), aversion (2 PE, DC 17), enshroud thoughts (2 PE), mind thrust VI (6 PE, DC 21), psychic asylum (5 PE), psychic crush I (5 PE, DC 20), quintessence (1 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Maharishi Manu</Name>
@@ -58897,7 +58897,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (Sp) (CL 18th; concentration +26; Wisdom-based)  45 PE-aversion (2 PE, DC 20), awaken (5 PE), awaken construct (6 PE), babble (3 PE, DC 21), ego whip VOA (7 PE, DC 25), greater synaptic pulse (5 PE, DC 23), mind thrust VIOA (6 PE, DC 24), mindwipe (4 PE, DC 22), psychic image (9 PE), psychic surgery (6 PE), synapse overload (5 PE, DC 23)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (Sp) (CL 18th; concentration +26; Wisdom-based)  45 PE-aversion (2 PE, DC 20), awaken (5 PE), awaken construct (6 PE), babble (3 PE, DC 21), ego whip VOA (7 PE, DC 25), greater synaptic pulse (5 PE, DC 23), mind thrust VI (6 PE, DC 24), mindwipe (4 PE, DC 22), psychic image (9 PE), psychic surgery (6 PE), synapse overload (5 PE, DC 23)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Chalicotherium</Name>
@@ -59683,7 +59683,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 11th, concentration +17)  10 PE-ego whip IOA (3 PE, DC 19), id insinuation IOA (2 PE, DC 18), mental barrier IOA (1 PE), mind thrust IVOA (4 PE, DC 20)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 11th, concentration +17)  10 PE-ego whip I (3 PE, DC 19), id insinuation I (2 PE, DC 18), mental barrier I (1 PE), mind thrust IVOA (4 PE, DC 20)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Ophiotaurus</Name>
@@ -60386,7 +60386,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 8th; concentration +11)   20 PE-cognitive block (3 PE, DC 16), ego whip IOA (3 PE, DC 16), mind probe (4 PE, DC 17), mind thrust IIIOA (3 PE, DC 16), possession (5 PE, DC 18), synaptic pulse (3 PE, DC 16), thought shield IIIOA (4 PE, DC 17)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 8th; concentration +11)   20 PE-cognitive block (3 PE, DC 16), ego whip I (3 PE, DC 16), mind probe (4 PE, DC 17), mind thrust III (3 PE, DC 16), possession (5 PE, DC 18), synaptic pulse (3 PE, DC 16), thought shield III (4 PE, DC 17)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Psychepore</Name>
@@ -62293,7 +62293,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 12th; concentration +15)   0 PE (see whelp magic)-id insinuation IIOA (3 PE, DC 16), mind thrust IIIOA (3 PE, DC 16), thought shield IIOA (3 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 12th; concentration +15)   0 PE (see whelp magic)-id insinuation II (3 PE, DC 16), mind thrust III (3 PE, DC 16), thought shield II (3 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Syricta</Name>
@@ -62984,7 +62984,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 5th; concentration +5)  8 PE-burst of adrenaline (1 PE), burst of insight (1 PE), ego whip IOA (3 PE, DC 13), levitate (2 PE), paranoia (2 PE, DC 12)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 5th; concentration +5)  8 PE-burst of adrenaline (1 PE), burst of insight (1 PE), ego whip I (3 PE, DC 13), levitate (2 PE), paranoia (2 PE, DC 12)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Turul</Name>
@@ -69892,7 +69892,7 @@
     <MR>0</MR>
     <Mythic>0</Mythic>
     <MT>0</MT>
-    <PsychicMagic>Psychic Magic (CL 6th; concentration +8)   5 PE-babble (2 PE, DC 14), id insinuation IOA (2 PE, DC 14), mental block (1 PE, DC 13), mind thrust IOA (1 PE, DC 13), telekinetic projectile (1 PE)</PsychicMagic>
+    <PsychicMagic>Psychic Magic (CL 6th; concentration +8)   5 PE-babble (2 PE, DC 14), id insinuation I (2 PE, DC 14), mental block (1 PE, DC 13), mind thrust I (1 PE, DC 13), telekinetic projectile (1 PE)</PsychicMagic>
   </Monster>
   <Monster>
     <Name>Pallid Wriggler Swarm</Name>

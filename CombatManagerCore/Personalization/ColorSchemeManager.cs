@@ -29,7 +29,6 @@ namespace CombatManager.Personalization
             defaultSchemes = XmlListLoader<ColorScheme>.Load("DefaultColorSchemes.xml");
             colorSchemes = new List<ColorScheme>();
             colorSchemes.AddRange(defaultSchemes);
-            XmlListLoader<ColorScheme>.Save(defaultSchemes, "Temp.xml");
 
         }
 

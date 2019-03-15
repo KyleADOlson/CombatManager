@@ -12,6 +12,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
@@ -1235,5 +1236,19 @@ namespace CombatManager.Maps
             ShowContextMenu(new GameMap.MapCell(-1, -1));
         }
 
+        double rotation = 0;
+
+        private void RotateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (playerMode)
+            {
+                rotation += 90.0;
+                DoubleAnimation animate = new DoubleAnimation();
+                animate.To = rotation;
+                animate.Duration = new Duration(TimeSpan.FromMilliseconds(100.0));
+
+                LayoutRootRenderRotateTransform.BeginAnimation(RotateTransform.AngleProperty, animate);
+            }
+        }
     }
 }
