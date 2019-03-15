@@ -403,7 +403,8 @@ namespace CombatManager
 
         private ObservableCollection<ActiveCondition> _ActiveConditions;
         private ObservableCollection<Condition> _UsableConditions;
-        
+        private bool usableConditionsParsed;
+
         private bool _LoseDexBonus;
         private bool _DexZero;
         private int? _PreLossDex;
@@ -2653,6 +2654,41 @@ namespace CombatManager
         void SpecialAbilitiesList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SpecialAblitiesParsed = true;
+            usableConditionsParsed = false;
+        }
+
+        void ParseUsableConditions()
+        {
+            _UsableConditions.Clear();
+            foreach (SpecialAbility sa in SpecialAbilitiesList)
+            {
+                if (sa.Name == "Disease" || sa.Name == "Poison")
+                {
+                    Affliction a = Affliction.FromSpecialAbility(this, sa);
+
+
+                    if (a != null)
+                    {
+
+                        Condition c = new Condition();
+                        c.Name = a.Name;
+                        c.Affliction = a;
+                        if (sa.Name == "Disease")
+                        {
+                            c.Image = "disease";
+                        }
+                        else
+                        {
+                            c.Image = "poison";
+                        }
+
+
+                        _UsableConditions.Add(c);
+                    }
+
+                }
+            }
+            usableConditionsParsed = true;
         }
 
         void ParseAC()
@@ -8452,2505 +8488,2510 @@ namespace CombatManager
 
         #region Monster Properties
 
-            [XmlIgnore]
-            public int Perception
+        [XmlIgnore]
+        public int Perception
+        {
+            get
             {
-                get
+
+                int perception = 0;
+                if (SkillValueDictionary.ContainsKey("Perception"))
+                {
+                    perception = SkillValueDictionary["Perception"].Mod;
+                }
+                else
+                {
+                    perception = AbilityBonus(Wisdom);
+                }
+
+                return perception;
+            }
+            set
+            {
+
+            }
+        }
+
+        [DBLoaderIgnore]
+        public ObservableCollection<ActiveCondition> ActiveConditions
+        {
+            get
+            {
+                if (_ActiveConditions == null)
+                {
+                    _ActiveConditions = new ObservableCollection<ActiveCondition>();
+                    //_ActiveConditions.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(_ActiveConditions_CollectionChanged);
+                }
+
+                return _ActiveConditions;
+
+            }
+        }
+
+        [DBLoaderIgnore]
+        public ObservableCollection<Condition> UsableConditions
+        {
+            get
+            {
+                if (_UsableConditions == null)
+                {
+                    _UsableConditions = new ObservableCollection<Condition>();
+                }
+
+                if (!usableConditionsParsed && SpecialAbilitiesList != null)
+                {
+                    ParseUsableConditions();
+                }
+
+                return _UsableConditions;
+
+            }
+            set
+            {
+                if (_UsableConditions != value)
+                {
+                    _UsableConditions = value;
+                    NotifyPropertyChanged("UsableConditions");
+
+
+                }
+            }
+        }
+
+        [DataMember]
+        public bool LoseDexBonus
+        {
+            get
+            {
+                return _LoseDexBonus;
+            }
+            set
+            {
+                if (_LoseDexBonus != value)
                 {
 
-                    int perception = 0;
-                    if (SkillValueDictionary.ContainsKey("Perception"))
+                    _LoseDexBonus = value;
+
+                    NotifyPropertyChanged("LoseDexBonus");
+                }
+            }
+        }
+
+        [DataMember]
+        public bool DexZero
+        {
+            get
+            {
+                return _DexZero;
+            }
+            set
+            {
+                if (_DexZero != value)
+                {
+
+                    if (value)
                     {
-                        perception = SkillValueDictionary["Perception"].Mod;
+                        _PreLossDex = Dexterity;
+                        if (Dexterity != null)
+                        {
+                            AdjustDexterity(-Dexterity.Value);
+                        }
+                        _DexZero = true;
                     }
                     else
                     {
-                        perception = AbilityBonus(Wisdom);
-                    }
-
-                    return perception;
-                }
-                set
-                {
-
-                }
-            }
-
-            [DBLoaderIgnore]
-            public ObservableCollection<ActiveCondition> ActiveConditions
-            {
-                get
-                {
-                    if (_ActiveConditions == null)
-                    {
-                        _ActiveConditions = new ObservableCollection<ActiveCondition>();
-                        //_ActiveConditions.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(_ActiveConditions_CollectionChanged);
-                    }
-
-                    return _ActiveConditions;
-
-                }
-            }
-
-            [DBLoaderIgnore]
-            public ObservableCollection<Condition> UsableConditions
-            {
-                get
-                {
-                    if (_UsableConditions == null)
-                    {
-                        _UsableConditions = new ObservableCollection<Condition>();
-                    }
-
-                    return _UsableConditions;
-
-                }
-                set
-                {
-                    if (_UsableConditions != value)
-                    {
-                        _UsableConditions = value;
-                        NotifyPropertyChanged("UsableConditions");
-
-
-                    }
-                }
-            }
-
-            [DataMember]
-            public bool LoseDexBonus
-            {
-                get
-                {
-                    return _LoseDexBonus;
-                }
-                set
-                {
-                    if (_LoseDexBonus != value)
-                    {
-
-                        _LoseDexBonus = value;
-
-                        NotifyPropertyChanged("LoseDexBonus");
-                    }
-                }
-            }
-
-            [DataMember]
-            public bool DexZero
-            {
-                get
-                {
-                    return _DexZero;
-                }
-                set
-                {
-                    if (_DexZero != value)
-                    {
-
-                        if (value)
+                        _DexZero = false;
+                        if (_PreLossDex != null)
                         {
-                            _PreLossDex = Dexterity;
-                            if (Dexterity != null)
-                            {
-                                AdjustDexterity(-Dexterity.Value);
-                            }
-                            _DexZero = true;
+                            AdjustDexterity(_PreLossDex.Value);
                         }
-                        else
-                        {
-                            _DexZero = false;
-                            if (_PreLossDex != null)
-                            {
-                                AdjustDexterity(_PreLossDex.Value);
-                            }
-                        }
-
-                        NotifyPropertyChanged("DexZero");
                     }
+
+                    NotifyPropertyChanged("DexZero");
                 }
             }
+        }
 
-            [DataMember]
-            public bool StrZero
+        [DataMember]
+        public bool StrZero
+        {
+            get
             {
-                get
+                return _StrZero;
+            }
+            set
+            {
+                if (_StrZero != value)
                 {
-                    return _StrZero;
-                }
-                set
-                {
-                    if (_StrZero != value)
-                    {
 
-                        if (value)
+                    if (value)
+                    {
+                        _PreLossStr = Strength;
+                        if (Strength != null)
                         {
-                            _PreLossStr = Strength;
-                            if (Strength != null)
-                            {
-                                AdjustStrength(-Strength.Value);
-                            }
-                            _StrZero = true;
+                            AdjustStrength(-Strength.Value);
                         }
-                        else
+                        _StrZero = true;
+                    }
+                    else
+                    {
+                        _StrZero = false;
+                        if (_PreLossStr != null)
                         {
-                            _StrZero = false;
-                            if (_PreLossStr != null)
-                            {
-                                AdjustStrength(_PreLossStr.Value);
-                            }
+                            AdjustStrength(_PreLossStr.Value);
                         }
-
-                        NotifyPropertyChanged("StrZero");
                     }
+
+                    NotifyPropertyChanged("StrZero");
                 }
             }
+        }
 
-            [DataMember]
-            public int? PreLossDex
+        [DataMember]
+        public int? PreLossDex
+        {
+            get { return _PreLossDex; }
+            set
             {
-                get { return _PreLossDex; }
-                set
+                if (_PreLossDex != value)
                 {
-                    if (_PreLossDex != value)
+                    _PreLossDex = value;
+                }
+            }
+        }
+
+        [DataMember]
+        public int? PreLossStr
+        {
+            get { return _PreLossStr; }
+            set
+            {
+                if (_PreLossStr != value)
+                {
+                    _PreLossStr = value;
+                }
+            }
+        }
+
+        [XmlIgnore]
+        protected DieRoll HDRoll
+        {
+            get
+            {
+                return FindNextDieRoll(HD, 0);
+            }
+            set
+            {
+                HD = ReplaceDieRoll(HD, value, 0);
+            }
+        }
+
+        [XmlIgnore]
+        public CreatureType CreatureType
+        {
+            get
+            {
+                return Monster.ParseCreatureType(Type);
+            }
+            set
+            {
+                Type = Monster.CreatureTypeText(value);
+            }
+        }
+
+        [XmlIgnore]
+        public List<AttackSet> MeleeAttacks
+        {
+            get
+            {
+                List<AttackSet> sets = new List<AttackSet>();
+
+                if (Melee != null)
+                {
+                    Regex regOr = new Regex("\\) or ");
+
+                    Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+                    int lastLoc = 0;
+
+                    foreach (Match m in regOr.Matches(Melee))
                     {
-                        _PreLossDex = value;
-                    }
-                }
-            }
+                        AttackSet set = new AttackSet();
+                        string text = Melee.Substring(lastLoc, m.Index - lastLoc + 1);
 
-            [DataMember]
-            public int? PreLossStr
-            {
-                get { return _PreLossStr; }
-                set
-                {
-                    if (_PreLossStr != value)
-                    {
-                        _PreLossStr = value;
-                    }
-                }
-            }
+                        lastLoc = m.Index + m.Length;
 
-            [XmlIgnore]
-            protected DieRoll HDRoll
-            {
-                get
-                {
-                    return FindNextDieRoll(HD, 0);
-                }
-                set
-                {
-                    HD = ReplaceDieRoll(HD, value, 0);
-                }
-            }
-
-            [XmlIgnore]
-            public CreatureType CreatureType
-            {
-                get
-                {
-                    return Monster.ParseCreatureType(Type);
-                }
-                set
-                {
-                    Type = Monster.CreatureTypeText(value);
-                }
-            }
-
-            [XmlIgnore]
-            public List<AttackSet> MeleeAttacks
-            {
-                get
-                {
-                    List<AttackSet> sets = new List<AttackSet>();
-
-                    if (Melee != null)
-                    {
-                        Regex regOr = new Regex("\\) or ");
-
-                        Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
-                        int lastLoc = 0;
-
-                        foreach (Match m in regOr.Matches(Melee))
-                        {
-                            AttackSet set = new AttackSet();
-                            string text = Melee.Substring(lastLoc, m.Index - lastLoc + 1);
-
-                            lastLoc = m.Index + m.Length;
-
-                            foreach (Match a in regAttack.Matches(text))
-                            {
-                                Attack attack = Attack.ParseAttack(a);
-
-                                if (attack.Weapon != null && attack.Weapon.Class != "Natural")
-                                {
-                                    testTwoHandedFromText(attack);
-                                    set.WeaponAttacks.Add(attack);
-                                }
-                                else
-                                {
-                                    if (attack.Weapon == null)
-                                    {
-                                        attack.Weapon = new Weapon(attack, false, SizeMods.GetSize(Size));
-
-                                        if (attack.Weapon.Natural)
-                                        {
-                                            set.NaturalAttacks.Add(attack);
-                                        }
-                                        else
-                                        {
-                                            set.WeaponAttacks.Add(attack);
-                                        }
-                                    }
-                                    else
-                                    {
-
-                                        set.NaturalAttacks.Add(attack);
-                                    }
-                                }
-
-                            }
-
-                            sets.Add(set);
-
-                        }
-
-                        string lastText = Melee.Substring(lastLoc);
-
-
-                        AttackSet newSet = new AttackSet();
-
-                        foreach (Match a in regAttack.Matches(lastText))
+                        foreach (Match a in regAttack.Matches(text))
                         {
                             Attack attack = Attack.ParseAttack(a);
 
                             if (attack.Weapon != null && attack.Weapon.Class != "Natural")
                             {
                                 testTwoHandedFromText(attack);
-                                newSet.WeaponAttacks.Add(attack);
+                                set.WeaponAttacks.Add(attack);
                             }
                             else
                             {
                                 if (attack.Weapon == null)
                                 {
                                     attack.Weapon = new Weapon(attack, false, SizeMods.GetSize(Size));
-                                }
 
-                                newSet.NaturalAttacks.Add(attack);
+                                    if (attack.Weapon.Natural)
+                                    {
+                                        set.NaturalAttacks.Add(attack);
+                                    }
+                                    else
+                                    {
+                                        set.WeaponAttacks.Add(attack);
+                                    }
+                                }
+                                else
+                                {
+
+                                    set.NaturalAttacks.Add(attack);
+                                }
                             }
+
                         }
 
-                        sets.Add(newSet);
-
+                        sets.Add(set);
 
                     }
 
-                    return sets;
-                }
-            }
+                    string lastText = Melee.Substring(lastLoc);
 
-            [XmlIgnore]
-            public List<Attack> RangedAttacks
-            {
-                get
-                {
-                    List<Attack> attacks = new List<Attack>();
 
-                    Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+                    AttackSet newSet = new AttackSet();
 
-                    if (Ranged != null)
+                    foreach (Match a in regAttack.Matches(lastText))
                     {
-                        foreach (Match m in regAttack.Matches(Ranged))
-                        {
-                            Attack attack = Attack.ParseAttack(m);
+                        Attack attack = Attack.ParseAttack(a);
 
+                        if (attack.Weapon != null && attack.Weapon.Class != "Natural")
+                        {
+                            testTwoHandedFromText(attack);
+                            newSet.WeaponAttacks.Add(attack);
+                        }
+                        else
+                        {
                             if (attack.Weapon == null)
                             {
-                                attack.Weapon = new Weapon(attack, true, SizeMods.GetSize(Size));
+                                attack.Weapon = new Weapon(attack, false, SizeMods.GetSize(Size));
                             }
 
-                            attacks.Add(attack);
-
+                            newSet.NaturalAttacks.Add(attack);
                         }
                     }
 
-                    return attacks;
+                    sets.Add(newSet);
+
+
                 }
+
+                return sets;
             }
+        }
 
-            [DataMember]
-            public String Name
+        [XmlIgnore]
+        public List<Attack> RangedAttacks
+        {
+            get
             {
-                get
-                {
-                    return name;
-                }
-                set
-                {
-                    name = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Name"));
-                    }
-                }
-            }
+                List<Attack> attacks = new List<Attack>();
 
-            [DataMember]
-            public String CR
-            {
-                get
-                {
-                    return cr;
-                }
-                set
-                {
-                    cr = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("CR"));
-                    }
-                }
-            }
+                Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
-            [DataMember]
-            public String XP
-            {
-                get
+                if (Ranged != null)
                 {
-                    return xp;
-                }
-                set
-                {
-                    xp = value;
-                    if (PropertyChanged != null)
+                    foreach (Match m in regAttack.Matches(Ranged))
                     {
-                        PropertyChanged(this, new PropertyChangedEventArgs("XP"));
-                    }
-                }
-            }
+                        Attack attack = Attack.ParseAttack(m);
 
-            [DataMember]
-            public String Race
-            {
-                get
-                {
-                    return race;
-                }
-                set
-                {
-                    race = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Race"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Class
-            {
-                get
-                {
-                    return className;
-                }
-                set
-                {
-                    className = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Class"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Alignment
-            {
-                get
-                {
-                    return alignment;
-                }
-                set
-                {
-                    alignment = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Alignment"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Size
-            {
-                get
-                {
-                    return size;
-                }
-                set
-                {
-                    size = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Size"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Type
-            {
-                get
-                {
-                    return type;
-                }
-                set
-                {
-                    type = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Type"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String SubType
-            {
-                get
-                {
-                    return subType;
-                }
-                set
-                {
-                    subType = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SubType"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public int Init
-            {
-                get
-                {
-                    return init;
-                }
-                set
-                {
-                    init = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Init"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? DualInit
-            {
-                get
-                {
-                    return dualinit;
-                }
-                set
-                {
-                    dualinit = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("DualInit"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Senses
-            {
-                get
-                {
-                    return senses;
-                }
-                set
-                {
-                    senses = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Senses"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String AC
-            {
-                get
-                {
-                    return ac;
-                }
-                set
-                {
-                    ac = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("AC"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String AC_Mods
-            {
-                get
-                {
-                    return ac_mods;
-                }
-                set
-                {
-                    ac_mods = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("AC_Mods"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public int HP
-            {
-                get
-                {
-                    return hp;
-                }
-                set
-                {
-                    hp = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("HP"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String HD
-            {
-                get
-                {
-                    return hd;
-                }
-                set
-                {
-                    hd = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("HD"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Saves
-            {
-                get
-                {
-                    return saves;
-                }
-                set
-                {
-                    saves = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Saves"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? Fort
-            {
-                get
-                {
-                    return fort;
-                }
-                set
-                {
-                    fort = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Fort"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? Ref
-            {
-                get
-                {
-                    return reflex;
-                }
-                set
-                {
-                    reflex = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Ref"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? Will
-            {
-                get
-                {
-                    return will;
-                }
-                set
-                {
-                    will = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Will"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Save_Mods
-            {
-                get
-                {
-                    return save_mods;
-                }
-                set
-                {
-                    save_mods = value;
-                    if (save_mods == "NULL")
-                    {
-                        save_mods = null;
-                    }
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Save_Mods"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Resist
-            {
-                get
-                {
-                    return resist;
-                }
-                set
-                {
-                    resist = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Resist"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String DR
-            {
-                get
-                {
-                    return dr;
-                }
-                set
-                {
-                    dr = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("DR"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String SR
-            {
-                get
-                {
-                    return sr;
-                }
-                set
-                {
-                    sr = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SR"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Speed
-            {
-                get
-                {
-                    return speed;
-                }
-                set
-                {
-                    speed = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Speed"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Melee
-            {
-                get
-                {
-                    return melee;
-                }
-                set
-                {
-                    melee = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Melee"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Ranged
-            {
-                get
-                {
-                    return ranged;
-                }
-                set
-                {
-                    ranged = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Ranged"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Space
-            {
-                get
-                {
-                    return space;
-                }
-                set
-                {
-                    space = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Space"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Reach
-            {
-                get
-                {
-                    return reach;
-                }
-                set
-                {
-                    reach = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Reach"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String SpecialAttacks
-            {
-                get
-                {
-
-                    UpdateFromDetailsDB();
-                    return specialAttacks;
-                }
-                set
-                {
-                    specialAttacks = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpecialAttacks"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String SpellLikeAbilities
-            {
-                get
-                {
-
-                    UpdateFromDetailsDB();
-                    return spellLikeAbilities;
-                }
-                set
-                {
-                    if (spellLikeAbilities != value)
-                    {
-                        spellLikeAbilities = value;
-                        _SpellLikeAbilitiesBlock = null;
-                        if (PropertyChanged != null)
+                        if (attack.Weapon == null)
                         {
-                            PropertyChanged(this, new PropertyChangedEventArgs("SpellLikeAbilities"));
-                        }
-                    }
-                }
-            }
-
-            [XmlIgnore]
-            public ObservableCollection<SpellBlockInfo> SpellLikeAbilitiesBlock
-            {
-                get
-                {
-                    ParseSpellLikeAbilities();
-                    return _SpellLikeAbilitiesBlock;
-                }
-            }
-
-            [DataMember]
-            public String AbilitiyScores
-            {
-                get
-                {
-                    return abilitiyScores;
-                }
-                set
-                {
-                    abilitiyScores = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("AbilitiyScores"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public int BaseAtk
-            {
-                get
-                {
-                    return baseAtk;
-                }
-                set
-                {
-                    baseAtk = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("BaseAtk"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String CMB
-            {
-                get
-                {
-                    return cmb;
-                }
-                set
-                {
-                    cmb = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("CMB"));
-                        PropertyChanged(this, new PropertyChangedEventArgs("CMB_Numeric"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String CMD
-            {
-                get
-                {
-                    return cmd;
-                }
-                set
-                {
-                    cmd = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("CMD"));
-                        PropertyChanged(this, new PropertyChangedEventArgs("CMD_Numeric"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Feats
-            {
-                get
-                {
-                    UpdateFromDetailsDB();
-                    return feats;
-                }
-                set
-                {
-                    feats = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Feats"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Skills
-            {
-                get
-                {
-                    UpdateFromDetailsDB();
-                    return skills;
-                }
-                set
-                {
-                    skills = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Skills"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String RacialMods
-            {
-                get
-                {
-                    return racialMods;
-                }
-                set
-                {
-                    racialMods = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("RacialMods"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Languages
-            {
-                get
-                {
-                    return languages;
-                }
-                set
-                {
-                    languages = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Languages"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String SQ
-            {
-                get
-                {
-                    return sq;
-                }
-                set
-                {
-                    sq = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SQ"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Environment
-            {
-                get
-                {
-                    return environment;
-                }
-                set
-                {
-                    environment = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Environment"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Organization
-            {
-                get
-                {
-                    return organization;
-                }
-                set
-                {
-                    organization = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Organization"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Treasure
-            {
-                get
-                {
-                    if (treasure == "NULL")
-                    {
-                        treasure = null;
-                    }
-                    return treasure;
-                }
-                set
-                {
-                    treasure = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Treasure"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Description_Visual
-            {
-                get
-                {
-
-                    UpdateFromDetailsDB();
-                    if (description_visual == "NULL")
-                    {
-                        description_visual = null;
-                    }
-                    return description_visual;
-                }
-                set
-                {
-                    description_visual = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Description_Visual"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Group
-            {
-                get
-                {
-                    return group;
-                }
-                set
-                {
-                    group = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Group"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Source
-            {
-                get
-                {
-                    return source;
-                }
-                set
-                {
-                    source = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Source"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String IsTemplate
-            {
-                get
-                {
-                    return isTemplate;
-                }
-                set
-                {
-                    isTemplate = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("IsTemplate"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String SpecialAbilities
-            {
-                get
-                {
-                    UpdateFromDetailsDB();
-                    return specialAbilities;
-                }
-                set
-                {
-                    specialAbilities = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilities"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Description
-            {
-                get
-                {
-                    UpdateFromDetailsDB();
-                    return description;
-                }
-                set
-                {
-                    description = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Description"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String FullText
-            {
-                get
-                {
-                    return fullText;
-                }
-                set
-                {
-                    fullText = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("FullText"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Gender
-            {
-                get
-                {
-                    return gender;
-                }
-                set
-                {
-                    gender = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Gender"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Bloodline
-            {
-                get
-                {
-                    return bloodline;
-                }
-                set
-                {
-                    bloodline = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Bloodline"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String ProhibitedSchools
-            {
-                get
-                {
-                    return prohibitedSchools;
-                }
-                set
-                {
-                    prohibitedSchools = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("ProhibitedSchools"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String BeforeCombat
-            {
-                get
-                {
-
-                    UpdateFromDetailsDB();
-                    if (beforeCombat == "NULL")
-                    {
-                        beforeCombat = null;
-                    }
-                    return beforeCombat;
-                }
-                set
-                {
-                    beforeCombat = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("BeforeCombat"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String DuringCombat
-            {
-                get
-                {
-
-                    UpdateFromDetailsDB();
-                    if (duringCombat == "NULL")
-                    {
-                        duringCombat = null;
-                    }
-                    return duringCombat;
-                }
-                set
-                {
-                    duringCombat = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("DuringCombat"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Morale
-            {
-                get
-                {
-                    UpdateFromDetailsDB();
-                    if (morale == "NULL")
-                    {
-                        morale = null;
-                    }
-                    return morale;
-                }
-                set
-                {
-                    morale = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Morale"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Gear
-            {
-                get
-                {
-                    UpdateFromDetailsDB();
-                    if (gear == "NULL")
-                    {
-                        gear = null;
-                    }
-                    return gear;
-                }
-                set
-                {
-                    gear = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Gear"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String OtherGear
-            {
-                get
-                {
-                    UpdateFromDetailsDB();
-                    return otherGear;
-                }
-                set
-                {
-                    otherGear = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("OtherGear"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Vulnerability
-            {
-                get
-                {
-                    return vulnerability;
-                }
-                set
-                {
-                    vulnerability = value;
-                    if (vulnerability == "NULL")
-                    {
-                        vulnerability = null;
-                    }
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Vulnerability"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Note
-            {
-                get
-                {
-                    return note;
-                }
-                set
-                {
-                    note = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Note"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String CharacterFlag
-            {
-                get
-                {
-                    return characterFlag;
-                }
-                set
-                {
-                    characterFlag = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("CharacterFlag"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String CompanionFlag
-            {
-                get
-                {
-                    return companionFlag;
-                }
-                set
-                {
-                    companionFlag = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("CompanionFlag"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Fly
-            {
-                get
-                {
-                    return fly;
-                }
-                set
-                {
-                    fly = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Fly"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Climb
-            {
-                get
-                {
-                    return climb;
-                }
-                set
-                {
-                    climb = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Climb"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Burrow
-            {
-                get
-                {
-                    return burrow;
-                }
-                set
-                {
-                    burrow = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Burrow"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Swim
-            {
-                get
-                {
-                    return swim;
-                }
-                set
-                {
-                    swim = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Swim"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Land
-            {
-                get
-                {
-                    return land;
-                }
-                set
-                {
-                    land = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Land"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String TemplatesApplied
-            {
-                get
-                {
-                    return templatesApplied;
-                }
-                set
-                {
-                    templatesApplied = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("TemplatesApplied"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String OffenseNote
-            {
-                get
-                {
-                    return offenseNote;
-                }
-                set
-                {
-                    offenseNote = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("OffenseNote"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String BaseStatistics
-            {
-                get
-                {
-                    return baseStatistics;
-                }
-                set
-                {
-                    baseStatistics = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("BaseStatistics"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String SpellsPrepared
-            {
-                get
-                {
-                    UpdateFromDetailsDB();
-                    return spellsPrepared;
-                }
-                set
-                {
-                    if (spellsPrepared != value)
-                    {
-                        spellsPrepared = value;
-                        _SpellsPreparedBlock = null;
-                        if (PropertyChanged != null)
-                        {
-                            PropertyChanged(this, new PropertyChangedEventArgs("SpellsPrepared"));
-                        }
-                    }
-                }
-            }
-
-            [XmlIgnore]
-            public ObservableCollection<SpellBlockInfo> SpellsPreparedBlock
-            {
-                get
-                {
-                    ParseSpellsPrepared();
-                    return _SpellsPreparedBlock;
-                }
-            }
-
-            [DataMember]
-            public String SpellDomains
-            {
-                get
-                {
-                    return spellDomains;
-                }
-                set
-                {
-                    spellDomains = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpellDomains"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Aura
-            {
-                get
-                {
-                    return aura;
-                }
-                set
-                {
-                    aura = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Aura"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String DefensiveAbilities
-            {
-                get
-                {
-                    return defensiveAbilities;
-                }
-                set
-                {
-                    defensiveAbilities = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("DefensiveAbilities"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Immune
-            {
-                get
-                {
-                    return immune;
-                }
-                set
-                {
-                    immune = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Immune"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String HP_Mods
-            {
-                get
-                {
-                    return hp_mods;
-                }
-                set
-                {
-                    hp_mods = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("HP_Mods"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String SpellsKnown
-            {
-                get
-                {
-                    UpdateFromDetailsDB();
-                    return spellsKnown;
-                }
-                set
-                {
-                    if (spellsKnown != value)
-                    {
-                        spellsKnown = value;
-                        _SpellsKnownBlock = null;
-                        if (PropertyChanged != null)
-                        {
-                            PropertyChanged(this, new PropertyChangedEventArgs("SpellsKnown"));
-                        }
-                    }
-                }
-            }
-
-            [XmlIgnore]
-            public ObservableCollection<SpellBlockInfo> SpellsKnownBlock
-            {
-                get
-                {
-                    ParseSpellsKnown();
-                    return _SpellsKnownBlock;
-                }
-            }
-
-            [DataMember]
-            public String Weaknesses
-            {
-                get
-                {
-                    return weaknesses;
-                }
-                set
-                {
-                    weaknesses = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Weaknesses"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Speed_Mod
-            {
-                get
-                {
-                    return speed_mod;
-                }
-                set
-                {
-                    speed_mod = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Speed_Mod"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String MonsterSource
-            {
-                get
-                {
-                    return monsterSource;
-                }
-                set
-                {
-                    monsterSource = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("MonsterSource"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public String ExtractsPrepared
-            {
-                get { return extractsPrepared; }
-                set
-                {
-                    if (extractsPrepared != value)
-                    {
-                        extractsPrepared = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ExtractsPrepared")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public String AgeCategory
-            {
-                get { return ageCategory; }
-                set
-                {
-                    if (ageCategory != value)
-                    {
-                        ageCategory = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AgeCategory")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public bool DontUseRacialHD
-            {
-                get { return dontUseRacialHD; }
-                set
-                {
-                    if (dontUseRacialHD != value)
-                    {
-                        dontUseRacialHD = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DontUseRacialHD")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public String VariantParent
-            {
-                get { return variantParent; }
-                set
-                {
-                    if (variantParent != value)
-                    {
-                        variantParent = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("VariantParent")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public String DescHTML
-            {
-                get { return descHTML; }
-                set
-                {
-                    if (descHTML != value)
-                    {
-                        descHTML = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DescHTML")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? MR
-            {
-                get { return mr; }
-                set
-                {
-                    if (mr != value)
-                    {
-                        mr = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MR")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public String Mythic
-            {
-                get { return mythic; }
-                set
-                {
-                    if (mythic != value)
-                    {
-                        mythic = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Mythic")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public bool StatsParsed
-            {
-                get
-                {
-                    return statsParsed;
-                }
-                set
-                {
-                    statsParsed = value;
-                }
-            }
-
-            [DataMember]
-            public int? Strength
-            {
-                get
-                {
-                    if (!statsParsed)
-                    {
-                        ParseStats();
-                    }
-                    return strength;
-                }
-                set
-                {
-                    if (strength != value)
-                    {
-
-                        strength = value;
-                        if (PropertyChanged != null)
-                        {
-                            PropertyChanged(this, new PropertyChangedEventArgs("Strength"));
-                        }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? Dexterity
-            {
-                get
-                {
-                    if (!statsParsed)
-                    {
-                        ParseStats();
-                    }
-                    return dexterity;
-                }
-                set
-                {
-                    if (dexterity != value)
-                    {
-
-                        dexterity = value;
-                        if (PropertyChanged != null)
-                        {
-                            PropertyChanged(this, new PropertyChangedEventArgs("Dexterity"));
-                        }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? Constitution
-            {
-                get
-                {
-                    if (!statsParsed)
-                    {
-                        ParseStats();
-                    }
-                    return constitution;
-                }
-                set
-                {
-                    if (constitution != value)
-                    {
-
-                        constitution = value;
-
-                        if (PropertyChanged != null)
-                        {
-                            PropertyChanged(this, new PropertyChangedEventArgs("Constitution"));
-                        }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? Intelligence
-            {
-                get
-                {
-                    if (!statsParsed)
-                    {
-                        ParseStats();
-                    }
-                    return intelligence;
-                }
-                set
-                {
-                    if (intelligence != value)
-                    {
-                        intelligence = value;
-                        if (PropertyChanged != null)
-                        {
-                            PropertyChanged(this, new PropertyChangedEventArgs("Intelligence"));
-                        }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? Wisdom
-            {
-                get
-                {
-                    if (!statsParsed)
-                    {
-                        ParseStats();
-                    }
-                    return wisdom;
-                }
-                set
-                {
-                    if (wisdom != value)
-                    {
-                        wisdom = value;
-                        if (PropertyChanged != null)
-                        {
-                            PropertyChanged(this, new PropertyChangedEventArgs("Wisdom"));
-                        }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int? Charisma
-            {
-                get
-                {
-                    if (!statsParsed)
-                    {
-                        ParseStats();
-                    }
-                    return charisma;
-                }
-                set
-                {
-                    if (charisma != value)
-                    {
-                        charisma = value;
-                        if (PropertyChanged != null)
-                        {
-                            PropertyChanged(this, new PropertyChangedEventArgs("Charisma"));
-                        }
-                    }
-
-                }
-            }
-
-            [DataMember]
-            public bool SpecialAblitiesParsed
-            {
-                get
-                {
-                    return specialAblitiesParsed;
-                }
-                set
-                {
-                    specialAblitiesParsed = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpecialAblitiesParsed"));
-                    }
-                }
-
-            }
-
-            [DataMember]
-            public ObservableCollection<SpecialAbility> SpecialAbilitiesList
-            {
-                get
-                {
-                    if (!specialAblitiesParsed)
-                    {
-                        ParseSpecialAbilities();
-                    }
-                    return specialAbilitiesList;
-                }
-                set
-                {
-                    specialAbilitiesList = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilitiesList"));
-                    }
-                }
-            }
-
-            [DataMember]
-            public bool SkillsParsed
-            {
-                get
-                {
-                    return skillsParsed;
-                }
-                set
-                {
-                    skillsParsed = value;
-                }
-            }
-
-            [XmlIgnore]
-            public SortedDictionary<String, SkillValue> SkillValueDictionary
-            {
-                get
-                {
-                    if (!skillsParsed)
-                    {
-                        ParseSkills();
-                    }
-                    else if (skillValuesMayNeedUpdate)
-                    {
-                        skillValuesMayNeedUpdate = false;
-
-                        foreach (SkillValue skillValue in skillValueList)
-                        {
-                            skillValueDictionary[skillValue.FullName] = skillValue;
+                            attack.Weapon = new Weapon(attack, true, SizeMods.GetSize(Size));
                         }
 
+                        attacks.Add(attack);
+
                     }
-                    return skillValueDictionary;
                 }
-                set
+
+                return attacks;
+            }
+        }
+
+        [DataMember]
+        public String Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                if (PropertyChanged != null)
                 {
-                    skillValueDictionary = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("Name"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String CR
+        {
+            get
+            {
+                return cr;
+            }
+            set
+            {
+                cr = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("CR"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String XP
+        {
+            get
+            {
+                return xp;
+            }
+            set
+            {
+                xp = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("XP"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Race
+        {
+            get
+            {
+                return race;
+            }
+            set
+            {
+                race = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Race"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Class
+        {
+            get
+            {
+                return className;
+            }
+            set
+            {
+                className = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Class"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Alignment
+        {
+            get
+            {
+                return alignment;
+            }
+            set
+            {
+                alignment = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Alignment"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Size
+        {
+            get
+            {
+                return size;
+            }
+            set
+            {
+                size = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Size"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Type
+        {
+            get
+            {
+                return type;
+            }
+            set
+            {
+                type = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Type"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String SubType
+        {
+            get
+            {
+                return subType;
+            }
+            set
+            {
+                subType = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SubType"));
+                }
+            }
+        }
+
+        [DataMember]
+        public int Init
+        {
+            get
+            {
+                return init;
+            }
+            set
+            {
+                init = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Init"));
+                }
+            }
+        }
+
+        [DataMember]
+        public int? DualInit
+        {
+            get
+            {
+                return dualinit;
+            }
+            set
+            {
+                dualinit = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("DualInit"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Senses
+        {
+            get
+            {
+                return senses;
+            }
+            set
+            {
+                senses = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Senses"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String AC
+        {
+            get
+            {
+                return ac;
+            }
+            set
+            {
+                ac = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("AC"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String AC_Mods
+        {
+            get
+            {
+                return ac_mods;
+            }
+            set
+            {
+                ac_mods = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("AC_Mods"));
+                }
+            }
+        }
+
+        [DataMember]
+        public int HP
+        {
+            get
+            {
+                return hp;
+            }
+            set
+            {
+                hp = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("HP"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String HD
+        {
+            get
+            {
+                return hd;
+            }
+            set
+            {
+                hd = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("HD"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Saves
+        {
+            get
+            {
+                return saves;
+            }
+            set
+            {
+                saves = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Saves"));
+                }
+            }
+        }
+
+        [DataMember]
+        public int? Fort
+        {
+            get
+            {
+                return fort;
+            }
+            set
+            {
+                fort = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Fort"));
+                }
+            }
+        }
+
+        [DataMember]
+        public int? Ref
+        {
+            get
+            {
+                return reflex;
+            }
+            set
+            {
+                reflex = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Ref"));
+                }
+            }
+        }
+
+        [DataMember]
+        public int? Will
+        {
+            get
+            {
+                return will;
+            }
+            set
+            {
+                will = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Will"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Save_Mods
+        {
+            get
+            {
+                return save_mods;
+            }
+            set
+            {
+                save_mods = value;
+                if (save_mods == "NULL")
+                {
+                    save_mods = null;
+                }
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Save_Mods"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Resist
+        {
+            get
+            {
+                return resist;
+            }
+            set
+            {
+                resist = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Resist"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String DR
+        {
+            get
+            {
+                return dr;
+            }
+            set
+            {
+                dr = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("DR"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String SR
+        {
+            get
+            {
+                return sr;
+            }
+            set
+            {
+                sr = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SR"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Speed
+        {
+            get
+            {
+                return speed;
+            }
+            set
+            {
+                speed = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Speed"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Melee
+        {
+            get
+            {
+                return melee;
+            }
+            set
+            {
+                melee = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Melee"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Ranged
+        {
+            get
+            {
+                return ranged;
+            }
+            set
+            {
+                ranged = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Ranged"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Space
+        {
+            get
+            {
+                return space;
+            }
+            set
+            {
+                space = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Space"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Reach
+        {
+            get
+            {
+                return reach;
+            }
+            set
+            {
+                reach = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Reach"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String SpecialAttacks
+        {
+            get
+            {
+
+                UpdateFromDetailsDB();
+                return specialAttacks;
+            }
+            set
+            {
+                specialAttacks = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAttacks"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String SpellLikeAbilities
+        {
+            get
+            {
+
+                UpdateFromDetailsDB();
+                return spellLikeAbilities;
+            }
+            set
+            {
+                if (spellLikeAbilities != value)
+                {
+                    spellLikeAbilities = value;
+                    _SpellLikeAbilitiesBlock = null;
                     if (PropertyChanged != null)
                     {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SkillValueDictionary"));
+                        PropertyChanged(this, new PropertyChangedEventArgs("SpellLikeAbilities"));
                     }
                 }
             }
+        }
 
-            [DataMember]
-            public List<SkillValue> SkillValueList
+        [XmlIgnore]
+        public ObservableCollection<SpellBlockInfo> SpellLikeAbilitiesBlock
+        {
+            get
             {
-                get
-                {
-                    if (!skillValuesMayNeedUpdate)
-                    {
-                        UpdateSkillValueList();
-                    }
+                ParseSpellLikeAbilities();
+                return _SpellLikeAbilitiesBlock;
+            }
+        }
 
-                    skillValuesMayNeedUpdate = true;
-                    return skillValueList;
+        [DataMember]
+        public String AbilitiyScores
+        {
+            get
+            {
+                return abilitiyScores;
+            }
+            set
+            {
+                abilitiyScores = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("AbilitiyScores"));
                 }
-                set
-                {
-                    skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
+            }
+        }
 
-                    foreach (SkillValue val in value)
+        [DataMember]
+        public int BaseAtk
+        {
+            get
+            {
+                return baseAtk;
+            }
+            set
+            {
+                baseAtk = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("BaseAtk"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String CMB
+        {
+            get
+            {
+                return cmb;
+            }
+            set
+            {
+                cmb = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("CMB"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("CMB_Numeric"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String CMD
+        {
+            get
+            {
+                return cmd;
+            }
+            set
+            {
+                cmd = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("CMD"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("CMD_Numeric"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Feats
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return feats;
+            }
+            set
+            {
+                feats = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Feats"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Skills
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return skills;
+            }
+            set
+            {
+                skills = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Skills"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String RacialMods
+        {
+            get
+            {
+                return racialMods;
+            }
+            set
+            {
+                racialMods = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("RacialMods"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Languages
+        {
+            get
+            {
+                return languages;
+            }
+            set
+            {
+                languages = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Languages"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String SQ
+        {
+            get
+            {
+                return sq;
+            }
+            set
+            {
+                sq = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SQ"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Environment
+        {
+            get
+            {
+                return environment;
+            }
+            set
+            {
+                environment = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Environment"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Organization
+        {
+            get
+            {
+                return organization;
+            }
+            set
+            {
+                organization = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Organization"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Treasure
+        {
+            get
+            {
+                if (treasure == "NULL")
+                {
+                    treasure = null;
+                }
+                return treasure;
+            }
+            set
+            {
+                treasure = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Treasure"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Description_Visual
+        {
+            get
+            {
+
+                UpdateFromDetailsDB();
+                if (description_visual == "NULL")
+                {
+                    description_visual = null;
+                }
+                return description_visual;
+            }
+            set
+            {
+                description_visual = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Description_Visual"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Group
+        {
+            get
+            {
+                return group;
+            }
+            set
+            {
+                group = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Group"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Source
+        {
+            get
+            {
+                return source;
+            }
+            set
+            {
+                source = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Source"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String IsTemplate
+        {
+            get
+            {
+                return isTemplate;
+            }
+            set
+            {
+                isTemplate = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsTemplate"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String SpecialAbilities
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return specialAbilities;
+            }
+            set
+            {
+                specialAbilities = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilities"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Description
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return description;
+            }
+            set
+            {
+                description = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Description"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String FullText
+        {
+            get
+            {
+                return fullText;
+            }
+            set
+            {
+                fullText = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("FullText"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Gender
+        {
+            get
+            {
+                return gender;
+            }
+            set
+            {
+                gender = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Gender"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Bloodline
+        {
+            get
+            {
+                return bloodline;
+            }
+            set
+            {
+                bloodline = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Bloodline"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String ProhibitedSchools
+        {
+            get
+            {
+                return prohibitedSchools;
+            }
+            set
+            {
+                prohibitedSchools = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("ProhibitedSchools"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String BeforeCombat
+        {
+            get
+            {
+
+                UpdateFromDetailsDB();
+                if (beforeCombat == "NULL")
+                {
+                    beforeCombat = null;
+                }
+                return beforeCombat;
+            }
+            set
+            {
+                beforeCombat = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("BeforeCombat"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String DuringCombat
+        {
+            get
+            {
+
+                UpdateFromDetailsDB();
+                if (duringCombat == "NULL")
+                {
+                    duringCombat = null;
+                }
+                return duringCombat;
+            }
+            set
+            {
+                duringCombat = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("DuringCombat"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Morale
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                if (morale == "NULL")
+                {
+                    morale = null;
+                }
+                return morale;
+            }
+            set
+            {
+                morale = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Morale"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Gear
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                if (gear == "NULL")
+                {
+                    gear = null;
+                }
+                return gear;
+            }
+            set
+            {
+                gear = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Gear"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String OtherGear
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return otherGear;
+            }
+            set
+            {
+                otherGear = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("OtherGear"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Vulnerability
+        {
+            get
+            {
+                return vulnerability;
+            }
+            set
+            {
+                vulnerability = value;
+                if (vulnerability == "NULL")
+                {
+                    vulnerability = null;
+                }
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Vulnerability"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Note
+        {
+            get
+            {
+                return note;
+            }
+            set
+            {
+                note = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Note"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String CharacterFlag
+        {
+            get
+            {
+                return characterFlag;
+            }
+            set
+            {
+                characterFlag = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("CharacterFlag"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String CompanionFlag
+        {
+            get
+            {
+                return companionFlag;
+            }
+            set
+            {
+                companionFlag = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("CompanionFlag"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Fly
+        {
+            get
+            {
+                return fly;
+            }
+            set
+            {
+                fly = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Fly"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Climb
+        {
+            get
+            {
+                return climb;
+            }
+            set
+            {
+                climb = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Climb"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Burrow
+        {
+            get
+            {
+                return burrow;
+            }
+            set
+            {
+                burrow = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Burrow"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Swim
+        {
+            get
+            {
+                return swim;
+            }
+            set
+            {
+                swim = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Swim"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Land
+        {
+            get
+            {
+                return land;
+            }
+            set
+            {
+                land = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Land"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String TemplatesApplied
+        {
+            get
+            {
+                return templatesApplied;
+            }
+            set
+            {
+                templatesApplied = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("TemplatesApplied"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String OffenseNote
+        {
+            get
+            {
+                return offenseNote;
+            }
+            set
+            {
+                offenseNote = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("OffenseNote"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String BaseStatistics
+        {
+            get
+            {
+                return baseStatistics;
+            }
+            set
+            {
+                baseStatistics = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("BaseStatistics"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String SpellsPrepared
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return spellsPrepared;
+            }
+            set
+            {
+                if (spellsPrepared != value)
+                {
+                    spellsPrepared = value;
+                    _SpellsPreparedBlock = null;
+                    if (PropertyChanged != null)
                     {
-                        skillValueDictionary[val.FullName] = val;
+                        PropertyChanged(this, new PropertyChangedEventArgs("SpellsPrepared"));
                     }
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public ObservableCollection<SpellBlockInfo> SpellsPreparedBlock
+        {
+            get
+            {
+                ParseSpellsPrepared();
+                return _SpellsPreparedBlock;
+            }
+        }
+
+        [DataMember]
+        public String SpellDomains
+        {
+            get
+            {
+                return spellDomains;
+            }
+            set
+            {
+                spellDomains = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SpellDomains"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Aura
+        {
+            get
+            {
+                return aura;
+            }
+            set
+            {
+                aura = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Aura"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String DefensiveAbilities
+        {
+            get
+            {
+                return defensiveAbilities;
+            }
+            set
+            {
+                defensiveAbilities = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("DefensiveAbilities"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Immune
+        {
+            get
+            {
+                return immune;
+            }
+            set
+            {
+                immune = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Immune"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String HP_Mods
+        {
+            get
+            {
+                return hp_mods;
+            }
+            set
+            {
+                hp_mods = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("HP_Mods"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String SpellsKnown
+        {
+            get
+            {
+                UpdateFromDetailsDB();
+                return spellsKnown;
+            }
+            set
+            {
+                if (spellsKnown != value)
+                {
+                    spellsKnown = value;
+                    _SpellsKnownBlock = null;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("SpellsKnown"));
+                    }
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public ObservableCollection<SpellBlockInfo> SpellsKnownBlock
+        {
+            get
+            {
+                ParseSpellsKnown();
+                return _SpellsKnownBlock;
+            }
+        }
+
+        [DataMember]
+        public String Weaknesses
+        {
+            get
+            {
+                return weaknesses;
+            }
+            set
+            {
+                weaknesses = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Weaknesses"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String Speed_Mod
+        {
+            get
+            {
+                return speed_mod;
+            }
+            set
+            {
+                speed_mod = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Speed_Mod"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String MonsterSource
+        {
+            get
+            {
+                return monsterSource;
+            }
+            set
+            {
+                monsterSource = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("MonsterSource"));
+                }
+            }
+        }
+
+        [DataMember]
+        public String ExtractsPrepared
+        {
+            get { return extractsPrepared; }
+            set
+            {
+                if (extractsPrepared != value)
+                {
+                    extractsPrepared = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ExtractsPrepared")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public String AgeCategory
+        {
+            get { return ageCategory; }
+            set
+            {
+                if (ageCategory != value)
+                {
+                    ageCategory = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AgeCategory")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public bool DontUseRacialHD
+        {
+            get { return dontUseRacialHD; }
+            set
+            {
+                if (dontUseRacialHD != value)
+                {
+                    dontUseRacialHD = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DontUseRacialHD")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public String VariantParent
+        {
+            get { return variantParent; }
+            set
+            {
+                if (variantParent != value)
+                {
+                    variantParent = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("VariantParent")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public String DescHTML
+        {
+            get { return descHTML; }
+            set
+            {
+                if (descHTML != value)
+                {
+                    descHTML = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DescHTML")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int? MR
+        {
+            get { return mr; }
+            set
+            {
+                if (mr != value)
+                {
+                    mr = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MR")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public String Mythic
+        {
+            get { return mythic; }
+            set
+            {
+                if (mythic != value)
+                {
+                    mythic = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Mythic")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public bool StatsParsed
+        {
+            get
+            {
+                return statsParsed;
+            }
+            set
+            {
+                statsParsed = value;
+            }
+        }
+
+        [DataMember]
+        public int? Strength
+        {
+            get
+            {
+                if (!statsParsed)
+                {
+                    ParseStats();
+                }
+                return strength;
+            }
+            set
+            {
+                if (strength != value)
+                {
+
+                    strength = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("Strength"));
+                    }
+                }
+            }
+        }
+
+        [DataMember]
+        public int? Dexterity
+        {
+            get
+            {
+                if (!statsParsed)
+                {
+                    ParseStats();
+                }
+                return dexterity;
+            }
+            set
+            {
+                if (dexterity != value)
+                {
+
+                    dexterity = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("Dexterity"));
+                    }
+                }
+            }
+        }
+
+        [DataMember]
+        public int? Constitution
+        {
+            get
+            {
+                if (!statsParsed)
+                {
+                    ParseStats();
+                }
+                return constitution;
+            }
+            set
+            {
+                if (constitution != value)
+                {
+
+                    constitution = value;
 
                     if (PropertyChanged != null)
                     {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SkillValueDictionary"));
+                        PropertyChanged(this, new PropertyChangedEventArgs("Constitution"));
                     }
                 }
             }
+        }
 
-            [DataMember]
-            public bool FeatsParsed
+        [DataMember]
+        public int? Intelligence
+        {
+            get
             {
-                get
+                if (!statsParsed)
                 {
-                    return featsParsed;
+                    ParseStats();
                 }
-                set
-                {
-                    featsParsed = value;
-                }
+                return intelligence;
             }
-
-            [DataMember]
-            public List<string> FeatsList
+            set
             {
-                get
+                if (intelligence != value)
                 {
-                    if (featsList == null)
-                    {
-                        featsList = new List<string>();
-                    }
-                    if (!featsParsed)
-                    {
-                        ParseFeats();
-                    }
-                    return featsList;
-                }
-                set
-                {
-                    featsList = value;
+                    intelligence = value;
                     if (PropertyChanged != null)
                     {
-                        PropertyChanged(this, new PropertyChangedEventArgs("FeatsList"));
+                        PropertyChanged(this, new PropertyChangedEventArgs("Intelligence"));
                     }
                 }
             }
+        }
 
-            [DataMember]
-            public bool AcParsed
+        [DataMember]
+        public int? Wisdom
+        {
+            get
             {
-                get { return acParsed; }
-                set
+                if (!statsParsed)
                 {
-                    if (acParsed != value)
-                    {
-                        acParsed = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("acParsed")); }
-                    }
+                    ParseStats();
                 }
+                return wisdom;
             }
-
-            [DataMember]
-            public int FullAC
+            set
             {
-                get
+                if (wisdom != value)
                 {
-                    if (!acParsed)
-                    {
-                        ParseAC();
-                    }
-
-                    return fullAC;
-                }
-                set
-                {
-                    if (fullAC != value)
-                    {
-                        fullAC = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("FullAC")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int TouchAC
-            {
-                get
-                {
-                    if (!acParsed)
-                    {
-                        ParseAC();
-                    }
-
-                    return touchAC;
-                }
-                set
-                {
-                    if (touchAC != value)
-                    {
-                        touchAC = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TouchAC")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int FlatFootedAC
-            {
-                get
-                {
-                    if (!acParsed)
-                    {
-                        ParseAC();
-                    }
-
-                    return flatFootedAC;
-                }
-                set
-                {
-                    if (flatFootedAC != value)
-                    {
-                        flatFootedAC = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("FlatFootedAC")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int NaturalArmor
-            {
-                get
-                {
-                    if (!acParsed)
-                    {
-                        ParseAC();
-                    }
-
-                    return naturalArmor;
-                }
-                set
-                {
-                    if (naturalArmor != value)
-                    {
-                        naturalArmor = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("NaturalArmor")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int Deflection
-            {
-                get
-                {
-                    if (!acParsed)
-                    {
-                        ParseAC();
-                    }
-
-                    return deflection;
-                }
-                set
-                {
-                    if (deflection != value)
-                    {
-                        deflection = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Deflection")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int Shield
-            {
-                get
-                {
-                    if (!acParsed)
-                    {
-                        ParseAC();
-                    }
-
-                    return shield;
-                }
-                set
-                {
-                    if (shield != value)
-                    {
-                        shield = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Shield")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int Armor
-            {
-                get
-                {
-                    if (!acParsed)
-                    {
-                        ParseAC();
-                    }
-
-                    return armor;
-                }
-                set
-                {
-                    if (armor != value)
-                    {
-                        armor = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Armor")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int Dodge
-            {
-                get
-                {
-                    if (!acParsed)
-                    {
-                        ParseAC();
-                    }
-
-                    return dodge;
-                }
-                set
-                {
-                    if (dodge != value)
-                    {
-                        dodge = value;
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Dodge")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int CMB_Numeric
-            {
-                get
-                {
-                    return GetStartingModOrVal(CMB);
-                }
-                set
-                {
-                    int num = CMB_Numeric;
-                    if (num != value)
-                    {
-                        CMB = ChangeStartingModOrVal(CMB, value - num);
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CMB_Numeric")); }
-                    }
-                }
-            }
-
-            [DataMember]
-            public int CMD_Numeric
-            {
-                get
-                {
-                    return GetStartingNumber(CMD);
-                }
-                set
-                {
-                    int num = CMD_Numeric;
-                    if (CMD_Numeric != value)
-                    {
-                        CMD = ChangeCMD(CMD, value - num);
-
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CMD_Numeric")); }
-                    }
-                }
-            }
-
-            [XmlIgnore]
-            public long? XPValue
-            {
-                get
-                {
-                    if (xp != null)
-                    {
-
-                        string xpstr = Regex.Replace(xp, ",", "");
-                        long val = 0;
-                        if (long.TryParse(xpstr, out val))
-                        {
-                            return val;
-                        }
-                    }
-                    return null;
-                }
-            }
-
-            [XmlIgnore]
-            public bool NPC
-            {
-                get
-                {
-                    return npc;
-                }
-                set
-                {
-                    npc = value;
+                    wisdom = value;
                     if (PropertyChanged != null)
                     {
-                        PropertyChanged(this, new PropertyChangedEventArgs("NPC"));
+                        PropertyChanged(this, new PropertyChangedEventArgs("Wisdom"));
                     }
                 }
             }
+        }
 
-            [XmlIgnore]
-            public bool IsCustom
+        [DataMember]
+        public int? Charisma
+        {
+            get
             {
-                get
+                if (!statsParsed)
                 {
-                    return DBLoaderID != 0;
+                    ParseStats();
                 }
+                return charisma;
             }
-
-            [XmlIgnore]
-            public int DBLoaderID
+            set
             {
-                get
+                if (charisma != value)
                 {
-                    return _DBLoaderID;
-                }
-                set
-                {
-                    if (_DBLoaderID != value)
+                    charisma = value;
+                    if (PropertyChanged != null)
                     {
-                        _DBLoaderID = value;
-
-                        if (PropertyChanged != null)
-                        {
-                            PropertyChanged(this, new PropertyChangedEventArgs("DBLoaderID"));
-                        }
+                        PropertyChanged(this, new PropertyChangedEventArgs("Charisma"));
                     }
-
                 }
-            }
 
-            [XmlIgnore]
-            public MonsterAdjuster Adjuster
+            }
+        }
+
+        [DataMember]
+        public bool SpecialAblitiesParsed
+        {
+            get
             {
-                get
+                return specialAblitiesParsed;
+            }
+            set
+            {
+                specialAblitiesParsed = value;
+                if (PropertyChanged != null)
                 {
-                    if (_Adjuster == null)
-                    {
-                        _Adjuster = new MonsterAdjuster(this);
-                    }
-
-                    return _Adjuster;
+                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAblitiesParsed"));
                 }
             }
+
+        }
+
+        [DataMember]
+        public ObservableCollection<SpecialAbility> SpecialAbilitiesList
+        {
+            get
+            {
+                if (!specialAblitiesParsed)
+                {
+                    ParseSpecialAbilities();
+                }
+                return specialAbilitiesList;
+            }
+            set
+            {
+                specialAbilitiesList = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilitiesList"));
+                }
+            }
+        }
+
+        [DataMember]
+        public bool SkillsParsed
+        {
+            get
+            {
+                return skillsParsed;
+            }
+            set
+            {
+                skillsParsed = value;
+            }
+        }
+
+        [XmlIgnore]
+        public SortedDictionary<String, SkillValue> SkillValueDictionary
+        {
+            get
+            {
+                if (!skillsParsed)
+                {
+                    ParseSkills();
+                }
+                else if (skillValuesMayNeedUpdate)
+                {
+                    skillValuesMayNeedUpdate = false;
+
+                    foreach (SkillValue skillValue in skillValueList)
+                    {
+                        skillValueDictionary[skillValue.FullName] = skillValue;
+                    }
+
+                }
+                return skillValueDictionary;
+            }
+            set
+            {
+                skillValueDictionary = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SkillValueDictionary"));
+                }
+            }
+        }
+
+        [DataMember]
+        public List<SkillValue> SkillValueList
+        {
+            get
+            {
+                if (!skillValuesMayNeedUpdate)
+                {
+                    UpdateSkillValueList();
+                }
+
+                skillValuesMayNeedUpdate = true;
+                return skillValueList;
+            }
+            set
+            {
+                skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
+
+                foreach (SkillValue val in value)
+                {
+                    skillValueDictionary[val.FullName] = val;
+                }
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SkillValueDictionary"));
+                }
+            }
+        }
+
+        [DataMember]
+        public bool FeatsParsed
+        {
+            get
+            {
+                return featsParsed;
+            }
+            set
+            {
+                featsParsed = value;
+            }
+        }
+
+        [DataMember]
+        public List<string> FeatsList
+        {
+            get
+            {
+                if (featsList == null)
+                {
+                    featsList = new List<string>();
+                }
+                if (!featsParsed)
+                {
+                    ParseFeats();
+                }
+                return featsList;
+            }
+            set
+            {
+                featsList = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("FeatsList"));
+                }
+            }
+        }
+
+        [DataMember]
+        public bool AcParsed
+        {
+            get { return acParsed; }
+            set
+            {
+                if (acParsed != value)
+                {
+                    acParsed = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("acParsed")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int FullAC
+        {
+            get
+            {
+                if (!acParsed)
+                {
+                    ParseAC();
+                }
+
+                return fullAC;
+            }
+            set
+            {
+                if (fullAC != value)
+                {
+                    fullAC = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("FullAC")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int TouchAC
+        {
+            get
+            {
+                if (!acParsed)
+                {
+                    ParseAC();
+                }
+
+                return touchAC;
+            }
+            set
+            {
+                if (touchAC != value)
+                {
+                    touchAC = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TouchAC")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int FlatFootedAC
+        {
+            get
+            {
+                if (!acParsed)
+                {
+                    ParseAC();
+                }
+
+                return flatFootedAC;
+            }
+            set
+            {
+                if (flatFootedAC != value)
+                {
+                    flatFootedAC = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("FlatFootedAC")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int NaturalArmor
+        {
+            get
+            {
+                if (!acParsed)
+                {
+                    ParseAC();
+                }
+
+                return naturalArmor;
+            }
+            set
+            {
+                if (naturalArmor != value)
+                {
+                    naturalArmor = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("NaturalArmor")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int Deflection
+        {
+            get
+            {
+                if (!acParsed)
+                {
+                    ParseAC();
+                }
+
+                return deflection;
+            }
+            set
+            {
+                if (deflection != value)
+                {
+                    deflection = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Deflection")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int Shield
+        {
+            get
+            {
+                if (!acParsed)
+                {
+                    ParseAC();
+                }
+
+                return shield;
+            }
+            set
+            {
+                if (shield != value)
+                {
+                    shield = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Shield")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int Armor
+        {
+            get
+            {
+                if (!acParsed)
+                {
+                    ParseAC();
+                }
+
+                return armor;
+            }
+            set
+            {
+                if (armor != value)
+                {
+                    armor = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Armor")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int Dodge
+        {
+            get
+            {
+                if (!acParsed)
+                {
+                    ParseAC();
+                }
+
+                return dodge;
+            }
+            set
+            {
+                if (dodge != value)
+                {
+                    dodge = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Dodge")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int CMB_Numeric
+        {
+            get
+            {
+                return GetStartingModOrVal(CMB);
+            }
+            set
+            {
+                int num = CMB_Numeric;
+                if (num != value)
+                {
+                    CMB = ChangeStartingModOrVal(CMB, value - num);
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CMB_Numeric")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int CMD_Numeric
+        {
+            get
+            {
+                return GetStartingNumber(CMD);
+            }
+            set
+            {
+                int num = CMD_Numeric;
+                if (CMD_Numeric != value)
+                {
+                    CMD = ChangeCMD(CMD, value - num);
+
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CMD_Numeric")); }
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public long? XPValue
+        {
+            get
+            {
+                if (xp != null)
+                {
+
+                    string xpstr = Regex.Replace(xp, ",", "");
+                    long val = 0;
+                    if (long.TryParse(xpstr, out val))
+                    {
+                        return val;
+                    }
+                }
+                return null;
+            }
+        }
+
+        [XmlIgnore]
+        public bool NPC
+        {
+            get
+            {
+                return npc;
+            }
+            set
+            {
+                npc = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("NPC"));
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public bool IsCustom
+        {
+            get
+            {
+                return DBLoaderID != 0;
+            }
+        }
+
+        [XmlIgnore]
+        public int DBLoaderID
+        {
+            get
+            {
+                return _DBLoaderID;
+            }
+            set
+            {
+                if (_DBLoaderID != value)
+                {
+                    _DBLoaderID = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("DBLoaderID"));
+                    }
+                }
+
+            }
+        }
+
+        [XmlIgnore]
+        public MonsterAdjuster Adjuster
+        {
+            get
+            {
+                if (_Adjuster == null)
+                {
+                    _Adjuster = new MonsterAdjuster(this);
+                }
+
+                return _Adjuster;
+            }
+        }
         
         #endregion
 

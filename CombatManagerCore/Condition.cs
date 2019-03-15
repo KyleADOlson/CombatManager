@@ -179,41 +179,7 @@ namespace CombatManager
 
                     if (monster.SpecialAbilitiesList != null)
                     {
-                        foreach (SpecialAbility sa in monster.SpecialAbilitiesList)
-                        {
-                            if (sa.Name == "Disease" || sa.Name == "Poison")
-                            {
-                                Affliction a = Affliction.FromSpecialAbility(monster, sa);
-
-
-                                if (a == null)
-                                {
-                                    failure++;
-                                    //System.Diagnostics.Debug.WriteLine(monster.Name + " - " + sa.Name);
-                                }
-                                else
-                                {
-                                    success++;
-
-                                    Condition c = new Condition();
-                                    c.Name = a.Name;
-                                    c.Affliction = a;
-                                    if (sa.Name == "Disease")
-                                    {
-                                        c.Image = "disease";
-                                    }
-                                    else
-                                    {
-                                        c.Image = "poison";
-                                    }
-
-                                    Conditions.Add(c);
-
-                                    monster.UsableConditions.Add(c);
-                                }
-
-                            }
-                        }
+                        //Monster.ParseUsableConditions();
                     }
                 }
 
