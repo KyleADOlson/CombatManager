@@ -32,9 +32,10 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
-
-using Ionic.Zip;
+using System.IO.Compression;
+//using Ionic.Zip;
 using System.Threading.Tasks;
+
 
 
 namespace CombatManager
@@ -1219,7 +1220,7 @@ namespace CombatManager
             List<Monster> returnMonsters = null;
             try
             {
-                if (ZipFile.IsZipFile(filename))
+                if (File.Exists(filename))
                 {
                     returnMonsters = FromHeroLabZip(filename);
                 }
@@ -1388,43 +1389,85 @@ namespace CombatManager
 
         }
 
+        //private static List<Monster> FromHeroLabZip(string filename)
+        //{
+
+        //    List<Monster> monsters = new List<Monster>();
+
+        //    ZipFile f = ZipFile.Read(filename);
+
+
+        //    foreach (var en in from v in f.Entries where v.FileName.StartsWith("statblocks_text") && !v.IsDirectory select v)
+        //    {
+        //        #if MONO
+
+        //        using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("utf-8")))
+        //        {
+        //        #else
+        //        using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("windows-1252")))
+        //        {
+        //        #endif
+        //            String block = r.ReadToEnd();
+
+        //            var otheren = f.Entries.FirstOrDefault(v => v.FileName.Equals(en.FileName.Replace("statblocks_text", "statblocks_xml").Replace(".txt", ".xml")));
+
+        //            XDocument doc = null;
+
+        //            if (otheren != null)
+        //            {
+        //                doc = XDocument.Load(new StreamReader(otheren.OpenReader()));
+        //            }
+
+
+        //            Monster monster = new Monster();
+        //            ImportHeroLabBlock(block, doc, monster, true);
+        //            monsters.Add(monster);
+
+        //        }
+        //    }
+
+        //    return monsters;
+        //}
+
         private static List<Monster> FromHeroLabZip(string filename)
         {
-            
             List<Monster> monsters = new List<Monster>();
-
-            ZipFile f = ZipFile.Read(filename);
-            
-
-            foreach (var en in from v in f.Entries where v.FileName.StartsWith("statblocks_text") && !v.IsDirectory select v)
+            if (!File.Exists(filename)) return monsters;
+            using (var hlFile = ZipFile.OpenRead(filename))
             {
-                #if MONO
-
-                using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("utf-8")))
+                var txtresult = from currentry in hlFile.Entries
+                                where Path.GetDirectoryName(currentry.FullName) == "statblocks_text"
+                                where !string.IsNullOrEmpty(currentry.Name)
+                                select currentry;
+                foreach (var entry in txtresult)
                 {
-                #else
-                using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("windows-1252")))
-                {
-                #endif
-                    String block = r.ReadToEnd();
-
-                    var otheren = f.Entries.FirstOrDefault(v => v.FileName.Equals(en.FileName.Replace("statblocks_text", "statblocks_xml").Replace(".txt", ".xml")));
-
-                    XDocument doc = null;
-
-                    if (otheren != null)
+                    if (!entry.FullName.EndsWith(".txt", StringComparison.OrdinalIgnoreCase)) continue;
+#if MONO
+                    using (var r = new StreamReader(entry.Open(), Encoding.GetEncoding("utf-8")))
                     {
-                        doc = XDocument.Load(new StreamReader(otheren.OpenReader()));
+#else
+                    using (var r = new StreamReader(entry.Open(), Encoding.GetEncoding("windows-1252")))
+                    {
+#endif
+                        var block = r.ReadToEnd();
+                        var xmlresult = from currentry in hlFile.Entries
+                                        where Path.GetDirectoryName(currentry.FullName) == "statblocks_xml"
+                                        where currentry.Name == entry.Name.Replace(".txt", ".xml")
+                                        select currentry;
+
+                        XDocument doc = null;
+                        if (xmlresult.FirstOrDefault() != null)
+                        {
+                            doc = XDocument.Load(new StreamReader(xmlresult.FirstOrDefault().Open()));
+                        }
+
+                        var monster = new Monster();
+                        ImportHeroLabBlock(block, doc, monster, true);
+                        monsters.Add(monster);
+
                     }
-
-
-                    Monster monster = new Monster();
-                    ImportHeroLabBlock(block, doc, monster, true);
-                    monsters.Add(monster);
-                    
                 }
             }
-
             return monsters;
         }
 
@@ -1804,6 +1847,7 @@ namespace CombatManager
         {
             statsblock = statsblock.Replace('×', 'x');
             statsblock = statsblock.Replace("Ã—", "x");
+            statsblock = statsblock.Replace("â€“", "-");
             statsblock = statsblock.Replace("\n", "\r\n");
             statsblock = statsblock.Replace("\r\r\n", "\r\n");
 
