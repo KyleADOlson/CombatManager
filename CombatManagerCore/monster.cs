@@ -60,7 +60,7 @@ namespace CombatManager
     public class Monster : INotifyPropertyChanged, IDBLoadable
     {
         static ObservableCollection<Monster> monsters;
-        
+
 
         static void LoadBestiary()
         {
@@ -72,12 +72,12 @@ namespace CombatManager
 
             if (LowMemoryLoad)
             {
-                
+
                 System.Diagnostics.Debug.WriteLine("Low Memory Load");
                 Parallel.Invoke(new Action[] {
                         () =>
-                        monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"), 
-                     () => 
+                        monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"),
+                     () =>
                          npcSet1 = LoadMonsterFromXml("NPCShort.xml")});
             }
             else
@@ -90,12 +90,12 @@ namespace CombatManager
                             monsterSet1 = LoadMonsterFromXml("BestiaryShort.xml"),
                         () =>
                         monsterSet2 = LoadMonsterFromXml("BestiaryShort2.xml")});
-                    
-                    Parallel.Invoke(new Action[] {
-                     () => 
+
+                Parallel.Invoke(new Action[] {
+                     () =>
                          npcSet1 = LoadMonsterFromXml("NPCShort.xml"),
-                
-                     () => 
+
+                     () =>
                          npcSet2 = LoadMonsterFromXml("NPCShort2.xml")});
             }
 
@@ -105,22 +105,22 @@ namespace CombatManager
             DateTime time2 = DateTime.Now;
             double span = (new TimeSpan(time2.Ticks - time.Ticks)).TotalMilliseconds;
             System.Diagnostics.Debug.WriteLine("Bestairy Load: " + span);
-			
-			if (npcSet1 != null)
-			{
-	            foreach (Monster m in npcSet1)
-	            {
-	                m.NPC = true;
-	            }
-	            monsterSet1.AddRange(npcSet1);
-			}
-	
+
+            if (npcSet1 != null)
+            {
+                foreach (Monster m in npcSet1)
+                {
+                    m.NPC = true;
+                }
+                monsterSet1.AddRange(npcSet1);
+            }
+
             if (DBSettings.UseDB)
             {
                 List<Monster> dbMonsters = new List<Monster>(MonsterDB.DB.Monsters);
                 monsterSet1.AddRange(dbMonsters);
             }
-			 
+
             monsters = new ObservableCollection<Monster>(monsterSet1);
 
 
@@ -142,12 +142,12 @@ namespace CombatManager
             {
 
                 List<Monster> monsters = new List<Monster>();
-    #if ANDROID
+#if ANDROID
                 XDocument doc = XDocument.Load(new StreamReader(CoreContext.Context.Assets.Open(filename)));
-    #else
+#else
 
                 XDocument doc = XDocument.Load(Path.Combine(XmlLoader<Monster>.AssemblyDir, filename));
-    #endif
+#endif
 
                 foreach (var v in doc.Descendants("Monster"))
                 {
@@ -216,7 +216,7 @@ namespace CombatManager
                     m.Swim = GetElementStringValue(v, "Swim");
                     m.Land = GetElementStringValue(v, "Land");
                     m.AgeCategory = GetElementStringValue(v, "AgeCategory");
-                    m.DontUseRacialHD = GetElementIntValue(v, "DontUseRacialHD")==1;
+                    m.DontUseRacialHD = GetElementIntValue(v, "DontUseRacialHD") == 1;
                     m.Race = GetElementStringValue(v, "Race");
                     m.Class = GetElementStringValue(v, "Class");
                     m.Resist = GetElementStringValue(v, "Resist");
@@ -245,7 +245,7 @@ namespace CombatManager
                     m.MR = GetElementIntNullValue(v, "MR");
                     m.Mythic = GetElementStringValue(v, "Mythic");
                     m.ProhibitedSchools = GetElementStringValue(v, "ProhibitedSchools");
-                    
+
                     monsters.Add(m);
                 }
                 return monsters;
@@ -277,7 +277,7 @@ namespace CombatManager
         public void NotifyPropertyChanged(string property)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-            
+
         }
 
         private String name;
@@ -400,7 +400,7 @@ namespace CombatManager
 
         private static Dictionary<string, Stat> _SkillsList;
         private static Dictionary<string, SkillInfo> _SkillsDetails;
-        
+
 
         private ObservableCollection<ActiveCondition> _ActiveConditions;
         private ObservableCollection<Condition> _UsableConditions;
@@ -469,7 +469,7 @@ namespace CombatManager
             Ref,
             Will
         }
-            
+
         public struct AlignmentType
         {
             public OrderAxis Order;
@@ -503,48 +503,48 @@ namespace CombatManager
             Reposition,
             Steal,
             Sunder,
-            Trip 
+            Trip
         }
 
         static Monster()
         {
             CombatManeuvers = new List<string>();
-            
-            foreach (var maneuver in (ManeuverType[]) Enum.GetValues(typeof(ManeuverType)))
+
+            foreach (var maneuver in (ManeuverType[])Enum.GetValues(typeof(ManeuverType)))
             {
-                CombatManeuvers.Add( ManeuverName(maneuver));           
+                CombatManeuvers.Add(ManeuverName(maneuver));
             }
 
-            
+
 
             _SkillsList = new Dictionary<string, Stat>(new InsensitiveEqualityCompararer());
 
-                _SkillsList["Acrobatics"] = Stat.Dexterity;
-                _SkillsList["Appraise"] = Stat.Intelligence;
-                _SkillsList["Bluff"] = Stat.Charisma;
-                _SkillsList["Climb"] = Stat.Strength;
-                _SkillsList["Craft"] = Stat.Intelligence;
-                _SkillsList["Diplomacy"] = Stat.Charisma;
-                _SkillsList["Disable Device"] = Stat.Dexterity;
-                _SkillsList["Disguise"] = Stat.Charisma;
-                _SkillsList["Escape Artist"] = Stat.Dexterity;
-                _SkillsList["Fly"] = Stat.Dexterity;
-                _SkillsList["Handle Animal"] = Stat.Charisma;
-                _SkillsList["Heal"] = Stat.Wisdom;
-                _SkillsList["Intimidate"] = Stat.Charisma;
-                _SkillsList["Knowledge"] = Stat.Intelligence;
-                _SkillsList["Linguistics"] = Stat.Intelligence;
-                _SkillsList["Perception"] = Stat.Wisdom;
-                _SkillsList["Perform"] = Stat.Charisma;
-                _SkillsList["Profession"] = Stat.Wisdom;
-                _SkillsList["Ride"] = Stat.Dexterity;
-                _SkillsList["Sense Motive"] = Stat.Wisdom;
-                _SkillsList["Sleight of Hand"] = Stat.Dexterity;
-                _SkillsList["Spellcraft"] = Stat.Intelligence;
-                _SkillsList["Stealth"] = Stat.Dexterity;
-                _SkillsList["Survival"] = Stat.Wisdom;
-                _SkillsList["Swim"] = Stat.Strength;
-                _SkillsList["Use Magic Device"] = Stat.Charisma;
+            _SkillsList["Acrobatics"] = Stat.Dexterity;
+            _SkillsList["Appraise"] = Stat.Intelligence;
+            _SkillsList["Bluff"] = Stat.Charisma;
+            _SkillsList["Climb"] = Stat.Strength;
+            _SkillsList["Craft"] = Stat.Intelligence;
+            _SkillsList["Diplomacy"] = Stat.Charisma;
+            _SkillsList["Disable Device"] = Stat.Dexterity;
+            _SkillsList["Disguise"] = Stat.Charisma;
+            _SkillsList["Escape Artist"] = Stat.Dexterity;
+            _SkillsList["Fly"] = Stat.Dexterity;
+            _SkillsList["Handle Animal"] = Stat.Charisma;
+            _SkillsList["Heal"] = Stat.Wisdom;
+            _SkillsList["Intimidate"] = Stat.Charisma;
+            _SkillsList["Knowledge"] = Stat.Intelligence;
+            _SkillsList["Linguistics"] = Stat.Intelligence;
+            _SkillsList["Perception"] = Stat.Wisdom;
+            _SkillsList["Perform"] = Stat.Charisma;
+            _SkillsList["Profession"] = Stat.Wisdom;
+            _SkillsList["Ride"] = Stat.Dexterity;
+            _SkillsList["Sense Motive"] = Stat.Wisdom;
+            _SkillsList["Sleight of Hand"] = Stat.Dexterity;
+            _SkillsList["Spellcraft"] = Stat.Intelligence;
+            _SkillsList["Stealth"] = Stat.Dexterity;
+            _SkillsList["Survival"] = Stat.Wisdom;
+            _SkillsList["Swim"] = Stat.Strength;
+            _SkillsList["Use Magic Device"] = Stat.Charisma;
 
 
             _SkillsDetails = new Dictionary<string, SkillInfo>(new InsensitiveEqualityCompararer());
@@ -570,10 +570,10 @@ namespace CombatManager
             know.Subtypes.Add("Dungeoneering");
             know.Subtypes.Add("Engineering");
             know.Subtypes.Add("Geography");
-            know.Subtypes.Add("History"); 
-            know.Subtypes.Add("Local"); 
-            know.Subtypes.Add("Nature"); 
-            know.Subtypes.Add("Nobility");  	 
+            know.Subtypes.Add("History");
+            know.Subtypes.Add("Local");
+            know.Subtypes.Add("Nature");
+            know.Subtypes.Add("Nobility");
             know.Subtypes.Add("Planes");
             know.Subtypes.Add("Religion");
 
@@ -607,53 +607,53 @@ namespace CombatManager
             SkillInfo perform = _SkillsDetails["Perform"];
 
             perform.Subtypes = new List<string>();
-            perform.Subtypes.Add("Act"); 
-            perform.Subtypes.Add("Comedy"); 
-            perform.Subtypes.Add("Dance"); 
-            perform.Subtypes.Add("Keyboard Instruments"); 
-            perform.Subtypes.Add("Oratory"); 
-            perform.Subtypes.Add("Percussion Instruments"); 
-            perform.Subtypes.Add("Sing"); 
-            perform.Subtypes.Add("String Instruments"); 
+            perform.Subtypes.Add("Act");
+            perform.Subtypes.Add("Comedy");
+            perform.Subtypes.Add("Dance");
+            perform.Subtypes.Add("Keyboard Instruments");
+            perform.Subtypes.Add("Oratory");
+            perform.Subtypes.Add("Percussion Instruments");
+            perform.Subtypes.Add("Sing");
+            perform.Subtypes.Add("String Instruments");
             perform.Subtypes.Add("Wind Instruments");
 
 
             SkillInfo profession = _SkillsDetails["Profession"];
             profession.Subtypes = new List<string>();
-            profession.Subtypes.Add("Architect"); 
-            profession.Subtypes.Add("Baker"); 
-            profession.Subtypes.Add("Barkeep"); 
-            profession.Subtypes.Add("Barmaid"); 
-            profession.Subtypes.Add("Barrister"); 
-            profession.Subtypes.Add("Brewer"); 
-            profession.Subtypes.Add("Butcher"); 
-            profession.Subtypes.Add("Clerk"); 
-            profession.Subtypes.Add("Cook"); 
-            profession.Subtypes.Add("Courtesean"); 
-            profession.Subtypes.Add("Driver"); 
-            profession.Subtypes.Add("Engineer"); 
-            profession.Subtypes.Add("Farmer"); 
-            profession.Subtypes.Add("Fisherman"); 
-            profession.Subtypes.Add("Fortune-Teller"); 
-            profession.Subtypes.Add("Gambler"); 
-            profession.Subtypes.Add("Gardener"); 
-            profession.Subtypes.Add("Herbalist"); 
-            profession.Subtypes.Add("Innkeeper"); 
-            profession.Subtypes.Add("Librarian"); 
-            profession.Subtypes.Add("Medium"); 
-            profession.Subtypes.Add("Merchant"); 
-            profession.Subtypes.Add("Midwife"); 
-            profession.Subtypes.Add("Miller"); 
-            profession.Subtypes.Add("Miner"); 
-            profession.Subtypes.Add("Porter"); 
-            profession.Subtypes.Add("Sailor"); 
-            profession.Subtypes.Add("Scribe"); 
-            profession.Subtypes.Add("Shepherd"); 
-            profession.Subtypes.Add("Soldier"); 
-            profession.Subtypes.Add("Soothsayer"); 
-            profession.Subtypes.Add("Stable Master"); 
-            profession.Subtypes.Add("Tanner"); 
-            profession.Subtypes.Add("Torturer"); 
+            profession.Subtypes.Add("Architect");
+            profession.Subtypes.Add("Baker");
+            profession.Subtypes.Add("Barkeep");
+            profession.Subtypes.Add("Barmaid");
+            profession.Subtypes.Add("Barrister");
+            profession.Subtypes.Add("Brewer");
+            profession.Subtypes.Add("Butcher");
+            profession.Subtypes.Add("Clerk");
+            profession.Subtypes.Add("Cook");
+            profession.Subtypes.Add("Courtesean");
+            profession.Subtypes.Add("Driver");
+            profession.Subtypes.Add("Engineer");
+            profession.Subtypes.Add("Farmer");
+            profession.Subtypes.Add("Fisherman");
+            profession.Subtypes.Add("Fortune-Teller");
+            profession.Subtypes.Add("Gambler");
+            profession.Subtypes.Add("Gardener");
+            profession.Subtypes.Add("Herbalist");
+            profession.Subtypes.Add("Innkeeper");
+            profession.Subtypes.Add("Librarian");
+            profession.Subtypes.Add("Medium");
+            profession.Subtypes.Add("Merchant");
+            profession.Subtypes.Add("Midwife");
+            profession.Subtypes.Add("Miller");
+            profession.Subtypes.Add("Miner");
+            profession.Subtypes.Add("Porter");
+            profession.Subtypes.Add("Sailor");
+            profession.Subtypes.Add("Scribe");
+            profession.Subtypes.Add("Shepherd");
+            profession.Subtypes.Add("Soldier");
+            profession.Subtypes.Add("Soothsayer");
+            profession.Subtypes.Add("Stable Master");
+            profession.Subtypes.Add("Tanner");
+            profession.Subtypes.Add("Torturer");
             profession.Subtypes.Add("Trapper");
             profession.Subtypes.Add("Woodcutter");
 
@@ -743,10 +743,10 @@ namespace CombatManager
                 {
                     creatureTypes[name.Value] = name.Key;
                 }
-				
-				
-				creatureTypeNamesList = new List<string>(creatureTypeNames.Values);
-				creatureTypeNamesList.Sort();
+
+
+                creatureTypeNamesList = new List<string>(creatureTypeNames.Values);
+                creatureTypeNamesList.Sort();
 
             }
             catch (Exception ex)
@@ -759,12 +759,12 @@ namespace CombatManager
 
 
         public static List<string> CreatureTypeNames
-		{
-			get
-			{
-				return creatureTypeNamesList;
-			}
-		}
+        {
+            get
+            {
+                return creatureTypeNamesList;
+            }
+        }
 
         private static void LoadWeaponNames()
         {
@@ -804,10 +804,10 @@ namespace CombatManager
                     {
                         _crs[i] = i.ToString();
                     }
-                    
+
 
                 }
-                
+
                 return _crs;
             }
         }
@@ -869,86 +869,86 @@ namespace CombatManager
 
             DexZero = m.DexZero;
             _DetailsID = m._DetailsID;
-		    Name=m.name;
-            CR=m.cr;
-            XP=m.xp;
-            Race=m.race;
-            className=m.className;
-            Alignment=m.alignment;
-            Size=m.size;
-            Type=m.type;
-            SubType=m.subType;
-            Init=m.init;
+            Name = m.name;
+            CR = m.cr;
+            XP = m.xp;
+            Race = m.race;
+            className = m.className;
+            Alignment = m.alignment;
+            Size = m.size;
+            Type = m.type;
+            SubType = m.subType;
+            Init = m.init;
             DualInit = m.dualinit;
-            Senses=m.senses;
-            AC=m.ac;
-            AC_Mods=m.ac_mods;
-            HP=m.hp;
-            HD=m.hd;
-            Saves=m.saves;
-            Fort=m.fort;
-            Ref=m.reflex;
-            Will=m.will;
-            Save_Mods=m.save_mods;
-            Resist=m.resist;
-            DR=m.dr;
-            SR=m.sr;
-            Speed=m.speed;
-            Melee=m.melee;
-            Ranged=m.ranged;
-            Space=m.space;
-            Reach=m.reach;
-            SpecialAttacks=m.specialAttacks;
-            SpellLikeAbilities=m.spellLikeAbilities;
-            AbilitiyScores=m.abilitiyScores;
-            BaseAtk=m.baseAtk;
-            CMB=m.cmb;
-            CMD=m.cmd;
-            Feats=m.feats;
-            Skills=m.skills;
-            RacialMods=m.racialMods;
-            Languages=m.languages;
-            SQ=m.sq;
-            Environment=m.environment;
-            Organization=m.organization;
-            Treasure=m.treasure;
-            Description_Visual=m.description_visual;
-            Group=m.Group;
-            Source=m.Source;
-            IsTemplate=m.isTemplate;
-            SpecialAbilities=m.specialAbilities;
-            Description=m.description;
-            FullText=m.fullText;
-            Gender=m.gender;
-            Bloodline=m.bloodline;
-            ProhibitedSchools=m.prohibitedSchools;
-            BeforeCombat=m.beforeCombat;
-            DuringCombat=m.duringCombat;
-            Morale=m.morale;
-            Gear=m.gear;
-            OtherGear=m.otherGear;
-            Vulnerability=m.vulnerability;
-            Note=m.note;
-            CharacterFlag=m.characterFlag;
-            CompanionFlag=m.companionFlag;
-            Fly=m.fly;
-            Climb=m.climb;
-            Burrow=m.burrow;
-            Swim=m.swim;
-            Land=m.land;
-            TemplatesApplied=m.templatesApplied;
-            OffenseNote=m.offenseNote;
-            BaseStatistics=m.baseStatistics;
-            SpellsPrepared=m.spellsPrepared;
-            SpellDomains=m.spellDomains;
-            Aura=m.aura;
-            DefensiveAbilities=m.defensiveAbilities;
-            Immune=m.immune;
-            HP_Mods=m.hp_mods;
-            SpellsKnown=m.spellsKnown;
-            Weaknesses=m.weaknesses;
-            Speed_Mod=m.speed_mod;
-            MonsterSource=m.monsterSource;
+            Senses = m.senses;
+            AC = m.ac;
+            AC_Mods = m.ac_mods;
+            HP = m.hp;
+            HD = m.hd;
+            Saves = m.saves;
+            Fort = m.fort;
+            Ref = m.reflex;
+            Will = m.will;
+            Save_Mods = m.save_mods;
+            Resist = m.resist;
+            DR = m.dr;
+            SR = m.sr;
+            Speed = m.speed;
+            Melee = m.melee;
+            Ranged = m.ranged;
+            Space = m.space;
+            Reach = m.reach;
+            SpecialAttacks = m.specialAttacks;
+            SpellLikeAbilities = m.spellLikeAbilities;
+            AbilitiyScores = m.abilitiyScores;
+            BaseAtk = m.baseAtk;
+            CMB = m.cmb;
+            CMD = m.cmd;
+            Feats = m.feats;
+            Skills = m.skills;
+            RacialMods = m.racialMods;
+            Languages = m.languages;
+            SQ = m.sq;
+            Environment = m.environment;
+            Organization = m.organization;
+            Treasure = m.treasure;
+            Description_Visual = m.description_visual;
+            Group = m.Group;
+            Source = m.Source;
+            IsTemplate = m.isTemplate;
+            SpecialAbilities = m.specialAbilities;
+            Description = m.description;
+            FullText = m.fullText;
+            Gender = m.gender;
+            Bloodline = m.bloodline;
+            ProhibitedSchools = m.prohibitedSchools;
+            BeforeCombat = m.beforeCombat;
+            DuringCombat = m.duringCombat;
+            Morale = m.morale;
+            Gear = m.gear;
+            OtherGear = m.otherGear;
+            Vulnerability = m.vulnerability;
+            Note = m.note;
+            CharacterFlag = m.characterFlag;
+            CompanionFlag = m.companionFlag;
+            Fly = m.fly;
+            Climb = m.climb;
+            Burrow = m.burrow;
+            Swim = m.swim;
+            Land = m.land;
+            TemplatesApplied = m.templatesApplied;
+            OffenseNote = m.offenseNote;
+            BaseStatistics = m.baseStatistics;
+            SpellsPrepared = m.spellsPrepared;
+            SpellDomains = m.spellDomains;
+            Aura = m.aura;
+            DefensiveAbilities = m.defensiveAbilities;
+            Immune = m.immune;
+            HP_Mods = m.hp_mods;
+            SpellsKnown = m.spellsKnown;
+            Weaknesses = m.weaknesses;
+            Speed_Mod = m.speed_mod;
+            MonsterSource = m.monsterSource;
             ExtractsPrepared = m.extractsPrepared;
             AgeCategory = m.ageCategory;
             DontUseRacialHD = m.dontUseRacialHD;
@@ -960,13 +960,13 @@ namespace CombatManager
 
 
 
-            StatsParsed=m.statsParsed;
-            Strength=m.strength;
-            Dexterity=m.dexterity;
-            Constitution=m.constitution;
-            Intelligence=m.intelligence;
-            Wisdom=m.wisdom;
-            Charisma=m.charisma;
+            StatsParsed = m.statsParsed;
+            Strength = m.strength;
+            Dexterity = m.dexterity;
+            Constitution = m.constitution;
+            Intelligence = m.intelligence;
+            Wisdom = m.wisdom;
+            Charisma = m.charisma;
 
             SpecialAblitiesParsed = m.specialAblitiesParsed;
             if (m.specialAbilitiesList != null)
@@ -992,7 +992,7 @@ namespace CombatManager
             if (m.skillsParsed)
             {
                 skillValueDictionary.Clear();
-                
+
                 foreach (SkillValue skillValue in m.skillValueDictionary.Values)
                 {
 
@@ -1003,7 +1003,7 @@ namespace CombatManager
                 {
                     skillValueList.Add(skillValue);
                 }
-                
+
             }
 
             featsParsed = m.featsParsed;
@@ -1041,93 +1041,93 @@ namespace CombatManager
 
         }
 
-		public object Clone()
-		{
-			Monster m = new Monster();
+        public object Clone()
+        {
+            Monster m = new Monster();
 
             BaseClone(m);
 
             m._DetailsID = _DetailsID;
-		    m.name=name;
-            m.cr=cr;
-            m.xp=xp;
-            m.race=race;
-            m.className=className;
-            m.alignment=alignment;
-            m.size=size;
-            m.type=type;
-            m.subType=subType;
-            m.init=init;
-            m.dualinit =dualinit;
-            m.senses=senses;
-            m.ac=ac;
-            m.ac_mods=ac_mods;
-            m.hp=hp;
-            m.hd=hd;
-            m.saves=saves;
-            m.fort=fort;
-            m.reflex=reflex;
-            m.will=will;
-            m.save_mods=save_mods;
-            m.resist=resist;
-            m.dr=dr;
-            m.sr=sr;
-            m.speed=speed;
-            m.melee=melee;
-            m.ranged=ranged;
-            m.space=space;
-            m.reach=reach;
-            m.specialAttacks=specialAttacks;
-            m.spellLikeAbilities=spellLikeAbilities;
-            m.abilitiyScores=abilitiyScores;
-            m.baseAtk=baseAtk;
-            m.cmb=cmb;
-            m.cmd=cmd;
-            m.feats=feats;
-            m.skills=skills;
-            m.racialMods=racialMods;
-            m.languages=languages;
-            m.sq=sq;
-            m.environment=environment;
-            m.organization=organization;
-            m.treasure=treasure;
-            m.description_visual=description_visual;
-            m.group=group;
-            m.source=source;
-            m.isTemplate=isTemplate;
-            m.specialAbilities=specialAbilities;
-            m.description=description;
-            m.fullText=fullText;
-            m.gender=gender;
-            m.bloodline=bloodline;
-            m.prohibitedSchools=prohibitedSchools;
-            m.beforeCombat=beforeCombat;
-            m.duringCombat=duringCombat;
-            m.morale=morale;
-            m.gear=gear;
-            m.otherGear=otherGear;
-            m.vulnerability=vulnerability;
-            m.note=note;
-            m.characterFlag=characterFlag;
-            m.companionFlag=companionFlag;
-            m.fly=fly;
-            m.climb=climb;
-            m.burrow=burrow;
-            m.swim=swim;
-            m.land=land;
-            m.templatesApplied=templatesApplied;
-            m.offenseNote=offenseNote;
-            m.baseStatistics=baseStatistics;
-            m.spellsPrepared=spellsPrepared;
-            m.spellDomains=spellDomains;
-            m.aura=aura;
-            m.defensiveAbilities=defensiveAbilities;
-            m.immune=immune;
-            m.hp_mods=hp_mods;
-            m.spellsKnown=spellsKnown;
-            m.weaknesses=weaknesses;
-            m.speed_mod=speed_mod;
-            m.monsterSource=monsterSource;
+            m.name = name;
+            m.cr = cr;
+            m.xp = xp;
+            m.race = race;
+            m.className = className;
+            m.alignment = alignment;
+            m.size = size;
+            m.type = type;
+            m.subType = subType;
+            m.init = init;
+            m.dualinit = dualinit;
+            m.senses = senses;
+            m.ac = ac;
+            m.ac_mods = ac_mods;
+            m.hp = hp;
+            m.hd = hd;
+            m.saves = saves;
+            m.fort = fort;
+            m.reflex = reflex;
+            m.will = will;
+            m.save_mods = save_mods;
+            m.resist = resist;
+            m.dr = dr;
+            m.sr = sr;
+            m.speed = speed;
+            m.melee = melee;
+            m.ranged = ranged;
+            m.space = space;
+            m.reach = reach;
+            m.specialAttacks = specialAttacks;
+            m.spellLikeAbilities = spellLikeAbilities;
+            m.abilitiyScores = abilitiyScores;
+            m.baseAtk = baseAtk;
+            m.cmb = cmb;
+            m.cmd = cmd;
+            m.feats = feats;
+            m.skills = skills;
+            m.racialMods = racialMods;
+            m.languages = languages;
+            m.sq = sq;
+            m.environment = environment;
+            m.organization = organization;
+            m.treasure = treasure;
+            m.description_visual = description_visual;
+            m.group = group;
+            m.source = source;
+            m.isTemplate = isTemplate;
+            m.specialAbilities = specialAbilities;
+            m.description = description;
+            m.fullText = fullText;
+            m.gender = gender;
+            m.bloodline = bloodline;
+            m.prohibitedSchools = prohibitedSchools;
+            m.beforeCombat = beforeCombat;
+            m.duringCombat = duringCombat;
+            m.morale = morale;
+            m.gear = gear;
+            m.otherGear = otherGear;
+            m.vulnerability = vulnerability;
+            m.note = note;
+            m.characterFlag = characterFlag;
+            m.companionFlag = companionFlag;
+            m.fly = fly;
+            m.climb = climb;
+            m.burrow = burrow;
+            m.swim = swim;
+            m.land = land;
+            m.templatesApplied = templatesApplied;
+            m.offenseNote = offenseNote;
+            m.baseStatistics = baseStatistics;
+            m.spellsPrepared = spellsPrepared;
+            m.spellDomains = spellDomains;
+            m.aura = aura;
+            m.defensiveAbilities = defensiveAbilities;
+            m.immune = immune;
+            m.hp_mods = hp_mods;
+            m.spellsKnown = spellsKnown;
+            m.weaknesses = weaknesses;
+            m.speed_mod = speed_mod;
+            m.monsterSource = monsterSource;
             m.extractsPrepared = extractsPrepared;
             m.ageCategory = ageCategory;
             m.dontUseRacialHD = dontUseRacialHD;
@@ -1138,13 +1138,13 @@ namespace CombatManager
             m.mythic = mythic;
 
 
-            m.statsParsed=statsParsed;
-            m.strength=strength;
-            m.dexterity=dexterity;
-            m.constitution=constitution;
-            m.intelligence=intelligence;
-            m.wisdom=wisdom;
-            m.charisma=charisma;
+            m.statsParsed = statsParsed;
+            m.strength = strength;
+            m.dexterity = dexterity;
+            m.constitution = constitution;
+            m.intelligence = intelligence;
+            m.wisdom = wisdom;
+            m.charisma = charisma;
 
             m.specialAblitiesParsed = specialAblitiesParsed;
             if (specialAbilitiesList != null)
@@ -1213,7 +1213,7 @@ namespace CombatManager
             m.DBLoaderID = DBLoaderID;
 
             return m;
-		}
+        }
 
         public static List<Monster> FromFile(string filename)
         {
@@ -1389,50 +1389,16 @@ namespace CombatManager
 
         }
 
-        //private static List<Monster> FromHeroLabZip(string filename)
-        //{
 
-        //    List<Monster> monsters = new List<Monster>();
-
-        //    ZipFile f = ZipFile.Read(filename);
-
-
-        //    foreach (var en in from v in f.Entries where v.FileName.StartsWith("statblocks_text") && !v.IsDirectory select v)
-        //    {
-        //        #if MONO
-
-        //        using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("utf-8")))
-        //        {
-        //        #else
-        //        using (StreamReader r = new StreamReader(en.OpenReader(), Encoding.GetEncoding("windows-1252")))
-        //        {
-        //        #endif
-        //            String block = r.ReadToEnd();
-
-        //            var otheren = f.Entries.FirstOrDefault(v => v.FileName.Equals(en.FileName.Replace("statblocks_text", "statblocks_xml").Replace(".txt", ".xml")));
-
-        //            XDocument doc = null;
-
-        //            if (otheren != null)
-        //            {
-        //                doc = XDocument.Load(new StreamReader(otheren.OpenReader()));
-        //            }
-
-
-        //            Monster monster = new Monster();
-        //            ImportHeroLabBlock(block, doc, monster, true);
-        //            monsters.Add(monster);
-
-        //        }
-        //    }
-
-        //    return monsters;
-        //}
 
         private static List<Monster> FromHeroLabZip(string filename)
         {
             List<Monster> monsters = new List<Monster>();
-            if (!File.Exists(filename)) return monsters;
+            if (!File.Exists(filename))
+            {
+                return monsters;
+            }
+
             using (var hlFile = ZipFile.OpenRead(filename))
             {
                 var txtresult = from currentry in hlFile.Entries
@@ -1441,29 +1407,31 @@ namespace CombatManager
                                 select currentry;
                 foreach (var entry in txtresult)
                 {
-                    if (!entry.FullName.EndsWith(".txt", StringComparison.OrdinalIgnoreCase)) continue;
+                    if (entry.FullName.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+                    {
 #if MONO
-                    using (var r = new StreamReader(entry.Open(), Encoding.GetEncoding("utf-8")))
-                    {
-#else
-                    using (var r = new StreamReader(entry.Open(), Encoding.GetEncoding("windows-1252")))
-                    {
-#endif
-                        var block = r.ReadToEnd();
-                        var xmlresult = from currentry in hlFile.Entries
-                                        where Path.GetDirectoryName(currentry.FullName) == "statblocks_xml"
-                                        where currentry.Name == entry.Name.Replace(".txt", ".xml")
-                                        select currentry;
-
-                        XDocument doc = null;
-                        if (xmlresult.FirstOrDefault() != null)
+                        using (var r = new StreamReader(entry.Open(), Encoding.GetEncoding("utf-8")))
                         {
-                            doc = XDocument.Load(new StreamReader(xmlresult.FirstOrDefault().Open()));
-                        }
+#else
+                        using (var r = new StreamReader(entry.Open(), Encoding.GetEncoding("windows-1252")))
+                        {
+#endif
+                            var block = r.ReadToEnd();
+                            var xmlresult = from currentry in hlFile.Entries
+                                            where Path.GetDirectoryName(currentry.FullName) == "statblocks_xml"
+                                            where currentry.Name == entry.Name.Replace(".txt", ".xml")
+                                            select currentry;
 
-                        var monster = new Monster();
-                        ImportHeroLabBlock(block, doc, monster, true);
-                        monsters.Add(monster);
+                            XDocument doc = null;
+                            if (xmlresult.FirstOrDefault() != null)
+                            {
+                                doc = XDocument.Load(new StreamReader(xmlresult.FirstOrDefault().Open()));
+                            }
+
+                            var monster = new Monster();
+                            ImportHeroLabBlock(block, doc, monster, true);
+                            monsters.Add(monster);
+                        }
 
                     }
                 }
@@ -1475,7 +1443,7 @@ namespace CombatManager
         {
             List<Monster> monsters = new List<Monster>();
 
-            
+
             //attempt to get the stats block
 
             ///group-set/groups/group/combatants/combatant
@@ -1535,7 +1503,7 @@ namespace CombatManager
                 if (int.TryParse(m.Groups["val"].Value, out chaInt))
                 {
                     abilityScores = Regex.Replace(abilityScores, "Cha (?<val>[0-9]+)",
-                        delegate(Match ma)
+                        delegate (Match ma)
                         {
                             return "Cha " + chaInt;
                         }
@@ -1543,7 +1511,7 @@ namespace CombatManager
                 }
 
                 monster.abilitiyScores = abilityScores;
-               
+
 
 
 
@@ -1572,7 +1540,7 @@ namespace CombatManager
                 skills = Regex.Replace(skills, ";( )*\r\n", ", ").Trim().Trim(new char[] { ',' });
                 monster.skills = skills;
 
-                
+
                 //BAB, CMB, CMD
                 SizeMods mods = SizeMods.GetMods(SizeMods.GetSize(monster.Size));
                 monster.BaseAtk = GetElementIntValue(it, "baseAttack");
@@ -1596,7 +1564,7 @@ namespace CombatManager
                 speed = Regex.Replace(speed, "Walk ", "");
                 monster.Speed = speed.ToLower();
 
-                
+
 
                 //load senses
                 string senses = GetElementStringValue(it, "senses").ToLower();
@@ -1611,9 +1579,9 @@ namespace CombatManager
                         return ma.Groups["val"].Value + " ft.";
                     }
                 );
-                
+
                 //add perception
-                Regex regSense =  new Regex(", Listen (\\+|-)[0-9]+, Spot (\\+|-)[0-9]+", RegexOptions.IgnoreCase);
+                Regex regSense = new Regex(", Listen (\\+|-)[0-9]+, Spot (\\+|-)[0-9]+", RegexOptions.IgnoreCase);
                 int perception = 0;
                 if (monster.SkillValueDictionary.ContainsKey("Perception"))
                 {
@@ -1678,7 +1646,7 @@ namespace CombatManager
                     else
                     {
                         rangedStrings.Add(attack.Trim());
-                    }                       
+                    }
                 }
 
                 string melee = "";
@@ -1721,21 +1689,21 @@ namespace CombatManager
             if (_DetailsID != 0)
             {
                 //perform updating from DB
-                var list = DetailsDB.LoadDetails(_DetailsID.ToString(), "Bestiary", MonsterDBFields); 
-               Description = list["Description"];
-               Description_Visual = list["Description_Visual"];
-               SpecialAbilities = list["SpecialAbilities"];
-               BeforeCombat = list["BeforeCombat"];
-               DuringCombat = list["DuringCombat"];
-               Morale = list["Morale"];
-               Gear = list["Gear"];
-               OtherGear = list["OtherGear"];
-               Feats = list["Feats"];
-               SpecialAttacks = list["SpecialAttacks"];
-               SpellLikeAbilities = list["SpellLikeAbilities"];
-               SpellsKnown = list["SpellsKnown"];
-               SpellsPrepared = list["SpellsPrepared"];
-               Skills = list["Skills"];
+                var list = DetailsDB.LoadDetails(_DetailsID.ToString(), "Bestiary", MonsterDBFields);
+                Description = list["Description"];
+                Description_Visual = list["Description_Visual"];
+                SpecialAbilities = list["SpecialAbilities"];
+                BeforeCombat = list["BeforeCombat"];
+                DuringCombat = list["DuringCombat"];
+                Morale = list["Morale"];
+                Gear = list["Gear"];
+                OtherGear = list["OtherGear"];
+                Feats = list["Feats"];
+                SpecialAttacks = list["SpecialAttacks"];
+                SpellLikeAbilities = list["SpellLikeAbilities"];
+                SpellsKnown = list["SpellsKnown"];
+                SpellsPrepared = list["SpellsPrepared"];
+                Skills = list["Skills"];
                 _DetailsID = 0;
             }
         }
@@ -1874,7 +1842,7 @@ namespace CombatManager
                     }
                 }
 
-                
+
                 monster.Name = name;
             }
 
@@ -2124,7 +2092,7 @@ namespace CombatManager
             int defStart = m.Index + m.Length;
 
             Regex endLine = new Regex("(?<line>.+)");
-            m = endLine.Match(statsblock, defStart+1);
+            m = endLine.Match(statsblock, defStart + 1);
             String defLine = m.Value;
 
             //string da = FixHeroLabDefensiveAbilities(GetLine("Defensive Abilities", statsblock, true));
@@ -2156,7 +2124,7 @@ namespace CombatManager
             monster.Speed = GetLine("Spd", statsblock, false);
             if (monster.Speed == null)
             {
-                
+
                 monster.Speed = GetLine("Speed", statsblock, false);
             }
 
@@ -2367,7 +2335,7 @@ namespace CombatManager
             spells = spells.Replace("):", ")");
             spells = spells.Replace("\r\n", " ");
             //remove Sources
-            spells = Regex.Replace(spells,@"\[\D+\]", "");
+            spells = Regex.Replace(spells, @"\[\D+\]", "");
             return spells;
 
         }
@@ -2545,7 +2513,7 @@ namespace CombatManager
                 returnText = ReplaceHeroLabSpecialChar(returnText);
                 returnText = Weapon.ReplaceOriginalWeaponNames(returnText, false);
                 returnText = ReplaceColonItems(returnText);
-                
+
             }
 
 
@@ -2560,16 +2528,16 @@ namespace CombatManager
             {
                 returnText = returnText.Replace("&#151;", "-");
             }
-            
+
             return returnText;
-        
+
         }
 
         private static string ReplaceColonItems(string text)
         {
             Regex reg = new Regex(": (?<val>[-+/. \\p{L}0-9]+?)(?<mod> (\\+|-)[0-9]+)?((?<comma>,)|\r|\n|$)");
 
-            return reg.Replace(text, delegate(Match m)
+            return reg.Replace(text, delegate (Match m)
             {
                 string val = " (" + m.Groups["val"] + ")";
 
@@ -2615,7 +2583,7 @@ namespace CombatManager
                 {
                     specialAbilitiesList = new ObservableCollection<SpecialAbility>();
                     specialAbilitiesList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(SpecialAbilitiesList_CollectionChanged);
-                
+
                 }
                 if (specialAbilities != null)
                 {
@@ -2631,37 +2599,37 @@ namespace CombatManager
 
 
                     List<String> list = new List<string>();
-					string specRegString = "\\((?<type>(Ex|Su|Sp))(, (?<cp>[0-9]+) CP)?\\):?";
+                    string specRegString = "\\((?<type>(Ex|Su|Sp))(, (?<cp>[0-9]+) CP)?\\):?";
                     Regex specFindRegex = new Regex("((?<startline>^)|\\.)[-\\p{L} ',]+" + specRegString);
-					Regex specRegex = new Regex(specRegString);
-					Match specFindMatch = specFindRegex.Match(specText);
-					List<int> locList = new List<int>();
-					
-					while (specFindMatch.Success)
-					{
-						int index = specFindMatch.Index	;
-						if (!specFindMatch.GroupSuccess("startline"))
-						{
-							index++;
-						}
-						locList.Add(index);
-						
-						specFindMatch = specFindMatch.NextMatch();
-					}
-					
-					for (int i=0; i<locList.Count; i++)
-					{
-						if (i + 1 == locList.Count)
-						{
-							list.Add(specText.Substring(locList[i], specText.Length - locList[i]).Trim());
-						}
-						else
-						{
-							
-							list.Add(specText.Substring(locList[i], locList[i+1] - locList[i]).Trim());
-						}
-					}
-					
+                    Regex specRegex = new Regex(specRegString);
+                    Match specFindMatch = specFindRegex.Match(specText);
+                    List<int> locList = new List<int>();
+
+                    while (specFindMatch.Success)
+                    {
+                        int index = specFindMatch.Index;
+                        if (!specFindMatch.GroupSuccess("startline"))
+                        {
+                            index++;
+                        }
+                        locList.Add(index);
+
+                        specFindMatch = specFindMatch.NextMatch();
+                    }
+
+                    for (int i = 0; i < locList.Count; i++)
+                    {
+                        if (i + 1 == locList.Count)
+                        {
+                            list.Add(specText.Substring(locList[i], specText.Length - locList[i]).Trim());
+                        }
+                        else
+                        {
+
+                            list.Add(specText.Substring(locList[i], locList[i + 1] - locList[i]).Trim());
+                        }
+                    }
+
                     foreach (string strSpec in list)
                     {
                         Match match = specRegex.Match(strSpec);
@@ -2770,7 +2738,7 @@ namespace CombatManager
 
             if (match.Success)
             {
-                string text = match.Value.Substring(5, match.Length-6);
+                string text = match.Value.Substring(5, match.Length - 6);
                 int.TryParse(text, out touchAC);
             }
 
@@ -2810,7 +2778,7 @@ namespace CombatManager
 
 
                     value.Name = match.Groups[1].Value.Trim();
-                    
+
 
                     if (match.Groups[3].Success)
                     {
@@ -2821,12 +2789,12 @@ namespace CombatManager
                     value.Mod = int.Parse(match.Groups[5].Value);
 
                     skillValueDictionary[value.FullName] = value;
-                   
-                    
+
+
                 }
             }
 
-            skillsParsed =true;
+            skillsParsed = true;
         }
 
         private void ParseFeats()
@@ -2858,12 +2826,12 @@ namespace CombatManager
 
                         featsList.Add(val);
 
-                        
+
 
                     }
                     featsParsed = true;
                 }
-                
+
                 featsList.Sort();
 
             }
@@ -2896,7 +2864,7 @@ namespace CombatManager
 
             return value;
         }
-       
+
         private static string ReplaceModifierNumber(string text, string modifierName, int value, bool addIfZero)
         {
             string valText = CMStringUtilities.PlusFormatNumber(value) + " " + modifierName;
@@ -2908,7 +2876,7 @@ namespace CombatManager
 
 
             Regex regName = new Regex("(, )?(\\+|-)[0-9]+ " + modifierName + "(, )?", RegexOptions.IgnoreCase);
-            
+
             string returnText = text;
             if (text != null || value != 0)
             {
@@ -2946,7 +2914,7 @@ namespace CombatManager
                     }
                 }
             }
-            
+
             return returnText != "()" ? returnText : "";
         }
 
@@ -2959,7 +2927,7 @@ namespace CombatManager
             {
                 Regex regVs = new Regex("([-\\+0-9/]+)( vs\\.)");
 
-                returnText = regVs.Replace(returnText, delegate(Match m)
+                returnText = regVs.Replace(returnText, delegate (Match m)
                                 {
                                     int val = int.Parse(m.Groups[1].Value) + diff;
 
@@ -2987,7 +2955,7 @@ namespace CombatManager
 
                 Regex regAttack = new Regex(Attack.RegexString(thrownAttack.Key), RegexOptions.IgnoreCase);
 
-                returnText = regAttack.Replace(returnText, delegate(Match m)
+                returnText = regAttack.Replace(returnText, delegate (Match m)
                 {
                     Attack info = Attack.ParseAttack(m);
 
@@ -3042,7 +3010,7 @@ namespace CombatManager
             }
         }
 
-        public bool AddOrChangeSkill(string skill,  int diff)
+        public bool AddOrChangeSkill(string skill, int diff)
         {
             return AddOrChangeSkill(skill, null, diff);
         }
@@ -3072,7 +3040,7 @@ namespace CombatManager
 
                 SkillValueDictionary[val.FullName] = val;
 
-                UpdateSkillFields(val);                
+                UpdateSkillFields(val);
 
                 added = true;
 
@@ -3099,7 +3067,7 @@ namespace CombatManager
             {
                 return false;
             }
-            
+
         }
 
         private static string SetSkillStringMod(string text, string skill, int val)
@@ -3160,8 +3128,8 @@ namespace CombatManager
                     added = true;
                 }
             }
-           
-            if (add && ! added)
+
+            if (add && !added)
             {
                 returnText = AddToStringList(returnText, skill + " " + CMStringUtilities.PlusFormatNumber(diff));
             }
@@ -3183,12 +3151,12 @@ namespace CombatManager
             {
                 returnText = "";
             }
-            
+
             Regex regVal = new Regex("((\\+|-)[0-9]+) " + type);
 
             bool replaced = false;
 
-            returnText = regVal.Replace(returnText, delegate(Match m)
+            returnText = regVal.Replace(returnText, delegate (Match m)
                 {
                     int val = int.Parse(m.Groups[1].Value);
 
@@ -3200,7 +3168,7 @@ namespace CombatManager
 
             if (!replaced)
             {
-                returnText = AddToStringList(returnText, 
+                returnText = AddToStringList(returnText,
                     CMStringUtilities.PlusFormatNumber(diff) + " " + type);
             }
 
@@ -3281,7 +3249,7 @@ namespace CombatManager
 
             Regex regName = new Regex("^-?[0-9]+");
 
-            returnText = regName.Replace(returnText, delegate(Match m)
+            returnText = regName.Replace(returnText, delegate (Match m)
                 {
 
                     int val = int.Parse(m.Value);
@@ -3391,7 +3359,7 @@ namespace CombatManager
 
         public bool MakeCelestial()
         {
-            return MakeSummoned(HalfOutsiderType.Celestial) ;
+            return MakeSummoned(HalfOutsiderType.Celestial);
         }
 
         public bool MakeFiendish()
@@ -3435,7 +3403,7 @@ namespace CombatManager
 
             return opType;
 
-            
+
         }
 
         public static string GetOutsiderDRType(HalfOutsiderType type)
@@ -3531,7 +3499,7 @@ namespace CombatManager
             {
                 case HalfOutsiderType.Celestial:
                     {
-                        
+
                         //SubType = "(good, extraplanar)";//implied but not explictly stated
                         //add resist acid, cold, electricity
                         Resist = AddResitance(Resist, "acid", resistAmount);
@@ -3609,13 +3577,13 @@ namespace CombatManager
 
             //add hd
             AdjustHD(dice);
-            
+
             DieRoll newHD = FindNextDieRoll(HD, 0);
 
             int appliedDice = newHD.count - oldHD.count;
 
             //adjust skills
-            int skillCount = Math.Max(typeInfo.Skills + AbilityBonus(Intelligence), 1);           
+            int skillCount = Math.Max(typeInfo.Skills + AbilityBonus(Intelligence), 1);
             AdjustSkills(skillCount * newHD.TotalCount - skillCount * oldHD.TotalCount);
 
 
@@ -3693,7 +3661,7 @@ namespace CombatManager
 
                 list.Sort((a, b) => b.Key - a.Key);
 
-                for (int i=0; i < typeInfo.SaveVariesCount; i++)
+                for (int i = 0; i < typeInfo.SaveVariesCount; i++)
                 {
                     switch (list[i].Value)
                     {
@@ -3807,13 +3775,13 @@ namespace CombatManager
 
                     oldHP -= GetCRHPChange(crLevel);
                 }
-                
+
             }
 
             return appliedDice;
 
         }
-        
+
         public bool MakeHalfDragon(string color)
         {
             //living creatures only
@@ -3838,7 +3806,7 @@ namespace CombatManager
 
             //add low light vision
             Senses = AddSense(Senses, "low-light vision");
-           
+
             //add imunnity sleep, paralysis, breath weapon type
             Immune = AddImmunity(Immune, element);
             Immune = AddImmunity(Immune, "sleep");
@@ -3857,10 +3825,10 @@ namespace CombatManager
             SpecialAttacks = AddSpecialAttack(SpecialAttacks,
                 "breath weapon (" + colorInfo.distance + "-foot " + colorInfo.weaponType + " of " +
                     colorInfo.element + ", " + HDRoll.count +
-                    "d6 " + colorInfo.element + " damage, Reflex DC " + 
-                    (10 + HDRoll.count/2 + AbilityBonus(Constitution)) + " half)", 1);
-            
-            
+                    "d6 " + colorInfo.element + " damage, Reflex DC " +
+                    (10 + HDRoll.count / 2 + AbilityBonus(Constitution)) + " half)", 1);
+
+
             //add stats
             AdjustStrength(8);
             AdjustConstitution(6);
@@ -3873,7 +3841,7 @@ namespace CombatManager
             {
                 AdjustCR(1);
             }
-                
+
             return true;
         }
 
@@ -3900,13 +3868,13 @@ namespace CombatManager
         public bool MakeHalfOutsider(HalfOutsiderType outsiderType, HashSet<Stat> bonusStats)
         {
             //living creatures only
-            if (Constitution == null || bonusStats.Count != 3 || 
+            if (Constitution == null || bonusStats.Count != 3 ||
                 Intelligence == null || Intelligence < 4)
             {
                 return false;
             }
 
-           
+
             //increase CR
             if (HDRoll.count < 5)
             {
@@ -3923,7 +3891,7 @@ namespace CombatManager
 
             //make alignment good/evil
             AlignmentType align = ParseAlignment(Alignment);
-            align.Moral = (outsiderType == HalfOutsiderType.Celestial)?MoralAxis.Good:MoralAxis.Evil;
+            align.Moral = (outsiderType == HalfOutsiderType.Celestial) ? MoralAxis.Good : MoralAxis.Evil;
             Alignment = AlignmentText(align);
 
             //change type
@@ -3935,9 +3903,9 @@ namespace CombatManager
 
             //add darkvision
             Senses = ChangeDarkvisionAtLeast(Senses, 60);
-            
+
             //add immunity
-            Immune = AddImmunity(Immune, (outsiderType == HalfOutsiderType.Celestial)?"disease":"poison");
+            Immune = AddImmunity(Immune, (outsiderType == HalfOutsiderType.Celestial) ? "disease" : "poison");
 
             //add resistance
             Resist = AddResitance(Resist, "acid", 10);
@@ -3993,7 +3961,7 @@ namespace CombatManager
                 {
                     if (outsiderType == HalfOutsiderType.Celestial)
                     {
-                        
+
                         SpellLikeAbilities = AddSpellLikeAbility(SpellLikeAbilities, "aid", 1, hdCount);
                         SpellLikeAbilities = AddSpellLikeAbility(SpellLikeAbilities, "detect evil", 1, hdCount);
                     }
@@ -4100,7 +4068,7 @@ namespace CombatManager
                         SpellLikeAbilities = AddSpellLikeAbility(SpellLikeAbilities, "destruction", 1, hdCount);
                     }
                 }
-                
+
             }
 
             //add stats
@@ -4125,7 +4093,7 @@ namespace CombatManager
 
             string smiteAlignment = GetOutsiderOpposedType(outsiderType);
             string halfType = (half ? "half-" : "") + GetOutsiderTypeName(outsiderType);
-            
+
             //add smite good/evil
             SpecialAttacks = AddSpecialAttack(SpecialAttacks, "smite " + smiteAlignment, 1);
 
@@ -4138,9 +4106,9 @@ namespace CombatManager
 
         public bool MakeSkeleton(bool bloody, bool burning, bool champion)
         {
-            if (String.Compare(Type, "undead", true) == 0 || 
+            if (String.Compare(Type, "undead", true) == 0 ||
                 String.Compare(Type, "construct", true) == 0 ||
-                Strength == null || Dexterity == null || 
+                Strength == null || Dexterity == null ||
                     (SubType != null && String.Compare(SubType, "swarm", true) == 0))
             {
                 return false;
@@ -4182,7 +4150,7 @@ namespace CombatManager
             Type = "undead";
 
             //add natural armor
-            switch ( SizeMods.GetSize(Size))
+            switch (SizeMods.GetSize(Size))
             {
                 case MonsterSize.Small:
                     AdjustNaturalArmor(1);
@@ -4261,7 +4229,7 @@ namespace CombatManager
             //add darkvision
             Senses = ChangeDarkvisionAtLeast(Senses, 60);
 
-            
+
             //add DR
             DR = AddDR(null, "bludgeoning", 5);
 
@@ -4270,7 +4238,7 @@ namespace CombatManager
             {
                 Immune = AddImmunity(Immune, "cold");
             }
-            
+
             if (burning)
             {
                 //switch cold to fire immunity                
@@ -4284,7 +4252,7 @@ namespace CombatManager
 
             //adjust bab
             AdjustBaseAttack(roll.count * 3 / 4 - BaseAtk, true);
-            
+
             //add claws
             AddNaturalAttack("claw", 2, 0);
 
@@ -4300,8 +4268,8 @@ namespace CombatManager
             {
                 AdjustCR(1);
             }
-            
-            
+
+
             DieRoll hdRoll = HDRoll;
             if (bloody)
             {
@@ -4335,7 +4303,7 @@ namespace CombatManager
                 SpecialAbility ab = new SpecialAbility();
                 ab.Name = "Deathless";
                 ab.Text = "A bloody skeleton is destroyed when reduced to 0 hit points, but it returns to unlife 1 hour later at 1 hit point, allowing its fast healing thereafter to resume healing it. A bloody skeleton can be permanently destroyed if it is destroyed by positive energy, if it is reduced to 0 hit points in the area of a bless or hallow spell, or if its remains are sprinkled with a vial of holy water.";
-                ab.Type = "Su"; 
+                ab.Type = "Su";
                 SpecialAbilitiesList.Add(ab);
 
 
@@ -4349,23 +4317,23 @@ namespace CombatManager
                 //add fire to melee attacks
                 Melee = SetPlusOnMeleeAttacks(Melee, "1d6 fire", false);
 
-                
+
                 //add aura
                 Aura = AddToStringList(Aura, "fiery aura");
                 SpecialAbility ab = new SpecialAbility();
                 ab.Name = "Fiery Aura";
                 ab.Text = "Creatures adjacent to a burning skeleton take 1d6 points of fire damage at the start of their turn. Anyone striking a burning skeleton with an unarmed strike or natural attack takes 1d6 points of fire damage.";
-                ab.Type = "Ex"; 
+                ab.Type = "Ex";
                 SpecialAbilitiesList.Add(ab);
 
 
                 //add fiery death
-                int deathDC = 10 + hdRoll.count /2 + AbilityBonus(Charisma);
+                int deathDC = 10 + hdRoll.count / 2 + AbilityBonus(Charisma);
                 SQ = AddToStringList(Aura, "fiery death (DC " + deathDC + ")");
                 ab = new SpecialAbility();
                 ab.Name = "Fiery Death";
                 ab.Text = "A burning skeleton explodes into a burst of flame when it dies. Anyone adjacent to the skeleton when it is destroyed takes 1d6 points of fire damage. A Reflex save (DC " + deathDC + ") halves this damage.";
-                ab.Type = "Su"; 
+                ab.Type = "Su";
                 SpecialAbilitiesList.Add(ab);
 
             }
@@ -4413,7 +4381,7 @@ namespace CombatManager
 
             //add channel resistance 4
             DefensiveAbilities = ChangeSkillStringMod(DefensiveAbilities, "channel resistance", 4, true);
-            
+
             // add DR 15/bludgeoning and magic
             DR = AddDR(null, "bludgeoning and magic", 5);
 
@@ -4513,7 +4481,7 @@ namespace CombatManager
             AddNaturalAttack("slam", 1, 0);
 
             //**add special attacks
-            
+
             //blood drain
             SpecialAttacks = AddToStringList(SpecialAttacks, "blood drain");
             SpecialAbility ab = new SpecialAbility();
@@ -4560,7 +4528,7 @@ namespace CombatManager
             SQ = AddToStringList(SQ, "change shape (dire bat or wolf, beast shape II)");
             ab = new SpecialAbility();
             ab.Name = "Change Shape";
-            ab.Text = "A vampire can use change shape to assume the form of a dire bat or wolf, as beast shape II.";            
+            ab.Text = "A vampire can use change shape to assume the form of a dire bat or wolf, as beast shape II.";
             ab.Type = "Su"; SpecialAbilitiesList.Add(ab);
 
             //gaseous form
@@ -4607,11 +4575,11 @@ namespace CombatManager
             DieRoll roll = HDRoll;
             roll.die = 8;
             //add charisma and toughness
-            roll.mod = AbilityBonus(Charisma) * roll.TotalCount + 
-                (roll.TotalCount<3? 3: roll.TotalCount);
+            roll.mod = AbilityBonus(Charisma) * roll.TotalCount +
+                (roll.TotalCount < 3 ? 3 : roll.TotalCount);
             HD = "(" + DieRollText(roll) + ")";
             HP = roll.AverageRoll();
-            
+
 
 
 
@@ -4629,14 +4597,14 @@ namespace CombatManager
 
         public bool MakeZombie(ZombieType zombieType)
         {
-            
+
             if (String.Compare(Type, "undead", true) == 0 ||
                 Strength == null || Dexterity == null)
             {
                 return false;
             }
 
-            
+
 
             //change type
             Type = "undead";
@@ -4648,24 +4616,24 @@ namespace CombatManager
                 AlignmentType align = ParseAlignment(Alignment);
                 align.Moral = MoralAxis.Evil;
                 Alignment = AlignmentText(align);
-                
+
 
                 //adjust natural armor
                 AdjustNaturalArmor(3);
 
                 //change hd
-                ChangeHDToDie(8);       
+                ChangeHDToDie(8);
 
                 //Defensive Abilities: Juju zombies gain channel resistance +4, 
                 DefensiveAbilities = ChangeSkillStringMod(DefensiveAbilities, "channel resistance", 4, true);
-                
+
                 //DR 5/magic and slashing (or DR 10/magic and slashing if it has 11 HD or more), 
                 DR = AddDR(DR, "magic", (HDRoll.count <= 11) ? 5 : 10);
                 DR = AddDR(DR, "slashing", (HDRoll.count <= 11) ? 5 : 10);
-                
+
                 //and fire resistance 10. 
                 Resist = AddResitance(Resist, "fire", 10);
-                
+
                 //They are immune to cold, electricity, and magic missile.
                 Immune = AddImmunity(Immune, "cold");
                 Immune = AddImmunity(Immune, "electricity");
@@ -4677,7 +4645,7 @@ namespace CombatManager
                 //Attacks: A juju zombie retains all the natural weapons, manufactured weapon attacks, and weapon proficiencies of the base creature. It also gains a slam attack that deals damage based on the juju zombie’s size, but as if it were one size category larger than its actual size.
                 //add slam (+1 diestep)
                 AddNaturalAttack("slam", 1, 1);
-                
+
                 //Abilities: Increase from the base creature as follows: Str +4, Dex +2. A juju zombie has no Constitution score; as an undead, it uses its Charisma in place of Constitution when calculating hit points, Fortitude saves, or any special ability that relies on Constitution.
                 AdjustStrength(4);
                 AdjustDexterity(2);
@@ -4727,7 +4695,7 @@ namespace CombatManager
 
                 //change hd
                 ChangeHDToDie(8);
-                
+
                 DieRoll roll = HDRoll;
 
                 //change saves
@@ -4911,10 +4879,10 @@ namespace CombatManager
 
                     //gains a +2 bonus to its Strength.
                     AdjustStrength(2);
-                    
+
                     break;
 
-                    
+
                 case 2:
                     //2: Oversized Maw: The ogrekin gains a bite attack (1d4).
                     SQ = AddToStringList(SQ, "oversized maw");
@@ -4922,7 +4890,7 @@ namespace CombatManager
                     break;
 
                 case 3:
-                //3: Quick Metabolism: The ogrekin gains a +2 racial bonus on Fortitude saves.
+                    //3: Quick Metabolism: The ogrekin gains a +2 racial bonus on Fortitude saves.
                     SQ = AddToStringList(SQ, "quick metabolism");
                     if (Fort != null)
                     {
@@ -4937,9 +4905,9 @@ namespace CombatManager
                     break;
 
                 case 5:
-                //5: Vestigial Limb: Vestigial third arm (can't be used to use items) grants a +4 racial bonus on grapple checks.
-                    SQ = AddToStringList(SQ, "vestigial limb");                   
-                    
+                    //5: Vestigial Limb: Vestigial third arm (can't be used to use items) grants a +4 racial bonus on grapple checks.
+                    SQ = AddToStringList(SQ, "vestigial limb");
+
                     break;
 
                 case 6:
@@ -4984,7 +4952,7 @@ namespace CombatManager
                         AdjustDexterity(-1);
                     }
                     break;
-                        
+
 
                 case 5:
                     //5: Stunted Legs: The ogrekin's base speed is reduced by 10 feet (minimum base speed of 5 feet).
@@ -5011,7 +4979,7 @@ namespace CombatManager
         }
 
 
-        public void ChangeHDToDie(int die) 
+        public void ChangeHDToDie(int die)
         {
             DieRoll roll = HDRoll;
             roll.die = 8;
@@ -5120,7 +5088,7 @@ namespace CombatManager
 
         public void AddNaturalAttack(string name, int count, int step, string plus, bool noDamageBonus)
         {
-           
+
             if (Weapon.Weapons.ContainsKey(name))
             {
                 ObservableCollection<AttackSet> sets = new ObservableCollection<AttackSet>(MeleeAttacks);
@@ -5178,7 +5146,7 @@ namespace CombatManager
                 MonsterSize monsterSize = SizeMods.GetSize(Size);
                 SizeMods mods = SizeMods.GetMods(monsterSize);
 
-                DieRoll damageRoll = new DieRoll(0, 1, noDamageBonus?0:AbilityBonus(Strength));
+                DieRoll damageRoll = new DieRoll(0, 1, noDamageBonus ? 0 : AbilityBonus(Strength));
                 attack.Damage = DieRoll.StepDie(damageRoll, (int)monsterSize + step);
 
 
@@ -5188,7 +5156,7 @@ namespace CombatManager
                 {
                     attack.Plus = plus;
                 }
-                
+
                 Melee = AddAttack(Melee, attack);
             }
 
@@ -5263,7 +5231,7 @@ namespace CombatManager
             {
                 DieRoll roll = HDRoll;
 
-                int bonus = roll.TotalCount< 3 ? 3 : roll.TotalCount;
+                int bonus = roll.TotalCount < 3 ? 3 : roll.TotalCount;
 
                 roll.mod += added ? bonus : -bonus;
 
@@ -5339,7 +5307,7 @@ namespace CombatManager
             FullAC += mod;
             FlatFootedAC += mod;
             AC_Mods = ReplaceModifierNumber(ac_mods, "natural", NaturalArmor, false);
-            
+
         }
 
         public void AdjustShield(int value)
@@ -5493,7 +5461,7 @@ namespace CombatManager
         private static string GetXPString(string crText)
         {
             return GetCRValue(crText).ToString("#,#", CultureInfo.InvariantCulture);
-                 
+
         }
 
         public static long GetCRValue(string crText)
@@ -5634,14 +5602,14 @@ namespace CombatManager
                     Dexterity += value;
 
                     ApplyDexterityAdjustments(oldDex);
-                    
+
                 }
             }
         }
 
         private void ApplyDexterityAdjustments(int? oldDex)
         {
-                           
+
             int oldDexBonus = AbilityBonus(oldDex);
             int newDexBonus = AbilityBonus(Dexterity);
 
@@ -5674,14 +5642,14 @@ namespace CombatManager
                     AC_Mods = "";
                 }
             }
-                
+
 
             //adjust initiative
             Init += diff;
 
             //adjust save
             Ref += diff;
-                
+
             //adjust CMD
             CMD = ChangeCMD(CMD, diff);
 
@@ -5692,8 +5660,8 @@ namespace CombatManager
             }
 
             ChangeSkillsForStat(Stat.Dexterity, diff);
-                
-            
+
+
         }
 
         public void AdjustWisdom(int value)
@@ -5704,7 +5672,7 @@ namespace CombatManager
                 Wisdom += value;
 
                 ApplyWisdomAdjustments(oldWis);
-                
+
             }
 
         }
@@ -5737,7 +5705,7 @@ namespace CombatManager
                 Intelligence += value;
 
                 ApplyIntelligenceAdjustments(oldInt);
-                
+
             }
         }
 
@@ -5771,7 +5739,7 @@ namespace CombatManager
                     Strength += value;
 
                     ApplyStrengthAdjustments(old);
-                    
+
 
 
                 }
@@ -5817,7 +5785,7 @@ namespace CombatManager
                 Constitution += value;
 
                 ApplyConstitutionAdjustments(old);
-                
+
 
             }
         }
@@ -5849,7 +5817,7 @@ namespace CombatManager
                 Charisma += value;
 
                 ApplyCharismaAdjustments(old);
-                
+
             }
         }
 
@@ -5878,7 +5846,7 @@ namespace CombatManager
         public void AdjustHD(int diff)
         {
             DieRoll roll = FindNextDieRoll(HD, 0);
-            
+
             //check for toughness
             bool toughness = FeatsList.Contains("Toughness");
 
@@ -5901,10 +5869,10 @@ namespace CombatManager
                 applyCount = 1 - roll.count;
             }
 
-            
+
             int oldCount = roll.count;
-            
-            
+
+
             roll.count += applyCount;
             roll.mod += hpMod * applyCount;
             int toughnessExtra = 0;
@@ -5957,10 +5925,10 @@ namespace CombatManager
 
             HP += hpMod * applyCount + toughnessExtra;
 
-            HP += (applyCount * roll.die) / 2 + applyCount/2;
+            HP += (applyCount * roll.die) / 2 + applyCount / 2;
 
             SpellLikeAbilities = ChangeSpellLikeCL(SpellLikeAbilities, applyCount);
- 
+
         }
 
         private static string ChangeSpellLikeCL(String text, int diff)
@@ -5974,7 +5942,7 @@ namespace CombatManager
 
             Regex regEx = new Regex("(CL )([0-9]+)((th)|(rd)|(nd)|(st))");
 
-            returnText = regEx.Replace(returnText, delegate(Match m)
+            returnText = regEx.Replace(returnText, delegate (Match m)
             {
                 int cl = int.Parse(m.Groups[2].Value) + diff;
 
@@ -5999,25 +5967,25 @@ namespace CombatManager
             });
 
 
-            return returnText;            
+            return returnText;
         }
 
         private static string ChangeDarkvisionAtLeast(string text, int dist)
         {
-            
+
             Regex regDark = new Regex("(darkvision )([0-9]+)( ft\\.)", RegexOptions.IgnoreCase);
 
             string returnText = text;
             bool bFound = false;
 
-            returnText =  regDark.Replace(text, delegate(Match m)
-                {
-                    bFound = true;
-                    return m.Groups[1] +
-                        (Math.Max(int.Parse(m.Groups[2].Value), dist)).ToString() +
-                        m.Groups[3];
-                        
-                }, 1);
+            returnText = regDark.Replace(text, delegate (Match m)
+               {
+                   bFound = true;
+                   return m.Groups[1] +
+                       (Math.Max(int.Parse(m.Groups[2].Value), dist)).ToString() +
+                       m.Groups[3];
+
+               }, 1);
 
             if (!bFound)
             {
@@ -6052,7 +6020,7 @@ namespace CombatManager
 
                 Regex regColon = new Regex(";");
 
-                returnText = regColon.Replace(returnText, delegate(Match m)
+                returnText = regColon.Replace(returnText, delegate (Match m)
                     {
                         bAdded = true;
                         return ", " + sense + ";";
@@ -6062,7 +6030,7 @@ namespace CombatManager
                 {
                     returnText = sense + "; " + returnText;
                 }
-                
+
             }
 
             return returnText;
@@ -6071,14 +6039,14 @@ namespace CombatManager
         private static string AddImmunity(string text, string type)
         {
             return AddToStringList(text, type);
-           
+
         }
 
         private const string FlyString = "(fly )([0-9]+)( ft\\. \\()([\\p{L}]+)(\\))";
 
         private static string AddFlyFromMove(string text, int speedMult, string quality)
         {
-            
+
             string returnText = text;
 
             //get speed
@@ -6094,7 +6062,7 @@ namespace CombatManager
             Regex regFly = new Regex(FlyString, RegexOptions.IgnoreCase);
 
             bool bAdded = false;
-            returnText = regFly.Replace(returnText, delegate(Match m)
+            returnText = regFly.Replace(returnText, delegate (Match m)
                 {
                     flySpeed = Math.Max(int.Parse(m.Groups[2].Value), flySpeed);
 
@@ -6108,7 +6076,7 @@ namespace CombatManager
                 returnText = returnText + ", fly " + flySpeed + " ft. (" + quality + ")";
             }
 
-            return  returnText;
+            return returnText;
         }
 
         private static string SetFlyQuality(string text, string quality)
@@ -6120,14 +6088,14 @@ namespace CombatManager
 
                 Regex regFly = new Regex(FlyString, RegexOptions.IgnoreCase);
 
-                returnText = regFly.Replace(returnText, delegate(Match m)
+                returnText = regFly.Replace(returnText, delegate (Match m)
                 {
 
                     return m.Groups[1].Value + m.Groups[2].Value +
                         m.Groups[3].Value + quality + m.Groups[5].Value;
                 }, 1);
             }
-            
+
 
             return returnText;
         }
@@ -6148,7 +6116,7 @@ namespace CombatManager
             {
                 value = -1;
             }
-            
+
             return value;
         }
 
@@ -6159,7 +6127,7 @@ namespace CombatManager
 
         private static string GetMaxFlyQuality(string quality1, string quality2)
         {
-            return (GetFlyQuality(quality1) > GetFlyQuality(quality2))?quality1 : quality2;
+            return (GetFlyQuality(quality1) > GetFlyQuality(quality2)) ? quality1 : quality2;
         }
 
         private static string AddToStringList(string text, string type)
@@ -6170,7 +6138,7 @@ namespace CombatManager
 
         }
 
-        private static string AddToStringList(string text, string type,  out bool added)
+        private static string AddToStringList(string text, string type, out bool added)
         {
             added = false;
 
@@ -6188,7 +6156,7 @@ namespace CombatManager
 
                 returnText = returnText + (returnText.Length > 0 ? ", " : "") + type;
 
-                added = true;    
+                added = true;
 
             }
 
@@ -6225,7 +6193,7 @@ namespace CombatManager
 
             bool bFound = false;
 
-            returnText = regDr.Replace(returnText, delegate(Match m)
+            returnText = regDr.Replace(returnText, delegate (Match m)
                 {
                     bFound = true;
                     return
@@ -6241,7 +6209,7 @@ namespace CombatManager
                     returnText += ", ";
                 }
                 returnText += val.ToString() + "/" + type;
-                    
+
             }
 
             return returnText;
@@ -6262,7 +6230,7 @@ namespace CombatManager
             Regex regAttack = new Regex(Attack.RegexString(attack.Name), RegexOptions.IgnoreCase);
             bool bAdded = false;
 
-            returnText = regAttack.Replace(returnText, delegate(Match m)
+            returnText = regAttack.Replace(returnText, delegate (Match m)
                 {
                     bAdded = true;
                     Attack foundAttack = Attack.ParseAttack(m);
@@ -6276,7 +6244,7 @@ namespace CombatManager
 
                     return addAttack.Text;
 
-                    
+
                 });
 
             if (!bAdded)
@@ -6305,7 +6273,7 @@ namespace CombatManager
 
 
             return returnText;
-            
+
 
         }
 
@@ -6341,12 +6309,12 @@ namespace CombatManager
 
             Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
-            returnText = regAttack.Replace(returnText, delegate(Match m)
+            returnText = regAttack.Replace(returnText, delegate (Match m)
             {
 
                 Attack info = Attack.ParseAttack(m);
-                
-    
+
+
                 if (!natural || !weaponNameList.ContainsKey(info.Name.ToLower()))
                 {
                     info.Plus = plus;
@@ -6385,10 +6353,10 @@ namespace CombatManager
 
             bool bFound = false;
 
-            returnText = regSp.Replace(returnText, delegate(Match m)
+            returnText = regSp.Replace(returnText, delegate (Match m)
                 {
                     bFound = true;
-                    return m.Groups[1] + 
+                    return m.Groups[1] +
                         (int.Parse(m.Groups[2].Value) + count).ToString() +
                         m.Groups[3];
 
@@ -6400,8 +6368,8 @@ namespace CombatManager
                 {
                     returnText += ", ";
                 }
-                returnText += attack + " (" + count + "/day)" ;
-                    
+                returnText += attack + " (" + count + "/day)";
+
             }
 
             return returnText;
@@ -6454,9 +6422,9 @@ namespace CombatManager
             if (returnText == null)
             {
                 returnText = "0";
-            }           
+            }
 
-   
+
             int intCR = 0;
 
             if (!CR.Contains('/'))
@@ -6469,7 +6437,7 @@ namespace CombatManager
 
             Regex regNum = new Regex("[0-9]+");
 
-            returnText = regNum.Replace(returnText, delegate(Match m)
+            returnText = regNum.Replace(returnText, delegate (Match m)
                 {
                     return Math.Max(int.Parse(m.Value), newSR).ToString();
                 }, 1);
@@ -6488,7 +6456,7 @@ namespace CombatManager
         {
             return AddTypeValToStringList(text, type, val);
         }
-       
+
         private static string AddTypeValToStringList(string text, string type, int val)
         {
 
@@ -6503,13 +6471,13 @@ namespace CombatManager
 
             bool bFound = false;
 
-            returnText = regRes.Replace(returnText, delegate(Match m)
+            returnText = regRes.Replace(returnText, delegate (Match m)
             {
                 bFound = true;
                 return
                     m.Groups[1] +
                     (Math.Max(int.Parse(m.Groups[2].Value), val)).ToString();
-                    
+
 
             }, 1);
 
@@ -6540,7 +6508,7 @@ namespace CombatManager
 
             bool bFound = false;
 
-            returnText = regRes.Replace(returnText, delegate(Match m)
+            returnText = regRes.Replace(returnText, delegate (Match m)
             {
                 bFound = true;
                 return
@@ -6576,7 +6544,7 @@ namespace CombatManager
 
                 HP += diff * hdRoll.TotalCount;
             }
-               
+
         }
 
         public bool HasDefensiveAbility(string quality)
@@ -6596,7 +6564,7 @@ namespace CombatManager
                 CreatureTypeInfo info = CreatureTypeInfo.GetInfo(Type);
 
                 List<KeyValuePair<SkillValue, int>> list = GetSkillRanks();
-               
+
 
                 if (list.Count > 0 && diff != 0)
                 {
@@ -6672,7 +6640,7 @@ namespace CombatManager
                                 }
 
                             }
-                            
+
                             if (!added)
                             {
                                 break;
@@ -6689,7 +6657,7 @@ namespace CombatManager
         {
             CreatureTypeInfo info = CreatureTypeInfo.GetInfo(Type);
 
-            return HDRoll.TotalCount + AbilityBonus(GetStat(SkillsList[skill])) + (info.IsClassSkill(skill)?3:0) + GetRacialSkillMod(skill);
+            return HDRoll.TotalCount + AbilityBonus(GetStat(SkillsList[skill])) + (info.IsClassSkill(skill) ? 3 : 0) + GetRacialSkillMod(skill);
         }
 
         private int SkillMin(string skill)
@@ -6698,7 +6666,7 @@ namespace CombatManager
 
             return AbilityBonus(GetStat(SkillsList[skill])) + (info.IsClassSkill(skill) ? 3 : 0) + GetRacialSkillMod(skill);
         }
-        
+
         private int GetRacialSkillMod(string skill)
         {
             int mod = 0;
@@ -6738,14 +6706,14 @@ namespace CombatManager
 
                 catch (KeyNotFoundException)
                 {
-                    System.Diagnostics.Debug.WriteLine(Name + " Skill not found: " +skillValue.Name);
+                    System.Diagnostics.Debug.WriteLine(Name + " Skill not found: " + skillValue.Name);
                 }
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.ToString());
                     throw;
                 }
-                
+
             }
 
 
@@ -6842,7 +6810,7 @@ namespace CombatManager
                 return creatureTypes[creatureTypeNames[CreatureType.Humanoid]];
             }
             return creatureTypes[name.ToLower()];
-            
+
         }
 
         public void BaseClone(Monster s)
@@ -6942,7 +6910,7 @@ namespace CombatManager
             }
             if (bonus.Armor != null)
             {
-                AdjustArmor(remove? -bonus.Armor.Value : bonus.Armor.Value);
+                AdjustArmor(remove ? -bonus.Armor.Value : bonus.Armor.Value);
             }
             if (bonus.Shield != null)
             {
@@ -7058,29 +7026,29 @@ namespace CombatManager
 
             if (String.Compare("Strength", name, true) == 0)
             {
-                stat =  Stat.Strength;
+                stat = Stat.Strength;
             }
             else if (String.Compare("Dexterity", name, true) == 0)
             {
-                stat =  Stat.Dexterity;
+                stat = Stat.Dexterity;
             }
             else if (String.Compare("Constitution", name, true) == 0)
             {
-                stat =  Stat.Constitution;
+                stat = Stat.Constitution;
             }
             else if (String.Compare("Intelligence", name, true) == 0)
             {
-                stat =  Stat.Intelligence;
+                stat = Stat.Intelligence;
             }
             else if (String.Compare("Wisdom", name, true) == 0)
             {
-                stat =  Stat.Wisdom;
+                stat = Stat.Wisdom;
             }
             else if (String.Compare("Charisma", name, true) == 0)
             {
-                stat =  Stat.Charisma;
+                stat = Stat.Charisma;
             }
-        
+
             return stat;
         }
 
@@ -7112,8 +7080,8 @@ namespace CombatManager
 
             return text;
         }
-		
-		public static string ShortStatText(Stat stat)
+
+        public static string ShortStatText(Stat stat)
         {
             string text = null;
 
@@ -7171,7 +7139,7 @@ namespace CombatManager
                 return 0;
             }
 
-            return (score.Value/2) - 5;
+            return (score.Value / 2) - 5;
         }
 
         public void AdjustStat(Stat stat, int value)
@@ -7199,9 +7167,9 @@ namespace CombatManager
             }
 
         }
-       
-        public static Dictionary<string, Stat> SkillsList 
-        { 
+
+        public static Dictionary<string, Stat> SkillsList
+        {
             get
             {
                 return _SkillsList;
@@ -7232,7 +7200,7 @@ namespace CombatManager
         {
             return FindNextDieRoll(text, 0);
         }
-       
+
         public static DieRoll FindNextDieRoll(string text, int start)
         {
             return DieRoll.FromString(text, start);
@@ -7363,14 +7331,14 @@ namespace CombatManager
             }
             string returnText = text;
 
-			if (returnText.IndexOf(" or ") > 0)
-			{
-				List<string> orAttacks = new List<string>();
-				foreach (string subAttack in returnText.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
-					orAttacks.Add(ChangeAttackMods(subAttack, diff));
+            if (returnText.IndexOf(" or ") > 0)
+            {
+                List<string> orAttacks = new List<string>();
+                foreach (string subAttack in returnText.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
+                    orAttacks.Add(ChangeAttackMods(subAttack, diff));
 
-				return string.Join(" or ", orAttacks.ToArray());
-			}
+                return string.Join(" or ", orAttacks.ToArray());
+            }
 
             //if (returnText.IndexOf(" and ") > 0)
             //{
@@ -7382,27 +7350,27 @@ namespace CombatManager
             //}			
 
             //find mods 
-			return ChangeSingleAttackMods(diff, returnText);
+            return ChangeSingleAttackMods(diff, returnText);
         }
 
         private static string ChangeSingleAttackMods(int diff, string returnText)
-		{
-			Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+        {
+            Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
-			returnText = regAttack.Replace(returnText, delegate(Match m)
-			{
-				Attack info = Attack.ParseAttack(m);
-				//get mod
-				for (int i = 0; i < info.Bonus.Count; i++)
-				{
-					info.Bonus[i] += diff;
-				}
+            returnText = regAttack.Replace(returnText, delegate (Match m)
+            {
+                Attack info = Attack.ParseAttack(m);
+                //get mod
+                for (int i = 0; i < info.Bonus.Count; i++)
+                {
+                    info.Bonus[i] += diff;
+                }
 
-				return info.Text;
+                return info.Text;
 
-			});
-			return returnText;
-		}
+            });
+            return returnText;
+        }
 
         private static string ChangeAttackDieStep(string text, int diff)
         {
@@ -7445,7 +7413,7 @@ namespace CombatManager
 
             Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
-            returnText = regAttack.Replace(returnText, delegate(Match m)
+            returnText = regAttack.Replace(returnText, delegate (Match m)
             {
                 Attack info = Attack.ParseAttack(m);
 
@@ -7460,24 +7428,24 @@ namespace CombatManager
 
         }
 
-		public string ChangeAttackDamage(string text, int diff, int diffPlusHalf, int halfDiff)
-		{
+        public string ChangeAttackDamage(string text, int diff, int diffPlusHalf, int halfDiff)
+        {
 
-			if (text == null)
-			{
-				return null;
-			}
+            if (text == null)
+            {
+                return null;
+            }
 
-			string returnText = text;
+            string returnText = text;
 
-			if (text.IndexOf(" or ") > 0)
-			{
-				List<string> orAttack = new List<string>();
-				foreach (string subAttack in text.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
-					orAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
+            if (text.IndexOf(" or ") > 0)
+            {
+                List<string> orAttack = new List<string>();
+                foreach (string subAttack in text.Split(new string[] { " or " }, StringSplitOptions.RemoveEmptyEntries))
+                    orAttack.Add(ChangeAttackDamage(subAttack, diff, diffPlusHalf, halfDiff));
 
-				return string.Join(" or ", orAttack.ToArray());
-			}
+                return string.Join(" or ", orAttack.ToArray());
+            }
 
             //if (text.IndexOf(" and ") > 0)
             //{
@@ -7488,57 +7456,57 @@ namespace CombatManager
             //    return string.Join(" and ", andAttack.ToArray());
             //}
 
-			return changeAttack(diff, diffPlusHalf, halfDiff, returnText);
-		}
+            return changeAttack(diff, diffPlusHalf, halfDiff, returnText);
+        }
 
-		private string changeAttack(int diff, int diffPlusHalf, int halfDiff, string returnText)
-		{
-			Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
+        private string changeAttack(int diff, int diffPlusHalf, int halfDiff, string returnText)
+        {
+            Regex regAttack = new Regex(Attack.RegexString(null), RegexOptions.IgnoreCase);
 
-			returnText = regAttack.Replace(returnText, delegate(Match m)
-			{
-				Attack info = Attack.ParseAttack(m);
+            returnText = regAttack.Replace(returnText, delegate (Match m)
+            {
+                Attack info = Attack.ParseAttack(m);
 
-				if (!info.AltDamage)
-				{
-					int applyDiff = diff;
+                if (!info.AltDamage)
+                {
+                    int applyDiff = diff;
 
-					if (info.Weapon != null)
-					{
-						if (info.Weapon.Class == "Natual" && info.Weapon.Light)
-						{
-							applyDiff = halfDiff;
-						}
+                    if (info.Weapon != null)
+                    {
+                        if (info.Weapon.Class == "Natual" && info.Weapon.Light)
+                        {
+                            applyDiff = halfDiff;
+                        }
 
-						else if (info.Weapon.Hands == "Two-Handed")
-						{
-							applyDiff = diffPlusHalf;
-						}
-					}
+                        else if (info.Weapon.Hands == "Two-Handed")
+                        {
+                            applyDiff = diffPlusHalf;
+                        }
+                    }
 
 
-					info.Damage.mod += applyDiff;
+                    info.Damage.mod += applyDiff;
 
-					if (info.OffHandDamage != null)
-					{
-						if (HasFeat("Double Slice") || HasSpecialAbility("Superior Two-Weapon Fighting"))
-						{
-							info.OffHandDamage.mod += applyDiff;
-						}
-						else
-						{
-							info.OffHandDamage.mod += halfDiff;
-						}
+                    if (info.OffHandDamage != null)
+                    {
+                        if (HasFeat("Double Slice") || HasSpecialAbility("Superior Two-Weapon Fighting"))
+                        {
+                            info.OffHandDamage.mod += applyDiff;
+                        }
+                        else
+                        {
+                            info.OffHandDamage.mod += halfDiff;
+                        }
 
-					}
+                    }
 
-				}
+                }
 
-				return info.Text;
+                return info.Text;
 
-			});
-			return returnText;
-		}
+            });
+            return returnText;
+        }
 
         private static string ChangeReachForSize(string reach, MonsterSize sizeOld, MonsterSize sizeNew, int diff)
         {
@@ -7617,7 +7585,7 @@ namespace CombatManager
         {
             string text = "";
 
-            
+
             //find combat feats
             CombatFeats cf = GetCombatFeats();
 
@@ -7636,7 +7604,7 @@ namespace CombatManager
                 }
             }
 
-            
+
 
 
             if (attacks.NaturalAttacks.Count > 0)
@@ -7683,7 +7651,7 @@ namespace CombatManager
                     //get hand related bonus
                     int handMod = 0;
                     int offHandMod = 0;
-                    GetHandMods(hasOff, hasHeavyOff, item, cf, out handMod, out offHandMod);                   
+                    GetHandMods(hasOff, hasHeavyOff, item, cf, out handMod, out offHandMod);
 
                     //add bonuses
                     attack.Bonus = new List<int>();
@@ -7700,14 +7668,14 @@ namespace CombatManager
                             {
                                 attack.Bonus.Add(AttackBonus(baseBonus, offHandMod, item, cf, af));
                             }
-                            
+
                         }
 
                         if (firstBonus && item.HasSpecialAbility("speed"))
                         {
                             attack.Bonus.Add(AttackBonus(baseBonus, 0, item, cf, af));
                         }
-                        
+
                         baseBonus -= 5;
                         firstBonus = false;
                         count++;
@@ -7764,7 +7732,7 @@ namespace CombatManager
 
                         //create attack
                         Attack attack = StartAttackFromItem(item, af, cf);
-                        
+
                         //set count
                         attack.Count = useCount;
 
@@ -7849,7 +7817,7 @@ namespace CombatManager
 
             if (attacks.RangedWeapons != null && attacks.RangedWeapons.Count > 0)
             {
-                
+
                 //find combat feats
                 CombatFeats cf = GetCombatFeats();
 
@@ -7874,7 +7842,7 @@ namespace CombatManager
                         attack.Bonus.Add(AttackBonus(baseBonus, 0, item, cf, af));
 
                         if (firstBonus && item.HasSpecialAbility("speed"))
-                        {                            
+                        {
                             attack.Bonus.Add(AttackBonus(baseBonus, 0, item, cf, af));
                         }
 
@@ -7907,7 +7875,7 @@ namespace CombatManager
                     text += atk.Text;
                 }
 
-                
+
             }
 
             return text;
@@ -8012,13 +7980,13 @@ namespace CombatManager
             Attack attack = new Attack();
             attack.Weapon = item.Weapon;
 
-            attack.CritMultiplier = item.Broken?2:item.Weapon.CritMultiplier;
-            attack.CritRange = item.Broken?20:item.Weapon.CritRange;
+            attack.CritMultiplier = item.Broken ? 2 : item.Weapon.CritMultiplier;
+            attack.CritRange = item.Broken ? 20 : item.Weapon.CritRange;
 
 
             if (String.Compare(attack.Name, "Bite", true) == 0 && cf.savageBite)
             {
-                attack.CritRange -=1;
+                attack.CritRange -= 1;
             }
 
             if (af.improvedCritical || item.SpecialAbilitySet.ContainsKey("keen"))
@@ -8038,7 +8006,7 @@ namespace CombatManager
             attack.AltDamage = item.Weapon.AltDamage;
             attack.AltDamageStat = item.Weapon.AltDamageStat;
             attack.AltDamageDrain = item.Weapon.AltDamageDrain;
-			attack.TwoHanded = item.TwoHanded;
+            attack.TwoHanded = item.TwoHanded;
 
             SetAttackDamageDie(item, attack, af, cf);
 
@@ -8127,9 +8095,9 @@ namespace CombatManager
             int strDamageBonus;
 
 
-            
+
             strDamageBonus = WeaponStrengthDamageBonus(attack, item, af, cf, onlyNatural, makeSecondary);
-            
+
 
             attack.Damage.mod = strDamageBonus + WeaponSpecialBonus(attack, af);
 
@@ -8143,7 +8111,7 @@ namespace CombatManager
                 }
             }
         }
-        
+
         private void SetRangedAttackDamageMod(Attack attack, WeaponItem item, AttackFeats af, CombatFeats cf)
         {
             int strDamageBonus = 0;
@@ -8185,9 +8153,9 @@ namespace CombatManager
             }
 
             return baseBonus + abilityAttackBonus + handMod + mods.Attack +
-                            (item.Masterwork ? 1 : 0) + item.MagicBonus + (item.Broken ? -2 : 0) + 
+                            (item.Masterwork ? 1 : 0) + item.MagicBonus + (item.Broken ? -2 : 0) +
                             (af.weaponFocus ? 1 : 0) + (af.greaterWeaponFocus ? 1 : 0) + af.weaponTraining;
-                            
+
         }
 
         void GetHandMods(bool hasOff, bool hasHeavyOff, WeaponItem item, CombatFeats cf, out int handMod, out int offHandMod)
@@ -8265,12 +8233,12 @@ namespace CombatManager
 
                 bool foundWeaponTraining = false;
 
-                SQ = regWT.Replace(SQ, delegate(Match m)
+                SQ = regWT.Replace(SQ, delegate (Match m)
                 {
                     foundWeaponTraining = true;
 
                     string retString = "";
-                    
+
                     if (m.Groups["start"].Success)
                     {
                         retString += m.Groups["start"].Value;
@@ -8279,7 +8247,7 @@ namespace CombatManager
                     Regex regValues = new Regex("(?<name>[ \\p{L}]+ \\+(?<val>[0-9]+))");
 
                     bool weaponFound = false;
-                    retString += "weapon training (" + regValues.Replace(m.Groups["values"].Value, delegate(Match ma)
+                    retString += "weapon training (" + regValues.Replace(m.Groups["values"].Value, delegate (Match ma)
                     {
                         string valueString = null;
 
@@ -8304,13 +8272,13 @@ namespace CombatManager
                     }
 
                     retString += ")";
-                        
+
 
 
                     return retString;
                 }, 1);
 
-                
+
 
                 if (!foundWeaponTraining)
                 {
@@ -8344,7 +8312,7 @@ namespace CombatManager
                     {
                         val = int.Parse(m.Groups["val"].Value);
                     }
-                    
+
                 }
             }
 
@@ -8530,7 +8498,6 @@ namespace CombatManager
             UpdateSkillFields(v);
         }
 
-        #region Monster Properties
 
         [XmlIgnore]
         public int Perception
@@ -11036,20 +11003,19 @@ namespace CombatManager
                 return _Adjuster;
             }
         }
-        
-        #endregion
+
 
         public int? GetManoeuver(string maneuverType)
-        {  
-             return ParseManoeuver(maneuverType);    
+        {
+            return ParseManoeuver(maneuverType);
         }
 
         private int? ParseManoeuver(string maneuverName)
         {
-            
+
             var regex = new Regex(@"((?<bonus>(\+|-)\d+) |(?<=\()(?<bonus>(\+|-)\d+).+?)" + maneuverName.ToLower());
             var x = regex.Match(CMB);
-            
+
             return x.Success ? Int32.Parse(x.Groups["bonus"].Value) : CMB_Numeric;
         }
 
@@ -11156,7 +11122,7 @@ namespace CombatManager
         {
             get
             {
-                return new List<String> (dragonColorList.Keys);
+                return new List<String>(dragonColorList.Keys);
             }
         }
 
@@ -11221,11 +11187,11 @@ namespace CombatManager
         public class MonsterAdjuster : INotifyPropertyChanged
         {
             public event PropertyChangedEventHandler PropertyChanged;
-            
+
             private Monster _Monster;
 
             private String _FlyQuality;
-            
+
             public void NotifyPropertyChanged(string property)
             {
                 if (PropertyChanged != null)
@@ -11234,7 +11200,7 @@ namespace CombatManager
                 }
             }
 
-            
+
             public MonsterAdjuster(Monster m)
             {
                 _Monster = m;
@@ -11242,7 +11208,7 @@ namespace CombatManager
                 _Monster.PropertyChanged += new PropertyChangedEventHandler(Monster_PropertyChanged);
             }
 
-            void  Monster_PropertyChanged(object sender, PropertyChangedEventArgs e)
+            void Monster_PropertyChanged(object sender, PropertyChangedEventArgs e)
             {
                 NotifyPropertyChanged(e.PropertyName);
 
@@ -11250,11 +11216,11 @@ namespace CombatManager
                 {
                     NotifyPropertyChanged("MonsterSize");
                 }
-				if (e.PropertyName == "SubType")
-				{
-					NotifyPropertyChanged("Subtype");	
-				}
-				
+                if (e.PropertyName == "SubType")
+                {
+                    NotifyPropertyChanged("Subtype");
+                }
+
             }
 
             public int? Strength
@@ -11404,22 +11370,22 @@ namespace CombatManager
                 }
                 else
                 {
-                    
+
                     bool bFound = false;
                     Regex speedReg = new Regex(speedType + " +(?<speed>[0-9]+) +ft\\.", RegexOptions.IgnoreCase);
-                     _Monster.Speed = speedReg.Replace(_Monster.speed,
-                                delegate(Match m)
-                                {
-                                    bFound = true;
-                                    return value + " ft.";
-                                }
-                                );
+                    _Monster.Speed = speedReg.Replace(_Monster.speed,
+                               delegate (Match m)
+                               {
+                                   bFound = true;
+                                   return value + " ft.";
+                               }
+                               );
 
-                     if (!bFound)
-                     {
-                         _Monster.Speed += ", " + speedType + " " + value + " ft.";
-                     }
-                    
+                    if (!bFound)
+                    {
+                        _Monster.Speed += ", " + speedType + " " + value + " ft.";
+                    }
+
                 }
             }
 
@@ -11446,10 +11412,10 @@ namespace CombatManager
                 }
                 set
                 {
-                    
+
                     Regex speedReg = new Regex("^ *(?<speed>[0-9]+) +ft\\.", RegexOptions.IgnoreCase);
                     _Monster.Speed = speedReg.Replace(_Monster.speed,
-                                    delegate(Match m)
+                                    delegate (Match m)
                                     {
                                         return value + " ft.";
                                     }
@@ -11485,14 +11451,14 @@ namespace CombatManager
                 Regex speedReg = new Regex("fly +(?<speed>[0-9]+) +ft\\. +\\((?<quality>[\\p{L}]+)\\)", RegexOptions.IgnoreCase);
 
                 string flyString = "fly " + speed + " ft. (" + quality.ToLower() + ")";
-                
+
                 bool found = false;
-                _Monster.Speed = speedReg.Replace(_Monster.Speed, delegate(Match m)
+                _Monster.Speed = speedReg.Replace(_Monster.Speed, delegate (Match m)
                     {
                         found = true;
                         return flyString;
                     });
-                
+
 
                 if (!found)
                 {
@@ -11506,7 +11472,7 @@ namespace CombatManager
                 Regex speedReg = new Regex("(, +)?fly +(?<speed>[0-9]+) +ft\\. +\\((?<quality>[\\p{L}]+)\\)", RegexOptions.IgnoreCase);
 
                 speedReg.Replace(_Monster.Speed, "");
-                
+
             }
 
             public int? FlySpeed
@@ -11815,7 +11781,7 @@ namespace CombatManager
                 }
                 set
                 {
-                    
+
                     _Monster.CR = value;
                     _Monster.XP = GetXPString(value);
 
@@ -11826,70 +11792,70 @@ namespace CombatManager
 
                 }
             }
-			
-			public string Subtype
-			{
-				get
-				{
-					if (_Monster.SubType == null)
-					{
-						return null;
-					}
-					return _Monster.SubType.Trim(new char[]{'(',')'});
-				}
-				set
-				{
-					if (value == null)
-					{
-						_Monster.SubType = null;
-					}
-					else 
-					{
-						string val = value.Trim();
-						if (val.Length == 0)
-						{
-							_Monster.SubType = null;
-						}
-						else
-						{
-							if (!Regex.Match(val, "\\(.+\\)").Success)
-							{
-								val = "(" + val + ")";
-							}
-							_Monster.SubType = val;
-						}
-					}
-					
+
+            public string Subtype
+            {
+                get
+                {
+                    if (_Monster.SubType == null)
+                    {
+                        return null;
+                    }
+                    return _Monster.SubType.Trim(new char[] { '(', ')' });
+                }
+                set
+                {
+                    if (value == null)
+                    {
+                        _Monster.SubType = null;
+                    }
+                    else
+                    {
+                        string val = value.Trim();
+                        if (val.Length == 0)
+                        {
+                            _Monster.SubType = null;
+                        }
+                        else
+                        {
+                            if (!Regex.Match(val, "\\(.+\\)").Success)
+                            {
+                                val = "(" + val + ")";
+                            }
+                            _Monster.SubType = val;
+                        }
+                    }
+
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("Subtype"));
                     }
-					
-				}
-			}
-			public DieRoll HD
-			{
-				get	
-				{
-					return DieRoll.FromString(_Monster.HD);
-				}
-				set
-				{
-					_Monster.HD = "(" + value.ToString() + ")";
-					_Monster.HP = value.AverageRoll();
+
+                }
+            }
+            public DieRoll HD
+            {
+                get
+                {
+                    return DieRoll.FromString(_Monster.HD);
+                }
+                set
+                {
+                    _Monster.HD = "(" + value.ToString() + ")";
+                    _Monster.HP = value.AverageRoll();
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("HD"));
                     }
-				}
-			}
+                }
+            }
 
             public int Space
             {
                 get
                 {
-                    int ? space = FootConverter.Convert(_Monster.Space);
-                    return (space == null)?0:(space.Value);
+                    int? space = FootConverter.Convert(_Monster.Space);
+                    return (space == null) ? 0 : (space.Value);
                 }
                 set
                 {
@@ -11901,8 +11867,8 @@ namespace CombatManager
             {
                 get
                 {
-                    int ? reach = FootConverter.Convert(_Monster.Reach);
-                    return (reach == null)?0:(reach.Value);
+                    int? reach = FootConverter.Convert(_Monster.Reach);
+                    return (reach == null) ? 0 : (reach.Value);
                 }
                 set
                 {

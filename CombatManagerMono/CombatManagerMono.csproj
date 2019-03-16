@@ -783,6 +783,8 @@
     <ProjectReference Include="..\CombatManagerCore\CombatManagerCoreMono.csproj">
       <Project>{A1770C4F-09EE-41F9-86AB-5672C3D42980}</Project>
       <Name>CombatManagerCoreMono</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
