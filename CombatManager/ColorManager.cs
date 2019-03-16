@@ -15,9 +15,9 @@ namespace CombatManager
             SetNewScheme(UserSettings.Settings.ColorScheme);
         }
 
-        public static void SetNewScheme(int index)
+        public static void SetNewScheme(int id)
         {
-            ColorScheme scheme = ColorSchemeManager.Manager.ColorSchemes[index];
+            ColorScheme scheme = ColorSchemeManager.Manager.SchemeById(id);
 
             for (int i = 0; i < 3; i++)
             {
