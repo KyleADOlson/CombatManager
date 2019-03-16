@@ -8,7 +8,7 @@
         xmlns:xwpf="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"  
         Title="Game Map" Height="545.25" Width="901" DataContext="{Binding}"  Icon="/Images/Globe.ico" >
     <Window.Resources>
-        
+
         <ContextMenu x:Key="FogOfWarContextMenu">
 
             <MenuItem Header="Hide All" Click="HideAll_Click"/>
@@ -361,7 +361,7 @@
             </TransformGroup>
         </Grid.LayoutTransform>
         <Grid.RowDefinitions>
-            <RowDefinition Height="31"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -370,13 +370,13 @@
             <ColumnDefinition Width="26.133"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.Column="1" Height="31" StrokeThickness="1  " VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="0">
+        <Rectangle Grid.Column="1" StrokeThickness="1  " Grid.ColumnSpan="3" Margin="0">
             <Rectangle.Fill>
                 <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
             </Rectangle.Fill>
         </Rectangle>
         <Grid x:Name="NameGrid" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="259" Grid.Column="1">
-            <Rectangle HorizontalAlignment="Left" Width="293" Height="31" VerticalAlignment="Top">
+            <Rectangle HorizontalAlignment="Left" Width="293">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
                 </Rectangle.Fill>
@@ -399,10 +399,12 @@
             <TextBlock HorizontalAlignment="Left" Margin="8,7,0,8" x:Name="textBlock1" Width="30" FontWeight="Bold" ><Run Text="Scale"/></TextBlock>
             <Button x:Name="ScaleUpButton" Content="+" HorizontalAlignment="Left" Height="11" Margin="41,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleUpButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
             <Button x:Name="ScaleDownButton" Content="-" HorizontalAlignment="Left" Height="11" Margin="108,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleDownButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
-            <Button x:Name="RotateButton" Content="Rotate" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" VerticalContentAlignment="Top" Grid.Column="1" Click="RotateButton_Click"/>
+            <Button x:Name="RotateButton"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="auto" VerticalContentAlignment="Top" Grid.Column="1" Click="RotateButton_Click" Height="25">
+                <Image Source="/CombatManager;component/Images/RotateArrow.png"/>
+            </Button>
 
         </Grid>
-        <Grid x:Name="GridSizeGrid" Grid.Column="2" Height="31" VerticalAlignment="Top" Margin="3,0,0,0" Grid.ColumnSpan="2">
+        <Grid x:Name="GridSizeGrid" Grid.Column="2" Height="auto" Margin="3,0,0,0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="73"/>
@@ -411,7 +413,7 @@
                 <ColumnDefinition Width="239.8"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Rectangle Height="31" StrokeThickness="1  " Grid.ColumnSpan="6" Margin="0,0,-6.8,0">
+            <Rectangle Height="auto" StrokeThickness="1  " Grid.ColumnSpan="6" Margin="0,0,0,0">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
                 </Rectangle.Fill>
@@ -421,7 +423,7 @@
                     <TextBlock><Run Text="Set Grid Anchor"/><LineBreak /><Run Text="Choose any point where two gridlines meet"/></TextBlock>
                 </Button.ToolTip>
                 <StackPanel>
-                    <TextBlock Foreground="{DynamicResource TextOnPrimaryDarkerBrush}">⚓</TextBlock>
+                    <TextBlock Foreground="{DynamicResource TextOnPrimaryDarkerBrush}"><Run Text="⚓"/></TextBlock>
                 </StackPanel>
             </Button>
             <Button Height="25" Margin="39,3,0,0" x:Name="SetCornerButton" VerticalAlignment="Top" Click="SetCornerButton_Click" Padding="4,1"  Width="28" HorizontalAlignment="Left" FontSize="14" Grid.Column="1" >
@@ -474,7 +476,7 @@
             <xwpf:ColorPicker HorizontalAlignment="Left" Height="26" Margin="139.8,3,0,0"  VerticalAlignment="Top" Width="98" SelectedColor="{Binding GridColor}" ToolTip="Grid Color" Grid.Column="4"/>
         </Grid>
 
-        <Rectangle Margin="0,31,0,-2" Grid.RowSpan="2">
+        <Rectangle Margin="0,0,0,-2" Grid.Row="1">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                     <GradientStop Color="#FF969696" Offset="0"/>
@@ -506,7 +508,7 @@
             <Path Data="M0,0 L4,6 L8,0 Z" Height="6.875" Stretch="Fill" Width="8.208" Fill="#FF474747" />
 
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="31" StrokeThickness="1  " VerticalAlignment="Top" Width="50">
+        <Rectangle HorizontalAlignment="Left" StrokeThickness="1  " Width="50">
             <Rectangle.Fill>
                 <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
             </Rectangle.Fill>
@@ -517,7 +519,7 @@
             </StackPanel>
 
         </Button>
-        <ScrollViewer Margin="0,31,0,0" x:Name="MapScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="3" Grid.Column="1" CanContentScroll="False" PreviewMouseWheel="MapScrollViewer_PreviewMouseWheel" Grid.RowSpan="2">
+        <ScrollViewer Margin="0" x:Name="MapScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="3" Grid.Column="1" CanContentScroll="False" PreviewMouseWheel="MapScrollViewer_PreviewMouseWheel" Grid.Row="1">
             <Grid x:Name="MapScrollViewerGrid" Background="Black" MouseRightButtonUp="MapScrollViewerGrid_MouseRightButtonUp">
 
                 <Image Height="100" x:Name="MapImageControl" Stretch="Fill" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" />

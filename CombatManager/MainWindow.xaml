@@ -318,7 +318,7 @@
             <MenuItem x:Name="ClearDelayReadyMenuItem" Header="Clear"  IsEnabled="{Binding IsNotReadyingOrDelaying, Converter={StaticResource boolInverter}}" Click="ClearDelayReadyMenuItem_Click" />
             <MenuItem x:Name="ActNowMenuItem" Header="Act Now"  Click="ActNowMenuItem_Click" />
             <MenuItem x:Name="ReloadMenuItem" Header="Reload from Source" Visibility="{Binding OriginalFilename, Converter={StaticResource NotNullVisibilityCollapsedConverter}}" Click="ReloadMenuItem_Click">
-                
+
                 <MenuItem.Icon>
                     <Image Source="/CombatManager;component/Images/reset-16.png" />
                 </MenuItem.Icon>
@@ -3829,16 +3829,16 @@
                                                     <SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
                                                 </Border.Background>
                                                 <StackPanel >
-                                                    <CheckBox x:Name="GenerateMundaneCheck" Content="Mundane" IsChecked="False" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
-                                                    <CheckBox x:Name="GenerateMagicalArmorCheck" Content="Magical Armor" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
-                                                    <CheckBox x:Name="GenerateMagicalWeaponCheck" Content="Magical Weapon" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
-                                                    <CheckBox x:Name="GeneratePotionCheck" Content="Potion" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
-                                                    <CheckBox x:Name="GenerateRingCheck" Content="Ring" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
-                                                    <CheckBox x:Name="GenerateRodCheck" Content="Rod" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
-                                                    <CheckBox x:Name="GenerateScrollCheck" Content="Scroll" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
-                                                    <CheckBox x:Name="GenerateStaffCheck" Content="Staff" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
-                                                    <CheckBox x:Name="GenerateWandCheck" Content="Wand" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
-                                                    <CheckBox x:Name="GenerateWondrousItemCheck" Content="Wondrous Item" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" />
+                                                    <CheckBox x:Name="GenerateMundaneCheck" Content="Mundane" IsChecked="False" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
+                                                    <CheckBox x:Name="GenerateMagicalArmorCheck" Content="Magical Armor" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
+                                                    <CheckBox x:Name="GenerateMagicalWeaponCheck" Content="Magical Weapon" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
+                                                    <CheckBox x:Name="GeneratePotionCheck" Content="Potion" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
+                                                    <CheckBox x:Name="GenerateRingCheck" Content="Ring" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
+                                                    <CheckBox x:Name="GenerateRodCheck" Content="Rod" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
+                                                    <CheckBox x:Name="GenerateScrollCheck" Content="Scroll" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
+                                                    <CheckBox x:Name="GenerateStaffCheck" Content="Staff" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
+                                                    <CheckBox x:Name="GenerateWandCheck" Content="Wand" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
+                                                    <CheckBox x:Name="GenerateWondrousItemCheck" Content="Wondrous Item" IsChecked="True" Padding="4,1,0,1" Checked="GenerateItemCheck_Checked" Unchecked="GenerateItemCheck_Checked" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" />
                                                 </StackPanel>
                                             </Border>
                                             <TextBlock HorizontalAlignment="Left" Margin="6.54,8,0,0" TextWrapping="Wrap" Text="Count" VerticalAlignment="Top"/>

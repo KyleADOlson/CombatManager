@@ -34,22 +34,22 @@ using System.Windows.Shapes;
 
 namespace CombatManager
 {
-	/// <summary>
-	/// Interaction logic for SettingsDialog.xaml
-	/// </summary>
-	public partial class SettingsDialog : Window
-	{
-		
-		public SettingsDialog()
-		{
-			this.InitializeComponent();
+    /// <summary>
+    /// Interaction logic for SettingsDialog.xaml
+    /// </summary>
+    public partial class SettingsDialog : Window
+    {
+
+        public SettingsDialog()
+        {
+            this.InitializeComponent();
 
             // Insert code required on object creation below this point.
             ConfirmInitiativeCheckbox.IsChecked = UserSettings.Settings.ConfirmInitiativeRoll;
             ConfirmCharacterDeleteCheckbox.IsChecked = UserSettings.Settings.ConfirmCharacterDelete;
             ConfirmApplicationCloseCheckbox.IsChecked = UserSettings.Settings.ConfirmClose;
-			ShowAllDamageDice.IsChecked = UserSettings.Settings.ShowAllDamageDice;
-			RollAlternativeInitCheckbox.IsChecked = UserSettings.Settings.AlternateInit3d6;
+            ShowAllDamageDice.IsChecked = UserSettings.Settings.ShowAllDamageDice;
+            RollAlternativeInitCheckbox.IsChecked = UserSettings.Settings.AlternateInit3d6;
             ShowHiddenInitValueBox.IsChecked = UserSettings.Settings.ShowHiddenInitValue;
             AddMonstersHiddenBox.IsChecked = UserSettings.Settings.AddMonstersHidden;
             StatsOpenByDefaultCheckbox.IsChecked = UserSettings.Settings.StatsOpenByDefault;
@@ -58,16 +58,22 @@ namespace CombatManager
 
             RollAlternateInitDiceBox.TextChanged += new TextChangedEventHandler(RollAlternateInitDiceBox_TextChanged);
 
-            foreach (ColorScheme scheme in ColorSchemeManager.Manager.ColorSchemes)
+            int userScheme = UserSettings.Settings.ColorScheme;
+
+            foreach (ColorScheme scheme in ColorSchemeManager.Manager.SortedSchemes)
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = scheme.Name;
+                item.Tag = scheme.ID;
                 ColorSchemeCombo.Items.Add(item);
+                if (scheme.ID == userScheme)
+                {
+                    ColorSchemeCombo.SelectedItem = item;
+                }
             }
 
-            ColorSchemeCombo.SelectedIndex = Math.Min(ColorSchemeManager.Manager.ColorSchemes.Count - 1, UserSettings.Settings.ColorScheme);
 
-		}
+        }
 
         void RollAlternateInitDiceBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -75,19 +81,19 @@ namespace CombatManager
             OKButton.IsEnabled = (dr != null);
         }
 
-		private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
             UserSettings.Settings.ConfirmInitiativeRoll = ConfirmInitiativeCheckbox.IsChecked.Value;
             UserSettings.Settings.ConfirmCharacterDelete = ConfirmCharacterDeleteCheckbox.IsChecked.Value;
             UserSettings.Settings.ConfirmClose = ConfirmApplicationCloseCheckbox.IsChecked.Value;
-			UserSettings.Settings.ShowAllDamageDice = ShowAllDamageDice.IsChecked.Value;
-			UserSettings.Settings.AlternateInit3d6 = RollAlternativeInitCheckbox.IsChecked.Value;
+            UserSettings.Settings.ShowAllDamageDice = ShowAllDamageDice.IsChecked.Value;
+            UserSettings.Settings.AlternateInit3d6 = RollAlternativeInitCheckbox.IsChecked.Value;
             UserSettings.Settings.AlternateInitRoll = RollAlternateInitDiceBox.Text;
             UserSettings.Settings.ShowHiddenInitValue = ShowHiddenInitValueBox.IsChecked.Value;
             UserSettings.Settings.AddMonstersHidden = AddMonstersHiddenBox.IsChecked.Value;
             UserSettings.Settings.StatsOpenByDefault = StatsOpenByDefaultCheckbox.IsChecked.Value;
             UserSettings.Settings.CheckForUpdates = CheckForUpdatesCheckbox.IsChecked.Value;
-            UserSettings.Settings.ColorScheme = ColorSchemeCombo.SelectedIndex;
+            UserSettings.Settings.ColorScheme = SelectedScheme;
             UserSettings.Settings.SaveOptions();
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
@@ -95,20 +101,35 @@ namespace CombatManager
 
             DialogResult = true;
             Close();
-             
-		}
+
+        }
 
         private void ColorSchemeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ColorManager.SetNewScheme(ColorSchemeCombo.SelectedIndex);
+            ColorManager.SetNewScheme(SelectedScheme);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ColorSchemeCombo.SelectedIndex != UserSettings.Settings.ColorScheme)
+            if (SelectedScheme != UserSettings.Settings.ColorScheme)
             {
                 ColorManager.PrepareCurrentScheme();
             }
         }
+
+
+        private int SelectedScheme
+        {
+            get
+            {
+                ComboBoxItem item = (ComboBoxItem)ColorSchemeCombo.SelectedItem;
+                return (int)item.Tag;
+
+
+            }
+
+
+        }
+
     }
 }

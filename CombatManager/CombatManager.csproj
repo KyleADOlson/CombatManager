@@ -542,6 +542,7 @@
     <Resource Include="license.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\RotateArrow.png" />
     <Resource Include="Images\folderopen-16.png" />
     <Resource Include="Images\folderopen-32.png" />
     <Resource Include="Images\Generic_Document.png" />

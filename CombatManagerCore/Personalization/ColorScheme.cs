@@ -24,7 +24,7 @@ namespace CombatManager.Personalization
         private List<List<String>> colors;
         private String name;
         private bool darkScheme;
-
+        private int id;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -62,6 +62,25 @@ namespace CombatManager.Personalization
             }
         }
 
+        [DataMember]
+        public int ID
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                if (id != value)
+                {
+                    id = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ID"));
+                }
+            }
+        }
+
+
+
 
         [DataMember]
         public bool DarkScheme
@@ -79,6 +98,7 @@ namespace CombatManager.Personalization
                 }
             }
         }
+
 
         public ColorScheme()
         {

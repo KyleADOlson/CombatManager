@@ -26,6 +26,7 @@
     </Colors>
     <Name>Default Blue Brown</Name>
     <DarkScheme>false</DarkScheme>
+    <ID>0</ID>
   </ColorScheme>
   <ColorScheme>
     <Colors>
@@ -53,6 +54,7 @@
     </Colors>
     <Name>Apples to Apples</Name>
     <DarkScheme>false</DarkScheme>
+    <ID>1</ID>
   </ColorScheme>
   <ColorScheme>
     <Colors>
@@ -80,6 +82,7 @@
     </Colors>
     <Name>Autumn</Name>
     <DarkScheme>false</DarkScheme>
+    <ID>2</ID>
   </ColorScheme>
   <ColorScheme>
     <Colors>
@@ -107,6 +110,7 @@
     </Colors>
     <Name>Baysplode</Name>
     <DarkScheme>false</DarkScheme>
+    <ID>3</ID>
   </ColorScheme>
 
 
@@ -136,6 +140,7 @@
     </Colors>
     <Name>Film Noir</Name>
     <DarkScheme>false</DarkScheme>
+    <ID>4</ID>
   </ColorScheme>
   <ColorScheme>
     <Colors>
@@ -163,6 +168,7 @@
     </Colors>
     <Name>I'm Blue</Name>
     <DarkScheme>false</DarkScheme>
+    <ID>5</ID>
   </ColorScheme>
   <ColorScheme>
     <Colors>
@@ -190,6 +196,7 @@
     </Colors>
     <Name>Leaf</Name>
     <DarkScheme>false</DarkScheme>
+    <ID>6</ID>
   </ColorScheme>
   <ColorScheme>
     <Colors>
@@ -217,6 +224,7 @@
     </Colors>
     <Name>Old School</Name>
     <DarkScheme>false</DarkScheme>
+    <ID>7</ID>
   </ColorScheme>
   <ColorScheme>
     <Colors>
@@ -244,5 +252,118 @@
     </Colors>
     <Name>Violet</Name>
     <DarkScheme>false</DarkScheme>
+    <ID>8</ID>
+  </ColorScheme>
+  <ColorScheme>
+    <Colors>
+      <ArrayOfString>
+        <string>FFD7B8A6</string>
+        <string>FFAF8974</string>
+        <string>FF8A6552</string>
+        <string>FF6A4430</string>
+        <string>FF572F1A</string>
+      </ArrayOfString>
+      <ArrayOfString>
+        <string>FF729485</string>
+        <string>FF507867</string>
+        <string>FF385F4E</string>
+        <string>FF214838</string>
+        <string>FF123C2A</string>
+      </ArrayOfString>
+      <ArrayOfString>
+        <string>FF698883</string>
+        <string>FF4A6F68</string>
+        <string>FF345751</string>
+        <string>FF1F433D</string>
+        <string>FF103731</string>
+      </ArrayOfString>
+    </Colors>
+    <Name>Sherwood</Name>
+    <DarkScheme>false</DarkScheme>
+    <ID>9</ID>
+  </ColorScheme>
+  <ColorScheme>
+    <Colors>
+      <ArrayOfString>
+        <string>FF4B55A5</string>
+        <string>FF2F3B99</string>
+        <string>FF1B277F</string>
+        <string>FF0E1868</string>
+        <string>FF060E4B</string>
+      </ArrayOfString>
+      <ArrayOfString>
+        <string>FFF05858</string>
+        <string>FFDE2C2C</string>
+        <string>FFB81212</string>
+        <string>FF960000</string>
+        <string>FF6C0000</string>
+      </ArrayOfString>
+      <ArrayOfString>
+        <string>FFF05858</string>
+        <string>FFDE2C2C</string>
+        <string>FFB81212</string>
+        <string>FF960000</string>
+        <string>FF6C0000</string>
+      </ArrayOfString>
+    </Colors>
+    <Name>Independence</Name>
+    <DarkScheme>false</DarkScheme>
+    <ID>10</ID>
+  </ColorScheme>
+  <ColorScheme>
+    <Colors>
+      <ArrayOfString>
+        <string>FF7F828F</string>
+        <string>FF565963</string>
+        <string>FF313338</string>
+        <string>FF121319</string>
+        <string>FF0C0E18</string>
+      </ArrayOfString>
+      <ArrayOfString>
+        <string>FFFD5F63</string>
+        <string>FFFD3439</string>
+        <string>FFF90006</string>
+        <string>FFC30005</string>
+        <string>FF990004</string>
+      </ArrayOfString>
+      <ArrayOfString>
+        <string>FFFD5F63</string>
+        <string>FFFD3439</string>
+        <string>FFF90006</string>
+        <string>FFC30005</string>
+        <string>FF990004</string>
+      </ArrayOfString>
+    </Colors>
+    <Name>Checkers</Name>
+    <DarkScheme>false</DarkScheme>
+    <ID>11</ID>
+  </ColorScheme>
+  <ColorScheme>
+    <Colors>
+      <ArrayOfString>
+        <string>FF19C860</string>
+        <string>FF00BA4B</string>
+        <string>FF00973D</string>
+        <string>FF007A31</string>
+        <string>FF005924</string>
+      </ArrayOfString>
+      <ArrayOfString>
+        <string>FFFD2026</string>
+        <string>FFFD0006</string>
+        <string>FFCF0005</string>
+        <string>FFA80004</string>
+        <string>FF7B0003</string>
+      </ArrayOfString>
+      <ArrayOfString>
+        <string>FF63E51D</string>
+        <string>FF4EDF00</string>
+        <string>FF40B600</string>
+        <string>FF339300</string>
+        <string>FF266C00</string>
+      </ArrayOfString>
+    </Colors>
+    <Name>Watermelon</Name>
+    <DarkScheme>false</DarkScheme>
+    <ID>12</ID>
   </ColorScheme>
 </ArrayOfColorScheme>

@@ -72,6 +72,7 @@ namespace CombatManager.Maps
 
             this.playerMode = playerMode;
             FogOfWar.PlayerMode = playerMode;
+            RotateButton.Visibility = playerMode?Visibility.Visible:Visibility.Collapsed;
 
             if (playerMode)
             {
