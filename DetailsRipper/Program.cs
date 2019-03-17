@@ -37,6 +37,8 @@ namespace DetailsRipper
 
         static SQLiteConnection cn;
 
+        static List<string> mythicFeats;
+
         static void Main(string[] args)
         {
             if (File.Exists("Details.db"))
@@ -52,9 +54,10 @@ namespace DetailsRipper
 
             CleanupSpells();
 
+            CleanupFeats();
+
             CleanupMonsters();
 
-            CleanupFeats();
 
 
             cn.Close();
@@ -181,6 +184,7 @@ namespace DetailsRipper
                 string monName = x.Element("Name").Value;
 
 
+
                 string source = x.Element("Source").Value;
                 Debug.Assert(source != null);
                 if (Regex.Match(source, "Tome of Horrors").Success)
@@ -284,6 +288,23 @@ namespace DetailsRipper
 
             SaveCopyFile(docMon, "NPCShort.xml");
             SaveCopyFile(doc2, "NPCShort2.xml");
+        }
+
+        static String CleanupFeatString(String feats)
+        {
+
+            List<String> featsList = feats.Tokenize(',');
+            for (int i = 0; i < featsList.Count; i++)
+            {
+                String text = featsList[i].Trim();
+                if (text.EndsWith("M"))
+                {
+                    text = "Mythic " + text.TrimEnd('M');
+                }
+                featsList[i] = text;
+            }
+            return featsList.ToTokenString(',');
+                    
         }
 
         static void CreateTable(SQLiteCommand v, string name, IEnumerable<string> fields)
@@ -601,7 +622,6 @@ namespace DetailsRipper
                 feat.Add(dp);
             }
 
-            
 
             SaveCopyFile(docFeats, "Feats.xml");
         }
