@@ -3799,7 +3799,7 @@ namespace CombatManager
                 GetMonitorInfo(monitor, monitorInfo);
                 RECT rcWorkArea = monitorInfo.rcWork;
                 RECT rcMonitorArea = monitorInfo.rcMonitor;
-                double scaleFactor = 1;
+                double scaleFactor = GetScaleFactor(); ;
                 mmi.ptMaxPosition.x = Math.Abs(rcWorkArea.left - rcMonitorArea.left);
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
                 mmi.ptMaxSize.x = (int)(Math.Abs(rcWorkArea.right - rcWorkArea.left) * scaleFactor );
