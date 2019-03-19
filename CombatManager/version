@@ -6,6 +6,7 @@ Prevent resize below min width/height
 Allow reload of imported monster from previous location
 Change map square height and width together by default
 Allow player map to be rotated
+Fix map rename saving on creation
 
 1.6.8
 Fix for old Windows
