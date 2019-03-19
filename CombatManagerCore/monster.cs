@@ -419,6 +419,7 @@ namespace CombatManager
         private ObservableCollection<SpellBlockInfo> _SpellLikeAbilitiesBlock;
         private ObservableCollection<SpellBlockInfo> _SpellsKnownBlock;
         private ObservableCollection<SpellBlockInfo> _SpellsPreparedBlock;
+        private ObservableCollection<ActiveResource> _TrackedResources;
 
         private struct DragonColorInfo
         {
@@ -816,6 +817,7 @@ namespace CombatManager
         {
             skillValueDictionary = new SortedDictionary<String, SkillValue>(StringComparer.OrdinalIgnoreCase);
             skillValueList = new List<SkillValue>();
+            TResources = new ObservableCollection<ActiveResource>();
         }
 
         public static Monster BlankMonster()
@@ -1036,6 +1038,13 @@ namespace CombatManager
                     _SpellLikeAbilitiesBlock.Add(new SpellBlockInfo(info));
                 }
             }
+            if (m._TrackedResources != null)
+            {
+                foreach (var Tresource in m._TrackedResources)
+                {
+                    _TrackedResources.Add(new ActiveResource(Tresource));
+                }
+            }
 
             DBLoaderID = m.DBLoaderID;
 
@@ -1207,7 +1216,13 @@ namespace CombatManager
                     m._SpellLikeAbilitiesBlock.Add(new SpellBlockInfo(info));
                 }
             }
-
+            if (_TrackedResources != null)
+            {
+                foreach (ActiveResource Tresource in _TrackedResources)
+                {
+                    m._TrackedResources.Add(new ActiveResource(Tresource));
+                }
+            }
 
 
             m.DBLoaderID = DBLoaderID;
@@ -1936,7 +1951,16 @@ namespace CombatManager
                 monster.xp = "0";
             }
 
-
+            if (doc != null)
+            {
+                var reources = doc.Descendants("trackedresource");
+                foreach (var resource in reources.Select(r => new ActiveResource
+                {
+                    Name = r.Attribute("name").Value,
+                    Current = Int32.Parse(r.Attribute("left").Value),
+                    Max = Int32.Parse(r.Attribute("max").Value)
+                })) monster.TResources.Add(resource);
+            }
 
             //CN Medium Humanoid (Orc)
             string sizesText = SizesString;
@@ -9588,6 +9612,24 @@ namespace CombatManager
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("Treasure"));
+                }
+            }
+        }
+
+        [DataMember]
+        public ObservableCollection<ActiveResource> TResources
+        {
+            get
+            {
+                return _TrackedResources;
+            }
+            set
+            {
+                if (_TrackedResources != value)
+                {
+                    _TrackedResources = value;
+
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TResources"));
                 }
             }
         }
