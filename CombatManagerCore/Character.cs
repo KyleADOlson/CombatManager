@@ -125,7 +125,7 @@ namespace CombatManager
                 ac.Condition = Condition.FindCondition("Incorporeal");
                 this.monster.AddCondition(ac);
             }
-
+            Resources = this.monster.TResources;
             LoadResources();
 			
         }

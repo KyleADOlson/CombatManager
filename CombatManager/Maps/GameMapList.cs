@@ -161,6 +161,7 @@ namespace CombatManager.Maps
                 this.map = map;
                 this.sourceFile = map.SourceFile;
                 this.cachedMap = map.CachedMap;
+                map.PropertyChanged += Map_PropertyChanged;
 
             }
             public string Name
