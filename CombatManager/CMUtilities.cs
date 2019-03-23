@@ -472,6 +472,8 @@ namespace CombatManager
         public const String SecondaryColorBMedium = "SecondaryColorBMedium";
         public const String SecondaryColorBDark = "SecondaryColorBDark";
         public const String SecondaryColorBDarker = "SecondaryColorBDarker";
+        public const String ThemeTextForeground = "ThemeTextForeground";
+        public const String ThemeTextBackground = "ThemeTextBackground";
 
 
     }

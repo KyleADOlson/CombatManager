@@ -27,7 +27,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-using ScottsUtils;
 
 namespace RandomItemWeightFixer
 {

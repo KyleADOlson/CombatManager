@@ -107,6 +107,7 @@ namespace CombatManager
         private bool _InitiativeFlip;
 
         private int _ColorScheme;
+        private bool _DarkScheme;
 
 
 
@@ -136,6 +137,7 @@ namespace CombatManager
             _SelectedTab = 0;
             _InitiativeConditionsSize = 2;
             _ColorScheme = 0;
+            _DarkScheme = false;
             LoadOptions();
         }
 
@@ -554,6 +556,25 @@ namespace CombatManager
             }
         }
 
+        public bool DarkScheme
+        {
+            get { return _DarkScheme; }
+            set
+            {
+                if (_DarkScheme != value)
+                {
+                    _DarkScheme = value;
+                    if (optionsLoaded)
+                    {
+                        ColorManager.PrepareCurrentScheme();
+                    }
+
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DarkScheme")); }
+
+                }
+            }
+        }
+
 
         public MonsterSetFilter MonsterDBFilter
         {
@@ -676,6 +697,7 @@ namespace CombatManager
                 MonsterDBFilter = (MonsterSetFilter)LoadIntValue("MonsterDBFilter", (int)MonsterSetFilter.Monsters);
                 MonsterTabFilter = (MonsterSetFilter)LoadIntValue("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
                 ColorScheme = LoadIntValue("ColorScheme", 0);
+                DarkScheme = LoadBoolValue("DarkScheme", false);
 
                 optionsLoaded = true;
             }

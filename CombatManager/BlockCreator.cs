@@ -139,7 +139,7 @@ namespace CombatManager
             sourceMap.Add("PAP:CotCTPG", "Curse of the Crimson Throne Player's Guide");
             sourceMap.Add("PCo:SD", "Second Darkness Player's Guide");
             sourceMap.Add("PCo:LoFPG", "Legacy of Fire Player's Guide");
-            
+
             sourceMap.Add("PAP1:RotR1", "Rise of the Runelords: Burnt Offerings");
             sourceMap.Add("PAP2:RotR2", "Rise of the Runelords: The Skinsaw Murders");
             sourceMap.Add("PAP3:RotR3", "Rise of the Runelords: Hook Mountain Massacre");
@@ -317,7 +317,7 @@ namespace CombatManager
             line.Y1 = 0;
             line.Y2 = 0;
             line.Stretch = Stretch.Fill;
-            line.Stroke = new SolidColorBrush(Colors.Black);
+            line.Stroke = ForegroundBrush;
 
             grid.Children.Add(line);
             BlockUIContainer cont = new BlockUIContainer(grid);
@@ -396,14 +396,39 @@ namespace CombatManager
             return CreateHeaderParagraph(text, null);
         }
 
+        protected Brush DarkerBrush
+        {
+            get
+            {
+                return new SolidColorBrush((Color)document.FindResource("SecondaryColorBDarker"));
+            }
+        }
+
+        protected Brush ForegroundBrush
+        {
+            get
+            {
+                return document.Foreground;
+            }
+        }
+
+        protected Brush BackgroundBrush
+        {
+            get
+            {
+                return document.Background;
+            }
+        }
+
+
 
         protected Block CreateHeaderParagraph(string text, string secondaryText)
         {
             
 
             Paragraph header = new Paragraph();
-            header.Background = new SolidColorBrush((Color)document.FindResource("SecondaryColorBDarker"));
-            header.Foreground = document.Background;
+            header.Background = DarkerBrush;
+            header.Foreground = ForegroundBrush;
             header.FontSize = document.FontSize * 1.3;
 
 
@@ -682,7 +707,7 @@ namespace CombatManager
                 else
                 {
                     Paragraph p = new Paragraph();
-                    p.Foreground = Brushes.Black;
+                    p.Foreground = ForegroundBrush;
                     TableCell c = new TableCell();
 
                     

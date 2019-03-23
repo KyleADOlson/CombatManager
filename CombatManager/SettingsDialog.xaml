@@ -5,7 +5,7 @@
 	x:Class="CombatManager.SettingsDialog"
 	x:Name="Window"
 	Title="Settings"
-	Width="258" Height="331" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False" VerticalAlignment="Top" d:DesignHeight="324">
+	Width="258" Height="354" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False" VerticalAlignment="Top" d:DesignHeight="324">
 
     <Grid x:Name="LayoutRoot" Margin="0,0,0,0" VerticalAlignment="Top">
         <Grid.Background>
@@ -28,10 +28,12 @@
                 <CheckBox x:Name="CheckForUpdatesCheckbox" Content="Check For Updates" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Color Scheme:" Margin="6,8,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                    <ComboBox x:Name="ColorSchemeCombo"  Width="130" Margin="6,5,4,8" SelectionChanged="ColorSchemeCombo_SelectionChanged">
+                    <ComboBox x:Name="ColorSchemeCombo"  Width="130" Margin="6,5,4,2" SelectionChanged="ColorSchemeCombo_SelectionChanged">
                         
                     </ComboBox>
                 </StackPanel>
+                <CheckBox x:Name="DarkSchemeCheckbox" Content="Dark Scheme" HorizontalAlignment="Left" Margin="6,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="DarkSchemeCheckbox_Checked" Unchecked="DarkSchemeCheckbox_Unchecked"/>
+
             </StackPanel>
         </Border>
         <Button Content="OK" HorizontalAlignment="Right" Margin="0,0,87,13" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="Button_Click" x:Name="OKButton" />

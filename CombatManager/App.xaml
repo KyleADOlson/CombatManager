@@ -28,6 +28,9 @@
 		 <Color x:Key="SecondaryColorBDark"   >#805B15</Color>  
 		 <Color x:Key="SecondaryColorBDarker" >#553800</Color>
 
+        <Color x:Key="ThemeTextForeground">#FFFFFF</Color>
+        <Color x:Key="ThemeTextBackground">#000000</Color>
+
 
 
         <LinearGradientBrush x:Key="characterButtonBrush" EndPoint="0,1" StartPoint="0,0">
@@ -56,6 +59,10 @@
         <SolidColorBrush x:Key="SecondaryColorBMediumBrush" Color="{DynamicResource  SecondaryColorBMedium}"/>
         <SolidColorBrush x:Key="SecondaryColorBDarkBrush" Color="{DynamicResource    SecondaryColorBDark}"/>
         <SolidColorBrush x:Key="SecondaryColorBDarkerBrush" Color="{DynamicResource  SecondaryColorBDarker}"/>
+
+        <SolidColorBrush x:Key="ThemeTextForegroundBrush" Color="{DynamicResource ThemeTextForeground}"/>
+        <SolidColorBrush x:Key="ThemeTextBackgroundBrush" Color="{DynamicResource ThemeTextBackground}"/>
+        
 
         <SolidColorBrush x:Key="LightBorderBrush" Color="White" />
         <SolidColorBrush x:Key="TextOnSecondaryADarkerBrush" Color="White" />
@@ -231,8 +238,8 @@
             </Setter>
         </Style>
         <Style TargetType="{x:Type TextBox}">
-             <Setter Property="Background" Value="White"/>
-			 <Setter Property="Foreground" Value="Black"/>
+             <Setter Property="Foreground" Value="{DynamicResource ThemeTextForegroundBrush}"/>
+			 <Setter Property="Background" Value="{DynamicResource ThemeTextBackgroundBrush}"/>
 			 <Setter Property="SelectionBrush" Value="#FF3399FF" />
 			 <Setter Property="BorderBrush" Value="#FFABADB3" />
             <Setter Property="VerticalContentAlignment" Value="Center" />

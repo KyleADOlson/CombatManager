@@ -6619,7 +6619,7 @@ namespace CombatManager
                 if (res.Rolls.Count == 1 && res.Rolls[0].Die == 20 && (res.Rolls[0].Result == 20 || res.Rolls[0].Result == 1))
                 {
                     int result = res.Rolls[0].Result;
-                    p.Inlines.Add(CreateRollElement(res.Total.ToString() + " (" + result + ")", Colors.White, (result == 1) ? Colors.Red : Colors.Green));
+                    p.Inlines.Add(CreateRollElement(res.Total.ToString() + " (" + result + ")", DieRollDocument.Background, new SolidColorBrush((result == 1) ? Colors.Red : Colors.Green)));
 
                 }
                 else
@@ -6649,18 +6649,14 @@ namespace CombatManager
 
         Inline CreateRollElement(string text)
         {
-            return CreateRollElement(text, Colors.White, Colors.Black);
+            return CreateRollElement(text, DieRollDocument.Background, DieRollDocument.Foreground);
         }
 
-        Inline CreateRollElement(string text, Color foreground, Color background)
+        Inline CreateRollElement(string text, Brush foreground, Brush background)
         {
             return CreateRollElement(text, foreground, background, null);
         }
 
-        Inline CreateRollElement(string text, Color foreground, Color background, string tooltip)
-        {
-            return CreateRollElement(text, new SolidColorBrush(foreground), new SolidColorBrush(background), tooltip);
-        }
 
         Inline CreateRollElement(string text, Brush foreground, Brush background, string tooltip)
         {
@@ -7355,8 +7351,8 @@ namespace CombatManager
                     if (actualDie >= atk.CritRange || actualDie == 1)
                     {
                         string text = res.Total.ToString() + " (" + actualDie + ")";
-                        Inline co = CreateRollElement(text, Colors.White,
-                            (actualDie == 1) ? Colors.Red : Colors.Green);
+                        Inline co = CreateRollElement(text, DieRollDocument.Background,
+                            new SolidColorBrush((actualDie == 1) ? Colors.Red : Colors.Green));
                         p.Inlines.Add(co);
                         p.Inlines.Add(" ");
 
@@ -7392,7 +7388,8 @@ namespace CombatManager
 
                         }
 
-                        p.Inlines.Add(CreateRollElement(dmg.Total.ToString(), Colors.White, Colors.Blue, dmgtext));
+                        p.Inlines.Add(CreateRollElement(dmg.Total.ToString(), DieRollDocument.Background,
+                            new SolidColorBrush(Colors.Blue), dmgtext));
 
 
 
@@ -7405,7 +7402,8 @@ namespace CombatManager
                         if (bonusRoll != null)
                         {
                             p.Inlines.Add(new Run("+"));
-                            p.Inlines.Add(CreateRollElement(bonusDmg.Total.ToString(), Colors.White, Colors.DarkMagenta));
+                            p.Inlines.Add(CreateRollElement(bonusDmg.Total.ToString(), DieRollDocument.Background,
+                            new SolidColorBrush(Colors.DarkMagenta)));
                             p.Inlines.Add(" " + bonusType);
                         }
 
@@ -7953,8 +7951,8 @@ namespace CombatManager
         {
             DrawingBrush brush = new DrawingBrush();
 
-            Color backColor = CMUIUtilities.FindColor(box, CMUIUtilities.SecondaryColorBLighter);
-            Color barColor = Colors.White;
+            Color backColor = CMUIUtilities.FindColor(box, CMUIUtilities.SecondaryColorBMedium);
+            Color barColor = CMUIUtilities.FindColor(box, CMUIUtilities.ThemeTextBackground);
 
 
             RectangleGeometry backGeo = new RectangleGeometry(new Rect(0, 0, 1, 1));

@@ -55,6 +55,7 @@ namespace CombatManager
             StatsOpenByDefaultCheckbox.IsChecked = UserSettings.Settings.StatsOpenByDefault;
             RollAlternateInitDiceBox.Text = UserSettings.Settings.AlternateInitRoll;
             CheckForUpdatesCheckbox.IsChecked = UserSettings.Settings.CheckForUpdates;
+            DarkSchemeCheckbox.IsChecked = UserSettings.Settings.DarkScheme;
 
             RollAlternateInitDiceBox.TextChanged += new TextChangedEventHandler(RollAlternateInitDiceBox_TextChanged);
 
@@ -94,6 +95,7 @@ namespace CombatManager
             UserSettings.Settings.StatsOpenByDefault = StatsOpenByDefaultCheckbox.IsChecked.Value;
             UserSettings.Settings.CheckForUpdates = CheckForUpdatesCheckbox.IsChecked.Value;
             UserSettings.Settings.ColorScheme = SelectedScheme;
+            UserSettings.Settings.DarkScheme = DarkSchemeCheckbox.IsChecked.Value;
             UserSettings.Settings.SaveOptions();
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
@@ -106,13 +108,22 @@ namespace CombatManager
 
         private void ColorSchemeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ColorManager.SetNewScheme(SelectedScheme);
+            ShowSelectedColorScheme();
+        }
+
+        void ShowSelectedColorScheme()
+        {
+            if (ColorSchemeCombo.SelectedItem != null)
+            {
+                ColorManager.SetNewScheme(SelectedScheme, DarkSchemeCheckbox.IsChecked.Value);
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedScheme != UserSettings.Settings.ColorScheme)
             {
+
                 ColorManager.PrepareCurrentScheme();
             }
         }
@@ -131,5 +142,14 @@ namespace CombatManager
 
         }
 
+        private void DarkSchemeCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            ShowSelectedColorScheme();
+        }
+
+        private void DarkSchemeCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ShowSelectedColorScheme();
+        }
     }
 }

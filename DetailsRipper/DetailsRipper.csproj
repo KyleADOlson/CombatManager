@@ -141,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CombatManagerCore\CombatManagerCore.csproj">
-      <Project>{89CF9A2F-FAE7-46E5-B2CC-FC478D9662FA}</Project>
+      <Project>{89cf9a2f-fae7-46e5-b2cc-fc478d9662fa}</Project>
       <Name>CombatManagerCore</Name>
     </ProjectReference>
   </ItemGroup>

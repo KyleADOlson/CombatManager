@@ -1375,8 +1375,20 @@
                 <Image Source="images/hourglass-16.png"  Visibility="{Binding IsDelaying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Margin="0,3,0,3" Grid.Column="1"/>
                 <Image Source="images/target-16.png"  Visibility="{Binding IsReadying, Converter={StaticResource BoolToVisibilityCollapsedConverter}}" Margin="0,3,0,3" Grid.Column="2"/>
                 <StackPanel Grid.Column="3" Orientation="Horizontal">
-                    <TextBlock x:Name="NameTextBlock" Text="{Binding Name}"  Foreground="{Binding HP, Converter={StaticResource hpToBrushConverter}}" 
-            			Margin="0,0,0,0" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+                    <TextBlock x:Name="NameTextBlock" Text="{Binding Name}"
+            			Margin="0,0,0,0" TextTrimming="CharacterEllipsis" VerticalAlignment="Center">
+                        <TextBlock.Foreground>
+                            <Binding  Path="HP" Converter="{StaticResource hpToBrushConverter}">
+                                <Binding.ConverterParameter>
+                                    <local:BrushCollection>
+                                        <SolidColorBrush Color="{DynamicResource ThemeTextForeground}"/>
+                                        <SolidColorBrush Color="Blue"/>
+                                        <SolidColorBrush Color="Red"/>
+                                    </local:BrushCollection>
+                                </Binding.ConverterParameter>
+                            </Binding>
+                        </TextBlock.Foreground>
+                    </TextBlock>
                     <ListBox x:Name="CurrentPlayerConditions" ItemsSource="{Binding Stats.ActiveConditions}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemTemplate="{DynamicResource ConditionMiniTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle4}" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                         <ListBox.RenderTransform>
                             <TransformGroup>
@@ -1390,10 +1402,22 @@
 
                 </StackPanel>
 
-                <TextBlock Grid.Column="4" Text="Init:" Margin="6,0,3,0" FontStyle="Italic" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="4" Text="Init:" Margin="6,0,3,0" FontStyle="Italic" VerticalAlignment="Center" Foreground="{DynamicResource ThemeTextForegroundBrush}"/>
                 <TextBox Grid.Column="5" Text="{Binding CurrentInitiative, UpdateSourceTrigger=PropertyChanged}" 
-            		Background="{Binding HasInitiativeChanged, ConverterParameter={StaticResource SecondaryColorBLighter}, Converter={StaticResource changedToBrushConverter}}" 
-            		Margin="2.999,2,4,1" Width="24" VerticalAlignment="Center" Height="19"/>
+            		    
+            		Margin="2.556,0,4.556,2" Width="24" VerticalAlignment="Bottom" Height="19">
+                    <TextBox.Background >
+                        <Binding Path="HasInitiativeChanged" Converter="{StaticResource changedToBrushConverter}">
+                            <Binding.ConverterParameter>
+                                <local:BrushCollection>
+                                    <SolidColorBrush Color="{DynamicResource ThemeTextBackground}"/>
+                                    <SolidColorBrush Color="{DynamicResource SecondaryColorBMedium}"/>
+                                </local:BrushCollection>
+                            </Binding.ConverterParameter>
+                        </Binding>
+
+                    </TextBox.Background>
+                </TextBox>
                 <local:NotesPopup x:Name="NotesPopup"/>
                 <ListBox x:Name="FollowersListBox" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="6" 
             		ItemsSource="{Binding InitiativeFollowers}"
@@ -2179,7 +2203,19 @@
         <Geometry x:Key="RightArrow">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
         <DataTemplate x:Key="InitiativeFollowerItemTemplate">
             <Grid >
-                <TextBlock Margin="25,0,0,0" TextWrapping="NoWrap" Text="{Binding Name}" ToolTip="{Binding Name}" Foreground="{Binding HP, Converter={StaticResource hpToBrushConverter}}" d:LayoutOverrides="Width, Height" TextTrimming="CharacterEllipsis"/>
+                <TextBlock Margin="25,0,0,0" TextWrapping="NoWrap" Text="{Binding Name}" ToolTip="{Binding Name}" d:LayoutOverrides="Width, Height" TextTrimming="CharacterEllipsis">
+                    <TextBlock.Foreground>
+                        <Binding  Path="HP" Converter="{StaticResource hpToBrushConverter}">
+                            <Binding.ConverterParameter>
+                                <local:BrushCollection>
+                                    <SolidColorBrush Color="{DynamicResource ThemeTextForeground}"/>
+                                    <SolidColorBrush Color="Blue"/>
+                                    <SolidColorBrush Color="Red"/>
+                                </local:BrushCollection>
+                            </Binding.ConverterParameter>
+                        </Binding>
+                    </TextBlock.Foreground>
+                </TextBlock>
             </Grid>
         </DataTemplate>
         <SolidColorBrush x:Key="TabItemSelectedBackground2" Color="#F9F9F9"/>
@@ -2549,6 +2585,47 @@
                 </Button>
             </Grid>
         </DataTemplate>
+        <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
+        <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9"/>
+        <Style x:Key="ThemeListBoxStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="{DynamicResource ThemeTextBackgroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource ThemeTextForegroundBrush}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="ScrollViewer.Background" Value="{DynamicResource ThemeTextBackgroundBrush}"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
+                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Border}"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsGrouping" Value="true"/>
+                                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
     </Window.Resources>
     <Window.Title>
@@ -2689,29 +2766,27 @@
                                                             <TextBlock Text="Reset" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="3" />
                                                         </StackPanel>
                                                     </Button>
-                                                    <ListBox Margin="4,44,3,54.332" x:Name="combatListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CombatListItemTemplate}" HorizontalContentAlignment="Stretch" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="White" Foreground="Black" />
+                                                    <ListBox Margin="4,44,3,54.332" x:Name="combatListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CombatListItemTemplate}" HorizontalContentAlignment="Stretch" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{DynamicResource ThemeListBoxStyle}" />
                                                     <Button Margin="61.2,2.706,55.237,0" VerticalAlignment="Top" Click="NextButtonClick" x:Name="NextButton" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" Height="37.294" Style="{DynamicResource ButtonMainStyle}" ToolTip="Next Turn (Ctrl+N)" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment">
-                                                        <Button.Content>
-                                                            <StackPanel Orientation="Horizontal">
-                                                                <StackPanel Orientation="Vertical">
-                                                                    <TextBlock HorizontalAlignment="Center">Next</TextBlock>
-                                                                    <TextBlock HorizontalAlignment="Center">Turn</TextBlock>
-                                                                </StackPanel>
-                                                                <Path Data="M1,4 L5,4 L5,1 L11,6 L5,11 L5,8 L1,8 z" StrokeLineJoin="Round" StrokeThickness="1" Width="16" RenderTransformOrigin="0.5,0.5" Height="15" Stretch="Fill" Stroke="White" Margin="11,0,0,0">
-                                                                    <Path.RenderTransform>
-                                                                        <TransformGroup>
-                                                                            <ScaleTransform ScaleX="1.6" ScaleY="1.6"/>
-                                                                            <SkewTransform/>
-                                                                            <RotateTransform/>
-                                                                            <TranslateTransform/>
-                                                                        </TransformGroup>
-                                                                    </Path.RenderTransform>
-                                                                    <Path.Fill>
-                                                                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-                                                                    </Path.Fill>
-                                                                </Path>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Orientation="Vertical">
+                                                                <TextBlock HorizontalAlignment="Center"><Run Text="Next"/></TextBlock>
+                                                                <TextBlock HorizontalAlignment="Center"><Run Text="Turn"/></TextBlock>
                                                             </StackPanel>
-                                                        </Button.Content>
+                                                            <Path Data="M1,4 L5,4 L5,1 L11,6 L5,11 L5,8 L1,8 z" StrokeLineJoin="Round" StrokeThickness="1" Width="16" RenderTransformOrigin="0.5,0.5" Height="15" Stretch="Fill" Stroke="White" Margin="11,0,0,0">
+                                                                <Path.RenderTransform>
+                                                                    <TransformGroup>
+                                                                        <ScaleTransform ScaleX="1.6" ScaleY="1.6"/>
+                                                                        <SkewTransform/>
+                                                                        <RotateTransform/>
+                                                                        <TranslateTransform/>
+                                                                    </TransformGroup>
+                                                                </Path.RenderTransform>
+                                                                <Path.Fill>
+                                                                    <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+                                                                </Path.Fill>
+                                                            </Path>
+                                                        </StackPanel>
                                                     </Button>
                                                     <Button Margin="4,2.706,0,0" x:Name="PrevButton" Click="PrevButton_Click" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" VerticalAlignment="Top" Style="{DynamicResource ButtonMainStyle}" Height="37.294" ToolTip="Previous Turn (Ctrl+P)" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="53.2" >
                                                         <StackPanel Orientation="Horizontal">
@@ -2729,8 +2804,8 @@
                                                                 </Path.Fill>
                                                             </Path>
                                                             <StackPanel Orientation="Vertical">
-                                                                <TextBlock HorizontalAlignment="Center">Prev</TextBlock>
-                                                                <TextBlock HorizontalAlignment="Center">Turn</TextBlock>
+                                                                <TextBlock HorizontalAlignment="Center"><Run Text="Prev"/></TextBlock>
+                                                                <TextBlock HorizontalAlignment="Center"><Run Text="Turn"/></TextBlock>
                                                             </StackPanel>
                                                         </StackPanel>
                                                     </Button>
@@ -2786,8 +2861,8 @@
                                                     <RowDefinition Height="Auto"/>
                                                     <RowDefinition Height="Auto" />
                                                 </Grid.RowDefinitions>
-                                                <FlowDocumentScrollViewer VerticalScrollBarVisibility="Auto" x:Name="DieRollViewer" Grid.ColumnSpan="2" Background="#00000000" Foreground="Black">
-                                                    <FlowDocument  Background="White" x:Name="DieRollDocument" FontFamily="Segoe UI" FontSize="12" TextAlignment="Left" PagePadding="3"/>
+                                                <FlowDocumentScrollViewer VerticalScrollBarVisibility="Auto" x:Name="DieRollViewer" Grid.ColumnSpan="2" Background="#00000000">
+                                                    <FlowDocument Foreground="{DynamicResource ThemeTextForegroundBrush}" Background="{DynamicResource ThemeTextBackgroundBrush}" x:Name="DieRollDocument" FontFamily="Segoe UI" FontSize="12" TextAlignment="Left" PagePadding="3"/>
                                                 </FlowDocumentScrollViewer>
                                                 <TabControl Grid.Row="2" TabStripPlacement="Left" ItemContainerStyle="{DynamicResource DieTabContainerStyle}" Margin="0" Grid.RowSpan="1" Padding="0" SelectedIndex="0" Background="White" Foreground="Black">
                                                     <TabItem>
@@ -2983,7 +3058,7 @@
                                                 <RowDefinition Height="28"/>
                                             </Grid.RowDefinitions>
                                             <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="0,2,0,0" RadiusY="0" RadiusX="0" Stroke="White" StrokeThickness="0" Grid.RowSpan="3"/>
-                                            <ListBox x:Name="playerListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CharacterDataTemplateSmall}" HorizontalContentAlignment="Stretch" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" GotFocus="playerListBox_GotFocus" SelectionMode="Extended" Grid.Row="1" Background="White" Foreground="Black" />
+                                            <ListBox x:Name="playerListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CharacterDataTemplateSmall}" HorizontalContentAlignment="Stretch" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" BorderBrush="{DynamicResource ThemeTextBackgroundBrush}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" GotFocus="playerListBox_GotFocus" SelectionMode="Extended" Grid.Row="1" Style="{DynamicResource ThemeListBoxStyle}" />
                                             <Button Margin="5.931,4.988,0,0" Click="Button_Click" HorizontalAlignment="Left" Width="23.236" VerticalAlignment="Top" Height="21.96" Style="{DynamicResource ButtonMainStyle}" ToolTip="Add a Blank Party Member">
                                                 <Path Data="M3,0 L6,0 L6,3 L9,3 L9,6 L6,6 L6,9 L3,9 L3,6 L0,6 L0,3 L3,3 z" HorizontalAlignment="Center" StrokeStartLineCap="Round" Stretch="Fill" StrokeEndLineCap="Round" Width="15" Height="15" Stroke="#FF115E16" Fill="#FF3AE54D" VerticalAlignment="Center"/>
                                             </Button>
@@ -3024,7 +3099,7 @@
                                                 <Image Width="16" Height="16" Source="Images/openHS.png" Stretch="Fill"/>
                                             </Button>
                                             <ToggleButton x:Name="MonsterMiniModeButton" Content="Mini" Margin="0,5.613,62.472,0" HorizontalAlignment="Right" Style="{DynamicResource ButtonMainStyle}" Width="36.047" Checked="MonsterMiniModeButton_Checked" Unchecked="MonsterMiniModeButton_Unchecked" Height="21.96" VerticalAlignment="Top" VerticalContentAlignment="Top" />
-                                            <ListBox x:Name="monsterListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CharacterDataTemplate}" HorizontalContentAlignment="Stretch" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" GotFocus="monsterListBox_GotFocus" SelectionMode="Extended" Grid.Row="1" Background="White" Foreground="Black" />
+                                            <ListBox x:Name="monsterListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CharacterDataTemplate}" HorizontalContentAlignment="Stretch" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" GotFocus="monsterListBox_GotFocus" SelectionMode="Extended" Grid.Row="1" Style="{DynamicResource ThemeListBoxStyle}"/>
                                             <Border x:Name="EncounterXPDisplay" BorderThickness="1" Margin="50.334,2,3.333,2" CornerRadius="0" Visibility="{Binding CR, Converter={StaticResource notNullVisibilityConverter}}" Background="{DynamicResource DarkBackgroundBrush}" Grid.Row="4">
                                                 <TextBlock x:Name="XPDisplayText" TextWrapping="Wrap" VerticalAlignment="Center" Margin="7,0,0,2" Foreground="White" HorizontalAlignment="Left" Width="160.333" >
                                                     <TextBlock.Text>
@@ -3053,18 +3128,18 @@
                                         <AvalonDock:DockableContent x:Name="SelectedMonsterContent" Title="Selected Monster" IsCloseable="False">
 
                                             <FlowDocumentScrollViewer Background="White" x:Name="SmallMonsterFlowDocument" VerticalScrollBarVisibility="Auto" FontSize="12" Grid.Row="3" Margin="0,0.184,0,0" Grid.ColumnSpan="2" Foreground="Black">
-                                                <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" FontSize="12" TextAlignment="Left" />
+                                                <FlowDocument Foreground="{DynamicResource ThemeTextForegroundBrush}" Background="{DynamicResource ThemeTextBackgroundBrush}" FontFamily="/CombatManager;component/Fonts/#Segoe UI" FontSize="12" TextAlignment="Left" />
                                             </FlowDocumentScrollViewer>
                                         </AvalonDock:DockableContent>
                                     </AvalonDock:DockablePane>
                                     <AvalonDock:DockablePane>
                                         <AvalonDock:DockableContent x:Name="MonsterDBContent" Title="Monster DB" IsCloseable="False">
                                             <Grid x:Name="MonsterDBBoxGrid" Grid.Row="3" Margin="2,1.432,2,2">
-                                                <TextBox x:Name="monsterFilterBox" Margin="0,0,27,0" VerticalAlignment="Top" TextWrapping="Wrap" VerticalContentAlignment="Top" KeyDown="monsterFilterBox_KeyDown" Background="White" Foreground="Black" />
+                                                <TextBox x:Name="monsterFilterBox" Margin="0,0,27,0" VerticalAlignment="Top" TextWrapping="Wrap" VerticalContentAlignment="Top" KeyDown="monsterFilterBox_KeyDown"  />
                                                 <Button x:Name="ClearText" HorizontalAlignment="Right" VerticalAlignment="Top" Width="23" Height="21.96" RenderTransformOrigin="0.395,-0.152" Click="ClearFilter_Click" ToolTip="Clear" Style="{DynamicResource ButtonSecondaryStyle}" >
                                                     <Path Stretch="Fill" Stroke="White" Data="M0,0 L1,1 M0,1 L1,0" StrokeThickness="3"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="14" Width="14"/>
                                                 </Button>
-                                                <ListBox x:Name="monsterDBBox" ItemsSource="{Binding}" MouseDoubleClick="listBox1_MouseDoubleClick" BorderBrush="White" Margin="0,25.96,0,52.71" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:LayoutOverrides="VerticalAlignment" Background="White" Foreground="Black">
+                                                <ListBox x:Name="monsterDBBox" ItemsSource="{Binding}" MouseDoubleClick="listBox1_MouseDoubleClick" BorderBrush="White" Margin="0,25.96,0,52.71" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:LayoutOverrides="VerticalAlignment" Style="{DynamicResource ThemeListBoxStyle}">
                                                     <ListBox.ItemTemplate>
                                                         <DataTemplate>
                                                             <Grid>
@@ -3146,9 +3221,9 @@
                     </Grid.ColumnDefinitions>
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="0" RadiusX="0" Grid.RowSpan="3" Stroke="White" StrokeThickness="0"/>
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="0" RadiusX="0" Grid.RowSpan="3" Stroke="White" StrokeThickness="0" Grid.Column="1"/>
-                    <ListBox x:Name="FeatListBox" Margin="1,0,1,8" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.Row="1" BorderBrush="White" Background="White" Foreground="Black" />
-                    <FlowDocumentScrollViewer x:Name="FeatFlowDocument" Grid.Column="1" Margin="1,32.96,1,8" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="1" Foreground="Black">
-                        <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
+                    <ListBox x:Name="FeatListBox" Margin="1,0,1,8" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.Row="1" BorderBrush="{DynamicResource ThemeTextBackgroundBrush}"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" />
+                    <FlowDocumentScrollViewer x:Name="FeatFlowDocument" Grid.Column="1" Margin="1,32.96,1,8" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="1"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}">
+                        <FlowDocument  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
                     </FlowDocumentScrollViewer>
                     <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="featFilterBox" VerticalAlignment="Top" TextChanged="featFilterBox_TextChanged" />
                     <Button x:Name="ClearFeatText" HorizontalAlignment="Right" Margin="0,5.04,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Height="21.811" VerticalAlignment="Top" Click="ClearFeatText_Click">
@@ -3205,7 +3280,7 @@
                     </Grid.ColumnDefinitions>
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="0" RadiusX="0" Grid.RowSpan="6" Stroke="White" StrokeThickness="0"/>
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0,2,0" RadiusY="0" RadiusX="0" Grid.RowSpan="6" Stroke="White" StrokeThickness="0" Grid.Column="1" Grid.ColumnSpan="2" />
-                    <ListBox x:Name="MonstersListBox" Margin="1,6,1,3" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" BorderBrush="White" Background="White" Foreground="Black" />
+                    <ListBox x:Name="MonstersListBox" Margin="1,6,1,3" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" BorderBrush="{DynamicResource ThemeTextBackgroundBrush}" Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" />
                     <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="MonsterTabFilterBox" VerticalAlignment="Top" TextChanged="MonsterTabFilterBox_TextChanged" />
                     <Button x:Name="ClearMonsterText" HorizontalAlignment="Right" Margin="0,5.04,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Height="21.811" VerticalAlignment="Top" Click="ClearMonsterText_Click">
                         <Path Stretch="Fill" Stroke="Black" Data="M0,0 L1,1 M0,1 L1,0" StrokeThickness="3"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="14" Width="14"/>
@@ -3213,8 +3288,8 @@
                     <Button x:Name="MonsterPrintButton" Grid.Column="2" HorizontalAlignment="Right" Margin="0,4,5,0" d:LayoutOverrides="Height" Click="MonsterPrintButton_Click" Height="Auto" VerticalAlignment="Top">
                         <Image Height="16" Source="Images/PrintHS.png" Stretch="Fill" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Button>
-                    <FlowDocumentScrollViewer x:Name="MonsterFlowDocument" Grid.Column="1" Margin="1,0,2,0" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2" Foreground="Black">
-                        <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
+                    <FlowDocumentScrollViewer x:Name="MonsterFlowDocument" Grid.Column="1" Margin="1,0,2,0"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}"  VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2" >
+                        <FlowDocument FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}"/>
                     </FlowDocumentScrollViewer>
                     <Expander x:Name="MonsterAdvancerExpander" Grid.Column="1" HorizontalAlignment="Left" Margin="5,4,0,3.968" Grid.Row="4" d:LayoutOverrides="Height" Style="{DynamicResource ExpanderStyle1}" IsExpanded="False">
                         <Expander.Header>
@@ -3519,9 +3594,9 @@
                     </Grid.ColumnDefinitions>
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="0" RadiusX="0" Grid.RowSpan="5" Stroke="White" StrokeThickness="0"/>
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="0" RadiusX="0" Grid.RowSpan="5" Stroke="White" StrokeThickness="0" Grid.Column="1"/>
-                    <ListBox x:Name="RuleListBox" Margin="1,0,1,2.628" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" BorderBrush="White" SelectionChanged="RuleListBox_SelectionChanged" Background="White" Foreground="Black" />
-                    <FlowDocumentScrollViewer x:Name="RuleFlowDocument" Grid.Column="1" Margin="1,0,1,2.628" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="3" Grid.Row="1" Foreground="Black">
-                        <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
+                    <ListBox x:Name="RuleListBox" Margin="1,0,1,2.628" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" BorderBrush="{DynamicResource ThemeTextBackgroundBrush}" SelectionChanged="RuleListBox_SelectionChanged"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" />
+                    <FlowDocumentScrollViewer x:Name="RuleFlowDocument" Grid.Column="1" Margin="1,0,1,2.628" VerticalScrollBarVisibility="Auto" Grid.RowSpan="3" Grid.Row="1"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}">
+                        <FlowDocument  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
                     </FlowDocumentScrollViewer>
                     <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="RulesTabFilterBox" VerticalAlignment="Top" TextChanged="RulesTabFilterBox_TextChanged" />
                     <Button x:Name="ClearRuleFilterText" HorizontalAlignment="Right" Margin="0,5.04,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Height="21.811" VerticalAlignment="Top" Click="ClearRuleFilterText_Click">
@@ -3561,9 +3636,9 @@
                     </Grid.ColumnDefinitions>
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="0" RadiusX="0" Grid.RowSpan="3" Stroke="White" StrokeThickness="0" Grid.Column="1"/>
                     <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="0" RadiusX="0" Grid.RowSpan="3" Stroke="White" StrokeThickness="0"/>
-                    <ListBox x:Name="SpellListBox" Margin="1,0,1,8" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate1}" Grid.RowSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.Row="1" BorderBrush="White" Background="White" Foreground="Black" />
-                    <FlowDocumentScrollViewer x:Name="SpellFlowDocument" Grid.Column="1" Margin="1,32.96,1,8" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="1" Foreground="Black">
-                        <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
+                    <ListBox x:Name="SpellListBox" Margin="1,0,1,8" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate1}" Grid.RowSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.Row="1" BorderBrush="{DynamicResource ThemeTextBackgroundBrush}"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" />
+                    <FlowDocumentScrollViewer x:Name="SpellFlowDocument" Grid.Column="1" Margin="1,32.96,1,8"  VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Row="1" Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}">
+                        <FlowDocument FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}"/>
                     </FlowDocumentScrollViewer>
                     <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="spellFilterBox" TextChanged="spellFilterBox_TextChanged" VerticalAlignment="Top" />
                     <Button x:Name="ClearSpellText" HorizontalAlignment="Right" Margin="0,5.189,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Click="ClearSpellText_Click" Height="21.811" VerticalAlignment="Top">
@@ -3664,9 +3739,9 @@
                                 </Grid.ColumnDefinitions>
                                 <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="0" RadiusX="0" Grid.RowSpan="5" Stroke="White" StrokeThickness="0"/>
                                 <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,0" RadiusY="0" RadiusX="0" Grid.RowSpan="5" Stroke="White" StrokeThickness="0" Grid.Column="1"/>
-                                <ListBox x:Name="MagicItemListBox" Margin="1,0,1,2.628" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" BorderBrush="White" SelectionChanged="MagicItemListBox_SelectionChanged" Background="White" Foreground="Black" />
-                                <FlowDocumentScrollViewer x:Name="MagicItemFlowDocument" Grid.Column="1" Margin="1,0,1,2.628" Background="White" VerticalScrollBarVisibility="Auto" Grid.RowSpan="3" Grid.Row="1">
-                                    <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
+                                <ListBox x:Name="MagicItemListBox" Margin="1,0,1,2.628" ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate2}" Grid.RowSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" BorderBrush="{DynamicResource ThemeTextBackgroundBrush}" SelectionChanged="MagicItemListBox_SelectionChanged" Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}"/>
+                                <FlowDocumentScrollViewer x:Name="MagicItemFlowDocument" Grid.Column="1" Margin="1,0,1,2.628" Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" VerticalScrollBarVisibility="Auto" Grid.RowSpan="3" Grid.Row="1">
+                                    <FlowDocument Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
                                 </FlowDocumentScrollViewer>
                                 <TextBox Margin="8,5.04,31.28,0" TextWrapping="Wrap" VerticalContentAlignment="Top" x:Name="MagicItemsTabFilterBox" VerticalAlignment="Top" TextChanged="MagicItemsTabFilterBox_TextChanged" />
                                 <Button x:Name="ClearMagicItemFilterText" HorizontalAlignment="Right" Margin="0,5.04,6,0" Width="23" RenderTransformOrigin="0.395,-0.152" Height="21.811" VerticalAlignment="Top" Click="ClearMagicItemFilterText_Click">
@@ -3695,10 +3770,10 @@
                                 </StackPanel>
                             </TabItem.Header>
                             <Grid>
-                                <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="-0.46,-1.332,0,0" RadiusY="5" RadiusX="5" Stroke="White" StrokeThickness="0" HorizontalAlignment="Left" Width="188"/>
-                                <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="191.54,0,1,0" RadiusY="5" RadiusX="5" Stroke="White" StrokeThickness="0"/>
-                                <FlowDocumentScrollViewer x:Name="TreasureFlowDocument" Margin="192.54,38,0,0" Background="White" VerticalScrollBarVisibility="Auto">
-                                    <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
+                                <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="-0.46,-1.332,0,0" RadiusY="5" RadiusX="5" Stroke="{DynamicResource ThemeTextBackgroundBrush}" StrokeThickness="0" HorizontalAlignment="Left" Width="188"/>
+                                <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="191.54,0,1,0" RadiusY="5" RadiusX="5" Stroke="{DynamicResource ThemeTextBackgroundBrush}" StrokeThickness="0"/>
+                                <FlowDocumentScrollViewer x:Name="TreasureFlowDocument" Margin="192.54,38,0,0"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" VerticalScrollBarVisibility="Auto">
+                                    <FlowDocument  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" FontFamily="/CombatManager;component/Fonts/#Segoe UI" TextAlignment="Left" />
                                 </FlowDocumentScrollViewer>
                                 <TabControl HorizontalAlignment="Left" Margin="0,1.668,0,0" Width="187.54" Height="332.461" VerticalAlignment="Top">
                                     <TabItem Header="Level">
@@ -3882,7 +3957,7 @@
                         </StackPanel>
                     </Button>
 
-                    <ListBox x:Name="GameMapListBox" Margin="10,39,10,10" ItemsSource="{Binding}" Loaded="GameMapListBox_Loaded" ItemTemplate="{DynamicResource GameMapListItemTemplate}"/>
+                    <ListBox x:Name="GameMapListBox" Margin="10,39,10,10" ItemsSource="{Binding}" Loaded="GameMapListBox_Loaded" ItemTemplate="{DynamicResource GameMapListItemTemplate}"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -12,10 +12,10 @@ namespace CombatManager
     {
         public static void PrepareCurrentScheme()
         {
-            SetNewScheme(UserSettings.Settings.ColorScheme);
+            SetNewScheme(UserSettings.Settings.ColorScheme, UserSettings.Settings.DarkScheme);
         }
 
-        public static void SetNewScheme(int id)
+        public static void SetNewScheme(int id, bool darkScheme)
         {
             ColorScheme scheme = ColorSchemeManager.Manager.SchemeById(id);
 
@@ -33,6 +33,15 @@ namespace CombatManager
 
                 }
             }
+
+            Color fore = darkScheme ? 0xFFEEEEEE.ToColor() : Colors.Black;
+            Color back = darkScheme ? 0xFF111111.ToColor() : Colors.White;
+
+            App.Current.Resources["ThemeTextForeground"] = fore;
+            App.Current.Resources["ThemeTextForegroundBrush"] = new SolidColorBrush(fore);
+            App.Current.Resources["ThemeTextBackground"] = back;
+            App.Current.Resources["ThemeTextBackgroundBrush"] = new SolidColorBrush(back);
+
         }
     }
 }

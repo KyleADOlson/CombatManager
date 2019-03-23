@@ -33,6 +33,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace CombatManager
 {
@@ -277,6 +278,9 @@ namespace CombatManager
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+
+            BrushCollection brushes = (BrushCollection)parameter;
+
             if (targetType != typeof(Brush) )
             {
                 return null;
@@ -284,10 +288,10 @@ namespace CombatManager
 			
 			if ((int)value == 0)
 			{
-				return Brushes.Blue;
+				return brushes[1];
 			}
 
-            return (int)value < 0 ? Brushes.Red : Brushes.Black;
+            return (int)value < 0 ? brushes[2] : brushes[0];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -305,9 +309,12 @@ namespace CombatManager
             {
                 return null;
             }
-			
 
-            return (bool)value ?  new SolidColorBrush((Color)parameter) : Brushes.White;
+            BrushCollection brushes = (BrushCollection)parameter;
+
+
+            return (bool)value ? brushes[1] :
+                brushes[0];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -315,6 +322,13 @@ namespace CombatManager
             return null;
         }
     }
+
+    public class BrushCollection : Collection<Brush>
+    {
+
+
+    }
+
 
     [ValueConversion(typeof(uint?), typeof(Brush))]
     class NullableUintToBrushConverter : IValueConverter
