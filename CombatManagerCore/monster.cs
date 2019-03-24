@@ -33,6 +33,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
 using System.IO.Compression;
+ using System.Runtime.InteropServices.ComTypes;
 //using Ionic.Zip;
 using System.Threading.Tasks;
 
@@ -1831,6 +1832,7 @@ namespace CombatManager
             statsblock = statsblock.Replace('×', 'x');
             statsblock = statsblock.Replace("Ã—", "x");
             statsblock = statsblock.Replace("â€“", "-");
+            statsblock = statsblock.Replace("â€”", "-");
             statsblock = statsblock.Replace("\n", "\r\n");
             statsblock = statsblock.Replace("\r\r\n", "\r\n");
 
@@ -2291,7 +2293,7 @@ namespace CombatManager
                 }
             }
 
-            string endAttacks = "[\\p{L}()]+ Spells (Known|Prepared)|Special Attacks|[ \\p{L}()]+Spell-Like Abilities|-------|Space [0-9]";
+            string endAttacks = "[\\p{L}()]+ Spells (Known|Prepared)|Special Attacks|([\\p{L}( )]+)?\\s?Spell-Like Abilities|-------|Space [0-9]";
 
             Regex regMelee = new Regex("\r\nMelee (?<melee>(.|\r|\n)+?)\r\n(Ranged|" + endAttacks + ")");
 
@@ -2317,14 +2319,20 @@ namespace CombatManager
                 monster.Ranged = FixHeroLabAttackString(attacks);
             }
 
-            monster.SpellLikeAbilities = GetLine("Spell-Like Abilities", statsblock, false);
-            if (monster.SpellLikeAbilities != null)
+            //monster.SpellLikeAbilities = GetLine("Spell-Like Abilities", statsblock, false);
+            //if (monster.SpellLikeAbilities != null)
+            //{
+            //    monster.SpellLikeAbilities = monster.SpellLikeAbilities.Replace((char)65533, ' ');
+            //}
+
+            MatchCollection mc = Regex.Matches(statsblock, @"(?<SLA>([\p{L}( )]+)?\s?Spell-Like Abilities (.|\r|\n)+?)(?=([\p{L}( )]+)?\s?Spells (Known|Prepared)|\r\n------| D Domain)");
+            foreach (var collection in mc)
             {
-                monster.SpellLikeAbilities = monster.SpellLikeAbilities.Replace((char)65533, ' ');
+                monster.SpellLikeAbilities = collection.ToString().Trim();
             }
 
             Regex regSpells = new Regex(
-                "\r\n[ \\p{L}()]+ (?<spells>Spells Known (.|\r|\n)+?)\r\n------");
+                @"(?<spells>([\p{L}( )]+)?\s?Spells Known (.|\r|\n)+?)(?=([\p{L}( )]+)?\s?Spells Prepared|\r\n------| D Domain|Bloodline)");
 
             m = regSpells.Match(statsblock);
             if (m.Success)
@@ -2336,28 +2344,42 @@ namespace CombatManager
                 monster.SpellsKnown = spells;
             }
 
+            //Regex regSpellsPrepared = new Regex(
+            //    "\r\n[ \\p{L}()]+ (?<spells>Spells Prepared (.|\r|\n)+?)(\r\n------| D Domain)");
             Regex regSpellsPrepared = new Regex(
-                "\r\n[ \\p{L}()]+ (?<spells>Spells Prepared (.|\r|\n)+?)\r\n------");
+                "\r\n(?<spells>\\w+? Spells Prepared (.|\r|\n)+?)(\r\n------| D Domain)");
 
             m = regSpellsPrepared.Match(statsblock);
             if (m.Success)
             {
                 string spells = m.Groups["spells"].Value;
-
+                
                 spells = FixSpellString(spells);
 
                 monster.SpellsPrepared = spells;
 
+            }
+             Regex regDomains = new Regex(@" D Domain spell; Domains (?<Domains>(.+?))(?=\r\n|\r\n------)");
+            m = regDomains.Match(statsblock);
+            if (m.Success)
+            {
+                monster.SpellDomains = m.Groups["Domains"].Value;
+            }
+            Regex regBloodline = new Regex(@" Bloodline (?<Bloodline>(.+?))(?=\r\n|\r\n------)");
+            m = regBloodline.Match(statsblock);
+            if (m.Success)
+            {
+                monster.bloodline = m.Groups["Bloodline"].Value;
             }
 
         }
 
         private static string FixSpellString(string spells)
         {
-            spells = spells.Replace("â€”", "-");
             spells = spells.Replace('—', '-');
             spells = spells.Replace("):", ")");
             spells = spells.Replace("\r\n", " ");
+
             //remove Sources
             spells = Regex.Replace(spells, @"\[\D+\]", "");
             return spells;
@@ -2446,6 +2468,7 @@ namespace CombatManager
             attacks = attacks.ToLower();
 
             attacks = Regex.Replace(attacks, "and\r\n  ", "or");
+            attacks = Regex.Replace(attacks, "or\r\n  ", "or");
             attacks = Regex.Replace(attacks, "/20/", "/");
             attacks = Regex.Replace(attacks, "/20\\)", ")");
             attacks = Regex.Replace(attacks, " \\(from armor\\)", "");
