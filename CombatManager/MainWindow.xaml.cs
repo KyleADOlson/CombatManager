@@ -7335,13 +7335,13 @@ namespace CombatManager
                     DieRoll bonusRoll = null;
                     if (atk.Plus != null)
                     {
-                        Regex plusRegex = new Regex("(?<die>[0-9]+d[0-9]+((\\+|-)[0-9]+)?) (?<type>[a-zA-Z]+)");
+                        Regex plusRegex = new Regex("(?<die>[0-9]+d[0-9]+((\\+|-)[0-9]+)?) ?((?<type>[a-zA-Z \\.]+)?)");
                         Match dm = plusRegex.Match(atk.Plus);
                         if (dm.Success)
                         {
                             bonusRoll = DieRoll.FromString(dm.Groups["die"].Value);
                             bonusDmg = bonusRoll.Roll();
-                            bonusType = dm.Groups["type"].Value;
+                            bonusType = (!string.IsNullOrEmpty(dm.Groups["type"].Value)) ? dm.Groups["type"].Value : "Dmg";
                         }
                     }
 

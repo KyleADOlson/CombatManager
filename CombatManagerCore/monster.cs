@@ -2319,12 +2319,6 @@ namespace CombatManager
                 monster.Ranged = FixHeroLabAttackString(attacks);
             }
 
-            //monster.SpellLikeAbilities = GetLine("Spell-Like Abilities", statsblock, false);
-            //if (monster.SpellLikeAbilities != null)
-            //{
-            //    monster.SpellLikeAbilities = monster.SpellLikeAbilities.Replace((char)65533, ' ');
-            //}
-
             MatchCollection mc = Regex.Matches(statsblock, @"(?<SLA>([\p{L}( )]+)?\s?Spell-Like Abilities (.|\r|\n)+?)(?=([\p{L}( )]+)?\s?Spells (Known|Prepared)|\r\n------| D Domain)");
             foreach (var collection in mc)
             {
@@ -2344,8 +2338,6 @@ namespace CombatManager
                 monster.SpellsKnown = spells;
             }
 
-            //Regex regSpellsPrepared = new Regex(
-            //    "\r\n[ \\p{L}()]+ (?<spells>Spells Prepared (.|\r|\n)+?)(\r\n------| D Domain)");
             Regex regSpellsPrepared = new Regex(
                 "\r\n(?<spells>\\w+? Spells Prepared (.|\r|\n)+?)(\r\n------| D Domain)");
 
