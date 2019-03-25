@@ -28,8 +28,14 @@
 		 <Color x:Key="SecondaryColorBDark"   >#805B15</Color>  
 		 <Color x:Key="SecondaryColorBDarker" >#553800</Color>
 
-        <Color x:Key="ThemeTextForeground">#FFFFFF</Color>
-        <Color x:Key="ThemeTextBackground">#000000</Color>
+
+        <Color x:Key="ThemeTextForegroundDark">#CCCCCC</Color>
+        <Color x:Key="ThemeTextBackgroundDark">#333333</Color>
+        <Color x:Key="ThemeTextForegroundLight">#000000</Color>
+        <Color x:Key="ThemeTextBackgroundLight">#FFFFFF</Color>
+
+        <Color x:Key="ThemeTextForeground">#CCCCCC</Color>
+        <Color x:Key="ThemeTextBackground">#333333</Color>
 
 
 

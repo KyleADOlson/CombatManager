@@ -34,8 +34,22 @@ namespace CombatManager
                 }
             }
 
-            Color fore = darkScheme ? 0xFFEEEEEE.ToColor() : Colors.Black;
-            Color back = darkScheme ? 0xFF111111.ToColor() : Colors.White;
+            Color fore = (Color)( darkScheme ? App.Current.Resources["ThemeTextForegroundDark"] 
+                : App.Current.Resources["ThemeTextForegroundLight"]);
+            Color back = (Color)(darkScheme ? App.Current.Resources["ThemeTextBackgroundDark"]
+                : App.Current.Resources["ThemeTextBackgroundLight"]);
+
+            UInt32 newFore = scheme.GetTextColor(true, darkScheme);
+            if (newFore != 0)
+            {
+                fore = newFore.ToColor();
+            }
+
+            UInt32 newBack = scheme.GetTextColor(false, darkScheme);
+            if (newBack != 0)
+            {
+                back = newBack.ToColor();
+            }
 
             App.Current.Resources["ThemeTextForeground"] = fore;
             App.Current.Resources["ThemeTextForegroundBrush"] = new SolidColorBrush(fore);

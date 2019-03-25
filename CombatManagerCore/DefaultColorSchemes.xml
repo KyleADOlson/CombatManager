@@ -108,8 +108,13 @@
         <string>FFAF6300</string>
       </ArrayOfString>
     </Colors>
+    <TextColors>
+      <int>-1</int>
+      <int>-1</int>
+      <int>-1</int>
+      <int>4</int>
+    </TextColors>
     <Name>Baysplode</Name>
-    <DarkScheme>false</DarkScheme>
     <ID>3</ID>
   </ColorScheme>
 

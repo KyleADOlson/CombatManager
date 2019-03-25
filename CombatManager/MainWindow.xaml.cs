@@ -493,14 +493,14 @@ namespace CombatManager
         {
             if (!combatLayoutLoaded)
             {
-                //AvalonDock.ThemeFactory.ChangeTheme(new Uri("/AvalonDock.Themes;component/themes/dev2010.xaml", UriKind.RelativeOrAbsolute));
                 try
                 {
-                    AvalonDock.ThemeFactory.ChangeColors((Color)FindResource("PrimaryColorDarker"));
+                    AvalonDock.ThemeFactory.ChangeTheme(new Uri("/AvalonDock.Themes;component/themes/expressiondark.xaml", UriKind.RelativeOrAbsolute));
+                    AvalonDock.ThemeFactory.ChangeColors(Colors.Black);
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                 }
 
                 SaveDefaultLayout();
@@ -8391,33 +8391,60 @@ namespace CombatManager
 
                 try
                 {
-                    gameMapList = XmlLoader<GameMapList>.Load("GameMaps.xml", true);
+                    gameMapList = XmlLoader<GameMapList>.Load("GameMaps1.xml", true);
                 }
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.Write(ex);
+
+                }
+                if (gameMapList == null)
+                {
+                    try
+                    {
+                        gameMapList = XmlLoader<GameMapList>.Load("GameMaps.xml", true);
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.Write(ex);
+                    }
                 }
                 if (gameMapList == null)
                 {
                     gameMapList = new GameMapList();
 
                 }
+                else
+                {
+                    if (gameMapList.Version < 1)
+                    {
+                        gameMapList.UpdateVersions();
+
+
+                        SaveGameMaps();
+                    }
+                
+                }
                 gameMapList.MapChanged += GameMapList_MapChanged;
                 gameMapList.Maps.CollectionChanged += GameMapList_CollectionChanged;
-                GameMapListBox.DataContext = gameMapList.Maps;
+                GameMapListBox.DataContext = gameMapList.CurrentMaps;
             }
         }
 
         private void GameMapList_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
 
-            XmlLoader<GameMapList>.Save(gameMapList, "GameMaps.xml", true);
+            SaveGameMaps();
         }
 
         private void GameMapList_MapChanged(GameMapList.MapStub map)
         {
+            SaveGameMaps();
+        }
 
-            XmlLoader<GameMapList>.Save(gameMapList, "GameMaps.xml", true);
+        private void SaveGameMaps()
+        {
+            XmlLoader<GameMapList>.Save(gameMapList, "GameMaps1.xml", true);
         }
 
         bool openMapOnUp = false;

@@ -3121,7 +3121,7 @@
 
                                         <AvalonDock:DockableContent x:Name="CurrentMonsterContent" Title="Current Monster" IsCloseable="False">
                                             <FlowDocumentScrollViewer Background="White" x:Name="CurrentMonsterFlowDocument" VerticalScrollBarVisibility="Auto" FontSize="12" Margin="0" Panel.ZIndex="13" Foreground="Black">
-                                                <FlowDocument Background="White" FontFamily="/CombatManager;component/Fonts/#Segoe UI" FontSize="12" TextAlignment="Left" />
+                                                <FlowDocument FontFamily="/CombatManager;component/Fonts/#Segoe UI" FontSize="12" TextAlignment="Left" Foreground="{DynamicResource ThemeTextForegroundBrush}" Background="{DynamicResource ThemeTextBackgroundBrush}"/>
                                             </FlowDocumentScrollViewer>
                                         </AvalonDock:DockableContent>
 

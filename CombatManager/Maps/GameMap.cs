@@ -64,6 +64,8 @@ namespace CombatManager.Maps
         bool showGrid = true;
         Color gridColor = Color.FromArgb(255, 255, 255, 255);
 
+        List<int> folderPath;
+
         double rotation;
         bool flip;
         
@@ -89,7 +91,7 @@ namespace CombatManager.Maps
 
         }
 
-        public GameMap(int id, String filename, string name) : this()
+        public GameMap(int id, String filename, string name, List<int> folderPath) : this()
         {
             this.Id = id;
             SourceFile = filename;
@@ -97,6 +99,7 @@ namespace CombatManager.Maps
 
             FileInfo info = new FileInfo(filename);
             Name = name;
+            this.folderPath = folderPath;
         }
 
 
@@ -339,6 +342,23 @@ namespace CombatManager.Maps
             }
         }
 
+        public List<int> FolderPath
+        {
+            get
+            {
+                return folderPath;
+
+            }
+            set
+            {
+                if (folderPath != value)
+                {
+                    folderPath = value;
+                    Notify("FolderPath");
+                }
+            }
+        }
+
         private void Notify(string prop)
         {
             if (this.PropertyChanged != null)
@@ -394,6 +414,7 @@ namespace CombatManager.Maps
                 }
             }
         }
+
 
 
         [XmlIgnore]

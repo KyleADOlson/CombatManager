@@ -42,10 +42,6 @@ using System.Windows.Media.Imaging;
 namespace CombatManager
 {
  
-
-
-
-
     public static class CMUIUtilities
     {
         public static T FindVisualParent<T>(this DependencyObject child)

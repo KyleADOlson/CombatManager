@@ -21,9 +21,21 @@ namespace CombatManager.Personalization
             return Prefixes[hue] + Shades[shade];
         }
 
+        public static String GetTextColorBaseName(bool fore)
+        {
+            return "ThemeText" + (fore ? "Foreground" : "Background");
+        }
+
+        public static String GetTextColorName(bool fore, bool dark)
+        {
+            return GetTextColorBaseName(fore) + ( dark ? "Dark" : "Light");
+        }
+
         private List<List<String>> colors;
         private String name;
-        private bool darkScheme;
+
+        private List<int> textColors;
+
         private int id;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -79,24 +91,55 @@ namespace CombatManager.Personalization
             }
         }
 
-
-
-
         [DataMember]
-        public bool DarkScheme
+        public List<int> TextColors
         {
             get
+
             {
-                return darkScheme;
+                return textColors;
             }
             set
             {
-                if (darkScheme != value)
+                if (textColors != value)
                 {
-                    darkScheme = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("DarkScheme"));
+                    textColors = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TextColors"));
                 }
             }
+        }
+
+        public UInt32 GetTextColor(bool fore, bool dark)
+        {
+            if (TextColors == null || TextColors.Count < 4)
+            {
+                return 0;
+            }
+
+            int index = TextColors[(dark ? 2 : 0) + (fore?0:1)];
+            if (index == -1)
+            {
+                return 0;
+            }
+            else
+            {
+                return UInt32FromString(ColorFromIndex(index));
+            }
+
+        }
+
+        public String ColorFromIndex(int index)
+        {
+            if (index == -1)
+            {
+                return null;
+            }
+
+            int list = index / 5;
+            int level = index % 5;
+
+            return Colors[list][index];
+
         }
 
 
@@ -118,6 +161,12 @@ namespace CombatManager.Personalization
         public UInt32 GetColorUInt32(int hue, int shade)
         {
             String color = Colors[hue][shade];
+            return UInt32FromString(color);
+        }
+
+        private UInt32 UInt32FromString (String color)
+        {
+
             return UInt32.Parse(color, System.Globalization.NumberStyles.AllowHexSpecifier);
         }
 
@@ -140,6 +189,8 @@ namespace CombatManager.Personalization
                     sub.Add(old.Colors[i][j]);
                 }
             }
+            textColors = new List<int>();
+            textColors.AddRange(old.TextColors);
         }
 
 

@@ -68,6 +68,7 @@
     <Compile Include="CharacterActions.cs" />
     <Compile Include="CharacterAttacks.cs" />
     <Compile Include="CharacterClass.cs" />
+    <Compile Include="CMListUtilities.cs" />
     <Compile Include="CMMathUtilities.cs" />
     <Compile Include="CMRegexUtilities.cs" />
     <Compile Include="CMStringUtilities.cs" />
