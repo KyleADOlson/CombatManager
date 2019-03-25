@@ -104,7 +104,7 @@ namespace CombatManager.Maps
 
             file.CopyTo(filename);
 
-            GameMap map = new GameMap(newId, filename, file.Name.Substring(0, file.Name.Length - file.Extension.Length), new List<int>(folder.Path));
+            GameMap map = new GameMap(newId, filename, file.Name.Substring(0, file.Name.Length - file.Extension.Length), new List<int>(folder.FolderPath));
 
             MapStub stub = new MapStub(map);
 
