@@ -2561,6 +2561,7 @@
                     <ColumnDefinition Width="55"/>
                     <ColumnDefinition Width="267.6"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="MapViewButton" HorizontalAlignment="Left"  Click="MapViewButton_Click" Margin="0,0,0,-0.4">
@@ -2577,7 +2578,13 @@
                         <TextBlock>Update Map File</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="MapDeleteButton"  HorizontalAlignment="Left" Width="Auto" Click="MapDeleteButton_Click" Margin="0,0,3,-0.4" Grid.Column="3" >
+                <Button x:Name="MapMoveButton"  HorizontalAlignment="Left" Width="Auto" Margin="0,0,3,-0.4" Grid.Column="3" Click="MapMoveButton_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Move.png" Width="16" Height="16" Margin="0,1,0,0" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" VerticalAlignment="Center"/>
+                        <TextBlock>Move</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="MapDeleteButton"  HorizontalAlignment="Left" Width="Auto" Click="MapDeleteButton_Click" Margin="0,0,3,-0.4" Grid.Column="4" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Images/delete-16.png" Width="16" Height="16" Margin="0,1,0,0" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" VerticalAlignment="Center"/>
                         <TextBlock>Delete</TextBlock>
@@ -2626,6 +2633,23 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <DataTemplate x:Key="MapsListFolderTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition MinWidth="100"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="MapFolderItemOpen" Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="25" Height="25" Click="MapFolderItemOpen_Click"  >
+                    <Image Source="Images/openHS@2x.png"></Image>
+                </Button>
+                <TextBlock x:Name="MapFolderItemNameText" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4,3,4,3" VerticalAlignment="Stretch" Text="{Binding Name}" MouseLeftButtonDown="MapFolderItemNameText_MouseLeftButtonDown" >
+                </TextBlock>
+                <Button x:Name="MapFolderItemDelete" Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="25" Height="25" Click="MapFolderItemDelete_Click"  >
+                    <Image Source="Images/delete-16.png"></Image>
+                </Button>
+            </Grid>
+        </DataTemplate>
 
     </Window.Resources>
     <Window.Title>
@@ -3937,7 +3961,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="MapsTab" IsSelected="True">
+            <TabItem x:Name="MapsTab" IsSelected="True" Loaded="MapsTab_Loaded">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Width="16" Height="16" Source="Images\globe-16.png"/>
@@ -3945,19 +3969,48 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <Rectangle RadiusX="0" RadiusY="0" StrokeThickness="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="486*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="207.333"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle RadiusX="0" RadiusY="0" StrokeThickness="0" Grid.ColumnSpan="2" Margin="0,0,-0.333,0.333" Grid.RowSpan="2">
                         <Rectangle.Fill>
                             <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="CreateMapButton" Click="CreateMapsButton_Click" Margin="10,10,0,0" Height="24" Width="196">
+                    <Button x:Name="UpFolderButton" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="24" Height="24" Click="UpFolderButton_Click" IsEnabled="{Binding IsRoot, Converter={StaticResource boolInverter}}">
+                        <Image Source="Images/arrowcurveright-16.png" Width="16" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="180"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+
+                        </Image>
+                    </Button>
+                    <TextBox HorizontalAlignment="Left" Height="24" Margin="39,8,0,0" VerticalAlignment="Top" Width="138" 
+                             Text="{Binding CurrentFolder.Name}" IsEnabled="{Binding IsRoot, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource boolInverter}}" TextChanged="TextBox_TextChanged_1"/>
+
+                    <Button x:Name="AddFolderButton" HorizontalAlignment="Left" Margin="182,8,0,0" VerticalAlignment="Top" Height="24" Width="24" Click="AddFolderButton_Click">
+                        <Image Source="Images/plus.png" Width="16"/>
+                    </Button>
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="CreateMapButton" Click="CreateMapsButton_Click" Margin="3.667,8,0,0" Height="24" Width="196" Grid.Column="1">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Images/openHS@2x.png" Width="16"/>
+                            <Image Source="Images/Globe.ico" Width="16"/>
                             <TextBlock Text="Create Map From Image File" Margin="3,0,0,0"/>
                         </StackPanel>
                     </Button>
 
-                    <ListBox x:Name="GameMapListBox" Margin="10,39,10,10" ItemsSource="{Binding}" Loaded="GameMapListBox_Loaded" ItemTemplate="{DynamicResource GameMapListItemTemplate}"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}"/>
+                    <ListBox x:Name="MapFolderListBox" HorizontalAlignment="Left" Height="474" Margin="10,1.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="196" Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" ItemsSource="{Binding CurrentFolder.Folders}" ItemTemplate="{DynamicResource MapsListFolderTemplate}"/>
+                    <ListBox x:Name="GameMapListBox" Margin="3.667,1.667,9.667,10.333" ItemsSource="{Binding CurrentMaps}" Loaded="GameMapListBox_Loaded" ItemTemplate="{DynamicResource GameMapListItemTemplate}"  Background="{DynamicResource ThemeTextBackgroundBrush}" Foreground="{DynamicResource ThemeTextForegroundBrush}" Grid.Column="1" Grid.Row="1"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

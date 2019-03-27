@@ -128,6 +128,33 @@ namespace CombatManager.Maps
             return folder;
         }
 
+        public void DeleteFolder(MapFolder folder)
+        {
+            List<MapFolder> subfolders = new List<MapFolder>(folder.Folders);
+
+            foreach (MapFolder sub in subfolders)
+            {
+                DeleteFolder(sub);
+            }
+
+            List<MapStub> stubs = new List<MapStub>(folder.Maps);
+
+            foreach (MapStub stub in stubs)
+            {
+                DeleteMapFile(stub);
+            }
+
+            GetParent(folder).Folders.Remove(folder);
+
+        }
+
+        public MapFolder GetParent(MapFolder folder)
+        {
+            var newPath = new List<int>(folder.FolderPath);
+            newPath.PopEnd();
+            return GetFolderByPath(newPath);
+        }
+
         public GameMap LoadStub(MapStub stub)
         {
             GameMap map = GameMap.LoadMap(stub.Id);
@@ -144,8 +171,11 @@ namespace CombatManager.Maps
 
         public void RemoveMap(MapStub stub)
         {
+
+
             DeleteMapFile(stub);
-            Maps.Remove(stub);
+            MapFolder folder = GetFolder(stub);
+            folder.Maps.Remove(stub);
             GameMap.Delete(stub.Id);
         }
 
@@ -182,6 +212,16 @@ namespace CombatManager.Maps
             map.ForceUpdateSourceFile(filename);
 
         }
+
+        public void MoveMapToFolder(MapStub stub, MapFolder newFolder)
+        {
+            MapFolder oldFolder = GetFolder(stub);
+            oldFolder.Maps.Remove(stub);
+            stub.FolderPath = new List<int>(newFolder.FolderPath);
+            newFolder.Maps.Add(stub);
+
+        }
+
         public ObservableCollection<MapStub> Maps
         {
             get
@@ -281,7 +321,9 @@ namespace CombatManager.Maps
             if (version == 0)
             {
                 currentFolderPath = new ObservableCollection<int>() { 0 };
+                
                 MapFolder folder = CurrentFolder;
+                folder.FolderPath = currentFolderPath;
                 foreach (MapStub stub in maps)
                 {
                     folder.Maps.Add(stub);
@@ -315,12 +357,21 @@ namespace CombatManager.Maps
                     {
                         currentFolderPath.CollectionChanged += CurrentFolderPath_CollectionChanged;
                     }
-                    if (!(startEmpty && endEmpty))
-                    {
-                        Notify("CurrentFolderPath");
-                        Notify("CurrentFolder");
-                    }
+                    Notify("CurrentFolderPath");
+                    Notify("CurrentFolder");
+                    Notify("CurrentMaps");
+                    Notify("IsRoot");
+                    
                 }
+            }
+        }
+
+        [XmlIgnore]
+        public bool IsRoot
+        {
+            get
+            {
+                return CurrentFolder.Id == 0;
             }
         }
 
@@ -333,40 +384,53 @@ namespace CombatManager.Maps
         {
             get
             {
-                MapFolder folder = RootFolder;
-
-                if (folder == null)
+                if (currentFolderPath == null)
                 {
-                    RootFolder = new MapFolder();
-                    RootFolder.Maps = new ObservableCollection<MapStub>();
-                    folder = RootFolder;
+                    currentFolderPath = new ObservableCollection<int>();
+                    currentFolderPath.Add(0);
                 }
 
-                List<int> searchPath = new List<int>();
-                if (currentFolderPath != null)
-                {
-                    searchPath = new List<int>(currentFolderPath);
-                    searchPath.PopFront();
-                }
-                else
-                {
-                    CurrentFolderPath = new ObservableCollection<int>();
-                }
-                while (searchPath.Count > 0)
-                {
-                    int next = searchPath.PopFront();
-                    MapFolder nextFolder = folder.Folders.FirstOrDefault((x) => (x.Id == next));
-                    if (nextFolder == null)
-                    {
-                        break;
-                    }
-                    folder = nextFolder;
-
-                }
-
-                return folder;
+                return GetFolderByPath(currentFolderPath);
 
             }
+        }
+
+        public MapFolder GetFolder(MapStub stub)
+        {
+            return GetFolderByPath(stub.FolderPath);
+        }
+
+        public MapFolder GetFolderByPath(IEnumerable<int> folderPath)
+        {
+            MapFolder folder = RootFolder;
+
+            if (folder == null)
+            {
+                RootFolder = new MapFolder();
+                RootFolder.Maps = new ObservableCollection<MapStub>();
+                folder = RootFolder;
+            }
+
+
+            List<int> searchPath = new List<int>();
+            if (folderPath != null)
+            {
+                searchPath = new List<int>(folderPath);
+                searchPath.PopFront();
+            }
+            while (searchPath.Count > 0)
+            {
+                int next = searchPath.PopFront();
+                MapFolder nextFolder = folder.Folders.FirstOrDefault((x) => (x.Id == next));
+                if (nextFolder == null)
+                {
+                    break;
+                }
+                folder = nextFolder;
+
+            }
+
+            return folder;
         }
 
 

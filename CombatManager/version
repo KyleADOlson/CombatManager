@@ -7,6 +7,7 @@ Allow reload of imported monster from previous location
 Change map square height and width together by default
 Allow player map to be rotated
 Fix map rename saving on creation
+Map Folders
 
 1.6.8
 Fix for old Windows

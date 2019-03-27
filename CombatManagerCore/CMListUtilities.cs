@@ -40,7 +40,7 @@ namespace CombatManager
 
         public static void PushEnd<T>(this IList<T> list,  T newItem)
         {
-            list.Append(newItem);
+            list.Add(newItem);
         }
 
         public static bool IsEmptyOrNull<T>(this ICollection<T> list)

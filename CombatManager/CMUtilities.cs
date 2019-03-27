@@ -148,6 +148,14 @@ namespace CombatManager
             mi.Icon = GetNamedImageControl(name); ;
         }
 
+        public static void AddSeparatorIfNotEmpty(this ItemsControl ic)
+        {
+            if (ic.Items.Count > 0)
+            {
+                ic.Items.Add(new Separator());
+            }
+        }
+
         public static Size Multiply(this Size oldSize, double scale) 
         {
             return new Size(oldSize.Width * scale, oldSize.Height * scale);

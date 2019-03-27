@@ -8383,52 +8383,68 @@ namespace CombatManager
             }));
         }
 
-        private void GameMapListBox_Loaded(object sender, RoutedEventArgs e)
+        private GameMapList GameMapList
         {
-            if (gameMapList == null)
+            get
             {
 
-
-                try
-                {
-                    gameMapList = XmlLoader<GameMapList>.Load("GameMaps1.xml", true);
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.Write(ex);
-
-                }
                 if (gameMapList == null)
                 {
                     try
                     {
-                        gameMapList = XmlLoader<GameMapList>.Load("GameMaps.xml", true);
+                        gameMapList = XmlLoader<GameMapList>.Load("GameMaps1.xml", true);
                     }
                     catch (Exception ex)
                     {
                         System.Diagnostics.Debug.Write(ex);
-                    }
-                }
-                if (gameMapList == null)
-                {
-                    gameMapList = new GameMapList();
 
-                }
-                else
-                {
-                    if (gameMapList.Version < 1)
+                    }
+                    if (gameMapList == null)
                     {
-                        gameMapList.UpdateVersions();
-
-
-                        SaveGameMaps();
+                        try
+                        {
+                            gameMapList = XmlLoader<GameMapList>.Load("GameMaps.xml", true);
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Diagnostics.Debug.Write(ex);
+                        }
                     }
-                
+                    if (gameMapList == null)
+                    {
+                        gameMapList = new GameMapList();
+
+                    }
+                    else
+                    {
+                        if (gameMapList.Version < 1)
+                        {
+                            gameMapList.UpdateVersions();
+
+
+                            SaveGameMaps();
+                        }
+
+                    }
                 }
-                gameMapList.MapChanged += GameMapList_MapChanged;
-                gameMapList.Maps.CollectionChanged += GameMapList_CollectionChanged;
-                GameMapListBox.DataContext = gameMapList.CurrentMaps;
+                return gameMapList;
             }
+        }
+
+
+
+        private void MapsTab_Loaded(object sender, RoutedEventArgs e)
+        {
+            MapsTab.DataContext = GameMapList;
+        }
+
+        private void GameMapListBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            GameMapList list = GameMapList;
+
+            list.MapChanged += GameMapList_MapChanged;
+            list.Maps.CollectionChanged += GameMapList_CollectionChanged;
+            
         }
 
         private void GameMapList_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -8547,6 +8563,116 @@ namespace CombatManager
             {
                 MessageBox.Show("Unable to reload from file");
             }
+        }
+
+        private void AddFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            GameMapList.CreateFolder("Folder");
+            SaveGameMaps();
+        }
+
+        private void DeleteFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!GameMapList.IsRoot)
+            {
+                ObservableCollection<int> newCurrent = new ObservableCollection<int>(GameMapList.CurrentFolderPath);
+                newCurrent.PopEnd();
+                GameMapList.CurrentFolderPath = newCurrent;
+
+            }
+        }
+
+        private void MapFolderItemOpen_Click(object sender, RoutedEventArgs e)
+        {
+            GameMapList.MapFolder folder = (GameMapList.MapFolder)((FrameworkElement)sender).DataContext;
+            ObservableCollection<int> newCurrent = new ObservableCollection<int>(GameMapList.CurrentFolderPath);
+            newCurrent.PushEnd(folder.Id);
+            GameMapList.CurrentFolderPath = newCurrent;
+        }
+
+        private void MapFolderItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+            GameMapList.MapFolder folder = (GameMapList.MapFolder)((FrameworkElement)sender).DataContext;
+            if (MessageBoxResult.Yes == MessageBox.Show("Are you sure you want to delete " + folder.Name + " and all of its maps?", "Delete Folder and Maps", MessageBoxButton.YesNo, MessageBoxImage.Question))
+            {
+                GameMapList.DeleteFolder(folder);
+            }
+            SaveGameMaps();
+        }
+
+        private void MapFolderItemNameText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            GameMapList.MapFolder folder = (GameMapList.MapFolder)((FrameworkElement)sender).DataContext;
+            ObservableCollection<int> newCurrent = new ObservableCollection<int>(GameMapList.CurrentFolderPath);
+            newCurrent.PushEnd(folder.Id);
+            GameMapList.CurrentFolderPath = newCurrent;
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            SaveGameMaps();
+
+        }
+
+        private void MapMoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!GameMapList.IsRoot || GameMapList.CurrentFolder.Folders.Count > 0)
+            {
+                ContextMenu menu = new ContextMenu();
+               
+                menu.DataContext = ((FrameworkElement)sender).DataContext;
+                GameMapList.MapStub stub = (GameMapList.MapStub)menu.DataContext;
+                GameMapList.MapFolder current = GameMapList.CurrentFolder;
+
+                bool itemsAdded = false;
+
+                if (!GameMapList.IsRoot)
+                {
+                    MenuItem moveup = new MenuItem();
+
+                    moveup.Header = "Move Up";
+
+                    menu.Items.Add(moveup);
+                    GameMapList.MapFolder parent = GameMapList.GetParent(current);
+
+                    moveup.Click += (men, ev) =>
+                    {
+                        GameMapList.MoveMapToFolder(stub, parent);
+                        SaveGameMaps();
+                    };
+
+
+                }
+
+                if (GameMapList.CurrentFolder.Folders.Count > 0)
+                {
+                    menu.AddSeparatorIfNotEmpty();
+
+                    foreach (GameMapList.MapFolder f in GameMapList.CurrentFolder.Folders)
+                    {
+                        MenuItem fi = new MenuItem();
+                        fi.Header = "Move to " + f.Name;
+                        fi.DataContext = f;
+                        fi.Click += (men, ev) =>
+                        {
+                            GameMapList.MapFolder fol = (GameMapList.MapFolder)((FrameworkElement)men).DataContext;
+                            GameMapList.MoveMapToFolder(stub, f);
+                            SaveGameMaps();
+                        };
+                        menu.Items.Add(fi);
+                    }
+                }
+
+
+                menu.PlacementTarget = (UIElement)sender;
+                menu.IsOpen = true;
+            }
+        
         }
     }
 
