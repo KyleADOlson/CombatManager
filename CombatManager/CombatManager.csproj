@@ -570,6 +570,9 @@
     <Resource Include="Images\coins-16%402x.png" />
     <Resource Include="Images\CombatManagerGraphic.png" />
     <Resource Include="Images\CM-Back.png" />
+    <Resource Include="..\CombatManagerCore\Supporters.txt">
+      <Link>Supporters.txt</Link>
+    </Resource>
     <Content Include="Images\d10-16%402x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
