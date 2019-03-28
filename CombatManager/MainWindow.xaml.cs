@@ -130,8 +130,8 @@ namespace CombatManager
 
         private CombatListWindow combatListWindow;
 
-        private GameMapDisplayWindow mapDisplayWindow;
-        private GameMapDisplayWindow playerMapDisplayWindow;
+        private Dictionary<int, GameMapDisplayWindow> mapDisplayWindowMap = new Dictionary<int, GameMapDisplayWindow>();
+        private Dictionary<int, GameMapDisplayWindow> playerMapDisplayWindowMap = new Dictionary<int, GameMapDisplayWindow>();
 
         List<CheckBox> treasureCheckboxesList;
 
@@ -6056,14 +6056,28 @@ namespace CombatManager
             {
                 combatListWindow.Close();
             }
-            if (mapDisplayWindow != null)
+
+
+            List<GameMapDisplayWindow> gml = new List<GameMapDisplayWindow>(playerMapDisplayWindowMap.Values);
+            gml.AddRange(mapDisplayWindowMap.Values);
+
+            foreach (GameMapDisplayWindow gm in gml)
             {
-                mapDisplayWindow.Close();
+                if (gm != null)
+                {
+                    try
+                    {
+                        gm.Close();
+
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
             }
-            if (playerMapDisplayWindow != null)
-            {
-                playerMapDisplayWindow.Close();
-            }
+            playerMapDisplayWindowMap.Clear();
+            mapDisplayWindowMap.Clear();
         }
 
         private void ResetInitiaitveButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -8308,6 +8322,7 @@ namespace CombatManager
 
                     ShowMap(gameMap);
                     succeeded = true;
+                    SaveGameMaps();
                 }
                 catch (Exception ex)
                 {
@@ -8327,21 +8342,20 @@ namespace CombatManager
         }
 
 
-        private GameMap lastGameMap;
 
         private void ShowMap(GameMap gameMap)
         {
-
-            if (mapDisplayWindow == null)
+            GameMapDisplayWindow mapDisplayWindow;
+            if (!mapDisplayWindowMap.TryGetValue(gameMap.Id, out mapDisplayWindow))
             {
                 mapDisplayWindow = new GameMapDisplayWindow();
+                mapDisplayWindowMap[gameMap.Id] = mapDisplayWindow;
                 mapDisplayWindow.Closed += new EventHandler((s, re) =>
                 {
-                    mapDisplayWindow = null;
+                    mapDisplayWindowMap.Remove(gameMap.Id);
                 });
             }
 
-            lastGameMap = gameMap;
 
             mapDisplayWindow.Map = gameMap;
 
@@ -8352,27 +8366,25 @@ namespace CombatManager
                 SetForegroundWindow(new WindowInteropHelper(mapDisplayWindow).Handle);
             }));
 
-            mapDisplayWindow.ShowPlayerMap += (e) => { ShowMapPlayer(); };
+            mapDisplayWindow.ShowPlayerMap += (e) => { ShowMapPlayer(gameMap); };
 
-            if (playerMapDisplayWindow != null)
-            {
-                playerMapDisplayWindow.Map = lastGameMap;
-            }
         }
 
-        private void ShowMapPlayer()
+        private void ShowMapPlayer(GameMap gameMap)
         {
-
-            if (playerMapDisplayWindow == null)
+            GameMapDisplayWindow playerMapDisplayWindow;
+            if (!playerMapDisplayWindowMap.TryGetValue(gameMap.Id, out playerMapDisplayWindow))
             {
+            
                 playerMapDisplayWindow = new GameMapDisplayWindow(true);
+                playerMapDisplayWindowMap[gameMap.Id] = playerMapDisplayWindow;
                 playerMapDisplayWindow.Closed += new EventHandler((s, re) =>
                 {
-                    playerMapDisplayWindow = null;
+                    playerMapDisplayWindowMap.Remove(gameMap.Id);
                 });
+                playerMapDisplayWindow.Map = gameMap;
             }
 
-            playerMapDisplayWindow.Map = lastGameMap;
 
             playerMapDisplayWindow.Show();
             playerMapDisplayWindow.Activate();
@@ -8502,12 +8514,18 @@ namespace CombatManager
             if (MessageBoxResult.Yes == MessageBox.Show("Are you sure you want to delete " + stub.Name + "?", "Delete Map", MessageBoxButton.YesNo, MessageBoxImage.Question))
             {
 
-                if (mapDisplayWindow != null && mapDisplayWindow.Map == stub.Map)
+                GameMapDisplayWindow mapDisplayWindow;
+                if (mapDisplayWindowMap.TryGetValue(stub.Id, out mapDisplayWindow))
                 {
-                    mapDisplayWindow.Close();
-                }
+                    if (mapDisplayWindow != null && mapDisplayWindow.Map == stub.Map)
+                    {
+                        mapDisplayWindow.Close();
+                    }
 
+
+                }
                 gameMapList.RemoveMap(stub);
+                SaveGameMaps();
             }
 
             

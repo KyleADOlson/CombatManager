@@ -72,13 +72,13 @@ namespace CombatManager.Maps
 
             this.playerMode = playerMode;
             FogOfWar.PlayerMode = playerMode;
-            RotateButton.Visibility = playerMode?Visibility.Visible:Visibility.Collapsed;
+            RotateButton.Visibility = playerMode ? Visibility.Visible : Visibility.Collapsed;
 
             if (playerMode)
             {
                 HideGMControls();
             }
-            
+
         }
 
 
@@ -151,11 +151,12 @@ namespace CombatManager.Maps
             {
                 UpdateMapImage();
             }
-            else if(e.PropertyName == "CellSize" || e.PropertyName == "CellOrigin" 
+            else if (e.PropertyName == "CellSize" || e.PropertyName == "CellOrigin"
                 || e.PropertyName == "ShowGrid" || e.PropertyName == "GridColor")
             {
                 UpdateGridBrush();
-            } else if (e.PropertyName == "Image")
+            }
+            else if (e.PropertyName == "Image")
             {
                 UpdateMapImage();
             }
@@ -198,7 +199,7 @@ namespace CombatManager.Maps
                     DrawingBrush db = new DrawingBrush(gd);
                     db.TileMode = TileMode.Tile;
                     db.Viewport = new Rect(xStart, yStart, xSize, ySize);
-                    
+
 
                     MapGridCanvas.Background = db;
                     FogOfWar.InvalidateVisual();
@@ -206,8 +207,8 @@ namespace CombatManager.Maps
                 else
                 {
                     MapGridCanvas.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                        
-                        FogOfWar.InvalidateVisual();
+
+                    FogOfWar.InvalidateVisual();
                 }
             }
         }
@@ -371,7 +372,7 @@ namespace CombatManager.Maps
 
         private void MapGridCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            
+
         }
 
         bool rightClickDown = false;
@@ -409,7 +410,7 @@ namespace CombatManager.Maps
             menu.DataContext = cell;
 
             bool hasMarkers = map.CellHasMarkers(cell);
-                
+
             menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
             menu.IsOpen = true;
 
@@ -417,7 +418,7 @@ namespace CombatManager.Maps
 
             if (CellOnBoard(cell))
             {
-                    
+
                 mi = (MenuItem)menu.FindLogicalNode("ToggleFogItem");
                 mi.DataContext = cell;
                 mi.Visibility = !playerMode ? Visibility.Visible : Visibility.Collapsed;
@@ -578,7 +579,7 @@ namespace CombatManager.Maps
 
             if (size == 1)
             {
-                
+
                 list.Add(PointToCell(p));
             }
             else if (size.IsOdd())
@@ -604,8 +605,8 @@ namespace CombatManager.Maps
             else
             {
                 Point start = p;
-                start.X = start.X - UseCellSize.Width * ((double)size)/2.0 + UseCellSize.Width / 2.0;
-                start.Y = start.Y - UseCellSize.Height * ((double)size)/2.0 + UseCellSize.Height / 2.0;
+                start.X = start.X - UseCellSize.Width * ((double)size) / 2.0 + UseCellSize.Width / 2.0;
+                start.Y = start.Y - UseCellSize.Height * ((double)size) / 2.0 + UseCellSize.Height / 2.0;
 
                 for (int x = 0; x < size; x++)
                 {
@@ -620,7 +621,7 @@ namespace CombatManager.Maps
 
             return list;
         }
-        
+
 
 
 
@@ -800,7 +801,7 @@ namespace CombatManager.Maps
                 image.Source = CMUIUtilities.LoadBitmapFromImagesDir("eraser-48.png");
                 SetMarkerButton.Content = image;
             }
-           
+
         }
 
         Geometry GetUnitMarkerStylePath(GameMap.MarkerStyle style)
@@ -829,7 +830,7 @@ namespace CombatManager.Maps
             return null;
         }
 
-    void SetActionButtonState(Button b, bool state)
+        void SetActionButtonState(Button b, bool state)
         {
             b.Background = this.FindSolidBrush(state ? CMUIUtilities.SecondaryColorALight : CMUIUtilities.SecondaryColorADark);
 
@@ -972,7 +973,7 @@ namespace CombatManager.Maps
             if (!e.Handled && sender != null)
             {
                 double steps = ((double)e.Delta) / 120.0;
-             
+
                 e.Handled = true;
                 var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
                 eventArg.RoutedEvent = UIElement.MouseWheelEvent;
@@ -985,10 +986,10 @@ namespace CombatManager.Maps
                     double diff = Math.Pow(1.1, steps);
 
                     Size mapSizeStart = new Size(MapScrollViewer.ViewportWidth, MapScrollViewer.ViewportHeight);
-                    
+
                     double vertOffset = MapScrollViewer.VerticalOffset;
                     double horzOffset = MapScrollViewer.HorizontalOffset;
-                    
+
                     UseScale = UseScale * diff;
 
                     Size mapSizeEnd = mapSizeStart.Multiply(diff);
@@ -997,7 +998,7 @@ namespace CombatManager.Maps
 
                     double scrollOnSizeX = horzOffset * diff + mapSizeDiff.X;
                     double scrollOnSizeY = vertOffset * diff + mapSizeDiff.Y;
-                   
+
                     MapScrollViewer.ScrollTo(scrollOnSizeX, scrollOnSizeY);
                 }
                 var parent = ((Control)sender).Parent as UIElement;
@@ -1043,7 +1044,7 @@ namespace CombatManager.Maps
 
         private void MapGridCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-                
+
         }
 
         private void BrushSizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1160,7 +1161,7 @@ namespace CombatManager.Maps
 
                 RootGrid.ColumnDefinitions[0].Width = new System.Windows.GridLength(0);
             }
-            
+
             MapScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
             MapScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
 
@@ -1215,7 +1216,7 @@ namespace CombatManager.Maps
             WindowState = WindowState.Maximized;
             fullscreen = true;
 
-     
+
             Hide();
             Show();
         }
@@ -1251,5 +1252,22 @@ namespace CombatManager.Maps
                 LayoutRootRenderRotateTransform.BeginAnimation(RotateTransform.AngleProperty, animate);
             }
         }
+
+        private void DecimalBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                UpdateTextBinding(sender);
+            }
+        }
+
+        private void UpdateTextBinding(object sender)
+        {
+            TextBox box = (TextBox)sender;
+            var be = box.GetBindingExpression(TextBox.TextProperty);
+            be.UpdateSource();
+        }
+
     }
+        
 }

@@ -395,7 +395,15 @@
                     <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBox HorizontalAlignment="Left" Margin="54,3,0,3" x:Name="ScaleBox" Width="52" Text="{Binding Scale, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
+            <TextBox HorizontalAlignment="Left" Margin="54,3,0,3" x:Name="ScaleBox" Width="52" Text="{Binding Scale}" VerticalContentAlignment="Center" KeyDown="DecimalBox_KeyDown">
+                <TextBox.ToolTip>
+                    <StackPanel>
+                        <TextBlock Text="Scale of the map relative to the actual size in Pixels"/>
+                        <TextBlock Text="Press Enter or Tab to see changes"/>
+
+                    </StackPanel>
+                </TextBox.ToolTip>
+            </TextBox>
             <TextBlock HorizontalAlignment="Left" Margin="8,7,0,8" x:Name="textBlock1" Width="30" FontWeight="Bold" ><Run Text="Scale"/></TextBlock>
             <Button x:Name="ScaleUpButton" Content="+" HorizontalAlignment="Left" Height="11" Margin="41,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleUpButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
             <Button x:Name="ScaleDownButton" Content="-" HorizontalAlignment="Left" Height="11" Margin="108,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleDownButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
@@ -408,12 +416,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="73"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="64.8888888888889"/>
+                <ColumnDefinition Width="28.333"/>
                 <ColumnDefinition Width="239.8"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Rectangle Height="auto" StrokeThickness="1  " Grid.ColumnSpan="6" Margin="0,0,0,0">
+            <Rectangle Height="auto" StrokeThickness="1  " Grid.ColumnSpan="6" Margin="0,0,-0.444,0.111">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
                 </Rectangle.Fill>
@@ -438,7 +446,7 @@
                     </Path>
                 </StackPanel>
             </Button>
-            <ToggleButton Height="25" Margin="2.8,3,0,0" x:Name="SquareCellButton" VerticalAlignment="Top" Padding="4,1"  Width="auto" HorizontalAlignment="Left" FontSize="14" Grid.Column="3" IsChecked="{Binding SquareCellSize}" Background="{DynamicResource SecondaryColorADarkBrush}">
+            <ToggleButton Height="25" Margin="1.222,3,0,0" x:Name="SquareCellButton" VerticalAlignment="Top" Padding="4,1"  Width="auto" HorizontalAlignment="Left" FontSize="14" Grid.Column="3" IsChecked="{Binding SquareCellSize}" Background="{DynamicResource SecondaryColorADarkBrush}">
                 <ToggleButton.ToolTip>
                     <TextBlock><Run Text="MakeSquare"/><LineBreak /><Run Text="Keep Grid Square"/></TextBlock>
                 </ToggleButton.ToolTip>
@@ -451,7 +459,7 @@
                     </Path>
                 </StackPanel>
             </ToggleButton>
-            <Ellipse HorizontalAlignment="Left" Margin="2.8,6,0,6" StrokeThickness="2" Width="19" Grid.Column="4">
+            <Ellipse HorizontalAlignment="Left" Margin="2.778,6,0,6.111" StrokeThickness="2" Width="19" Grid.Column="4">
                 <Ellipse.Fill>
                     <SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
                 </Ellipse.Fill>
@@ -459,7 +467,7 @@
                     <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
                 </Ellipse.Stroke>
             </Ellipse>
-            <Ellipse Margin="70.8,6,0,6" StrokeThickness="2" HorizontalAlignment="Left" Width="19" Grid.Column="4">
+            <Ellipse Margin="70.778,6,0,6.111" StrokeThickness="2" HorizontalAlignment="Left" Width="19" Grid.Column="4">
                 <Ellipse.Fill>
                     <SolidColorBrush Color="{DynamicResource PrimaryColorLighter}"/>
                 </Ellipse.Fill>
@@ -467,13 +475,29 @@
                     <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
                 </Ellipse.Stroke>
             </Ellipse>
-            <TextBox Margin="25.8,3,0,1" x:Name="textBox1" VerticalContentAlignment="Center" Text="{Binding CellSizeWidth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="41" Grid.Column="4" ToolTip="Grid Width in Pixels" />
-            <TextBlock HorizontalAlignment="Left" Margin="3,6,0,4" x:Name="textBlock2" Text="Grid Pixels" Width="auto" FontWeight="Bold" Grid.Column="2" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
-            <TextBlock HorizontalAlignment="Left" Margin="75.8,7,0,4" x:Name="textBlock3" Text="H" FontWeight="Bold" Grid.Column="4" Width="9" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
-            <TextBox HorizontalAlignment="Left" Margin="93.8,3,0,1" x:Name="textBox2" Text="{Binding CellSizeHeight, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="41" Grid.Column="4" ToolTip="Grid Height in Pixels" />
-            <TextBlock HorizontalAlignment="Left" Margin="5.8,7,0,4" x:Name="textBlock3_Copy" Text="W" FontWeight="Bold" Grid.Column="4" Width="12" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
+            <TextBox Margin="25.778,3,0,0.111" x:Name="textBox1" VerticalContentAlignment="Center" Text="{Binding CellSizeWidth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="41" Grid.Column="4" KeyDown="DecimalBox_KeyDown" >
+                <TextBox.ToolTip>
+                    <StackPanel>
+                        <TextBlock Text="Grid Width in image pixels"/>
+                        <TextBlock Text="Press Enter or Tab to see changes"/>
+
+                    </StackPanel>
+                </TextBox.ToolTip>
+            </TextBox>
+            <TextBlock HorizontalAlignment="Left" Margin="3.111,6,0,3.111" x:Name="textBlock2" Text="Grid Pixels" Width="auto" FontWeight="Bold" Grid.Column="2" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
+            <TextBlock HorizontalAlignment="Left" Margin="75.778,7,0,3.111" x:Name="textBlock3" Text="H" FontWeight="Bold" Grid.Column="4" Width="9" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
+            <TextBox HorizontalAlignment="Left" Margin="93.778,3,0,0.111" x:Name="textBox2" Text="{Binding CellSizeHeight, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="41" Grid.Column="4"  KeyDown="DecimalBox_KeyDown">
+                <TextBox.ToolTip>
+                    <StackPanel>
+                        <TextBlock Text="Grid Height in image pixels"/>
+                        <TextBlock Text="Press Enter or Tab to see changes"/>
+
+                    </StackPanel>
+                </TextBox.ToolTip>
+            </TextBox>
+            <TextBlock HorizontalAlignment="Left" Margin="5.778,7,0,3.111" x:Name="textBlock3_Copy" Text="W" FontWeight="Bold" Grid.Column="4" Width="12" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
             <CheckBox x:Name="ShowGridCheckBox" Content="Grid" HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Click="ShowGridCheckBox_Click" IsChecked="{Binding ShowGrid}" FontWeight="Bold" Height="15" Width="44" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}"/>
-            <xwpf:ColorPicker HorizontalAlignment="Left" Height="26" Margin="139.8,3,0,0"  VerticalAlignment="Top" Width="98" SelectedColor="{Binding GridColor}" ToolTip="Grid Color" Grid.Column="4"/>
+            <xwpf:ColorPicker HorizontalAlignment="Left" Height="26" Margin="139.778,3,0,0"  VerticalAlignment="Top" Width="98" SelectedColor="{Binding GridColor}" ToolTip="Grid Color" Grid.Column="4"/>
         </Grid>
 
         <Rectangle Margin="0,0,0,-2" Grid.Row="1">
