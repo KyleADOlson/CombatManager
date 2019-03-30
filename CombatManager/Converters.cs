@@ -281,6 +281,14 @@ namespace CombatManager
 
             BrushCollection brushes = (BrushCollection)parameter;
 
+            if (brushes != null)
+            {
+                brushes = new BrushCollection();
+                brushes.Add((Brush)App.Current.Resources["ThemeTextForegroundBrush"]);
+                brushes.Add(new SolidColorBrush(Colors.Blue));
+                brushes.Add(new SolidColorBrush(Colors.Red));
+            }
+
             if (targetType != typeof(Brush) )
             {
                 return null;
