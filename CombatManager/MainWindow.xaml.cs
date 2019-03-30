@@ -3802,8 +3802,8 @@ namespace CombatManager
                 double scaleFactor = GetScaleFactor(); ;
                 mmi.ptMaxPosition.x = Math.Abs(rcWorkArea.left - rcMonitorArea.left);
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
-                mmi.ptMaxSize.x = (int)(Math.Abs(rcWorkArea.right - rcWorkArea.left) * scaleFactor );
-                mmi.ptMaxSize.y = (int)(Math.Abs(rcWorkArea.bottom - rcWorkArea.top) * scaleFactor);
+                mmi.ptMaxSize.x = (int)(Math.Abs(rcWorkArea.right - rcWorkArea.left));
+                mmi.ptMaxSize.y = (int)(Math.Abs(rcWorkArea.bottom - rcWorkArea.top));
                 mmi.ptMinTrackSize.x = (int)(MinWidth *scaleFactor);
                 mmi.ptMinTrackSize.y = (int)(MinHeight * scaleFactor);
             }
