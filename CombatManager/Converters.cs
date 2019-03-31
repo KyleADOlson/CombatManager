@@ -281,7 +281,7 @@ namespace CombatManager
 
             BrushCollection brushes = (BrushCollection)parameter;
 
-            if (brushes != null)
+            if (brushes == null)
             {
                 brushes = new BrushCollection();
                 brushes.Add((Brush)App.Current.Resources["ThemeTextForegroundBrush"]);
