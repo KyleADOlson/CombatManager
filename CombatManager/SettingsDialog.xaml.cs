@@ -40,6 +40,8 @@ namespace CombatManager
     public partial class SettingsDialog : Window
     {
 
+        bool startDarkScheme;
+
         public SettingsDialog()
         {
             this.InitializeComponent();
@@ -56,6 +58,7 @@ namespace CombatManager
             RollAlternateInitDiceBox.Text = UserSettings.Settings.AlternateInitRoll;
             CheckForUpdatesCheckbox.IsChecked = UserSettings.Settings.CheckForUpdates;
             DarkSchemeCheckbox.IsChecked = UserSettings.Settings.DarkScheme;
+            startDarkScheme = UserSettings.Settings.DarkScheme;
 
             RollAlternateInitDiceBox.TextChanged += new TextChangedEventHandler(RollAlternateInitDiceBox_TextChanged);
 
@@ -95,7 +98,7 @@ namespace CombatManager
             UserSettings.Settings.StatsOpenByDefault = StatsOpenByDefaultCheckbox.IsChecked.Value;
             UserSettings.Settings.CheckForUpdates = CheckForUpdatesCheckbox.IsChecked.Value;
             UserSettings.Settings.ColorScheme = SelectedScheme;
-            ColorManager.SetDarkScheme(DarkSchemeCheckbox.IsChecked.Value);
+            UserSettings.Settings.DarkScheme = DarkSchemeCheckbox.IsChecked.Value;
             UserSettings.Settings.SaveOptions();
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
@@ -121,9 +124,21 @@ namespace CombatManager
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+
+            bool needScheme = false;
+            if (UserSettings.Settings.DarkScheme != startDarkScheme)
+            {
+                needScheme = true;
+                UserSettings.Settings.DarkScheme = startDarkScheme;
+            }
+
             if (SelectedScheme != UserSettings.Settings.ColorScheme)
             {
+                needScheme = true;
+            }
 
+            if (needScheme)
+            {
                 ColorManager.PrepareCurrentScheme();
             }
         }
@@ -136,7 +151,6 @@ namespace CombatManager
                 ComboBoxItem item = (ComboBoxItem)ColorSchemeCombo.SelectedItem;
                 return (int)item.Tag;
 
-
             }
 
 
@@ -144,11 +158,13 @@ namespace CombatManager
 
         private void DarkSchemeCheckbox_Checked(object sender, RoutedEventArgs e)
         {
+            UserSettings.Settings.DarkScheme = true;
             ShowSelectedColorScheme();
         }
 
         private void DarkSchemeCheckbox_Unchecked(object sender, RoutedEventArgs e)
         {
+            UserSettings.Settings.DarkScheme = false;
             ShowSelectedColorScheme();
         }
     }

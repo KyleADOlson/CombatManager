@@ -18,17 +18,6 @@ namespace CombatManager
             SetNewScheme(UserSettings.Settings.ColorScheme, UserSettings.Settings.DarkScheme);
         }
 
-        public static void SetDarkScheme(bool darkScheme, bool save = false)
-        {
-            UserSettings.Settings.DarkScheme = darkScheme;
-
-            NewSchemeSet?.Invoke(ColorSchemeManager.Manager.SchemeById(UserSettings.Settings.ColorScheme), darkScheme);
-
-            if (save)
-            {
-                UserSettings.Settings.SaveOptions();
-            }
-        }
 
         public static void SetNewScheme(int id, bool darkScheme)
         {

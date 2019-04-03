@@ -544,8 +544,17 @@ namespace CombatManager
         private void ColorManager_NewSchemeSet(ColorScheme arg1, bool arg2)
         {
             //refresh things that need refreshing
+           
             UpdateSmallMonsterFlowDocument();
+
             UpdateCurrentMonsterFlowDocument();
+            UpdateFeatFlowDocument();
+            UpdateMonsterFlowDocument();
+            UpdateRuleFlowDocument(true);
+            UpdateSpellFlowDocument();
+            UpdateMagicItemsFlowDocument();
+            
+            combatListBox.Items.Refresh();
 
         }
 
@@ -2160,12 +2169,12 @@ namespace CombatManager
 
         }
 
-        void UpdateRuleFlowDocument()
+        void UpdateRuleFlowDocument(bool force = false)
         {
 
             Rule rule = (Rule)rulesView.CurrentItem;
 
-            if (rule != lastViewRule)
+            if (rule != lastViewRule || force)
             {
                 lastViewRule = rule;
                 RuleFlowDocument.Document.Blocks.Clear();

@@ -436,7 +436,7 @@ namespace CombatManager
 
             Paragraph header = new Paragraph();
             header.Background = UserSettings.Settings.DarkScheme?LighterBrush:DarkerBrush;
-            header.Foreground = BackgroundBrush;
+            header.Foreground = (Brush)App.Current.Resources["ThemeTextBackgroundBrush"];
             header.FontSize = document.FontSize * 1.3;
 
 

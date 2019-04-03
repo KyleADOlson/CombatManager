@@ -33,7 +33,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
 using System.IO.Compression;
-//using Ionic.Zip;
+using IonicZipFile = Ionic.Zip.ZipFile;
 using System.Threading.Tasks;
 
 
@@ -1235,7 +1235,7 @@ namespace CombatManager
             List<Monster> returnMonsters = null;
             try
             {
-                if (File.Exists(filename))
+                if (IonicZipFile.IsZipFile(filename))
                 {
                     returnMonsters = FromHeroLabZip(filename);
                 }
@@ -1409,7 +1409,7 @@ namespace CombatManager
         private static List<Monster> FromHeroLabZip(string filename)
         {
             List<Monster> monsters = new List<Monster>();
-            if (!File.Exists(filename))
+            if (IonicZipFile.IsZipFile(filename))
             {
                 return monsters;
             }
