@@ -95,7 +95,7 @@ namespace CombatManager
             UserSettings.Settings.StatsOpenByDefault = StatsOpenByDefaultCheckbox.IsChecked.Value;
             UserSettings.Settings.CheckForUpdates = CheckForUpdatesCheckbox.IsChecked.Value;
             UserSettings.Settings.ColorScheme = SelectedScheme;
-            UserSettings.Settings.DarkScheme = DarkSchemeCheckbox.IsChecked.Value;
+            ColorManager.SetDarkScheme(DarkSchemeCheckbox.IsChecked.Value);
             UserSettings.Settings.SaveOptions();
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;

@@ -56,6 +56,9 @@ namespace CombatManager.Maps
 
         public event MapEventDelegate ShowPlayerMap;
 
+        bool scaleTimerPlayer;
+        bool scaleTimerUp;
+
         public GameMapDisplayWindow() : this(false)
         {
         }
@@ -87,13 +90,8 @@ namespace CombatManager.Maps
             RootGrid.ColumnDefinitions[0].Width = new System.Windows.GridLength(0);
             NameGrid.Visibility = Visibility.Collapsed;
             GridSizeGrid.Visibility = Visibility.Collapsed;
+            RegularScaleControls.Visibility = Visibility.Collapsed;
             ShowActionButtons(false);
-            var v = ScaleGrid.Margin;
-            v.Left = 0;
-            ScaleGrid.Margin = v;
-            Binding b = new Binding("TableScale");
-            b.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            ScaleBox.SetBinding(TextBox.TextProperty, b);
         }
 
         public GameMap Map
@@ -1061,66 +1059,94 @@ namespace CombatManager.Maps
         DispatcherTimer scaleTimer;
 
 
-        private void ScaleUpButton_MouseDown(object sender, MouseButtonEventArgs e)
+
+        private void ScaleTimer_Tick(object sender, EventArgs e)
         {
 
-            scaleTimer?.Stop();
-            scaleTimer = null;
-
-            scaleTimer = new DispatcherTimer();
-            scaleTimer.Tick += ScaleTimer_TickUp;
-            scaleTimer.Interval = new TimeSpan(30000);
-            scaleTimer.Start();
-            double diff = Math.Pow(1.1, 1);
-            ChangeScale(diff);
-
+            double diff = Math.Pow(1.1, this.scaleTimerUp ? 1:-1);
+            ChangeScale(scaleTimerPlayer, diff);
         }
 
-        private void ScaleTimer_TickUp(object sender, EventArgs e)
+        private void ChangeScale(bool player, double diff)
         {
-
-            double diff = Math.Pow(1.1, 1);
-            ChangeScale(diff);
-        }
-
-        private void ChangeScale(double diff)
-        {
-            UseScale = UseScale * diff;
+            if (player)
+            {
+                map.TableScale = map.TableScale * diff;
+            }
+            else
+            {
+                map.Scale = map.Scale * diff;
+            }
         }
 
         private void ScaleUpButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
 
-            scaleTimer?.Stop();
-            scaleTimer = null;
+            EndScaleTimer();
         }
 
         private void ScaleDownButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            StartScaleTimer(false, false);
+
+        }
+
+        private void ScaleUpButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+
+            StartScaleTimer(true, false);
+
+        }
+
+        private void TableScaleDownButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            StartScaleTimer(false, true);
+
+        }
+
+        private void TableScaleUpButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+
+            StartScaleTimer(true, true);
+
+        }
+
+        void StartScaleTimer(bool directionUp, bool player)
+        {
+            scaleTimerUp = directionUp;
+            scaleTimerPlayer = player;
+            EndScaleTimer();
 
             scaleTimer?.Stop();
             scaleTimer = null;
 
             scaleTimer = new DispatcherTimer();
-            scaleTimer.Tick += ScaleTimer_TickDown;
+            scaleTimer.Tick += ScaleTimer_Tick;
             scaleTimer.Interval = new TimeSpan(30000);
             scaleTimer.Start();
             double diff = Math.Pow(1.1, 1);
-            ChangeScale(diff);
+            ChangeScale(player, diff);
         }
 
-        private void ScaleTimer_TickDown(object sender, EventArgs e)
+        void EndScaleTimer()
         {
-            double diff = Math.Pow(1.1, -1);
-            ChangeScale(diff);
+
+            scaleTimer?.Stop();
+            scaleTimer = null;
         }
+
+
+
 
         private void ScaleDownButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            scaleTimer?.Stop();
-            scaleTimer = null;
-
+            EndScaleTimer();
         }
+
+
+
 
         bool controlsHidden;
         GridLength controlRowDefinition;

@@ -366,53 +366,72 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="371.867"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="240"/>
             <ColumnDefinition Width="26.133"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.Column="1" StrokeThickness="1  " Grid.ColumnSpan="3" Margin="0">
+        <Rectangle Grid.Column="1" StrokeThickness="1  " Grid.ColumnSpan="4" Margin="0.222,0,0.444,0">
             <Rectangle.Fill>
                 <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Grid x:Name="NameGrid" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="259" Grid.Column="1">
-            <Rectangle HorizontalAlignment="Left" Width="293">
+        <Grid x:Name="NameGrid" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="1" Margin="0.222,0,0,0">
+            <Rectangle HorizontalAlignment="Left" Width="233">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
                 </Rectangle.Fill>
             </Rectangle>
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,7,0,8" TextWrapping="Wrap" Text="Name" Width="35" FontWeight="Bold"/>
-            <TextBox x:Name="MapNameTextBox" Margin="50,3,0,3" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="204" MaxLines="1"/>
+            <TextBox x:Name="MapNameTextBox" Margin="50,3,0,3" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" MaxLines="1"/>
         </Grid>
-        <Grid x:Name="ScaleGrid" Height="31" VerticalAlignment="Top" Grid.Column="1" Margin="250,0,0,0" HorizontalAlignment="Left" MouseLeftButtonDown="ScaleGrid_MouseLeftButtonDown" Grid.ColumnSpan="2">
+        <Grid x:Name="ScaleGrid" Height="31" VerticalAlignment="Top" Grid.Column="1" Margin="179.778,0,0,0" HorizontalAlignment="Left" MouseLeftButtonDown="ScaleGrid_MouseLeftButtonDown" Grid.ColumnSpan="2" Width="200" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="123"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Rectangle HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="123" d:IsHidden="True">
+            <Rectangle HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="123" d:IsHidden="True" Grid.ColumnSpan="2">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBox HorizontalAlignment="Left" Margin="54,3,0,3" x:Name="ScaleBox" Width="52" Text="{Binding Scale}" VerticalContentAlignment="Center" KeyDown="DecimalBox_KeyDown">
-                <TextBox.ToolTip>
-                    <StackPanel>
-                        <TextBlock Text="Scale of the map relative to the actual size in Pixels"/>
-                        <TextBlock Text="Press Enter or Tab to see changes"/>
+            <Grid x:Name="RegularScaleControls" Margin="5,3,2.222,1">
+                <TextBlock HorizontalAlignment="Left" Margin="0,4,0,4.111" x:Name="ScaleTextBlock" Width="30" FontWeight="Bold" ><Run Text="Scale"/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="30,0,0,0.111" x:Name="ScaleBox" Width="32" Text="{Binding Scale}" VerticalContentAlignment="Center" KeyDown="DecimalBox_KeyDown">
+                    <TextBox.ToolTip>
+                        <StackPanel>
+                            <TextBlock Text="Scale of the map relative to the actual size in Pixels"/>
+                            <TextBlock Text="Press Enter or Tab to see changes"/>
 
-                    </StackPanel>
-                </TextBox.ToolTip>
-            </TextBox>
-            <TextBlock HorizontalAlignment="Left" Margin="8,7,0,8" x:Name="textBlock1" Width="30" FontWeight="Bold" ><Run Text="Scale"/></TextBlock>
-            <Button x:Name="ScaleUpButton" Content="+" HorizontalAlignment="Left" Height="11" Margin="41,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleUpButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
-            <Button x:Name="ScaleDownButton" Content="-" HorizontalAlignment="Left" Height="11" Margin="108,11,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleDownButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
-            <Button x:Name="RotateButton"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="auto" VerticalContentAlignment="Top" Grid.Column="1" Click="RotateButton_Click" Height="25">
+                        </StackPanel>
+                    </TextBox.ToolTip>
+                </TextBox>
+                <Button x:Name="ScaleUpButton" Content="+" HorizontalAlignment="Left" Height="11" Margin="64,1,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleUpButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
+                <Button x:Name="ScaleDownButton" Content="-" HorizontalAlignment="Left" Height="11" Margin="64,13,0,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="ScaleDownButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
+            </Grid>
+            <Button x:Name="RotateButton"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="25" VerticalContentAlignment="Top" Click="RotateButton_Click" Height="25" Margin="2.222,3,0,3" Grid.Column="2">
                 <Image Source="/CombatManager;component/Images/RotateArrow.png"/>
             </Button>
+            <Grid x:Name="PlayerScaleControls" Grid.Column="1" Margin="2.778,3,2.667,2">
+                <TextBlock Margin="0,4,0,2.111" x:Name="textBlock1_Copy" FontWeight="Bold" HorizontalAlignment="Left" Width="35" ><Run Text="Player"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="38,0,0,-0.889" x:Name="TableScaleBox" Width="32" Text="{Binding TableScale}" VerticalContentAlignment="Center" KeyDown="DecimalBox_KeyDown">
+                    <TextBox.ToolTip>
+                        <StackPanel>
+                            <TextBlock Text="Scale of the player map relative to the actual size in Pixels"/>
+                            <TextBlock Text="Press Enter or Tab to see changes"/>
+
+                        </StackPanel>
+                    </TextBox.ToolTip>
+                </TextBox>
+                <Button x:Name="TableScaleUpButton" Content="+" HorizontalAlignment="Left" Height="11" Margin="72,1,-0.001,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="TableScaleUpButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
+                <Button x:Name="TableScaleDownButton" Content="-" HorizontalAlignment="Left" Height="11" Margin="72,13,-0.001,0" VerticalAlignment="Top" Width="11" VerticalContentAlignment="Top" Padding="0.5,-5,1,1" PreviewMouseDown="TableScaleDownButton_MouseDown" PreviewMouseUp="ScaleUpButton_MouseUp"/>
+
+            </Grid>
 
         </Grid>
-        <Grid x:Name="GridSizeGrid" Grid.Column="2" Height="auto" Margin="3,0,0,0" Grid.ColumnSpan="2">
+        <Grid x:Name="GridSizeGrid" Grid.Column="2" Height="auto" Margin="204.778,0,-0.111,0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="73"/>
@@ -475,7 +494,7 @@
                     <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
                 </Ellipse.Stroke>
             </Ellipse>
-            <TextBox Margin="25.778,3,0,0.111" x:Name="textBox1" VerticalContentAlignment="Center" Text="{Binding CellSizeWidth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="41" Grid.Column="4" KeyDown="DecimalBox_KeyDown" >
+            <TextBox Margin="25.778,3,0,3" x:Name="textBox1" VerticalContentAlignment="Center" Text="{Binding CellSizeWidth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="41" Grid.Column="4" KeyDown="DecimalBox_KeyDown" >
                 <TextBox.ToolTip>
                     <StackPanel>
                         <TextBlock Text="Grid Width in image pixels"/>
@@ -484,9 +503,9 @@
                     </StackPanel>
                 </TextBox.ToolTip>
             </TextBox>
-            <TextBlock HorizontalAlignment="Left" Margin="3.111,6,0,3.111" x:Name="textBlock2" Text="Grid Pixels" Width="auto" FontWeight="Bold" Grid.Column="2" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
-            <TextBlock HorizontalAlignment="Left" Margin="75.778,7,0,3.111" x:Name="textBlock3" Text="H" FontWeight="Bold" Grid.Column="4" Width="9" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
-            <TextBox HorizontalAlignment="Left" Margin="93.778,3,0,0.111" x:Name="textBox2" Text="{Binding CellSizeHeight, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="41" Grid.Column="4"  KeyDown="DecimalBox_KeyDown">
+            <TextBlock HorizontalAlignment="Left" Margin="3.111,6,0,3" x:Name="textBlock2" Text="Grid Pixels" Width="auto" FontWeight="Bold" Grid.Column="2" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
+            <TextBlock HorizontalAlignment="Left" Margin="75.778,7,0,3" x:Name="textBlock3" Text="H" FontWeight="Bold" Grid.Column="4" Width="9" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
+            <TextBox HorizontalAlignment="Left" Margin="93.778,3,0,3" x:Name="textBox2" Text="{Binding CellSizeHeight, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="41" Grid.Column="4"  KeyDown="DecimalBox_KeyDown">
                 <TextBox.ToolTip>
                     <StackPanel>
                         <TextBlock Text="Grid Height in image pixels"/>
@@ -497,10 +516,10 @@
             </TextBox>
             <TextBlock HorizontalAlignment="Left" Margin="5.778,7,0,3.111" x:Name="textBlock3_Copy" Text="W" FontWeight="Bold" Grid.Column="4" Width="12" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}" />
             <CheckBox x:Name="ShowGridCheckBox" Content="Grid" HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Click="ShowGridCheckBox_Click" IsChecked="{Binding ShowGrid}" FontWeight="Bold" Height="15" Width="44" Foreground="{DynamicResource TextOnPrimaryDarkerBrush}"/>
-            <xwpf:ColorPicker HorizontalAlignment="Left" Height="26" Margin="139.778,3,0,0"  VerticalAlignment="Top" Width="98" SelectedColor="{Binding GridColor}" ToolTip="Grid Color" Grid.Column="4"/>
+            <xwpf:ColorPicker HorizontalAlignment="Left" Height="26" Margin="139.778,3,0,3"  VerticalAlignment="Top" Width="98" SelectedColor="{Binding GridColor}" ToolTip="Grid Color" Grid.Column="4"/>
         </Grid>
 
-        <Rectangle Margin="0,0,0,-2" Grid.Row="1">
+        <Rectangle Margin="0,0,242.778,-1.778" Grid.Row="1" Grid.ColumnSpan="2">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                     <GradientStop Color="#FF969696" Offset="0"/>
@@ -509,7 +528,7 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Button Height="22" Margin="2,36.8,0,0" x:Name="SetFogButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="SetFogButton_Click" HorizontalAlignment="Left" Width="28" ToolTip="Set Fog of War" >
+        <Button Height="22" Margin="2,37,0,0" x:Name="SetFogButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="SetFogButton_Click" HorizontalAlignment="Left" Width="28" ToolTip="Set Fog of War" >
             <Grid>
                 <StackPanel Orientation="Horizontal" ToolTip="Fog of War">
                     <Image Source="/CombatManager;component/Images/blacksquare-16.png"/>
@@ -518,32 +537,32 @@
             </Grid>
 
         </Button>
-        <Button Height="22" Margin="30,36.8,0,0" x:Name="FogOptionsButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="FogOptionsButton_Click" ToolTip="Fog of War Options" HorizontalAlignment="Left" Width="18" >
+        <Button Height="22" Margin="30,37,0,0" x:Name="FogOptionsButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="FogOptionsButton_Click" ToolTip="Fog of War Options" HorizontalAlignment="Left" Width="18" >
             <Path Data="M0,0 L4,6 L8,0 Z" Height="6.875" Stretch="Fill" Width="8.208" Fill="#FF474747" />
 
 
         </Button>
-        <Button Height="22" Margin="2,63.8,0,0" x:Name="SetMarkerButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="SetMarkerButton_Click" HorizontalAlignment="Left" Width="28" ToolTip="Set Markers" >
+        <Button Height="22" Margin="2,64,0,0" x:Name="SetMarkerButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="SetMarkerButton_Click" HorizontalAlignment="Left" Width="28" ToolTip="Set Markers" >
 
             <Path x:Name="MarkerButtonPath"  Data="M0,0 L0,1 L1,1 L1,0 Z" Height="16" Stretch="Fill" Width="16" Fill="#FF474747" />
 
         </Button>
-        <Button Height="22" Margin="30,63.8,0,0" x:Name="MarkerOptionsButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="MarkerOptionsButton_Click" HorizontalAlignment="Left" Width="18" ToolTip="Marker Options" >
+        <Button Height="22" Margin="30,64,0,0" x:Name="MarkerOptionsButton" VerticalAlignment="Top" Padding="4,1" Grid.Row="1"  Style="{DynamicResource SimpleButton}" Click="MarkerOptionsButton_Click" HorizontalAlignment="Left" Width="18" ToolTip="Marker Options" >
             <Path Data="M0,0 L4,6 L8,0 Z" Height="6.875" Stretch="Fill" Width="8.208" Fill="#FF474747" />
 
         </Button>
-        <Rectangle HorizontalAlignment="Left" StrokeThickness="1  " Width="50">
+        <Rectangle HorizontalAlignment="Left" StrokeThickness="1  " Width="50" Grid.ColumnSpan="2">
             <Rectangle.Fill>
                 <SolidColorBrush Color="{DynamicResource SecondaryColorAMedium}"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Button Height="22" Margin="10,4,10,0" x:Name="ShowPlayerWindowButton" VerticalAlignment="Top" Click="ShowPlayerWindowButton_Click" Padding="4,1"  Style="{DynamicResource SimpleButton}" ToolTip="Show Player Window" >
+        <Button Height="22" Margin="10,4,9.778,0" x:Name="ShowPlayerWindowButton" VerticalAlignment="Top" Click="ShowPlayerWindowButton_Click" Padding="4,1"  Style="{DynamicResource SimpleButton}" ToolTip="Show Player Window" >
             <StackPanel Orientation="Horizontal">
                 <Image Source="/CombatManager;component/Images/screen-16.png"/>
             </StackPanel>
 
         </Button>
-        <ScrollViewer Margin="0" x:Name="MapScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="3" Grid.Column="1" CanContentScroll="False" PreviewMouseWheel="MapScrollViewer_PreviewMouseWheel" Grid.Row="1">
+        <ScrollViewer Margin="0.222,0,0.444,0.222" x:Name="MapScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="4" Grid.Column="1" CanContentScroll="False" PreviewMouseWheel="MapScrollViewer_PreviewMouseWheel" Grid.Row="1">
             <Grid x:Name="MapScrollViewerGrid" Background="Black" MouseRightButtonUp="MapScrollViewerGrid_MouseRightButtonUp">
 
                 <Image Height="100" x:Name="MapImageControl" Stretch="Fill" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" />
@@ -551,7 +570,7 @@
                 <Canvas Height="100" x:Name="MapGridCanvas" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" MouseDown="MapGridCanvas_MouseDown" Margin="0,0,0,0"  MouseUp="MapGridCanvas_MouseUp" MouseMove="MapGridCanvas_MouseMove" MouseRightButtonDown="MapGridCanvas_MouseRightButtonDown" MouseRightButtonUp="MapGridCanvas_MouseRightButtonUp" MouseLeftButtonDown="MapGridCanvas_MouseLeftButtonDown" MouseLeftButtonUp="MapGridCanvas_MouseLeftButtonUp" MouseWheel="MapGridCanvas_MouseWheel" />
             </Grid>
         </ScrollViewer>
-        <ComboBox x:Name="BrushSizeComboBox" HorizontalAlignment="Left" Margin="2,90.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="46" SelectedIndex="0"  Style="{DynamicResource GameDisplayComboBoxStyle}" ToolTip="Brush Size" SelectionChanged="BrushSizeComboBox_SelectionChanged"  >
+        <ComboBox x:Name="BrushSizeComboBox" HorizontalAlignment="Left" Margin="2,91,0,0" Grid.Row="1" VerticalAlignment="Top" Width="46" SelectedIndex="0"  Style="{DynamicResource GameDisplayComboBoxStyle}" ToolTip="Brush Size" SelectionChanged="BrushSizeComboBox_SelectionChanged"  >
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>

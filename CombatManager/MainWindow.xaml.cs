@@ -534,12 +534,20 @@ namespace CombatManager
             _PipeServer.FileRecieved += new EventHandler<PipeServer.PipeServerEventArgs>(PipeServer_FileRecieved);
             _PipeServer.RunServer();
 
+            ColorManager.NewSchemeSet += ColorManager_NewSchemeSet;
+
             ColorManager.PrepareCurrentScheme();
 
 
         }
 
- 
+        private void ColorManager_NewSchemeSet(ColorScheme arg1, bool arg2)
+        {
+            //refresh things that need refreshing
+            UpdateSmallMonsterFlowDocument();
+            UpdateCurrentMonsterFlowDocument();
+
+        }
 
         void SaveDefaultLayout()
         {

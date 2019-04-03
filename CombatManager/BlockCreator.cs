@@ -404,6 +404,14 @@ namespace CombatManager
             }
         }
 
+        protected Brush LighterBrush
+        {
+            get
+            {
+                return new SolidColorBrush((Color)document.FindResource("SecondaryColorBLighter"));
+            }
+        }
+
         protected Brush ForegroundBrush
         {
             get
@@ -427,8 +435,8 @@ namespace CombatManager
             
 
             Paragraph header = new Paragraph();
-            header.Background = DarkerBrush;
-            header.Foreground = ForegroundBrush;
+            header.Background = UserSettings.Settings.DarkScheme?LighterBrush:DarkerBrush;
+            header.Foreground = BackgroundBrush;
             header.FontSize = document.FontSize * 1.3;
 
 
