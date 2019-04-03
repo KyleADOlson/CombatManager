@@ -1409,10 +1409,10 @@ namespace CombatManager
         private static List<Monster> FromHeroLabZip(string filename)
         {
             List<Monster> monsters = new List<Monster>();
-            //if (IonicZipFile.IsZipFile(filename))
-            //{
-            //    return monsters;
-            //}
+            if (!IonicZipFile.IsZipFile(filename))
+            {
+                return monsters;
+            }
 
             using (var hlFile = ZipFile.OpenRead(filename))
             {
@@ -1947,10 +1947,13 @@ namespace CombatManager
             {
                 XElement el = doc.Element("document").Element("public").Element("character");
                 XElement cr = el.Element("challengerating");
-                String crText = cr.Attribute("text").Value;
-                monster.CR = crText.Substring(3);
+                String crText = cr?.Attribute("text")?.Value;
+                if (crText != null)
+                {
+                    monster.CR = crText.Substring(3);
+                }
                 XElement xp = el.Element("xpaward");
-                monster.XP = xp.Attribute("value").Value;
+                monster.XP = xp?.Attribute("value")?.Value;
             }
             else
             {
@@ -2002,7 +2005,7 @@ namespace CombatManager
                 var charxElement = doc.Element("document").Element("public").Element("character");
                 monster.Class = charxElement.Element("classes").Attribute("summary").Value;
                 monster.Race = charxElement.Element("race").Attribute("racetext").Value;
-                monster.Gender = charxElement.Element("personal").Attribute("gender").Value;
+                monster.Gender = charxElement.Element("personal").Attribute("gender")?.Value;
             }
 
         //init, senses, perception
