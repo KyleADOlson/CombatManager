@@ -1409,10 +1409,10 @@ namespace CombatManager
         private static List<Monster> FromHeroLabZip(string filename)
         {
             List<Monster> monsters = new List<Monster>();
-            if (IonicZipFile.IsZipFile(filename))
-            {
-                return monsters;
-            }
+            //if (IonicZipFile.IsZipFile(filename))
+            //{
+            //    return monsters;
+            //}
 
             using (var hlFile = ZipFile.OpenRead(filename))
             {
@@ -1826,7 +1826,8 @@ namespace CombatManager
             ImportHeroLabBlock(statsblock, null, monster, readNameBlock);
         }
 
-        private static void ImportHeroLabBlock(string statsblock, XDocument doc, Monster monster, bool readNameBlock = false)
+        private static void ImportHeroLabBlock(string statsblock, XDocument doc, Monster monster,
+            bool readNameBlock = false)
         {
             statsblock = statsblock.Replace('×', 'x');
             statsblock = statsblock.Replace("Ã—", "x");
@@ -1870,11 +1871,11 @@ namespace CombatManager
 
             //get stats
             string statsRegStr = HeroLabStatRegexString("Str") + strStatSeparator +
-                 HeroLabStatRegexString("Dex") + strStatSeparator +
-                  HeroLabStatRegexString("Con") + strStatSeparator +
-                   HeroLabStatRegexString("Int") + strStatSeparator +
-                    HeroLabStatRegexString("Wis") + strStatSeparator +
-                     HeroLabStatRegexString("Cha");
+                                 HeroLabStatRegexString("Dex") + strStatSeparator +
+                                 HeroLabStatRegexString("Con") + strStatSeparator +
+                                 HeroLabStatRegexString("Int") + strStatSeparator +
+                                 HeroLabStatRegexString("Wis") + strStatSeparator +
+                                 HeroLabStatRegexString("Cha");
 
 
             Regex regStats = new Regex(statsRegStr);
@@ -1907,23 +1908,28 @@ namespace CombatManager
 
                 regStats = new Regex(RegstatsRegDexterity);
                 Match regexMatchDex = regStats.Match(statsblock);
-                StatCollection = StatCollection + (regexMatchDex.Success ? ", Dex " + regexMatchDex.Groups["dex"].Value : ", Dex -");
+                StatCollection = StatCollection +
+                                 (regexMatchDex.Success ? ", Dex " + regexMatchDex.Groups["dex"].Value : ", Dex -");
 
                 regStats = new Regex(RegstatsRegConstitution);
                 Match regexMatchCon = regStats.Match(statsblock);
-                StatCollection = StatCollection + (regexMatchCon.Success ? ", Con " + regexMatchCon.Groups["con"].Value : ", Con -");
+                StatCollection = StatCollection +
+                                 (regexMatchCon.Success ? ", Con " + regexMatchCon.Groups["con"].Value : ", Con -");
 
                 regStats = new Regex(RegstatsRegIntelligence);
                 Match regexMatchInt = regStats.Match(statsblock);
-                StatCollection = StatCollection + (regexMatchInt.Success ? ", Int " + regexMatchInt.Groups["int"].Value : ", Int -");
+                StatCollection = StatCollection +
+                                 (regexMatchInt.Success ? ", Int " + regexMatchInt.Groups["int"].Value : ", Int -");
 
                 regStats = new Regex(RegstatsRegWisdom);
                 Match regexMatchWis = regStats.Match(statsblock);
-                StatCollection = StatCollection + (regexMatchWis.Success ? ", Wis " + regexMatchWis.Groups["wis"].Value : ", Wis -");
+                StatCollection = StatCollection +
+                                 (regexMatchWis.Success ? ", Wis " + regexMatchWis.Groups["wis"].Value : ", Wis -");
 
                 regStats = new Regex(RegstatsRegCharisma);
                 Match regexMatchCha = regStats.Match(statsblock);
-                StatCollection = StatCollection + (regexMatchCha.Success ? ", Cha " + regexMatchCha.Groups["cha"].Value : ", Cha -");
+                StatCollection = StatCollection +
+                                 (regexMatchCha.Success ? ", Cha " + regexMatchCha.Groups["cha"].Value : ", Cha -");
 
                 monster.AbilitiyScores = StatCollection;
 
@@ -1971,7 +1977,7 @@ namespace CombatManager
 
 
             Regex regeAlSizeType = new Regex("(?<align>" + AlignString + ") (?<size>" + sizesText +
-                ") (?<type>" + typesText + ") *(\\(|\r\n)");
+                                             ") (?<type>" + typesText + ") *(\\(|\r\n)");
             m = regeAlSizeType.Match(statsblock);
 
             if (m.Success)
@@ -1990,13 +1996,16 @@ namespace CombatManager
                 monster.Size = "Medium";
                 monster.Type = "humanoid";
             }
+            if (doc != null)
+            {
+            
+                var charxElement = doc.Element("document").Element("public").Element("character");
+                monster.Class = charxElement.Element("classes").Attribute("summary").Value;
+                monster.Race = charxElement.Element("race").Attribute("racetext").Value;
+                monster.Gender = charxElement.Element("personal").Attribute("gender").Value;
+            }
 
-            var charxElement = doc.Element("document").Element("public").Element("character");
-            monster.Class= charxElement.Element("classes").Attribute("summary").Value;
-            monster.Race = charxElement.Element("race").Attribute("racetext").Value;
-            monster.Gender = charxElement.Element("personal").Attribute("gender").Value;
-
-            //init, senses, perception
+        //init, senses, perception
 
             //Init +7; Senses Darkvision (60 feet); Perception +2
             Regex regSense = new Regex("Init (?<init>(\\+|-)[0-9]+)(/(?<dualinit>(\\+|-)[0-9]+), dual initiative)?(; Senses )((?<senses>.+)(;|,) )?Perception (?<perception>(\\+|-)[0-9]+)");
