@@ -1991,43 +1991,10 @@ namespace CombatManager
                 monster.Type = "humanoid";
             }
 
-
-            string[] lines = statsblock.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-            string raceClass = GetLine("Male", statsblock, true);
-            if (raceClass == null)
-            {
-                raceClass = GetLine("Female", statsblock, true);
-                if (raceClass != null)
-                {
-                    monster.Gender = "Female";
-                }
-                else
-                {
-                    raceClass = lines[1];
-                }
-            }
-            else
-            {
-                monster.Gender = "Male";
-            }
-
-            if (raceClass != null)
-            {
-                m = Regex.Match(raceClass, "(?<race>[-\\p{L}]+) (?<class>.+)?");
-
-                if (m.Success)
-                {
-                    monster.Race = m.Groups["race"].Value;
-                    if (m.Groups["class"].Success)
-                    {
-                        monster.Class = m.Groups["class"].Value;
-                    }
-                }
-
-            }
-
-
+            var charxElement = doc.Element("document").Element("public").Element("character");
+            monster.Class= charxElement.Element("classes").Attribute("summary").Value;
+            monster.Race = charxElement.Element("race").Attribute("racetext").Value;
+            monster.Gender = charxElement.Element("personal").Attribute("gender").Value;
 
             //init, senses, perception
 
@@ -2077,8 +2044,6 @@ namespace CombatManager
                 monster.AC_Mods = "";
             }
 
-
-            //Regex regHP = new Regex("(hp (?<hp>[0-9]+)) ((?<hd>\\([-+0-9d]+\\))|(\\(\\)))|\\(\\d+ HD; (?<hd>[-+0-9d]+\\))");
             Regex regHP = new Regex(@"(hp (?<hp>[0-9]+)) ((?<hd>\([-+0-9d]+\))|(\(\))|\(\d+ HD; (?<hd>[-+0-9d]+)\))");
 
             m = regHP.Match(statsblock);
@@ -2143,7 +2108,7 @@ namespace CombatManager
                 }
             }*/
 
-            monster.Weaknesses = GetLine("Weakness", statsblock, false);
+            monster.Weaknesses = GetLine("Weaknesses", statsblock, false);
 
 
             monster.Speed = GetLine("Spd", statsblock, false);
@@ -2395,7 +2360,7 @@ namespace CombatManager
                     }
 
                     typesText += "(" + StringCapitalizer.Capitalize(name)
-                      + ")";
+                      + "|" + name + ")";
                 }
 
                 return typesText;
