@@ -2298,7 +2298,7 @@ namespace CombatManager
             MatchCollection mc = Regex.Matches(statsblock, @"(?<SLA>([\p{L}( )]+)?\s?Spell-Like Abilities (.|\r|\n)+?)(?=([\p{L}( )]+)?\s?Spells (Known|Prepared)|\r\n------| D Domain)");
             foreach (var collection in mc)
             {
-                monster.SpellLikeAbilities = collection.ToString().Trim();
+                monster.SpellLikeAbilities = FixSpellString(collection.ToString().Trim());
             }
 
             Regex regSpells = new Regex(
@@ -11718,7 +11718,8 @@ namespace CombatManager
 
                     if (SLA != null)
                     {
-                        Regex regSLA = new Regex("Spell-Like Abilities +(?<SLA>.*)", RegexOptions.IgnoreCase);
+                        Regex regSLA = new Regex(@"(?<SLA>([\p{L}( )]+)?\s?Spell-Like Abilities .*)", RegexOptions.IgnoreCase);
+                        
                         Match m = regSLA.Match(SLA);
 
                         if (m.Success)
