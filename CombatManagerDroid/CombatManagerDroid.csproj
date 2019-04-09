@@ -20,7 +20,7 @@
     <ReleaseVersion>1.05</ReleaseVersion>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <AndroidKeyStore>true</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Users\kylea\Documents\CombatManager\CombatManagerDroid\mono.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyStore>C:\Users\kylea\Documents\github\CombatManager\CombatManagerDroid\mono.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>@hysteria11</AndroidSigningStorePass>
     <AndroidSigningKeyPass>@hysteria11</AndroidSigningKeyPass>
     <AndroidSigningKeyAlias>monokey</AndroidSigningKeyAlias>
@@ -57,6 +57,7 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidSupportedAbis />
     <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
+    <MandroidI18n />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

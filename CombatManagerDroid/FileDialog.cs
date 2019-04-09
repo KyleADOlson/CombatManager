@@ -41,50 +41,71 @@ namespace CombatManagerDroid
 
         public class FileDialogEventArgs
         {
-            public string Filename { get; set;}
+            public string Filename { get; set; }
         }
         public event EventHandler<FileDialogEventArgs> DialogComplete;
 
-        public FileDialog(Context context, List<string> ext, bool load) : base (context)
+        public FileDialog(Context context, List<string> ext, bool load) : base(context)
         {
+
+            GoToInitialFolder();
+
             _Load = load;
             _Context = context;
             _Extensions = ext;
 
             SetContentView(Resource.Layout.FileDialog);
-            SetTitle(_Load?"Open File":"Save File");
+            SetTitle(_Load ? "Open File" : "Save File");
             SetCanceledOnTouchOutside(true);
 
             Button okB = (Button)FindViewById(Resource.Id.okButton);
-            (okB).Click += 
-                (object sender, EventArgs e) => {OkClicked();};
-            okB.Text = _Load?"Open":"Save";
+            (okB).Click +=
+                (object sender, EventArgs e) => { OkClicked(); };
+            okB.Text = _Load ? "Open" : "Save";
 
-            ((Button)FindViewById(Resource.Id.cancelButton)).Click += 
-                (object sender, EventArgs e) => {Dismiss();};
-            
+            ((Button)FindViewById(Resource.Id.cancelButton)).Click +=
+                (object sender, EventArgs e) => { Dismiss(); };
+
             EditText t = FindViewById<EditText>(Resource.Id.fileName);
             if (Text != null)
             {
                 t.Text = Text;
             }
-            
+
             Button b = FindViewById<Button>(Resource.Id.folderUpButton);
-            b.Click += (object sender, EventArgs e) => { MoveUpFolder();};
-
-            
-            if (!Directory.Exists(Folder))
-            {
-                Directory.CreateDirectory(Folder);
-            }
+            b.Click += (object sender, EventArgs e) => { MoveUpFolder(); };
 
 
-            
             TextView tv = FindViewById<TextView>(Resource.Id.folderNameText);
             tv.Text = Folder;
 
 
             BuildList();
+
+        }
+
+        void GoToInitialFolder()
+        {
+            bool safeFolder = true;
+
+            if (!Directory.Exists(Folder))
+            {
+                safeFolder = false;
+                try
+                {
+                    Directory.CreateDirectory(Folder);
+                    safeFolder = true;
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+
+            if (!safeFolder)
+            {
+                _Folder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            }
 
         }
 
@@ -109,7 +130,7 @@ namespace CombatManagerDroid
 
         void UpdateFolderDisplay()
         {
-            
+
             TextView tv = FindViewById<TextView>(Resource.Id.folderNameText);
             tv.Text = Folder;
 
@@ -123,7 +144,7 @@ namespace CombatManagerDroid
             {
                 if (_Folder == null)
                 {
-                    string docpath = "/sdcard";
+                    string docpath = DefaultBaseDir;
 
                     string folder = Path.Combine(docpath, "CombatManager");
                     _Folder = folder;
@@ -132,6 +153,15 @@ namespace CombatManagerDroid
                 return _Folder;
             }
         }
+
+        private string DefaultBaseDir
+        {
+            get
+            {
+                return Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDocuments).AbsolutePath;
+            }
+        } 
+            
 
         private void OkClicked()
         {

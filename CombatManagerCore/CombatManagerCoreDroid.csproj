@@ -49,6 +49,9 @@
     <Reference Include="Mono.Android" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\DotZipLib\Ionic.Zip.dll</HintPath>
+    </Reference>   
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
