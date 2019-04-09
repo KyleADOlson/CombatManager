@@ -102,7 +102,13 @@ namespace CombatManager.Maps
 
             String filename = GetMapFileName(newId, name);
 
-            file.CopyTo(filename);
+            file.CopyTo(filename, true);
+
+            if (folder.FolderPath == null && folder.Id == 0)
+            {
+                folder.FolderPath = new ObservableCollection<int>() { 0 };
+            }
+
 
             GameMap map = new GameMap(newId, filename, file.Name.Substring(0, file.Name.Length - file.Extension.Length), new List<int>(folder.FolderPath));
 
@@ -384,7 +390,7 @@ namespace CombatManager.Maps
         {
             get
             {
-                if (currentFolderPath == null)
+                if (currentFolderPath == null || currentFolderPath.Count == 0)
                 {
                     currentFolderPath = new ObservableCollection<int>();
                     currentFolderPath.Add(0);
