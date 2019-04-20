@@ -2001,14 +2001,14 @@ namespace CombatManager
             }
             if (doc != null)
             {
-            
+
                 var charxElement = doc.Element("document").Element("public").Element("character");
                 monster.Class = charxElement.Element("classes").Attribute("summary").Value;
                 monster.Race = charxElement.Element("race").Attribute("racetext").Value;
                 monster.Gender = charxElement.Element("personal").Attribute("gender")?.Value;
             }
 
-        //init, senses, perception
+            //init, senses, perception
 
             //Init +7; Senses Darkvision (60 feet); Perception +2
             Regex regSense = new Regex("Init (?<init>(\\+|-)[0-9]+)(/(?<dualinit>(\\+|-)[0-9]+), dual initiative)?(; Senses )((?<senses>.+)(;|,) )?Perception (?<perception>(\\+|-)[0-9]+)");
@@ -2321,13 +2321,13 @@ namespace CombatManager
             if (m.Success)
             {
                 string spells = m.Groups["spells"].Value;
-                
+
                 spells = FixSpellString(spells);
 
                 monster.SpellsPrepared = spells;
 
             }
-             Regex regDomains = new Regex(@" D Domain spell; Domains (?<Domains>(.+?))(?=\r\n|\r\n------)");
+            Regex regDomains = new Regex(@" D Domain spell; Domains (?<Domains>(.+?))(?=\r\n|\r\n------)");
             m = regDomains.Match(statsblock);
             if (m.Success)
             {
@@ -4871,6 +4871,245 @@ namespace CombatManager
             return true;
         }
 
+        public enum SimpleMythicTemplateType
+        {
+            Agile,
+            Arcane,
+            Divine,
+            Invincible,
+            Savage
+        }
+
+        public bool MakeSimpleMythic(SimpleMythicTemplateType templateType)
+        {
+
+
+            switch (templateType)
+            {
+                case SimpleMythicTemplateType.Agile:
+
+                    SubType = AddToStringList(SubType, "mythic");
+
+                    //mr 1
+                    AdjustMR(1);
+
+                    //CR 1
+                    AdjustCR(1);
+
+                    //Init + 20 bonus;
+                    Init += 20;
+
+                    //AC + 2 dodge bonus;
+                    AdjustDodge(2);
+
+                    //hp mythic bonus hit points(see Mythic Bonus Hit Points sidebar);
+
+                    //Defensive Abilities evasion(as the rogue class feature); 
+                    DefensiveAbilities = AddToStringList(DefensiveAbilities, "evasion");
+
+                    //Speed +30 feet for all movement types(up to double the creature’s base movement speed);
+                    Adjuster.AdjustAllSpeed(30);
+
+                    //Special Attacks dual initiative.
+                    SpecialAttacks = AddToStringList(SpecialAttacks, "dual initiative");
+                    DualInit = Init - 20;
+
+                    return true;
+                case SimpleMythicTemplateType.Arcane:
+
+                    SubType = AddToStringList(SubType, "mythic");
+
+                    //mr 1
+                    AdjustMR(HDRoll.TotalCount > 10 ? 2 : 1);
+
+                    //CR 1
+                    AdjustCR(1);
+
+                    //AC + 2 deflection bonus; 
+                    AdjustDeflection(2);
+
+                    // SR gains SR equal to its new CR + 11; 
+                    SR = (GetCRIntWholeNumber() + 11).ToString();
+
+                    //Special Attacks mythic magic, 
+                    SpecialAttacks = AddToStringList(SpecialAttacks, "mythic magic");
+                    SpecialAbility ab = new SpecialAbility();
+                    ab.Name = "Mythic Magic";
+                    ab.Text = "Up to three times per day, when the creature casts a spell, it can cast the mythic version instead(as with all mythic spells, the creature must expend mythic power to cast a mythic spell in this way).";
+                    ab.Type = "Su";
+                    SpecialAbilitiesList.Add(ab);
+
+
+                    //simple arcane spellcasting.
+                    SpecialAttacks = AddToStringList(SpecialAttacks, "simple arcane spellcasting");
+                    ab = new SpecialAbility();
+                    ab.Name = "Simple Arcane Spellcasting";
+                    ab.Text = "The creature gains the ability to cast spells from the sorcerer/wizard spell list. " +
+                        "Select a number of spells with total spell levels equal to twice the creature’s CR. No spell for this ability should have a level higher than 1 + 1 / 2 the creature’s CR.A 0 - level spell counts as 1 / 2 spell level toward this total. " +
+                        "The creature can cast each of these spells once per day. " +
+                        "Its caster level is equal to its Hit Dice.It uses the higher of its Intelligence or Charisma modifiers to determine its spell DCs.";
+                    ab.Type = "Su";
+                    SpecialAbilitiesList.Add(ab);
+
+                    return true;
+
+                case SimpleMythicTemplateType.Divine:
+
+                    SubType = AddToStringList(SubType, "mythic");
+
+                    //mr 1
+                    AdjustMR(HDRoll.TotalCount > 10 ? 2 : 1);
+
+                    //CR 1
+                    AdjustCR(1);
+
+
+                    //Aura aura of grace
+                    Aura = AddToStringList(Aura, "aura of grace");
+                    ab = new SpecialAbility();
+                    ab.Name = "Aura of Grace";
+                    ab.Text = "This creature and all allies within 10 feet receive a + 2 sacred bonus on saving throws—or a profane bonus if the this creature is evil.";
+                    ab.Type = "Ex";
+                    SpecialAbilitiesList.Add(ab);
+
+
+                    //AC + 2 deflection bonus;
+                    AdjustDeflection(2);
+                    //Special Attacks mythic magic, 
+                    SpecialAttacks = AddToStringList(SpecialAttacks, "mythic magic");
+                    ab = new SpecialAbility();
+                    ab.Name = "Mythic Magic";
+                    ab.Text = "Up to three times per day, when the creature casts a spell, it can cast the mythic version instead(as with all mythic spells, the creature must expend mythic power to cast a mythic spell in this way).";
+                    ab.Type = "Su";
+                    SpecialAbilitiesList.Add(ab);
+
+                    //simple arcane spellcasting.
+                    SpecialAttacks = AddToStringList(SpecialAttacks, "simple divine spellcasting");
+
+                    ab = new SpecialAbility();
+                    ab.Name = "Simple divine Spellcasting";
+                    ab.Text = "The creature gains the ability to cast spells from the cleric or druid spell list. " +
+                        "Select a number of spells with total spell levels equal to twice the creature’s CR. " +
+                        "No spell for this ability should have a level higher than 1 + 1/2 the creature’s CR. " +
+                        "A 0-level spell counts as 1/2 spell level toward this total. The creature can cast each of these spells once per day." +
+                        "Its caster level is equal to its Hit Dice. It uses its Wisdom or Charisma (whichever is higher) to determine its spell DCs.";
+                    ab.Type = "Su";
+                    SpecialAbilitiesList.Add(ab);
+
+
+                    return true;
+
+                case SimpleMythicTemplateType.Invincible:
+
+
+                    SubType = AddToStringList(SubType, "mythic");
+
+                    //mr 1
+                    AdjustMR(HDRoll.TotalCount > 10 ? 2 : 1);
+
+                    //CR 1
+                    AdjustCR(1);
+
+                    //AC increase natural armor bonus by 2(or 4 if the creature has 11 or more Hit Dice);
+                    AdjustNaturalArmor(HDRoll.TotalCount > 10 ? 4 : 2);
+
+                    //gains DR and resistance to all types of energy as per Table: Invincible Template Defenses, as well as 
+                    GainEnergyResistForMythicTemplates();
+
+                    //block attacks and                    
+                    DefensiveAbilities = AddToStringList(DefensiveAbilities, "block attacks");
+                    ab = new SpecialAbility();
+                    ab.Name = "Block Attacks";
+                    ab.Text = "Once per round, when the creature is hit by a melee or ranged attack, it can attempt a melee attack using its highest attack bonus. If this result exceeds the result from the attack against it, the creature is unaffected by the attack (as if the attack had missed).";
+                    ab.Type = "Ex";
+                    SpecialAbilitiesList.Add(ab);
+
+                    //second save.
+                    ab = new SpecialAbility();
+                    ab.Name = "Second Save";
+                    ab.Text = "Whenever the creature fails a saving throw against an effect with a duration greater than 1 round, it can keep trying to shake off the effect. At the start of its turn, if it’s still affected, it can attempt the save one more time as a free action. If this save succeeds, the effect affects the creature as if it had succeeded at its initial saving throw. " +
+                        "If the effect already allows another saving throw on a later turn to break the effect(such as for hold monster), this ability is in addition to the extra saving throw from the effect.";
+                    ab.Type = "Ex";
+                    SpecialAbilitiesList.Add(ab);
+
+                    return true;
+
+                case SimpleMythicTemplateType.Savage:
+
+                    SubType = AddToStringList(SubType, "mythic");
+
+                    //mr 1
+                    AdjustMR(HDRoll.TotalCount > 10 ? 2 : 1);
+
+                    //CR 1
+                    AdjustCR(1);
+
+                    //AC increase natural armor bonus by 2;
+                    AdjustNaturalArmor(2);
+
+                    //Defensive Abilities gains DR and resistance to all types of energy as per Table: Savage Template Defenses 
+                    GainEnergyResistForMythicTemplates();
+
+                    //Special Attacks all attacks gain bleed 1(this stacks with itself), 
+                    ObservableCollection<AttackSet> sets = new ObservableCollection<AttackSet>(MeleeAttacks);
+                    ObservableCollection<Attack> ranged = new ObservableCollection<Attack>(RangedAttacks);
+                    var attacks = new CharacterAttacks(sets, ranged);
+
+                    foreach (var item in attacks.NaturalAttacks)
+                    {
+                        if (item.Plus == null || item.Plus.Length == 0)
+                        {
+                            item.Plus = "bleed 1";
+                        }
+                        else
+                        {
+                            item.Plus = item.Plus + " and bleed 1";
+                        }
+                            
+                    }
+
+                   Melee = MeleeString(attacks);
+
+
+
+                    //feral savagery(full attack).
+                    SpecialAttacks = AddToStringList(SpecialAttacks, "feral savagery(full attack)");
+                    ab = new SpecialAbility();
+                    ab.Name = "Feral Savagery";
+                    ab.Text = "Under the circumstances listed in the monster’s stat block—such as when it makes a full attack or a rend attack—it can immediately attempt an additional attack against an opponent. " +
+                        "This attack is made using the creature’s full base attack bonus, plus any modifiers appropriate to the situation. " +
+                        "This additional attack doesn’t stack with similar means of gaining additional attacks, such as the haste spell or a speed weapon. " +
+                        "This ability doesn’t grant an extra action, so you can’t use it to cast a second spell or otherwise take an extra action in the round.";
+                    ab.Type = "Ex";
+                    return true;
+
+
+            }
+            return false;
+
+        }
+
+        void GainEnergyResistForMythicTemplates()
+        {
+            if (HDRoll.TotalCount > 10)
+            {
+                Resist = AddResitance(Resist, "energy", 15);
+                DR = AddDR(DR, "epic", 10);
+
+            }
+            else if (HDRoll.TotalCount > 4)
+            {
+                Resist = AddResitance(Resist, "energy", 10);
+                DR = AddDR(DR, "epic", 5);
+            }
+            else
+            {
+                Resist = AddResitance(Resist, "energy", 5);
+            }
+
+        }
+
+
         public bool MakeOgrekin(int benefit, int disadvantage)
         {
             AdjustCR(1);
@@ -5379,6 +5618,26 @@ namespace CombatManager
 
         }
 
+        
+        public int GetCRIntWholeNumber()
+        {
+            try
+            {
+                if (CR.Contains('/'))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return int.Parse(CR);
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
         public void AdjustCR(int diff)
         {
             if (diff > 0)
@@ -5598,6 +5857,37 @@ namespace CombatManager
             }
 
             return CR;
+        }
+
+        public void AdjustMR(int change)
+        {
+            int? startMR = mr;
+            if (mr == null)
+            {
+                mr = 0;
+            }
+            int startNumMr = mr.Value;
+            mr += change;
+            int diff = change;
+            if (mr <= 0)
+            {
+                diff = -startNumMr;
+                mr = null;
+            }
+            if (diff != 0)
+            {
+                int maxDie = HDRoll.HighestDie();
+                int hpdiff = diff * maxDie;
+
+                ChangeHDMod(hpdiff);
+
+            }
+            if (startMR != mr)
+            {
+
+                NotifyPropertyChanged("MR");
+            }
+
         }
 
         public void AdjustDexterity(int value)
@@ -11596,6 +11886,27 @@ namespace CombatManager
                     NotifyPropertyChanged("SwimSpeed");
                 }
             }
+
+            public void AdjustAllSpeed(int speed)
+            {
+                LandSpeed = Math.Max(LandSpeed + speed, 0);
+                if (FlySpeed != null)
+                {
+                    FlySpeed = Math.Max(FlySpeed.Value + speed, 0);
+                }
+                if (SwimSpeed != null)
+                {
+                    SwimSpeed = Math.Max(SwimSpeed.Value + speed, 0);
+                }
+                if (ClimbSpeed != null)
+                {
+                    ClimbSpeed = Math.Max(ClimbSpeed.Value + speed, 0);
+                }
+                if (BurrowSpeed != null)
+                {
+                    BurrowSpeed = Math.Max(BurrowSpeed.Value + speed, 0);
+                }
+            } 
 
             public int MonsterSize
             {

@@ -1777,6 +1777,12 @@ namespace CombatManager
                     monster.Name = "Half-Celestial " + monster.Name;
                 }
             }
+            if (OtherTemplateTabControl.SelectedItem == MythicTab)
+            {
+                monster.MakeSimpleMythic((Monster.SimpleMythicTemplateType)MythicTemplateCombo.SelectedIndex);
+
+
+            }
             if (OtherTemplateTabControl.SelectedItem == OgrekinTab)
             {
                 if (monster.MakeOgrekin(OgrekinBeneficialCombo.SelectedIndex + 1, OgrekinDisadvantageousCommbo.SelectedIndex + 1))

@@ -554,6 +554,16 @@ namespace CombatManager
             
         }
 
+        public int HighestDie()
+        {
+            int high = 0;
+            foreach (DieStep step in AllRolls)
+            {
+                high = Math.Max(step.Die, high);
+            }
+            return high;
+        }
+
 
         [XmlIgnore]
         public int count

@@ -3499,6 +3499,18 @@
                                         <CheckBox Content="Charisma" Margin="108.666,72.874,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="HalfFiendCharismaCheck"  Click="MonsterAdvancerCheck_Checked"/>
                                     </Grid>
                                 </TabItem>
+                                <TabItem x:Name="MythicTab" Background="Transparent" BorderBrush="#00000000">
+                                    <TabItem.Header>Mythic</TabItem.Header>
+                                    <Grid Width="198">
+                                        <ComboBox Margin="8,5,0,0" VerticalAlignment="Top" SelectedIndex="0" HorizontalAlignment="Left" Width="80.5" x:Name="MythicTemplateCombo" SelectionChanged="AdvancedMonsterMultiplierCombo_SelectionChanged">
+                                            <ComboBoxItem Content="Agile"/>
+                                            <ComboBoxItem Content="Arcane"/>
+                                            <ComboBoxItem Content="Divine"/>
+                                            <ComboBoxItem Content="Invincible"/>
+                                            <ComboBoxItem Content="Savage"/>
+                                        </ComboBox>
+                                    </Grid>
+                                </TabItem>
                                 <TabItem x:Name="OgrekinTab" Background="Transparent" BorderBrush="#00000000">
                                     <TabItem.Header>Ogrekin</TabItem.Header>
                                     <Grid Width="198">

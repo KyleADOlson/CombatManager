@@ -3,280 +3,297 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CombatManager.CustomConditionDialog"
         Title="Custom Conditon" Height="492" Width="509" ResizeMode="NoResize">
-	<Window.Resources>     
-         
-		<ItemsPanelTemplate x:Key="PopupItemsPanelTemplate">
-			<WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
-		</ItemsPanelTemplate>
-		<DataTemplate x:Key="SmallImageItemTemplate">
-			<Grid>
-				<Image Width="16" Height="16" Source="{Binding Converter={StaticResource StringImageSmallIconConverter}}"/>
-			</Grid>
-		</DataTemplate>
+    <Window.Resources>
+
+        <ItemsPanelTemplate x:Key="PopupItemsPanelTemplate">
+            <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+        <DataTemplate x:Key="SmallImageItemTemplate">
+            <Grid>
+                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource StringImageSmallIconConverter}}"/>
+            </Grid>
+        </DataTemplate>
 
 
-		<Style x:Key="ListBoxItemStyle3" TargetType="{x:Type ListBoxItem}">
-			<Setter Property="Background" Value="Transparent"/>
-			<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-			<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-			<Setter Property="Padding" Value="2,0,0,0"/>
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="{x:Type ListBoxItem}">
-						<Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="2"/>
-						</Border>
-						<ControlTemplate.Triggers>
-							<Trigger Property="IsSelected" Value="true">
-								<Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
-							</Trigger>
-							<MultiTrigger>
-								<MultiTrigger.Conditions>
-									<Condition Property="IsSelected" Value="true"/>
-									<Condition Property="Selector.IsSelectionActive" Value="false"/>
-								</MultiTrigger.Conditions>
-								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-								<Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"/>
-							</MultiTrigger>
-							<Trigger Property="IsEnabled" Value="false">
-								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-							</Trigger>
-						</ControlTemplate.Triggers>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-	</Window.Resources>
-	<Window.Background>
-		<SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
-	</Window.Background>
+        <Style x:Key="ListBoxItemStyle3" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="Padding" Value="2,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="2"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"/>
+                                    <Condition Property="Selector.IsSelectionActive" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
+    </Window.Background>
     <Grid>
-        
-    	<Border BorderThickness="1" Visibility="{Binding IsChecked, Converter={StaticResource boolToVisibilityConverter}, ElementName=CustomRadioButton}" CornerRadius="6">
-    		<Border.Background>
-    			<SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
-    		</Border.Background>
-    		<Grid>
-    			<Border BorderThickness="1" Margin="5.445,5,97.007,0" VerticalAlignment="Top" CornerRadius="6">
-    				<Border.Background>
-    					<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-    				</Border.Background>
-    				<Grid VerticalAlignment="Top">
-    					<Grid.ColumnDefinitions>
-    						<ColumnDefinition Width="44.319"/>
-    						<ColumnDefinition/>
-    					</Grid.ColumnDefinitions>
-    					<TextBlock TextWrapping="Wrap" Text="Name" Foreground="White"
+
+        <Border BorderThickness="1" Visibility="{Binding IsChecked, Converter={StaticResource boolToVisibilityConverter}, ElementName=CustomRadioButton}" CornerRadius="6">
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource SecondaryColorADarker}"/>
+            </Border.Background>
+            <Grid>
+                <Border BorderThickness="1" Margin="5.445,5,97.007,0" VerticalAlignment="Top" CornerRadius="6">
+                    <Border.Background>
+                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+                    </Border.Background>
+                    <Grid VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="44.319"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock TextWrapping="Wrap" Text="Name" Foreground="White"
     						RenderTransformOrigin="0.667,0.592" VerticalAlignment="Top" Padding="3,0,0,1" Margin="1.75,6,0,0" HorizontalAlignment="Left">
-    						<TextBlock.Effect>
-    							<DropShadowEffect/>
-    						</TextBlock.Effect>
-    					</TextBlock>
-    					<TextBox x:Name="CustomNameBox" Margin="0.001,3,4,3" TextWrapping="Wrap" VerticalContentAlignment="Top"  VerticalAlignment="Top" Grid.Column="1" TextChanged="CustomNameBox_TextChanged"/>
-    				</Grid>
-    			</Border>
-    			<Border BorderThickness="1" Margin="5.445,36.96,8,0" VerticalAlignment="Top" CornerRadius="6" Height="76.373" d:LayoutOverrides="VerticalAlignment">
-    				<Border.Background>
-    					<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-    				</Border.Background>
-    				<Grid>
-    					<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Text" Foreground="White"
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <TextBox x:Name="CustomNameBox" Margin="0.001,3,4,3" TextWrapping="Wrap" VerticalContentAlignment="Top"  VerticalAlignment="Top" Grid.Column="1" TextChanged="CustomNameBox_TextChanged"/>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" Margin="5.445,36.96,8,0" VerticalAlignment="Top" CornerRadius="6" Height="76.373" d:LayoutOverrides="VerticalAlignment">
+                    <Border.Background>
+                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+                    </Border.Background>
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Text" Foreground="White"
     						RenderTransformOrigin="0.56,0.525" VerticalAlignment="Top" Padding="3,0,0,1" Margin="3,1,0,0" Width="38.637">
-    						<TextBlock.Effect>
-    							<DropShadowEffect/>
-    						</TextBlock.Effect>
-    					</TextBlock>
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
                         <TextBox x:Name="CustomTextBox" TextWrapping="Wrap" VerticalContentAlignment="Top"  AcceptsReturn="True" AcceptsTab="True"
     						Height="49.413" VerticalAlignment="Bottom" Margin="3,0,4,3"
             			/>
-    				</Grid>
-    			</Border>
-    			<Border BorderThickness="1" Margin="5.445,117.333,8,0" VerticalAlignment="Top" CornerRadius="6" Height="90.873">
-    				<Border.Background>
-    					<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-    				</Border.Background>
-    				<Grid>
-    					<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Image" Foreground="White"
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" Margin="5.445,117.333,8,0" VerticalAlignment="Top" CornerRadius="6" Height="90.873">
+                    <Border.Background>
+                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+                    </Border.Background>
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Image" Foreground="White"
     						RenderTransformOrigin="0.56,0.525" VerticalAlignment="Top" Padding="3,0,0,1" Margin="3,1,0,0">
-    						<TextBlock.Effect>
-    							<DropShadowEffect/>
-    						</TextBlock.Effect>
-    					</TextBlock>
-    					<ListBox x:Name="CustomImageBox" Margin="3,17.96,4,3" ItemsSource="{Binding Source={StaticResource SmallImages}}"
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ListBox x:Name="CustomImageBox" Margin="3,17.96,4,3" ItemsSource="{Binding Source={StaticResource SmallImages}}"
     						ItemTemplate="{DynamicResource SmallImageItemTemplate}" ItemsPanel="{StaticResource PopupItemsPanelTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle3}"/>
-    				</Grid>
-    			</Border>
-    			<Border BorderThickness="1" Margin="5.445,212.206,8,0" VerticalAlignment="Top" CornerRadius="6" Height="211.127">
-    				<Border.Background>
-    					<SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
-    				</Border.Background>
-    				<Grid>
-    					<CheckBox x:Name="CustomBonusCheckBox" HorizontalAlignment="Left" Content="Bonus" Foreground="White"
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" Margin="5.445,212.206,8,0" VerticalAlignment="Top" CornerRadius="6" Height="211.127">
+                    <Border.Background>
+                        <SolidColorBrush Color="{DynamicResource SecondaryColorBDarker}"/>
+                    </Border.Background>
+                    <Grid>
+                        <CheckBox x:Name="CustomBonusCheckBox" HorizontalAlignment="Left" Content="Bonus" Foreground="White"
     						RenderTransformOrigin="0.56,0.525" VerticalAlignment="Top" Padding="3,0,0,1" Margin="3,5,0,0" Checked="CustomBonusCheckBox_Checked" Unchecked="CustomBonusCheckBox_Unchecked">
-    						<CheckBox.Effect>
-    							<DropShadowEffect/>
-    						</CheckBox.Effect>
-    					</CheckBox>
-    					<Grid x:Name="CustomBonusBorder" Margin="3,25.96,4,3.619">
-            					
-    						<Grid.ColumnDefinitions>
-    							<ColumnDefinition Width="112"/>
-    							<ColumnDefinition Width="4"/>
-    							<ColumnDefinition Width="67"/>
-    							<ColumnDefinition Width="4"/>
-    							<ColumnDefinition Width="125.698"/>
-    							<ColumnDefinition Width="4"/>
-    							<ColumnDefinition Width="0.968*"/>
-    						</Grid.ColumnDefinitions>
-    						<Grid.RowDefinitions>
-    							<RowDefinition Height="28.715"/>
-    							<RowDefinition Height="82.833"/>
-    							<RowDefinition Height="4"/>
-    							<RowDefinition/>
-    						</Grid.RowDefinitions>
-    						<Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6">
-    							<Border.Background>
-    								<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
-    							</Border.Background>
-    							<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
-    								<Rectangle.Fill>
-    									<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-    								</Rectangle.Fill>
-    							</Rectangle>
-    						</Border>
-    						<Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6" Grid.Column="2">
-    							<Border.Background>
-    								<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
-    							</Border.Background>
-    							<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
-    								<Rectangle.Fill>
-    									<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-    								</Rectangle.Fill>
-    							</Rectangle>
-    						</Border>
-    						<Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6" Grid.Column="4" RenderTransformOrigin="1.421,0.513">
-    							<Border.Background>
-    								<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
-    							</Border.Background>
-    							<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
-    								<Rectangle.Fill>
-    									<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-    								</Rectangle.Fill>
-    							</Rectangle>
-    						</Border>
-    						<Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6" Grid.Column="6" RenderTransformOrigin="1.421,0.513">
-    							<Border.Background>
-    								<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
-    							</Border.Background>
-    							<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
-    								<Rectangle.Fill>
-    									<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-    								</Rectangle.Fill>
-    							</Rectangle>
-    						</Border>
-                            	
-    						<TextBlock HorizontalAlignment="Left" Margin="8,5.785,0,0" TextWrapping="Wrap" Text="Str" RenderTransformOrigin="2.813,2.896" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBox x:Name="CustomStrBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding Str, Converter={StaticResource BonusValueConverter}}" Margin="33.613,2.785,0,0" HorizontalAlignment="Left" Width="22" VerticalAlignment="Top" Grid.Row="1" />
-    						<TextBlock HorizontalAlignment="Left" Margin="8,31.745,0,0" TextWrapping="Wrap" Text="Dex" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBox x:Name="CustomDexBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Dex, Converter={StaticResource BonusValueConverter}}"  Margin="33.613,28.745,0,0" HorizontalAlignment="Left" Width="22" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="8,57.705,0,0" TextWrapping="Wrap" Text="Con" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBox x:Name="CustomConBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Con, Converter={StaticResource BonusValueConverter}}"  Margin="33.613,54.705,0,0" HorizontalAlignment="Left" Width="22" RenderTransformOrigin="0.524,0.719" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBlock Margin="58.612,5.953,0,0" TextWrapping="Wrap" Text="Int" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left"/>
-    						<TextBox x:Name="CustomIntBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Int, Converter={StaticResource BonusValueConverter}}"  Margin="84.216,2.953,0,0" HorizontalAlignment="Left" Width="22" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.103,0.488"/>
-    						<TextBlock Margin="58.612,31.934,0,34.127" TextWrapping="Wrap" Text="Wis" d:LayoutOverrides="Height" Grid.Row="1" HorizontalAlignment="Left"/>
-    						<TextBox x:Name="CustomWisBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Wis, Converter={StaticResource BonusValueConverter}}"  Margin="84.235,28.913,0,0" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="22"/>
-    						<TextBlock Margin="58.613,57.873,0,0" TextWrapping="Wrap" Text="Cha" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left"/>
-    						<TextBox x:Name="CustomChaBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Cha, Converter={StaticResource BonusValueConverter}}"  Margin="84.235,54.873,0,0" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="22"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="8,8,0,4.755" TextWrapping="Wrap" d:LayoutOverrides="Height" Foreground="White">
-    							<TextBlock.Effect>
-    								<DropShadowEffect/>
-    							</TextBlock.Effect><Run Text="Stats"/><LineBreak/><Run/></TextBlock>
-    						<TextBlock HorizontalAlignment="Left" Margin="8,8,0,4.755" TextWrapping="Wrap" d:LayoutOverrides="HorizontalAlignment, Height" RenderTransformOrigin="4.983,0.922" Text="Save" Grid.Column="2" Foreground="White">
-    							<TextBlock.Effect>
-    								<DropShadowEffect/>
-    							</TextBlock.Effect>
-    						</TextBlock>
-    						<TextBlock HorizontalAlignment="Left" Margin="8,5.785,0,0" TextWrapping="Wrap" Text="Fort" RenderTransformOrigin="2.813,2.896" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2"/>
+                            <CheckBox.Effect>
+                                <DropShadowEffect/>
+                            </CheckBox.Effect>
+                        </CheckBox>
+                        <Grid x:Name="CustomBonusBorder" Margin="3,25.96,4,3.619">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="112"/>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="67"/>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="125.698"/>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="0.968*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="28.715"/>
+                                <RowDefinition Height="82.833"/>
+                                <RowDefinition Height="4"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+                                </Border.Background>
+                                <Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Border>
+                            <Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6" Grid.Column="2">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+                                </Border.Background>
+                                <Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Border>
+                            <Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6" Grid.Column="4" RenderTransformOrigin="1.421,0.513">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+                                </Border.Background>
+                                <Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Border>
+                            <Border BorderThickness="1" Grid.RowSpan="2" CornerRadius="6" Grid.Column="6" RenderTransformOrigin="1.421,0.513">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+                                </Border.Background>
+                                <Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Border>
+
+                            <TextBlock HorizontalAlignment="Left" Margin="8,5.785,0,0" TextWrapping="Wrap" Text="Str" RenderTransformOrigin="2.813,2.896" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBox x:Name="CustomStrBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding Str, Converter={StaticResource BonusValueConverter}}" Margin="33.613,2.785,0,0" HorizontalAlignment="Left" Width="22" VerticalAlignment="Top" Grid.Row="1" />
+                            <TextBlock HorizontalAlignment="Left" Margin="8,31.745,0,0" TextWrapping="Wrap" Text="Dex" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBox x:Name="CustomDexBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Dex, Converter={StaticResource BonusValueConverter}}"  Margin="33.613,28.745,0,0" HorizontalAlignment="Left" Width="22" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,57.705,0,0" TextWrapping="Wrap" Text="Con" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBox x:Name="CustomConBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Con, Converter={StaticResource BonusValueConverter}}"  Margin="33.613,54.705,0,0" HorizontalAlignment="Left" Width="22" RenderTransformOrigin="0.524,0.719" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBlock Margin="58.612,5.953,0,0" TextWrapping="Wrap" Text="Int" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="CustomIntBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Int, Converter={StaticResource BonusValueConverter}}"  Margin="84.216,2.953,0,0" HorizontalAlignment="Left" Width="22" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.103,0.488"/>
+                            <TextBlock Margin="58.612,31.934,0,34.127" TextWrapping="Wrap" Text="Wis" d:LayoutOverrides="Height" Grid.Row="1" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="CustomWisBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Wis, Converter={StaticResource BonusValueConverter}}"  Margin="84.235,28.913,0,0" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="22"/>
+                            <TextBlock Margin="58.613,57.873,0,0" TextWrapping="Wrap" Text="Cha" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="CustomChaBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Cha, Converter={StaticResource BonusValueConverter}}"  Margin="84.235,54.873,0,0" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="22"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,8,0,4.755" TextWrapping="Wrap" d:LayoutOverrides="Height" Foreground="White">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect/>
+                                </TextBlock.Effect><Run Text="Stats"/><LineBreak/><Run/></TextBlock>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,8,0,4.755" TextWrapping="Wrap" d:LayoutOverrides="HorizontalAlignment, Height" RenderTransformOrigin="4.983,0.922" Text="Save" Grid.Column="2" Foreground="White">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,5.785,0,0" TextWrapping="Wrap" Text="Fort" RenderTransformOrigin="2.813,2.896" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2"/>
                             <TextBox x:Name="FortSaveBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Fort, Converter={StaticResource BonusValueConverter}}" Margin="36.93,2.953,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Width="22" HorizontalAlignment="Left" />
                             <TextBox x:Name="AllSavesBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding AllSaves, Converter={StaticResource BonusValueConverter}}" Margin="36.93,5.168,0,1.587" Grid.Column="2" d:LayoutOverrides="Height" Width="22" HorizontalAlignment="Left"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="8,31.766,0,35.107" TextWrapping="Wrap" Text="Ref" RenderTransformOrigin="2.813,2.896" Grid.Row="1" Grid.Column="2" d:LayoutOverrides="Height"/>
-    						<TextBox x:Name="RefSaveBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Ref, Converter={StaticResource BonusValueConverter}}" Margin="36.93,28.913,0,0" Grid.Row="1" Grid.Column="2" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" />
-    						<TextBlock HorizontalAlignment="Left" Margin="8,57.705,0,0" TextWrapping="Wrap" Text="Will" RenderTransformOrigin="2.813,2.896" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top"/>
-    						<TextBox x:Name="WillSaveBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Will, Converter={StaticResource BonusValueConverter}}"  Margin="36.93,54.873,0,0" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Width="22" HorizontalAlignment="Left" />
-    						<TextBlock HorizontalAlignment="Left" Margin="8,8,0,4.755" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Attack" Grid.Column="4" d:LayoutOverrides="HorizontalAlignment, Height" Foreground="White">
-    							<TextBlock.Effect>
-    								<DropShadowEffect/>
-    							</TextBlock.Effect>
-    						</TextBlock>
-    						<TextBox x:Name="AllAttackBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding AllAttack, Converter={StaticResource BonusValueConverter}}" Margin="47.002,2.785,58.768,0" Grid.Column="4" d:LayoutOverrides="VerticalAlignment" VerticalAlignment="Top" Grid.Row="1" Width="22"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="9.153,5.953,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="All Hit" Grid.Column="4" d:LayoutOverrides="HorizontalAlignment" Grid.Row="1" VerticalAlignment="Top"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="70.002,5.785,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dmg" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top"/>
-    						<TextBox x:Name="AttackDamageBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding AttackDamage, Converter={StaticResource BonusValueConverter}}" Margin="99.819,2.785,0,0" Grid.Column="4" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" d:LayoutOverrides="VerticalAlignment"/>
-    						<TextBox x:Name="MeleeAttackBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding MeleeAttack, Converter={StaticResource BonusValueConverter}}" Margin="47.002,28.745,58.768,0" Grid.Column="4" VerticalAlignment="Top" Grid.Row="1" Width="22"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="25.993,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Hit" Grid.Column="4" Grid.Row="1" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="70.002,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dmg" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top"/>
-    						<TextBox x:Name="MeleeDamageBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding MeleeDamage, Converter={StaticResource BonusValueConverter}}" Margin="99.819,28.745,0,0" Grid.Column="4" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBox x:Name="RangedAttackBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding RangedAttack, Converter={StaticResource BonusValueConverter}}" Margin="47.002,54.705,58.768,0" Grid.Column="4" VerticalAlignment="Top" Grid.Row="1" Width="22"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="25.993,57.705,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Hit" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="70.002,57.705,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dmg" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top"/>
-    						<TextBox x:Name="RangedDamageBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding RangedDamage, Converter={StaticResource BonusValueConverter}}" Margin="99.819,54.705,0,0" Grid.Column="4" Width="22" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"/>
-    						<Image HorizontalAlignment="Left" Margin="8,31.705,0,0" Width="16" Source="Images/sword-16.png" Grid.Column="4" Grid.Row="1" ToolTip="Melee" Height="16" VerticalAlignment="Top"/>
-    						<Image HorizontalAlignment="Left" Margin="8,57.665,0,0" Width="16" Source="Images/bow-16.png" Grid.Column="4" Grid.Row="1" Height="16" VerticalAlignment="Top" RenderTransformOrigin="0.421,0.339" ToolTip="Ranged"/>
-    						<TextBlock Margin="77.905,57.705,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Other" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-    						<TextBox x:Name="ACBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding AC, Converter={StaticResource BonusValueConverter}}" Margin="133.857,54.873,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.188" Grid.Row="1"/>
-                            	
-    						<TextBlock HorizontalAlignment="Left" Margin="8,5.953,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dodge" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
-    						<TextBox x:Name="DodgeBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Dodge, Converter={StaticResource BonusValueConverter}}" Margin="53.905,2.953,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBlock HorizontalAlignment="Left" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Margin="8,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Natural" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
-    						<TextBox x:Name="NaturalBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding NaturalArmor, Converter={StaticResource BonusValueConverter}}" Margin="53.905,28.913,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBlock HorizontalAlignment="Left" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Margin="8,57.873,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Shield" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
-    						<Image Source="Images/shield-16.png" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Height="16" Grid.Column="6" Margin="8,8,0,0">
-    							<Image.Effect>
-    								<DropShadowEffect/>
-    							</Image.Effect>
-    						</Image>
-    						<TextBox x:Name="ShieldBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Shield, Converter={StaticResource BonusValueConverter}}" Margin="53.905,54.873,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="77.905,5.953,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Deflection" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
-    						<TextBox x:Name="DeflectionBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Deflection, Converter={StaticResource BonusValueConverter}}" Margin="133.857,2.953,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBlock IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Margin="77.905,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Armor" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-    						<TextBox x:Name="ArmorBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Armor, Converter={StaticResource BonusValueConverter}}" Margin="133.857,28.913,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="28.683,8.04,0,4.715" TextWrapping="Wrap" Text="AC" Grid.Column="6" d:LayoutOverrides="Height" Foreground="White">
-    							<TextBlock.Effect>
-    								<DropShadowEffect/>
-    							</TextBlock.Effect>
-    						</TextBlock>
-    						<Border BorderThickness="1" CornerRadius="6" RenderTransformOrigin="1.421,0.513" Grid.Row="3" Grid.ColumnSpan="3">
-    							<Border.Background>
-    								<SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
-    							</Border.Background>
-    							<Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
-    								<Rectangle.Fill>
-    									<SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
-    								</Rectangle.Fill>
-    							</Rectangle>
-    						</Border>
-    						<TextBox x:Name="CMBText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding CMB, Converter={StaticResource BonusValueConverter}}" Margin="33.613,34.04,0,0" VerticalAlignment="Top" Width="22" HorizontalAlignment="Left" Grid.Row="3"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="4.163,37.04,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="CMB" VerticalAlignment="Top" Grid.Row="3" d:LayoutOverrides="HorizontalAlignment"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="55.613,0,0,11" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="CMD" VerticalAlignment="Bottom" Grid.Row="3"/>
-    						<TextBox x:Name="CMDText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding CMD, Converter={StaticResource BonusValueConverter}}" Margin="84.235,34.04,0,0" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3"/>
-    						<TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Other" Foreground="White" Grid.Row="3" VerticalAlignment="Top">
-    							<TextBlock.Effect>
-    								<DropShadowEffect/>
-    							</TextBlock.Effect>
-    						</TextBlock>
-    						<TextBlock HorizontalAlignment="Left" Margin="-4,0,0,11" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Size" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment"/>
-    						<TextBox x:Name="SizeText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding Size, Converter={StaticResource BonusValueConverter}}" Margin="20.983,34.04,0,0" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="2"/>
-    						
-    					</Grid>
-    				</Grid>
-    			</Border>
-    			<Button x:Name="ClearCustomButton" Content="Clear" HorizontalAlignment="Right" Margin="0,9,8,0" VerticalAlignment="Top" Width="75" Click="ClearCustomButton_Click"/>
-            		        	
-    		</Grid>         
-    	</Border>
-    	<Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,8" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
-    	<Button x:Name="OKButton" Content="OK" Margin="0,0,87,8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" IsDefault="True" Click="OKButton_Click"/>
-        
+                            <TextBlock HorizontalAlignment="Left" Margin="8,31.766,0,35.107" TextWrapping="Wrap" Text="Ref" RenderTransformOrigin="2.813,2.896" Grid.Row="1" Grid.Column="2" d:LayoutOverrides="Height"/>
+                            <TextBox x:Name="RefSaveBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Ref, Converter={StaticResource BonusValueConverter}}" Margin="36.93,28.913,0,0" Grid.Row="1" Grid.Column="2" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <TextBlock HorizontalAlignment="Left" Margin="8,57.705,0,0" TextWrapping="Wrap" Text="Will" RenderTransformOrigin="2.813,2.896" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top"/>
+                            <TextBox x:Name="WillSaveBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Will, Converter={StaticResource BonusValueConverter}}"  Margin="36.93,54.873,0,0" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Width="22" HorizontalAlignment="Left" />
+                            <TextBlock HorizontalAlignment="Left" Margin="8,8,0,4.755" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Attack" Grid.Column="4" d:LayoutOverrides="HorizontalAlignment, Height" Foreground="White">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                            <TextBox x:Name="AllAttackBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding AllAttack, Converter={StaticResource BonusValueConverter}}" Margin="47.002,2.785,58.768,0" Grid.Column="4" d:LayoutOverrides="VerticalAlignment" VerticalAlignment="Top" Grid.Row="1" Width="22"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="9.153,5.953,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="All Hit" Grid.Column="4" d:LayoutOverrides="HorizontalAlignment" Grid.Row="1" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="70.002,5.785,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dmg" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top"/>
+                            <TextBox x:Name="AttackDamageBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding AttackDamage, Converter={StaticResource BonusValueConverter}}" Margin="99.819,2.785,0,0" Grid.Column="4" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" d:LayoutOverrides="VerticalAlignment"/>
+                            <TextBox x:Name="MeleeAttackBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding MeleeAttack, Converter={StaticResource BonusValueConverter}}" Margin="47.002,28.745,58.768,0" Grid.Column="4" VerticalAlignment="Top" Grid.Row="1" Width="22"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="25.993,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Hit" Grid.Column="4" Grid.Row="1" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="70.002,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dmg" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top"/>
+                            <TextBox x:Name="MeleeDamageBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding MeleeDamage, Converter={StaticResource BonusValueConverter}}" Margin="99.819,28.745,0,0" Grid.Column="4" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBox x:Name="RangedAttackBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding RangedAttack, Converter={StaticResource BonusValueConverter}}" Margin="47.002,54.705,58.768,0" Grid.Column="4" VerticalAlignment="Top" Grid.Row="1" Width="22"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="25.993,57.705,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Hit" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="70.002,57.705,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dmg" Grid.Column="4" Grid.Row="1" VerticalAlignment="Top"/>
+                            <TextBox x:Name="RangedDamageBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding RangedDamage, Converter={StaticResource BonusValueConverter}}" Margin="99.819,54.705,0,0" Grid.Column="4" Width="22" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"/>
+                            <Image HorizontalAlignment="Left" Margin="8,31.705,0,0" Width="16" Source="Images/sword-16.png" Grid.Column="4" Grid.Row="1" ToolTip="Melee" Height="16" VerticalAlignment="Top"/>
+                            <Image HorizontalAlignment="Left" Margin="8,57.665,0,0" Width="16" Source="Images/bow-16.png" Grid.Column="4" Grid.Row="1" Height="16" VerticalAlignment="Top" RenderTransformOrigin="0.421,0.339" ToolTip="Ranged"/>
+                            <TextBlock Margin="77.905,57.705,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Other" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="ACBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding AC, Converter={StaticResource BonusValueConverter}}" Margin="133.857,54.873,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.188" Grid.Row="1"/>
+
+                            <TextBlock HorizontalAlignment="Left" Margin="8,5.953,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Dodge" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
+                            <TextBox x:Name="DodgeBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Dodge, Converter={StaticResource BonusValueConverter}}" Margin="53.905,2.953,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBlock HorizontalAlignment="Left" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Margin="8,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Natural" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
+                            <TextBox x:Name="NaturalBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding NaturalArmor, Converter={StaticResource BonusValueConverter}}" Margin="53.905,28.913,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBlock HorizontalAlignment="Left" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Margin="8,57.873,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Shield" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
+                            <Image Source="Images/shield-16.png" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16" Height="16" Grid.Column="6" Margin="8,8,0,0">
+                                <Image.Effect>
+                                    <DropShadowEffect/>
+                                </Image.Effect>
+                            </Image>
+                            <TextBox x:Name="ShieldBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Shield, Converter={StaticResource BonusValueConverter}}" Margin="53.905,54.873,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="77.905,5.953,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Deflection" Grid.Column="6" Grid.Row="1" VerticalAlignment="Top"/>
+                            <TextBox x:Name="DeflectionBonusText"  IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Deflection, Converter={StaticResource BonusValueConverter}}" Margin="133.857,2.953,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBlock IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Margin="77.905,31.934,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Armor" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <TextBox x:Name="ArmorBonusText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}" Text="{Binding Armor, Converter={StaticResource BonusValueConverter}}" Margin="133.857,28.913,0,0" Grid.Column="6" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="28.683,8.04,0,4.715" TextWrapping="Wrap" Text="AC" Grid.Column="6" d:LayoutOverrides="Height" Foreground="White">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                            <Border BorderThickness="1" CornerRadius="6" RenderTransformOrigin="1.421,0.513" Grid.Row="3" Grid.ColumnSpan="3">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+                                </Border.Background>
+                                <Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Border>
+                            <TextBox x:Name="CMBText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding CMB, Converter={StaticResource BonusValueConverter}}" Margin="33.613,34.04,0,0" VerticalAlignment="Top" Width="22" HorizontalAlignment="Left" Grid.Row="3"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="4.163,37.04,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="CMB" VerticalAlignment="Top" Grid.Row="3" d:LayoutOverrides="HorizontalAlignment"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="60,0,0,11.111" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="CMD" VerticalAlignment="Bottom" Grid.Row="3"/>
+                            <TextBox x:Name="CMDText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding CMD, Converter={StaticResource BonusValueConverter}}" Margin="88,34.444,0,0" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Other" Foreground="White" Grid.Row="3" VerticalAlignment="Top">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                            <TextBlock HorizontalAlignment="Left" Margin="0,0,0,11.111" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Size" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="2"/>
+                            <TextBox x:Name="SizeText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding Size, Converter={StaticResource BonusValueConverter}}" Margin="25,34.444,0,0" Width="22" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="2"/>
+                            <Border BorderThickness="1" CornerRadius="6" RenderTransformOrigin="1.421,0.513" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="4" Margin="2.889,1.444,104.222,2.111" Grid.RowSpan="2">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
+                                </Border.Background>
+                                <Rectangle Margin="2,2,2,0" StrokeThickness="0" Height="26" VerticalAlignment="Top" RadiusX="6" RadiusY="6">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Border>
+                            <TextBlock HorizontalAlignment="Left" Margin="10.889,5.444,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="Skills" Foreground="White" Grid.Row="3" VerticalAlignment="Top" Grid.Column="4">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                            <TextBlock HorizontalAlignment="Left" Margin="8.889,35.444,0,0" TextWrapping="Wrap" RenderTransformOrigin="4.983,0.922" Text="All Skills" VerticalAlignment="Top" Grid.Row="3" Grid.Column="4"/>
+                            <TextBox x:Name="AllSkillsText" IsEnabled="{Binding IsChecked, ElementName=CustomBonusCheckBox}"  Text="{Binding AllSkills, Converter={StaticResource BonusValueConverter}}" Margin="56.889,34.444,0,0" VerticalAlignment="Top" Width="22" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="4"/>
+
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Button x:Name="ClearCustomButton" Content="Clear" HorizontalAlignment="Right" Margin="0,9,8,0" VerticalAlignment="Top" Width="75" Click="ClearCustomButton_Click"/>
+
+            </Grid>
+        </Border>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,8" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
+        <Button x:Name="OKButton" Content="OK" Margin="0,0,87,8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" IsDefault="True" Click="OKButton_Click"/>
+
     </Grid>
 </Window>

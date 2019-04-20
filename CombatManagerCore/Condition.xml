@@ -81,6 +81,16 @@ A confused creature who can't carry out the indicated action does nothing but ba
     <Name>Energy Drained</Name>
     <Text>The character gains one or more negative levels, which might become permanent. If the subject has at least as many negative levels as Hit Dice, he dies. See Energy Drain and Negative levels for more information.</Text>
     <Image>battery-low</Image>
+    <Bonus>
+      <AllAttack>-1</AllAttack>
+      <LoseDex>false</LoseDex>
+      <AllSaves>-1</AllSaves>
+      <AllSkills>-1</AllSkills>
+      <CMB>-1</CMB>
+      <CMD>-1</CMD>
+      <StrZero>false</StrZero>
+      <DexZero>false</DexZero>
+    </Bonus>
   </Condition>
   <Condition>
     <Name>Entangled</Name>
