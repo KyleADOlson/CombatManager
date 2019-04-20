@@ -1702,6 +1702,21 @@ namespace CombatManager
                     monster.Name = monster.Name + " " + CMStringUtilities.PlusFormatNumber(res) + " HD";
                 }
             }
+            if (Equals(OtherTemplateTabControl.SelectedItem, GhostTab))
+            {
+                //make a collection of any more are added
+                bool cTouch = (CorruptingTouchCheckBox.IsChecked == true);
+                bool cGaze = (CorruptingGazeCheckBox.IsChecked == true);
+                bool dTouch = (DrainingTouchCheckBox.IsChecked == true);
+                bool fMoan = (FrightfulMoanCheckBox.IsChecked == true);
+                bool Malevolence = (MalevolenceCheckBox.IsChecked == true);
+                bool Tk = (TelekinesisCheckBox.IsChecked == true);
+
+                if (monster.MakeGhost(cTouch, cGaze, dTouch, fMoan, Malevolence, Tk))
+                { 
+                    monster.Name = "Ghost " + monster.Name;
+                }
+            }
             if (OtherTemplateTabControl.SelectedItem == HalfDragonTab)
             {
                 if (monster.MakeHalfDragon((string)((ComboBoxItem)HalfDragonColorCombo.SelectedValue).Content))

@@ -3338,7 +3338,7 @@ namespace CombatManager
 
             return val;
         }
-
+#region Templates
         public bool MakeAdvanced()
         {
             AdjustNaturalArmor(2);
@@ -4601,6 +4601,151 @@ namespace CombatManager
             return true;
         }
 
+        public bool MakeGhost(bool cTouch, bool cGaze, bool dTouch, bool fMoan, bool Malevolence, bool Tk)
+        {
+            if (string.Compare(Type, "undead", true) == 0 || string.Compare(Type, "construct", true) == 0 || Charisma < 6)
+            {
+                return false;
+            }
+            //increase CR
+            AdjustCR(2);
+
+            //make alignment evil
+            AlignmentType align = ParseAlignment(Alignment);
+            align.Moral = MoralAxis.Evil;
+            Alignment = AlignmentText(align);
+
+            //Make undead
+            Type = "undead";
+            SubType = "Incorporeal";
+                var aCondition = new ActiveCondition
+                {
+                    Condition = Condition.FindCondition("Incorporeal")
+                };
+                AddCondition(aCondition);
+
+            //add undead immunites
+            Immune = AddToStringList(Immune, "undead immunities");
+
+            //change ability scores
+            Strength = null;
+            Constitution = null;
+            AdjustCharisma(4);
+
+            //add skill bonuses(class skills?)
+            AddRacialSkillBonus("Perception", 8);
+            AddRacialSkillBonus("Stealth", 8);
+
+            //remove movements, add fly(what if it already could fly better?)
+            Speed = "";
+            Speed = "Fly 30 ft. (perfect)";
+            
+            //remove attacks and ranged attacks(if ghost touch add back manually)
+            Melee = "";
+            Ranged = "";
+
+            //Make HD D8
+            DieRoll roll = HDRoll;
+            roll.die = 8;
+            //add charisma and toughness
+            roll.mod = AbilityBonus(Charisma) * roll.TotalCount +
+                       (roll.TotalCount < 3 ? 3 : roll.TotalCount);
+            HD = "(" + DieRollText(roll) + ")";
+            HP = roll.AverageRoll();
+
+            //Reduce Natural armor to 0
+            AdjustNaturalArmor(0);
+
+            //Remove Armor and shield bonuses
+            Armor = 0;
+            Shield = 0;
+
+            // Add Deflection = to Charisma bonus
+            Deflection = AbilityBonus(Charisma);
+
+            //add darkvision
+            Senses = ChangeDarkvisionAtLeast(Senses, 60);
+
+            //Defensive Abilities: Ghosts gain channel resistance +4, 
+            DefensiveAbilities = ChangeSkillStringMod(DefensiveAbilities, "channel resistance", 4, true);
+
+            //add rejuvenation (su)
+            SpecialAbility ab = new SpecialAbility();
+            ab.Name = "Rejuvenation";
+            ab.Text = "In most cases, it’s difficult to destroy a ghost through simple combat: the “destroyed” spirit restores itself in 2d4 days. Even the most powerful spells are usually only temporary solutions. The only way to permanently destroy a ghost is to determine the reason for its existence and set right whatever prevents it from resting in peace. The exact means varies with each spirit and may require a good deal of research, and should be created specifically for each different ghost by the GM.";
+            ab.Type = "Su";
+            SpecialAbilitiesList.Add(ab);
+
+            if (cTouch)
+            {            //Corrupting Touch
+                SpecialAttacks = AddToStringList(SpecialAttacks, "Corrupting Touch Fort Half DC: " + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString() + " (Touch +" + (BaseAtk + AbilityBonus(Charisma)).ToString() + " (" + CR + "d6 plus 1d4 Cha))");
+                ab = new SpecialAbility();
+                ab.Name = "Corrupting Touch";
+                ab.Type = "Su";
+                ab.Text = "All ghosts gain this incorporeal touch attack. By passing part of its incorporeal body through a foe’s body as a standard action, the ghost inflicts a number of d6s equal to its CR in damage. This damage is not negative energy—it manifests in the form of physical wounds and aches from supernatural aging. Creatures immune to magical aging are immune to this damage, but otherwise the damage bypasses all forms of damage reduction. A Fortitude save halves the damage inflicted.";
+                SpecialAbilitiesList.Add(ab);
+            }
+            //special attacks to choose from
+
+
+            if (cGaze)
+            {
+                //Corrupting Gaze
+                SpecialAttacks = AddToStringList(SpecialAttacks, "Corrupting Gaze 30' Fort Negates Charisma Damage DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString() + " (Gaze (2d10 plus 1d4 Cha))");
+                ab = new SpecialAbility();
+                ab.Name = "Corrupting Gaze";
+                ab.Type = "Su";
+                ab.Text = "The ghost is disfigured through age or violence, and has a gaze attack with a range of 30 feet that causes 2d10 damage and 1d4 Charisma damage (Fortitude save negates Charisma damage but not physical damage).";
+                SpecialAbilitiesList.Add(ab); 
+            }
+
+            if (dTouch)
+            {
+                //Draining Touch
+                SpecialAttacks = AddToStringList(SpecialAttacks, "Draining Touch (Touch +" + (BaseAtk + AbilityBonus(Charisma)).ToString() + " 1d4 drain from chosen Stat)");
+                ab = new SpecialAbility();
+                ab.Name = "Draining Touch";
+                ab.Type = "Su";
+                ab.Text = "The ghost died while insane or diseased. It gains a touch attack that drains 1d4 points from any one ability score it selects on a hit. On each such successful attack, the ghost heals 5 points of damage to itself. When a ghost makes a draining touch attack, it cannot use its standard ghostly touch attack.";
+                SpecialAbilitiesList.Add(ab); 
+            }
+
+            if (fMoan)
+            {
+                //Frightful Moan
+                SpecialAttacks = AddToStringList(SpecialAttacks, "Frightful Moan 30' Spread Will Negates DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString());
+                ab = new SpecialAbility();
+                ab.Name = "Frightful Moan";
+                ab.Type = "Su";
+                ab.Text = "The ghost died in the throes of crippling terror. It can emit a frightful moan as a standard action. All living creatures within a 30-foot spread must succeed on a Will save or become panicked for 2d4 rounds. This is a sonic mind-affecting fear effect. A creature that successfully saves against the moan cannot be affected by the same ghost’s moan for 24 hours.";
+                SpecialAbilitiesList.Add(ab); 
+            }
+
+            if (Malevolence)
+            {
+                //Malevolence
+                SpecialAttacks = AddToStringList(SpecialAttacks, "Malevolence Will DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString());
+                ab = new SpecialAbility();
+                ab.Name = "Malevolence";
+                ab.Type = "Su";
+                ab.Text = "The ghost died while insane or diseased. It gains a touch attack that drains 1d4 points from any one ability score it selects on a hit. On each such successful attack, the ghost heals 5 points of damage to itself. When a ghost makes a draining touch attack, it cannot use its standard ghostly touch attack.";
+                SpecialAbilitiesList.Add(ab); 
+            }
+
+            if (Tk)
+            {
+                //Telekinesis
+                SpecialAttacks = AddToStringList(SpecialAttacks, "Telekinesis Will DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString());
+                ab = new SpecialAbility();
+                ab.Name = "Telekinesis";
+                ab.Type = "Su";
+                ab.Text = "The ghost’s death involved great physical trauma. The ghost can use telekinesis as a standard action once every 1d4 rounds (caster level 12th or equal to the ghost’s HD, whichever is higher).";
+                SpecialAbilitiesList.Add(ab); 
+            }
+
+            return true;
+        }
+
         public enum ZombieType
         {
             Normal = 0,
@@ -4992,7 +5137,7 @@ namespace CombatManager
 
             return true;
         }
-
+#endregion
 
         public void ChangeHDToDie(int die)
         {
