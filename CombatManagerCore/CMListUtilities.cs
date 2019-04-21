@@ -71,5 +71,11 @@ namespace CombatManager
                 
 
         }
+
+        public static bool IndexInList<T>(this IList<T> list, int index)
+        {
+            return index >= 0 && index < list.Count;
+        }
+
     }
 }

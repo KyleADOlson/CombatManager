@@ -3338,7 +3338,7 @@ namespace CombatManager
 
             return val;
         }
-#region Templates
+        #region Templates
         public bool MakeAdvanced()
         {
             AdjustNaturalArmor(2);
@@ -4601,9 +4601,39 @@ namespace CombatManager
             return true;
         }
 
-        public bool MakeGhost(bool cTouch, bool cGaze, bool dTouch, bool fMoan, bool Malevolence, bool Tk)
+        public enum GhostTemplateAbilities
         {
-            if (string.Compare(Type, "undead", true) == 0 || string.Compare(Type, "construct", true) == 0 || Charisma < 6)
+            CorruptingGaze = 0,
+            DrainingTouch = 1,
+            FrightfulMoan = 2,
+            Malevolence = 3,
+            Telekinesis = 4
+        }
+
+        public static String GetGhostTemplateAbilityName(GhostTemplateAbilities ability)
+        {
+            switch (ability)
+            {
+                case Monster.GhostTemplateAbilities.CorruptingGaze:
+                    return "Corrupting Gaze";
+                case Monster.GhostTemplateAbilities.DrainingTouch:
+                    return "Draining Touch";
+                case Monster.GhostTemplateAbilities.FrightfulMoan:
+                    return "Frightful Moan";
+                case Monster.GhostTemplateAbilities.Malevolence:
+                    return "Malevolence";
+                case Monster.GhostTemplateAbilities.Telekinesis:
+                default:
+                    return "Telekinesis";
+            }
+        }
+
+
+
+        public bool MakeGhost(GhostTemplateAbilities[] ghostTemplateAbilities)
+        {
+            if (string.Compare(Type, "undead", true) == 0 || string.Compare(Type, "construct", true) == 0 || Charisma < 6
+                || ghostTemplateAbilities == null || ghostTemplateAbilities.Length != 5)
             {
                 return false;
             }
@@ -4618,11 +4648,11 @@ namespace CombatManager
             //Make undead
             Type = "undead";
             SubType = "Incorporeal";
-                var aCondition = new ActiveCondition
-                {
-                    Condition = Condition.FindCondition("Incorporeal")
-                };
-                AddCondition(aCondition);
+            var aCondition = new ActiveCondition
+            {
+                Condition = Condition.FindCondition("Incorporeal")
+            };
+            AddCondition(aCondition);
 
             //add undead immunites
             Immune = AddToStringList(Immune, "undead immunities");
@@ -4637,9 +4667,18 @@ namespace CombatManager
             AddRacialSkillBonus("Stealth", 8);
 
             //remove movements, add fly(what if it already could fly better?)
-            Speed = "";
-            Speed = "Fly 30 ft. (perfect)";
-            
+
+            int? oldFly = Adjuster.FlySpeed;
+
+            int newSpeed = 30;
+            if (oldFly != null && oldFly.Value > 30)
+            {
+                newSpeed = oldFly.Value;
+            }
+
+            Speed = "Fly " + newSpeed + " ft. (perfect)";
+
+
             //remove attacks and ranged attacks(if ghost touch add back manually)
             Melee = "";
             Ranged = "";
@@ -4676,71 +4715,74 @@ namespace CombatManager
             ab.Type = "Su";
             SpecialAbilitiesList.Add(ab);
 
-            if (cTouch)
-            {            //Corrupting Touch
-                SpecialAttacks = AddToStringList(SpecialAttacks, "Corrupting Touch Fort Half DC: " + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString() + " (Touch +" + (BaseAtk + AbilityBonus(Charisma)).ToString() + " (" + CR + "d6 plus 1d4 Cha))");
-                ab = new SpecialAbility();
-                ab.Name = "Corrupting Touch";
-                ab.Type = "Su";
-                ab.Text = "All ghosts gain this incorporeal touch attack. By passing part of its incorporeal body through a foe’s body as a standard action, the ghost inflicts a number of d6s equal to its CR in damage. This damage is not negative energy—it manifests in the form of physical wounds and aches from supernatural aging. Creatures immune to magical aging are immune to this damage, but otherwise the damage bypasses all forms of damage reduction. A Fortitude save halves the damage inflicted.";
-                SpecialAbilitiesList.Add(ab);
-            }
+            //Corrupting Touch
+            SpecialAttacks = AddToStringList(SpecialAttacks, "Corrupting Touch Fort Half DC: " + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString() + " (Touch +" + (BaseAtk + AbilityBonus(Charisma)).ToString() + " (" + CR + "d6 plus 1d4 Cha))");
+            ab = new SpecialAbility();
+            ab.Name = "Corrupting Touch";
+            ab.Type = "Su";
+            ab.Text = "All ghosts gain this incorporeal touch attack. By passing part of its incorporeal body through a foe’s body as a standard action, the ghost inflicts a number of d6s equal to its CR in damage. This damage is not negative energy—it manifests in the form of physical wounds and aches from supernatural aging. Creatures immune to magical aging are immune to this damage, but otherwise the damage bypasses all forms of damage reduction. A Fortitude save halves the damage inflicted.";
+            SpecialAbilitiesList.Add(ab);
+
             //special attacks to choose from
+            int bonusAbilites = (this.GetCRIntWholeNumber() - 3) / 3;
 
-
-            if (cGaze)
+            for (int i = 0; i < bonusAbilites.Max(5); i++)
             {
-                //Corrupting Gaze
-                SpecialAttacks = AddToStringList(SpecialAttacks, "Corrupting Gaze 30' Fort Negates Charisma Damage DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString() + " (Gaze (2d10 plus 1d4 Cha))");
-                ab = new SpecialAbility();
-                ab.Name = "Corrupting Gaze";
-                ab.Type = "Su";
-                ab.Text = "The ghost is disfigured through age or violence, and has a gaze attack with a range of 30 feet that causes 2d10 damage and 1d4 Charisma damage (Fortitude save negates Charisma damage but not physical damage).";
-                SpecialAbilitiesList.Add(ab); 
-            }
+                GhostTemplateAbilities ability = ghostTemplateAbilities[i];
+                switch (ability)
+                {
+                    case GhostTemplateAbilities.CorruptingGaze:
 
-            if (dTouch)
-            {
-                //Draining Touch
-                SpecialAttacks = AddToStringList(SpecialAttacks, "Draining Touch (Touch +" + (BaseAtk + AbilityBonus(Charisma)).ToString() + " 1d4 drain from chosen Stat)");
-                ab = new SpecialAbility();
-                ab.Name = "Draining Touch";
-                ab.Type = "Su";
-                ab.Text = "The ghost died while insane or diseased. It gains a touch attack that drains 1d4 points from any one ability score it selects on a hit. On each such successful attack, the ghost heals 5 points of damage to itself. When a ghost makes a draining touch attack, it cannot use its standard ghostly touch attack.";
-                SpecialAbilitiesList.Add(ab); 
-            }
+                        //Corrupting Gaze
+                        SpecialAttacks = AddToStringList(SpecialAttacks, "Corrupting Gaze 30' Fort Negates Charisma Damage DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString() + " (Gaze (2d10 plus 1d4 Cha))");
+                        ab = new SpecialAbility();
+                        ab.Name = "Corrupting Gaze";
+                        ab.Type = "Su";
+                        ab.Text = "The ghost is disfigured through age or violence, and has a gaze attack with a range of 30 feet that causes 2d10 damage and 1d4 Charisma damage (Fortitude save negates Charisma damage but not physical damage).";
+                        SpecialAbilitiesList.Add(ab);
 
-            if (fMoan)
-            {
-                //Frightful Moan
-                SpecialAttacks = AddToStringList(SpecialAttacks, "Frightful Moan 30' Spread Will Negates DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString());
-                ab = new SpecialAbility();
-                ab.Name = "Frightful Moan";
-                ab.Type = "Su";
-                ab.Text = "The ghost died in the throes of crippling terror. It can emit a frightful moan as a standard action. All living creatures within a 30-foot spread must succeed on a Will save or become panicked for 2d4 rounds. This is a sonic mind-affecting fear effect. A creature that successfully saves against the moan cannot be affected by the same ghost’s moan for 24 hours.";
-                SpecialAbilitiesList.Add(ab); 
-            }
+                        break;
+                    case GhostTemplateAbilities.DrainingTouch:
+                        //Draining Touch
+                        SpecialAttacks = AddToStringList(SpecialAttacks, "Draining Touch (Touch +" + (BaseAtk + AbilityBonus(Charisma)).ToString() + " 1d4 drain from chosen Stat)");
+                        ab = new SpecialAbility();
+                        ab.Name = "Draining Touch";
+                        ab.Type = "Su";
+                        ab.Text = "The ghost died while insane or diseased. It gains a touch attack that drains 1d4 points from any one ability score it selects on a hit. On each such successful attack, the ghost heals 5 points of damage to itself. When a ghost makes a draining touch attack, it cannot use its standard ghostly touch attack.";
+                        SpecialAbilitiesList.Add(ab);
+                        break;
 
-            if (Malevolence)
-            {
-                //Malevolence
-                SpecialAttacks = AddToStringList(SpecialAttacks, "Malevolence Will DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString());
-                ab = new SpecialAbility();
-                ab.Name = "Malevolence";
-                ab.Type = "Su";
-                ab.Text = "The ghost died while insane or diseased. It gains a touch attack that drains 1d4 points from any one ability score it selects on a hit. On each such successful attack, the ghost heals 5 points of damage to itself. When a ghost makes a draining touch attack, it cannot use its standard ghostly touch attack.";
-                SpecialAbilitiesList.Add(ab); 
-            }
+                    case GhostTemplateAbilities.FrightfulMoan:
+                        //Frightful Moan
+                        SpecialAttacks = AddToStringList(SpecialAttacks, "Frightful Moan 30' Spread Will Negates DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString());
+                        ab = new SpecialAbility();
+                        ab.Name = "Frightful Moan";
+                        ab.Type = "Su";
+                        ab.Text = "The ghost died in the throes of crippling terror. It can emit a frightful moan as a standard action. All living creatures within a 30-foot spread must succeed on a Will save or become panicked for 2d4 rounds. This is a sonic mind-affecting fear effect. A creature that successfully saves against the moan cannot be affected by the same ghost’s moan for 24 hours.";
+                        SpecialAbilitiesList.Add(ab);
+                        break;
 
-            if (Tk)
-            {
-                //Telekinesis
-                SpecialAttacks = AddToStringList(SpecialAttacks, "Telekinesis Will DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString());
-                ab = new SpecialAbility();
-                ab.Name = "Telekinesis";
-                ab.Type = "Su";
-                ab.Text = "The ghost’s death involved great physical trauma. The ghost can use telekinesis as a standard action once every 1d4 rounds (caster level 12th or equal to the ghost’s HD, whichever is higher).";
-                SpecialAbilitiesList.Add(ab); 
+                    case GhostTemplateAbilities.Malevolence:
+
+                        //Malevolence
+                        SpecialAttacks = AddToStringList(SpecialAttacks, "Malevolence Will DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString());
+                        ab = new SpecialAbility();
+                        ab.Name = "Malevolence";
+                        ab.Type = "Su";
+                        ab.Text = "The ghost died while insane or diseased. It gains a touch attack that drains 1d4 points from any one ability score it selects on a hit. On each such successful attack, the ghost heals 5 points of damage to itself. When a ghost makes a draining touch attack, it cannot use its standard ghostly touch attack.";
+                        SpecialAbilitiesList.Add(ab);
+                        break;
+
+                    case GhostTemplateAbilities.Telekinesis:
+                        //Telekinesis
+                        SpecialAttacks = AddToStringList(SpecialAttacks, "Telekinesis Will DC:" + (10 + (HDRoll.TotalCount / 2) + AbilityBonus(Charisma)).ToString());
+                        ab = new SpecialAbility();
+                        ab.Name = "Telekinesis";
+                        ab.Type = "Su";
+                        ab.Text = "The ghost’s death involved great physical trauma. The ghost can use telekinesis as a standard action once every 1d4 rounds (caster level 12th or equal to the ghost’s HD, whichever is higher).";
+                        SpecialAbilitiesList.Add(ab);
+                        break;
+                }
             }
 
             return true;
@@ -7467,6 +7509,10 @@ namespace CombatManager
             if (bonus.StrZero)
             {
                 StrZero = !remove;
+            }
+            if (bonus.HP != null)
+            {
+                HP += bonus.HP.Value.NegateIf(remove);
             }
         }
 

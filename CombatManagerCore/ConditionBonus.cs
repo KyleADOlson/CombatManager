@@ -68,7 +68,8 @@ namespace CombatManager
         private int? _CMB;
         private int? _CMD;
         private bool _StrZero; 
-        private bool _DexZero; 
+        private bool _DexZero;
+        private int? _HP;
 
 
 
@@ -115,7 +116,8 @@ namespace CombatManager
             _CMB = bonus.CMB;
             _CMD = bonus.CMD;
             _StrZero = bonus._StrZero;
-            _DexZero = bonus._DexZero; 
+            _DexZero = bonus._DexZero;
+            _HP = bonus._HP;
         }
 
 
@@ -570,6 +572,19 @@ namespace CombatManager
                 {
                     _DexZero = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DexZero")); }
+                }
+            }
+        }
+
+        public int? HP
+        {
+            get { return _HP; }
+            set
+            {
+                if (_HP != value)
+                {
+                    _HP = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HP"));
                 }
             }
         }

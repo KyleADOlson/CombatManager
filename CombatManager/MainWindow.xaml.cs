@@ -1705,17 +1705,14 @@ namespace CombatManager
             if (Equals(OtherTemplateTabControl.SelectedItem, GhostTab))
             {
                 //make a collection of any more are added
-                bool cTouch = (CorruptingTouchCheckBox.IsChecked == true);
-                bool cGaze = (CorruptingGazeCheckBox.IsChecked == true);
-                bool dTouch = (DrainingTouchCheckBox.IsChecked == true);
-                bool fMoan = (FrightfulMoanCheckBox.IsChecked == true);
-                bool Malevolence = (MalevolenceCheckBox.IsChecked == true);
-                bool Tk = (TelekinesisCheckBox.IsChecked == true);
-
-                if (monster.MakeGhost(cTouch, cGaze, dTouch, fMoan, Malevolence, Tk))
-                { 
-                    monster.Name = "Ghost " + monster.Name;
-                }
+                var list = (from s in ghostSpecials select s.Ability).ToArray<Monster.GhostTemplateAbilities>();
+                if (list.Length == 5)
+                {
+                    if (monster.MakeGhost(list))
+                    {
+                        monster.Name = "Ghost " + monster.Name;
+                    }
+                } 
             }
             if (OtherTemplateTabControl.SelectedItem == HalfDragonTab)
             {
@@ -8729,6 +8726,122 @@ namespace CombatManager
                 menu.IsOpen = true;
             }
         
+        }
+
+        class GhostSpecial : SimpleNotifyClass
+        {
+            String crText;
+            String name;
+            Monster.GhostTemplateAbilities ability;
+
+            public String CRText
+            {
+                get
+                {
+                    return crText;
+                }
+                set
+                {
+                    crText = value;
+                    Notify("CRText");
+
+
+                }
+            }
+
+            public String Name
+            {
+                get
+                {
+                    return name;
+                }
+                set
+                {
+                    name = value;
+                    Notify("Name");
+
+
+                }
+            }
+
+            public Monster.GhostTemplateAbilities Ability
+            {
+                get
+                {
+                    return ability;
+                }
+                set
+                {
+                    ability = value;
+                    Notify("Ability");
+                }
+            }
+        }
+
+        ObservableCollection<GhostSpecial> ghostSpecials = new ObservableCollection<GhostSpecial>();
+
+
+
+        private void GhostSpecialListBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ghostSpecials.Count == 0)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Monster.GhostTemplateAbilities ability = (Monster.GhostTemplateAbilities)i;
+                    ghostSpecials.Add(new GhostSpecial() { Ability = ability, Name = Monster.GetGhostTemplateAbilityName(ability) });
+                }
+                SetGhostSpecialsCRText();
+            }
+            GhostSpecialListBox.ItemsSource = ghostSpecials;
+            ghostSpecials.CollectionChanged += GhostSpecials_CollectionChanged;
+        }
+
+        private void SetGhostSpecialsCRText()
+        {
+            int x = 6;
+            foreach (GhostSpecial special in ghostSpecials)
+            {
+                special.CRText = "CR " + x;
+                x += 3;
+            }
+        }
+
+        private void GhostSpecials_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            SetGhostSpecialsCRText();
+            UpdateMonsterFlowDocument();
+        }
+
+        private void MoveUpGhostSpecial(GhostSpecial special)
+        {
+            int index = ghostSpecials.IndexOf(special);
+            if (index > 0)
+            {
+                ghostSpecials.Move(index, index - 1);
+            }
+        }
+
+        private void MoveDownGhostSpecial(GhostSpecial special)
+        {
+            int index = ghostSpecials.IndexOf(special);
+            if (index < ghostSpecials.Count - 1)
+            {
+                ghostSpecials.Move(index, index + 1);
+            }
+        }
+
+        private void GhostSpecialUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            GhostSpecial sp = (GhostSpecial)((FrameworkElement)sender).DataContext;
+            MoveUpGhostSpecial(sp);
+        }
+
+        private void GhostSpecialDownButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            GhostSpecial sp = (GhostSpecial)((FrameworkElement)sender).DataContext;
+            MoveDownGhostSpecial(sp);
         }
     }
 

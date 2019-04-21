@@ -23,6 +23,16 @@ namespace CombatManager
            
         }
 
+        public static int NegateIf(this int val, bool negate)
+        {
+            return negate ? -val : val;
+        }
+
+        public static double NegateIf(this double val, bool negate)
+        {
+            return negate ? -val : val;
+        }
+
         public static T Max<T>(this T val, T max) where T : IComparable<T>
         {
             if (val.CompareTo(max) > 0) return max;
