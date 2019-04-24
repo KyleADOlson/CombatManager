@@ -1935,6 +1935,12 @@ namespace CombatManager
 
             }
 
+            XElement characterElement = null;
+            if (doc != null)
+            {
+                characterElement = doc.Element("document").Element("public").Element("character");
+            } 
+
             Regex regCR = new Regex("CR (?<cr>[0-9]+(/[0-9]+)?)\r\n");
             m = regCR.Match(statsblock);
             if (m.Success)
