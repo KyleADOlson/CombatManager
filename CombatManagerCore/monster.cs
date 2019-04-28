@@ -1951,14 +1951,13 @@ namespace CombatManager
             }
             else if (doc != null)
             {
-                XElement el = doc.Element("document").Element("public").Element("character");
-                XElement cr = el.Element("challengerating");
+                XElement cr = characterElement.Element("challengerating");
                 String crText = cr?.Attribute("text")?.Value;
                 if (crText != null)
                 {
                     monster.CR = crText.Substring(3);
                 }
-                XElement xp = el.Element("xpaward");
+                XElement xp = characterElement.Element("xpaward");
                 monster.XP = xp?.Attribute("value")?.Value;
             }
             else
@@ -1966,6 +1965,8 @@ namespace CombatManager
                 monster.CR = "0";
                 monster.xp = "0";
             }
+
+            
 
             if (doc != null)
             {
@@ -2346,6 +2347,53 @@ namespace CombatManager
                 monster.bloodline = m.Groups["Bloodline"].Value;
             }
 
+            if (characterElement != null)
+            {
+
+                var dr = characterElement.Element("damagereduction");
+                if (dr != null)
+                {
+                    foreach (var drSpecial in dr.Elements("special"))
+                    {
+                        string drval = drSpecial.Attribute("shortname")?.Value;
+                        string drtype;
+                        int dramount;
+                        if (FindDR(drval, out drtype, out dramount))
+
+                        {
+                            monster.DR = AddDR(monster.DR, drtype, dramount);
+
+                        }
+                    }
+                }
+
+            }
+        }
+
+        static private bool FindDR(String drval, out string drtype, out int val)
+        {
+            drtype = null;
+            val = 0;
+            bool success = false;
+            if (drval != null)
+            {
+                int slash = drval.IndexOf('/');
+                if (slash != -1)
+                {
+                    try
+                    {
+                        string [] splitstr = drval.Split('/');
+                        string valstr = splitstr[0];
+                        drtype = splitstr[1];
+                        val = int.Parse(valstr);
+                        success = true;
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+            }
+            return success;
         }
 
         private static string FixSpellString(string spells)
