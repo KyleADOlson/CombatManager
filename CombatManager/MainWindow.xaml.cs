@@ -8000,7 +8000,7 @@ namespace CombatManager
         {
             DrawingBrush brush = new DrawingBrush();
 
-            Color backColor = CMUIUtilities.FindColor(box, CMUIUtilities.SecondaryColorBMedium);
+            Color backColor = App.Current.GetColor(CMUIUtilities.HealthBackground);
             Color barColor = CMUIUtilities.FindColor(box, CMUIUtilities.ThemeTextBackground);
 
 

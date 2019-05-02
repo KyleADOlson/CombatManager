@@ -41,7 +41,7 @@ using System.Windows.Media.Imaging;
 
 namespace CombatManager
 {
- 
+
     public static class CMUIUtilities
     {
         public static T FindVisualParent<T>(this DependencyObject child)
@@ -156,7 +156,7 @@ namespace CombatManager
             }
         }
 
-        public static Size Multiply(this Size oldSize, double scale) 
+        public static Size Multiply(this Size oldSize, double scale)
         {
             return new Size(oldSize.Width * scale, oldSize.Height * scale);
         }
@@ -291,7 +291,7 @@ namespace CombatManager
             double circleSize = rect.CircleSize() - (borderWidth / 2.0);
 
             return new EllipseGeometry(rect.Center(), circleSize, circleSize);
-               
+
         }
 
         public static Geometry DiamondPath(this Rect rect)
@@ -355,9 +355,9 @@ namespace CombatManager
         {
 
             double diff = borderWidth / 2.0;
-            double radius = (rect.CircleSize() - diff)* .8;
+            double radius = (rect.CircleSize() - diff) * .8;
             Point center = rect.Center();
-                
+
             float innerScale = (float)(Math.Cos(2.0 * Math.PI / 5.0) / Math.Cos(Math.PI / 5.0));
 
 
@@ -366,15 +366,15 @@ namespace CombatManager
 
             for (int i = 0; i < 5; i++)
             {
-                double angle = ((double) i) * (Math.PI * 2.0) / 5.0f - Math.PI/2.0 ;
-                points[i*2] = new Point(center.X + Math.Cos(angle) * radius, center.Y + Math.Sin(angle) * radius);
+                double angle = ((double)i) * (Math.PI * 2.0) / 5.0f - Math.PI / 2.0;
+                points[i * 2] = new Point(center.X + Math.Cos(angle) * radius, center.Y + Math.Sin(angle) * radius);
                 angle += Math.PI * 2.0 / 10.0;
-                points[i*2+1] = new Point(center.X + Math.Cos(angle) * radius * innerScale, center.Y + Math.Sin(angle) * radius * innerScale);
+                points[i * 2 + 1] = new Point(center.X + Math.Cos(angle) * radius * innerScale, center.Y + Math.Sin(angle) * radius * innerScale);
 
             }
-            
 
-            return CreatePathGeometry(points);       
+
+            return CreatePathGeometry(points);
 
         }
 
@@ -421,13 +421,13 @@ namespace CombatManager
             return dep;
         }
 
-        public static DependencyObject SetElementsVisibility(this DependencyObject dep, String [] names, Visibility visibility)
+        public static DependencyObject SetElementsVisibility(this DependencyObject dep, String[] names, Visibility visibility)
         {
             foreach (String name in names)
             {
                 dep.SetElementVisibility(name, visibility);
             }
-            
+
             return dep;
         }
 
@@ -443,7 +443,7 @@ namespace CombatManager
 
         public static void ScrollTo(this ScrollViewer viewer, double x, double y)
         {
-          
+
             viewer.ScrollToHorizontalOffset(x);
             viewer.ScrollToVerticalOffset(y);
 
@@ -460,7 +460,15 @@ namespace CombatManager
         }
 
 
+        public static Brush GetBrush(this Application app, string brush)
+        {
+            return (app.Resources[brush]) as Brush;
+        }
 
+        public static Color GetColor(this Application app, string color)
+        {
+            return (Color)(app.Resources[color]);
+        }
 
         public const String PrimaryColorLight = "PrimaryColorLight";
         public const String PrimaryColorMedium = "PrimaryColorMedium";
@@ -478,6 +486,8 @@ namespace CombatManager
         public const String SecondaryColorBDarker = "SecondaryColorBDarker";
         public const String ThemeTextForeground = "ThemeTextForeground";
         public const String ThemeTextBackground = "ThemeTextBackground";
+        public const String HealthBackground = "HealthBackground";
+
 
 
     }

@@ -60,6 +60,11 @@ namespace CombatManager
             App.Current.Resources["ThemeTextBackground"] = back;
             App.Current.Resources["ThemeTextBackgroundBrush"] = new SolidColorBrush(back);
 
+            Color healthBackground = (Color)(App.Current.Resources
+                [darkScheme ? "HealthDarkBackground" : "HealthLightBackground"]);
+            App.Current.Resources["HealthBackground"] = healthBackground;
+            App.Current.Resources["HealthBackgroundBrush"] = new SolidColorBrush(healthBackground);
+
             NewSchemeSet?.Invoke(scheme, darkScheme);
 
         }

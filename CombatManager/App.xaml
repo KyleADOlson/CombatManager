@@ -37,7 +37,11 @@
         <Color x:Key="ThemeTextForeground">#CCCCCC</Color>
         <Color x:Key="ThemeTextBackground">#333333</Color>
 
+        <Color x:Key="HealthLightBackground">#ffacac</Color>
+        <Color x:Key="HealthDarkBackground">#c51212</Color>
 
+
+        <Color x:Key="HealthBackground">#ffacac</Color>
 
         <LinearGradientBrush x:Key="characterButtonBrush" EndPoint="0,1" StartPoint="0,0">
             <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -69,6 +73,8 @@
         <SolidColorBrush x:Key="ThemeTextForegroundBrush" Color="{DynamicResource ThemeTextForeground}"/>
         <SolidColorBrush x:Key="ThemeTextBackgroundBrush" Color="{DynamicResource ThemeTextBackground}"/>
         
+        <SolidColorBrush x:Key="HealthBackgroundBrush" Color="{DynamicResource HealthDarkBackground}"/>
+
 
         <SolidColorBrush x:Key="LightBorderBrush" Color="White" />
         <SolidColorBrush x:Key="TextOnSecondaryADarkerBrush" Color="White" />
