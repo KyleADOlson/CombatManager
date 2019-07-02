@@ -102,7 +102,7 @@ namespace CombatManager
         private static string spellcountblock = "((?<spellcount>[0-9]+(?=[;,\\)])),?)";
         private static string dcblock = "(DC (?<DC>[0-9]+),?)";
         private static string castblock = "((; )?((?<spellcast>[0-9]+|already)) cast)";
-        private static string otherblock = "((; )?(?<othertext>[\\p{Pd}+',/\\p{L}0-9:\\. %\\*\\[\\]]+))";
+        private static string otherblock = "((; )?(?<othertext>[\\p{Pd}+',/\\p{L}0-9:\\. #%\\*\\[\\]]+))";
         private static string countdcblock = "((" + spellcountblock + "|" + dcblock + "|" + castblock + "|" + otherblock + ") *)+";
 
 
