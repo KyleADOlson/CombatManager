@@ -259,7 +259,7 @@ namespace CombatManager
 
         private static string sladcblock = "((" + dcblock + "|" + otherblock + ") *)+";
         private static string slaspellblock = "((?<spellname>[\\p{Pd}'\\p{L}/ ]+)\\*? *(?<countdc>\\(" + sladcblock + "\\))?,?)";
-        private static string slaheader = "(((?<daily>[0-9]+)/day)|(?<constant>[Cc]onstant)|(?<atwill>At will))-";
+        private static string slaheader = "(((?<daily>[0-9]+)/day)|(?<constant>[Cc]onstant)|(?<atwill>At [W|w]ill))-";
         private static string slablock = " *" + slaheader + "(?<spellblocks>" + slaspellblock + "+) *";
 
 
