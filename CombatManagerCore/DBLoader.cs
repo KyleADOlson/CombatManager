@@ -473,7 +473,11 @@ namespace CombatManager
         {
             Type type = typeof(T);
 
+#if ANDROID
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+#else
             string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+#endif
             path = Path.Combine(path, "Combat Manager");
 
             if (!Directory.Exists(path))

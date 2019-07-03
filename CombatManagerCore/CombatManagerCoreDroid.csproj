@@ -15,7 +15,7 @@
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AssemblyName>CombatManagerCoreDroid</AssemblyName>
     <ReleaseVersion>1.05</ReleaseVersion>
-    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -51,7 +51,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="Ionic.Zip">
       <HintPath>..\DotZipLib\Ionic.Zip.dll</HintPath>
-    </Reference>   
+    </Reference>
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
