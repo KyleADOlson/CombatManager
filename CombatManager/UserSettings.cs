@@ -29,6 +29,7 @@ using System.Xml.Serialization;
 using Microsoft.Win32;
 using System.IO;
 
+
 namespace CombatManager
 {
 
@@ -56,7 +57,7 @@ namespace CombatManager
             All = 3
         }
 
-    
+
         private bool _RollHP;
         private bool _UseCore;
         private bool _UseAPG;
@@ -75,6 +76,7 @@ namespace CombatManager
         private bool _AddMonstersHidden;
         private bool _StatsOpenByDefault;
         private bool _CheckForUpdates;
+        private Character.HPMode _DefaultHPMode;
 
         private bool _PlayerMiniMode;
         private bool _MonsterMiniMode;
@@ -128,6 +130,7 @@ namespace CombatManager
             _MonsterMiniMode = false;
             _RunCombatViewService = false;
             _CheckForUpdates = true;
+            _DefaultHPMode = Character.HPMode.Default;
             _MainWindowWidth = -1;
             _MainWindowHeight = -1;
             _MainWindowLeft = int.MinValue;
@@ -481,6 +484,19 @@ namespace CombatManager
             }
         }
 
+        public Character.HPMode DefaultHPMode
+        {
+            get { return _DefaultHPMode; }
+            set
+            {
+                if (_DefaultHPMode != value)
+                {
+                    _DefaultHPMode = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DefaultHPMode")); }
+                }
+            }
+        }
+
         public int InitiativeConditionsSize
         {
             get { return _InitiativeConditionsSize; }
@@ -693,11 +709,13 @@ namespace CombatManager
                 ShowHiddenInitValue = LoadBoolValue("ShowHiddenInitValue", false);
                 AddMonstersHidden = LoadBoolValue("AddMonstersHidden", false);
                 StatsOpenByDefault = LoadBoolValue("StatsOpenByDefault", false);
-                CheckForUpdates = LoadBoolValue("CheckForUpdates", true); 
+                CheckForUpdates = LoadBoolValue("CheckForUpdates", true);
+                DefaultHPMode = (Character.HPMode)LoadIntValue("DefaultHPMode", 0);
                 MonsterDBFilter = (MonsterSetFilter)LoadIntValue("MonsterDBFilter", (int)MonsterSetFilter.Monsters);
                 MonsterTabFilter = (MonsterSetFilter)LoadIntValue("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
                 ColorScheme = LoadIntValue("ColorScheme", 0);
                 DarkScheme = LoadBoolValue("DarkScheme", false);
+
 
                 optionsLoaded = true;
             }
@@ -738,7 +756,9 @@ namespace CombatManager
                         SaveBoolValue(key, "StatsOpenByDefault", StatsOpenByDefault);
                         SaveBoolValue(key, "CheckForUpdates", CheckForUpdates);
                         SaveIntValue(key, "ColorScheme", ColorScheme);
-                        
+                        SaveIntValue(key, "DefaultHPMode", (int)DefaultHPMode);
+
+
                     }
 
                     if (section == SettingsSaveSection.WindowState || section == SettingsSaveSection.All)

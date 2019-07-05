@@ -35,6 +35,13 @@ namespace CombatManager
     [DataContract]
     public class Character : INotifyPropertyChanged
     {
+        public enum HPMode : int
+        {
+            Default = 0,
+            Roll = 1,
+            Max = 2
+        }
+
         [XmlIgnore]
         public object UndoInfo { get; set; }
 
@@ -108,11 +115,16 @@ namespace CombatManager
 			
         }
 
-        public Character(Monster monster, bool rollHP) : this()
+        public Character(Monster monster, bool rollHP) : this(monster, rollHP?HPMode.Roll:HPMode.Default)
+        {
+
+        }
+
+        public Character(Monster monster, HPMode mode) : this()
         {
             this.monster = (Monster)monster.Clone();
             this.name = monster.Name;
-            if (!rollHP || !TryParseHP())
+            if (mode == HPMode.Default || !TryParseHP(mode == HPMode.Max))
             {
                 this.hp = monster.HP;
             }
@@ -725,12 +737,19 @@ namespace CombatManager
             }
         }
 
-        public bool TryParseHP()
+        public bool TryParseHP(bool max)
         {
             DieRoll dr = DieRoll.FromString(monster.HD);
             if (dr != null)
             {
-                HP = dr.Roll().Total;
+                if (max)
+                {
+                    HP = dr.Max;
+                }
+                else
+                {
+                    HP = dr.Roll().Total;
+                }
                 return true;
             }
 

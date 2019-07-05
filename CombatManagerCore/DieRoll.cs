@@ -690,6 +690,20 @@ namespace CombatManager
            
         }
 
+        public int Max
+        {
+            get
+            {
+                int total = this._mod;
+
+                foreach (DieStep step in AllRolls)
+                {
+                    total += step.Die * step.Count;
+                }
+                return total; 
+            }
+        }
+
         public void AddDie(int newdie)
         {
             AddDie(new DieStep(1, newdie));

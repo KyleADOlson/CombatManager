@@ -1091,7 +1091,7 @@ namespace CombatManager
 
         void LoadSettings()
         {
-            RollHPCheck.IsChecked = UserSettings.Settings.RollHP;
+            HPModeCombo.SelectedIndex = (int)UserSettings.Settings.DefaultHPMode;
             UseCoreContentCheck.IsChecked = UserSettings.Settings.UseCore;
             UseAPGContentCheck.IsChecked = UserSettings.Settings.UseAPG;
             UseChroniclesContentCheck.IsChecked = UserSettings.Settings.UseChronicles;
@@ -1107,7 +1107,7 @@ namespace CombatManager
         {
             if (checkBoxSettingsLoaded)
             {
-                UserSettings.Settings.RollHP = RollHPCheck.IsChecked.Value;
+                UserSettings.Settings.DefaultHPMode = (Character.HPMode) HPModeCombo.SelectedIndex;
                 UserSettings.Settings.UseCore = UseCoreContentCheck.IsChecked.Value;
                 UserSettings.Settings.UseAPG = UseAPGContentCheck.IsChecked.Value;
                 UserSettings.Settings.UseChronicles = UseChroniclesContentCheck.IsChecked.Value;
@@ -2307,7 +2307,7 @@ namespace CombatManager
 
             if (monster != null)
             {
-                combatState.AddMonster(monster, RollHPCheck.IsChecked == true, true, UserSettings.Settings.AddMonstersHidden);
+                combatState.AddMonster(monster, (Character.HPMode)HPModeCombo.SelectedIndex, true, UserSettings.Settings.AddMonstersHidden);
             }
         }
 
@@ -3580,7 +3580,7 @@ namespace CombatManager
 
                 Monster monster = currentDBMonster;
 
-                combatState.AddMonster(monster,  RollHPCheck.IsChecked == true, true, UserSettings.Settings.AddMonstersHidden);
+                combatState.AddMonster(monster, (Character.HPMode)HPModeCombo.SelectedIndex, true, UserSettings.Settings.AddMonstersHidden);
             }
         }
 
@@ -4048,16 +4048,10 @@ namespace CombatManager
             OtherTemplateTabControl.SelectedItem = null;
         }
 
-        private void RollHPCheck_Checked(object sender, RoutedEventArgs e)
-        {
-            using (var undoGroup = undo.CreateUndoGroup())
-            {
-                SaveSettings();
-            }
-        }
 
-        private void RollHPCheck_Unchecked(object sender, RoutedEventArgs e)
+        private void HPModeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             using (var undoGroup = undo.CreateUndoGroup())
             {
                 SaveSettings();
@@ -8843,6 +8837,7 @@ namespace CombatManager
             GhostSpecial sp = (GhostSpecial)((FrameworkElement)sender).DataContext;
             MoveDownGhostSpecial(sp);
         }
+
     }
 
 
