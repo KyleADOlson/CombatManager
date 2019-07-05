@@ -1,3 +1,18 @@
+1.1.7
+Data Update
+
+1.1.6
+Import and Export Data   
+Monster DB    
+Fix Feat and Spell UIs
+
+1.1.5
+Fix Monster Editor UI
+
+1.1.4
+Data Update
+Fix magic item crash
+
 1.1.1
 Add custom feats
 Fix multiline buttons
