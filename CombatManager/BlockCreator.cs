@@ -352,6 +352,47 @@ namespace CombatManager
             return CreateItemIfNotNull(title, true, value, null, true);
         }
 
+        protected List<Inline> CreateLinkIfNotNull(String value, String end = null, RoutedEventHandler handler = null, 
+            object datacontext = null, System.Windows.Controls.ToolTip tip = null)
+        {
+            List<Inline> inlines = new List<Inline>();
+
+            if (value != null)
+            {
+                Hyperlink link = new Hyperlink(new Run(value));
+
+                link.Tag = value ;
+                if (handler != null)
+                {
+                    link.Click += handler;
+                }
+
+                if (datacontext != null)
+                {
+                    link.DataContext = datacontext;
+                }
+                
+                inlines.Add(link);
+
+                if (end != null)
+                {
+                    inlines.Add(new Run(end));
+                }
+
+
+                if (tip != null)
+                {
+
+                    ToolTipService.SetShowDuration(link, 360000);
+                    link.ToolTip = tip;
+                    link.ToolTipOpening += new ToolTipEventHandler(link_ToolTipOpening);
+
+                }
+            }
+
+            return inlines;
+        }
+
         protected List<Inline> CreateItemIfNotNull(String title, bool boldTitle, String value, String end, bool linebreak)
         {
             List<Inline> inlines = new List<Inline>();
@@ -831,6 +872,12 @@ namespace CombatManager
 
             return list;
 
+        }
+
+        protected void link_ToolTipOpening(object sender, ToolTipEventArgs e)
+        {
+            Hyperlink l = (Hyperlink)sender;
+            ((ToolTip)l.ToolTip).DataContext = l.DataContext;
         }
 
 

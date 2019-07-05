@@ -139,6 +139,11 @@ namespace CombatManager
             }
         }
 
+        public static Rule Find(String name, String type)
+        {
+            return Rule.Rules.FirstOrDefault<Rule>(a => (String.Compare(a.Name,name, true) == 0 && a.Type == type));
+        }
+
 #if ANDROID
         static string _DBVersion;
         public static void PrepareDetailDB(String version)

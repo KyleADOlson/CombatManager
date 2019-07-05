@@ -1580,11 +1580,11 @@ namespace CombatManager
 
         void BlockLinkClicked(object sender, DocumentLinkEventArgs e)
         {
-            if (e.Type ==  "Feat")
+            if (e.Type == "Feat")
             {
                 ShowFeat(e.Name);
 
-           
+
             }
             else if (e.Type == "School")
             {
@@ -1611,6 +1611,10 @@ namespace CombatManager
             {
                 ShowMagicItem(e.Name);
             }
+            else if (e.Type == "Rule")
+            {
+                ShowRule(e.Name);
+            }
 
 
         }
@@ -1636,6 +1640,13 @@ namespace CombatManager
             MainTabControl.SelectedItem = TreasureTab;
             TreasureTabControl.SelectedItem = MagicItemsTab;
 
+        }
+
+        void ShowRule(string name)
+        {
+            RulesTabFilterBox.Text = name;
+            ResetRulesFilters();
+            MainTabControl.SelectedItem = RulesTab;
         }
 
         void ShowFeat(string feat)
@@ -7597,6 +7608,12 @@ namespace CombatManager
 
         private void ResetRulesFilterButton_Click(object sender, RoutedEventArgs e)
         {
+            ResetRulesFilters();
+        }
+
+        private void ResetRulesFilters()
+        {
+
             RuleTypeFilterComboBox.SelectedIndex = 0;
             RuleSubtypeFilterComboBox.SelectedIndex = 0;
         }
