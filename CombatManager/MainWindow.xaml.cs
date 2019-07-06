@@ -8216,6 +8216,9 @@ namespace CombatManager
                         case CombatHotKeyType.Skill:
                             RollSkillCheck(c, chk.Subtype, null);
                             break;
+                        case CombatHotKeyType.Condition:
+                            c.AddConditionByName(chk.Subtype);
+                            break;
                     }
                 }
             }

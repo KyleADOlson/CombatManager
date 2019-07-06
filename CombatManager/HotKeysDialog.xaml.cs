@@ -95,6 +95,11 @@ namespace CombatManager
 
             if (subtypeCombo != null)
             {
+
+
+                ComboBox cb = subtypeCombo;
+                CombatHotKey hk = (CombatHotKey)cb.DataContext;
+
                 subtypeCombo.Items.Clear();
                 switch (selectedIndex)
                 {
@@ -109,6 +114,7 @@ namespace CombatManager
                         subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Fort" });
                         subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Ref" });
                         subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Will" });
+                        SetIndexForString(cb, hk.Subtype);
                         break;
                     case 3:
                         subtypeCombo.IsEnabled = true;
@@ -116,12 +122,39 @@ namespace CombatManager
                         {
                             subtypeCombo.Items.Add(new ComboBoxItem() { Content = si.Name, Tag = si });
                         }
+                        SetIndexForString(cb, hk.Subtype);
+                        break;
+                    case 4:
+                        subtypeCombo.IsEnabled = true;
+
+                        String hkcond = hk.Subtype;
+
+                        
+                        foreach (Condition c in Condition.Conditions)
+                        {
+                            StackPanel panel = new StackPanel();
+                            panel.Orientation = Orientation.Horizontal;
+
+
+                            Image i = new Image();
+                            BitmapImage bi = StringImageSmallIconConverter.FromName(c.Image);
+                            i.Source = bi;
+                            i.Width = 16;
+                            i.Height = 16;
+
+                            panel.Children.Add(i);
+                            panel.Children.Add(new TextBlock() { Text = c.Name });
+                            ComboBoxItem cbi = new ComboBoxItem() {Content = panel, Tag = c };
+                            
+                            subtypeCombo.Items.Add(cbi);
+
+                            if (c.Name == hkcond)
+                            {
+                                subtypeCombo.SelectedItem = cbi;
+                            }
+                        }
                         break;
                 }
-
-                ComboBox cb = subtypeCombo;
-                CombatHotKey hk = (CombatHotKey)cb.DataContext;
-                SetIndexForString(cb, hk.Subtype);
             }
         }
 
@@ -186,7 +219,15 @@ namespace CombatManager
 			CombatHotKey hk = (CombatHotKey)cb.DataContext;
             if (cb.SelectedValue != null)
             {
-                hk.Subtype = (String)((ComboBoxItem)cb.SelectedValue).Content;
+                ComboBoxItem item = (ComboBoxItem)cb.SelectedItem;
+                if (item.Tag is Condition)
+                {
+                    hk.Subtype = ((Condition)item.Tag).Name;
+                }
+                else
+                {
+                    hk.Subtype = (String)((ComboBoxItem)cb.SelectedValue).Content;
+                }
             }
 
 		}
