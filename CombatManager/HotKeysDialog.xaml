@@ -55,6 +55,7 @@
 					<ComboBoxItem>Ranged Attack</ComboBoxItem>         
 					<ComboBoxItem>Save</ComboBoxItem>         
 					<ComboBoxItem>Skill</ComboBoxItem>
+                    <ComboBoxItem>Condition</ComboBoxItem>
 				</ComboBox>
 				<Button x:Name="DeleteButton" Margin="0,6.294,7.333,6.331" RenderTransformOrigin="0.222,-0.601" Width="16" Height="16" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Right" Click="DeleteButton_Click">
 					<Button.ToolTip>Delete</Button.ToolTip>

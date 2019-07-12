@@ -3217,9 +3217,11 @@
                                                     </StackPanel>
                                                 </Button>
                                                 <Border Margin="0" Background="{DynamicResource PrimaryColorDarkBrush}" Height="24.372" VerticalAlignment="Bottom">
-                                                    <CheckBox x:Name="RollHPCheck" Margin="4,0,0,0" d:LayoutOverrides="Height" HorizontalAlignment="Left" IsChecked="True" Checked="RollHPCheck_Checked" Unchecked="RollHPCheck_Unchecked" VerticalAlignment="Center">
-                                                        <TextBlock Text="Roll Monster HP" Foreground="White"/>
-                                                    </CheckBox>
+                                                    <ComboBox Height="23" x:Name="HPModeCombo" Margin="0,0,0,0" d:LayoutOverrides="Height" Style="{DynamicResource ComboBoxStyle1}" SelectedIndex="0" SelectionChanged="HPModeCombo_SelectionChanged">
+                                                        <ComboBoxItem x:Name="DefaultHPItem" Content="Default Monster HP"/>
+                                                        <ComboBoxItem x:Name="RollHPItem" Content="Roll Monster HP"/>
+                                                        <ComboBoxItem x:Name="MaxHPItem" Content="Max Monster HP"/>
+                                                    </ComboBox>
                                                 </Border>
                                             </Grid>
                                         </AvalonDock:DockableContent>

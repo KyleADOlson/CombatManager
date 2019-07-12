@@ -1091,7 +1091,7 @@ namespace CombatManager
 
         void LoadSettings()
         {
-            RollHPCheck.IsChecked = UserSettings.Settings.RollHP;
+            HPModeCombo.SelectedIndex = (int)UserSettings.Settings.DefaultHPMode;
             UseCoreContentCheck.IsChecked = UserSettings.Settings.UseCore;
             UseAPGContentCheck.IsChecked = UserSettings.Settings.UseAPG;
             UseChroniclesContentCheck.IsChecked = UserSettings.Settings.UseChronicles;
@@ -1107,7 +1107,7 @@ namespace CombatManager
         {
             if (checkBoxSettingsLoaded)
             {
-                UserSettings.Settings.RollHP = RollHPCheck.IsChecked.Value;
+                UserSettings.Settings.DefaultHPMode = (Character.HPMode) HPModeCombo.SelectedIndex;
                 UserSettings.Settings.UseCore = UseCoreContentCheck.IsChecked.Value;
                 UserSettings.Settings.UseAPG = UseAPGContentCheck.IsChecked.Value;
                 UserSettings.Settings.UseChronicles = UseChroniclesContentCheck.IsChecked.Value;
@@ -1580,11 +1580,11 @@ namespace CombatManager
 
         void BlockLinkClicked(object sender, DocumentLinkEventArgs e)
         {
-            if (e.Type ==  "Feat")
+            if (e.Type == "Feat")
             {
                 ShowFeat(e.Name);
 
-           
+
             }
             else if (e.Type == "School")
             {
@@ -1611,6 +1611,10 @@ namespace CombatManager
             {
                 ShowMagicItem(e.Name);
             }
+            else if (e.Type == "Rule")
+            {
+                ShowRule(e.Name);
+            }
 
 
         }
@@ -1636,6 +1640,13 @@ namespace CombatManager
             MainTabControl.SelectedItem = TreasureTab;
             TreasureTabControl.SelectedItem = MagicItemsTab;
 
+        }
+
+        void ShowRule(string name)
+        {
+            RulesTabFilterBox.Text = name;
+            ResetRulesFilters();
+            MainTabControl.SelectedItem = RulesTab;
         }
 
         void ShowFeat(string feat)
@@ -2307,7 +2318,7 @@ namespace CombatManager
 
             if (monster != null)
             {
-                combatState.AddMonster(monster, RollHPCheck.IsChecked == true, true, UserSettings.Settings.AddMonstersHidden);
+                combatState.AddMonster(monster, (Character.HPMode)HPModeCombo.SelectedIndex, true, UserSettings.Settings.AddMonstersHidden);
             }
         }
 
@@ -3580,7 +3591,7 @@ namespace CombatManager
 
                 Monster monster = currentDBMonster;
 
-                combatState.AddMonster(monster,  RollHPCheck.IsChecked == true, true, UserSettings.Settings.AddMonstersHidden);
+                combatState.AddMonster(monster, (Character.HPMode)HPModeCombo.SelectedIndex, true, UserSettings.Settings.AddMonstersHidden);
             }
         }
 
@@ -4048,16 +4059,10 @@ namespace CombatManager
             OtherTemplateTabControl.SelectedItem = null;
         }
 
-        private void RollHPCheck_Checked(object sender, RoutedEventArgs e)
-        {
-            using (var undoGroup = undo.CreateUndoGroup())
-            {
-                SaveSettings();
-            }
-        }
 
-        private void RollHPCheck_Unchecked(object sender, RoutedEventArgs e)
+        private void HPModeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             using (var undoGroup = undo.CreateUndoGroup())
             {
                 SaveSettings();
@@ -7603,6 +7608,12 @@ namespace CombatManager
 
         private void ResetRulesFilterButton_Click(object sender, RoutedEventArgs e)
         {
+            ResetRulesFilters();
+        }
+
+        private void ResetRulesFilters()
+        {
+
             RuleTypeFilterComboBox.SelectedIndex = 0;
             RuleSubtypeFilterComboBox.SelectedIndex = 0;
         }
@@ -8204,6 +8215,9 @@ namespace CombatManager
                             break;
                         case CombatHotKeyType.Skill:
                             RollSkillCheck(c, chk.Subtype, null);
+                            break;
+                        case CombatHotKeyType.Condition:
+                            c.AddConditionByName(chk.Subtype);
                             break;
                     }
                 }
@@ -8843,6 +8857,7 @@ namespace CombatManager
             GhostSpecial sp = (GhostSpecial)((FrameworkElement)sender).DataContext;
             MoveDownGhostSpecial(sp);
         }
+
     }
 
 

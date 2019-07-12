@@ -172,7 +172,8 @@ namespace CombatManager
                 topParagraph.Inlines.Add(new LineBreak());
             }
             topParagraph.Inlines.Add(monster.Alignment + " " + monster.Size + " ");
-            topParagraph.Inlines.AddRange(CreateItemIfNotNull(null, false, monster.Type, " ", false));
+            topParagraph.Inlines.AddRange(CreateRulesLink(monster.Type, "Creature Types", " "));
+
             topParagraph.Inlines.AddRange(CreateItemIfNotNull(null, false, monster.SubType, null, false));
             topParagraph.Inlines.Add(new LineBreak());
             if (monster.DualInit != null)
@@ -194,6 +195,32 @@ namespace CombatManager
             topParagraph.Inlines.Add(new LineBreak());
 
             blocks.Add(topParagraph);
+        }
+
+        private List<Inline> CreateRulesLink(string rule, string ruleType, string end)
+        {
+            return CreateRulesLink(rule, rule, ruleType, end);
+        }
+
+        private List<Inline> CreateRulesLink(string text, string rule, string ruleType, string end)
+        {
+            List<Inline> inlines = new List<Inline>();
+            if (text != null)
+            {
+                ToolTip t = null;
+                Rule ruleObject = Rule.Find(rule, ruleType);
+                if (ruleObject != null)
+                {
+                    t = (ToolTip)App.Current.MainWindow.FindResource("ObjectToolTip");
+                    inlines.AddRange(CreateLinkIfNotNull(text, end, RuleLinkClicked, ruleObject, t));
+                }
+
+                else
+                {
+                    inlines.AddRange(CreateItemIfNotNull(null, false, text, end, false));
+                }
+            }
+            return inlines;
         }
 
         private void CreateDefenseSection(Monster monster, List<Block> blocks)
@@ -587,11 +614,6 @@ namespace CombatManager
             return lines;
         }
 
-        void link_ToolTipOpening(object sender, ToolTipEventArgs e)
-        {
-            Hyperlink l = (Hyperlink)sender;
-            ((ToolTip)l.ToolTip).DataContext = l.DataContext;
-        }
 
         private void CreateTacticsSection(Monster monster, List<Block> blocks)
         {
@@ -714,7 +736,9 @@ namespace CombatManager
 
             if (monster.SkillValueDictionary.Count > 0)
             {
-                string skillList = "";
+
+                
+                statsParagraph.Inlines.Add(new Bold(new Run("Skills ")));
 
                 int count = 0;
 
@@ -722,14 +746,14 @@ namespace CombatManager
                 {
                     if (count > 0)
                     {
-                        skillList += ", ";
+                        statsParagraph.Inlines.Add(new Run(", "));
                     }
-
-                    skillList += val.Text;
+                    statsParagraph.Inlines.AddRange(CreateRulesLink(val.FullName, val.Name, "Skills", " "));
+                    statsParagraph.Inlines.Add(new Run(val.Mod.PlusFormat()));
                     count++;
                 }
-
-                statsParagraph.Inlines.AddRange(CreateItemIfNotNull("Skills ", skillList));
+                statsParagraph.Inlines.Add(new LineBreak());
+                
             }
 
             statsParagraph.Inlines.AddRange(CreateItemIfNotNull("  Racial Modifiers ", monster.RacialMods));
@@ -879,6 +903,20 @@ namespace CombatManager
                 
             }
         }
+
+        void RuleLinkClicked(object sender, RoutedEventArgs e)
+        {
+            if (_LinkHandler != null)
+            {
+                Hyperlink link = (Hyperlink)sender;
+
+                string rule = (string)link.Tag;
+
+                _LinkHandler(this, new DocumentLinkEventArgs(rule, "Rule"));
+
+            }
+        }
+
         void SpellLinkClicked(object sender, RoutedEventArgs e)
         {
             if (_LinkHandler != null)

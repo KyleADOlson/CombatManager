@@ -771,13 +771,20 @@ namespace CombatManager
         {
             weaponNameList = new SortedDictionary<string, string>();
 
-            foreach (Weapon wp in Weapon.Weapons.Values)
+            try
             {
-                if (!wp.Natural)
+                foreach (Weapon wp in Weapon.Weapons.Values)
                 {
-                    string wpName = wp.Name.ToLower();
-                    weaponNameList[wpName] = wpName;
+                    if (!wp.Natural)
+                    {
+                        string wpName = wp.Name.ToLower();
+                        weaponNameList[wpName] = wpName;
+                    }
                 }
+
+            }
+            catch (Exception)
+            {
             }
 
 

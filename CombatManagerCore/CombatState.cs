@@ -1322,11 +1322,23 @@ namespace CombatManager
 
         public void AddMonster(Monster m, bool rollHP)
         {
-            AddMonster(m, rollHP, true);
+            AddMonster(m, rollHP?Character.HPMode.Roll:Character.HPMode.Default);
         }
+
+        public void AddMonster(Monster m, Character.HPMode mode)
+        {
+     
+            AddMonster(m, mode, true);
+        }
+
         public void AddMonster(Monster m, bool rollHP, bool monster, bool hidden = false)
         {
-            Character character = new Character(m, rollHP);
+            AddMonster(m, rollHP ? Character.HPMode.Roll : Character.HPMode.Default, monster, hidden);
+        }
+
+        public void AddMonster(Monster m, Character.HPMode mode, bool monster, bool hidden = false)
+        {
+            Character character = new Character(m, mode);
             character.IsMonster = monster;
             character.IsHidden = hidden;
             character.Name = GetUnusedName(character.Name);

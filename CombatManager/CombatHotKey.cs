@@ -12,7 +12,8 @@ namespace CombatManager
         MeleeAttack,
         RangedAttack,
         Save,
-        Skill
+        Skill,
+        Condition
     }
 
     public class CombatHotKey
@@ -21,6 +22,7 @@ namespace CombatManager
         ModifierKeys _Modifier;
         CombatHotKeyType _Type;
         String _Subtype;
+        
 
         public CombatHotKey() { }
         public CombatHotKey(CombatHotKey hk)
