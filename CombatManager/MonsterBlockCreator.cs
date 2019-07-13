@@ -185,7 +185,11 @@ namespace CombatManager
             {
                 topParagraph.Inlines.AddRange(CreateItemIfNotNull("Init ", true, monster.Init.PlusFormat(), "; ", false));
             }
-            topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, monster.Senses, null, false));
+            // Make Perception in Senses Linked
+            topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, monster.Senses.Replace(Regex.Match(monster.Senses, @"Perception [+-]\d+").ToString(), " "), null, false));
+            topParagraph.Inlines.AddRange(CreateRulesLink("Perception", "Perception", "Skills"," "));
+            topParagraph.Inlines.Add(new Run(int.Parse(Regex.Match(monster.Senses, @"Perception [+-]\d+").Value.Replace("Perception ", "")).PlusFormat()));
+
             if (monster.Aura != null && monster.Aura.Length > 0)
             {
                 topParagraph.Inlines.Add(new LineBreak());
@@ -426,33 +430,30 @@ namespace CombatManager
                 multiblock = true;
                 lines.Add(new Bold(new Run(titleText)));
 
-                string text = "";
-
-
-                text = "(CL " + BlockCreator.PastTenseNumber(blockinfo.CasterLevel.ToString());
-
+                lines.Add(new Run("(CL " + BlockCreator.PastTenseNumber(blockinfo.CasterLevel.ToString())));
                 if (blockinfo.SpellFailure != null)
                 {
-                    text += "; " + blockinfo.SpellFailure.Value + "% spell failure";
+                    lines.Add(new Run("; " + blockinfo.SpellFailure.Value + "% spell failure"));
                 }
                 if (blockinfo.Concentration != null)
                 {
-                    text += "; concentration " +  CMStringUtilities.PlusFormatNumber(blockinfo.Concentration.Value);
+                    lines.Add(new Run("; "));
+                    lines.AddRange(CreateRulesLink("Concentration", "Concentration", "Magic", " "));
+                    lines.Add(new Run(CMStringUtilities.PlusFormatNumber(blockinfo.Concentration.Value)));
                 }
                 if (blockinfo.MeleeTouch != null)
                 {
-                    text += "; " +  CMStringUtilities.PlusFormatNumber(blockinfo.MeleeTouch.Value) + " melee touch";
+                    lines.Add(new Run("; " + CMStringUtilities.PlusFormatNumber(blockinfo.MeleeTouch.Value) + " melee touch"));
                 }
                 if (blockinfo.RangedTouch != null)
                 {
-                    text += "; " + CMStringUtilities.PlusFormatNumber(blockinfo.RangedTouch.Value) + " ranged touch";
+                    lines.Add(new Run("; " + CMStringUtilities.PlusFormatNumber(blockinfo.RangedTouch.Value) + " ranged touch"));
                 }
-                text += ") ";
+                lines.Add(new Run(") "));
 
-                
-                lines.Add(new Run(text));
                 //start spells on their own line
                 lines.Add(new LineBreak());
+                var text = "";
                 foreach (SpellLevelInfo levelinfo in blockinfo.Levels)
                 {
                     //indentation of spell list
