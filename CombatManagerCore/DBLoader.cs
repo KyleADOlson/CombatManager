@@ -611,7 +611,7 @@ namespace CombatManager
 #if !MONO
                     sql = new SQL_Lite();
 					
-                    sql2.SkipHeaderRow = true;
+                    sql.SkipHeaderRow = true;
                     sql.Open(fullfilename);
 #else
                     sql = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + fullfilename);
@@ -694,12 +694,17 @@ namespace CombatManager
                 RowsRet data = sql.ExecuteCommand("Select * from " + table.Name);
 
                 List<string> validOldFields = new List<string>();
+                List<DBFieldDesc> invalidNewFields = new List<DBFieldDesc>();
 
                 foreach (DBFieldDesc desc in table.Fields)
                 {
                     if (data.HasColumn(desc.Name))
                     {
                         validOldFields.Add(desc.Name);
+                    }
+                    else
+                    {
+                        invalidNewFields.Add(desc);
                     }
                 }
 
@@ -712,16 +717,35 @@ namespace CombatManager
                     commandBuilder.Append(", OwnerID");
                     count++;
                 }
+                StringBuilder fieldBuilder = new StringBuilder();
+                StringBuilder valueBuilder = new StringBuilder();
                 foreach (string strField in validOldFields)
                 {
-                    commandBuilder.Append(", " + strField);
+                    fieldBuilder.Append(", " + strField);
                 }
-                commandBuilder.Append(") VALUES ( ?");
                 for (int i = 1; i < count; i++)
                 {
-                    commandBuilder.Append(", ?");
+                    valueBuilder.Append(", ?");
                 }
-                commandBuilder.Append(");");
+
+                foreach (DBFieldDesc desc in invalidNewFields)
+                {
+                    if (desc.Nullable == false)
+                    {
+                        if (desc.Type == "INTEGER")
+                        {
+
+                            fieldBuilder.Append(", " + desc.Name);
+                            valueBuilder.Append(", 0");
+
+                        }
+                    }
+                }
+
+                fieldBuilder.Append(") VALUES ( ?");
+                valueBuilder.Append(");");
+                commandBuilder.Append(fieldBuilder);
+                commandBuilder.Append(valueBuilder);
                 string command = commandBuilder.ToString();
 
                 foreach (Row row in data.Rows)

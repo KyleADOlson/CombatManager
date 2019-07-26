@@ -50,12 +50,8 @@
                     <ComboBoxItem>F12</ComboBoxItem>
                 </ComboBox>
                 <ComboBox x:Name="CommandComboBox" HorizontalAlignment="Left" Margin="194.661,3.333,0,3.333" Width="120" VerticalAlignment="Stretch" Height="Auto" d:LayoutOverrides="Height" SelectionChanged="CommandComboBox_SelectionChanged"
-					SelectedIndex="{Binding IntType}" DataContextChanged="CommandComboBox_DataContextChanged" Initialized="CommandComboBox_Initialized">
-                	<ComboBoxItem>Melee Attack</ComboBoxItem>            
-					<ComboBoxItem>Ranged Attack</ComboBoxItem>         
-					<ComboBoxItem>Save</ComboBoxItem>         
-					<ComboBoxItem>Skill</ComboBoxItem>
-                    <ComboBoxItem>Condition</ComboBoxItem>
+					DataContextChanged="CommandComboBox_DataContextChanged" Initialized="CommandComboBox_Initialized">
+                	
 				</ComboBox>
 				<Button x:Name="DeleteButton" Margin="0,6.294,7.333,6.331" RenderTransformOrigin="0.222,-0.601" Width="16" Height="16" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Right" Click="DeleteButton_Click">
 					<Button.ToolTip>Delete</Button.ToolTip>

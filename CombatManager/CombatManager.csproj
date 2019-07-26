@@ -141,6 +141,7 @@
     <Compile Include="CampaignEventWindow.xaml.cs">
       <DependentUpon>CampaignEventWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UICharacterActionHandler.cs" />
     <Compile Include="Cloud\CloudConnection.cs" />
     <Compile Include="Cloud\MonsterLibrary.cs" />
     <Compile Include="CMUtilities.cs" />

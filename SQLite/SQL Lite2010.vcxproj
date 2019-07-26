@@ -199,6 +199,7 @@
     <ClInclude Include="sqlitedll.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="SQL Lite.cs" />
     <None Include="sqlitedll.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

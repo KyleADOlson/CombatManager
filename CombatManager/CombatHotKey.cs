@@ -7,22 +7,13 @@ using System.Xml.Serialization;
 
 namespace CombatManager
 {
-    public enum CombatHotKeyType
-    {
-        MeleeAttack,
-        RangedAttack,
-        Save,
-        Skill,
-        Condition
-    }
-
+ 
     public class CombatHotKey
     {
         Key _Key = Key.A;
         ModifierKeys _Modifier;
-        CombatHotKeyType _Type;
+        CharacterAction _Type;
         String _Subtype;
-        
 
         public CombatHotKey() { }
         public CombatHotKey(CombatHotKey hk)
@@ -45,7 +36,8 @@ namespace CombatManager
             set { _Modifier = value; }
         }
 
-        public CombatHotKeyType Type
+        [XmlIgnore]
+        public CharacterAction Type
         {
             get { return _Type; }
             set { _Type = value; }
@@ -58,12 +50,11 @@ namespace CombatManager
         }
 		
 		
-        [XmlIgnore]
         public int IntType
 		{
 			
             get { return (int)_Type; }
-            set { _Type = (CombatHotKeyType)value; }
+            set { _Type = (CharacterAction)value; }
 		}
 
         [XmlIgnore]
@@ -93,6 +84,7 @@ namespace CombatManager
                 SetModifier(ModifierKeys.Control, value);
             }
         }
+
 
         private bool GetModifier(ModifierKeys key)
         {

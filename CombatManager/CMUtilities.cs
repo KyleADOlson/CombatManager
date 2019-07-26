@@ -87,6 +87,33 @@ namespace CombatManager
             return null;
         }
 
+        public static T GetSibling<T>(this DependencyObject e, String name) where T : DependencyObject
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(e);
+            return parent.GetChild<T>(name);
+
+        }
+
+
+        public static T GetChild<T>(this DependencyObject parent, String name) where T : DependencyObject
+        {
+            int count = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < count; i++)
+            {
+                DependencyObject dob = VisualTreeHelper.GetChild(parent, i);
+                if (dob is FrameworkElement)
+                {
+                    FrameworkElement fe = (FrameworkElement)dob;
+                    if (fe.Name == name)
+                    {
+                        return fe as T;
+                    }
+                }
+
+            }
+            return null;
+        }
+
         public static void ScrollChildToBottom(this DependencyObject e)
         {
 
@@ -525,55 +552,7 @@ namespace CombatManager
 
     }
 
-    public abstract class SimpleNotifyClass : INotifyPropertyChanged
-    {
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void Notify(string prop)
-        {
-            if (this.PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
-        }
-    }
-
-
-    public class NotifyValue<T> : INotifyPropertyChanged
-    {
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        T _Value;
-
-        public NotifyValue(T val)
-        {
-            _Value = val;
-        }
-
-        public NotifyValue()
-        {
-        }
-
-        public T Value
-        {
-
-            get
-            {
-                return _Value;
-            }
-            set
-            {
-                _Value = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Value"));
-                }
-            }
-        }
-
-    }
 
     public class DebugTimer
     {

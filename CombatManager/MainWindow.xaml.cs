@@ -99,6 +99,9 @@ namespace CombatManager
         //combat round        
         CombatState combatState;
 
+        Dictionary<RulesSystem, CombatState> stateDictionary = 
+            new Dictionary<RulesSystem, CombatState>();
+
         bool combatLayoutLoaded;
         bool restoreDefaultLayout;
 
@@ -211,14 +214,10 @@ namespace CombatManager
             mainWindowLoaded = true;
             UpdateMonsterFlowDocument();
 
-            combatState = XmlLoader<CombatState>.Load("CombatState.xml", true);
+            combatState = new CombatState();
+            combatState.Copy(LoadCombatState(UserSettings.Settings.RulesSystem));
 
-            if (combatState == null)
-            {
-
-                combatState = new CombatState();
-
-            }
+ 
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
             CombatState.alternateRoll = UserSettings.Settings.AlternateInitRoll;
@@ -413,6 +412,9 @@ namespace CombatManager
             PerformUpdateCheck();
 
         }
+
+  
+
 
 
         void PipeServer_FileRecieved(object sender, PipeServer.PipeServerEventArgs e)
@@ -867,6 +869,35 @@ namespace CombatManager
             }
         }
 
+        CombatState LoadCombatState(RulesSystem system)
+        {
+            CombatState state = XmlLoader<CombatState>.Load(CombatStateName(system), true);
+            if (state == null)
+            {
+                state = new CombatState();
+                state.RulesSystem = system;
+            }
+            stateDictionary[system] = state;
+            return state;
+        }
+
+
+        private String CombatStateName(RulesSystem system)
+        {
+
+            switch (system)
+            {
+                case RulesSystem.PF2:
+                    return "CombatStatePF2.xml";
+                case RulesSystem.DD5:
+                    return "CombatStateDD5.xml";
+                case RulesSystem.PF1:
+                default:
+                    return "CombatState.xml";
+
+            }
+        }
+
         void LoadCombatStateFromFile(string file)
         {
             try
@@ -874,16 +905,20 @@ namespace CombatManager
 
                 CombatState cs = XmlLoader<CombatState>.Load(file);
 
-                combatState.Copy(cs);
+                CombatState old;
+                if (!stateDictionary.TryGetValue(cs.RulesSystem, out old))
+                {
+                    old = new CombatState();
+                    stateDictionary[cs.RulesSystem] = old;
+                }
 
-                combatView.Refresh();
-                //currentPlayerView.Refresh();
-                monsterView.Refresh();
-                playerView.Refresh();
+                old.Copy(cs);
 
+                StoreSystemCombatState();
 
-                combatState.FixInitiativeLinks();
-                combatState.SortCombatList(false, false);
+                UserSettings.Settings.RulesSystem = cs.RulesSystem;
+
+                RetrieveSystemCombatState();
 
 
             }
@@ -893,13 +928,48 @@ namespace CombatManager
             }
         }
 
+        void StoreSystemCombatState()
+        {
+            CombatState cs;
+            if (!stateDictionary.TryGetValue(UserSettings.Settings.RulesSystem, out cs))
+            {
+                cs = LoadCombatState(UserSettings.Settings.RulesSystem);
+            }
+            cs.Copy(combatState);
+        }
+
+
+        void RetrieveSystemCombatState()
+        {
+            CombatState cs;
+            if (!stateDictionary.TryGetValue(UserSettings.Settings.RulesSystem, out cs))
+            {
+                cs = LoadCombatState(UserSettings.Settings.RulesSystem);
+            }
+
+            
+            combatState.Copy(cs);
+
+            combatView.Refresh();
+            //currentPlayerView.Refresh();
+            monsterView.Refresh();
+            playerView.Refresh();
+
+
+            combatState.FixInitiativeLinks();
+            combatState.SortCombatList(false, false);
+            
+        }
+
         void SaveCombatState()
         {
             try
             {
                 DateTime x = DateTime.Now;
 
-                XmlLoader<CombatState>.Save(combatState, "CombatState.xml", true);
+
+                XmlLoader<CombatState>.Save(combatState, 
+                    CombatStateName(UserSettings.Settings.RulesSystem), true);
 
                 DateTime y = DateTime.Now;
 
@@ -1342,6 +1412,7 @@ namespace CombatManager
 
                 currentViewMonster = m;
                 currentViewCharacter = ch;
+                SetLastClickedChar(ch, false);
 
                 if (currentViewMonster != null)
                 {
@@ -2441,6 +2512,12 @@ namespace CombatManager
 
         private void NextButtonClick(object sender, RoutedEventArgs e)
         {
+            NextTurn();
+        }
+
+        public void NextTurn()
+        {
+
             using (var undoGroup = undo.CreateUndoGroup())
             {
                 MoveNextPlayer();
@@ -2463,6 +2540,11 @@ namespace CombatManager
  
 
         private void PrevButton_Click(object sender, RoutedEventArgs e)
+        {
+            PreviousTurn();
+        }
+
+        public void PreviousTurn()
         {
             using (var undoGroup = undo.CreateUndoGroup())
             {
@@ -4308,7 +4390,7 @@ namespace CombatManager
             }
         }
 
-        private void EditAttacks(Character character)
+        public void EditAttacks(Character character)
         {
             using (var undoGroup = undo.CreateUndoGroup())
             {
@@ -4320,7 +4402,7 @@ namespace CombatManager
             }
         }
 
-        private void EditFeats(Character character)
+        public void EditFeats(Character character)
         {
             FeatChangeWindow window = new FeatChangeWindow();
             window.Character = character;
@@ -4534,15 +4616,20 @@ namespace CombatManager
 
         private void MenuItem_Clone(object sender, RoutedEventArgs e)
         {
+            List<Character> list = GetViewSelectedCharacters(sender);
+        }
+
+        public void CloneCharacterList(List<Character> list)
+        {
             using (var undoGroup = undo.CreateUndoGroup())
             {
-                List<Character> list = GetViewSelectedCharacters(sender);
 
                 foreach (Character ch in list)
                 {
                     combatState.CloneCharacter(ch);
                 }
             }
+
         }
 
         private void MenuItem_EditAttacks(object sender, RoutedEventArgs e)
@@ -4565,9 +4652,15 @@ namespace CombatManager
 
         private void MenuItem_Delete(object sender, RoutedEventArgs e)
         {
+
+            List<Character> list = GetViewSelectedCharacters(sender);
+            DeleteCharacterList(list);
+        }
+
+        public void DeleteCharacterList(List<Character> list)
+        {
             using (var undoGroup = undo.CreateUndoGroup())
             {
-                List<Character> list = GetViewSelectedCharacters(sender);
 
                 foreach (Character ch in list)
                 {
@@ -5256,9 +5349,14 @@ namespace CombatManager
 
         private void MenuItem_Unlink(object sender, RoutedEventArgs e)
         {
+            List<Character> list = GetViewSelectedCharacters(sender);
+            UnlinkCharacterList(list);
+        }
+
+        public void UnlinkCharacterList(List<Character> list)
+        {
             using (var undoGroup = undo.CreateUndoGroup())
             {
-                List<Character> list = GetViewSelectedCharacters(sender);
 
                 foreach (Character ch in list)
                 {
@@ -5266,13 +5364,19 @@ namespace CombatManager
                 }
             }
         }
-        
+
+
         private void MenuItem_GroupAllSelected(object sender, RoutedEventArgs e)
         {
 
+            List<Character> list = GetViewSelectedCharacters(sender);
+            GroupCharacterList(list);
+        }
+
+        public void GroupCharacterList(List<Character> list)
+        {
             using (var undoGroup = undo.CreateUndoGroup())
             {
-                List<Character> list = GetViewSelectedCharacters(sender);
                 if (list.Count > 0)
                 {
 
@@ -5280,7 +5384,7 @@ namespace CombatManager
                     Character start = list[0];
 
                     List<Character> followers;
-                    
+
                     combatState.UnlinkLeader(start);
                     if (list.Count > 1)
                     {
@@ -5320,10 +5424,16 @@ namespace CombatManager
 
         private void ClearDelayReadyMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            Character ch = (Character)((FrameworkElement)sender).DataContext;
+            ClearCharacter(ch);
+        }
+
+        public void ClearCharacter(Character ch)
+        {
+
             using (var undoGroup = undo.CreateUndoGroup())
             {
 
-                Character ch = (Character)((FrameworkElement)sender).DataContext;
                 ch.IsReadying = false;
                 ch.IsDelaying = false;
             }
@@ -5331,30 +5441,45 @@ namespace CombatManager
 
         private void ReadyMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            using (var undoGroup = undo.CreateUndoGroup())
-            {
-
-                Character ch = (Character)((FrameworkElement)sender).DataContext;
-                ch.IsReadying = true;
-            }
+            Character ch = (Character)((FrameworkElement)sender).DataContext;
+            ReadyCharacter(ch);
         }
 
-        private void ActNowMenuItem_Click(object sender, RoutedEventArgs e)
+        public void ReadyCharacter(Character ch)
         {
             using (var undoGroup = undo.CreateUndoGroup())
             {
 
-                Character ch = (Character)((FrameworkElement)sender).DataContext;
+                ch.IsReadying = true;
+            }
+
+        }
+
+        private void ActNowMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Character ch = (Character)((FrameworkElement)sender).DataContext;
+            ActNowCharacter(ch);
+        }
+
+        public void ActNowCharacter(Character ch)
+        {
+            using (var undoGroup = undo.CreateUndoGroup())
+            {
+
                 combatState.CharacterActNow(ch);
             }
         }
 
         private void DelayMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            Character ch = (Character)((FrameworkElement)sender).DataContext;
+            DelayCharacter(ch);
+        }
+
+        public void DelayCharacter(Character ch)
+        {
             using (var undoGroup = undo.CreateUndoGroup())
             {
-
-                Character ch = (Character)((FrameworkElement)sender).DataContext;
                 ch.IsDelaying = true;
             }
         }
@@ -5637,16 +5762,22 @@ namespace CombatManager
 
         private void DamageHealMenuItem_Click(object sender, RoutedEventArgs e)
         {
+
+            Control control = (Control)sender;
+            Character ch = ((Character)control.DataContext);
+            DamageHealDialogCharacter(ch);
+
+
+        }
+
+        public  void DamageHealDialogCharacter(Character ch)
+        {
+
             HPChangeDialog dlg = new HPChangeDialog();
             dlg.Owner = this;
             dlg.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-
-
-            Control control = (Control)sender;
-
-            Character source = ((Character)control.DataContext);
-
-            if (source.IsMonster)
+            
+            if (ch.IsMonster)
             {
                 dlg.ListBox = monsterListBox;
             }
@@ -5656,7 +5787,6 @@ namespace CombatManager
             }
 
             dlg.Show();
-
         }
 
         private void GenerateItemsButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -5864,20 +5994,35 @@ namespace CombatManager
 
                 MenuItem item = (MenuItem)sender;
 
-                item.Items.Clear();
 
-                AddFavoriteConditionItems(Condition.FavoriteConditions, item);
-                AddFavoriteConditionItems(Condition.RecentConditions, item);
+                AddConditonMenuItems(item);
 
-                MenuItem EditFavorites = new MenuItem();
-                EditFavorites.Header = "Other...";
-                EditFavorites.Click += new RoutedEventHandler(MenuItem_AddCondition);
-                item.Items.Add(EditFavorites);
 
             }
         }
 
-        void AddFavoriteConditionItems(List<FavoriteCondition> list, MenuItem item)
+        public void AddConditonMenuItems(ItemsControl item)
+        {
+            item.Items.Clear();
+            AddFavoriteConditionItems(Condition.FavoriteConditions, item);
+            AddFavoriteConditionItems(Condition.RecentConditions, item);
+            AddOtherMenuItems(item);
+        }
+
+        public void ShowConditionMenu(Character ch)
+        {
+            ContextMenu m = new ContextMenu();
+            m.DataContext = ch;
+
+            AddConditonMenuItems(m);
+
+
+            m.Placement = PlacementMode.MousePoint;
+            m.IsOpen = true;
+
+        }
+        
+        void AddFavoriteConditionItems(List<FavoriteCondition> list, ItemsControl item)
         {
             foreach (FavoriteCondition fc in list)
             {
@@ -5905,6 +6050,14 @@ namespace CombatManager
             {
                 item.Items.Add(new Separator());
             }
+        }
+
+        void AddOtherMenuItems(ItemsControl item)
+        {
+            MenuItem EditFavorites = new MenuItem();
+            EditFavorites.Header = "Other...";
+            EditFavorites.Click += new RoutedEventHandler(MenuItem_AddCondition);
+            item.Items.Add(EditFavorites);
         }
 
 
@@ -6194,17 +6347,21 @@ namespace CombatManager
 
         private void RollInitiativeMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem mi = (MenuItem)sender;
+
+            FrameworkElement el = (FrameworkElement)sender;
+
+            Character ch = (Character)el.DataContext;
+
+            List<Character> list = GetViewSelectedCharactersFromChar(ch);
+
+            RollIniiativeForCharacters(list);
+        }
+
+        public void RollIniiativeForCharacters(List<Character> list)
+        {
             using (var undoGroup = undo.CreateUndoGroup())
             {
-
-                MenuItem mi = (MenuItem)sender;
-
-                FrameworkElement el = (FrameworkElement)sender;
-
-                Character ch = (Character)el.DataContext;
-
-                List<Character> list = GetViewSelectedCharactersFromChar(ch);
-
                 foreach (Character c in list)
                 {
                     combatState.RollIndividualInitiative(c);
@@ -6216,7 +6373,6 @@ namespace CombatManager
 
         private void MenuItem_EditMonster(object sender, RoutedEventArgs e)
         {
-            MonsterEditorWindow w = new MonsterEditorWindow();
 
             MenuItem mi = (MenuItem)sender;
 
@@ -6224,12 +6380,21 @@ namespace CombatManager
 
             Character ch = (Character)el.DataContext;
 
+            EditMonster(ch);
+
+        }
+
+        public void EditMonster(Character ch)
+        {
+            MonsterEditorWindow w = new MonsterEditorWindow();
+
             w.Owner = this;
             w.Monster = ch.Monster;
             if (w.ShowDialog() == true)
             {
                 CalculateEncounterXP();
             }
+
         }
 
 
@@ -6287,6 +6452,9 @@ namespace CombatManager
             Popup popup = (Popup)el.FindName("NotesPopup");
             popup.IsOpen = true;
         }
+        
+
+
 
         private ListBoxItem GetListBoxItemForCharater(Character ch)
         {
@@ -6344,7 +6512,13 @@ namespace CombatManager
             AddNewCustomMonster(ch.Monster);
         }
 
-        private Monster AddNewCustomMonster(Monster oldmonster)
+
+        public Monster AddNewCustomMonster(Character oldmonster)
+        {
+            return AddNewCustomMonster(oldmonster.Monster);
+        }
+
+        public Monster AddNewCustomMonster(Monster oldmonster)
         {
             Monster m = (Monster)oldmonster.Clone();
             m.DBLoaderID = 0;
@@ -6352,6 +6526,11 @@ namespace CombatManager
             Monster.Monsters.Add(m);
             return m;
             
+        }
+
+        public void MakeCharacterCustomMonster(Character c)
+        {
+            AddNewCustomMonster(c);
         }
 
         private void CustomizeMonsterButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -6817,7 +6996,7 @@ namespace CombatManager
 
         }
 
-        private void RollSave(List<Character> list, Monster.SaveType type)
+        public void RollSave(List<Character> list, Monster.SaveType type)
         {
             if (list.Count > 0)
             {
@@ -7042,7 +7221,7 @@ namespace CombatManager
             RollSkillCheck(list, v.Name, v.Subtype);
         }
 
-        private void RollSkillCheck(List<Character> list, string skill, string subtype)
+        public void RollSkillCheck(List<Character> list, string skill, string subtype)
         {
             if (list.Count > 0)
             {
@@ -7627,13 +7806,20 @@ namespace CombatManager
 
         private void MenuItem_IdleMonster(object sender, RoutedEventArgs e)
         {
+
+            Character root = (Character)((FrameworkElement)sender).DataContext;
+            List<Character> list = GetViewSelectedCharactersFromChar(root);
+
+
+            bool newState = !root.IsIdle;
+            SetIdleCharacterList(list, newState);
+        }
+
+        private void SetIdleCharacterList(List<Character> list, bool newState)
+        {
+
             using (var undoGroup = undo.CreateUndoGroup())
             {
-                Character root = (Character)((FrameworkElement)sender).DataContext;
-
-                List<Character> list = GetViewSelectedCharactersFromChar(root);
-
-                bool newState = !root.IsIdle;
 
                 foreach (Character ch in list)
                 {
@@ -7646,15 +7832,34 @@ namespace CombatManager
             }
         }
 
+        public void IdleCharacterList(List<Character> list)
+        {
+            SetIdleCharacterList(list, true);
+        }
+
+        public void WakeUpCharacterList(List<Character> list)
+        {
+
+            SetIdleCharacterList(list, false);
+        }
+
         private void MenuItem_HideMonster(object sender, RoutedEventArgs e)
+        {
+
+            Character root = (Character)((FrameworkElement)sender).DataContext;
+
+            List<Character> list = GetViewSelectedCharactersFromChar(root);
+
+            bool newState = !root.IsHidden;
+
+            SetHideCharacterList(list, newState);
+
+        }
+
+        public void SetHideCharacterList(List<Character> list, bool newState)
         {
             using (var undoGroup = undo.CreateUndoGroup())
             {
-                Character root = (Character)((FrameworkElement)sender).DataContext;
-
-                List<Character> list = GetViewSelectedCharactersFromChar(root);
-
-                bool newState = !root.IsHidden;
 
                 foreach (Character ch in list)
                 {
@@ -7664,7 +7869,51 @@ namespace CombatManager
                 combatView.Refresh();
                 combatState.FilterList();
             }
+        }
 
+        public void HideCharacterList(List<Character> list)
+        {
+            SetHideCharacterList(list, true);
+        }
+        public void UnhideCharacterList(List<Character> list)
+        {
+            SetHideCharacterList(list, false);
+        }
+
+
+        public void RollMeleeAttackCharacter(Character c)
+        {
+            List<AttackSet> latk = c.Monster.MeleeAttacks;
+            if (latk.Count > 0)
+            {
+                AttackSet set = latk[0];
+
+                List<Attack> attacks = new List<Attack>();
+
+                attacks.AddRange(set.WeaponAttacks);
+                attacks.AddRange(set.NaturalAttacks);
+
+
+                foreach (Attack atk in attacks)
+                {
+                    RollAttack(c, atk);
+                }
+            }
+            
+        }
+
+
+        public void RollRangedAttackCharacter(Character c)
+        {
+            List<Attack> ran = c.Monster.RangedAttacks;
+            if (ran != null && ran.Count > 0)
+            {
+
+                foreach (Attack atk in ran)
+                {
+                    RollAttack(c, atk);
+                }
+            }
         }
 
         private void CustomizeSpellButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -8110,7 +8359,7 @@ namespace CombatManager
 
         private void LoadHotkeys()
         {
-            _CombatHotKeys = XmlListLoader<CombatHotKey>.Load("CombatHotKeys.xml", true);
+            _CombatHotKeys = XmlListLoader<CombatHotKey>.Load("CombatHotKeys2.xml", true);
             UpdateHotKeys();
         }
 
@@ -8118,7 +8367,7 @@ namespace CombatManager
         {
             if (_CombatHotKeys != null)
             {
-                XmlListLoader<CombatHotKey>.Save(_CombatHotKeys, "CombatHotKeys.xml", true);
+                XmlListLoader<CombatHotKey>.Save(_CombatHotKeys, "CombatHotKeys2.xml", true);
             }
             UpdateHotKeys();
         }
@@ -8139,7 +8388,7 @@ namespace CombatManager
                     {
                         InputBinding ib = new KeyBinding(new RelayCommand((object x) =>
                         {
-                            TakeHotkeyAction(chk);
+                            HandleHotKey(chk);
                         }), hk.Key, hk.Modifier);
                         _HotKeys.Add(ib);
                         InputBindings.Add(ib);
@@ -8154,77 +8403,29 @@ namespace CombatManager
 
         }
 
-        private void TakeHotkeyAction(CombatHotKey chk)
+        private void HandleHotKey(CombatHotKey chk)
         {
             //get targets
-            Character ch = currentViewCharacter;
+            Character ch = lastClickedChar;
 
             if (ch != null)
             {
-                List<Character> list = GetViewSelectedCharactersFromChar(ch);
-
-                foreach (Character c in list)
+                List<Character> list;
+                if (lastClickCombatList)
                 {
-                    //run command
-                    switch (chk.Type)
-                    {
-                        case CombatHotKeyType.MeleeAttack:
-                            List<AttackSet> latk = c.Monster.MeleeAttacks;
-                            if (latk.Count > 0)
-                            {
-                                AttackSet set = latk[0];
-
-                                List<Attack> attacks = new List<Attack>();
-
-                                attacks.AddRange(set.WeaponAttacks);
-                                attacks.AddRange(set.NaturalAttacks);
-
-
-                                foreach (Attack atk in attacks)
-                                {
-                                    RollAttack(c, atk);
-                                }
-                            }
-
-                            break;
-                        case CombatHotKeyType.RangedAttack:
-                            List<Attack> ran = c.Monster.RangedAttacks;
-                            if (ran != null && ran.Count > 0)
-                            {
-
-                                foreach (Attack atk in ran)
-                                {
-                                    RollAttack(c, atk);
-                                }
-                            }
-
-                            break;
-                        case CombatHotKeyType.Save:
-                            if (chk.Subtype == "Fort")
-                            {
-                                RollSave(c, Monster.SaveType.Fort);
-                            }
-                            else if (chk.Subtype == "Ref")
-                            {
-                                RollSave(c, Monster.SaveType.Ref);
-                            }
-                            else if (chk.Subtype == "Will")
-                            {
-                                RollSave(c, Monster.SaveType.Will);
-                            }
-                            break;
-                        case CombatHotKeyType.Skill:
-                            RollSkillCheck(c, chk.Subtype, null);
-                            break;
-                        case CombatHotKeyType.Condition:
-                            c.AddConditionByName(chk.Subtype);
-                            break;
-                    }
+                    list = new List<Character>();
+                    list.Add(ch);
                 }
+                else
+                {
+                    list = GetViewSelectedCharactersFromChar(ch);
+                }
+
+                UICharacterActionHandler.HandleAction(ch, list,
+                        chk.Type, chk.Subtype, this);
             }
-
-
         }
+        
 
         #endregion
         private void RollInitWithoutResetMenuItem_Click(object sender, RoutedEventArgs e)
@@ -8858,7 +9059,93 @@ namespace CombatManager
             MoveDownGhostSpecial(sp);
         }
 
+        Character lastSelectedCombatListChar = null;
+        Character lastClickedChar = null;
+        bool lastClickCombatList = false;
+
+        private void CombatListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lastSelectedCombatListChar = null;
+            ListBox lb = (ListBox)sender;
+            object si = lb.SelectedItem;
+                if (si is Character)
+                {
+                    lastSelectedCombatListChar = (Character)si;
+                SetLastClickedChar(lastSelectedCombatListChar, true);
+                }
+            
+        }
+
+        void SetLastClickedChar(Character c, bool combatlist)
+        {
+            lastClickedChar = c;
+            lastClickCombatList = combatlist;
+        }
+
+        private void TitleBarSystemButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContextMenu m = new ContextMenu();
+
+
+            foreach (var system in new RulesSystem[] { RulesSystem.PF1, RulesSystem.DD5})
+            {
+
+                MenuItem item = new MenuItem();
+                item.Header = RulesSystemHelper.SystemName(system);
+                item.DataContext = system;
+                item.Click += SystemItem_Click;
+                m.Items.Add(item);
+            }
+
+            m.Placement = PlacementMode.Bottom;
+            m.PlacementTarget = (UIElement)sender;
+            m.IsOpen = true;
+
+
+        }
+
+        private void SystemItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            RulesSystem system = (RulesSystem)item.DataContext;
+            SetRulesSystem(system);
+
+        }
+
+        private void SetRulesSystem(RulesSystem system)
+        {
+            if (UserSettings.Settings.RulesSystem != system)
+            {
+                StoreSystemCombatState();
+
+                UserSettings.Settings.RulesSystem = system;
+
+                RetrieveSystemCombatState();
+
+                UpdateRulesSystemText();
+            }
+        }
+
+        private void UpdateRulesSystemText()
+        {
+            SystemButtonTextBlock.Text = RulesSystemHelper.SystemName(UserSettings.Settings.RulesSystem);
+                    
+        }
+
+        private void TitleBarSystemButton_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void SystemButtonTextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            UpdateRulesSystemText();
+        }
     }
+
+
+
+
 
 
     public class RelayCommand : ICommand 

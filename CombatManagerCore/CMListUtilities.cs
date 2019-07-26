@@ -49,6 +49,11 @@ namespace CombatManager
                
         }
 
+        public static bool NotEmptyOrNull<T>(this ICollection<T> list)
+        {
+            return !list.IsEmptyOrNull();
+        }
+
         public static T FirstOrDefaultSafe<T>(this IEnumerable<T> list)
         {
             if (list == null)

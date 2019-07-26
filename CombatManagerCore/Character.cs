@@ -47,6 +47,8 @@ namespace CombatManager
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private RulesSystem rulesSystem;
+
         private String name;
         private int hp;
         private int maxHP;
@@ -235,6 +237,38 @@ namespace CombatManager
             get
             {
                 return monster;
+            }
+        }
+
+        [XmlIgnore]
+        public RulesSystem RulesSystem
+        {
+            get
+            {
+                return rulesSystem;
+            }
+            set
+            {
+                if (rulesSystem != value)
+                {
+                    rulesSystem = value;
+                    Notify("RulesSystem");
+                }
+
+            }
+            
+        }
+
+        [DataMember]
+        public int RulesSystemInt
+        {
+            get
+            {
+                return (int)RulesSystem;
+            }
+            set
+            {
+                RulesSystem = (RulesSystem)value;
             }
         }
 

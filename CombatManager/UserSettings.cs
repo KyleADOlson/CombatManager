@@ -46,7 +46,8 @@ namespace CombatManager
             WindowState,
             Sources,
             Initiative,
-            Filters
+            Filters,
+            System,
         }
 
         public enum MonsterSetFilter
@@ -111,6 +112,8 @@ namespace CombatManager
         private int _ColorScheme;
         private bool _DarkScheme;
 
+        private int _RulesSystem;
+
 
 
         private bool optionsLoaded;
@@ -141,6 +144,7 @@ namespace CombatManager
             _InitiativeConditionsSize = 2;
             _ColorScheme = 0;
             _DarkScheme = false;
+            _RulesSystem = 0;
             LoadOptions();
         }
 
@@ -670,6 +674,20 @@ namespace CombatManager
             }
         }
 
+        public RulesSystem RulesSystem
+        {
+            get { return (RulesSystem)_RulesSystem; }
+            set
+            {
+                if (_RulesSystem != (int)value)
+                {
+                    _RulesSystem = (int)value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RulesSystem"));
+                }
+            }
+        }
+            
+
 
         void LoadOptions()
         {
@@ -715,6 +733,7 @@ namespace CombatManager
                 MonsterTabFilter = (MonsterSetFilter)LoadIntValue("MonsterTabFilter", (int)MonsterSetFilter.Monsters);
                 ColorScheme = LoadIntValue("ColorScheme", 0);
                 DarkScheme = LoadBoolValue("DarkScheme", false);
+                RulesSystem = (RulesSystem)LoadIntValue("RulesSystem", 0);
 
 
                 optionsLoaded = true;
@@ -759,6 +778,11 @@ namespace CombatManager
                         SaveIntValue(key, "DefaultHPMode", (int)DefaultHPMode);
 
 
+                    }
+
+                    if (section == SettingsSaveSection.System || section == SettingsSaveSection.All)
+                    {
+                        SaveIntValue(key, "RulesSystem", (int)RulesSystem);
                     }
 
                     if (section == SettingsSaveSection.WindowState || section == SettingsSaveSection.All)

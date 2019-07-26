@@ -20,10 +20,21 @@ namespace CombatManager
     public partial class HotKeysDialog : Window
     {
 		 ObservableCollection<CombatHotKey> _CombatHotKeys;
-		
+
+        SortedDictionary<string, CharacterAction> names = new SortedDictionary<string, CharacterAction>();
+
+
         public HotKeysDialog()
         {
             InitializeComponent();
+
+
+            foreach (CharacterAction type in Enum.GetValues(typeof(CharacterAction)))
+            {
+                String name = UICharacterActionHandler.Description(type);
+                names[name] = type;
+            }
+
         }
 
         private void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -69,54 +80,37 @@ namespace CombatManager
 		private void CommandComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
 		{
             ComboBox typeCombo = (ComboBox)sender;
-            DependencyObject parent = VisualTreeHelper.GetParent(typeCombo);
-            int count = VisualTreeHelper.GetChildrenCount(parent);
-            ComboBox subtypeCombo = null;
-            for (int i = 0; i < count; i++)
-            {
-                DependencyObject dob = VisualTreeHelper.GetChild(parent, i);
-                if (dob is FrameworkElement)
-                {
-                    FrameworkElement fe = (FrameworkElement)dob;
-                    if (fe.Name == "SubtypeComboBox")
-                    {
-                        subtypeCombo = (ComboBox)fe;
-                        break;
-                    }
-                }
 
-            }
-            UpdateSubtypeCombo(typeCombo.SelectedIndex, subtypeCombo);
+            ComboBoxItem cbi = (ComboBoxItem)typeCombo.SelectedItem;
+            CombatHotKey hk = (CombatHotKey)typeCombo.DataContext;
+            hk.Type = (CharacterAction)cbi.DataContext;
+
+            ComboBox subtypeCombo = typeCombo.GetSibling<ComboBox>("SubtypeComboBox");
+
+            UpdateSubtypeCombo(subtypeCombo);
 
 		}
 
-        private void UpdateSubtypeCombo(int selectedIndex, ComboBox subtypeCombo)
+        private void UpdateSubtypeCombo(ComboBox subtypeCombo)
         {
 
             if (subtypeCombo != null)
             {
-
-
                 ComboBox cb = subtypeCombo;
                 CombatHotKey hk = (CombatHotKey)cb.DataContext;
 
+            
                 subtypeCombo.Items.Clear();
-                switch (selectedIndex)
+                switch ((CharacterAction)hk.Type)
                 {
-                    case 0:
-                        subtypeCombo.IsEnabled = false;
-                        break;
-                    case 1:
-                        subtypeCombo.IsEnabled = false;
-                        break;
-                    case 2:
+                    case CharacterAction.Save:
                         subtypeCombo.IsEnabled = true;
                         subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Fort" });
                         subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Ref" });
                         subtypeCombo.Items.Add(new ComboBoxItem() { Content = "Will" });
                         SetIndexForString(cb, hk.Subtype);
                         break;
-                    case 3:
+                    case CharacterAction.Skill:
                         subtypeCombo.IsEnabled = true;
                         foreach (Monster.SkillInfo si in Monster.SkillsDetails.Values)
                         {
@@ -124,37 +118,53 @@ namespace CombatManager
                         }
                         SetIndexForString(cb, hk.Subtype);
                         break;
-                    case 4:
-                        subtypeCombo.IsEnabled = true;
-
-                        String hkcond = hk.Subtype;
-
-                        
-                        foreach (Condition c in Condition.Conditions)
-                        {
-                            StackPanel panel = new StackPanel();
-                            panel.Orientation = Orientation.Horizontal;
-
-
-                            Image i = new Image();
-                            BitmapImage bi = StringImageSmallIconConverter.FromName(c.Image);
-                            i.Source = bi;
-                            i.Width = 16;
-                            i.Height = 16;
-
-                            panel.Children.Add(i);
-                            panel.Children.Add(new TextBlock() { Text = c.Name });
-                            ComboBoxItem cbi = new ComboBoxItem() {Content = panel, Tag = c };
-                            
-                            subtypeCombo.Items.Add(cbi);
-
-                            if (c.Name == hkcond)
-                            {
-                                subtypeCombo.SelectedItem = cbi;
-                            }
-                        }
+                    case CharacterAction.ApplyCondition:
+                        UpdateConditionSubtype(subtypeCombo, hk);
+                        break;
+                    default:
+                        subtypeCombo.IsEnabled = false;
                         break;
                 }
+            }
+            
+        }
+
+        List<ComboBoxItem> conditionItems;
+
+        private void UpdateConditionSubtype(ComboBox subtypeCombo, CombatHotKey hk)
+        {
+            subtypeCombo.IsEnabled = true;
+
+            String hkcond = hk.Subtype;
+            bool found = false;
+
+            foreach (Condition c in from x in Condition.Conditions where x.Spell == null select x )
+            {
+                StackPanel panel = new StackPanel();
+                panel.Orientation = Orientation.Horizontal;
+
+
+                Image i = new Image();
+                BitmapImage bi = StringImageSmallIconConverter.FromName(c.Image);
+                i.Source = bi;
+                i.Width = 16;
+                i.Height = 16;
+
+                panel.Children.Add(i);
+                panel.Children.Add(new TextBlock() { Text = c.Name });
+                ComboBoxItem cbi = new ComboBoxItem() { Content = panel, Tag = c };
+
+                subtypeCombo.Items.Add(cbi);
+
+                if (c.Name == hkcond)
+                {
+                    subtypeCombo.SelectedItem = cbi;
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                subtypeCombo.SelectedIndex = 0;
             }
         }
 
@@ -200,14 +210,32 @@ namespace CombatManager
 
 		private void CommandComboBox_Initialized(object sender, System.EventArgs e)
 		{
+            ComboBox cb = (ComboBox)sender;
+
+            CombatHotKey hk = (CombatHotKey)cb.DataContext;
+
+            ComboBoxItem selected = null;
+
+            foreach (var kv in names)
+            {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Content = kv.Key;
+                cbi.DataContext = kv.Value;
+
+                if (kv.Value == hk.Type)
+                {
+                    selected = cbi;
+                }
+
+                cb.Items.Add(cbi);
+            }
+            cb.SelectedItem = selected;
 		}
        
 		private void SubtypeComboBox_Initialized(object sender, System.EventArgs e)
 		{
             ComboBox cb = (ComboBox)sender;
-			CombatHotKey hk = (CombatHotKey)cb.DataContext;
-            int index = hk.IntType;
-            UpdateSubtypeCombo(index, cb);
+            UpdateSubtypeCombo(cb);
 
             
 		}
@@ -266,6 +294,8 @@ namespace CombatManager
             Grid cb = ((Grid)sender);
 			CombatHotKey hk = (CombatHotKey)cb.DataContext;
             UpdateBackground(cb, hk);
+
+            UpdateSubtypeCombo(cb.GetChild<ComboBox>("SubtypeCombo"));
         }
     }
 }

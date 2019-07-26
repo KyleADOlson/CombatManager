@@ -2698,7 +2698,7 @@
         <Rectangle RadiusX="0" RadiusY="0" StrokeThickness="3" x:Name="MainRectangle1" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" MouseLeftButtonUp="MainRectangle_MouseLeftButtonUp" MouseMove="MainRectangle_MouseMove" Stroke="Black" Margin="0" Grid.RowSpan="3" />
         <Rectangle Fill="{DynamicResource PrimaryColorDarkerBrush}" RadiusX="0" RadiusY="0" StrokeThickness="3" x:Name="MainRectangle" MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" MouseLeftButtonUp="MainRectangle_MouseLeftButtonUp" MouseMove="MainRectangle_MouseMove" Stroke="White" Margin="1" Grid.RowSpan="3" />
         <Button Height="34.667" HorizontalAlignment="Stretch" Margin="8,4,9,0" x:Name="TitleBarButton" VerticalAlignment="Top" Focusable="False" IsTabStop="False" Style="{DynamicResource TitleBarButtonStyle}" MouseDoubleClick="TitleBarButton_MouseDoubleClick">
-            <Rectangle MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" />
+            <Rectangle MouseLeftButtonDown="MainRectangle_MouseLeftButtonDown" Margin="0,0,0.2,-0.2" />
         </Button>
         <Button x:Name="TitleBarMenuButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment"  Margin="8,0,0,1" Style="{DynamicResource ButtonMainStyle}" Height="29.667" Click="TitleBarMenuButton_Click">
 
@@ -2817,7 +2817,7 @@
                                                             <TextBlock Text="Reset" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="3" />
                                                         </StackPanel>
                                                     </Button>
-                                                    <ListBox Margin="4,44,3,54.332" x:Name="combatListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CombatListItemTemplate}" HorizontalContentAlignment="Stretch" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{DynamicResource ThemeListBoxStyle}" />
+                                                    <ListBox Margin="4,44,3,54.332" x:Name="combatListBox" ItemsSource="{Binding}" ItemTemplate="{DynamicResource CombatListItemTemplate}" HorizontalContentAlignment="Stretch" BorderBrush="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{DynamicResource ThemeListBoxStyle}" SelectionChanged="CombatListBox_SelectionChanged" />
                                                     <Button Margin="61.2,2.706,55.237,0" VerticalAlignment="Top" Click="NextButtonClick" x:Name="NextButton" IsEnabled="{Binding IsEmpty, Converter={StaticResource boolInverter}}" Height="37.294" Style="{DynamicResource ButtonMainStyle}" ToolTip="Next Turn (Ctrl+N)" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment">
                                                         <StackPanel Orientation="Horizontal">
                                                             <StackPanel Orientation="Vertical">
@@ -2929,12 +2929,10 @@
                                                             </Border.BorderBrush>
                                                             <WrapPanel Orientation="Horizontal">
                                                                 <Button x:Name="D4Button1" Height="23" Style="{DynamicResource ButtonSecondaryStyle}" Tag="4"  Width="48" Click="InstantDieButtonPressed" Margin="0,0,3,2" HorizontalContentAlignment="Right" >
-                                                                    <Button.Content>
-                                                                        <StackPanel Orientation="Horizontal">
-                                                                            <TextBlock Text="d4" Margin="0,0,4,0" VerticalAlignment="Center" />
-                                                                            <Image Source="Images/d4-16.png"></Image>
-                                                                        </StackPanel>
-                                                                    </Button.Content>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <TextBlock Text="d4" Margin="0,0,4,0" VerticalAlignment="Center" />
+                                                                        <Image Source="Images/d4-16.png"/>
+                                                                    </StackPanel>
                                                                 </Button>
                                                                 <Button x:Name="D6Button1" Height="23" Style="{DynamicResource ButtonSecondaryStyle}" Tag="6"  Width="48" Click="InstantDieButtonPressed" Margin="0,0,3,2" HorizontalContentAlignment="Right" >
                                                                     <StackPanel Orientation="Horizontal">
@@ -2943,44 +2941,34 @@
                                                                     </StackPanel>
                                                                 </Button>
                                                                 <Button x:Name="D8Button1" Height="23" Style="{DynamicResource ButtonSecondaryStyle}" Tag="8"  Width="48" Click="InstantDieButtonPressed" Margin="0,0,3,2" HorizontalContentAlignment="Right" >
-                                                                    <Button.Content>
-                                                                        <StackPanel Orientation="Horizontal">
-                                                                            <TextBlock Text="d8" Margin="0,0,4,0"  VerticalAlignment="Center" />
-                                                                            <Image Source="Images/d8-16.png"></Image>
-                                                                        </StackPanel>
-                                                                    </Button.Content>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <TextBlock Text="d8" Margin="0,0,4,0"  VerticalAlignment="Center" />
+                                                                        <Image Source="Images/d8-16.png"/>
+                                                                    </StackPanel>
                                                                 </Button>
                                                                 <Button x:Name="D10Button1" Height="23" Style="{DynamicResource ButtonSecondaryStyle}" Tag="10" Click="InstantDieButtonPressed"  Width="48" Margin="0,0,3,2" HorizontalContentAlignment="Right" >
-                                                                    <Button.Content>
-                                                                        <StackPanel Orientation="Horizontal">
-                                                                            <TextBlock Text="d10" Margin="0,0,4,0"  VerticalAlignment="Center"  />
-                                                                            <Image Source="Images/d10-16.png"></Image>
-                                                                        </StackPanel>
-                                                                    </Button.Content>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <TextBlock Text="d10" Margin="0,0,4,0"  VerticalAlignment="Center"  />
+                                                                        <Image Source="Images/d10-16.png"/>
+                                                                    </StackPanel>
                                                                 </Button>
                                                                 <Button x:Name="D12Button1" Height="23" Style="{DynamicResource ButtonSecondaryStyle}" Tag="12" Click="InstantDieButtonPressed" Width="48" Margin="0,0,3,2" HorizontalContentAlignment="Right">
-                                                                    <Button.Content>
-                                                                        <StackPanel Orientation="Horizontal">
-                                                                            <TextBlock Text="d12" Margin="0,0,4,0"  VerticalAlignment="Center" />
-                                                                            <Image Source="Images/d12-16.png"></Image>
-                                                                        </StackPanel>
-                                                                    </Button.Content>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <TextBlock Text="d12" Margin="0,0,4,0"  VerticalAlignment="Center" />
+                                                                        <Image Source="Images/d12-16.png"/>
+                                                                    </StackPanel>
                                                                 </Button>
                                                                 <Button x:Name="D20Button1" Height="23" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Left" Width="48" Tag="20" Click="InstantDieButtonPressed" Margin="0,0,3,2" HorizontalContentAlignment="Right" >
-                                                                    <Button.Content>
-                                                                        <StackPanel Orientation="Horizontal">
-                                                                            <TextBlock Text="d20" Margin="0,0,4,0"  VerticalAlignment="Center" />
-                                                                            <Image Source="Images/d20p-16.png"></Image>
-                                                                        </StackPanel>
-                                                                    </Button.Content>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <TextBlock Text="d20" Margin="0,0,4,0"  VerticalAlignment="Center" />
+                                                                        <Image Source="Images/d20p-16.png"/>
+                                                                    </StackPanel>
                                                                 </Button>
                                                                 <Button x:Name="D100Button1" Height="23" Style="{DynamicResource ButtonSecondaryStyle}" HorizontalAlignment="Left" Width="48" Tag="100" Click="InstantDieButtonPressed" TabIndex="2147483644" Margin="0,0,3,2" HorizontalContentAlignment="Right" >
-                                                                    <Button.Content>
-                                                                        <StackPanel Orientation="Horizontal">
-                                                                            <TextBlock Text="d%" Margin="0,0,4,0"  VerticalAlignment="Center" />
-                                                                            <Image Source="Images/d100-16.png"></Image>
-                                                                        </StackPanel>
-                                                                    </Button.Content>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <TextBlock Text="d%" Margin="0,0,4,0"  VerticalAlignment="Center" />
+                                                                        <Image Source="Images/d100-16.png"/>
+                                                                    </StackPanel>
                                                                 </Button>
                                                             </WrapPanel>
                                                         </Border>
@@ -2996,12 +2984,10 @@
                                                             <StackPanel Orientation="Vertical">
                                                                 <WrapPanel Orientation="Horizontal" d:LayoutOverrides="Width">
                                                                     <Button x:Name="D4Button" Width="48" Height="23" Style="{DynamicResource ButtonMainStyle}" Tag="4" Click="DieButtonPressed" Margin="0,0,3,2" HorizontalContentAlignment="Right"  >
-                                                                        <Button.Content>
-                                                                            <StackPanel Orientation="Horizontal">
-                                                                                <TextBlock Text="d4" Margin="0,0,4,0" VerticalAlignment="Center"/>
-                                                                                <Image Source="Images/d4-16.png"></Image>
-                                                                            </StackPanel>
-                                                                        </Button.Content>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="d4" Margin="0,0,4,0" VerticalAlignment="Center"/>
+                                                                            <Image Source="Images/d4-16.png"/>
+                                                                        </StackPanel>
                                                                     </Button>
                                                                     <Button x:Name="D6Button" Width="48" Height="23" Style="{DynamicResource ButtonMainStyle}" Tag="6" Click="DieButtonPressed" Margin="0,0,3,2" HorizontalContentAlignment="Right"  >
                                                                         <StackPanel Orientation="Horizontal">
@@ -3010,44 +2996,34 @@
                                                                         </StackPanel>
                                                                     </Button>
                                                                     <Button x:Name="D8Button" Width="48" Height="23" Style="{DynamicResource ButtonMainStyle}" Tag="8" Click="DieButtonPressed" Margin="0,0,3,2" HorizontalContentAlignment="Right"  >
-                                                                        <Button.Content>
-                                                                            <StackPanel Orientation="Horizontal">
-                                                                                <TextBlock Text="d8" Margin="0,0,4,0"  VerticalAlignment="Center"/>
-                                                                                <Image Source="Images/d8-16.png"></Image>
-                                                                            </StackPanel>
-                                                                        </Button.Content>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="d8" Margin="0,0,4,0"  VerticalAlignment="Center"/>
+                                                                            <Image Source="Images/d8-16.png"/>
+                                                                        </StackPanel>
                                                                     </Button>
                                                                     <Button x:Name="D10Button" Height="23" Style="{DynamicResource ButtonMainStyle}" Tag="10" Click="DieButtonPressed" HorizontalAlignment="Left" Width="48" Margin="0,0,3,2" HorizontalContentAlignment="Right"  >
-                                                                        <Button.Content>
-                                                                            <StackPanel Orientation="Horizontal">
-                                                                                <TextBlock Text="d10" Margin="0,0,4,0"  VerticalAlignment="Center"/>
-                                                                                <Image Source="Images/d10-16.png"></Image>
-                                                                            </StackPanel>
-                                                                        </Button.Content>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="d10" Margin="0,0,4,0"  VerticalAlignment="Center"/>
+                                                                            <Image Source="Images/d10-16.png"/>
+                                                                        </StackPanel>
                                                                     </Button>
                                                                     <Button x:Name="D12Button" Height="23" Style="{DynamicResource ButtonMainStyle}" Tag="12" Click="DieButtonPressed" HorizontalAlignment="Left" Width="48" Margin="0,0,3,2" HorizontalContentAlignment="Right"  >
-                                                                        <Button.Content>
-                                                                            <StackPanel Orientation="Horizontal">
-                                                                                <TextBlock Text="d12" Margin="0,0,4,0"  VerticalAlignment="Center"/>
-                                                                                <Image Source="Images/d12-16.png"></Image>
-                                                                            </StackPanel>
-                                                                        </Button.Content>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="d12" Margin="0,0,4,0"  VerticalAlignment="Center"/>
+                                                                            <Image Source="Images/d12-16.png"/>
+                                                                        </StackPanel>
                                                                     </Button>
                                                                     <Button x:Name="D20Button" Height="23" Style="{DynamicResource ButtonMainStyle}" HorizontalAlignment="Left" Width="48" Tag="20" Click="DieButtonPressed" Margin="0,0,3,2" HorizontalContentAlignment="Right"  >
-                                                                        <Button.Content>
-                                                                            <StackPanel Orientation="Horizontal">
-                                                                                <TextBlock Text="d20" Margin="0,0,4,0"  VerticalAlignment="Center"/>
-                                                                                <Image Source="Images/d20p-16.png"></Image>
-                                                                            </StackPanel>
-                                                                        </Button.Content>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="d20" Margin="0,0,4,0"  VerticalAlignment="Center"/>
+                                                                            <Image Source="Images/d20p-16.png"/>
+                                                                        </StackPanel>
                                                                     </Button>
                                                                     <Button x:Name="D100Button" Height="23" Style="{DynamicResource ButtonMainStyle}" HorizontalAlignment="Left" Width="48" Tag="100" Click="DieButtonPressed" TabIndex="2147483644" Margin="0,0,3,2" HorizontalContentAlignment="Right"  >
-                                                                        <Button.Content>
-                                                                            <StackPanel Orientation="Horizontal">
-                                                                                <TextBlock Text="d%" Margin="0,0,4,0"  VerticalAlignment="Center"/>
-                                                                                <Image Source="Images/d100-16.png"></Image>
-                                                                            </StackPanel>
-                                                                        </Button.Content>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock Text="d%" Margin="0,0,4,0"  VerticalAlignment="Center"/>
+                                                                            <Image Source="Images/d100-16.png"/>
+                                                                        </StackPanel>
                                                                     </Button>
                                                                 </WrapPanel>
                                                                 <Grid Height="23.533">
@@ -4079,6 +4055,18 @@
             </Button.Effect>
         </Button>
         <Button Content="Hot Keys" FontSize="10.667" HorizontalAlignment="Left" Margin="183,4,0,8" Name="HotKeysButton" Style="{DynamicResource ButtonMainStyle}" Grid.Row="2" Click="HotKeysButton_Click" />
+        <Button x:Name="TitleBarSystemButton" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Margin="160,0,0,0.8" Style="{DynamicResource ButtonMainStyle}" Height="30" Click="TitleBarSystemButton_Click" Loaded="TitleBarSystemButton_Loaded" >
+
+            <StackPanel Orientation="Horizontal">
+
+                <TextBlock x:Name="SystemButtonTextBlock" Text="Pathfinder 1.0" TextWrapping="Wrap" FontSize="16" Height="22" IsHitTestVisible="False" FontWeight="Bold" Foreground="White" d:LayoutOverrides="Width" Padding="3,0,0,0" Loaded="SystemButtonTextBlock_Loaded"/>
+                <Path Data="M0,0 L1,1 L2,0" Fill="#FFF4F4F5" HorizontalAlignment="Right" Margin="6,3,6,0" Stretch="Fill"  Width="10" Height="8">
+                    <Path.Effect>
+                        <DropShadowEffect/>
+                    </Path.Effect>
+                </Path>
+            </StackPanel>
+        </Button>
     </Grid>
 
 

@@ -282,7 +282,10 @@ namespace ScottsUtils
 
             int column = -1;
 
-            _ColumnIndexes.TryGetValue(name, out column);
+            if (!_ColumnIndexes.TryGetValue(name, out column))
+            {
+                return -1;
+            }
 
             return column;
         }

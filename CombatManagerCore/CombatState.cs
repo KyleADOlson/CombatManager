@@ -79,8 +79,12 @@ namespace CombatManager
 
         public static bool use3d6;
         public static string alternateRoll;
-		
-		private bool sortingList;
+
+        private RulesSystem _RulesSystem;
+
+
+
+        private bool sortingList;
 
 
         public CombatState()
@@ -90,6 +94,7 @@ namespace CombatManager
             _CombatList = new ObservableCollection<Character>();
             _UnfilteredCombatList = new ObservableCollection<Character>();
             _CombatIDList = new List<Guid>();
+            _RulesSystem = RulesSystem.PF1;
         }
 
 
@@ -99,6 +104,7 @@ namespace CombatManager
             _CR = s._CR;
             _XP = s._XP;
             _CombatIDList = new List<Guid>();
+            _RulesSystem = s._RulesSystem;
 
 
             _CombatList = new ObservableCollection<Character>();
@@ -137,6 +143,7 @@ namespace CombatManager
             Round = s.Round;
 	        CR = s.CR;
             XP = s.XP;
+            RulesSystem = s.RulesSystem;
 
             Characters.Clear();
             foreach (Character c in s.Characters)
@@ -405,6 +412,33 @@ namespace CombatManager
             }
         }
 
+        [XmlIgnore]
+        public RulesSystem RulesSystem
+        {
+            get { return _RulesSystem; }
+            set
+            {
+                if (_RulesSystem != value)
+                {
+                    _RulesSystem = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("RulesSystem")); }
+                }
+            }
+        }
+
+        [DataMember]
+        public int RulesSystemInt
+        {
+            get
+            {
+                return (int)RulesSystem;
+            }
+            set
+            {
+                RulesSystem = (RulesSystem)value;
+            }
+        }
+
         public void UpdateAllConditions()
         {
             foreach (Character ch in _UnfilteredCombatList)
@@ -491,7 +525,7 @@ namespace CombatManager
             for (int i = 0; i < count; i++)
             {
                 if (ac.Turns != null)
-                {
+                                {
                     if (ac.EndTurn == null)
                     {
                         UpdateConditions(ch);

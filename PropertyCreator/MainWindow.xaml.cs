@@ -132,25 +132,52 @@ namespace PropertyCreator
                 string1 = reader.ReadLine();
             }
 
+
             foreach (var inf in variables)
             {
 
-                writer.WriteLine("        private " + inf.VarType + " _" + inf.Name + ";");
+                String memberName = GetMemberName(inf.Name);
+                writer.WriteLine("        private " + inf.VarType + " " +  memberName  +";");
             }
 
             writer.WriteLine();
 
             foreach (var inf in variables)
             {
-                writer.WriteLine("public " + inf.VarType + " " + inf.Name + "{get{return _" + inf.Name + ";}set{if(_" + inf.Name + "!=value){_" + inf.Name + "=value;");
+                String memberName = GetMemberName(inf.Name);
+                writer.WriteLine("public " + inf.VarType + " " + inf.Name + "{get{return " + memberName + ";}set{if(" + memberName + "!=value){" + memberName + "=value;");
                 if (propertyChangedCheck.IsChecked == true)
                 {
-                    writer.WriteLine("if (PropertyChanged != null){ PropertyChanged(this, new PropertyChangedEventArgs(\"" + inf.Name + "\"));}");
+                    if (SimpleNotifyCheckBox.IsChecked == true)
+                    {
+                        writer.WriteLine("Notify(\"" + inf.Name + "\");");
+                            
+                    }
+                    else
+                    {
+                        writer.WriteLine("if (PropertyChanged != null){ PropertyChanged(this, new PropertyChangedEventArgs(\"" + inf.Name + "\"));}");
+                    }
                 }
             
                 writer.WriteLine("} } }");
             }
 
+        }
+
+        String GetMemberName(String name)
+        {
+            switch (MemberNameComboBox.SelectedIndex)
+            {
+
+                case 1:
+                    return "_" + name;
+                case 2:
+                    return name + "_";
+                default:
+                case 0:
+                    return name.Substring(0, 1).ToLower() + name.Substring(1);
+            }
+                    
         }
     }
 }

@@ -421,6 +421,9 @@ namespace CombatManager
         private ObservableCollection<SpellBlockInfo> _SpellsPreparedBlock;
         private ObservableCollection<ActiveResource> _TrackedResources;
 
+        //multiple system allowance
+        RulesSystem _rulesSystem;
+
         private struct DragonColorInfo
         {
             public string element;
@@ -9214,6 +9217,39 @@ namespace CombatManager
                 }
             }
         }
+
+        [XmlIgnore]
+        public RulesSystem RulesSystem
+        {
+            get
+            {
+                return _rulesSystem;
+            }
+            set
+            {
+                if (_rulesSystem != value)
+                {
+                    _rulesSystem = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RulesSystem"));
+                }
+
+            }
+
+        }
+
+        [DataMember]
+        public int RulesSystemInt
+        {
+            get
+            {
+                return (int)RulesSystem;
+            }
+            set
+            {
+                RulesSystem = (RulesSystem)value;
+            }
+        }
+
 
         [DataMember]
         public int? PreLossDex
