@@ -1048,6 +1048,7 @@ namespace CombatManager
                     _SpellLikeAbilitiesBlock.Add(new SpellBlockInfo(info));
                 }
             }
+            _TrackedResources.Clear();
             if (m._TrackedResources != null)
             {
                 foreach (var Tresource in m._TrackedResources)
