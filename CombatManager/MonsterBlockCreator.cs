@@ -185,10 +185,13 @@ namespace CombatManager
             {
                 topParagraph.Inlines.AddRange(CreateItemIfNotNull("Init ", true, monster.Init.PlusFormat(), "; ", false));
             }
+            topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, monster.Senses, null, false));
             // Make Perception in Senses Linked
-            topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, monster.Senses.Replace(Regex.Match(monster.Senses, @"Perception [+-]\d+").ToString(), " "), null, false));
-            topParagraph.Inlines.AddRange(CreateRulesLink("Perception", "Perception", "Skills"," "));
-            topParagraph.Inlines.Add(new Run(int.Parse(Regex.Match(monster.Senses, @"Perception [+-]\d+").Value.Replace("Perception ", "")).PlusFormat()));
+            // Need to move the regex away from here. Also best to check results of Regex operation, Will blow up on nonstandard data
+            // Which is a mistake I've made too much. Needs to be processed elsewhere.
+            //topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, monster.Senses.Replace(Regex.Match(monster.Senses, @"Perception [+-]\d+").ToString(), " "), null, false));
+            //topParagraph.Inlines.AddRange(CreateRulesLink("Perception", "Perception", "Skills"," "));
+            //topParagraph.Inlines.Add(new Run(int.Parse(Regex.Match(monster.Senses, @"Perception [+-]\d+").Value.Replace("Perception ", "")).PlusFormat()));
 
             if (monster.Aura != null && monster.Aura.Length > 0)
             {
