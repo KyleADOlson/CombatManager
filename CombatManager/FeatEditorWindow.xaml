@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CombatManager.FeatEditorWindow"
-        Title="Feat Editor" Height="404" Width="551" Icon="Images/d20-32.ico" ShowInTaskbar="False" ResizeMode="NoResize">
+        Title="Feat Editor" Height="435" Width="551" Icon="Images/d20-32.ico" ShowInTaskbar="False" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="White"/>
@@ -36,7 +36,7 @@
                     <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox x:Name="NameText" Margin="8,19.96,8,0"  Text="{Binding Name}" VerticalAlignment="Top" TextChanged="FeatNameText_TextChanged" />
+                <TextBox x:Name="NameText" Margin="8,19.96,8,0"  Text="{Binding Name}" VerticalAlignment="Top" TextChanged="FeatNameText_TextChanged" Height="18" />
                 <TextBlock Text="Name" Style="{DynamicResource LabelStyle}" Margin="8,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
@@ -47,7 +47,7 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBox x:Name="TypesText" Margin="8,19.96,74,0"  Text="{Binding Type}" VerticalAlignment="Top" Grid.Column="1" IsEnabled="False" />
+                <TextBox x:Name="TypesText" Margin="8,19.96,74,0"  Text="{Binding Type}" VerticalAlignment="Top" Grid.Column="1" IsEnabled="False" Height="18" />
                 <Popup x:Name="TypesPopup" PlacementTarget="{Binding ElementName=TypesButton}" HorizontalOffset="-90" HorizontalAlignment="Left" Margin="0" Width="153" AllowsTransparency="True" StaysOpen="False">
                     <Grid Margin="0" Width="153">
                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="6">
@@ -69,34 +69,45 @@
                 <SolidColorBrush Color="{DynamicResource PrimaryColorMedium}"/>
             </Border.Background>
             <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="77*"/>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="115*"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Prerequisites" Style="{DynamicResource LabelStyle}" Margin="8,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <TextBlock Text="Prerequisites" Style="{DynamicResource LabelStyle}" Margin="8,77,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="16" Width="73" Grid.RowSpan="2">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBox Margin="8,27.96,8,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Prerequistites}" VerticalAlignment="Top"/>
-                <TextBlock Text="Benefit" Style="{DynamicResource LabelStyle}" Margin="8,53.92,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <TextBox Margin="8,20.8,9.8,5.2" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Prerequistites}" Grid.Row="1"/>
+                <TextBlock Text="Benefit" Style="{DynamicResource LabelStyle}" Margin="8,89.8,0,0" HorizontalAlignment="Left" Grid.Row="1" Width="41" Height="16" VerticalAlignment="Top" Grid.RowSpan="2">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBox Margin="8,73.88,8,8" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Benefit}" VerticalScrollBarVisibility="Auto"/>
-                <TextBlock Text="Normal" Style="{DynamicResource LabelStyle}" Margin="8,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1">
+                <TextBox Margin="8,20.8,7.8,7.4" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Benefit}" VerticalScrollBarVisibility="Auto" Grid.Row="2"/>
+                <TextBlock Text="Normal" Style="{DynamicResource LabelStyle}" Margin="8.2,3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Height="16" Width="42">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBox Margin="8,27.96,8,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Normal}" VerticalAlignment="Top" Grid.Column="1" Height="90" VerticalScrollBarVisibility="Auto"/>
-                <TextBlock Text="Special" Style="{DynamicResource LabelStyle}" Margin="8.2,122,0,0" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Top">
+                <TextBox Margin="8.2,21,7,5.2" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Normal}" Grid.Column="1" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2"/>
+                <TextBlock Text="Special" Style="{DynamicResource LabelStyle}" Margin="8.2,89.8,0,0" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="40" Grid.RowSpan="2">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBox Margin="8.2,141,7.6,8.2" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Special}" Grid.Column="1" VerticalScrollBarVisibility="Auto"/>
+                <TextBox Margin="8.2,20.8,7,8.4" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Special}" Grid.Column="1" VerticalScrollBarVisibility="Auto" Grid.Row="2"/>
+                <TextBlock Text="Summary" Style="{DynamicResource LabelStyle}" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="16" Width="73">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBox Margin="8,21,9.8,5.2" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="{Binding Summary}"/>
             </Grid>
         </Border>
         <Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,16.667,8" Grid.Row="1" Width="75" VerticalAlignment="Bottom" IsCancel="True" Name="CancelButton" />

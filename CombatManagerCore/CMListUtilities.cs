@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,6 +82,65 @@ namespace CombatManager
         {
             return index >= 0 && index < list.Count;
         }
+
+        
+
+    }
+
+    public static class DictionaryLister
+    {
+        public static void ToTupleList<T, U>(this Dictionary<T, U> source, List<Tuple<T, U>> outputList)
+        {
+            outputList.Clear();
+
+            foreach (var kv in source)
+            {
+                outputList.Add(new Tuple<T, U>(kv.Key, kv.Value));
+            }
+        }
+
+        public static void ToTupleList<T, U>(this Dictionary<T, U> source, ObservableCollection<Tuple<T, U>> outputList)
+        {
+            outputList.Clear();
+
+            foreach (var kv in source)
+            {
+                outputList.Add(new Tuple<T, U>(kv.Key, kv.Value));
+            }
+        }
+
+        public static void UpdateFromTupleList<T, U>(this Dictionary<T, U> target, List<Tuple<T, U>> source)
+        {
+            target.Clear();
+            foreach (var t in source)
+            {
+                target[t.Item1] = t.Item2;
+            }
+
+        }
+
+        public static void UpdateFromTupleList<T, U>(this Dictionary<T, U> target, ObservableCollection<Tuple<T, U>> source)
+        {
+            target.Clear();
+            foreach (var t in source)
+            {
+                target[t.Item1] = t.Item2;
+            }
+
+        }
+
+        public static void ToList<T>(this HashSet<T> source, ObservableCollection<T> target)
+        {
+            target.Clear();
+            source.ForEach(x => target.Add(x));
+        }
+
+        public static void FromList<T>(this HashSet<T> target, ObservableCollection<T> source)
+        {
+            target.Clear();
+            source.ForEach(x => target.Add(x));
+        }
+
 
     }
 }
