@@ -40,6 +40,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
+ using static System.Text.RegularExpressions.Regex;
 
 namespace CombatManager
 {
@@ -185,13 +186,36 @@ namespace CombatManager
             {
                 topParagraph.Inlines.AddRange(CreateItemIfNotNull("Init ", true, monster.Init.PlusFormat(), "; ", false));
             }
-            topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, monster.Senses, null, false));
-            // Make Perception in Senses Linked
-            // Need to move the regex away from here. Also best to check results of Regex operation, Will blow up on nonstandard data
-            // Which is a mistake I've made too much. Needs to be processed elsewhere.
-            //topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, monster.Senses.Replace(Regex.Match(monster.Senses, @"Perception [+-]\d+").ToString(), " "), null, false));
-            //topParagraph.Inlines.AddRange(CreateRulesLink("Perception", "Perception", "Skills"," "));
-            //topParagraph.Inlines.Add(new Run(int.Parse(Regex.Match(monster.Senses, @"Perception [+-]\d+").Value.Replace("Perception ", "")).PlusFormat()));
+            var regex = new Regex(@"Perception\s?[+-]\d+");
+            if(regex.IsMatch(monster.Senses))
+            {
+                // Make Perception in Senses Linked
+                // Need to move the regex away from here. Also best to check results of Regex operation, Will blow up on nonstandard data
+                // Which is a mistake I've made too much. Needs to be processed elsewhere.
+                var newSenses = Remove_Perception(regex, monster.Senses);
+                //Mostly Ranger Favored Terrain
+                var mod = Perception_Modifier(monster.Senses);
+                if (mod != null)
+                {
+                    newSenses =  Remove_Mod(newSenses,mod);
+
+                }
+                var rank = Get_Perception(monster.Senses);
+                // Senses no Perception
+                topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, newSenses, null, false));
+                // Create link to Perception
+                topParagraph.Inlines.AddRange(CreateRulesLink("Perception", "Perception", "Skills", " "));
+                //put rank and/or Modifier back
+                if (rank != null)
+                {
+                    topParagraph.Inlines.Add(mod != null ? new Run(rank + " " + mod) : new Run(rank));
+                }
+
+            }
+            else
+            {
+                topParagraph.Inlines.AddRange(CreateItemIfNotNull("Senses ", true, monster.Senses, null, false));
+            }
 
             if (monster.Aura != null && monster.Aura.Length > 0)
             {
@@ -204,6 +228,29 @@ namespace CombatManager
             blocks.Add(topParagraph);
         }
 
+        private string Remove_Perception(Regex regex, string senses)
+        {
+            return senses.Replace(Match(senses, regex.ToString()).ToString(), " "); ;
+        }
+
+        private string Remove_Mod(string old, string match)
+        { 
+            return old.Replace(old, " "); 
+        }
+        private string Perception_Modifier(string senses)
+        {
+            var regex = new Regex(@"\(\s?[+-]\d+\s?[a-zA-Z\s]+\)");
+
+            var match = Match(senses, regex.ToString());
+            return match.Success ? match.ToString() : null;
+        }
+
+        private string Get_Perception(string senses)
+        {
+            var regex = new Regex(@"(?:Perception\s)?([+-]\d+)");
+            var match = Match(senses, regex.ToString());
+            return match.Success ? match.Groups[1].ToString() : null;
+        }
         private List<Inline> CreateRulesLink(string rule, string ruleType, string end)
         {
             return CreateRulesLink(rule, rule, ruleType, end);
