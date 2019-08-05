@@ -55,6 +55,7 @@ using System.Xml.Linq;
 using System.Reflection;
 using CombatManager.Maps;
 using CombatManager.Personalization;
+using CombatManager.LocalService;
 
 namespace CombatManager
 {
@@ -161,6 +162,7 @@ namespace CombatManager
 
         private GameMapList gameMapList;
 
+        private LocalCombatManagerService localService;
 
 
         public MainWindow()
@@ -409,11 +411,36 @@ namespace CombatManager
 
             LoadHotkeys();
 
+            if (UserSettings.Settings.RunLocalService)
+            {
+                RunLocalService();
+            }
+
+            UserSettings.Settings.PropertyChanged += Settings_PropertyChanged;
+
             PerformUpdateCheck();
 
         }
 
-  
+        private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "RunLocalService")
+            {
+                if (UserSettings.Settings.RunLocalService)
+                {
+                    RunLocalService();
+                }
+                else
+                {
+                    StopLocalService();
+                }
+            }
+            else if (e.PropertyName == "LocalServicePort" && UserSettings.Settings.RunLocalService)
+            {
+                StopLocalService();
+                RunLocalService();
+            }
+        }
 
 
 
@@ -9140,6 +9167,50 @@ namespace CombatManager
         {
 
             UpdateRulesSystemText();
+        }
+
+        private void LocalServiceMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            UserSettings.Settings.RunLocalService = !UserSettings.Settings.RunLocalService;
+            UserSettings.Settings.SaveOptions(UserSettings.SettingsSaveSection.LocalService);
+        }
+
+
+        void RunLocalService()
+        {
+            if (localService == null)
+            {
+                localService = new LocalCombatManagerService(combatState, UserSettings.Settings.LocalServicePort);
+                localService.StateActionCallback = act =>
+                {
+                    Dispatcher.Invoke(act);
+
+                };
+                localService.Start();
+            }
+
+        }
+
+        void StopLocalService()
+        {
+            try
+            {
+                localService.Close();
+
+            }
+            catch
+            {
+
+            }
+            localService = null;
+        }
+
+        private void LocalServiceMenuItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+
+            item.IsChecked = UserSettings.Settings.RunLocalService;
+
         }
     }
 

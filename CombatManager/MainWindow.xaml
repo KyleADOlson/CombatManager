@@ -390,6 +390,10 @@
 
             </MenuItem>
             <Separator/>
+            <MenuItem Header="Run Local Web Services" x:Name="LocalServiceMenuItem" Click="LocalServiceMenuItem_Click"
+                    Loaded="LocalServiceMenuItem_Loaded"/>
+
+            <Separator/>
             <MenuItem Header="Restore Combat Tab Layout" x:Name="RestoreMenuItem" Click="RestoreMenuItem_Click"/>
             <Separator/>
             <MenuItem Header="Exit" x:Name="CloseMenuItem" Click="CloseMenuItem_Click"/>

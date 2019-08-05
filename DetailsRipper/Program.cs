@@ -37,7 +37,6 @@ namespace DetailsRipper
 
         static SQLiteConnection cn;
 
-        static List<string> mythicFeats;
 
         static void Main(string[] args)
         {

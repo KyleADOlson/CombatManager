@@ -28,7 +28,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Microsoft.Win32;
 using System.IO;
-
+using CombatManager.LocalService;
 
 namespace CombatManager
 {
@@ -48,6 +48,7 @@ namespace CombatManager
             Initiative,
             Filters,
             System,
+            LocalService,
         }
 
         public enum MonsterSetFilter
@@ -112,6 +113,9 @@ namespace CombatManager
         private int _ColorScheme;
         private bool _DarkScheme;
 
+        private bool _RunLocalService;
+        private ushort _LocalServicePort;
+
         private int _RulesSystem;
 
 
@@ -144,7 +148,9 @@ namespace CombatManager
             _InitiativeConditionsSize = 2;
             _ColorScheme = 0;
             _DarkScheme = false;
+            _RunLocalService = false;
             _RulesSystem = 0;
+            _LocalServicePort = LocalCombatManagerService.DefaultPort;
             LoadOptions();
         }
 
@@ -674,6 +680,32 @@ namespace CombatManager
             }
         }
 
+        public bool RunLocalService
+        {
+            get { return _RunLocalService; }
+            set
+            {
+                if (_RunLocalService != value)
+                {
+                    _RunLocalService = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("RunLocalService")); }
+                }
+            }
+        }
+
+        public ushort LocalServicePort
+        {
+            get { return _LocalServicePort; }
+            set
+            {
+                if (_LocalServicePort != value)
+                {
+                    _LocalServicePort = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("LocalServicePort")); }
+                }
+            }
+        }
+
         public RulesSystem RulesSystem
         {
             get { return (RulesSystem)_RulesSystem; }
@@ -734,7 +766,8 @@ namespace CombatManager
                 ColorScheme = LoadIntValue("ColorScheme", 0);
                 DarkScheme = LoadBoolValue("DarkScheme", false);
                 RulesSystem = (RulesSystem)LoadIntValue("RulesSystem", 0);
-
+                RunLocalService = LoadBoolValue("RunLocalService", false);
+                LocalServicePort = (ushort)LoadIntValue("LocalServicePort", LocalCombatManagerService.DefaultPort);
 
                 optionsLoaded = true;
             }
@@ -819,6 +852,12 @@ namespace CombatManager
                         SaveBoolValue(key, "InitiativeAlwaysOnTop", InitiativeAlwaysOnTop);
                         SaveDoubleValue(key, "InitiativeScale", InitiativeScale);
                         SaveBoolValue(key, "InitiativeFlip", InitiativeFlip);
+                    }
+                    if (section == SettingsSaveSection.All || section == SettingsSaveSection.LocalService)
+                    {
+                        SaveBoolValue(key, "RunLocalService", RunLocalService);
+                        SaveIntValue(key, "LocalServicePort", LocalServicePort);
+
                     }
                     if (section == SettingsSaveSection.All || section == SettingsSaveSection.Filters)
                     {
