@@ -77,7 +77,8 @@ namespace CombatManager
             }
         }
 
-		private void CommandComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+
+        private void CommandComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
 		{
             ComboBox typeCombo = (ComboBox)sender;
 
@@ -192,13 +193,25 @@ namespace CombatManager
             }
         }
 
-		private void KeyComboBox_Initialized(object sender, System.EventArgs e)
+
+
+
+        private void KeyComboBox_Initialized(object sender, System.EventArgs e)
 		{
             ComboBox cb = (ComboBox)sender;
             CombatHotKey hk = (CombatHotKey)cb.DataContext;
+            
 
-            string key = (String)new KeyToStringConverter().Convert(hk.Key, 
-                typeof(String), null, System.Globalization.CultureInfo.CurrentCulture);
+            foreach (var k in KeyToStringConverter.KeysList)
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = k.Key;
+                item.DataContext = k.Value;
+                cb.Items.Add(item);
+            }
+
+            string key = hk.Key.ToString();// (String)new KeyToStringConverter().Convert(hk.Key, 
+                //typeof(String), null, System.Globalization.CultureInfo.CurrentCulture);
 
 
             SetIndexForString(cb, key);
@@ -296,6 +309,24 @@ namespace CombatManager
             UpdateBackground(cb, hk);
 
             UpdateSubtypeCombo(cb.GetChild<ComboBox>("SubtypeCombo"));
+        }
+
+        private void KeyPressButton_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            CombatHotKey hk = (CombatHotKey)((FrameworkElement)sender).DataContext;
+
+
+            bool ctrl = Keyboard.Modifiers.HasFlag(ModifierKeys.Control);
+            bool alt = Keyboard.Modifiers.HasFlag(ModifierKeys.Alt);
+            bool shift = Keyboard.Modifiers.HasFlag(ModifierKeys.Shift);
+            if (!KeyToStringConverter.IgnoreKeys.Contains(e.Key) && (ctrl | alt | shift))
+            {
+                hk.Key = e.Key;
+                hk.CtrlKey = ctrl;
+                hk.AltKey = alt;
+                hk.ShiftKey = shift;
+
+            }
         }
     }
 }

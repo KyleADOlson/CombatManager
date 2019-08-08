@@ -314,7 +314,7 @@ namespace CombatManager
         }
         private static void HandleRollInitiative(ActionData data)
         {
-            data.ActOnAll(data.Parent.RollIniiativeForCharacters);
+            data.Parent.RollInitiativeAndSort();
         }
         private static void HandleUnlinkFromGroup(ActionData data)
         {

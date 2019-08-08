@@ -1214,27 +1214,7 @@ namespace CombatManager
 
             Key k = (Key)value;
 
-            if (k >= Key.A && k <= Key.Z)
-            {
-                int diff = k - Key.A;
-
-                Char c = (Char)((int)'A' + diff);
-                String s = c.ToString();
-                return s;
-            }
-            else if (k >= Key.NumPad0 && k <= Key.NumPad9)
-            {
-                int diff = k - Key.NumPad0;               
-                return diff.ToString();
-            }
-            else if (k >= Key.F1 && k <= Key.F10)
-            {
-                int val = k - Key.F1 + 1;
-
-                return "F" + val;
-            }
-
-            return null;
+            return k.ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -1246,27 +1226,50 @@ namespace CombatManager
             }
 
             String s = (String)value;
-            Match m = Regex.Match(s, "F(?<num>[0-9]+)");
-            if (m.Success)
+
+            Key returnKey;
+            if (KeysList.TryGetValue(s, out returnKey))
             {
-                int key = int.Parse(m.Groups["num"].Value) - 1;
-                
-                return (Key)(Key.F1 + key);
-            }
-            if (Regex.Match(s, "[0-9]").Success)
-            {
-                Char c = s[0];
-                int diff = c - '0';
-                return (Key)(Key.NumPad0 + diff);
-            }
-            if (Regex.Match(s, "[A-Z]").Success)
-            {
-                Char c = s[0];
-                int diff = c - 'A';
-                return (Key)(Key.A + diff);
+                return returnKey;
             }
 
             return null;
+        }
+
+
+        static SortedDictionary<String, System.Windows.Input.Key> keysList;
+
+        public static readonly HashSet<System.Windows.Input.Key> IgnoreKeys = new HashSet<Key>()
+        {
+            System.Windows.Input.Key.LeftCtrl,
+            System.Windows.Input.Key.RightCtrl,
+             System.Windows.Input.Key.LeftShift,
+             System.Windows.Input.Key.RightShift,
+             System.Windows.Input.Key.LeftAlt,
+             System.Windows.Input.Key.RightAlt,
+             System.Windows.Input.Key.LWin,
+             System.Windows.Input.Key.RWin
+        };
+ 
+
+        static public SortedDictionary<string, Key> KeysList
+        {
+            get
+            {
+                if (keysList == null)
+                {
+
+                    keysList = new SortedDictionary<string, Key>();
+                    foreach (System.Windows.Input.Key v in Enum.GetValues(typeof(System.Windows.Input.Key)))
+                    {
+                        if (!IgnoreKeys.Contains(v))
+                        {
+                            keysList[v.ToString()] = v;
+                        }
+                    }
+                }
+                return keysList;
+            }
         }
     }
 	

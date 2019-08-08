@@ -23,6 +23,7 @@ using CombatManager.Personalization;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -59,6 +60,8 @@ namespace CombatManager
             CheckForUpdatesCheckbox.IsChecked = UserSettings.Settings.CheckForUpdates;
             DarkSchemeCheckbox.IsChecked = UserSettings.Settings.DarkScheme;
             startDarkScheme = UserSettings.Settings.DarkScheme;
+            LocalWebServiceCheckbox.IsChecked = UserSettings.Settings.RunLocalService;
+            PortTextBox.Text = UserSettings.Settings.LocalServicePort.ToString();
 
             RollAlternateInitDiceBox.TextChanged += new TextChangedEventHandler(RollAlternateInitDiceBox_TextChanged);
 
@@ -77,6 +80,7 @@ namespace CombatManager
             }
 
 
+
         }
 
         void RollAlternateInitDiceBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -85,27 +89,64 @@ namespace CombatManager
             OKButton.IsEnabled = (dr != null);
         }
 
+        private bool EnableOK()
+        {
+            bool enable = true;
+            if (GetLocalPort() == null)
+            {
+                enable = false;
+            }
+            OKButton.IsEnabled = enable;
+            return enable;
+        }
+        private ushort? GetLocalPort()
+        {
+            int port;
+            if (int.TryParse(PortTextBox.Text, out port))
+            {
+                if (port > 0 && port < 65536)
+                {
+                    return (ushort)port;
+                }
+            }
+            return null;
+        }
+
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            UserSettings.Settings.ConfirmInitiativeRoll = ConfirmInitiativeCheckbox.IsChecked.Value;
-            UserSettings.Settings.ConfirmCharacterDelete = ConfirmCharacterDeleteCheckbox.IsChecked.Value;
-            UserSettings.Settings.ConfirmClose = ConfirmApplicationCloseCheckbox.IsChecked.Value;
-            UserSettings.Settings.ShowAllDamageDice = ShowAllDamageDice.IsChecked.Value;
-            UserSettings.Settings.AlternateInit3d6 = RollAlternativeInitCheckbox.IsChecked.Value;
-            UserSettings.Settings.AlternateInitRoll = RollAlternateInitDiceBox.Text;
-            UserSettings.Settings.ShowHiddenInitValue = ShowHiddenInitValueBox.IsChecked.Value;
-            UserSettings.Settings.AddMonstersHidden = AddMonstersHiddenBox.IsChecked.Value;
-            UserSettings.Settings.StatsOpenByDefault = StatsOpenByDefaultCheckbox.IsChecked.Value;
-            UserSettings.Settings.CheckForUpdates = CheckForUpdatesCheckbox.IsChecked.Value;
-            UserSettings.Settings.ColorScheme = SelectedScheme;
-            UserSettings.Settings.DarkScheme = DarkSchemeCheckbox.IsChecked.Value;
-            UserSettings.Settings.SaveOptions();
+            if (SaveSettings())
+            {
+                DialogResult = true;
+                Close();
+            }
 
-            CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
-            CombatState.alternateRoll = UserSettings.Settings.AlternateInitRoll;
+        }
 
-            DialogResult = true;
-            Close();
+        bool SaveSettings()
+        {
+            if (EnableOK())
+            {
+                UserSettings.Settings.ConfirmInitiativeRoll = ConfirmInitiativeCheckbox.IsChecked.Value;
+                UserSettings.Settings.ConfirmCharacterDelete = ConfirmCharacterDeleteCheckbox.IsChecked.Value;
+                UserSettings.Settings.ConfirmClose = ConfirmApplicationCloseCheckbox.IsChecked.Value;
+                UserSettings.Settings.ShowAllDamageDice = ShowAllDamageDice.IsChecked.Value;
+                UserSettings.Settings.AlternateInit3d6 = RollAlternativeInitCheckbox.IsChecked.Value;
+                UserSettings.Settings.AlternateInitRoll = RollAlternateInitDiceBox.Text;
+                UserSettings.Settings.ShowHiddenInitValue = ShowHiddenInitValueBox.IsChecked.Value;
+                UserSettings.Settings.AddMonstersHidden = AddMonstersHiddenBox.IsChecked.Value;
+                UserSettings.Settings.StatsOpenByDefault = StatsOpenByDefaultCheckbox.IsChecked.Value;
+                UserSettings.Settings.CheckForUpdates = CheckForUpdatesCheckbox.IsChecked.Value;
+                UserSettings.Settings.ColorScheme = SelectedScheme;
+                UserSettings.Settings.DarkScheme = DarkSchemeCheckbox.IsChecked.Value;
+                UserSettings.Settings.RunLocalService = LocalWebServiceCheckbox.IsChecked == true;
+                UserSettings.Settings.LocalServicePort = GetLocalPort().Value;
+                UserSettings.Settings.SaveOptions();
+
+                CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
+                CombatState.alternateRoll = UserSettings.Settings.AlternateInitRoll;
+                return true;
+            }
+            return false;
 
         }
 
@@ -166,6 +207,42 @@ namespace CombatManager
         {
             UserSettings.Settings.DarkScheme = false;
             ShowSelectedColorScheme();
+        }
+
+        private void PortTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EnableOK();
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            bool allowed = !regex.IsMatch(text);
+            return allowed;
+        }
+
+        private void PortTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!IsTextAllowed(e.Text))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void PortTextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!IsTextAllowed(text))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
+            }
         }
     }
 }

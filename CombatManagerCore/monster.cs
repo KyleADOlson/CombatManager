@@ -61,6 +61,7 @@ namespace CombatManager
     {
         static ObservableCollection<Monster> monsters;
 
+        static Dictionary<int, Monster> monstersByDetailsID;
 
         static void LoadBestiary()
         {
@@ -114,6 +115,12 @@ namespace CombatManager
                 }
                 monsterSet1.AddRange(npcSet1);
             }
+            monstersByDetailsID = new Dictionary<int, Monster>();
+            foreach (Monster m in monsterSet1)
+            {
+                monstersByDetailsID[m.DetailsID] = m;
+                
+            }
 
             if (DBSettings.UseDB)
             {
@@ -134,6 +141,7 @@ namespace CombatManager
 
             }
         }
+
 
         private static List<Monster> LoadMonsterFromXml(String filename)
         {
@@ -271,6 +279,34 @@ namespace CombatManager
             }
         }
 
+        public static Monster ByDetailsID(int id)
+        {
+            if (monstersByDetailsID == null)
+            {
+                LoadBestiary();
+            }
+            Monster m;
+            monstersByDetailsID.TryGetValue(id, out m);
+            return m;
+        }
+
+        public static Monster ByDBLoaderID(int id)
+        {
+            return MonsterDB.DB.Monsters.FirstOrDefault(m => m.DBLoaderID == id);
+        }
+
+        public static Monster ByID(bool custom, int id)
+        {
+            if (custom)
+            {
+                return ByDBLoaderID(id);
+            }
+            else
+            {
+                return ByDetailsID(id);
+            }
+        }
+                
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -5954,6 +5990,54 @@ namespace CombatManager
             XP = GetXPString(CR);
         }
 
+        [XmlIgnore]
+        public int? IntCR
+        {
+            get
+            {
+                return TryGetCRChartInt(CR);
+            }
+        }
+
+
+        public static int? TryGetCRChartInt(string crText)
+        {
+            if (crText == null)
+            {
+                return null;
+            }
+
+            Regex crSlash = new Regex("([0-9]+)/([0-9]+)");
+
+            Match match = crSlash.Match(crText);
+
+            int? crInt = null;
+
+            if (match.Success)
+            {
+                int val = 1;
+
+                if (int.TryParse(match.Groups[2].Value, out val))
+                {
+
+                    if (lowCRToIntChart.ContainsKey(val))
+                    {
+                        crInt = lowCRToIntChart[val];
+                    }
+                }
+            }
+            else
+            {
+                int cVal;
+                if (int.TryParse(crText, out cVal))
+                {
+                    crInt = cVal;
+                }
+            }
+
+            return crInt;
+        }
+
         public static int GetCRChartInt(string crText)
         {
             Regex crSlash = new Regex("([0-9]+)/([0-9]+)");
@@ -11570,6 +11654,16 @@ namespace CombatManager
                 }
             }
         }
+
+        [XmlIgnore]
+        public int DetailsID
+        {
+            get
+            {
+                return _DetailsID;
+            }
+        }
+            
 
         [XmlIgnore]
         public bool IsCustom

@@ -1342,7 +1342,7 @@ namespace CombatManager
             return null;
         }
 
-        public void CloneCharacter(Character ch)
+        public Character CloneCharacter(Character ch)
         {
 
             Character newCharacter = (Character)ch.Clone();
@@ -1351,32 +1351,35 @@ namespace CombatManager
                 newCharacter.Name = GetUnusedName(newCharacter.Monster.Name);
             }
             AddCharacter(newCharacter);
+            return newCharacter;
 
         }
 
-        public void AddMonster(Monster m, bool rollHP)
+        public Character AddMonster(Monster m, bool rollHP)
         {
-            AddMonster(m, rollHP?Character.HPMode.Roll:Character.HPMode.Default);
+            return AddMonster(m, rollHP?Character.HPMode.Roll:Character.HPMode.Default);
         }
 
-        public void AddMonster(Monster m, Character.HPMode mode)
+        public Character AddMonster(Monster m, Character.HPMode mode)
         {
      
-            AddMonster(m, mode, true);
+            return AddMonster(m, mode, true);
         }
 
-        public void AddMonster(Monster m, bool rollHP, bool monster, bool hidden = false)
+        public Character AddMonster(Monster m, bool rollHP, bool monster, bool hidden = false)
         {
-            AddMonster(m, rollHP ? Character.HPMode.Roll : Character.HPMode.Default, monster, hidden);
+            return AddMonster(m, rollHP ? Character.HPMode.Roll : Character.HPMode.Default, monster, hidden);
         }
 
-        public void AddMonster(Monster m, Character.HPMode mode, bool monster, bool hidden = false)
+        public Character AddMonster(Monster m, Character.HPMode mode, bool monster, bool hidden = false)
         {
             Character character = new Character(m, mode);
             character.IsMonster = monster;
             character.IsHidden = hidden;
             character.Name = GetUnusedName(character.Name);
             AddCharacter(character);
+
+            return character;
         }
 
         public void AddBlank(bool monster, bool hidden = false )

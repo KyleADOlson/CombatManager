@@ -20,7 +20,7 @@ namespace CombatManager
             double tv = t.Clamp(0, 1);
 
             return (b - a) * tv + a;
-           
+
         }
 
         public static int NegateIf(this int val, bool negate)
@@ -73,6 +73,50 @@ namespace CombatManager
         public static bool IsFactor(this int val, long num)
         {
             return val % num == 0;
+        }
+
+        public static bool IsBetweenInclusive<T>(this T check, Nullable<T> min = null, Nullable<T> max = null) where T : struct, IComparable
+        {
+
+            if (min != null)
+            {
+                if (check.CompareTo(min.Value) < 0)
+                {
+                    return false;
+                }
+            }
+            if (max != null)
+            {
+                if (check.CompareTo(max.Value) > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        } 
+
+        public static bool IsNullOrBetweenInclusive<T>(this Nullable<T> check, Nullable<T> min = null, Nullable<T> max = null) where T : struct, IComparable
+        {
+            if (check == null)
+            {
+                return true;
+            }
+
+            if (min != null)
+            {
+                if (check.Value.CompareTo(min.Value) < 0)
+                {
+                    return false;
+                }
+            }
+            if (max != null)
+            {
+                if (check.Value.CompareTo(max.Value) > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
     }

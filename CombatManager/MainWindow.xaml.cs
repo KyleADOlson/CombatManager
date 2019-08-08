@@ -440,6 +440,13 @@ namespace CombatManager
                 StopLocalService();
                 RunLocalService();
             }
+            else if (e.PropertyName == "DefaultHPMode")
+            {
+                if (localService != null)
+                {
+                    localService.HPMode = UserSettings.Settings.DefaultHPMode;
+                }
+            }
         }
 
 
@@ -2479,6 +2486,15 @@ namespace CombatManager
             {
                 combatState.RollInitiative();
                 
+            }
+        }
+
+        public void RollInitiativeAndSort()
+        {
+            using (var undoGroup = undo.CreateUndoGroup())
+            {
+                combatState.RollInitiative();
+                combatState.SortCombatList();
 
             }
         }
@@ -6264,6 +6280,16 @@ namespace CombatManager
 
         }
 
+        private void CloseCombatListWindow()
+        {
+
+            if (combatListWindow != null)
+            {
+                combatListWindow.Close();
+            }
+
+        }
+
         private void Window_Closed(object sender, System.EventArgs e)
         {
             CloseToolWindows();
@@ -8387,7 +8413,28 @@ namespace CombatManager
         private void LoadHotkeys()
         {
             _CombatHotKeys = XmlListLoader<CombatHotKey>.Load("CombatHotKeys2.xml", true);
+
+            SetDefaultHotKeys();
+
             UpdateHotKeys();
+        }
+
+        private void SetDefaultHotKeys()
+        {
+            if (_CombatHotKeys == null)
+            {
+                _CombatHotKeys = new List<CombatHotKey>();
+            
+
+                _CombatHotKeys.Clear();
+                _CombatHotKeys.Add(new CombatHotKey() { CtrlKey = true, Key = Key.OemPlus, Type = CharacterAction.NextTurn }); ;
+                _CombatHotKeys.Add(new CombatHotKey() { CtrlKey = true, Key = Key.OemMinus, Type = CharacterAction.PreviousTurn });
+                _CombatHotKeys.Add(new CombatHotKey() { CtrlKey = true, Key = Key.R, Type = CharacterAction.RollInitiative });
+
+
+                SaveHotkeys();
+
+            }
         }
 
         private void SaveHotkeys()
@@ -8427,6 +8474,8 @@ namespace CombatManager
                 }
 
             }
+
+       
 
         }
 
@@ -9181,14 +9230,84 @@ namespace CombatManager
             if (localService == null)
             {
                 localService = new LocalCombatManagerService(combatState, UserSettings.Settings.LocalServicePort);
+                localService.HPMode = UserSettings.Settings.DefaultHPMode;
                 localService.StateActionCallback = act =>
                 {
                     Dispatcher.Invoke(act);
 
                 };
+                localService.UIActionTaken += (sender, e) =>
+               {
+                   Dispatcher.Invoke(() =>
+                   {
+                       switch (e.Action)
+                       {
+                           case LocalCombatManagerService.UIAction.BringToFront:
+                               if (WindowState == WindowState.Minimized)
+                               {
+                                   WindowState = WindowState.Normal;
+                               }
+                               Activate();
+                               break;
+                           case LocalCombatManagerService.UIAction.Minimize:
+
+                               this.WindowState = WindowState.Minimized;
+                               break;
+                           case LocalCombatManagerService.UIAction.Goto:
+                               string target = e.Data as string;
+                               UIGoto(target);
+                               break;
+
+                           case LocalCombatManagerService.UIAction.ShowCombatListWindow:
+                               OpenCombatListWindow();
+                               break;
+                           case LocalCombatManagerService.UIAction.HideCombatListWindow:
+                               CloseCombatListWindow();
+                               break;
+
+                       }
+                   }
+                   );
+               };
                 localService.Start();
             }
 
+        }
+
+        void UIGoto(string target)
+        {
+            switch (target.ToLower())
+            {
+                case "combat":
+                    CombatTab.IsSelected = true;
+                    break;
+                case "feats":
+                    FeatsTab.IsSelected = true;
+                    break;
+                case "spells":
+                    SpellsTab.IsSelected = true;
+                    break;
+                case "monsters":
+                    MonstersTab.IsSelected = true;
+                    break;
+                case "rules":
+                    RulesTab.IsSelected = true;
+                    break;
+                case "treasure":
+                    TreasureTab.IsSelected = true;
+                    break;
+                case "magicitems":
+                    TreasureTab.IsSelected = true;
+                    MagicItemsTab.IsSelected = true;
+                    break;
+                case "treasuregenerator":
+                    TreasureTab.IsSelected = true;
+                    TreasureGeneratorTab.IsSelected = true;
+                    break;
+                case "maps":
+                    MapsTab.IsSelected = true;
+                    break;
+            }
         }
 
         void StopLocalService()

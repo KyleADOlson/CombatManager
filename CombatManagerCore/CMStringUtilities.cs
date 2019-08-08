@@ -192,5 +192,10 @@ namespace CombatManager
             return res;
         
         }
+
+        public static bool IsEmptyOrNull(this string s)
+        {
+            return s == null || s.Length == 0;
+        }
     }
 }

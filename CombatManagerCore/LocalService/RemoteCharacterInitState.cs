@@ -8,8 +8,15 @@ namespace CombatManager.LocalService
 {
     public class RemoteCharacterInitState
     {
-        public string Name {get; set;}
-        public Guid ID {get; set;}
-        public RemoteInitiativeCount InitiativeCount {get; set;}
+        public string Name { get; set; }
+        public Guid ID { get; set; }
+        public RemoteInitiativeCount InitiativeCount { get; set; }
+
+        public int HP { get; set; }
+        public int MaxHP { get; set; }
+
+        public bool IsMonster { get; set; }
+
+        public List<RemoteActiveCondition> ActiveConditions { get; set; }
     }
 }

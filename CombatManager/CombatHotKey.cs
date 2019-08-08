@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace CombatManager
 {
  
-    public class CombatHotKey
+    public class CombatHotKey : SimpleNotifyClass
     {
         Key _Key = Key.A;
         ModifierKeys _Modifier;
@@ -27,34 +27,69 @@ namespace CombatManager
         public Key Key
         {
             get { return _Key; }
-            set { _Key = value; }
+            set {
+                if (_Key != value)
+                {
+                    _Key = value;
+                    Notify("Key");
+                }
+            }
         }
 
         public ModifierKeys Modifier
         {
+
             get { return _Modifier; }
-            set { _Modifier = value; }
+            set
+            {
+                if (_Modifier != value)
+                {
+                    _Modifier = value;
+                    Notify("Modifier");
+                }
+            }
         }
 
         [XmlIgnore]
         public CharacterAction Type
         {
             get { return _Type; }
-            set { _Type = value; }
+            set
+            {
+                if (_Type != value)
+                {
+                    _Type = value;
+                    Notify("Type");
+                    Notify("IntType");
+                }
+            }
         }
 
         public String Subtype
         {
             get { return _Subtype; }
-            set { _Subtype = value; }
+            set
+            {
+                if (_Subtype != value)
+                {
+                    _Subtype = value;
+                    Notify("Subtype");
+                }
+            }
         }
 		
 		
         public int IntType
 		{
 			
-            get { return (int)_Type; }
-            set { _Type = (CharacterAction)value; }
+            get { return (int)Type; }
+            set {
+                if (value != IntType)
+                {
+                    Type = (CharacterAction)value;
+                }
+
+            }
 		}
 
         [XmlIgnore]
@@ -64,6 +99,7 @@ namespace CombatManager
             set
             {
                 SetModifier(ModifierKeys.Alt, value);
+                Notify("AltKey");
             }
         }
         [XmlIgnore]
@@ -73,6 +109,7 @@ namespace CombatManager
             set
             {
                 SetModifier(ModifierKeys.Shift, value);
+                Notify("ShiftKey");
             }
         }
         [XmlIgnore]
@@ -82,6 +119,7 @@ namespace CombatManager
             set
             {
                 SetModifier(ModifierKeys.Control, value);
+                Notify("CtrlKey");
             }
         }
 
@@ -101,6 +139,9 @@ namespace CombatManager
             {
                 _Modifier &= ~key;
             }
+            Notify("AltKey");
+            Notify("ShiftKey");
+            Notify("CtrlKey");
         }
 
     }

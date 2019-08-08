@@ -5,7 +5,7 @@
 	x:Class="CombatManager.SettingsDialog"
 	x:Name="Window"
 	Title="Settings"
-	Width="258" Height="354" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False" VerticalAlignment="Top" d:DesignHeight="324">
+	Width="258" Height="414" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False" VerticalAlignment="Top" d:DesignHeight="324">
 
     <Grid x:Name="LayoutRoot" Margin="0,0,0,0" VerticalAlignment="Top">
         <Grid.Background>
@@ -33,7 +33,14 @@
                     </ComboBox>
                 </StackPanel>
                 <CheckBox x:Name="DarkSchemeCheckbox" Content="Dark Scheme" HorizontalAlignment="Left" Margin="6,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="DarkSchemeCheckbox_Checked" Unchecked="DarkSchemeCheckbox_Unchecked"/>
+                <CheckBox x:Name="LocalWebServiceCheckbox" Content="Run Local Web Service" HorizontalAlignment="Left" Margin="6,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="DarkSchemeCheckbox_Checked" Unchecked="DarkSchemeCheckbox_Unchecked"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Port:" Margin="16,0,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" VerticalAlignment="Center"/>
+                    <TextBox x:Name="PortTextBox"  Width="80" Margin="6,5,4,2" TextChanged="PortTextBox_TextChanged" ToolTip="Choose a port number may be from 1 to 65535" PreviewTextInput="PortTextBox_PreviewTextInput"
+                             DataObject.Pasting="PortTextBox_Pasting ">
 
+                    </TextBox>
+                </StackPanel>
             </StackPanel>
         </Border>
         <Button Content="OK" HorizontalAlignment="Right" Margin="0,0,87,13" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="Button_Click" x:Name="OKButton" />

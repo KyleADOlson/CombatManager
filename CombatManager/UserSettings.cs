@@ -118,8 +118,6 @@ namespace CombatManager
 
         private int _RulesSystem;
 
-
-
         private bool optionsLoaded;
 
         public UserSettings()
@@ -718,8 +716,6 @@ namespace CombatManager
                 }
             }
         }
-            
-
 
         void LoadOptions()
         {
@@ -768,6 +764,7 @@ namespace CombatManager
                 RulesSystem = (RulesSystem)LoadIntValue("RulesSystem", 0);
                 RunLocalService = LoadBoolValue("RunLocalService", false);
                 LocalServicePort = (ushort)LoadIntValue("LocalServicePort", LocalCombatManagerService.DefaultPort);
+               
 
                 optionsLoaded = true;
             }
