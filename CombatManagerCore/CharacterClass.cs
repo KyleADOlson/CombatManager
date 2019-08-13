@@ -50,6 +50,15 @@ namespace CombatManager
         Oracle,
         Summoner,
         Witch,
+        Arcanist,
+        Bloodrager,
+        Hunter,
+        Investigator,
+        Shaman,
+        Skald,
+        Slayer,
+        Swashbuckler,
+        Warpriest,
         ArcaneArcher,
         ArcaneTrickster,
         Assassin,
@@ -76,6 +85,11 @@ namespace CombatManager
         Samurai,
         Spiritualist,
         StalwartDefender,
+        Adept,
+        Aristocrat,
+        Commoner,
+        Expert,
+        Warrior,
 
     }
 
@@ -107,6 +121,15 @@ namespace CombatManager
             _EnumToName[CharacterClassEnum.Oracle] = "Oracle";
             _EnumToName[CharacterClassEnum.Summoner] = "Summoner";
             _EnumToName[CharacterClassEnum.Witch] = "Witch";
+            _EnumToName[CharacterClassEnum.Arcanist] = "Arcanist";
+            _EnumToName[CharacterClassEnum.Bloodrager] = "Bloodrager";
+            _EnumToName[CharacterClassEnum.Hunter] = "Hunter";
+            _EnumToName[CharacterClassEnum.Investigator] = "Investigator";
+            _EnumToName[CharacterClassEnum.Shaman] = "Shaman";
+            _EnumToName[CharacterClassEnum.Skald] = "Skald";
+            _EnumToName[CharacterClassEnum.Slayer] = "Slayer";
+            _EnumToName[CharacterClassEnum.Swashbuckler] = "Swashbuckler";
+            _EnumToName[CharacterClassEnum.Warpriest] = "Warpriest";
             _EnumToName[CharacterClassEnum.ArcaneArcher] = "Arcane Archer";
             _EnumToName[CharacterClassEnum.ArcaneTrickster] = "Arcane Trickster";
             _EnumToName[CharacterClassEnum.Assassin] = "Assassin";
@@ -133,6 +156,11 @@ namespace CombatManager
             _EnumToName[CharacterClassEnum.Samurai] = "Samurai";
             _EnumToName[CharacterClassEnum.Spiritualist] = "Spiritualist";
             _EnumToName[CharacterClassEnum.StalwartDefender] = "Stalwart Defender";
+            _EnumToName[CharacterClassEnum.Adept] = "Adept";
+            _EnumToName[CharacterClassEnum.Aristocrat] = "Aristocrat";
+            _EnumToName[CharacterClassEnum.Commoner] = "Commoner";
+            _EnumToName[CharacterClassEnum.Expert] = "Expert";
+            _EnumToName[CharacterClassEnum.Warrior] = "Warrior";
 
 
             foreach (KeyValuePair<CharacterClassEnum, string> pair in _EnumToName)
