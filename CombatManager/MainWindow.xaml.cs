@@ -440,6 +440,13 @@ namespace CombatManager
                 StopLocalService();
                 RunLocalService();
             }
+            else if (e.PropertyName == "LocalServicePasscode" && UserSettings.Settings.RunLocalService)
+            {
+                if (localService != null)
+                {
+                    localService.Passcode = UserSettings.Settings.LocalServicePasscode;
+                }
+            }
             else if (e.PropertyName == "DefaultHPMode")
             {
                 if (localService != null)
@@ -6549,7 +6556,7 @@ namespace CombatManager
             {
                 UserSettings.Settings.MainWindowLeft = (int)Left;
                 UserSettings.Settings.MainWindowTop = (int)Top;
-                UserSettings.Settings.SaveOptions();
+                UserSettings.Settings.SaveOptions(UserSettings.SettingsSaveSection.WindowState);
             }
         }
 
@@ -9229,7 +9236,7 @@ namespace CombatManager
         {
             if (localService == null)
             {
-                localService = new LocalCombatManagerService(combatState, UserSettings.Settings.LocalServicePort);
+                localService = new LocalCombatManagerService(combatState, UserSettings.Settings.LocalServicePort, UserSettings.Settings.LocalServicePasscode);
                 localService.HPMode = UserSettings.Settings.DefaultHPMode;
                 localService.StateActionCallback = act =>
                 {
@@ -9330,6 +9337,21 @@ namespace CombatManager
 
             item.IsChecked = UserSettings.Settings.RunLocalService;
 
+        }
+
+        private void SettingsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            using (var undoGroup = undo.CreateUndoGroup())
+            {
+                SettingsDialog dlg = new SettingsDialog();
+                dlg.Owner = this;
+                dlg.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+
+                if (dlg.ShowDialog() == true)
+                {
+
+                }
+            }
         }
     }
 

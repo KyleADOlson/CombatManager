@@ -36,13 +36,17 @@ namespace CombatManager.LocalService
         int port;
         WebServer server;
         Character.HPMode hpmode;
+        string passcode;
 
         public const ushort DefaultPort = 12457;
 
 
         public delegate void ActionCallback(Action action);
+        
 
         public ActionCallback StateActionCallback { get; set; }
+        public Action SaveCallback { get; set; }
+
 
         public LocalCombatManagerServiceController serviceController;
 
@@ -63,16 +67,22 @@ namespace CombatManager.LocalService
 
         }
 
-        public LocalCombatManagerService(CombatState state, ushort port = DefaultPort)
+        public LocalCombatManagerService(CombatState state, ushort port = DefaultPort, string passcode = null)
         {
             this.state = state;
             this.port = port;
+            this.passcode = passcode;
 
         }
 
         void RunActionCallback(Action action)
         {
             StateActionCallback?.Invoke(action);
+        }
+
+        void RunSaveCallback()
+        {
+            SaveCallback?.Invoke();
         }
 
         public void TakeUIAction(UIAction ui, object data = null)
@@ -90,13 +100,32 @@ namespace CombatManager.LocalService
             server.RegisterModule(new WebApiModule());
             server.Module<WebApiModule>().RegisterController<LocalCombatManagerServiceController>(y =>
             {
-                serviceController = new LocalCombatManagerServiceController(y, state, this, RunActionCallback);
+                serviceController = new LocalCombatManagerServiceController(y, state, this, RunActionCallback, RunSaveCallback);
                 serviceController.HPMode = hpmode;
+                serviceController.Passcode = passcode;
                 return serviceController;
              });
             server.RunAsync();
     
         }
+
+        public string Passcode
+        {
+            get
+            {
+                return passcode;
+            }
+            set
+            {
+                passcode = value;
+                if (serviceController != null)
+                {
+                    serviceController.Passcode = passcode;
+                }
+            }
+        }
+
+
 
         public void Close()
         {

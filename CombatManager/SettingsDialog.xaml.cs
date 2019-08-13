@@ -62,6 +62,7 @@ namespace CombatManager
             startDarkScheme = UserSettings.Settings.DarkScheme;
             LocalWebServiceCheckbox.IsChecked = UserSettings.Settings.RunLocalService;
             PortTextBox.Text = UserSettings.Settings.LocalServicePort.ToString();
+            PasscodeTextBox.Text = UserSettings.Settings.LocalServicePasscode;
 
             RollAlternateInitDiceBox.TextChanged += new TextChangedEventHandler(RollAlternateInitDiceBox_TextChanged);
 
@@ -140,6 +141,7 @@ namespace CombatManager
                 UserSettings.Settings.DarkScheme = DarkSchemeCheckbox.IsChecked.Value;
                 UserSettings.Settings.RunLocalService = LocalWebServiceCheckbox.IsChecked == true;
                 UserSettings.Settings.LocalServicePort = GetLocalPort().Value;
+                UserSettings.Settings.LocalServicePasscode = PasscodeTextBox.Text;
                 UserSettings.Settings.SaveOptions();
 
                 CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
@@ -214,7 +216,7 @@ namespace CombatManager
             EnableOK();
         }
 
-        private static bool IsTextAllowed(string text)
+        private static bool IsPortTextAllowed(string text)
         {
             Regex regex = new Regex("[^0-9]+");
             bool allowed = !regex.IsMatch(text);
@@ -223,7 +225,7 @@ namespace CombatManager
 
         private void PortTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!IsTextAllowed(e.Text))
+            if (!IsPortTextAllowed(e.Text))
             {
                 e.Handled = true;
             }
@@ -234,7 +236,42 @@ namespace CombatManager
             if (e.DataObject.GetDataPresent(typeof(String)))
             {
                 String text = (String)e.DataObject.GetData(typeof(String));
-                if (!IsTextAllowed(text))
+                if (!IsPortTextAllowed(text))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
+            }
+        }
+
+        private static bool IsPasscodeTextAllowed(string text)
+        {
+            Regex regex = new Regex("[^0-9A-Za-z!@#$%^&*]+");
+            bool allowed = !regex.IsMatch(text);
+            return allowed;
+        }
+
+        private void PascodeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
+
+        private void PasscodeTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!IsPasscodeTextAllowed(e.Text))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void PasscodeTextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!IsPasscodeTextAllowed(text))
                 {
                     e.CancelCommand();
                 }

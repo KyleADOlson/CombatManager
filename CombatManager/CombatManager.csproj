@@ -543,6 +543,7 @@
     <Resource Include="license.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\gear.png" />
     <Resource Include="Images\Move.png" />
     <Resource Include="Images\Plus.png" />
     <Resource Include="Images\RotateArrow.png" />
