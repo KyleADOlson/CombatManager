@@ -15,14 +15,16 @@ namespace CombatManager.LocalService
     {
         CombatState state;
         LocalCombatManagerService.ActionCallback actionCallback;
+        Action saveCallback;
         LocalCombatManagerService service;
 
-        public LocalCombatManagerServiceController(IHttpContext context, CombatState state, LocalCombatManagerService service, LocalCombatManagerService.ActionCallback actionCallback)
+        public LocalCombatManagerServiceController(IHttpContext context, CombatState state, LocalCombatManagerService service, LocalCombatManagerService.ActionCallback actionCallback, Action saveCallback)
             : base(context)
         {
             this.state = state;
             this.service = service;
             this.actionCallback = actionCallback;
+            this.saveCallback = saveCallback;
         }
 
         private class ResultHandler
@@ -41,12 +43,14 @@ namespace CombatManager.LocalService
 
         public Character.HPMode HPMode { get; set; }
 
+        public string Passcode { get; set; }
+
         [WebApiHandler(HttpVerbs.Get, "/api/combat/state")]
         public async Task<bool> GetCombatState()
         {
             return await TakeAction((res) =>
             {
-                res.Data = state.ToRemote() ;
+                res.Data = state.ToRemote();
             });
         }
 
@@ -56,6 +60,7 @@ namespace CombatManager.LocalService
             return await TakeAction((res) =>
             {
                 state.MoveNext();
+                saveCallback();
                 res.Data = state.ToRemote();
             });
         }
@@ -67,6 +72,7 @@ namespace CombatManager.LocalService
             return await TakeAction((res) =>
                 {
                     state.MovePrevious();
+                    saveCallback();
                     res.Data = state.ToRemote();
                 });
         }
@@ -78,6 +84,7 @@ namespace CombatManager.LocalService
                 {
                     state.RollInitiative();
                     state.SortCombatList();
+                    saveCallback();
                     res.Data = state.ToRemote();
                 }
                 );
@@ -85,7 +92,7 @@ namespace CombatManager.LocalService
         }
 
         [WebApiHandler(HttpVerbs.Get, "/api/character/details/{charid}")]
-        public async Task<bool> CombatRollInit(string charid)
+        public async Task<bool> GetCharacterDetails(string charid)
         {
 
             return await TakeCharacterAction(charid, (res, ch) =>
@@ -103,6 +110,7 @@ namespace CombatManager.LocalService
             {
 
                 state.MoveUpCharacter(ch);
+                saveCallback();
                 res.Data = state.ToRemote();
 
             });
@@ -116,6 +124,7 @@ namespace CombatManager.LocalService
             {
 
                 state.MoveDownCharacter(ch);
+                saveCallback();
                 res.Data = state.ToRemote();
 
             });
@@ -129,6 +138,7 @@ namespace CombatManager.LocalService
             {
 
                 state.RemoveCharacter(ch);
+                saveCallback();
                 res.Data = state.ToRemote();
 
             });
@@ -142,6 +152,7 @@ namespace CombatManager.LocalService
             return await TakeCharacterAction(charid, (res, ch) =>
             {
                 ch.Adjuster.HP += amount;
+                saveCallback();
                 res.Data = ch.ToRemote();
 
             });
@@ -153,6 +164,7 @@ namespace CombatManager.LocalService
             return await TakeCharacterAction(charid, (res, ch) =>
             {
                 ch.MaxHP += amount;
+                saveCallback();
                 res.Data = ch.ToRemote();
 
             });
@@ -164,6 +176,7 @@ namespace CombatManager.LocalService
             return await TakeCharacterAction(charid, (res, ch) =>
             {
                 ch.Adjuster.TemporaryHP += amount;
+                saveCallback();
                 res.Data = ch.ToRemote();
 
             });
@@ -176,6 +189,7 @@ namespace CombatManager.LocalService
             return await TakeCharacterAction(charid, (res, ch) =>
             {
                 ch.Adjuster.NonlethalDamage += amount;
+                saveCallback();
                 res.Data = ch.ToRemote();
 
             });
@@ -198,6 +212,7 @@ namespace CombatManager.LocalService
                 ac.InitiativeCount = state.CurrentInitiativeCount;
                 ac.Turns = data.Turns;
                 ch.Monster.AddCondition(ac);
+                saveCallback();
 
                 res.Data = ch.ToRemote();
 
@@ -211,6 +226,7 @@ namespace CombatManager.LocalService
             return await TakeCharacterPostAction<RemoveConditionRequest>((res, data, ch) =>
             {
                 ch.RemoveConditionByName(data.Name);
+                saveCallback();
 
                 res.Data = ch.ToRemote();
 
@@ -275,32 +291,44 @@ namespace CombatManager.LocalService
         public async Task<bool> BringToFront()
         {
 
-            service.TakeUIAction(LocalCombatManagerService.UIAction.BringToFront);
-            return await Ok(new { res = true });
+            return await Precheck(async () =>
+            {
+                service.TakeUIAction(LocalCombatManagerService.UIAction.BringToFront);
+                return await Ok(new { res = true });
+            });
         }
 
         [WebApiHandler(HttpVerbs.Get, "/api/ui/minimize")]
         public async Task<bool> Minimize()
         {
 
-            service.TakeUIAction(LocalCombatManagerService.UIAction.Minimize);
-            return await Ok(new { res = true });
+            return await Precheck(async () =>
+            {
+                service.TakeUIAction(LocalCombatManagerService.UIAction.Minimize);
+                return await Ok(new { res = true });
+            });
         }
 
         [WebApiHandler(HttpVerbs.Get, "/api/ui/goto/{place}")]
         public async Task<bool> UIGoto(string place)
         {
 
-            service.TakeUIAction(LocalCombatManagerService.UIAction.Goto, place);
-            return await Ok(new { res = true });
+            return await Precheck(async () =>
+            {
+                service.TakeUIAction(LocalCombatManagerService.UIAction.Goto, place);
+                return await Ok(new { res = true });
+            });
         }
 
         [WebApiHandler(HttpVerbs.Get, "/api/ui/showcombatlist")]
         public async Task<bool> ShowCombatList()
         {
 
-            service.TakeUIAction(LocalCombatManagerService.UIAction.ShowCombatListWindow);
-            return await Ok(new { res = true });
+            return await Precheck(async () =>
+            {
+                service.TakeUIAction(LocalCombatManagerService.UIAction.ShowCombatListWindow);
+                return await Ok(new { res = true });
+            });
         }
 
 
@@ -308,8 +336,11 @@ namespace CombatManager.LocalService
         public async Task<bool> HideCombatList()
         {
 
-            service.TakeUIAction(LocalCombatManagerService.UIAction.HideCombatListWindow);
-            return await Ok(new { res = true });
+            return await Precheck(async () =>
+            {
+                service.TakeUIAction(LocalCombatManagerService.UIAction.HideCombatListWindow);
+                return await Ok(new { res = true });
+            });
         }
 
 
@@ -347,58 +378,85 @@ namespace CombatManager.LocalService
         {
             return await TakePostAction<MonsterAddRequest>((res, data) =>
             {
-                
 
-                Monster m = Monster.ByID(data.Source.IsCustom, data.Source.ID);
-                if (m != null)
+                foreach (var mr in data.Monsters)
                 {
-                    Character ch = state.AddMonster(m, HPMode, data.IsMonster);
-                    if (!data.Name.IsEmptyOrNull())
+                    Monster m = Monster.ByID(mr.IsCustom, mr.ID);
+                    if (m != null)
                     {
-                        ch.Name = data.Name;
+                        Character ch = state.AddMonster(m, HPMode, data.IsMonster);
+                        if (!data.Name.IsEmptyOrNull())
+                        {
+                            ch.Name = data.Name;
+                        }
+                        res.Data = ch.ToRemote();
+
                     }
-                    res.Data= ch.ToRemote();
-                    
                 }
+                saveCallback();
             });
         }
 
+        
+
+        private async Task<bool> Precheck(Func<Task<bool>> function)
+        {
+            if (!Passcode.IsEmptyOrNull())
+            {
+                if (!HttpContext.HasRequestHeader("passcode"))
+                {
+                    return await InternalServerError(new ArgumentException(), System.Net.HttpStatusCode.Forbidden);
+                }
+                else
+                {
+                    string matchcode = HttpContext.RequestHeader("Passcode");
+                    if (matchcode != Passcode)
+                    {
+                        return await InternalServerError(new ArgumentException(), System.Net.HttpStatusCode.Forbidden);
+
+                    }
+                }
+            }
+            return await function();
+        }
 
 
         private async Task<bool> TakeAction(Action<ResultHandler> resAction)
         {
-
-            try
+            return await Precheck(async () =>
             {
-                ResultHandler res = new ResultHandler();
-
-
-                actionCallback(() =>
+                try
                 {
-                    try
+                    ResultHandler res = new ResultHandler();
+
+
+                    actionCallback(() =>
                     {
-                        resAction(res);
-                    }
-                    catch (Exception)
+                        try
+                        {
+                            resAction(res);
+                        }
+                        catch (Exception)
+                        {
+                            res.Failed = true;
+                        }
+
+                    });
+                    if (res.Failed)
                     {
-                        res.Failed = true;
+
+                        return await InternalServerError(new ArgumentException(), res.Code);
                     }
-
-                });
-                if (res.Failed)
-                {
-
-                    return await InternalServerError(new ArgumentException(), res.Code);
+                    else
+                    {
+                        return await Ok(res.Data);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    return await Ok(res.Data);
+                    return await InternalServerError(ex);
                 }
-            }
-            catch (Exception ex)
-            {
-                return await InternalServerError(ex);
-            }
+            });
         }
 
         private async Task<bool> TakeCharacterAction(string charid, Action<ResultHandler, Character> handler)
@@ -435,46 +493,49 @@ namespace CombatManager.LocalService
         private async Task<bool> TakePostAction<T>(Action<ResultHandler, T> resAction) where T : class
         {
 
-            try
+            return await Precheck(async () =>
             {
-                ResultHandler res = new ResultHandler();
-                T data = await HttpContext.ParseJsonAsync<T>();
-
-                if (data == null)
+                try
                 {
-                    res.Failed = true;
-                }
-                else
-                {
+                    ResultHandler res = new ResultHandler();
+                    T data = await HttpContext.ParseJsonAsync<T>();
 
-                    actionCallback(() =>
+                    if (data == null)
                     {
-                        try
+                        res.Failed = true;
+                    }
+                    else
+                    {
+
+                        actionCallback(() =>
                         {
-                            resAction(res, data);
-                        }
-                        catch (Exception ex)
-                        {
-                            res.Failed = true;
-                        }
+                            try
+                            {
+                                resAction(res, data);
+                            }
+                            catch (Exception ex)
+                            {
+                                res.Failed = true;
+                            }
 
-                    });
+                        });
+                    }
+                    if (res.Failed)
+                    {
+
+                        return await InternalServerError(new ArgumentException(), res.Code);
+                    }
+                    else
+                    {
+                        return await Ok(res.Data);
+                    }
+
                 }
-                if (res.Failed)
+                catch (Exception ex)
                 {
-
-                    return await InternalServerError(new ArgumentException(), res.Code);
+                    return await InternalServerError(ex);
                 }
-                else
-                {
-                    return await Ok(res.Data);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                return await InternalServerError(ex);
-            }
+            });
         }
 
         private async Task<bool> TakeCharacterPostAction<T>(Action<ResultHandler, T, Character> resAction) where T : CharacterRequest

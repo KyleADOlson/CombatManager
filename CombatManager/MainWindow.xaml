@@ -390,6 +390,12 @@
 
             </MenuItem>
             <Separator/>
+            <MenuItem Header="Settings" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click">
+                <MenuItem.Icon>
+                <Image Source="/CombatManager;component/Images/gear.png" Width="16" Height="16"/>
+            </MenuItem.Icon>
+            </MenuItem>
+            <Separator/>
             <MenuItem Header="Run Local Web Services" x:Name="LocalServiceMenuItem" Click="LocalServiceMenuItem_Click"
                     Loaded="LocalServiceMenuItem_Loaded"/>
 

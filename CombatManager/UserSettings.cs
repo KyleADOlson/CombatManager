@@ -115,6 +115,7 @@ namespace CombatManager
 
         private bool _RunLocalService;
         private ushort _LocalServicePort;
+        private string _LocalServicePasscode;
 
         private int _RulesSystem;
 
@@ -149,6 +150,7 @@ namespace CombatManager
             _RunLocalService = false;
             _RulesSystem = 0;
             _LocalServicePort = LocalCombatManagerService.DefaultPort;
+            _LocalServicePasscode = "";
             LoadOptions();
         }
 
@@ -704,6 +706,19 @@ namespace CombatManager
             }
         }
 
+        public String LocalServicePasscode
+        {
+            get { return _LocalServicePasscode; }
+            set
+            {
+                if (_LocalServicePasscode != value)
+                {
+                    _LocalServicePasscode = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("LocalServicePasscode")); }
+                }
+            }
+        }
+
         public RulesSystem RulesSystem
         {
             get { return (RulesSystem)_RulesSystem; }
@@ -716,6 +731,8 @@ namespace CombatManager
                 }
             }
         }
+
+
 
         void LoadOptions()
         {
@@ -764,7 +781,7 @@ namespace CombatManager
                 RulesSystem = (RulesSystem)LoadIntValue("RulesSystem", 0);
                 RunLocalService = LoadBoolValue("RunLocalService", false);
                 LocalServicePort = (ushort)LoadIntValue("LocalServicePort", LocalCombatManagerService.DefaultPort);
-               
+                LocalServicePasscode = LoadStringValue("LocalServicePasscode", "");
 
                 optionsLoaded = true;
             }
@@ -854,6 +871,7 @@ namespace CombatManager
                     {
                         SaveBoolValue(key, "RunLocalService", RunLocalService);
                         SaveIntValue(key, "LocalServicePort", LocalServicePort);
+                        SaveStringValue(key, "LocalServicePasscode", LocalServicePasscode);
 
                     }
                     if (section == SettingsSaveSection.All || section == SettingsSaveSection.Filters)
@@ -971,7 +989,7 @@ namespace CombatManager
                 {
                     RegistryValueKind ki = key.GetValueKind(name);
 
-                    if (ki == RegistryValueKind.DWord)
+                    if (ki == RegistryValueKind.String)
                     {
                         value = (String)key.GetValue(name);
 

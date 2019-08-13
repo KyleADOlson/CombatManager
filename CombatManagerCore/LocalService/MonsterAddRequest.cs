@@ -10,7 +10,7 @@ namespace CombatManager.LocalService
     {
         public string Name { get; set; }
         public bool IsMonster { get; set; }
-        public MonsterRequest Source { get; set; }
+        public List<MonsterRequest> Monsters { get; set; }
 
     }
 }
