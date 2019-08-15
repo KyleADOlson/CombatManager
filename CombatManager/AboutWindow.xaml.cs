@@ -87,5 +87,12 @@ namespace CombatManager
         {
             System.Diagnostics.Process.Start("http://combatmanager.com");
         }
+
+
+        private void APIHyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://combatmanager.com/localapi.html");
+        }
+
     }
 }
