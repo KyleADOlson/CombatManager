@@ -107,6 +107,7 @@
     <Compile Include="DD5Stats.cs" />
     <Compile Include="LocalService\AddConditionRequest.cs" />
     <Compile Include="LocalService\CharacterRequest.cs" />
+    <Compile Include="LocalService\CombatManagerNotificationServer.cs" />
     <Compile Include="LocalService\LocalRemoteConverter.cs" />
     <Compile Include="LocalService\MonsterAddRequest.cs" />
     <Compile Include="LocalService\MonsterListRequest.cs" />

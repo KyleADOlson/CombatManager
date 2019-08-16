@@ -60,6 +60,7 @@ namespace CombatManager
         public event CombatStateCharacterEvent CharacterRemoved;
         public event CombatStateCharacterEvent CharacterPropertyChanged;
 		public event EventHandler CharacterSortCompleted;
+        public event CombatStateCharacterEvent TurnChanged;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -157,6 +158,11 @@ namespace CombatManager
             }
             CurrentCharacter = s.CurrentCharacter;
 
+        }
+
+        void SendTurnChanged()
+        {
+            TurnChanged?.Invoke(this, new CombatStateCharacterEventArgs() { Character = this.CurrentCharacter });
         }
 
 
@@ -601,6 +607,7 @@ namespace CombatManager
             {
                 CurrentCharacter = null;
             }
+            SendTurnChanged();
         }
 
 
@@ -682,6 +689,7 @@ namespace CombatManager
 	                character.IsDelaying = false;
 	            }
 			}
+            SendTurnChanged();
         }
 
         public void MovePrevious()
@@ -710,6 +718,7 @@ namespace CombatManager
             }
 
             UpdateAllConditions();
+            SendTurnChanged();
         }
 
         public void SortInitiative()
@@ -730,7 +739,8 @@ namespace CombatManager
 
                 CurrentCharacter = CombatList.FirstOrDefault();
             }
-            
+
+
         }
 
         public void SortCombatList()
@@ -796,6 +806,7 @@ namespace CombatManager
             {
                 CurrentCharacter = CombatList.FirstOrDefault();
             }
+            SendTurnChanged();
 
 
         }
@@ -961,6 +972,7 @@ namespace CombatManager
                 CorrectCharacterLocation(character);
 
                 UpdateAllConditions();
+                SendTurnChanged();
 
             }
             
@@ -986,6 +998,7 @@ namespace CombatManager
                     MovePrevious();
 
                 }
+                SendTurnChanged();
             }
         }
 
@@ -1060,6 +1073,7 @@ namespace CombatManager
 
 
                 UpdateAllConditions();
+                SendTurnChanged();
 
             }
             
