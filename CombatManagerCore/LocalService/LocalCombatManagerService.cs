@@ -105,6 +105,11 @@ namespace CombatManager.LocalService
                 serviceController.Passcode = passcode;
                 return serviceController;
              });
+
+            server.RegisterModule(new WebSocketsModule());
+            server.Module<WebSocketsModule>().RegisterWebSocketsServer<CombatManagerNotificationServer>("/api/notications",
+                new CombatManagerNotificationServer(state));
+
             server.RunAsync();
     
         }

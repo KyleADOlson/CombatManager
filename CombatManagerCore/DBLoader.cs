@@ -1204,7 +1204,12 @@ namespace CombatManager
             }
             else
             {
-                nextIndexForTable[tableName] = ret.Rows[0].IntValue("ID") + 1;
+                var row = ret.Rows[0];
+                String text = row.Cols[0];
+                int index;
+                int.TryParse(text, out index);
+
+                nextIndexForTable[tableName] = index + 1;
             }
         }
 
