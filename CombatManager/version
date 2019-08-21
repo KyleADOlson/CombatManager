@@ -1,4 +1,9 @@
-﻿1.7.5
+﻿1.7.6
+Fix Combat State loading
+Fix missing delete button in Hotkeys dialog
+Fix clone menu option
+
+1.7.5
 Fix customization DB crash
 
 1.7.4

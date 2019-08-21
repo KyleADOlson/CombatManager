@@ -955,6 +955,11 @@ namespace CombatManager
 
                 old.Copy(cs);
 
+                if (combatState.RulesSystem == old.RulesSystem)
+                {
+                    combatState.Copy(old);
+                }
+
                 StoreSystemCombatState();
 
                 UserSettings.Settings.RulesSystem = cs.RulesSystem;
@@ -4667,6 +4672,7 @@ namespace CombatManager
         private void MenuItem_Clone(object sender, RoutedEventArgs e)
         {
             List<Character> list = GetViewSelectedCharacters(sender);
+            CloneCharacterList(list);
         }
 
         public void CloneCharacterList(List<Character> list)
@@ -8474,9 +8480,9 @@ namespace CombatManager
                         _HotKeys.Add(ib);
                         InputBindings.Add(ib);
                     }
-                    catch (NotSupportedException)
+                    catch (NotSupportedException ex)
                     {
-
+                        System.Diagnostics.Debug.WriteLine("Unable to set key:\r\n" + ex.ToString());
                     }
                 }
 
