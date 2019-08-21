@@ -4316,9 +4316,25 @@ namespace CombatManager
                 roll.mod = 0;
                 if (roll.extraRolls != null)
                 {
-                    roll.extraRolls.Clear();
+                    //roll.extraRolls.Clear();
+                    if (className != null)
+                    {
+                        var hdfromClass = GetClassLvls(className);
+                        if (roll.TotalCount - hdfromClass == 0)
+                        {
+                            roll.Text = "1d8";
+                            className = "";
+                        }
+                        else
+                        {
+                            roll.count = (roll.TotalCount - hdfromClass);
+                            roll.Text = roll.count + "d8";
+                            className = "";
+                        }
+                    }
                 }
             }
+
             HD = "(" + DieRollText(roll) + ")";
             HP = roll.AverageRoll();
 
@@ -11710,7 +11726,27 @@ namespace CombatManager
             }
         }
 
+        public int GetClassLvls(string mClass)
+        {
+            var regClasses = "(";
+            int lvls = 0;
 
+            foreach (CharacterClassEnum Cclass in Enum.GetValues(typeof(CharacterClassEnum)))
+            {
+                if (Cclass == CharacterClassEnum.None) continue;
+                regClasses = regClasses+"|"+ CharacterClass.GetName(Cclass);
+
+            }
+
+            regClasses = regClasses + ")";
+            var regex = new Regex(@"." + regClasses + @"(?<lvl>\d+)");
+            var x = regex.Matches(mClass);
+            foreach (var match in x)
+            {
+                lvls += int.Parse(match.ToString());
+            }
+            return lvls;
+        }
         public int? GetManoeuver(string maneuverType)
         {
             return ParseManoeuver(maneuverType);
