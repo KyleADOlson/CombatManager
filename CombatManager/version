@@ -1,7 +1,11 @@
-﻿1.7.6
+﻿1.7.7
+Additiona Local Service API functions
+
+1.7.6
 Fix Combat State loading
 Fix missing delete button in Hotkeys dialog
 Fix clone menu option
+Skeleton Template Fix
 
 1.7.5
 Fix customization DB crash

@@ -144,6 +144,65 @@ namespace CombatManager.LocalService
             });
         }
 
+        [WebApiHandler(HttpVerbs.Get, "/api/combat/ready/{charid}")]
+        public async Task<bool> ReadyCharacter(string charid)
+        {
+            return await TakeCharacterAction(charid, (res, ch) =>
+            {
+                ch.IsReadying = true;
+                saveCallback();
+                res.Data = state.ToRemote();
+
+            });
+        }
+
+        [WebApiHandler(HttpVerbs.Get, "/api/combat/unready/{charid}")]
+        public async Task<bool> UnreadyCharacter(string charid)
+        {
+            return await TakeCharacterAction(charid, (res, ch) =>
+            {
+                ch.IsReadying = false;
+                saveCallback();
+                res.Data = state.ToRemote();
+
+            });
+        }
+
+        [WebApiHandler(HttpVerbs.Get, "/api/combat/delay/{charid}")]
+        public async Task<bool> DelayCharacter(string charid)
+        {
+            return await TakeCharacterAction(charid, (res, ch) =>
+            {
+                ch.IsDelaying = true;
+                saveCallback();
+                res.Data = state.ToRemote();
+
+            });
+        }
+
+        [WebApiHandler(HttpVerbs.Get, "/api/combat/undelay/{charid}")]
+        public async Task<bool> UndelayCharacter(string charid)
+        {
+            return await TakeCharacterAction(charid, (res, ch) =>
+            {
+                ch.IsDelaying = false;
+                saveCallback();
+                res.Data = state.ToRemote();
+
+            });
+        }
+
+        [WebApiHandler(HttpVerbs.Get, "/api/combat/actnow/{charid}")]
+        public async Task<bool> CharacterActNow(string charid)
+        {
+            return await TakeCharacterAction(charid, (res, ch) =>
+            {
+                state.CharacterActNow(ch);
+                saveCallback();
+                res.Data = state.ToRemote();
+
+            });
+        }
 
 
         [WebApiHandler(HttpVerbs.Get, "/api/character/changehp/{charid}/{amount}")]
@@ -464,13 +523,32 @@ namespace CombatManager.LocalService
             return await TakeAction((res) =>
             {
                 Guid id;
-                if (!Guid.TryParse(charid, out id))
+
+                Character ch = null;
+
+                if (charid == "current")
+
                 {
-                    res.Failed = true;
-                    return;
+                    id = Guid.Empty;
+                }
+                else
+                {
+                    if (!Guid.TryParse(charid, out id))
+                    {
+                        res.Failed = true;
+                        return;
+                    }
                 }
 
-                Character ch = state.GetCharacterByID(id);
+
+                if (id == Guid.Empty)
+                {
+                    ch = state.CurrentCharacter;
+                }
+                else
+                {
+                    ch = state.GetCharacterByID(id);
+                }
                 if (ch != null)
                 {
                     try
