@@ -111,6 +111,9 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Services" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\DotZipLib\Ionic.Zip.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Affliction.cs" />
@@ -177,6 +180,7 @@
     <Compile Include="XElementExt.cs" />
     <Compile Include="ActiveResource.cs" />
     <Compile Include="ExportData.cs" />
+    <Compile Include="CMMathUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">
