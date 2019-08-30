@@ -114,6 +114,15 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\DotZipLib\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unosquare.Labs.EmbedIO">
+      <HintPath>..\packages\EmbedIO.2.9.2\lib\netstandard2.0\Unosquare.Labs.EmbedIO.dll</HintPath>
+    </Reference>
+    <Reference Include="Unosquare.Swan.Lite">
+      <HintPath>..\packages\Unosquare.Swan.Lite.1.3.1\lib\netstandard2.0\Unosquare.Swan.Lite.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Affliction.cs" />
@@ -181,6 +190,40 @@
     <Compile Include="ActiveResource.cs" />
     <Compile Include="ExportData.cs" />
     <Compile Include="CMMathUtilities.cs" />
+    <Compile Include="LocalService\RemoteDBItem.cs" />
+    <Compile Include="LocalService\LocalCombatManagerServiceController.cs" />
+    <Compile Include="LocalService\RemoteRollResult.cs" />
+    <Compile Include="LocalService\RemoteAffliction.cs" />
+    <Compile Include="LocalService\CombatManagerNotificationServer.cs" />
+    <Compile Include="LocalService\MonsterAddRequest.cs" />
+    <Compile Include="LocalService\LocalCombatManagerService.cs" />
+    <Compile Include="LocalService\LocalRemoteConverter.cs" />
+    <Compile Include="LocalService\MonsterListRequest.cs" />
+    <Compile Include="LocalService\RemoteSpell.cs" />
+    <Compile Include="LocalService\RemoteCharacter.cs" />
+    <Compile Include="LocalService\CharacterRequest.cs" />
+    <Compile Include="LocalService\RemoteDieResult.cs" />
+    <Compile Include="LocalService\RemoteDie.cs" />
+    <Compile Include="LocalService\RemoteCharacterInitState.cs" />
+    <Compile Include="LocalService\RemoteCombatState.cs" />
+    <Compile Include="LocalService\MonstersRequest.cs" />
+    <Compile Include="LocalService\RemoteInitiativeCount.cs" />
+    <Compile Include="LocalService\RemoveConditionRequest.cs" />
+    <Compile Include="LocalService\RemoteActiveCondition.cs" />
+    <Compile Include="LocalService\RemoteMonsterList.cs" />
+    <Compile Include="LocalService\RemoteDieRoll.cs" />
+    <Compile Include="LocalService\MonsterRequest.cs" />
+    <Compile Include="LocalService\AddConditionRequest.cs" />
+    <Compile Include="LocalService\RemoteDBListing.cs" />
+    <Compile Include="LocalService\RemoteConditon.cs" />
+    <Compile Include="LocalService\RemoteBonus.cs" />
+    <Compile Include="LocalService\RemoteMonster.cs" />
+    <Compile Include="RulesSystem.cs" />
+    <Compile Include="ProficiencyRank.cs" />
+    <Compile Include="PF2Stats.cs" />
+    <Compile Include="PF2Score.cs" />
+    <Compile Include="DD5Stats.cs" />
+    <Compile Include="CMBindingUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">
@@ -254,6 +297,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WeaponNames" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
