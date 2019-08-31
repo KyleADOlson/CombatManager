@@ -47,6 +47,8 @@ namespace CombatManagerMono
         ButtonStringPopover settingsPopover;
 
         ImportExportDialog ieDialog;
+
+        ButtonStringPopoverItem serverItem;
 		
 		public ToolbarView ()
 		{
@@ -103,6 +105,9 @@ namespace CombatManagerMono
             settingsPopover.Items.Add(pi);
             pi = new ButtonStringPopoverItem { Text = "Export"};
             settingsPopover.Items.Add(pi);
+            serverItem = new ButtonStringPopoverItem { Text = "Run Local Service" };
+            SetLocalServiceIcon();
+            settingsPopover.Items.Add(serverItem);
             settingsPopover.ItemClicked += (sender, eee) => 
             {
                 switch (eee.Index)
@@ -116,6 +121,9 @@ namespace CombatManagerMono
 
                         Export();
                         
+                        break;
+                    case 2:
+                        LocalServiceClicked();
                         break;
                 }
             };
@@ -132,8 +140,24 @@ namespace CombatManagerMono
 
             Add (_AboutButton);
 			BackgroundColor = UIColor.Black;
+
+            MobileSettings.Instance.PropertyChanged += MobileSettingsPropertyChanged;
 			
 		}
+
+        void SetLocalServiceIcon()
+        {
+
+            serverItem.Icon = MobileSettings.Instance.RunLocalService ? "check" : null;
+        }
+
+        private void MobileSettingsPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "RunLocalService")
+            {
+                SetLocalServiceIcon();
+            }
+        }
 
         void Import()
         {
@@ -223,6 +247,11 @@ namespace CombatManagerMono
                 MainUI.MainView.AddSubview(ofd.View);
             };
             MainUI.MainView.AddSubview(ieDialog.View);
+        }
+
+        void LocalServiceClicked()
+        {
+            MobileSettings.Instance.RunLocalService = !MobileSettings.Instance.RunLocalService;
         }
 
 
