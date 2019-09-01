@@ -184,32 +184,28 @@ namespace CombatManagerMono
         {
             CMTab newTab = null;
 
-            if (newTab != null && newTab != currentTab)
-            {
-                currentTab.RemoveFromSuperview();
-                currentTab = newTab;
-                AddSubview(newTab);
-                Resize();
 
-            }
             switch (button)
             {
                 case UITab.Combat:
                     if (!(currentTab is CombatTab))
                     {
                         newTab = CombatTab;
+                        toolbar.SetClickedButton(0);
                     }
                     break;
                 case UITab.Monsters:
                     if (!(currentTab is MonstersTab))
                     {
                         newTab = MonstersTab;
+                        toolbar.SetClickedButton(1);
                     }
                     break;
                 case UITab.Feats:
                     if (!(currentTab is FeatsTab))
                     {
                         newTab = FeatsTab;
+                        toolbar.SetClickedButton(2);
                     }
                     break;
                 case UITab.Spells:
@@ -217,19 +213,32 @@ namespace CombatManagerMono
                     {
                         newTab = SpellsTab;
                     }
+                    toolbar.SetClickedButton(3);
                     break;
                 case UITab.Rules:
                     if (!(currentTab is RulesTab))
                     {
                         newTab = RulesTab;
                     }
+                    toolbar.SetClickedButton(4);
                     break;
                 case UITab.Treasure:
                     if (!(currentTab is TreasureTab))
                     {
                         newTab = TreasureTab;
                     }
+                    toolbar.SetClickedButton(5);
                     break;
+            }
+            if (newTab != null && newTab != currentTab)
+            {
+                currentTab.RemoveFromSuperview();
+                currentTab = newTab;
+                AddSubview(newTab);
+                
+                Resize();
+                toolbar.SetNeedsDisplay();
+
             }
         }
 

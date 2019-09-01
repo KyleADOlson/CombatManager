@@ -83,7 +83,24 @@ namespace CombatManager
             return index >= 0 && index < list.Count;
         }
 
-        
+        public static void RunOnIndex<T>(this IList<T> list, int index, Action<T> action)
+        {
+            if (list.IndexInList(index))
+            {
+                action(list[index]);
+            }
+        }
+
+        public static void RunOnRange<T>(this IList<T> list, int start, int end, Action<T> action)
+        {
+            int index = Math.Max(0, start);
+
+            while (index <= end && index < list.Count)
+            {
+                action(list[index]);
+                index++;
+            }
+        }
 
     }
 

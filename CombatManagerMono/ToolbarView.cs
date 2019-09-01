@@ -312,7 +312,7 @@ namespace CombatManagerMono
             UIAlertView alert = (UIAlertView)sender;
             if (ea.ButtonIndex == 0)
             {
-                String text = alert.GetTextField(0).Text;
+                String text = alert.GetTextField(0).Text.Trim();
                 MobileSettings.Instance.LocalServicePasscode = text;
             }
 
@@ -333,14 +333,12 @@ namespace CombatManagerMono
 
 		void HandleBTouchUpInside (object sender, EventArgs e)
 		{
-            
-            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDarker);
-			clickedButton = (GradientButton)sender;
-			if (ButtonClicked != null)
-			{
+
+            if (ButtonClicked != null)
+            {
                 ButtonClicked(this, (int)((UIButton)sender).Tag);
-			}
-            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
+            }
+            SetClickedButtonGradients((GradientButton)sender);
 		}
 		public override void LayoutSubviews ()
 		{
@@ -352,6 +350,25 @@ namespace CombatManagerMono
 
 
 		}
+
+        void SetClickedButtonGradients(GradientButton b)
+        {
+            if (clickedButton != null)
+            {
+                clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDarker);
+            }
+            clickedButton = b;
+            if (clickedButton != null)
+            {
+                clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
+            }
+
+        }
+
+        public void SetClickedButton(int button)
+        {
+            buttons.RunOnIndex(button, SetClickedButtonGradients);
+        }
 		
 	}
 }
