@@ -132,15 +132,19 @@ namespace CombatManager
         public static void ToList<T>(this HashSet<T> source, ObservableCollection<T> target)
         {
             target.Clear();
-            source.ForEach(x => target.Add(x));
+            foreach (var x in source)
+            {
+                target.Add(x);
+            }
         }
 
         public static void FromList<T>(this HashSet<T> target, ObservableCollection<T> source)
         {
             target.Clear();
-            source.ForEach(x => target.Add(x));
+            foreach (var x in source)
+            {
+                target.Add(x);
+            }
         }
-
-
     }
 }

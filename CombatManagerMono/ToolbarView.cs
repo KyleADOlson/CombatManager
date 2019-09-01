@@ -105,9 +105,14 @@ namespace CombatManagerMono
             settingsPopover.Items.Add(pi);
             pi = new ButtonStringPopoverItem { Text = "Export"};
             settingsPopover.Items.Add(pi);
+            settingsPopover.Items.Add(new ButtonStringPopoverItem());
             serverItem = new ButtonStringPopoverItem { Text = "Run Local Service" };
             SetLocalServiceIcon();
             settingsPopover.Items.Add(serverItem);
+            pi = new ButtonStringPopoverItem { Text = "Local Service Port" };
+            settingsPopover.Items.Add(pi);
+            pi = new ButtonStringPopoverItem { Text = "Local Service Passcode" };
+            settingsPopover.Items.Add(pi);
             settingsPopover.ItemClicked += (sender, eee) => 
             {
                 switch (eee.Index)
@@ -124,6 +129,12 @@ namespace CombatManagerMono
                         break;
                     case 2:
                         LocalServiceClicked();
+                        break;
+                    case 4:
+                        LocalServicePortClicked();
+                        break;
+                    case 5:
+                        LocalServicePasscodeClicked();
                         break;
                 }
             };
@@ -254,6 +265,58 @@ namespace CombatManagerMono
             MobileSettings.Instance.RunLocalService = !MobileSettings.Instance.RunLocalService;
         }
 
+        void LocalServicePortClicked()
+        {
+            var alert = new UIAlertView();
+            alert.Title = "Enter Port";
+            alert.AddButton("OK");
+            alert.AddButton("Cancel");
+            alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+            alert.GetTextField(0).Text = MobileSettings.Instance.LocalServicePort.ToString();
+            alert.Show();
+            alert.Clicked += PortAlertClicked;
+        }
+
+        void PortAlertClicked(object sender, UIButtonEventArgs ea)
+        {
+            UIAlertView alert = (UIAlertView)sender;
+            if (ea.ButtonIndex == 0)
+            {
+                String text = alert.GetTextField(0).Text;
+                int port;
+                if (int.TryParse(text, out port))
+                {
+                    if (port > 0 && port < 32768)
+                    {
+                        MobileSettings.Instance.LocalServicePort = port;
+                    }
+                }
+            }
+
+        }
+
+        void LocalServicePasscodeClicked()
+        {
+            var alert = new UIAlertView();
+            alert.Title = "Enter Port";
+            alert.AddButton("OK");
+            alert.AddButton("Cancel");
+            alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+            alert.GetTextField(0).Text = MobileSettings.Instance.LocalServicePasscode;
+            alert.Show();
+            alert.Clicked += PasscodeAlertClicked;
+        }
+
+        void PasscodeAlertClicked(object sender, UIButtonEventArgs ea)
+        {
+            UIAlertView alert = (UIAlertView)sender;
+            if (ea.ButtonIndex == 0)
+            {
+                String text = alert.GetTextField(0).Text;
+                MobileSettings.Instance.LocalServicePasscode = text;
+            }
+
+        }
 
         void SettingsButtonClicked (object sender, EventArgs e)
         {

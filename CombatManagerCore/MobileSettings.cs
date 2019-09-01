@@ -1,4 +1,5 @@
 ﻿using System;
+using CombatManager.LocalService;
 using Xamarin.Essentials;
 
 namespace CombatManager
@@ -31,8 +32,11 @@ namespace CombatManager
             }
             set
             {
-                Preferences.Set("RunLocalService", value);
-                Notify("RunLocalService");
+                if (RunLocalService != value)
+                {
+                    Preferences.Set("RunLocalService", value);
+                    Notify("RunLocalService");
+                }
             }
         }
         
@@ -41,12 +45,13 @@ namespace CombatManager
         {
             get
             {
-                return Preferences.Get("LocalServicePort", 15247);
+                return Preferences.Get("LocalServicePort", LocalCombatManagerService.DefaultPort);
             }
             set
             {
-                if (value > 0 && value < 32778)
+                if (value > 0 && value < 32778 &&LocalServicePort != value)
                 {
+
                     Preferences.Set("LocalServicePort", value);
                     Notify("LocalServicePort");
                 }
@@ -62,8 +67,11 @@ namespace CombatManager
             }
             set
             {
-                Preferences.Set("LocalServicePasscode", value);
-                Notify("LocalServicePasscode");
+                if (LocalServicePasscode != value)
+                {
+                    Preferences.Set("LocalServicePasscode", value);
+                    Notify("LocalServicePasscode");
+                }
             }
         }
     }
