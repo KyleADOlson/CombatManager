@@ -7,6 +7,7 @@ using Foundation;
 using UIKit;
 
 using CombatManager;
+using CombatManager.LocalService;
 
 namespace CombatManagerMono
 {
@@ -88,8 +89,124 @@ namespace CombatManagerMono
             ui.Frame = rect;
             View.AddSubview(ui);
             LayoutView();
+
+            if (MobileSettings.Instance.RunLocalService)
+            {
+                RunLocalService();
+            }
+
+            MobileSettings.Instance.PropertyChanged += MobileSettingsPropertyChanged;
         }
-		
+
+        LocalCombatManagerService localService;
+
+        private void MobileSettingsPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "RunLocalService":
+                    if (MobileSettings.Instance.RunLocalService)
+                    {
+                        RunLocalService();
+                    }
+                    else
+                    {
+                        StopLocalService();
+
+                    }
+
+                    break;
+                case "LocalServicePort":
+                    if (MobileSettings.Instance.RunLocalService)
+                    {
+                        StopLocalService();
+                        RunLocalService();
+                    }
+
+                    break;
+                case "LocalServicePasscode":
+                    if (localService != null)
+                    {
+                        localService.Passcode = MobileSettings.Instance.LocalServicePasscode;
+                    }
+
+                    break;
+            }
+        }
+
+        void RunLocalService()
+        {
+            if (localService == null)
+            {
+                localService = new LocalCombatManagerService(MainUI.CombatState, (ushort)MobileSettings.Instance.LocalServicePort, MobileSettings.Instance.LocalServicePasscode);
+                localService.HPMode = Character.HPMode.Default;
+                localService.StateActionCallback = act =>
+                {
+                    InvokeOnMainThread(act);
+
+                };
+                localService.UIActionTaken += (sender, e) =>
+                {
+                    InvokeOnMainThread(() =>
+                    {
+                        switch (e.Action)
+                        {
+                            case LocalCombatManagerService.UIAction.BringToFront:
+                                break;
+                            case LocalCombatManagerService.UIAction.Minimize:
+
+                            case LocalCombatManagerService.UIAction.Goto:
+                                UIGoto((String)e.Data);
+                                break;
+
+                            case LocalCombatManagerService.UIAction.ShowCombatListWindow:
+                                break;
+                            case LocalCombatManagerService.UIAction.HideCombatListWindow:
+                                break;
+
+                        }
+                    }
+                    );
+                };
+                localService.Start();
+            }
+
+        }
+
+        void StopLocalService()
+        {
+            if (localService != null)
+            {
+                localService.Close();
+                localService = null;
+            }
+        }
+
+        void UIGoto(string target)
+        {
+            switch (target.ToLower())
+            {
+                case "combat":
+                    ui.SwitchTab(MainUI.UITab.Combat);
+                    break;
+                case "feats":
+                    ui.SwitchTab(MainUI.UITab.Feats);
+                    break;
+                case "spells":
+                    ui.SwitchTab(MainUI.UITab.Spells);
+                    break;
+                case "monsters":
+                    ui.SwitchTab(MainUI.UITab.Monsters);
+                    break;
+                case "rules":
+                    ui.SwitchTab(MainUI.UITab.Rules);
+                    break;
+                case "treasure":
+                    ui.SwitchTab(MainUI.UITab.Treasure);
+                    break;
+            }
+        }
+
         public override void ViewDidUnload ()
         {
             base.ViewDidUnload ();

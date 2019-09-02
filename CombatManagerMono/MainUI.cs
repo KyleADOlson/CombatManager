@@ -47,6 +47,16 @@ namespace CombatManagerMono
 		static MainUI _MainView;
 		
 		static CombatState _CombatState = new CombatState();
+
+        public enum UITab
+        {
+            Combat = 0,
+            Monsters = 1,
+            Feats = 2,
+            Spells = 3,
+            Rules = 4,
+            Treasure =5
+        }
 		
 		public MainUI ()
 		{
@@ -166,57 +176,71 @@ namespace CombatManagerMono
 
 		void HandleToolbarButtonClicked (object sender, int button)
 		{
-			CMTab newTab = null;
-			switch (button)
-			{
-			case 0:
-				if (!(currentTab is CombatTab))
-				{
-					newTab = CombatTab;	
-				}
-				break;
-			case 1:
-				if (!(currentTab is MonstersTab))
-				{
-					newTab = MonstersTab;
-				}
-				break;
-			case 2:
-				if (!(currentTab is FeatsTab))
-				{
-					newTab = FeatsTab;	
-				}
-				break;
-			case 3:
-				if (!(currentTab is SpellsTab))
-				{
-					newTab = SpellsTab;	
-				}
-				break;
-			case 4:
-				if (!(currentTab is RulesTab))
-				{
-					newTab = RulesTab;	
-				}
-				break;
-            case 5:
-                if (!(currentTab is TreasureTab))
-                {
-                    newTab = TreasureTab;  
-                }
-                break;
-			}
-			
-			if (newTab !=null && newTab != currentTab)
-			{
-				currentTab.RemoveFromSuperview();
-				currentTab = newTab;
-				AddSubview(newTab);
-				Resize();
-				
-			}
+            SwitchTab((UITab)button);
 			
 		}
+
+        public void SwitchTab(UITab button)
+        {
+            CMTab newTab = null;
+
+
+            switch (button)
+            {
+                case UITab.Combat:
+                    if (!(currentTab is CombatTab))
+                    {
+                        newTab = CombatTab;
+                        toolbar.SetClickedButton(0);
+                    }
+                    break;
+                case UITab.Monsters:
+                    if (!(currentTab is MonstersTab))
+                    {
+                        newTab = MonstersTab;
+                        toolbar.SetClickedButton(1);
+                    }
+                    break;
+                case UITab.Feats:
+                    if (!(currentTab is FeatsTab))
+                    {
+                        newTab = FeatsTab;
+                        toolbar.SetClickedButton(2);
+                    }
+                    break;
+                case UITab.Spells:
+                    if (!(currentTab is SpellsTab))
+                    {
+                        newTab = SpellsTab;
+                    }
+                    toolbar.SetClickedButton(3);
+                    break;
+                case UITab.Rules:
+                    if (!(currentTab is RulesTab))
+                    {
+                        newTab = RulesTab;
+                    }
+                    toolbar.SetClickedButton(4);
+                    break;
+                case UITab.Treasure:
+                    if (!(currentTab is TreasureTab))
+                    {
+                        newTab = TreasureTab;
+                    }
+                    toolbar.SetClickedButton(5);
+                    break;
+            }
+            if (newTab != null && newTab != currentTab)
+            {
+                currentTab.RemoveFromSuperview();
+                currentTab = newTab;
+                AddSubview(newTab);
+                
+                Resize();
+                toolbar.SetNeedsDisplay();
+
+            }
+        }
 
         public override void MovedToSuperview()
         {
@@ -281,6 +305,14 @@ namespace CombatManagerMono
             _monstersTab?.Filter(true);
             _featsTab?.Filter(true);
             _rulesTab?.Filter(true);
+        }
+
+        public static CombatState CombatState
+        {
+            get
+            {
+                return _CombatState;
+            }
         }
 		
 		CombatTab CombatTab

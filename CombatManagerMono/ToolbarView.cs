@@ -47,6 +47,8 @@ namespace CombatManagerMono
         ButtonStringPopover settingsPopover;
 
         ImportExportDialog ieDialog;
+
+        ButtonStringPopoverItem serverItem;
 		
 		public ToolbarView ()
 		{
@@ -103,6 +105,14 @@ namespace CombatManagerMono
             settingsPopover.Items.Add(pi);
             pi = new ButtonStringPopoverItem { Text = "Export"};
             settingsPopover.Items.Add(pi);
+            settingsPopover.Items.Add(new ButtonStringPopoverItem());
+            serverItem = new ButtonStringPopoverItem { Text = "Run Local Service" };
+            SetLocalServiceIcon();
+            settingsPopover.Items.Add(serverItem);
+            pi = new ButtonStringPopoverItem { Text = "Local Service Port" };
+            settingsPopover.Items.Add(pi);
+            pi = new ButtonStringPopoverItem { Text = "Local Service Passcode" };
+            settingsPopover.Items.Add(pi);
             settingsPopover.ItemClicked += (sender, eee) => 
             {
                 switch (eee.Index)
@@ -116,6 +126,15 @@ namespace CombatManagerMono
 
                         Export();
                         
+                        break;
+                    case 2:
+                        LocalServiceClicked();
+                        break;
+                    case 4:
+                        LocalServicePortClicked();
+                        break;
+                    case 5:
+                        LocalServicePasscodeClicked();
                         break;
                 }
             };
@@ -132,8 +151,24 @@ namespace CombatManagerMono
 
             Add (_AboutButton);
 			BackgroundColor = UIColor.Black;
+
+            MobileSettings.Instance.PropertyChanged += MobileSettingsPropertyChanged;
 			
 		}
+
+        void SetLocalServiceIcon()
+        {
+
+            serverItem.Icon = MobileSettings.Instance.RunLocalService ? "check" : null;
+        }
+
+        private void MobileSettingsPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "RunLocalService")
+            {
+                SetLocalServiceIcon();
+            }
+        }
 
         void Import()
         {
@@ -225,6 +260,63 @@ namespace CombatManagerMono
             MainUI.MainView.AddSubview(ieDialog.View);
         }
 
+        void LocalServiceClicked()
+        {
+            MobileSettings.Instance.RunLocalService = !MobileSettings.Instance.RunLocalService;
+        }
+
+        void LocalServicePortClicked()
+        {
+            var alert = new UIAlertView();
+            alert.Title = "Enter Port";
+            alert.AddButton("OK");
+            alert.AddButton("Cancel");
+            alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+            alert.GetTextField(0).Text = MobileSettings.Instance.LocalServicePort.ToString();
+            alert.Show();
+            alert.Clicked += PortAlertClicked;
+        }
+
+        void PortAlertClicked(object sender, UIButtonEventArgs ea)
+        {
+            UIAlertView alert = (UIAlertView)sender;
+            if (ea.ButtonIndex == 0)
+            {
+                String text = alert.GetTextField(0).Text;
+                int port;
+                if (int.TryParse(text, out port))
+                {
+                    if (port > 0 && port < 32768)
+                    {
+                        MobileSettings.Instance.LocalServicePort = port;
+                    }
+                }
+            }
+
+        }
+
+        void LocalServicePasscodeClicked()
+        {
+            var alert = new UIAlertView();
+            alert.Title = "Enter Port";
+            alert.AddButton("OK");
+            alert.AddButton("Cancel");
+            alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+            alert.GetTextField(0).Text = MobileSettings.Instance.LocalServicePasscode;
+            alert.Show();
+            alert.Clicked += PasscodeAlertClicked;
+        }
+
+        void PasscodeAlertClicked(object sender, UIButtonEventArgs ea)
+        {
+            UIAlertView alert = (UIAlertView)sender;
+            if (ea.ButtonIndex == 0)
+            {
+                String text = alert.GetTextField(0).Text.Trim();
+                MobileSettings.Instance.LocalServicePasscode = text;
+            }
+
+        }
 
         void SettingsButtonClicked (object sender, EventArgs e)
         {
@@ -241,14 +333,12 @@ namespace CombatManagerMono
 
 		void HandleBTouchUpInside (object sender, EventArgs e)
 		{
-            
-            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDarker);
-			clickedButton = (GradientButton)sender;
-			if (ButtonClicked != null)
-			{
+
+            if (ButtonClicked != null)
+            {
                 ButtonClicked(this, (int)((UIButton)sender).Tag);
-			}
-            clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
+            }
+            SetClickedButtonGradients((GradientButton)sender);
 		}
 		public override void LayoutSubviews ()
 		{
@@ -260,6 +350,25 @@ namespace CombatManagerMono
 
 
 		}
+
+        void SetClickedButtonGradients(GradientButton b)
+        {
+            if (clickedButton != null)
+            {
+                clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorMedium, CMUIColors.PrimaryColorDarker);
+            }
+            clickedButton = b;
+            if (clickedButton != null)
+            {
+                clickedButton.Gradient = new GradientHelper(CMUIColors.PrimaryColorDarker, CMUIColors.PrimaryColorMedium);
+            }
+
+        }
+
+        public void SetClickedButton(int button)
+        {
+            buttons.RunOnIndex(button, SetClickedButtonGradients);
+        }
 		
 	}
 }

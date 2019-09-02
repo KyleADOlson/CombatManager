@@ -83,7 +83,24 @@ namespace CombatManager
             return index >= 0 && index < list.Count;
         }
 
-        
+        public static void RunOnIndex<T>(this IList<T> list, int index, Action<T> action)
+        {
+            if (list.IndexInList(index))
+            {
+                action(list[index]);
+            }
+        }
+
+        public static void RunOnRange<T>(this IList<T> list, int start, int end, Action<T> action)
+        {
+            int index = Math.Max(0, start);
+
+            while (index <= end && index < list.Count)
+            {
+                action(list[index]);
+                index++;
+            }
+        }
 
     }
 
@@ -141,13 +158,10 @@ namespace CombatManager
         public static void FromList<T>(this HashSet<T> target, ObservableCollection<T> source)
         {
             target.Clear();
-
             foreach (var x in source)
             {
                 target.Add(x);
             }
         }
-
-
     }
 }

@@ -7,7 +7,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>kyleolson.combatmanager</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.7.0</string>
+	<string>1.1.8.0</string>
 	<key>MinimumOSVersion</key>
 	<string>9.3</string>
 	<key>UIDeviceFamily</key>
@@ -73,7 +73,7 @@
 		</dict>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.7</string>
+	<string>1.1.8</string>
 	<key>CFBundleName</key>
 	<string>CombatMan</string>
 	<key>XSAppIconAssets</key>
