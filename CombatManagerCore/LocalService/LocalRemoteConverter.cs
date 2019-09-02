@@ -15,7 +15,10 @@ namespace CombatManager.LocalService
             remoteState.Round = state.Round;
             remoteState.XP = state.XP;
             remoteState.RulesSystem = state.RulesSystemInt;
-            remoteState.CurrentInitiativeCount = state.CurrentInitiativeCount.ToRemote();
+            if (state.CurrentInitiativeCount != null)
+            {
+                remoteState.CurrentInitiativeCount = state.CurrentInitiativeCount.ToRemote();
+            }
             remoteState.CurrentCharacterID = state.CurrentCharacterID;
             remoteState.CombatList = new List<RemoteCharacterInitState>();
 
@@ -51,17 +54,23 @@ namespace CombatManager.LocalService
             RemoteCharacterInitState initState = new RemoteCharacterInitState();
 
             initState.ID = character.ID;
-            initState.InitiativeCount = character.InitiativeCount.ToRemote();
+            if (character.InitiativeCount != null)
+            {
+                initState.InitiativeCount = character.InitiativeCount.ToRemote();
+            }
             initState.Name = character.Name;
             initState.HP = character.HP;
             initState.MaxHP = character.MaxHP;
             initState.IsMonster = character.IsMonster;
-            if (character.Monster != null && character.Monster.ActiveConditions.Count > 0)
+            if (character.Monster != null && character.Monster.ActiveConditions != null && character.Monster.ActiveConditions.Count > 0)
             {
                 initState.ActiveConditions = new List<RemoteActiveCondition>();
                 foreach (ActiveCondition c in character.Monster.ActiveConditions)
                 {
-                    initState.ActiveConditions.Add(c.ToRemote());
+                    if (c != null)
+                    {
+                        initState.ActiveConditions.Add(c.ToRemote());
+                    }
                 }
             }
 
