@@ -109,6 +109,7 @@
     <Compile Include="LocalService\CharacterRequest.cs" />
     <Compile Include="LocalService\CombatManagerNotificationServer.cs" />
     <Compile Include="LocalService\LocalRemoteConverter.cs" />
+    <Compile Include="LocalService\LocalServiceMessage.cs" />
     <Compile Include="LocalService\MonsterAddRequest.cs" />
     <Compile Include="LocalService\MonsterListRequest.cs" />
     <Compile Include="LocalService\MonsterRequest.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -57,12 +58,63 @@ namespace CombatManagerDroid
                 ed.Commit();
             };
 
+            CheckBox m = FindViewById<CheckBox>(Resource.Id.localWebServiceBox);
+            m.Checked = MobileSettings.Instance.RunLocalService;
+            m.Click += (object sender, EventArgs e) =>
+            {
+                MobileSettings.Instance.RunLocalService = m.Checked;
+            };
 
-            View b = FindViewById<View>(Resource.Id.closeButton);
+            PortEditText.Text = MobileSettings.Instance.LocalServicePort.ToString();
+            PortEditText.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) =>
+            {
+                int newPort;
+                bool set = false;
+                if (int.TryParse(e.Text.ToString(), out newPort))
+                {
+                    if (newPort > 0 && newPort < Math.Pow(2, 15))
+                    {
+                        MobileSettings.Instance.LocalServicePort = newPort;
+                        set = true;
+
+                        PortEditText.Background = PasscodeEditText.Background;
+                    }
+                }
+                
+                if (!set)
+                {
+                    PortEditText.SetBackgroundColor(Color.LightPink);
+                }
+            };
+
+            PasscodeEditText.Text = MobileSettings.Instance.LocalServicePasscode.ToString();
+            PasscodeEditText.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) =>
+            {
+                MobileSettings.Instance.LocalServicePasscode = e.Text.ToString().Trim();
+            };
+
+                View b = FindViewById<View>(Resource.Id.closeButton);
             b.Click += (object sender, EventArgs e) => 
             {
                 Dismiss();
             };
+        }
+
+
+        EditText PortEditText
+        {
+            get
+            {
+                return FindViewById<EditText>(Resource.Id.portEditText);
+            }
+        }
+
+        EditText PasscodeEditText
+        {
+            get
+            {
+                return FindViewById<EditText>(Resource.Id.passcodeEditText);
+            }
         }
     }
 }

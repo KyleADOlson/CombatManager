@@ -107,7 +107,7 @@ namespace CombatManager.LocalService
              });
 
             server.RegisterModule(new WebSocketsModule());
-            server.Module<WebSocketsModule>().RegisterWebSocketsServer<CombatManagerNotificationServer>("/api/notications",
+            server.Module<WebSocketsModule>().RegisterWebSocketsServer<CombatManagerNotificationServer>("/api/notifications",
                 new CombatManagerNotificationServer(state));
 
             server.RunAsync();

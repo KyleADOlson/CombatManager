@@ -18,6 +18,44 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/roll3d6Box" />
+
+    <CheckBox
+        android:text="Run Local Web Service"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/localWebServiceBox" />
+    <TextView
+        android:text="Port"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/portTextView"
+        android:textSize="15sp" 
+        android:layout_marginLeft="15dp"/>
+    <EditText
+        android:text="12457"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/portEditText"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+    android:maxLines="1"
+        android:inputType="text"/>
+    <TextView
+        android:text="Passcode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/passcodeTextView" 
+        android:textSize="15sp"
+        android:layout_marginLeft="15dp"/>
+    <EditText
+        android:text=""
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/passcodeEditText"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+    android:maxLines="1"
+        android:inputType="text"/>
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"

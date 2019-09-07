@@ -28,7 +28,7 @@ namespace CombatManager
         {
             get
             {
-                return Preferences.Get("RunLocalService", true);
+                return Preferences.Get("RunLocalService", false);
             }
             set
             {

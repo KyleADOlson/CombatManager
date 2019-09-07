@@ -31,7 +31,8 @@ namespace CombatManager.LocalService
         void SendState()
         {
             RemoteCombatState rs = state.ToRemote();
-            String data = JsonConvert.SerializeObject(rs);
+            LocalServiceMessage message = LocalServiceMessage.Create("State", rs);
+            String data = JsonConvert.SerializeObject(message);
 
 
             new Thread(() =>
