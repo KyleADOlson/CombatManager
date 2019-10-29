@@ -234,6 +234,8 @@ namespace CombatManager
             combatState.Characters.CollectionChanged += new NotifyCollectionChangedEventHandler(CollectionChangedForUndo);
             combatState.CombatList.CollectionChanged += new NotifyCollectionChangedEventHandler(CollectionChangedForUndo);
             combatState.PropertyChanged += new PropertyChangedEventHandler(combatState_PropertyChanged);
+            combatState.CombatStateNotificationSent += CombatState_CombatStateNotificationSent;
+            combatState.RollRequested += CombatState_RollRequested;
 
             dbView = new ListCollectionView(Monster.Monsters);
             dbView.SortDescriptions.Add(
@@ -420,6 +422,24 @@ namespace CombatManager
 
             PerformUpdateCheck();
 
+        }
+
+        private void CombatState_RollRequested(object sender, CombatState.RollEventArgs e)
+        {
+            var v = e.Roll;
+            if (v.Type == CombatState.RollType.Save)
+            {
+                Monster.SaveType save = (Monster.SaveType)v.Param1;
+                RollResult res = (RollResult)v.Result;
+                String title = e.Roll.Character.Name + " " + SaveName(save) + " save";
+                if (e.Roll.Target != null)
+                {
+                    title += " DC " + e.Roll.Target.Value + " ";
+                }
+                ShowRollResult(e.Roll.Roll, res, title, false, e.Roll.Target);
+
+
+            }
         }
 
         private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -5770,8 +5790,7 @@ namespace CombatManager
 
                 if (ch != null)
                 {
-                    ch.RemoveConditionByName("dying");
-                    ch.AddConditionByName("stable");
+                    ch.Stabilize();
                 }
             }
         }
@@ -6363,9 +6382,6 @@ namespace CombatManager
                     lastCurrentCharacter.PropertyChanged += new PropertyChangedEventHandler(CombatStateCurrentCharacter_PropertyChanged);
                 }
 
-
-
-
                 UpdateCurrentMonsterFlowDocument();
             }
         }
@@ -6376,6 +6392,17 @@ namespace CombatManager
             {
                 UpdateCurrentMonsterFlowDocument();
             }
+        }
+
+        private void CombatState_CombatStateNotificationSent(object sender, CombatStateNotification notification)
+        {
+            Paragraph p = new Paragraph();
+            p.Inlines.Add(new Bold(new Underline(new Run(notification.Title))));
+            p.Inlines.Add(new System.Windows.Documents.LineBreak());
+            p.Inlines.Add(new Run(notification.Body));
+            DieRollDocument.Blocks.Add(p);
+
+            //MessageBox.Show(notification.Body, notification.Title);
         }
 
         private void GridSplitter_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -6849,6 +6876,7 @@ namespace CombatManager
             public DieRoll Roll { get; set; }
             public string Header { get; set; }
             public bool Full { get; set; }
+            public int? Target { get; set; }
         }
 
         private Button AddDieRollButton(Paragraph p)
@@ -6864,15 +6892,20 @@ namespace CombatManager
             return b;
         }
 
-        private void RollDie(DieRoll roll, string header, bool full)
+        private void RollDie(DieRoll roll, string header, bool full, int ? target = null)
         {
             RollResult res = roll.Roll();
 
+            ShowRollResult(roll, res, header, full, target);
+           
+        }
 
+        private void ShowRollResult(DieRoll roll, RollResult res, String header, bool full, int ? target = null)
+        {
             Paragraph p = new Paragraph();
 
             Button b = AddDieRollButton(p);
-            b.Tag = new DieRollerRollInfo() { Roll = roll, Header = header, Full = full };
+            b.Tag = new DieRollerRollInfo() { Roll = roll, Header = header, Full = full, Target = target };
             b.Click += new RoutedEventHandler(DieReroll_Click);
 
             if (header != null)
@@ -6927,6 +6960,23 @@ namespace CombatManager
                 }
             }
 
+            if (target != null)
+            {
+                Run run;
+                if (res.Total >= target.Value)
+                {
+                    run = new Run(" Succeeded");
+                    run.Foreground = new SolidColorBrush(Colors.Blue);
+                }
+                else
+                {
+
+                    run = new Run(" Failed");
+                    run.Foreground = new SolidColorBrush(Colors.Red);
+                }
+                p.Inlines.Add(run);
+            }
+
             bool firstIl = true;
             foreach (Inline il in p.Inlines)
             {
@@ -6944,6 +6994,7 @@ namespace CombatManager
 
 
             DieRollViewer.ScrollChildToBottom();
+
         }
 
         Inline CreateRollElement(string text)
@@ -6988,7 +7039,7 @@ namespace CombatManager
             Button b = (Button)sender;
             DieRollerRollInfo r = (DieRollerRollInfo)b.Tag;
 
-            RollDie(r.Roll, r.Header, r.Full);
+            RollDie(r.Roll, r.Header, r.Full, r.Target);
         }
 
         private void DieButtonPressed(object sender, RoutedEventArgs e)
@@ -8985,8 +9036,6 @@ namespace CombatManager
                 menu.DataContext = ((FrameworkElement)sender).DataContext;
                 GameMapList.MapStub stub = (GameMapList.MapStub)menu.DataContext;
                 GameMapList.MapFolder current = GameMapList.CurrentFolder;
-
-                bool itemsAdded = false;
 
                 if (!GameMapList.IsRoot)
                 {

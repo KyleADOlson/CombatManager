@@ -24,7 +24,11 @@ namespace CombatManager.LocalService
 
             foreach (Character character in state.CombatList)
             {
-                remoteState.CombatList.Add(character.ToRemoteInit());
+                var v = character.ToRemoteInit();
+                if (v != null)
+                {
+                    remoteState.CombatList.Add(v);
+                }
             }
 
             return remoteState;
@@ -51,6 +55,10 @@ namespace CombatManager.LocalService
 
         public static RemoteCharacterInitState ToRemoteInit(this Character character)
         {
+            if (character == null)
+            {
+                return null;
+            }
             RemoteCharacterInitState initState = new RemoteCharacterInitState();
 
             initState.ID = character.ID;
@@ -62,6 +70,8 @@ namespace CombatManager.LocalService
             initState.HP = character.HP;
             initState.MaxHP = character.MaxHP;
             initState.IsMonster = character.IsMonster;
+            initState.IsHidden = character.IsHidden;
+            initState.IsActive = character.IsActive;
             if (character.Monster != null && character.Monster.ActiveConditions != null && character.Monster.ActiveConditions.Count > 0)
             {
                 initState.ActiveConditions = new List<RemoteActiveCondition>();

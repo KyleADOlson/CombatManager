@@ -17,6 +17,10 @@ namespace CombatManager.LocalService
 
         public bool IsMonster { get; set; }
 
+        public bool IsActive { get; set; }
+
+        public bool IsHidden { get; set; }
+
         public List<RemoteActiveCondition> ActiveConditions { get; set; }
     }
 }

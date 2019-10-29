@@ -104,6 +104,7 @@
     <Compile Include="CMRegexUtilities.cs" />
     <Compile Include="CMStringUtilities.cs" />
     <Compile Include="Coin.cs" />
+    <Compile Include="CombatStateNotifcation.cs" />
     <Compile Include="DD5Stats.cs" />
     <Compile Include="LocalService\AddConditionRequest.cs" />
     <Compile Include="LocalService\CharacterRequest.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="LocalService\RemoteRollResult.cs" />
     <Compile Include="LocalService\RemoteSpell.cs" />
     <Compile Include="LocalService\RemoveConditionRequest.cs" />
+    <Compile Include="CoreSettings.cs" />
     <Compile Include="Personalization\ColorScheme.cs" />
     <Compile Include="CombatState.cs" />
     <Compile Include="Condition.cs" />

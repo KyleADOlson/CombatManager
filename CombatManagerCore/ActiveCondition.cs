@@ -38,6 +38,7 @@ namespace CombatManager
         private Condition _Condition;
         private int? _Turns;
         private int? _EndTurn;
+        private int? _LastAppliedRound;
         private string _Details;
         private InitiativeCount _InitiativeCount;
 
@@ -55,6 +56,7 @@ namespace CombatManager
             }
             _Turns = a._Turns;
             _EndTurn = a._EndTurn;
+            _LastAppliedRound = a._LastAppliedRound;
             if (a._InitiativeCount != null)
             {
                 _InitiativeCount = (InitiativeCount)a._InitiativeCount.Clone();
@@ -75,7 +77,7 @@ namespace CombatManager
                 if (_Condition != value)
                 {
                     _Condition = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Condition")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Condition"));
                 }
             }
         }
@@ -88,7 +90,7 @@ namespace CombatManager
                 if (_Turns != value)
                 {
                     _Turns = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Turns")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Turns"));
                 }
             }
         }
@@ -102,12 +104,12 @@ namespace CombatManager
                 if (_EndTurn != value)
                 {
                     _EndTurn = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Turns")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Turns"));
                 }
             }
         }
 
-        [XmlIgnore]
+
         public InitiativeCount InitiativeCount
         {
             get { return _InitiativeCount; }
@@ -116,7 +118,23 @@ namespace CombatManager
                 if (_InitiativeCount != value)
                 {
                     _InitiativeCount = new InitiativeCount((InitiativeCount)value) ;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("InitiativeCount")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InitiativeCount"));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Used to prevent a condition from being applied twice when rounds go back and fo
+        /// </summary>
+        public int? LastAppliedRound
+        {
+            get { return _LastAppliedRound; }
+            set
+            {
+                if (_LastAppliedRound != value)
+                {
+                    _LastAppliedRound = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LastAppliedRound"));
                 }
             }
         }
@@ -148,7 +166,7 @@ namespace CombatManager
                 if (_Details != value)
                 {
                     _Details = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Details")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Details"));
                 }
             }
         }

@@ -130,7 +130,6 @@ namespace CombatManager
             
         }
 
-        List<ComboBoxItem> conditionItems;
 
         private void UpdateConditionSubtype(ComboBox subtypeCombo, CombatHotKey hk)
         {

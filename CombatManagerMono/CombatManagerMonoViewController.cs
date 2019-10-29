@@ -90,12 +90,12 @@ namespace CombatManagerMono
             View.AddSubview(ui);
             LayoutView();
 
-            if (MobileSettings.Instance.RunLocalService)
+            if (CoreSettings.Instance.RunLocalService)
             {
                 RunLocalService();
             }
 
-            MobileSettings.Instance.PropertyChanged += MobileSettingsPropertyChanged;
+            CoreSettings.Instance.PropertyChanged += MobileSettingsPropertyChanged;
         }
 
         LocalCombatManagerService localService;
@@ -105,7 +105,7 @@ namespace CombatManagerMono
             switch (e.PropertyName)
             {
                 case "RunLocalService":
-                    if (MobileSettings.Instance.RunLocalService)
+                    if (CoreSettings.Instance.RunLocalService)
                     {
                         RunLocalService();
                     }
@@ -117,7 +117,7 @@ namespace CombatManagerMono
 
                     break;
                 case "LocalServicePort":
-                    if (MobileSettings.Instance.RunLocalService)
+                    if (CoreSettings.Instance.RunLocalService)
                     {
                         StopLocalService();
                         RunLocalService();
@@ -127,7 +127,7 @@ namespace CombatManagerMono
                 case "LocalServicePasscode":
                     if (localService != null)
                     {
-                        localService.Passcode = MobileSettings.Instance.LocalServicePasscode;
+                        localService.Passcode = CoreSettings.Instance.LocalServicePasscode;
                     }
 
                     break;
@@ -138,7 +138,7 @@ namespace CombatManagerMono
         {
             if (localService == null)
             {
-                localService = new LocalCombatManagerService(MainUI.CombatState, (ushort)MobileSettings.Instance.LocalServicePort, MobileSettings.Instance.LocalServicePasscode);
+                localService = new LocalCombatManagerService(MainUI.CombatState, (ushort)CoreSettings.Instance.LocalServicePort, CoreSettings.Instance.LocalServicePasscode);
                 localService.HPMode = Character.HPMode.Default;
                 localService.StateActionCallback = act =>
                 {

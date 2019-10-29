@@ -54,6 +54,19 @@ namespace CombatManager
 
         }
 
+        public static InitiativeCount MaxValue
+        {
+            get
+            {
+                InitiativeCount count = new InitiativeCount();
+                count._Base = int.MaxValue;
+                count._Dex = int.MaxValue;
+                count.Tiebreaker = int.MaxValue;
+                return count;
+            }
+        }
+
+
         public object Clone()
         {
 

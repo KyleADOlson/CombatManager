@@ -66,9 +66,6 @@ namespace CombatManager.Maps
 
         List<int> folderPath;
 
-        double rotation;
-        bool flip;
-        
 
         int id;
 

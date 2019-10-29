@@ -79,6 +79,7 @@
     <Compile Include="CMBindingUtils.cs" />
     <Compile Include="CMListUtilities.cs" />
     <Compile Include="CMMathUtilities.cs" />
+    <Compile Include="CombatStateNotifcation.cs" />
     <Compile Include="DD5Stats.cs" />
     <Compile Include="LocalService\AddConditionRequest.cs" />
     <Compile Include="LocalService\CharacterRequest.cs" />

@@ -7487,11 +7487,7 @@ namespace CombatManager
 
         public void AddCondition(ActiveCondition c)
         {
-            if (_ActiveConditions == null)
-            {
-                _ActiveConditions = new ObservableCollection<ActiveCondition>();
-            }
-            _ActiveConditions.Add(c);
+            ActiveConditions.Add(c);
 
             if (c.Bonus != null)
             {
@@ -7502,8 +7498,7 @@ namespace CombatManager
 
         public void RemoveCondition(ActiveCondition c)
         {
-
-            _ActiveConditions.Remove(c);
+            ActiveConditions.Remove(c);
 
             if (c.Bonus != null)
             {
@@ -11924,6 +11919,19 @@ namespace CombatManager
             }
 
             return text;
+        }
+
+        public static string SaveName(Monster.SaveType type)
+        {
+            switch (type)
+            {
+                case Monster.SaveType.Fort:
+                    return "Fort";
+                case Monster.SaveType.Ref:
+                    return "Ref";
+                default:
+                    return "Will";
+            }
         }
 
         public class MonsterAdjuster : INotifyPropertyChanged

@@ -49,6 +49,8 @@ namespace CombatManager
         public string Property { get; set; }
     }
 
+    public delegate void CombatStateNotificationEvent(object sender, CombatStateNotification notification);
+
 
     public delegate void CombatStateCharacterEvent(object sender, CombatStateCharacterEventArgs e);
 
@@ -62,7 +64,11 @@ namespace CombatManager
 		public event EventHandler CharacterSortCompleted;
         public event CombatStateCharacterEvent TurnChanged;
 
+        public event CombatStateNotificationEvent CombatStateNotificationSent;
+
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public event EventHandler<RollEventArgs> RollRequested;
 
         private int? _Round;		
 		private string _CR;
@@ -174,10 +180,7 @@ namespace CombatManager
                 {
                     ch.PropertyChanged += Character_PropertyChanged;
 
-                    if (CharacterAdded != null)
-                    {
-                        CharacterAdded(this, new CombatStateCharacterEventArgs() { Character = ch });
-                    }
+                    CharacterAdded?.Invoke(this, new CombatStateCharacterEventArgs() { Character = ch });
                 }
             }
             if (e.OldItems != null)
@@ -185,10 +188,9 @@ namespace CombatManager
                 foreach (Character ch in e.OldItems)
                 {
                     ch.PropertyChanged -= Character_PropertyChanged;
-                    if (CharacterRemoved != null)
-                    {
-                        CharacterRemoved(this, new CombatStateCharacterEventArgs() { Character = ch });
-                    }
+
+                    CharacterRemoved?.Invoke(this, new CombatStateCharacterEventArgs() { Character = ch });
+                    
                 }
             }
         }
@@ -197,10 +199,8 @@ namespace CombatManager
 
         void Character_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (CharacterPropertyChanged != null)
-            {
-                CharacterPropertyChanged(this, new CombatStateCharacterEventArgs() { Character = (Character)sender, Property = e.PropertyName});
-            }
+            CharacterPropertyChanged?.Invoke(this, new CombatStateCharacterEventArgs() { Character = (Character)sender, Property = e.PropertyName});
+            
         }
 
         [DataMember]
@@ -212,7 +212,7 @@ namespace CombatManager
                 if (_Round != value)
                 {
                     _Round = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Round")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Round")); 
                 }
             }
         }
@@ -226,7 +226,7 @@ namespace CombatManager
                 if (_CR != value)
                 {
                     _CR = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CR")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CR"));
                 }
             }
 			
@@ -241,7 +241,7 @@ namespace CombatManager
                 if (_XP != value)
                 {
                     _XP = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("XP")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("XP"));
                 }
             }
         }
@@ -255,8 +255,8 @@ namespace CombatManager
                 if (_Characters != value)
                 {
                     _Characters = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Characters")); }
-                }
+                    
+PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));                }
             }
         }
 
@@ -297,7 +297,7 @@ namespace CombatManager
                 if (_CombatList != value)
                 {
                     _CombatList = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CombatList")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CombatList"));
                 }
             }
         }
@@ -392,7 +392,7 @@ namespace CombatManager
                         _CurrentCharacter.IsActive = true;
                     }
 
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CurrentCharacter")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentCharacter"));
                 }
             }
         }
@@ -427,7 +427,7 @@ namespace CombatManager
                 if (_RulesSystem != value)
                 {
                     _RulesSystem = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("RulesSystem")); }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RulesSystem"));
                 }
             }
         }
@@ -467,8 +467,8 @@ namespace CombatManager
             if (round == 0 || round == null)
             {
                 round = 0;
+                ResetAllAppliedRounds();
             }
-
 
             if (ch.Stats.ActiveConditions != null)
             {
@@ -488,6 +488,7 @@ namespace CombatManager
                         if (CurrentInitiativeCount != null)
                         {
                             passedConditionInitiative = CurrentInitiativeCount <= condition.InitiativeCount;
+
                         }
 
                         if (condition.Turns != null)
@@ -524,6 +525,30 @@ namespace CombatManager
                 }
             }
 
+        }
+
+        public void TriggerPlayerConditions(InitiativeCount last)
+        {
+            if (_Round != null && CurrentInitiativeCount != null)
+            {
+                if (CoreSettings.Instance.AutomaticStabilization)
+                {
+
+                    foreach (Character ch in from x in _Characters where x.IsDying select x)
+                    {
+                        ActiveCondition dycon = ch.FindCondition("Dying");
+                        if (dycon != null && ch.InitiativeCount != null
+                            && last > ch.InitiativeCount && CurrentInitiativeCount <= ch.InitiativeCount
+                            && (dycon.LastAppliedRound == null || dycon.LastAppliedRound.Value < _Round.Value))
+
+                        {
+                            dycon.LastAppliedRound = Round;
+                            ApplyDying(ch);
+                        }
+
+                    }
+                }
+            }
         }
 
         public void AddConditionTurns(Character ch, ActiveCondition ac, int count)
@@ -574,6 +599,66 @@ namespace CombatManager
                 }
             }
         }
+
+        void ApplyDying(Character ch)
+        {
+            int target = 10 - ch.HP;
+            RollResult res = RollSave(ch, Monster.SaveType.Fort, target);
+            bool passed = res.Total >= target;
+            if (passed)
+            {
+                ch.Stabilize();
+                SendStabilizedMessaged(ch, target, res.Total);
+            }
+            else
+            {
+                ch.AdjustHP(-1);
+                if (ch.IsDead)
+                {
+                    SendDyingDiedMessage(ch, target, res.Total);
+                }
+                else
+                {
+                    SendNotStabilizedMessaged(ch, target, res.Total);
+                }
+            }
+        }
+
+        void SendNotStabilizedMessaged(Character ch, int target, int res)
+        {
+            string title = ch.Name + " Not Stabilized";
+            string body = ch.Name + " rolled a " + res + " on a DC " + target + " Fortitude save and failed to stabilize, losing 1 HP.";
+            SendCombatStateNotification(CombatStateNotification.EventType.NotStabilized, title, body, ch);
+        }
+
+        void SendStabilizedMessaged(Character ch, int target, int res)
+        {
+            string title = ch.Name + " Stabilized";
+            string body = ch.Name + " rolled a " + res + " on a DC " + target + " Fortitude save to stabilize.";
+            SendCombatStateNotification(CombatStateNotification.EventType.Stabilized, title, body, ch);
+        }
+
+        void SendDyingDiedMessage(Character ch, int target, int res)
+        {
+            string title = ch.Name + " Died";
+            string body = ch.Name + " rolled a " + res + " on a DC " + target + " Fortitude save, failed to save, lost 1 HP, and died.";
+            SendCombatStateNotification(CombatStateNotification.EventType.DyingDied, title, body, ch);
+
+        }
+
+        void SendCombatStateNotification(CombatStateNotification.EventType type,
+            string title, string body, object data = null)
+        {
+            CombatStateNotification not = new CombatStateNotification()
+            {
+                Type = type,
+                Title = title,
+                Body = body,
+                Data = data
+            };
+            CombatStateNotificationSent?.Invoke(this, not);
+        }
+
         public void RollInitiative()
         {
             RollInitiative(true);
@@ -598,6 +683,8 @@ namespace CombatManager
                 Round = 1;
             }
 
+            ResetAllAppliedRounds();
+
 
             if (CombatList.Count > 0)
             {
@@ -610,6 +697,22 @@ namespace CombatManager
             SendTurnChanged();
         }
 
+        private void ResetAllAppliedRounds()
+        {
+            foreach (Character ch in _Characters)
+            {
+                if (ch.Monster != null)
+                {
+                    foreach (var ac in ch.Monster.ActiveConditions)
+                    {
+                        if (ac != null)
+                        {
+                            ac.LastAppliedRound = null;
+                        }
+                    }
+                }
+            }
+        }
 
         public void RollIndividualInitiative(Character character)
         {
@@ -647,23 +750,37 @@ namespace CombatManager
 
             int next = CombatList.IndexOf(CurrentCharacter) + 1;
 
+            bool roundIncreased = false;
+
             if (next == CombatList.Count)
             {
                 next = 0;
 
                 if (Round == null)
                 {
+                    ResetAllAppliedRounds();
                     Round = 0;
                 }
                 Round++;
+                roundIncreased = true;
+            }
+            else  if (Round == null)
+            {
+                ResetAllAppliedRounds();
+                Round = 1;
+            }
+
+            InitiativeCount lastCount;
+
+            if (CurrentCharacter == null)
+            {
+                lastCount = InitiativeCount.MaxValue;
             }
             else
             {
-                if (Round == null)
-                {
-                    Round = 1;
-                }
+                lastCount = CurrentInitiativeCount;
             }
+            
 
             if (CombatList.Count > 0)
             {
@@ -677,6 +794,15 @@ namespace CombatManager
             Character character = CurrentCharacter;
 
             UpdateAllConditions();
+
+            if (roundIncreased)
+            {
+                TriggerPlayerConditions(InitiativeCount.MaxValue);
+            }
+            else
+            {
+                TriggerPlayerConditions(lastCount);
+            }
 			
 			if (character != null)
 			{
@@ -689,6 +815,7 @@ namespace CombatManager
 	                character.IsDelaying = false;
 	            }
 			}
+           
             SendTurnChanged();
         }
 
@@ -707,7 +834,8 @@ namespace CombatManager
 
                 if (Round == null)
                 {
-                   Round = 1;
+                    ResetAllAppliedRounds();
+                    Round = 1;
                 }
                 Round--;
             }
@@ -1630,14 +1758,10 @@ namespace CombatManager
             public RequestedRoll Roll {get; set;}
         }
 
-        public event EventHandler<RollEventArgs> RollRequested;
 
         private void SendRollEvent(RequestedRoll roll)
         {
-            if (RollRequested != null)
-            {
-                RollRequested(this, new RollEventArgs() {Roll = roll});
-            }
+            RollRequested?.Invoke(this, new RollEventArgs() {Roll = roll});
         }
       
 
@@ -1659,80 +1783,92 @@ namespace CombatManager
             public Character Character {get; set;}
             public object Param1 { get; set;}
             public object Param2 { get; set;}
+            public DieRoll Roll { get; set; }
             public object Result {get; set;}
+            public int? Target { get; set; }
         }
 
-        public void Roll(RollType type, Character character, object param1, object param2)
+        public RequestedRoll Roll(RollType type, Character character, object param1, object param2 = null, int ? target = null)
         {
             RequestedRoll req = new RequestedRoll() {
                 Type = type,
                 Character = character,
                 Param1 = param1,
-                Param2 = param2
+                Param2 = param2,
+                Target = target,
             };
 
             switch (type)
             {
-            case RollType.Save:
-                {
-                    int? mod = character.Monster.GetSave((Monster.SaveType)param1);
-                    if (mod == null)
+                case RollType.Save:
                     {
-                        DieRoll roll = new DieRoll(1, 20, 0);
-                        RollResult res = roll.Roll();
-                        res.Rolls[0].Result = 1;
-                        req.Result = res;
+                    
+                        int? mod = character.Monster.GetSave((Monster.SaveType)param1);
+                        if (mod == null)
+                        {
+                            DieRoll roll = new DieRoll(1, 20, 0);
+                            RollResult res = roll.Roll();
+                            res.Rolls[0].Result = 1;
+                            req.Roll = roll;
+                            req.Result = res;
+                        }
+                        else
+                        {
+                            DieRoll roll = new DieRoll(1, 20, (int)mod);
+                            req.Result = roll.Roll();
+                            req.Roll = roll;
+                        }
                     }
-                    else
+                    break;
+                case RollType.Skill:
                     {
-                        DieRoll roll = new DieRoll(1, 20, (int)mod);
+                        string skill = (string)param1;
+                        string subtype = (string)param2;
+                        int mod = character.Monster.GetSkillMod(skill, subtype);
+
+                        DieRoll roll = new DieRoll(1, 20, mod);
                         req.Result = roll.Roll();
                     }
-                }
-                break;
-            case RollType.Skill:
-                {
-                    string skill = (string)param1;
-                    string subtype = (string)param2;
-                    int mod = character.Monster.GetSkillMod(skill, subtype);
-
-                    DieRoll roll = new DieRoll(1, 20, mod);
-                    req.Result = roll.Roll();
-                }
-                break;
-            case RollType.Attack:
-                {
-                    Attack atk = (Attack)param1;
-                    AttackRollResult res = new AttackRollResult(atk);
-                    res.Character = character;
-                    req.Result = res;
-
-                    res.Character = character;
-                }
-                break;
-            case RollType.AttackSet:
-                {
-                    AttackSet atkSet = (AttackSet)param1;
-                    AttackSetResult res = new AttackSetResult();
-                    res.Character = character;
-
-                    foreach (Attack at in atkSet.WeaponAttacks)
+                    break;
+                case RollType.Attack:
                     {
-                        AttackRollResult ares = new AttackRollResult(at);
-                        res.Results.Add (ares);
+                        Attack atk = (Attack)param1;
+                        AttackRollResult res = new AttackRollResult(atk);
+                        res.Character = character;
+                        req.Result = res;
+
+                        res.Character = character;
                     }
-                    foreach (Attack at in atkSet.NaturalAttacks)
+                    break;
+                case RollType.AttackSet:
                     {
-                        AttackRollResult ares = new AttackRollResult(at);
-                        res.Results.Add (ares);
+                        AttackSet atkSet = (AttackSet)param1;
+                        AttackSetResult res = new AttackSetResult();
+                        res.Character = character;
+
+                        foreach (Attack at in atkSet.WeaponAttacks)
+                        {
+                            AttackRollResult ares = new AttackRollResult(at);
+                            res.Results.Add (ares);
+                        }
+                        foreach (Attack at in atkSet.NaturalAttacks)
+                        {
+                            AttackRollResult ares = new AttackRollResult(at);
+                            res.Results.Add (ares);
+                        }
+                        req.Result = res;
                     }
-                    req.Result = res;
-                }
-                break;
+                    break;
             }
             SendRollEvent(req);
+            return req;
 
 
+        }
+
+        public RollResult RollSave(Character character, Monster.SaveType save, int ? target = null)
+        {
+            return (RollResult)Roll(RollType.Save, character, save, target: target).Result;
         }
 
         public class SingleAttackRoll

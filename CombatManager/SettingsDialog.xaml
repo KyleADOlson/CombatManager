@@ -5,49 +5,62 @@
 	x:Class="CombatManager.SettingsDialog"
 	x:Name="Window"
 	Title="Settings"
-	Width="258" Height="429" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False" VerticalAlignment="Top" d:DesignHeight="324">
+	Width="500" Height="429" ResizeMode="NoResize" Icon="/CombatManager;component/Images/d20-32.ico" ShowInTaskbar="False" VerticalAlignment="Top" d:DesignHeight="324">
 
     <Grid x:Name="LayoutRoot" Margin="0,0,0,0" VerticalAlignment="Top">
         <Grid.Background>
             <SolidColorBrush Color="{DynamicResource PrimaryColorLight}"/>
         </Grid.Background>
-        <Border BorderThickness="1" Margin="8,14,8,41.25" CornerRadius="0" VerticalAlignment="Top">
+        <Border BorderThickness="1" Margin="8,14,8,41.25" CornerRadius="0" VerticalAlignment="Top" Padding="0">
             <Border.Background>
                 <SolidColorBrush Color="{DynamicResource SecondaryColorADark}"/>
             </Border.Background>
-            <StackPanel>
-                <CheckBox x:Name="ConfirmApplicationCloseCheckbox" Content="Confirm on Application Close" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                <CheckBox x:Name="ConfirmInitiativeCheckbox" Content="Confirm Initiative Roll/Sort" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                <CheckBox x:Name="ConfirmCharacterDeleteCheckbox" Content="Confirm Character Delete" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                <CheckBox x:Name="RollAlternativeInitCheckbox" Content="Roll Alternate Dice For d20 Rolls" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                <TextBox Margin="26,5,156,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="3d6" IsEnabled="{Binding IsChecked, ElementName=RollAlternativeInitCheckbox}" x:Name="RollAlternateInitDiceBox" VerticalAlignment="Top" />
-                <CheckBox x:Name="ShowAllDamageDice" Content="Show All Damage Dice in Die Roller" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                <CheckBox x:Name="AddMonstersHiddenBox" Content="Add Monsters Hidden" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                <CheckBox x:Name="ShowHiddenInitValueBox" Content="Show Hidden Init Value" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                <CheckBox x:Name="StatsOpenByDefaultCheckbox" Content="Stats Panel Begins Open" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                <CheckBox x:Name="CheckForUpdatesCheckbox" Content="Check For Updates" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Color Scheme:" Margin="6,8,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
-                    <ComboBox x:Name="ColorSchemeCombo"  Width="130" Margin="6,5,4,2" SelectionChanged="ColorSchemeCombo_SelectionChanged">
-                        
-                    </ComboBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel ToolTip="Automatically roll to stabilize dying character,and decrease HP if roll fails. ">
+                    <TextBlock Text="User Interface" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" FontWeight="Bold" Margin="2,0,0,0"/>
+
+                    <CheckBox x:Name="ConfirmApplicationCloseCheckbox" Content="Confirm on Application Close" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <CheckBox x:Name="ConfirmInitiativeCheckbox" Content="Confirm Initiative Roll/Sort" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <CheckBox x:Name="ConfirmCharacterDeleteCheckbox" Content="Confirm Character Delete" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <CheckBox x:Name="ShowAllDamageDice" Content="Show All Damage Dice in Die Roller" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <CheckBox x:Name="AddMonstersHiddenBox" Content="Add Monsters Hidden" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <CheckBox x:Name="ShowHiddenInitValueBox" Content="Show Hidden Init Value" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <CheckBox x:Name="StatsOpenByDefaultCheckbox" Content="Stats Panel Begins Open" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <CheckBox x:Name="CheckForUpdatesCheckbox" Content="Check For Updates" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Color Scheme:" Margin="6,8,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                        <ComboBox x:Name="ColorSchemeCombo"  Width="130" Margin="6,5,4,2" SelectionChanged="ColorSchemeCombo_SelectionChanged"/>
+                    </StackPanel>
+                    <CheckBox x:Name="DarkSchemeCheckbox" Content="Dark Scheme" HorizontalAlignment="Left" Margin="6,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="DarkSchemeCheckbox_Checked" Unchecked="DarkSchemeCheckbox_Unchecked"/>
+                    <TextBlock Text="Gameplay" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" FontWeight="Bold" Margin="2,0,0,0"/>
+                    <CheckBox x:Name="AutomaticStabilizationCheckbox" Content="Automatic Stabilization Rolls" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+
+                    <CheckBox x:Name="RollAlternativeInitCheckbox" Content="Roll Alternate Dice For d20 Rolls" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}"/>
+                    <TextBox Margin="26,5,156,30" TextWrapping="Wrap" VerticalContentAlignment="Top" Text="3d6" IsEnabled="{Binding IsChecked, ElementName=RollAlternativeInitCheckbox}" x:Name="RollAlternateInitDiceBox" VerticalAlignment="Top" />
+
                 </StackPanel>
-                <CheckBox x:Name="DarkSchemeCheckbox" Content="Dark Scheme" HorizontalAlignment="Left" Margin="6,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="DarkSchemeCheckbox_Checked" Unchecked="DarkSchemeCheckbox_Unchecked"/>
-                <CheckBox x:Name="LocalWebServiceCheckbox" Content="Run Local Web Service" HorizontalAlignment="Left" Margin="6,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="DarkSchemeCheckbox_Checked" Unchecked="DarkSchemeCheckbox_Unchecked"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Port:" Width="53" Margin="16,0,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" VerticalAlignment="Center"/>
-                    <TextBox x:Name="PortTextBox"  Width="80" Margin="6,5,4,2" TextChanged="PortTextBox_TextChanged" ToolTip="Choose a port number may be from 1 to 65535" PreviewTextInput="PortTextBox_PreviewTextInput"
+                <StackPanel Grid.Column="1" Background="{DynamicResource ResourceKey=SecondaryColorBDarkerBrush}" Margin="0">
+                    <TextBlock Text="Network" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" FontWeight="Bold" Margin="2,0,0,0"/>
+                    <CheckBox x:Name="LocalWebServiceCheckbox" Content="Run Local Web Service" HorizontalAlignment="Left" Margin="6,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="DarkSchemeCheckbox_Checked" Unchecked="DarkSchemeCheckbox_Unchecked"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Port:" Width="53" Margin="16,0,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" VerticalAlignment="Center"/>
+                        <TextBox x:Name="PortTextBox"  Width="80" Margin="6,5,4,2" TextChanged="PortTextBox_TextChanged" ToolTip="Choose a port number may be from 1 to 65535" PreviewTextInput="PortTextBox_PreviewTextInput"
                              DataObject.Pasting="PortTextBox_Pasting "/>
 
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Passcode:" Width="53" Margin="16,0,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Passcode:" Width="53" Margin="16,0,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" VerticalAlignment="Center"/>
 
-                    <TextBox x:Name="PasscodeTextBox"  Width="80" Margin="6,5,4,2" TextChanged="PascodeTextBox_TextChanged" ToolTip="Chose a passcode for the passcode header, if you want one" PreviewTextInput="PasscodeTextBox_PreviewTextInput"
+                        <TextBox x:Name="PasscodeTextBox"  Width="80" Margin="6,5,4,2" TextChanged="PascodeTextBox_TextChanged" ToolTip="Chose a passcode for the passcode header, if you want one" PreviewTextInput="PasscodeTextBox_PreviewTextInput"
                              DataObject.Pasting="PasscodeTextBox_Pasting"/>
 
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
+            </Grid>
         </Border>
         <Button Content="OK" HorizontalAlignment="Right" Margin="0,0,87,13" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="Button_Click" x:Name="OKButton" />
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,13" VerticalAlignment="Bottom" Width="75" IsCancel="True" Click="CancelButton_Click"/>

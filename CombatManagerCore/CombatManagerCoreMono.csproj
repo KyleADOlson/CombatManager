@@ -141,6 +141,7 @@
     <Compile Include="Coin.cs" />
     <Compile Include="Condition.cs" />
     <Compile Include="ConditionBonus.cs" />
+    <Compile Include="CoreSettings.cs" />
     <Compile Include="CreatureTypeInfo.cs" />
     <Compile Include="DBLoader.cs" />
     <Compile Include="DBTableDesc.cs" />
@@ -229,7 +230,6 @@
     <Compile Include="DD5Stats.cs" />
     <Compile Include="CMBindingUtils.cs" />
     <Compile Include="CMListUtilities.cs" />
-    <Compile Include="MobileSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TreasureChart.xml">

@@ -19,7 +19,7 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <ReleaseVersion>1.05</ReleaseVersion>
     <AndroidKeyStore>true</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Users\kylea\OneDrive\Documents\github\CombatManager\CombatManagerDroid\mono.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyStore>C:\Users\kylea\GitHub\CombatManager\CombatManagerDroid\mono.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>@hysteria11</AndroidSigningStorePass>
     <AndroidSigningKeyPass>@hysteria11</AndroidSigningKeyPass>
     <AndroidSigningKeyAlias>monokey</AndroidSigningKeyAlias>

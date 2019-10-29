@@ -93,7 +93,11 @@ namespace CombatManager
 
         private CharacterAdjuster adjuster;
 
+
+        Dictionary<String, bool> _KnownConditions = new Dictionary<String, bool>();
+
         private static Random rand = new Random();
+
 
 
         public Character()
@@ -230,6 +234,31 @@ namespace CombatManager
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
+
+        public void Stabilize()
+        {
+            RemoveConditionByName("dying");
+            AddConditionByName("stable");
+        }
+
+        [XmlIgnore]
+        public bool IsDead
+        {
+            get
+            {
+                return HasCondition("Dead");
+            }
+        }
+
+        [XmlIgnore]
+        public bool IsDying
+        {
+            get
+            {
+                return HasCondition("Dying");
+            }
+        }
+
 
         [XmlIgnore]
         public Monster Stats
@@ -737,6 +766,7 @@ namespace CombatManager
                     if (monster != null)
                     {
                         monster.PropertyChanged -= Monster_PropertyChanged;
+                        monster.ActiveConditions.CollectionChanged -= ActiveConditions_CollectionChanged;
 
                     }
 
@@ -745,6 +775,7 @@ namespace CombatManager
                     if (monster != null)
                     {
                         monster.PropertyChanged += Monster_PropertyChanged;
+                        monster.ActiveConditions.CollectionChanged += ActiveConditions_CollectionChanged;
 
                     }
 
@@ -758,6 +789,12 @@ namespace CombatManager
 
                 }
             }
+        }
+
+
+        private void ActiveConditions_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            _KnownConditions.Clear();
         }
 
         private void Monster_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -792,7 +829,13 @@ namespace CombatManager
 
         public bool HasCondition(string name)
         {
-            return FindCondition(name) != null;
+            bool res;
+            if (!_KnownConditions.TryGetValue(name, out res))
+            {
+                res = FindCondition(name) != null;
+                _KnownConditions[name] = res;
+            }
+            return res;
         }
 
         public void AddConditionByName(string name)

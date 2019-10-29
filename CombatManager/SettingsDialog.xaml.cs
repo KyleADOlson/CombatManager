@@ -63,6 +63,7 @@ namespace CombatManager
             LocalWebServiceCheckbox.IsChecked = UserSettings.Settings.RunLocalService;
             PortTextBox.Text = UserSettings.Settings.LocalServicePort.ToString();
             PasscodeTextBox.Text = UserSettings.Settings.LocalServicePasscode;
+            AutomaticStabilizationCheckbox.IsChecked = CoreSettings.Instance.AutomaticStabilization;
 
             RollAlternateInitDiceBox.TextChanged += new TextChangedEventHandler(RollAlternateInitDiceBox_TextChanged);
 
@@ -142,6 +143,7 @@ namespace CombatManager
                 UserSettings.Settings.RunLocalService = LocalWebServiceCheckbox.IsChecked == true;
                 UserSettings.Settings.LocalServicePort = GetLocalPort().Value;
                 UserSettings.Settings.LocalServicePasscode = PasscodeTextBox.Text;
+                CoreSettings.Instance.AutomaticStabilization = AutomaticStabilizationCheckbox.IsChecked == true;
                 UserSettings.Settings.SaveOptions();
 
                 CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;

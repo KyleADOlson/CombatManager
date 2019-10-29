@@ -152,14 +152,14 @@ namespace CombatManagerMono
             Add (_AboutButton);
 			BackgroundColor = UIColor.Black;
 
-            MobileSettings.Instance.PropertyChanged += MobileSettingsPropertyChanged;
+            CoreSettings.Instance.PropertyChanged += MobileSettingsPropertyChanged;
 			
 		}
 
         void SetLocalServiceIcon()
         {
 
-            serverItem.Icon = MobileSettings.Instance.RunLocalService ? "check" : null;
+            serverItem.Icon = CoreSettings.Instance.RunLocalService ? "check" : null;
         }
 
         private void MobileSettingsPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -262,7 +262,7 @@ namespace CombatManagerMono
 
         void LocalServiceClicked()
         {
-            MobileSettings.Instance.RunLocalService = !MobileSettings.Instance.RunLocalService;
+            CoreSettings.Instance.RunLocalService = !CoreSettings.Instance.RunLocalService;
         }
 
         void LocalServicePortClicked()
@@ -272,7 +272,7 @@ namespace CombatManagerMono
             alert.AddButton("OK");
             alert.AddButton("Cancel");
             alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-            alert.GetTextField(0).Text = MobileSettings.Instance.LocalServicePort.ToString();
+            alert.GetTextField(0).Text = CoreSettings.Instance.LocalServicePort.ToString();
             alert.Show();
             alert.Clicked += PortAlertClicked;
         }
@@ -288,7 +288,7 @@ namespace CombatManagerMono
                 {
                     if (port > 0 && port < 32768)
                     {
-                        MobileSettings.Instance.LocalServicePort = port;
+                        CoreSettings.Instance.LocalServicePort = port;
                     }
                 }
             }
@@ -302,7 +302,7 @@ namespace CombatManagerMono
             alert.AddButton("OK");
             alert.AddButton("Cancel");
             alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-            alert.GetTextField(0).Text = MobileSettings.Instance.LocalServicePasscode;
+            alert.GetTextField(0).Text = CoreSettings.Instance.LocalServicePasscode;
             alert.Show();
             alert.Clicked += PasscodeAlertClicked;
         }
@@ -313,7 +313,7 @@ namespace CombatManagerMono
             if (ea.ButtonIndex == 0)
             {
                 String text = alert.GetTextField(0).Text.Trim();
-                MobileSettings.Instance.LocalServicePasscode = text;
+                CoreSettings.Instance.LocalServicePasscode = text;
             }
 
         }

@@ -103,7 +103,7 @@ namespace CombatManager
 
                             ToolTipService.SetShowDuration(link, 360000);
                             link.ToolTip = t;
-                            link.ToolTipOpening += new ToolTipEventHandler(link_ToolTipOpening);
+                            link.ToolTipOpening += new ToolTipEventHandler(SpellBlockLink_ToolTipOpening);
 
                         }
                     }
@@ -255,7 +255,7 @@ namespace CombatManager
 
         }
 
-        void link_ToolTipOpening(object sender, ToolTipEventArgs e)
+        void SpellBlockLink_ToolTipOpening(object sender, ToolTipEventArgs e)
         {
             Hyperlink l = (Hyperlink)sender;
             ((ToolTip)l.ToolTip).DataContext = l.Tag;

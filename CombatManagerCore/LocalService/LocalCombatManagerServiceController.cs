@@ -254,6 +254,30 @@ namespace CombatManager.LocalService
             });
         }
 
+        [WebApiHandler(HttpVerbs.Get, "/api/character/hide/{charid}/{state}")]
+        public async Task<bool> HideCharacter(string charid, bool state)
+        {
+            return await TakeCharacterAction(charid, (res, ch) =>
+            {
+                ch.IsHidden = state;
+                saveCallback();
+                res.Data = ch.ToRemote();
+
+            });
+        }
+
+        [WebApiHandler(HttpVerbs.Get, "/api/character/idle/{charid}/{state}")]
+        public async Task<bool> IdleCharacter(string charid, bool state)
+        {
+            return await TakeCharacterAction(charid, (res, ch) =>
+            {
+                ch.IsIdle = state;
+                saveCallback();
+                res.Data = ch.ToRemote();
+
+            });
+        }
+
 
         [WebApiHandler(HttpVerbs.Post, "/api/character/addcondition")]
         public async Task<bool> AddCondition()
