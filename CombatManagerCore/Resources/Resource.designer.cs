@@ -40,8 +40,8 @@ namespace CombatManager
 		public partial class Xml
 		{
 			
-			// aapt resource value: 0x7f020000
-			public static int xamarin_essentials_fileprovider_file_paths = 2130837504;
+			// aapt resource value: 0x7F010000
+			public static int xamarin_essentials_fileprovider_file_paths = 2130771968;
 			
 			static Xml()
 			{

@@ -99,7 +99,7 @@ namespace CombatManager
 #if MONO
         public static void SaveBoolValue(String name, bool value)
         {
-            Preferences.Set(name, def);
+            Preferences.Set(name, value);
         }
     
 
@@ -110,21 +110,21 @@ namespace CombatManager
         }
         public static void SaveStringValue(String name, string value)
         {
-            Preferences.Set(name, def);
+            Preferences.Set(name, value);
         }
     
 
-        public static bool LoadStringValue(String name, string def)
+        public static String LoadStringValue(String name, string def)
         {
-            return Preferences.Get(name, def);
+            return Preferences.Get(name, (string)def);
         }
-        public static void SaveIntValue(String name, string value)
+        public static void SaveIntValue(String name, int value)
         {
-            Preferences.Set(name, def);
+            Preferences.Set(name, value);
         }
     
 
-        public static bool LoadIntValue(String name, string def)
+        public static int LoadIntValue(String name, int def)
         {
             return Preferences.Get(name, def);
         }

@@ -59,13 +59,13 @@ namespace CombatManagerDroid
             };
 
             CheckBox m = FindViewById<CheckBox>(Resource.Id.localWebServiceBox);
-            m.Checked = MobileSettings.Instance.RunLocalService;
+            m.Checked = CoreSettings.Instance.RunLocalService;
             m.Click += (object sender, EventArgs e) =>
             {
-                MobileSettings.Instance.RunLocalService = m.Checked;
+                CoreSettings.Instance.RunLocalService = m.Checked;
             };
 
-            PortEditText.Text = MobileSettings.Instance.LocalServicePort.ToString();
+            PortEditText.Text = CoreSettings.Instance.LocalServicePort.ToString();
             PortEditText.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) =>
             {
                 int newPort;
@@ -74,7 +74,7 @@ namespace CombatManagerDroid
                 {
                     if (newPort > 0 && newPort < Math.Pow(2, 15))
                     {
-                        MobileSettings.Instance.LocalServicePort = newPort;
+                        CoreSettings.Instance.LocalServicePort = newPort;
                         set = true;
 
                         PortEditText.Background = PasscodeEditText.Background;
@@ -87,10 +87,10 @@ namespace CombatManagerDroid
                 }
             };
 
-            PasscodeEditText.Text = MobileSettings.Instance.LocalServicePasscode.ToString();
+            PasscodeEditText.Text = CoreSettings.Instance.LocalServicePasscode.ToString();
             PasscodeEditText.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) =>
             {
-                MobileSettings.Instance.LocalServicePasscode = e.Text.ToString().Trim();
+                CoreSettings.Instance.LocalServicePasscode = e.Text.ToString().Trim();
             };
 
                 View b = FindViewById<View>(Resource.Id.closeButton);

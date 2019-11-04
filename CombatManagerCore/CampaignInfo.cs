@@ -46,7 +46,7 @@ namespace CombatManager
     //private SQL_Lite sql;
 #else
 		
-        private static SqliteConnection eventDB;
+        //private static SqliteConnection eventDB;
 #endif
 
         private static void PrepareDB()

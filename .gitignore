@@ -118,3 +118,4 @@ ZipDll/Resources/zippedResources.zip
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
 .vscode/settings.json
+UpgradeLog2.htm

@@ -615,7 +615,7 @@ namespace CombatManager.LocalService
                             {
                                 resAction(res, data);
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 res.Failed = true;
                             }

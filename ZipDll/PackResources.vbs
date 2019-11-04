@@ -164,7 +164,7 @@ Sub CreateZip(pathToZipFile, dirToZip)
                     If (fcount = 0) Then
                         Wscript.Sleep(400)
                     End If
-                    WScript.Echo builtpath
+                    '' WScript.Echo builtpath
                     zip.CopyHere builtpath, 0
                     fcount = fcount + 1
                     '' Delay between each item. With no, the zip fails with
