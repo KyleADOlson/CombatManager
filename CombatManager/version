@@ -1,4 +1,7 @@
-﻿1.7.7
+﻿1.7.8
+More player color choices
+
+1.7.7
 Fix Local Service Crash
 Additional Local Service API functions and "Current" Character ID option
 Auto Stabilization option
@@ -8,6 +11,7 @@ Fix Combat State loading
 Fix missing delete button in Hotkeys dialog
 Fix clone menu option
 Skeleton Template Fix
+
 
 1.7.5
 Fix customization DB crash

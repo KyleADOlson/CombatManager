@@ -8646,6 +8646,176 @@ namespace CombatManager
             OgrekinDisadvantageousCommbo.SelectedIndex = disadventageous;
         }
 
+        private void ColorMenu_Loaded(object sender, RoutedEventArgs e)
+        {
+            MenuItem cm = (MenuItem)sender;
+
+            List<MenuItem> remove = new List<MenuItem>();
+            foreach (object item in cm.Items)
+            {
+                if (item is MenuItem)
+                {
+                    MenuItem mi = (MenuItem)item;
+                    if (mi.Tag is uint)
+                    {
+                        remove.Add(mi);
+                    }
+                }
+                   
+            }
+            foreach (MenuItem item in remove)
+            {
+                cm.Items.Remove(item);
+            }
+
+            foreach (uint c in FavoritePlayerColorList)
+            {
+                MenuItem mi = new MenuItem();
+                mi.DataContext = c;
+                mi.Tag = c;
+                mi.Header = FavoriteColorItemText((uint)mi.DataContext);
+                SetColorMenuItemColor(mi);
+                mi.Click += ColorMenuItem_Click;
+                cm.Items.Add(mi);
+            }
+        }
+
+        private string FavoriteColorItemText(uint color)
+        {
+            String text = "#";
+            if ((color & 0xff000000) == 0xff000000)
+            {
+                text += (color & 0x00ffffff).ToString("X6");
+            }
+            else
+            {
+                text += color.ToString("X8");
+            }
+            return text;
+        }
+
+        private void SetColorMenuItemColor(MenuItem mi)
+        {
+            Rectangle rectangle = new Rectangle();
+            rectangle.Height = 16;
+            rectangle.Width = 16;
+            rectangle.Stretch = Stretch.Fill;
+            rectangle.Fill = ColorMenuItemColor((MenuItem)mi).Brush();
+            mi.Icon = rectangle;
+        }
+        
+
+        private void ColorMenuItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            MenuItem mi = sender as MenuItem;
+            SetColorMenuItemColor(mi);
+
+        }
+       
+        private Color ColorMenuItemColor(MenuItem mi)
+        {
+            Color color = Colors.White;
+
+            if (mi.DataContext is uint)
+            {
+                return ((uint)mi.DataContext).ToColor();
+
+            }
+
+            if (mi.Name == "BlackColorMenuItem")
+            {
+                color = Colors.Black;
+            }
+            if (mi.Name == "GrayColorMenuItem")
+            {
+                color = Colors.Gray;
+            }
+            if (mi.Name == "WhiteColorMenuItem")
+            {
+                color = Colors.White;
+            }
+            if (mi.Name == "RedColorMenuItem")
+            {
+                color = Colors.Red;
+            }
+            if (mi.Name == "OrangeColorMenuItem")
+            {
+                color = Colors.Orange;
+            }
+            if (mi.Name == "YellowColorMenuItem")
+            {
+                color = Colors.Yellow;
+            }
+            if (mi.Name == "GreenColorMenuItem")
+            {
+                color = Colors.Green;
+            }
+            if (mi.Name == "BlueColorMenuItem")
+            {
+                color = Colors.Blue;
+            }
+            if (mi.Name == "IndigoColorMenuItem")
+            {
+                color = Colors.Indigo;
+            }
+            if (mi.Name == "VioletColorMenuItem")
+            {
+                color = Colors.Violet;
+            }
+
+            return color;
+        }
+
+        List<uint> FavoritePlayerColorList
+        {
+            get
+            {
+                return FavoriteColors.GetList("playercolors");
+            }
+
+        }
+
+        void AddFavoritePlayerColor(uint color)
+        {
+            FavoriteColors.Push("playercolors", color, limit: 10);
+            
+        }
+
+        int[] CustomColorList
+        {
+            get
+            {
+                
+
+                List<uint> fc = FavoriteColors.GetList("customcolors");
+
+                int[] ca = new int[fc.Count];
+
+                for (int i=0; i<fc.Count; i++)
+                {
+
+                    ca[i] = fc[i].ToOLEColor();
+                }
+
+                return ca;
+
+            }
+            set
+            {
+                List<uint> fc = new List<uint>();
+                for (int i = 0; i<value.Length; i++)
+                {
+                    uint val = value[i].FromOLEColor();
+                    fc.Add(val);
+                }
+                FavoriteColors.SetList("customcolors", fc);
+
+            }
+        }
+
+
+
+
         private void ColorMenuItem_Click(object sender, RoutedEventArgs e)
         {
             MenuItem mi = (MenuItem)sender;
@@ -8658,22 +8828,39 @@ namespace CombatManager
 
             uint? color = null;
 
-            if (mi.Name == "RedColorMenuItem")
-            {
-                color = 0xffff0000;
-            }
-            if (mi.Name == "BlueColorMenuItem")
-            {
-                color = 0xff0000ff; 
-            }
-            if (mi.Name == "GreenColorMenuItem")
-            {
-                color = 0xff00ff00;
-            }
+            color = ColorMenuItemColor(mi).ToUInt32();
 
             foreach (Character ch in list)
             {
                 ch.Color = color;
+            }
+
+        }
+
+        private void OtherColorMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            Character root = (Character)((FrameworkElement)sender).DataContext;
+
+            List<Character> list = GetViewSelectedCharactersFromChar(root);
+
+            System.Windows.Forms.ColorDialog cd = new System.Windows.Forms.ColorDialog();
+
+            cd.CustomColors = CustomColorList;
+
+            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.Drawing.Color sdc = cd.Color;
+                UInt32 val = sdc.ToColor().ToUInt32();
+
+                AddFavoritePlayerColor(val);
+
+                foreach (Character ch in list)
+                {
+                    ch.Color = val;   
+                }
+
+                CustomColorList = cd.CustomColors;
             }
 
         }

@@ -44,6 +44,25 @@ namespace CombatManager
             list.Add(newItem);
         }
 
+        public static void ShortenToLength<T>(this IList<T> list, int length)
+        {
+            if (length < 0 || list.Count <= length)
+            {
+                return;
+            }
+            if (list is List<T>)
+            {
+                ((List<T>)list).RemoveRange(length, list.Count - length);
+            }
+            else
+            {
+                while (list.Count > length)
+                {
+                    list.PopEnd();
+                }
+            }
+        }
+
         public static bool IsEmptyOrNull<T>(this ICollection<T> list)
         {
             return list == null || list.Count == 0;

@@ -260,9 +260,37 @@ namespace CombatManager
             return Color.FromArgb(bytes[3], bytes[2], bytes[1], bytes[0]);
         }
 
-        public static UInt32 ToUInt32(this Color color)
+        public static System.Drawing.Color ToOldColor(this Color color)
+        {
+            return System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
+
+        }
+
+        public static Color ToNewColor(this System.Drawing.Color color)
+        {
+            return Color.FromArgb(color.A, color.R, color.G, color.B);
+
+        }
+
+        public static uint ToUInt32(this Color color)
         {
             return BitConverter.ToUInt32(new byte[] { color.B, color.G, color.R, color.A }, 0);
+        }
+        
+        public static int ToOLEColor(this UInt32 color)
+        {
+            return System.Drawing.ColorTranslator.ToOle(color.ToColor().ToOldColor());
+
+        }
+
+        public static uint FromOLEColor(this int color)
+        {
+            return System.Drawing.ColorTranslator.FromOle(color).ToNewColor().ToUInt32();
+        }
+
+        public static SolidColorBrush Brush(this Color color)
+        {
+            return new SolidColorBrush(color);
         }
 
         public static Point Center(this Rect rect)
@@ -288,6 +316,17 @@ namespace CombatManager
             double heightInflate = (newHeight - r.Height) / 2.0;
             rectOut.Inflate(widthInflate, heightInflate);
             return rectOut;
+        }
+
+        public static System.Windows.Shapes.Path ToButtonPath(this Geometry geo, Color color)
+        {
+            System.Windows.Shapes.Path path = new System.Windows.Shapes.Path();
+            path.Data = geo;
+            path.Fill = new SolidColorBrush(color);
+            path.Height = 16;
+            path.Width = 16;
+            path.Stretch = Stretch.Fill;
+            return path;
         }
 
 
@@ -515,7 +554,10 @@ namespace CombatManager
         public const String ThemeTextBackground = "ThemeTextBackground";
         public const String HealthBackground = "HealthBackground";
 
-
+        public static Color ToColor(this System.Drawing.Color oc)
+        {
+            return Color.FromArgb(oc.A, oc.R, oc.G, oc.B);
+        }
 
     }
 

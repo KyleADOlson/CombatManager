@@ -156,6 +156,7 @@
     <Compile Include="ParsedFeat.cs" />
     <Compile Include="Pathfinder.Herolab.Serializable.class.cs" />
     <Compile Include="Personalization\ColorSchemeManager.cs" />
+    <Compile Include="Personalization\FavoriteColors.cs" />
     <Compile Include="PF2Score.cs" />
     <Compile Include="PF2Stats.cs" />
     <Compile Include="ProficiencyRank.cs" />

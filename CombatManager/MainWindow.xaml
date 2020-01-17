@@ -227,14 +227,32 @@
                     <Image Source="/CombatManager;component/Images/NoteHS.png" Width="16" Height="16"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Color">
+            <MenuItem Header="Color" Loaded="ColorMenu_Loaded">
                 <MenuItem Header="None" x:Name="NoColorMenuItem" Click="ColorMenuItem_Click">
                 </MenuItem>
-                <MenuItem Header="Red" x:Name="RedColorMenuItem" Click="ColorMenuItem_Click">
+                <Separator/>
+                <MenuItem Header="Black" x:Name="BlackColorMenuItem" Click="ColorMenuItem_Click"  Loaded="ColorMenuItem_Loaded" DataContext="Colors.Red">
                 </MenuItem>
-                <MenuItem Header="Blue" x:Name="BlueColorMenuItem" Click="ColorMenuItem_Click">
+                <MenuItem Header="Gray" x:Name="GrayColorMenuItem" Click="ColorMenuItem_Click"  Loaded="ColorMenuItem_Loaded">
                 </MenuItem>
-                <MenuItem Header="Green" x:Name="GreenColorMenuItem" Click="ColorMenuItem_Click">
+                <MenuItem Header="White" x:Name="WhiteColorMenuItem" Click="ColorMenuItem_Click"  Loaded="ColorMenuItem_Loaded">
+                </MenuItem>
+                <MenuItem Header="Red" x:Name="RedColorMenuItem" Click="ColorMenuItem_Click"  Loaded="ColorMenuItem_Loaded">
+                </MenuItem>
+                <MenuItem Header="Orange" x:Name="OrangeColorMenuItem" Click="ColorMenuItem_Click"  Loaded="ColorMenuItem_Loaded">
+                </MenuItem>
+                <MenuItem Header="Yellow" x:Name="YellowColorMenuItem" Click="ColorMenuItem_Click" Loaded="ColorMenuItem_Loaded">
+                </MenuItem>
+                <MenuItem Header="Green" x:Name="GreenColorMenuItem" Click="ColorMenuItem_Click" Loaded="ColorMenuItem_Loaded">
+                </MenuItem>
+                <MenuItem Header="Blue" x:Name="BlueColorMenuItem" Click="ColorMenuItem_Click" Loaded="ColorMenuItem_Loaded">
+                </MenuItem>
+                <MenuItem Header="Indigo" x:Name="IndigoColorMenuItem" Click="ColorMenuItem_Click" Loaded="ColorMenuItem_Loaded">
+                </MenuItem>
+                <MenuItem Header="Violet" x:Name="VioletColorMenuItem" Click="ColorMenuItem_Click" Loaded="ColorMenuItem_Loaded">
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Other..." x:Name="OtherColorMenuItem" Click="OtherColorMenuItem_Click">
                 </MenuItem>
             </MenuItem>
             <Separator/>
