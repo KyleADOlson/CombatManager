@@ -163,6 +163,7 @@ namespace CombatManager
             blocks.Add(CreateHeaderParagraph(name, header));
 
             Paragraph topParagraph = new Paragraph();
+            topParagraph.Inlines.AddRange(CreateItemIfNotNull("Description: ", true, monster.Description_Visual, null, true));
             topParagraph.Inlines.Add(new Bold(new Run("XP: " + monster.XP)));
             topParagraph.Inlines.Add(new LineBreak());
             topParagraph.Margin = new Thickness(0);
@@ -829,7 +830,7 @@ namespace CombatManager
                 Paragraph ecoParagraph = new Paragraph();
                 ecoParagraph.Margin = new Thickness(0);
 
-
+                
                 ecoParagraph.Inlines.AddRange(CreateItemIfNotNull("Environment ", monster.Environment));
                 ecoParagraph.Inlines.AddRange(CreateItemIfNotNull("Organization ", monster.Organization));
                 ecoParagraph.Inlines.AddRange(CreateItemIfNotNull("Treasure ", monster.Treasure));
