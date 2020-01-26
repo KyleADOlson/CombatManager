@@ -489,7 +489,7 @@ namespace CombatManager
             try
             {
                 string fullfilename = Path.Combine(path, filename);
-				
+
 #if !MONO
 				sql = new SQL_Lite();
                 sql.SkipHeaderRow = true;
@@ -497,6 +497,8 @@ namespace CombatManager
                 string backtext = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 string backname = fullfilename + backtext + ".db";
 #else
+
+                Android.Util.Log.Error("DBLoader", "fullfilename " + fullfilename);
                 sql = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + fullfilename);
 
                 sql.Open();
@@ -579,23 +581,39 @@ namespace CombatManager
 
                 if (needsCopy)
                 {
+#if ANDROID
+                    Android.Util.Log.Error("DBLoader", "DBL needs copy");
+
+#endif
                     string newfile = fullfilename + ".tmp";
                     if (File.Exists(newfile))
                     {
+
+#if ANDROID
+                        Android.Util.Log.Error("DBLoader", "DBL new file exists");
+
+#endif
                         File.Delete(newfile);
+
+#if ANDROID
+                        Android.Util.Log.Error("DBLoader", "DBL new file delete");
+
+#endif
                     }
-					
+
 #if !MONO
                     SQL_Lite sql2 = new SQL_Lite();
                     sql2.SkipHeaderRow = true;
 
                     sql2.Open(newfile);
 #else
+
+                    Android.Util.Log.Error("DBLoader", "NewFile " + newfile);
                     SqliteConnection sql2 = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + newfile);
-					
+                    sql2.Open();
+
 #endif
-					
-					
+
                     foreach (DBTableDesc table in tables)
                     {
                         CopyTable(sql, sql2, table);
@@ -615,6 +633,7 @@ namespace CombatManager
                     sql.Open(fullfilename);
 #else
                     sql = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + fullfilename);
+                    sql.Open();
 #endif
                 }
 
@@ -686,12 +705,27 @@ namespace CombatManager
         private static void CopyTable(SqliteConnection sql, SqliteConnection sql2, DBTableDesc table)
 #endif
         {
+#if ANDROID
+            Android.Util.Log.Error("DBLoader", "CopyTable");
+            
+#endif
+
             String str = CreateTableStatementForDesc(table);
             sql2.ExecuteCommand(str);
+
+#if ANDROID
+            Android.Util.Log.Error("DBLoader", "Created");
+
+#endif
 
             if (sql.DatabaseObjectExists(table.Name))
             {
                 RowsRet data = sql.ExecuteCommand("Select * from " + table.Name);
+
+#if ANDROID
+                Android.Util.Log.Error("DBLoader", "Select from table.name");
+
+#endif
 
                 List<string> validOldFields = new List<string>();
                 List<DBFieldDesc> invalidNewFields = new List<DBFieldDesc>();
@@ -764,6 +798,11 @@ namespace CombatManager
 
                     object[] objParams = values.ToArray();
                     sql2.ExecuteCommand(command, objParams);
+
+#if ANDROID
+                    Android.Util.Log.Error("DBLoader", "row command");
+
+#endif
                 }
             }
         }

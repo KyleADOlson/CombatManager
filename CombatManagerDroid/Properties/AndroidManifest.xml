@@ -4,5 +4,6 @@
 	<supports-screens android:smallScreens="false" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" />
 	<application android:label="Combat Manager" android:icon="@drawable/Icon"></application>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 </manifest>
