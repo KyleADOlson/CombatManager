@@ -1,10 +1,10 @@
-﻿using System;
+﻿using EmbedIO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Unosquare.Labs.EmbedIO;
-using Unosquare.Labs.EmbedIO.Modules;
+using EmbedIO;
 
 namespace CombatManager.LocalService
 {
@@ -96,19 +96,14 @@ namespace CombatManager.LocalService
 
 
             // Our web server is disposable.
-            server = new WebServer(port);
-            server.RegisterModule(new WebApiModule());
-            server.Module<WebApiModule>().RegisterController<LocalCombatManagerServiceController>(y =>
-            {
-                serviceController = new LocalCombatManagerServiceController(y, state, this, RunActionCallback, RunSaveCallback);
-                serviceController.HPMode = hpmode;
-                serviceController.Passcode = passcode;
-                return serviceController;
-             });
+            server = new WebServer(o => o.WithUrlPrefix(url)
+            .WithMode(HttpListenerMode.EmbedIO))
+            .WithLocalSessionManager()
+            .WithModule(new CombatManagerNotificationServer("/api/notification/", state))
+            .WithWebApi("/api", m => m.RegisterController(() =>  new LocalCombatManagerServiceController(null, state, this, RunActionCallback, RunSaveCallback)));
+ 
 
-            server.RegisterModule(new WebSocketsModule());
-            server.Module<WebSocketsModule>().RegisterWebSocketsServer<CombatManagerNotificationServer>("/api/notifications",
-                new CombatManagerNotificationServer(state));
+            
 
             server.RunAsync();
     

@@ -1,11 +1,11 @@
-﻿using System;
+﻿using EmbedIO.WebApi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Unosquare.Labs.EmbedIO;
-using Unosquare.Labs.EmbedIO.Constants;
-using Unosquare.Labs.EmbedIO.Modules;
+using EmbedIO;
+using EmbedIO.Routing;
 
 #pragma warning disable 618
 
@@ -19,7 +19,7 @@ namespace CombatManager.LocalService
         LocalCombatManagerService service;
 
         public LocalCombatManagerServiceController(IHttpContext context, CombatState state, LocalCombatManagerService service, LocalCombatManagerService.ActionCallback actionCallback, Action saveCallback)
-            : base(context)
+            
         {
             this.state = state;
             this.service = service;
@@ -45,8 +45,8 @@ namespace CombatManager.LocalService
 
         public string Passcode { get; set; }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/state")]
-        public async Task<bool> GetCombatState()
+        [Route(HttpVerbs.Get, "/combat/state")]
+        public async Task<object> GetCombatState()
         {
             return await TakeAction((res) =>
             {
@@ -54,8 +54,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/next")]
-        public async Task<bool> CombatNext()
+        [Route(HttpVerbs.Get, "/combat/next")]
+        public async Task<object> CombatNext()
         {
             return await TakeAction((res) =>
             {
@@ -65,8 +65,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/prev")]
-        public async Task<bool> CombatPrev()
+        [Route(HttpVerbs.Get, "/combat/prev")]
+        public async Task<object> CombatPrev()
         {
 
             return await TakeAction((res) =>
@@ -77,8 +77,8 @@ namespace CombatManager.LocalService
                 });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/rollinit")]
-        public async Task<bool> CombatRollInit()
+        [Route(HttpVerbs.Get, "/combat/rollinit")]
+        public async Task<object> CombatRollInit()
         {
             return await TakeAction((res) =>
                 {
@@ -91,8 +91,8 @@ namespace CombatManager.LocalService
 
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/character/details/{charid}")]
-        public async Task<bool> GetCharacterDetails(string charid)
+        [Route(HttpVerbs.Get, "/character/details/{charid}")]
+        public async Task<object> GetCharacterDetails(string charid)
         {
 
             return await TakeCharacterAction(charid, (res, ch) =>
@@ -102,8 +102,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/moveupcharacter/{charid}")]
-        public async Task<bool> MoveCharacterUp(string charid)
+        [Route(HttpVerbs.Get, "/combat/moveupcharacter/{charid}")]
+        public async Task<object> MoveCharacterUp(string charid)
         {
 
             return await TakeCharacterAction(charid, (res, ch) =>
@@ -116,8 +116,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/movedowncharacter/{charid}")]
-        public async Task<bool> MoveDownCharacter(string charid)
+        [Route(HttpVerbs.Get, "/combat/movedowncharacter/{charid}")]
+        public async Task<object> MoveDownCharacter(string charid)
         {
 
             return await TakeCharacterAction(charid, (res, ch) =>
@@ -130,8 +130,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/deletecharacter/{charid}")]
-        public async Task<bool> DeleteCharacter(string charid)
+        [Route(HttpVerbs.Get, "/combat/deletecharacter/{charid}")]
+        public async Task<object> DeleteCharacter(string charid)
         {
 
             return await TakeCharacterAction(charid, (res, ch) =>
@@ -144,8 +144,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/ready/{charid}")]
-        public async Task<bool> ReadyCharacter(string charid)
+        [Route(HttpVerbs.Get, "/combat/ready/{charid}")]
+        public async Task<object> ReadyCharacter(string charid)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -156,8 +156,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/unready/{charid}")]
-        public async Task<bool> UnreadyCharacter(string charid)
+        [Route(HttpVerbs.Get, "/combat/unready/{charid}")]
+        public async Task<object> UnreadyCharacter(string charid)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -168,8 +168,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/delay/{charid}")]
-        public async Task<bool> DelayCharacter(string charid)
+        [Route(HttpVerbs.Get, "/combat/delay/{charid}")]
+        public async Task<object> DelayCharacter(string charid)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -180,8 +180,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/undelay/{charid}")]
-        public async Task<bool> UndelayCharacter(string charid)
+        [Route(HttpVerbs.Get, "/combat/undelay/{charid}")]
+        public async Task<object> UndelayCharacter(string charid)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -192,8 +192,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/combat/actnow/{charid}")]
-        public async Task<bool> CharacterActNow(string charid)
+        [Route(HttpVerbs.Get, "/combat/actnow/{charid}")]
+        public async Task<object> CharacterActNow(string charid)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -205,8 +205,8 @@ namespace CombatManager.LocalService
         }
 
 
-        [WebApiHandler(HttpVerbs.Get, "/api/character/changehp/{charid}/{amount}")]
-        public async Task<bool> ChangeHP(string charid, int amount)
+        [Route(HttpVerbs.Get, "/character/changehp/{charid}/{amount}")]
+        public async Task<object> ChangeHP(string charid, int amount)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -217,8 +217,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/character/changemaxhp/{charid}/{amount}")]
-        public async Task<bool> ChangeMaxHP(string charid, int amount)
+        [Route(HttpVerbs.Get, "/character/changemaxhp/{charid}/{amount}")]
+        public async Task<object> ChangeMaxHP(string charid, int amount)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -229,8 +229,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/character/changetemporaryhp/{charid}/{amount}")]
-        public async Task<bool> ChangeTemporaryHP(string charid, int amount)
+        [Route(HttpVerbs.Get, "/character/changetemporaryhp/{charid}/{amount}")]
+        public async Task<object> ChangeTemporaryHP(string charid, int amount)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -242,8 +242,8 @@ namespace CombatManager.LocalService
         }
 
 
-        [WebApiHandler(HttpVerbs.Get, "/api/character/changenonlethaldamage/{charid}/{amount}")]
-        public async Task<bool> ChangeNonlethalDamage(string charid, int amount)
+        [Route(HttpVerbs.Get, "/character/changenonlethaldamage/{charid}/{amount}")]
+        public async Task<object> ChangeNonlethalDamage(string charid, int amount)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -254,8 +254,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/character/hide/{charid}/{state}")]
-        public async Task<bool> HideCharacter(string charid, bool state)
+        [Route(HttpVerbs.Get, "/character/hide/{charid}/{state}")]
+        public async Task<object> HideCharacter(string charid, bool state)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -266,8 +266,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/character/idle/{charid}/{state}")]
-        public async Task<bool> IdleCharacter(string charid, bool state)
+        [Route(HttpVerbs.Get, "/character/idle/{charid}/{state}")]
+        public async Task<object> IdleCharacter(string charid, bool state)
         {
             return await TakeCharacterAction(charid, (res, ch) =>
             {
@@ -279,8 +279,8 @@ namespace CombatManager.LocalService
         }
 
 
-        [WebApiHandler(HttpVerbs.Post, "/api/character/addcondition")]
-        public async Task<bool> AddCondition()
+        [Route(HttpVerbs.Post, "/character/addcondition")]
+        public async Task<object> AddCondition()
         {
             return await TakeCharacterPostAction<AddConditionRequest>((res, data, ch) =>
             {
@@ -303,8 +303,8 @@ namespace CombatManager.LocalService
         }
 
 
-        [WebApiHandler(HttpVerbs.Post, "/api/character/removecondition")]
-        public async Task<bool> RemoveCondition()
+        [Route(HttpVerbs.Post, "/character/removecondition")]
+        public async Task<object> RemoveCondition()
         {
             return await TakeCharacterPostAction<RemoveConditionRequest>((res, data, ch) =>
             {
@@ -316,8 +316,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Post, "/api/monster/list")]
-        public async Task<bool> ListMonsters()
+        [Route(HttpVerbs.Post, "/monster/list")]
+        public async Task<object> ListMonsters()
         {
             return await TakePostAction<MonsterListRequest>((res, data) =>
             {
@@ -350,8 +350,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Post, "/api/monster/get")]
-        public async Task<bool> GetMonster()
+        [Route(HttpVerbs.Post, "/monster/get")]
+        public async Task<object> GetMonster()
         {
 
             return await TakePostAction<MonsterRequest>((res, data) =>
@@ -361,8 +361,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/monster/getregular/{id}")]
-        public async Task<bool> GetRegularMonster(int id)
+        [Route(HttpVerbs.Get, "/monster/getregular/{id}")]
+        public async Task<object> GetRegularMonster(int id)
         {
             return await TakeAction( (res) =>
             {
@@ -370,66 +370,66 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/ui/bringtofront")]
-        public async Task<bool> BringToFront()
+        [Route(HttpVerbs.Get, "/ui/bringtofront")]
+        public async Task<object> BringToFront()
         {
 
             return await Precheck(async () =>
             {
                 service.TakeUIAction(LocalCombatManagerService.UIAction.BringToFront);
-                return await Ok(new { res = true });
+                return await Task.FromResult(new { res = true });
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/ui/minimize")]
-        public async Task<bool> Minimize()
+        [Route(HttpVerbs.Get, "/ui/minimize")]
+        public async Task<object> Minimize()
         {
 
             return await Precheck(async () =>
             {
                 service.TakeUIAction(LocalCombatManagerService.UIAction.Minimize);
-                return await Ok(new { res = true });
+                return await Task.FromResult(new { res = true });
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/ui/goto/{place}")]
-        public async Task<bool> UIGoto(string place)
+        [Route(HttpVerbs.Get, "/ui/goto/{place}")]
+        public async Task<object> UIGoto(string place)
         {
 
             return await Precheck(async () =>
             {
                 service.TakeUIAction(LocalCombatManagerService.UIAction.Goto, place);
-                return await Ok(new { res = true });
+                return await Task.FromResult(new { res = true });
             });
         }
 
-        [WebApiHandler(HttpVerbs.Get, "/api/ui/showcombatlist")]
-        public async Task<bool> ShowCombatList()
+        [Route(HttpVerbs.Get, "/ui/showcombatlist")]
+        public async Task<object> ShowCombatList()
         {
 
             return await Precheck(async () =>
             {
                 service.TakeUIAction(LocalCombatManagerService.UIAction.ShowCombatListWindow);
-                return await Ok(new { res = true });
+                return await Task.FromResult(new { res = true });
             });
         }
 
 
-        [WebApiHandler(HttpVerbs.Get, "/api/ui/hidecombatlist")]
-        public async Task<bool> HideCombatList()
+        [Route(HttpVerbs.Get, "/ui/hidecombatlist")]
+        public async Task<object> HideCombatList()
         {
 
             return await Precheck(async () =>
             {
                 service.TakeUIAction(LocalCombatManagerService.UIAction.HideCombatListWindow);
-                return await Ok(new { res = true });
+                return await Task.FromResult(new { res = true });
             });
         }
 
 
 
-        [WebApiHandler(HttpVerbs.Get, "/api/monster/getcustom/{id}")]
-        public async Task<bool> GetCustomMonster(int id)
+        [Route(HttpVerbs.Get, "/monster/getcustom/{id}")]
+        public async Task<object> GetCustomMonster(int id)
         {
             return await TakeAction((res) =>
             {
@@ -437,8 +437,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Post, "/api/monster/fromlist")]
-        public async Task<bool> GetMonsters()
+        [Route(HttpVerbs.Post, "/monster/fromlist")]
+        public async Task<object> GetMonsters()
         {
             return await TakePostAction<MonstersRequest>((res, data) =>
             {
@@ -456,8 +456,8 @@ namespace CombatManager.LocalService
             });
         }
 
-        [WebApiHandler(HttpVerbs.Post, "/api/monster/add")]
-        public async Task<bool> AddMonster()
+        [Route(HttpVerbs.Post, "/monster/add")]
+        public async Task<object> AddMonster()
         {
             return await TakePostAction<MonsterAddRequest>((res, data) =>
             {
@@ -482,21 +482,19 @@ namespace CombatManager.LocalService
 
         
 
-        private async Task<bool> Precheck(Func<Task<bool>> function)
+        private async Task<object> Precheck(Func<Task<object>> function)
         {
             if (!Passcode.IsEmptyOrNull())
             {
                 if (!HttpContext.HasRequestHeader("passcode"))
                 {
-                    return await InternalServerError(new ArgumentException(), System.Net.HttpStatusCode.Forbidden);
-                }
+                    throw HttpException.Forbidden();                }
                 else
                 {
                     string matchcode = HttpContext.RequestHeader("Passcode");
                     if (matchcode != Passcode)
                     {
-                        return await InternalServerError(new ArgumentException(), System.Net.HttpStatusCode.Forbidden);
-
+                        throw HttpException.Forbidden();
                     }
                 }
             }
@@ -504,7 +502,7 @@ namespace CombatManager.LocalService
         }
 
 
-        private async Task<bool> TakeAction(Action<ResultHandler> resAction)
+        private async Task<object> TakeAction(Action<ResultHandler> resAction)
         {
             return await Precheck(async () =>
             {
@@ -527,22 +525,21 @@ namespace CombatManager.LocalService
                     });
                     if (res.Failed)
                     {
-
-                        return await InternalServerError(new ArgumentException(), res.Code);
+                        throw new HttpException(res.Code);
                     }
                     else
                     {
-                        return await Ok(res.Data);
+                        return await Task.FromResult(res.Data);
                     }
                 }
                 catch (Exception ex)
                 {
-                    return await InternalServerError(ex);
+                    throw new HttpException(System.Net.HttpStatusCode.InternalServerError, ex.ToString());
                 }
             });
         }
 
-        private async Task<bool> TakeCharacterAction(string charid, Action<ResultHandler, Character> handler)
+        private async Task<object> TakeCharacterAction(string charid, Action<ResultHandler, Character> handler)
         {
             return await TakeAction((res) =>
             {
@@ -592,7 +589,7 @@ namespace CombatManager.LocalService
             });
         }
 
-        private async Task<bool> TakePostAction<T>(Action<ResultHandler, T> resAction) where T : class
+        private async Task<object> TakePostAction<T>(Action<ResultHandler, T> resAction) where T : class
         {
 
             return await Precheck(async () =>
@@ -600,7 +597,7 @@ namespace CombatManager.LocalService
                 try
                 {
                     ResultHandler res = new ResultHandler();
-                    T data = await HttpContext.ParseJsonAsync<T>();
+                    T data = await HttpContext.GetRequestDataAsync<T>();
 
                     if (data == null)
                     {
@@ -624,23 +621,22 @@ namespace CombatManager.LocalService
                     }
                     if (res.Failed)
                     {
-
-                        return await InternalServerError(new ArgumentException(), res.Code);
+                        throw new HttpException(res.Code, new ArgumentException().ToString());
                     }
                     else
                     {
-                        return await Ok(res.Data);
+                        return res.Data;
                     }
 
                 }
                 catch (Exception ex)
                 {
-                    return await InternalServerError(ex);
+                    throw new HttpException(System.Net.HttpStatusCode.InternalServerError, ex.ToString());
                 }
             });
         }
 
-        private async Task<bool> TakeCharacterPostAction<T>(Action<ResultHandler, T, Character> resAction) where T : CharacterRequest
+        private async Task<object> TakeCharacterPostAction<T>(Action<ResultHandler, T, Character> resAction) where T : CharacterRequest
         {
             return await TakePostAction<T>((res, data) =>
             {

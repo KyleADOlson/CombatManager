@@ -5,18 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Unosquare.Labs.EmbedIO;
-using Unosquare.Labs.EmbedIO.Modules;
-using Unosquare.Swan;
+using EmbedIO;
+using EmbedIO.WebSockets;
 
 namespace CombatManager.LocalService
 {
-    public class CombatManagerNotificationServer : WebSocketsServer
+    public class CombatManagerNotificationServer : WebSocketModule
     {
         CombatState state;
 
-        public CombatManagerNotificationServer(CombatState state)
-            : base(true)
+        public CombatManagerNotificationServer(string path, CombatState state)
+            : base(path, true)
         {
             this.state = state;
 
@@ -36,7 +35,7 @@ namespace CombatManager.LocalService
 
 
             new Thread(() =>
-           Broadcast(data)
+           BroadcastAsync(data)
         ).Start();
 
 
@@ -56,7 +55,7 @@ namespace CombatManager.LocalService
 
         private void State_CharacterSortCompleted(object sender, EventArgs e)
         {
-            
+
         }
 
         private void State_CharacterPropertyChanged(object sender, CombatStateCharacterEventArgs e)
@@ -82,33 +81,33 @@ namespace CombatManager.LocalService
             SendState();
         }
 
-        public override string ServerName => "Combat State Notifcation Server";
 
-        protected override void OnMessageReceived(IWebSocketContext context, byte[] rxBuffer, IWebSocketReceiveResult rxResult)
+        protected override Task OnMessageReceivedAsync(IWebSocketContext context, byte[] buffer, IWebSocketReceiveResult result)
         {
-            foreach (var ws in WebSockets)
-            {
-                //if (ws != context)
-                  //  Send(ws, rxBuffer.ToText());
-            }
+            return Task.CompletedTask;
+            
         }
 
-        protected override void OnClientConnected(
-            IWebSocketContext context,
-            System.Net.IPEndPoint localEndPoint,
-            System.Net.IPEndPoint remoteEndPoint)
+
+        protected override Task OnClientConnectedAsync(
+            IWebSocketContext context)
         {
 
+            return Task.CompletedTask;
         }
 
-        protected override void OnFrameReceived(IWebSocketContext context, byte[] rxBuffer, IWebSocketReceiveResult rxResult)
+        protected override Task OnFrameReceivedAsync(IWebSocketContext context, byte[] rxBuffer, IWebSocketReceiveResult rxResult)
         {
-            // placeholder
+
+            return Task.CompletedTask;
         }
 
-        protected override void OnClientDisconnected(IWebSocketContext context)
+        protected override Task OnClientDisconnectedAsync(IWebSocketContext context)
         {
+            return Task.CompletedTask;
         }
+
+
     }
 
 
