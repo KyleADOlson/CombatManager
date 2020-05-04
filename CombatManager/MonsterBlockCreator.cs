@@ -155,7 +155,7 @@ namespace CombatManager
             }
 
             string header =  "CR " + monster.CR;
-            if (monster.MR != null && monster.MR > 0)
+            if (monster.MR != null && monster.MR > 0 && monster.IsMythic)
             {
                 header += "/MR " + monster.MR;
             }

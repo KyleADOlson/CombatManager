@@ -29,53 +29,119 @@ namespace CombatManager
 {
 	public class MonsterHtmlCreator
 	{
-		public static string CreateHtml(Monster monster)
-		{
-			return CreateHtml(monster, null);
-		}
+
 		
-		public static string CreateHtml(Monster monster, Character ch)
+		public static string CreateHtml(Monster monster = null, Character ch = null, bool addDescription = true, bool completePage = true)
 		{
-			return CreateHtml(monster, ch, true);
-		}
-		
-		public static string CreateHtml(Monster monster, Character ch, bool addDescription)
-		{
+            Monster useMonster;
+
+            if (ch != null)
+            {
+                useMonster = ch.Monster;
+            }
+            else
+            {
+                useMonster = monster;
+            }
+
 			StringBuilder blocks = new StringBuilder();
-			blocks.CreateHtmlHeader();
-			
+            if (completePage)
+            {
+                blocks.CreateHtmlHeader();
+            }
 
-            CreateTopSection(monster, ch, blocks);
+            CreateTopSection(useMonster, ch, blocks);
 
-            CreateDefenseSection(monster, blocks);
+            CreateDefenseSection(useMonster, blocks);
 
-            CreateOffenseSection(monster, blocks);
-            CreateTacticsSection(monster, blocks);
-            CreateStatisticsSection(monster, blocks);
-            CreateEcologySection(monster, blocks);
-            CreateSpecialAbilitiesSection(monster, blocks);
+            CreateOffenseSection(useMonster, blocks);
+            CreateTacticsSection(useMonster, blocks);
+            CreateStatisticsSection(useMonster, blocks);
+            CreateEcologySection(useMonster, blocks);
+            CreateSpecialAbilitiesSection(useMonster, blocks);
             if (addDescription)
             {
-                CreateDescriptionSection(monster, blocks);
+                CreateDescriptionSection(useMonster, blocks);
             }
 
            
 
-            if (SourceInfo.GetSourceType(monster.Source) != SourceType.Core)
+            if (SourceInfo.GetSourceType(useMonster.Source) != SourceType.Core)
             {
                 
-                blocks.CreateItemIfNotNull("Source ", SourceInfo.GetSource(monster.Source));
+                blocks.CreateItemIfNotNull("Source ", SourceInfo.GetSource(useMonster.Source));
                 
             }
 
-            
-			
-			blocks.CreateHtmlFooter();
+
+            if (completePage)
+            {
+                blocks.CreateHtmlFooter();
+            }
 		
 			return blocks.ToString();
 		}
-		
-		private static void CreateTopSection(Monster monster, Character ch, StringBuilder blocks)
+
+        public static String CreateCombatListItem(Character ch, CombatState state = null)
+        {
+            StringBuilder blocks = new StringBuilder();
+
+
+            bool follower = ch.InitiativeLeader != null;
+
+            blocks.StartParagraph();
+
+            if (state != null && ch == state.CurrentCharacter)
+            {
+                blocks.AppendImg("/img/icon/next", "icon");
+            }
+            else
+            {
+                blocks.AppendTag("span", " ", "square24");
+            }
+            if (follower)
+            {
+                blocks.AppendSpace(4);
+            }
+
+            blocks.AppendOpenTag("span", "combatlistitem");
+            blocks.AppendHtml(ch.Name);
+            blocks.AppendHtml(" " + ch.HP + "/" + ch.MaxHP + " " );
+            blocks.AppendHtml(ch.InitiativeCount.Base.ToString());
+            blocks.AppendCloseTag("span");
+
+            foreach (ActiveCondition cn in ch.Monster.ActiveConditions)
+            {
+                blocks.AppendImg("/img/icon/" + cn.Condition.Image, "icon");
+            }
+
+
+            blocks.EndParagraph();
+
+
+
+            return blocks.ToString();
+        }
+
+        public static string CreateCombatList(CombatState state)
+        {
+            StringBuilder blocks = new StringBuilder();
+
+            foreach (Character c in state.CombatList)
+            {
+                blocks.Append(CreateCombatListItem(c, state));
+
+                foreach (Character f in c.InitiativeFollowers)
+                {
+
+                    blocks.Append(CreateCombatListItem(f));
+                }
+            }
+            return blocks.ToString();
+        }
+
+
+        private static void CreateTopSection(Monster monster, Character ch, StringBuilder blocks)
         {
             string name = monster.Name;
 
@@ -85,7 +151,7 @@ namespace CombatManager
             }
 
             string header = "CR " + monster.CR;
-            if (monster.MR != null && monster.MR > 0)
+            if (monster.MR != null && monster.MR > 0 && monster.IsMythic)
             {
                 header += "/MR " + monster.MR;
             }
@@ -293,7 +359,7 @@ namespace CombatManager
                 int count = 0;
 
 
-                blocks.AppendEscapedTag("sp", "bolded", "Feats");
+                blocks.AppendEscapedTag("sp", "Feats", "bolded");
 				blocks.AppendSpace();
 				string text = "";
                 foreach (string feat in monster.FeatsList)
@@ -416,7 +482,7 @@ namespace CombatManager
             if (monster.Description_Visual != null && monster.Description_Visual.Length > 0)
             {
 				
-				blocks.AppendOpenTagWithClass("p", "visualdescription");
+				blocks.AppendOpenTag("p", "visualdescription");
 				
                 blocks.AppendHtml(monster.Description_Visual);
 				
@@ -429,7 +495,7 @@ namespace CombatManager
             if (monster.DescHTML != null && monster.DescHTML.Length > 0)
             {
 				
-				blocks.AppendOpenTagWithClass("p", "description");
+				blocks.AppendOpenTag("p", "description");
                 blocks.Append(monster.DescHTML);
 				blocks.AppendCloseTag("p");
 
@@ -437,7 +503,7 @@ namespace CombatManager
             else if (monster.Description != null && monster.Description.Length > 0)
             {
 				
-				blocks.AppendOpenTagWithClass("span", "description");
+				blocks.AppendOpenTag("span", "description");
 
                 blocks.AppendHtml(monster.Description);
 

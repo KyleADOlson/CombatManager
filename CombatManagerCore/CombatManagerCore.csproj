@@ -105,10 +105,14 @@
     <Compile Include="CMStringUtilities.cs" />
     <Compile Include="Coin.cs" />
     <Compile Include="CombatStateNotifcation.cs" />
+    <Compile Include="ConditionHtmlCreator.cs" />
     <Compile Include="DD5Stats.cs" />
     <Compile Include="LocalService\AddConditionRequest.cs" />
+    <Compile Include="LocalService\BinaryResourceManager.cs" />
     <Compile Include="LocalService\CharacterRequest.cs" />
+    <Compile Include="LocalService\CombatManagerHTMLServer.cs" />
     <Compile Include="LocalService\CombatManagerNotificationServer.cs" />
+    <Compile Include="LocalService\ImageServer.cs" />
     <Compile Include="LocalService\LocalRemoteConverter.cs" />
     <Compile Include="LocalService\LocalServiceHelper.cs" />
     <Compile Include="LocalService\LocalServiceMessage.cs" />

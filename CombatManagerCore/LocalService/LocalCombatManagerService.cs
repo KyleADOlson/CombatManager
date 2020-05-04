@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EmbedIO;
 
 namespace CombatManager.LocalService
 {
@@ -99,6 +98,8 @@ namespace CombatManager.LocalService
             server = new WebServer(o => o.WithUrlPrefix(url)
             .WithMode(HttpListenerMode.EmbedIO))
             .WithLocalSessionManager()
+            .WithModule(new CombatManagerHTMLServer("/www/", state))
+            .WithModule(new ImageServer())
             .WithModule(new CombatManagerNotificationServer("/api/notification/", state))
             .WithWebApi("/api", m => m.RegisterController(() =>  new LocalCombatManagerServiceController(null, state, this, RunActionCallback, RunSaveCallback)));
  

@@ -8820,15 +8820,20 @@ namespace CombatManager
         {
             MenuItem mi = (MenuItem)sender;
 
-            Character root = (Character)((FrameworkElement)sender).DataContext;
+            Character root = null;
+
+            if (mi.DataContext is uint)
+            {
+                root = (Character)((FrameworkElement)mi.Parent).DataContext;
+            }
+            else
+            {
+                root = (Character)mi.DataContext;
+            }
 
             List<Character> list = GetViewSelectedCharactersFromChar(root);
 
-            bool newState = !root.IsHidden;
-
-            uint? color = null;
-
-            color = ColorMenuItemColor(mi).ToUInt32();
+            uint? color = ColorMenuItemColor(mi).ToUInt32();
 
             foreach (Character ch in list)
             {

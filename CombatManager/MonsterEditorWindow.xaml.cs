@@ -440,6 +440,5 @@ namespace CombatManager
 	       _Monster.Senses = sensesText + "Perception " + CMStringUtilities.PlusFormatNumber(_Monster.Perception);
 	    }
 
-			
-	}
+    }
 }

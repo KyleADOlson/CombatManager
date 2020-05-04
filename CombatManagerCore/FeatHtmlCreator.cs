@@ -85,7 +85,7 @@ namespace CombatManager
             {
                 if (featString != null && featString.Length > 0)
                 {
-					blocks.AppendEscapedTag("p", "altheader", featString);
+					blocks.AppendEscapedTag("p", featString, "altheader");
                 }
             }
 

@@ -11,16 +11,15 @@ namespace CombatManager
         {
         }
         
-        public static String CreateHtml(MagicItem item)
-        {
-            return CreateHtml(item, true);
-        }
-
-        public static String CreateHtml(MagicItem item, bool showTitle)
+        public static String CreateHtml(MagicItem item, bool showTitle = true, bool completePage = true)
         {
 
             StringBuilder blocks = new StringBuilder();
-            blocks.CreateHtmlHeader();
+
+            if (completePage)
+            {
+                blocks.CreateHtmlHeader();
+            }
 
             if (showTitle)
             {
@@ -49,7 +48,7 @@ namespace CombatManager
                 if (!String.IsNullOrEmpty(item.DescHTML) && item.DescHTML != "NULL")
                 {
 
-                    blocks.AppendOpenTagWithClass("p", "description");
+                    blocks.AppendOpenTag("p", "description");
                     blocks.Append(item.DescHTML);
                     blocks.AppendCloseTag("p");
                 }
@@ -57,7 +56,7 @@ namespace CombatManager
                 {
 
 
-                    blocks.AppendOpenTagWithClass("p", "description");
+                    blocks.AppendOpenTag("p", "description");
 
                     blocks.CreateItemIfNotNull( null, true, item.Description, null, true);
 
@@ -98,7 +97,10 @@ namespace CombatManager
 
             }
 
-            blocks.CreateHtmlFooter();
+            if (completePage)
+            {
+                blocks.CreateHtmlFooter();
+            }
 
             return blocks.ToString();
         }

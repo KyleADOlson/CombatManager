@@ -165,7 +165,7 @@ namespace CombatManager
                             subBlocks.AppendLineBreak();
                         }
                         type = item.Type;
-                        subBlocks.AppendHtmlSpan("itemspace", type);
+                        subBlocks.AppendSpan(type, "itemspace");
                         first = true;
                     }
                     if (first)

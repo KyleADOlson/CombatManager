@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 <head>
 <style>
@@ -45,6 +46,10 @@ text-align:right;
 {
 font-weight:bold;
 }
+.italic
+{
+font-style:italic;
+}
 .sectionheader
 {
 margin-top:0px;
@@ -89,6 +94,32 @@ background-color:#A63E3C;
 {
 color:White;
 background-color:#000000;
+}
+
+.icon {
+    padding: 4px;
+  height: 16px;
+  width: 16px;
+}
+
+.square24 {
+  height: 24px;
+  width: 24px;
+  display:inline-block;
+}
+
+.square16 {
+  height: 16px;
+  width: 16px;
+  display:inline-block;
+}
+
+.combatlistitem {
+
+  display:inline-block;
+  margin-bottom:16px;
+  vertical-align: middle
+
 }
 
 </style>

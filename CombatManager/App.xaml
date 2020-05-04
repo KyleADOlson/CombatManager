@@ -103,10 +103,12 @@
         <local:ItemExistsConverter x:Key="itemExistsConverter"/>
         <local:GreaterThanConverter x:Key="GreaterThanConverter"/>
         <local:BoolInverter x:Key="boolInverter"/>
+        <local:NullableIntValueConverter x:Key="NullableIntValueConverter"/>
         <local:NotNullVisibilityConverter x:Key="notNullVisibilityConverter"/>
         <local:NotNullVisibilityCollapsedConverter x:Key="NotNullVisibilityCollapsedConverter"/>
         <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
         <local:BoolToVisibilityCollapsedConverter x:Key="BoolToVisibilityCollapsedConverter"/>
+        <local:StringBoolToVisibilityConverter x:Key="StringBoolToVisibilityConverter"/>
         <local:ChangedToBrushConverter x:Key="changedToBrushConverter"/>
         <local:HPToBrushConverter x:Key="hpToBrushConverter"/>
         <local:NullableUintToBrushConverter x:Key="nullableUintToBrushConverter"/>
@@ -144,6 +146,34 @@
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Background" Value="{DynamicResource PrimaryColorLightBrush}"/>
                     <Setter Property="Foreground" Value="DarkGray"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <Style x:Key="ButtonMainToggleStyle" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Background" Value="{DynamicResource PrimaryColorDarkerBrush}" />
+          
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border BorderBrush="{DynamicResource LightBorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Margin="{TemplateBinding Margin}"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                TextBlock.Foreground="{DynamicResource TextOnPrimaryDarkerBrush}">
+                            <ContentPresenter HorizontalAlignment="Center"                  
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource PrimaryColorMediumBrush}" />
+
+                    <Setter Property="TextBlock.Foreground" Value="{DynamicResource TextOnPrimaryDarkerBrush}"/>
                 </Trigger>
             </Style.Triggers>
 

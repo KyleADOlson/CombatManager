@@ -301,14 +301,22 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40" />
-                    <ColumnDefinition Width="0.916*"/>
-                    <ColumnDefinition Width="0.084*" />
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="24.5" />
+                    <ColumnDefinition Width="31.375" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="31.375" />
                 </Grid.ColumnDefinitions>
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name" Foreground="White" d:LayoutOverrides="Height" FontWeight="Bold" Margin="0,0,4,0" VerticalAlignment="Center"/>
                 <TextBox Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,2,4.001,2" VerticalAlignment="Center" x:Name="NameTextBox" TextChanged="NameTextBox_TextChanged" />
                 <TextBlock Grid.Column="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="CR" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="4,0"/>
-                <TextBox Grid.Column="3" Text="{Binding Adjuster.CR, Converter={StaticResource CRValidatingConverter}, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="0,2" />
+
+                <TextBox Grid.Column="3" Text="{Binding Adjuster.CR, Converter={StaticResource CRValidatingConverter}, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Margin="0,2,0.5,0" />
+                <ToggleButton Grid.Column="4" HorizontalAlignment="Left" IsChecked="{Binding IsMythic}" Style="{DynamicResource ButtonMainToggleStyle}" Content="MR" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Padding="4,0" Margin="4,0"/>
+
+                <TextBox Grid.Column="5" Text="{Binding Adjuster.MR, Converter={StaticResource NullableIntValueConverter}, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="0,2"
+                         Visibility="{Binding IsMythic, Converter={StaticResource boolToVisibilityConverter}}"/>
+
                 <ComboBox SelectedIndex="{Binding Alignment, Converter={StaticResource AlignmentIndexConverter}}" Margin="0,3" Width="34.584" VerticalAlignment="Top" HorizontalAlignment="Left" BorderBrush="{x:Null}" Grid.ColumnSpan="1" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3" Grid.Row="1">
                     <ComboBoxItem Content="LG"/>
                     <ComboBoxItem Content="NG"/>
@@ -331,7 +339,7 @@
                     <ComboBoxItem Content="Gargantuan"/>
                     <ComboBoxItem Content="Colossal"/>
                 </ComboBox>
-                <ComboBox SelectedIndex="{Binding Type, Converter={StaticResource MonsterTypeIndexConverter}}" Margin="92.028,3,76.846,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3" Grid.Row="1" Grid.Column="1" Width="104" HorizontalAlignment="Left">
+                <ComboBox SelectedIndex="{Binding Type, Converter={StaticResource MonsterTypeIndexConverter}}" Margin="92,3,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource ComboBoxStyle1}" Padding="3,3,0,3" Grid.Row="1" Grid.Column="1" Width="103" HorizontalAlignment="Left">
                     <ComboBoxItem Content="Aberration" />
                     <ComboBoxItem Content="Animal" />
                     <ComboBoxItem Content="Construct" />
@@ -346,7 +354,7 @@
                     <ComboBoxItem Content="Undead" />
                     <ComboBoxItem Content="Vermin" />
                 </ComboBox>
-                <TextBox Margin="200,3,0,3" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" d:LayoutOverrides="Height" Text="{Binding SubType, Converter={StaticResource ParenthesesPropertyConverter}}" ToolTip="Subtype"/>
+                <TextBox Margin="200,3,0,3" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Text="{Binding SubType, Converter={StaticResource ParenthesesPropertyConverter}, UpdateSourceTrigger=PropertyChanged}" ToolTip="Subtype"/>
                 <TextBlock TextWrapping="Wrap" Text="Senses" Foreground="White" Grid.Row="2" d:LayoutOverrides="Height" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 <TextBox Margin="0,2,4.001,2" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1">
                     <MultiBinding Converter="{StaticResource SensesConverter}">
@@ -355,14 +363,14 @@
                     </MultiBinding>
                 </TextBox>
                 <TextBlock Margin="0,5" TextWrapping="Wrap" Foreground="White" Grid.Row="2" TextAlignment="Center" d:LayoutOverrides="Height" Text="Init" HorizontalAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
-                <TextBox Text="{Binding Init}" VerticalAlignment="Top" Grid.Row="2" TextAlignment="Center" GotFocus="TextBox_GotFocus" Margin="0,2,0,0" Grid.Column="3" />
+                <TextBox Text="{Binding Init}" VerticalAlignment="Top" Grid.Row="2" TextAlignment="Center" GotFocus="TextBox_GotFocus" Margin="24,2,0,0" Grid.Column="2" Grid.ColumnSpan="4" />
                 <TextBlock Text="Race" Grid.Row="3" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" />
                 <TextBox Grid.Column="1" Margin="0,2" Grid.Row="3" Text="{Binding Race}" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="94.195"/>
                 <TextBlock Text="Class" Grid.Row="3" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" RenderTransformOrigin="2.474,0.342" Grid.Column="1" Margin="98.195,5,0,5" d:LayoutOverrides="Height" />
-                <TextBox Grid.Column="1" Margin="131.775,2,0,2" Grid.Row="3" Text="{Binding Class}" d:LayoutOverrides="Height" Grid.ColumnSpan="3"/>
+                <TextBox Grid.Column="1" Margin="132,2,0,2" Grid.Row="3" Text="{Binding Class}" Grid.ColumnSpan="5"/>
             </Grid>
         </Border>
-        <Border  HorizontalAlignment="Right" Width="235.333" VerticalAlignment="Top" Margin="0,6,11,0" CornerRadius="0" BorderThickness="1" Grid.Column="1" d:LayoutOverrides="VerticalAlignment" BorderBrush="{DynamicResource LightBorderBrush}">
+        <Border  HorizontalAlignment="Right" Width="238" VerticalAlignment="Top" Margin="0,6,10.667,0" CornerRadius="0" BorderThickness="1" Grid.Column="1" BorderBrush="{DynamicResource LightBorderBrush}">
             <Border.Background>
                 <SolidColorBrush Color="{DynamicResource PrimaryColorDarker}"/>
             </Border.Background>
@@ -382,10 +390,10 @@
                         <RowDefinition Height="26"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="81"/>
-                        <ColumnDefinition Width="Auto" MinWidth="31.333"/>
-                        <ColumnDefinition Width="81"/>
-                        <ColumnDefinition Width="Auto" MinWidth="31.333"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Margin="5,5,0,0" TextWrapping="Wrap" Text="Str" Foreground="White" TextAlignment="Center" VerticalAlignment="Top" Width="35.833" HorizontalAlignment="Left" d:LayoutOverrides="Width" FontWeight="Bold"/>
                     <TextBox Text="{Binding Adjuster.Strength, Converter={StaticResource AbilityValueConverter}, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Margin="0,2,3,0" TextWrapping="NoWrap" Width="24" VerticalAlignment="Top" TextAlignment="Center" GotFocus="TextBox_GotFocus" />

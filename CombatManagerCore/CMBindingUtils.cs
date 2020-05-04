@@ -20,10 +20,7 @@ namespace CombatManager
 
         protected void Notify(string prop)
         {
-            if (this.PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop)); 
         }
     }
 
@@ -53,10 +50,8 @@ namespace CombatManager
             set
             {
                 _Value = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Value"));
-                }
+                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Value"));
+                
             }
         }
 

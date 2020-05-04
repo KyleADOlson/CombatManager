@@ -78,93 +78,80 @@ namespace CombatManager
 #endif
         }
 
+
 		public static StringBuilder AppendHtml(this StringBuilder builder, string text)
 		{
 			return builder.Append(HttpUtility.HtmlEncode(text));
 		}
-		public static StringBuilder AppendOpenTag(this StringBuilder builder, string text)
+		public static StringBuilder AppendOpenTag(this StringBuilder builder, string tag, string cl = null)
 		{
-			return builder.Append("<" + text + ">");
+			string text = "<" + tag;
+			if (cl != null)
+			{
+				text += " class=\"" + cl + "\"";
+
+			}
+			text += ">";
+			return builder.Append(text);
 		}
-		public static StringBuilder AppendOpenTagWithClass(this StringBuilder builder, string text, string cl)
+		public static StringBuilder AppendCloseTag(this StringBuilder builder, string tag)
 		{
-			return builder.Append("<" + text + " class=\"" + cl + "\">");
+			return builder.Append("</" + tag + ">");
 		}
-		public static StringBuilder AppendCloseTag(this StringBuilder builder, string text)
+
+		public static StringBuilder AppendSpan(this StringBuilder builder, string content, string cl)
 		{
-			return builder.Append("</" + text + ">");
-		}
-		
-		
-		public static StringBuilder AppendHtmlSpan(this StringBuilder builder, string span, string text)
-		{
-			builder.Append("<span class=\"" + span + "\">");
-			builder.Append(HttpUtility.HtmlEncode(text));
-			builder.Append("</span>");
-		
+			builder.AppendEscapedTag("span", content, cl);
+
 			return builder;
 		}
 		
-		public static string CreateTagWithClass(string tag, string cl, string content)
+		public static string CreateTag(string tag, string content, string cl = null)
 		{
-			string text = "<" + tag + " class=\"" + cl + "\">";
+			string text = "<" + tag;
+			if (cl != null)
+			{
+				text += " class=\"" + cl + "\"";
+			}
+			text += ">";
 			text += content;
 			text += "</" + tag + ">";
 			
 			
 			return text;
 		}
-		
-		public static StringBuilder AppendTagWithClass(this StringBuilder builder, string tag, string cl, string content)
+
+
+
+		public static StringBuilder AppendTag(this StringBuilder builder, string tag, string content, string cl = null)
 		{
-			return builder.Append (CreateTagWithClass (tag, cl, content));
-		}
-		
-		public static string CreateTag(string tag, string content)
-		{
-			string text = "<" + tag + ">";
-			text += content;
-			text += "</" + tag + ">";
-			
-			
-			return text;
-		}
-		
-		public static StringBuilder AppendTag(this StringBuilder builder, string tag, string content)
-		{
-			return builder.Append (CreateTag (tag, content));
+			return builder.Append (CreateTag (tag, content, cl));
 		}
 		
 		
-		public static string CreateEscapedTagWithClass(string tag, string cl, string content)
-		{
-			string text = "<" + tag + " class=\"" + cl + "\">";
-			text += HttpUtility.HtmlEncode (content);
-			text += "</" + tag + ">";
-			
-			
-			return text;
-		}
 		
-		public static StringBuilder AppendEscapedTag(this StringBuilder builder, string tag, string cl, string content)
+		public static StringBuilder AppendEscapedTag(this StringBuilder builder, string tag, string content, string cl = null)
 		{
-			return builder.Append (CreateEscapedTagWithClass (tag, cl, content));
+			return builder.Append (CreateEscapedTag (tag, content, cl));
 		}
 		
 		
-		public static string CreateEscapedTag(string tag, string content)
+		public static string CreateEscapedTag(string tag, string content, string cl = null)
 		{
-			string text = "<" + tag + ">";
+			string text = "<" + tag;
+
+			if (cl != null)
+			{ 
+				text += " class=\"" + cl + "\"";
+			}
+			text += ">";
 			text += HttpUtility.HtmlEncode(content);
 			text += "</" + tag + ">";
 			
 			return text;
 		}
-		
-		public static StringBuilder AppendEscapedTag(this StringBuilder builder, string tag, string content)
-		{
-			return builder.Append (CreateEscapedTag (tag, content));
-		}
+
+
 		
 		
 		public static StringBuilder CreateHtmlHeader(this StringBuilder builder)
@@ -188,6 +175,20 @@ namespace CombatManager
 		public static StringBuilder AppendLineBreak(this StringBuilder builder)
 		{
 			return builder.AppendOpenTag ("br");	
+		}
+
+
+
+		public static StringBuilder StartParagraph(this StringBuilder builder, string cl = null)
+		{
+			builder.AppendOpenTag("p", cl);
+			return builder;
+		}
+
+		public static StringBuilder EndParagraph(this StringBuilder builder)
+		{
+			builder.AppendCloseTag("p");
+			return builder;
 		}
 		
 		public static String HtmlEncode(this string text)
@@ -244,7 +245,7 @@ namespace CombatManager
 				{
 					if (boldTitle)
 					{
-						builder.AppendOpenTagWithClass("sp", "bolded");
+						builder.AppendOpenTag("sp", "bolded");
 					}
 					
 					builder.Append(HttpUtility.HtmlEncode(title));
@@ -326,12 +327,12 @@ namespace CombatManager
 			{
 				builder.AppendOpenTag(header);
 				
-				builder.AppendOpenTagWithClass ("table", "headertable");
+				builder.AppendOpenTag("table", "headertable");
 				
 				builder.AppendOpenTag("tr");
 				
-				builder.AppendEscapedTag("th", "headertablename", name);
-				builder.AppendEscapedTag("th", "headertableextra", extra);
+				builder.AppendEscapedTag("th", name, "headertablename");
+				builder.AppendEscapedTag("th", extra, "headertableextra");
 				
 				builder.AppendCloseTag("tr");
 				
@@ -348,15 +349,22 @@ namespace CombatManager
 		{
 			return str != null && str.Trim() != "";
 		}
+
+
 		
-		public static StringBuilder AppendSpace(this StringBuilder builder)
+		public static StringBuilder AppendSpace(this StringBuilder builder, int count = 1)
 		{
-			return builder.Append("&nbsp;");	
+			for (int i = 0; i < count; i++)
+			{
+				builder.Append("&nbsp;");
+			}
+			return builder;
+			
 		}
 		
 		public static StringBuilder CreateSectionHeader(this StringBuilder builder, string text)
 		{
-			return builder.AppendEscapedTag("p", "sectionheader", text);
+			return builder.AppendEscapedTag("p", text, "sectionheader");
 		}
 		
         public static  StringBuilder CreateMultiValueLine(this StringBuilder blocks, List<TitleValuePair> values, string seperator)
@@ -386,16 +394,24 @@ namespace CombatManager
            return blocks;
         }
 
-        public static void AppendImg(this StringBuilder builder, string img)
+        public static void AppendImg(this StringBuilder builder, string img, string cl = null)
         {
 
-            String text = "<img src=\"" + img + "\"/>";
+			String text = "<img src=\"" + img + "\"";
+
+			if (cl != null)
+			{
+				text += " class=\"" + cl + "\"";
+			}
+
+			text += "/>";
 
             builder.Append(text);
 
         }
 
-        public static void AppendSmallIcon(this StringBuilder builder, string name)
+
+		public static void AppendSmallIcon(this StringBuilder builder, string name)
         {
 
             String text = "<img src=\"Images/External/" + name + "-16.png\"/>";

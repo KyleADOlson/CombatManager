@@ -168,8 +168,58 @@ namespace CombatManager
             return invert?(vis != Visibility.Visible):(vis==Visibility.Visible);
         }
     }
-	
-	
+
+    [ValueConversion(typeof(string), typeof(Visibility))]
+    class StringBoolToVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+
+            if (targetType != typeof(Visibility))
+            {
+                return null;
+            }
+
+            bool visible = ((string)value) == "1";
+            if (parameter != null && parameter.GetType() == typeof(bool))
+            {
+                if ((bool)parameter)
+                {
+                    visible = !visible;
+                }
+            }
+            else if (parameter != null && parameter.GetType() == typeof(string))
+            {
+                if (string.Compare((string)parameter, "true", true) == 0)
+                {
+                    visible = !visible;
+                }
+            }
+
+            return ((bool)visible) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (targetType != typeof(string))
+            {
+                return null;
+
+            }
+            Visibility vis = (Visibility)value;
+
+            bool invert = false;
+            if (parameter != null && parameter.GetType() == typeof(bool))
+            {
+                invert = (bool)parameter;
+            }
+
+            bool val =  invert ? (vis != Visibility.Visible) : (vis == Visibility.Visible);
+            return val ? "1" : "0";
+        }
+    }
+
+
     [ValueConversion(typeof(bool), typeof(Visibility))]
     class BoolToVisibilityCollapsedConverter : IValueConverter
     {

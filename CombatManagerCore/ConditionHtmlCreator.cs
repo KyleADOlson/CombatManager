@@ -31,7 +31,7 @@ namespace CombatManager
             StringBuilder blocks = new StringBuilder();
             blocks.CreateHtmlHeader();
 
-            blocks.AppendEscapedTag("p", "bolded", item.Name);
+            blocks.AppendEscapedTag("p", item.Name, "bolded");
             blocks.AppendOpenTag("p");
             blocks.AppendHtml(item.Text);
             blocks.AppendCloseTag("p");
@@ -44,7 +44,7 @@ namespace CombatManager
             StringBuilder blocks = new StringBuilder();
             blocks.CreateHtmlHeader();
 
-            blocks.AppendEscapedTag("p", "bolded", af.Name);
+            blocks.AppendEscapedTag("p", af.Name, "bolded");
             blocks.AppendOpenTag("p");
             blocks.AppendHtml(af.Text);
             blocks.AppendCloseTag("p");

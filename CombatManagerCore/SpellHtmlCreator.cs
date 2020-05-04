@@ -91,7 +91,7 @@ namespace CombatManager
             {
                 if (showTitle)
                 {
-                   blocks.AppendEscapedTag("p", "bolded", spell.name);
+                   blocks.AppendEscapedTag("p", spell.name, "bolded");
                 }
 
                 if (spell.description_formated != null && spell.description_formated.Length > 0)

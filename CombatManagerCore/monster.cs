@@ -403,7 +403,7 @@ namespace CombatManager
         private bool npc;
         private String descHTML;
         private int? mr;
-        private String mythic;
+        private string mythic;
 
         private bool statsParsed;
         private int? strength;
@@ -1851,6 +1851,7 @@ namespace CombatManager
             }
             return value;
         }
+
 
         static String GetAttributeStringValue(XElement it, string name)
         {
@@ -5192,7 +5193,7 @@ namespace CombatManager
             {
                 case SimpleMythicTemplateType.Agile:
 
-                    SubType = AddToStringList(SubType, "mythic");
+                    AddSubtype( "mythic");
 
                     //mr 1
                     AdjustMR(1);
@@ -5221,7 +5222,7 @@ namespace CombatManager
                     return true;
                 case SimpleMythicTemplateType.Arcane:
 
-                    SubType = AddToStringList(SubType, "mythic");
+                    AddSubtype("mythic");
 
                     //mr 1
                     AdjustMR(HDRoll.TotalCount > 10 ? 2 : 1);
@@ -5259,7 +5260,7 @@ namespace CombatManager
 
                 case SimpleMythicTemplateType.Divine:
 
-                    SubType = AddToStringList(SubType, "mythic");
+                    AddSubtype("mythic");
 
                     //mr 1
                     AdjustMR(HDRoll.TotalCount > 10 ? 2 : 1);
@@ -5306,7 +5307,7 @@ namespace CombatManager
                 case SimpleMythicTemplateType.Invincible:
 
 
-                    SubType = AddToStringList(SubType, "mythic");
+                    AddSubtype("mythic");
 
                     //mr 1
                     AdjustMR(HDRoll.TotalCount > 10 ? 2 : 1);
@@ -5340,7 +5341,7 @@ namespace CombatManager
 
                 case SimpleMythicTemplateType.Savage:
 
-                    SubType = AddToStringList(SubType, "mythic");
+                    AddSubtype("mythic");
 
                     //mr 1
                     AdjustMR(HDRoll.TotalCount > 10 ? 2 : 1);
@@ -6787,11 +6788,68 @@ namespace CombatManager
             return (GetFlyQuality(quality1) > GetFlyQuality(quality2)) ? quality1 : quality2;
         }
 
+        private bool AddSubtype(string subtype)
+        {
+            String work = "";
+            if (SubType != null)
+            {
+                work = SubType.Trim(new char[] { '(', ')' });
+            }
+
+
+            work = AddToStringList(work, subtype, out bool added);
+
+            if (work.Length > 0)
+            {
+                SubType = "(" + work + ")";
+            }
+            else
+            {
+                SubType = null;
+            }
+
+            return added;
+
+        }
+
+        private bool RemoveSubtype(string subtype)
+        {
+            bool removed = false;
+
+            if (subType != null && subType.Length > 0)
+            {
+
+                string work = SubType.Trim(new char[] { '(', ')' });
+
+                work = RemoveFromStringList(work, subtype, out removed);
+
+                if (work.Length > 0)
+                {
+                    SubType = "(" + work + ")";
+                }
+                else
+                {
+                    SubType = null;
+                }
+            }
+
+            return removed;
+        }
+
+        private bool HasSubtype(string subtype)
+        {
+            if (SubType == null)
+            {
+                return false;
+            }
+
+            string work = SubType.Trim(new char[] { '(', ')' });
+            return StringListHasItem(work, subtype);
+        }
+
         private static string AddToStringList(string text, string type)
         {
-            bool added;
-
-            return AddToStringList(text, type, out added);
+            return AddToStringList(text, type, out _);
 
         }
 
@@ -6806,9 +6864,8 @@ namespace CombatManager
                 returnText = "";
             }
 
-            Regex regType = new Regex(Regex.Escape(type), RegexOptions.IgnoreCase);
 
-            if (!regType.Match(returnText).Success)
+            if (!StringListHasItem(returnText, type))
             {
 
                 returnText = returnText + (returnText.Length > 0 ? ", " : "") + type;
@@ -6819,6 +6876,14 @@ namespace CombatManager
 
             return returnText;
         }
+
+        private static bool StringListHasItem(string list, string item)
+        {
+            Regex regType = new Regex(Regex.Escape(item) + "(\\Z|$|,)", RegexOptions.IgnoreCase);
+
+            return regType.Match(list).Success;
+        }
+           
 
         private static string RemoveFromStringList(string text, string type)
         {
@@ -9665,11 +9730,16 @@ namespace CombatManager
             }
             set
             {
+                bool oldMythic = IsMythic;
                 subType = value;
-                if (PropertyChanged != null)
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SubType"));
+                if (oldMythic != IsMythic)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SubType"));
+                    Mythic = (!oldMythic)?"1":"0";
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsMythic"));
                 }
+
             }
         }
 
@@ -11078,7 +11148,7 @@ namespace CombatManager
         }
 
         [DataMember]
-        public String Mythic
+        public string Mythic
         {
             get { return mythic; }
             set
@@ -11088,6 +11158,32 @@ namespace CombatManager
                     mythic = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Mythic")); }
                 }
+            }
+        }
+
+        [XmlIgnore]
+        public bool IsMythic
+        {
+            get
+            {
+                return HasSubtype("mythic");
+            }
+            set
+            {
+                if (value)
+                {
+                    AddSubtype("mythic");
+                }
+                else
+                {
+                    RemoveSubtype("mythic");
+                }
+                string newStr = value ? "1" : "0";
+                if (Mythic != newStr)
+                {
+                    Mythic = newStr;
+                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsMythic"));
             }
         }
 
@@ -12557,11 +12653,32 @@ namespace CombatManager
                     _Monster.CR = value;
                     _Monster.XP = GetXPString(value);
 
-                    if (PropertyChanged != null)
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CR"));
+
+                }
+            }
+
+            public int? MR
+            {
+                get
+                {
+                    return _Monster.MR;
+                }
+                set
+                {
+                    _Monster.MR = value;
+
+                    if (value == null)
                     {
-                        PropertyChanged(this, new PropertyChangedEventArgs("CR"));
+                        //_Monster.
+                        //remove mythic
+                    }
+                    else
+                    {
+                        //add mythic
                     }
 
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MR"));
                 }
             }
 
