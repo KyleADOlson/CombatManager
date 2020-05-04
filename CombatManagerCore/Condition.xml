@@ -85,9 +85,10 @@ A confused creature who can't carry out the indicated action does nothing but ba
       <AllAttack>-1</AllAttack>
       <LoseDex>false</LoseDex>
       <AllSaves>-1</AllSaves>
-      <AllSkills>-1</AllSkills>
+      <AllSkills>-1</AllSkills> 
       <CMB>-1</CMB>
       <CMD>-1</CMD>
+      <HP>-5</HP>
       <StrZero>false</StrZero>
       <DexZero>false</DexZero>
     </Bonus>

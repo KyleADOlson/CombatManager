@@ -104,6 +104,7 @@ namespace CombatManager
         {
             this.InitiativeTiebreaker = rand.Next();
             monster = Monster.BlankMonster();
+            monster.PropertyChanged += Monster_PropertyChanged;
             HP = monster.HP;
             MaxHP = monster.HP;
             initiativeFollowers = new ObservableCollection<Character>();
@@ -129,6 +130,7 @@ namespace CombatManager
         public Character(Monster monster, HPMode mode) : this()
         {
             this.monster = (Monster)monster.Clone();
+
             this.name = monster.Name;
             if (mode == HPMode.Default || !TryParseHP(mode == HPMode.Max))
             {
@@ -143,6 +145,8 @@ namespace CombatManager
                 ac.Condition = Condition.FindCondition("Incorporeal");
                 this.monster.AddCondition(ac);
             }
+
+            this.monster.PropertyChanged += Monster_PropertyChanged;
             Resources = this.monster.TResources;
             LoadResources();
 			
@@ -171,6 +175,7 @@ namespace CombatManager
             else
             {
                 character.monster = (Monster)monster.Clone();
+                character.monster.PropertyChanged  += character.Monster_PropertyChanged;
             }
 
             character.isActive = isActive;
@@ -803,7 +808,9 @@ namespace CombatManager
             {
                 if (MaxHP != monster.HP)
                 {
+                    int diff = monster.HP - MaxHP;
                     MaxHP = monster.HP;
+                    HP += diff;
                 }
             }
         }
