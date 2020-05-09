@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EmbedIO;
 using EmbedIO.Routing;
+using CombatManager.LocalService.Data;
 
 #pragma warning disable 618
 

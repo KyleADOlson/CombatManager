@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CombatManager.LocalService
+namespace CombatManager.LocalService.Data
 {
-    public class RemoteDBListing
+    public class RemoteMonsterList
     {
-        public List<RemoteDBItem> Items { get; set; }
+        public List<RemoteMonster> Monsters { get; set; }
+
     }
 }

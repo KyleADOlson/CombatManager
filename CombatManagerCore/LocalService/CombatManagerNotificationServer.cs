@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EmbedIO;
 using EmbedIO.WebSockets;
+using CombatManager.LocalService.Data;
 
 namespace CombatManager.LocalService
 {
