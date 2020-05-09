@@ -181,7 +181,7 @@ namespace CombatManager.Html
                 blocks.AppendWebIcon("lock");
                 blocks.AppendSpace();
             }
-            blocks.AppendHtml(name);
+            blocks.AppendSpanWithTooltip(content: name, tiptext: name);
             blocks.AppendCloseTag("span");
             blocks.AppendSpan(" HP: " + hp + "/" + maxhp + " ", classname: "playerhp");
 

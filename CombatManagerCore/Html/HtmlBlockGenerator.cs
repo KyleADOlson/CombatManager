@@ -29,6 +29,7 @@ using System.Web;
 using CombatManager;
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CombatManager.Html
 {
@@ -614,9 +615,48 @@ namespace CombatManager.Html
 
 			return builder;
 		}
-	}
-	
-	
 
+		public static string CreateSpanWithTooltip(string id = null, string content = "", bool escaped = true, string contentId = null, string tiptext = "", bool tipEscaped = true, string tipId = null)
+		{
+			StringBuilder builder = new StringBuilder();
+			builder.AppendOpenTag("span", cl: "tooltip", id);
+			builder.AppendOpenTag("span", id: contentId);
+			builder.Append(escaped ? HttpUtility.HtmlEncode(content) : content);
+			builder.AppendCloseTag("span");
+			builder.Append(CreateTooltip(tiptext, tipEscaped, tipId));
+			return builder.AppendCloseTag("span").ToString(); ;
+
+		}
+		public static StringBuilder AppendSpanWithTooltip(this StringBuilder builder, string id = null, string content="", bool escaped = true, string contentId = null, string tiptext = "", bool tipEscaped = true, string tipId = null)
+		{
+			return builder.Append(CreateSpanWithTooltip(id:id, content:content, escaped:escaped, contentId:contentId, tiptext:tiptext, tipEscaped:tipEscaped, tipId:tipId));
+		}
+
+
+
+		public static string CreateContentWithTooltip(string content, bool escaped = true, string tiptext = "", bool tipEscaped = true, string tipId = null)
+		{
+			StringBuilder builder = new StringBuilder();
+			builder.Append(escaped ? HttpUtility.HtmlEncode(content) : content);
+			return builder.Append(CreateTooltip(tiptext, tipEscaped, tipId)).ToString();
+
+		}
+		public static StringBuilder AppendContentWithTooltip(this StringBuilder builder, string content, bool escaped = true, string tiptext="", bool tipEscaped = true, string tipId = null)
+		{
+			return builder.Append(CreateContentWithTooltip(content, escaped, tiptext, tipEscaped, tipId));
+		}
+
+
+		public static string CreateTooltip(string tiptext, bool escaped = true, string id = null)
+		{
+			StringBuilder builder = new StringBuilder();
+			return builder.AppendTag("span", content: tiptext, escaped : escaped, classname : "tooltiptext", id).ToString();
+		}
+
+		public static StringBuilder AppendTooltip(this StringBuilder builder, string tiptext, bool escaped = true, string id = null)
+		{
+			return builder.Append(CreateTooltip(tiptext, escaped, id));
+		}
+	}
 }
 

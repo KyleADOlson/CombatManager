@@ -15,7 +15,7 @@ namespace CombatManager.Html
             builder.AppendTag("script", attributes: new[] { ("src", "/www/js/PlayerWebPage.js") });
             builder.AppendOpenTag("div", cl: "playerview");
             builder.CreateHeader("Player View");
-            builder.AppendTag("span", id: "selectedText", content: "player", escaped: true);
+            builder.AppendSpanWithTooltip(content: "player", tiptext: "Player!");
             builder.AppendSelect(from ch in state.Characters where !ch.IsMonster select (ch.ID.ToString(), ch.Name), id: "playerSelect", attributes: new []{ ("onchange", "playerSelectChanged()")});
             
             builder.AppendCloseTag("div");

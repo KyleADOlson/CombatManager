@@ -67,6 +67,33 @@ p {
     font-size: 16px;
 }
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: auto;
+    background-color: #555555;
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+    color: #fff;
+    text-align: center;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
 .altheader {
     font-style: italic;
 }
