@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CombatManager.LocalService
+namespace CombatManager.LocalService.Request
 {
-    class RemoveConditionRequest : CharacterRequest
+    public class CharacterRequest
     {
-        public string Name { get; set; }
+        public Guid ID { get; set; }
     }
 }

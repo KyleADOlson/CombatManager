@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CombatManager.LocalService
+namespace CombatManager.LocalService.Request
 {
-    public class MagicItemRequest
+    public class FeatRequest
     {
         public bool IsCustom { get; set; }
         public int ID { get; set; }
