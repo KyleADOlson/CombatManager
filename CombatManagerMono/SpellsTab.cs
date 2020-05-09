@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using CoreGraphics;
 using CombatManager;
+using CombatManager.Html;
 using UIKit;
 
 

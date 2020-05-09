@@ -306,6 +306,12 @@ namespace CombatManager
                 return ByDetailsID(id);
             }
         }
+
+        public static bool TryByID(bool custom, int id, out Monster m)
+        {
+            m = Monster.ByID(custom, id);
+            return m != null;
+        }
                 
 
         public event PropertyChangedEventHandler PropertyChanged;

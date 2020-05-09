@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace CombatManager
+namespace CombatManager.Html
 {
     public static class ConditionHtmlCreator
     {

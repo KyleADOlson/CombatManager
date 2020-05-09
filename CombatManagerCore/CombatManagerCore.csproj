@@ -105,17 +105,22 @@
     <Compile Include="CMStringUtilities.cs" />
     <Compile Include="Coin.cs" />
     <Compile Include="CombatStateNotifcation.cs" />
-    <Compile Include="ConditionHtmlCreator.cs" />
+    <Compile Include="Html\ConditionHtmlCreator.cs" />
     <Compile Include="DD5Stats.cs" />
+    <Compile Include="Html\HtmlStyle.cs" />
+    <Compile Include="Html\PlayerHtmlCreator.cs" />
     <Compile Include="LocalService\AddConditionRequest.cs" />
     <Compile Include="LocalService\BinaryResourceManager.cs" />
     <Compile Include="LocalService\CharacterRequest.cs" />
     <Compile Include="LocalService\CombatManagerHTMLServer.cs" />
     <Compile Include="LocalService\CombatManagerNotificationServer.cs" />
+    <Compile Include="LocalService\FeatRequest.cs" />
     <Compile Include="LocalService\ImageServer.cs" />
     <Compile Include="LocalService\LocalRemoteConverter.cs" />
     <Compile Include="LocalService\LocalServiceHelper.cs" />
     <Compile Include="LocalService\LocalServiceMessage.cs" />
+    <Compile Include="LocalService\LocalServiceUtilities.cs" />
+    <Compile Include="LocalService\MagicItemRequest.cs" />
     <Compile Include="LocalService\MonsterAddRequest.cs" />
     <Compile Include="LocalService\MonsterListRequest.cs" />
     <Compile Include="LocalService\MonsterRequest.cs" />
@@ -129,11 +134,14 @@
     <Compile Include="LocalService\RemoteDie.cs" />
     <Compile Include="LocalService\RemoteDieResult.cs" />
     <Compile Include="LocalService\RemoteDieRoll.cs" />
+    <Compile Include="LocalService\RemoteFeat.cs" />
+    <Compile Include="LocalService\RemoteMagicItem.cs" />
     <Compile Include="LocalService\RemoteMonsterList.cs" />
     <Compile Include="LocalService\RemoteRollResult.cs" />
     <Compile Include="LocalService\RemoteSpell.cs" />
     <Compile Include="LocalService\RemoveConditionRequest.cs" />
     <Compile Include="CoreSettings.cs" />
+    <Compile Include="LocalService\SpellRequest.cs" />
     <Compile Include="Personalization\ColorScheme.cs" />
     <Compile Include="CombatState.cs" />
     <Compile Include="Condition.cs" />
@@ -148,16 +156,16 @@
     <Compile Include="Equipment.cs" />
     <Compile Include="ExportData.cs" />
     <Compile Include="Feat.cs" />
-    <Compile Include="FeatHtmlCreator.cs" />
-    <Compile Include="GenericHtmlCreator.cs" />
-    <Compile Include="HtmlBlockGenerator.cs" />
+    <Compile Include="Html\FeatHtmlCreator.cs" />
+    <Compile Include="Html\GenericHtmlCreator.cs" />
+    <Compile Include="Html\HtmlBlockGenerator.cs" />
     <Compile Include="InitiativeCount.cs" />
     <Compile Include="InsensitiveComparer.cs" />
     <Compile Include="MagicItem.cs" />
-    <Compile Include="MagicItemHtmlCreator.cs" />
+    <Compile Include="Html\MagicItemHtmlCreator.cs" />
     <Compile Include="monster.cs" />
     <Compile Include="MonsterDB.cs" />
-    <Compile Include="MonsterHtmlCreator.cs" />
+    <Compile Include="Html\MonsterHtmlCreator.cs" />
     <Compile Include="ParsedFeat.cs" />
     <Compile Include="Pathfinder.Herolab.Serializable.class.cs" />
     <Compile Include="Personalization\ColorSchemeManager.cs" />
@@ -171,7 +179,7 @@
     <Compile Include="ActiveResource.cs" />
     <Compile Include="RomanNumbers.cs" />
     <Compile Include="Rule.cs" />
-    <Compile Include="RuleHtmlCreator.cs" />
+    <Compile Include="Html\RuleHtmlCreator.cs" />
     <Compile Include="RulesSystem.cs" />
     <Compile Include="LocalService\LocalCombatManagerService.cs" />
     <Compile Include="LocalService\LocalCombatManagerServiceController.cs" />
@@ -187,14 +195,15 @@
     <Compile Include="SpecificItemChart.cs" />
     <Compile Include="Spell.cs" />
     <Compile Include="SpellBlockInfo.cs" />
-    <Compile Include="SpellHtmlCreator.cs" />
+    <Compile Include="Html\SpellHtmlCreator.cs" />
     <Compile Include="SpellInfo.cs" />
     <Compile Include="SpellLevelInfo.cs" />
     <Compile Include="Stat.cs" />
     <Compile Include="StringCapitalizer.cs" />
+    <Compile Include="TitleValuePair.cs" />
     <Compile Include="Treasure.cs" />
     <Compile Include="TreasureGenerator.cs" />
-    <Compile Include="TreasureHtmlCreator.cs" />
+    <Compile Include="Html\TreasureHtmlCreator.cs" />
     <Compile Include="TreasureItem.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="WeaponItem.cs" />
@@ -249,6 +258,9 @@
     <Content Include="NPCShort2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="PlayerWebPage.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="RuleShort.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -260,6 +272,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WebStyles.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Supporters.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1470,6 +1470,12 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
             FilterList();
         }
 
+        public bool TryGetCharacterById(Guid ID, out Character ch)
+        {
+            ch = GetCharacterByID(ID);
+            return ch != null;
+                
+        }
 
         public Character GetCharacterByID(Guid ID)
         {

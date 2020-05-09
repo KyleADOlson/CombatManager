@@ -137,6 +137,9 @@ namespace CombatManager
         private SpellAdjuster _Adjuster;
 
         private static ObservableCollection<Spell> _Spells;
+
+        private static Dictionary<int, Spell> _SpellsByDetailsID;
+
         private static SortedDictionary<string, string> _Schools;
         private static SortedSet<string> _Subschools;
         private static SortedSet<string> _Descriptors;
@@ -198,6 +201,14 @@ namespace CombatManager
             foreach (Spell s in remove)
             {
                 set.Remove(s);
+            }
+
+
+            _SpellsByDetailsID = new Dictionary<int, Spell>();
+            foreach (Spell s in set)
+            {
+                _SpellsByDetailsID[s.detailsid] = s;
+
             }
 
             _Spells = new ObservableCollection<Spell>(set);
@@ -613,7 +624,41 @@ namespace CombatManager
             }
         }
 
- 
+
+        public static Spell ByDetailsID(int id)
+        {
+            if (_SpellsByDetailsID == null)
+            {
+                LoadSpells();
+            }
+            Spell s;
+            _SpellsByDetailsID.TryGetValue(id, out s);
+            return s;
+        }
+
+        public static Spell ByDBLoaderID(int id)
+        {
+            return DBSpells.FirstOrDefault(s => s.DBLoaderID == id);
+        }
+
+        public static Spell ByID(bool custom, int id)
+        {
+            if (custom)
+            {
+                return ByDBLoaderID(id);
+            }
+            else
+            {
+                return ByDetailsID(id);
+            }
+        }
+
+        public static bool TryByID(bool custom, int id, out Spell s)
+        {
+            s = ByID(custom, id);
+            return s != null;
+        }
+
 
         public static void AddCustomSpell(Spell s)
         {

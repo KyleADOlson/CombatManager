@@ -25,6 +25,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using CombatManager;
+using CombatManager.Html;
 using System.Text.RegularExpressions;
 
 namespace CombatManagerMono

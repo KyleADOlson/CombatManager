@@ -24,7 +24,7 @@ using System.Text;
 using CombatManager;
 using System.Collections.Generic;
 
-namespace CombatManager
+namespace CombatManager.Html
 {
 	public class SpellHtmlCreator
 	{
@@ -32,15 +32,15 @@ namespace CombatManager
 		{
 		}
 
-        public static string CreateHtml(Spell spell)
+        public static string CreateHtml(Spell spell, bool shortForm = false,
+            bool showTitle = true, bool completepage = true,  string css = null)
         {
-            return CreateHtml(spell, false, true);
-        }
 
-        public static string CreateHtml(Spell spell, bool shortForm, bool showTitle)
-        {
             StringBuilder blocks = new StringBuilder();
-			blocks.CreateHtmlHeader();
+            if (completepage)
+            {
+                blocks.CreateHtmlHeader(css);
+            }
 
 
             if (!shortForm)
@@ -105,8 +105,11 @@ namespace CombatManager
 
 
             }
-			
-			blocks.CreateHtmlFooter();
+
+            if (completepage)
+            {
+                blocks.CreateHtmlFooter();
+            }
 
 
             return blocks.ToString();

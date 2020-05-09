@@ -15,7 +15,7 @@
  * 
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.create
  *
  */
 
@@ -23,15 +23,13 @@ using System;
 using System.Text;
 using CombatManager;
 using System.Collections.Generic;
+using System.Linq;
 
-
-namespace CombatManager
+namespace CombatManager.Html
 {
 	public class MonsterHtmlCreator
 	{
-
-		
-		public static string CreateHtml(Monster monster = null, Character ch = null, bool addDescription = true, bool completePage = true)
+		public static string CreateHtml(Monster monster = null, Character ch = null, bool addDescription = true, bool completePage = true, string css = null)
 		{
             Monster useMonster;
 
@@ -47,7 +45,7 @@ namespace CombatManager
 			StringBuilder blocks = new StringBuilder();
             if (completePage)
             {
-                blocks.CreateHtmlHeader();
+                blocks.CreateHtmlHeader(css);
             }
 
             CreateTopSection(useMonster, ch, blocks);
@@ -82,38 +80,121 @@ namespace CombatManager
 			return blocks.ToString();
 		}
 
-        public static String CreateCombatListItem(Character ch, CombatState state = null)
+
+        public enum CombatVisibility
+        {
+            Visible = 0,
+            Anonymous = 1,
+            Hidden = 2
+        }
+
+
+        delegate CombatVisibility CombatVisFilter(Character ch, CombatState c);
+
+        static CombatVisibility DefaultCombatFilter(Character ch, CombatState c)
+        {
+            return CombatListFilter(ch, c);
+        }
+
+        static CombatVisibility CombatListFilter(Character ch, CombatState c, CombatVisibility players = CombatVisibility.Visible, CombatVisibility monsters = CombatVisibility.Visible,
+            CombatVisibility idle = CombatVisibility.Visible, CombatVisibility hidden = CombatVisibility.Anonymous)
+        {
+            CombatVisibility vis = ch.IsMonster?monsters:players;
+            if (ch.IsHidden)
+            {
+                vis = vis.Combine(hidden);
+            }
+            if (ch.IsIdle)
+            {
+                vis = vis.Combine(idle);
+            }
+            return vis;
+        }
+
+        static List<(CombatVisibility, Character)> FilterCombatList(CombatState c, CombatVisFilter filter, CombatVisibility maxlevel = CombatVisibility.Anonymous)
+        {
+            var list = new List<(CombatVisibility, Character)>();
+         
+            foreach (Character ch in c.CombatList)
+            {
+                var vis = filter(ch, c);
+                if (vis <= maxlevel)
+                {
+                    list.Add(( vis, ch));
+                }
+            }
+
+            return list;
+        }
+
+
+        public static String CreateCombatListItem(Character ch, CombatState state = null, List<(CombatVisibility, Character)> filteredList = null, int index = 0, CombatVisibility visibility = CombatVisibility.Visible)
         {
             StringBuilder blocks = new StringBuilder();
 
+            string id = (index % 2 == 0) ? "listitem1" : "listitem2";
 
             bool follower = ch.InitiativeLeader != null;
 
-            blocks.StartParagraph();
+            var styles = new List<(string, string)>();
+            if (filteredList != null && index == filteredList.Count - 1)
+            {
+                styles.Add(HtmlBlockCreator.StyleNoBottom);
+            }
+
+
+            blocks.StartParagraph(cl: "combatlistitem", id: id);
 
             if (state != null && ch == state.CurrentCharacter)
             {
-                blocks.AppendImg("/img/icon/next", "icon");
+                blocks.AppendWebIcon("next");
             }
             else
             {
-                blocks.AppendTag("span", " ", "square24");
+                blocks.AppendTag("span", content: " ", classname: "square16");
             }
+
+            string name;
+            string hp;
+            string maxhp;
+            string init;
+
+            if (visibility.IsAnonymous())
+            {
+                name = "??????";
+                hp = "??";
+                maxhp = "??";
+                init = "??";
+            }
+            else
+            {
+                name = ch.Name;
+                hp = ch.HP.ToString();
+                maxhp = ch.MaxHP.ToString();
+                init = ch.InitiativeCount.Base.ToString();
+            }
+
+            blocks.AppendOpenTag("span", "combatlistplayer");
+            blocks.AppendOpenTag("span", "playername");
             if (follower)
             {
-                blocks.AppendSpace(4);
+                blocks.AppendWebIcon("lock");
+                blocks.AppendSpace();
             }
+            blocks.AppendHtml(name);
+            blocks.AppendCloseTag("span");
+            blocks.AppendSpan(" HP: " + hp + "/" + maxhp + " ", classname: "playerhp");
 
-            blocks.AppendOpenTag("span", "combatlistitem");
-            blocks.AppendHtml(ch.Name);
-            blocks.AppendHtml(" " + ch.HP + "/" + ch.MaxHP + " " );
-            blocks.AppendHtml(ch.InitiativeCount.Base.ToString());
+            blocks.AppendSpan("Init: " + init, classname: "playerinitiative");
+            if (visibility.IsVisible())
+            {
+                foreach (ActiveCondition cn in ch.Monster.ActiveConditions)
+                {
+                    blocks.AppendWebIcon(cn.Condition.Image, cl: "conditionicon");
+                }
+            }
             blocks.AppendCloseTag("span");
 
-            foreach (ActiveCondition cn in ch.Monster.ActiveConditions)
-            {
-                blocks.AppendImg("/img/icon/" + cn.Condition.Image, "icon");
-            }
 
 
             blocks.EndParagraph();
@@ -123,20 +204,48 @@ namespace CombatManager
             return blocks.ToString();
         }
 
+
         public static string CreateCombatList(CombatState state)
         {
             StringBuilder blocks = new StringBuilder();
+            blocks.AppendOpenTag("div", cl:"combatlist");
 
-            foreach (Character c in state.CombatList)
+            blocks.CreateHeader("Combat List");
+
+
+            int index = 0;
+
+            var filteredList = FilterCombatList(state, DefaultCombatFilter);
+
+
+            foreach (var pair in filteredList)
             {
-                blocks.Append(CreateCombatListItem(c, state));
+                CombatVisibility vis = pair.Item1;
+                Character c = pair.Item2;
+                BorderStyle bs = new BorderStyle();
+                if (index != filteredList.Count - 1)
+                {
+                    bs.SetSideValue(BoxStyle.BoxSide.Bottom, 0);
+                }
+                   
+                    
+
+                blocks.AppendOpenTag("div", htmlStyles: new []{bs});
+
+                    
+                blocks.Append(CreateCombatListItem(c, state, filteredList, index, visibility: vis));
 
                 foreach (Character f in c.InitiativeFollowers)
                 {
 
-                    blocks.Append(CreateCombatListItem(f));
+                    blocks.Append(CreateCombatListItem(f, visibility:vis));
                 }
+
+                blocks.AppendCloseTag("div");
+
+                index++;
             }
+            blocks.AppendCloseTag("div");
             return blocks.ToString();
         }
 
@@ -515,5 +624,32 @@ namespace CombatManager
         }
 
 	}
+
+    static class CombatVisibilityHelper
+    {
+
+        public static MonsterHtmlCreator.CombatVisibility Combine(this MonsterHtmlCreator.CombatVisibility a, MonsterHtmlCreator.CombatVisibility b)
+        {
+            return (a > b) ? a : b;
+        }
+
+
+        public static bool IsVisible(this MonsterHtmlCreator.CombatVisibility vis)
+        {
+            return vis == MonsterHtmlCreator.CombatVisibility.Visible;
+        }
+
+        public static bool IsAnonymous(this MonsterHtmlCreator.CombatVisibility vis)
+        {
+            return vis == MonsterHtmlCreator.CombatVisibility.Anonymous;
+        }
+
+        public static bool IsHidden(this MonsterHtmlCreator.
+            CombatVisibility vis)
+        {
+            return vis == MonsterHtmlCreator.CombatVisibility.Hidden;
+        }
+
+    }
 }
 

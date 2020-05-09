@@ -61,6 +61,7 @@ namespace CombatManager
             DarkSchemeCheckbox.IsChecked = UserSettings.Settings.DarkScheme;
             startDarkScheme = UserSettings.Settings.DarkScheme;
             LocalWebServiceCheckbox.IsChecked = UserSettings.Settings.RunLocalService;
+            RunHttpServerCheckbox.IsChecked = UserSettings.Settings.RunWebService;
             PortTextBox.Text = UserSettings.Settings.LocalServicePort.ToString();
             PasscodeTextBox.Text = UserSettings.Settings.LocalServicePasscode;
             AutomaticStabilizationCheckbox.IsChecked = CoreSettings.Instance.AutomaticStabilization;
@@ -141,6 +142,7 @@ namespace CombatManager
                 UserSettings.Settings.ColorScheme = SelectedScheme;
                 UserSettings.Settings.DarkScheme = DarkSchemeCheckbox.IsChecked.Value;
                 UserSettings.Settings.RunLocalService = LocalWebServiceCheckbox.IsChecked == true;
+                UserSettings.Settings.RunWebService = RunHttpServerCheckbox.IsChecked == true;
                 UserSettings.Settings.LocalServicePort = GetLocalPort().Value;
                 UserSettings.Settings.LocalServicePasscode = PasscodeTextBox.Text;
                 CoreSettings.Instance.AutomaticStabilization = AutomaticStabilizationCheckbox.IsChecked == true;
@@ -282,6 +284,26 @@ namespace CombatManager
             {
                 e.CancelCommand();
             }
+        }
+
+        private void LocalWebServiceCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdateLocalServiceControls();
+        }
+
+        private void LocalWebServiceCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            UpdateLocalServiceControls();
+        }
+
+        private void UpdateLocalServiceControls()
+        {
+            bool state = LocalWebServiceCheckbox.IsChecked == true;
+            LocalServerPasscodeLabel.IsEnabled = state;
+            PasscodeTextBox.IsEnabled = state;
+            LocalServerPortLabel.IsEnabled = state;
+            PortTextBox.IsEnabled = state;
+            RunHttpServerCheckbox.IsEnabled = state;
         }
     }
 }

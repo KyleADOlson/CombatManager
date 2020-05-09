@@ -1,5 +1,6 @@
 using System;
 using CombatManager;
+using CombatManager.Html;
 using System.Collections.Generic;
 using Android.Widget;
 

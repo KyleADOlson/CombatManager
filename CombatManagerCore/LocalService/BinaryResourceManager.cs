@@ -46,7 +46,14 @@ namespace CombatManager.LocalService
             using (var stream = asm.GetManifestResourceStream(resName))
             using (var reader = new System.Resources.ResourceReader(stream))
             {
-                return  (UnmanagedMemoryStream)reader.Cast<DictionaryEntry>().First(entry => (string)entry.Key == resource).Value;
+                try
+                {
+                    return (UnmanagedMemoryStream)reader.Cast<DictionaryEntry>().First(entry => (string)entry.Key == resource).Value;
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
 
             }
         }

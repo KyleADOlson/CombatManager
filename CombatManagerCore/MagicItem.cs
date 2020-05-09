@@ -98,12 +98,15 @@ namespace CombatManager
         private static SortedDictionary<string, string> groups;
         private static SortedDictionary<int, int> cls;
 
+        private static Dictionary<int, MagicItem> _MagicItemsByDetailsID;
+
         private static bool _MagicItemsLoaded;
 
         public static void LoadMagicItems()
         {
 
             List<MagicItem> set = LoadMagicItemsFromXml("MagicItemsShort.xml");
+            _MagicItemsByDetailsID = new Dictionary<int, MagicItem>();
 
 
             groups = new SortedDictionary<string, string>();
@@ -116,6 +119,8 @@ namespace CombatManager
 
                 groups[item.Group] = item.Group;
                 cls[item.CL] = item.CL;
+
+                _MagicItemsByDetailsID[item._DetailsID] = item;
             }
 
             _MagicItemsLoaded = true;
@@ -223,6 +228,67 @@ namespace CombatManager
             }
         }
 
+        public MagicItem()
+        {
+        }
+
+        public MagicItem(MagicItem m)
+        {
+            CopyFrom(m);
+        }
+
+        public object Clone()
+        {
+            return new MagicItem(this);
+        }
+
+        public void CopyFrom(MagicItem magicItem)
+        {
+            if (magicItem == null)
+            {
+                return;
+            }
+            _DetailsID = magicItem._DetailsID;
+            _Name = magicItem._Name;
+            _Aura = magicItem._Aura;
+            _CL = magicItem._CL;
+            _Slot = magicItem._Slot;
+            _Price = magicItem._Price;
+            _Weight = magicItem._Weight;
+            _Description = magicItem._Description;
+            _Requirements = magicItem._Requirements;
+            _Cost = magicItem._Cost;
+            _Group = magicItem._Group;
+            _Source = magicItem._Source;
+            _FullText = magicItem._FullText;
+            _Destruction = magicItem._Destruction;
+            _MinorArtifactFlag = magicItem._MinorArtifactFlag;
+            _MajorArtifactFlag = magicItem._MajorArtifactFlag;
+            _Abjuration = magicItem._Abjuration;
+            _Conjuration = magicItem._Conjuration;
+            _Divination = magicItem._Divination;
+            _Enchantment = magicItem._Enchantment;
+            _Evocation = magicItem._Evocation;
+            _Necromancy = magicItem._Necromancy;
+            _Transmutation = magicItem._Transmutation;
+            _AuraStrength = magicItem._AuraStrength;
+            _WeightValue = magicItem._WeightValue;
+            _PriceValue = magicItem._PriceValue;
+            _CostValue = magicItem._CostValue;
+            _AL = magicItem._AL;
+            _Int = magicItem._Int;
+            _Wis = magicItem._Wis;
+            _Cha = magicItem._Cha;
+            _Ego = magicItem._Ego;
+            _Communication = magicItem._Communication;
+            _Senses = magicItem._Senses;
+            _Powers = magicItem._Powers;
+            _MagicItems = magicItem._MagicItems;
+            _DescHTML = magicItem._DescHTML;
+            _Mythic = magicItem._Mythic;
+            _LegendaryWeapon = magicItem._LegendaryWeapon;
+        }
+
         void UpdateFromDetailsDB()
         {
             if (_DetailsID != 0)
@@ -279,6 +345,42 @@ namespace CombatManager
                 }
                 return itemMap;
             }
+        }
+
+
+        public static MagicItem ByDetailsID(int id)
+        {
+            
+            if (_MagicItemsByDetailsID == null)
+            {
+                LoadMagicItems();
+            }
+            MagicItem m;
+            _MagicItemsByDetailsID.TryGetValue(id, out m);
+            return m;
+        }
+
+        public static MagicItem ByDBLoaderID(int id)
+        {
+            return null;
+        }
+
+        public static MagicItem ByID(bool custom, int id)
+        {
+            if (custom)
+            {
+                return ByDBLoaderID(id); ;
+            }
+            else
+            {
+                return ByDetailsID(id);
+            }
+        }
+
+        public static bool TryByID(bool custom, int id, out MagicItem s)
+        {
+            s = ByID(custom, id);
+            return s != null;
         }
 
         public static ICollection<string> Groups
@@ -894,6 +996,22 @@ namespace CombatManager
                 {
                     _LegendaryWeapon = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("LegendaryWeapon")); }
+                }
+            }
+        }
+
+        public int DetailsID
+        {
+            get
+            {
+                return _DetailsID;
+            }
+            set
+            {
+                if (_DetailsID != value)
+                {
+                    _DetailsID = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("DetailsID"));
                 }
             }
         }

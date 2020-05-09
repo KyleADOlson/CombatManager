@@ -114,6 +114,7 @@ namespace CombatManager
         private bool _DarkScheme;
 
         private bool _RunLocalService;
+        private bool _RunWebService;
         private ushort _LocalServicePort;
         private string _LocalServicePasscode;
 
@@ -148,6 +149,7 @@ namespace CombatManager
             _ColorScheme = 0;
             _DarkScheme = false;
             _RunLocalService = false;
+            _RunWebService = true;
             _RulesSystem = 0;
             _LocalServicePort = LocalCombatManagerService.DefaultPort;
             _LocalServicePasscode = "";
@@ -693,6 +695,19 @@ namespace CombatManager
             }
         }
 
+        public bool RunWebService
+        {
+            get { return _RunWebService; }
+            set
+            {
+                if (_RunWebService != value)
+                {
+                    _RunWebService = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("RunWebService")); }
+                }
+            }
+        }
+
         public ushort LocalServicePort
         {
             get { return _LocalServicePort; }
@@ -780,6 +795,7 @@ namespace CombatManager
                 DarkScheme = CoreSettings.LoadBoolValue("DarkScheme", false);
                 RulesSystem = (RulesSystem)CoreSettings.LoadIntValue("RulesSystem", 0);
                 RunLocalService = CoreSettings.LoadBoolValue("RunLocalService", false);
+                RunWebService = CoreSettings.LoadBoolValue("RunWebService", true);
                 LocalServicePort = (ushort)CoreSettings.LoadIntValue("LocalServicePort", LocalCombatManagerService.DefaultPort);
                 LocalServicePasscode = CoreSettings.LoadStringValue("LocalServicePasscode", "");
 
@@ -870,6 +886,7 @@ namespace CombatManager
                     if (section == SettingsSaveSection.All || section == SettingsSaveSection.LocalService)
                     {
                         CoreSettings.SaveBoolValue("RunLocalService", RunLocalService);
+                        CoreSettings.SaveBoolValue("RunWebService", RunWebService);
                         CoreSettings.SaveIntValue("LocalServicePort", LocalServicePort);
                         CoreSettings.SaveStringValue("LocalServicePasscode", LocalServicePasscode);
 

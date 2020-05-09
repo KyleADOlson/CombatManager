@@ -25,7 +25,7 @@ namespace CombatManager.LocalService
 
         protected override Task OnRequestAsync(IHttpContext context)
         {
-            Match m = Regex.Match(context.RequestedPath, "\\A/(?<type>[a-zA-Z]+)/(?<name>[-@_a-zA-Z0-9]+)\\Z");
+            Match m = Regex.Match(context.RequestedPath, "\\A/(?<type>[a-zA-Z]+)/(?<name>[-@_a-zA-Z0-9]+(\\.(?<ext>(png)|(jpg)|(jpeg)))?)\\Z");
 
             if (m != null)
             {
@@ -40,6 +40,19 @@ namespace CombatManager.LocalService
                         SendUnmanagedStream(context, "images/png", s);
 
                     }
+                }
+                if (type == "image")
+                {
+                    string ext = m.Value("ext");
+                    if (ext != null)
+                    {
+                        SendUnmanagedStream(context, "image/" + 
+                            ((ext == "png")?"png":"jpeg"), GetImage(name));
+
+
+                        
+                    }
+
                 }
 
 
@@ -65,6 +78,12 @@ namespace CombatManager.LocalService
         private Stream GetIcon16(string icon)
         {
             return BinaryResourceManager.Manager.FindResource(GetIcon16Name(icon));
+        }
+
+        private Stream GetImage(string image)
+        {
+            return BinaryResourceManager.Manager.FindResource("images/" + image);
+
         }
 
         private string GetIcon16Name(string icon)

@@ -10,6 +10,7 @@ using Android.Views;
 using Android.Widget;
 
 using CombatManager;
+using CombatManager.Html;
 using Android.Graphics.Drawables;
 using Android.Webkit;
 

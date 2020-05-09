@@ -4,7 +4,7 @@ using CombatManager;
 using System.Collections.Generic;
 
 
-namespace CombatManager
+namespace CombatManager.Html
 {
     public class TreasureHtmlCreator
     {

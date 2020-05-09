@@ -60,6 +60,7 @@ namespace CombatManager
 
         private int _DBLoaderID;
 
+        private int _ID;
 
         private static Dictionary<String, Feat> featMap;
         private static Dictionary<String, String> altFeatMap;
@@ -68,6 +69,7 @@ namespace CombatManager
 
         private static bool _FeatsLoaded;
         private static DBLoader<Feat> _FeatsDB;
+        private static Dictionary<int, Feat> _FeatsByDetailsID;
 
 
         public Feat()
@@ -118,6 +120,7 @@ namespace CombatManager
             
             _DetailParsed = f._DetailParsed;
             _DBLoaderID = f._DBLoaderID;
+            _ID = f._ID;
         }
 
         public static void LoadFeats()
@@ -129,6 +132,8 @@ namespace CombatManager
             featMap = new Dictionary<string, Feat>();
             altFeatMap = new Dictionary<string, string>();
             types = new SortedDictionary<String, String>();
+            _FeatsByDetailsID = new Dictionary<int, Feat>();
+
 
             foreach (Feat feat in set)
             {
@@ -156,13 +161,18 @@ namespace CombatManager
                 {
                     Debug.WriteLine(feat.Name);
                 }
-				
-				feats = new ObservableCollection<Feat>();
-				foreach (Feat f in Feat.FeatMap.Values)
-				{
-					feats.Add(f);
-				}
+
+
+                _FeatsByDetailsID[feat.Id] = feat;
+
+                feats = new ObservableCollection<Feat>();
+
             }
+            foreach (Feat f in Feat.FeatMap.Values)
+            {
+                feats.Add(f);
+            }
+
             if (DBSettings.UseDB)
             {
                 _FeatsDB = new DBLoader<Feat>("feats.db");
@@ -209,6 +219,40 @@ namespace CombatManager
 				}
                 return feats;
             }
+        }
+
+        public static Feat ByDetailsID(int id)
+        {
+            if (_FeatsByDetailsID == null)
+            {
+                LoadFeats();
+            }
+            Feat s;
+            _FeatsByDetailsID.TryGetValue(id, out s);
+            return s;
+        }
+
+        public static Feat ByDBLoaderID(int id)
+        {
+            return DBFeats.FirstOrDefault(s => s.DBLoaderID == id);
+        }
+
+        public static Feat ByID(bool custom, int id)
+        {
+            if (custom)
+            {
+                return ByDBLoaderID(id);
+            }
+            else
+            {
+                return ByDetailsID(id);
+            }
+        }
+
+        public static bool TryByID(bool custom, int id, out Feat s)
+        {
+            s = ByID(custom, id);
+            return s != null;
         }
 
         public static Dictionary<String, String> AltFeatMap
@@ -435,6 +479,23 @@ namespace CombatManager
                 {
                     _DBLoaderID = value;
                     if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DBLoaderID")); }
+
+                }
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    _ID = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ID")); }
 
                 }
             }

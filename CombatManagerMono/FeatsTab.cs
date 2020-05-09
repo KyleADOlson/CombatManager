@@ -21,6 +21,7 @@
 
 using System;
 using CombatManager;
+using CombatManager.Html;
 using CoreGraphics;
 using UIKit;
 

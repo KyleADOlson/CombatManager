@@ -2,6 +2,7 @@ using System;
 using CombatManager;
 using System.Collections.Generic;
 using Android.Widget;
+using CombatManager.Html;
 
 namespace CombatManagerDroid
 {

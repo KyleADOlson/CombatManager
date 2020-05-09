@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CombatManager;
+using CombatManager.Html;
 using System.Text;
 
 namespace CombatManagerDroid
@@ -92,7 +93,7 @@ namespace CombatManagerDroid
                 resHtml.AppendSpace();
                 if (dr.Die == 20 && dr.Result >= critRange)
                 {
-                    resHtml.AppendOpenTagWithClass("span", "critical");
+                    resHtml.AppendOpenTag("span", cl: "critical");
                     resHtml.AppendSpace();
                     resHtml.AppendHtml(text);
                     resHtml.AppendSpace();
@@ -101,7 +102,7 @@ namespace CombatManagerDroid
                 }
                 else if (dr.Die == 20 && dr.Result == 1)
                 {
-                    resHtml.AppendOpenTagWithClass("span", "critfail");
+                    resHtml.AppendOpenTag("span", cl: "critfail");
                     resHtml.AppendSpace();
                     resHtml.AppendHtml(text);
                     resHtml.AppendSpace();
@@ -120,7 +121,7 @@ namespace CombatManagerDroid
                 resHtml.AppendHtml(r.Mod.PlusFormat());
             }
             resHtml.AppendHtml(" = ");
-            resHtml.AppendOpenTagWithClass("sp", "bolded");
+            resHtml.AppendOpenTag("sp", cl: "bolded");
             resHtml.AppendHtml(r.Total.ToString());
             resHtml.AppendCloseTag("sp");
             if ( breakLine)
@@ -155,7 +156,7 @@ namespace CombatManagerDroid
                 AppendCharacterHeader(resHtml, ar.Character);
             }
 
-            resHtml.AppendOpenTagWithClass("span", "weaponheader");
+            resHtml.AppendOpenTag("span", cl: "weaponheader");
             if (ar.Attack.Weapon == null)
             {
                 resHtml.AppendSmallIcon("sword");

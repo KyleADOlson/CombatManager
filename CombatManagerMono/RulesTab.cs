@@ -23,6 +23,7 @@ using System;
 using CoreGraphics;
 
 using CombatManager;
+using CombatManager.Html;
 namespace CombatManagerMono
 {
 	public class RulesTab : LookupTab<Rule>

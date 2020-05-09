@@ -361,6 +361,37 @@ namespace CombatManager.LocalService
             });
         }
 
+        [Route(HttpVerbs.Post, "/feat/get")]
+        public async Task<object> GetFeat()
+        {
+            return await TakePostAction<FeatRequest>((res, data) =>
+            {
+                res.Data = Feat.ByID(data.IsCustom, data.ID).ToRemote();
+
+            });
+        }
+
+        [Route(HttpVerbs.Post, "/spell/get")]
+        public async Task<object> GetSpell()
+        {
+            return await TakePostAction<SpellRequest>((res, data) =>
+            {
+                res.Data = Spell.ByID(data.IsCustom, data.ID).ToRemote();
+
+            });
+        }
+
+        [Route(HttpVerbs.Post, "/magicitem/get")]
+        public async Task<object> GetMagicItem()
+        {
+            return await TakePostAction<MagicItemRequest>((res, data) =>
+            {
+                res.Data = MagicItem.ByID(data.IsCustom, data.ID).ToRemote();
+
+            });
+        }
+
+
         [Route(HttpVerbs.Get, "/monster/getregular/{id}")]
         public async Task<object> GetRegularMonster(int id)
         {

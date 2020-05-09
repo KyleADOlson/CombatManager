@@ -498,16 +498,18 @@ namespace CombatManager
                 string backname = fullfilename + backtext + ".db";
 #else
 
+#if ANDROID
                 Android.Util.Log.Error("DBLoader", "fullfilename " + fullfilename);
+#endif
                 sql = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + fullfilename);
 
                 sql.Open();
 #endif
-				
 
 
-				
-			
+
+
+
 #if !MONO
                 //make a backup
                 if (File.Exists(fullfilename) && !(File.Exists(backname)))
@@ -607,8 +609,9 @@ namespace CombatManager
 
                     sql2.Open(newfile);
 #else
+                    LogError("DBLoader", "NewFile " + newfile);
 
-                    Android.Util.Log.Error("DBLoader", "NewFile " + newfile);
+
                     SqliteConnection sql2 = new SqliteConnection("DbLinqProvider=Sqlite;Data Source=" + newfile);
                     sql2.Open();
 
@@ -696,6 +699,16 @@ namespace CombatManager
             }
 
             return tableMatches;
+        }
+
+        private void LogError(string source, string error)
+        {
+#if !MONO
+            System.Diagnostics.Debug.WriteLine(source + ": " + error);
+#elif ANDROID
+              Android.Util.Log.Error("DBLoader", "DBL new file exists");
+
+#endif
         }
 		
 #if !MONO

@@ -13,6 +13,7 @@ using Android.Views;
 using Android.Widget;
 
 using CombatManager;
+using CombatManager.Html;
 
 namespace CombatManagerDroid
 {

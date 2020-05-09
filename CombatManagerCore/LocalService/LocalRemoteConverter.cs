@@ -243,6 +243,85 @@ namespace CombatManager.LocalService
             return remoteMonster;
         }
 
+        public static RemoteFeat ToRemote(this Feat feat)
+        {
+
+            if (feat == null)
+            {
+                return null;
+            }
+            RemoteFeat remoteFeat = new RemoteFeat();
+
+            remoteFeat.Name = feat.Name;
+            remoteFeat.AltName = feat.AltName;
+            remoteFeat.Type = feat.Type;
+            remoteFeat.Prerequistites = feat.Prerequistites;
+            remoteFeat.Summary = feat.Summary;
+            remoteFeat.Source = feat.Source;
+            remoteFeat.System = feat.System;
+            remoteFeat.License = feat.License;
+            remoteFeat.URL = feat.URL;
+            remoteFeat.Detail = feat.Detail;
+            remoteFeat.Benefit = feat.Benefit;
+            remoteFeat.Normal = feat.Normal;
+            remoteFeat.Special = feat.Special;
+            remoteFeat.DBLoaderID = feat.DBLoaderID;
+            remoteFeat.ID = feat.Id;
+
+            return remoteFeat;
+
+        }
+
+        public static RemoteMagicItem ToRemote(this MagicItem magicItem)
+        {
+            if (magicItem == null)
+            {
+                return null;
+            }
+            RemoteMagicItem remoteMagicItem = new RemoteMagicItem();
+            remoteMagicItem.DetailsID = magicItem.DetailsID;
+            remoteMagicItem.Name = magicItem.Name;
+            remoteMagicItem.Aura = magicItem.Aura;
+            remoteMagicItem.CL = magicItem.CL;
+            remoteMagicItem.Slot = magicItem.Slot;
+            remoteMagicItem.Price = magicItem.Price;
+            remoteMagicItem.Weight = magicItem.Weight;
+            remoteMagicItem.Description = magicItem.Description;
+            remoteMagicItem.Requirements = magicItem.Requirements;
+            remoteMagicItem.Cost = magicItem.Cost;
+            remoteMagicItem.Group = magicItem.Group;
+            remoteMagicItem.Source = magicItem.Source;
+            remoteMagicItem.FullText = magicItem.FullText;
+            remoteMagicItem.Destruction = magicItem.Destruction;
+            remoteMagicItem.MinorArtifactFlag = magicItem.MinorArtifactFlag;
+            remoteMagicItem.MajorArtifactFlag = magicItem.MajorArtifactFlag;
+            remoteMagicItem.Abjuration = magicItem.Abjuration;
+            remoteMagicItem.Conjuration = magicItem.Conjuration;
+            remoteMagicItem.Divination = magicItem.Divination;
+            remoteMagicItem.Enchantment = magicItem.Enchantment;
+            remoteMagicItem.Evocation = magicItem.Evocation;
+            remoteMagicItem.Necromancy = magicItem.Necromancy;
+            remoteMagicItem.Transmutation = magicItem.Transmutation;
+            remoteMagicItem.AuraStrength = magicItem.AuraStrength;
+            remoteMagicItem.WeightValue = magicItem.WeightValue;
+            remoteMagicItem.PriceValue = magicItem.PriceValue;
+            remoteMagicItem.CostValue = magicItem.CostValue;
+            remoteMagicItem.AL = magicItem.AL;
+            remoteMagicItem.Int = magicItem.Int;
+            remoteMagicItem.Wis = magicItem.Wis;
+            remoteMagicItem.Cha = magicItem.Cha;
+            remoteMagicItem.Ego = magicItem.Ego;
+            remoteMagicItem.Communication = magicItem.Communication;
+            remoteMagicItem.Senses = magicItem.Senses;
+            remoteMagicItem.Powers = magicItem.Powers;
+            remoteMagicItem.MagicItems = magicItem.MagicItems;
+            remoteMagicItem.DescHTML = magicItem.DescHTML;
+            remoteMagicItem.Mythic = magicItem.Mythic;
+            remoteMagicItem.LegendaryWeapon = magicItem.LegendaryWeapon;
+
+            return remoteMagicItem;
+        }
+
         public static RemoteDieRoll ToRemote(this DieRoll roll)
         {
             if (roll == null)

@@ -89,7 +89,7 @@ namespace CombatManager.LocalService
             UIActionTaken?.Invoke(this, new UIActionEventArgs() { Action = ui, Data = data });
         }
 
-        public void Start()
+        public void Start(bool runWeb = true)
         {
             var url = "http://localhost:" + port + "/";
 
@@ -97,9 +97,14 @@ namespace CombatManager.LocalService
             // Our web server is disposable.
             server = new WebServer(o => o.WithUrlPrefix(url)
             .WithMode(HttpListenerMode.EmbedIO))
-            .WithLocalSessionManager()
-            .WithModule(new CombatManagerHTMLServer("/www/", state))
-            .WithModule(new ImageServer())
+            .WithLocalSessionManager();
+
+            if (runWeb)
+            {
+               server.WithModule(new CombatManagerHTMLServer("/www/", state, RunActionCallback));
+            }
+
+            server.WithModule(new ImageServer())
             .WithModule(new CombatManagerNotificationServer("/api/notification/", state))
             .WithWebApi("/api", m => m.RegisterController(() =>  new LocalCombatManagerServiceController(null, state, this, RunActionCallback, RunSaveCallback)));
  

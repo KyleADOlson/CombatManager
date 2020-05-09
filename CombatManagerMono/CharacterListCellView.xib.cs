@@ -26,6 +26,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using CombatManager;
+using CombatManager.Html;
 using System.ComponentModel;
 using CoreGraphics;
 

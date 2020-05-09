@@ -24,7 +24,7 @@ using System.Text;
 using CombatManager;
 using System.Collections.Generic;
 
-namespace CombatManager
+namespace CombatManager.Html
 {
 	public class FeatHtmlCreator
 	{
@@ -32,16 +32,13 @@ namespace CombatManager
 		{
 		}
 		
-		public static String CreateHtml(Feat feat)
-        {
-            return CreateHtml(feat, true);
-        }
-
-        public static String CreateHtml(Feat feat, bool showTitle)
+		public static String CreateHtml(Feat feat, bool showTitle = true, bool completepage = true, string css = null)
         {
             StringBuilder blocks = new StringBuilder();
-			blocks.CreateHtmlHeader();
-
+            if (completepage)
+            {
+                blocks.CreateHtmlHeader(css:css);
+            }
             string featString = null;
             if (feat.Types != null)
             {
@@ -108,8 +105,10 @@ namespace CombatManager
 
             
 			blocks.AppendCloseTag("p");
-			blocks.CreateHtmlFooter();
-
+            if (completepage)
+            {
+                blocks.CreateHtmlFooter();
+            }
 
             return blocks.ToString();
 

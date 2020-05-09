@@ -27,6 +27,7 @@ using Foundation;
 using UIKit;
 using CoreGraphics;
 using CombatManager;
+using CombatManager.Html;
 using System.Text.RegularExpressions;
 
 namespace CombatManagerMono

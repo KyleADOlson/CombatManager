@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 
 using CombatManager;
+using CombatManager.Html;
 using Android.Webkit;
 using Android.Support.V4.Content;
 

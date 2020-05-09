@@ -47,6 +47,12 @@ namespace CombatManager
             return false;
         }
 
+        public static bool HasGroup(this Match m, string group)
+        {
+            return m.Groups[group] != null;
+        }
+
+
         public static string Value(this Match m, string group)
         {
             string val = null;

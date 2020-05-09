@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -121,6 +122,296 @@ namespace CombatManager
             }
         }
 
+
+        public static List<T> ToListAlways<T>(this T[] array)
+        {
+            if (array == null)
+            {
+                return new List<T>(); ;
+            }
+
+            return new List<T>(array);
+        }
+
+        public static List<T> CopyOrCreate<T>(this List<T> list)
+        {
+            if (list == null)
+            {
+                return new List<T>();
+            }
+            return new List<T>(list);
+        }
+
+        public static List<T> ToList<T>(this T[] array)
+        {
+            if (array == null)
+            {
+                return null;
+            }
+
+            return new List<T>(array);
+        }
+
+        public static List<T> TrimFront<T>(this List<T> list, T item)
+        {
+
+            while (list.Count >= 0 && list.First().Equals(item))
+            {
+                list.PopFront();
+            }
+            return list;
+        }
+
+        public static List<T> TrimEnd<T>(this List<T> list, T item)
+        {
+
+            while (list.Count >= 0 && list.Last().Equals(item))
+            {
+                list.PopEnd();
+            }
+            return list;
+        }
+
+        public static List<T> Trim<T>(this List<T> list, T item)
+        {
+            return list.TrimFront(item).TrimEnd(item); ;
+        }
+
+    }
+
+    public static class CMArrayUtilities
+    {
+        public static bool IsEmptyOrNull<T> (this T[] array)
+        {
+            if (array == null)
+            {
+                return true;
+            }
+            return array.Length == 0;
+        }
+
+        public static bool NotEmptyOrNull<T> (this T[] array)
+        {
+            return !array.IsEmptyOrNull();
+        }
+
+        public static T[] CombineEvenNull<T>(this T[] array,  T[] array2)
+        {
+            if (array == null)
+            {
+                return array2;
+            }
+            else if (array2 == null)
+            {
+                return array;
+            }
+            else
+            {
+                return array.Concat(array2).ToArray();
+            }
+        }
+        public static T[] AppendEvenNull<T>(this T[] array, T item)
+        {
+            if (array == null)
+            {
+                return new T[] { item };
+            }
+            else if (item == null)
+            {
+                return array;
+            }
+            else
+            {
+                return array.Concat(new T[] { item }).ToArray();
+            }
+        }
+
+        public static T[] PopFront<T>(this T[] array)
+        {
+            List<T> list = array.ToList();
+            list.PopFront();
+            return list.ToArray(); 
+        }
+
+        public static T[] PopEnd<T>(this T[] array)
+        {
+            List<T> list = array.ToList();
+            list.PopEnd();
+            return list.ToArray();
+        }
+        public static T[] PopLoc<T>(this T[] array, int loc)
+        {
+            List<T> list = new List<T>(array);
+            list.PopLoc(loc);
+            return list.ToArray();
+        }
+
+        public static T[] PushFront<T>(this T[] array, T item)
+        {
+            List<T> list = array.ToList();
+            list.PushFront(item);
+            return list.ToArray();
+        }
+
+        public static T[] PushEnd<T>(this T[] array, T item)
+        {
+            List<T> list = array.ToList();
+            list.PushEnd(item);
+            return list.ToArray();
+        }
+
+        public static T[] Insert<T>(this T[] array, int index, T item)
+        {
+            List<T> list = array.ToList();
+            list.Insert( index, item);
+            return list.ToArray();
+        }
+
+
+
+        public static T[] InsertRange<T>(this T[] array, int index, IEnumerable<T> items)
+        {
+            List<T> list = array.ToList();
+            list.InsertRange(index, items);
+            return list.ToArray();
+        }
+
+        public static T[] TrimFront<T>(this T[] array, T item)
+        {
+            return array.ToList().TrimFront(item).ToArray();
+        }
+
+        public static T[] TrimEnd<T>(this T[] array, T item)
+        {
+
+            return array.ToList().TrimEnd(item).ToArray();
+        }
+
+        public static T[] Trim<T>(this T[] array, T item)
+        {
+
+            return array.ToList().Trim(item).ToArray();
+        }
+
+        public static bool TryGetIndex<T>(this T[] array, int index, out T item)
+        {
+            if (array == null || array.Length <= index)
+            {
+                item = default(T);
+                return false;
+            }
+
+            item = array[index];
+            return true;
+            
+        }
+
+        public static bool TryGetIndexNotNull<T>(this T[] array, int index, out T item)
+        {
+            if (array == null || array.Length <= index || array[index] == null)
+            {
+                item = default(T);
+                return false;
+            }
+
+            item = array[index];
+            return true;
+
+        }
+
+
+        public static bool TryGetInt(this string[] array, int index, out int value)
+        {
+            if (array == null || array.Length <= index)
+            {
+                value = 0;
+                return false;
+            }
+            
+            string text = array[index];
+            return int.TryParse(text, out value);
+        }
+
+        public static bool TryGetGuid(this string[] array, int index, out Guid value)
+        {
+            if (array == null || array.Length <= index)
+            {
+                value = Guid.Empty;
+                return false;
+            }
+
+            string text = array[index];
+            return Guid.TryParse(text, out value);
+        }
+
+        public static bool TryGetUint(this string[] array, int index, out uint value)
+        {
+            if (array == null || array.Length <= index)
+            {
+                value = 0;
+                return false;
+            }
+
+            string text = array[index];
+            if (text.StartsWith("0x") || text.StartsWith("#"))
+            {
+
+            }
+
+            return uint.TryParse(text, out value);
+        }
+
+
+        public static bool TryGetFloat(this string[] array, int index, out float value)
+        {
+            if (array == null || array.Length <= index)
+            {
+                value = 0;
+                return false;
+            }
+
+            string text = array[index];
+            return float.TryParse(text, out value);
+        }
+        public static bool TryGetDouble(this string[] array, int index, out double value)
+        {
+            if (array == null || array.Length <= index)
+            {
+                value = 0;
+                return false;
+            }
+
+            string text = array[index];
+            return double.TryParse(text, out value);
+        }
+
+        public static bool TryGetBool(this string[] array, int index, out bool value)
+        {
+            if (array.TryGetIndexNotNull(index, out var text))
+            {
+                value = false;
+                return false;
+            }
+            return text.TryParseBool(out value);
+        }
+
+        public static bool TryParseBool(this string txt, out bool value)
+        {
+            string text = txt.ToLower();
+            if (text == "true" || text == "1")
+            {
+                value = true;
+                return true;
+            }
+            if (text == "false" || text == "0")
+            {
+                value = false;
+                return true;
+            }
+
+            value = false;
+            return false;
+        }
     }
 
     public static class DictionaryLister
@@ -182,5 +473,95 @@ namespace CombatManager
                 target.Add(x);
             }
         }
+
+        public static void WeaveList<T>(this IEnumerable<T> list, Action<T> onItem = null, Action<T, T> betweenItems = null)
+        {
+            var enu = list.GetEnumerator();
+            bool more = enu.MoveNext();
+            while (more)
+            {
+                T item = enu.Current;
+                onItem?.Invoke(item);
+
+                more = enu.MoveNext();
+                if (more)
+                {
+                    T next = enu.Current;
+                    betweenItems?.Invoke(item, next);
+                }
+            }
+        }
+
+        public static void All<T>(this Action<T> action)  where T : System.Enum
+        {
+            foreach (T v in Enum.GetValues(typeof(T)))
+            {
+                action(v);
+            }
+        }
+
     }
+
+    public static class CMTupleUtils
+    {
+        public static List<T> ToList<T>(this (T, T) tuple)
+        {
+            return new List<T>() { tuple.Item1, tuple.Item2 };
+            
+        }
+
+        public static List<T> ToList<T>(this (T, T, T) tuple)
+        {
+            return new List<T>() { tuple.Item1, tuple.Item2, tuple.Item3 };
+
+        }
+
+        public static List<T> ToList<T>(this (T, T, T, T) tuple)
+        {
+            return new List<T>() { tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4 };
+
+        }
+
+        public static List<T> ToList<T>(this (T, T, T, T, T) tuple)
+        {
+            return new List<T>() { tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5 };
+
+        }
+
+        public static List<T> ToList<T>(this (T, T, T, T, T, T) tuple)
+        {
+            return new List<T>() { tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6 };
+
+        }
+
+        public static List<string> ToStringList<T, U>(this (T, U) tuple)
+        {
+            return new List<string>() { tuple.Item1.ToString(), tuple.Item2.ToString()};
+
+        }
+        public static List<string> ToStringList<T, U, V>(this (T, U, V) tuple)
+        {
+            return new List<string>() { tuple.Item1.ToString(), tuple.Item2.ToString(), tuple.Item3.ToString()};
+
+        }
+        public static List<string> ToStringList<T, U, V, W>(this (T, U, V, W) tuple)
+        {
+            return new List<string>() { tuple.Item1.ToString(), tuple.Item2.ToString(), tuple.Item3.ToString(), tuple.Item4.ToString()};
+
+        }
+        public static List<string> ToStringList<T, U, V, W, X>(this (T, U, V, W, X) tuple)
+        {
+            return new List<string>() { tuple.Item1.ToString(), tuple.Item2.ToString(), tuple.Item3.ToString(), tuple.Item4.ToString(), tuple.Item5.ToString()};
+
+        }
+
+        public static List<string> ToStringList<T, U, V, W, X, Y>(this (T, U, V, W, X, Y) tuple)
+        {
+            return new List<string>() { tuple.Item1.ToString(), tuple.Item2.ToString(), tuple.Item3.ToString(), tuple.Item4.ToString(), tuple.Item5.ToString(), tuple.Item6.ToString() };
+
+        }
+
+
+    }
+        
 }

@@ -3,7 +3,7 @@ using System.Text;
 
 using CombatManager;
 
-namespace CombatManager
+namespace CombatManager.Html
 {
     public class MagicItemHtmlCreator
     {
@@ -11,14 +11,14 @@ namespace CombatManager
         {
         }
         
-        public static String CreateHtml(MagicItem item, bool showTitle = true, bool completePage = true)
+        public static String CreateHtml(MagicItem item, bool showTitle = true, bool completepage = true, string css = null)
         {
 
             StringBuilder blocks = new StringBuilder();
 
-            if (completePage)
+            if (completepage)
             {
-                blocks.CreateHtmlHeader();
+                blocks.CreateHtmlHeader(css);
             }
 
             if (showTitle)
@@ -97,7 +97,7 @@ namespace CombatManager
 
             }
 
-            if (completePage)
+            if (completepage)
             {
                 blocks.CreateHtmlFooter();
             }

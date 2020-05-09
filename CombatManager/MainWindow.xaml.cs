@@ -455,6 +455,11 @@ namespace CombatManager
                     StopLocalService();
                 }
             }
+            else if (e.PropertyName == "RunWebService" && UserSettings.Settings.RunLocalService)
+            {
+                StopLocalService();
+                RunLocalService();
+            }
             else if (e.PropertyName == "LocalServicePort" && UserSettings.Settings.RunLocalService)
             {
                 StopLocalService();
@@ -9523,7 +9528,7 @@ namespace CombatManager
                    }
                    );
                };
-                localService.Start();
+                localService.Start(UserSettings.Settings.RunWebService);
             }
 
         }

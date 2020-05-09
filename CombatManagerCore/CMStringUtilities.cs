@@ -83,14 +83,14 @@ namespace CombatManager
             return strings;
         }
 
-        public static String ToTokenString(this List<String> strings, char token)
+        public static string ToTokenString(this List<string> strings, char token)
         {
             if (strings == null || strings.Count == 0)
             {
                 return null;
             }
-            String list = "";
-            foreach (String str in strings)
+            string list = "";
+            foreach (string str in strings)
             {
                 if (list != "")
                 {
@@ -99,6 +99,30 @@ namespace CombatManager
                 list += str;
             }
             return list;
+        }
+
+        public static List<string> ToStringList<T>(this IEnumerable<T> obs)
+        {
+            List<string> strings = new List<string>();
+            foreach (var o in obs)
+            {
+                strings.Add(o.ToString());
+            }
+            return strings;
+        }
+        
+        public static string WeaveObjectsToString<T>(this IEnumerable<T> ob, string space)
+        {
+            StringBuilder b = new StringBuilder();
+            ob.WeaveList(s => b.Append(s.ToString()), (x, y) => b.Append(space));
+            return b.ToString();
+        }
+
+        public static string WeaveString(this IEnumerable<string> strings, string space)
+        {
+            StringBuilder b = new StringBuilder();
+            strings.WeaveList(s => b.Append(s), (x, y) => b.Append(space));
+            return b.ToString();
         }
 
 
@@ -193,9 +217,143 @@ namespace CombatManager
         
         }
 
+        public static readonly string[] HexPrefixes  = { "#", "0x", "&h" };
+
+        public static bool TryParseAllowHex(this string s, out uint value)
+        {
+            value = 0;
+            if (s == null)
+            {
+                return false;
+            }
+            if (s.StartsWith(HexPrefixes))
+            {
+
+                string parser = s.TrimStart(HexPrefixes);
+                return uint.TryParse(s, System.Globalization.NumberStyles.HexNumber, null, out value);
+            }
+            else
+            {
+                return uint.TryParse(s, out value);
+            }
+
+        }
+
+        public static bool TryParseAllowHex(this string s, out ulong value)
+        {
+            value = 0;
+            if (s == null)
+            {
+                return false;
+            }
+            if (s.StartsWith(HexPrefixes))
+            {
+
+                string parser = s.TrimStart(HexPrefixes);
+                return ulong.TryParse(s, System.Globalization.NumberStyles.HexNumber, null, out value);
+            }
+            else
+            {
+                return ulong.TryParse(s, out value);
+            }
+
+        }
+
+        public static bool StartsWith(this string s, IEnumerable<string> matches)
+        {
+            foreach (var m in matches)
+            {
+                if (s.StartsWith(m))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static string TrimStart(this string s, string trim)
+        {
+            if (s == null) return null;
+            string outs = s;
+            if (trim != null && trim.Length > 0)
+            {
+                while (outs.StartsWith(trim))
+                {
+                    outs = outs.Substring(trim.Length);
+                }
+            }
+            return outs;
+            
+        }
+
+
+
+        public static string TrimStart(this string s, IEnumerable<string> trims)
+        {
+            if (s == null) return null;
+            string outs = s;
+            if (trims != null)
+            {
+                foreach (var trim in trims)
+                {
+                    outs = outs.TrimStart(trim);
+                }
+            }
+            return outs;
+        }
+
+
+        public static string TrimEnd(this string s, string trim)
+        {
+            if (s == null) return null;
+            string outs = s;
+            if (trim != null && trim.Length > 0)
+            {
+                while (outs.EndsWith(trim))
+                {
+                    outs = outs.Substring(0, outs.Length - trim.Length);
+                }
+            }
+            return outs;
+
+        }
+
+
+        public static string TrimEnd(this string s, IEnumerable<string> trims)
+        {
+            if (s == null) return null;
+            string outs = s;
+            if (trims != null)
+            {
+                foreach (var trim in trims)
+                {
+                    outs = outs.TrimEnd(trim);
+                }
+            }
+            return outs;
+        }
+
+        public static string Trim(this string s, string trim)
+        {
+            return s.TrimStart(trim).TrimEnd(trim);
+        }
+
+        public static string Trim(this string s, IEnumerable<string> trims)
+        {
+            return s.TrimStart(trims).TrimEnd(trims);
+        }
+
+
         public static bool IsEmptyOrNull(this string s)
         {
             return s == null || s.Length == 0;
         }
+
+        public static bool NotNullString(this string str)
+        {
+            return str != null && str.Trim() != "";
+        }
+
     }
 }

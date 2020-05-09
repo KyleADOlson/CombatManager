@@ -44,21 +44,29 @@
 
                 </StackPanel>
                 <StackPanel Grid.Column="1" Background="{DynamicResource ResourceKey=SecondaryColorBDarkerBrush}" Margin="0">
+                    
                     <TextBlock Text="Network" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" FontWeight="Bold" Margin="2,0,0,0"/>
-                    <CheckBox x:Name="LocalWebServiceCheckbox" Content="Run Local Web Service" HorizontalAlignment="Left" Margin="6,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="DarkSchemeCheckbox_Checked" Unchecked="DarkSchemeCheckbox_Unchecked"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Port:" Width="53" Margin="16,0,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" VerticalAlignment="Center"/>
-                        <TextBox x:Name="PortTextBox"  Width="80" Margin="6,5,4,2" TextChanged="PortTextBox_TextChanged" ToolTip="Choose a port number may be from 1 to 65535" PreviewTextInput="PortTextBox_PreviewTextInput"
-                             DataObject.Pasting="PortTextBox_Pasting "/>
+                    <CheckBox x:Name="LocalWebServiceCheckbox" Content="Run Local Web Service" HorizontalAlignment="Left" Margin="6,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="LocalWebServiceCheckbox_Checked" Unchecked="LocalWebServiceCheckbox_Unchecked" />
+                    <Border Margin="10,0" Padding="0,10" Background="{DynamicResource SecondaryColorADarkerBrush}" BorderThickness="1" BorderBrush="{DynamicResource TextOnSecondaryADarkerBrush}">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="LocalServerPortLabel" Text="Port:" Width="53" Margin="16,0,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" VerticalAlignment="Center"/>
+                                <TextBox x:Name="PortTextBox"  Width="80" Margin="6,5,4,2" TextChanged="PortTextBox_TextChanged" ToolTip="Choose a port number may be from 1 to 65535" PreviewTextInput="PortTextBox_PreviewTextInput"
+                                     DataObject.Pasting="PortTextBox_Pasting "/>
 
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Passcode:" Width="53" Margin="16,0,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="LocalServerPasscodeLabel" Text="Passcode:" Width="53" Margin="16,0,0,0" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" VerticalAlignment="Center"/>
 
-                        <TextBox x:Name="PasscodeTextBox"  Width="80" Margin="6,5,4,2" TextChanged="PascodeTextBox_TextChanged" ToolTip="Chose a passcode for the passcode header, if you want one" PreviewTextInput="PasscodeTextBox_PreviewTextInput"
-                             DataObject.Pasting="PasscodeTextBox_Pasting"/>
+                                <TextBox x:Name="PasscodeTextBox"  Width="80" Margin="6,5,4,2" TextChanged="PascodeTextBox_TextChanged" ToolTip="Chose a passcode for the passcode header, if you want one" PreviewTextInput="PasscodeTextBox_PreviewTextInput"
+                                         DataObject.Pasting="PasscodeTextBox_Pasting"/>
 
-                    </StackPanel>
+                            </StackPanel>
+
+                            <CheckBox x:Name="RunHttpServerCheckbox" Content="Run Player Web Server" HorizontalAlignment="Left" Margin="14,5,0,3" VerticalAlignment="Top" Foreground="{DynamicResource TextOnSecondaryADarkerBrush}" Checked="DarkSchemeCheckbox_Checked" Unchecked="DarkSchemeCheckbox_Unchecked"/>
+
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
             </Grid>
         </Border>

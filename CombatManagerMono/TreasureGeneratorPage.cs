@@ -7,6 +7,7 @@ using UIKit;
 using System.IO;
 
 using CombatManager;
+using CombatManager.Html;
 using MessageUI;
 
 namespace CombatManagerMono
