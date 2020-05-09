@@ -44,7 +44,7 @@ namespace CombatManager
         Major
     }
 
-    public class MagicItem : INotifyPropertyChanged
+    public class MagicItem : INotifyPropertyChanged, IDBLoadable
     {
 
 
@@ -91,6 +91,8 @@ namespace CombatManager
         private String _DescHTML;
         private String _Mythic;
         private String _LegendaryWeapon;
+
+        private int _DBLoaderID;
 
 
 
@@ -287,6 +289,7 @@ namespace CombatManager
             _DescHTML = magicItem._DescHTML;
             _Mythic = magicItem._Mythic;
             _LegendaryWeapon = magicItem._LegendaryWeapon;
+            _DBLoaderID = magicItem._DBLoaderID;
         }
 
         void UpdateFromDetailsDB()
@@ -330,6 +333,7 @@ namespace CombatManager
                 _DescHTML = list["DescHTML"];
                 _Mythic = list["Mythic"];
                 _LegendaryWeapon = list["LegendaryWeapon"];
+                _DBLoaderID = 0;
 
                 _DetailsID = 0;
             }
@@ -1016,7 +1020,22 @@ namespace CombatManager
             }
         }
 
+        public int DBLoaderID
+        {
+            get
+            {
+                return _DBLoaderID;
+            }
+            set
+            {
+                if (_DBLoaderID != value)
+                {
+                    _DBLoaderID = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DBLoaderID")); }
 
+                }
+            }
+        }
 
         public static MagicItem ByName(string name)
         {
