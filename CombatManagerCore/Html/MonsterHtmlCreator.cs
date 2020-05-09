@@ -175,14 +175,16 @@ namespace CombatManager.Html
             }
 
             blocks.AppendOpenTag("span", "combatlistplayer");
-            blocks.AppendOpenTag("span", "playername");
+            StringBuilder subbuilder = new StringBuilder();
+            subbuilder.AppendOpenTag("span", "playername");
             if (follower)
             {
-                blocks.AppendWebIcon("lock");
-                blocks.AppendSpace();
+                subbuilder.AppendWebIcon("lock");
+                subbuilder.AppendSpace();
             }
-            blocks.AppendSpanWithTooltip(content: name, tiptext: name);
-            blocks.AppendCloseTag("span");
+            subbuilder.AppendHtml(name);
+            subbuilder.AppendCloseTag("span");
+            blocks.AppendSpanWithTooltip(content: subbuilder.ToString(), escaped: false, tiptext: name);
             blocks.AppendSpan(" HP: " + hp + "/" + maxhp + " ", classname: "playerhp");
 
             blocks.AppendSpan("Init: " + init, classname: "playerinitiative");
