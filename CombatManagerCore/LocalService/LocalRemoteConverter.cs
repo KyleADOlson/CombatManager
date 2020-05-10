@@ -604,9 +604,9 @@ namespace CombatManager.LocalService
             return remoteSpell;
         }
 
-        public delegate bool MonsterFilter(Monster monster);
+        public delegate bool ItemFilter<T>(T item);
 
-        public static RemoteDBListing CreateRemoteMonsterList(MonsterFilter filter)
+        public static RemoteDBListing CreateRemoteMonsterList(ItemFilter<Monster> filter)
         {
             RemoteDBListing listing = new RemoteDBListing();
             listing.Items = new List<RemoteDBItem>();
@@ -618,12 +618,77 @@ namespace CombatManager.LocalService
             return listing;
         }
 
+        public static RemoteDBListing CreateRemoteFeatList(ItemFilter<Feat> filter)
+        {
+            RemoteDBListing listing = new RemoteDBListing();
+            listing.Items = new List<RemoteDBItem>();
+            foreach (Feat fs in from f in Feat.Feats where filter(f) select f)
+            {
+                listing.Items.Add(fs.ToDBItem());
+            }
+
+            return listing;
+        }
+        public static RemoteDBListing CreateRemoteSpellList(ItemFilter<Spell> filter)
+        {
+            RemoteDBListing listing = new RemoteDBListing();
+            listing.Items = new List<RemoteDBItem>();
+            foreach (Spell ss in from s in Spell.Spells where filter(s) select s)
+            {
+                listing.Items.Add(ss.ToDBItem());
+            }
+
+            return listing;
+        }
+
+        public static RemoteDBListing CreateRemoteMagicItemList(ItemFilter<MagicItem> filter)
+        {
+            RemoteDBListing listing = new RemoteDBListing();
+            listing.Items = new List<RemoteDBItem>();
+            foreach (MagicItem mis in from mi in MagicItem.Items.Values where filter(mi) select mi)
+            {
+                listing.Items.Add(mis.ToDBItem());
+            }
+
+            return listing;
+        }
+
         public static RemoteDBItem ToDBItem(this Monster monster)
         {
             RemoteDBItem item = new RemoteDBItem();
             item.Name = monster.Name;
             item.ID = monster.IsCustom ? monster.DBLoaderID : monster.DetailsID;
             item.IsCustom = monster.IsCustom;
+
+            return item;
+        }
+
+        public static RemoteDBItem ToDBItem(this Feat feat)
+        {
+            RemoteDBItem item = new RemoteDBItem();
+            item.Name = feat.Name;
+            item.ID = feat.IsCustom ? feat.DBLoaderID : feat.Id;
+            item.IsCustom = feat.IsCustom;
+
+            return item;
+        }
+
+        public static RemoteDBItem ToDBItem(this Spell spell)
+        {
+            RemoteDBItem item = new RemoteDBItem();
+            item.Name = spell.Name;
+            item.ID = spell.IsCustom ? spell.DBLoaderID : spell.detailsid;
+            item.IsCustom = spell.IsCustom;
+
+            return item;
+        }
+
+        public static RemoteDBItem ToDBItem(this MagicItem magicItem)
+        {
+            RemoteDBItem item = new RemoteDBItem();
+            item.Name = magicItem.Name;
+            item.ID = magicItem.IsCustom ? magicItem.DBLoaderID : magicItem.DetailsID;
+            item.IsCustom = magicItem.IsCustom;
 
             return item;
         }
