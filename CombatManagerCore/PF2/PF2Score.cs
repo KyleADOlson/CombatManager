@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace CombatManager
+namespace CombatManager.PF2
 {
     public class PF2Score : SimpleNotifyClass
     {

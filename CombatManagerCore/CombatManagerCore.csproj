@@ -175,9 +175,9 @@
     <Compile Include="Pathfinder.Herolab.Serializable.class.cs" />
     <Compile Include="Personalization\ColorSchemeManager.cs" />
     <Compile Include="Personalization\FavoriteColors.cs" />
-    <Compile Include="PF2Score.cs" />
-    <Compile Include="PF2Stats.cs" />
-    <Compile Include="ProficiencyRank.cs" />
+    <Compile Include="PF2\PF2Score.cs" />
+    <Compile Include="PF2\PF2Stats.cs" />
+    <Compile Include="PF2\ProficiencyRank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyConverters.cs" />
     <Compile Include="RandomWeightChart.cs" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CombatManager
+namespace CombatManager.PF2
 {
     public enum ProficiencyRank
     {
