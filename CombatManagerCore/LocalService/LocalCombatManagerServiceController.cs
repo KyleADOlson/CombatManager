@@ -373,6 +373,55 @@ namespace CombatManager.LocalService
             });
         }
 
+        [Route(HttpVerbs.Post, "/feat/fromlist")]
+        public async Task<object> GetFeats()
+        {
+            return await TakePostAction<FeatsRequest>((res, data) =>
+            {
+                RemoteFeatList list = new RemoteFeatList();
+                list.Feats = new List<RemoteFeat>();
+                if (data.Feats != null)
+                {
+                    foreach (var fr in data.Feats)
+                    {
+                        Feat f = Feat.ByID(fr.IsCustom, fr.ID);
+                        list.Feats.Add(f.ToRemote());
+                    }
+                }
+                res.Data = list;
+            });
+        }
+
+
+        [Route(HttpVerbs.Post, "/feat/list")]
+        public async Task<object> ListFeats()
+        {
+            return await TakePostAction<FeatListRequest>((res, data) =>
+            {
+               
+
+                res.Data = LocalRemoteConverter.CreateRemoteFeatList(m =>
+                {
+                    try
+                    {
+                        return m.Name.ContainsOrNullIgnoreCase(data.Name)
+                        && (data.IsCustom == null || m.IsCustom == data.IsCustom)
+                        && (data.Type == null || m.Types.Contains(data.Type));
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex != null)
+                        {
+
+                        }
+                        return false;
+                    }
+
+                });
+
+            });
+        }
+
         [Route(HttpVerbs.Post, "/spell/get")]
         public async Task<object> GetSpell()
         {
@@ -383,12 +432,113 @@ namespace CombatManager.LocalService
             });
         }
 
+        [Route(HttpVerbs.Post, "/spell/fromlist")]
+        public async Task<object> GetSpells()
+        {
+            return await TakePostAction<SpellsRequest>((res, data) =>
+            {
+                RemoteSpellList list = new RemoteSpellList();
+                list.Spells = new List<RemoteSpell>();
+                if (data.Spells != null)
+                {
+                    foreach (var sr in data.Spells)
+                    {
+                        Spell s = Spell.ByID(sr.IsCustom, sr.ID);
+                        list.Spells.Add(s.ToRemote());
+                    }
+                }
+                res.Data = list;
+            });
+        }
+
+        [Route(HttpVerbs.Post, "/spell/list")]
+        public async Task<object> ListSpells()
+        {
+            return await TakePostAction<SpellListRequest>((res, data) =>
+            {
+
+
+                res.Data = LocalRemoteConverter.CreateRemoteSpellList(m =>
+                {
+                    try
+                    {
+                        return m.Name.ContainsOrNullIgnoreCase(data.Name)
+                        && (data.IsCustom == null || m.IsCustom == data.IsCustom)
+                        && (data.School == null || m.school.Equals(data.School, StringComparison.CurrentCultureIgnoreCase))
+                        && m.subschool.ContainsOrNullIgnoreCase(data.Subschool);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex != null)
+                        {
+
+                        }
+                        return false;
+                    }
+
+                });
+
+            });
+        }
+
         [Route(HttpVerbs.Post, "/magicitem/get")]
         public async Task<object> GetMagicItem()
         {
             return await TakePostAction<MagicItemRequest>((res, data) =>
             {
                 res.Data = MagicItem.ByID(data.IsCustom, data.ID).ToRemote();
+
+            });
+        }
+
+        [Route(HttpVerbs.Post, "/magicitem/fromlist")]
+        public async Task<object> GetMagicItems()
+        {
+            return await TakePostAction<MagicItemsRequest>((res, data) =>
+            {
+                RemoteMagicItemList list = new RemoteMagicItemList();
+                list.MagicItems = new List<RemoteMagicItem>();
+                if (data.MagicItems != null)
+                {
+                    foreach (var mir in data.MagicItems)
+                    {
+                        MagicItem mi = MagicItem.ByID(mir.IsCustom, mir.ID);
+                        list.MagicItems.Add(mi.ToRemote());
+                    }
+                }
+                res.Data = list;
+            });
+        }
+
+        [Route(HttpVerbs.Post, "/magicitem/list")]
+        public async Task<object> ListMagicItems()
+        {
+            return await TakePostAction<MagicItemListRequest>((res, data) =>
+            {
+
+
+                res.Data = LocalRemoteConverter.CreateRemoteMagicItemList(m =>
+                {
+
+                    try
+                    {
+                        return m.Name.ContainsOrNullIgnoreCase(data.Name)
+                        && (data.IsCustom == null || m.IsCustom == data.IsCustom)
+                        && m.Slot.ContainsOrNullIgnoreCase(data.Slot)
+                        && m.Group.ContainsOrNullIgnoreCase(data.Group)
+                        && (data.MinCL == null || m.CL >= data.MinCL.Value)
+                        && (data.MaxCL == null || m.CL <= data.MaxCL.Value);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex != null)
+                        {
+
+                        }
+                        return false;
+                    }
+
+                });
 
             });
         }

@@ -1037,6 +1037,15 @@ namespace CombatManager
             }
         }
 
+        [XmlIgnore]
+        public bool IsCustom
+        {
+            get
+            {
+                return DBLoaderID != 0;
+            }
+        }
+
         public static MagicItem ByName(string name)
         {
             MagicItem item = null;

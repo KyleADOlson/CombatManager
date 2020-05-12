@@ -355,5 +355,23 @@ namespace CombatManager
             return str != null && str.Trim() != "";
         }
 
+        public static bool ContainsIgnoreCase(this string target, string contains)
+        {
+            if (target == null || contains == null)
+            {
+                return false;
+            }
+            return target.ToUpper().Contains(contains.ToString());
+        }
+
+        public static bool ContainsOrNullIgnoreCase(this string target, string contains)
+        {
+            if (contains == null)
+            {
+                return true;
+            }
+            return target.ToUpper().Contains(contains.ToString());
+        }
+        
     }
 }
