@@ -90,6 +90,7 @@
     <Compile Include="ArmorWeaponSpecialChart.cs" />
     <Compile Include="Attack.cs" />
     <Compile Include="AttackSet.cs" />
+    <Compile Include="BaseMonster.cs" />
     <Compile Include="Bookmark.cs" />
     <Compile Include="BookmarkList.cs" />
     <Compile Include="CampaignEvent.cs" />

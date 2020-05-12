@@ -134,6 +134,7 @@
     <Compile Include="ArmorWeaponSpecialChart.cs" />
     <Compile Include="Attack.cs" />
     <Compile Include="AttackSet.cs" />
+    <Compile Include="BaseMonster.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharacterAttacks.cs" />
     <Compile Include="CMRegexUtilities.cs" />
@@ -209,6 +210,9 @@
     <Compile Include="MagicItem.cs" />
     <Compile Include="monster.cs" />
     <Compile Include="MonsterDB.cs" />
+    <Compile Include="PF2\PF2Score.cs" />
+    <Compile Include="PF2\PF2Stats.cs" />
+    <Compile Include="PF2\ProficiencyRank.cs" />
     <Compile Include="RandomWeightChart.cs" />
     <Compile Include="SizeMods.cs" />
     <Compile Include="SkillValue.cs" />
@@ -249,9 +253,6 @@
     <Compile Include="LocalService\LocalCombatManagerService.cs" />
     <Compile Include="LocalService\LocalRemoteConverter.cs" />
     <Compile Include="RulesSystem.cs" />
-    <Compile Include="ProficiencyRank.cs" />
-    <Compile Include="PF2Stats.cs" />
-    <Compile Include="PF2Score.cs" />
     <Compile Include="DD5Stats.cs" />
     <Compile Include="CMBindingUtils.cs" />
     <Compile Include="CMListUtilities.cs" />

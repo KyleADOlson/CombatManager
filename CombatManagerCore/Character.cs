@@ -33,7 +33,7 @@ namespace CombatManager
 {
     
     [DataContract]
-    public class Character : INotifyPropertyChanged
+    public class Character : SimpleNotifyClass
     {
         public enum HPMode : int
         {
@@ -45,11 +45,9 @@ namespace CombatManager
         [XmlIgnore]
         public object UndoInfo { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private RulesSystem rulesSystem;
 
-        private String name;
+        private string name;
         private int hp;
         private int maxHP;
         private int nonlethalDamage;
@@ -230,15 +228,6 @@ namespace CombatManager
             }
         }
 
-
-
-        private void Notify(string prop)
-        {
-            if (this.PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
-        }
 
         public void Stabilize()
         {
@@ -1055,11 +1044,9 @@ namespace CombatManager
                 if (_IsHidden != value)
                 {
                     _IsHidden = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("IsHidden")); 
-                        PropertyChanged(this, new PropertyChangedEventArgs("HiddenName"));
-                    }
+                    Notify("IsHidden");
+                    Notify("HiddenName");
+                    
                 }
             }
         }
@@ -1074,7 +1061,7 @@ namespace CombatManager
                 if (_IsIdle != value)
                 {
                     _IsIdle = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("IsIdle")); }
+                    Notify("IsIdle");
                 }
             }
         }
@@ -1092,7 +1079,7 @@ namespace CombatManager
                 {
                     resources = value;
 
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Resources")); }
+                    Notify("Resources");
 
                 }
             }
