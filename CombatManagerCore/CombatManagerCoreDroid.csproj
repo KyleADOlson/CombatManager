@@ -76,6 +76,7 @@
     <None Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDBClass.cs" />
     <Compile Include="BaseMonster.cs" />
     <Compile Include="CMBindingUtils.cs" />
     <Compile Include="CMListUtilities.cs" />

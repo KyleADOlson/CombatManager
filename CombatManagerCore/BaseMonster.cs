@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CombatManager
 {
-    public class BaseMonster : SimpleNotifyClass
+    public abstract class BaseMonster : BaseDBClass
     {
+
     }
 }

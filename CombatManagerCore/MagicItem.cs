@@ -44,14 +44,8 @@ namespace CombatManager
         Major
     }
 
-    public class MagicItem : INotifyPropertyChanged, IDBLoadable
+    public class MagicItem : BaseDBClass
     {
-
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private int _DetailsID;
 
         private String _Name;
         private String _Aura;
@@ -92,7 +86,6 @@ namespace CombatManager
         private String _Mythic;
         private String _LegendaryWeapon;
 
-        private int _DBLoaderID;
 
 
 
@@ -419,8 +412,7 @@ namespace CombatManager
                 if (_Name != value)
                 {
                     _Name = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Name")); }
-                }
+                    Notify("Name");                }
             }
         }
         public String Aura
@@ -432,8 +424,7 @@ namespace CombatManager
                 if (_Aura != value)
                 {
                     _Aura = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Aura")); }
-                }
+                    Notify("Aura");                }
             }
         }
         public int CL
@@ -444,8 +435,7 @@ namespace CombatManager
                 if (_CL != value)
                 {
                     _CL = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CL")); }
-                }
+                    Notify("CL");                }
             }
         }
         public String Slot
@@ -460,8 +450,7 @@ namespace CombatManager
                 if (_Slot != value)
                 {
                     _Slot = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Slot")); }
-                }
+                    Notify("Slot");                }
             }
         }
         public String Price
@@ -476,8 +465,7 @@ namespace CombatManager
                 if (_Price != value)
                 {
                     _Price = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Price")); }
-                }
+                    Notify("Price");                }
             }
         }
         public String Weight
@@ -492,8 +480,7 @@ namespace CombatManager
                 if (_Weight != value)
                 {
                     _Weight = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Weight")); }
-                }
+                    Notify("Weight");                }
             }
         }
         public String Description
@@ -508,8 +495,7 @@ namespace CombatManager
                 if (_Description != value)
                 {
                     _Description = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Description")); }
-                }
+                    Notify("Description");                }
             }
         }
         public String Requirements
@@ -525,8 +511,7 @@ namespace CombatManager
                 if (_Requirements != value)
                 {
                     _Requirements = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Requirements")); }
-                }
+                    Notify("Requirements");                }
             }
         }
         public String Cost
@@ -541,8 +526,7 @@ namespace CombatManager
                 if (_Cost != value)
                 {
                     _Cost = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Cost")); }
-                }
+                    Notify("Cost");                }
             }
         }
         public String Group
@@ -553,8 +537,7 @@ namespace CombatManager
                 if (_Group != value)
                 {
                     _Group = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Group")); }
-                }
+                    Notify("Group");                }
             }
         }
         public String Source
@@ -565,8 +548,7 @@ namespace CombatManager
                 if (_Source != value)
                 {
                     _Source = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Source")); }
-                }
+                    Notify("Source");                }
             }
         }
         public String FullText
@@ -582,8 +564,7 @@ namespace CombatManager
                 if (_FullText != value)
                 {
                     _FullText = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("FullText")); }
-                }
+                    Notify("FullText");                }
             }
         }
         public String Destruction
@@ -599,8 +580,7 @@ namespace CombatManager
                 if (_Destruction != value)
                 {
                     _Destruction = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Destruction")); }
-                }
+                    Notify("Destruction");                }
             }
         }
         public String MinorArtifactFlag
@@ -615,8 +595,7 @@ namespace CombatManager
                 if (_MinorArtifactFlag != value)
                 {
                     _MinorArtifactFlag = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MinorArtifactFlag")); }
-                }
+                    Notify("MinorArtifactFlag");                }
             }
         }
         public String MajorArtifactFlag
@@ -631,8 +610,7 @@ namespace CombatManager
                 if (_MajorArtifactFlag != value)
                 {
                     _MajorArtifactFlag = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MajorArtifactFlag")); }
-                }
+                    Notify("MajorArtifactFlag");                }
             }
         }
         public String Abjuration
@@ -647,8 +625,7 @@ namespace CombatManager
                 if (_Abjuration != value)
                 {
                     _Abjuration = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Abjuration")); }
-                }
+                    Notify("Abjuration");                }
             }
         }
         public String Conjuration
@@ -663,8 +640,7 @@ namespace CombatManager
                 if (_Conjuration != value)
                 {
                     _Conjuration = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Conjuration")); }
-                }
+                    Notify("Conjuration");                }
             }
         }
         public String Divination
@@ -679,8 +655,7 @@ namespace CombatManager
                 if (_Divination != value)
                 {
                     _Divination = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Divination")); }
-                }
+                    Notify("Divination");                }
             }
         }
         public String Enchantment
@@ -695,8 +670,7 @@ namespace CombatManager
                 if (_Enchantment != value)
                 {
                     _Enchantment = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Enchantment")); }
-                }
+                    Notify("Enchantment");                }
             }
         }
         public String Evocation
@@ -711,8 +685,7 @@ namespace CombatManager
                 if (_Evocation != value)
                 {
                     _Evocation = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Evocation")); }
-                }
+                    Notify("Evocation");                }
             }
         }
         public String Necromancy
@@ -727,8 +700,7 @@ namespace CombatManager
                 if (_Necromancy != value)
                 {
                     _Necromancy = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Necromancy")); }
-                }
+                    Notify("Necromancy");                }
             }
         }
         public String Transmutation
@@ -743,8 +715,7 @@ namespace CombatManager
                 if (_Transmutation != value)
                 {
                     _Transmutation = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Transmutation")); }
-                }
+                    Notify("Transmutation");                }
             }
         }
         public String AuraStrength
@@ -759,8 +730,7 @@ namespace CombatManager
                 if (_AuraStrength != value)
                 {
                     _AuraStrength = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AuraStrength")); }
-                }
+                    Notify("AuraStrength");                }
             }
         }
         public String WeightValue
@@ -775,8 +745,7 @@ namespace CombatManager
                 if (_WeightValue != value)
                 {
                     _WeightValue = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("WeightValue")); }
-                }
+                    Notify("WeightValue");                }
             }
         }
         public String PriceValue
@@ -791,8 +760,7 @@ namespace CombatManager
                 if (_PriceValue != value)
                 {
                     _PriceValue = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("PriceValue")); }
-                }
+                    Notify("PriceValue");                }
             }
         }
         public String CostValue
@@ -807,8 +775,7 @@ namespace CombatManager
                 if (_CostValue != value)
                 {
                     _CostValue = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CostValue")); }
-                }
+                    Notify("CostValue");                }
             }
         }
         public String AL
@@ -823,8 +790,7 @@ namespace CombatManager
                 if (_AL != value)
                 {
                     _AL = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AL")); }
-                }
+                    Notify("AL");                }
             }
         }
         public String Int
@@ -839,8 +805,7 @@ namespace CombatManager
                 if (_Int != value)
                 {
                     _Int = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Int")); }
-                }
+                    Notify("Int");                }
             }
         }
         public String Wis
@@ -855,8 +820,7 @@ namespace CombatManager
                 if (_Wis != value)
                 {
                     _Wis = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Wis")); }
-                }
+                    Notify("Wis");                }
             }
         }
         public String Cha
@@ -871,8 +835,7 @@ namespace CombatManager
                 if (_Cha != value)
                 {
                     _Cha = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Cha")); }
-                }
+                    Notify("Cha");                }
             }
         }
         public String Ego
@@ -887,8 +850,7 @@ namespace CombatManager
                 if (_Ego != value)
                 {
                     _Ego = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Ego")); }
-                }
+                    Notify("Ego");                }
             }
         }
         public String Communication
@@ -903,8 +865,7 @@ namespace CombatManager
                 if (_Communication != value)
                 {
                     _Communication = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Communication")); }
-                }
+                    Notify("Communication");                }
             }
         }
         public String Senses
@@ -919,8 +880,7 @@ namespace CombatManager
                 if (_Senses != value)
                 {
                     _Senses = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Senses")); }
-                }
+                    Notify("Senses");                }
             }
         }
         public String Powers
@@ -935,8 +895,7 @@ namespace CombatManager
                 if (_Powers != value)
                 {
                     _Powers = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Powers")); }
-                }
+                    Notify("Powers");                }
             }
         }
 
@@ -949,8 +908,7 @@ namespace CombatManager
                 if (_MagicItems != value && value != "NULL")
                 {
                     _MagicItems = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MagicItem")); }
-                }
+                    Notify("MagicItem");                }
             }
         }
 
@@ -966,8 +924,7 @@ namespace CombatManager
                 if (_DescHTML != value)
                 {
                     _DescHTML = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DescHTML")); }
-                }
+                    Notify("DescHTML");                }
             }
         }
 
@@ -983,8 +940,7 @@ namespace CombatManager
                 if (_Mythic != value)
                 {
                     _Mythic = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Mythic")); }
-                }
+                    Notify("Mythic");                }
             }
         }
         public String LegendaryWeapon
@@ -999,52 +955,10 @@ namespace CombatManager
                 if (_LegendaryWeapon != value)
                 {
                     _LegendaryWeapon = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("LegendaryWeapon")); }
-                }
+                    Notify("LegendaryWeapon");                }
             }
         }
 
-        public int DetailsID
-        {
-            get
-            {
-                return _DetailsID;
-            }
-            set
-            {
-                if (_DetailsID != value)
-                {
-                    _DetailsID = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("DetailsID"));
-                }
-            }
-        }
-
-        public int DBLoaderID
-        {
-            get
-            {
-                return _DBLoaderID;
-            }
-            set
-            {
-                if (_DBLoaderID != value)
-                {
-                    _DBLoaderID = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DBLoaderID")); }
-
-                }
-            }
-        }
-
-        [XmlIgnore]
-        public bool IsCustom
-        {
-            get
-            {
-                return DBLoaderID != 0;
-            }
-        }
 
         public static MagicItem ByName(string name)
         {

@@ -19,7 +19,7 @@
  *
  */
 
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -57,7 +57,7 @@ namespace CombatManager
     }
 
     [DataContract]
-    public class Monster : INotifyPropertyChanged, IDBLoadable
+    public class Monster : BaseMonster
     {
         static ObservableCollection<Monster> monsters;
 
@@ -314,11 +314,10 @@ namespace CombatManager
         }
                 
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string property)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            Notify(property);
 
         }
 
@@ -453,10 +452,6 @@ namespace CombatManager
         private int? _PreLossDex;
         private bool _StrZero;
         private int? _PreLossStr;
-
-        private int _DBLoaderID;
-
-        private int _DetailsID;
 
         private ObservableCollection<SpellBlockInfo> _SpellLikeAbilitiesBlock;
         private ObservableCollection<SpellBlockInfo> _SpellsKnownBlock;
@@ -9397,7 +9392,7 @@ namespace CombatManager
                 if (_rulesSystem != value)
                 {
                     _rulesSystem = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RulesSystem"));
+                    Notify("RulesSystem");
                 }
 
             }
@@ -9601,10 +9596,7 @@ namespace CombatManager
             set
             {
                 name = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Name"));
-                }
+                Notify("Name");
             }
         }
 
@@ -9618,10 +9610,7 @@ namespace CombatManager
             set
             {
                 cr = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("CR"));
-                }
+                Notify("CR");
             }
         }
 
@@ -9635,10 +9624,7 @@ namespace CombatManager
             set
             {
                 xp = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("XP"));
-                }
+                Notify("XP");
             }
         }
 
@@ -9652,10 +9638,7 @@ namespace CombatManager
             set
             {
                 race = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Race"));
-                }
+                Notify("Race");
             }
         }
 
@@ -9669,10 +9652,7 @@ namespace CombatManager
             set
             {
                 className = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Class"));
-                }
+                Notify("Class");
             }
         }
 
@@ -9686,10 +9666,7 @@ namespace CombatManager
             set
             {
                 alignment = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Alignment"));
-                }
+                Notify("Alignment");
             }
         }
 
@@ -9703,10 +9680,7 @@ namespace CombatManager
             set
             {
                 size = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Size"));
-                }
+                Notify("Size");
             }
         }
 
@@ -9720,10 +9694,7 @@ namespace CombatManager
             set
             {
                 type = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Type"));
-                }
+                Notify("Type");
             }
         }
 
@@ -9739,11 +9710,11 @@ namespace CombatManager
                 bool oldMythic = IsMythic;
                 subType = value;
 
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SubType"));
+                Notify("SubType");
                 if (oldMythic != IsMythic)
                 {
                     Mythic = (!oldMythic)?"1":"0";
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsMythic"));
+                    Notify("IsMythic");
                 }
 
             }
@@ -9759,10 +9730,7 @@ namespace CombatManager
             set
             {
                 init = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Init"));
-                }
+                Notify("Init");
             }
         }
 
@@ -9776,10 +9744,7 @@ namespace CombatManager
             set
             {
                 dualinit = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("DualInit"));
-                }
+                Notify("DualInit");
             }
         }
 
@@ -9793,10 +9758,7 @@ namespace CombatManager
             set
             {
                 senses = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Senses"));
-                }
+                Notify("Senses");
             }
         }
 
@@ -9810,10 +9772,7 @@ namespace CombatManager
             set
             {
                 ac = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("AC"));
-                }
+                Notify("AC");
             }
         }
 
@@ -9827,10 +9786,7 @@ namespace CombatManager
             set
             {
                 ac_mods = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("AC_Mods"));
-                }
+                Notify("AC_Mods");
             }
         }
 
@@ -9844,10 +9800,7 @@ namespace CombatManager
             set
             {
                 hp = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("HP"));
-                }
+                Notify("HP");
             }
         }
 
@@ -9861,10 +9814,7 @@ namespace CombatManager
             set
             {
                 hd = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("HD"));
-                }
+                Notify("HD");
             }
         }
 
@@ -9878,10 +9828,7 @@ namespace CombatManager
             set
             {
                 saves = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Saves"));
-                }
+                Notify("Saves");
             }
         }
 
@@ -9895,10 +9842,7 @@ namespace CombatManager
             set
             {
                 fort = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Fort"));
-                }
+                Notify("Fort");
             }
         }
 
@@ -9912,10 +9856,7 @@ namespace CombatManager
             set
             {
                 reflex = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Ref"));
-                }
+                Notify("Ref");
             }
         }
 
@@ -9929,10 +9870,7 @@ namespace CombatManager
             set
             {
                 will = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Will"));
-                }
+                Notify("Will");
             }
         }
 
@@ -9950,10 +9888,7 @@ namespace CombatManager
                 {
                     save_mods = null;
                 }
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Save_Mods"));
-                }
+                Notify("Save_Mods");
             }
         }
 
@@ -9967,10 +9902,7 @@ namespace CombatManager
             set
             {
                 resist = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Resist"));
-                }
+                Notify("Resist");
             }
         }
 
@@ -9984,10 +9916,7 @@ namespace CombatManager
             set
             {
                 dr = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("DR"));
-                }
+                Notify("DR");
             }
         }
 
@@ -10001,10 +9930,7 @@ namespace CombatManager
             set
             {
                 sr = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SR"));
-                }
+                Notify("SR");
             }
         }
 
@@ -10018,10 +9944,7 @@ namespace CombatManager
             set
             {
                 speed = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Speed"));
-                }
+                Notify("Speed");
             }
         }
 
@@ -10035,10 +9958,7 @@ namespace CombatManager
             set
             {
                 melee = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Melee"));
-                }
+                Notify("Melee");
             }
         }
 
@@ -10052,10 +9972,7 @@ namespace CombatManager
             set
             {
                 ranged = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Ranged"));
-                }
+                Notify("Ranged");
             }
         }
 
@@ -10069,10 +9986,7 @@ namespace CombatManager
             set
             {
                 space = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Space"));
-                }
+                Notify("Space");
             }
         }
 
@@ -10086,10 +10000,7 @@ namespace CombatManager
             set
             {
                 reach = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Reach"));
-                }
+                Notify("Reach");
             }
         }
 
@@ -10105,10 +10016,7 @@ namespace CombatManager
             set
             {
                 specialAttacks = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAttacks"));
-                }
+                Notify("SpecialAttacks");
             }
         }
 
@@ -10127,10 +10035,7 @@ namespace CombatManager
                 {
                     spellLikeAbilities = value;
                     _SpellLikeAbilitiesBlock = null;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpellLikeAbilities"));
-                    }
+                    Notify("SpellLikeAbilities");
                 }
             }
         }
@@ -10155,10 +10060,7 @@ namespace CombatManager
             set
             {
                 abilitiyScores = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("AbilitiyScores"));
-                }
+                Notify("AbilitiyScores");
             }
         }
 
@@ -10172,10 +10074,7 @@ namespace CombatManager
             set
             {
                 baseAtk = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("BaseAtk"));
-                }
+                Notify("BaseAtk");
             }
         }
 
@@ -10189,11 +10088,9 @@ namespace CombatManager
             set
             {
                 cmb = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("CMB"));
-                    PropertyChanged(this, new PropertyChangedEventArgs("CMB_Numeric"));
-                }
+                Notify("CMB");
+                Notify("CMB_Numeric");
+                
             }
         }
 
@@ -10207,11 +10104,9 @@ namespace CombatManager
             set
             {
                 cmd = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("CMD"));
-                    PropertyChanged(this, new PropertyChangedEventArgs("CMD_Numeric"));
-                }
+                Notify("CMD");
+                Notify("CMD_Numeric");
+
             }
         }
 
@@ -10226,10 +10121,7 @@ namespace CombatManager
             set
             {
                 feats = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Feats"));
-                }
+                Notify("Feats");
             }
         }
 
@@ -10244,10 +10136,7 @@ namespace CombatManager
             set
             {
                 skills = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Skills"));
-                }
+                Notify("Skills");
             }
         }
 
@@ -10261,10 +10150,7 @@ namespace CombatManager
             set
             {
                 racialMods = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("RacialMods"));
-                }
+                Notify("RacialMods");
             }
         }
 
@@ -10278,10 +10164,7 @@ namespace CombatManager
             set
             {
                 languages = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Languages"));
-                }
+                Notify("Languages");
             }
         }
 
@@ -10295,10 +10178,7 @@ namespace CombatManager
             set
             {
                 sq = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SQ"));
-                }
+                Notify("SQ");
             }
         }
 
@@ -10312,10 +10192,7 @@ namespace CombatManager
             set
             {
                 environment = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Environment"));
-                }
+                Notify("Environment");
             }
         }
 
@@ -10329,10 +10206,7 @@ namespace CombatManager
             set
             {
                 organization = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Organization"));
-                }
+                Notify("Organization");
             }
         }
 
@@ -10350,10 +10224,7 @@ namespace CombatManager
             set
             {
                 treasure = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Treasure"));
-                }
+                Notify("Treasure");
             }
         }
 
@@ -10370,7 +10241,7 @@ namespace CombatManager
                 {
                     _TrackedResources = value;
 
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TResources"));
+                    Notify("TResources");
                 }
             }
         }
@@ -10391,10 +10262,7 @@ namespace CombatManager
             set
             {
                 description_visual = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Description_Visual"));
-                }
+                Notify("Description_Visual");
             }
         }
 
@@ -10408,10 +10276,7 @@ namespace CombatManager
             set
             {
                 group = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Group"));
-                }
+                Notify("Group");
             }
         }
 
@@ -10425,10 +10290,7 @@ namespace CombatManager
             set
             {
                 source = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Source"));
-                }
+                Notify("Source");
             }
         }
 
@@ -10442,10 +10304,7 @@ namespace CombatManager
             set
             {
                 isTemplate = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("IsTemplate"));
-                }
+                Notify("IsTemplate");
             }
         }
 
@@ -10460,10 +10319,7 @@ namespace CombatManager
             set
             {
                 specialAbilities = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilities"));
-                }
+                Notify("SpecialAbilities");
             }
         }
 
@@ -10478,10 +10334,7 @@ namespace CombatManager
             set
             {
                 description = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Description"));
-                }
+                Notify("Description");
             }
         }
 
@@ -10495,10 +10348,7 @@ namespace CombatManager
             set
             {
                 fullText = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("FullText"));
-                }
+                Notify("FullText");
             }
         }
 
@@ -10512,10 +10362,7 @@ namespace CombatManager
             set
             {
                 gender = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Gender"));
-                }
+                Notify("Gender");
             }
         }
 
@@ -10529,10 +10376,7 @@ namespace CombatManager
             set
             {
                 bloodline = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Bloodline"));
-                }
+                Notify("Bloodline");
             }
         }
 
@@ -10546,10 +10390,7 @@ namespace CombatManager
             set
             {
                 prohibitedSchools = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("ProhibitedSchools"));
-                }
+                Notify("ProhibitedSchools");
             }
         }
 
@@ -10569,10 +10410,7 @@ namespace CombatManager
             set
             {
                 beforeCombat = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("BeforeCombat"));
-                }
+                Notify("BeforeCombat");
             }
         }
 
@@ -10592,10 +10430,7 @@ namespace CombatManager
             set
             {
                 duringCombat = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("DuringCombat"));
-                }
+                Notify("DuringCombat");
             }
         }
 
@@ -10614,10 +10449,7 @@ namespace CombatManager
             set
             {
                 morale = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Morale"));
-                }
+                Notify("Morale");
             }
         }
 
@@ -10636,10 +10468,7 @@ namespace CombatManager
             set
             {
                 gear = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Gear"));
-                }
+                Notify("Gear");
             }
         }
 
@@ -10654,10 +10483,7 @@ namespace CombatManager
             set
             {
                 otherGear = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("OtherGear"));
-                }
+                Notify("OtherGear");
             }
         }
 
@@ -10675,10 +10501,7 @@ namespace CombatManager
                 {
                     vulnerability = null;
                 }
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Vulnerability"));
-                }
+                Notify("Vulnerability");
             }
         }
 
@@ -10692,10 +10515,7 @@ namespace CombatManager
             set
             {
                 note = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Note"));
-                }
+                Notify("Note");
             }
         }
 
@@ -10709,10 +10529,7 @@ namespace CombatManager
             set
             {
                 characterFlag = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("CharacterFlag"));
-                }
+                Notify("CharacterFlag");
             }
         }
 
@@ -10726,10 +10543,7 @@ namespace CombatManager
             set
             {
                 companionFlag = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("CompanionFlag"));
-                }
+                Notify("CompanionFlag");
             }
         }
 
@@ -10743,10 +10557,7 @@ namespace CombatManager
             set
             {
                 fly = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Fly"));
-                }
+                Notify("Fly");
             }
         }
 
@@ -10760,10 +10571,7 @@ namespace CombatManager
             set
             {
                 climb = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Climb"));
-                }
+                Notify("Climb");
             }
         }
 
@@ -10777,10 +10585,7 @@ namespace CombatManager
             set
             {
                 burrow = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Burrow"));
-                }
+                Notify("Burrow");
             }
         }
 
@@ -10794,10 +10599,7 @@ namespace CombatManager
             set
             {
                 swim = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Swim"));
-                }
+                Notify("Swim");
             }
         }
 
@@ -10811,10 +10613,7 @@ namespace CombatManager
             set
             {
                 land = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Land"));
-                }
+                Notify("Land");
             }
         }
 
@@ -10828,10 +10627,7 @@ namespace CombatManager
             set
             {
                 templatesApplied = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("TemplatesApplied"));
-                }
+                Notify("TemplatesApplied");
             }
         }
 
@@ -10845,10 +10641,7 @@ namespace CombatManager
             set
             {
                 offenseNote = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("OffenseNote"));
-                }
+                Notify("OffenseNote");
             }
         }
 
@@ -10862,10 +10655,7 @@ namespace CombatManager
             set
             {
                 baseStatistics = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("BaseStatistics"));
-                }
+                Notify("BaseStatistics");
             }
         }
 
@@ -10883,10 +10673,8 @@ namespace CombatManager
                 {
                     spellsPrepared = value;
                     _SpellsPreparedBlock = null;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpellsPrepared"));
-                    }
+                    Notify("SpellsPrepared");
+                    
                 }
             }
         }
@@ -10911,10 +10699,7 @@ namespace CombatManager
             set
             {
                 spellDomains = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SpellDomains"));
-                }
+                Notify("SpellDomains");
             }
         }
 
@@ -10928,10 +10713,7 @@ namespace CombatManager
             set
             {
                 aura = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Aura"));
-                }
+                Notify("Aura");
             }
         }
 
@@ -10945,10 +10727,7 @@ namespace CombatManager
             set
             {
                 defensiveAbilities = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("DefensiveAbilities"));
-                }
+                Notify("DefensiveAbilities");
             }
         }
 
@@ -10962,10 +10741,7 @@ namespace CombatManager
             set
             {
                 immune = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Immune"));
-                }
+                Notify("Immune");
             }
         }
 
@@ -10979,10 +10755,7 @@ namespace CombatManager
             set
             {
                 hp_mods = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("HP_Mods"));
-                }
+                Notify("HP_Mods");
             }
         }
 
@@ -11000,10 +10773,8 @@ namespace CombatManager
                 {
                     spellsKnown = value;
                     _SpellsKnownBlock = null;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("SpellsKnown"));
-                    }
+                    Notify("SpellsKnown");
+                    
                 }
             }
         }
@@ -11028,10 +10799,7 @@ namespace CombatManager
             set
             {
                 weaknesses = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Weaknesses"));
-                }
+                Notify("Weaknesses");
             }
         }
 
@@ -11045,10 +10813,7 @@ namespace CombatManager
             set
             {
                 speed_mod = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Speed_Mod"));
-                }
+                Notify("Speed_Mod");
             }
         }
 
@@ -11062,10 +10827,7 @@ namespace CombatManager
             set
             {
                 monsterSource = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("MonsterSource"));
-                }
+                Notify("MonsterSource");
             }
         }
 
@@ -11078,7 +10840,7 @@ namespace CombatManager
                 if (extractsPrepared != value)
                 {
                     extractsPrepared = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ExtractsPrepared")); }
+                    Notify("ExtractsPrepared");
                 }
             }
         }
@@ -11092,7 +10854,7 @@ namespace CombatManager
                 if (ageCategory != value)
                 {
                     ageCategory = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AgeCategory")); }
+                    Notify("AgeCategory");
                 }
             }
         }
@@ -11106,7 +10868,7 @@ namespace CombatManager
                 if (dontUseRacialHD != value)
                 {
                     dontUseRacialHD = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DontUseRacialHD")); }
+                    Notify("DontUseRacialHD");
                 }
             }
         }
@@ -11120,7 +10882,7 @@ namespace CombatManager
                 if (variantParent != value)
                 {
                     variantParent = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("VariantParent")); }
+                    Notify("VariantParent");
                 }
             }
         }
@@ -11134,7 +10896,7 @@ namespace CombatManager
                 if (descHTML != value)
                 {
                     descHTML = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DescHTML")); }
+                    Notify("DescHTML");
                 }
             }
         }
@@ -11148,7 +10910,7 @@ namespace CombatManager
                 if (mr != value)
                 {
                     mr = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MR")); }
+                    Notify("MR");
                 }
             }
         }
@@ -11162,7 +10924,7 @@ namespace CombatManager
                 if (mythic != value)
                 {
                     mythic = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Mythic")); }
+                    Notify("Mythic");
                 }
             }
         }
@@ -11189,7 +10951,7 @@ namespace CombatManager
                 {
                     Mythic = newStr;
                 }
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsMythic"));
+                Notify("IsMythic");
             }
         }
 
@@ -11223,10 +10985,7 @@ namespace CombatManager
                 {
 
                     strength = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Strength"));
-                    }
+                    Notify("Strength");
                 }
             }
         }
@@ -11248,10 +11007,7 @@ namespace CombatManager
                 {
 
                     dexterity = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Dexterity"));
-                    }
+                    Notify("Dexterity");
                 }
             }
         }
@@ -11274,10 +11030,7 @@ namespace CombatManager
 
                     constitution = value;
 
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Constitution"));
-                    }
+                    Notify("Constitution");
                 }
             }
         }
@@ -11298,10 +11051,7 @@ namespace CombatManager
                 if (intelligence != value)
                 {
                     intelligence = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Intelligence"));
-                    }
+                    Notify("Intelligence");
                 }
             }
         }
@@ -11322,10 +11072,7 @@ namespace CombatManager
                 if (wisdom != value)
                 {
                     wisdom = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Wisdom"));
-                    }
+                    Notify("Wisdom");
                 }
             }
         }
@@ -11346,10 +11093,7 @@ namespace CombatManager
                 if (charisma != value)
                 {
                     charisma = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Charisma"));
-                    }
+                    Notify("Charisma");
                 }
 
             }
@@ -11365,10 +11109,7 @@ namespace CombatManager
             set
             {
                 specialAblitiesParsed = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAblitiesParsed"));
-                }
+                Notify("SpecialAblitiesParsed");
             }
 
         }
@@ -11387,10 +11128,7 @@ namespace CombatManager
             set
             {
                 specialAbilitiesList = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SpecialAbilitiesList"));
-                }
+                Notify("SpecialAbilitiesList");
             }
         }
 
@@ -11431,10 +11169,7 @@ namespace CombatManager
             set
             {
                 skillValueDictionary = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SkillValueDictionary"));
-                }
+                Notify("SkillValueDictionary");
             }
         }
 
@@ -11460,10 +11195,7 @@ namespace CombatManager
                     skillValueDictionary[val.FullName] = val;
                 }
 
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("SkillValueDictionary"));
-                }
+                Notify("SkillValueDictionary");
             }
         }
 
@@ -11498,10 +11230,7 @@ namespace CombatManager
             set
             {
                 featsList = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("FeatsList"));
-                }
+                Notify("FeatsList");
             }
         }
 
@@ -11514,7 +11243,7 @@ namespace CombatManager
                 if (acParsed != value)
                 {
                     acParsed = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("acParsed")); }
+                    Notify("acParsed");
                 }
             }
         }
@@ -11536,7 +11265,7 @@ namespace CombatManager
                 if (fullAC != value)
                 {
                     fullAC = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("FullAC")); }
+                    Notify("FullAC");
                 }
             }
         }
@@ -11558,7 +11287,7 @@ namespace CombatManager
                 if (touchAC != value)
                 {
                     touchAC = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TouchAC")); }
+                    Notify("TouchAC");
                 }
             }
         }
@@ -11580,7 +11309,7 @@ namespace CombatManager
                 if (flatFootedAC != value)
                 {
                     flatFootedAC = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("FlatFootedAC")); }
+                    Notify("FlatFootedAC");
                 }
             }
         }
@@ -11602,7 +11331,7 @@ namespace CombatManager
                 if (naturalArmor != value)
                 {
                     naturalArmor = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("NaturalArmor")); }
+                    Notify("NaturalArmor");
                 }
             }
         }
@@ -11624,7 +11353,7 @@ namespace CombatManager
                 if (deflection != value)
                 {
                     deflection = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Deflection")); }
+                    Notify("Deflection");
                 }
             }
         }
@@ -11646,7 +11375,7 @@ namespace CombatManager
                 if (shield != value)
                 {
                     shield = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Shield")); }
+                    Notify("Shield");
                 }
             }
         }
@@ -11668,7 +11397,7 @@ namespace CombatManager
                 if (armor != value)
                 {
                     armor = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Armor")); }
+                    Notify("Armor");
                 }
             }
         }
@@ -11690,7 +11419,7 @@ namespace CombatManager
                 if (dodge != value)
                 {
                     dodge = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Dodge")); }
+                    Notify("Dodge");
                 }
             }
         }
@@ -11708,7 +11437,7 @@ namespace CombatManager
                 if (num != value)
                 {
                     CMB = ChangeStartingModOrVal(CMB, value - num);
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CMB_Numeric")); }
+                    Notify("CMB_Numeric");
                 }
             }
         }
@@ -11727,7 +11456,7 @@ namespace CombatManager
                 {
                     CMD = ChangeCMD(CMD, value - num);
 
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CMD_Numeric")); }
+                    Notify("CMD_Numeric");
                 }
             }
         }
@@ -11761,53 +11490,16 @@ namespace CombatManager
             set
             {
                 npc = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("NPC"));
-                }
+                Notify("NPC");
             }
         }
 
-        [XmlIgnore]
-        public int DetailsID
-        {
-            get
-            {
-                return _DetailsID;
-            }
-        }
+
             
 
-        [XmlIgnore]
-        public bool IsCustom
-        {
-            get
-            {
-                return DBLoaderID != 0;
-            }
-        }
 
-        [XmlIgnore]
-        public int DBLoaderID
-        {
-            get
-            {
-                return _DBLoaderID;
-            }
-            set
-            {
-                if (_DBLoaderID != value)
-                {
-                    _DBLoaderID = value;
 
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("DBLoaderID"));
-                    }
-                }
 
-            }
-        }
 
         [XmlIgnore]
         public MonsterAdjuster Adjuster
@@ -12036,9 +11728,8 @@ namespace CombatManager
             }
         }
 
-        public class MonsterAdjuster : INotifyPropertyChanged
+        public class MonsterAdjuster : SimpleNotifyClass
         {
-            public event PropertyChangedEventHandler PropertyChanged;
 
             private Monster _Monster;
 
@@ -12046,10 +11737,7 @@ namespace CombatManager
 
             public void NotifyPropertyChanged(string property)
             {
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(property));
-                }
+                Notify(property); 
             }
 
 
@@ -12659,7 +12347,7 @@ namespace CombatManager
                     _Monster.CR = value;
                     _Monster.XP = GetXPString(value);
 
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CR"));
+                    Notify("CR");
 
                 }
             }
@@ -12684,7 +12372,7 @@ namespace CombatManager
                         //add mythic
                     }
 
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MR"));
+                    Notify("MR");
                 }
             }
 
@@ -12721,10 +12409,7 @@ namespace CombatManager
                         }
                     }
 
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Subtype"));
-                    }
+                    Notify("Subtype");
 
                 }
             }
@@ -12738,10 +12423,7 @@ namespace CombatManager
                 {
                     _Monster.HD = "(" + value.ToString() + ")";
                     _Monster.HP = value.AverageRoll();
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("HD"));
-                    }
+                    Notify("HD");
                 }
             }
 
