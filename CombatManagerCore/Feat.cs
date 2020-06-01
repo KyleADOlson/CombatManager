@@ -35,10 +35,9 @@ using System.Collections.ObjectModel;
 
 namespace CombatManager
 {
-    public class Feat : INotifyPropertyChanged, IDBLoadable
+    public class Feat : BaseDBClass
     {
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private String _Name;
         private String _AltName;
@@ -58,9 +57,6 @@ namespace CombatManager
         private bool _DetailParsed;
 
 
-        private int _DBLoaderID;
-
-        private int _ID;
 
         private static Dictionary<String, Feat> featMap;
         private static Dictionary<String, String> altFeatMap;
@@ -70,6 +66,7 @@ namespace CombatManager
         private static bool _FeatsLoaded;
         private static DBLoader<Feat> _FeatsDB;
         private static Dictionary<int, Feat> _FeatsByDetailsID;
+
 
 
         public Feat()
@@ -120,7 +117,7 @@ namespace CombatManager
             
             _DetailParsed = f._DetailParsed;
             _DBLoaderID = f._DBLoaderID;
-            _ID = f._ID;
+            _DetailsID = f._DetailsID;
         }
 
         public static void LoadFeats()
@@ -190,6 +187,14 @@ namespace CombatManager
 
             _FeatsLoaded = true;
 
+        }
+
+        protected override void SelfPropertyChanged(string name)
+        {
+            if (name == "DetailsID")
+            {
+                Notify("Id");
+            }
         }
 
         public static bool FeatsLoaded
@@ -286,7 +291,7 @@ namespace CombatManager
                 if (_Name != value)
                 {
                     _Name = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Name")); }
+                    Notify("Name");
                 }
             }
         }
@@ -298,7 +303,7 @@ namespace CombatManager
                 if (_AltName != value)
                 {
                     _AltName = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("AltName")); }
+                    Notify("AltName");
                 }
             }
         }
@@ -318,7 +323,7 @@ namespace CombatManager
                         _Types[str.Trim()] = str.Trim();
                     }
 
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Type")); }
+                    Notify("Type");
                 }
             }
         }
@@ -330,7 +335,7 @@ namespace CombatManager
                 if (_Prerequistites != value)
                 {
                     _Prerequistites = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Prerequistites")); }
+                    Notify("Prerequistites");
                 }
             }
         }
@@ -342,7 +347,7 @@ namespace CombatManager
                 if (_Summary != value)
                 {
                     _Summary = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Summary")); }
+                    Notify("Summary");
                 }
             }
         }
@@ -354,7 +359,7 @@ namespace CombatManager
                 if (_Source != value)
                 {
                     _Source = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Source")); }
+                    Notify("Source");
                 }
             }
         }
@@ -366,7 +371,7 @@ namespace CombatManager
                 if (_System != value)
                 {
                     _System = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("System")); }
+                    Notify("System");
                 }
             }
         }
@@ -378,7 +383,7 @@ namespace CombatManager
                 if (_License != value)
                 {
                     _License = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("License")); }
+                    Notify("License");
                 }
             }
         }
@@ -391,7 +396,7 @@ namespace CombatManager
                 if (_URL != value)
                 {
                     _URL = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("URL")); }
+                    Notify("URL");
                 }
             }
         }
@@ -404,7 +409,7 @@ namespace CombatManager
                 if (_Detail != value)
                 {
                     _Detail = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Detail")); }
+                    Notify("Detail");
                 }
             }
         }
@@ -424,7 +429,7 @@ namespace CombatManager
                 if (_Benefit != value)
                 {
                     _Benefit = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Benefit")); }
+                    Notify("Benefit");
                 }
             }
         }
@@ -443,7 +448,7 @@ namespace CombatManager
                 if (_Normal != value)
                 {
                     _Normal = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Normal")); }
+                    Notify("Normal");
                 }
             }
         }
@@ -462,53 +467,30 @@ namespace CombatManager
                 if (_Special != value)
                 {
                     _Special = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Special")); }
+                    Notify("Special");
                 }
             }
         }
 
-        public int DBLoaderID
-        {
-            get
-            {
-                return _DBLoaderID;
-            }
-            set
-            {
-                if (_DBLoaderID != value)
-                {
-                    _DBLoaderID = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DBLoaderID")); }
-
-                }
-            }
-        }
 
         public int Id
         {
             get
             {
-                return _ID;
+                return _DetailsID;
             }
             set
             {
-                if (_ID != value)
+                if (_DetailsID != value)
                 {
-                    _ID = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ID")); }
+                    _DetailsID = value;
+                    Notify("DetailsID");
+                    Notify("Id");
 
                 }
             }
         }
 
-        [XmlIgnore]
-        public bool IsCustom
-        {
-            get
-            {
-                return DBLoaderID != 0;
-            }
-        }
 
         [XmlIgnore]
         public ICollection<String> Types

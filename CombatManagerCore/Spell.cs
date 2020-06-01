@@ -34,9 +34,8 @@ using System.Text.RegularExpressions;
 namespace CombatManager
 {
 
-    public class Spell : INotifyPropertyChanged, IDBLoadable
+    public class Spell : BaseDBClass
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         private String _name;
         private String _school;
         private String _subschool;
@@ -109,7 +108,6 @@ namespace CombatManager
         private String _shadow;
         private String _sonic;
         private String _water;
-        private int _detailsid;
 
         //annotation fields
 
@@ -131,8 +129,6 @@ namespace CombatManager
 
 
 
-
-        private int _DBLoaderID;
 
         private SpellAdjuster _Adjuster;
 
@@ -906,6 +902,14 @@ namespace CombatManager
             return new Spell(this);
         }
 
+        protected override void SelfPropertyChanged(string name)
+        {
+            if (name == "DetailsID")
+            {
+                Notify("detailsid");
+            }
+        }
+
         public int? LevelForClass(CharacterClassEnum cl)
 		{
 			string levelStr = null;
@@ -1051,11 +1055,8 @@ namespace CombatManager
                 {
                     Oldname = _name;
                     _name = value;
-                    if (PropertyChanged != null) 
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("name"));
-                        PropertyChanged(this, new PropertyChangedEventArgs("Name")); 
-                    }
+                    Notify("name");
+                    Notify("Name");
                 }
             }
         }
@@ -1078,8 +1079,7 @@ namespace CombatManager
                 if (_school != value)
                 {
                     _school = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("school")); }
-                }
+                    Notify("school");                }
             }
         }
         public String subschool
@@ -1090,8 +1090,7 @@ namespace CombatManager
                 if (_subschool != value)
                 {
                     _subschool = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("subschool")); }
-                }
+                    Notify("subschool");                }
             }
         }
         public String descriptor
@@ -1102,8 +1101,7 @@ namespace CombatManager
                 if (_descriptor != value)
                 {
                     _descriptor = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("descriptor")); }
-                }
+                    Notify("descriptor");                }
             }
         }
         public String spell_level
@@ -1114,8 +1112,7 @@ namespace CombatManager
                 if (_spell_level != value)
                 {
                     _spell_level = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("spell_level")); }
-                }
+                    Notify("spell_level");                }
             }
         }
         public String casting_time
@@ -1130,8 +1127,7 @@ namespace CombatManager
                 if (_casting_time != value)
                 {
                     _casting_time = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("casting_time")); }
-                }
+                    Notify("casting_time");                }
             }
         }
         public String components
@@ -1150,8 +1146,7 @@ namespace CombatManager
                     {
                         _Adjuster.UpdateComponents();
                     }
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("components")); }
-
+                    Notify("components");
                 }
             }
         }
@@ -1167,8 +1162,7 @@ namespace CombatManager
                 if (_costly_components != value)
                 {
                     _costly_components = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("costly_components")); }
-                }
+                    Notify("costly_components");                }
             }
         }
         public String range
@@ -1183,8 +1177,7 @@ namespace CombatManager
                 if (_range != value)
                 {
                     _range = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("range")); }
-                }
+                    Notify("range");                }
             }
         }
         public String targets
@@ -1199,8 +1192,7 @@ namespace CombatManager
                 if (_targets != value)
                 {
                     _targets = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("targets")); }
-                }
+                    Notify("targets");                }
             }
         }
         public String duration
@@ -1215,8 +1207,7 @@ namespace CombatManager
                 if (_duration != value)
                 {
                     _duration = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("duration")); }
-                }
+                    Notify("duration");                }
             }
         }
         public String dismissible
@@ -1231,8 +1222,7 @@ namespace CombatManager
                 if (_dismissible != value)
                 {
                     _dismissible = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("dismissible")); }
-                }
+                    Notify("dismissible");                }
             }
         }
         public String shapeable
@@ -1247,8 +1237,7 @@ namespace CombatManager
                 if (_shapeable != value)
                 {
                     _shapeable = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("shapeable")); }
-                }
+                    Notify("shapeable");                }
             }
         }
         public String saving_throw
@@ -1263,8 +1252,7 @@ namespace CombatManager
                 if (_saving_throw != value)
                 {
                     _saving_throw = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("saving_throw")); }
-                }
+                    Notify("saving_throw");                }
             }
         }
         public String spell_resistence
@@ -1279,8 +1267,7 @@ namespace CombatManager
                 if (_spell_resistence != value)
                 {
                     _spell_resistence = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("spell_resistence")); }
-                }
+                    Notify("spell_resistence");                }
             }
         }
         public String description
@@ -1295,8 +1282,7 @@ namespace CombatManager
                 if (_description != value)
                 {
                     _description = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("description")); }
-                }
+                    Notify("description");                }
             }
         }
         public String description_formated
@@ -1311,8 +1297,7 @@ namespace CombatManager
                 if (_description_formated != value)
                 {
                     _description_formated = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("description_formated")); }
-                }
+                    Notify("description_formated");                }
             }
         }
         public String source
@@ -1323,8 +1308,7 @@ namespace CombatManager
                 if (_source != value)
                 {
                     _source = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("source")); }
-                }
+                    Notify("source");                }
             }
         }
         public String full_text
@@ -1335,8 +1319,7 @@ namespace CombatManager
                 if (_full_text != value)
                 {
                     _full_text = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("full_text")); }
-                }
+                    Notify("full_text");                }
             }
         }
         public String verbal
@@ -1347,8 +1330,7 @@ namespace CombatManager
                 if (_verbal != value)
                 {
                     _verbal = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("verbal")); }
-                }
+                    Notify("verbal");                }
             }
         }
         public String somatic
@@ -1359,8 +1341,7 @@ namespace CombatManager
                 if (_somatic != value)
                 {
                     _somatic = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("somatic")); }
-                }
+                    Notify("somatic");                }
             }
         }
         public String material
@@ -1371,8 +1352,7 @@ namespace CombatManager
                 if (_material != value)
                 {
                     _material = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("material")); }
-                }
+                    Notify("material");                }
             }
         }
         public String focus
@@ -1383,8 +1363,7 @@ namespace CombatManager
                 if (_focus != value)
                 {
                     _focus = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("focus")); }
-                }
+                    Notify("focus");                }
             }
         }
         public String divine_focus
@@ -1395,8 +1374,7 @@ namespace CombatManager
                 if (_divine_focus != value)
                 {
                     _divine_focus = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("divine_focus")); }
-                }
+                    Notify("divine_focus");                }
             }
         }
         public String sor
@@ -1411,8 +1389,7 @@ namespace CombatManager
                     {
                         _sor = null;
                     }   
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("sor")); }
-                }
+                    Notify("sor");                }
             }
         }
         public String wiz
@@ -1427,8 +1404,7 @@ namespace CombatManager
                     {
                         _wiz = null;
                     }   
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("wiz")); }
-                }
+                    Notify("wiz");                }
             }
         }
         public String cleric
@@ -1443,8 +1419,7 @@ namespace CombatManager
                     {
                         _cleric = null;
                     }   
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("cleric")); }
-                }
+                    Notify("cleric");                }
             }
         }
         public String druid
@@ -1459,8 +1434,7 @@ namespace CombatManager
                     {
                         _druid = null;
                     }   
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("druid")); }
-                }
+                    Notify("druid");                }
             }
         }
         public String ranger
@@ -1475,8 +1449,7 @@ namespace CombatManager
                     {
                         _ranger = null;
                     }    
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ranger")); }
-                }
+                    Notify("ranger");                }
             }
         }
         public String bard
@@ -1491,8 +1464,7 @@ namespace CombatManager
                     {
                         _bard = null;
                     }     
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("bard")); }
-                }
+                    Notify("bard");                }
             }
         }
         public String paladin
@@ -1507,8 +1479,7 @@ namespace CombatManager
                     {
                         _paladin = null;
                     }     
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("paladin")); }
-                }
+                    Notify("paladin");                }
             }
         }
         public String effect
@@ -1519,8 +1490,7 @@ namespace CombatManager
                 if (_effect != value)
                 {
                     _effect = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("effect")); }
-                }
+                    Notify("effect");                }
             }
         }
 
@@ -1536,8 +1506,7 @@ namespace CombatManager
                 if (_area != value)
                 {
                     _area = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("area")); }
-                }
+                    Notify("area");                }
             }
         }
 
@@ -1554,8 +1523,7 @@ namespace CombatManager
                     {
                         _alchemist = null;
                     }     
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("alchemist")); }
-                }
+                    Notify("alchemist");                }
             }
         }
         public String summoner
@@ -1570,8 +1538,7 @@ namespace CombatManager
                     {
                         _summoner = null;
                     }     
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("summoner")); }
-                }
+                    Notify("summoner");                }
             }
         }
         public String witch
@@ -1586,8 +1553,7 @@ namespace CombatManager
                     {
                         _witch = null;
                     }     
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("witch")); }
-                }
+                    Notify("witch");                }
             }
         }
         public String inquisitor
@@ -1602,8 +1568,7 @@ namespace CombatManager
                     {
                         _inquisitor = null;
                     }      
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("inquisitor")); }
-                }
+                    Notify("inquisitor");                }
             }
         }
         public String oracle
@@ -1618,8 +1583,7 @@ namespace CombatManager
                     {
                         _oracle = null;
                     }                  
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("oracle")); }
-                }
+                    Notify("oracle");                }
             }
         }
         public String antipaladin
@@ -1634,8 +1598,7 @@ namespace CombatManager
                     {
                         _antipaladin = null;
                     }
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("antipaladin")); }
-                }
+                    Notify("antipaladin");                }
             }
         }
 
@@ -1647,8 +1610,7 @@ namespace CombatManager
                 if (_assassin != value)
                 {
                     _assassin = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("assassin")); }
-                }
+                    Notify("assassin");                }
             }
         }
 
@@ -1660,8 +1622,7 @@ namespace CombatManager
                 if (_red_mantis_assassin != value)
                 {
                     _red_mantis_assassin = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("red_mantis_assassin")); }
-                }
+                    Notify("red_mantis_assassin");                }
             }
         }
 
@@ -1673,8 +1634,7 @@ namespace CombatManager
                 if (_adept != value)
                 {
                     _adept = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("adept")); }
-                }
+                    Notify("adept");                }
             }
         }
         public String URL
@@ -1685,8 +1645,7 @@ namespace CombatManager
                 if (_URL != value)
                 {
                     _URL = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("URL")); }
-                }
+                    Notify("URL");                }
             }
         }
 
@@ -1698,8 +1657,7 @@ namespace CombatManager
                 if (_magus != value)
                 {
                     _magus = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("magus")); }
-                }
+                    Notify("magus");                }
             }
         }
         public String SLA_Level
@@ -1710,8 +1668,7 @@ namespace CombatManager
                 if (_SLA_Level != value)
                 {
                     _SLA_Level = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("SLA_Level")); }
-                }
+                    Notify("SLA_Level");                }
             }
         }
         public String preparation_time
@@ -1722,8 +1679,7 @@ namespace CombatManager
                 if (_preparation_time != value)
                 {
                     _preparation_time = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("preparation_time")); }
-                }
+                    Notify("preparation_time");                }
             }
         }
         public bool duplicated
@@ -1734,8 +1690,7 @@ namespace CombatManager
                 if (_duplicated != value)
                 {
                     _duplicated = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("duplicated")); }
-                }
+                    Notify("duplicated");                }
             }
         }
         public String acid
@@ -1746,8 +1701,7 @@ namespace CombatManager
                 if (_acid != value)
                 {
                     _acid = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("acid")); }
-                }
+                    Notify("acid");                }
             }
         }
         public String air
@@ -1762,8 +1716,7 @@ namespace CombatManager
                 if (_air != value)
                 {
                     _air = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("air")); }
-                }
+                    Notify("air");                }
             }
         }
         public String chaotic
@@ -1778,8 +1731,7 @@ namespace CombatManager
                 if (_chaotic != value)
                 {
                     _chaotic = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("chaotic")); }
-                }
+                    Notify("chaotic");                }
             }
         }
         public String cold
@@ -1794,8 +1746,7 @@ namespace CombatManager
                 if (_cold != value)
                 {
                     _cold = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("cold")); }
-                }
+                    Notify("cold");                }
             }
         }
         public String curse
@@ -1810,8 +1761,7 @@ namespace CombatManager
                 if (_curse != value)
                 {
                     _curse = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("curse")); }
-                }
+                    Notify("curse");                }
             }
         }
         public String darkness
@@ -1826,8 +1776,7 @@ namespace CombatManager
                 if (_darkness != value)
                 {
                     _darkness = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("darkness")); }
-                }
+                    Notify("darkness");                }
             }
         }
         public String death
@@ -1842,8 +1791,7 @@ namespace CombatManager
                 if (_death != value)
                 {
                     _death = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("death")); }
-                }
+                    Notify("death");                }
             }
         }
         public String disease
@@ -1858,8 +1806,7 @@ namespace CombatManager
                 if (_disease != value)
                 {
                     _disease = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("disease")); }
-                }
+                    Notify("disease");                }
             }
         }
         public String earth
@@ -1874,8 +1821,7 @@ namespace CombatManager
                 if (_earth != value)
                 {
                     _earth = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("earth")); }
-                }
+                    Notify("earth");                }
             }
         }
         public String electricity
@@ -1890,8 +1836,7 @@ namespace CombatManager
                 if (_electricity != value)
                 {
                     _electricity = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("electricity")); }
-                }
+                    Notify("electricity");                }
             }
         }
         public String emotion
@@ -1906,8 +1851,7 @@ namespace CombatManager
                 if (_emotion != value)
                 {
                     _emotion = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("emotion")); }
-                }
+                    Notify("emotion");                }
             }
         }
         public String evil
@@ -1922,8 +1866,7 @@ namespace CombatManager
                 if (_evil != value)
                 {
                     _evil = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("evil")); }
-                }
+                    Notify("evil");                }
             }
         }
         public String fear
@@ -1938,8 +1881,7 @@ namespace CombatManager
                 if (_fear != value)
                 {
                     _fear = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("fear")); }
-                }
+                    Notify("fear");                }
             }
         }
         public String fire
@@ -1954,8 +1896,7 @@ namespace CombatManager
                 if (_fire != value)
                 {
                     _fire = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("fire")); }
-                }
+                    Notify("fire");                }
             }
         }
         public String force
@@ -1970,8 +1911,7 @@ namespace CombatManager
                 if (_force != value)
                 {
                     _force = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("force")); }
-                }
+                    Notify("force");                }
             }
         }
         public String good
@@ -1986,8 +1926,7 @@ namespace CombatManager
                 if (_good != value)
                 {
                     _good = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("good")); }
-                }
+                    Notify("good");                }
             }
         }
         public String language
@@ -2002,8 +1941,7 @@ namespace CombatManager
                 if (_language != value)
                 {
                     _language = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("language")); }
-                }
+                    Notify("language");                }
             }
         }
         public String lawful
@@ -2018,8 +1956,7 @@ namespace CombatManager
                 if (_lawful != value)
                 {
                     _lawful = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("lawful")); }
-                }
+                    Notify("lawful");                }
             }
         }
         public String light
@@ -2034,8 +1971,7 @@ namespace CombatManager
                 if (_light != value)
                 {
                     _light = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("light")); }
-                }
+                    Notify("light");                }
             }
         }
         public String mind_affecting
@@ -2050,8 +1986,7 @@ namespace CombatManager
                 if (_mind_affecting != value)
                 {
                     _mind_affecting = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("mind_affecting")); }
-                }
+                    Notify("mind_affecting");                }
             }
         }
         public String pain
@@ -2066,8 +2001,7 @@ namespace CombatManager
                 if (_pain != value)
                 {
                     _pain = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("pain")); }
-                }
+                    Notify("pain");                }
             }
         }
         public String poison
@@ -2082,8 +2016,7 @@ namespace CombatManager
                 if (_poison != value)
                 {
                     _poison = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("poison")); }
-                }
+                    Notify("poison");                }
             }
         }
         public String shadow
@@ -2098,8 +2031,7 @@ namespace CombatManager
                 if (_shadow != value)
                 {
                     _shadow = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("shadow")); }
-                }
+                    Notify("shadow");                }
             }
         }
         public String sonic
@@ -2114,8 +2046,7 @@ namespace CombatManager
                 if (_sonic != value)
                 {
                     _sonic = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("sonic")); }
-                }
+                    Notify("sonic");                }
             }
         }
         public String water
@@ -2130,21 +2061,19 @@ namespace CombatManager
                 if (_water != value)
                 {
                     _water = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("water")); }
-                }
+                    Notify("water");                }
             }
         }
 
         [XmlElement("id")]
         public int detailsid
         {
-            get { return _detailsid; }
+            get { return _DBLoaderID; }
             set
             {
-                if (_detailsid != value)
+                if (_DBLoaderID != value)
                 {
-                    _detailsid = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("id")); }
+                    DBLoaderID = value;
                 }
             }
         }
@@ -2158,8 +2087,7 @@ namespace CombatManager
                 if (_PotionWeight != value)
                 {
                     _PotionWeight = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("PotionWeight")); }
-                }
+                    Notify("PotionWeight");                }
             }
         }
         public string DivineScrollWeight
@@ -2170,8 +2098,7 @@ namespace CombatManager
                 if (_DivineScrollWeight != value)
                 {
                     _DivineScrollWeight = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DivineScrollWeight")); }
-                }
+                    Notify("DivineScrollWeight");                }
             }
         }
         public string ArcaneScrollWeight
@@ -2182,8 +2109,7 @@ namespace CombatManager
                 if (_ArcaneScrollWeight != value)
                 {
                     _ArcaneScrollWeight = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ArcaneScrollWeight")); }
-                }
+                    Notify("ArcaneScrollWeight");                }
             }
         }
         public string WandWeight
@@ -2194,8 +2120,7 @@ namespace CombatManager
                 if (_WandWeight != value)
                 {
                     _WandWeight = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("WandWeight")); }
-                }
+                    Notify("WandWeight");                }
             }
         }
 
@@ -2208,8 +2133,7 @@ namespace CombatManager
                 if (_PotionLevel != value)
                 {
                     _PotionLevel = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("PotionLevel")); }
-                }
+                    Notify("PotionLevel");                }
             }
         }
         public String PotionCost
@@ -2220,8 +2144,7 @@ namespace CombatManager
                 if (_PotionCost != value)
                 {
                     _PotionCost = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("PotionCost")); }
-                }
+                    Notify("PotionCost");                }
             }
         }
         public String ArcaneScrollLevel
@@ -2232,8 +2155,7 @@ namespace CombatManager
                 if (_ArcaneScrollLevel != value)
                 {
                     _ArcaneScrollLevel = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ArcaneScrollLevel")); }
-                }
+                    Notify("ArcaneScrollLevel");                }
             }
         }
         public String ArcaneScrollCost
@@ -2244,8 +2166,7 @@ namespace CombatManager
                 if (_ArcaneScrollCost != value)
                 {
                     _ArcaneScrollCost = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ArcaneScrollCost")); }
-                }
+                    Notify("ArcaneScrollCost");                }
             }
         }
         public String DivineScrollLevel
@@ -2256,8 +2177,7 @@ namespace CombatManager
                 if (_DivineScrollLevel != value)
                 {
                     _DivineScrollLevel = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DivineScrollLevel")); }
-                }
+                    Notify("DivineScrollLevel");                }
             }
         }
         public String DivineScrollCost
@@ -2268,8 +2188,7 @@ namespace CombatManager
                 if (_DivineScrollCost != value)
                 {
                     _DivineScrollCost = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DivineScrollCost")); }
-                }
+                    Notify("DivineScrollCost");                }
             }
         }
         public String WandLevel
@@ -2280,8 +2199,7 @@ namespace CombatManager
                 if (_WandLevel != value)
                 {
                     _WandLevel = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("WandLevel")); }
-                }
+                    Notify("WandLevel");                }
             }
         }
         public String WandCost
@@ -2292,8 +2210,7 @@ namespace CombatManager
                 if (_WandCost != value)
                 {
                     _WandCost = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("WandCost")); }
-                }
+                    Notify("WandCost");                }
             }
         }
 
@@ -2305,8 +2222,7 @@ namespace CombatManager
                 if (_Bonus != value)
                 {
                     _Bonus = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Bonus")); }
-                }
+                    Notify("Bonus");                }
             }
         }
 
@@ -2362,10 +2278,10 @@ namespace CombatManager
 
         void UpdateFromDetailsDB()
         {
-            if (_detailsid != 0)
+            if (_DBLoaderID != 0)
             {
                 //perform updating from DB
-                var list = DetailsDB.LoadDetails(_detailsid.ToString(), "Spells", DetailsFields);
+                var list = DetailsDB.LoadDetails(_DBLoaderID.ToString(), "Spells", DetailsFields);
 
 
                 _casting_time = list["casting_time"];
@@ -2408,7 +2324,7 @@ namespace CombatManager
                 _sonic= list["sonic"];
                 _water= list["water"];
 
-                _detailsid = 0;
+                _DBLoaderID = 0;
             }
         }
         
@@ -2418,28 +2334,6 @@ namespace CombatManager
             get
             {
                 return RomanNumbers.FindAndReplace(name);
-            }
-        }
-
-        [XmlIgnore]
-        public bool IsCustom
-        {
-            get
-            {
-                return DBLoaderID != 0;
-            }
-        }
-        
-
-        public int DBLoaderID
-        {
-            get
-            {
-                return _DBLoaderID;
-            }
-            set
-            {
-                _DBLoaderID = value;
             }
         }
 
@@ -2463,11 +2357,10 @@ namespace CombatManager
         }
                     
 
-        public class SpellAdjuster : INotifyPropertyChanged
+        public class SpellAdjuster : SimpleNotifyClass
         {
 
             public static Dictionary<string, string> classes = new Dictionary<string, string>();
-            public event PropertyChangedEventHandler PropertyChanged;
 
             private Spell _Spell;
             private ObservableCollection<LevelAdjusterInfo> _Levels;
@@ -2656,8 +2549,7 @@ namespace CombatManager
                     {
                         _Verbal = value;
                         UpdateText();
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Verbal")); }
-                    }
+                        Notify("Verbal");                    }
                 }
             }
             public bool Somatic
@@ -2669,8 +2561,7 @@ namespace CombatManager
                     {
                         _Somatic = value;
                         UpdateText();
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Somatic")); }
-                    }
+                        Notify("Somatic");                    }
                 }
             }
             public bool Material
@@ -2682,8 +2573,7 @@ namespace CombatManager
                     {
                         _Material = value;
                         UpdateText();
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Material")); }
-                    }
+                        Notify("Material");                    }
                 }
             }
             public bool Focus
@@ -2695,8 +2585,7 @@ namespace CombatManager
                     {
                         _Focus = value;
                         UpdateText();
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Focus")); }
-                    }
+                        Notify("Focus");                    }
                 }
             }
             public bool DivineFocus
@@ -2708,8 +2597,7 @@ namespace CombatManager
                     {
                         _DivineFocus = value;
                         UpdateText();
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("DivineFocus")); }
-                    }
+                        Notify("DivineFocus");                    }
                 }
             }
             public String MaterialText
@@ -2721,8 +2609,7 @@ namespace CombatManager
                     {
                         _MaterialText = value;
                         UpdateText();
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MaterialText")); }
-                    }
+                        Notify("MaterialText");                    }
                 }
             }
             public String FocusText
@@ -2734,8 +2621,7 @@ namespace CombatManager
                     {
                         _FocusText = value;
                         UpdateText();
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("FocusText")); }
-                    }
+                        Notify("FocusText");                    }
                 }
             }
 
@@ -2752,8 +2638,7 @@ namespace CombatManager
                     {
                         _Duration = value;
                         SetDuration();
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Duration")); }
-                    }
+                        Notify("Duration");                    }
                 }
             }
             public bool Dismissible
@@ -2768,8 +2653,7 @@ namespace CombatManager
                     {
                         _Dismissible = value;
                         SetDuration();
-                        if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Dismissible")); }
-                    }
+                        Notify("Dismissible");                    }
                 }
             }
 
@@ -3071,10 +2955,8 @@ namespace CombatManager
             }
 
 
-            public class LevelAdjusterInfo : INotifyPropertyChanged
+            public class LevelAdjusterInfo : SimpleNotifyClass
             {
-
-                public event PropertyChangedEventHandler PropertyChanged;
 
                 private string _Class;
                 private int _Level;
@@ -3089,8 +2971,7 @@ namespace CombatManager
                         if (_Class != value)
                         {
                             _Class = value;
-                            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Class")); }
-                        }
+                            Notify("Class");                        }
                     }
                 }
                 public int Level
@@ -3101,7 +2982,7 @@ namespace CombatManager
                         if (_Level != value)
                         {
                             _Level = value;
-                            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Level")); }
+                            Notify("Level");                        
                         }
                     }
                 }
@@ -3113,7 +2994,7 @@ namespace CombatManager
                         if (_Property != value)
                         {
                             _Property = value;
-                            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Property")); }
+                            Notify("Property");                        
                         }
                     }
                 }
