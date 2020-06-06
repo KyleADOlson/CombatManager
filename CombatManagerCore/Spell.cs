@@ -2068,15 +2068,16 @@ namespace CombatManager
         [XmlElement("id")]
         public int detailsid
         {
-            get { return _DBLoaderID; }
+            get { return _DetailsID; }
             set
             {
-                if (_DBLoaderID != value)
+                if (_DetailsID != value)
                 {
-                    DBLoaderID = value;
+                    _DetailsID = value;
                 }
             }
         }
+
 
 
         public string PotionWeight
