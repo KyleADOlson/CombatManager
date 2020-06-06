@@ -8,7 +8,7 @@
     <ProjectGuid>{A1770C4F-09EE-41F9-86AB-5672C3D42980}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>CombatManagerCoreMono</RootNamespace>
+    <RootNamespace>CombatManager</RootNamespace>
     <AssemblyName>CombatManagerCoreMono</AssemblyName>
     <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
@@ -211,7 +211,13 @@
     <Compile Include="MagicItem.cs" />
     <Compile Include="monster.cs" />
     <Compile Include="MonsterDB.cs" />
+    <Compile Include="PF2\PF2Action.cs" />
+    <Compile Include="PF2\PF2ActionDamage.cs" />
+    <Compile Include="PF2\PF2ActionTrait.cs" />
+    <Compile Include="PF2\PF2Monster.cs" />
     <Compile Include="PF2\PF2Score.cs" />
+    <Compile Include="PF2\PF2SpellLevel.cs" />
+    <Compile Include="PF2\PF2SpellList.cs" />
     <Compile Include="PF2\PF2Stats.cs" />
     <Compile Include="PF2\ProficiencyRank.cs" />
     <Compile Include="RandomWeightChart.cs" />

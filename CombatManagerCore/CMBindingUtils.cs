@@ -18,7 +18,7 @@ namespace CombatManager
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void Notify(string prop)
+        public void Notify(string prop)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop)); 
         }

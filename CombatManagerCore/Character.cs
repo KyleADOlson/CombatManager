@@ -28,6 +28,7 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
+using CombatManager.PF2;
 
 namespace CombatManager
 {
@@ -58,7 +59,7 @@ namespace CombatManager
         private Guid id;
 
         private bool isMonster;
-        private Monster monster;
+        private BaseMonster monster;
         private bool isBlank;
 
 
@@ -130,19 +131,12 @@ namespace CombatManager
             this.monster = (Monster)monster.Clone();
 
             this.name = monster.Name;
-            if (mode == HPMode.Default || !TryParseHP(mode == HPMode.Max))
-            {
-                this.hp = monster.HP;
-            }
+            this.hp = monster.GetStartingHP(mode);
             this.maxHP = this.hp;
             this.isMonster = true;
 
-            if (this.monster.HasDefensiveAbility("Incorporeal"))
-            {
-                ActiveCondition ac = new ActiveCondition();
-                ac.Condition = Condition.FindCondition("Incorporeal");
-                this.monster.AddCondition(ac);
-            }
+            this.monster.ApplyDefaultConditions();
+
 
             this.monster.PropertyChanged += Monster_PropertyChanged;
             Resources = this.monster.TResources;
@@ -172,7 +166,14 @@ namespace CombatManager
             }
             else
             {
-                character.monster = (Monster)monster.Clone();
+                if (monster is Monster)
+                {
+                    character.monster = (BaseMonster)(((Monster)monster).Clone());
+                }
+                else if (monster is PF2Monster)
+                {
+                    character.monster = (BaseMonster)(((PF2Monster)monster).Clone());
+                }
                 character.monster.PropertyChanged  += character.Monster_PropertyChanged;
             }
 
@@ -201,30 +202,12 @@ namespace CombatManager
 
         private void LoadResources()
         {
-            if (monster.SpecialAttacks != null)
+
+            IEnumerable<ActiveResource> res = monster.LoadResources();
+
+            foreach (var r in res)
             {
-                //find rage
-                Match m = Regex.Match(monster.SpecialAttacks, "[Rr]age \\((?<count>[0-9]+) rounds?/ ?day\\)");
-                if (m.Success)
-                {
-                    int count = int.Parse(m.Groups["count"].Value);
-                    ActiveResource r = new ActiveResource() { Name = "Rage", Max = count, Current = count, Uses = count + " rounds/day" };
-                    Resources.Add(r);
-                }
-
-
-            }
-
-            if (monster.SQ != null)
-            {
-                //find rage
-                Match m = Regex.Match(monster.SQ, "[Kk]i [Pp]ool \\((?<count>[0-9]+) points?,");
-                if (m.Success)
-                {
-                    int count = int.Parse(m.Groups["count"].Value);
-                    ActiveResource r = new ActiveResource() { Name = "Ki pool", Max = count, Current = count };
-                    Resources.Add(r);
-                }
+                resources.Add(r);
             }
         }
 
@@ -255,11 +238,38 @@ namespace CombatManager
 
 
         [XmlIgnore]
-        public Monster Stats
+        public BaseMonster Stats
         {
             get
             {
-                return monster;
+
+                if (monster is Monster)
+                {
+                    return (Monster) monster;
+                }
+                else
+                {
+                    return null;
+                
+                }
+            } 
+        }
+
+        [XmlIgnore]
+        public PF2Monster PF2Stats
+        {
+            get
+            {
+
+                if (monster is PF2Monster)
+                {
+                    return (PF2Monster)monster;
+                }
+                else
+                {
+                    return null;
+
+                }
             }
         }
 
@@ -744,9 +754,8 @@ namespace CombatManager
             }
         }
 
-
-        [DataMember]
-        public Monster Monster
+        [XmlIgnore]
+        public BaseMonster BaseMonster
         {
             get
             {
@@ -754,34 +763,127 @@ namespace CombatManager
             }
             set
             {
-                if (this.monster != value)
+
+                SetMonster(value);
+            }
+        }
+
+
+        [DataMember]
+        public Monster Monster
+        {
+            get
+            {
+                if (monster is Monster)
                 {
-                    bool replacement = monster != null;
-                    if (monster != null)
-                    {
-                        monster.PropertyChanged -= Monster_PropertyChanged;
-                        monster.ActiveConditions.CollectionChanged -= ActiveConditions_CollectionChanged;
+                    return (Monster)monster;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (value != null)
+                {
+                    BaseMonster = value;
+                }
+            }
+        }
 
-                    }
+        public static RulesSystem ? MonsterSystem(BaseMonster monster)
+        {
+            switch (monster)
+            {
+                case PF2Monster _:
+                    return RulesSystem.PF2;
+                case Monster _:
+                    return RulesSystem.PF1;
+                default:
+                    return null;
 
-                    this.monster = value;
+            }
+        }
 
-                    if (monster != null)
-                    {
-                        monster.PropertyChanged += Monster_PropertyChanged;
-                        monster.ActiveConditions.CollectionChanged += ActiveConditions_CollectionChanged;
 
-                    }
+        [DataMember]
+        public PF2Monster PF2Monster
+        {
+            get
+            {
+                if (monster is PF2Monster)
+                {
+                    return (PF2Monster)monster;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (value != null)
+                {
+                    BaseMonster = value;
+                }
+            }
+        }
 
-                    Notify("Monster");
-                    Notify("Stats");
-                    if (replacement && monster != null)
-                    {
-                        MaxHP = monster.HP;
-                        monster.NotifyPropertyChanged("Init");
-                    }
+        private void SetMonster(BaseMonster value)
+        {
+
+            if (monster != value)
+            {
+                RulesSystem? oldSystem = MonsterSystem(monster);
+                RulesSystem? newSystem = MonsterSystem(value);
+
+                bool replacement = monster != null;
+                if (monster != null)
+                {
+                    monster.PropertyChanged -= Monster_PropertyChanged;
+                    monster.ActiveConditions.CollectionChanged -= ActiveConditions_CollectionChanged;
 
                 }
+
+                this.monster = value;
+
+                if (monster != null)
+                {
+                    monster.PropertyChanged += Monster_PropertyChanged;
+                    monster.ActiveConditions.CollectionChanged += ActiveConditions_CollectionChanged;
+
+                }
+
+                if (oldSystem != null)
+                {
+                    NotifyMonsterSystem(oldSystem.Value);
+                }
+                if (newSystem != null && (oldSystem == null || oldSystem.Value != newSystem.Value))
+                {
+                    NotifyMonsterSystem(newSystem.Value);
+                }
+
+                if (replacement && monster != null)
+                {
+                    MaxHP = monster.HP;
+                    monster.Notify("Init");
+                }
+
+            }
+        }
+
+        private void NotifyMonsterSystem(RulesSystem system)
+        {
+            switch (system)
+            {
+                case RulesSystem.PF1:
+                    Notify("Monster");
+                    Notify("Stats");
+                    break;
+                case RulesSystem.PF2:
+                    Notify("PF2Monster");
+                    break;
             }
         }
 
@@ -804,24 +906,7 @@ namespace CombatManager
             }
         }
 
-        public bool TryParseHP(bool max)
-        {
-            DieRoll dr = DieRoll.FromString(monster.HD);
-            if (dr != null)
-            {
-                if (max)
-                {
-                    HP = dr.Max;
-                }
-                else
-                {
-                    HP = dr.Roll().Total;
-                }
-                return true;
-            }
 
-            return false;
-        }
 
         public bool HasCondition(string name)
         {
@@ -847,8 +932,7 @@ namespace CombatManager
 
         public ActiveCondition FindCondition(string name)
         {
-            return Stats.ActiveConditions.FirstOrDefault
-                (a => String.Compare(a.Condition.Name, name, true) == 0);
+            return monster.FindCondition(name);
         }
 
 

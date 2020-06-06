@@ -5072,15 +5072,18 @@ namespace CombatManager
 
                 Character ch = (Character)el.DataContext;
 
-                foreach (Condition c in ch.Stats.UsableConditions)
+                if (ch.Monster != null)
                 {
+                    foreach (Condition c in ch.Monster.UsableConditions)
+                    {
 
-                    AfflictionItemData data = new AfflictionItemData();
-                    data.Character = ch;
-                    data.Condition = c;
-                    data.Targets = combatState.CombatList;
+                        AfflictionItemData data = new AfflictionItemData();
+                        data.Character = ch;
+                        data.Condition = c;
+                        data.Targets = combatState.CombatList;
 
-                    list.Add(data);
+                        list.Add(data);
+                    }
                 }
             }
 

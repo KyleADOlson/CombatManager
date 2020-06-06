@@ -22,7 +22,7 @@ namespace CombatManager
 
         public static T PopLoc<T>(this IList<T> list, int loc)
         {
-            if (loc < 0 || loc > list.Count -1)
+            if (loc < 0 || loc > list.Count - 1)
             {
                 return default(T);
             }
@@ -40,7 +40,7 @@ namespace CombatManager
             list.Insert(0, newItem);
         }
 
-        public static void PushEnd<T>(this IList<T> list,  T newItem)
+        public static void PushEnd<T>(this IList<T> list, T newItem)
         {
             list.Add(newItem);
         }
@@ -67,7 +67,7 @@ namespace CombatManager
         public static bool IsEmptyOrNull<T>(this ICollection<T> list)
         {
             return list == null || list.Count == 0;
-               
+
         }
 
         public static bool NotEmptyOrNull<T>(this ICollection<T> list)
@@ -91,10 +91,10 @@ namespace CombatManager
             if (list == null)
             {
                 return default(T);
-               
+
             }
             return list.FirstOrDefault(predicate);
-                
+
 
         }
 
@@ -177,6 +177,54 @@ namespace CombatManager
             return list.TrimFront(item).TrimEnd(item); ;
         }
 
+        public static ObservableCollection<T> AddRange<T>(this ObservableCollection<T> col, IEnumerable<T> items)
+        {
+            foreach (T t in items)
+            {
+                col.Add(t);
+            }
+            return col;
+        }
+
+        public static ObservableCollection<T> ReplaceContents<T>(this ObservableCollection<T> col, IEnumerable<T> items)
+        {
+            col.Clear();
+            return col.AddRange(items);
+        }
+
+        public static T CloneOrNull<T>(this T obj) where T : ICloneable
+        {
+            if (obj == null)
+            {
+                return obj;
+            }
+            return (T)obj.Clone();
+        }
+
+        public static ObservableCollection<T> AddRangeClone<T>(this ObservableCollection<T> col, IEnumerable<T> items) where T : ICloneable
+        {
+
+            foreach (T t in items)
+            {
+                col.Add(t.CloneOrNull());
+            }
+            return col;
+        }
+        public static ObservableCollection<T> ReplaceClone<T>(this ObservableCollection<T> col, IEnumerable<T> items) where T : ICloneable
+        {
+            col.Clear();
+            return col.AddRangeClone(items);
+        }
+
+        public static ObservableCollection<T> CloneContents<T>(this ObservableCollection<T> col) where T : ICloneable
+        {
+            if (col == null)
+            {
+                return null;
+            }
+            return new ObservableCollection<T>(from s in col select s.CloneOrNull());
+
+        }
     }
 
     public static class CMArrayUtilities
