@@ -125,7 +125,12 @@ namespace PropertyCreator
                         type = m.Groups["type"].Value;
                     }
 
-                    variables.Add(new VarInfo {Name = m.Groups["text"].Value, VarType=type});
+                    var inf = new VarInfo { Name = m.Groups["text"].Value, VarType = type };
+                    if (CamelCase)
+                    {
+                        inf.Name = inf.Name.Substring(0, 1).ToUpper() + inf.Name.Substring(1);
+                    }
+                    variables.Add(inf);
 
 
                 }
@@ -155,7 +160,9 @@ namespace PropertyCreator
                     }
                     else
                     {
-                        writer.WriteLine("if (PropertyChanged != null){ PropertyChanged(this, new PropertyChangedEventArgs(\"" + inf.Name + "\"));}");
+
+
+                        writer.WriteLine("PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(\"" + inf.Name + "\");");
                     }
                 }
             
@@ -164,7 +171,15 @@ namespace PropertyCreator
 
         }
 
-        String GetMemberName(String name)
+        bool CamelCase
+        {
+            get
+            {
+                return MemberNameComboBox.SelectedIndex == 0;
+            }
+        }
+
+        string GetMemberName(string name)
         {
             switch (MemberNameComboBox.SelectedIndex)
             {
