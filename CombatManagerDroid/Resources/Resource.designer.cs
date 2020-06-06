@@ -15,7 +15,7 @@ namespace CombatManagerDroid
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
 	public partial class Resource
 	{
 		
@@ -26,6 +26,7 @@ namespace CombatManagerDroid
 		
 		public static void UpdateIdValues()
 		{
+			global::CombatManager.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::CombatManagerDroid.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::CombatManagerDroid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::CombatManagerDroid.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::CombatManagerDroid.Resource.Attribute.font;

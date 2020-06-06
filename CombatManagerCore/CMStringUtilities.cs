@@ -83,9 +83,10 @@ namespace CombatManager
             return strings;
         }
 
-        public static string ToTokenString(this List<string> strings, char token)
+        public static string ToTokenString(this IEnumerable<string> strings, char token)
         {
-            if (strings == null || strings.Count == 0)
+            if (strings == null || !strings.Any())
+
             {
                 return null;
             }
@@ -109,6 +110,16 @@ namespace CombatManager
                 strings.Add(o.ToString());
             }
             return strings;
+        }
+
+        public static List<string> AddIfNotNull(this List<string> list, object ob, string prefix = null, string  text = null, string postfix = null)
+        {
+            if (ob != null)
+            {
+                
+                list.Add((prefix ?? "") + (text ?? ob.ToString()) + (postfix ?? ""));
+            }
+            return list;
         }
         
         public static string WeaveObjectsToString<T>(this IEnumerable<T> ob, string space)

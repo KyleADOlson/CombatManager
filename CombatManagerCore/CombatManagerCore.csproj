@@ -186,8 +186,14 @@
     <Compile Include="Pathfinder.Herolab.Serializable.class.cs" />
     <Compile Include="Personalization\ColorSchemeManager.cs" />
     <Compile Include="Personalization\FavoriteColors.cs" />
+    <Compile Include="PF2\PF2Action.cs" />
+    <Compile Include="PF2\PF2ActionDamage.cs" />
+    <Compile Include="PF2\PF2Monster.cs" />
     <Compile Include="PF2\PF2Score.cs" />
+    <Compile Include="PF2\PF2SpellLevel.cs" />
+    <Compile Include="PF2\PF2SpellList.cs" />
     <Compile Include="PF2\PF2Stats.cs" />
+    <Compile Include="PF2\PF2ActionTrait.cs" />
     <Compile Include="PF2\ProficiencyRank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyConverters.cs" />
