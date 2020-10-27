@@ -119,3 +119,4 @@ ZipDll/Resources/zippedResources.zip
 #!**/packages/repositories.config
 .vscode/settings.json
 UpgradeLog2.htm
+CombatManagerDroid/MSBuild.log

@@ -53,7 +53,8 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <DefineConstants>RELEASE</DefineConstants>
     <AndroidKeyStore>True</AndroidKeyStore>
-    <AndroidSupportedAbis />
+    <AndroidSupportedAbis>
+    </AndroidSupportedAbis>
     <MandroidI18n />
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
@@ -171,6 +172,7 @@
     <Compile Include="Controls\FlowLayout.cs" />
     <Compile Include="FeatDialog.cs" />
     <Compile Include="ImportExportDialog.cs" />
+    <Compile Include="RequestPermissionHandler.cs" />
     <Compile Include="ServiceManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -570,6 +572,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="..\CombatManagerCore\WebStyles.css">
+      <Link>Assets\WebStyles.css</Link>
+    </AndroidAsset>
   </ItemGroup>
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.28.0.0.1\build\monoandroid90\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.28.0.0.1\build\monoandroid90\Xamarin.Android.Support.Annotations.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -61,6 +61,8 @@ namespace CombatManager
         private bool isMonster;
         private BaseMonster monster;
         private bool isBlank;
+        private bool isNotSet;
+
 
 
         private bool isReadying;
@@ -98,11 +100,11 @@ namespace CombatManager
         private static Random rand = new Random();
 
 
-
         public Character()
         {
             this.InitiativeTiebreaker = rand.Next();
             monster = Monster.BlankMonster();
+            isNotSet = true;
             monster.PropertyChanged += Monster_PropertyChanged;
             HP = monster.HP;
             MaxHP = monster.HP;
@@ -838,7 +840,7 @@ namespace CombatManager
                 RulesSystem? oldSystem = MonsterSystem(monster);
                 RulesSystem? newSystem = MonsterSystem(value);
 
-                bool replacement = monster != null;
+                bool replacement = !isNotSet;
                 if (monster != null)
                 {
                     monster.PropertyChanged -= Monster_PropertyChanged;
@@ -869,6 +871,8 @@ namespace CombatManager
                     MaxHP = monster.HP;
                     monster.Notify("Init");
                 }
+
+                isNotSet = false;
 
             }
         }

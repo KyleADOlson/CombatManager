@@ -4855,8 +4855,15 @@ namespace CombatManager
                         if (condition.Affliction != null)
                         {
                             Paragraph p = new Paragraph(new Run(condition.Affliction.Text));
-                            p.FontFamily = new FontFamily("Cabin");
-                            p.FontSize = 12.0;
+                            try
+                            {
+                                p.FontFamily = new FontFamily("Cabin");
+                                p.FontSize = 12.0;
+                            }
+                            catch (Exception)
+                            {
+
+                            }
                             viewer.Document.Blocks.Add(p);
                         }
                     }

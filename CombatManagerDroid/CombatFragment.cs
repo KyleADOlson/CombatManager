@@ -17,6 +17,7 @@ using CombatManager.Html;
 using Android.Webkit;
 using System.IO;
 using Android.Support.V4.Content;
+using Android;
 
 namespace CombatManagerDroid
 {
@@ -282,6 +283,7 @@ namespace CombatManagerDroid
             }
         }
 
+
         private void AddCharacterList(LayoutInflater inflater, ViewGroup container, View v, int id, bool monsters)
         {
             LinearLayout cl = (LinearLayout)inflater.Inflate(Resource.Layout.CharacterList, container, false);
@@ -331,13 +333,57 @@ namespace CombatManagerDroid
             cl.FindViewById<ImageButton>(Resource.Id.loadButton).Click += 
                 (object sender, EventArgs e) => 
             {
+                LoadPressed(cl, monsters);
+
+            };
+
+            cl.FindViewById<ImageButton>(Resource.Id.saveButton).Click += 
+                (object sender, EventArgs e) => 
+            {
+
+                SavePressed(cl, monsters);
+            };
+
+            cl.FindViewById<Button>(Resource.Id.clearButton).Click += 
+                (object sender, EventArgs e) => 
+            {
+                AlertDialog.Builder bui = new AlertDialog.Builder(v.Context);
+                bui.SetMessage("Clear " + (monsters?"Monsters":"Players") + " List?");
+                bui.SetPositiveButton("OK", (a, x) => {
+                    List<Character> removeList = new List<Character>(from c in _CombatState.Characters where c.IsMonster == monsters select c);
+                        foreach (Character c in removeList)
+                    {
+                        _CombatState.RemoveCharacter(c);
+                    }
+                    });
+                bui.SetNegativeButton("Cancel", (a, x) => {});
+                bui.Show();                
+            };
+
+            if (monsters)
+            {
+                _XPText = cl.FindViewById<TextView>(Resource.Id.xpText);
+                ReloadXPText();
+            }
+
+
+
+            v.FindViewById<LinearLayout>(id).AddView(cl);
+
+        }
+
+        void LoadPressed(LinearLayout cl, bool monsters)
+        {
+            FileDialog.CheckFilePermission(Activity, () =>
+            { 
+            
 
                 FileDialog fd = new FileDialog(cl.Context, _Extensions, true);
                 fd.Show();
-                
-                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) => 
+
+                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
                 {
-                    
+
                     string name = ea.Filename;
                     string fullname = Path.Combine(fd.Folder, name);
 
@@ -369,53 +415,29 @@ namespace CombatManagerDroid
                     }
 
                 };
+            });
+        }
 
-            };
+        void SavePressed(LinearLayout cl, bool monsters)
+        {
 
-            cl.FindViewById<ImageButton>(Resource.Id.saveButton).Click += 
-                (object sender, EventArgs e) => 
+            FileDialog.CheckFilePermission(Activity, () =>
             {
-                FileDialog fd = new FileDialog(v.Context, _Extensions, false);
-                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) => 
+
+                FileDialog fd = new FileDialog(cl.Context, _Extensions, false);
+                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
                 {
                     string name = ea.Filename;
                     if (!name.EndsWith(".cmpt", StringComparison.CurrentCultureIgnoreCase))
                     {
-                        name = name+".cmpt";
+                        name = name + ".cmpt";
                     }
                     string fullname = Path.Combine(fd.Folder, name);
 
-                    XmlListLoader<Character>.Save(new List<Character>(_CombatState.Characters.Where((a)=>a.IsMonster == monsters)), fullname);
+                    XmlListLoader<Character>.Save(new List<Character>(_CombatState.Characters.Where((a) => a.IsMonster == monsters)), fullname);
                 };
                 fd.Show();
-            };
-
-            cl.FindViewById<Button>(Resource.Id.clearButton).Click += 
-                (object sender, EventArgs e) => 
-            {
-                AlertDialog.Builder bui = new AlertDialog.Builder(v.Context);
-                bui.SetMessage("Clear " + (monsters?"Monsters":"Players") + " List?");
-                bui.SetPositiveButton("OK", (a, x) => {
-                    List<Character> removeList = new List<Character>(from c in _CombatState.Characters where c.IsMonster == monsters select c);
-                        foreach (Character c in removeList)
-                    {
-                        _CombatState.RemoveCharacter(c);
-                    }
-                    });
-                bui.SetNegativeButton("Cancel", (a, x) => {});
-                bui.Show();                
-            };
-
-            if (monsters)
-            {
-                _XPText = cl.FindViewById<TextView>(Resource.Id.xpText);
-                ReloadXPText();
-            }
-
-
-
-            v.FindViewById<LinearLayout>(id).AddView(cl);
-
+            });
         }
 
         class ListOnDragListener : Java.Lang.Object, View.IOnDragListener 
