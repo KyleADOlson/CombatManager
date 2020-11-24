@@ -219,6 +219,8 @@ namespace CombatManager
             combatState = new CombatState();
             combatState.Copy(LoadCombatState(UserSettings.Settings.RulesSystem));
 
+            SetupTurnClockManager();
+
  
 
             CombatState.use3d6 = UserSettings.Settings.AlternateInit3d6;
@@ -478,6 +480,10 @@ namespace CombatManager
                 {
                     localService.HPMode = UserSettings.Settings.DefaultHPMode;
                 }
+            }
+            else if (UserSettings.IsTimerSetting(e.PropertyName))
+            {
+                UpdateTurnClockState();
             }
         }
 
@@ -892,6 +898,8 @@ namespace CombatManager
                 }
 
                 _PipeServer.EndServer();
+
+                combatState.StopAnyTurnClockManager();
             }
             
 
@@ -9614,6 +9622,119 @@ namespace CombatManager
 
                 }
             }
+        }
+
+
+
+        void SetupTurnClockManager()
+        {
+            combatState.ClockManager.ClockTimerElapsed += ClockManager_ClockTimerElapsed;
+            UpdateTurnClockState();
+        }
+
+        private void ClockManager_ClockTimerElapsed(object sender, EventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                UpdateTurnClockUI();
+
+
+            }));
+        }
+
+        void UpdateTurnClockState()
+        {
+            if (combatState.ClockManager.Running != UserSettings.Settings.UseTurnClock)
+            {
+                if (UserSettings.Settings.UseTurnClock)
+                {
+                    combatState.ClockManager.Start();
+
+                }
+                else
+                {
+                    combatState.ClockManager.Stop();
+                }
+            }
+
+
+            UpdateTurnClockUI();
+        }
+
+        void UpdateTurnClockUI()
+        {
+            Visibility vis = UserSettings.Settings.UseTurnClock ? Visibility.Visible : Visibility.Collapsed;
+            
+            TurnClockText.Visibility = vis;
+            TurnClockSettingsButton.Visibility = vis;
+            if (!UserSettings.Settings.UseTurnClock)
+            {
+                TurnClockButtonText.Text = "Timer Off";
+            }
+            else if (!UserSettings.Settings.CountdownToNextTurn)
+            {
+                TurnClockButtonText.Text = "Time Left";
+            }
+            else
+            {
+                TurnClockButtonText.Text = "Turn Time";
+            }
+
+            if (UserSettings.Settings.UseTurnClock)
+            {
+                UpdateClockTime();
+            }
+
+
+        }
+
+        private void TurnClockButton_Click(object sender, RoutedEventArgs e)
+        {
+            CycleTurnClockState();
+        }
+
+        private void CycleTurnClockState()
+        {
+            if (!UserSettings.Settings.UseTurnClock)
+            {
+                UserSettings.Settings.CountdownToNextTurn = true;
+                UserSettings.Settings.UseTurnClock = true;
+            }
+            else if (UserSettings.Settings.CountdownToNextTurn)
+            {
+                UserSettings.Settings.CountdownToNextTurn = false;
+
+            }
+            else
+            {
+                UserSettings.Settings.UseTurnClock = false;
+            }
+
+            UpdateTurnClockState();
+        }
+
+
+        private void TurnClockResetButton_Click(object sender, RoutedEventArgs e)
+        {
+   
+        }
+
+        private void UpdateClockTime()
+        {
+            TimeSpan span;
+
+
+            if (UserSettings.Settings.CountdownToNextTurn)
+            {
+                span = combatState.CurrentTurnStartTime.AddSeconds(UserSettings.Settings.TurnTimeSeconds)
+                    - DateTime.UtcNow;
+            }
+            else
+            {
+                span = DateTime.UtcNow - combatState.CurrentTurnStartTime;
+            }
+
+            TurnClockText.Text = span.ToString();
         }
     }
 

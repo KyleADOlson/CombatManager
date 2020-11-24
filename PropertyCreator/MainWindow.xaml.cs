@@ -185,9 +185,9 @@ namespace PropertyCreator
             {
 
                 case 1:
-                    return "_" + name;
+                    return (name.StartsWith("_")?"":"_") + name;
                 case 2:
-                    return name + "_";
+                    return name + (name.EndsWith("_") ? "" : "_");
                 default:
                 case 0:
                     return name.Substring(0, 1).ToLower() + name.Substring(1);

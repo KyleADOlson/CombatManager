@@ -9,6 +9,10 @@ using System.IO;
 
 namespace CombatManager
 {
+
+    //these settings are set in a platform appropriate manner in the core
+    //the settings are automatically stored when changed
+
     public class CoreSettings : SimpleNotifyClass
     {
         private static CoreSettings instance;
@@ -95,6 +99,7 @@ namespace CombatManager
                 }
             }
         }
+
 
 #if MONO
         public static void SaveBoolValue(String name, bool value)

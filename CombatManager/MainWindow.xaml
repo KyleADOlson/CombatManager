@@ -3238,8 +3238,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0"/>
                             <ColumnDefinition Width="190"/>
-                            <ColumnDefinition Width="230"/>
-                            <ColumnDefinition Width="230"/>
+                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="210"/>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="0"/>
                         </Grid.ColumnDefinitions>
@@ -3247,14 +3247,40 @@
                         <Rectangle Margin="0" RadiusX="0" RadiusY="0" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Fill="{DynamicResource DarkBackgroundBrush}" Stroke="{DynamicResource ResourceKey=RectangleBorderBrush}" StrokeThickness="1"/>
                         <TextBlock HorizontalAlignment="Left" Margin="8,0,0,0" TextWrapping="Wrap" FontSize="16" Grid.Column="1" Grid.Row="1" d:LayoutOverrides="Height" Text="Active Character:" Foreground="White" VerticalAlignment="Center" />
                         <StackPanel  Grid.Column="2" Margin="-50.083,0,8,0" Orientation="Horizontal"  >
+           
                             <TextBlock x:Name="CurrentPlayerText"  Text="{Binding CurrentCharacter.Name}" FontSize="16" d:LayoutOverrides="Height, GridBox" TextTrimming="CharacterEllipsis" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" />
                             <ListBox x:Name="CurrentPlayerConditions" ItemsSource="{Binding CurrentCharacter.Stats.ActiveConditions}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemTemplate="{DynamicResource ConditionMiniTemplate}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemStyle3}" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Center"/>
                         </StackPanel>
                         <Rectangle Fill="{DynamicResource LightBackgroundBrush}" Margin="1,1,76.032,1" RadiusX="0" RadiusY="0" Grid.Column="3" Grid.Row="1"/>
-                        <Rectangle Margin="-1,0,0,0" RadiusX="0" RadiusY="0" Grid.Column="3" Grid.Row="1" Fill="{DynamicResource DarkBackgroundBrush}" Stroke="{DynamicResource RectangleBorderBrush}" StrokeThickness="1"/>
-                        <TextBlock x:Name="CurrentRoundText" Margin="61.943,3.54,0,4.18" FontSize="16" Grid.Column="3" Grid.Row="1" TextTrimming="CharacterEllipsis" Foreground="White" d:LayoutOverrides="Height" Text="{Binding Round}" HorizontalAlignment="Left" Width="43.858" TextAlignment="Center" VerticalAlignment="Center" />
-                        <TextBlock HorizontalAlignment="Left" Margin="8,3.54,0,4.18" TextWrapping="Wrap" FontSize="16" Grid.Column="3" Grid.Row="1" Text="Round:" Foreground="White" d:LayoutOverrides="Height" VerticalAlignment="Center" />
-                        <Button x:Name="ResetRoundButton" ToolTip="Reset Round" Margin="109.801,5.02,0,4.02" Grid.Column="3" Grid.Row="1"  Click="ResetRoundButton_Click" Content="Reset" HorizontalAlignment="Left" Padding="1,0" RenderTransformOrigin="0.76,0.226" d:LayoutOverrides="Height" Foreground="White" Width="40.167" Style="{DynamicResource ButtonSecondaryStyle}" />
+                        <Rectangle Margin="-1,0,0,0" RadiusX="0" RadiusY="0" Grid.Column="3" Grid.Row="1" Fill="{DynamicResource DarkBackgroundBrush}" Stroke="{DynamicResource RectangleBorderBrush}" StrokeThickness="1" Grid.ColumnSpan="4"/>
+                        <StackPanel x:Name="RoundStackPanel" Orientation="Horizontal" Grid.Column="3" Grid.ColumnSpan="2">
+                            <TextBlock HorizontalAlignment="Left" Margin="8,3.54,0,4.18" TextWrapping="Wrap" FontSize="16" Text="Round:" Foreground="White" d:LayoutOverrides="Height" VerticalAlignment="Center" />
+                            <TextBlock x:Name="CurrentRoundText" Margin="4,3.54,0,4.18" FontSize="16"  TextTrimming="CharacterEllipsis" Foreground="White" d:LayoutOverrides="Height" Text="{Binding Round}" HorizontalAlignment="Left" Width="43.858" TextAlignment="Center" VerticalAlignment="Center" />
+
+                            <Button x:Name="ResetRoundButton" ToolTip="Reset Round" Margin="4,5.02,4,4.02" Grid.Column="3" Grid.Row="1"  Click="ResetRoundButton_Click" Content="Reset" HorizontalAlignment="Left" Padding="1,0" RenderTransformOrigin="0.76,0.226" d:LayoutOverrides="Height" Foreground="White" Width="40.167" Style="{DynamicResource ButtonSecondaryStyle}" />
+                            <Button x:Name="TurnClockButton" ToolTip="Show a timer for the current player's turn" Margin="4,5.02,4,4.02" Foreground="White" Width="auto" Style="{DynamicResource ButtonSecondaryAStyle}" Click="TurnClockButton_Click" >
+                                <TextBlock x:Name="TurnClockButtonText" Margin="4,0,4,0">Clock Off</TextBlock>
+                            </Button>
+                            <TextBlock x:Name="TurnClockText" Margin="4,3.54,4,4.18" FontSize="16"  TextTrimming="CharacterEllipsis" Foreground="White" d:LayoutOverrides="Height" Text="00:00:00" HorizontalAlignment="Left" TextAlignment="Center" VerticalAlignment="Center" Width="85" />
+
+                            <ToggleButton x:Name="PauseButton" ToolTip="Pause Turn Clock"  Height="22" Margin="4,5.02,4,4.02" Foreground="White" Width="22" Style="{DynamicResource ButtonSecondaryAStyle}" >
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Image x:Name="TurnClockPauseImage" Source="Images\PauseButton.png" ></Image>
+                                    <Image  x:Name="TurnClockPlayImage" Source="Images\PlayArrow.png"  Visibility="Collapsed"></Image>
+                                </StackPanel>
+                            </ToggleButton>
+                            <Button x:Name="TurnClockResetButton" Height="22" ToolTip="Reset Turn Clock" Margin="4,5.02,4,4.02" Foreground="White" Width="22" Style="{DynamicResource ButtonSecondaryAStyle}" Click="TurnClockResetButton_Click" >
+
+                                <Image Source="Images\reset-16.png"></Image>
+                            </Button>
+                            <Button x:Name="TurnClockSettingsButton"  Height="22" ToolTip="Turn Clock Settings" Margin="4,5.02,4,4.02" Foreground="White" Width="auto" Style="{DynamicResource ButtonSecondaryAStyle}" >
+                                <StackPanel Orientation="Horizontal">
+                                <Image Source="Images\hourglass-16.png"></Image>
+                                    <Image Source="Images\gear.png"></Image>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
                     </Grid>
 
                 </Grid>

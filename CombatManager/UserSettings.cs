@@ -49,6 +49,7 @@ namespace CombatManager
             Filters,
             System,
             LocalService,
+            Timer,
         }
 
         public enum MonsterSetFilter
@@ -118,6 +119,17 @@ namespace CombatManager
         private ushort _LocalServicePort;
         private string _LocalServicePasscode;
 
+        private bool _UseTurnClock;
+        private bool _CountdownToNextTurn;
+        private bool _MoveAutomaticallyOnTurnTimer;
+        private int _TurnTimeSeconds;
+        private int _WarningTimeSeconds;
+        private bool _PlayWarningSound;
+        private string _WarningSound;
+        private bool _PlayTurnEndSound;
+        private string _TurnEndSound;
+        private bool _ShowClockForMonsters;
+
         private int _RulesSystem;
 
         private bool optionsLoaded;
@@ -153,6 +165,16 @@ namespace CombatManager
             _RulesSystem = 0;
             _LocalServicePort = LocalCombatManagerService.DefaultPort;
             _LocalServicePasscode = "";
+            _UseTurnClock = false;
+            _CountdownToNextTurn = true;
+            _MoveAutomaticallyOnTurnTimer = false;
+            _TurnTimeSeconds = 180;
+            _WarningTimeSeconds = 10;
+            _PlayWarningSound = true;
+            _WarningSound = "";
+            _PlayTurnEndSound = true;
+            _TurnEndSound = "";
+            _ShowClockForMonsters = true;
             LoadOptions();
         }
 
@@ -747,6 +769,130 @@ namespace CombatManager
             }
         }
 
+        public bool UseTurnClock
+        {
+            get { return _UseTurnClock; }
+            set
+            {
+                if (_UseTurnClock != value)
+                {
+                    _UseTurnClock = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("UseTurnClock")); }
+                }
+            }
+        }
+        public bool CountdownToNextTurn
+        {
+            get { return _CountdownToNextTurn; }
+            set
+            {
+                if (_CountdownToNextTurn != value)
+                {
+                    _CountdownToNextTurn = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("CountdownToNextTurn")); }
+                }
+            }
+        }
+        public bool MoveAutomaticallyOnTurnTimer
+        {
+            get { return _MoveAutomaticallyOnTurnTimer; }
+            set
+            {
+                if (_MoveAutomaticallyOnTurnTimer != value)
+                {
+                    _MoveAutomaticallyOnTurnTimer = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("MoveAutomaticallyOnTurnTimer")); }
+                }
+            }
+        }
+        public int TurnTimeSeconds
+        {
+            get { return _TurnTimeSeconds; }
+            set
+            {
+                if (_TurnTimeSeconds != value)
+                {
+                    _TurnTimeSeconds = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TurnTimeSeconds")); }
+                }
+            }
+        }
+        public int WarningTimeSeconds
+        {
+            get { return _WarningTimeSeconds; }
+            set
+            {
+                if (_WarningTimeSeconds != value)
+                {
+                    _WarningTimeSeconds = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("WarningTimeSeconds")); }
+                }
+            }
+        }
+        public bool PlayWarningSound
+        {
+            get { return _PlayWarningSound; }
+            set
+            {
+                if (_PlayWarningSound != value)
+                {
+                    _PlayWarningSound = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("PlayWarningSound")); }
+                }
+            }
+        }
+        public string WarningSound
+        {
+            get { return _WarningSound; }
+            set
+            {
+                if (_WarningSound != value)
+                {
+                    _WarningSound = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("WarningSound")); }
+                }
+            }
+        }
+        public bool PlayTurnEndSound
+        {
+            get { return _PlayTurnEndSound; }
+            set
+            {
+                if (_PlayTurnEndSound != value)
+                {
+                    _PlayTurnEndSound = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("PlayTurnEndSound")); }
+                }
+            }
+        }
+        public string TurnEndSound
+        {
+            get { return _TurnEndSound; }
+            set
+            {
+                if (_TurnEndSound != value)
+                {
+                    _TurnEndSound = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("TurnEndSound")); }
+                }
+            }
+        }
+
+        public bool ShowClockForMonsters
+        {
+            get { return _ShowClockForMonsters; }
+            set
+            {
+                if (_ShowClockForMonsters != value)
+                {
+                    _ShowClockForMonsters = value;
+                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("ShowClockForMonsters")); }
+                }
+            }
+        }
+        
+
+
 
 
         void LoadOptions()
@@ -798,6 +944,17 @@ namespace CombatManager
                 RunWebService = CoreSettings.LoadBoolValue("RunWebService", true);
                 LocalServicePort = (ushort)CoreSettings.LoadIntValue("LocalServicePort", LocalCombatManagerService.DefaultPort);
                 LocalServicePasscode = CoreSettings.LoadStringValue("LocalServicePasscode", "");
+
+                UseTurnClock = CoreSettings.LoadBoolValue("UseTurnClock", false);
+                CountdownToNextTurn = CoreSettings.LoadBoolValue("CountdownToNextTurn", true);
+                MoveAutomaticallyOnTurnTimer = CoreSettings.LoadBoolValue("MoveAutomaticallyOnTurnTimer", false);
+                TurnTimeSeconds = CoreSettings.LoadIntValue("TurnTimeSeconds", 180);
+                WarningTimeSeconds = CoreSettings.LoadIntValue("WarningTimeSeconds", 10);
+                PlayWarningSound = CoreSettings.LoadBoolValue("PlayWarningSound", true);
+                WarningSound = CoreSettings.LoadStringValue("WarningSound","");
+                PlayTurnEndSound = CoreSettings.LoadBoolValue("PlayTurnEndSound", true);
+                TurnEndSound = CoreSettings.LoadStringValue("TurnEndSound","");
+                ShowClockForMonsters = CoreSettings.LoadBoolValue("ShowClockForMonsters", true);
 
                 optionsLoaded = true;
             }
@@ -896,6 +1053,19 @@ namespace CombatManager
                         CoreSettings.SaveIntValue( "MonsterDBFilter", (int)MonsterDBFilter);
                         CoreSettings.SaveIntValue( "MonsterTabFilter", (int)MonsterTabFilter);
                     }
+                    if (section == SettingsSaveSection.All || section == SettingsSaveSection.Timer)
+                    {
+                        CoreSettings.LoadBoolValue("UseTurnClock", UseTurnClock);
+                        CoreSettings.LoadBoolValue("CountdownToNextTurn", CountdownToNextTurn);
+                        CoreSettings.LoadBoolValue("MoveAutomaticallyOnTurnTimer", MoveAutomaticallyOnTurnTimer);
+                        CoreSettings.LoadIntValue("TurnTimeSeconds", TurnTimeSeconds);
+                        CoreSettings.LoadIntValue("WarningTimeSeconds", WarningTimeSeconds);
+                        CoreSettings.LoadBoolValue("PlayWarningSound", PlayWarningSound);
+                        CoreSettings.LoadStringValue("WarningSound", WarningSound);
+                        CoreSettings.LoadBoolValue("PlayTurnEndSound", PlayTurnEndSound);
+                        CoreSettings.LoadStringValue("TurnEndSound", TurnEndSound);
+                        CoreSettings.LoadBoolValue("ShowClockForMonsters", ShowClockForMonsters);
+                    }
 
 
                 }
@@ -909,6 +1079,24 @@ namespace CombatManager
                     System.Diagnostics.Debug.WriteLine(ex.ToString());
                 }
             }
+        }
+
+        static HashSet<string> timeSettings = new HashSet<string>
+    (){"UseTurnClock",
+            "CountdownToNextTurn",
+            "MoveAutomaticallyOnTurnTimer",
+            "TurnTimeSeconds",
+            "WarningTimeSeconds",
+            "PlayWarningSound",
+            "WarningSound",
+            "PlayTurnEndSound",
+            "TurnEndSound",
+            "ShowClockForMonsters",
+        };
+
+        public static bool IsTimerSetting(string name)
+        {
+            return timeSettings.Contains(name);
         }
 
        
