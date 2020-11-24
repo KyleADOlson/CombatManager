@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlTypes;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace PF2WebRipper
 {
@@ -30,7 +35,7 @@ namespace PF2WebRipper
 
         }
 
-
+        const string monsteroutname = "monsterout.html";
 
         public async Task<List<PF2WebListItem>> GetMonsters()
         {
@@ -41,15 +46,28 @@ namespace PF2WebRipper
             match.OpenRow();
             match.MakeUrlCell("url", "name", false);
             match.MultiUrlCell("familyurl", "family", optional: true);
-            match.MakeTextCell(name:"level");
+            match.MakeTextCell(name: "level");
             match.MakeUrlCell("publisherurl", "publisher", true);
             match.MakeUrlCell("sourceurl", "source", true);
             match.CloseRow();
 
+            string text;
 
-            HttpResponseMessage resp = await client.GetAsync("https://pf2.d20pfsrd.com/monster");
+            if (File.Exists(monsteroutname))
+            {
+                text = await monsteroutname.LoadFileAsync();
+            }
+            else
+            {
+                HttpResponseMessage resp = await client.GetAsync("https://pf2.d20pfsrd.com/monster");
 
-            string text = await resp.Content.ReadAsStringAsync();
+                 text = await resp.Content.ReadAsStringAsync();
+
+                text.SpitFile(monsteroutname);
+
+            }
+
+
 
             string mt = match.ToString();
 
@@ -58,8 +76,8 @@ namespace PF2WebRipper
 
 
             using (var s = File.Open("lasturl.txt", FileMode.Create))
-             using (var r = new StreamWriter(s))
-             {
+            using (var r = new StreamWriter(s))
+            {
                 r.WriteLine(mt);
             }
             foreach (Match mo in m)
@@ -79,7 +97,7 @@ namespace PF2WebRipper
 
             return list;
         }
-        
+
 
         public async Task<List<PF2WebListItem>> GetSourcePage()
         {
@@ -113,21 +131,38 @@ namespace PF2WebRipper
             return list;
         }
 
+        string hto = "[-\\., 'A-Za-z0-9()]+";
+        string cro = "[-0-9]+";
 
         public StringBuilder AddHeader()
         {
-             string headermatch1 = "<h4 class=\"monster\">(?<name>[-\\., A-Za-z0-9()]+) <span class=\"monster-level\">(?<type>[-\\., A-Za-z0-9()]+) (?<cr>[0-9]+)</span></h4>";
+
+            string headermatch1 = "<h4 class=\"monster\">(?<name>[-\\., 'A-Za-z0-9()]+) <(span|h4) class=\"(monster-)?level\">(?<type>[-\\., 'A-Za-z0-9()]+) (?<cr>[-0-9]+)</span></h4>";
 
             var sb1 = SB(headermatch1);
-            var sb2 = SB().AddTag("h1", content: SB().TextGroup()).Whitespace().AddOpenTag("p", "header");
+            var sb2 = CreateHeader2("h1", "2");
+            var sb3 = CreateHeader2("p", "3");
 
-            //Froghemoth <span class="level">Creature 13</span></p>
-            sb2.TextGroup(group: "name2").AddTag("span", cl: "level", content: "(?<type2>[-\\., A-Za-z0-9()]+) (?<cr2>[0-9]+)").AddCloseTag("p");
-            var sb = SB((new[] { sb1, sb2 }).Options());
+            var sb = SB((new[] { sb1, sb2, sb3 }).Options(group:true));
 
             return sb;
         }
-        
+
+         StringBuilder CreateHeader2(string tag, string id)
+        {
+            var sb2 = SB().AddTag(tag, content: SB().TextGroup()).Whitespace().AddOpenTag("p", "header");
+            sb2.TextGroup(group: "name" + id).AddTag("span", cl: "(monster-)?level", content: "(?<type2>[-\\., 'A-Za-z0-9()]+) (?<cr2>[0-9]+)").AddCloseTag("p");
+            var sb = SB((new[] { SB(), sb2 }).Options(group: true));
+
+            return sb;
+
+
+            sb2.TextGroup(group: "name" + id).AddTag("span|", cl: "(monster-)?level", content: "(?<type" +  id +  ">" + hto + ") (?<cr" + id + ">" + cro + ")").AddCloseTag("p");
+
+
+            return sb2;
+        }
+
 
         public void AddFirstSection(StringBuilder sb)
         {
@@ -225,7 +260,6 @@ namespace PF2WebRipper
         void AddToSaves(StringBuilder sb)
 
         {
-            var optDivEnd = SB().Group(SB().AddCloseTag("div").Whitespace(), min: 0);
 
             sb.PlainPLine("itemsline", "Items", min: 0);
 
@@ -236,7 +270,6 @@ namespace PF2WebRipper
             oat.AddCloseTag("p").Whitespace();
             sb.Group(oat, name: "otherpower", min: 0, max: -1);
             oat.SpitJSRegex("oat.txt");
-            sb.Append(optDivEnd);
             sb.Append("<hr( /)?>").Whitespace();
             sb.AddOpenTag("p").AddTag("b", "AC");
             sb.Append(" ").NumberGroup(group: "ac").Append("; ");
@@ -335,35 +368,45 @@ namespace PF2WebRipper
 
         }
 
+        string matchText;
 
-        public string BuildMatchText()
+
+        public string MatchText
         {
-            var optDiv = SB().Group(SB().AddOpenTag("div", cl: "[-a-zA-Z0-9_]+", classoptional: true).Whitespace(), min: 0); 
-            
-            
-            StringBuilder sb = AddHeader();
-
-            AddFirstSection(sb);
-
-            /*AddToPerception(sb);
-
-            AddToRough(sb);
-
-            AddToStats(sb);
-
-
-
-            AddToSaves(sb);
-
-            AddToResist(sb);
-
-            AddToEnd(sb);*/
+            get
+            {
+                if (matchText == null)
+                {
 
 
 
 
+                    StringBuilder sb = AddHeader();
 
-            return sb.ToString();
+                    //AddFirstSection(sb);
+
+                    /*AddToPerception(sb);
+
+                    AddToRough(sb);
+
+                    AddToStats(sb);
+
+
+
+                    AddToSaves(sb);
+
+                    AddToResist(sb);
+
+                    AddToEnd(sb);*/
+
+
+
+
+
+                    matchText = sb.ToString();
+                }
+                return matchText;
+            }
         }
 
         public StringBuilder AddAbilityTag(StringBuilder sb, string name, bool pf = true)
@@ -386,13 +429,8 @@ namespace PF2WebRipper
         {
             sb.AddTag("b", content: name);
             sb.Append(" ");
-            sb.TextGroup(group:name, options:options);
+            sb.TextGroup(group: name, options: options);
             return sb;
-        }
-
-        public string InfoFileName(PF2WebListItem item)
-        {
-            return item.Name + ".f.html";
         }
 
         public string BuildFileName(PF2WebListItem item)
@@ -400,15 +438,26 @@ namespace PF2WebRipper
             return item.Name + ".b.html";
         }
 
-        public async Task<string> GetPage(PF2WebListItem item)
+        public class DownloadPageRes
         {
-            string infoname = InfoFileName(item);
+            public PF2WebListItem Item { get; set; }
+            public bool Result { get; set; }
+        }
+
+        public async Task<bool> DownloadPage(PF2WebListItem item, Action<DownloadPageRes> callback)
+        {
+            DownloadPageRes res = new DownloadPageRes();
+            res.Item = item;
+
+            string infoname = item.FileName;
 
             string text;
 
+            
+
             if (File.Exists(infoname))
             {
-                text = infoname.LoadFile();
+                res.Result = false;
             }
             else
             {
@@ -420,59 +469,128 @@ namespace PF2WebRipper
 
 
                 Thread.Sleep(500);
+                res.Result =  true;
 
             }
 
+            callback.Invoke(res);
 
-            return text;
+            return res.Result;
+
+
+        }
+
+        public async Task<string> LoadPageText(PF2WebListItem item)
+        {
+            return await item.FileName.LoadFileAsync();
         }
 
 
-        public async Task<List<PF2WebMonsterInfo>> GetInfo(PF2WebListItem item)
+        public async Task<string> LoadPrefixedPage(PF2WebListItem item)
         {
-            List<PF2WebMonsterInfo> list = new List<PF2WebMonsterInfo>();
 
-            string text = await GetPage(item);
-
-            text = text.PrefixEscapes();
-            text.SpitFile(item.Name + ".b.html");
-
-
-            string matchtext = BuildMatchText() ;
-
-            var ma = Regex.Matches(text, matchtext) ;
-
-            using (var s = File.Open(item.Name + ".txt", FileMode.Create))
-            using (var r = new StreamWriter(s))
+            if (File.Exists(item.BuildFileName))
             {
-                int foo = 0;
-
-                foreach (Match m in ma)
-                {
-
-                    PF2WebMonsterInfo info = new PF2WebMonsterInfo();
-                    info.Name = m.Value("name") ?? m.Value("name2");
-
-                    
-                    
-                    info.Type = m.Values("trait");
-                    list.Add(info);
-
-                    if (foo > 0)
-                    {
-                        r.WriteLine("--------");
-                    }
-                    foo++;
-
-
-                    r.WriteLine(info.Name);
-
-
-                }
+                return await item.BuildFileName.LoadFileAsync();
             }
 
+            else
+            {
+                string text = await LoadPageText(item);
 
-            return list;
+                ConsoleHelper.WriteLine(item.BuildFileName);
+
+                text = text.PrefixEscapes();
+
+                await text.SpitFileAsync(item.BuildFileName);
+
+                return text;
+            }
+
+        }
+
+        public class GetInfoRes
+        {
+            public PF2WebListItem Item { get; set; }
+
+            public bool Result { get; set; }
+           
+            public List<PF2WebMonsterInfo> List { get; set; }
+
+            public GetInfoRes()
+            {
+                List = new List<PF2WebMonsterInfo>();
+            }
+        }
+
+
+
+        public async Task<GetInfoRes> GetInfo(PF2WebListItem item, Action<GetInfoRes> callback = null)
+        {
+            
+            ConsoleHelper.WriteLine(">>>  " + item.Name);
+
+            GetInfoRes res = new GetInfoRes();
+
+            try
+            {
+
+                res.Item = item;
+
+                string text = await LoadPrefixedPage(item);
+
+
+                string matchtext = MatchText;
+
+
+
+
+                res.List = new List<PF2WebMonsterInfo>(); 
+                ConsoleHelper.WriteLine("   >>> " + item.Name);
+
+
+                MatchCollection ma = Regex.Matches(text, matchtext);
+
+                using (var s = File.Open(item.Name + ".txt", FileMode.Create))
+                using (var r = new StreamWriter(s))
+                {
+                    int foo = 0;
+
+                    foreach (Match m in ma)
+                    {
+
+                        PF2WebMonsterInfo info = new PF2WebMonsterInfo();
+                        info.Name = m.Value("name") ?? m.Value("name2") ?? m.Value("name3");
+
+
+                        info.Type = m.Values("trait");
+                        res.List.Add(info);
+
+                        if (foo > 0)
+                        {
+                            r.WriteLine("--------");
+                        }
+                        foo++;
+
+
+                        r.WriteLine(info.Name);
+
+
+                    }
+
+                }
+
+                res.Result = res.List.Count > 0;
+
+            }
+            catch (Exception ex)
+            {
+                ConsoleHelper.WriteLine("X*X*X*X*X------" + item.Name);
+            }
+            callback?.Invoke(res);
+
+
+            return res ;
         }
 
         private static StringBuilder SB(string text = null)
@@ -495,6 +613,23 @@ namespace PF2WebRipper
         public string Source { get; set; }
 
         public string Level { get; set; }
+
+        [XmlIgnore]
+        public string FileName
+        {
+            get {
+                return Name + "." + Url.GetHashCode() + ".html";
+                    }
+        }
+
+        [XmlIgnore]
+        public string BuildFileName
+        {
+            get
+            {
+                return Name + ".b." + Url.GetHashCode() + ".html";
+            }
+        }
 
     }
 

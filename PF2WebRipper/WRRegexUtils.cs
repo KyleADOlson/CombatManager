@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -37,7 +40,7 @@ namespace PF2WebRipper
             {
                 return urlPattern;
             }
-                
+
         }
 
         public static string TextPattern
@@ -109,9 +112,9 @@ namespace PF2WebRipper
   <p><b>AC</b>
              */
             string m = " AC ([0-9]+); <b>Fort";
-            text = Regex.Replace(text, m, "</p> \r\n  <hr>\r\n  <p><b>AC</b> $1; <b>Fort") ;
+            text = Regex.Replace(text, m, "</p> \r\n  <hr>\r\n  <p><b>AC</b> $1; <b>Fort");
 
-            foreach (string s in new []{ "Immunities", "Weaknesses", "Resistances"})
+            foreach (string s in new[] { "Immunities", "Weaknesses", "Resistances" })
             {
                 text = text.FixBoldGroupS(s);
             }
@@ -128,9 +131,10 @@ namespace PF2WebRipper
         static string KillDiv(this string text)
         {
 
-            var div = SB(" *").AddOpenTag("div", cl: "[-a-zA-Z0-9_]+", classoptional: true).Append(" *\r?\n?").ToString();
+            var div = SB().AddOpenTag("div", cl: "[- a-zA-Z0-9_]+", classoptional: true).ToString();
             text = Regex.Replace(text, div, "");
-            var dive = SB(" *").AddCloseTag("div").Append(" *\r?\n?").ToString();
+
+            var dive = SB().AddCloseTag("div").ToString();
             text = Regex.Replace(text, dive, "");
             return text;
         }
@@ -143,7 +147,7 @@ namespace PF2WebRipper
             int l2 = text.Length;
             var t = "\\r\\n( *\\r\\n)+";
             return Regex.Replace(text, t, "\r\n");
-           
+
         }
 
 
@@ -374,7 +378,7 @@ namespace PF2WebRipper
 
         public static StringBuilder PFNumberGroup(this StringBuilder s, string group = null)
         {
-            return s.Group(text:"(\\+|-)?[0-9]+", name:group);
+            return s.Group(text: "(\\+|-)?[0-9]+", name: group);
         }
 
         public static StringBuilder TextGroup(this StringBuilder s, string group = null, TextGroupOptions options = null, int min = 1, int max = -1)
@@ -424,7 +428,7 @@ namespace PF2WebRipper
             return s.Group(text: textPattern.Wrap("[]").Quantify(min, max), name: group);
         }
 
-       
+
 
         public static StringBuilder TextOrUrlGroup(this StringBuilder s, string name = null, string altname = null)
         {
@@ -495,16 +499,16 @@ namespace PF2WebRipper
 
         public static StringBuilder AddSpan(this StringBuilder s, StringBuilder content = null, string cl = null, int min = groupmin, int max = groupmax, IEnumerable<WRAttribute> attributes = null)
         {
-            return s.AddSpan(content.ToStringOrNull(), cl, min: min, max: max, attributes:attributes);
+            return s.AddSpan(content.ToStringOrNull(), cl, min: min, max: max, attributes: attributes);
         }
 
         public static StringBuilder AddParagraph(this StringBuilder s, string content = null, string cl = null, int min = groupmin, int max = groupmax, IEnumerable<WRAttribute> attributes = null)
         {
-            return s.AddTag("p", content, cl, min: min, max: max, attributes:attributes);
+            return s.AddTag("p", content, cl, min: min, max: max, attributes: attributes);
         }
         public static StringBuilder AddSpan(this StringBuilder s, string content = null, string cl = null, int min = groupmin, int max = groupmax, IEnumerable<WRAttribute> attributes = null)
         {
-            return s.AddTag("span", content, cl, min: min, max: max, attributes:attributes);
+            return s.AddTag("span", content, cl, min: min, max: max, attributes: attributes);
         }
 
 
@@ -521,7 +525,7 @@ namespace PF2WebRipper
             bool empty = content == null;
 
 
-            ns.AddOpenTag(tag, cl, classoptional:classoptional, attributes:attributes, terminate: !empty);
+            ns.AddOpenTag(tag, cl, classoptional: classoptional, attributes: attributes, terminate: !empty);
 
             if (empty)
             {
@@ -554,7 +558,7 @@ namespace PF2WebRipper
 
         public static string Quantify(this string s, int min = 1, int max = 1, bool ungreedy = false)
         {
-            return  s+ Quantifier(min, max, ungreedy);
+            return s + Quantifier(min, max, ungreedy);
         }
 
         public static string Quantifier(int min = 1, int max = 1, bool ungreedy = false)
@@ -600,7 +604,7 @@ namespace PF2WebRipper
             return ret;
         }
 
-        public static StringBuilder AddOpenTag(this StringBuilder s, string tag, string cl = null, bool classoptional = false, IEnumerable<WRAttribute> attributes = null,   bool terminate = true)
+        public static StringBuilder AddOpenTag(this StringBuilder s, string tag, string cl = null, bool classoptional = false, IEnumerable<WRAttribute> attributes = null, bool terminate = true)
         {
 
             s.Append("<").Append(tag);
@@ -608,7 +612,7 @@ namespace PF2WebRipper
             {
                 s.Append(SB().AppendAttribute("class", cl).Spaces().Wrap("()").Optional(classoptional));
             }
-            if(attributes != null)
+            if (attributes != null)
             {
                 foreach (var at in attributes)
                 {
@@ -655,7 +659,7 @@ namespace PF2WebRipper
             if (!optional)
             {
                 val = SB(val.Group()).Optional().ToString();
-                 
+
             }
             return val;
         }
@@ -746,7 +750,7 @@ namespace PF2WebRipper
             return null;
         }
 
-        public static string Wrap (this int i, string wrapper)
+        public static string Wrap(this int i, string wrapper)
         {
             return i.ToString().Wrap(wrapper);
         }
@@ -757,7 +761,7 @@ namespace PF2WebRipper
             {
                 return s;
             }
-            return wrapper[0] + s + wrapper[wrapper.Length-1];
+            return wrapper[0] + s + wrapper[wrapper.Length - 1];
 
         }
 
@@ -819,7 +823,7 @@ namespace PF2WebRipper
 
         public static string Options(this IEnumerable<string> list, bool group = false, string name = null, int min = 1, int max = 1)
         {
-            string val = list.ToTokenString("|"); 
+            string val = list.ToTokenString("|");
             if (group || min != 1 || max != 1)
             {
                 if (name != null)
@@ -843,7 +847,7 @@ namespace PF2WebRipper
 
         public static string LinksOrText(TextGroupOptions options = null, bool breaks = false)
         {
-            var tg = SB().TextGroup(options:options);
+            var tg = SB().TextGroup(options: options);
             List<StringBuilder> list = new List<StringBuilder>();
             list.Add(SB().AddLink(content: tg.ToString(), cl: "[a-zA-Z0-9]+", classoptional: true));
             list.Add(tg.TextGroup());
@@ -861,13 +865,13 @@ namespace PF2WebRipper
         {
 
             return sb.Group(SB().AddOpenTag("p").AddTag("b", content: content).Append(SB().
-                Group(SB().LinksOrText(new TextGroupOptions()))).AddCloseTag("p"), name:name, min:min, max:max);
+                Group(SB().LinksOrText(new TextGroupOptions()))).AddCloseTag("p"), name: name, min: min, max: max);
 
         }
 
         public static StringBuilder PBoldLine(this StringBuilder sb, string name, string content, bool breaks = false, int min = 1, int max = 1)
         {
-            return sb.Group(SB().AddOpenTag("p").AddBText(content, breaks: breaks).Group(SB().AddBText(TitleString, breaks:  breaks), min: 0, max: -1).AddCloseTag("p"), name:name, min:min, max:max);
+            return sb.Group(SB().AddOpenTag("p").AddBText(content, breaks: breaks).Group(SB().AddBText(TitleString, breaks: breaks), min: 0, max: -1).AddCloseTag("p"), name: name, min: min, max: max);
         }
 
         public static StringBuilder PBoldLineAnon(this StringBuilder sb, string name, string content, bool breaks = false, int min = 1, int max = 1)
@@ -879,9 +883,9 @@ namespace PF2WebRipper
 
         public static StringBuilder AddBText(this StringBuilder sb, string title, bool optional = false, bool breaks = false)
         {
-            return sb.Group(SB().AddTag("b", content: title).Append(SB().LinksOrText(new TextGroupOptions(), breaks)), min:optional?0:1);
+            return sb.Group(SB().AddTag("b", content: title).Append(SB().LinksOrText(new TextGroupOptions(), breaks)), min: optional ? 0 : 1);
         }
-       
+
 
         public static string ToTokenString(this IEnumerable<string> strings, string token)
         {
@@ -898,7 +902,7 @@ namespace PF2WebRipper
                     first = false;
                 }
                 else
-                { 
+                {
                     list += token;
                 }
                 list += str;
@@ -932,6 +936,17 @@ namespace PF2WebRipper
             }
         }
 
+        public static async Task<bool> SpitFileAsync(this string text, string filename)
+        {
+
+            using (var s = File.Open(filename, FileMode.Create))
+            using (var r = new StreamWriter(s))
+            {
+                await r.WriteAsync(text);
+            }
+            return true;
+        }
+
         public static string LoadFile(this string filename)
         {
 
@@ -941,6 +956,47 @@ namespace PF2WebRipper
                 return r.ReadToEnd();
             }
 
+        }
+
+
+
+        public async static Task<string> DownloadFileAsync(this string url)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                HttpResponseMessage resp = await client.GetAsync(url);
+
+                return await resp.Content.ReadAsStringAsync();
+
+            }
+            catch (Exception)
+            {
+
+            }
+            return null;
+        }
+
+        public static async Task<string> LoadFileAsync(this string filename)
+        {
+
+            using (var s = File.Open(filename, FileMode.Open))
+            using (var r = new StreamReader(s))
+            {
+                return await r.ReadToEndAsync();
+            }
+
+        }
+
+        public static async Task<string> DownloadToAsync(this string url, string filename)
+        {
+            string text = await url.DownloadFileAsync();
+            if (text != null)
+            {
+                await text.SpitFileAsync(filename);
+            }
+            return text;
+       
         }
 
         public static void SpitJSRegex(this StringBuilder text, string filename)
@@ -964,6 +1020,22 @@ namespace PF2WebRipper
 
         }
 
+    }
+
+    public static class AsyncUtils
+    {
+        private static Task<T> MakeTask<T>(Func<T> func)
+        {
+            return new Task<T>(func);
+        }
+        private static Task<T> MakeTask<T, X>(Func<X, T> func, X val)
+        {
+            return new Task<T>(() =>func(val) );
+        }
+        private static Task<T> MakeTask<T, X, Y>(Func<X, Y, T> func, X val, Y val2)
+        {
+            return new Task<T>(() => func(val, val2)); ;
+        }
     }
 
     public class WRAttribute
