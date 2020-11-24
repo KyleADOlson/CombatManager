@@ -889,15 +889,22 @@ namespace CombatManager
             {
                 Paragraph descriptionParagraph = new Paragraph();
 
-                if (Fonts.SystemFontFamilies.Contains(new FontFamily("Nyala")))
+                try
+                {
+                    if (Fonts.SystemFontFamilies.Contains(new FontFamily("Nyala")))
+                    {
+
+                        descriptionParagraph.FontFamily = new FontFamily("Nyala");
+                        descriptionParagraph.FontSize = Document.FontSize * 1.2;
+                    }
+                    else
+                    {
+                        descriptionParagraph.FontFamily = new FontFamily("Georgia");
+                    }
+                }
+                catch (Exception)
                 {
 
-                    descriptionParagraph.FontFamily = new FontFamily("Nyala");
-                    descriptionParagraph.FontSize = Document.FontSize * 1.2;
-                }
-                else
-                {
-                    descriptionParagraph.FontFamily = new FontFamily("Georgia");
                 }
 
 
@@ -922,15 +929,23 @@ namespace CombatManager
             {
                 Paragraph descriptionParagraph = new Paragraph();
 
-                if (Fonts.SystemFontFamilies.Contains(new FontFamily("Nyala")))
+                try
+                { 
+                    if (Fonts.SystemFontFamilies.Contains(new FontFamily("Nyala")))
+                    {
+
+                        descriptionParagraph.FontFamily = new FontFamily("Nyala");
+                        descriptionParagraph.FontSize = Document.FontSize * 1.2;
+                    }
+                    else
+                    {
+                        descriptionParagraph.FontFamily = new FontFamily("Georgia");
+                    }
+
+                }
+                catch (Exception)
                 {
 
-                    descriptionParagraph.FontFamily = new FontFamily("Nyala");
-                    descriptionParagraph.FontSize = Document.FontSize * 1.2;
-                }
-                else
-                {
-                    descriptionParagraph.FontFamily = new FontFamily("Georgia");
                 }
 
                 string description = FixBodyString(monster.Description);

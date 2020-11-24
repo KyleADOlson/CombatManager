@@ -11,6 +11,9 @@ using Android.Widget;
 using System.IO;
 using System.Security.AccessControl;
 using Android.Support.V4.Content;
+using Android;
+using Android.Content.PM;
+using Android.Support.V4.App;
 
 namespace CombatManagerDroid
 {
@@ -44,6 +47,45 @@ namespace CombatManagerDroid
             public string Filename { get; set; }
         }
         public event EventHandler<FileDialogEventArgs> DialogComplete;
+
+        public const int FilePermissionCode = 33;
+
+        public static bool CheckFilePermission(Activity context, Action continueAction)
+        {
+            if (ContextCompat.CheckSelfPermission(context, Manifest.Permission.ReadExternalStorage) != Permission.Granted ||
+                ContextCompat.CheckSelfPermission(context, Manifest.Permission.WriteExternalStorage) != Permission.Granted)
+            {
+
+                RequestPermissionHandler.RegisterAction(FilePermissionCode, (permissions, results) =>
+                { 
+                    if (results.Length == 2 && results[0] == Permission.Granted && results[1] == Permission.Granted)
+                    {
+                        continueAction();
+                    }
+                    else
+                    {
+
+                    }
+                
+                });
+
+
+                ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.ReadExternalStorage, 
+                    Manifest.Permission.WriteExternalStorage }, FilePermissionCode);
+
+                //ActivityCompat.PermissionCompatDelegate
+
+                return false;
+            }
+            else
+            {
+                continueAction();
+                return true;
+
+            }
+
+
+        }
 
         public FileDialog(Context context, List<string> ext, bool load) : base(context)
         {
@@ -104,10 +146,31 @@ namespace CombatManagerDroid
 
             if (!safeFolder)
             {
-                _Folder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+                String allpaths = AllPaths;
+                if (allpaths != null)
+                { 
+                }
+
+                _Folder = MyDocsFolder;
             }
 
         }
+
+        string AllPaths
+        {
+            get
+            {
+                string text = "";
+
+                foreach (var x in Enum.GetValues(typeof(System.Environment.SpecialFolder)))
+                {
+                    text += (System.Environment.GetFolderPath((System.Environment.SpecialFolder)x) + "\r\n");
+                }
+                return text;
+            }
+        }
+        string MyDocsFolder => "/sdcard/download";
+        string SystemFolder => System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonApplicationData);
 
         void MoveUpFolder()
         {

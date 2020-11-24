@@ -338,7 +338,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="76"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -358,10 +359,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.LayoutTransform>
-            <local:CustomCombatList Margin="8,2.167,8,0.96" x:Name="CombatList" Grid.Row="1" />
             <Grid>
-                <Grid.ColumnDefinitions>
-                </Grid.ColumnDefinitions>
                 <Border Margin="8,6,8.57,8"  BorderBrush="White" BorderThickness="1">
                     <Border.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -370,54 +368,71 @@
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid>
-                        <Rectangle  Margin="-1" Fill="{DynamicResource PrimaryColorDarkBrush}" Stroke="{DynamicResource LightBorderBrush}"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle  Margin="-1" Fill="{DynamicResource PrimaryColorDarkBrush}" Stroke="{DynamicResource LightBorderBrush}" Grid.RowSpan="2"/>
                         <StackPanel Margin="4">
                             <TextBlock  TextWrapping="Wrap" Text="Active Character: " VerticalAlignment="Top" FontSize="16" Foreground="White" HorizontalAlignment="Left">
                                 <TextBlock.Effect>
                                     <DropShadowEffect/>
                                 </TextBlock.Effect>
                             </TextBlock>
-                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Foreground="White" TextTrimming="CharacterEllipsis" Name="CharacterNameText">
-                            </TextBlock>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Foreground="White" TextTrimming="CharacterEllipsis" x:Name="CharacterNameText"/>
                         </StackPanel>
+                        <Grid x:Name="TimerGrid" Grid.Row="1" Height="20">
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock x:Name="TimeDescriptionText" Margin="3,0,0,0" Text="Player Time Left">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                                <TextBlock x:Name="TimeText" Margin="15,0,0,0" Text="0:00">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
                 </Border>
             </Grid>
-            <Expander  HorizontalAlignment="Left" Margin="8,3.04,0,8"  Grid.Row="2" Foreground="White">
+            <local:CustomCombatList Margin="8,2.167,8,0.96" x:Name="CombatList" Grid.Row="2" />
+            <Expander  HorizontalAlignment="Left" Margin="8,3.04,0,8"  Grid.Row="3" Foreground="White">
                 <Expander.Header>
                     <TextBlock Text="Options" Foreground="White"/>
                 </Expander.Header>
-                <Expander.Content>
-                    <WrapPanel Orientation="Horizontal">
-                        <StackPanel Margin="4,0">
-                            <TextBlock Text="Players"/>
-                            <ComboBox x:Name="PlayersComboBox" d:LayoutOverrides="Height" Margin="0,2" SelectedIndex="0" VerticalContentAlignment="Center" SelectionChanged="ComboBox_IndexChanged" Width="90">
-                                <ComboBoxItem>Show</ComboBoxItem>
-                                <ComboBoxItem>Hide Names</ComboBoxItem>
-                                <ComboBoxItem>Hide</ComboBoxItem>
-                            </ComboBox>
-                        </StackPanel>
-                        <StackPanel Margin="4,0">
-                            <TextBlock Text="Monsters"/>
-                            <ComboBox x:Name="MonstersComboBox" HorizontalAlignment="Left" Grid.Row="2" d:LayoutOverrides="Height" Margin="0,2" SelectedIndex="0" VerticalContentAlignment="Center" SelectionChanged="ComboBox_IndexChanged" Width="90">
-                                <ComboBoxItem>Show</ComboBoxItem>
-                                <ComboBoxItem>Hide Names</ComboBoxItem>
-                                <ComboBoxItem>Hide</ComboBoxItem>
-                            </ComboBox>
-                        </StackPanel>
-                        <CheckBox x:Name="TopmostCheckbox" Content="Always on Top" Foreground="White" Checked="TopmostCheckbox_Checked" Unchecked="TopmostCheckbox_Checked" Grid.Row="2" d:LayoutOverrides="Width, Height" Grid.Column="2" Padding="4,0" Margin="4,4,4,6" VerticalAlignment="Bottom"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                            <CheckBox x:Name="ShowConditionsCheckBox" Content="Show Conditions" Foreground="White" Margin="2,4,2,2" Checked="ShowConditionsCheckBox_Checked" Unchecked="ShowConditionsCheckBox_Unchecked" />
-                            <ComboBox x:Name="ConditionSizeComboBox" Width="92" SelectedIndex="0" Margin="5,0,0,0" SelectionChanged="ConditionSizeComboBox_SelectionChanged" >
-                                <ComboBoxItem Content="Smallest"/>
-                                <ComboBoxItem Content="Smaller"/>
-                                <ComboBoxItem Content="Normal"/>
-                                <ComboBoxItem Content="Larger"/>
-                                <ComboBoxItem Content="Largest"/>
-                            </ComboBox>
-                        </StackPanel>
-                    </WrapPanel>
-                </Expander.Content>
+                <WrapPanel Orientation="Horizontal">
+                    <StackPanel Margin="4,0">
+                        <TextBlock Text="Players"/>
+                        <ComboBox x:Name="PlayersComboBox" d:LayoutOverrides="Height" Margin="0,2" SelectedIndex="0" VerticalContentAlignment="Center" SelectionChanged="ComboBox_IndexChanged" Width="90">
+                            <ComboBoxItem Content="Show"/>
+                            <ComboBoxItem Content="Hide Names"/>
+                            <ComboBoxItem Content="Hide"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="4,0">
+                        <TextBlock Text="Monsters"/>
+                        <ComboBox x:Name="MonstersComboBox" HorizontalAlignment="Left" Grid.Row="2" d:LayoutOverrides="Height" Margin="0,2" SelectedIndex="0" VerticalContentAlignment="Center" SelectionChanged="ComboBox_IndexChanged" Width="90">
+                            <ComboBoxItem Content="Show"/>
+                            <ComboBoxItem Content="Hide Names"/>
+                            <ComboBoxItem Content="Hide"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <CheckBox x:Name="TopmostCheckbox" Content="Always on Top" Foreground="White" Checked="TopmostCheckbox_Checked" Unchecked="TopmostCheckbox_Checked" Grid.Row="2" d:LayoutOverrides="Width, Height" Grid.Column="2" Padding="4,0" Margin="4,4,4,6" VerticalAlignment="Bottom"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <CheckBox x:Name="ShowConditionsCheckBox" Content="Show Conditions" Foreground="White" Margin="2,4,2,2" Checked="ShowConditionsCheckBox_Checked" Unchecked="ShowConditionsCheckBox_Unchecked" />
+                        <ComboBox x:Name="ConditionSizeComboBox" Width="92" SelectedIndex="0" Margin="5,0,0,0" SelectionChanged="ConditionSizeComboBox_SelectionChanged" >
+                            <ComboBoxItem Content="Smallest"/>
+                            <ComboBoxItem Content="Smaller"/>
+                            <ComboBoxItem Content="Normal"/>
+                            <ComboBoxItem Content="Larger"/>
+                            <ComboBoxItem Content="Largest"/>
+                        </ComboBox>
+                    </StackPanel>
+                </WrapPanel>
             </Expander>
         </Grid>
         <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,86.588,0">

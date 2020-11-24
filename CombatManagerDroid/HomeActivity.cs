@@ -19,7 +19,7 @@ namespace CombatManagerDroid
 {
     [Activity (Label = "Combat Manager", Theme = "@android:style/Theme.Light.NoTitleBar")]
 
-    public class HomeActivity : Activity, ActionBar.ITabListener
+    public class HomeActivity : Activity, ActionBar.ITabListener, Android.Support.V4.App.ActivityCompat.IOnRequestPermissionsResultCallback
     {
         enum HomePage
         {
@@ -419,18 +419,23 @@ namespace CombatManagerDroid
 
         void ShowImport()
         {
-            FileDialog fd = new FileDialog(this, new List<string>() { ".cmx" }, true);
-            fd.Show();
-
-            fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
+            FileDialog.CheckFilePermission(this, () =>
             {
 
-                string name = ea.Filename;
-                string fullname = Path.Combine(fd.Folder, name);
 
-                FileInfo file = new FileInfo(fullname);
-                ShowImportDialog(fullname);
-            };
+                FileDialog fd = new FileDialog(this, new List<string>() { ".cmx" }, true);
+                fd.Show();
+
+                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
+                {
+
+                    string name = ea.Filename;
+                    string fullname = Path.Combine(fd.Folder, name);
+
+                    FileInfo file = new FileInfo(fullname);
+                    ShowImportDialog(fullname);
+                };
+            });
         }
 
         void ShowImportDialog(String filename)
@@ -506,23 +511,27 @@ namespace CombatManagerDroid
             ied.Show();
             ied.DialogComplete += (sender, e) =>
             {
-                FileDialog fd = new FileDialog(this, new List<string>() { ".cmx" }, false);
-                fd.Text = "export.cmx";
-                fd.Show();
-
-                fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
+                FileDialog.CheckFilePermission(this, () =>
                 {
 
-                    string name = ea.Filename;
-                    string fullname = Path.Combine(fd.Folder, name);
+                    FileDialog fd = new FileDialog(this, new List<string>() { ".cmx" }, false);
+                    fd.Text = "export.cmx";
+                    fd.Show();
 
-                    FileInfo file = new FileInfo(fullname);
+                    fd.DialogComplete += (object s, FileDialog.FileDialogEventArgs ea) =>
+                    {
 
-                    fullname = fullname.TrimEnd('.') + ".cmx";
+                        string name = ea.Filename;
+                        string fullname = Path.Combine(fd.Folder, name);
 
-                    XmlLoader<ExportData>.Save(e.Data, fullname);
+                        FileInfo file = new FileInfo(fullname);
 
-                };
+                        fullname = fullname.TrimEnd('.') + ".cmx";
+
+                        XmlLoader<ExportData>.Save(e.Data, fullname);
+
+                    };
+                });
             };
         }
 
@@ -559,6 +568,14 @@ namespace CombatManagerDroid
         {
 
         }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions,  Android.Content.PM.Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            RequestPermissionHandler.Result(requestCode, permissions, grantResults);
+        }
+
+
 
 
         public void OnTabReselected (Android.App.ActionBar.Tab tab, FragmentTransaction ft)

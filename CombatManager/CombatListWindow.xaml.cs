@@ -32,6 +32,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Globalization;
+using Timer = System.Windows.Forms.Timer;
 
 namespace CombatManager
 {
@@ -45,6 +46,8 @@ namespace CombatManager
 		IInitiativeController _Controller;
         private double _Scale;
         private bool _SetupComplete;
+
+        Timer timer;
 		
 		public CombatListWindow()
 		{
@@ -69,9 +72,20 @@ namespace CombatManager
             _SetupComplete = true;
 		}
 
+        void SetupClock()
+        {
+            TimerGrid.Visibility = UserSettings.Settings.UseTurnClock ? Visibility.Visible : Visibility.Collapsed;
+
+        }
+
         void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             UpdateCharacterName();
+
+            if (UserSettings.IsTimerSetting(e.PropertyName))
+            {
+                SetupClock();
+            }
         }
 
         public int ComboIndex(bool show, bool hideNames)

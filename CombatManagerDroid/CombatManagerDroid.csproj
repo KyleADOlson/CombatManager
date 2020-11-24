@@ -53,7 +53,8 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <DefineConstants>RELEASE</DefineConstants>
     <AndroidKeyStore>True</AndroidKeyStore>
-    <AndroidSupportedAbis />
+    <AndroidSupportedAbis>
+    </AndroidSupportedAbis>
     <MandroidI18n />
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
@@ -171,8 +172,9 @@
     <Compile Include="Controls\FlowLayout.cs" />
     <Compile Include="FeatDialog.cs" />
     <Compile Include="ImportExportDialog.cs" />
-    <Compile Include="ServiceManager.cs" />
+    <Compile Include="RequestPermissionHandler.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="ServiceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="LoadingActivity.cs" />
@@ -221,6 +223,14 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Assets\VersionNotes.txt" />
+    <AndroidResource Include="Resources\drawable\RightArrow24.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\RightArrow242x.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout-normal-port\Main.axml" />
     <AndroidResource Include="Resources\layout-normal\Combat.axml" />
     <AndroidResource Include="Resources\layout-normal-port\Combat.axml">
@@ -402,7 +412,6 @@
     <AndroidResource Include="Resources\drawable\qm16.png" />
     <AndroidResource Include="Resources\drawable\reaper16.png" />
     <AndroidResource Include="Resources\drawable\reset16.png" />
-    <AndroidResource Include="Resources\drawable\RightArrow24.png" />
     <AndroidResource Include="Resources\drawable\rock16.png" />
     <AndroidResource Include="Resources\drawable\scared16.png" />
     <AndroidResource Include="Resources\drawable\screen16.png" />
@@ -442,7 +451,6 @@
     <AndroidResource Include="Resources\drawable\mail162x.png" />
     <AndroidResource Include="Resources\drawable\openHS2x.png" />
     <AndroidResource Include="Resources\drawable\redx2x.png" />
-    <AndroidResource Include="Resources\drawable\RightArrow242x.png" />
     <AndroidResource Include="Resources\drawable\saveHS2x.png" />
     <AndroidResource Include="Resources\drawable\star162x.png" />
     <AndroidResource Include="Resources\drawable\treasure162x.png" />
@@ -570,6 +578,26 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="..\CombatManagerCore\WebStyles.css">
+      <Link>Assets\WebStyles.css</Link>
+    </AndroidAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\rightar24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\openerhs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\openerhs2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\rightar2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\diepencils.png" />
   </ItemGroup>
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.28.0.0.1\build\monoandroid90\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.28.0.0.1\build\monoandroid90\Xamarin.Android.Support.Annotations.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

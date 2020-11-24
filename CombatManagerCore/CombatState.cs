@@ -29,6 +29,7 @@ using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
+using System.Timers;
 
 namespace CombatManager
 {
@@ -56,12 +57,12 @@ namespace CombatManager
 
 
     [DataContract]
-    public class CombatState: INotifyPropertyChanged
+    public class CombatState : INotifyPropertyChanged
     {
         public event CombatStateCharacterEvent CharacterAdded;
         public event CombatStateCharacterEvent CharacterRemoved;
         public event CombatStateCharacterEvent CharacterPropertyChanged;
-		public event EventHandler CharacterSortCompleted;
+        public event EventHandler CharacterSortCompleted;
         public event CombatStateCharacterEvent TurnChanged;
 
         public event CombatStateNotificationEvent CombatStateNotificationSent;
@@ -70,8 +71,8 @@ namespace CombatManager
 
         public event EventHandler<RollEventArgs> RollRequested;
 
-        private int? _Round;		
-		private string _CR;
+        private int? _Round;
+        private string _CR;
         private long? _XP;
 
         private ObservableCollection<Character> _Characters;
@@ -89,6 +90,9 @@ namespace CombatManager
 
         private RulesSystem _RulesSystem;
 
+        private DateTime _CurrentTurnStartTime;
+        private bool _ClockPaused;
+        private TimeSpan _PausedTime;
 
 
         private bool sortingList;
@@ -127,7 +131,7 @@ namespace CombatManager
                     AddCharacter(newChar);
                     if (s._CurrentCharacter == c)
                     {
-                        _CurrentCharacter = newChar;                       
+                        _CurrentCharacter = newChar;
                     }
                     newChar.ID = c.ID;
 
@@ -137,18 +141,20 @@ namespace CombatManager
             }
             foreach (Character ch in s._CombatList)
             {
-                _CombatIDList.Add (ch.ID);
+                _CombatIDList.Add(ch.ID);
             }
 
             _CombatIDListNeedsUpdate = false;
             _CombatListNeedsUpdate = true;
+            _CurrentTurnStartTime = s._CurrentTurnStartTime;
+            _ClockPaused = s._ClockPaused;
 
         }
 
         public void Copy(CombatState s)
         {
             Round = s.Round;
-	        CR = s.CR;
+            CR = s.CR;
             XP = s.XP;
             RulesSystem = s.RulesSystem;
 
@@ -163,12 +169,23 @@ namespace CombatManager
                 CombatList.Add(c);
             }
             CurrentCharacter = s.CurrentCharacter;
+            CurrentTurnStartTime = s.CurrentTurnStartTime;
+            ClockPaused = s.ClockPaused;
 
         }
 
-        void SendTurnChanged()
+        void HandleTurnChanged()
         {
+            CurrentTurnStartTime = DateTime.UtcNow;
+
             TurnChanged?.Invoke(this, new CombatStateCharacterEventArgs() { Character = this.CurrentCharacter });
+        }
+
+        void PauseTimer()
+        {
+            _ClockPaused = true;
+            _PausedTime = DateTime.UtcNow - CurrentTurnStartTime;
+
         }
 
 
@@ -190,7 +207,7 @@ namespace CombatManager
                     ch.PropertyChanged -= Character_PropertyChanged;
 
                     CharacterRemoved?.Invoke(this, new CombatStateCharacterEventArgs() { Character = ch });
-                    
+
                 }
             }
         }
@@ -199,8 +216,8 @@ namespace CombatManager
 
         void Character_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            CharacterPropertyChanged?.Invoke(this, new CombatStateCharacterEventArgs() { Character = (Character)sender, Property = e.PropertyName});
-            
+            CharacterPropertyChanged?.Invoke(this, new CombatStateCharacterEventArgs() { Character = (Character)sender, Property = e.PropertyName });
+
         }
 
         [DataMember]
@@ -212,14 +229,14 @@ namespace CombatManager
                 if (_Round != value)
                 {
                     _Round = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Round")); 
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Round"));
                 }
             }
         }
 
         [DataMember]
-		public string CR
-		{
+        public string CR
+        {
             get { return _CR; }
             set
             {
@@ -229,8 +246,8 @@ namespace CombatManager
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CR"));
                 }
             }
-			
-		}
+
+        }
 
         [DataMember]
         public long? XP
@@ -255,15 +272,15 @@ namespace CombatManager
                 if (_Characters != value)
                 {
                     _Characters = value;
-                    
-PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));                }
+
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters")); }
             }
         }
 
         [XmlIgnore]
         public ObservableCollection<Character> CombatList
         {
-            get 
+            get
             {
 
                 if (_CombatList == null)
@@ -290,7 +307,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
                 {
                     _CombatIDListNeedsUpdate = true;
                 }
-                return _CombatList; 
+                return _CombatList;
             }
             set
             {
@@ -308,11 +325,11 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
             get
             {
                 var v = new List<SimpleCombatListItem>(
-                    from c in CombatList select new SimpleCombatListItem() 
-                        {ID = c.ID, 
-                            Followers =  (c.InitiativeFollowers == null)?null:
+                    from c in CombatList select new SimpleCombatListItem()
+                    { ID = c.ID,
+                        Followers = (c.InitiativeFollowers == null) ? null :
                             new List<Guid>(
-                                from x in c.InitiativeFollowers select x.ID)});
+                                from x in c.InitiativeFollowers select x.ID) });
 
                 return v;
             }
@@ -322,7 +339,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
         [DataMember]
         public List<Guid> CombatIDList
         {
-            get 
+            get
             {
                 if (_CombatIDListNeedsUpdate)
                 {
@@ -354,7 +371,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
         [DataMember]
         public Guid CurrentCharacterID
         {
-            get 
+            get
             {
                 if (CurrentCharacter == null)
                 {
@@ -419,6 +436,64 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
         }
 
         [XmlIgnore]
+        public DateTime CurrentTurnStartTime
+        {
+            get =>  _CurrentTurnStartTime;
+            set
+            {
+                if (_CurrentTurnStartTime != value)
+                {
+                    _CurrentTurnStartTime = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentTurnStartTime"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentTurnStartTimeTicks"));
+                }
+            }
+
+        }
+
+        public long ? CurrentTurnStartTimeTicks
+        {
+            get
+            {
+                return _CurrentTurnStartTime.Ticks;
+            }
+            set
+            {
+                bool changed = false;
+                if (value.Value != _CurrentTurnStartTime.Ticks)
+                {
+                    _CurrentTurnStartTime = new DateTime(value.Value);
+                    changed = true;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentTurnStartTime"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentTurnStartTimeTicks"));
+                }
+                if (changed)
+                {
+
+                }
+
+            }
+
+        }
+
+        public bool ClockPaused
+        {
+            get => _ClockPaused;
+            set
+            {
+                if (_ClockPaused != value)
+                {
+                    _ClockPaused = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ClockPaused"));
+                }
+            }
+
+        }
+
+
+
+
+        [XmlIgnore]
         public RulesSystem RulesSystem
         {
             get { return _RulesSystem; }
@@ -431,6 +506,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
                 }
             }
         }
+
 
         [DataMember]
         public int RulesSystemInt
@@ -685,16 +761,8 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
 
             ResetAllAppliedRounds();
 
-
-            if (CombatList.Count > 0)
-            {
-                CurrentCharacter = CombatList[0];
-            }
-            else
-            {
-                CurrentCharacter = null;
-            }
-            SendTurnChanged();
+            MoveCurrentCharacterToIndex(0);
+            HandleTurnChanged();
         }
 
         private void ResetAllAppliedRounds()
@@ -780,16 +848,10 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
             {
                 lastCount = CurrentInitiativeCount;
             }
-            
 
-            if (CombatList.Count > 0)
-            {
-                CurrentCharacter = CombatList[next];
-            }
-            else
-            {
-                CurrentCharacter = null;
-            }
+
+
+            MoveCurrentCharacterToIndex(next);
 
             Character character = CurrentCharacter;
 
@@ -816,7 +878,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
 	            }
 			}
            
-            SendTurnChanged();
+            HandleTurnChanged();
         }
 
         public void MovePrevious()
@@ -840,13 +902,22 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
                 Round--;
             }
 
-            if (CombatList.Count > 0)
+            MoveCurrentCharacterToIndex(next);
+
+            UpdateAllConditions();
+            HandleTurnChanged();
+        }
+
+        private void MoveCurrentCharacterToIndex(int next)
+        {
+            if (CombatList.Count > next)
             {
                 CurrentCharacter = CombatList[next];
             }
-
-            UpdateAllConditions();
-            SendTurnChanged();
+            else
+            {
+                CurrentCharacter = null;
+            }
         }
 
         public void SortInitiative()
@@ -925,16 +996,13 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
 			
 			
 			sortingList = false;
-			if (CharacterSortCompleted != null)
-			{
-				CharacterSortCompleted(this, new EventArgs());
-			}
+			CharacterSortCompleted?.Invoke(this, new EventArgs());
 
             if (moveToFirst)
             {
                 CurrentCharacter = CombatList.FirstOrDefault();
             }
-            SendTurnChanged();
+            HandleTurnChanged();
 
 
         }
@@ -1100,7 +1168,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
                 CorrectCharacterLocation(character);
 
                 UpdateAllConditions();
-                SendTurnChanged();
+                HandleTurnChanged();
 
             }
             
@@ -1126,7 +1194,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
                     MovePrevious();
 
                 }
-                SendTurnChanged();
+                HandleTurnChanged();
             }
         }
 
@@ -1201,7 +1269,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
 
 
                 UpdateAllConditions();
-                SendTurnChanged();
+                HandleTurnChanged();
 
             }
             
@@ -1294,10 +1362,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
             _UnfilteredCombatList.Add(character);
             FilterList();
             sortingList = false;
-            if (CharacterSortCompleted != null)
-            {
-                CharacterSortCompleted(this, new EventArgs());
-            }
+            CharacterSortCompleted?.Invoke(this, new EventArgs());
         }
 
         public void RemoveCharacter(Character character)
@@ -1316,10 +1381,7 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
             FilterList();
             sortingList = false;
             
-            if (CharacterSortCompleted != null)
-            {
-                CharacterSortCompleted(this, new EventArgs());
-            }
+            CharacterSortCompleted?.Invoke(this, new EventArgs());
         }
 
 
@@ -2031,9 +2093,88 @@ PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Characters"));      
             }
         }
 
+        public void StopAnyTurnClockManager()
+        {
+            if (_TurnClockManager != null && _TurnClockManager.Running)
+            {
+                _TurnClockManager.Stop();
+            }
+        }
+
+        TurnClockManager _TurnClockManager = null;
+        [XmlIgnore]
+        public TurnClockManager ClockManager
+        {
+            get
+            {
+                if (_TurnClockManager == null)
+                {
+                    _TurnClockManager = new TurnClockManager(this);
+                }
+                return _TurnClockManager;
+            }
+        }
 
 
+        public class TurnClockManager
+        {
+            private CombatState state;
+            private double eventMS = 50.0;
+            private bool running;
 
+            Timer clockTimer;
+
+            internal TurnClockManager(CombatState state)
+            {
+                this.state = state;
+                clockTimer = new Timer(eventMS);
+                clockTimer.Elapsed += ClockTimer_Elapsed;
+
+            }
+
+            public void Start()
+            {
+                clockTimer.Start();
+                running = true;
+            }
+
+            public event EventHandler ClockTimerElapsed;
+
+
+            private void ClockTimer_Elapsed(object sender, ElapsedEventArgs e)
+            {
+                ClockTimerElapsed?.Invoke(this, new EventArgs());
+            }
+
+            public void Stop()
+            {
+                clockTimer.Stop();
+                running = false;
+
+            }
+
+            public double EventMS
+            {
+                get
+                {
+                    return eventMS;
+                }
+                set
+                {
+                    if (eventMS != value)
+                    {
+                        eventMS = value;
+                        clockTimer.Interval = value;
+                    }
+                }
+            }
+
+            public bool Running
+            {
+                get => running;
+            }
+
+        }
 
     }
 }
