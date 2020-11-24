@@ -92,7 +92,7 @@ namespace CombatManager
 
         private DateTime _CurrentTurnStartTime;
         private bool _ClockPaused;
-        private TimeSpan _PausedTime;
+        private TimeSpan _PausedTimeSpan;
 
 
         private bool sortingList;
@@ -181,10 +181,21 @@ namespace CombatManager
             TurnChanged?.Invoke(this, new CombatStateCharacterEventArgs() { Character = this.CurrentCharacter });
         }
 
-        void PauseTimer()
+        public void PauseTimer()
         {
-            _ClockPaused = true;
-            _PausedTime = DateTime.UtcNow - CurrentTurnStartTime;
+            if (!_ClockPaused)
+            {
+                PausedTimeSpan = DateTime.UtcNow - CurrentTurnStartTime;
+                ClockPaused = true;
+            }
+        }
+
+        public void ResumeTimer()
+
+        {
+            CurrentTurnStartTime = DateTime.UtcNow - PausedTimeSpan;
+
+            ClockPaused = false;
 
         }
 
@@ -485,6 +496,20 @@ namespace CombatManager
                 {
                     _ClockPaused = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ClockPaused"));
+                }
+            }
+
+        }
+
+        public TimeSpan PausedTimeSpan
+        {
+            get => _PausedTimeSpan;
+            set
+            {
+                if (_PausedTimeSpan != value)
+                {
+                    _PausedTimeSpan = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PausedTimeSpan"));
                 }
             }
 

@@ -6407,6 +6407,10 @@ namespace CombatManager
 
                 UpdateCurrentMonsterFlowDocument();
             }
+            else if (e.PropertyName == "ClockPaused")
+            {
+                UpdateTurnClockUI();
+            }    
         }
 
         void CombatStateCurrentCharacter_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -9666,24 +9670,35 @@ namespace CombatManager
             Visibility vis = UserSettings.Settings.UseTurnClock ? Visibility.Visible : Visibility.Collapsed;
             
             TurnClockText.Visibility = vis;
+            TurnClockResetButton.Visibility = vis;
+            TurnClockPauseButton.Visibility = vis;
             TurnClockSettingsButton.Visibility = vis;
             if (!UserSettings.Settings.UseTurnClock)
             {
                 TurnClockButtonText.Text = "Timer Off";
+                TurnClockButtonText.Background = null;
             }
             else if (!UserSettings.Settings.CountdownToNextTurn)
             {
                 TurnClockButtonText.Text = "Time Left";
+               
+
+                //if (CurrentTurnTimeSpan -
+                //TurnClockButtonText.Background
             }
             else
             {
                 TurnClockButtonText.Text = "Turn Time";
+                TurnClockButtonText.Background = null;
             }
 
             if (UserSettings.Settings.UseTurnClock)
             {
                 UpdateClockTime();
             }
+            TurnClockPauseButton.IsChecked = combatState.ClockPaused;
+
+            
 
 
         }
@@ -9703,6 +9718,7 @@ namespace CombatManager
             else if (UserSettings.Settings.CountdownToNextTurn)
             {
                 UserSettings.Settings.CountdownToNextTurn = false;
+                
 
             }
             else
@@ -9721,22 +9737,130 @@ namespace CombatManager
 
         private void UpdateClockTime()
         {
-            TimeSpan span;
+ 
+            TurnClockText.Text = TimerTimeText(CurrentTurnTimeSpan);
+        }
+
+        private TimeSpan TurnTimeSpan
+        {
+            get => new TimeSpan(0, 0, UserSettings.Settings.TurnTimeSeconds);
+        }
+        private TimeSpan WarningTimeSpan
+        {
+            get => new TimeSpan(0, 0, UserSettings.Settings.WarningTimeSeconds);
+        }
+
+        private TimeSpan CurrentTurnTimeSpan
+        {
+            get
+           {
+                TimeSpan span;
 
 
-            if (UserSettings.Settings.CountdownToNextTurn)
-            {
-                span = combatState.CurrentTurnStartTime.AddSeconds(UserSettings.Settings.TurnTimeSeconds)
-                    - DateTime.UtcNow;
+                if (UserSettings.Settings.CountdownToNextTurn)
+                {
+                    if (combatState.ClockPaused)
+                    {
+                        span = TurnTimeSpan - combatState.PausedTimeSpan;
+                    }
+                    else
+                    {
+
+                        span = combatState.CurrentTurnStartTime.AddSeconds(UserSettings.Settings.TurnTimeSeconds)
+                            - DateTime.UtcNow;
+                    }
+                }
+                else
+                {
+                    if (combatState.ClockPaused)
+                    {
+                        span = combatState.PausedTimeSpan;
+                    }
+                    else
+                    {
+                        span = DateTime.UtcNow - combatState.CurrentTurnStartTime;
+                    }
+                }
+
+                return span;
             }
+
+        }
+
+        private TimeSpan TurnTimeRemaining
+        {
+            get => TurnTimeSpan - CurrentTurnTimeSpan;
+        }
+
+
+        private TimeSpan WarningTimeRemaining
+        {
+            get => WarningTimeSpan - CurrentTurnTimeSpan;
+        }
+
+
+
+
+        string TimerTimeText(TimeSpan span)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            TimeSpan checkSpan = span;
+            if (checkSpan.Ticks < 0)
+            {
+                checkSpan = checkSpan.Negate();
+                builder.Append("-");
+            }
+            bool hasDays = false;
+            bool hasHours = false;
+            if (checkSpan.Days >= 1)
+            {
+                builder.Append(checkSpan.Days + ":");
+                hasDays = true;
+
+            }
+            if (checkSpan.TotalHours >= 1)
+            {
+                string hours = checkSpan.Hours.ToString();
+                if (checkSpan.Hours < 10 && hasDays)
+                {
+                    hours = "0" + hours;
+                }
+                builder.Append(hours + ":");
+                hasHours = true;
+
+            }
+            string minutes = checkSpan.Minutes.ToString();
+            if (checkSpan.Minutes < 10 && hasHours)
+            {
+                minutes = "0" + minutes;
+
+            }
+            builder.Append(minutes + ":");
+            string seconds = checkSpan.Seconds.ToString("D2");
+            builder.Append(seconds);
+            return builder.ToString();
+
+        }
+
+        private void TurnClockPauseButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TurnClockPauseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (combatState.ClockPaused)
+            {
+                combatState.ResumeTimer();
+            }    
             else
             {
-                span = DateTime.UtcNow - combatState.CurrentTurnStartTime;
+                combatState.PauseTimer();
             }
-
-            TurnClockText.Text = span.ToString();
         }
     }
+
 
 
 

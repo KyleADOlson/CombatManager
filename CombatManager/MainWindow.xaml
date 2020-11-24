@@ -3258,12 +3258,12 @@
                             <TextBlock x:Name="CurrentRoundText" Margin="4,3.54,0,4.18" FontSize="16"  TextTrimming="CharacterEllipsis" Foreground="White" d:LayoutOverrides="Height" Text="{Binding Round}" HorizontalAlignment="Left" Width="43.858" TextAlignment="Center" VerticalAlignment="Center" />
 
                             <Button x:Name="ResetRoundButton" ToolTip="Reset Round" Margin="4,5.02,4,4.02" Grid.Column="3" Grid.Row="1"  Click="ResetRoundButton_Click" Content="Reset" HorizontalAlignment="Left" Padding="1,0" RenderTransformOrigin="0.76,0.226" d:LayoutOverrides="Height" Foreground="White" Width="40.167" Style="{DynamicResource ButtonSecondaryStyle}" />
-                            <Button x:Name="TurnClockButton" ToolTip="Show a timer for the current player's turn" Margin="4,5.02,4,4.02" Foreground="White" Width="auto" Style="{DynamicResource ButtonSecondaryAStyle}" Click="TurnClockButton_Click" >
+                            <Button x:Name="TurnClockButton" ToolTip="Show a timer for the current player's turn" Margin="4,5.02,4,4.02" Foreground="White" Width="65" Style="{DynamicResource ButtonSecondaryAStyle}" Click="TurnClockButton_Click" >
                                 <TextBlock x:Name="TurnClockButtonText" Margin="4,0,4,0">Clock Off</TextBlock>
                             </Button>
                             <TextBlock x:Name="TurnClockText" Margin="4,3.54,4,4.18" FontSize="16"  TextTrimming="CharacterEllipsis" Foreground="White" d:LayoutOverrides="Height" Text="00:00:00" HorizontalAlignment="Left" TextAlignment="Center" VerticalAlignment="Center" Width="85" />
 
-                            <ToggleButton x:Name="PauseButton" ToolTip="Pause Turn Clock"  Height="22" Margin="4,5.02,4,4.02" Foreground="White" Width="22" Style="{DynamicResource ButtonSecondaryAStyle}" >
+                            <ToggleButton x:Name="TurnClockPauseButton" ToolTip="Pause Turn Clock"  Height="22" Margin="4,5.02,4,4.02" Foreground="White" Width="22" Style="{DynamicResource ButtonSecondaryAStyle}" Click="TurnClockPauseButton_Click" Checked="TurnClockPauseButton_Checked" >
                                 <StackPanel Orientation="Horizontal">
 
                                     <Image x:Name="TurnClockPauseImage" Source="Images\PauseButton.png" ></Image>
