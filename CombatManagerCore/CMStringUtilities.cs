@@ -372,16 +372,17 @@ namespace CombatManager
             {
                 return false;
             }
-            return target.ToUpper().Contains(contains.ToString());
+            return target.ToLower().Contains(contains.ToLower());
         }
 
         public static bool ContainsOrNullIgnoreCase(this string target, string contains)
         {
-            if (contains == null)
+            if (string.IsNullOrWhiteSpace(contains))
             {
                 return true;
             }
-            return target.ToUpper().Contains(contains.ToString());
+
+            return target.ToLower().Contains(contains.ToLower());
         }
         
     }
