@@ -8,6 +8,6 @@ namespace CombatManager.LocalService.Data
 {
     public class RemoteFeatList
     {
-        public List<RemoteFeat> Feats;
+        public List<RemoteFeat> Feats { get; set; }
     }
 }
